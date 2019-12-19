@@ -686,6 +686,46 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param Domain: Domain name
+        :type Domain: str
+        :param ErrorNos: Original error code
+        :type ErrorNos: list of int
+        :param Body: New response packet
+        :type Body: str
+        :param NewErrorNo: New error code
+        :type NewErrorNo: int
+        :param ClearHeaders: Response header to be deleted
+        :type ClearHeaders: list of str
+        :param SetHeaders: Response header to be set
+        :type SetHeaders: list of HttpHeaderParam
+        """
+        self.ListenerId = None
+        self.Domain = None
+        self.ErrorNos = None
+        self.Body = None
+        self.NewErrorNo = None
+        self.ClearHeaders = None
+        self.SetHeaders = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.Domain = params.get("Domain")
+        self.ErrorNos = params.get("ErrorNos")
+        self.Body = params.get("Body")
+        self.NewErrorNo = params.get("NewErrorNo")
+        self.ClearHeaders = params.get("ClearHeaders")
+        if params.get("SetHeaders") is not None:
+            self.SetHeaders = []
+            for item in params.get("SetHeaders"):
+                obj = HttpHeaderParam()
+                obj._deserialize(item)
+                self.SetHeaders.append(obj)
+
 
 class CreateDomainErrorPageInfoResponse(AbstractModel):
     """CreateDomainErrorPageInfo response structure.
@@ -694,13 +734,17 @@ class CreateDomainErrorPageInfoResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param ErrorPageId: Configuration ID of a custom error response
+        :type ErrorPageId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.ErrorPageId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ErrorPageId = params.get("ErrorPageId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1382,6 +1426,17 @@ class DeleteDomainErrorPageInfoRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ErrorPageId: Unique ID of a custom error page. For more information, please see the response to CreateDomainErrorPageInfo.
+        :type ErrorPageId: str
+        """
+        self.ErrorPageId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorPageId = params.get("ErrorPageId")
+
 
 class DeleteDomainErrorPageInfoResponse(AbstractModel):
     """DeleteDomainErrorPageInfo response structure.
@@ -1907,6 +1962,21 @@ class DescribeDomainErrorPageInfoRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param Domain: Domain name
+        :type Domain: str
+        """
+        self.ListenerId = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.Domain = params.get("Domain")
+
 
 class DescribeDomainErrorPageInfoResponse(AbstractModel):
     """DescribeDomainErrorPageInfo response structure.
@@ -1915,13 +1985,23 @@ class DescribeDomainErrorPageInfoResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param ErrorPageSet: Configuration set of a custom error response
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorPageSet: list of DomainErrorPageInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.ErrorPageSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("ErrorPageSet") is not None:
+            self.ErrorPageSet = []
+            for item in params.get("ErrorPageSet"):
+                obj = DomainErrorPageInfo()
+                obj._deserialize(item)
+                self.ErrorPageSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3122,6 +3202,17 @@ class DescribeRulesByRuleIdsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param RuleIds: List of rule IDs. Up to 10 rules are supported.
+        :type RuleIds: list of str
+        """
+        self.RuleIds = None
+
+
+    def _deserialize(self, params):
+        self.RuleIds = params.get("RuleIds")
+
 
 class DescribeRulesByRuleIdsResponse(AbstractModel):
     """DescribeRulesByRuleIds response structure.
@@ -3130,13 +3221,26 @@ class DescribeRulesByRuleIdsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: The number of returned rules.
+        :type TotalCount: int
+        :param RuleSet: List of returned rules.
+        :type RuleSet: list of RuleInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TotalCount = None
+        self.RuleSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RuleSet") is not None:
+            self.RuleSet = []
+            for item in params.get("RuleSet"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.RuleSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3255,6 +3359,17 @@ class DescribeSecurityRulesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param SecurityRuleIds: List of security rule IDs. Up to 20 security rules are supported.
+        :type SecurityRuleIds: list of str
+        """
+        self.SecurityRuleIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityRuleIds = params.get("SecurityRuleIds")
+
 
 class DescribeSecurityRulesResponse(AbstractModel):
     """DescribeSecurityRules response structure.
@@ -3263,13 +3378,26 @@ class DescribeSecurityRulesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: The number of returned security rules.
+        :type TotalCount: int
+        :param SecurityRuleSet: List of returned security rules.
+        :type SecurityRuleSet: list of SecurityPolicyRuleOut
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TotalCount = None
+        self.SecurityRuleSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SecurityRuleSet") is not None:
+            self.SecurityRuleSet = []
+            for item in params.get("SecurityRuleSet"):
+                obj = SecurityPolicyRuleOut()
+                obj._deserialize(item)
+                self.SecurityRuleSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3526,6 +3654,60 @@ class DomainAccessRegionDict(AbstractModel):
         self.GeographicalZoneInnerCode = params.get("GeographicalZoneInnerCode")
         self.ContinentInnerCode = params.get("ContinentInnerCode")
         self.RegionName = params.get("RegionName")
+
+
+class DomainErrorPageInfo(AbstractModel):
+    """Custom error response configuration of a domain name
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorPageId: Configuration ID of a custom error response
+        :type ErrorPageId: str
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param Domain: Domain name
+        :type Domain: str
+        :param ErrorNos: Original error code
+        :type ErrorNos: list of int
+        :param NewErrorNo: New error code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NewErrorNo: int
+        :param ClearHeaders: Response header to be cleared
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClearHeaders: list of str
+        :param SetHeaders: Response header to be set
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SetHeaders: list of HttpHeaderParam
+        :param Body: Configured response body (excluding HTTP header)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Body: str
+        """
+        self.ErrorPageId = None
+        self.ListenerId = None
+        self.Domain = None
+        self.ErrorNos = None
+        self.NewErrorNo = None
+        self.ClearHeaders = None
+        self.SetHeaders = None
+        self.Body = None
+
+
+    def _deserialize(self, params):
+        self.ErrorPageId = params.get("ErrorPageId")
+        self.ListenerId = params.get("ListenerId")
+        self.Domain = params.get("Domain")
+        self.ErrorNos = params.get("ErrorNos")
+        self.NewErrorNo = params.get("NewErrorNo")
+        self.ClearHeaders = params.get("ClearHeaders")
+        if params.get("SetHeaders") is not None:
+            self.SetHeaders = []
+            for item in params.get("SetHeaders"):
+                obj = HttpHeaderParam()
+                obj._deserialize(item)
+                self.SetHeaders.append(obj)
+        self.Body = params.get("Body")
 
 
 class DomainRuleSet(AbstractModel):
@@ -3822,6 +4004,27 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = CertificateAliasInfo()
                 obj._deserialize(item)
                 self.PolyClientCertificateAliasInfo.append(obj)
+
+
+class HttpHeaderParam(AbstractModel):
+    """Parameter describing an HTTP packet header
+
+    """
+
+    def __init__(self):
+        """
+        :param HeaderName: HTTP header name
+        :type HeaderName: str
+        :param HeaderValue: HTTP header value
+        :type HeaderValue: str
+        """
+        self.HeaderName = None
+        self.HeaderValue = None
+
+
+    def _deserialize(self, params):
+        self.HeaderName = params.get("HeaderName")
+        self.HeaderValue = params.get("HeaderValue")
 
 
 class InquiryPriceCreateProxyRequest(AbstractModel):

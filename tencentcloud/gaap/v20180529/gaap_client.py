@@ -252,7 +252,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateDomainErrorPageInfo(self, request):
-        """定制域名指定错误码的错误响应
+        """This API is used to customize the error code of an error response to the specified domain name.
 
         :param request: Request instance for CreateDomainErrorPageInfo.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateDomainErrorPageInfoRequest`
@@ -616,7 +616,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteDomainErrorPageInfo(self, request):
-        """删除域名的定制错误
+        """This API is used to delete a custom error code for a domain name.
 
         :param request: Request instance for DeleteDomainErrorPageInfo.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteDomainErrorPageInfoRequest`
@@ -952,7 +952,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeDomainErrorPageInfo(self, request):
-        """查询目前订制域名的错误响应
+        """This API is used to query the custom error response to the current domain name.
 
         :param request: Request instance for DescribeDomainErrorPageInfo.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoRequest`
@@ -1568,7 +1568,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRulesByRuleIds(self, request):
-        """本接口（DescribeRulesByRuleIds）用于根据规则ID拉取规则信息列表。支持一个或者多个规则信息的拉取。一次最多支持10个规则信息的拉取。
+        """This API is used to pull the list of rules based on rule ID. It supports pulling 1 to 10 rules at a time.
 
         :param request: Request instance for DescribeRulesByRuleIds.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRulesByRuleIdsRequest`
@@ -1624,7 +1624,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeSecurityRules(self, request):
-        """本接口（DescribeSecurityRules）用于根据安全规则ID查询安全规则详情列表。支持一个或多个安全规则的查询。一次最多支持20个安全规则的查询。
+        """This API is used to query the list of security rules based on security rule ID. It supports querying 1 to 20 security rules at a time.
 
         :param request: Request instance for DescribeSecurityRules.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeSecurityRulesRequest`
