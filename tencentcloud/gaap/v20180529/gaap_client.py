@@ -952,7 +952,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeDomainErrorPageInfo(self, request):
-        """This API is used to query the custom error response to the current domain name.
+        """This API is used to query the custom error response to a domain name.
 
         :param request: Request instance for DescribeDomainErrorPageInfo.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoRequest`

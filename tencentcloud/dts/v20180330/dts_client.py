@@ -1,0 +1,496 @@
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import json
+
+from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+from tencentcloud.common.abstract_client import AbstractClient
+from tencentcloud.dts.v20180330 import models
+
+
+class DtsClient(AbstractClient):
+    _apiVersion = '2018-03-30'
+    _endpoint = 'dts.tencentcloudapi.com'
+
+
+    def CompleteMigrateJob(self, request):
+        """This API (CompleteMigrateJob) is used to complete a data migration task.
+        For tasks in incremental migration mode, you need to call this API before migration gets ready, so as to stop migrating incremental data.
+        If the task status queried through the (DescribeMigrateJobs) API is ready (status=8), you can call this API to complete the migration task.
+
+        :param request: Request instance for CompleteMigrateJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.CompleteMigrateJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.CompleteMigrateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CompleteMigrateJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CompleteMigrateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateMigrateCheckJob(self, request):
+        """This API is used to create a migration check task.
+        Before migration, you should call this API to create a check. Migration will start only if the check succeeds. You can view the check result through the DescribeMigrateCheckJob API.
+        After successful check, if the migration task needs to be modified, a new check task should be created and migration will begin only after the new check succeeds.
+
+        :param request: Request instance for CreateMigrateCheckJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.CreateMigrateCheckJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.CreateMigrateCheckJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMigrateCheckJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMigrateCheckJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateMigrateJob(self, request):
+        """This API (CreateMigrateJob) is used to create a data migration task.
+
+        For a finance zone linkage, please use the domain name dts.ap-shenzhen-fsi.tencentcloudapi.com.
+
+        :param request: Request instance for CreateMigrateJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.CreateMigrateJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.CreateMigrateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMigrateJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMigrateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSyncCheckJob(self, request):
+        """Before the StartSyncJob API is called to start disaster recovery sync, this API should be called first to create a check. Data sync can start only if the check succeeds. You can view the check result through the DescribeSyncCheckJob API.
+        Sync can begin only if the check succeeds.
+
+        :param request: Request instance for CreateSyncCheckJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.CreateSyncCheckJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.CreateSyncCheckJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSyncCheckJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSyncCheckJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSyncJob(self, request):
+        """This API (CreateSyncJob) is used to create a disaster recovery sync task.
+        After successful creation, check can be initiated through the CreateSyncCheckJob API. The sync task can be started through the StartSyncJob API only if the check succeeds.
+
+        :param request: Request instance for CreateSyncJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.CreateSyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.CreateSyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSyncJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSyncJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteMigrateJob(self, request):
+        """This API (DeleteMigrationJob) is used to delete a data migration task. If the task status queried through the DescribeMigrateJobs API is checking (status=3), running (status=7), ready (status=8), canceling (status=11), or completing (status=12), the task cannot be deleted.
+
+        :param request: Request instance for DeleteMigrateJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.DeleteMigrateJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DeleteMigrateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteMigrateJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMigrateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSyncJob(self, request):
+        """This API is used to delete a disaster recovery sync task. Sync tasks that are running cannot be deleted.
+
+        :param request: Request instance for DeleteSyncJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.DeleteSyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DeleteSyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSyncJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSyncJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMigrateCheckJob(self, request):
+        """This API is used to get the check result and query check status and progress after a check is created.
+        If the check succeeds, you can call the StartMigrateJob API to start migration.
+        If the check fails, the reason can be queried. Please modify the migration configuration or adjust relevant parameters of the source/target instances through the ModifyMigrateJob API based on the error message.
+
+        :param request: Request instance for DescribeMigrateCheckJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.DescribeMigrateCheckJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DescribeMigrateCheckJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMigrateCheckJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMigrateCheckJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMigrateJobs(self, request):
+        """This API is used to query data migration tasks.
+        For a finance zone linkage, please use the domain name https://dts.ap-shenzhen-fsi.tencentcloudapi.com.
+
+        :param request: Request instance for DescribeMigrateJobs.
+        :type request: :class:`tencentcloud.dts.v20180330.models.DescribeMigrateJobsRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DescribeMigrateJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMigrateJobs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMigrateJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSyncCheckJob(self, request):
+        """This API is used to get the check result after a disaster recovery sync check task is created through the CreateSyncCheckJob API. Check status and progress can be queried.
+        If the check succeeds, you can call the StartSyncJob API to start the sync task.
+        If the check fails, the reason will be returned. You can modify the configuration through the ModifySyncJob API and initiate check again.
+        It takes about 30 seconds to complete the check task. If the returned status is not "finished", the check has not been completed, and this API needs to be polled.
+        If Status=finished and CheckFlag=1, the check succeeds.
+        If Status=finished and CheckFlag !=1, the check fails.
+
+        :param request: Request instance for DescribeSyncCheckJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.DescribeSyncCheckJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DescribeSyncCheckJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSyncCheckJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSyncCheckJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSyncJobs(self, request):
+        """This API is used to query disaster recovery sync tasks initiated on the DTS platform.
+
+        :param request: Request instance for DescribeSyncJobs.
+        :type request: :class:`tencentcloud.dts.v20180330.models.DescribeSyncJobsRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DescribeSyncJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSyncJobs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSyncJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMigrateJob(self, request):
+        """This API (ModifyMigrateJob) is used to modify a data migration task.
+        If the status of a migration task is creating (status=1), check succeeded (status=4), check failed (status=5), or migration failed (status=10), this API can be called to modify the task, but the type of the source and target instances and the region of the target instance cannot be modified.
+
+        For a finance zone linkage, please use the domain name dts.ap-shenzhen-fsi.tencentcloudapi.com.
+
+        :param request: Request instance for ModifyMigrateJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.ModifyMigrateJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ModifyMigrateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMigrateJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMigrateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySyncJob(self, request):
+        """This API is used to modify a disaster recovery sync task.
+        If the status of a sync task is creating, created, check succeeded, or check failed, this API can be called to modify the task.
+        The information of the source and target instances cannot be modified, but the task name and the tables to be synced can.
+
+        :param request: Request instance for ModifySyncJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.ModifySyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ModifySyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySyncJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySyncJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartMigrateJob(self, request):
+        """This API (StartMigrationJob) is used to start a migration task. After the API is called, non-scheduled migration tasks will start the migration immediately, while scheduled tasks will start the countdown.
+        Before calling this API, be sure to use the CreateMigrateCheckJob API to check the data migration task, which can be started only if its status queried through the DescribeMigrateJobs API is check succeeded (status=4).
+
+        :param request: Request instance for StartMigrateJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.StartMigrateJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.StartMigrateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartMigrateJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartMigrateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartSyncJob(self, request):
+        """This API is used to start a disaster recovery sync task after it is successfully checked through the CreateSyncCheckJob and DescribeSyncCheckJob APIs.
+
+        :param request: Request instance for StartSyncJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.StartSyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.StartSyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartSyncJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartSyncJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopMigrateJob(self, request):
+        """This API (StopMigrateJob) is used to cancel a data migration task.
+        During migration, this API can be used to cancel migration if the task status queried through the DescribeMigrateJobs API is running (status=7) or ready (status=8), and the migration task will fail.
+
+        :param request: Request instance for StopMigrateJob.
+        :type request: :class:`tencentcloud.dts.v20180330.models.StopMigrateJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.StopMigrateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopMigrateJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopMigrateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

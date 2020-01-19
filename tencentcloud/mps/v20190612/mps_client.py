@@ -17,29 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.clb.v20180317 import models
+from tencentcloud.mps.v20190612 import models
 
 
-class ClbClient(AbstractClient):
-    _apiVersion = '2018-03-17'
-    _endpoint = 'clb.tencentcloudapi.com'
+class MpsClient(AbstractClient):
+    _apiVersion = '2019-06-12'
+    _endpoint = 'mps.tencentcloudapi.com'
 
 
-    def AssociateTargetGroups(self, request):
-        """监听器或转发规则绑定目标组。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+    def CreateAIRecognitionTemplate(self, request):
+        """This API is used to create a custom content recognition template. Up to 50 templates can be created.
 
-        :param request: Request instance for AssociateTargetGroups.
-        :type request: :class:`tencentcloud.clb.v20180317.models.AssociateTargetGroupsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.AssociateTargetGroupsResponse`
+        :param request: Request instance for CreateAIRecognitionTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAIRecognitionTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateTargetGroups", params)
+            body = self.call("CreateAIRecognitionTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AssociateTargetGroupsResponse()
+                model = models.CreateAIRecognitionTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -54,20 +53,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def AutoRewrite(self, request):
-        """An HTTPS:443 listener needs to be created first, along with a forwarding rule. When this API is called, an HTTP:80 listener will be created automatically if it did not exist and a forwarding rule corresponding to `Domains` (specified in the input parameter) under the HTTPS:443 listener will also be created. After successful creation, access requests to an HTTP:80 address will be redirected to an HTTPS:443 address automatically.
+    def CreateAnimatedGraphicsTemplate(self, request):
+        """This API is used to create a custom animated image generating template. Up to 16 templates can be created.
 
-        :param request: Request instance for AutoRewrite.
-        :type request: :class:`tencentcloud.clb.v20180317.models.AutoRewriteRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.AutoRewriteResponse`
+        :param request: Request instance for CreateAnimatedGraphicsTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAnimatedGraphicsTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAnimatedGraphicsTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("AutoRewrite", params)
+            body = self.call("CreateAnimatedGraphicsTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AutoRewriteResponse()
+                model = models.CreateAnimatedGraphicsTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -82,20 +81,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def BatchDeregisterTargets(self, request):
-        """This API is used to unbind layer-4/layer-7 real servers in batches.
+    def CreateContentReviewTemplate(self, request):
+        """This API is used to create a custom content audit template. Up to 50 templates can be created.
 
-        :param request: Request instance for BatchDeregisterTargets.
-        :type request: :class:`tencentcloud.clb.v20180317.models.BatchDeregisterTargetsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.BatchDeregisterTargetsResponse`
+        :param request: Request instance for CreateContentReviewTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateContentReviewTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BatchDeregisterTargets", params)
+            body = self.call("CreateContentReviewTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BatchDeregisterTargetsResponse()
+                model = models.CreateContentReviewTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -110,21 +109,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def BatchModifyTargetWeight(self, request):
-        """This API (BatchModifyTargetWeight) is used to batch modify the forwarding weights of real servers bound to a listener. Currently, it only supports HTTP/HTTPS listeners.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def CreateImageSpriteTemplate(self, request):
+        """This API is used to create a custom image sprite generating template. Up to 16 templates can be created.
 
-        :param request: Request instance for BatchModifyTargetWeight.
-        :type request: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetWeightRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetWeightResponse`
+        :param request: Request instance for CreateImageSpriteTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateImageSpriteTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateImageSpriteTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BatchModifyTargetWeight", params)
+            body = self.call("CreateImageSpriteTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BatchModifyTargetWeightResponse()
+                model = models.CreateImageSpriteTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -139,20 +137,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def BatchRegisterTargets(self, request):
-        """This API is used to bind CVM instances or ENIs in batches. It supports cross-region binding and only layer-4 (TCP/UDP) protocols.
+    def CreatePersonSample(self, request):
+        """This API is used to create a figure sample for video processing operations such as content recognition and audit using the face recognition technology.
 
-        :param request: Request instance for BatchRegisterTargets.
-        :type request: :class:`tencentcloud.clb.v20180317.models.BatchRegisterTargetsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.BatchRegisterTargetsResponse`
+        :param request: Request instance for CreatePersonSample.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreatePersonSampleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreatePersonSampleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BatchRegisterTargets", params)
+            body = self.call("CreatePersonSample", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BatchRegisterTargetsResponse()
+                model = models.CreatePersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -167,21 +165,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateListener(self, request):
-        """This API is used to create a listener for a CLB instance.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
+    def CreateSampleSnapshotTemplate(self, request):
+        """This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created.
 
-        :param request: Request instance for CreateListener.
-        :type request: :class:`tencentcloud.clb.v20180317.models.CreateListenerRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateListenerResponse`
+        :param request: Request instance for CreateSampleSnapshotTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateSampleSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateSampleSnapshotTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateListener", params)
+            body = self.call("CreateSampleSnapshotTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateListenerResponse()
+                model = models.CreateSampleSnapshotTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -196,22 +193,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateLoadBalancer(self, request):
-        """This API (CreateLoadBalancer) is used to create a CLB instance. To use the CLB service, you first need to purchase one or more instances. After this API is called successfully, a unique instance ID will be returned. There are two types of instances: public network and private network. For more information, see the product types in the product documentation.
-        Note: (1) To apply for a CLB instance in the specified AZ and cross-AZ disaster recovery, please [submit a ticket](https://console.cloud.tencent.com/workorder/category); (2) Currently, IPv6 is supported only in Beijing, Shanghai, and Guangzhou regions.
-        This is an async API. After it is returned successfully, you can call the DescribeLoadBalancers API to query the status of the instance (such as creating and normal) to check whether it is successfully created.
+    def CreateSnapshotByTimeOffsetTemplate(self, request):
+        """This API is used to create a custom time point screencapturing template. Up to 16 templates can be created.
 
-        :param request: Request instance for CreateLoadBalancer.
-        :type request: :class:`tencentcloud.clb.v20180317.models.CreateLoadBalancerRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateLoadBalancerResponse`
+        :param request: Request instance for CreateSnapshotByTimeOffsetTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateSnapshotByTimeOffsetTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateSnapshotByTimeOffsetTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLoadBalancer", params)
+            body = self.call("CreateSnapshotByTimeOffsetTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateLoadBalancerResponse()
+                model = models.CreateSnapshotByTimeOffsetTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -226,21 +221,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateRule(self, request):
-        """This API (CreateRule) is used to create a forwarding rule under an existing layer-7 CLB listener, where real servers must be bound to the rule instead of the listener.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def CreateTranscodeTemplate(self, request):
+        """This API is used to create a custom transcoding template. Up to 1,000 templates can be created.
 
-        :param request: Request instance for CreateRule.
-        :type request: :class:`tencentcloud.clb.v20180317.models.CreateRuleRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateRuleResponse`
+        :param request: Request instance for CreateTranscodeTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateTranscodeTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRule", params)
+            body = self.call("CreateTranscodeTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateRuleResponse()
+                model = models.CreateTranscodeTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -255,20 +249,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateTargetGroup(self, request):
-        """创建目标组。（目标组功能正在灰度中，需要开通白名单支持）
+    def CreateWatermarkTemplate(self, request):
+        """This API is used to create a custom watermarking template. Up to 1,000 templates can be created.
 
-        :param request: Request instance for CreateTargetGroup.
-        :type request: :class:`tencentcloud.clb.v20180317.models.CreateTargetGroupRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateTargetGroupResponse`
+        :param request: Request instance for CreateWatermarkTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateWatermarkTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTargetGroup", params)
+            body = self.call("CreateWatermarkTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateTargetGroupResponse()
+                model = models.CreateWatermarkTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -283,21 +277,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteListener(self, request):
-        """This API is used to delete a listener from a CLB instance (layer-4 or layer-7).
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def CreateWordSamples(self, request):
+        """This API is used to create keyword samples in batches for video processing operations such as content recognition and audit using the OCR and ASR technologies.
 
-        :param request: Request instance for DeleteListener.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteListenerRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteListenerResponse`
+        :param request: Request instance for CreateWordSamples.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateWordSamplesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateWordSamplesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteListener", params)
+            body = self.call("CreateWordSamples", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteListenerResponse()
+                model = models.CreateWordSamplesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -312,21 +305,30 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteLoadBalancer(self, request):
-        """This API (DeleteLoadBalancer) is used to delete one or more specified CLB instances.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
+    def CreateWorkflow(self, request):
+        """This API is used to set a processing rule for media files uploaded to the specified directory of a COS bucket, including:
+        1. Video transcoding (with watermark);
+        2. Animated image generating;
+        3. Time point screencapturing;
+        4. Sampled screencapturing;
+        5. Image sprite generating;
+        6. Video conversion to adaptive bitrate streaming;
+        7. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);
+        8. Intelligent content recognition (face recognition, full text recognition, text keyword recognition, full speech recognition, and speech keyword recognition).
 
-        :param request: Request instance for DeleteLoadBalancer.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerResponse`
+        Note: Once successfully created, a workflow is disabled by default and needs to be enabled manually.
+
+        :param request: Request instance for CreateWorkflow.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateWorkflowRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateWorkflowResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoadBalancer", params)
+            body = self.call("CreateWorkflow", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteLoadBalancerResponse()
+                model = models.CreateWorkflowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -341,20 +343,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteRewrite(self, request):
-        """This API (DeleteRewrite) is used to delete the redirection relationship between the specified forwarding rules.
+    def DeleteAIRecognitionTemplate(self, request):
+        """This API is used to delete a custom content recognition template.
 
-        :param request: Request instance for DeleteRewrite.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteRewriteRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteRewriteResponse`
+        :param request: Request instance for DeleteAIRecognitionTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteAIRecognitionTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRewrite", params)
+            body = self.call("DeleteAIRecognitionTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteRewriteResponse()
+                model = models.DeleteAIRecognitionTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -369,21 +371,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteRule(self, request):
-        """This API (DeleteRule) is used to delete a forwarding rule under a layer-7 CLB instance listener
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def DeleteAnimatedGraphicsTemplate(self, request):
+        """This API is used to delete a custom animated image generating template.
 
-        :param request: Request instance for DeleteRule.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteRuleRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteRuleResponse`
+        :param request: Request instance for DeleteAnimatedGraphicsTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAnimatedGraphicsTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteAnimatedGraphicsTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRule", params)
+            body = self.call("DeleteAnimatedGraphicsTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteRuleResponse()
+                model = models.DeleteAnimatedGraphicsTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -398,20 +399,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteTargetGroups(self, request):
-        """删除目标组
+    def DeleteContentReviewTemplate(self, request):
+        """This API is used to delete a custom content audit template.
 
-        :param request: Request instance for DeleteTargetGroups.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteTargetGroupsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteTargetGroupsResponse`
+        :param request: Request instance for DeleteContentReviewTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteContentReviewTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTargetGroups", params)
+            body = self.call("DeleteContentReviewTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteTargetGroupsResponse()
+                model = models.DeleteContentReviewTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -426,21 +427,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeregisterTargetGroupInstances(self, request):
-        """将服务器从目标组中解绑。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+    def DeleteImageSpriteTemplate(self, request):
+        """This API is used to delete an image sprite generating template.
 
-        :param request: Request instance for DeregisterTargetGroupInstances.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetGroupInstancesRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetGroupInstancesResponse`
+        :param request: Request instance for DeleteImageSpriteTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteImageSpriteTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteImageSpriteTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeregisterTargetGroupInstances", params)
+            body = self.call("DeleteImageSpriteTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeregisterTargetGroupInstancesResponse()
+                model = models.DeleteImageSpriteTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -455,21 +455,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeregisterTargets(self, request):
-        """This API (DeregisterTargets) is used to unbind one or more real servers from a CLB listener or forwarding rule. For layer-4 listeners, only the listener ID needs to be specified. For layer-7 listeners, the forwarding rule also needs to be specified through LocationId or Domain+Url.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def DeletePersonSample(self, request):
+        """This API is used to delete a figure sample based on figure ID.
 
-        :param request: Request instance for DeregisterTargets.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetsResponse`
+        :param request: Request instance for DeletePersonSample.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeletePersonSampleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeletePersonSampleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeregisterTargets", params)
+            body = self.call("DeletePersonSample", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeregisterTargetsResponse()
+                model = models.DeletePersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -484,21 +483,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeregisterTargetsFromClassicalLB(self, request):
-        """This API (DeregisterTargetsFromClassicalLB) is used to unbind real servers from a classic load balancer.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
+    def DeleteSampleSnapshotTemplate(self, request):
+        """This API is used to delete a custom sampled screencapturing template.
 
-        :param request: Request instance for DeregisterTargetsFromClassicalLB.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetsFromClassicalLBRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetsFromClassicalLBResponse`
+        :param request: Request instance for DeleteSampleSnapshotTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSampleSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteSampleSnapshotTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeregisterTargetsFromClassicalLB", params)
+            body = self.call("DeleteSampleSnapshotTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeregisterTargetsFromClassicalLBResponse()
+                model = models.DeleteSampleSnapshotTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -513,20 +511,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClassicalLBByInstanceId(self, request):
-        """This API (DescribeClassicalLBByInstanceId) is used to get the list of classic CLB IDs through the real server instance ID.
+    def DeleteSnapshotByTimeOffsetTemplate(self, request):
+        """This API is used to delete a custom time point screencapturing template.
 
-        :param request: Request instance for DescribeClassicalLBByInstanceId.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBByInstanceIdRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBByInstanceIdResponse`
+        :param request: Request instance for DeleteSnapshotByTimeOffsetTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSnapshotByTimeOffsetTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteSnapshotByTimeOffsetTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClassicalLBByInstanceId", params)
+            body = self.call("DeleteSnapshotByTimeOffsetTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClassicalLBByInstanceIdResponse()
+                model = models.DeleteSnapshotByTimeOffsetTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -541,20 +539,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClassicalLBHealthStatus(self, request):
-        """This API (DescribeClassicalLBHealthStatus) is used to get the real server health status of a classic CLB
+    def DeleteTranscodeTemplate(self, request):
+        """This API is used to delete a custom transcoding template.
 
-        :param request: Request instance for DescribeClassicalLBHealthStatus.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBHealthStatusRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBHealthStatusResponse`
+        :param request: Request instance for DeleteTranscodeTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteTranscodeTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClassicalLBHealthStatus", params)
+            body = self.call("DeleteTranscodeTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClassicalLBHealthStatusResponse()
+                model = models.DeleteTranscodeTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -569,20 +567,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClassicalLBListeners(self, request):
-        """This API (DescribeClassicalLBListeners) is used to get the listener information of a classic CLB.
+    def DeleteWatermarkTemplate(self, request):
+        """This API is used to delete a custom watermarking template.
 
-        :param request: Request instance for DescribeClassicalLBListeners.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBListenersRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBListenersResponse`
+        :param request: Request instance for DeleteWatermarkTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteWatermarkTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClassicalLBListeners", params)
+            body = self.call("DeleteWatermarkTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClassicalLBListenersResponse()
+                model = models.DeleteWatermarkTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -597,20 +595,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClassicalLBTargets(self, request):
-        """This API (DescribeClassicalLBTargets) is used to get the real servers bound to a classic CLB.
+    def DeleteWordSamples(self, request):
+        """This API is used to delete keyword samples in batches.
 
-        :param request: Request instance for DescribeClassicalLBTargets.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBTargetsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBTargetsResponse`
+        :param request: Request instance for DeleteWordSamples.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWordSamplesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteWordSamplesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClassicalLBTargets", params)
+            body = self.call("DeleteWordSamples", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClassicalLBTargetsResponse()
+                model = models.DeleteWordSamplesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -625,20 +623,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeListeners(self, request):
-        """This API (DescribeListeners) is used to get the list of listeners by CLB IDs, listener protocol, or port. If no filter is specified, the default number (20) of listeners for the instance will be returned.
+    def DeleteWorkflow(self, request):
+        """This API is used to delete a workflow. An enabled workflow must be disabled before it can be deleted.
 
-        :param request: Request instance for DescribeListeners.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeListenersRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeListenersResponse`
+        :param request: Request instance for DeleteWorkflow.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWorkflowRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteWorkflowResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListeners", params)
+            body = self.call("DeleteWorkflow", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeListenersResponse()
+                model = models.DeleteWorkflowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -653,20 +651,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeLoadBalancerListByCertId(self, request):
-        """根据证书ID查询其在一个地域中所关联到负载均衡实例列表
+    def DescribeAIRecognitionTemplates(self, request):
+        """This API is used to get the list of content recognition templates based on unique template ID. The return result includes all eligible custom and preset content recognition templates.
 
-        :param request: Request instance for DescribeLoadBalancerListByCertId.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerListByCertIdRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerListByCertIdResponse`
+        :param request: Request instance for DescribeAIRecognitionTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAIRecognitionTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAIRecognitionTemplatesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancerListByCertId", params)
+            body = self.call("DescribeAIRecognitionTemplates", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeLoadBalancerListByCertIdResponse()
+                model = models.DescribeAIRecognitionTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -681,20 +679,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeLoadBalancers(self, request):
-        """This API is used to query the list of CLB instances.
+    def DescribeAnimatedGraphicsTemplates(self, request):
+        """This API is used to query the list of animated image generating templates and supports paged queries by filters.
 
-        :param request: Request instance for DescribeLoadBalancers.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancersRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancersResponse`
+        :param request: Request instance for DescribeAnimatedGraphicsTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAnimatedGraphicsTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAnimatedGraphicsTemplatesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancers", params)
+            body = self.call("DescribeAnimatedGraphicsTemplates", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeLoadBalancersResponse()
+                model = models.DescribeAnimatedGraphicsTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -709,20 +707,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeRewrite(self, request):
-        """This API (DescribeRewrite) is used to query the redirection relationship between the forwarding rules of a CLB instance by instance ID. If no listener ID or forwarding rule ID is specified, all redirection relationships in the instance will be returned.
+    def DescribeContentReviewTemplates(self, request):
+        """This API is used to get the list of content audit templates based on unique template ID. The return result includes all eligible custom and preset content audit templates.
 
-        :param request: Request instance for DescribeRewrite.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeRewriteRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeRewriteResponse`
+        :param request: Request instance for DescribeContentReviewTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeContentReviewTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeContentReviewTemplatesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRewrite", params)
+            body = self.call("DescribeContentReviewTemplates", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeRewriteResponse()
+                model = models.DescribeContentReviewTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -737,20 +735,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTargetGroupInstances(self, request):
-        """获取目标组绑定的服务器信息
+    def DescribeImageSpriteTemplates(self, request):
+        """This API is used to query the list of image sprite generating templates and supports paged queries by filters.
 
-        :param request: Request instance for DescribeTargetGroupInstances.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupInstancesRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupInstancesResponse`
+        :param request: Request instance for DescribeImageSpriteTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeImageSpriteTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeImageSpriteTemplatesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargetGroupInstances", params)
+            body = self.call("DescribeImageSpriteTemplates", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTargetGroupInstancesResponse()
+                model = models.DescribeImageSpriteTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -765,20 +763,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTargetGroupList(self, request):
-        """获取目标组列表
+    def DescribePersonSamples(self, request):
+        """This API is used to query the information of figure samples and supports paged queries by figure ID, name, and tag.
 
-        :param request: Request instance for DescribeTargetGroupList.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupListRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupListResponse`
+        :param request: Request instance for DescribePersonSamples.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribePersonSamplesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribePersonSamplesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargetGroupList", params)
+            body = self.call("DescribePersonSamples", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTargetGroupListResponse()
+                model = models.DescribePersonSamplesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -793,20 +791,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTargetGroups(self, request):
-        """查询目标组信息
+    def DescribeSampleSnapshotTemplates(self, request):
+        """This API is used to query the list of sampled screencapturing templates and supports paged queries by filters.
 
-        :param request: Request instance for DescribeTargetGroups.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupsResponse`
+        :param request: Request instance for DescribeSampleSnapshotTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSampleSnapshotTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeSampleSnapshotTemplatesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargetGroups", params)
+            body = self.call("DescribeSampleSnapshotTemplates", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTargetGroupsResponse()
+                model = models.DescribeSampleSnapshotTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -821,20 +819,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTargetHealth(self, request):
-        """This API (DescribeTargetHealth) is used to query the health check result of a real server of a CLB instance.
+    def DescribeSnapshotByTimeOffsetTemplates(self, request):
+        """This API is used to query the list of time point screencapturing templates and supports paged queries by filters.
 
-        :param request: Request instance for DescribeTargetHealth.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetHealthRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTargetHealthResponse`
+        :param request: Request instance for DescribeSnapshotByTimeOffsetTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSnapshotByTimeOffsetTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeSnapshotByTimeOffsetTemplatesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargetHealth", params)
+            body = self.call("DescribeSnapshotByTimeOffsetTemplates", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTargetHealthResponse()
+                model = models.DescribeSnapshotByTimeOffsetTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -849,20 +847,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTargets(self, request):
-        """This API (DescribeTargets) is used to query the list of real servers bound to some listeners of a CLB instance.
+    def DescribeTaskDetail(self, request):
+        """This API is used to query the details of execution status and result of a task submitted in the last 3 days by task ID.
 
-        :param request: Request instance for DescribeTargets.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTargetsResponse`
+        :param request: Request instance for DescribeTaskDetail.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeTaskDetailRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeTaskDetailResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargets", params)
+            body = self.call("DescribeTaskDetail", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTargetsResponse()
+                model = models.DescribeTaskDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -877,20 +875,22 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTaskStatus(self, request):
-        """This API is used to query the execution status of an async task. After non-query APIs (used to create/delete CLB instances, listeners, or rules or to bind/unbind real servers) are called successfully, this API needs to be used to query whether the task is successful.
+    def DescribeTasks(self, request):
+        """* This API is used to query the task list;
+        * If there are many data entries in the list, one single call of the API may not be able to pull the entire list. The `ScrollToken` parameter can be used to pull the list in batches;
+        * Only tasks in the last three days (72 hours) can be queried.
 
-        :param request: Request instance for DescribeTaskStatus.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTaskStatusRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTaskStatusResponse`
+        :param request: Request instance for DescribeTasks.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeTasksRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeTasksResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskStatus", params)
+            body = self.call("DescribeTasks", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTaskStatusResponse()
+                model = models.DescribeTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -905,21 +905,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DisassociateTargetGroups(self, request):
-        """解除规则的目标组关联关系。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+    def DescribeTranscodeTemplates(self, request):
+        """This API is used to get the list of transcoding templates based on unique template ID. The return result includes all eligible custom and [preset transcoding templates](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
 
-        :param request: Request instance for DisassociateTargetGroups.
-        :type request: :class:`tencentcloud.clb.v20180317.models.DisassociateTargetGroupsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.DisassociateTargetGroupsResponse`
+        :param request: Request instance for DescribeTranscodeTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeTranscodeTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeTranscodeTemplatesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateTargetGroups", params)
+            body = self.call("DescribeTranscodeTemplates", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DisassociateTargetGroupsResponse()
+                model = models.DescribeTranscodeTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -934,20 +933,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ManualRewrite(self, request):
-        """After the original access address and the address to be redirected are configured manually, the system will automatically redirect requests made to the original access address to the target address of the corresponding path. Multiple paths can be configured as a redirection policy under one domain name to achieve automatic redirection between HTTP and HTTPS. A redirection policy should meet the following rules: if A has already been redirected to B, then it cannot be redirected to C (unless the original redirection relationship is deleted and a new one is created), and B cannot be redirected to any other addresses.
+    def DescribeWatermarkTemplates(self, request):
+        """This API is used to query custom watermarking templates and supports paged queries by filters.
 
-        :param request: Request instance for ManualRewrite.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ManualRewriteRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ManualRewriteResponse`
+        :param request: Request instance for DescribeWatermarkTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWatermarkTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeWatermarkTemplatesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ManualRewrite", params)
+            body = self.call("DescribeWatermarkTemplates", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ManualRewriteResponse()
+                model = models.DescribeWatermarkTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -962,21 +961,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyDomain(self, request):
-        """This API (ModifyDomain) is used to modify a domain name under a layer-7 CLB listener.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def DescribeWordSamples(self, request):
+        """This API is used to perform paged queries of keyword sample information by use case, keyword, and tag.
 
-        :param request: Request instance for ModifyDomain.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyDomainRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyDomainResponse`
+        :param request: Request instance for DescribeWordSamples.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWordSamplesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeWordSamplesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomain", params)
+            body = self.call("DescribeWordSamples", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyDomainResponse()
+                model = models.DescribeWordSamplesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -991,21 +989,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyDomainAttributes(self, request):
-        """This API is used to modify the domain name-level attributes of a layer-7 listener's forwarding rule, such as modifying the domain name, changing the DefaultServer, enabling/disabling HTTP/2, and modifying certificates.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
+    def DescribeWorkflows(self, request):
+        """This API is used to get the list of workflow details by workflow ID.
 
-        :param request: Request instance for ModifyDomainAttributes.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyDomainAttributesRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyDomainAttributesResponse`
+        :param request: Request instance for DescribeWorkflows.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWorkflowsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeWorkflowsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainAttributes", params)
+            body = self.call("DescribeWorkflows", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyDomainAttributesResponse()
+                model = models.DescribeWorkflowsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1020,21 +1017,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyListener(self, request):
-        """This API (ModifyListener) is used to modify the attributes of a CLB listener, such as listener name, health check parameter, certificate information, and forwarding policy.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def DisableWorkflow(self, request):
+        """This API is used to disable a workflow.
 
-        :param request: Request instance for ModifyListener.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyListenerRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyListenerResponse`
+        :param request: Request instance for DisableWorkflow.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DisableWorkflowRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DisableWorkflowResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyListener", params)
+            body = self.call("DisableWorkflow", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyListenerResponse()
+                model = models.DisableWorkflowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1049,20 +1045,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyLoadBalancerAttributes(self, request):
-        """This API is used to modify the attributes of a CLB instance such as name and cross-region attributes.
+    def EnableWorkflow(self, request):
+        """This API is used to enable a workflow.
 
-        :param request: Request instance for ModifyLoadBalancerAttributes.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerAttributesRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerAttributesResponse`
+        :param request: Request instance for EnableWorkflow.
+        :type request: :class:`tencentcloud.mps.v20190612.models.EnableWorkflowRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnableWorkflowResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoadBalancerAttributes", params)
+            body = self.call("EnableWorkflow", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyLoadBalancerAttributesResponse()
+                model = models.EnableWorkflowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1077,21 +1073,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyRule(self, request):
-        """This API (ModifyRule) is used to modify the attributes of a forwarding rule under a layer-7 CLB listener, such as forwarding path, health check attribute, and forwarding policy.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def ModifyAIRecognitionTemplate(self, request):
+        """This API is used to modify a custom content recognition template.
 
-        :param request: Request instance for ModifyRule.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyRuleRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyRuleResponse`
+        :param request: Request instance for ModifyAIRecognitionTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyAIRecognitionTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRule", params)
+            body = self.call("ModifyAIRecognitionTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyRuleResponse()
+                model = models.ModifyAIRecognitionTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1106,20 +1101,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyTargetGroupAttribute(self, request):
-        """修改目标组的名称或者默认端口属性
+    def ModifyAnimatedGraphicsTemplate(self, request):
+        """This API is used to modify a custom animated image generating template.
 
-        :param request: Request instance for ModifyTargetGroupAttribute.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupAttributeRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupAttributeResponse`
+        :param request: Request instance for ModifyAnimatedGraphicsTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAnimatedGraphicsTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyAnimatedGraphicsTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetGroupAttribute", params)
+            body = self.call("ModifyAnimatedGraphicsTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyTargetGroupAttributeResponse()
+                model = models.ModifyAnimatedGraphicsTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1134,21 +1129,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyTargetGroupInstancesPort(self, request):
-        """批量修改目标组服务器端口。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+    def ModifyContentReviewTemplate(self, request):
+        """This API is used to modify a custom content audit template.
 
-        :param request: Request instance for ModifyTargetGroupInstancesPort.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupInstancesPortRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupInstancesPortResponse`
+        :param request: Request instance for ModifyContentReviewTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyContentReviewTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetGroupInstancesPort", params)
+            body = self.call("ModifyContentReviewTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyTargetGroupInstancesPortResponse()
+                model = models.ModifyContentReviewTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1163,21 +1157,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyTargetGroupInstancesWeight(self, request):
-        """批量修改目标组的服务器权重。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+    def ModifyImageSpriteTemplate(self, request):
+        """This API is used to modify a custom image sprite generating template.
 
-        :param request: Request instance for ModifyTargetGroupInstancesWeight.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupInstancesWeightRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupInstancesWeightResponse`
+        :param request: Request instance for ModifyImageSpriteTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyImageSpriteTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyImageSpriteTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetGroupInstancesWeight", params)
+            body = self.call("ModifyImageSpriteTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyTargetGroupInstancesWeightResponse()
+                model = models.ModifyImageSpriteTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1192,21 +1185,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyTargetPort(self, request):
-        """This API (ModifyTargetPort) is used to modify the port of a real server bound to a listener.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def ModifyPersonSample(self, request):
+        """This API is used to modify figure sample information based on figure ID, such as modifying the name and description and adding/deleting/resetting a face or tag. There should be at least one image left after the face deletion operation; otherwise, please use the reset operation.
 
-        :param request: Request instance for ModifyTargetPort.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetPortRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyTargetPortResponse`
+        :param request: Request instance for ModifyPersonSample.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyPersonSampleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyPersonSampleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetPort", params)
+            body = self.call("ModifyPersonSample", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyTargetPortResponse()
+                model = models.ModifyPersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1221,21 +1213,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyTargetWeight(self, request):
-        """This API (ModifyTargetWeight) is used to modify the forwarding weight of a real server bound to a CLB instance.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def ModifySampleSnapshotTemplate(self, request):
+        """This API is used to modify a custom sampled screencapturing template.
 
-        :param request: Request instance for ModifyTargetWeight.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetWeightRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyTargetWeightResponse`
+        :param request: Request instance for ModifySampleSnapshotTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifySampleSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifySampleSnapshotTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetWeight", params)
+            body = self.call("ModifySampleSnapshotTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyTargetWeightResponse()
+                model = models.ModifySampleSnapshotTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1250,21 +1241,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RegisterTargetGroupInstances(self, request):
-        """注册服务器到目标组。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+    def ModifySnapshotByTimeOffsetTemplate(self, request):
+        """This API is used to modify a custom time point screencapturing template.
 
-        :param request: Request instance for RegisterTargetGroupInstances.
-        :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetGroupInstancesRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.RegisterTargetGroupInstancesResponse`
+        :param request: Request instance for ModifySnapshotByTimeOffsetTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifySnapshotByTimeOffsetTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifySnapshotByTimeOffsetTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterTargetGroupInstances", params)
+            body = self.call("ModifySnapshotByTimeOffsetTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RegisterTargetGroupInstancesResponse()
+                model = models.ModifySnapshotByTimeOffsetTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1279,21 +1269,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RegisterTargets(self, request):
-        """This API (RegisterTargets) is used to bind one or more real servers to a CLB listener or layer-7 forwarding rule. Before using this API, you need to create relevant layer-4 listeners or layer-7 forwarding rules. For the former (TCP/UDP), only the listener ID needs to be specified, while for the latter (HTTP/HTTPS), the forwarding rule also needs to be specified through LocationId or Domain+Url.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+    def ModifyTranscodeTemplate(self, request):
+        """This API is used to modify a custom transcoding template.
 
-        :param request: Request instance for RegisterTargets.
-        :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsResponse`
+        :param request: Request instance for ModifyTranscodeTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyTranscodeTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterTargets", params)
+            body = self.call("ModifyTranscodeTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RegisterTargetsResponse()
+                model = models.ModifyTranscodeTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1308,21 +1297,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RegisterTargetsWithClassicalLB(self, request):
-        """This API (RegisterTargetsWithClassicalLB) is used to bind real servers to a classic CLB.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
+    def ModifyWatermarkTemplate(self, request):
+        """This API is used to modify a custom watermarking template. The watermark type cannot be modified.
 
-        :param request: Request instance for RegisterTargetsWithClassicalLB.
-        :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsWithClassicalLBRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsWithClassicalLBResponse`
+        :param request: Request instance for ModifyWatermarkTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyWatermarkTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterTargetsWithClassicalLB", params)
+            body = self.call("ModifyWatermarkTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RegisterTargetsWithClassicalLBResponse()
+                model = models.ModifyWatermarkTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1337,23 +1325,20 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ReplaceCertForLoadBalancers(self, request):
-        """This API (ReplaceCertForLoadBalancers) is used to replace the certificate associated with a CLB instance. A new certificates can be associated with a CLB only after the original certificate is disassociated from it.
-        This API supports replacing server certificates and client certificates.
-        The new certificate to be used can be specified by passing in the certificate ID. If no certificate ID is specified, relevant information such as certificate content must be passed in to create a new certificate and bind it to the CLB.
-        Note: This API can only be called in the Guangzhou region; for other regions, an error will occur due to domain name resolution problems.
+    def ModifyWordSample(self, request):
+        """This API is used to modify the use case and tag of a keyword. The keyword itself cannot be modified, but you can delete it and create another one if needed.
 
-        :param request: Request instance for ReplaceCertForLoadBalancers.
-        :type request: :class:`tencentcloud.clb.v20180317.models.ReplaceCertForLoadBalancersRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ReplaceCertForLoadBalancersResponse`
+        :param request: Request instance for ModifyWordSample.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyWordSampleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyWordSampleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceCertForLoadBalancers", params)
+            body = self.call("ModifyWordSample", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ReplaceCertForLoadBalancersResponse()
+                model = models.ModifyWordSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1368,22 +1353,21 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SetLoadBalancerSecurityGroups(self, request):
-        """This API (SetLoadBalancerSecurityGroups) is used to bind/unbind security groups for a public network CLB instance. You can use the DescribeLoadBalancers API to query the security groups bound to a CLB instance. This API uses `set` semantics.
-        During a binding operation, the input parameters need to be all security groups to be bound to the CLB instance (including those already bound ones and new ones).
-        During an unbinding operation, the input parameters need to be all the security groups still bound to the CLB instance after the unbinding operation. To unbind all security groups, you can leave this parameter empty or pass in an empty array. Note: Private network CLB do not support binding security groups.
+    def ParseLiveStreamProcessNotification(self, request):
+        """This API is used to parse the content of an MPS live stream processing event notification from the `msgBody` field in the message received from CMQ.
+        Instead of initiating a video processing task, this API is used to help generate SDKs for various programming languages. You can parse the event notification based on the analytic function of the SDKs.
 
-        :param request: Request instance for SetLoadBalancerSecurityGroups.
-        :type request: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerSecurityGroupsRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerSecurityGroupsResponse`
+        :param request: Request instance for ParseLiveStreamProcessNotification.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ParseLiveStreamProcessNotificationRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ParseLiveStreamProcessNotificationResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("SetLoadBalancerSecurityGroups", params)
+            body = self.call("ParseLiveStreamProcessNotification", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SetLoadBalancerSecurityGroupsResponse()
+                model = models.ParseLiveStreamProcessNotificationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1398,20 +1382,117 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SetSecurityGroupForLoadbalancers(self, request):
-        """This API is used to bind or unbind a security group for multiple public network CLB instances. Note: Private network CLB do not support binding security groups.
+    def ParseNotification(self, request):
+        """This API is used to parse the content of an MPS event notification from the `msgBody` field in the message received from CMQ.
+        Instead of initiating a video processing task, this API is used to help generate SDKs for various programming languages. You can parse the event notification based on the analytic function of the SDKs.
 
-        :param request: Request instance for SetSecurityGroupForLoadbalancers.
-        :type request: :class:`tencentcloud.clb.v20180317.models.SetSecurityGroupForLoadbalancersRequest`
-        :rtype: :class:`tencentcloud.clb.v20180317.models.SetSecurityGroupForLoadbalancersResponse`
+        :param request: Request instance for ParseNotification.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ParseNotificationRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ParseNotificationResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("SetSecurityGroupForLoadbalancers", params)
+            body = self.call("ParseNotification", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SetSecurityGroupForLoadbalancersResponse()
+                model = models.ParseNotificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ProcessLiveStream(self, request):
+        """This API is used to initiate a processing task for a live streaming media file, including:
+
+        * Intelligent content audit (detection of porn, terrorism, and politically sensitive information in image and porn information in speech);
+
+        The live stream processing event notification is written into the specified CMQ queue in real time. You need to obtain the event notification result from CMQ. If a file is output during video processing, it will be written into the specified target bucket.
+
+        :param request: Request instance for ProcessLiveStream.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ProcessLiveStreamRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProcessLiveStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProcessLiveStream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProcessLiveStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ProcessMedia(self, request):
+        """This API is used to initiate a processing task for media files in COS, including:
+        1. Video transcoding (with watermark);
+        2. Animated image generating;
+        3. Time point screencapturing;
+        4. Sampled screencapturing;
+        5. Image sprite generating;
+        6. Video conversion to adaptive bitrate streaming;
+        7. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);
+        8. Intelligent content recognition (face recognition, full text recognition, text keyword recognition, full speech recognition, and speech keyword recognition).
+
+        :param request: Request instance for ProcessMedia.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ProcessMediaRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProcessMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProcessMedia", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProcessMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetWorkflow(self, request):
+        """This API is used to reset an existing workflow that is disabled.
+
+        :param request: Request instance for ResetWorkflow.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ResetWorkflowRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ResetWorkflowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetWorkflow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetWorkflowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

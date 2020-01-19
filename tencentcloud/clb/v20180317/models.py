@@ -16,6 +16,29 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AssociateTargetGroupsRequest(AbstractModel):
+    """AssociateTargetGroups request structure.
+
+    """
+
+
+class AssociateTargetGroupsResponse(AbstractModel):
+    """AssociateTargetGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AutoRewriteRequest(AbstractModel):
     """AutoRewrite request structure.
 
@@ -800,6 +823,29 @@ class CreateRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTargetGroupRequest(AbstractModel):
+    """CreateTargetGroup request structure.
+
+    """
+
+
+class CreateTargetGroupResponse(AbstractModel):
+    """CreateTargetGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteListenerRequest(AbstractModel):
     """DeleteListener request structure.
 
@@ -958,6 +1004,52 @@ class DeleteRuleRequest(AbstractModel):
 
 class DeleteRuleResponse(AbstractModel):
     """DeleteRule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTargetGroupsRequest(AbstractModel):
+    """DeleteTargetGroups request structure.
+
+    """
+
+
+class DeleteTargetGroupsResponse(AbstractModel):
+    """DeleteTargetGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeregisterTargetGroupInstancesRequest(AbstractModel):
+    """DeregisterTargetGroupInstances request structure.
+
+    """
+
+
+class DeregisterTargetGroupInstancesResponse(AbstractModel):
+    """DeregisterTargetGroupInstances response structure.
 
     """
 
@@ -1320,6 +1412,29 @@ class DescribeListenersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLoadBalancerListByCertIdRequest(AbstractModel):
+    """DescribeLoadBalancerListByCertId request structure.
+
+    """
+
+
+class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
+    """DescribeLoadBalancerListByCertId response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLoadBalancersRequest(AbstractModel):
     """DescribeLoadBalancers request structure.
 
@@ -1488,6 +1603,75 @@ class DescribeRewriteResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTargetGroupInstancesRequest(AbstractModel):
+    """DescribeTargetGroupInstances request structure.
+
+    """
+
+
+class DescribeTargetGroupInstancesResponse(AbstractModel):
+    """DescribeTargetGroupInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTargetGroupListRequest(AbstractModel):
+    """DescribeTargetGroupList request structure.
+
+    """
+
+
+class DescribeTargetGroupListResponse(AbstractModel):
+    """DescribeTargetGroupList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTargetGroupsRequest(AbstractModel):
+    """DescribeTargetGroups request structure.
+
+    """
+
+
+class DescribeTargetGroupsResponse(AbstractModel):
+    """DescribeTargetGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTargetHealthRequest(AbstractModel):
     """DescribeTargetHealth request structure.
 
@@ -1623,6 +1807,29 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateTargetGroupsRequest(AbstractModel):
+    """DisassociateTargetGroups request structure.
+
+    """
+
+
+class DisassociateTargetGroupsResponse(AbstractModel):
+    """DisassociateTargetGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2570,6 +2777,75 @@ class ModifyRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyTargetGroupAttributeRequest(AbstractModel):
+    """ModifyTargetGroupAttribute request structure.
+
+    """
+
+
+class ModifyTargetGroupAttributeResponse(AbstractModel):
+    """ModifyTargetGroupAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTargetGroupInstancesPortRequest(AbstractModel):
+    """ModifyTargetGroupInstancesPort request structure.
+
+    """
+
+
+class ModifyTargetGroupInstancesPortResponse(AbstractModel):
+    """ModifyTargetGroupInstancesPort response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
+    """ModifyTargetGroupInstancesWeight request structure.
+
+    """
+
+
+class ModifyTargetGroupInstancesWeightResponse(AbstractModel):
+    """ModifyTargetGroupInstancesWeight response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTargetPortRequest(AbstractModel):
     """ModifyTargetPort request structure.
 
@@ -2681,6 +2957,29 @@ class ModifyTargetWeightRequest(AbstractModel):
 
 class ModifyTargetWeightResponse(AbstractModel):
     """ModifyTargetWeight response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RegisterTargetGroupInstancesRequest(AbstractModel):
+    """RegisterTargetGroupInstances request structure.
+
+    """
+
+
+class RegisterTargetGroupInstancesResponse(AbstractModel):
+    """RegisterTargetGroupInstances response structure.
 
     """
 

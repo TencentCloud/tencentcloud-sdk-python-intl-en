@@ -93,7 +93,7 @@ In scheduled recording mode, this field must be set; in real-time video recordin
 "audio": audio recording.
 In both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.
         :type RecordType: str
-        :param FileFormat: Recording file format. Value range:
+        :param FileFormat: Recording file format. Valid values:
 "flv" **(default)**, "hls", "mp4", "aac", "mp3".
 In both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.
         :type FileFormat: str
@@ -107,7 +107,7 @@ In both scheduled and real-time video recording modes, this parameter is valid a
 In both scheduled and real-time video recording modes, this parameter is valid.
         :type MixStream: int
         :param StreamParam: Recording stream parameter. The following parameters are supported currently:
-record_interval: Recording interval in seconds. Value range: 1,800-7,200
+record_interval: Recording interval in seconds. Value range: 1,800–7,200
 storage_time: Recording file duration in seconds
 eg. record_interval=3600&storage_time=2592000
 Note: The parameter needs url encode.
@@ -216,13 +216,13 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         """
         :param TemplateName: Template name, which is a non-empty string.
         :type TemplateName: str
-        :param Description: Description.
+        :param Description: Message description
         :type Description: str
         :param FlvParam: FLV recording parameter, which is set when FLV recording is enabled.
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param HlsParam: HLS recording parameter, which is set when HLS recording is enabled.
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: MP4 recording parameter, which is set when MP4 recording is enabled.
+        :param Mp4Param: Mp4 recording parameter, which is set when Mp4 recording is enabled.
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param AacParam: AAC recording parameter, which is set when AAC recording is enabled.
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
@@ -231,7 +231,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type IsDelayLive: int
         :param HlsSpecialParam: HLS-specific recording parameter.
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: MP3 recording parameter, which is set when MP3 recording is enabled.
+        :param Mp3Param: Mp3 recording parameter, which is set when Mp3 recording is enabled.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         self.TemplateName = None
@@ -301,7 +301,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
         :type DomainName: str
         :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
         :type AppName: str
-        :param StreamName: Stream name.
+        :param StreamName: Stream name. If only the domain name or path is bound, leave this parameter blank.
         :type StreamName: str
         :param TemplateId: Designates an existing template ID.
         :type TemplateId: int
@@ -345,15 +345,15 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         """
         :param TemplateName: Template name, such as 900 900p. This can be only a combination of letters and digits.
         :type TemplateName: str
-        :param VideoBitrate: Video bitrate. Value range: 100-8,000.
+        :param VideoBitrate: Video bitrate. Value range: 100–8,000.
+Note: The bitrate must be a multiple of 100.
         :type VideoBitrate: int
-        :param Vcodec: Video encoding format. Value range: h264, h265. Default value: h264.
-Note: This parameter will take effect later.
+        :param Vcodec: Video encoding format. Valid values: h264, h265. Default value: h264.
         :type Vcodec: str
         :param Acodec: Audio encoding in ACC format. Default value: original audio format.
 Note: This parameter will take effect later.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0-500. Default value: 0.
+        :param AudioBitrate: Audio bitrate. Value range: 0–500. Default value: 0.
         :type AudioBitrate: int
         :param Description: Template description.
         :type Description: str
@@ -380,9 +380,9 @@ baseline/main/high. Default value: baseline.
         :type HeightToOrig: int
         :param FpsToOrig: Whether to not exceed the original frame rate. 0: no; 1: yes. Default value: 0.
         :type FpsToOrig: int
-        :param AiTransCode: Whether it is an Ultra-fast HD template. 0: no; 1: yes. Default value: 0.
+        :param AiTransCode: Whether it is a TESHD template. 0: no; 1: yes. Default value: 0.
         :type AiTransCode: int
-        :param AdaptBitratePercent: VideoBitrate minus Ultra-fast HD bitrate. Value range: 0.1-0.5.
+        :param AdaptBitratePercent: VideoBitrate minus TESHD bitrate. Value range: 0.1–0.5.
         :type AdaptBitratePercent: float
         """
         self.TemplateName = None
@@ -1102,81 +1102,6 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeLiveStreamOnlineInfoRequest(AbstractModel):
-    """DescribeLiveStreamOnlineInfo request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param PageNum: Page number to get.
-Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page.
-Maximum value: 100.
-Value range: any integer between 1 and 100.
-Default value: 10.
-        :type PageSize: int
-        :param Status: 0: push not started; 1: pushing.
-        :type Status: int
-        :param StreamName: Stream name.
-        :type StreamName: str
-        """
-        self.PageNum = None
-        self.PageSize = None
-        self.Status = None
-        self.StreamName = None
-
-
-    def _deserialize(self, params):
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.Status = params.get("Status")
-        self.StreamName = params.get("StreamName")
-
-
-class DescribeLiveStreamOnlineInfoResponse(AbstractModel):
-    """DescribeLiveStreamOnlineInfo response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param PageNum: Page number.
-        :type PageNum: int
-        :param PageSize: Number of entries per page.
-        :type PageSize: int
-        :param TotalNum: Total number of eligible ones.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param StreamInfoList: Stream information list.
-        :type StreamInfoList: list of StreamInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.StreamInfoList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        if params.get("StreamInfoList") is not None:
-            self.StreamInfoList = []
-            for item in params.get("StreamInfoList"):
-                obj = StreamInfo()
-                obj._deserialize(item)
-                self.StreamInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeLiveStreamOnlineListRequest(AbstractModel):
     """DescribeLiveStreamOnlineList request structure.
 
@@ -1749,19 +1674,19 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type TemplateId: int
         :param TemplateName: Template name.
         :type TemplateName: str
-        :param Description: Description.
+        :param Description: Message description
         :type Description: str
         :param FlvParam: FLV recording parameter, which is set when FLV recording is enabled.
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param HlsParam: HLS recording parameter, which is set when HLS recording is enabled.
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: MP4 recording parameter, which is set when MP4 recording is enabled.
+        :param Mp4Param: Mp4 recording parameter, which is set when Mp4 recording is enabled.
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param AacParam: AAC recording parameter, which is set when AAC recording is enabled.
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param HlsSpecialParam: Custom HLS recording parameter.
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: MP3 recording parameter, which is set when MP3 recording is enabled.
+        :param Mp3Param: Mp3 recording parameter, which is set when Mp3 recording is enabled.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         self.TemplateId = None
@@ -1826,30 +1751,30 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
         :param TemplateId: Template ID.
         :type TemplateId: int
         :param Vcodec: Video encoding format:
-H.264/H.265.
+h264/h265.
         :type Vcodec: str
         :param Acodec: Audio encoding format:
-AAC/MP3.
+aac/mp3.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0-500. Default value: 0.
+        :param AudioBitrate: Audio bitrate. Value range: 0–500. Default value: 0.
         :type AudioBitrate: int
         :param Description: Template description.
         :type Description: str
-        :param VideoBitrate: Video bitrate. Value range: 100-8,000
+        :param VideoBitrate: Video bitrate. Value range: 100–8,000
         :type VideoBitrate: int
-        :param Width: Width. Value range: 0-3,000
+        :param Width: Width. Value range: 0–3,000
         :type Width: int
         :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
         :type NeedVideo: int
         :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
-        :param Height: Height. Value range: 0-3,000
+        :param Height: Height. Value range: 0–3,000
         :type Height: int
-        :param Fps: Frame rate. Value range: 0-200
+        :param Fps: Frame rate. Value range: 0–200
         :type Fps: int
-        :param Gop: Keyframe interval in seconds. Value range: 0-50
+        :param Gop: Keyframe interval in seconds. Value range: 0–50
         :type Gop: int
-        :param Rotate: Rotation angle. Value range: 0, 90, 180, 270
+        :param Rotate: Rotation angle. Valid values: 0, 90, 180, 270
         :type Rotate: int
         :param Profile: Encoding quality:
 baseline/main/high.
@@ -1860,7 +1785,7 @@ baseline/main/high.
         :type HeightToOrig: int
         :param FpsToOrig: Whether to not exceed the original frame rate. 0: no; 1: yes. Default value: 0.
         :type FpsToOrig: int
-        :param AdaptBitratePercent: VideoBitrate minus Ultra-fast HD bitrate. Value range: 0.1-0.5.
+        :param AdaptBitratePercent: VideoBitrate minus TESHD bitrate. Value range: 0.1–0.5.
         :type AdaptBitratePercent: float
         """
         self.TemplateId = None
@@ -1936,7 +1861,7 @@ class PlayAuthKeyInfo(AbstractModel):
         :type AuthKey: str
         :param AuthDelta: Validity period in seconds.
         :type AuthDelta: int
-        :param AuthBackKey: Authentication back key.
+        :param AuthBackKey: Authentication BackKey.
         :type AuthBackKey: str
         """
         self.DomainName = None
@@ -2014,11 +1939,11 @@ class RecordParam(AbstractModel):
         """
         :param RecordInterval: Recording interval.
 In seconds. Default value: 1,800.
-Value range: 300-7,200.
+Value range: 300–7,200.
 This parameter is not valid for HLS, and a file is generated from push start to push end when HLS is recorded.
         :type RecordInterval: int
         :param StorageTime: Recording storage duration.
-In seconds. Value range: 0-93,312,000.
+In seconds. Value range: 0–93,312,000.
 0 represents permanent storage.
         :type StorageTime: int
         :param Enable: Whether to enable recording in the current format. 0: no; 1: yes. Default value: 0.
@@ -2046,13 +1971,13 @@ class RecordTemplateInfo(AbstractModel):
         :type TemplateId: int
         :param TemplateName: Template name.
         :type TemplateName: str
-        :param Description: Description.
+        :param Description: Message description
         :type Description: str
         :param FlvParam: FLV recording parameter.
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param HlsParam: HLS recording parameter.
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: MP4 recording parameter.
+        :param Mp4Param: Mp4 recording parameter.
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param AacParam: AAC recording parameter.
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
@@ -2061,7 +1986,7 @@ class RecordTemplateInfo(AbstractModel):
         :type IsDelayLive: int
         :param HlsSpecialParam: Custom HLS recording parameter.
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: MP3 recording parameter.
+        :param Mp3Param: Mp3 recording parameter.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         self.TemplateId = None
@@ -2313,47 +2238,6 @@ Example: 2019-01-07T15:00:00Z.
         self.Resolution = params.get("Resolution")
 
 
-class StreamInfo(AbstractModel):
-    """Push information
-
-    """
-
-    def __init__(self):
-        """
-        :param AppName: Name of the application to which the live stream belongs
-        :type AppName: str
-        :param CreateMode: Creation mode
-        :type CreateMode: str
-        :param CreateTime: Creation time, such as 2018-07-13 14:48:23
-        :type CreateTime: str
-        :param Status: Stream status
-        :type Status: int
-        :param StreamId: Stream ID
-        :type StreamId: str
-        :param StreamName: Stream name
-        :type StreamName: str
-        :param WaterMarkId: Watermark ID
-        :type WaterMarkId: str
-        """
-        self.AppName = None
-        self.CreateMode = None
-        self.CreateTime = None
-        self.Status = None
-        self.StreamId = None
-        self.StreamName = None
-        self.WaterMarkId = None
-
-
-    def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.CreateMode = params.get("CreateMode")
-        self.CreateTime = params.get("CreateTime")
-        self.Status = params.get("Status")
-        self.StreamId = params.get("StreamId")
-        self.StreamName = params.get("StreamName")
-        self.WaterMarkId = params.get("WaterMarkId")
-
-
 class StreamName(AbstractModel):
     """List of stream names
 
@@ -2449,24 +2333,24 @@ class TemplateInfo(AbstractModel):
     def __init__(self):
         """
         :param Vcodec: Video encoding format:
-H.264/H.265.
+h264/h265.
         :type Vcodec: str
-        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8,000
+        :param VideoBitrate: Video bitrate in Kbps. Value range: 100–8,000
         :type VideoBitrate: int
         :param Acodec: Audio encoding format: AAC/MP3
-AAC/MP3.
+aac/mp3.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0-500
+        :param AudioBitrate: Audio bitrate. Value range: 0–500
         :type AudioBitrate: int
-        :param Width: Width. Value range: 0-3,000
+        :param Width: Width. Value range: 0–3,000
         :type Width: int
-        :param Height: Height. Value range: 0-3,000
+        :param Height: Height. Value range: 0–3,000
         :type Height: int
-        :param Fps: Frame rate. Value range: 0-200
+        :param Fps: Frame rate. Value range: 0–200
         :type Fps: int
-        :param Gop: Keyframe interval in seconds. Value range: 1-50
+        :param Gop: Keyframe interval in seconds. Value range: 1–50
         :type Gop: int
-        :param Rotate: Rotation angle. Value range: 0, 90, 180, 270
+        :param Rotate: Rotation angle. Valid values: 0, 90, 180, 270
         :type Rotate: int
         :param Profile: Encoding quality:
 baseline/main/high.
@@ -2487,9 +2371,9 @@ baseline/main/high.
         :type TemplateName: str
         :param Description: Template description
         :type Description: str
-        :param AiTransCode: Whether it is an Ultra-fast HD template. 0: no; 1: yes. Default value: 0.
+        :param AiTransCode: Whether it is a TESHD template. 0: no; 1: yes. Default value: 0.
         :type AiTransCode: int
-        :param AdaptBitratePercent: VideoBitrate minus Ultra-fast HD bitrate. Value range: 0.1-0.5.
+        :param AdaptBitratePercent: VideoBitrate minus TESHD bitrate. Value range: 0.1–0.5.
         :type AdaptBitratePercent: float
         """
         self.Vcodec = None

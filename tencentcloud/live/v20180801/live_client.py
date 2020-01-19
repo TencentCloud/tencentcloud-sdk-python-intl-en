@@ -58,18 +58,18 @@ class LiveClient(AbstractClient):
     def CreateLiveRecord(self, request):
         """- Prerequisites
           1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.
-          2. After the recording files are stored, fees (including storage fees and downstream playback traffic fees) are charged according to the VOD billing method. For details, see the [corresponding document](https://cloud.tencent.com/document/product/266/2838).
+          2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the [corresponding document](https://cloud.tencent.com/document/product/266/2838).
 
         - Mode description
           This API supports two recording modes:
           1. Scheduled recording mode **(default mode)**.
-            The start time and end time need to be passed in, and the recording task automatically starts and ends based on the time parameters.
+            The start time and end time need to be passed in, and the recording task will automatically start and end based on the time parameters.
           2. Real-time video recording mode.
-            The start time passed in is ignored, and recording is started immediately after the recording task is created. The recording duration can be up to 30 minutes. If the end time passed in is more than 30 minutes after the current time, it will be counted as 30 minutes. Real-time video recording is mainly used for recording highlight scenes, and it is recommended to keep the duration within 5 minutes.
+            The start time passed in will be ignored, and recording will be started immediately after the recording task is created. The recording duration can be up to 30 minutes. If the end time passed in is more than 30 minutes after the current time, it will be counted as 30 minutes. Real-time video recording is mainly used for recording highlight scenes, and you are recommended to keep the duration within 5 minutes.
 
         - Precautions
-          1. The API call timeout should be set to more than 3 seconds; otherwise, retries and frequent calls may result in repeated recording tasks.
-          2. Subject to the audio and video file formats (FLV/MP4/HLS), the video encoding format of H.264 and audio encoding format of ACC are supported.
+          1. The API call timeout period should be set to more than 3 seconds; otherwise, retries and frequent calls may result in repeated recording tasks.
+          2. Subject to the audio and video file formats (FLV/MP4/HLS), the video codec of H.264 and audio codec of ACC are supported.
 
         :param request: Request instance for CreateLiveRecord.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveRecordRequest`
@@ -156,7 +156,7 @@ class LiveClient(AbstractClient):
 
     def CreateLiveTranscodeRule(self, request):
         """To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](/document/product/267/32646) API to create a transcoding template and bind the returned template ID to the stream.
-        <br>Transcoding-related document: [LVB Encapsulating and Transcoding](/document/product/267/32736).
+        <br>Transcoding-related document: [LVB Remuxing and Transcoding](/document/product/267/32736).
 
         :param request: Request instance for CreateLiveTranscodeRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveTranscodeRuleRequest`
@@ -185,7 +185,7 @@ class LiveClient(AbstractClient):
 
     def CreateLiveTranscodeTemplate(self, request):
         """After a transcoding template is created and a template ID is successfully returned, you need to call the [CreateLiveTranscodeRule](/document/product/267/32647) API and bind the returned template ID to the stream.
-        <br>Transcoding-related document: [LVB Encapsulating and Transcoding](/document/product/267/32736).
+        <br>Transcoding-related document: [LVB Remuxing and Transcoding](/document/product/267/32736).
 
         :param request: Request instance for CreateLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveTranscodeTemplateRequest`
@@ -213,7 +213,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecord(self, request):
-        """This API is used to delete a recording task.
+        """Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](/document/product/267/30146) API.
 
         :param request: Request instance for DeleteLiveRecord.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordRequest`
@@ -564,34 +564,6 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveStreamEventListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeLiveStreamOnlineInfo(self, request):
-        """This API is used to query the active push information list.
-
-        :param request: Request instance for DescribeLiveStreamOnlineInfo.
-        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamOnlineInfoRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamOnlineInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeLiveStreamOnlineInfo", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeLiveStreamOnlineInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1000,7 +972,7 @@ class LiveClient(AbstractClient):
 
 
     def StopLiveRecord(self, request):
-        """Note: Recording files are stored on the VOD platform. To use the recording feature, you need to activate a VOD account and ensure that it is available. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing method. For more information, see the corresponding document.
+        """Note: Recording files are stored on the VOD platform. To use the recording feature, you need to activate a VOD account and ensure that it is available. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing method. For more information, please see the corresponding document.
 
         :param request: Request instance for StopLiveRecord.
         :type request: :class:`tencentcloud.live.v20180801.models.StopLiveRecordRequest`

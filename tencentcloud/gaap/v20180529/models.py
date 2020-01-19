@@ -324,17 +324,17 @@ class Certificate(AbstractModel):
         :type CertificateId: str
         :param CertificateName: Certificate name; It’s an old parameter, please switch to CertificateAlias.
         :type CertificateName: str
-        :param CertificateType: Certificate type
+        :param CertificateType: Certificate type.
         :type CertificateType: int
         :param CertificateAlias: Certificate name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CertificateAlias: str
-        :param CreateTime: Certificate creation time. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
+        :param CreateTime: Certificate creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
         :type CreateTime: int
-        :param BeginTime: Certificate effective time. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
+        :param BeginTime: Certificate effective time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BeginTime: int
-        :param EndTime: Certificate expiration time. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
+        :param EndTime: Certificate expiration time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EndTime: int
         :param IssuerCN: Common name of the certificate issuer.
@@ -407,13 +407,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param CertificateKey: Key content. This field will be returned if the certificate type is the SSL certificate.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CertificateKey: str
-        :param CreateTime: Creation time. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
+        :param CreateTime: Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: int
-        :param BeginTime: Certificate effective time. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
+        :param BeginTime: Certificate effective time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BeginTime: int
-        :param EndTime: Certificate expiration time. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
+        :param EndTime: Certificate expiration time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EndTime: int
         :param IssuerCN: Common name of the certificate’s issuer.
@@ -3769,10 +3769,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param RealServerCertificateDomain: Origin server authentication domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RealServerCertificateDomain: str
-        :param PolyClientCertificateAliasInfo: Returns IDs and list of multiple certificates when there are multiple client certificates.
+        :param PolyClientCertificateAliasInfo: Returns IDs and aliases of multiple certificates when there are multiple client certificates.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo
-        :param PolyRealServerCertificateAliasInfo: 
+        :param PolyRealServerCertificateAliasInfo: Returns IDs and aliases of multiple certificates when there are multiple origin certificates.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type PolyRealServerCertificateAliasInfo: list of CertificateAliasInfo
         """
         self.Domain = None
@@ -5198,7 +5199,7 @@ class ProxyInfo(AbstractModel):
         :param InstanceId: Connection instance ID; It’s an old parameter, please switch to ProxyId.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param CreateTime: Creation time. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
+        :param CreateTime: Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
         :type CreateTime: int
         :param ProjectId: Project ID.
         :type ProjectId: int
@@ -5733,10 +5734,12 @@ The default value is 0.
         :type BasicAuthConfId: str
         :param GaapCertificateId: Connection SSL certificate ID, which is obtained from the certificate management page.
         :type GaapCertificateId: str
-        :param RealServerCertificateId: Origin server CA certificate ID, which is obtained from the certificate management page.
+        :param RealServerCertificateId: CA certificate ID of the origin server, which is obtained from the certificate management page. When authenticating the origin server, enter this parameter or the `RealServerCertificateIds` parameter.
         :type RealServerCertificateId: str
         :param RealServerCertificateDomain: Domain name of the origin server certificate.
         :type RealServerCertificateDomain: str
+        :param PolyRealServerCertificateIds: CA certificate IDs of multiple origin servers, which are obtained from the certificate management page. When authenticating the origin servers, enter this parameter or the `RealServerCertificateId` parameter.
+        :type PolyRealServerCertificateIds: list of str
         """
         self.ListenerId = None
         self.Domain = None
@@ -5747,6 +5750,7 @@ The default value is 0.
         self.GaapCertificateId = None
         self.RealServerCertificateId = None
         self.RealServerCertificateDomain = None
+        self.PolyRealServerCertificateIds = None
 
 
     def _deserialize(self, params):
@@ -5759,6 +5763,7 @@ The default value is 0.
         self.GaapCertificateId = params.get("GaapCertificateId")
         self.RealServerCertificateId = params.get("RealServerCertificateId")
         self.RealServerCertificateDomain = params.get("RealServerCertificateDomain")
+        self.PolyRealServerCertificateIds = params.get("PolyRealServerCertificateIds")
 
 
 class SetAuthenticationResponse(AbstractModel):
