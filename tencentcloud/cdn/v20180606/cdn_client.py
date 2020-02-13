@@ -25,6 +25,62 @@ class CdnClient(AbstractClient):
     _endpoint = 'cdn.tencentcloudapi.com'
 
 
+    def AddCdnDomain(self, request):
+        """This API is used to add a CDN acceleration domain name.
+
+        :param request: Request instance for AddCdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.AddCdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.AddCdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddCdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCdnDomain(self, request):
+        """This API is used to delete a specified acceleration domain name.
+
+        :param request: Request instance for DeleteCdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DeleteCdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DeleteCdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCdnData(self, request):
         """This API (DescribeCdnData) is used to query CDN real-time access monitoring data and supports the following metrics:
 
@@ -104,6 +160,62 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCdnIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDomains(self, request):
+        """This API is used to query the basic configuration information of CDN acceleration domain names (inside and outside mainland China), including the project ID, service status, business type, creation time, and update time, etc.
+
+        :param request: Request instance for DescribeDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDomainsConfig(self, request):
+        """This API is used to query all the configuration information of CDN acceleration domain names (inside and outside mainland China).
+
+        :param request: Request instance for DescribeDomainsConfig.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDomainsConfigRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeDomainsConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDomainsConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainsConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -300,6 +412,35 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUrlViolations(self, request):
+        """This API is used to query the list of domain name URLs containing regulation-violating content scanned and detected by the CDN system, and the current status of the URLs.
+        It corresponds to the **Pornography Detection** page of the CDN Console.
+
+        :param request: Request instance for DescribeUrlViolations.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeUrlViolationsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeUrlViolationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUrlViolations", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUrlViolationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableCaches(self, request):
         """This API (DisableCaches) is used to block access to a specific URL on CDN. After a URL is blocked, error 403 will be returned for all access requests to it. (This API is during beta test and not fully available now.)
 
@@ -357,7 +498,7 @@ class CdnClient(AbstractClient):
 
 
     def GetDisableRecords(self, request):
-        """This API (GetDisableRecords) is used to query the resource blocking history and the current URL status. (This API is during beta test and not fully available now.)
+        """This API is used to query the resource blocking history and the current URL status. (This API is in beta test and not fully available yet.)
 
         :param request: Request instance for GetDisableRecords.
         :type request: :class:`tencentcloud.cdn.v20180606.models.GetDisableRecordsRequest`
@@ -385,13 +526,15 @@ class CdnClient(AbstractClient):
 
 
     def ListTopData(self, request):
-        """This API (ListTopData) is used to query the following sorting data by using different combinations of the `Metric` and `Filter` input parameters:
+        """This API is used to query the following sorting data by using different combinations of the Metric and Filter input parameters:
 
-        + Sorts access URLs by total traffic and total requests and returns top 1,000 URLs in descending order.
-        + Sorts client districts by total traffic and total requests and returns the list of districts in descending order.
-        + Sorts client ISPs by total traffic and total requests and returns the list of ISPs in descending order.
-        + Sorts domain names by total traffic, peak bandwidth, total requests, average hit rate, and 2XX/3XX/4XX/5XX status codes and returns the list of domain names in descending order.
-        + Sorts domain names by total origin-pull traffic, peak origin-pull bandwidth, total origin-pull requests, average origin-pull failure rate, and 2XX/3XX/4XX/5XX origin-pull status codes and returns the list of domain names in descending order.
+        + It sorts access URLs by total traffic and total requests, and returns the top 1,000 URLs in descending order.
+        + It sorts client districts by total traffic and total requests, and returns the list of districts in descending order.
+        + It sorts client ISPs by total traffic and total requests, and returns the list of ISPs in descending order.
+        + It sorts domain names by total traffic, peak bandwidth, total requests, average hit rate, and 2XX/3XX/4XX/5XX status codes, and returns the list of domain names in descending order.
+        + It sorts domain names by total origin-pull traffic, peak origin-pull bandwidth, total origin-pull requests, average origin-pull failure rate, and 2XX/3XX/4XX/5XX origin-pull status codes, and returns the list of domain names in descending order.
+
+        Note: only querying of data within the past 90 days is supported.
 
         :param request: Request instance for ListTopData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopDataRequest`
@@ -492,6 +635,120 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PushUrlsCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartCdnDomain(self, request):
+        """This API is used to enable the acceleration service for a disabled domain name.
+
+        :param request: Request instance for StartCdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.StartCdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.StartCdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartCdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopCdnDomain(self, request):
+        """This API is used to suspend the acceleration service for a domain name.
+        Note: after the acceleration service has been suspended, the requests to the cache node will directly return 404. In order to avoid impact to your business, please release it before suspending the acceleration service.
+
+        :param request: Request instance for StopCdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.StopCdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.StopCdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopCdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateDomainConfig(self, request):
+        """This API is used to modify the configuration information of the CDN acceleration domain names.
+        Note: if you need to update complex configuration items, you must pass all the attributes of the entire object. Attributes that are not passed will use the default value. It is recommended that you call the querying API to obtain the configuration attributes first, and then you directly modify them and pass them to this API. Due to the special nature of the certificate, for HTTPS configuration, the certificate and key fields do not need to be passed.
+
+        :param request: Request instance for UpdateDomainConfig.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateDomainConfigRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.UpdateDomainConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateDomainConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateDomainConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdatePayType(self, request):
+        """This API is used to modify the billing mode of an account. At present, the billing mode of monthly-billed accounts and sub-accounts cannot be modified.
+
+        :param request: Request instance for UpdatePayType.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.UpdatePayTypeRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.UpdatePayTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdatePayType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdatePayTypeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
