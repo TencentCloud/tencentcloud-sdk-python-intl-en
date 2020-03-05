@@ -1143,6 +1143,8 @@ Note: This field may return null, indicating that no valid value was found.
         :type SnapshotCount: int
         :param SnapshotSize: The total capacity of the snapshots of the cloud disk. Unit: MB.
         :type SnapshotSize: int
+        :param BackupDisk: Indicates whether a snapshot should be created for backup when the cloud disk is terminated due to arrears or expiration. `True`: create a snapshot to backup the disk upon termination. `False`: terminate the disk without backup
+        :type BackupDisk: bool
         """
         self.DiskId = None
         self.DiskUsage = None
@@ -1176,6 +1178,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.InstanceIdList = None
         self.SnapshotCount = None
         self.SnapshotSize = None
+        self.BackupDisk = None
 
 
     def _deserialize(self, params):
@@ -1218,6 +1221,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.InstanceIdList = params.get("InstanceIdList")
         self.SnapshotCount = params.get("SnapshotCount")
         self.SnapshotSize = params.get("SnapshotSize")
+        self.BackupDisk = params.get("BackupDisk")
 
 
 class DiskChargePrepaid(AbstractModel):
