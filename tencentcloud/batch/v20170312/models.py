@@ -165,6 +165,29 @@ class Application(AbstractModel):
             self.Docker._deserialize(params.get("Docker"))
 
 
+class AttachInstancesRequest(AbstractModel):
+    """AttachInstances request structure.
+
+    """
+
+
+class AttachInstancesResponse(AbstractModel):
+    """AttachInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Authentication(AbstractModel):
     """Authentication information
 
@@ -1641,6 +1664,29 @@ class DescribeTaskTemplatesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TaskTemplateSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DetachInstancesRequest(AbstractModel):
+    """DetachInstances request structure.
+
+    """
+
+
+class DetachInstancesResponse(AbstractModel):
+    """DetachInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

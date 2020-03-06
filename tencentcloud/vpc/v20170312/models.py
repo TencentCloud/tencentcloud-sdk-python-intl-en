@@ -5789,6 +5789,29 @@ class ModifyCcnAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCcnRegionBandwidthLimitsTypeRequest(AbstractModel):
+    """ModifyCcnRegionBandwidthLimitsType request structure.
+
+    """
+
+
+class ModifyCcnRegionBandwidthLimitsTypeResponse(AbstractModel):
+    """ModifyCcnRegionBandwidthLimitsType response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyHaVipAttributeRequest(AbstractModel):
     """ModifyHaVipAttribute request structure.
 

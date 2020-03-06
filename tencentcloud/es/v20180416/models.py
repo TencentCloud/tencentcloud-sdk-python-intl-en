@@ -56,7 +56,8 @@ class CreateInstanceRequest(AbstractModel):
         :type Password: str
         :param InstanceName: Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
         :type InstanceName: str
-        :param NodeNum: Number of nodes (2-50)
+        :param NodeNum: This parameter has been disused. Please use `NodeInfoList`
+Number of nodes (2–50)
         :type NodeNum: int
         :param ChargeType: Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR
         :type ChargeType: str
@@ -64,11 +65,14 @@ class CreateInstanceRequest(AbstractModel):
         :type ChargePeriod: int
         :param RenewFlag: This parameter is not used on the global website
         :type RenewFlag: str
-        :param NodeType: Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        :param NodeType: This parameter has been disused. Please use `NodeInfoList`
+Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
         :type NodeType: str
-        :param DiskType: Node disk type <li>CLOUD_SSD: SSD cloud disk </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD
+        :param DiskType: This parameter has been disused. Please use `NodeInfoList`
+Node storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premium cloud storage </li>Default value: CLOUD_SSD
         :type DiskType: str
-        :param DiskSize: Node disk size in GB
+        :param DiskSize: This parameter has been disused. Please use `NodeInfoList`
+Node disk size in GB
         :type DiskSize: int
         :param TimeUnit: This parameter is not used on the global website
         :type TimeUnit: str
@@ -76,13 +80,17 @@ class CreateInstanceRequest(AbstractModel):
         :type AutoVoucher: int
         :param VoucherIds: List of voucher IDs (only one voucher can be specified at a time currently)
         :type VoucherIds: list of str
-        :param EnableDedicatedMaster: Whether to create a dedicated master node <li>true: Yes </li><li>false: No </li>Default value: false
+        :param EnableDedicatedMaster: This parameter has been disused. Please use `NodeInfoList`
+Whether to create a dedicated master node <li>true: yes </li><li>false: no </li>Default value: false
         :type EnableDedicatedMaster: bool
-        :param MasterNodeNum: Number of dedicated master nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is true)
+        :param MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
+Number of dedicated master nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)
         :type MasterNodeNum: int
-        :param MasterNodeType: Dedicated master node type, which must be passed in if `EnableDedicatedMaster` is true <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :param MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
+Dedicated master node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
         :type MasterNodeType: str
-        :param MasterNodeDiskSize: Dedicated master node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently
+        :param MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
+Dedicated master node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently
         :type MasterNodeDiskSize: int
         :param ClusterNameInConf: ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized
         :type ClusterNameInConf: str
@@ -92,11 +100,11 @@ class CreateInstanceRequest(AbstractModel):
         :type MultiZoneInfo: list of ZoneDetail
         :param LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
         :type LicenseType: str
-        :param NodeInfoList: 
+        :param NodeInfoList: Node information list, which is used to describe the specification information of various types of nodes in the cluster, such as node type, node quantity, node specification, disk type, and disk size
         :type NodeInfoList: list of NodeInfo
-        :param TagList: 
+        :param TagList: Node tag information list
         :type TagList: list of TagInfo
-        :param BasicSecurityType: 
+        :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
         :type BasicSecurityType: int
         """
         self.Zone = None
@@ -249,9 +257,9 @@ class DescribeInstancesRequest(AbstractModel):
         :type OrderByKey: int
         :param OrderByType: Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default
         :type OrderByType: int
-        :param TagList: 
+        :param TagList: Node tag information list
         :type TagList: list of TagInfo
-        :param IpList: 
+        :param IpList: VPC VIP list
         :type IpList: list of str
         """
         self.Zone = None
@@ -390,9 +398,24 @@ class EsDictionaryInfo(AbstractModel):
 
 
 class EsPublicAcl(AbstractModel):
-    """ES公网访问访问控制信息
+    """Public network ACL information of ES
 
     """
+
+    def __init__(self):
+        """
+        :param BlackIpList: Access blacklist
+        :type BlackIpList: list of str
+        :param WhiteIpList: Access whitelist
+        :type WhiteIpList: list of str
+        """
+        self.BlackIpList = None
+        self.WhiteIpList = None
+
+
+    def _deserialize(self, params):
+        self.BlackIpList = params.get("BlackIpList")
+        self.WhiteIpList = params.get("WhiteIpList")
 
 
 class InstanceInfo(AbstractModel):
@@ -472,8 +495,8 @@ class InstanceInfo(AbstractModel):
         :type TagList: list of TagInfo
         :param LicenseType: License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
         :type LicenseType: str
-        :param EnableHotWarmMode: Whether it is a hot/warm cluster <li> true: yes </li><li>false: no</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param EnableHotWarmMode: Whether it is a hot/warm cluster <li>true: yes </li><li>false: no</li>
+Note: this field may return null, indicating that no valid values can be obtained.
         :type EnableHotWarmMode: bool
         :param WarmNodeType: Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -804,7 +827,8 @@ class UpdateInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param InstanceName: Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
         :type InstanceName: str
-        :param NodeNum: Number of nodes (2-50)
+        :param NodeNum: This parameter has been disused. Please use `NodeInfoList`
+Number of nodes (2–50)
         :type NodeNum: int
         :param EsConfig: Configuration item (JSON string). Only the following items are supported currently: <li>action.destructive_requires_name</li><li>indices.fielddata.cache.size</li><li>indices.query.bool.max_clause_count</li>
         :type EsConfig: str
@@ -812,29 +836,34 @@ class UpdateInstanceRequest(AbstractModel):
         :type Password: str
         :param EsAcl: Access control list
         :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
-        :param DiskSize: Disk size in GB
+        :param DiskSize: This parameter has been disused. Please use `NodeInfoList`
+Disk size in GB
         :type DiskSize: int
-        :param NodeType: Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        :param NodeType: This parameter has been disused. Please use `NodeInfoList`
+Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
         :type NodeType: str
-        :param MasterNodeNum: Number of dedicated master nodes (only 3 and 5 are supported)
+        :param MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
+Number of dedicated master nodes (only 3 and 5 are supported)
         :type MasterNodeNum: int
-        :param MasterNodeType: Dedicated master node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :param MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
+Dedicated master node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
         :type MasterNodeType: str
-        :param MasterNodeDiskSize: Dedicated master node disk size in GB. This is 50 GB by default and currently cannot be customized
+        :param MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
+Dedicated master node disk size in GB. This is 50 GB by default and currently cannot be customized
         :type MasterNodeDiskSize: int
         :param ForceRestart: Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false
         :type ForceRestart: bool
         :param CosBackup: Auto-backup to COS
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
-        :param NodeInfoList: 
+        :param NodeInfoList: Node information list. You can pass in only the nodes to be updated and their corresponding specification information. Supported operations include: <li>modifying the number of nodes in the same type </li><li>modifying the specification and disk size of nodes in the same type </li><li>adding a node type (you must also specify the node type, quantity, specification, disk, etc.) </li>The above operations can only be performed one at a time, and the disk type cannot be modified
         :type NodeInfoList: list of NodeInfo
-        :param PublicAccess: 
+        :param PublicAccess: Public network access status
         :type PublicAccess: str
-        :param EsPublicAcl: 
+        :param EsPublicAcl: Public network ACL
         :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
-        :param KibanaPublicAccess: 
+        :param KibanaPublicAccess: Public network access status of Kibana
         :type KibanaPublicAccess: str
-        :param KibanaPrivateAccess: 
+        :param KibanaPrivateAccess: Private network access status of Kibana
         :type KibanaPrivateAccess: str
         """
         self.InstanceId = None
@@ -921,7 +950,7 @@ class UpgradeInstanceRequest(AbstractModel):
         :type CheckOnly: bool
         :param LicenseType: Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic
         :type LicenseType: str
-        :param BasicSecurityType: 
+        :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
         :type BasicSecurityType: int
         """
         self.InstanceId = None
@@ -971,9 +1000,9 @@ class UpgradeLicenseRequest(AbstractModel):
         :type AutoVoucher: int
         :param VoucherIds: List of voucher IDs (only one voucher can be specified at a time currently)
         :type VoucherIds: list of str
-        :param BasicSecurityType: 
+        :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
         :type BasicSecurityType: int
-        :param ForceRestart: 
+        :param ForceRestart: Whether to force restart <li>true: yes </li><li>false: no </li>Default value: false
         :type ForceRestart: bool
         """
         self.InstanceId = None
