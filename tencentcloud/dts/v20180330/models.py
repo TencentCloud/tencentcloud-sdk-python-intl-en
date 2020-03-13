@@ -122,7 +122,7 @@ class CreateMigrateJobRequest(AbstractModel):
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
         :param SrcDatabaseType: Source instance database type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, and Percona. For more information on the supported types in a specific region, see the migration task creation page in the console.
         :type SrcDatabaseType: str
-        :param SrcAccessType: Source instance access type. Value range: extranet (public network), cvm (CVM-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instances)
+        :param SrcAccessType: Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instance)
         :type SrcAccessType: str
         :param SrcInfo: Source instance information, which is correlated with the migration task type
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
@@ -668,9 +668,9 @@ class MigrateDetailInfo(AbstractModel):
         :type Progress: str
         :param CurrentStepProgress: Progress of the current step, such as:
         :type CurrentStepProgress: str
-        :param MasterSlaveDistance: Master/slave difference in MB
+        :param MasterSlaveDistance: Master/slave lag in MB, which is valid during incremental sync and currently supported by TencentDB for Redis and MySQL
         :type MasterSlaveDistance: int
-        :param SecondsBehindMaster: Master/slave difference in seconds
+        :param SecondsBehindMaster: Master/slave lag in seconds, which is valid during incremental sync and currently supported by TencentDB for MySQL
         :type SecondsBehindMaster: int
         :param StepInfo: Step information
         :type StepInfo: list of MigrateStepDetailInfo
@@ -857,11 +857,15 @@ class MigrateStepDetailInfo(AbstractModel):
         :type StepId: str
         :param Status: Step status. Value range: 0 (default), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)
         :type Status: int
+        :param StartTime: Start time of current step in the format of `yyyy-mm-dd hh:mm:ss`. This field is meaningless if it does not exist or is empty
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
         """
         self.StepNo = None
         self.StepName = None
         self.StepId = None
         self.Status = None
+        self.StartTime = None
 
 
     def _deserialize(self, params):
@@ -869,6 +873,7 @@ class MigrateStepDetailInfo(AbstractModel):
         self.StepName = params.get("StepName")
         self.StepId = params.get("StepId")
         self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
 
 
 class ModifyMigrateJobRequest(AbstractModel):
@@ -884,11 +889,11 @@ class ModifyMigrateJobRequest(AbstractModel):
         :type JobName: str
         :param MigrateOption: Migration task configuration options
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcAccessType: Source instance access type. Value range: extranet (public network), cvm (CVM-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), vpnselfbuild (self-built VPN-enabled instance), cdb (TencentDB instance)
+        :param SrcAccessType: Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance)
         :type SrcAccessType: str
         :param SrcInfo: Source instance information, which is correlated with the migration task type
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstAccessType: Target instance access type. Value range: extranet (public network), cvm (CVM-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), vpnselfbuild (self-built VPN-enabled instance), cdb (TencentDB instance). Currently, only "cdb" is supported.
+        :param DstAccessType: Target instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance). Currently, only `cdb` is supported
         :type DstAccessType: str
         :param DstInfo: Target instance information. The region where the target instance is located cannot be modified.
         :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
@@ -1015,7 +1020,7 @@ class SrcInfo(AbstractModel):
         :type Password: str
         :param RdsInstanceId: Alibaba Cloud ApsaraDB for RDS instance ID, which is applicable if the source database is an Alibaba Cloud ApsaraDB for RDS 5.6/5.7 instance
         :type RdsInstanceId: str
-        :param CvmInstanceId: Short CVM instance ID in the format of ins-olgl39y8. It is the same as the instance ID displayed on the CVM Console page. For CVM-created instances, this field needs to be passed in.
+        :param CvmInstanceId: Short CVM instance ID in the format of `ins-olgl39y8`. It is the same as the instance ID displayed on the CVM Console page. For CVM-based self-created instances, this field needs to be passed in
         :type CvmInstanceId: str
         :param UniqDcgId: Direct Connect gateway ID in the format of dcg-0rxtqqxb
         :type UniqDcgId: str

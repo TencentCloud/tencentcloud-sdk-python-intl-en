@@ -31,11 +31,14 @@ class AccountCreateInfo(AbstractModel):
         :type DBPrivileges: list of DBPrivilege
         :param Remark: Account remarks
         :type Remark: str
+        :param IsAdmin: Whether it is an admin account. Default value: no
+        :type IsAdmin: bool
         """
         self.UserName = None
         self.Password = None
         self.DBPrivileges = None
         self.Remark = None
+        self.IsAdmin = None
 
 
     def _deserialize(self, params):
@@ -48,6 +51,7 @@ class AccountCreateInfo(AbstractModel):
                 obj._deserialize(item)
                 self.DBPrivileges.append(obj)
         self.Remark = params.get("Remark")
+        self.IsAdmin = params.get("IsAdmin")
 
 
 class AccountDetail(AbstractModel):
@@ -479,7 +483,7 @@ class CreateMigrationRequest(AbstractModel):
         :type MigrateName: str
         :param MigrateType: Migration type (1: structure migration, 2: data migration, 3: incremental sync)
         :type MigrateType: int
-        :param SourceType: Type of migration source. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database, 4: SQL Server backup restoration, 5: SQL Server backup restoration (through COS)
+        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
         :type SourceType: int
         :param Source: Migration source
         :type Source: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`
@@ -847,7 +851,7 @@ class DealInfo(AbstractModel):
         :type DealName: str
         :param Count: Number of items
         :type Count: int
-        :param FlowId: ID of associated flow, which can be used to query flow execution status
+        :param FlowId: ID of associated flow, which can be used to query the flow execution status
         :type FlowId: int
         :param InstanceIdSet: This field is required only for an order that creates an instance, indicating the ID of the instance created by the order
         :type InstanceIdSet: list of str
@@ -1002,7 +1006,7 @@ class DescribeAccountsRequest(AbstractModel):
         :type InstanceId: str
         :param Limit: Number of results per page. Value range: 1–100. Default value: 20
         :type Limit: int
-        :param Offset: Page number start value, which starts at 0. Default value: 0
+        :param Offset: Page number. Default value: 0
         :type Offset: int
         """
         self.InstanceId = None
@@ -1063,9 +1067,9 @@ class DescribeBackupsRequest(AbstractModel):
         :type EndTime: str
         :param InstanceId: Instance ID in the format of mssql-njj2mtpl
         :type InstanceId: str
-        :param Limit: Number of results per page. Default value: 20. Maximum value: 100
+        :param Limit: Number of results per page. Value range: 1–100. Default value: 20
         :type Limit: int
-        :param Offset: Offset. Default value: 0
+        :param Offset: Page number. Default value: 0
         :type Offset: int
         """
         self.StartTime = None
@@ -1136,9 +1140,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 <li>11: read-only</li>
 <li>12: restarting</li>
         :type Status: int
-        :param Offset: Number of pages. Default value: 0
+        :param Offset: Page number. Default value: 0
         :type Offset: int
-        :param Limit: Number of entries per page. Default value: 50
+        :param Limit: Number of results per page. Value range: 1–100. Default value: 100
         :type Limit: int
         :param InstanceIdSet: One or more instance IDs in the format of mssql-si2823jyl
         :type InstanceIdSet: list of str
@@ -1201,9 +1205,9 @@ class DescribeDBsRequest(AbstractModel):
         """
         :param InstanceIdSet: Instance ID
         :type InstanceIdSet: list of str
-        :param Limit: Number of results per page. Maximum value: 100. Default value: 20
+        :param Limit: Number of results per page. Value range: 1–100. Default value: 20
         :type Limit: int
-        :param Offset: Page number, starting at 0
+        :param Offset: Page number. Default value: 0
         :type Offset: int
         """
         self.InstanceIdSet = None
@@ -1317,7 +1321,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
         :type AppId: int
         :param Region: Migration task region
         :type Region: str
-        :param SourceType: Type of migration source. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database, 4: SQL Server backup restoration, 5: SQL Server backup restoration (through COS)
+        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
         :type SourceType: int
         :param CreateTime: Migration task creation time
         :type CreateTime: str
@@ -1395,9 +1399,9 @@ class DescribeMigrationsRequest(AbstractModel):
         :type StatusSet: list of int
         :param MigrateName: Migration task name (fuzzy match)
         :type MigrateName: str
-        :param Limit: Number of results per page
+        :param Limit: Number of results per page. Value range: 1–100. Default value: 100
         :type Limit: int
-        :param Offset: Specifies to query the results on which page
+        :param Offset: Page number. Default value: 0
         :type Offset: int
         :param OrderBy: The query results are sorted by keyword. Valid values: name, createTime, startTime, endTime, status
         :type OrderBy: str
@@ -1641,9 +1645,9 @@ class DescribeSlowlogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: Query end time
         :type EndTime: str
-        :param Limit: Number of results per page. Default value: 20. Maximum value: 100
+        :param Limit: Number of results per page. Value range: 1–100. Default value: 20
         :type Limit: int
-        :param Offset: Page number start value, which starts at 0. Default value: 0
+        :param Offset: Page number. Default value: 0
         :type Offset: int
         """
         self.InstanceId = None
@@ -1914,7 +1918,7 @@ class MigrateSource(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of source instance in the format of mssql-si2823jyl, which is used when `MigrateType` is 1 (TencentDB for SQL Server)
+        :param InstanceId: Source instance ID in the format of `mssql-si2823jyl`, which is used when `MigrateType` is 1 (TencentDB for SQL Server)
         :type InstanceId: str
         :param CvmId: ID of source CVM instance, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
         :type CvmId: str
@@ -2000,7 +2004,7 @@ class MigrateTask(AbstractModel):
         :type AppId: int
         :param Region: Migration task region
         :type Region: str
-        :param SourceType: Type of migration source. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database, 4: SQL Server backup restoration, 5: SQL Server backup restoration (through COS)
+        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
         :type SourceType: int
         :param CreateTime: Migration task creation time
         :type CreateTime: str
@@ -2324,7 +2328,7 @@ class ModifyMigrationRequest(AbstractModel):
         :type MigrateName: str
         :param MigrateType: New migration type (1: structure migration, 2: data migration, 3: incremental sync). If this parameter is left empty, no modification will be made
         :type MigrateType: int
-        :param SourceType: Type of migration source. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database, 4: SQL Server backup restoration, 5: SQL Server backup restoration (through COS). If this parameter is left empty, no modification will be made
+        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode). If this parameter is left empty, no modification will be made
         :type SourceType: int
         :param Source: Migration source. If this parameter is left empty, no modification will be made
         :type Source: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`

@@ -26,13 +26,13 @@ class BatchClient(AbstractClient):
 
 
     def AttachInstances(self, request):
-        """此接口可将已存在实例添加到计算环境中。
-        实例需要满足如下条件：<br/>
-        1.实例不在批量计算系统中。<br/>
-        2.实例状态要求处于运行中。<br/>
-        3.支持预付费实例，按小时后付费实例，专享子机实例。不支持竞价实例。<br/>
+        """This API is used to add existing instances to the compute environment.
+        Considerations: <br/>
+        1. The instance should not be in the batch compute system.<br/>
+        2. The instance status should be “running”.<br/>
+        3. It supports dedicated CVMs and pay-as-you-go instances that billed on an hourly basis. Spot instances are not supported.<b/>
 
-        此接口会将加入到计算环境中的实例重设UserData和重装操作系统。
+        For instances added to the compute environment, their UserData will be reset and the operating systems will be reinstalled.
 
         :param request: Request instance for AttachInstances.
         :type request: :class:`tencentcloud.batch.v20170312.models.AttachInstancesRequest`
@@ -594,7 +594,7 @@ class BatchClient(AbstractClient):
 
 
     def DetachInstances(self, request):
-        """将添加到计算环境中的实例从计算环境中移出。若是由批量计算自动创建的计算节点实例则不允许移出。
+        """This API is used to remove instances that from compute environment.
 
         :param request: Request instance for DetachInstances.
         :type request: :class:`tencentcloud.batch.v20170312.models.DetachInstancesRequest`

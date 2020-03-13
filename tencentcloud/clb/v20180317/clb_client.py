@@ -26,8 +26,8 @@ class ClbClient(AbstractClient):
 
 
     def AssociateTargetGroups(self, request):
-        """监听器或转发规则绑定目标组。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        """This API is used to bind target groups to CLB listeners (layer-4 protocol) or forwarding rules (layer-7 protocol).
+        This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for AssociateTargetGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.AssociateTargetGroupsRequest`
@@ -111,8 +111,8 @@ class ClbClient(AbstractClient):
 
 
     def BatchModifyTargetWeight(self, request):
-        """This API (BatchModifyTargetWeight) is used to batch modify the forwarding weights of real servers bound to a listener. Currently, it only supports HTTP/HTTPS listeners.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+        """This API is used to modify the forwarding weights of real servers bound to a CLB listener in batches. It supports layer-4 and layer-7 CLB listeners but not Classic CLB.
+        This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for BatchModifyTargetWeight.
         :type request: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetWeightRequest`
@@ -140,7 +140,7 @@ class ClbClient(AbstractClient):
 
 
     def BatchRegisterTargets(self, request):
-        """This API is used to bind CVM instances or ENIs in batches. It supports cross-region binding and only layer-4 (TCP/UDP) protocols.
+        """This API is used to bind CVM instances or ENIs in batches. It supports cross-region binding and layer-4 and layer-7 (TCP, UDP, HTTP, HTTPS) protocols.
 
         :param request: Request instance for BatchRegisterTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.BatchRegisterTargetsRequest`
@@ -256,7 +256,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateTargetGroup(self, request):
-        """创建目标组。（目标组功能正在灰度中，需要开通白名单支持）
+        """This API is used to create a target group. (The target group feature is currently in beta test. To try it out, submit a ticket for application.)
 
         :param request: Request instance for CreateTargetGroup.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateTargetGroupRequest`
@@ -399,7 +399,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteTargetGroups(self, request):
-        """删除目标组
+        """This API is used to delete a target group.
 
         :param request: Request instance for DeleteTargetGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteTargetGroupsRequest`
@@ -427,8 +427,8 @@ class ClbClient(AbstractClient):
 
 
     def DeregisterTargetGroupInstances(self, request):
-        """将服务器从目标组中解绑。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        """This API is used to unbind a server from a target group.
+        This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeregisterTargetGroupInstances.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetGroupInstancesRequest`
@@ -626,7 +626,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeListeners(self, request):
-        """This API (DescribeListeners) is used to get the list of listeners by CLB IDs, listener protocol, or port. If no filter is specified, the default number (20) of listeners for the instance will be returned.
+        """This API is used to get the list of listeners by CLB instance ID, listener protocol, or port. If no filter is specified, all listeners under the CLB instance will be returned.
 
         :param request: Request instance for DescribeListeners.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeListenersRequest`
@@ -654,7 +654,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeLoadBalancerListByCertId(self, request):
-        """根据证书ID查询其在一个地域中所关联到负载均衡实例列表
+        """This API is used to query the list of CLB instances associated with a certificate in a region by certificate ID.
 
         :param request: Request instance for DescribeLoadBalancerListByCertId.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerListByCertIdRequest`
@@ -682,7 +682,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeLoadBalancers(self, request):
-        """This API is used to query the list of CLB instances.
+        """This API is used to query the list of CLB instances in a region.
 
         :param request: Request instance for DescribeLoadBalancers.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancersRequest`
@@ -738,7 +738,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeTargetGroupInstances(self, request):
-        """获取目标组绑定的服务器信息
+        """This API is used to get the information of servers bound to a target group.
 
         :param request: Request instance for DescribeTargetGroupInstances.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupInstancesRequest`
@@ -766,7 +766,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeTargetGroupList(self, request):
-        """获取目标组列表
+        """This API is used to get the target group list.
 
         :param request: Request instance for DescribeTargetGroupList.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupListRequest`
@@ -794,7 +794,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeTargetGroups(self, request):
-        """查询目标组信息
+        """This API is used to query the target group information.
 
         :param request: Request instance for DescribeTargetGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupsRequest`
@@ -906,8 +906,8 @@ class ClbClient(AbstractClient):
 
 
     def DisassociateTargetGroups(self, request):
-        """解除规则的目标组关联关系。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        """This API is used to unbind target groups from a rule.
+        This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DisassociateTargetGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.DisassociateTargetGroupsRequest`
@@ -1107,7 +1107,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyTargetGroupAttribute(self, request):
-        """修改目标组的名称或者默认端口属性
+        """This API is used to rename a target group or modify its default port attribute.
 
         :param request: Request instance for ModifyTargetGroupAttribute.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupAttributeRequest`
@@ -1135,8 +1135,8 @@ class ClbClient(AbstractClient):
 
 
     def ModifyTargetGroupInstancesPort(self, request):
-        """批量修改目标组服务器端口。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        """This API is used to modify server ports of a target group in batches.
+        This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyTargetGroupInstancesPort.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupInstancesPortRequest`
@@ -1164,8 +1164,8 @@ class ClbClient(AbstractClient):
 
 
     def ModifyTargetGroupInstancesWeight(self, request):
-        """批量修改目标组的服务器权重。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        """This API is used to modify server weights of a target group in batches.
+        This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyTargetGroupInstancesWeight.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupInstancesWeightRequest`
@@ -1251,8 +1251,8 @@ class ClbClient(AbstractClient):
 
 
     def RegisterTargetGroupInstances(self, request):
-        """注册服务器到目标组。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        """This API is used to register servers to a target group.
+        This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for RegisterTargetGroupInstances.
         :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetGroupInstancesRequest`

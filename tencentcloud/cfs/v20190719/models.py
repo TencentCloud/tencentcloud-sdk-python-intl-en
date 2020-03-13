@@ -164,6 +164,8 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type MountIP: str
         :param FsName: Custom file system name
         :type FsName: str
+        :param ResourceTags: File system tag
+        :type ResourceTags: list of TagInfo
         """
         self.Zone = None
         self.NetInterface = None
@@ -174,6 +176,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self.SubnetId = None
         self.MountIP = None
         self.FsName = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -186,6 +189,12 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.MountIP = params.get("MountIP")
         self.FsName = params.get("FsName")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateCfsFileSystemResponse(AbstractModel):
@@ -595,10 +604,13 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
         """
         :param FileSystems: File system information
         :type FileSystems: list of FileSystemInfo
+        :param TotalCount: Total number of file systems
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.FileSystems = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -609,6 +621,7 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
                 obj = FileSystemInfo()
                 obj._deserialize(item)
                 self.FileSystems.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1004,6 +1017,77 @@ class SignUpCfsServiceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.CfsServiceStatus = params.get("CfsServiceStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class TagInfo(AbstractModel):
+    """Tag information unit
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
+class UpdateCfsFileSystemNameRequest(AbstractModel):
+    """UpdateCfsFileSystemName request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: File system ID
+        :type FileSystemId: str
+        :param FsName: Custom file system name
+        :type FsName: str
+        """
+        self.FileSystemId = None
+        self.FsName = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.FsName = params.get("FsName")
+
+
+class UpdateCfsFileSystemNameResponse(AbstractModel):
+    """UpdateCfsFileSystemName response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CreationToken: Custom file system name
+        :type CreationToken: str
+        :param FileSystemId: File system ID
+        :type FileSystemId: str
+        :param FsName: Custom file system name
+        :type FsName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CreationToken = None
+        self.FileSystemId = None
+        self.FsName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CreationToken = params.get("CreationToken")
+        self.FileSystemId = params.get("FileSystemId")
+        self.FsName = params.get("FsName")
         self.RequestId = params.get("RequestId")
 
 

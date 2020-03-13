@@ -21,6 +21,22 @@ class AssociateTargetGroupsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param Associations: Association array
+        :type Associations: list of TargetGroupAssociation
+        """
+        self.Associations = None
+
+
+    def _deserialize(self, params):
+        if params.get("Associations") is not None:
+            self.Associations = []
+            for item in params.get("Associations"):
+                obj = TargetGroupAssociation()
+                obj._deserialize(item)
+                self.Associations.append(obj)
+
 
 class AssociateTargetGroupsResponse(AbstractModel):
     """AssociateTargetGroups response structure.
@@ -37,6 +53,58 @@ class AssociateTargetGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class AssociationItem(AbstractModel):
+    """Rule associated with target group
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: ID of associated CLB instance
+        :type LoadBalancerId: str
+        :param ListenerId: ID of associated listener
+        :type ListenerId: str
+        :param LocationId: ID of associated forwarding rule
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LocationId: str
+        :param Protocol: Protocol type of associated listener, such as HTTP or TCP
+        :type Protocol: str
+        :param Port: Port of associated listener
+        :type Port: int
+        :param Domain: Domain name of associated forwarding rule
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Domain: str
+        :param Url: URL of associated forwarding rule
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Url: str
+        :param LoadBalancerName: CLB instance name
+        :type LoadBalancerName: str
+        :param ListenerName: Listener name
+        :type ListenerName: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.LocationId = None
+        self.Protocol = None
+        self.Port = None
+        self.Domain = None
+        self.Url = None
+        self.LoadBalancerName = None
+        self.ListenerName = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.LocationId = params.get("LocationId")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.ListenerName = params.get("ListenerName")
 
 
 class AutoRewriteRequest(AbstractModel):
@@ -331,6 +399,33 @@ class BatchTarget(AbstractModel):
         self.LocationId = params.get("LocationId")
 
 
+class CertIdRelatedWithLoadBalancers(AbstractModel):
+    """Certificate ID and list of CLB instances associated with it
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: Certificate ID
+        :type CertId: str
+        :param LoadBalancers: List of CLB instances associated with certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LoadBalancers: list of LoadBalancer
+        """
+        self.CertId = None
+        self.LoadBalancers = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        if params.get("LoadBalancers") is not None:
+            self.LoadBalancers = []
+            for item in params.get("LoadBalancers"):
+                obj = LoadBalancer()
+                obj._deserialize(item)
+                self.LoadBalancers.append(obj)
+
+
 class CertificateInput(AbstractModel):
     """Certificate information
 
@@ -609,6 +704,33 @@ class ClassicalTargetInfo(AbstractModel):
         self.Weight = params.get("Weight")
 
 
+class ClusterItem(AbstractModel):
+    """Dedicated cluster information
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Unique cluster ID
+        :type ClusterId: str
+        :param ClusterName: Cluster name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterName: str
+        :param Zone: Cluster AZ, such as ap-guangzhou-1
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Zone: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.Zone = params.get("Zone")
+
+
 class CreateListenerRequest(AbstractModel):
     """CreateListener request structure.
 
@@ -626,7 +748,7 @@ class CreateListenerRequest(AbstractModel):
         :type ListenerNames: list of str
         :param HealthCheck: Health check parameter, which is applicable only to TCP/UDP/TCP_SSL listeners
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param Certificate: Certificate information. This parameter is applicable only to HTTPS/TCP_SSL listeners.
+        :param Certificate: Certificate information. This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled.
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param SessionExpireTime: Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners.
         :type SessionExpireTime: int
@@ -701,11 +823,11 @@ Note: If this name is the same as the name of an existing CLB instance in the sy
         :type LoadBalancerName: str
         :param VpcId: Network ID of the backend target server of CLB, which can be obtained through the DescribeVpcEx API. If this parameter is not passed in, it will default to a basic network ("0").
         :type VpcId: str
-        :param SubnetId: A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet. This parameter is not supported in other cases.
+        :param SubnetId: A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet.
         :type SubnetId: str
         :param ProjectId: ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API. If this parameter is not passed in, the default project will be used.
         :type ProjectId: int
-        :param AddressIPVersion: IP version. Value range: IPv4, IPv6. Default value: IPv4. This parameter is applicable only to public network CLB.
+        :param AddressIPVersion: IP version. Valid values: IPv4, IPv6, IPv6FullChain. Default value: IPv4. This parameter is applicable only to public network CLB instances.
         :type AddressIPVersion: str
         :param Number: Number of CLBs to be created. Default value: 1.
         :type Number: int
@@ -714,8 +836,10 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         :type MasterZoneId: str
         :param ZoneId: Specifies an AZ ID for creating a CLB instance, such as ap-guangzhou-1, which is applicable only to public network CLB.
         :type ZoneId: str
-        :param InternetAccessible: CLB network billing method. This parameter is applicable only to public network CLB, and takes effect only for users whose bandwidth is managed in IP and CLB.
+        :param InternetAccessible: CLB network billing mode. This parameter is applicable only to public network CLB instances.
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        :param VipIsp: This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode.
+        :type VipIsp: str
         :param Tags: Tags a CLB instance when purchasing it
         :type Tags: list of TagInfo
         """
@@ -730,6 +854,7 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         self.MasterZoneId = None
         self.ZoneId = None
         self.InternetAccessible = None
+        self.VipIsp = None
         self.Tags = None
 
 
@@ -747,6 +872,7 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         if params.get("InternetAccessible") is not None:
             self.InternetAccessible = InternetAccessible()
             self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.VipIsp = params.get("VipIsp")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
@@ -813,13 +939,17 @@ class CreateRuleResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param LocationIds: Array of unique IDs of created forwarding rules
+        :type LocationIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.LocationIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.LocationIds = params.get("LocationIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -827,6 +957,34 @@ class CreateTargetGroupRequest(AbstractModel):
     """CreateTargetGroup request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param TargetGroupName: Target group name (up to 50 characters)
+        :type TargetGroupName: str
+        :param VpcId: `vpcid` attribute of a target group. If this parameter is left empty, the default VPC will be used.
+        :type VpcId: str
+        :param Port: Default port of a target group, which can be used for subsequently added servers.
+        :type Port: int
+        :param TargetGroupInstances: Real server bound to a target group
+        :type TargetGroupInstances: list of TargetGroupInstance
+        """
+        self.TargetGroupName = None
+        self.VpcId = None
+        self.Port = None
+        self.TargetGroupInstances = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupName = params.get("TargetGroupName")
+        self.VpcId = params.get("VpcId")
+        self.Port = params.get("Port")
+        if params.get("TargetGroupInstances") is not None:
+            self.TargetGroupInstances = []
+            for item in params.get("TargetGroupInstances"):
+                obj = TargetGroupInstance()
+                obj._deserialize(item)
+                self.TargetGroupInstances.append(obj)
 
 
 class CreateTargetGroupResponse(AbstractModel):
@@ -836,13 +994,17 @@ class CreateTargetGroupResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TargetGroupId: ID generated after target group creation
+        :type TargetGroupId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TargetGroupId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1024,6 +1186,17 @@ class DeleteTargetGroupsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param TargetGroupIds: Target group ID array
+        :type TargetGroupIds: list of str
+        """
+        self.TargetGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupIds = params.get("TargetGroupIds")
+
 
 class DeleteTargetGroupsResponse(AbstractModel):
     """DeleteTargetGroups response structure.
@@ -1046,6 +1219,26 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
     """DeregisterTargetGroupInstances request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: Target group ID
+        :type TargetGroupId: str
+        :param TargetGroupInstances: Information of server to be unbound
+        :type TargetGroupInstances: list of TargetGroupInstance
+        """
+        self.TargetGroupId = None
+        self.TargetGroupInstances = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        if params.get("TargetGroupInstances") is not None:
+            self.TargetGroupInstances = []
+            for item in params.get("TargetGroupInstances"):
+                obj = TargetGroupInstance()
+                obj._deserialize(item)
+                self.TargetGroupInstances.append(obj)
 
 
 class DeregisterTargetGroupInstancesResponse(AbstractModel):
@@ -1395,10 +1588,14 @@ class DescribeListenersResponse(AbstractModel):
         """
         :param Listeners: List of listeners
         :type Listeners: list of Listener
+        :param TotalCount: Total number of listeners
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Listeners = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -1409,6 +1606,7 @@ class DescribeListenersResponse(AbstractModel):
                 obj = Listener()
                 obj._deserialize(item)
                 self.Listeners.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1416,6 +1614,17 @@ class DescribeLoadBalancerListByCertIdRequest(AbstractModel):
     """DescribeLoadBalancerListByCertId request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param CertIds: Server or client certificate ID
+        :type CertIds: list of str
+        """
+        self.CertIds = None
+
+
+    def _deserialize(self, params):
+        self.CertIds = params.get("CertIds")
 
 
 class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
@@ -1425,13 +1634,22 @@ class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param CertSet: Certificate ID and list of CLB instances associated with it
+        :type CertSet: list of CertIdRelatedWithLoadBalancers
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.CertSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("CertSet") is not None:
+            self.CertSet = []
+            for item in params.get("CertSet"):
+                obj = CertIdRelatedWithLoadBalancers()
+                obj._deserialize(item)
+                self.CertSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1461,7 +1679,7 @@ OPEN: public network; INTERNAL: private network.
         :type BackendPrivateIps: list of str
         :param Offset: Data offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of CLB instances to be returned. Default value: 20.
+        :param Limit: Number of returned CLB instances. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param OrderBy: Sort by parameter. Value range: LoadBalancerName, CreateTime, Domain, LoadBalancerType.
         :type OrderBy: str
@@ -1608,6 +1826,30 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param Filters: Filter. Currently, only filtering by `TargetGroupId`, `BindIP`, or `InstanceId` is supported.
+        :type Filters: list of Filter
+        :param Limit: Number of displayed results. Default value: 20
+        :type Limit: int
+        :param Offset: Display offset. Default value: 0
+        :type Offset: int
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
 
 class DescribeTargetGroupInstancesResponse(AbstractModel):
     """DescribeTargetGroupInstances response structure.
@@ -1616,13 +1858,30 @@ class DescribeTargetGroupInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: Number of results in current query
+        :type TotalCount: int
+        :param TargetGroupInstanceSet: Information of the bound server
+        :type TargetGroupInstanceSet: list of TargetGroupBackend
+        :param RealCount: Actual statistics, which are not affected by `Limit`, `Offset`, and `CAM`.
+        :type RealCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TotalCount = None
+        self.TargetGroupInstanceSet = None
+        self.RealCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TargetGroupInstanceSet") is not None:
+            self.TargetGroupInstanceSet = []
+            for item in params.get("TargetGroupInstanceSet"):
+                obj = TargetGroupBackend()
+                obj._deserialize(item)
+                self.TargetGroupInstanceSet.append(obj)
+        self.RealCount = params.get("RealCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1630,6 +1889,34 @@ class DescribeTargetGroupListRequest(AbstractModel):
     """DescribeTargetGroupList request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param TargetGroupIds: Target group ID array
+        :type TargetGroupIds: list of str
+        :param Filters: Filter array, which is exclusive of `TargetGroupIds`. Valid values: TargetGroupVpcId, TargetGroupName. Target group ID will be used first.
+        :type Filters: list of Filter
+        :param Offset: Starting display offset
+        :type Offset: int
+        :param Limit: Limit of the number of displayed results. Default value: 20
+        :type Limit: int
+        """
+        self.TargetGroupIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupIds = params.get("TargetGroupIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
 
 
 class DescribeTargetGroupListResponse(AbstractModel):
@@ -1639,13 +1926,26 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: Number of displayed results
+        :type TotalCount: int
+        :param TargetGroupSet: Information set of displayed target groups
+        :type TargetGroupSet: list of TargetGroupInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TotalCount = None
+        self.TargetGroupSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TargetGroupSet") is not None:
+            self.TargetGroupSet = []
+            for item in params.get("TargetGroupSet"):
+                obj = TargetGroupInfo()
+                obj._deserialize(item)
+                self.TargetGroupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1653,6 +1953,34 @@ class DescribeTargetGroupsRequest(AbstractModel):
     """DescribeTargetGroups request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param TargetGroupIds: Target group ID, which is exclusive of `Filters`.
+        :type TargetGroupIds: list of str
+        :param Limit: Limit of the number of displayed results. Default value: 20
+        :type Limit: int
+        :param Offset: Starting display offset
+        :type Offset: int
+        :param Filters: Filter array, which is exclusive of `TargetGroupIds`. Valid values: TargetGroupVpcId, TargetGroupName
+        :type Filters: list of Filter
+        """
+        self.TargetGroupIds = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupIds = params.get("TargetGroupIds")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeTargetGroupsResponse(AbstractModel):
@@ -1662,13 +1990,26 @@ class DescribeTargetGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: Number of displayed results
+        :type TotalCount: int
+        :param TargetGroupSet: Information set of displayed target groups
+        :type TargetGroupSet: list of TargetGroupInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TotalCount = None
+        self.TargetGroupSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TargetGroupSet") is not None:
+            self.TargetGroupSet = []
+            for item in params.get("TargetGroupSet"):
+                obj = TargetGroupInfo()
+                obj._deserialize(item)
+                self.TargetGroupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1815,6 +2156,22 @@ class DisassociateTargetGroupsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param Associations: Array of rules to be unbound
+        :type Associations: list of TargetGroupAssociation
+        """
+        self.Associations = None
+
+
+    def _deserialize(self, params):
+        if params.get("Associations") is not None:
+            self.Associations = []
+            for item in params.get("Associations"):
+                obj = TargetGroupAssociation()
+                obj._deserialize(item)
+                self.Associations.append(obj)
+
 
 class DisassociateTargetGroupsResponse(AbstractModel):
     """DisassociateTargetGroups response structure.
@@ -1834,9 +2191,43 @@ class DisassociateTargetGroupsResponse(AbstractModel):
 
 
 class ExclusiveCluster(AbstractModel):
-    """独占集群
+    """Dedicated cluster
 
     """
+
+    def __init__(self):
+        """
+        :param L4Clusters: Layer-4 dedicated cluster list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type L4Clusters: list of ClusterItem
+        :param L7Clusters: Layer-7 dedicated cluster list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type L7Clusters: list of ClusterItem
+        :param ClassicalCluster: vpcgw cluster
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClassicalCluster: :class:`tencentcloud.clb.v20180317.models.ClusterItem`
+        """
+        self.L4Clusters = None
+        self.L7Clusters = None
+        self.ClassicalCluster = None
+
+
+    def _deserialize(self, params):
+        if params.get("L4Clusters") is not None:
+            self.L4Clusters = []
+            for item in params.get("L4Clusters"):
+                obj = ClusterItem()
+                obj._deserialize(item)
+                self.L4Clusters.append(obj)
+        if params.get("L7Clusters") is not None:
+            self.L7Clusters = []
+            for item in params.get("L7Clusters"):
+                obj = ClusterItem()
+                obj._deserialize(item)
+                self.L7Clusters.append(obj)
+        if params.get("ClassicalCluster") is not None:
+            self.ClassicalCluster = ClusterItem()
+            self.ClassicalCluster._deserialize(params.get("ClassicalCluster"))
 
 
 class ExtraInfo(AbstractModel):
@@ -1860,6 +2251,27 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.ZhiTong = params.get("ZhiTong")
         self.TgwGroupName = params.get("TgwGroupName")
+
+
+class Filter(AbstractModel):
+    """Filter
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Filter name
+        :type Name: str
+        :param Values: Filter value array
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
 
 
 class HealthCheck(AbstractModel):
@@ -1952,7 +2364,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class InternetAccessible(AbstractModel):
-    """Network billing method based on the maximum outbound bandwidth
+    """Network billing mode based on maximum outbound bandwidth
 
     """
 
@@ -2241,8 +2653,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param AnycastZone: Anycast CLB publishing region. For non-anycast CLB, this field returns an empty string.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AnycastZone: str
-        :param AddressIPVersion: IP version. Value range: ipv4, ipv6
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param AddressIPVersion: IP version. Valid values: ipv4, ipv6
+Note: this field may return null, indicating that no valid values can be obtained.
         :type AddressIPVersion: str
         :param NumericalVpcId: VPC ID in a numeric form
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -2289,13 +2701,25 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ConfigId: Custom configuration ID at the CLB instance level
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ConfigId: str
-        :param LoadBalancerPassToTarget: Whether a real server opens the traffic from a CLB instance to the internet by default
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param LoadBalancerPassToTarget: Whether a real server opens the traffic from a CLB instance to the internet
+Note: this field may return null, indicating that no valid values can be obtained.
         :type LoadBalancerPassToTarget: bool
-        :param ExclusiveCluster: 
+        :param ExclusiveCluster: Private network dedicated cluster
+Note: this field may return null, indicating that no valid values can be obtained.
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
-        :param IPv6Mode: 
+        :param IPv6Mode: This field is meaningful only when the IP address version is `ipv6`. Valid values: IPv6Nat64, IPv6FullChain
+Note: this field may return null, indicating that no valid values can be obtained.
         :type IPv6Mode: str
+        :param SnatPro: Whether to enable SnatPro
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SnatPro: bool
+        :param SnatIps: SnatIp list after SnatPro load balancing is enabled
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SnatIps: list of SnatIp
+        :param SlaType: 
+        :type SlaType: str
+        :param IsBlock: 
+        :type IsBlock: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -2336,6 +2760,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.LoadBalancerPassToTarget = None
         self.ExclusiveCluster = None
         self.IPv6Mode = None
+        self.SnatPro = None
+        self.SnatIps = None
+        self.SlaType = None
+        self.IsBlock = None
 
 
     def _deserialize(self, params):
@@ -2400,6 +2828,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.ExclusiveCluster = ExclusiveCluster()
             self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
         self.IPv6Mode = params.get("IPv6Mode")
+        self.SnatPro = params.get("SnatPro")
+        if params.get("SnatIps") is not None:
+            self.SnatIps = []
+            for item in params.get("SnatIps"):
+                obj = SnatIp()
+                obj._deserialize(item)
+                self.SnatIps.append(obj)
+        self.SlaType = params.get("SlaType")
+        self.IsBlock = params.get("IsBlock")
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -2671,13 +3108,19 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type LoadBalancerName: str
         :param TargetRegionInfo: Region information of the real server bound to a CLB.
         :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
-        :param InternetChargeInfo: Network billing parameter. Note: The maximum outbound bandwidth can be modified, but the network billing method cannot be modified.
+        :param InternetChargeInfo: Network billing parameter
         :type InternetChargeInfo: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        :param LoadBalancerPassToTarget: Whether the target opens traffic from CLB to the internet. If yes (true), only security groups on CLB will be verified; if no (false), security groups on both CLB and backend instance need to be verified.
+        :type LoadBalancerPassToTarget: bool
+        :param SnatPro: Whether to enable SnatPro
+        :type SnatPro: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
         self.TargetRegionInfo = None
         self.InternetChargeInfo = None
+        self.LoadBalancerPassToTarget = None
+        self.SnatPro = None
 
 
     def _deserialize(self, params):
@@ -2689,6 +3132,8 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         if params.get("InternetChargeInfo") is not None:
             self.InternetChargeInfo = InternetAccessible()
             self.InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
+        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self.SnatPro = params.get("SnatPro")
 
 
 class ModifyLoadBalancerAttributesResponse(AbstractModel):
@@ -2698,7 +3143,8 @@ class ModifyLoadBalancerAttributesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealName: 
+        :param DealName: This parameter can be used to query whether CLB billing mode switch is successful.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type DealName: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2782,6 +3228,25 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param TargetGroupId: Target group ID
+        :type TargetGroupId: str
+        :param TargetGroupName: New name of target group
+        :type TargetGroupName: str
+        :param Port: New default port of target group
+        :type Port: int
+        """
+        self.TargetGroupId = None
+        self.TargetGroupName = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        self.TargetGroupName = params.get("TargetGroupName")
+        self.Port = params.get("Port")
+
 
 class ModifyTargetGroupAttributeResponse(AbstractModel):
     """ModifyTargetGroupAttribute response structure.
@@ -2805,6 +3270,26 @@ class ModifyTargetGroupInstancesPortRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param TargetGroupId: Target group ID
+        :type TargetGroupId: str
+        :param TargetGroupInstances: Array of servers for which to modify port
+        :type TargetGroupInstances: list of TargetGroupInstance
+        """
+        self.TargetGroupId = None
+        self.TargetGroupInstances = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        if params.get("TargetGroupInstances") is not None:
+            self.TargetGroupInstances = []
+            for item in params.get("TargetGroupInstances"):
+                obj = TargetGroupInstance()
+                obj._deserialize(item)
+                self.TargetGroupInstances.append(obj)
+
 
 class ModifyTargetGroupInstancesPortResponse(AbstractModel):
     """ModifyTargetGroupInstancesPort response structure.
@@ -2827,6 +3312,26 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
     """ModifyTargetGroupInstancesWeight request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: Target group ID
+        :type TargetGroupId: str
+        :param TargetGroupInstances: Array of servers for which to modify weight
+        :type TargetGroupInstances: list of TargetGroupInstance
+        """
+        self.TargetGroupId = None
+        self.TargetGroupInstances = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        if params.get("TargetGroupInstances") is not None:
+            self.TargetGroupInstances = []
+            for item in params.get("TargetGroupInstances"):
+                obj = TargetGroupInstance()
+                obj._deserialize(item)
+                self.TargetGroupInstances.append(obj)
 
 
 class ModifyTargetGroupInstancesWeightResponse(AbstractModel):
@@ -2976,6 +3481,26 @@ class RegisterTargetGroupInstancesRequest(AbstractModel):
     """RegisterTargetGroupInstances request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: Target group ID
+        :type TargetGroupId: str
+        :param TargetGroupInstances: Server instance array
+        :type TargetGroupInstances: list of TargetGroupInstance
+        """
+        self.TargetGroupId = None
+        self.TargetGroupInstances = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        if params.get("TargetGroupInstances") is not None:
+            self.TargetGroupInstances = []
+            for item in params.get("TargetGroupInstances"):
+                obj = TargetGroupInstance()
+                obj._deserialize(item)
+                self.TargetGroupInstances.append(obj)
 
 
 class RegisterTargetGroupInstancesResponse(AbstractModel):
@@ -3282,17 +3807,17 @@ class RuleInput(AbstractModel):
         :param Scheduler: Request forwarding method of the rule. Value range: WRR, LEAST_CONN, IP_HASH
 They represent weighted round robin, least connections, and IP hash, respectively. Default value: WRR.
         :type Scheduler: str
-        :param ForwardType: Forwarding protocol between CLB and real server. Currently, HTTP is supported
+        :param ForwardType: Forwarding protocol between the CLB instance and real server. Currently, HTTP/HTTPS/TRPC are supported.
         :type ForwardType: str
         :param DefaultServer: Whether to set this domain name as the default domain name. Note: Only one default domain name can be set under one listener.
         :type DefaultServer: bool
-        :param Http2: Whether to enable Http2. Note: Http2 can be enabled only for HTTPS domain names.
+        :param Http2: Whether to enable HTTP/2. Note: HTTP/2 can be enabled only for HTTPS domain names.
         :type Http2: bool
         :param TargetType: Target real server type. NODE: binding a general node; TARGETGROUP: binding a target group.
         :type TargetType: str
-        :param TrpcCallee: 
+        :param TrpcCallee: TRPC callee server route, which is required when `ForwardType` is `TRPC`.
         :type TrpcCallee: str
-        :param TrpcFunc: 
+        :param TrpcFunc: TRPC calling service API, which is required when `ForwardType` is `TRPC`.
         :type TrpcFunc: str
         """
         self.Domain = None
@@ -3378,9 +3903,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param WafDomainId: WAF instance ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WafDomainId: str
-        :param TrpcCallee: 
+        :param TrpcCallee: TRPC callee server route, which is valid when `ForwardType` is `TRPC`.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type TrpcCallee: str
-        :param TrpcFunc: 
+        :param TrpcFunc: TRPC calling service API, which is valid when `ForwardType` is `TRPC`.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type TrpcFunc: str
         """
         self.LocationId = None
@@ -3552,6 +4079,27 @@ class SetSecurityGroupForLoadbalancersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SnatIp(AbstractModel):
+    """`SnatIp` information structure
+
+    """
+
+    def __init__(self):
+        """
+        :param SubnetId: Unique VPC subnet ID, such as `subnet-12345678`.
+        :type SubnetId: str
+        :param Ip: IP address, such as 192.168.0.1
+        :type Ip: str
+        """
+        self.SubnetId = None
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.SubnetId = params.get("SubnetId")
+        self.Ip = params.get("Ip")
+
+
 class TagInfo(AbstractModel):
     """CLB tag information
 
@@ -3609,6 +4157,170 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.InstanceId = params.get("InstanceId")
         self.Weight = params.get("Weight")
         self.EniIp = params.get("EniIp")
+
+
+class TargetGroupAssociation(AbstractModel):
+    """Association between rule and target group
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: CLB instance ID
+        :type LoadBalancerId: str
+        :param ListenerId: Listener ID
+        :type ListenerId: str
+        :param TargetGroupId: Target group ID
+        :type TargetGroupId: str
+        :param LocationId: Forwarding rule ID
+        :type LocationId: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.TargetGroupId = None
+        self.LocationId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.TargetGroupId = params.get("TargetGroupId")
+        self.LocationId = params.get("LocationId")
+
+
+class TargetGroupBackend(AbstractModel):
+    """Real server bound to a target group
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: Target group ID
+        :type TargetGroupId: str
+        :param Type: Real server type. Valid values: CVM, ENI (coming soon)
+        :type Type: str
+        :param InstanceId: Unique real server ID
+        :type InstanceId: str
+        :param Port: Listening port of real server
+        :type Port: int
+        :param Weight: Forwarding weight of real server. Value range: [0, 100]. Default value: 10.
+        :type Weight: int
+        :param PublicIpAddresses: Public IP of real server
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PublicIpAddresses: list of str
+        :param PrivateIpAddresses: Private IP of real server
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PrivateIpAddresses: list of str
+        :param InstanceName: Real server instance name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param RegisteredTime: Real server binding time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegisteredTime: str
+        :param EniId: Unique ENI ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EniId: str
+        """
+        self.TargetGroupId = None
+        self.Type = None
+        self.InstanceId = None
+        self.Port = None
+        self.Weight = None
+        self.PublicIpAddresses = None
+        self.PrivateIpAddresses = None
+        self.InstanceName = None
+        self.RegisteredTime = None
+        self.EniId = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        self.Type = params.get("Type")
+        self.InstanceId = params.get("InstanceId")
+        self.Port = params.get("Port")
+        self.Weight = params.get("Weight")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self.InstanceName = params.get("InstanceName")
+        self.RegisteredTime = params.get("RegisteredTime")
+        self.EniId = params.get("EniId")
+
+
+class TargetGroupInfo(AbstractModel):
+    """Target group information
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: Target group ID
+        :type TargetGroupId: str
+        :param VpcId: `vpcid` of target group
+        :type VpcId: str
+        :param TargetGroupName: Target group name
+        :type TargetGroupName: str
+        :param Port: Default port of target group
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Port: int
+        :param CreatedTime: Target group creation time
+        :type CreatedTime: str
+        :param UpdatedTime: Target group modification time
+        :type UpdatedTime: str
+        :param AssociatedRule: Array of associated rules
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AssociatedRule: list of AssociationItem
+        """
+        self.TargetGroupId = None
+        self.VpcId = None
+        self.TargetGroupName = None
+        self.Port = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
+        self.AssociatedRule = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        self.VpcId = params.get("VpcId")
+        self.TargetGroupName = params.get("TargetGroupName")
+        self.Port = params.get("Port")
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
+        if params.get("AssociatedRule") is not None:
+            self.AssociatedRule = []
+            for item in params.get("AssociatedRule"):
+                obj = AssociationItem()
+                obj._deserialize(item)
+                self.AssociatedRule.append(obj)
+
+
+class TargetGroupInstance(AbstractModel):
+    """Target group instance
+
+    """
+
+    def __init__(self):
+        """
+        :param BindIP: Private IP of target group instance
+        :type BindIP: str
+        :param Port: Port of target group instance
+        :type Port: int
+        :param Weight: Weight of target group instance
+        :type Weight: int
+        :param NewPort: New port of target group instance
+        :type NewPort: int
+        """
+        self.BindIP = None
+        self.Port = None
+        self.Weight = None
+        self.NewPort = None
+
+
+    def _deserialize(self, params):
+        self.BindIP = params.get("BindIP")
+        self.Port = params.get("Port")
+        self.Weight = params.get("Weight")
+        self.NewPort = params.get("NewPort")
 
 
 class TargetHealth(AbstractModel):

@@ -1034,7 +1034,7 @@ class CamClient(AbstractClient):
 
 
     def SetFlag(self, request):
-        """This API is used to set user login, sensitive operations and async login.
+        """This API is used to set account verification for login and sensitive operation protection.
 
         :param request: Request instance for SetFlag.
         :type request: :class:`tencentcloud.cam.v20190116.models.SetFlagRequest`

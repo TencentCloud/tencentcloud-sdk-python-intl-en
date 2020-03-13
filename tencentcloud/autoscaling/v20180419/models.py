@@ -167,7 +167,7 @@ class AutoScalingGroup(AbstractModel):
         :type AutoScalingGroupId: str
         :param AutoScalingGroupName: Auto scaling group name
         :type AutoScalingGroupName: str
-        :param AutoScalingGroupStatus: Current status of the auto scaling group. Value range: <br><li>NORMAL: normal <br><li>CVM_ABNORMAL: Exception with the launch configuration <br><li>LB_ABNORMAL: exception with the load balancer <br><li>VPC_ABNORMAL: exception with the VPC <br><li>INSUFFICIENT_BALANCE: insufficient balance <br>
+        :param AutoScalingGroupStatus: Current status of the auto scaling group. Value range: <br><li>NORMAL: normal <br><li>CVM_ABNORMAL: Exception with the launch configuration <br><li>LB_ABNORMAL: exception with the load balancer <br><li>VPC_ABNORMAL: exception with the VPC <br><li>INSUFFICIENT_BALANCE: insufficient balance <br><li>LB_BACKEND_REGION_NOT_MATCH: the backend region of the CLB instance is not the same as the one of AS service.<br>
         :type AutoScalingGroupStatus: str
         :param CreatedTime: Creation time in UTC format
         :type CreatedTime: str
@@ -213,6 +213,8 @@ class AutoScalingGroup(AbstractModel):
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
         :param Ipv6AddressCount: 
         :type Ipv6AddressCount: int
+        :param MultiZoneSubnetPolicy: 
+        :type MultiZoneSubnetPolicy: str
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -239,6 +241,7 @@ class AutoScalingGroup(AbstractModel):
         self.Tags = None
         self.ServiceSettings = None
         self.Ipv6AddressCount = None
+        self.MultiZoneSubnetPolicy = None
 
 
     def _deserialize(self, params):
@@ -279,6 +282,7 @@ class AutoScalingGroup(AbstractModel):
             self.ServiceSettings = ServiceSettings()
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
 
 
 class AutoScalingGroupAbstract(AbstractModel):
@@ -663,6 +667,8 @@ class CreateLifecycleHookRequest(AbstractModel):
         :type NotificationMetadata: str
         :param NotificationTarget: Notification target
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        :param LifecycleTransitionType: The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. 
+        :type LifecycleTransitionType: str
         """
         self.AutoScalingGroupId = None
         self.LifecycleHookName = None
@@ -671,6 +677,7 @@ class CreateLifecycleHookRequest(AbstractModel):
         self.HeartbeatTimeout = None
         self.NotificationMetadata = None
         self.NotificationTarget = None
+        self.LifecycleTransitionType = None
 
 
     def _deserialize(self, params):
@@ -683,6 +690,7 @@ class CreateLifecycleHookRequest(AbstractModel):
         if params.get("NotificationTarget") is not None:
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
+        self.LifecycleTransitionType = params.get("LifecycleTransitionType")
 
 
 class CreateLifecycleHookResponse(AbstractModel):
@@ -2084,18 +2092,9 @@ class ExecuteScalingPolicyResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """>Key-value pair filters for conditional filtering queries, such as filtering ID, name, status, etc.
-    > * If there are multiple `Filter`, the relationship among them is logical `AND`.
-    > * If there are multiple `Values` in the same `Filter`, the relationship among the `Values` in the same `Filter` is logical `OR`.
-    >
-    > Take the `Filter` in the API [DescribeInstances](https://cloud.tencent.com/document/api/213/9388) as an example. We can use the following filters to query the instance that resides in the availability zone (`zone`) of Guangzhou Zone 1 ***and*** is billed (`instance-charge-type`) on a prepaid basis ***or*** on a pay-as-you-go basis:
-    ```
-    Filters.0.Name=zone
-    &Filters.0.Values.1=ap-guangzhou-1
-    &Filters.1.Name=instance-charge-type
-    &Filters.1.Values.1=PREPAID
-    &Filters.1.Values.2=POSTPAID_BY_HOUR
-    ```
+    """> Describes key-value pair filters used for conditional queries, such as filtering results by ID, name and state.
+    > * If there are multiple `Filter` parameters, the relationship among them will be logical `AND`.
+    > * If there are multiple `Values` for the same `Filter`, the relationship among the `Values` for the same `Filter` will be logical `OR`.
 
     """
 
@@ -2130,11 +2129,14 @@ class ForwardLoadBalancer(AbstractModel):
         :type TargetAttributes: list of TargetAttribute
         :param LocationId: ID of a forwarding rule. This parameter is required for layer-7 listeners.
         :type LocationId: str
+        :param Region: The region of CLB instance. It defaults to the region of AS service and is in the format of the common parameter `Region`, such as `ap-guangzhou`.
+        :type Region: str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
         self.TargetAttributes = None
         self.LocationId = None
+        self.Region = None
 
 
     def _deserialize(self, params):
@@ -2147,6 +2149,7 @@ class ForwardLoadBalancer(AbstractModel):
                 obj._deserialize(item)
                 self.TargetAttributes.append(obj)
         self.LocationId = params.get("LocationId")
+        self.Region = params.get("Region")
 
 
 class HostNameSettings(AbstractModel):
@@ -2501,6 +2504,8 @@ class LifecycleHook(AbstractModel):
         :type CreatedTime: str
         :param NotificationTarget: Notification target
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        :param LifecycleTransitionType: Applicable scenario of the lifecycle hook
+        :type LifecycleTransitionType: str
         """
         self.LifecycleHookId = None
         self.LifecycleHookName = None
@@ -2511,6 +2516,7 @@ class LifecycleHook(AbstractModel):
         self.NotificationMetadata = None
         self.CreatedTime = None
         self.NotificationTarget = None
+        self.LifecycleTransitionType = None
 
 
     def _deserialize(self, params):
@@ -2525,6 +2531,7 @@ class LifecycleHook(AbstractModel):
         if params.get("NotificationTarget") is not None:
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
+        self.LifecycleTransitionType = params.get("LifecycleTransitionType")
 
 
 class LimitedLoginSettings(AbstractModel):
@@ -3611,6 +3618,8 @@ class UpgradeLifecycleHookRequest(AbstractModel):
         :type NotificationMetadata: str
         :param NotificationTarget: Notification target
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        :param LifecycleTransitionType: The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. 
+        :type LifecycleTransitionType: str
         """
         self.LifecycleHookId = None
         self.LifecycleHookName = None
@@ -3619,6 +3628,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
         self.HeartbeatTimeout = None
         self.NotificationMetadata = None
         self.NotificationTarget = None
+        self.LifecycleTransitionType = None
 
 
     def _deserialize(self, params):
@@ -3631,6 +3641,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
         if params.get("NotificationTarget") is not None:
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
+        self.LifecycleTransitionType = params.get("LifecycleTransitionType")
 
 
 class UpgradeLifecycleHookResponse(AbstractModel):

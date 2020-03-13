@@ -31,7 +31,7 @@ class AddUserRequest(AbstractModel):
         :type ConsoleLogin: int
         :param UseApi: Whether or not to generate keys for sub-users. 0: No; 1: Yes.
         :type UseApi: int
-        :param Password: Sub-user’s console login password. If no password rules have been set, the default rules require the password to have at least 8 characters, at least one lowercase letter, one uppercase letter, one number, and one special character. This value is valid only when the sub-user is allowed to log in to the console. If no value is specified, and console login is allowed, the system will automatically generate a password. The automatically generated passwords are 32 characters long and contain letters (both upper and lower cases), numbers, and special characters. 
+        :param Password: Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.
         :type Password: str
         :param NeedResetPassword: If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.
         :type NeedResetPassword: int
@@ -243,8 +243,11 @@ Note: This field may return null, indicating that no valid value was found.
         :type OperateUin: str
         :param OperateUinType: 
         :type OperateUinType: int
-        :param Deactived: 
+        :param Deactived: Queries if the policy has been deactivated
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Deactived: int
+        :param DeactivedDetail: 
+        :type DeactivedDetail: list of str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -256,6 +259,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.OperateUin = None
         self.OperateUinType = None
         self.Deactived = None
+        self.DeactivedDetail = None
 
 
     def _deserialize(self, params):
@@ -269,6 +273,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.OperateUin = params.get("OperateUin")
         self.OperateUinType = params.get("OperateUinType")
         self.Deactived = params.get("Deactived")
+        self.DeactivedDetail = params.get("DeactivedDetail")
 
 
 class AttachRolePolicyRequest(AbstractModel):
@@ -369,8 +374,11 @@ Note: This field may return null, indicating that no valid value was found.
         :type PolicyType: str
         :param CreateMode: Policy creation method. 1: indicates the policy was created based on product function or item permission; other values indicate the policy was created based on the policy syntax
         :type CreateMode: int
-        :param Deactived: 
+        :param Deactived: Queries if the policy has been deactivated
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Deactived: int
+        :param DeactivedDetail: 
+        :type DeactivedDetail: list of str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -378,6 +386,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.PolicyType = None
         self.CreateMode = None
         self.Deactived = None
+        self.DeactivedDetail = None
 
 
     def _deserialize(self, params):
@@ -387,6 +396,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.PolicyType = params.get("PolicyType")
         self.CreateMode = params.get("CreateMode")
         self.Deactived = params.get("Deactived")
+        self.DeactivedDetail = params.get("DeactivedDetail")
 
 
 class ConsumeCustomMFATokenRequest(AbstractModel):
@@ -474,7 +484,7 @@ class CreatePolicyRequest(AbstractModel):
         """
         :param PolicyName: Policy name
         :type PolicyName: str
-        :param PolicyDocument: Policy document
+        :param PolicyDocument: Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API
         :type PolicyDocument: str
         :param Description: Policy description
         :type Description: str
@@ -497,7 +507,7 @@ class CreatePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: Newly added policy ID
+        :param PolicyId: ID of newly added policy
         :type PolicyId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -524,13 +534,16 @@ class CreateRoleRequest(AbstractModel):
         :type PolicyDocument: str
         :param Description: Role description
         :type Description: str
-        :param ConsoleLogin: If login is allowed
+        :param ConsoleLogin: Whether login is allowed. 1: yes, 0: no
         :type ConsoleLogin: int
+        :param SessionDuration: 
+        :type SessionDuration: int
         """
         self.RoleName = None
         self.PolicyDocument = None
         self.Description = None
         self.ConsoleLogin = None
+        self.SessionDuration = None
 
 
     def _deserialize(self, params):
@@ -538,6 +551,7 @@ class CreateRoleRequest(AbstractModel):
         self.PolicyDocument = params.get("PolicyDocument")
         self.Description = params.get("Description")
         self.ConsoleLogin = params.get("ConsoleLogin")
+        self.SessionDuration = params.get("SessionDuration")
 
 
 class CreateRoleResponse(AbstractModel):
@@ -1239,7 +1253,7 @@ class GetUserResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Uin: Sub-user user ID
+        :param Uin: Sub-user UIN
         :type Uin: int
         :param Name: Sub-user username
         :type Name: str
@@ -1395,7 +1409,7 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TargetGroupId: User Group ID
+        :param TargetGroupId: User group ID
         :type TargetGroupId: int
         :param Page: Page number, which starts from 1. Default is 1
         :type Page: int
@@ -1770,13 +1784,16 @@ class ListPoliciesResponse(AbstractModel):
         """
         :param TotalNum: Total number of policies
         :type TotalNum: int
-        :param List: Policy array. Each item in the array has the fields `policyId`, `policyName`, `addTime`, `type`, `description`, and `createMode` 
-`policyId`: Policy ID 
-`policyName`: Policy name
-`addTime`: Time policy created
-`type`: 1 is custom policy; 2 is preset policy 
-`description`: Policy description 
-`createMode`: 1 indicates a policy created based on business permissions, while other values indicate that the policy syntax can be viewed and the policy can be updated using the policy syntax.
+        :param List: Policy array. Each array contains fields including `policyId`, `policyName`, `addTime`, `type`, `description`, and `createMode`. 
+policyId: policy ID 
+policyName: policy name
+addTime: policy creation time
+type: 1: custom policy, 2: preset policy 
+description: policy description 
+createMode: 1 indicates a policy created based on business permissions, while other values indicate that the policy syntax can be viewed and the policy can be updated using the policy syntax
+Attachments: number of associated users
+ServiceType: the product the policy is associated with
+IsAttached: this value should not be null when querying if a marked entity has been associated with a policy. 0 indicates that no policy has been associated, and 1 indicates that a policy has been associated
         :type List: list of StrategyInfo
         :param ServiceTypeList: Reserved field
 Note: This field may return null, indicating that no valid value was found.
@@ -1973,7 +1990,7 @@ class OffsiteFlag(AbstractModel):
         :type NotifyEmail: int
         :param NotifyWechat: WeChat notification
         :type NotifyWechat: int
-        :param Tips: 
+        :param Tips: Alert
         :type Tips: int
         """
         self.VerifyFlag = None
@@ -2051,6 +2068,11 @@ class RoleInfo(AbstractModel):
         :type UpdateTime: str
         :param ConsoleLogin: If login is allowed for the role
         :type ConsoleLogin: int
+        :param RoleType: User role. Valid values: user, system
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RoleType: str
+        :param SessionDuration: 
+        :type SessionDuration: int
         """
         self.RoleId = None
         self.RoleName = None
@@ -2059,6 +2081,8 @@ class RoleInfo(AbstractModel):
         self.AddTime = None
         self.UpdateTime = None
         self.ConsoleLogin = None
+        self.RoleType = None
+        self.SessionDuration = None
 
 
     def _deserialize(self, params):
@@ -2069,6 +2093,8 @@ class RoleInfo(AbstractModel):
         self.AddTime = params.get("AddTime")
         self.UpdateTime = params.get("UpdateTime")
         self.ConsoleLogin = params.get("ConsoleLogin")
+        self.RoleType = params.get("RoleType")
+        self.SessionDuration = params.get("SessionDuration")
 
 
 class SAMLProviderInfo(AbstractModel):
@@ -2184,8 +2210,11 @@ Note: This field may return null, indicating that no valid value was found.
         :type ServiceType: str
         :param IsAttached: 
         :type IsAttached: int
-        :param Deactived: 
+        :param Deactived: Queries if the policy has been deactivated
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Deactived: int
+        :param DeactivedDetail: 
+        :type DeactivedDetail: list of str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -2197,6 +2226,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.ServiceType = None
         self.IsAttached = None
         self.Deactived = None
+        self.DeactivedDetail = None
 
 
     def _deserialize(self, params):
@@ -2210,6 +2240,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.ServiceType = params.get("ServiceType")
         self.IsAttached = params.get("IsAttached")
         self.Deactived = params.get("Deactived")
+        self.DeactivedDetail = params.get("DeactivedDetail")
 
 
 class SubAccountInfo(AbstractModel):
@@ -2354,7 +2385,7 @@ class UpdatePolicyRequest(AbstractModel):
         :type PolicyName: str
         :param Description: Policy description
         :type Description: str
-        :param PolicyDocument: Policy document
+        :param PolicyDocument: Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API
         :type PolicyDocument: str
         """
         self.PolicyId = None
@@ -2484,7 +2515,7 @@ class UpdateUserRequest(AbstractModel):
         :type Remark: str
         :param ConsoleLogin: Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.
         :type ConsoleLogin: int
-        :param Password: Sub-user’s console login password. If no password rules have been set, the default rules require the password to have at least 8 characters, at least one lowercase letter, one uppercase letter, one number, and one special character. This value is valid only when the sub-user is allowed to log in to the console. If no value is specified, and console login is allowed, the system will automatically generate a password. The automatically generated passwords are 32 characters long and contain letters (both upper and lower cases), numbers, and special characters.
+        :param Password: Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.
         :type Password: str
         :param NeedResetPassword: If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.
         :type NeedResetPassword: int

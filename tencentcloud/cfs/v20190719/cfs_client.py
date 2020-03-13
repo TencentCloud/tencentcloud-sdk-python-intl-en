@@ -417,6 +417,34 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateCfsFileSystemName(self, request):
+        """This API is used to update a file system name.
+
+        :param request: Request instance for UpdateCfsFileSystemName.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemNameRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateCfsFileSystemName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateCfsFileSystemNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateCfsFileSystemPGroup(self, request):
         """This API is used to update the permission group used by a file system.
 

@@ -170,6 +170,26 @@ class AttachInstancesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param EnvId: Compute environment ID
+        :type EnvId: str
+        :param Instances: List of instances that added to the compute environment
+        :type Instances: list of Instance
+        """
+        self.EnvId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = Instance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+
 
 class AttachInstancesResponse(AbstractModel):
     """AttachInstances response structure.
@@ -571,12 +591,20 @@ Note: This field may return null, indicating that no valid value is found.
         :param SnapshotId: Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.
 Note: This field may return null, indicating that no valid value is found.
         :type SnapshotId: str
+        :param Encrypt: Specifies whether the data disk is encrypted. Values: 
+<li>TRUE: encrypted
+<li>FALSE: not encrypted<br>
+Default value: FALSE<br>
+Currently, this parameter is only used in the `RunInstances` API.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Encrypt: bool
         """
         self.DiskSize = None
         self.DiskType = None
         self.DiskId = None
         self.DeleteWithInstance = None
         self.SnapshotId = None
+        self.Encrypt = None
 
 
     def _deserialize(self, params):
@@ -585,6 +613,7 @@ Note: This field may return null, indicating that no valid value is found.
         self.DiskId = params.get("DiskId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.SnapshotId = params.get("SnapshotId")
+        self.Encrypt = params.get("Encrypt")
 
 
 class DeleteComputeEnvRequest(AbstractModel):
@@ -1672,6 +1701,21 @@ class DetachInstancesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param EnvId: Compute environment ID
+        :type EnvId: str
+        :param InstanceIds: Instance ID list
+        :type InstanceIds: list of str
+        """
+        self.EnvId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.InstanceIds = params.get("InstanceIds")
+
 
 class DetachInstancesResponse(AbstractModel):
     """DetachInstances response structure.
@@ -2000,6 +2044,33 @@ class InputMapping(AbstractModel):
         self.MountOptionParameter = params.get("MountOptionParameter")
 
 
+class Instance(AbstractModel):
+    """Describes information on an instance
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param ImageId: Image ID.
+        :type ImageId: str
+        :param LoginSettings: Instance login settings.
+        :type LoginSettings: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
+        """
+        self.InstanceId = None
+        self.ImageId = None
+        self.LoginSettings = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ImageId = params.get("ImageId")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+
+
 class InstanceCategoryItem(AbstractModel):
     """List of instance categories
 
@@ -2134,6 +2205,9 @@ Note: This field may return null, indicating that no valid value is found.
         :type Status: str
         :param Price: Price of an instance model.
         :type Price: :class:`tencentcloud.batch.v20170312.models.ItemPrice`
+        :param SoldOutReason: Details of sold out items
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SoldOutReason: str
         """
         self.Zone = None
         self.InstanceType = None
@@ -2147,6 +2221,7 @@ Note: This field may return null, indicating that no valid value is found.
         self.LocalDiskTypeList = None
         self.Status = None
         self.Price = None
+        self.SoldOutReason = None
 
 
     def _deserialize(self, params):
@@ -2171,6 +2246,7 @@ Note: This field may return null, indicating that no valid value is found.
         if params.get("Price") is not None:
             self.Price = ItemPrice()
             self.Price._deserialize(params.get("Price"))
+        self.SoldOutReason = params.get("SoldOutReason")
 
 
 class InternetAccessible(AbstractModel):
@@ -2380,20 +2456,17 @@ class LocalDiskType(AbstractModel):
 
 
 class LoginSettings(AbstractModel):
-    """Describes login settings of an instance.
+    """描述了实例登录相关配置与信息。
 
     """
 
     def __init__(self):
         """
         :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-16 characters long and contain at least one character from two of the following categories: [a-z, A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-16 characters long and contain at least one character from three of the following categories: [a-z], [A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
-Note: This field may return null, indicating that no valid value is found.
         :type Password: str
         :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
-Note: This field may return null, indicating that no valid value is found.
         :type KeyIds: list of str
         :param KeepImageLogin: Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.
-Note: This field may return null, indicating that no valid value is found.
         :type KeepImageLogin: str
         """
         self.Password = None
@@ -2557,6 +2630,8 @@ class NamedComputeEnv(AbstractModel):
         :type Notifications: :class:`tencentcloud.batch.v20170312.models.Notification`
         :param ActionIfComputeNodeInactive: Inactive node processing policy. Default value: RECREATE, which means that instance resources will be re-created periodically for compute nodes where instance creation fails or is abnormally returned.
         :type ActionIfComputeNodeInactive: str
+        :param ResourceMaxRetryCount: When the instances are failed to be created or returned because of exceptions, the related compute node will retry to create instances periodically. This parameter specifies the maximum retry attempts. The max value is 11 and the default value is 7.
+        :type ResourceMaxRetryCount: int
         """
         self.EnvName = None
         self.DesiredComputeNodeCount = None
@@ -2569,6 +2644,7 @@ class NamedComputeEnv(AbstractModel):
         self.AgentRunningMode = None
         self.Notifications = None
         self.ActionIfComputeNodeInactive = None
+        self.ResourceMaxRetryCount = None
 
 
     def _deserialize(self, params):
@@ -2604,6 +2680,7 @@ class NamedComputeEnv(AbstractModel):
             self.Notifications = Notification()
             self.Notifications._deserialize(params.get("Notifications"))
         self.ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
+        self.ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
 
 
 class Notification(AbstractModel):
