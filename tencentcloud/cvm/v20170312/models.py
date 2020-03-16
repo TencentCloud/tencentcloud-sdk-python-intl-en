@@ -418,12 +418,20 @@ Note: This field may return null, indicating that no valid value is found.
         :param SnapshotId: Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.
 Note: This field may return null, indicating that no valid value is found.
         :type SnapshotId: str
+        :param Encrypt: Specifies whether the data disk is encrypted. Values: 
+<li>TRUE: encrypted
+<li>FALSE: not encrypted<br>
+Default value: FALSE<br>
+Currently, this parameter is only used in the `RunInstances` API.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Encrypt: bool
         """
         self.DiskSize = None
         self.DiskType = None
         self.DiskId = None
         self.DeleteWithInstance = None
         self.SnapshotId = None
+        self.Encrypt = None
 
 
     def _deserialize(self, params):
@@ -432,6 +440,7 @@ Note: This field may return null, indicating that no valid value is found.
         self.DiskId = params.get("DiskId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.SnapshotId = params.get("SnapshotId")
+        self.Encrypt = params.get("Encrypt")
 
 
 class DeleteDisasterRecoverGroupsRequest(AbstractModel):
@@ -881,6 +890,38 @@ class DescribeImportImageOsResponse(AbstractModel):
                 obj = OsVersion()
                 obj._deserialize(item)
                 self.ImportImageOsVersionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceFamilyConfigsRequest(AbstractModel):
+    """DescribeInstanceFamilyConfigs request structure.
+
+    """
+
+
+class DescribeInstanceFamilyConfigsResponse(AbstractModel):
+    """DescribeInstanceFamilyConfigs response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceFamilyConfigSet: List of instance model families
+        :type InstanceFamilyConfigSet: list of InstanceFamilyConfig
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceFamilyConfigSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceFamilyConfigSet") is not None:
+            self.InstanceFamilyConfigSet = []
+            for item in params.get("InstanceFamilyConfigSet"):
+                obj = InstanceFamilyConfig()
+                obj._deserialize(item)
+                self.InstanceFamilyConfigSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1342,6 +1383,42 @@ class DescribeZoneInstanceConfigInfosResponse(AbstractModel):
                 obj = InstanceTypeQuotaItem()
                 obj._deserialize(item)
                 self.InstanceTypeQuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeZonesRequest(AbstractModel):
+    """DescribeZones request structure.
+
+    """
+
+
+class DescribeZonesResponse(AbstractModel):
+    """DescribeZones response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of availability zones.
+        :type TotalCount: int
+        :param ZoneSet: List of availability zones.
+        :type ZoneSet: list of ZoneInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ZoneSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ZoneSet") is not None:
+            self.ZoneSet = []
+            for item in params.get("ZoneSet"):
+                obj = ZoneInfo()
+                obj._deserialize(item)
+                self.ZoneSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2288,6 +2365,13 @@ Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>ST
         :type LatestOperationState: str
         :param LatestOperationRequestId: 
         :type LatestOperationRequestId: str
+        :param DisasterRecoverGroupId: ID of a spread placement group.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DisasterRecoverGroupId: str
+        :param IPv6Addresses: 
+        :type IPv6Addresses: str
+        :param CamRoleName: 
+        :type CamRoleName: str
         """
         self.Placement = None
         self.InstanceId = None
@@ -2317,6 +2401,9 @@ Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>ST
         self.LatestOperation = None
         self.LatestOperationState = None
         self.LatestOperationRequestId = None
+        self.DisasterRecoverGroupId = None
+        self.IPv6Addresses = None
+        self.CamRoleName = None
 
 
     def _deserialize(self, params):
@@ -2368,6 +2455,9 @@ Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>ST
         self.LatestOperation = params.get("LatestOperation")
         self.LatestOperationState = params.get("LatestOperationState")
         self.LatestOperationRequestId = params.get("LatestOperationRequestId")
+        self.DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        self.IPv6Addresses = params.get("IPv6Addresses")
+        self.CamRoleName = params.get("CamRoleName")
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -2389,6 +2479,28 @@ class InstanceChargePrepaid(AbstractModel):
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.RenewFlag = params.get("RenewFlag")
+
+
+class InstanceFamilyConfig(AbstractModel):
+    """Describes the model family of the instance.
+    Format: {'InstanceFamilyName': 'Standard S1', 'InstanceFamily': 'S1'}, {'InstanceFamilyName': 'Network-optimized N1', 'InstanceFamily': 'N1'}, {'InstanceFamilyName': 'High IO I1', 'InstanceFamily': 'I1'}, etc.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceFamilyName: Full name of the model family.
+        :type InstanceFamilyName: str
+        :param InstanceFamily: Acronym of the model family.
+        :type InstanceFamily: str
+        """
+        self.InstanceFamilyName = None
+        self.InstanceFamily = None
+
+
+    def _deserialize(self, params):
+        self.InstanceFamilyName = params.get("InstanceFamilyName")
+        self.InstanceFamily = params.get("InstanceFamily")
 
 
 class InstanceMarketOptionsRequest(AbstractModel):
@@ -2504,6 +2616,9 @@ Note: This field may return null, indicating that no valid value is found.
         :type Status: str
         :param Price: Price of an instance model.
         :type Price: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
+        :param SoldOutReason: Details of sold out items
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SoldOutReason: str
         """
         self.Zone = None
         self.InstanceType = None
@@ -2517,6 +2632,7 @@ Note: This field may return null, indicating that no valid value is found.
         self.LocalDiskTypeList = None
         self.Status = None
         self.Price = None
+        self.SoldOutReason = None
 
 
     def _deserialize(self, params):
@@ -2541,6 +2657,7 @@ Note: This field may return null, indicating that no valid value is found.
         if params.get("Price") is not None:
             self.Price = ItemPrice()
             self.Price._deserialize(params.get("Price"))
+        self.SoldOutReason = params.get("SoldOutReason")
 
 
 class InternetAccessible(AbstractModel):
@@ -2711,8 +2828,8 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-16 characters long and contain at least one character from two of the following categories: [a-z, A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-16 characters long and contain at least one character from three of the following categories: [a-z], [A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
-Note: This field may return null, indicating that no valid value is found.
+        :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-30 characters long and contain at least two of the following categories: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-30 characters long and contain at least three of the following categories: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Password: str
         :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
 Note: This field may return null, indicating that no valid value is found.
@@ -3521,7 +3638,7 @@ class RunInstancesRequest(AbstractModel):
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         :param SecurityGroupIds: Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
         :type SecurityGroupIds: list of str
-        :param EnhancedService: Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Monitor and Cloud Security. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
+        :param EnhancedService: Specifies whether to enable services Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. But for custom images and images from market place, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. <br>For more information, see “How to ensure idempotency”.
         :type ClientToken: str
@@ -4030,3 +4147,71 @@ class VirtualPrivateCloud(AbstractModel):
         self.AsVpcGateway = params.get("AsVpcGateway")
         self.PrivateIpAddresses = params.get("PrivateIpAddresses")
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+
+
+class ZoneInfo(AbstractModel):
+    """Information on availability zones.
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: Availability zone name. For example, ap-guangzhou-3.
+Names of availability zones throughout the entire network:
+<li> ap-chongqing-1 </li>
+<li> ap-seoul-1 </li>
+<li> ap-chengdu-1 </li>
+<li> ap-chengdu-2 </li>
+<li> ap-hongkong-1 </li>
+<li> ap-hongkong-2 </li>
+<li> ap-shenzhen-fsi-1 </li>
+<li> ap-shenzhen-fsi-2 </li>
+<li> ap-shenzhen-fsi-3 </li>
+<li> ap-guangzhou-1 (sold out)</li>
+<li> ap-guangzhou-2 (sold out)</li>
+<li> ap-guangzhou-3 </li>
+<li> ap-guangzhou-4 </li>
+<li> ap-tokyo-1 </li>
+<li> ap-singapore-1 </li>
+<li> ap-shanghai-fsi-1 </li>
+<li> ap-shanghai-fsi-2 </li>
+<li> ap-shanghai-fsi-3 </li>
+<li> ap-bangkok-1 </li>
+<li> ap-shanghai-1 (sold out) </li>
+<li> ap-shanghai-2 </li>
+<li> ap-shanghai-3 </li>
+<li> ap-shanghai-4 </li>
+<li> ap-mumbai-1 </li>
+<li> ap-mumbai-2 </li>
+<li> eu-moscow-1 </li>
+<li> ap-beijing-1 </li>
+<li> ap-beijing-2 </li>
+<li> ap-beijing-3 </li>
+<li> ap-beijing-4 </li>
+<li> na-siliconvalley-1 </li>
+<li> na-siliconvalley-2 </li>
+<li> eu-frankfurt-1 </li>
+<li> na-toronto-1 </li>
+<li> na-ashburn-1 </li>
+<li> na-ashburn-2 </li>
+<li> ap-nanjing-1 </li>
+<li> ap-nanjing-2 </li>
+        :type Zone: str
+        :param ZoneName: Availability zone description, such as Guangzhou Zone 3.
+        :type ZoneName: str
+        :param ZoneId: Availability zone ID
+        :type ZoneId: str
+        :param ZoneState: Availability zone state. Valid values: `AVAILABLE`, available; `UNAVAILABLE`, unavailable.
+        :type ZoneState: str
+        """
+        self.Zone = None
+        self.ZoneName = None
+        self.ZoneId = None
+        self.ZoneState = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.ZoneName = params.get("ZoneName")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneState = params.get("ZoneState")

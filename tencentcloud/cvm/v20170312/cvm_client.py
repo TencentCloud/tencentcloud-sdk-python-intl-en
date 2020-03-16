@@ -494,6 +494,34 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceFamilyConfigs(self, request):
+        """This API is used to query the list of model families that are available for the current user and in the current region.
+
+        :param request: Request instance for DescribeInstanceFamilyConfigs.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceFamilyConfigsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceFamilyConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceFamilyConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceFamilyConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceTypeConfigs(self, request):
         """This API is used to query the model configuration of an instance.
 
@@ -758,6 +786,34 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZoneInstanceConfigInfosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeZones(self, request):
+        """This API is used to query availability zones.
+
+        :param request: Request instance for DescribeZones.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeZonesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeZones", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeZonesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
