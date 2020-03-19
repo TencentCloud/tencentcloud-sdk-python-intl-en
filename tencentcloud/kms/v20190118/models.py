@@ -16,6 +16,123 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AlgorithmInfo(AbstractModel):
+    """Algorithm name and ID
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyUsage: Algorithm ID
+        :type KeyUsage: str
+        :param Algorithm: Algorithm name
+        :type Algorithm: str
+        """
+        self.KeyUsage = None
+        self.Algorithm = None
+
+
+    def _deserialize(self, params):
+        self.KeyUsage = params.get("KeyUsage")
+        self.Algorithm = params.get("Algorithm")
+
+
+class AsymmetricRsaDecryptRequest(AbstractModel):
+    """AsymmetricRsaDecrypt request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        :param Ciphertext: Base64-encoded ciphertext encrypted with `PublicKey`
+        :type Ciphertext: str
+        :param Algorithm: Corresponding algorithm when a public key is used for encryption. Valid values: RSAES_PKCS1_V1_5, RSAES_OAEP_SHA_1, RSAES_OAEP_SHA_256
+        :type Algorithm: str
+        """
+        self.KeyId = None
+        self.Ciphertext = None
+        self.Algorithm = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Ciphertext = params.get("Ciphertext")
+        self.Algorithm = params.get("Algorithm")
+
+
+class AsymmetricRsaDecryptResponse(AbstractModel):
+    """AsymmetricRsaDecrypt response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        :param Plaintext: Base64-encoded plaintext after decryption
+        :type Plaintext: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.KeyId = None
+        self.Plaintext = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Plaintext = params.get("Plaintext")
+        self.RequestId = params.get("RequestId")
+
+
+class AsymmetricSm2DecryptRequest(AbstractModel):
+    """AsymmetricSm2Decrypt request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        :param Ciphertext: Base64-encoded ciphertext encrypted with `PublicKey`, whose length cannot exceed 256 bytes.
+        :type Ciphertext: str
+        """
+        self.KeyId = None
+        self.Ciphertext = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Ciphertext = params.get("Ciphertext")
+
+
+class AsymmetricSm2DecryptResponse(AbstractModel):
+    """AsymmetricSm2Decrypt response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        :param Plaintext: Base64-encoded plaintext after decryption
+        :type Plaintext: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.KeyId = None
+        self.Plaintext = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Plaintext = params.get("Plaintext")
+        self.RequestId = params.get("RequestId")
+
+
 class CancelKeyDeletionRequest(AbstractModel):
     """CancelKeyDeletion request structure.
 
@@ -46,11 +163,11 @@ class CreateKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Alias: 
+        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1–60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.
         :type Alias: str
         :param Description: 
         :type Description: str
-        :param KeyUsage: 
+        :param KeyUsage: Key purpose. The default value is `ENCRYPT_DECRYPT` (creating a symmetric key for encryption and decryption). Other valid values include `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption) and `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption).
         :type KeyUsage: str
         :param Type: Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.
         :type Type: int
@@ -154,6 +271,91 @@ class DeleteImportedKeyMaterialResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeKeyRequest(AbstractModel):
+    """DescribeKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DescribeKeyResponse(AbstractModel):
+    """DescribeKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyMetadata: Key attribute information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyMetadata: :class:`tencentcloud.kms.v20190118.models.KeyMetadata`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.KeyMetadata = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeyMetadata") is not None:
+            self.KeyMetadata = KeyMetadata()
+            self.KeyMetadata._deserialize(params.get("KeyMetadata"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeKeysRequest(AbstractModel):
+    """DescribeKeys request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyIds: List of IDs of the CMKs to be queried in batches. Up to 100 `KeyId` values are supported in one query.
+        :type KeyIds: list of str
+        """
+        self.KeyIds = None
+
+
+    def _deserialize(self, params):
+        self.KeyIds = params.get("KeyIds")
+
+
+class DescribeKeysResponse(AbstractModel):
+    """DescribeKeys response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyMetadatas: List of returned attribute information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyMetadatas: list of KeyMetadata
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.KeyMetadatas = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeyMetadatas") is not None:
+            self.KeyMetadatas = []
+            for item in params.get("KeyMetadatas"):
+                obj = KeyMetadata()
+                obj._deserialize(item)
+                self.KeyMetadatas.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -503,6 +705,52 @@ class GetParametersForImportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetPublicKeyRequest(AbstractModel):
+    """GetPublicKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID.
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class GetPublicKeyResponse(AbstractModel):
+    """GetPublicKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID.
+        :type KeyId: str
+        :param PublicKey: Base64-encoded public key content.
+        :type PublicKey: str
+        :param PublicKeyPem: Public key content in PEM format.
+        :type PublicKeyPem: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.KeyId = None
+        self.PublicKey = None
+        self.PublicKeyPem = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.PublicKey = params.get("PublicKey")
+        self.PublicKeyPem = params.get("PublicKeyPem")
+        self.RequestId = params.get("RequestId")
+
+
 class GetServiceStatusRequest(AbstractModel):
     """GetServiceStatus request structure.
 
@@ -572,6 +820,118 @@ class ImportKeyMaterialResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class KeyMetadata(AbstractModel):
+    """CMK属性信息
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 
+        :type KeyId: str
+        :param Alias: 
+        :type Alias: str
+        :param CreateTime: 
+        :type CreateTime: int
+        :param Description: 
+        :type Description: str
+        :param KeyState: CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport.
+        :type KeyState: str
+        :param KeyUsage: CMK purpose. Valid values: ENCRYPT_DECRYPT, ASYMMETRIC_DECRYPT_RSA_2048, ASYMMETRIC_DECRYPT_SM2
+        :type KeyUsage: str
+        :param Type: CMK type. 2: FIPS-compliant; 4: SM-CRYPTO
+        :type Type: int
+        :param CreatorUin: 
+        :type CreatorUin: int
+        :param KeyRotationEnabled: 
+        :type KeyRotationEnabled: bool
+        :param Owner: 
+        :type Owner: str
+        :param NextRotateTime: 
+        :type NextRotateTime: int
+        :param DeletionDate: 
+        :type DeletionDate: int
+        :param Origin: CMK key material type. TENCENT_KMS: created by KMS; EXTERNAL: imported by user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Origin: str
+        :param ValidTo: It’s valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ValidTo: int
+        """
+        self.KeyId = None
+        self.Alias = None
+        self.CreateTime = None
+        self.Description = None
+        self.KeyState = None
+        self.KeyUsage = None
+        self.Type = None
+        self.CreatorUin = None
+        self.KeyRotationEnabled = None
+        self.Owner = None
+        self.NextRotateTime = None
+        self.DeletionDate = None
+        self.Origin = None
+        self.ValidTo = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Alias = params.get("Alias")
+        self.CreateTime = params.get("CreateTime")
+        self.Description = params.get("Description")
+        self.KeyState = params.get("KeyState")
+        self.KeyUsage = params.get("KeyUsage")
+        self.Type = params.get("Type")
+        self.CreatorUin = params.get("CreatorUin")
+        self.KeyRotationEnabled = params.get("KeyRotationEnabled")
+        self.Owner = params.get("Owner")
+        self.NextRotateTime = params.get("NextRotateTime")
+        self.DeletionDate = params.get("DeletionDate")
+        self.Origin = params.get("Origin")
+        self.ValidTo = params.get("ValidTo")
+
+
+class ListAlgorithmsRequest(AbstractModel):
+    """ListAlgorithms request structure.
+
+    """
+
+
+class ListAlgorithmsResponse(AbstractModel):
+    """ListAlgorithms response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SymmetricAlgorithms: Symmetric encryption algorithms supported in this region
+        :type SymmetricAlgorithms: list of AlgorithmInfo
+        :param AsymmetricAlgorithms: Asymmetric encryption algorithms supported in this region
+        :type AsymmetricAlgorithms: list of AlgorithmInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SymmetricAlgorithms = None
+        self.AsymmetricAlgorithms = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SymmetricAlgorithms") is not None:
+            self.SymmetricAlgorithms = []
+            for item in params.get("SymmetricAlgorithms"):
+                obj = AlgorithmInfo()
+                obj._deserialize(item)
+                self.SymmetricAlgorithms.append(obj)
+        if params.get("AsymmetricAlgorithms") is not None:
+            self.AsymmetricAlgorithms = []
+            for item in params.get("AsymmetricAlgorithms"):
+                obj = AlgorithmInfo()
+                obj._deserialize(item)
+                self.AsymmetricAlgorithms.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListKeyDetailRequest(AbstractModel):
     """ListKeyDetail request structure.
 
@@ -581,7 +941,7 @@ class ListKeyDetailRequest(AbstractModel):
         """
         :param Offset: 
         :type Offset: int
-        :param Limit: 
+        :param Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200.
         :type Limit: int
         :param Role: 
         :type Role: int
@@ -593,6 +953,8 @@ class ListKeyDetailRequest(AbstractModel):
         :type SearchKeyAlias: str
         :param Origin: Filters by CMK type. "TENCENT_KMS" indicates to filter CMKs whose key materials are created by KMS; "EXTERNAL" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; "ALL" or empty indicates to filter CMKs of both types. This value is case-sensitive.
         :type Origin: str
+        :param KeyUsage: Filter by `KeyUsage` of CMKs. If this parameter is left empty, it means to filter all CMKs. Valid values: ENCRYPT_DECRYPT, ASYMMETRIC_DECRYPT_RSA_2048, ASYMMETRIC_DECRYPT_SM2
+        :type KeyUsage: str
         """
         self.Offset = None
         self.Limit = None
@@ -601,6 +963,7 @@ class ListKeyDetailRequest(AbstractModel):
         self.KeyState = None
         self.SearchKeyAlias = None
         self.Origin = None
+        self.KeyUsage = None
 
 
     def _deserialize(self, params):
@@ -611,6 +974,7 @@ class ListKeyDetailRequest(AbstractModel):
         self.KeyState = params.get("KeyState")
         self.SearchKeyAlias = params.get("SearchKeyAlias")
         self.Origin = params.get("Origin")
+        self.KeyUsage = params.get("KeyUsage")
 
 
 class ListKeyDetailResponse(AbstractModel):
@@ -620,13 +984,27 @@ class ListKeyDetailResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: 
+        :type TotalCount: int
+        :param KeyMetadatas: List of returned attribute information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyMetadatas: list of KeyMetadata
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TotalCount = None
+        self.KeyMetadatas = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("KeyMetadatas") is not None:
+            self.KeyMetadatas = []
+            for item in params.get("KeyMetadatas"):
+                obj = KeyMetadata()
+                obj._deserialize(item)
+                self.KeyMetadatas.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -726,6 +1104,21 @@ class UpdateKeyDescriptionRequest(AbstractModel):
     """UpdateKeyDescription request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param Description: 
+        :type Description: str
+        :param KeyId: ID of the CMK for which to modify the description
+        :type KeyId: str
+        """
+        self.Description = None
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.Description = params.get("Description")
+        self.KeyId = params.get("KeyId")
 
 
 class UpdateKeyDescriptionResponse(AbstractModel):

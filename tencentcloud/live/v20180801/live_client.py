@@ -55,6 +55,177 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddLiveDomain(self, request):
+        """This API is used to add a domain name. Only one domain name can be submitted at a time, and it must have an ICP filing.
+
+        :param request: Request instance for AddLiveDomain.
+        :type request: :class:`tencentcloud.live.v20180801.models.AddLiveDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AddLiveDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddLiveDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddLiveDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AddLiveWatermark(self, request):
+        """After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](/document/product/267/32629) API and bind the watermark ID to the stream.
+
+        :param request: Request instance for AddLiveWatermark.
+        :type request: :class:`tencentcloud.live.v20180801.models.AddLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AddLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddLiveWatermarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BindLiveDomainCert(self, request):
+        """This API is used to bind a domain name certificate.
+        Note: you need to call the `CreateLiveCert` API first to add a certificate. After getting the certificate ID, call this API for binding.
+
+        :param request: Request instance for BindLiveDomainCert.
+        :type request: :class:`tencentcloud.live.v20180801.models.BindLiveDomainCertRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.BindLiveDomainCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindLiveDomainCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindLiveDomainCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLiveCallbackRule(self, request):
+        """To create a callback rule, you need to first call the [CreateLiveCallbackTemplate](/document/product/267/32637) API to create a callback template and bind the returned template ID to the domain name/path.
+        <br>Callback protocol-related document: [Event Message Notification](/document/product/267/32744).
+
+        :param request: Request instance for CreateLiveCallbackRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveCallbackRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveCallbackRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLiveCallbackRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLiveCallbackRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLiveCallbackTemplate(self, request):
+        """After a callback template is created and a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](/document/product/267/32638) API and bind the template ID to the domain name/path.
+        <br>Callback protocol-related document: [Event Message Notification](/document/product/267/32744).
+
+        :param request: Request instance for CreateLiveCallbackTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveCallbackTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveCallbackTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLiveCallbackTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLiveCallbackTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLiveCert(self, request):
+        """This API is used to add a certificate.
+
+        :param request: Request instance for CreateLiveCert.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveCertRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLiveCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLiveCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLiveRecord(self, request):
         """- Prerequisites
           1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.
@@ -69,7 +240,8 @@ class LiveClient(AbstractClient):
 
         - Precautions
           1. The API call timeout period should be set to more than 3 seconds; otherwise, retries and frequent calls may result in repeated recording tasks.
-          2. Subject to the audio and video file formats (FLV/MP4/HLS), the video codec of H.264 and audio codec of ACC are supported.
+          2. Subject to the audio and video file formats (FLV/MP4/HLS), the video codec of H.264 and audio codec of AAC are supported.
+          3. In order to avoid malicious or non-subjective frequent API requests, the maximum number of tasks that can be created in scheduled recording mode is limited: up to 4,000 tasks can be created per day (excluding deleted ones), and up to 400 ones can run concurrently. If you need a higher upper limit, please submit a ticket for application.
 
         :param request: Request instance for CreateLiveRecord.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveRecordRequest`
@@ -154,6 +326,64 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLiveSnapshotRule(self, request):
+        """To create a screencapturing rule, you need to first call the [CreateLiveSnapshotTemplate](/document/product/267/32624) API to create a screencapturing template and bind the returned template ID to the stream.
+        <br>Screencapturing-related document: [LVB Screencapturing](/document/product/267/32737).
+
+        :param request: Request instance for CreateLiveSnapshotRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveSnapshotRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveSnapshotRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLiveSnapshotRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLiveSnapshotRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLiveSnapshotTemplate(self, request):
+        """After a screencapturing template is created and a template ID is successfully returned, you need to call the [CreateLiveSnapshotRule](/document/product/267/32625) API and bind the template ID to the stream.
+        <br>Screencapturing-related document: [LVB Screencapturing](/document/product/267/32737).
+
+        :param request: Request instance for CreateLiveSnapshotTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLiveSnapshotTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLiveSnapshotTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLiveTranscodeRule(self, request):
         """To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](/document/product/267/32646) API to create a transcoding template and bind the returned template ID to the stream.
         <br>Transcoding-related document: [LVB Remuxing and Transcoding](/document/product/267/32736).
@@ -198,6 +428,146 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveTranscodeTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLiveWatermarkRule(self, request):
+        """To create a watermarking rule, you need to first call the [AddLiveWatermark](/document/product/267/30154) API to add a watermark and bind the returned watermark ID to the stream.
+
+        :param request: Request instance for CreateLiveWatermarkRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveWatermarkRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveWatermarkRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLiveWatermarkRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLiveWatermarkRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveCallbackRule(self, request):
+        """This API is used to delete a callback rule.
+
+        :param request: Request instance for DeleteLiveCallbackRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveCallbackRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveCallbackRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveCallbackRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveCallbackRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveCallbackTemplate(self, request):
+        """This API deletes a callback template.
+
+        :param request: Request instance for DeleteLiveCallbackTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveCallbackTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveCallbackTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveCallbackTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveCallbackTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveCert(self, request):
+        """This API is used to delete a certificate corresponding to the domain name.
+
+        :param request: Request instance for DeleteLiveCert.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveCertRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveDomain(self, request):
+        """This API is used to delete an added LVB domain name.
+
+        :param request: Request instance for DeleteLiveDomain.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveDomainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -296,6 +666,62 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteLiveSnapshotRule(self, request):
+        """This API is used to delete a screencapturing rule.
+
+        :param request: Request instance for DeleteLiveSnapshotRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveSnapshotRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveSnapshotRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveSnapshotRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveSnapshotRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveSnapshotTemplate(self, request):
+        """This API is used to delete a screencapturing template.
+
+        :param request: Request instance for DeleteLiveSnapshotTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveSnapshotTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveSnapshotTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteLiveTranscodeRule(self, request):
         """This API is used to delete a transcoding rule.
 
@@ -352,6 +778,202 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteLiveWatermark(self, request):
+        """This API is used to delete a watermark.
+
+        :param request: Request instance for DeleteLiveWatermark.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveWatermarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveWatermarkRule(self, request):
+        """This API is used to delete a watermarking rule.
+
+        :param request: Request instance for DeleteLiveWatermarkRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveWatermarkRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveWatermarkRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveCallbackRules(self, request):
+        """This API is used to get the callback rule list.
+
+        :param request: Request instance for DescribeLiveCallbackRules.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackRulesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveCallbackRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveCallbackRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveCallbackTemplate(self, request):
+        """This API is used to get a single callback template.
+
+        :param request: Request instance for DescribeLiveCallbackTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveCallbackTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveCallbackTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveCallbackTemplates(self, request):
+        """This API is used to get the callback template list.
+
+        :param request: Request instance for DescribeLiveCallbackTemplates.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackTemplatesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveCallbackTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveCallbackTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveCert(self, request):
+        """This API is used to get certificate information.
+
+        :param request: Request instance for DescribeLiveCert.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCertRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveCerts(self, request):
+        """This API is used to get the certificate information list.
+
+        :param request: Request instance for DescribeLiveCerts.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCertsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveCertsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveCerts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveCertsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveDelayInfoList(self, request):
         """This API is used to get the list of delayed playbacks.
 
@@ -366,6 +988,90 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDelayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveDomain(self, request):
+        """This API is used to query the LVB domain name information.
+
+        :param request: Request instance for DescribeLiveDomain.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveDomainCert(self, request):
+        """This API is used to get the domain name certificate information.
+
+        :param request: Request instance for DescribeLiveDomainCert.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveDomainCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveDomains(self, request):
+        """This API is used to query domain names by domain name status and type.
+
+        :param request: Request instance for DescribeLiveDomains.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -534,6 +1240,90 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveRecordTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveSnapshotRules(self, request):
+        """This API is used to get the screencapturing rule list.
+
+        :param request: Request instance for DescribeLiveSnapshotRules.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotRulesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveSnapshotRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveSnapshotRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveSnapshotTemplate(self, request):
+        """This API is used to get a single screencapturing template.
+
+        :param request: Request instance for DescribeLiveSnapshotTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveSnapshotTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveSnapshotTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveSnapshotTemplates(self, request):
+        """This API is used to get the screencapturing template list.
+
+        :param request: Request instance for DescribeLiveSnapshotTemplates.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotTemplatesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveSnapshotTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveSnapshotTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -747,6 +1537,90 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveWatermark(self, request):
+        """This API is used to get the information of a single watermark.
+
+        :param request: Request instance for DescribeLiveWatermark.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveWatermarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveWatermarkRules(self, request):
+        """This API is used to get the watermarking rule list.
+
+        :param request: Request instance for DescribeLiveWatermarkRules.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarkRulesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarkRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveWatermarkRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveWatermarkRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveWatermarks(self, request):
+        """This API is used to query the watermark list.
+
+        :param request: Request instance for DescribeLiveWatermarks.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarksRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveWatermarks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveWatermarksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DropLiveStream(self, request):
         """This API is used to disconnect the push connection, which can be resumed.
 
@@ -761,6 +1635,62 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DropLiveStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableLiveDomain(self, request):
+        """This API is used to enable a disabled LVB domain name.
+
+        :param request: Request instance for EnableLiveDomain.
+        :type request: :class:`tencentcloud.live.v20180801.models.EnableLiveDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.EnableLiveDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableLiveDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableLiveDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ForbidLiveDomain(self, request):
+        """This API is used to disable an LVB domain name.
+
+        :param request: Request instance for ForbidLiveDomain.
+        :type request: :class:`tencentcloud.live.v20180801.models.ForbidLiveDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ForbidLiveDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ForbidLiveDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ForbidLiveDomainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -803,6 +1733,90 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyLiveCallbackTemplate(self, request):
+        """This API is used to modify a callback template.
+
+        :param request: Request instance for ModifyLiveCallbackTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveCallbackTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLiveCallbackTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLiveCallbackTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLiveCallbackTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLiveCert(self, request):
+        """This API is used to modify a certificate.
+
+        :param request: Request instance for ModifyLiveCert.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveCertRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLiveCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLiveCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLiveCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLiveDomainCert(self, request):
+        """This API is used to modify the domain name and certificate binding information.
+
+        :param request: Request instance for ModifyLiveDomainCert.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveDomainCertRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLiveDomainCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLiveDomainCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLiveDomainCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyLivePlayAuthKey(self, request):
         """This API is used to modify the playback authentication key.
 
@@ -817,6 +1831,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLivePlayAuthKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLivePlayDomain(self, request):
+        """This API is used to modify a playback domain name.
+
+        :param request: Request instance for ModifyLivePlayDomain.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLivePlayDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLivePlayDomainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -873,6 +1915,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveRecordTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLiveSnapshotTemplate(self, request):
+        """This API is used to modify the screencapturing template configuration.
+
+        :param request: Request instance for ModifyLiveSnapshotTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLiveSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLiveSnapshotTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLiveSnapshotTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -985,6 +2055,62 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopLiveRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnBindLiveDomainCert(self, request):
+        """This API is used to unbind a domain name certificate.
+
+        :param request: Request instance for UnBindLiveDomainCert.
+        :type request: :class:`tencentcloud.live.v20180801.models.UnBindLiveDomainCertRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.UnBindLiveDomainCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnBindLiveDomainCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnBindLiveDomainCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateLiveWatermark(self, request):
+        """This API is used to update a watermark.
+
+        :param request: Request instance for UpdateLiveWatermark.
+        :type request: :class:`tencentcloud.live.v20180801.models.UpdateLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.UpdateLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateLiveWatermarkResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -25,8 +25,64 @@ class KmsClient(AbstractClient):
     _endpoint = 'kms.tencentcloudapi.com'
 
 
+    def AsymmetricRsaDecrypt(self, request):
+        """This API is used to decrypt data with the specified private key that is encrypted with RSA asymmetric cryptographic algorithm. The ciphertext must be encrypted with the corresponding public key. The asymmetric key must be in `Enabled` state for decryption.
+
+        :param request: Request instance for AsymmetricRsaDecrypt.
+        :type request: :class:`tencentcloud.kms.v20190118.models.AsymmetricRsaDecryptRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.AsymmetricRsaDecryptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AsymmetricRsaDecrypt", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AsymmetricRsaDecryptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AsymmetricSm2Decrypt(self, request):
+        """This API is used to decrypt data with the specified private key that is encrypted with SM2 asymmetric cryptographic algorithm. The ciphertext must be encrypted with the corresponding public key. The asymmetric key must be in `Enabled` state for decryption. The length of the ciphertext passed in cannot exceed 256 bytes.
+
+        :param request: Request instance for AsymmetricSm2Decrypt.
+        :type request: :class:`tencentcloud.kms.v20190118.models.AsymmetricSm2DecryptRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.AsymmetricSm2DecryptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AsymmetricSm2Decrypt", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AsymmetricSm2DecryptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelKeyDeletion(self, request):
-        """取消CMK的计划删除操作
+        """Cancel the scheduled deletion of CMK
 
         :param request: Request instance for CancelKeyDeletion.
         :type request: :class:`tencentcloud.kms.v20190118.models.CancelKeyDeletionRequest`
@@ -54,7 +110,7 @@ class KmsClient(AbstractClient):
 
 
     def CreateKey(self, request):
-        """创建用户管理数据密钥的主密钥CMK（Custom Master Key）。
+        """Create a master key CMK (Custom Master Key) for user management data keys
 
         :param request: Request instance for CreateKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.CreateKeyRequest`
@@ -82,7 +138,7 @@ class KmsClient(AbstractClient):
 
 
     def Decrypt(self, request):
-        """本接口用于解密密文，得到明文数据。
+        """This API is used to decrypt the ciphertext and obtain the plaintext data.
 
         :param request: Request instance for Decrypt.
         :type request: :class:`tencentcloud.kms.v20190118.models.DecryptRequest`
@@ -137,8 +193,64 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeKey(self, request):
+        """This API is used to get the attribute details of the CMK with a specified `KeyId`.
+
+        :param request: Request instance for DescribeKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeKeys(self, request):
+        """This API is used to get the attribute information of CMKs in batches.
+
+        :param request: Request instance for DescribeKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeKeys", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableKey(self, request):
-        """本接口用于禁用一个主密钥，处于禁用状态的Key无法用于加密、解密操作。
+        """This API is used to disable a master key. The disabled key cannot be used for encryption and decryption operations.
 
         :param request: Request instance for DisableKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableKeyRequest`
@@ -166,7 +278,7 @@ class KmsClient(AbstractClient):
 
 
     def DisableKeyRotation(self, request):
-        """对指定的CMK禁止密钥轮换功能。
+        """Disabled key rotation for the specified CMK.
 
         :param request: Request instance for DisableKeyRotation.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableKeyRotationRequest`
@@ -194,7 +306,7 @@ class KmsClient(AbstractClient):
 
 
     def DisableKeys(self, request):
-        """该接口用于批量禁止CMK的使用。
+        """This API is used to batch prohibit the use of CMK.
 
         :param request: Request instance for DisableKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableKeysRequest`
@@ -222,7 +334,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableKey(self, request):
-        """用于启用一个指定的CMK。
+        """Enable a specified CMK.
 
         :param request: Request instance for EnableKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableKeyRequest`
@@ -250,7 +362,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableKeyRotation(self, request):
-        """对指定的CMK开启密钥轮换功能。
+        """Turn on the key rotation function for the specified CMK.
 
         :param request: Request instance for EnableKeyRotation.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableKeyRotationRequest`
@@ -278,7 +390,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableKeys(self, request):
-        """该接口用于批量启用CMK。
+        """This API is used to enable CMK in batches.
 
         :param request: Request instance for EnableKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableKeysRequest`
@@ -306,7 +418,7 @@ class KmsClient(AbstractClient):
 
 
     def Encrypt(self, request):
-        """本接口用于加密最多为4KB任意数据，可用于加密数据库密码，RSA Key，或其它较小的敏感信息。对于应用的数据加密，使用GenerateDataKey生成的DataKey进行本地数据的加解密操作
+        """This API is used to encrypt any data up to 4KB. It can be used to encrypt database passwords, RSA Key, or other small sensitive information. For application data encryption, use the DataKey generated by GenerateDataKey to perform local data encryption and decryption operations
 
         :param request: Request instance for Encrypt.
         :type request: :class:`tencentcloud.kms.v20190118.models.EncryptRequest`
@@ -334,7 +446,7 @@ class KmsClient(AbstractClient):
 
 
     def GenerateDataKey(self, request):
-        """本接口生成一个数据密钥，您可以用这个密钥进行本地数据的加密。
+        """This API generates a data key, which you can use to encrypt local data.
 
         :param request: Request instance for GenerateDataKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.GenerateDataKeyRequest`
@@ -390,7 +502,7 @@ class KmsClient(AbstractClient):
 
 
     def GetKeyRotationStatus(self, request):
-        """查询指定的CMK是否开启了密钥轮换功能。
+        """Query whether the specified CMK has the key rotation function.
 
         :param request: Request instance for GetKeyRotationStatus.
         :type request: :class:`tencentcloud.kms.v20190118.models.GetKeyRotationStatusRequest`
@@ -445,8 +557,36 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetPublicKey(self, request):
+        """This API is used to get the information of the public key that is encrypted with the asymmetric cryptographic algorithm and of which the `KeyUsage` is `ASYMMETRIC_DECRYPT_RSA_2048` or `ASYMMETRIC_DECRYPT_SM2`. This public key can be used to encrypt data locally, and the data encrypted with it can only be decrypted with the corresponding private key through KMS. The public key can only be obtained from the asymmetric key in `Enabled` state.
+
+        :param request: Request instance for GetPublicKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.GetPublicKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.GetPublicKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetPublicKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetPublicKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetServiceStatus(self, request):
-        """用于查询该用户是否已开通KMS服务
+        """Used to query whether the user has activated the KMS service.
 
         :param request: Request instance for GetServiceStatus.
         :type request: :class:`tencentcloud.kms.v20190118.models.GetServiceStatusRequest`
@@ -502,8 +642,36 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListAlgorithms(self, request):
+        """This API is used to list the encryption methods supported in the current region.
+
+        :param request: Request instance for ListAlgorithms.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ListAlgorithmsRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ListAlgorithmsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAlgorithms", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAlgorithmsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListKeyDetail(self, request):
-        """根据指定Offset和Limit获取主密钥列表详情。
+        """Get the master key list details according to the specified Offset and Limit.
 
         :param request: Request instance for ListKeyDetail.
         :type request: :class:`tencentcloud.kms.v20190118.models.ListKeyDetailRequest`
@@ -559,7 +727,7 @@ class KmsClient(AbstractClient):
 
 
     def ReEncrypt(self, request):
-        """使用指定CMK对密文重新加密。
+        """Re-encrypt the ciphertext using the specified CMK.
 
         :param request: Request instance for ReEncrypt.
         :type request: :class:`tencentcloud.kms.v20190118.models.ReEncryptRequest`
@@ -587,7 +755,7 @@ class KmsClient(AbstractClient):
 
 
     def ScheduleKeyDeletion(self, request):
-        """CMK计划删除接口，用于指定CMK删除的时间，可选时间区间为[7,30]天
+        """CMK planned deletion API, used to specify the time of CMK deletion, the optional time interval is [7,30] days
 
         :param request: Request instance for ScheduleKeyDeletion.
         :type request: :class:`tencentcloud.kms.v20190118.models.ScheduleKeyDeletionRequest`

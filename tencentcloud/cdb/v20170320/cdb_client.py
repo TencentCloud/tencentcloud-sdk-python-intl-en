@@ -81,6 +81,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BalanceRoGroupLoad(self, request):
+        """This API is used to rebalance the loads of instances in an RO group. Please note that the database connections to those instances will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases. This operation should be performed with caution.
+
+        :param request: Request instance for BalanceRoGroupLoad.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.BalanceRoGroupLoadRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.BalanceRoGroupLoadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BalanceRoGroupLoad", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BalanceRoGroupLoadResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseWanService(self, request):
         """This API (CloseWanService) is used to disable public network access for TencentDB instance, which will make public IP addresses inaccessible.
 
@@ -533,6 +561,62 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupOverview(self, request):
+        """This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes).
+
+        :param request: Request instance for DescribeBackupOverview.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupOverviewRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupOverview", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupOverviewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupSummaries(self, request):
+        """This API is used to query the statistics of backups. It will return the capacity used by backups at the instance level and the number and used capacity of data backups and log backups of each instance (all capacity values are in bytes).
+
+        :param request: Request instance for DescribeBackupSummaries.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupSummariesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupSummariesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupSummaries", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupSummariesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupTables(self, request):
         """This API is used to query the backup tables of the specified database. It has been disused.
         After the legacy version becomes capable of full backup, if you want to download logical backup files by table, you need to use this API.
@@ -577,6 +661,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBinlogBackupOverview(self, request):
+        """This API is used to query the log backup overview of a user in the current region.
+
+        :param request: Request instance for DescribeBinlogBackupOverview.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBinlogBackupOverviewRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBinlogBackupOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBinlogBackupOverview", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBinlogBackupOverviewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -857,6 +969,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBZoneConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataBackupOverview(self, request):
+        """This API is used to query the data backup overview of a user in the current region.
+
+        :param request: Request instance for DescribeDataBackupOverview.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDataBackupOverviewRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDataBackupOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataBackupOverview", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataBackupOverviewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1756,6 +1896,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyParamTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRoGroupInfo(self, request):
+        """This API is used to update the information of a TencentDB RO group, such as configuring an instance removal policy in case of excessive delay and setting read weights of RO instances.
+
+        :param request: Request instance for ModifyRoGroupInfo.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupInfoRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRoGroupInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRoGroupInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

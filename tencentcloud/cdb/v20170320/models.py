@@ -289,6 +289,93 @@ class BackupItem(AbstractModel):
         self.Table = params.get("Table")
 
 
+class BackupSummaryItem(AbstractModel):
+    """Statistical items of instance backup
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param AutoBackupCount: Number of automatic data backups of an instance.
+        :type AutoBackupCount: int
+        :param AutoBackupVolume: Capacity of automatic data backups of an instance.
+        :type AutoBackupVolume: int
+        :param ManualBackupCount: Number of manual data backups of an instance.
+        :type ManualBackupCount: int
+        :param ManualBackupVolume: Capacity of manual data backups of an instance.
+        :type ManualBackupVolume: int
+        :param DataBackupCount: Total number of data backups of an instance (including automatic backups and manual backups).
+        :type DataBackupCount: int
+        :param DataBackupVolume: Total capacity of data backups of an instance.
+        :type DataBackupVolume: int
+        :param BinlogBackupCount: Number of log backups of an instance.
+        :type BinlogBackupCount: int
+        :param BinlogBackupVolume: Capacity of log backups of an instance.
+        :type BinlogBackupVolume: int
+        :param BackupVolume: Total capacity of backups of an instance (including data backups and log backups).
+        :type BackupVolume: int
+        """
+        self.InstanceId = None
+        self.AutoBackupCount = None
+        self.AutoBackupVolume = None
+        self.ManualBackupCount = None
+        self.ManualBackupVolume = None
+        self.DataBackupCount = None
+        self.DataBackupVolume = None
+        self.BinlogBackupCount = None
+        self.BinlogBackupVolume = None
+        self.BackupVolume = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AutoBackupCount = params.get("AutoBackupCount")
+        self.AutoBackupVolume = params.get("AutoBackupVolume")
+        self.ManualBackupCount = params.get("ManualBackupCount")
+        self.ManualBackupVolume = params.get("ManualBackupVolume")
+        self.DataBackupCount = params.get("DataBackupCount")
+        self.DataBackupVolume = params.get("DataBackupVolume")
+        self.BinlogBackupCount = params.get("BinlogBackupCount")
+        self.BinlogBackupVolume = params.get("BinlogBackupVolume")
+        self.BackupVolume = params.get("BackupVolume")
+
+
+class BalanceRoGroupLoadRequest(AbstractModel):
+    """BalanceRoGroupLoad request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RoGroupId: RO group ID in the format of `cdbrg-c1nl9rpv`.
+        :type RoGroupId: str
+        """
+        self.RoGroupId = None
+
+
+    def _deserialize(self, params):
+        self.RoGroupId = params.get("RoGroupId")
+
+
+class BalanceRoGroupLoadResponse(AbstractModel):
+    """BalanceRoGroupLoad response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BinlogInfo(AbstractModel):
     """Binlog information
 
@@ -1301,6 +1388,119 @@ class DescribeBackupDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupOverviewRequest(AbstractModel):
+    """DescribeBackupOverview request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: TencentDB product type to be queried. Currently, only `mysql` is supported.
+        :type Product: str
+        """
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+
+
+class DescribeBackupOverviewResponse(AbstractModel):
+    """DescribeBackupOverview response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BackupCount: Total number of backups of a user in the current region (including data backups and log backups).
+        :type BackupCount: int
+        :param BackupVolume: Total capacity of backups of a user in the current region.
+        :type BackupVolume: int
+        :param BillingVolume: Paid capacity of backups of a user in the current region, i.e., capacity that exceeds the free tier.
+        :type BillingVolume: int
+        :param FreeVolume: Backup capacity in the free tier of a user in the current region.
+        :type FreeVolume: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BackupCount = None
+        self.BackupVolume = None
+        self.BillingVolume = None
+        self.FreeVolume = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BackupCount = params.get("BackupCount")
+        self.BackupVolume = params.get("BackupVolume")
+        self.BillingVolume = params.get("BillingVolume")
+        self.FreeVolume = params.get("FreeVolume")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupSummariesRequest(AbstractModel):
+    """DescribeBackupSummaries request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: TencentDB product type to be queried. Currently, only `mysql` is supported.
+        :type Product: str
+        :param Offset: Pagination offset.
+        :type Offset: int
+        :param Limit: Paginated query limit. Default value: 20.
+        :type Limit: int
+        :param OrderBy: Sorting criterion. Valid values: BackupVolume (backup capacity), DataBackupVolume (data backup capacity), BinlogBackupVolume (log backup capacity), AutoBackupVolume (automatic backup capacity), ManualBackupVolume (manual backup capacity).
+        :type OrderBy: str
+        :param OrderDirection: Sorting order. Valid values: ASC (ascending), DESC (descending).
+        :type OrderDirection: str
+        """
+        self.Product = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderBy = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderDirection = params.get("OrderDirection")
+
+
+class DescribeBackupSummariesResponse(AbstractModel):
+    """DescribeBackupSummaries response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Items: Statistical items of instance backup.
+        :type Items: list of BackupSummaryItem
+        :param TotalCount: Total number of instance backups.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Items = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = BackupSummaryItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupTablesRequest(AbstractModel):
     """DescribeBackupTables request structure.
 
@@ -1420,6 +1620,48 @@ class DescribeBackupsResponse(AbstractModel):
                 obj = BackupInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBinlogBackupOverviewRequest(AbstractModel):
+    """DescribeBinlogBackupOverview request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: TencentDB product type to be queried. Currently, only `mysql` is supported.
+        :type Product: str
+        """
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+
+
+class DescribeBinlogBackupOverviewResponse(AbstractModel):
+    """DescribeBinlogBackupOverview response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BinlogBackupVolume: Total capacity of log backups in bytes.
+        :type BinlogBackupVolume: int
+        :param BinlogBackupCount: Total number of log backups.
+        :type BinlogBackupCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BinlogBackupVolume = None
+        self.BinlogBackupCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BinlogBackupVolume = params.get("BinlogBackupVolume")
+        self.BinlogBackupCount = params.get("BinlogBackupCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2000,6 +2242,64 @@ class DescribeDBZoneConfigResponse(AbstractModel):
                 obj = RegionSellConf()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDataBackupOverviewRequest(AbstractModel):
+    """DescribeDataBackupOverview request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: TencentDB product type to be queried. Currently, only `mysql` is supported.
+        :type Product: str
+        """
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+
+
+class DescribeDataBackupOverviewResponse(AbstractModel):
+    """DescribeDataBackupOverview response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DataBackupVolume: Total capacity of data backups in bytes in the current region (including automatic backups and manual backups).
+        :type DataBackupVolume: int
+        :param DataBackupCount: Total number of data backups in the current region.
+        :type DataBackupCount: int
+        :param AutoBackupVolume: Total capacity of automatic backups in the current region.
+        :type AutoBackupVolume: int
+        :param AutoBackupCount: Total number of automatic backups in the current region.
+        :type AutoBackupCount: int
+        :param ManualBackupVolume: Total capacity of manual backups in the current region.
+        :type ManualBackupVolume: int
+        :param ManualBackupCount: Total number of manual backups in the current region.
+        :type ManualBackupCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataBackupVolume = None
+        self.DataBackupCount = None
+        self.AutoBackupVolume = None
+        self.AutoBackupCount = None
+        self.ManualBackupVolume = None
+        self.ManualBackupCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataBackupVolume = params.get("DataBackupVolume")
+        self.DataBackupCount = params.get("DataBackupCount")
+        self.AutoBackupVolume = params.get("AutoBackupVolume")
+        self.AutoBackupCount = params.get("AutoBackupCount")
+        self.ManualBackupVolume = params.get("ManualBackupVolume")
+        self.ManualBackupCount = params.get("ManualBackupCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4267,6 +4567,59 @@ class ModifyParamTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRoGroupInfoRequest(AbstractModel):
+    """ModifyRoGroupInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RoGroupId: RO group ID.
+        :type RoGroupId: str
+        :param RoGroupInfo: RO group details.
+        :type RoGroupInfo: :class:`tencentcloud.cdb.v20170320.models.RoGroupAttr`
+        :param RoWeightValues: Weights of instances in RO group. If the weighting mode of an RO group is changed to custom mode, this parameter must be set, and a weight value needs to be set for each RO instance.
+        :type RoWeightValues: list of RoWeightValue
+        :param IsBalanceRoLoad: Whether to rebalance the loads of RO instances in the RO group. Supported values include `1` (yes) and `0` (no). The default value is `0`. Please note that if this value is set to `1`, connections to the RO instances in the RO group will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases.
+        :type IsBalanceRoLoad: int
+        """
+        self.RoGroupId = None
+        self.RoGroupInfo = None
+        self.RoWeightValues = None
+        self.IsBalanceRoLoad = None
+
+
+    def _deserialize(self, params):
+        self.RoGroupId = params.get("RoGroupId")
+        if params.get("RoGroupInfo") is not None:
+            self.RoGroupInfo = RoGroupAttr()
+            self.RoGroupInfo._deserialize(params.get("RoGroupInfo"))
+        if params.get("RoWeightValues") is not None:
+            self.RoWeightValues = []
+            for item in params.get("RoWeightValues"):
+                obj = RoWeightValue()
+                obj._deserialize(item)
+                self.RoWeightValues.append(obj)
+        self.IsBalanceRoLoad = params.get("IsBalanceRoLoad")
+
+
+class ModifyRoGroupInfoResponse(AbstractModel):
+    """ModifyRoGroupInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTimeWindowRequest(AbstractModel):
     """ModifyTimeWindow request structure.
 
@@ -4767,6 +5120,39 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RoGroupZone = params.get("RoGroupZone")
 
 
+class RoGroupAttr(AbstractModel):
+    """RO group configuration information.
+
+    """
+
+    def __init__(self):
+        """
+        :param RoGroupName: RO group name.
+        :type RoGroupName: str
+        :param RoMaxDelayTime: Maximum delay threshold for RO instances in seconds. Minimum value: 1. Please note that this value will take effect only if an instance removal policy is enabled in the RO group.
+        :type RoMaxDelayTime: int
+        :param RoOfflineDelay: Whether to enable instance removal. Valid values: 1 (enabled), 0 (not enabled). Please note that if instance removal is enabled, the delay threshold parameter (`RoMaxDelayTime`) must be set.
+        :type RoOfflineDelay: int
+        :param MinRoInGroup: Minimum number of instances to be retained, which can be set to any value less than or equal to the number of RO instances in the RO group. Please note that if this value is set to be greater than the number of RO instances, no removal will be performed, and if it is set to 0, all instances with an excessive delay will be removed.
+        :type MinRoInGroup: int
+        :param WeightMode: Weighting mode. Supported values include `system` (automatically assigned by the system) and `custom` (defined by user). Please note that if the `custom` mode is selected, the RO instance weight configuration parameter (RoWeightValues) must be set.
+        :type WeightMode: str
+        """
+        self.RoGroupName = None
+        self.RoMaxDelayTime = None
+        self.RoOfflineDelay = None
+        self.MinRoInGroup = None
+        self.WeightMode = None
+
+
+    def _deserialize(self, params):
+        self.RoGroupName = params.get("RoGroupName")
+        self.RoMaxDelayTime = params.get("RoMaxDelayTime")
+        self.RoOfflineDelay = params.get("RoOfflineDelay")
+        self.MinRoInGroup = params.get("MinRoInGroup")
+        self.WeightMode = params.get("WeightMode")
+
+
 class RoInstanceInfo(AbstractModel):
     """RO instance details
 
@@ -4903,6 +5289,27 @@ class RoVipInfo(AbstractModel):
         self.RoVpcId = params.get("RoVpcId")
         self.RoVport = params.get("RoVport")
         self.RoVip = params.get("RoVip")
+
+
+class RoWeightValue(AbstractModel):
+    """RO instance weight value
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: RO instance ID.
+        :type InstanceId: str
+        :param Weight: Weight value. Value range: [0, 100].
+        :type Weight: int
+        """
+        self.InstanceId = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Weight = params.get("Weight")
 
 
 class RollbackDBName(AbstractModel):

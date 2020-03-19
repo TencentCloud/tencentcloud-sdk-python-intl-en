@@ -46,7 +46,7 @@ class CreateInstanceRequest(AbstractModel):
         """
         :param Zone: Availability Zone
         :type Zone: str
-        :param EsVersion: Instance version ("5.6.4" or "6.4.3")
+        :param EsVersion: Instance version ("5.6.4", "6.4.3", "6.8.2", or "7.5.1")
         :type EsVersion: str
         :param VpcId: VPC ID
         :type VpcId: str

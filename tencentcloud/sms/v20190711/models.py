@@ -431,10 +431,68 @@ class DeleteTemplateStatus(AbstractModel):
         self.DeleteTime = params.get("DeleteTime")
 
 
+class DescribeSignListStatus(AbstractModel):
+    """Response for getting SMS signature information
+
+    """
+
+    def __init__(self):
+        """
+        :param SignId: Signature ID
+        :type SignId: int
+        :param International: Whether it is Global SMS. Valid values:
+0: Mainland China SMS.
+1: Global SMS
+        :type International: int
+        :param StatusCode: Signature application status. Valid values:
+0: approved.
+-1: rejected or failed.
+        :type StatusCode: int
+        :param ReviewReply: Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.
+        :type ReviewReply: str
+        :param SignName: Signature name.
+        :type SignName: str
+        :param CreateTime: Application submission time in the format of UNIX timestamp in seconds.
+        :type CreateTime: int
+        """
+        self.SignId = None
+        self.International = None
+        self.StatusCode = None
+        self.ReviewReply = None
+        self.SignName = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.SignId = params.get("SignId")
+        self.International = params.get("International")
+        self.StatusCode = params.get("StatusCode")
+        self.ReviewReply = params.get("ReviewReply")
+        self.SignName = params.get("SignName")
+        self.CreateTime = params.get("CreateTime")
+
+
 class DescribeSmsSignListRequest(AbstractModel):
     """DescribeSmsSignList request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param SignIdSet: Signature ID array.
+        :type SignIdSet: list of int non-negative
+        :param International: Whether it is Global SMS:
+0: Mainland China SMS.
+1: Global SMS.
+        :type International: int
+        """
+        self.SignIdSet = None
+        self.International = None
+
+
+    def _deserialize(self, params):
+        self.SignIdSet = params.get("SignIdSet")
+        self.International = params.get("International")
 
 
 class DescribeSmsSignListResponse(AbstractModel):
@@ -444,13 +502,22 @@ class DescribeSmsSignListResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param DescribeSignListStatusSet: Response for getting signature information
+        :type DescribeSignListStatusSet: list of DescribeSignListStatus
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.DescribeSignListStatusSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("DescribeSignListStatusSet") is not None:
+            self.DescribeSignListStatusSet = []
+            for item in params.get("DescribeSignListStatusSet"):
+                obj = DescribeSignListStatus()
+                obj._deserialize(item)
+                self.DescribeSignListStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -458,6 +525,23 @@ class DescribeSmsTemplateListRequest(AbstractModel):
     """DescribeSmsTemplateList request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param TemplateIdSet: Template ID array.
+        :type TemplateIdSet: list of int non-negative
+        :param International: Whether it is Global SMS:
+0: Mainland China SMS.
+1: Global SMS.
+        :type International: int
+        """
+        self.TemplateIdSet = None
+        self.International = None
+
+
+    def _deserialize(self, params):
+        self.TemplateIdSet = params.get("TemplateIdSet")
+        self.International = params.get("International")
 
 
 class DescribeSmsTemplateListResponse(AbstractModel):
@@ -467,14 +551,64 @@ class DescribeSmsTemplateListResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param DescribeTemplateStatusSet: Response for getting SMS signature information
+        :type DescribeTemplateStatusSet: list of DescribeTemplateListStatus
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.DescribeTemplateStatusSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("DescribeTemplateStatusSet") is not None:
+            self.DescribeTemplateStatusSet = []
+            for item in params.get("DescribeTemplateStatusSet"):
+                obj = DescribeTemplateListStatus()
+                obj._deserialize(item)
+                self.DescribeTemplateStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DescribeTemplateListStatus(AbstractModel):
+    """Response for getting SMS template information
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID
+        :type TemplateId: int
+        :param International: Whether it is Global SMS. Valid values:
+0: Mainland China SMS.
+1: Global SMS
+        :type International: int
+        :param StatusCode: Signature application status. Valid values:
+0: approved.
+-1: rejected or failed.
+        :type StatusCode: int
+        :param ReviewReply: Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.
+        :type ReviewReply: str
+        :param TemplateName: Template name.
+        :type TemplateName: str
+        :param CreateTime: Application submission time in the format of UNIX timestamp in seconds.
+        :type CreateTime: int
+        """
+        self.TemplateId = None
+        self.International = None
+        self.StatusCode = None
+        self.ReviewReply = None
+        self.TemplateName = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.International = params.get("International")
+        self.StatusCode = params.get("StatusCode")
+        self.ReviewReply = params.get("ReviewReply")
+        self.TemplateName = params.get("TemplateName")
+        self.CreateTime = params.get("CreateTime")
 
 
 class ModifySignStatus(AbstractModel):
@@ -977,7 +1111,8 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PhoneNumberSet: Target mobile numbers in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number). Up to 200 mobile numbers are supported.
+        :param PhoneNumberSet: Target mobile number in the e.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Mainland China mobile numbers or all global mobile numbers).
+Example: +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
         :type PhoneNumberSet: list of str
         :param TemplateID: Template ID. You must enter the ID of an approved template, which can be viewed in the [SMS Console](https://console.cloud.tencent.com/sms/smslist).
         :type TemplateID: str

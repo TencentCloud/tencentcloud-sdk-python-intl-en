@@ -287,9 +287,9 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ZoneId: ID of the AZ where the instance resides
+        :param ZoneId: AZ ID of instance
         :type ZoneId: int
-        :param TypeId: Instance type. 2: Redis 2.8 master-slave edition; 3: Redis 3.2 master-slave edition (CKV master-slave edition); 4: Redis 3.2 cluster edition (CKV cluster edition); 5: Redis 2.8 standalone edition; 6: Redis 4.0 master-slave edition; 7: Redis 4.0 cluster edition
+        :param TypeId: Instance type. 2: Redis 2.8 Master-Slave Edition, 3: Redis 3.2 Master-Slave Edition (CKV Master-Slave Edition), 4: Redis 3.2 Cluster Edition (CKV Cluster Edition), 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,
         :type TypeId: int
         :param MemSize: Instance capacity in MB. The actual value is subject to the specifications returned by the purchasable specification querying API |
         :type MemSize: int
@@ -311,7 +311,7 @@ class CreateInstancesRequest(AbstractModel):
         :type AutoRenew: int
         :param SecurityGroupIdList: Array of security group IDs
         :type SecurityGroupIdList: list of str
-        :param VPort: User-defined port. If this parameter is left blank, 6379 will be used by default
+        :param VPort: User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024,65535]
         :type VPort: int
         :param RedisShardNum: Number of instance shards. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, Redis 2.8 standalone edition, and Redis 4.0 master-slave edition
         :type RedisShardNum: int
@@ -508,7 +508,7 @@ class DescribeBackupUrlRequest(AbstractModel):
         """
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param BackupId: Backup ID, which can be queried through the DescribeInstanceBackups API
+        :param BackupId: Backup ID, which can be queried through the `DescribeInstanceBackups` API
         :type BackupId: str
         """
         self.InstanceId = None
@@ -1358,10 +1358,12 @@ class DescribeInstancesRequest(AbstractModel):
         :type AutoRenew: list of int
         :param BillingMode: Billing method. postpaid: pay-as-you-go; prepaid: monthly subscription
         :type BillingMode: str
-        :param Type: Instance type. 1: legacy Redis cluster edition; 2: Redis 2.8 master-slave edition; 3: CKV master-slave edition; 4: CKV cluster edition; 5: Redis 2.8 standalone edition; 6: Redis 4.0 master-slave edition; 7: Redis 4.0 cluster edition
+        :param Type: Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Slave Edition, 3: CKV Master-Slave Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,
         :type Type: int
         :param SearchKeys: Search keywords, which can be instance ID, instance name, or complete IP
         :type SearchKeys: list of str
+        :param TypeList: Internal parameter, which can be ignored
+        :type TypeList: list of int
         """
         self.Limit = None
         self.Offset = None
@@ -1383,6 +1385,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.BillingMode = None
         self.Type = None
         self.SearchKeys = None
+        self.TypeList = None
 
 
     def _deserialize(self, params):
@@ -1406,6 +1409,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.BillingMode = params.get("BillingMode")
         self.Type = params.get("Type")
         self.SearchKeys = params.get("SearchKeys")
+        self.TypeList = params.get("TypeList")
 
 
 class DescribeInstancesResponse(AbstractModel):
@@ -2339,6 +2343,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param NoAuth: Whether an instance is password-free. true: yes; false: no
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NoAuth: bool
+        :param ClientLimit: Number of client connections
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClientLimit: int
+        :param DtsStatus: DTS status (internal parameter, which can be ignored)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DtsStatus: int
+        :param NetLimit: Upper shard bandwidth limit in MB
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NetLimit: int
+        :param PasswordFree: Password-free instance flag (internal parameter, which can be ignored)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PasswordFree: int
+        :param ReadOnly: Read-only instance flag (internal parameter, which can be ignored)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ReadOnly: int
+        :param Vip6: Internal parameter, which can be ignored
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Vip6: str
+        :param RemainBandwidthDuration: 
+        :type RemainBandwidthDuration: str
         """
         self.InstanceName = None
         self.InstanceId = None
@@ -2376,6 +2400,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.InstanceTags = None
         self.ProjectName = None
         self.NoAuth = None
+        self.ClientLimit = None
+        self.DtsStatus = None
+        self.NetLimit = None
+        self.PasswordFree = None
+        self.ReadOnly = None
+        self.Vip6 = None
+        self.RemainBandwidthDuration = None
 
 
     def _deserialize(self, params):
@@ -2425,6 +2456,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self.InstanceTags.append(obj)
         self.ProjectName = params.get("ProjectName")
         self.NoAuth = params.get("NoAuth")
+        self.ClientLimit = params.get("ClientLimit")
+        self.DtsStatus = params.get("DtsStatus")
+        self.NetLimit = params.get("NetLimit")
+        self.PasswordFree = params.get("PasswordFree")
+        self.ReadOnly = params.get("ReadOnly")
+        self.Vip6 = params.get("Vip6")
+        self.RemainBandwidthDuration = params.get("RemainBandwidthDuration")
 
 
 class InstanceSlowlogDetail(AbstractModel):
@@ -2794,27 +2832,39 @@ class ModifyInstanceRequest(AbstractModel):
         """
         :param Operation: Instance modification type. rename: rename an instance; modifyProject: modify the project of an instance; modifyAutoRenew: modify the auto-renewal flag of an instance
         :type Operation: str
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param InstanceName: New name of an instance
-        :type InstanceName: str
+        :param InstanceIds: Instance ID
+        :type InstanceIds: list of str
+        :param InstanceNames: New name of instance
+        :type InstanceNames: list of str
         :param ProjectId: Project ID
         :type ProjectId: int
-        :param AutoRenew: Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled
+        :param AutoRenews: Auto-renewal flag. 0: default status (manual renewal), 1: auto-renewal enabled, 2: auto-renewal disabled
+        :type AutoRenews: list of int
+        :param InstanceId: Disused
+        :type InstanceId: str
+        :param InstanceName: Disused
+        :type InstanceName: str
+        :param AutoRenew: Disused
         :type AutoRenew: int
         """
         self.Operation = None
+        self.InstanceIds = None
+        self.InstanceNames = None
+        self.ProjectId = None
+        self.AutoRenews = None
         self.InstanceId = None
         self.InstanceName = None
-        self.ProjectId = None
         self.AutoRenew = None
 
 
     def _deserialize(self, params):
         self.Operation = params.get("Operation")
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceNames = params.get("InstanceNames")
+        self.ProjectId = params.get("ProjectId")
+        self.AutoRenews = params.get("AutoRenews")
         self.InstanceId = params.get("InstanceId")
         self.InstanceName = params.get("InstanceName")
-        self.ProjectId = params.get("ProjectId")
         self.AutoRenew = params.get("AutoRenew")
 
 
@@ -3069,7 +3119,7 @@ class RenewInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealId: Transaction Id
+        :param DealId: Transaction ID
         :type DealId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

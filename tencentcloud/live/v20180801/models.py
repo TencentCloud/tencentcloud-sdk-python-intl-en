@@ -69,6 +69,469 @@ class AddDelayLiveStreamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddLiveDomainRequest(AbstractModel):
+    """AddLiveDomain request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Domain name.
+        :type DomainName: str
+        :param DomainType: Domain name type.
+0: push domain name.
+1: playback domain name.
+        :type DomainType: int
+        :param PlayType: Pull domain name type:
+1: Mainland China.
+2: global.
+3: outside Mainland China.
+Default value: 1.
+        :type PlayType: int
+        :param IsDelayLive: Whether it is LCB:
+0: LVB,
+1: LCB.
+Default value: 0.
+        :type IsDelayLive: int
+        """
+        self.DomainName = None
+        self.DomainType = None
+        self.PlayType = None
+        self.IsDelayLive = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.DomainType = params.get("DomainType")
+        self.PlayType = params.get("PlayType")
+        self.IsDelayLive = params.get("IsDelayLive")
+
+
+class AddLiveDomainResponse(AbstractModel):
+    """AddLiveDomain response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AddLiveWatermarkRequest(AbstractModel):
+    """AddLiveWatermark request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PictureUrl: Watermark image URL.
+        :type PictureUrl: str
+        :param WatermarkName: Watermark name.
+        :type WatermarkName: str
+        :param XPosition: Display position: X-axis offset.
+        :type XPosition: int
+        :param YPosition: Display position: Y-axis offset.
+        :type YPosition: int
+        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions.
+        :type Width: int
+        :param Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions.
+        :type Height: int
+        """
+        self.PictureUrl = None
+        self.WatermarkName = None
+        self.XPosition = None
+        self.YPosition = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.PictureUrl = params.get("PictureUrl")
+        self.WatermarkName = params.get("WatermarkName")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
+class AddLiveWatermarkResponse(AbstractModel):
+    """AddLiveWatermark response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: Watermark ID.
+        :type WatermarkId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.WatermarkId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+        self.RequestId = params.get("RequestId")
+
+
+class BindLiveDomainCertRequest(AbstractModel):
+    """BindLiveDomainCert request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: Certificate ID, which can be obtained through the `CreateLiveCert` API.
+        :type CertId: int
+        :param DomainName: Playback domain name.
+        :type DomainName: str
+        :param Status: Status. 0: off, 1: on.
+        :type Status: int
+        """
+        self.CertId = None
+        self.DomainName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.DomainName = params.get("DomainName")
+        self.Status = params.get("Status")
+
+
+class BindLiveDomainCertResponse(AbstractModel):
+    """BindLiveDomainCert response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CallBackRuleInfo(AbstractModel):
+    """Rule information
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateTime: Rule creation time.
+        :type CreateTime: str
+        :param UpdateTime: Rule update time.
+        :type UpdateTime: str
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        :param DomainName: Push domain name.
+        :type DomainName: str
+        :param AppName: Push path.
+        :type AppName: str
+        """
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.TemplateId = None
+        self.DomainName = None
+        self.AppName = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.TemplateId = params.get("TemplateId")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+
+
+class CallBackTemplateInfo(AbstractModel):
+    """Callback template information
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        :param TemplateName: Template name.
+        :type TemplateName: str
+        :param Description: Description.
+        :type Description: str
+        :param StreamBeginNotifyUrl: Stream starting callback URL.
+        :type StreamBeginNotifyUrl: str
+        :param StreamEndNotifyUrl: Stream ending callback URL.
+        :type StreamEndNotifyUrl: str
+        :param StreamMixNotifyUrl: Stream mixing callback URL.
+        :type StreamMixNotifyUrl: str
+        :param RecordNotifyUrl: Recording callback URL.
+        :type RecordNotifyUrl: str
+        :param SnapshotNotifyUrl: Screencapturing callback URL.
+        :type SnapshotNotifyUrl: str
+        :param PornCensorshipNotifyUrl: Porn detection callback URL.
+        :type PornCensorshipNotifyUrl: str
+        :param CallbackKey: Callback authentication key.
+        :type CallbackKey: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+        self.StreamBeginNotifyUrl = None
+        self.StreamEndNotifyUrl = None
+        self.StreamMixNotifyUrl = None
+        self.RecordNotifyUrl = None
+        self.SnapshotNotifyUrl = None
+        self.PornCensorshipNotifyUrl = None
+        self.CallbackKey = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
+        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
+        self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
+        self.RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
+        self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+        self.CallbackKey = params.get("CallbackKey")
+
+
+class CertInfo(AbstractModel):
+    """Certificate information
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: Certificate ID.
+        :type CertId: int
+        :param CertName: Certificate name.
+        :type CertName: str
+        :param Description: Description.
+        :type Description: str
+        :param CreateTime: Creation time in UTC format.
+        :type CreateTime: str
+        :param HttpsCrt: Certificate content.
+        :type HttpsCrt: str
+        :param CertType: Certificate type.
+0: Tencent Cloud-hosted certificate
+1: user-added certificate.
+        :type CertType: int
+        :param CertExpireTime: Certificate expiration time in UTC format.
+        :type CertExpireTime: str
+        :param DomainList: List of domain names that use this certificate.
+        :type DomainList: list of str
+        """
+        self.CertId = None
+        self.CertName = None
+        self.Description = None
+        self.CreateTime = None
+        self.HttpsCrt = None
+        self.CertType = None
+        self.CertExpireTime = None
+        self.DomainList = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.CertName = params.get("CertName")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.HttpsCrt = params.get("HttpsCrt")
+        self.CertType = params.get("CertType")
+        self.CertExpireTime = params.get("CertExpireTime")
+        self.DomainList = params.get("DomainList")
+
+
+class CreateLiveCallbackRuleRequest(AbstractModel):
+    """CreateLiveCallbackRule request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Push domain name.
+        :type DomainName: str
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :type AppName: str
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.TemplateId = params.get("TemplateId")
+
+
+class CreateLiveCallbackRuleResponse(AbstractModel):
+    """CreateLiveCallbackRule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveCallbackTemplateRequest(AbstractModel):
+    """CreateLiveCallbackTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateName: Template name, which is a non-empty string.
+Maximum length: 255 bytes.
+        :type TemplateName: str
+        :param Description: Description.
+Maximum length: 1,024 bytes.
+        :type Description: str
+        :param StreamBeginNotifyUrl: Stream starting callback URL,
+Protocol-related document: [Event Message Notification](/document/product/267/32744).
+        :type StreamBeginNotifyUrl: str
+        :param StreamEndNotifyUrl: Stream ending callback URL,
+Protocol-related document: [Event Message Notification](/document/product/267/32744).
+        :type StreamEndNotifyUrl: str
+        :param RecordNotifyUrl: Recording callback URL,
+Protocol-related document: [Event Message Notification](/document/product/267/32744).
+        :type RecordNotifyUrl: str
+        :param SnapshotNotifyUrl: Screencapturing callback URL,
+Protocol-related document: [Event Message Notification](/document/product/267/32744).
+        :type SnapshotNotifyUrl: str
+        :param PornCensorshipNotifyUrl: Porn detection callback URL,
+Protocol-related document: [Event Message Notification](/document/product/267/32741).
+        :type PornCensorshipNotifyUrl: str
+        :param CallbackKey: Callback key, which is shared by callback URLs. For more information on authentication callback, please see the callback format document
+        :type CallbackKey: str
+        """
+        self.TemplateName = None
+        self.Description = None
+        self.StreamBeginNotifyUrl = None
+        self.StreamEndNotifyUrl = None
+        self.RecordNotifyUrl = None
+        self.SnapshotNotifyUrl = None
+        self.PornCensorshipNotifyUrl = None
+        self.CallbackKey = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
+        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
+        self.RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
+        self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+        self.CallbackKey = params.get("CallbackKey")
+
+
+class CreateLiveCallbackTemplateResponse(AbstractModel):
+    """CreateLiveCallbackTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveCertRequest(AbstractModel):
+    """CreateLiveCert request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CertType: Certificate type. 0: user-added certificate, 1: Tencent Cloud-hosted certificate.
+Note: if the certificate type is 0, `HttpsCrt` and `HttpsKey` are required;
+If the certificate type is 1, the certificate corresponding to `CloudCertId` will be used first. If `CloudCertId` is empty, `HttpsCrt` and `HttpsKey` will be used.
+        :type CertType: int
+        :param CertName: Certificate name.
+        :type CertName: str
+        :param HttpsCrt: Certificate content, i.e., public key.
+        :type HttpsCrt: str
+        :param HttpsKey: Private key.
+        :type HttpsKey: str
+        :param Description: Description.
+        :type Description: str
+        :param CloudCertId: Tencent Cloud-hosted certificate ID.
+        :type CloudCertId: str
+        """
+        self.CertType = None
+        self.CertName = None
+        self.HttpsCrt = None
+        self.HttpsKey = None
+        self.Description = None
+        self.CloudCertId = None
+
+
+    def _deserialize(self, params):
+        self.CertType = params.get("CertType")
+        self.CertName = params.get("CertName")
+        self.HttpsCrt = params.get("HttpsCrt")
+        self.HttpsKey = params.get("HttpsKey")
+        self.Description = params.get("Description")
+        self.CloudCertId = params.get("CloudCertId")
+
+
+class CreateLiveCertResponse(AbstractModel):
+    """CreateLiveCert response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: Certificate ID
+        :type CertId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CertId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLiveRecordRequest(AbstractModel):
     """CreateLiveRecord request structure.
 
@@ -290,6 +753,126 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLiveSnapshotRuleRequest(AbstractModel):
+    """CreateLiveSnapshotRule request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Push domain name.
+        :type DomainName: str
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :type AppName: str
+        :param StreamName: Stream name.
+Note: if this parameter is a non-empty string, the rule will take effect only for the particular stream.
+        :type StreamName: str
+        """
+        self.DomainName = None
+        self.TemplateId = None
+        self.AppName = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.TemplateId = params.get("TemplateId")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+
+
+class CreateLiveSnapshotRuleResponse(AbstractModel):
+    """CreateLiveSnapshotRule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveSnapshotTemplateRequest(AbstractModel):
+    """CreateLiveSnapshotTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateName: Template name, which is a non-empty string.
+Maximum length: 255 bytes.
+        :type TemplateName: str
+        :param CosAppId: COS `AppId`.
+        :type CosAppId: int
+        :param CosBucket: COS bucket name.
+        :type CosBucket: str
+        :param CosRegion: COS region.
+        :type CosRegion: str
+        :param Description: Description.
+Maximum length: 1,024 bytes.
+        :type Description: str
+        :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
+Value range: 5–600s.
+        :type SnapshotInterval: int
+        :param Width: Screenshot width. Default value: 0 (original width).
+        :type Width: int
+        :param Height: Screenshot height. Default value: 0 (original height).
+        :type Height: int
+        :param PornFlag: Whether to enable porn detection. 0: no, 1: yes. Default value: 0
+        :type PornFlag: int
+        """
+        self.TemplateName = None
+        self.CosAppId = None
+        self.CosBucket = None
+        self.CosRegion = None
+        self.Description = None
+        self.SnapshotInterval = None
+        self.Width = None
+        self.Height = None
+        self.PornFlag = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.CosAppId = params.get("CosAppId")
+        self.CosBucket = params.get("CosBucket")
+        self.CosRegion = params.get("CosRegion")
+        self.Description = params.get("Description")
+        self.SnapshotInterval = params.get("SnapshotInterval")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.PornFlag = params.get("PornFlag")
+
+
+class CreateLiveSnapshotTemplateResponse(AbstractModel):
+    """CreateLiveSnapshotTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLiveTranscodeRuleRequest(AbstractModel):
     """CreateLiveTranscodeRule request structure.
 
@@ -299,7 +882,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
         """
         :param DomainName: Playback domain name.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you only bind a domain name, leave this parameter empty.
         :type AppName: str
         :param StreamName: Stream name. If only the domain name or path is bound, leave this parameter blank.
         :type StreamName: str
@@ -380,9 +963,9 @@ baseline/main/high. Default value: baseline.
         :type HeightToOrig: int
         :param FpsToOrig: Whether to not exceed the original frame rate. 0: no; 1: yes. Default value: 0.
         :type FpsToOrig: int
-        :param AiTransCode: Whether it is a TESHD template. 0: no; 1: yes. Default value: 0.
+        :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
         :type AiTransCode: int
-        :param AdaptBitratePercent: VideoBitrate minus TESHD bitrate. Value range: 0.1–0.5.
+        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1–0.5.
         :type AdaptBitratePercent: float
         """
         self.TemplateName = None
@@ -449,6 +1032,52 @@ class CreateLiveTranscodeTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLiveWatermarkRuleRequest(AbstractModel):
+    """CreateLiveWatermarkRule request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Push domain name.
+        :type DomainName: str
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :type AppName: str
+        :param StreamName: Stream name.
+        :type StreamName: str
+        :param TemplateId: Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](/document/product/267/30154) API.
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.TemplateId = params.get("TemplateId")
+
+
+class CreateLiveWatermarkRuleResponse(AbstractModel):
+    """CreateLiveWatermarkRule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DelayInfo(AbstractModel):
     """Information of the delayed playback
 
@@ -494,6 +1123,150 @@ Example: 2019-06-18T12:00:00Z (20:00:00, June 18, 2019, Beijing time).
         self.CreateTime = params.get("CreateTime")
         self.ExpireTime = params.get("ExpireTime")
         self.Status = params.get("Status")
+
+
+class DeleteLiveCallbackRuleRequest(AbstractModel):
+    """DeleteLiveCallbackRule request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Push domain name.
+        :type DomainName: str
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :type AppName: str
+        """
+        self.DomainName = None
+        self.AppName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+
+
+class DeleteLiveCallbackRuleResponse(AbstractModel):
+    """DeleteLiveCallbackRule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveCallbackTemplateRequest(AbstractModel):
+    """DeleteLiveCallbackTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeleteLiveCallbackTemplateResponse(AbstractModel):
+    """DeleteLiveCallbackTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveCertRequest(AbstractModel):
+    """DeleteLiveCert request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: Certificate ID.
+        :type CertId: int
+        """
+        self.CertId = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+
+
+class DeleteLiveCertResponse(AbstractModel):
+    """DeleteLiveCert response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveDomainRequest(AbstractModel):
+    """DeleteLiveDomain request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Domain name to be deleted.
+        :type DomainName: str
+        :param DomainType: Type. 0: push, 1: playback.
+        :type DomainType: int
+        """
+        self.DomainName = None
+        self.DomainType = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.DomainType = params.get("DomainType")
+
+
+class DeleteLiveDomainResponse(AbstractModel):
+    """DeleteLiveDomain response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteLiveRecordRequest(AbstractModel):
@@ -613,6 +1386,82 @@ class DeleteLiveRecordTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLiveSnapshotRuleRequest(AbstractModel):
+    """DeleteLiveSnapshotRule request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Push domain name.
+        :type DomainName: str
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :type AppName: str
+        :param StreamName: Stream name.
+        :type StreamName: str
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+
+
+class DeleteLiveSnapshotRuleResponse(AbstractModel):
+    """DeleteLiveSnapshotRule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveSnapshotTemplateRequest(AbstractModel):
+    """DeleteLiveSnapshotTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeleteLiveSnapshotTemplateResponse(AbstractModel):
+    """DeleteLiveSnapshotTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteLiveTranscodeRuleRequest(AbstractModel):
     """DeleteLiveTranscodeRule request structure.
 
@@ -697,6 +1546,258 @@ class DeleteLiveTranscodeTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLiveWatermarkRequest(AbstractModel):
+    """DeleteLiveWatermark request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: Watermark ID.
+        :type WatermarkId: int
+        """
+        self.WatermarkId = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+
+
+class DeleteLiveWatermarkResponse(AbstractModel):
+    """DeleteLiveWatermark response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveWatermarkRuleRequest(AbstractModel):
+    """DeleteLiveWatermarkRule request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Push domain name.
+        :type DomainName: str
+        :param AppName: Push path.
+        :type AppName: str
+        :param StreamName: Stream name.
+        :type StreamName: str
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+
+
+class DeleteLiveWatermarkRuleResponse(AbstractModel):
+    """DeleteLiveWatermarkRule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveCallbackRulesRequest(AbstractModel):
+    """DescribeLiveCallbackRules request structure.
+
+    """
+
+
+class DescribeLiveCallbackRulesResponse(AbstractModel):
+    """DescribeLiveCallbackRules response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: Rule information list.
+        :type Rules: list of CallBackRuleInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = CallBackRuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveCallbackTemplateRequest(AbstractModel):
+    """DescribeLiveCallbackTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DescribeLiveCallbackTemplateResponse(AbstractModel):
+    """DescribeLiveCallbackTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Template: Callback template information.
+        :type Template: :class:`tencentcloud.live.v20180801.models.CallBackTemplateInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Template = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = CallBackTemplateInfo()
+            self.Template._deserialize(params.get("Template"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveCallbackTemplatesRequest(AbstractModel):
+    """DescribeLiveCallbackTemplates request structure.
+
+    """
+
+
+class DescribeLiveCallbackTemplatesResponse(AbstractModel):
+    """DescribeLiveCallbackTemplates response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Templates: Template information list.
+        :type Templates: list of CallBackTemplateInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Templates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = CallBackTemplateInfo()
+                obj._deserialize(item)
+                self.Templates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveCertRequest(AbstractModel):
+    """DescribeLiveCert request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: Certificate ID.
+        :type CertId: int
+        """
+        self.CertId = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+
+
+class DescribeLiveCertResponse(AbstractModel):
+    """DescribeLiveCert response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CertInfo: Certificate information.
+        :type CertInfo: :class:`tencentcloud.live.v20180801.models.CertInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CertInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CertInfo") is not None:
+            self.CertInfo = CertInfo()
+            self.CertInfo._deserialize(params.get("CertInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveCertsRequest(AbstractModel):
+    """DescribeLiveCerts request structure.
+
+    """
+
+
+class DescribeLiveCertsResponse(AbstractModel):
+    """DescribeLiveCerts response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CertInfoSet: Certificate information list.
+        :type CertInfoSet: list of CertInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CertInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CertInfoSet") is not None:
+            self.CertInfoSet = []
+            for item in params.get("CertInfoSet"):
+                obj = CertInfo()
+                obj._deserialize(item)
+                self.CertInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveDelayInfoListRequest(AbstractModel):
     """DescribeLiveDelayInfoList request structure.
 
@@ -726,6 +1827,153 @@ class DescribeLiveDelayInfoListResponse(AbstractModel):
                 obj = DelayInfo()
                 obj._deserialize(item)
                 self.DelayInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveDomainCertRequest(AbstractModel):
+    """DescribeLiveDomainCert request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Playback domain name.
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class DescribeLiveDomainCertResponse(AbstractModel):
+    """DescribeLiveDomainCert response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainCertInfo: Certificate information.
+        :type DomainCertInfo: :class:`tencentcloud.live.v20180801.models.DomainCertInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DomainCertInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainCertInfo") is not None:
+            self.DomainCertInfo = DomainCertInfo()
+            self.DomainCertInfo._deserialize(params.get("DomainCertInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveDomainRequest(AbstractModel):
+    """DescribeLiveDomain request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Domain name.
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class DescribeLiveDomainResponse(AbstractModel):
+    """DescribeLiveDomain response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainInfo: Domain name information.
+        :type DomainInfo: :class:`tencentcloud.live.v20180801.models.DomainInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DomainInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainInfo") is not None:
+            self.DomainInfo = DomainInfo()
+            self.DomainInfo._deserialize(params.get("DomainInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveDomainsRequest(AbstractModel):
+    """DescribeLiveDomains request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainStatus: Filter by domain name status. 0: disabled, 1: enabled.
+        :type DomainStatus: int
+        :param DomainType: Filter by domain name type. 0: push. 1: playback
+        :type DomainType: int
+        :param PageSize: Number of entries per page. Value range: 10–100. Default value: 10.
+        :type PageSize: int
+        :param PageNum: Page number to get. Value range: 1–100000. Default value: 1.
+        :type PageNum: int
+        :param IsDelayLive: 0: LVB, 1: LCB. Default value: 0.
+        :type IsDelayLive: int
+        :param DomainPrefix: Domain name prefix.
+        :type DomainPrefix: str
+        """
+        self.DomainStatus = None
+        self.DomainType = None
+        self.PageSize = None
+        self.PageNum = None
+        self.IsDelayLive = None
+        self.DomainPrefix = None
+
+
+    def _deserialize(self, params):
+        self.DomainStatus = params.get("DomainStatus")
+        self.DomainType = params.get("DomainType")
+        self.PageSize = params.get("PageSize")
+        self.PageNum = params.get("PageNum")
+        self.IsDelayLive = params.get("IsDelayLive")
+        self.DomainPrefix = params.get("DomainPrefix")
+
+
+class DescribeLiveDomainsResponse(AbstractModel):
+    """DescribeLiveDomains response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AllCount: Total number of results.
+        :type AllCount: int
+        :param DomainList: List of domain name details.
+        :type DomainList: list of DomainInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AllCount = None
+        self.DomainList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AllCount = params.get("AllCount")
+        if params.get("DomainList") is not None:
+            self.DomainList = []
+            for item in params.get("DomainList"):
+                obj = DomainInfo()
+                obj._deserialize(item)
+                self.DomainList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -989,6 +2237,110 @@ class DescribeLiveRecordTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveSnapshotRulesRequest(AbstractModel):
+    """DescribeLiveSnapshotRules request structure.
+
+    """
+
+
+class DescribeLiveSnapshotRulesResponse(AbstractModel):
+    """DescribeLiveSnapshotRules response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: Rule list.
+        :type Rules: list of RuleInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveSnapshotTemplateRequest(AbstractModel):
+    """DescribeLiveSnapshotTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DescribeLiveSnapshotTemplateResponse(AbstractModel):
+    """DescribeLiveSnapshotTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Template: Screencapturing template information.
+        :type Template: :class:`tencentcloud.live.v20180801.models.SnapshotTemplateInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Template = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = SnapshotTemplateInfo()
+            self.Template._deserialize(params.get("Template"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveSnapshotTemplatesRequest(AbstractModel):
+    """DescribeLiveSnapshotTemplates request structure.
+
+    """
+
+
+class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
+    """DescribeLiveSnapshotTemplates response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Templates: Screencapturing template list.
+        :type Templates: list of SnapshotTemplateInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Templates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = SnapshotTemplateInfo()
+                obj._deserialize(item)
+                self.Templates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveStreamEventListRequest(AbstractModel):
     """DescribeLiveStreamEventList request structure.
 
@@ -1109,9 +2461,9 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
+        :param DomainName: Push domain name. If you use multiple paths, enter the `DomainName`.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you use multiple paths, enter the `AppName`.
         :type AppName: str
         :param PageNum: Page number to get. Default value: 1.
         :type PageNum: int
@@ -1424,6 +2776,228 @@ class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveWatermarkRequest(AbstractModel):
+    """DescribeLiveWatermark request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: Watermark ID.
+        :type WatermarkId: int
+        """
+        self.WatermarkId = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+
+
+class DescribeLiveWatermarkResponse(AbstractModel):
+    """DescribeLiveWatermark response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Watermark: Watermark information.
+        :type Watermark: :class:`tencentcloud.live.v20180801.models.WatermarkInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Watermark = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Watermark") is not None:
+            self.Watermark = WatermarkInfo()
+            self.Watermark._deserialize(params.get("Watermark"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveWatermarkRulesRequest(AbstractModel):
+    """DescribeLiveWatermarkRules request structure.
+
+    """
+
+
+class DescribeLiveWatermarkRulesResponse(AbstractModel):
+    """DescribeLiveWatermarkRules response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: Watermarking rule list.
+        :type Rules: list of RuleInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveWatermarksRequest(AbstractModel):
+    """DescribeLiveWatermarks request structure.
+
+    """
+
+
+class DescribeLiveWatermarksResponse(AbstractModel):
+    """DescribeLiveWatermarks response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalNum: Total number of watermarks.
+        :type TotalNum: int
+        :param WatermarkList: Watermark information list.
+        :type WatermarkList: list of WatermarkInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalNum = None
+        self.WatermarkList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalNum = params.get("TotalNum")
+        if params.get("WatermarkList") is not None:
+            self.WatermarkList = []
+            for item in params.get("WatermarkList"):
+                obj = WatermarkInfo()
+                obj._deserialize(item)
+                self.WatermarkList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DomainCertInfo(AbstractModel):
+    """Domain name certificate information
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: Certificate ID.
+        :type CertId: int
+        :param CertName: Certificate name.
+        :type CertName: str
+        :param Description: Description.
+        :type Description: str
+        :param CreateTime: Creation time in UTC format.
+        :type CreateTime: str
+        :param HttpsCrt: Certificate content.
+        :type HttpsCrt: str
+        :param CertType: Certificate type.
+0: user-added certificate
+1: Tencent Cloud-hosted certificate.
+        :type CertType: int
+        :param CertExpireTime: Certificate expiration time in UTC format.
+        :type CertExpireTime: str
+        :param DomainName: Domain name that uses this certificate.
+        :type DomainName: str
+        :param Status: Certificate status
+        :type Status: int
+        """
+        self.CertId = None
+        self.CertName = None
+        self.Description = None
+        self.CreateTime = None
+        self.HttpsCrt = None
+        self.CertType = None
+        self.CertExpireTime = None
+        self.DomainName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.CertName = params.get("CertName")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.HttpsCrt = params.get("HttpsCrt")
+        self.CertType = params.get("CertType")
+        self.CertExpireTime = params.get("CertExpireTime")
+        self.DomainName = params.get("DomainName")
+        self.Status = params.get("Status")
+
+
+class DomainInfo(AbstractModel):
+    """LVB domain name information
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: LVB domain name
+        :type Name: str
+        :param Type: Domain name type. 0: push, 1: playback
+        :type Type: int
+        :param Status: Domain name status. 0: disabled, 1: enabled.
+        :type Status: int
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param BCName: Whether there is a CNAME record pointing to a fixed rule. 0: no, 1: yes.
+        :type BCName: int
+        :param TargetDomain: Domain name corresponding to the CNAME record
+        :type TargetDomain: str
+        :param PlayType: Playback region. This parameter is valid only if `Type` is 1.
+1: Mainland China, 2: global, 3: outside Mainland China.
+        :type PlayType: int
+        :param IsDelayLive: 0: LVB,
+1: LCB.
+        :type IsDelayLive: int
+        :param CurrentCName: Information of currently used CNAME record
+        :type CurrentCName: str
+        :param RentTag: Whether it is a leased domain name
+        :type RentTag: int
+        :param RentExpireTime: Expiration time of leased domain name
+        :type RentExpireTime: str
+        :param IsMiniProgramLive: 
+        :type IsMiniProgramLive: int
+        """
+        self.Name = None
+        self.Type = None
+        self.Status = None
+        self.CreateTime = None
+        self.BCName = None
+        self.TargetDomain = None
+        self.PlayType = None
+        self.IsDelayLive = None
+        self.CurrentCName = None
+        self.RentTag = None
+        self.RentExpireTime = None
+        self.IsMiniProgramLive = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.BCName = params.get("BCName")
+        self.TargetDomain = params.get("TargetDomain")
+        self.PlayType = params.get("PlayType")
+        self.IsDelayLive = params.get("IsDelayLive")
+        self.CurrentCName = params.get("CurrentCName")
+        self.RentTag = params.get("RentTag")
+        self.RentExpireTime = params.get("RentExpireTime")
+        self.IsMiniProgramLive = params.get("IsMiniProgramLive")
+
+
 class DropLiveStreamRequest(AbstractModel):
     """DropLiveStream request structure.
 
@@ -1451,6 +3025,74 @@ class DropLiveStreamRequest(AbstractModel):
 
 class DropLiveStreamResponse(AbstractModel):
     """DropLiveStream response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableLiveDomainRequest(AbstractModel):
+    """EnableLiveDomain request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: LVB domain name to be enabled.
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class EnableLiveDomainResponse(AbstractModel):
+    """EnableLiveDomain response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ForbidLiveDomainRequest(AbstractModel):
+    """ForbidLiveDomain request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: LVB domain name to be disabled.
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class ForbidLiveDomainResponse(AbstractModel):
+    """ForbidLiveDomain response structure.
 
     """
 
@@ -1563,6 +3205,168 @@ class HlsSpecialParam(AbstractModel):
         self.FlowContinueDuration = params.get("FlowContinueDuration")
 
 
+class ModifyLiveCallbackTemplateRequest(AbstractModel):
+    """ModifyLiveCallbackTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        :param TemplateName: Template name.
+        :type TemplateName: str
+        :param Description: Description.
+        :type Description: str
+        :param StreamBeginNotifyUrl: Stream starting callback URL.
+        :type StreamBeginNotifyUrl: str
+        :param StreamEndNotifyUrl: Stream ending callback URL.
+        :type StreamEndNotifyUrl: str
+        :param RecordNotifyUrl: Recording callback URL.
+        :type RecordNotifyUrl: str
+        :param SnapshotNotifyUrl: Screencapturing callback URL.
+        :type SnapshotNotifyUrl: str
+        :param PornCensorshipNotifyUrl: Porn detection callback URL.
+        :type PornCensorshipNotifyUrl: str
+        :param CallbackKey: Callback key, which is shared by callback URLs. For more information on authentication callback, please see the callback format document.
+        :type CallbackKey: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+        self.StreamBeginNotifyUrl = None
+        self.StreamEndNotifyUrl = None
+        self.RecordNotifyUrl = None
+        self.SnapshotNotifyUrl = None
+        self.PornCensorshipNotifyUrl = None
+        self.CallbackKey = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
+        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
+        self.RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
+        self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+        self.CallbackKey = params.get("CallbackKey")
+
+
+class ModifyLiveCallbackTemplateResponse(AbstractModel):
+    """ModifyLiveCallbackTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveCertRequest(AbstractModel):
+    """ModifyLiveCert request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: Certificate ID.
+        :type CertId: str
+        :param CertType: Certificate type. 0: user-added certificate, 1: Tencent Cloud-hosted certificate.
+        :type CertType: int
+        :param CertName: Certificate name.
+        :type CertName: str
+        :param HttpsCrt: Certificate content, i.e., public key.
+        :type HttpsCrt: str
+        :param HttpsKey: Private key.
+        :type HttpsKey: str
+        :param Description: Description.
+        :type Description: str
+        """
+        self.CertId = None
+        self.CertType = None
+        self.CertName = None
+        self.HttpsCrt = None
+        self.HttpsKey = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.CertType = params.get("CertType")
+        self.CertName = params.get("CertName")
+        self.HttpsCrt = params.get("HttpsCrt")
+        self.HttpsKey = params.get("HttpsKey")
+        self.Description = params.get("Description")
+
+
+class ModifyLiveCertResponse(AbstractModel):
+    """ModifyLiveCert response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveDomainCertRequest(AbstractModel):
+    """ModifyLiveDomainCert request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Playback domain name.
+        :type DomainName: str
+        :param CertId: Certificate ID.
+        :type CertId: int
+        :param Status: Status. 0: off, 1: on.
+        :type Status: int
+        """
+        self.DomainName = None
+        self.CertId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.CertId = params.get("CertId")
+        self.Status = params.get("Status")
+
+
+class ModifyLiveDomainCertResponse(AbstractModel):
+    """ModifyLiveDomainCert response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLivePlayAuthKeyRequest(AbstractModel):
     """ModifyLivePlayAuthKey request structure.
 
@@ -1598,6 +3402,44 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
 class ModifyLivePlayAuthKeyResponse(AbstractModel):
     """ModifyLivePlayAuthKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLivePlayDomainRequest(AbstractModel):
+    """ModifyLivePlayDomain request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Playback domain name.
+        :type DomainName: str
+        :param PlayType: Pull domain name type. 1: Mainland China. 2: global, 3: outside Mainland China
+        :type PlayType: int
+        """
+        self.DomainName = None
+        self.PlayType = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.PlayType = params.get("PlayType")
+
+
+class ModifyLivePlayDomainResponse(AbstractModel):
+    """ModifyLivePlayDomain response structure.
 
     """
 
@@ -1726,6 +3568,79 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
 class ModifyLiveRecordTemplateResponse(AbstractModel):
     """ModifyLiveRecordTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveSnapshotTemplateRequest(AbstractModel):
+    """ModifyLiveSnapshotTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        :param TemplateName: Template name.
+Maximum length: 255 bytes.
+        :type TemplateName: str
+        :param Description: Description.
+Maximum length: 1,024 bytes.
+        :type Description: str
+        :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
+Value range: 5–600s.
+        :type SnapshotInterval: int
+        :param Width: Screenshot width. Default value: 0 (original width).
+        :type Width: int
+        :param Height: Screenshot height. Default value: 0 (original height).
+        :type Height: int
+        :param PornFlag: Whether to enable porn detection. 0: no, 1: yes.
+        :type PornFlag: int
+        :param CosAppId: COS `AppId`.
+        :type CosAppId: int
+        :param CosBucket: COS bucket name.
+        :type CosBucket: str
+        :param CosRegion: COS region.
+        :type CosRegion: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+        self.SnapshotInterval = None
+        self.Width = None
+        self.Height = None
+        self.PornFlag = None
+        self.CosAppId = None
+        self.CosBucket = None
+        self.CosRegion = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.SnapshotInterval = params.get("SnapshotInterval")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.PornFlag = params.get("PornFlag")
+        self.CosAppId = params.get("CosAppId")
+        self.CosBucket = params.get("CosBucket")
+        self.CosRegion = params.get("CosRegion")
+
+
+class ModifyLiveSnapshotTemplateResponse(AbstractModel):
+    """ModifyLiveSnapshotTemplate response structure.
 
     """
 
@@ -1948,16 +3863,20 @@ In seconds. Value range: 0–93,312,000.
         :type StorageTime: int
         :param Enable: Whether to enable recording in the current format. 0: no; 1: yes. Default value: 0.
         :type Enable: int
+        :param VodSubAppId: VOD subapplication ID.
+        :type VodSubAppId: int
         """
         self.RecordInterval = None
         self.StorageTime = None
         self.Enable = None
+        self.VodSubAppId = None
 
 
     def _deserialize(self, params):
         self.RecordInterval = params.get("RecordInterval")
         self.StorageTime = params.get("StorageTime")
         self.Enable = params.get("Enable")
+        self.VodSubAppId = params.get("VodSubAppId")
 
 
 class RecordTemplateInfo(AbstractModel):
@@ -2145,6 +4064,59 @@ class RuleInfo(AbstractModel):
         self.DomainName = params.get("DomainName")
         self.AppName = params.get("AppName")
         self.StreamName = params.get("StreamName")
+
+
+class SnapshotTemplateInfo(AbstractModel):
+    """Screencapturing template information
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: Template ID.
+        :type TemplateId: int
+        :param TemplateName: Template name.
+        :type TemplateName: str
+        :param SnapshotInterval: Screencapturing interval in seconds. Value range: 5–300s.
+        :type SnapshotInterval: int
+        :param Width: Screenshot width. Value range: 0–3000. 0: original width and fit to the original aspect ratio
+        :type Width: int
+        :param Height: Screenshot height. Value range: 0–2,000. 0: original height and fit to the original aspect ratio
+        :type Height: int
+        :param PornFlag: Whether to enable porn detection. 0: no, 1: yes.
+        :type PornFlag: int
+        :param CosAppId: COS `AppId`.
+        :type CosAppId: int
+        :param CosBucket: COS bucket name.
+        :type CosBucket: str
+        :param CosRegion: COS region.
+        :type CosRegion: str
+        :param Description: Template description
+        :type Description: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.SnapshotInterval = None
+        self.Width = None
+        self.Height = None
+        self.PornFlag = None
+        self.CosAppId = None
+        self.CosBucket = None
+        self.CosRegion = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.SnapshotInterval = params.get("SnapshotInterval")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.PornFlag = params.get("PornFlag")
+        self.CosAppId = params.get("CosAppId")
+        self.CosBucket = params.get("CosBucket")
+        self.CosRegion = params.get("CosRegion")
+        self.Description = params.get("Description")
 
 
 class StopLiveRecordRequest(AbstractModel):
@@ -2419,3 +4391,144 @@ baseline/main/high.
         self.Description = params.get("Description")
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
+
+
+class UnBindLiveDomainCertRequest(AbstractModel):
+    """UnBindLiveDomainCert request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Playback domain name.
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class UnBindLiveDomainCertResponse(AbstractModel):
+    """UnBindLiveDomainCert response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateLiveWatermarkRequest(AbstractModel):
+    """UpdateLiveWatermark request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: Watermark ID.
+        :type WatermarkId: int
+        :param PictureUrl: Watermark image URL.
+        :type PictureUrl: str
+        :param XPosition: Display position: X-axis offset.
+        :type XPosition: int
+        :param YPosition: Display position: Y-axis offset.
+        :type YPosition: int
+        :param WatermarkName: Watermark name.
+        :type WatermarkName: str
+        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions.
+        :type Width: int
+        :param Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions.
+        :type Height: int
+        """
+        self.WatermarkId = None
+        self.PictureUrl = None
+        self.XPosition = None
+        self.YPosition = None
+        self.WatermarkName = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+        self.PictureUrl = params.get("PictureUrl")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+        self.WatermarkName = params.get("WatermarkName")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
+class UpdateLiveWatermarkResponse(AbstractModel):
+    """UpdateLiveWatermark response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class WatermarkInfo(AbstractModel):
+    """Watermark information
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: Watermark ID.
+        :type WatermarkId: int
+        :param PictureUrl: Watermark image URL.
+        :type PictureUrl: str
+        :param XPosition: Display position: X-axis offset.
+        :type XPosition: int
+        :param YPosition: Display position: Y-axis offset.
+        :type YPosition: int
+        :param WatermarkName: Watermark name.
+        :type WatermarkName: str
+        :param Status: Current status. 0: not used. 1: in use.
+        :type Status: int
+        :param CreateTime: Creation time.
+        :type CreateTime: str
+        :param Width: Watermark width
+        :type Width: int
+        :param Height: Watermark height
+        :type Height: int
+        """
+        self.WatermarkId = None
+        self.PictureUrl = None
+        self.XPosition = None
+        self.YPosition = None
+        self.WatermarkName = None
+        self.Status = None
+        self.CreateTime = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+        self.PictureUrl = params.get("PictureUrl")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+        self.WatermarkName = params.get("WatermarkName")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")

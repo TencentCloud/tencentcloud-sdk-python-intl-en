@@ -89,7 +89,7 @@ overseas: acceleration outside mainland China
 global: global acceleration
 Overseas acceleration service must be enabled to use overseas acceleration and global acceleration.
         :type Area: str
-        :param OriginPullTimeout: 
+        :param OriginPullTimeout: Origin-pull timeout configuration
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         """
         self.Domain = None
@@ -565,37 +565,59 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class BriefDomain(AbstractModel):
-    """CDN domain name information
+    """Basic domain configuration information, including CNAME, status, service type, acceleration region, creation time, last modified time, and origin server configuration.
 
     """
 
     def __init__(self):
         """
-        :param ResourceId: Domain name ID.
+        :param ResourceId: Domain name ID
         :type ResourceId: str
-        :param AppId: Tencent Cloud account ID.
+        :param AppId: Tencent Cloud account ID
         :type AppId: int
-        :param Domain: CDN acceleration domain name.
+        :param Domain: Acceleration domain name
         :type Domain: str
-        :param Cname: Domain name CNAME.
+        :param Cname: CNAME address of domain name
         :type Cname: str
-        :param Status: Domain name status. Values include `pending`: under review; `rejected`: failed to pass review; `processing`: passed review and under deployment; `online`: enabled; `offline`: disabled; `deleted`: deleted.
+        :param Status: Acceleration service status
+rejected: the domain name is rejected due to expiration/deregistration of its ICP filing
+processing: deploying
+online: activated
+offline: disabled
         :type Status: str
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID, which can be viewed on the Tencent Cloud project management page
         :type ProjectId: int
-        :param ServiceType: Domain name service type. `web`: static acceleration; `download`: download acceleration; `media`: streaming media acceleration.
+        :param ServiceType: Domain name service type
+web: static acceleration
+download: download acceleration
+media: streaming VOD acceleration
         :type ServiceType: str
-        :param CreateTime: Domain name creation time.
+        :param CreateTime: Domain name creation time
         :type CreateTime: str
-        :param UpdateTime: Domain name update time.
+        :param UpdateTime: Last modified time of domain name
         :type UpdateTime: str
-        :param Origin: Origin server configuration details.
+        :param Origin: Origin server configuration details
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param Disable: Domain name block status. Values include `normal`, `overdue`, `quota`, `malicious`, `ddos`, `idle`, `unlicensed`, `capping`, and `readonly`.
+        :param Disable: Domain name block status
+normal: normal
+overdue: the domain name has been disabled due to account arrears. The acceleration service can be resumed after the account is topped up.
+malicious: the acceleration service has been forcibly disabled due to detection of malicious behavior.
+ddos: the acceleration service has been disabled due to large-scale DDoS attacks to the domain name
+idle: no operations or data has been detected for more than 90 days. The domain name is determined to be inactive which automatically disables the acceleration service. You can restart the service.
+unlicensed: the acceleration service has been automatically disabled as the domain name has no ICP filing or its ICP filing is deregistered. Service can be resumed after an ICP filing is obtained.
+capping: the configured upper limit for bandwidth has been reached.
+readonly: the domain name has a special configuration and has been locked.
         :type Disable: str
-        :param Area: Acceleration region. Values include `mainland`, `overseas`, and `global`.
+        :param Area: Acceleration region
+mainland: acceleration in Mainland China
+overseas: acceleration outside Mainland China
+global: global acceleration
         :type Area: str
-        :param Readonly: Domain name lock status. Values include `normal`: not locked; `mainland`: locked in mainland China; `overseas`: locked outside mainland China; `global`: locked globally.
+        :param Readonly: Domain name lock status
+normal: not locked
+mainland: locked in Mainland China
+overseas: locked outside Mainland China
+global: locked globally
         :type Readonly: str
         """
         self.ResourceId = None
@@ -778,21 +800,27 @@ Alternatively, you can specify a status code for querying.
 
 
 class CdnIp(AbstractModel):
-    """CdnIp attribute details
+    """IP attribute information
 
     """
 
     def __init__(self):
         """
-        :param Ip: IP of the node.
+        :param Ip: IP to be queried
         :type Ip: str
-        :param Platform: Whether the IP is a Tencent Cloud CDN cache node. `yes`: it is a Tencent Cloud CDN cache node; `no`: it is not.
+        :param Platform: IP ownership:
+yes: Tencent Cloud CDN node
+no: non-Tencent Cloud CDN node
         :type Platform: str
-        :param Location: District/country where the node is located. `unknown`: the node location is unknown.
+        :param Location: Node district/country
+unknown: unknown node location
         :type Location: str
-        :param History: Activation and deactivation history of the node.
+        :param History: Node activation and deactivation history
         :type History: list of CdnIpHistory
-        :param Area: Service region of the node. `mainland`: Mainland China; `overseas`: outside Mainland China; `unknown`: unknown
+        :param Area: Node region
+mainland: cache node in Mainland China
+overseas: cache node outside Mainland China
+unknown: service region unknown
         :type Area: str
         """
         self.Ip = None
@@ -816,16 +844,19 @@ class CdnIp(AbstractModel):
 
 
 class CdnIpHistory(AbstractModel):
-    """Activation and deactivation history of a CDN IP node.
+    """CDN node activation and deactivation history
 
     """
 
     def __init__(self):
         """
-        :param Status: Node status. `online`: activated; `offline`: deactivated
+        :param Status: Operation type
+online: node is online
+offline: node is offline
         :type Status: str
-        :param Datetime: Operation time. If its value is `null`, it means there is no status change record.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Datetime: Operation time corresponding to operation type
+If this value is null, there are no status change records
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Datetime: str
         """
         self.Status = None
@@ -1912,115 +1943,137 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DetailDomain(AbstractModel):
-    """Detailed configuration information for CDN domain names.
+    """Complete acceleration domain configuration information
 
     """
 
     def __init__(self):
         """
-        :param ResourceId: Domain name ID.
+        :param ResourceId: Domain name ID
         :type ResourceId: str
-        :param AppId: Tencent Cloud account ID.
+        :param AppId: Tencent Cloud account ID
         :type AppId: int
-        :param Domain: Accelerated domain name.
+        :param Domain: Acceleration domain name
         :type Domain: str
-        :param Cname: Domain name CNAME.
+        :param Cname: CNAME address of domain name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Cname: str
-        :param Status: Domain name status. Values include `pending`: under review; `rejected`: failed to pass review; `processing`: passed review and under deployment; `online`: enabled; `offline`: disabled; `deleted`: deleted.
+        :param Status: Acceleration service status
+rejected: the domain name is rejected due to expiration/deregistration of its ICP filing
+processing: deploying
+online: activated
+offline: disabled
         :type Status: str
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID, which can be viewed on the Tencent Cloud project management page
         :type ProjectId: int
-        :param ServiceType: Domain name service type. `web`: static acceleration; `download`: download acceleration; `media`: streaming media acceleration.
+        :param ServiceType: Domain name service type
+web: static acceleration
+download: download acceleration
+media: streaming VOD acceleration
         :type ServiceType: str
-        :param CreateTime: Domain name creation time.
+        :param CreateTime: Domain name creation time
         :type CreateTime: str
-        :param UpdateTime: Domain name update time.
+        :param UpdateTime: Last modified time of domain name
         :type UpdateTime: str
-        :param Origin: Origin server configuration.
+        :param Origin: Origin server configuration
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param IpFilter: IP blacklist/whitelist configuration.
+        :param IpFilter: IP blacklist/whitelist configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
-        :param IpFreqLimit: IP access limit configuration.
+        :param IpFreqLimit: IP access frequency limit configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
-        :param StatusCodeCache: Status code cache configuration.
+        :param StatusCodeCache: Status code cache configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
-        :param Compression: Smart compression configuration.
+        :param Compression: Smart compression configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
-        :param BandwidthAlert: Bandwidth cap configuration.
+        :param BandwidthAlert: Bandwidth cap configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
-        :param RangeOriginPull: Range GETs configuration.
+        :param RangeOriginPull: Range GETs configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
-        :param FollowRedirect: 301 and 302 automatic origin-pull follow-redirect configuration.
+        :param FollowRedirect: 301/302 origin-pull follow-redirect configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param ErrorPage: Error code redirect configuration.
+        :param ErrorPage: Custom error page configuration (in beta)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
-        :param RequestHeader: Origin-pull request header configuration.
+        :param RequestHeader: Custom request header configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
-        :param ResponseHeader: Origin server response header configuration.
+        :param ResponseHeader: Custom response header configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
-        :param DownstreamCapping: Download speed configuration.
+        :param DownstreamCapping: Single-link downstream speed limit configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
-        :param CacheKey: Node cache configuration.
+        :param CacheKey: Configuration of cache with/without parameter
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
-        :param ResponseHeaderCache: Follows origin server cache header configuration.
+        :param ResponseHeaderCache: Origin server header cache configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
-        :param VideoSeek: Video dragging configuration.
+        :param VideoSeek: Video dragging configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
-        :param Cache: Cache rules configuration.
+        :param Cache: Node cache expiration rule configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param OriginPullOptimization: Cross-border optimization configuration.
+        :param OriginPullOptimization: Cross-border linkage optimization configuration (in beta)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
-        :param Https: HTTPS configuration.
+        :param Https: HTTPS acceleration configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param Authentication: Timestamp hotlink protection configuration.
+        :param Authentication: Timestamp hotlink protection configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
-        :param Seo: SEO configuration.
+        :param Seo: SEO configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
-        :param Disable: Domain name block status. Values include `normal`, `overdue`, `quota`, `malicious`, `ddos`, `idle`, `unlicensed`, `capping`, and `readonly`.
+        :param Disable: Domain name block status
+normal: normal
+overdue: the domain name has been disabled due to account arrears. The acceleration service can be resumed after the account is topped up.
+malicious: the acceleration service has been forcibly disabled due to detection of malicious behavior.
+ddos: the acceleration service has been disabled due to large-scale DDoS attacks to the domain name
+idle: no operations or data has been detected for more than 90 days. The domain name is determined to be inactive which automatically disables the acceleration service. You can restart the service.
+unlicensed: the acceleration service has been automatically disabled as the domain name has no ICP filing or its ICP filing is deregistered. Service can be resumed after an ICP filing is obtained.
+capping: the configured upper limit for bandwidth has been reached.
+readonly: the domain name has a special configuration and has been locked.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Disable: str
-        :param ForceRedirect: Access protocol forced redirect configuration.
+        :param ForceRedirect: Access protocol forced redirect configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
-        :param Referer: Hotlink protection configuration.
+        :param Referer: Referer hotlink protection configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
-        :param MaxAge: Browser cache rules configuration.
+        :param MaxAge: Browser cache expiration rule configuration (in beta)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param Ipv6: IPv6 configuration.
+        :param Ipv6: IPv6 configuration (in beta)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
-        :param Compatibility: Old configuration compatibility check
+        :param Compatibility: Backwards compatibility configuration (compatibility field for internal use)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Compatibility: :class:`tencentcloud.cdn.v20180606.models.Compatibility`
-        :param SpecificConfig: Specific configuration by region.
+        :param SpecificConfig: Region-specific configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
-        :param Area: Acceleration region. Values include `mainland`, `overseas`, and `global`.
+        :param Area: Acceleration region
+mainland: acceleration in Mainland China
+overseas: acceleration outside Mainland China
+global: global acceleration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Area: str
-        :param Readonly: Domain name lock status. Values include `normal`: not locked; `mainland`: locked in mainland China; `overseas`: locked outside mainland China; `global`: locked globally.
+        :param Readonly: Domain name lock status
+normal: not locked
+mainland: locked in Mainland China
+overseas: locked outside Mainland China
+global: locked globally
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Readonly: str
         :param OriginPullTimeout: Origin-pull timeout configuration
@@ -4419,7 +4472,7 @@ mainland: acceleration inside mainland China
 overseas: acceleration outside mainland China
 global: global acceleration
         :type Area: str
-        :param OriginPullTimeout: 
+        :param OriginPullTimeout: Origin-pull timeout configuration
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         :param AwsPrivateAccess: 
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`

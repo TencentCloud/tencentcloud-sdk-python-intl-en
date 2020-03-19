@@ -41,6 +41,94 @@ class COSSettings(AbstractModel):
         self.LogOnCosPath = params.get("LogOnCosPath")
 
 
+class CdbInfo(AbstractModel):
+    """Output parameters
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceName: Database instance
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param Ip: Database IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Ip: str
+        :param Port: Database port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Port: int
+        :param MemSize: Database memory specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MemSize: int
+        :param Volume: Database disk specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Volume: int
+        :param Service: Service flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Service: str
+        :param ExpireTime: Expiration time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param ApplyTime: Application time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ApplyTime: str
+        :param PayType: Payment type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PayType: int
+        :param ExpireFlag: Expiration flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExpireFlag: bool
+        :param Status: Database status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param IsAutoRenew: Renewal flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsAutoRenew: int
+        :param SerialNo: Database string
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SerialNo: str
+        :param ZoneId: ZoneId
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: int
+        :param RegionId: RegionId
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionId: int
+        """
+        self.InstanceName = None
+        self.Ip = None
+        self.Port = None
+        self.MemSize = None
+        self.Volume = None
+        self.Service = None
+        self.ExpireTime = None
+        self.ApplyTime = None
+        self.PayType = None
+        self.ExpireFlag = None
+        self.Status = None
+        self.IsAutoRenew = None
+        self.SerialNo = None
+        self.ZoneId = None
+        self.RegionId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        self.MemSize = params.get("MemSize")
+        self.Volume = params.get("Volume")
+        self.Service = params.get("Service")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ApplyTime = params.get("ApplyTime")
+        self.PayType = params.get("PayType")
+        self.ExpireFlag = params.get("ExpireFlag")
+        self.Status = params.get("Status")
+        self.IsAutoRenew = params.get("IsAutoRenew")
+        self.SerialNo = params.get("SerialNo")
+        self.ZoneId = params.get("ZoneId")
+        self.RegionId = params.get("RegionId")
+
+
 class ClusterInstancesInfo(AbstractModel):
     """Cluster instance information
 
@@ -81,7 +169,34 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SubnetId: Subnet ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubnetId: int
-        :param Status: Status
+        :param Status: Instance status code. Value range:
+<li>2: cluster running</li>
+<li>3: creating cluster.</li>
+<li>4: scaling out cluster.</li>
+<li>5: adding router node in cluster.</li>
+<li>6: installing component in cluster.</li>
+<li>7: cluster executing command.</li>
+<li>8: restarting service.</li>
+<li>9: entering maintenance.</li>
+<li>10: suspending service.</li>
+<li>11: exiting maintenance.</li>
+<li>12: exiting suspension.</li>
+<li>13: delivering configuration.</li>
+<li>14: terminating cluster.</li>
+<li>15: terminating core node.</li>
+<li>16: terminating task node.</li>
+<li>17: terminating router node.</li>
+<li>18: changing webproxy password.</li>
+<li>19: isolating cluster.</li>
+<li>20: resuming cluster.</li>
+<li>21: repossessing cluster.</li>
+<li>22: waiting for configuration adjustment.</li>
+<li>23: cluster isolated.</li>
+<li>24: removing node.</li>
+<li>33: waiting for refund.</li>
+<li>34: refunded.</li>
+<li>301: creation failed.</li>
+<li>302: scale-out failed.</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
         :param AddTime: Creation time
@@ -123,8 +238,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: Tag information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param HiveMetaDb: 
+        :param HiveMetaDb: Hive metadata
+Note: this field may return null, indicating that no valid values can be obtained.
         :type HiveMetaDb: str
+        :param ServiceClass: 
+        :type ServiceClass: str
         """
         self.Id = None
         self.ClusterId = None
@@ -152,6 +270,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.MetaDb = None
         self.Tags = None
         self.HiveMetaDb = None
+        self.ServiceClass = None
 
 
     def _deserialize(self, params):
@@ -188,6 +307,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.HiveMetaDb = params.get("HiveMetaDb")
+        self.ServiceClass = params.get("ServiceClass")
 
 
 class CreateInstanceRequest(AbstractModel):
@@ -239,7 +359,7 @@ class CreateInstanceRequest(AbstractModel):
         :type SgId: str
         :param PreExecutedFileSettings: Bootstrap script settings.
         :type PreExecutedFileSettings: list of PreExecuteFileSettings
-        :param AutoRenew: Auto-renewal flag. Valid values:
+        :param AutoRenew: Whether auto-renewal is enabled. Valid values:
 <li>0: auto-renewal not enabled.</li>
 <li>1: auto-renewal enabled.</li>
         :type AutoRenew: int
@@ -259,6 +379,17 @@ class CreateInstanceRequest(AbstractModel):
         :type Tags: list of Tag
         :param DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.
         :type DisasterRecoverGroupIds: list of str
+        :param CbsEncrypt: CBS disk encryption at the cluster level. 0: not encrypted, 1: encrypted
+        :type CbsEncrypt: int
+        :param MetaType: Hive-shared metadatabase type. Valid values:
+<li>EMR_DEFAULT_META: the cluster creates one by default.</li>
+<li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>
+<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>
+        :type MetaType: str
+        :param UnifyMetaInstanceId: EMR-MetaDB instance
+        :type UnifyMetaInstanceId: str
+        :param MetaDBInfo: Custom MetaDB instance information
+        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
         """
         self.ProductId = None
         self.VPCSettings = None
@@ -282,6 +413,10 @@ class CreateInstanceRequest(AbstractModel):
         self.ExtendFsField = None
         self.Tags = None
         self.DisasterRecoverGroupIds = None
+        self.CbsEncrypt = None
+        self.MetaType = None
+        self.UnifyMetaInstanceId = None
+        self.MetaDBInfo = None
 
 
     def _deserialize(self, params):
@@ -327,6 +462,12 @@ class CreateInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self.CbsEncrypt = params.get("CbsEncrypt")
+        self.MetaType = params.get("MetaType")
+        self.UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
+        if params.get("MetaDBInfo") is not None:
+            self.MetaDBInfo = CustomMetaInfo()
+            self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -343,6 +484,104 @@ class CreateInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CustomMetaInfo(AbstractModel):
+    """User-created Hive-MetaDB instance information
+
+    """
+
+    def __init__(self):
+        """
+        :param MetaDataJdbcUrl: JDBC connection to custom MetaDB instance beginning with `jdbc:mysql://`
+        :type MetaDataJdbcUrl: str
+        :param MetaDataUser: Custom MetaDB instance username
+        :type MetaDataUser: str
+        :param MetaDataPass: Custom MetaDB instance password
+        :type MetaDataPass: str
+        """
+        self.MetaDataJdbcUrl = None
+        self.MetaDataUser = None
+        self.MetaDataPass = None
+
+
+    def _deserialize(self, params):
+        self.MetaDataJdbcUrl = params.get("MetaDataJdbcUrl")
+        self.MetaDataUser = params.get("MetaDataUser")
+        self.MetaDataPass = params.get("MetaDataPass")
+
+
+class DescribeClusterNodesRequest(AbstractModel):
+    """DescribeClusterNodes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Cluster instance ID in the format of emr-xxxxxxxx
+        :type InstanceId: str
+        :param NodeFlag: Node flag. Valid values:
+<li>all: gets the information of nodes in all types except TencentDB information.</li>
+<li>master: gets master node information.</li>
+<li>core: gets core node information.</li>
+<li>task: gets task node information.</li>
+<li>common: gets common node information.</li>
+<li>router: gets router node information.</li>
+<li>db: gets TencentDB information in normal status.</li>
+Note: only the above values are supported for the time being. Entering other values will cause errors.
+        :type NodeFlag: str
+        :param Offset: Page number. Default value: 0, indicating the first page.
+        :type Offset: int
+        :param Limit: Number of returned results per page. Default value: 100. Maximum value: 100
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.NodeFlag = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NodeFlag = params.get("NodeFlag")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeClusterNodesResponse(AbstractModel):
+    """DescribeClusterNodes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCnt: Total number of queried nodes
+        :type TotalCnt: int
+        :param NodeList: List of node details
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NodeList: list of NodeHardwareInfo
+        :param TagKeys: List of tag keys owned by user
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TagKeys: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCnt = None
+        self.NodeList = None
+        self.TagKeys = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("NodeList") is not None:
+            self.NodeList = []
+            for item in params.get("NodeList"):
+                obj = NodeHardwareInfo()
+                obj._deserialize(item)
+                self.NodeList.append(obj)
+        self.TagKeys = params.get("TagKeys")
         self.RequestId = params.get("RequestId")
 
 
@@ -561,6 +800,21 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param MetaType: Hive-shared metadatabase type. Valid values:
+<li>EMR_DEFAULT_META: the cluster creates one by default.</li>
+<li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>
+<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>
+        :type MetaType: str
+        :param UnifyMetaInstanceId: EMR-MetaDB instance
+        :type UnifyMetaInstanceId: str
+        :param MetaDBInfo: Custom MetaDB instance information
+        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
+        :param ProductId: Product ID. Different product IDs represent different EMR product versions. Valid values:
+<li>1: EMR v1.3.1.</li>
+<li>2: EMR v2.0.1.</li>
+<li>4: EMR v2.1.0.</li>
+<li>7: EMR v3.0.0.</li>
+        :type ProductId: int
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -571,6 +825,10 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         self.Software = None
         self.Placement = None
         self.VPCSettings = None
+        self.MetaType = None
+        self.UnifyMetaInstanceId = None
+        self.MetaDBInfo = None
+        self.ProductId = None
 
 
     def _deserialize(self, params):
@@ -589,6 +847,12 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         if params.get("VPCSettings") is not None:
             self.VPCSettings = VPCSettings()
             self.VPCSettings._deserialize(params.get("VPCSettings"))
+        self.MetaType = params.get("MetaType")
+        self.UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
+        if params.get("MetaDBInfo") is not None:
+            self.MetaDBInfo = CustomMetaInfo()
+            self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
+        self.ProductId = params.get("ProductId")
 
 
 class InquiryPriceCreateInstanceResponse(AbstractModel):
@@ -925,6 +1189,34 @@ class MultiDisk(AbstractModel):
         self.Count = params.get("Count")
 
 
+class MultiDiskMC(AbstractModel):
+    """Multi-cloud disk parameters
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: Number of cloud disks in this type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Count: int
+        :param Type: Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Type: int
+        :param Volume: Cloud disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Volume: int
+        """
+        self.Count = None
+        self.Type = None
+        self.Volume = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Type = params.get("Type")
+        self.Volume = params.get("Volume")
+
+
 class NewResourceSpec(AbstractModel):
     """Resource description
 
@@ -976,6 +1268,210 @@ class NewResourceSpec(AbstractModel):
             self.CommonResourceSpec = Resource()
             self.CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
         self.CommonCount = params.get("CommonCount")
+
+
+class NodeHardwareInfo(AbstractModel):
+    """Node hardware information
+
+    """
+
+    def __init__(self):
+        """
+        :param AppId: User `APPID`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AppId: int
+        :param SerialNo: Serial number
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SerialNo: str
+        :param OrderNo: Machine instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OrderNo: str
+        :param WanIp: Public IP bound to master node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanIp: str
+        :param Flag: Node type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Flag: int
+        :param Spec: Node specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Spec: str
+        :param CpuNum: Number of node cores
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CpuNum: int
+        :param MemSize: Node memory size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MemSize: int
+        :param MemDesc: Node memory description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MemDesc: str
+        :param RegionId: Node region
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionId: int
+        :param ZoneId: Node AZ
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: int
+        :param ApplyTime: Application time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ApplyTime: str
+        :param FreeTime: Release time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FreeTime: str
+        :param DiskSize: Disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: str
+        :param NameTag: Node description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NameTag: str
+        :param Services: Services deployed on node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Services: str
+        :param StorageType: Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StorageType: int
+        :param RootSize: System disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RootSize: int
+        :param ChargeType: Payment type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ChargeType: int
+        :param CdbIp: Database IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CdbIp: str
+        :param CdbPort: Database port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CdbPort: int
+        :param HwDiskSize: Disk capacity
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HwDiskSize: int
+        :param HwDiskSizeDesc: Disk capacity description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HwDiskSizeDesc: str
+        :param HwMemSize: Memory capacity
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HwMemSize: int
+        :param HwMemSizeDesc: Memory capacity description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HwMemSizeDesc: str
+        :param ExpireTime: Expiration time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param EmrResourceId: Node resource ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EmrResourceId: str
+        :param IsAutoRenew: Renewal flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsAutoRenew: int
+        :param DeviceClass: Device flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeviceClass: str
+        :param Mutable: Support for configuration adjustment
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Mutable: int
+        :param MCMultiDisk: Multi-cloud disk
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MCMultiDisk: list of MultiDiskMC
+        :param CdbNodeInfo: Database information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CdbNodeInfo: :class:`tencentcloud.emr.v20190103.models.CdbInfo`
+        :param Ip: Private IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Ip: str
+        :param Destroyable: Whether this node can be terminated. 1: yes, 0: no
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Destroyable: int
+        :param Tags: Tags bound to node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param AutoFlag: 
+        :type AutoFlag: int
+        """
+        self.AppId = None
+        self.SerialNo = None
+        self.OrderNo = None
+        self.WanIp = None
+        self.Flag = None
+        self.Spec = None
+        self.CpuNum = None
+        self.MemSize = None
+        self.MemDesc = None
+        self.RegionId = None
+        self.ZoneId = None
+        self.ApplyTime = None
+        self.FreeTime = None
+        self.DiskSize = None
+        self.NameTag = None
+        self.Services = None
+        self.StorageType = None
+        self.RootSize = None
+        self.ChargeType = None
+        self.CdbIp = None
+        self.CdbPort = None
+        self.HwDiskSize = None
+        self.HwDiskSizeDesc = None
+        self.HwMemSize = None
+        self.HwMemSizeDesc = None
+        self.ExpireTime = None
+        self.EmrResourceId = None
+        self.IsAutoRenew = None
+        self.DeviceClass = None
+        self.Mutable = None
+        self.MCMultiDisk = None
+        self.CdbNodeInfo = None
+        self.Ip = None
+        self.Destroyable = None
+        self.Tags = None
+        self.AutoFlag = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.SerialNo = params.get("SerialNo")
+        self.OrderNo = params.get("OrderNo")
+        self.WanIp = params.get("WanIp")
+        self.Flag = params.get("Flag")
+        self.Spec = params.get("Spec")
+        self.CpuNum = params.get("CpuNum")
+        self.MemSize = params.get("MemSize")
+        self.MemDesc = params.get("MemDesc")
+        self.RegionId = params.get("RegionId")
+        self.ZoneId = params.get("ZoneId")
+        self.ApplyTime = params.get("ApplyTime")
+        self.FreeTime = params.get("FreeTime")
+        self.DiskSize = params.get("DiskSize")
+        self.NameTag = params.get("NameTag")
+        self.Services = params.get("Services")
+        self.StorageType = params.get("StorageType")
+        self.RootSize = params.get("RootSize")
+        self.ChargeType = params.get("ChargeType")
+        self.CdbIp = params.get("CdbIp")
+        self.CdbPort = params.get("CdbPort")
+        self.HwDiskSize = params.get("HwDiskSize")
+        self.HwDiskSizeDesc = params.get("HwDiskSizeDesc")
+        self.HwMemSize = params.get("HwMemSize")
+        self.HwMemSizeDesc = params.get("HwMemSizeDesc")
+        self.ExpireTime = params.get("ExpireTime")
+        self.EmrResourceId = params.get("EmrResourceId")
+        self.IsAutoRenew = params.get("IsAutoRenew")
+        self.DeviceClass = params.get("DeviceClass")
+        self.Mutable = params.get("Mutable")
+        if params.get("MCMultiDisk") is not None:
+            self.MCMultiDisk = []
+            for item in params.get("MCMultiDisk"):
+                obj = MultiDiskMC()
+                obj._deserialize(item)
+                self.MCMultiDisk.append(obj)
+        if params.get("CdbNodeInfo") is not None:
+            self.CdbNodeInfo = CdbInfo()
+            self.CdbNodeInfo._deserialize(params.get("CdbNodeInfo"))
+        self.Ip = params.get("Ip")
+        self.Destroyable = params.get("Destroyable")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.AutoFlag = params.get("AutoFlag")
 
 
 class OutterResource(AbstractModel):
@@ -1378,9 +1874,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ClientToken: Client token.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClientToken: str
-        :param FlowId: 
+        :param FlowId: Scaling workflow ID.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type FlowId: int
-        :param BillId: 
+        :param BillId: Big order number.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type BillId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

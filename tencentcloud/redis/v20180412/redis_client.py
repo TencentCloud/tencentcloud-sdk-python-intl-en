@@ -1006,7 +1006,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """This API is used to modify instance information (renaming an instance is supported currently).
+        """This API is used to modify instance information.
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceRequest`
