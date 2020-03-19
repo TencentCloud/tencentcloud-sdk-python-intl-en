@@ -350,7 +350,7 @@ class DCDBInstanceInfo(AbstractModel):
         :type Zone: str
         :param VpcId: Numeric ID of a VPC
         :type VpcId: int
-        :param SubnetId: Subnet数字ID
+        :param SubnetId: Subnet Digital ID
         :type SubnetId: int
         :param StatusDesc: Status description
         :type StatusDesc: str

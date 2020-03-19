@@ -82,7 +82,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterAsGroup(self, request):
-        """为已经存在的集群创建伸缩组
+        """Create a scaling group for an existing cluster
 
         :param request: Request instance for CreateClusterAsGroup.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterAsGroupRequest`
@@ -110,7 +110,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterEndpoint(self, request):
-        """创建集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+        """Create a cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)
 
         :param request: Request instance for CreateClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointRequest`
@@ -138,7 +138,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterEndpointVip(self, request):
-        """创建托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
+        """Create an external network access port for the managed cluster (the old way, only the external network port for the managed cluster is supported)
 
         :param request: Request instance for CreateClusterEndpointVip.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointVipRequest`
@@ -250,7 +250,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterAsGroups(self, request):
-        """删除集群伸缩组
+        """Delete a cluster scaling group
 
         :param request: Request instance for DeleteClusterAsGroups.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterAsGroupsRequest`
@@ -278,7 +278,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterEndpoint(self, request):
-        """删除集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+        """Delete the cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)
 
         :param request: Request instance for DeleteClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointRequest`
@@ -306,7 +306,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterEndpointVip(self, request):
-        """删除托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
+        """Delete the external network access port of the managed cluster (the old way, only the external network port of the managed cluster is supported)
 
         :param request: Request instance for DeleteClusterEndpointVip.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointVipRequest`
@@ -418,7 +418,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterEndpointStatus(self, request):
-        """查询集群访问端口状态(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+        """Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)
 
         :param request: Request instance for DescribeClusterEndpointStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointStatusRequest`
@@ -446,7 +446,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterEndpointVipStatus(self, request):
-        """查询集群开启端口流程状态(仅支持托管集群外网端口)
+        """Query cluster open port process status (only supports external ports of the managed cluster)
 
         :param request: Request instance for DescribeClusterEndpointVipStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointVipStatusRequest`
@@ -670,7 +670,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterEndpointSP(self, request):
-        """修改托管集群外网端口的安全策略（老的方式，仅支持托管集群外网端口）
+        """Modify the security policy of the external port of the managed cluster (the old way, only the external port of the managed cluster is supported)
 
         :param request: Request instance for ModifyClusterEndpointSP.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterEndpointSPRequest`
