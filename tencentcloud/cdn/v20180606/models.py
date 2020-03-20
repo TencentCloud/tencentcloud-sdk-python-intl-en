@@ -523,7 +523,7 @@ hex: hexadecimal
 
 
 class AwsPrivateAccess(AbstractModel):
-    """s3源站回源鉴权。
+    """s3 source station back to source authentication.
 
     """
 

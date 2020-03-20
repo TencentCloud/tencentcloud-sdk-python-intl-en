@@ -2456,7 +2456,7 @@ class LocalDiskType(AbstractModel):
 
 
 class LoginSettings(AbstractModel):
-    """描述了实例登录相关配置与信息。
+    """Describes the configuration and information related to instance login.
 
     """
 

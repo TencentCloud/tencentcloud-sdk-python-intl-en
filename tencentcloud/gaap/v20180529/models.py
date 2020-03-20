@@ -2327,7 +2327,7 @@ class DescribeListenerStatisticsRequest(AbstractModel):
         :param Granularity: Monitoring granularity. It currently supports: 300, 3,600, and 86,400. Unit: seconds.
 Time range: ≤ 1 day, supported minimum granularity: 300 seconds;
 Time range: ≤ 7 days, supported minimum granularity: 3,600 seconds;
-Time range: ＞7 days, supported minimum granularity: 86,400 seconds;
+Time range: > 7 days, supported minimum granularity: 86,400 seconds;
         :type Granularity: int
         """
         self.ListenerId = None

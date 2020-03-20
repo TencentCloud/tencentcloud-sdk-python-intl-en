@@ -821,7 +821,7 @@ class ImportKeyMaterialResponse(AbstractModel):
 
 
 class KeyMetadata(AbstractModel):
-    """CMK属性信息
+    """CMK attribute information
 
     """
 

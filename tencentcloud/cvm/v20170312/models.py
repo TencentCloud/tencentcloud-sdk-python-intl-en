@@ -165,7 +165,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
         """
         :param SecurityGroupIds: ID of the security group to be associated, such as `sg-efil73jd`. Only one security group can be associated.
         :type SecurityGroupIds: list of str
-        :param InstanceIds: ID(s) of the instance(s) to be associated，such as `ins-lesecurk`. You can specify multiple instances.
+        :param InstanceIds: ID(s) of the instance(s) to be associated, such as `ins-lesecurk`. You can specify multiple instances.
         :type InstanceIds: list of str
         """
         self.SecurityGroupIds = None
@@ -1473,7 +1473,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
         """
         :param SecurityGroupIds: ID of the security group to be disassociated, such as `sg-efil73jd`. Only one security group can be disassociated.
         :type SecurityGroupIds: list of str
-        :param InstanceIds: ID(s) of the instance(s) to be disassociated，such as `ins-lesecurk`. You can specify multiple instances.
+        :param InstanceIds: ID(s) of the instance(s) to be disassociated, such as `ins-lesecurk`. You can specify multiple instances.
         :type InstanceIds: list of str
         """
         self.SecurityGroupIds = None

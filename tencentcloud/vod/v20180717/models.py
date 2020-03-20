@@ -2830,7 +2830,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTerrorismOcrTaskInput(AbstractModel):
-    """内容审核 Ocr 文字鉴恐任务输入参数类型
+    """Content review Ocr text forensics task input parameter types
 
     """
 
