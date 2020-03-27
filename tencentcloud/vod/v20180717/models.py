@@ -263,6 +263,11 @@ If this field is a blank string, DRM will not be performed on the video.
         :type VideoTrackTemplateSet: list of VideoTrackTemplateInfo
         :param AudioTrackTemplateSet: List of audio track templates.
         :type AudioTrackTemplateSet: list of AudioTrackTemplateInfo
+        :param Format: Adaptive bitstream format. Valid value:
+<li>HLS.</li>
+        :type Format: str
+        :param StreamInfos: Parameter information of input stream for adaptive bitrate streaming. Up to 10 streams can be input.
+        :type StreamInfos: list of AdaptiveStreamTemplate
         :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
 <li>0: no,</li>
 <li>1: yes.</li>
@@ -284,6 +289,8 @@ If this field is a blank string, DRM will not be performed on the video.
         self.DrmType = None
         self.VideoTrackTemplateSet = None
         self.AudioTrackTemplateSet = None
+        self.Format = None
+        self.StreamInfos = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.CreateTime = None
@@ -309,10 +316,48 @@ If this field is a blank string, DRM will not be performed on the video.
                 obj = AudioTrackTemplateInfo()
                 obj._deserialize(item)
                 self.AudioTrackTemplateSet.append(obj)
+        self.Format = params.get("Format")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class AdaptiveStreamTemplate(AbstractModel):
+    """Adaptive bitrate streaming parameter template
+
+    """
+
+    def __init__(self):
+        """
+        :param Video: Video parameter information.
+        :type Video: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
+        :param Audio: Audio parameter information.
+        :type Audio: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
+        :param RemoveAudio: Whether to remove audio stream. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type RemoveAudio: int
+        """
+        self.Video = None
+        self.Audio = None
+        self.RemoveAudio = None
+
+
+    def _deserialize(self, params):
+        if params.get("Video") is not None:
+            self.Video = VideoTemplateInfo()
+            self.Video._deserialize(params.get("Video"))
+        if params.get("Audio") is not None:
+            self.Audio = AudioTemplateInfo()
+            self.Audio._deserialize(params.get("Audio"))
+        self.RemoveAudio = params.get("RemoveAudio")
 
 
 class AiAnalysisResult(AbstractModel):
@@ -1997,16 +2042,13 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param Confidence: Score of ASR-detected politically sensitive information in speech between 0 and 100.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Confidence: float
         :param Suggestion: Suggestion for ASR-detected politically sensitive information in speech. Valid values:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Suggestion: str
         :param SegmentSet: List of video segments that contain ASR-detected politically sensitive information in speech.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
         """
         self.Confidence = None
@@ -2057,7 +2099,6 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 <li>block.</li>
         :type Suggestion: str
         :param SegmentSet: List of video segments that contain OCR-detected politically sensitive information in text.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self.Confidence = None
@@ -2161,16 +2202,13 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param Confidence: Score of ASR-detected porn information in speech between 0 and 100.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Confidence: float
         :param Suggestion: Suggestion for ASR-detected porn information in speech. Valid values:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Suggestion: str
         :param SegmentSet: List of video segments that contain the ASR-detected porn information in speech.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
         """
         self.Confidence = None
@@ -2214,16 +2252,13 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param Confidence: Score of OCR-detected porn information in text between 0 and 100.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Confidence: float
         :param Suggestion: Suggestion for OCR-detected porn information in text. Valid values:
 <li>pass.</li>
 <li>review.</li>
 <li>block.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Suggestion: str
         :param SegmentSet: List of video segments that contain the OCR-detected porn information in text.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self.Confidence = None
@@ -2336,7 +2371,6 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 <li>block.</li>
         :type Suggestion: str
         :param SegmentSet: List of video segments that contain the ASR-detected prohibited information in speech.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
         """
         self.Confidence = None
@@ -2387,7 +2421,6 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 <li>block.</li>
         :type Suggestion: str
         :param SegmentSet: List of video segments that contain the OCR-detected prohibited information in text.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self.Confidence = None
@@ -2830,9 +2863,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AiReviewTerrorismOcrTaskInput(AbstractModel):
-    """Content review Ocr text forensics task input parameter types
+    """Input parameter type of OCR-based terrorism information detection in text task in content audit
 
     """
+
+    def __init__(self):
+        """
+        :param Definition: Terrorism information detection template ID.
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
 
 
 class AiReviewTerrorismOcrTaskOutput(AbstractModel):
@@ -2850,7 +2894,6 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 <li>block.</li>
         :type Suggestion: str
         :param SegmentSet: List of video segments that contain OCR-detected terrorism information in text.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self.Confidence = None
@@ -3097,7 +3140,7 @@ class ApplyUploadResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param StorageBucket: Bucket, which is used as the `bucket_name` in the URL of the upload API.
+        :param StorageBucket: Storage bucket, which is used as the `bucket_name` in the URL of the upload API.
         :type StorageBucket: str
         :param StorageRegion: Storage region, which is used as the `Region` in the `Host` of the upload API.
         :type StorageRegion: str
@@ -3296,7 +3339,7 @@ class AudioTrackItem(AbstractModel):
         """
         :param SourceMedia: Source of media file for audio material, which can be an ID of a VOD file or URL of another file.
         :type SourceMedia: str
-        :param SourceMediaStartTime: Starting time of audio segment in material file in seconds. Default value: 0, which means to start capturing from the beginning position of the material.
+        :param SourceMediaStartTime: Start time of audio segment in material file in seconds. Default value: 0, which means to start capturing from the beginning position of the material.
         :type SourceMediaStartTime: float
         :param Duration: Audio segment duration in seconds. By default, the length of the material will be used, which means that the entire material will be captured.
         :type Duration: float
@@ -4019,7 +4062,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
-Note: this parameter is not supported yet
+Note: this parameter is not supported yet.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
         :param UserDefineConfigure: Custom content audit control parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -4324,6 +4368,52 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateClassRequest(AbstractModel):
+    """CreateClass request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ParentId: Parent category ID. For a first-level category, enter `-1`.
+        :type ParentId: int
+        :param ClassName: Category name. Length limit: 1–64 characters.
+        :type ClassName: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.ParentId = None
+        self.ClassName = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.ParentId = params.get("ParentId")
+        self.ClassName = params.get("ClassName")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateClassResponse(AbstractModel):
+    """CreateClass response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClassId: Category ID
+        :type ClassId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClassId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClassId = params.get("ClassId")
         self.RequestId = params.get("RequestId")
 
 
@@ -5210,7 +5300,7 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
         """
         :param Definitions: Unique ID filter of video content analysis templates. Array length limit: 100.
         :type Definitions: list of int
-        :param Offset: Paged offset. Default value: 0.
+        :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
@@ -5269,7 +5359,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
         """
         :param Definitions: Unique ID filter of video content recognition templates. Array length limit: 100.
         :type Definitions: list of int
-        :param Offset: Paged offset. Default value: 0.
+        :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
@@ -5521,9 +5611,9 @@ class DescribeCDNUsageDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param StartTime: Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
         :type StartTime: str
-        :param EndTime: End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be after the start date.
+        :param EndTime: End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The end date must be after the start date.
         :type EndTime: str
         :param DataType: CDN statistics type. Valid values:
 <li>Flux: traffic in bytes.</li>
@@ -5598,7 +5688,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
         """
         :param Definitions: Unique ID filter of content audit templates. Array length limit: 100.
         :type Definitions: list of int
-        :param Offset: Paged offset. Default value: 0.
+        :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
@@ -5780,6 +5870,62 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMediaProcessUsageDataRequest(AbstractModel):
+    """DescribeMediaProcessUsageData request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type StartTime: str
+        :param EndTime: End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.
+        :type EndTime: str
+        :param Type: Type of video processing task to be queried. Valid value: Transcode. Default value: Transcode.
+<li>Transcode: transcoding</li>
+        :type Type: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeMediaProcessUsageDataResponse(AbstractModel):
+    """DescribeMediaProcessUsageData response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaProcessDataSet: Overview of video processing statistics, which displays the overview and details of queried tasks.
+        :type MediaProcessDataSet: list of TaskStatData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.MediaProcessDataSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MediaProcessDataSet") is not None:
+            self.MediaProcessDataSet = []
+            for item in params.get("MediaProcessDataSet"):
+                obj = TaskStatData()
+                obj._deserialize(item)
+                self.MediaProcessDataSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProcedureTemplatesRequest(AbstractModel):
     """DescribeProcedureTemplates request structure.
 
@@ -5793,7 +5939,7 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 <li>Preset: preset task flow template;</li>
 <li>Custom: custom task flow template.</li>
         :type Type: str
-        :param Offset: Paged offset. Default value: 0.
+        :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
@@ -5852,9 +5998,9 @@ class DescribeReviewDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param StartTime: Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
         :type StartTime: str
-        :param EndTime: End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be after the start date.
+        :param EndTime: End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The end date must be after the start date.
         :type EndTime: str
         :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -6034,6 +6180,124 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStorageDataRequest(AbstractModel):
+    """DescribeStorageData request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeStorageDataResponse(AbstractModel):
+    """DescribeStorageData response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaCount: Total number of current media files.
+        :type MediaCount: int
+        :param TotalStorage: Total current storage capacity in bytes.
+        :type TotalStorage: int
+        :param InfrequentStorage: Current Standard_IA storage capacity in bytes.
+        :type InfrequentStorage: int
+        :param StandardStorage: Current Standard storage capacity in bytes.
+        :type StandardStorage: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.MediaCount = None
+        self.TotalStorage = None
+        self.InfrequentStorage = None
+        self.StandardStorage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MediaCount = params.get("MediaCount")
+        self.TotalStorage = params.get("TotalStorage")
+        self.InfrequentStorage = params.get("InfrequentStorage")
+        self.StandardStorage = params.get("StandardStorage")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStorageDetailsRequest(AbstractModel):
+    """DescribeStorageDetails request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start time in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type StartTime: str
+        :param EndTime: End time in ISO 8601 format, which must be after the start time. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type EndTime: str
+        :param Interval: Query time interval. Valid values:
+<li>Minute: once per minute.</li>
+<li>Hour: once per hour.</li>
+<li>Day: once per day.</li>
+The default value is determined by the time span. `Minute` will be used if the time span is less than 1 hour, `Hour` if less than or equal to 7 days, and `Day` if more than 7 days.
+        :type Interval: str
+        :param StorageType: Storage class to be queried. Valid values:
+<li>TotalStorage: total storage capacity.</li>
+<li>StandardStorage: Standard storage.</li>
+<li>InfrequentStorage: Standard_IA storage.</li>
+Default value: TotalStorage.
+        :type StorageType: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+When the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin.
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Interval = None
+        self.StorageType = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Interval = params.get("Interval")
+        self.StorageType = params.get("StorageType")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeStorageDetailsResponse(AbstractModel):
+    """DescribeStorageDetails response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: Storage statistics. One data entry per minute/hour/day.
+        :type Data: list of StatDataItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StatDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSubAppIdsRequest(AbstractModel):
     """DescribeSubAppIds request structure.
 
@@ -6098,7 +6362,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>Procedure: video processing task;</li>
 <li>EditMedia: video editing task;</li>
 <li>WechatPublish: release on WeChat task;</li>
-<li>WechatMiniProgramPublish: release in WeChat Mini Program task;</li>
+<li>WechatMiniProgramPublish: release on WeChat Mini Program task;</li>
 <li>ComposeMedia: media file composing task;</li>
 <li>PullUpload: media file pulling for upload task.</li>
 
@@ -6114,11 +6378,11 @@ Task types compatible with v2017:
 <li>PROCESSING: processing;</li>
 <li>FINISH: completed.</li>
         :type Status: str
-        :param CreateTime: Creation time of task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
         :type CreateTime: str
-        :param BeginProcessTime: Start time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param BeginProcessTime: Start time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
         :type BeginProcessTime: str
-        :param FinishTime: End time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param FinishTime: End time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
         :type FinishTime: str
         :param ProcedureTask: Video processing task information. This field has a value only when `TaskType` is `Procedure`.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -6150,7 +6414,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param CreateImageSpriteTask: Image sprite creating task information. This field has a value only when `TaskType` is `ImageSprite`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreateImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
-        :param WechatMiniProgramPublishTask: Release in WeChat Mini Program task information. This field has a value only when `TaskType` is `WechatMiniProgramPublish`.
+        :param WechatMiniProgramPublishTask: Release on WeChat Mini Program task information. This field has a value only when `TaskType` is `WechatMiniProgramPublish`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WechatMiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -6238,7 +6502,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 <li>Common: Common transcoding template;</li>
 <li>TEHD: TESHD template.</li>
         :type TEHDType: str
-        :param Offset: Paged offset. Default value: 0.
+        :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
@@ -6373,7 +6637,7 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 <li>image: image watermark;</li>
 <li>text: text watermark.</li>
         :type Type: str
-        :param Offset: Paged offset. Default value: 0.
+        :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param Limit: Number of returned entries
 <li>Default value: 10;</li>
@@ -6508,6 +6772,8 @@ class EditMediaRequest(AbstractModel):
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`
         :param SessionContext: Identifies the source context which is used to pass through the user request information. The `EditMediaComplete` callback and task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
+        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
         :param SessionId: ID used for task deduplication. If there was a request with the same ID in the last day, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
         :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
@@ -6520,6 +6786,7 @@ class EditMediaRequest(AbstractModel):
         self.ProcedureName = None
         self.OutputConfig = None
         self.SessionContext = None
+        self.TasksPriority = None
         self.SessionId = None
         self.SubAppId = None
 
@@ -6544,6 +6811,7 @@ class EditMediaRequest(AbstractModel):
             self.OutputConfig = EditMediaOutputConfig()
             self.OutputConfig._deserialize(params.get("OutputConfig"))
         self.SessionContext = params.get("SessionContext")
+        self.TasksPriority = params.get("TasksPriority")
         self.SessionId = params.get("SessionId")
         self.SubAppId = params.get("SubAppId")
 
@@ -6777,7 +7045,7 @@ class EventContent(AbstractModel):
 <li>EditMediaComplete: video editing completion;</li>
 <li>WechatPublishComplete: release on WeChat completion;</li>
 <li>ComposeMediaComplete: media file composing completion;</li>
-<li>WechatMiniProgramPublishComplete: release in WeChat Mini Program completion.</li>
+<li>WechatMiniProgramPublishComplete: release on WeChat Mini Program completion.</li>
 <b>Event types compatible with v2017:</b>
 <li>TranscodeComplete: video transcoding completion;</li>
 <li>ConcatComplete: video splicing completion;</li>
@@ -6821,7 +7089,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ComposeMediaCompleteEvent: Media file composing task completion event, which is valid when the event type is `ComposeMediaComplete`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ComposeMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
-        :param WechatMiniProgramPublishCompleteEvent: Release in WeChat Mini Program task completion event, which is valid if the event type is `WechatMiniProgramPublishComplete`.
+        :param WechatMiniProgramPublishCompleteEvent: Release on WeChat Mini Program task completion event, which is valid if the event type is `WechatMiniProgramPublishComplete`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
         """
@@ -7444,21 +7712,21 @@ class LiveRealTimeClipRequest(AbstractModel):
         """
         :param StreamId: [LVB code](https://cloud.tencent.com/document/product/267/5959) of a stream.
         :type StreamId: str
-        :param StartTime: Start time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param StartTime: Start time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
         :type StartTime: str
-        :param EndTime: End time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param EndTime: End time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
         :type EndTime: str
         :param IsPersistence: Whether to clip persistently. 0: no, 1: yes. Default: no.
         :type IsPersistence: int
-        :param ExpireTime: Storage expiration time of video generated by persistent clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). `9999-12-31T23:59:59Z` means `never expire`. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter will be valid only when `IsPersistence` is 1. By default, the video will never expire.
+        :param ExpireTime: Storage expiration time of video generated by persistent clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). `9999-12-31T23:59:59Z` means `never expire`. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter will be valid only when `IsPersistence` is 1. By default, the video will never expire.
         :type ExpireTime: str
         :param Procedure: VOD task flow processing for video generated by persistent clipping. For more information, please see [Specifying Task Flow After Upload](https://cloud.tencent.com/document/product/266/9759). This parameter will be valid only when `IsPersistence` is 1.
         :type Procedure: str
         :param MetaDataRequired: Whether the metadata of clipped video needs to be returned. 0: no, 1: yes. Default value: no.
         :type MetaDataRequired: int
-        :param Host: 
+        :param Host: Domain name used for live clipping. Time shifting must be enabled in LVB.
         :type Host: str
-        :param ExtInfo: 
+        :param ExtInfo: Reserved field. Do not enter a value for it.
         :type ExtInfo: str
         :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -8471,14 +8739,14 @@ class MediaMiniProgramReviewInfoItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Template ID, which is the ID of the transcoding template corresponding to the video published in WeChat Mini Program. 0 represents the source video.
+        :param Definition: Template ID, which is the ID of the transcoding template corresponding to the video published on WeChat Mini Program. 0 represents the source video.
         :type Definition: int
         :param MetaData: Video metadata.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param Url: Video playback address for WeChat Mini Program audit
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Url: str
-        :param ReviewResult: Status of video release in WeChat Mini Program
+        :param ReviewResult: Status of video release on WeChat Mini Program
 <li>Pass: succeeded.</li>
 <li>Rejected: rejected.</li>
         :type ReviewResult: str
@@ -10116,7 +10384,7 @@ Default value: 10%.
         :param Height: Blur height. % and px formats are supported:
 <li>If the string ends in %, the `Height` of the blur will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
 <li>If the string ends in px, the `Height` of the blur will be in px; for example, `100px` means that `Height` is 100 px.</li>
-Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original blur image.
+Default value: 10%.
         :type Height: str
         :param StartTimeOffset: Start time offset of blur in seconds. If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame.
 <li>If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame;</li>
@@ -11084,8 +11352,8 @@ class PullUploadRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaUrl: URL of the media to be pulled. HLS and Dash formats are not supported for pull currently.
-For the supported extensions, please see [File Types](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
+        :param MediaUrl: URL of the media to be pulled. Media files in HLS and Dash formats cannot be pulled currently.
+For the supported extensions, please see [Media Types](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B).
         :type MediaUrl: str
         :param MediaName: Media name.
         :type MediaName: str
@@ -11093,7 +11361,7 @@ For the supported extensions, please see [File Types](https://cloud.tencent.com/
         :type CoverUrl: str
         :param Procedure: Subsequent task for media. For more information, please see [Specifying Task Flow After Upload](https://cloud.tencent.com/document/product/266/9759).
         :type Procedure: str
-        :param ExpireTime: Expiration time of media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param ExpireTime: Expiration time of media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).
         :type ExpireTime: str
         :param StorageRegion: Specifies upload region. This is only applicable to users that have special requirements for the upload region (currently, only Beijing, Shanghai, and Chongqing regions are supported).
         :type StorageRegion: str
@@ -11446,11 +11714,11 @@ class SearchMediaRequest(AbstractModel):
         :type ClassIds: list of int
         :param StartTime: Start time in the creation time range.
 <li>After or at the start time.</li>
-<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).</li>
+<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).</li>
         :type StartTime: str
         :param EndTime: End time in the creation time range.
 <li>Before the end time.</li>
-<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).</li>
+<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).</li>
         :type EndTime: str
         :param SourceType: Media file source. For valid values, please see [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData).
         :type SourceType: str
@@ -11566,7 +11834,7 @@ class SimpleHlsClipRequest(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End offset time of clipping in seconds. Default value: 0, which means to clip till the end of the video. A negative number indicates how many seconds from the end of the video clipping will end. For example, -10 means that clipping will end at the 10th second from the end.
         :type EndTimeOffset: float
-        :param SubAppId: 
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Url = None
@@ -11801,6 +12069,32 @@ class SortBy(AbstractModel):
     def _deserialize(self, params):
         self.Field = params.get("Field")
         self.Order = params.get("Order")
+
+
+class SpecificationDataItem(AbstractModel):
+    """Statistics of task with specified specification.
+
+    """
+
+    def __init__(self):
+        """
+        :param Specification: Task specification.
+        :type Specification: str
+        :param Data: Statistics.
+        :type Data: list of TaskStatDataItem
+        """
+        self.Specification = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Specification = params.get("Specification")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = TaskStatDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
 
 
 class StatDataItem(AbstractModel):
@@ -12105,6 +12399,103 @@ class TagConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+
+
+class TaskStatData(AbstractModel):
+    """Video processing task statistics.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskType: Task type
+<li>Transcode: transcoding</li>
+<li>Snapshot: screencapturing</li>
+        :type TaskType: str
+        :param Summary: Task statistics overview.
+<li>Transcode: usage in seconds</li>
+        :type Summary: list of TaskStatDataItem
+        :param Details: Detailed statistics of tasks with different specifications.
+Transcoding specification:
+<li>Remuxing: remuxing</li>
+<li>Audio: audio transcoding</li>
+<li>Standard.H264.SD: H.264 SD transcoding</li>
+<li>Standard.H264.HD: H.264 HD transcoding</li>
+<li>Standard.H264.FHD: H.264 FHD transcoding</li>
+<li>Standard.H264.2K: H.264 2K transcoding</li>
+<li>Standard.H264.4K: H.264 4K transcoding</li>
+<li>Standard.H265.SD: H.265 SD transcoding</li>
+<li>Standard.H265.HD: H.265 HD transcoding</li>
+<li>Standard.H265.FHD: H.265 FHD transcoding</li>
+<li>Standard.H265.2K: H.265 2K transcoding</li>
+<li>Standard.H265.4K: H.265 4K transcoding</li>
+<li>TESHD-10.H264.SD: H.264 SD TESHD transcoding</li>
+<li>TESHD-10.H264.HD: H.264 HD TESHD transcoding</li>
+<li>TESHD-10.H264.FHD: H.264 FHD TESHD transcoding</li>
+<li>TESHD-10.H264.2K: H.264 2K TESHD transcoding</li>
+<li>TESHD-10.H264.4K: H.264 4K TESHD transcoding</li>
+<li>TESHD-10.H265.SD: H.265 SD TESHD transcoding</li>
+<li>TESHD-10.H265.HD: H.265 HD TESHD transcoding</li>
+<li>TESHD-10.H265.FHD: H.265 FHD TESHD transcoding</li>
+<li>TESHD-10.H265.2K: H.265 2K TESHD transcoding</li>
+<li>TESHD-10.H265.4K: H.265 4K TESHD transcoding</li>
+<li>Edit.Audio: audio editing</li>
+<li>Edit.H264.SD: H.264 SD video editing</li>
+<li>Edit.H264.HD: H.264 HD video editing</li>
+<li>Edit.H264.FHD: H.264 FHD video editing</li>
+<li>Edit.H264.2K: H.264 2K video editing</li>
+<li>Edit.H264.4K: H.264 4K video editing</li>
+<li>Edit.H265.SD: H.265 SD video editing</li>
+<li>Edit.H265.HD: H.265 HD video editing</li>
+<li>Edit.H265.FHD: H.265 FHD video editing</li>
+<li>Edit.H265.2K: H.265 2K video editing</li>
+<li>Edit.H265.4K: H.265 4K video editing</li>
+        :type Details: list of SpecificationDataItem
+        """
+        self.TaskType = None
+        self.Summary = None
+        self.Details = None
+
+
+    def _deserialize(self, params):
+        self.TaskType = params.get("TaskType")
+        if params.get("Summary") is not None:
+            self.Summary = []
+            for item in params.get("Summary"):
+                obj = TaskStatDataItem()
+                obj._deserialize(item)
+                self.Summary.append(obj)
+        if params.get("Details") is not None:
+            self.Details = []
+            for item in params.get("Details"):
+                obj = SpecificationDataItem()
+                obj._deserialize(item)
+                self.Details.append(obj)
+
+
+class TaskStatDataItem(AbstractModel):
+    """Task statistics, including number of tasks and usage.
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: Start time of data time range in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, if the time granularity is 1-day, `2018-12-01T00:00:00+08:00` represents the time range between December 1, 2018 (inclusive) and December 2, 2018 (not inclusive).
+        :type Time: str
+        :param Count: Number of tasks.
+        :type Count: int
+        :param Usage: Task usage.
+        :type Usage: int
+        """
+        self.Time = None
+        self.Count = None
+        self.Usage = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Count = params.get("Count")
+        self.Usage = params.get("Usage")
 
 
 class TempCertificate(AbstractModel):
@@ -12833,7 +13224,7 @@ class VideoTrackItem(AbstractModel):
         """
         :param SourceMedia: Source of media material for video segment, which can be an ID of a VOD file or URL of another file.
         :type SourceMedia: str
-        :param SourceMediaStartTime: Starting time of video segment in material file in seconds. Default value: 0.
+        :param SourceMediaStartTime: Start time of video segment in material file in seconds. Default value: 0.
         :type SourceMediaStartTime: float
         :param Duration: Video segment duration in seconds. By default, the length of the video material will be used, which means that the entire material will be captured. If the source file is an image, `Duration` needs to be greater than 0.
         :type Duration: float
@@ -13190,7 +13581,7 @@ class WeChatMiniProgramPublishResponse(AbstractModel):
 
 
 class WechatMiniProgramPublishTask(AbstractModel):
-    """Release in WeChat Mini Program task information
+    """Release on WeChat Mini Program task information
 
     """
 
@@ -13213,7 +13604,7 @@ FINISH: completed.
         :type FileId: str
         :param SourceDefinition: ID of the transcoding template corresponding to the published video. 0 represents the source video.
         :type SourceDefinition: int
-        :param PublishResult: Status of video release in WeChat Mini Program. Valid values:
+        :param PublishResult: Status of video release on WeChat Mini Program. Valid values:
 <li>Pass: successfully published;</li>
 <li>Failed: failed to publish;</li>
 <li>Rejected: rejected.</li>

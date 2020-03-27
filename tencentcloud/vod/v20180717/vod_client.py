@@ -145,7 +145,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAIAnalysisTemplate(self, request):
-        """This API is used to create a custom video content analysis template. Up to 50 ones can be created.
+        """This API is used to create a custom video content analysis template. Up to 50 templates can be created.
 
         :param request: Request instance for CreateAIAnalysisTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAIAnalysisTemplateRequest`
@@ -200,6 +200,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateClass(self, request):
+        """* This API is used to categorize media assets for management;
+        * It does not affect the categories of existing media assets. If you want to modify the category of a media asset, call the [ModifyMediaInfo](/document/product/266/31762) API.
+        * There can be up to 4 levels of categories.
+        * One category can have up to 500 subcategories under it.
+
+        :param request: Request instance for CreateClass.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateClassRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateClassResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClass", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClassResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateImageSpriteTemplate(self, request):
         """This API is used to create a custom image sprite generating template. Up to 16 templates can be created.
 
@@ -229,7 +260,7 @@ class VodClient(AbstractClient):
 
 
     def CreateProcedureTemplate(self, request):
-        """This API is used to create a custom task flow template. Up to 50 ones can be created.
+        """This API is used to create a custom task flow template. Up to 50 templates can be created.
 
         :param request: Request instance for CreateProcedureTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateProcedureTemplateRequest`
@@ -313,7 +344,7 @@ class VodClient(AbstractClient):
 
 
     def CreateTranscodeTemplate(self, request):
-        """This API is used to create a custom transcoding template. Up to 100 ones can be created.
+        """This API is used to create a custom transcoding template. Up to 100 templates can be created.
 
         :param request: Request instance for CreateTranscodeTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateTranscodeTemplateRequest`
@@ -341,7 +372,7 @@ class VodClient(AbstractClient):
 
 
     def CreateWatermarkTemplate(self, request):
-        """This API is used to create a custom watermarking template. Up to 1,000 ones can be created.
+        """This API is used to create a custom watermarking template. Up to 1,000 templates can be created.
 
         :param request: Request instance for CreateWatermarkTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateWatermarkTemplateRequest`
@@ -860,6 +891,36 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMediaProcessUsageData(self, request):
+        """This API is used to query the information of video processing usage within the specified time range.
+           1. Statistics on video processing for the last 365 days can be queried.
+           2. The query time range cannot be more than 90 days.
+
+        :param request: Request instance for DescribeMediaProcessUsageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeMediaProcessUsageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeMediaProcessUsageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaProcessUsageData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaProcessUsageDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProcedureTemplates(self, request):
         """This API is used to get the list of task flow template details by task flow template name.
 
@@ -975,8 +1036,68 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStorageData(self, request):
+        """This API is used to query the storage capacity usage and number of files.
+
+        :param request: Request instance for DescribeStorageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeStorageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeStorageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStorageData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStorageDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStorageDetails(self, request):
+        """This API is used to query the used VOD storage capacity in bytes within the specified time range.
+           1. Only storage capacity usage data for the last 365 days can be queried.
+           2. The query time range cannot be more than 90 days;
+           3. The query time range at the minute granularity cannot be more than 5 days;
+           4. The query time range at the hour granularity cannot be more than 10 days.
+
+        :param request: Request instance for DescribeStorageDetails.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeStorageDetailsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeStorageDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStorageDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStorageDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSubAppIds(self, request):
-        """This API is used to get the list of subapplications to which the current account has permissions, including primary applications. If the subapplication feature has not been enabled, this API will return
+        """This API is used to get the list of subapplications to which the current account has permissions, including primary applications. If the subapplication feature has not been enabled, this API will return.
          `FailedOperation`.
 
         :param request: Request instance for DescribeSubAppIds.
@@ -1226,7 +1347,7 @@ class VodClient(AbstractClient):
         ### Persistent clipping
         In persistent clipping mode, the clipped video is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the source LVB recording video (even if the source video is deleted, the clipped video will not be affected in any way). It can be further processed (transcoded, published on WeChat, etc.).
 
-        An example is as follows: for a complete football match, the source LVB recording video may be up to 2 hours in length. You want to store this video for only 2 months for the purpose of cost savings. However, you want to specify a longer retention period for the "highlights" video created by live clipping, and perform additional VOD operations on it such as transcoding and release on WeChat. In this case, you need to choose the persistent clipping mode of live clipping.
+        An example is as follows: for a complete football match, the source LVB recording video may be up to 2 hours in length. You want to store this video for only 2 months for the purpose of cost savings. However, you want to specify a longer retention period for the "highlights" video created by live clipping and perform additional VOD operations on it such as transcoding and release on WeChat. In this case, you need to choose the persistent clipping mode of live clipping.
 
         The advantage of persistent clipping is that the clipped video has a lifecycle independent of the source recording video and can be managed independently and stored persistently.
 
@@ -1806,7 +1927,7 @@ class VodClient(AbstractClient):
 
 
     def WeChatMiniProgramPublish(self, request):
-        """This API is used to publish a VOD video in WeChat Mini Program for playback in the WeChat Mini Program player.
+        """This API is used to publish a VOD video on WeChat Mini Program for playback in the WeChat Mini Program player.
 
         :param request: Request instance for WeChatMiniProgramPublish.
         :type request: :class:`tencentcloud.vod.v20180717.models.WeChatMiniProgramPublishRequest`
