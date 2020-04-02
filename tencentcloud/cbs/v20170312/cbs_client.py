@@ -571,6 +571,34 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetSnapOverview(self, request):
+        """This API is used to get snapshot overview information.
+
+        :param request: Request instance for GetSnapOverview.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.GetSnapOverviewRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.GetSnapOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetSnapOverview", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetSnapOverviewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceCreateDisks(self, request):
         """This API (InquiryPriceCreateDisks) is used to inquire the price for cloud disk creation.
 
@@ -587,37 +615,6 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceCreateDisksResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def InquiryPriceRenewDisks(self, request):
-        """This API is used to query the price of renewing one or more cloud disks.
-
-        * You can query the price for renewing cloud disks together with their bound instances. To do so, you need to specify `CurInstanceDeadline` in the [DiskChargePrepaid](/document/product/362/15669#DiskChargePrepaid) parameter, In this case, the API will query the price for renewing the cloud disk to the expiration time of the bound instance.
-        * You can specify different renewal lengths for multiple cloud disks in a single request. In such cases, the price returned will be the total price of renewing multiple cloud disks.
-
-        :param request: Request instance for InquiryPriceRenewDisks.
-        :type request: :class:`tencentcloud.cbs.v20170312.models.InquiryPriceRenewDisksRequest`
-        :rtype: :class:`tencentcloud.cbs.v20170312.models.InquiryPriceRenewDisksResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("InquiryPriceRenewDisks", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.InquiryPriceRenewDisksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -707,68 +704,6 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDiskAttributesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyDisksChargeType(self, request):
-        """API domain name: cbs.tencentcloudapi.com.
-
-        This API is used to change the billing mode of cloud disks.
-
-        You can only use this API to change the billing method from `POSTPAID_BY_HOUR` to `PREPAID`.
-        This API does not support non-elastic cloud disks. Please use `modifyinstanceschargetype` API to convert CVM instances and the bound non-elastic cloud disks.
-        Default API request frequency limit: 10 times/second.
-
-        :param request: Request instance for ModifyDisksChargeType.
-        :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyDisksChargeTypeRequest`
-        :rtype: :class:`tencentcloud.cbs.v20170312.models.ModifyDisksChargeTypeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyDisksChargeType", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDisksChargeTypeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyDisksRenewFlag(self, request):
-        """This API (ModifyDisksRenewFlag) is used to modify the renewal flag of the cloud disk, which supports batch modification.
-
-        :param request: Request instance for ModifyDisksRenewFlag.
-        :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyDisksRenewFlagRequest`
-        :rtype: :class:`tencentcloud.cbs.v20170312.models.ModifyDisksRenewFlagResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyDisksRenewFlag", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDisksRenewFlagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

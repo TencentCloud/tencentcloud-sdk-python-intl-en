@@ -1108,7 +1108,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param RenewFlag: Auto renewal flag. Supported values:<br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically<br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but not renew automatically<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically.
 Note: This field may return null, indicating that no valid value was found.
         :type RenewFlag: str
-        :param DeadlineError: This field is only applicable when the instance is already mounted to the cloud disk, and both the instance and the cloud disk use monthly subscription. <br><li>true: Expiration time of cloud disk is earlier than that of the instance.<br><li>false: Expiration time of cloud disk is later than that of the instance.
+        :param DeadlineError: This field is only applicable when the instance is already mounted to the cloud disk, and both the instance and the cloud disk use monthly subscription. <br><li>true: Expiration time of cloud disk is earlier than that of the instance.<br><li>false:Expiration time of cloud disk is later than that of the instance.
 Note: This field may return null, indicating that no valid value was found.
         :type DeadlineError: bool
         :param IsReturnable: Determines whether or not prepaid cloud disk supports active return. <br><li>true: Active return supported.<br><li>false: Active return not supported.
@@ -1370,6 +1370,45 @@ class Filter(AbstractModel):
         self.Values = params.get("Values")
 
 
+class GetSnapOverviewRequest(AbstractModel):
+    """GetSnapOverview request structure.
+
+    """
+
+
+class GetSnapOverviewResponse(AbstractModel):
+    """GetSnapOverview response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalSize: The total snapshot size of the user
+        :type TotalSize: float
+        :param RealTradeSize: The total billed snapshot size of the user
+        :type RealTradeSize: float
+        :param FreeQuota: Free tier of snapshot
+        :type FreeQuota: float
+        :param TotalNums: Total number of snapshots
+        :type TotalNums: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalSize = None
+        self.RealTradeSize = None
+        self.FreeQuota = None
+        self.TotalNums = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalSize = params.get("TotalSize")
+        self.RealTradeSize = params.get("RealTradeSize")
+        self.FreeQuota = params.get("FreeQuota")
+        self.TotalNums = params.get("TotalNums")
+        self.RequestId = params.get("RequestId")
+
+
 class Image(AbstractModel):
     """Image
 
@@ -1449,63 +1488,6 @@ class InquiryPriceCreateDisksResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("DiskPrice") is not None:
             self.DiskPrice = Price()
-            self.DiskPrice._deserialize(params.get("DiskPrice"))
-        self.RequestId = params.get("RequestId")
-
-
-class InquiryPriceRenewDisksRequest(AbstractModel):
-    """InquiryPriceRenewDisks request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param DiskIds: ID of the cloud disk, which can be queried via the API [DescribeDisks](/document/product/362/16315).
-        :type DiskIds: list of str
-        :param DiskChargePrepaids: Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase usage period can be specified using this parameter. If this parameter is specified as CurInstanceDeadline, then it will be renewed according to the aligned CVM expiration time. If it is a batch renewal price query, then this parameter will correspond to the Disks parameter, and the element quantity needs to be kept the same.
-        :type DiskChargePrepaids: list of DiskChargePrepaid
-        :param NewDeadline: Specify the new expiration time of the cloud disk, in such format as 2017-12-17 00:00:00. The parameters `NewDeadline` and `DiskChargePrepaids` are two options to specify the inquiry length, and you must specify at least one.
-        :type NewDeadline: str
-        :param ProjectId: ID of project the cloud disk belongs to. If selected, it can only be used for authentication.
-        :type ProjectId: int
-        """
-        self.DiskIds = None
-        self.DiskChargePrepaids = None
-        self.NewDeadline = None
-        self.ProjectId = None
-
-
-    def _deserialize(self, params):
-        self.DiskIds = params.get("DiskIds")
-        if params.get("DiskChargePrepaids") is not None:
-            self.DiskChargePrepaids = []
-            for item in params.get("DiskChargePrepaids"):
-                obj = DiskChargePrepaid()
-                obj._deserialize(item)
-                self.DiskChargePrepaids.append(obj)
-        self.NewDeadline = params.get("NewDeadline")
-        self.ProjectId = params.get("ProjectId")
-
-
-class InquiryPriceRenewDisksResponse(AbstractModel):
-    """InquiryPriceRenewDisks response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param DiskPrice: Describes the price of renewing the cloud disk.
-        :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.PrepayPrice`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.DiskPrice = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("DiskPrice") is not None:
-            self.DiskPrice = PrepayPrice()
             self.DiskPrice._deserialize(params.get("DiskPrice"))
         self.RequestId = params.get("RequestId")
 
@@ -1656,84 +1638,6 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
 class ModifyDiskAttributesResponse(AbstractModel):
     """ModifyDiskAttributes response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyDisksChargeTypeRequest(AbstractModel):
-    """ModifyDisksChargeType request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param DiskIds: The ID(s) of one or multiple cloud disks to be operated. The maximum number of cloud disks per request is 100.
-        :type DiskIds: list of str
-        :param DiskChargePrepaid: 
-        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
-        """
-        self.DiskIds = None
-        self.DiskChargePrepaid = None
-
-
-    def _deserialize(self, params):
-        self.DiskIds = params.get("DiskIds")
-        if params.get("DiskChargePrepaid") is not None:
-            self.DiskChargePrepaid = DiskChargePrepaid()
-            self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
-
-
-class ModifyDisksChargeTypeResponse(AbstractModel):
-    """ModifyDisksChargeType response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyDisksRenewFlagRequest(AbstractModel):
-    """ModifyDisksRenewFlag request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param DiskIds: IDs of one or more cloud disks to be operated.
-        :type DiskIds: list of str
-        :param RenewFlag: Cloud disk renewal flag. Value range: <br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically. <br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but do not renew automatically. <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically.
-        :type RenewFlag: str
-        """
-        self.DiskIds = None
-        self.RenewFlag = None
-
-
-    def _deserialize(self, params):
-        self.DiskIds = params.get("DiskIds")
-        self.RenewFlag = params.get("RenewFlag")
-
-
-class ModifyDisksRenewFlagResponse(AbstractModel):
-    """ModifyDisksRenewFlag response structure.
 
     """
 

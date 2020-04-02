@@ -165,7 +165,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
         """
         :param SecurityGroupIds: ID of the security group to be associated, such as `sg-efil73jd`. Only one security group can be associated.
         :type SecurityGroupIds: list of str
-        :param InstanceIds: ID(s) of the instance(s) to be associated, such as `ins-lesecurk`. You can specify multiple instances.
+        :param InstanceIds: ID(s) of the instance(s) to be associated，such as `ins-lesecurk`. You can specify multiple instances.
         :type InstanceIds: list of str
         """
         self.SecurityGroupIds = None
@@ -402,11 +402,11 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskSize: The data disk size in GB. The minimum increment is 10 GB. Different types of data disks have different value ranges. For details, see [Instance Specifications](https://intl.cloud.tencent.com/document/product/213/11518). The default value is 0, indicating that no data disk is purchased. For more information, see the CVM documentation.
+        :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://cloud.tencent.com/document/product/213/4952). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
         :type DiskSize: int
-        :param DiskType: The data disk type. For more information about the limits on different data disk types, see [Instance Specifications](/document/product/213/2177). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
+        :param DiskType: The type of the data disk. For more information regarding data disk types and limits, refer to [Storage Overview](https://cloud.tencent.com/document/product/213/4952). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for `ResizeInstanceDisk`.
         :type DiskType: str
-        :param DiskId: Data disk ID. Data disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter currently.
+        :param DiskId: Data disk ID. Data disks of the type `LOCAL_BASIC` or `LOCAL_SSD` do not have IDs and do not support this parameter.
         :type DiskId: str
         :param DeleteWithInstance: Whether to terminate the data disk when its CVM is terminated. Valid values:
 <li>TRUE: terminate the data disk when its CVM is terminated. This value only supports pay-as-you-go cloud disks billed on an hourly basis.
@@ -418,12 +418,12 @@ Note: This field may return null, indicating that no valid value is found.
         :param SnapshotId: Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.
 Note: This field may return null, indicating that no valid value is found.
         :type SnapshotId: str
-        :param Encrypt: Specifies whether the data disk is encrypted. Values: 
+        :param Encrypt: Specifies whether the data disk is encrypted. Valid values: 
 <li>TRUE: encrypted
 <li>FALSE: not encrypted<br>
 Default value: FALSE<br>
-Currently, this parameter is only used in the `RunInstances` API.
-Note: this field may return null, indicating that no valid values can be obtained.
+This parameter is only used with `RunInstances`.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type Encrypt: bool
         """
         self.DiskSize = None
@@ -1473,7 +1473,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
         """
         :param SecurityGroupIds: ID of the security group to be disassociated, such as `sg-efil73jd`. Only one security group can be disassociated.
         :type SecurityGroupIds: list of str
-        :param InstanceIds: ID(s) of the instance(s) to be disassociated, such as `ins-lesecurk`. You can specify multiple instances.
+        :param InstanceIds: ID(s) of the instance(s) to be disassociated，such as `ins-lesecurk`. You can specify multiple instances.
         :type InstanceIds: list of str
         """
         self.SecurityGroupIds = None
@@ -1601,17 +1601,16 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class Filter(AbstractModel):
-    """> Describes key-value pair filters used for conditional queries, such as filtering results by ID, name and state.
-    > * If there are multiple `Filter` parameters, the relationship among them will be logical `AND`.
-    > * If there are multiple `Values` for the same `Filter`, the relationship among the `Values` for the same `Filter` will be logical `OR`.
+    """> Key-value pair filters used for conditional queries, such as filtering results by ID, name, and state.
+    > * If there are multiple `Filter` parameters, they are evaluated using the logical `AND` operator.
+    > * If a `Filter` contains multiple `Values`, they are evaluated using the logical `OR` operator.
     >
-    > Take the [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API as an example. You can use the following filters to query the instances whose availability zone (`zone`) is Guangzhou Zone 1 ***and*** billing method (`instance-charge-type`) is prepaid ***or*** pay-as-you-go:
+    > Take [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) as an example. You can use the following filters to query the instances in availability zone (`zone`) Guangzhou Zone 1 ***and*** whose billing plan (`instance-charge-type`) is pay-as-you-go:
     ```
     Filters.0.Name=zone
     &Filters.0.Values.0=ap-guangzhou-1
     &Filters.1.Name=instance-charge-type
-    &Filters.1.Values.0=PREPAID
-    &Filters.1.Values.1=POSTPAID_BY_HOUR
+    &Filters.1.Values.0=POSTPAID_BY_HOUR
     ```
 
     """
@@ -2321,7 +2320,7 @@ class Instance(AbstractModel):
         :type RestrictState: str
         :param InstanceName: Instance name
         :type InstanceName: str
-        :param InstanceChargeType: Instance billing method. Valid values: <br><li>`PREPAID`: prepaid, i.e., monthly subscription <br><li>`POSTPAID_BY_HOUR`: pay-as-you-go <br><li>`CDHPAID`: you are only billed for the CDH instances, not the CVMs running on the CDHs. <br><li>`SPOTPAID`: you are billed based on your bid.
+        :param InstanceChargeType: Instance billing plan. Valid values:<br><li>`POSTPAID_BY_HOUR`: pay after use. You are billed by the hour, by traffic.<br><li>`CDHPAID`: `CDH` billing plan. Applicable to `CDH` only, not the instances on the host.<br>
         :type InstanceChargeType: str
         :param SystemDisk: Information on the system disk of the instance
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
@@ -2338,11 +2337,12 @@ Note: This field may return null, indicating that no valid value is found.
         :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         :param ImageId: `ID` of the image used to create the instance.
         :type ImageId: str
-        :param RenewFlag: Auto renewal flag. Valid values: <br><li>`NOTIFY_AND_MANUAL_RENEW`: notify upon expiration, but do not renew automatically <br><li>`NOTIFY_AND_AUTO_RENEW`: notify upon expiration and renew automatically <br><li>`DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify upon expiration nor renew automatically.
+        :param RenewFlag: Auto renewal flag. Valid values: <br><li>`NOTIFY_AND_MANUAL_RENEW`: notify upon expiration, but do not renew automatically <br><li>`NOTIFY_AND_AUTO_RENEW`: notify upon expiration and renew automatically <br><li>`DISABLE_NOTIFY_AND_MANUAL_RENEW`: do not notify upon expiration and do not renew automatically.
+<br><li>Note: this parameter is `null` for postpaid instances.
         :type RenewFlag: str
         :param CreatedTime: Creation time following the `ISO8601` standard and using `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
         :type CreatedTime: str
-        :param ExpiredTime: Expiration time following the `ISO8601` standard and using `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
+        :param ExpiredTime: Expiration time in UTC format following the `ISO8601` standard: `YYYY-MM-DDThh:mm:ssZ`. Note: this parameter is `null` for postpaid instances.
         :type ExpiredTime: str
         :param OsName: Operating system name.
         :type OsName: str
@@ -2366,11 +2366,13 @@ Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>ST
         :param LatestOperationRequestId: 
         :type LatestOperationRequestId: str
         :param DisasterRecoverGroupId: ID of a spread placement group.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid value is obtained.
         :type DisasterRecoverGroupId: str
-        :param IPv6Addresses: 
-        :type IPv6Addresses: str
-        :param CamRoleName: 
+        :param IPv6Addresses: IPv6 address of the instance.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type IPv6Addresses: list of str
+        :param CamRoleName: CAM role name.
+Note: this field may return null, indicating that no valid value is obtained.
         :type CamRoleName: str
         """
         self.Placement = None
@@ -2483,7 +2485,7 @@ class InstanceChargePrepaid(AbstractModel):
 
 class InstanceFamilyConfig(AbstractModel):
     """Describes the model family of the instance.
-    Format: {'InstanceFamilyName': 'Standard S1', 'InstanceFamily': 'S1'}, {'InstanceFamilyName': 'Network-optimized N1', 'InstanceFamily': 'N1'}, {'InstanceFamilyName': 'High IO I1', 'InstanceFamily': 'I1'}, etc.
+    Examples: {'InstanceFamilyName': 'Standard S1', 'InstanceFamily': 'S1'}, {'InstanceFamilyName': 'Network-optimized N1', 'InstanceFamily': 'N1'}, {'InstanceFamilyName': 'High IO I1', 'InstanceFamily': 'I1'}, etc.
 
     """
 
@@ -2527,7 +2529,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
 
 class InstanceStatus(AbstractModel):
-    """Describes instance states. For state types, see [here](/document/api/213/9452#INSTANCE_STATE).
+    """Describes instance states. For state types, see [here](/document/api/213/15753#InstanceStatus).
 
     """
 
@@ -2566,6 +2568,8 @@ class InstanceTypeConfig(AbstractModel):
         :type CPU: int
         :param Memory: Memory capacity; unit: `GB`.
         :type Memory: int
+        :param FPGA: Number of FPGA cores; unit: core.
+        :type FPGA: int
         """
         self.Zone = None
         self.InstanceType = None
@@ -2573,6 +2577,7 @@ class InstanceTypeConfig(AbstractModel):
         self.GPU = None
         self.CPU = None
         self.Memory = None
+        self.FPGA = None
 
 
     def _deserialize(self, params):
@@ -2582,6 +2587,7 @@ class InstanceTypeConfig(AbstractModel):
         self.GPU = params.get("GPU")
         self.CPU = params.get("CPU")
         self.Memory = params.get("Memory")
+        self.FPGA = params.get("FPGA")
 
 
 class InstanceTypeQuotaItem(AbstractModel):
@@ -2595,7 +2601,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type Zone: str
         :param InstanceType: Instance model.
         :type InstanceType: str
-        :param InstanceChargeType: Instance billing method. Valid values: <br><li>`PREPAID`: prepaid, i.e., monthly subscription <br><li>`POSTPAID_BY_HOUR`: pay-as-you-go <br><li>`CDHPAID`: you are only billed for the [CDH](https://cloud.tencent.com/document/product/416) instances, not the CVMs running on the CDHs. <br><li>`SPOTPAID`: you are billed based on your bid.
+        :param InstanceChargeType: Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://cloud.tencent.com/document/product/416) billing plan. Applicable to `CDH` only, not the instances on the host.
         :type InstanceChargeType: str
         :param NetworkCard: ENI type. For example, 25 represents an ENI of 25 GB.
         :type NetworkCard: int
@@ -2616,8 +2622,8 @@ Note: This field may return null, indicating that no valid value is found.
         :type Status: str
         :param Price: Price of an instance model.
         :type Price: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
-        :param SoldOutReason: Details of sold out items
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SoldOutReason: Details of out-of-stock items
+Note: this field may return null, indicating that no valid value is obtained.
         :type SoldOutReason: str
         """
         self.Zone = None
@@ -2667,7 +2673,7 @@ class InternetAccessible(AbstractModel):
 
     def __init__(self):
         """
-        :param InternetChargeType: Network billing method. Valid values: <br><li>BANDWIDTH_PREPAID: prepaid; billed by bandwidth <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay-as-you-go; billed by traffic on an hourly basis <br><li>BANDWIDTH_POSTPAID_BY_HOUR: pay-as-you-go; billed by bandwidth on an hourly basis <br><li>BANDWIDTH_PACKAGE: for bandwidth package users <br>Default value: same as the instance billing method for non-bandwidth package users.
+        :param InternetChargeType: Network connection billing plan. Valid value: <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour.
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://cloud.tencent.com/document/product/213/12523).
         :type InternetMaxBandwidthOut: int
@@ -2717,23 +2723,47 @@ class ItemPrice(AbstractModel):
 
     def __init__(self):
         """
-        :param UnitPrice: Subsequent unit price (in RMB).
-Note: This field may return null, indicating that no valid value is found.
+        :param UnitPrice: The original unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to the unit price for the usage between 0 and ∞ hours.
+Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPrice: float
-        :param ChargeUnit: Subsequent billing unit. Valid values: <br><li>HOUR: bill by hour. Scenarios using this billing unit include: pay as you go for instances on an hourly basis (`POSTPAID_BY_HOUR`), and pay as you go for bandwidth on an hourly basis (`BANDWIDTH_POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. Scenarios using this billing unit include: pay as you go for traffic on an hourly basis (`TRAFFIC_POSTPAID_BY_HOUR`).
-Note: This field may return null, indicating that no valid value is found.
+        :param ChargeUnit: Billing unit for pay-as-you-go mode. Valid values: <br><li>HOUR: billed on an hourly basis. It's used for hourly postpaid instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. It's used for postpaid products that are billed by the hourly traffic (`TRAFFIC_POSTPAID_BY_HOUR`).
+Note: this field may return null, indicating that no valid value is obtained.
         :type ChargeUnit: str
-        :param OriginalPrice: Original price of a prepaid instance (in RMB).
-Note: This field may return null, indicating that no valid value is found.
+        :param OriginalPrice: The original price of a pay-in-advance instance, in USD.
+Note: this field may return null, indicating that no valid value is obtained.
         :type OriginalPrice: float
-        :param DiscountPrice: Discount price of a prepaid instance (in RMB).
-Note: This field may return null, indicating that no valid value is found.
+        :param DiscountPrice: Discount price of a prepaid instance, in USD.
+Note: this field may return null, indicating that no valid value is obtained.
         :type DiscountPrice: float
+        :param Discount: Percentage of the original price. For example, if you enter "20", the discounted price will be 20% of the original price.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type Discount: int
+        :param UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to the unit price for the usage between 0 and ∞ hours.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type UnitPriceDiscount: float
+        :param UnitPriceSecondStep: Original unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type UnitPriceSecondStep: float
+        :param UnitPriceDiscountSecondStep: Discounted unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type UnitPriceDiscountSecondStep: float
+        :param UnitPriceThirdStep: Original unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type UnitPriceThirdStep: float
+        :param UnitPriceDiscountThirdStep: Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type UnitPriceDiscountThirdStep: float
         """
         self.UnitPrice = None
         self.ChargeUnit = None
         self.OriginalPrice = None
         self.DiscountPrice = None
+        self.Discount = None
+        self.UnitPriceDiscount = None
+        self.UnitPriceSecondStep = None
+        self.UnitPriceDiscountSecondStep = None
+        self.UnitPriceThirdStep = None
+        self.UnitPriceDiscountThirdStep = None
 
 
     def _deserialize(self, params):
@@ -2741,6 +2771,12 @@ Note: This field may return null, indicating that no valid value is found.
         self.ChargeUnit = params.get("ChargeUnit")
         self.OriginalPrice = params.get("OriginalPrice")
         self.DiscountPrice = params.get("DiscountPrice")
+        self.Discount = params.get("Discount")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.UnitPriceSecondStep = params.get("UnitPriceSecondStep")
+        self.UnitPriceDiscountSecondStep = params.get("UnitPriceDiscountSecondStep")
+        self.UnitPriceThirdStep = params.get("UnitPriceThirdStep")
+        self.UnitPriceDiscountThirdStep = params.get("UnitPriceDiscountThirdStep")
 
 
 class KeyPair(AbstractModel):
@@ -2828,11 +2864,11 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-30 characters long and contain at least two of the following categories: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-30 characters long and contain at least three of the following categories: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-30 characters long and contain at least two of the following types: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-30 characters long and contain at least three of the following categories: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
+Note: this field may return null, indicating that no valid value is obtained.
         :type Password: str
-        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
-Note: This field may return null, indicating that no valid value is found.
+        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://cloud.tencent.com/document/api/213/15699) to obtain `KeyId`. A key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
+Note: this field may return null, indicating that no valid value is obtained.
         :type KeyIds: list of str
         :param KeepImageLogin: Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.
 Note: This field may return null, indicating that no valid value is found.
@@ -3190,7 +3226,7 @@ class OperationCountLimit(AbstractModel):
 
     def __init__(self):
         """
-        :param Operation: Operations on an instance.
+        :param Operation: Instance operation. Valid values: <br><li>`INSTANCE_DEGRADE`: downgrade an instance<br><li>`INTERNET_CHARGE_TYPE_CHANGE`: modify the billing plan of the network connection
         :type Operation: str
         :param InstanceId: Instance ID.
         :type InstanceId: str
@@ -3244,7 +3280,7 @@ class Placement(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: ID of the [Availability Zone](/document/product/213/9452#zone) where the instance resides. To obtain the availability zone IDs, you can call [DescribeZones](/document/api/213/9455) and look for the `Zone` fields in the response.
+        :param Zone: The ID of [availability zone](https://cloud.tencent.com/document/product/213/15753#ZoneInfo) where the instance locates. It can obtained in the `Zone` field returned by [DescribeZones](https://cloud.tencent.com/document/213/15707) API.
         :type Zone: str
         :param ProjectId: ID of the project to which the instance belongs. To obtain the project IDs, you can call [DescribeProject](/document/api/378/4400) and look for the `projectId` fields in the response. If this parameter is not specified, the default project will be used.
         :type ProjectId: int
@@ -3252,11 +3288,14 @@ class Placement(AbstractModel):
         :type HostIds: list of str
         :param HostIps: Master host IP used to create the CVM
         :type HostIps: list of str
+        :param HostId: 
+        :type HostId: str
         """
         self.Zone = None
         self.ProjectId = None
         self.HostIds = None
         self.HostIps = None
+        self.HostId = None
 
 
     def _deserialize(self, params):
@@ -3264,6 +3303,7 @@ class Placement(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.HostIds = params.get("HostIds")
         self.HostIps = params.get("HostIps")
+        self.HostId = params.get("HostId")
 
 
 class Price(AbstractModel):
@@ -3566,7 +3606,7 @@ class ResizeInstanceDisksRequest(AbstractModel):
         """
         :param InstanceId: Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response.
         :type InstanceId: str
-        :param DataDisks: Configuration of data disks to be expanded. Currently you can only use the API to expand non-elastic data disks whose [disk type](/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is not elastic. Data disk capacity unit: GB; minimum increment: 10 GB. For more information on selecting the data disk type, see the product overview on cloud disks. Available data disk types are subject to the instance type (`InstanceType`). In addition, the maximum capacity allowed for expansion varies by data disk type.
+        :param DataDisks: Configuration of data disks to be expanded. Currently you can only use the API to expand non-elastic data disks whose [disk type](/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is not elastic. Data disk capacity unit: GB; minimum increment: 10 GB. For more information on selecting the data disk type, see the [product overview on cloud disks](https://cloud.tencent.com/document/product/362/2353). Available data disk types are subject to the instance type (`InstanceType`). In addition, the maximum capacity allowed for expansion varies by data disk type.
         :type DataDisks: list of DataDisk
         :param ForceStop: Whether to force shut down a running instances. It is recommended to manually shut down a running instance before resetting the user password. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE. <br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be shut down normally.
         :type ForceStop: bool
@@ -3638,7 +3678,7 @@ class RunInstancesRequest(AbstractModel):
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         :param SecurityGroupIds: Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
         :type SecurityGroupIds: list of str
-        :param EnhancedService: Specifies whether to enable services Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. But for custom images and images from market place, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.
+        :param EnhancedService: Specifies whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         :param ClientToken: A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. <br>For more information, see “How to ensure idempotency”.
         :type ClientToken: str
@@ -4017,7 +4057,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: The system disk type. For more information about the limits on system disk types, see [Instance Types](/document/product/213/2177). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD cloud disk<br><li>CLOUD_PREMIUM: premium cloud storage<br><br>Default value: CLOUD_BASIC.
+        :param DiskType: System disk type. For more information on system disk types and their limits, refer to [Storage Overview](https://cloud.tencent.com/document/product/213/4952). Valid values: <br><li>LOCAL_BASIC: Local disk <br><li>LOCAL_SSD: Local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium cloud disk <br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: LOCAL_BASIC.
         :type DiskType: str
         :param DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter currently.
         :type DiskId: str
@@ -4156,8 +4196,8 @@ class ZoneInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: Availability zone name. For example, ap-guangzhou-3.
-Names of availability zones throughout the entire network:
+        :param Zone: Availability zone name, such as ap-guangzhou-3.
+The following is a list of all availability zones:
 <li> ap-chongqing-1 </li>
 <li> ap-seoul-1 </li>
 <li> ap-chengdu-1 </li>
@@ -4201,7 +4241,7 @@ Names of availability zones throughout the entire network:
         :type ZoneName: str
         :param ZoneId: Availability zone ID
         :type ZoneId: str
-        :param ZoneState: Availability zone state. Valid values: `AVAILABLE`, available; `UNAVAILABLE`, unavailable.
+        :param ZoneState: Availability zone status. Valid values: `AVAILABLE`: available; `UNAVAILABLE`: unavailable.
         :type ZoneState: str
         """
         self.Zone = None

@@ -2361,7 +2361,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Vip6: Internal parameter, which can be ignored
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Vip6: str
-        :param RemainBandwidthDuration: 
+        :param RemainBandwidthDuration: Internal parameter, which can be ignored
+Note: this field may return null, indicating that no valid values can be obtained.
         :type RemainBandwidthDuration: str
         """
         self.InstanceName = None

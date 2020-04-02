@@ -374,6 +374,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type VoucherIds: list of str
         :param DBVersion: SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). The version purchasable varies by region and can be queried by calling the `DescribeProductConfig` API. If this parameter is left empty, 2008R2 will be used by default.
         :type DBVersion: str
+        :param AutoRenewFlag: Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
+        :type AutoRenewFlag: int
         """
         self.Zone = None
         self.Memory = None
@@ -387,6 +389,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.AutoVoucher = None
         self.VoucherIds = None
         self.DBVersion = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -402,6 +405,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
         self.DBVersion = params.get("DBVersion")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -413,15 +417,19 @@ class CreateDBInstancesResponse(AbstractModel):
         """
         :param DealName: Order name
         :type DealName: str
+        :param DealNames: Order name array
+        :type DealNames: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.DealName = None
+        self.DealNames = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
+        self.DealNames = params.get("DealNames")
         self.RequestId = params.get("RequestId")
 
 
@@ -686,6 +694,10 @@ class DBInstance(AbstractModel):
         :type Type: str
         :param Pid: Billing ID
         :type Pid: int
+        :param UniqVpcId: Unique string-type ID of instance VPC in the format of `vpc-xxx`, which is an empty string if the basic network is used
+        :type UniqVpcId: str
+        :param UniqSubnetId: Unique string-type ID of instance subnet in the format of `subnet-xxx`, which is an empty string if the basic network is used
+        :type UniqSubnetId: str
         """
         self.InstanceId = None
         self.Name = None
@@ -717,6 +729,8 @@ class DBInstance(AbstractModel):
         self.Version = None
         self.Type = None
         self.Pid = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
 
 
     def _deserialize(self, params):
@@ -750,6 +764,8 @@ class DBInstance(AbstractModel):
         self.Version = params.get("Version")
         self.Type = params.get("Type")
         self.Pid = params.get("Pid")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
 
 
 class DBPrivilege(AbstractModel):
@@ -1148,6 +1164,10 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceIdSet: list of str
         :param PayMode: Retrieves billing type. 0: pay-as-you-go
         :type PayMode: int
+        :param VpcId: Unique string-type ID of instance VPC in the format of `vpc-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.
+        :type VpcId: str
+        :param SubnetId: Unique string-type ID of instance subnet in the format of `subnet-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.
+        :type SubnetId: str
         """
         self.ProjectId = None
         self.Status = None
@@ -1155,6 +1175,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Limit = None
         self.InstanceIdSet = None
         self.PayMode = None
+        self.VpcId = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -1164,6 +1186,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.InstanceIdSet = params.get("InstanceIdSet")
         self.PayMode = params.get("PayMode")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
 
 
 class DescribeDBInstancesResponse(AbstractModel):

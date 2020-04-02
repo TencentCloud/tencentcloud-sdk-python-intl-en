@@ -123,6 +123,20 @@ class Cluster(AbstractModel):
         :type ClusterStatus: str
         :param Property: 
         :type Property: str
+        :param ClusterMaterNodeNum: Number of master nodes currently in the cluster
+        :type ClusterMaterNodeNum: int
+        :param ImageId: ID of the image used by the cluster
+Note: this field may return null, indicating that no valid value is obtained.
+        :type ImageId: str
+        :param OsCustomizeType: OsCustomizeType
+Note: this field may return null, indicating that no valid value is obtained.
+        :type OsCustomizeType: str
+        :param ContainerRuntime: Runtime environment of the cluster. Values can be `docker` or `containerd`.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type ContainerRuntime: str
+        :param CreatedTime: Creation time
+Note: this field may return null, indicating that no valid value is obtained.
+        :type CreatedTime: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -136,6 +150,11 @@ class Cluster(AbstractModel):
         self.TagSpecification = None
         self.ClusterStatus = None
         self.Property = None
+        self.ClusterMaterNodeNum = None
+        self.ImageId = None
+        self.OsCustomizeType = None
+        self.ContainerRuntime = None
+        self.CreatedTime = None
 
 
     def _deserialize(self, params):
@@ -158,6 +177,11 @@ class Cluster(AbstractModel):
                 self.TagSpecification.append(obj)
         self.ClusterStatus = params.get("ClusterStatus")
         self.Property = params.get("Property")
+        self.ClusterMaterNodeNum = params.get("ClusterMaterNodeNum")
+        self.ImageId = params.get("ImageId")
+        self.OsCustomizeType = params.get("OsCustomizeType")
+        self.ContainerRuntime = params.get("ContainerRuntime")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class ClusterAdvancedSettings(AbstractModel):
@@ -175,11 +199,20 @@ class ClusterAdvancedSettings(AbstractModel):
         :type ContainerRuntime: str
         :param NodeNameType: 
         :type NodeNameType: str
+        :param ExtraArgs: Cluster custom parameter
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
+        :param NetworkType: Cluster network type, which can be GR (Global Router) or VPC-CNI. The default value is GR.
+        :type NetworkType: str
+        :param IsNonStaticIpMode: Whether a cluster in VPC-CNI mode uses dynamic IP addresses. The default value is FALSE, which indicates that static IP addresses are used.
+        :type IsNonStaticIpMode: bool
         """
         self.IPVS = None
         self.AsEnabled = None
         self.ContainerRuntime = None
         self.NodeNameType = None
+        self.ExtraArgs = None
+        self.NetworkType = None
+        self.IsNonStaticIpMode = None
 
 
     def _deserialize(self, params):
@@ -187,6 +220,11 @@ class ClusterAdvancedSettings(AbstractModel):
         self.AsEnabled = params.get("AsEnabled")
         self.ContainerRuntime = params.get("ContainerRuntime")
         self.NodeNameType = params.get("NodeNameType")
+        if params.get("ExtraArgs") is not None:
+            self.ExtraArgs = ClusterExtraArgs()
+            self.ExtraArgs._deserialize(params.get("ExtraArgs"))
+        self.NetworkType = params.get("NetworkType")
+        self.IsNonStaticIpMode = params.get("IsNonStaticIpMode")
 
 
 class ClusterBasicSettings(AbstractModel):
@@ -258,11 +296,20 @@ class ClusterCIDRSettings(AbstractModel):
         :type MaxNodePodNum: int
         :param MaxClusterServiceNum: Maximum number of cluster services
         :type MaxClusterServiceNum: int
+        :param ServiceCIDR: The CIDR block used to assign cluster service IP addresses. It must conflict with neither the VPC CIDR block nor with CIDR blocks of other clusters in the same VPC instance. The IP range must be within the private network IP range, such as 10.1.0.0/14, 192.168.0.1/18, and 172.16.0.0/16.
+        :type ServiceCIDR: str
+        :param EniSubnetIds: Subnet ID of the ENI in VPC-CNI network mode
+        :type EniSubnetIds: list of str
+        :param ClaimExpiredSeconds: Repossession time of ENI IP addresses in VPC-CNI network mode, whose range is [300,15768000)
+        :type ClaimExpiredSeconds: int
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
         self.MaxNodePodNum = None
         self.MaxClusterServiceNum = None
+        self.ServiceCIDR = None
+        self.EniSubnetIds = None
+        self.ClaimExpiredSeconds = None
 
 
     def _deserialize(self, params):
@@ -270,6 +317,37 @@ class ClusterCIDRSettings(AbstractModel):
         self.IgnoreClusterCIDRConflict = params.get("IgnoreClusterCIDRConflict")
         self.MaxNodePodNum = params.get("MaxNodePodNum")
         self.MaxClusterServiceNum = params.get("MaxClusterServiceNum")
+        self.ServiceCIDR = params.get("ServiceCIDR")
+        self.EniSubnetIds = params.get("EniSubnetIds")
+        self.ClaimExpiredSeconds = params.get("ClaimExpiredSeconds")
+
+
+class ClusterExtraArgs(AbstractModel):
+    """Cluster master custom parameter
+
+    """
+
+    def __init__(self):
+        """
+        :param KubeAPIServer: kube-apiserver custom parameter
+Note: this field may return null, indicating that no valid value is obtained.
+        :type KubeAPIServer: list of str
+        :param KubeControllerManager: kube-controller-manager custom parameter
+Note: this field may return null, indicating that no valid value is obtained.
+        :type KubeControllerManager: list of str
+        :param KubeScheduler: kube-scheduler custom parameter
+Note: this field may return null, indicating that no valid value is obtained.
+        :type KubeScheduler: list of str
+        """
+        self.KubeAPIServer = None
+        self.KubeControllerManager = None
+        self.KubeScheduler = None
+
+
+    def _deserialize(self, params):
+        self.KubeAPIServer = params.get("KubeAPIServer")
+        self.KubeControllerManager = params.get("KubeControllerManager")
+        self.KubeScheduler = params.get("KubeScheduler")
 
 
 class ClusterNetworkSettings(AbstractModel):
@@ -451,7 +529,7 @@ class CreateClusterRequest(AbstractModel):
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param ExistedInstancesForNode: Configuration information of an existing instance
         :type ExistedInstancesForNode: list of ExistedInstancesForNode
-        :param InstanceDataDiskMountSettings: 
+        :param InstanceDataDiskMountSettings: CVM type and the corresponding data disk mounting configuration information.
         :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting
         """
         self.ClusterCIDRSettings = None
@@ -569,6 +647,33 @@ class DataDisk(AbstractModel):
     """Described the configuration and information of k8s node data disk.
 
     """
+
+    def __init__(self):
+        """
+        :param DiskType: 
+        :type DiskType: str
+        :param FileSystem: File system (ext3/ext4/xfs)
+        :type FileSystem: str
+        :param DiskSize: 
+        :type DiskSize: int
+        :param AutoFormatAndMount: Whether to automatically format and mount the disk
+        :type AutoFormatAndMount: bool
+        :param MountTarget: 
+        :type MountTarget: str
+        """
+        self.DiskType = None
+        self.FileSystem = None
+        self.DiskSize = None
+        self.AutoFormatAndMount = None
+        self.MountTarget = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.FileSystem = params.get("FileSystem")
+        self.DiskSize = params.get("DiskSize")
+        self.AutoFormatAndMount = params.get("AutoFormatAndMount")
+        self.MountTarget = params.get("MountTarget")
 
 
 class DeleteClusterAsGroupsRequest(AbstractModel):
@@ -1364,9 +1469,12 @@ class ExistedInstancesForNode(AbstractModel):
         :type NodeRole: str
         :param ExistedInstancesPara: Reinstallation parameter of existing instances
         :type ExistedInstancesPara: :class:`tencentcloud.tke.v20180525.models.ExistedInstancesPara`
+        :param InstanceAdvancedSettingsOverride: Advanced node setting, which overrides the InstanceAdvancedSettings item set at the cluster level (currently valid for the ExtraArgs node custom parameter only)
+        :type InstanceAdvancedSettingsOverride: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         """
         self.NodeRole = None
         self.ExistedInstancesPara = None
+        self.InstanceAdvancedSettingsOverride = None
 
 
     def _deserialize(self, params):
@@ -1374,6 +1482,9 @@ class ExistedInstancesForNode(AbstractModel):
         if params.get("ExistedInstancesPara") is not None:
             self.ExistedInstancesPara = ExistedInstancesPara()
             self.ExistedInstancesPara._deserialize(params.get("ExistedInstancesPara"))
+        if params.get("InstanceAdvancedSettingsOverride") is not None:
+            self.InstanceAdvancedSettingsOverride = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettingsOverride._deserialize(params.get("InstanceAdvancedSettingsOverride"))
 
 
 class ExistedInstancesPara(AbstractModel):
@@ -1455,11 +1566,22 @@ class Instance(AbstractModel):
         :type FailedReason: str
         :param InstanceState: Instance status (running, initializing, or failed)
         :type InstanceState: str
+        :param DrainStatus: Whether the instance is drained
+Note: this field may return null, indicating that no valid value is obtained.
+        :type DrainStatus: str
+        :param InstanceAdvancedSettings: Node settings
+Note: this field may return null, indicating that no valid value is obtained.
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param CreatedTime: Creation time
+        :type CreatedTime: str
         """
         self.InstanceId = None
         self.InstanceRole = None
         self.FailedReason = None
         self.InstanceState = None
+        self.DrainStatus = None
+        self.InstanceAdvancedSettings = None
+        self.CreatedTime = None
 
 
     def _deserialize(self, params):
@@ -1467,6 +1589,11 @@ class Instance(AbstractModel):
         self.InstanceRole = params.get("InstanceRole")
         self.FailedReason = params.get("FailedReason")
         self.InstanceState = params.get("InstanceState")
+        self.DrainStatus = params.get("DrainStatus")
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class InstanceAdvancedSettings(AbstractModel):
@@ -1488,6 +1615,8 @@ class InstanceAdvancedSettings(AbstractModel):
         :type Labels: list of Label
         :param DataDisks: 
         :type DataDisks: list of DataDisk
+        :param ExtraArgs: Information about node custom parameters
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         """
         self.MountTarget = None
         self.DockerGraphPath = None
@@ -1495,6 +1624,7 @@ class InstanceAdvancedSettings(AbstractModel):
         self.Unschedulable = None
         self.Labels = None
         self.DataDisks = None
+        self.ExtraArgs = None
 
 
     def _deserialize(self, params):
@@ -1514,18 +1644,78 @@ class InstanceAdvancedSettings(AbstractModel):
                 obj = DataDisk()
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
+        if params.get("ExtraArgs") is not None:
+            self.ExtraArgs = InstanceExtraArgs()
+            self.ExtraArgs._deserialize(params.get("ExtraArgs"))
 
 
 class InstanceDataDiskMountSetting(AbstractModel):
-    """CVM instance data disk mount configuration
+    """Mounting configuration of the CVM instance data disk
 
     """
+
+    def __init__(self):
+        """
+        :param InstanceType: CVM instance type
+        :type InstanceType: str
+        :param DataDisks: Data disk mounting information
+        :type DataDisks: list of DataDisk
+        :param Zone: Availability zone where the CVM instance is located
+        :type Zone: str
+        """
+        self.InstanceType = None
+        self.DataDisks = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        self.Zone = params.get("Zone")
+
+
+class InstanceExtraArgs(AbstractModel):
+    """Node custom parameter
+
+    """
+
+    def __init__(self):
+        """
+        :param Kubelet: Kubelet custom parameter
+Note: this field may return null, indicating that no valid value is obtained.
+        :type Kubelet: list of str
+        """
+        self.Kubelet = None
+
+
+    def _deserialize(self, params):
+        self.Kubelet = params.get("Kubelet")
 
 
 class Label(AbstractModel):
     """k8s tags, generally exist as an array
 
     """
+
+    def __init__(self):
+        """
+        :param Name: 
+        :type Name: str
+        :param Value: 
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
 
 
 class LoginSettings(AbstractModel):
@@ -1535,11 +1725,11 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-16 characters long and contain at least one character from two of the following categories: [a-z, A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-16 characters long and contain at least one character from three of the following categories: [a-z], [A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
-Note: This field may return null, indicating that no valid value is found.
+        :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-30 characters long and contain at least two of the following types: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-30 characters long and contain at least three of the following categories: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
+Note: this field may return null, indicating that no valid value is obtained.
         :type Password: str
-        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
-Note: This field may return null, indicating that no valid value is found.
+        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://cloud.tencent.com/document/api/213/15699) to obtain `KeyId`. A key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
+Note: this field may return null, indicating that no valid value is obtained.
         :type KeyIds: list of str
         :param KeepImageLogin: Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.
 Note: This field may return null, indicating that no valid value is found.
@@ -1672,14 +1862,23 @@ class RunInstancesForNode(AbstractModel):
         :type NodeRole: str
         :param RunInstancesPara: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://cloud.tencent.com/document/product/213/15730). Pass any parameter other than common parameters. ImageId will be replaced with the image corresponding to the TKE cluster operating system.
         :type RunInstancesPara: list of str
+        :param InstanceAdvancedSettingsOverrides: An advanced node setting. This parameter overrides the InstanceAdvancedSettings item set at the cluster level and corresponds to RunInstancesPara in a one-to-one sequential manner (currently valid for the ExtraArgs node custom parameter only).
+        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
         """
         self.NodeRole = None
         self.RunInstancesPara = None
+        self.InstanceAdvancedSettingsOverrides = None
 
 
     def _deserialize(self, params):
         self.NodeRole = params.get("NodeRole")
         self.RunInstancesPara = params.get("RunInstancesPara")
+        if params.get("InstanceAdvancedSettingsOverrides") is not None:
+            self.InstanceAdvancedSettingsOverrides = []
+            for item in params.get("InstanceAdvancedSettingsOverrides"):
+                obj = InstanceAdvancedSettings()
+                obj._deserialize(item)
+                self.InstanceAdvancedSettingsOverrides.append(obj)
 
 
 class RunMonitorServiceEnabled(AbstractModel):
@@ -1720,3 +1919,23 @@ class TagSpecification(AbstractModel):
     """List of tag descriptions. By specifying this parameter, you can bind tags to corresponding resource instances at the same time. Currently, only tags are bound to cloud host instances.
 
     """
+
+    def __init__(self):
+        """
+        :param ResourceType: 
+        :type ResourceType: str
+        :param Tags: 
+        :type Tags: list of Tag
+        """
+        self.ResourceType = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)

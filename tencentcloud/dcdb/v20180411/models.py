@@ -240,7 +240,7 @@ class CreateAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance Id, which is passed through from the input parameters.
+        :param InstanceId: Instance ID, which is passed through from the input parameters.
         :type InstanceId: str
         :param UserName: Username, which is passed through from the input parameters.
         :type UserName: str
@@ -340,7 +340,7 @@ class DCDBInstanceInfo(AbstractModel):
         :type InstanceId: str
         :param InstanceName: Instance name
         :type InstanceName: str
-        :param AppId: APPID
+        :param AppId: AppID
         :type AppId: int
         :param ProjectId: Project ID
         :type ProjectId: int
@@ -382,13 +382,13 @@ class DCDBInstanceInfo(AbstractModel):
         :type NodeCount: int
         :param IsTmp: Temporary instance flag. 0: non-temporary instance
         :type IsTmp: int
-        :param ExclusterId: Exclusive cluster ID. If this parameter is left empty, the instance is a non-dedicated cluster instance
+        :param ExclusterId: Dedicated cluster ID. If this parameter is empty, the instance is a non-dedicated cluster instance
         :type ExclusterId: str
         :param UniqueVpcId: VPC ID in string type
         :type UniqueVpcId: str
         :param UniqueSubnetId: VPC subnet ID in string type
         :type UniqueSubnetId: str
-        :param Id: Numeric ID of an instance (this field is obsolete and should not be depended on)
+        :param Id: Numeric ID of instance (this field is obsolete and should not be depended on)
         :type Id: int
         :param WanDomain: Domain name for public network access, which can be resolved by the public network
         :type WanDomain: str
@@ -413,6 +413,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type WanStatus: int
         :param IsAuditSupported: Whether the instance supports audit. 1: yes; 0: no
         :type IsAuditSupported: int
+        :param Cpu: Number of CPU cores
+        :type Cpu: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -452,6 +454,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Locker = None
         self.WanStatus = None
         self.IsAuditSupported = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -498,6 +501,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Locker = params.get("Locker")
         self.WanStatus = params.get("WanStatus")
         self.IsAuditSupported = params.get("IsAuditSupported")
+        self.Cpu = params.get("Cpu")
 
 
 class DCDBShardInfo(AbstractModel):
@@ -556,6 +560,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ShardSlaveZones: List of slave AZs of a shard
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ShardSlaveZones: list of str
+        :param Cpu: Number of CPU cores
+        :type Cpu: int
         """
         self.InstanceId = None
         self.ShardSerialId = None
@@ -580,6 +586,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Paymode = None
         self.ShardMasterZone = None
         self.ShardSlaveZones = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -606,6 +613,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Paymode = params.get("Paymode")
         self.ShardMasterZone = params.get("ShardMasterZone")
         self.ShardSlaveZones = params.get("ShardSlaveZones")
+        self.Cpu = params.get("Cpu")
 
 
 class Database(AbstractModel):
@@ -752,7 +760,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
         :type DbName: str
         :param Type: Type. Valid values: table; view; proc; func; \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be queried (i.e., `db.\*`), in which case the `Object` parameter will be ignored
         :type Type: str
-        :param Object: Type name. For example, if `Type` = table, it indicates a specific table name; if both `DbName` and `Type` are specific names, `Object` indicates a specific object name and cannot be `\*` or empty
+        :param Object: Type name. For example, if `Type` is table, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\*` or empty
         :type Object: str
         :param ColName: If `Type` = table and `ColName` is `\*`, the permissions of the table will be queried; if `ColName` is a specific field name, the permissions of the corresponding field will be queried
         :type ColName: str
@@ -1129,7 +1137,7 @@ class DescribeDCDBShardsRequest(AbstractModel):
         """
         :param InstanceId: Instance ID in the format of dcdbt-ow728lmc.
         :type InstanceId: str
-        :param ShardInstanceIds: List of shard IDs.
+        :param ShardInstanceIds: Shard ID list.
         :type ShardInstanceIds: list of str
         :param Offset: Offset. Default value: 0
         :type Offset: int
@@ -1402,7 +1410,7 @@ Field permission. Valid values: INSERT; REFERENCES; SELECT; UPDATE
         :type Privileges: list of str
         :param Type: Type. Valid values: table; view; proc; func; \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be set (i.e., `db.\*`), in which case the `Object` parameter will be ignored
         :type Type: str
-        :param Object: Type name. For example, if `Type` = table, it indicates a specific table name; if both `DbName` and `Type` are specific names, `Object` indicates a specific object name and cannot be `\*` or empty
+        :param Object: Type name. For example, if `Type` is table, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\*` or empty
         :type Object: str
         :param ColName: If `Type` = table and `ColName` is `\*`, the permissions will be granted to the table; if `ColName` is a specific field name, the permissions will be granted to the field
         :type ColName: str
@@ -1452,7 +1460,7 @@ class InitDCDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: List of IDs of instances to be initialized. The ID is in the format of dcdbt-ow728lmc and can be obtained through the `DescribeDCDBInstances` API.
+        :param InstanceIds: List of IDs of instances to be initialized. The ID is in the format of `dcdbt-ow728lmc` and can be obtained through the `DescribeDCDBInstances` API.
         :type InstanceIds: list of str
         :param Params: List of parameters. Valid values: character_set_server (character set; required); lower_case_table_names (table name case sensitivity; required; 0: case-sensitive; 1: case-insensitive); innodb_page_size (InnoDB data page; default size: 16 KB); sync_mode (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: strong sync).
         :type Params: list of DBParamValue
@@ -1795,12 +1803,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Default: str
         :param Constraint: Parameter constraint
         :type Constraint: :class:`tencentcloud.dcdb.v20180411.models.ParamConstraint`
+        :param HaveSetValue: Whether a value has been set. false: no, true: yes
+        :type HaveSetValue: bool
         """
         self.Param = None
         self.Value = None
         self.SetValue = None
         self.Default = None
         self.Constraint = None
+        self.HaveSetValue = None
 
 
     def _deserialize(self, params):
@@ -1811,6 +1822,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Constraint") is not None:
             self.Constraint = ParamConstraint()
             self.Constraint._deserialize(params.get("Constraint"))
+        self.HaveSetValue = params.get("HaveSetValue")
 
 
 class ParamModifyResult(AbstractModel):
@@ -1905,6 +1917,8 @@ class ShardInfo(AbstractModel):
         :type NodeCount: int
         :param Pid: Product type ID (this field is obsolete and should not be depended on)
         :type Pid: int
+        :param Cpu: Number of CPU cores
+        :type Cpu: int
         """
         self.ShardInstanceId = None
         self.ShardSerialId = None
@@ -1915,6 +1929,7 @@ class ShardInfo(AbstractModel):
         self.ShardId = None
         self.NodeCount = None
         self.Pid = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -1927,6 +1942,7 @@ class ShardInfo(AbstractModel):
         self.ShardId = params.get("ShardId")
         self.NodeCount = params.get("NodeCount")
         self.Pid = params.get("Pid")
+        self.Cpu = params.get("Cpu")
 
 
 class TableColumn(AbstractModel):

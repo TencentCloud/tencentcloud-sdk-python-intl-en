@@ -495,7 +495,7 @@ class CvmClient(AbstractClient):
 
 
     def DescribeInstanceFamilyConfigs(self, request):
-        """This API is used to query the list of model families that are available for the current user and in the current region.
+        """This API is used to query a list of model families available to the current user in the current region.
 
         :param request: Request instance for DescribeInstanceFamilyConfigs.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceFamilyConfigsRequest`

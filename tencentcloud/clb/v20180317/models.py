@@ -2523,12 +2523,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Targets: List of real servers bound to a listener (applicable only to TCP/UDP/TCP_SSL listeners)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Targets: list of Backend
+        :param EndPort: Ending port in port range if port range is supported; 0 if port range is not supported
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EndPort: int
         """
         self.ListenerId = None
         self.Protocol = None
         self.Port = None
         self.Rules = None
         self.Targets = None
+        self.EndPort = None
 
 
     def _deserialize(self, params):
@@ -2547,6 +2551,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = Backend()
                 obj._deserialize(item)
                 self.Targets.append(obj)
+        self.EndPort = params.get("EndPort")
 
 
 class ListenerHealth(AbstractModel):
@@ -2716,10 +2721,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SnatIps: SnatIp list after SnatPro load balancing is enabled
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SnatIps: list of SnatIp
-        :param SlaType: 
+        :param SlaType: Performance guarantee specification
+Note: this field may return null, indicating that no valid values can be obtained.
         :type SlaType: str
-        :param IsBlock: 
+        :param IsBlock: Whether VIP is blocked
+Note: this field may return null, indicating that no valid values can be obtained.
         :type IsBlock: bool
+        :param IsBlockTime: 
+        :type IsBlockTime: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -2764,6 +2773,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SnatIps = None
         self.SlaType = None
         self.IsBlock = None
+        self.IsBlockTime = None
 
 
     def _deserialize(self, params):
@@ -2837,6 +2847,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.SnatIps.append(obj)
         self.SlaType = params.get("SlaType")
         self.IsBlock = params.get("IsBlock")
+        self.IsBlockTime = params.get("IsBlockTime")
 
 
 class LoadBalancerHealth(AbstractModel):

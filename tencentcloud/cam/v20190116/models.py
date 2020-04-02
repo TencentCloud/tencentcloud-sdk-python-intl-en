@@ -246,7 +246,8 @@ Note: This field may return null, indicating that no valid value was found.
         :param Deactived: Queries if the policy has been deactivated
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Deactived: int
-        :param DeactivedDetail: 
+        :param DeactivedDetail: List of deprecated products
+Note: this field may return null, indicating that no valid values can be obtained.
         :type DeactivedDetail: list of str
         """
         self.PolicyId = None
@@ -374,11 +375,15 @@ Note: This field may return null, indicating that no valid value was found.
         :type PolicyType: str
         :param CreateMode: Policy creation method. 1: indicates the policy was created based on product function or item permission; other values indicate the policy was created based on the policy syntax
         :type CreateMode: int
-        :param Deactived: Queries if the policy has been deactivated
+        :param Deactived: Whether the product has been deprecated (0: no; 1: yes)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Deactived: int
-        :param DeactivedDetail: 
+        :param DeactivedDetail: List of deprecated products
+Note: this field may return null, indicating that no valid values can be obtained.
         :type DeactivedDetail: list of str
+        :param Description: Policy description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Description: str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -387,6 +392,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CreateMode = None
         self.Deactived = None
         self.DeactivedDetail = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -397,6 +403,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CreateMode = params.get("CreateMode")
         self.Deactived = params.get("Deactived")
         self.DeactivedDetail = params.get("DeactivedDetail")
+        self.Description = params.get("Description")
 
 
 class ConsumeCustomMFATokenRequest(AbstractModel):
@@ -536,7 +543,7 @@ class CreateRoleRequest(AbstractModel):
         :type Description: str
         :param ConsoleLogin: Whether login is allowed. 1: yes, 0: no
         :type ConsoleLogin: int
-        :param SessionDuration: 
+        :param SessionDuration: The maximum validity period of the temporary key for creating a role (range: 0-43200)
         :type SessionDuration: int
         """
         self.RoleName = None
@@ -771,12 +778,16 @@ class DeleteUserRequest(AbstractModel):
         """
         :param Name: Sub-user username
         :type Name: str
+        :param Force: Whether to forcibly delete the sub-user. The default input parameter is `0`. `0`: do not delete the user if the user has undeleted API keys; `1`: first delete the API keys then delete the user if the user has undeleted API keys. To delete API keys, you need to have cam:DeleteApiKey permission, which enables you to delete both enabled and disabled API keys. If you do not have this permission, you will not be able to delete API keys and the user.
+        :type Force: int
         """
         self.Name = None
+        self.Force = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Force = params.get("Force")
 
 
 class DeleteUserResponse(AbstractModel):
@@ -2071,8 +2082,11 @@ class RoleInfo(AbstractModel):
         :param RoleType: User role. Valid values: user, system
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RoleType: str
-        :param SessionDuration: 
+        :param SessionDuration: Valid period
+Note: this field may return null, indicating that no valid values can be obtained.
         :type SessionDuration: int
+        :param DeletionTaskId: 
+        :type DeletionTaskId: str
         """
         self.RoleId = None
         self.RoleName = None
@@ -2083,6 +2097,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ConsoleLogin = None
         self.RoleType = None
         self.SessionDuration = None
+        self.DeletionTaskId = None
 
 
     def _deserialize(self, params):
@@ -2095,6 +2110,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ConsoleLogin = params.get("ConsoleLogin")
         self.RoleType = params.get("RoleType")
         self.SessionDuration = params.get("SessionDuration")
+        self.DeletionTaskId = params.get("DeletionTaskId")
 
 
 class SAMLProviderInfo(AbstractModel):
@@ -2213,8 +2229,11 @@ Note: This field may return null, indicating that no valid value was found.
         :param Deactived: Queries if the policy has been deactivated
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Deactived: int
-        :param DeactivedDetail: 
+        :param DeactivedDetail: List of deprecated products
+Note: this field may return null, indicating that no valid values can be obtained.
         :type DeactivedDetail: list of str
+        :param IsServiceLinkedPolicy: 
+        :type IsServiceLinkedPolicy: int
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -2227,6 +2246,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IsAttached = None
         self.Deactived = None
         self.DeactivedDetail = None
+        self.IsServiceLinkedPolicy = None
 
 
     def _deserialize(self, params):
@@ -2241,6 +2261,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IsAttached = params.get("IsAttached")
         self.Deactived = params.get("Deactived")
         self.DeactivedDetail = params.get("DeactivedDetail")
+        self.IsServiceLinkedPolicy = params.get("IsServiceLinkedPolicy")
 
 
 class SubAccountInfo(AbstractModel):

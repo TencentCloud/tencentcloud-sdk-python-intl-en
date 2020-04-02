@@ -523,9 +523,30 @@ hex: hexadecimal
 
 
 class AwsPrivateAccess(AbstractModel):
-    """s3 source station back to source authentication.
+    """Origin access authentication for S3 bucket.
 
     """
+
+    def __init__(self):
+        """
+        :param Switch: Switch, which can be set to on or off.
+        :type Switch: str
+        :param AccessKey: Access ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AccessKey: str
+        :param SecretKey: Key.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SecretKey: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
 
 
 class BandwidthAlert(AbstractModel):
@@ -2079,7 +2100,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param OriginPullTimeout: Origin-pull timeout configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
-        :param AwsPrivateAccess: 
+        :param AwsPrivateAccess: S3 bucket origin access authentication configuration
+Note: this field may return null, indicating that no valid values can be obtained.
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         """
         self.ResourceId = None
@@ -4474,7 +4496,7 @@ global: global acceleration
         :type Area: str
         :param OriginPullTimeout: Origin-pull timeout configuration
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
-        :param AwsPrivateAccess: 
+        :param AwsPrivateAccess: Origin access authentication for S3 bucket
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         """
         self.Domain = None
