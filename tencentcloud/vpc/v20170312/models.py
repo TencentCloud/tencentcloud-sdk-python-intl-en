@@ -451,6 +451,62 @@ class AssignIpv6SubnetCidrBlockResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssignPrivateIpAddressesRequest(AbstractModel):
+    """AssignPrivateIpAddresses request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceId: The ID of the ENI instance, such as `eni-m6dyj72l`.
+        :type NetworkInterfaceId: str
+        :param PrivateIpAddresses: The information of the specified private IPs. You can specify a maximum of 10 each time.
+        :type PrivateIpAddresses: list of PrivateIpAddressSpecification
+        :param SecondaryPrivateIpAddressCount: The number of private IP addresses that is newly applied for. The total number of private IP addresses cannot exceed the quota.
+        :type SecondaryPrivateIpAddressCount: int
+        """
+        self.NetworkInterfaceId = None
+        self.PrivateIpAddresses = None
+        self.SecondaryPrivateIpAddressCount = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        if params.get("PrivateIpAddresses") is not None:
+            self.PrivateIpAddresses = []
+            for item in params.get("PrivateIpAddresses"):
+                obj = PrivateIpAddressSpecification()
+                obj._deserialize(item)
+                self.PrivateIpAddresses.append(obj)
+        self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+
+
+class AssignPrivateIpAddressesResponse(AbstractModel):
+    """AssignPrivateIpAddresses response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PrivateIpAddressSet: The detailed information of the Private IP.
+        :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PrivateIpAddressSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PrivateIpAddressSet") is not None:
+            self.PrivateIpAddressSet = []
+            for item in params.get("PrivateIpAddressSet"):
+                obj = PrivateIpAddressSpecification()
+                obj._deserialize(item)
+                self.PrivateIpAddressSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class AssistantCidr(AbstractModel):
     """Information about the secondary CIDR of the VPC.
 
@@ -3908,6 +3964,148 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNetworkInterfacesRequest(AbstractModel):
+    """DescribeNetworkInterfaces request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceIds: Queries the ID of the ENI instance, such as `eni-pxir56ns`. Each request can have a maximum of 100 instances. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
+        :type NetworkInterfaceIds: list of str
+        :param Filters: Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
+<li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>
+<li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>
+<li>attachment.instance-id - String - (Filter condition) CVM instance ID, such as `ins-3nqpdn3i`.</li>
+<li>groups.security-group-id - String - (Filter condition) Instance ID of the security group, such as `sg-f9ekbxeq`.</li>
+<li>network-interface-name - String - (Filter condition) ENI instance name.</li>
+<li>network-interface-description - String - (Filter condition) ENI instance description.</li>
+<li>address-ip - String - (Filter condition) Private IPv4 address.</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. The default value is 0.
+        :type Offset: int
+        :param Limit: Number of values to be returned. The default value is 20. Maximum is 100.
+        :type Limit: int
+        """
+        self.NetworkInterfaceIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceIds = params.get("NetworkInterfaceIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeNetworkInterfacesResponse(AbstractModel):
+    """DescribeNetworkInterfaces response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceSet: List of instance details.
+        :type NetworkInterfaceSet: list of NetworkInterface
+        :param TotalCount: The number of instances meeting the filter condition.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NetworkInterfaceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkInterfaceSet") is not None:
+            self.NetworkInterfaceSet = []
+            for item in params.get("NetworkInterfaceSet"):
+                obj = NetworkInterface()
+                obj._deserialize(item)
+                self.NetworkInterfaceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRouteTablesRequest(AbstractModel):
+    """DescribeRouteTables request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableIds: The route table instance ID, such as `rtb-azd4dt1c`.
+        :type RouteTableIds: list of str
+        :param Filters: Filter condition. `RouteTableIds` and `Filters` cannot be speified at the same time.
+<li>route-table-id - String - (Filter condition) Route table instance ID.</li>
+<li>route-table-name - String - (Filter condition) Route table name.</li>
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
+<li>association.main - String - (Filter condition) Whether it is the main route table.</li>
+<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
+<li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key is replaced with the specific tag key. For usage, refer to case 2.</li>
+        :type Filters: list of Filter
+        :param Offset: Offset.
+        :type Offset: str
+        :param Limit: The number of request objects.
+        :type Limit: str
+        """
+        self.RouteTableIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableIds = params.get("RouteTableIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeRouteTablesResponse(AbstractModel):
+    """DescribeRouteTables response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of instances meeting the filter condition.
+        :type TotalCount: int
+        :param RouteTableSet: Route table object.
+        :type RouteTableSet: list of RouteTable
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RouteTableSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RouteTableSet") is not None:
+            self.RouteTableSet = []
+            for item in params.get("RouteTableSet"):
+                obj = RouteTable()
+                obj._deserialize(item)
+                self.RouteTableSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupAssociationStatisticsRequest(AbstractModel):
     """DescribeSecurityGroupAssociationStatistics request structure.
 
@@ -5774,29 +5972,6 @@ class ModifyCcnAttributeRequest(AbstractModel):
 
 class ModifyCcnAttributeResponse(AbstractModel):
     """ModifyCcnAttribute response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyCcnRegionBandwidthLimitsTypeRequest(AbstractModel):
-    """ModifyCcnRegionBandwidthLimitsType request structure.
-
-    """
-
-
-class ModifyCcnRegionBandwidthLimitsTypeResponse(AbstractModel):
-    """ModifyCcnRegionBandwidthLimitsType response structure.
 
     """
 

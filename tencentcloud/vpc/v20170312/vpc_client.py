@@ -177,6 +177,37 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssignPrivateIpAddresses(self, request):
+        """This API (AssignPrivateIpAddresses) is used for the ENI to apply for private IPs.
+        * An ENI can only be bound with a limited number of IPs. For more information about resource limits, see<a href="/document/product/576/18527">ENI use limits</a>.
+        * You can specify the private IP you want to apply for. It cannot be the primary IP, which already exists and cannot be modified. The private IP must be in the same subnet as the ENI, and cannot be occupied.
+        * You can apply for more than one secondary private IP on the ENI. The API will return the specified number of secondary private IPs in the subnet IP range of the ENI.
+
+        :param request: Request instance for AssignPrivateIpAddresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssignPrivateIpAddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssignPrivateIpAddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssignPrivateIpAddresses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssignPrivateIpAddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateAddress(self, request):
         """This API (AssociateAddress) is used to bind an [Elastic IP](https://cloud.tencent.com/document/product/213/1941) (EIP for short) to the specified private IP of an instance or ENI.
         * Essentially, binding an EIP to an instance (CVM) means binding an EIP to the primary private IP of the primary ENI on an instance.
@@ -1982,6 +2013,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNetworkInterfaces(self, request):
+        """This API (DescribeNetworkInterfaces) is used to query the ENI list.
+
+        :param request: Request instance for DescribeNetworkInterfaces.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkInterfacesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkInterfacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNetworkInterfaces", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkInterfacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRouteTables(self, request):
+        """This API (DescribeRouteTables) is used to query route tables.
+
+        :param request: Request instance for DescribeRouteTables.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteTablesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRouteTables", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRouteTablesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSecurityGroupAssociationStatistics(self, request):
         """This API (DescribeSecurityGroupAssociationStatistics) is used to query statistics on the instances associated with a security group.
 
@@ -2821,34 +2908,6 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCcnAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyCcnRegionBandwidthLimitsType(self, request):
-        """This API (ModifyCcnRegionBandwidthlimitsType) is used to modify the bandwidth limits policy of the postpaid Ccn instances.
-
-        :param request: Request instance for ModifyCcnRegionBandwidthLimitsType.
-        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnRegionBandwidthLimitsTypeRequest`
-        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnRegionBandwidthLimitsTypeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyCcnRegionBandwidthLimitsType", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyCcnRegionBandwidthLimitsTypeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
