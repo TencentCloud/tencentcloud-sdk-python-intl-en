@@ -641,6 +641,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeImages(self, request):
+        """This API is used to get image information.
+
+        :param request: Request instance for DescribeImages.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeImagesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRegions(self, request):
+        """This API is used to obtain all regions supported by TKE.
+
+        :param request: Request instance for DescribeRegions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRegionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRouteTableConflicts(self, request):
         """This API is used to query the list of route table conflicts.
 
@@ -655,6 +711,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTableConflictsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterAttribute(self, request):
+        """This API is used to modify cluster attributes.
+
+        :param request: Request instance for ModifyClusterAttribute.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAttributeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

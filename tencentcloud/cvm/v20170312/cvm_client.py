@@ -772,6 +772,34 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeReservedInstances(self, request):
+        """This API is used to list reserved instances the user has purchased.
+
+        :param request: Request instance for DescribeReservedInstances.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReservedInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReservedInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeZoneInstanceConfigInfos(self, request):
         """This API is used to query the configurations of models in an availability zone.
 

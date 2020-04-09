@@ -113,6 +113,8 @@ class Address(AbstractModel):
         :type AddressType: str
         :param CascadeRelease: Whether the EIP is automatically released after being unbound. `True` indicates the EIP will be automatically released after being unbound. `False` indicates the EIP will not be automatically released after being unbound.
         :type CascadeRelease: bool
+        :param EipAlgType: Type of the protocol used in EIP ALG
+        :type EipAlgType: :class:`tencentcloud.vpc.v20170312.models.AlgType`
         """
         self.AddressId = None
         self.AddressName = None
@@ -127,6 +129,7 @@ class Address(AbstractModel):
         self.IsEipDirectConnection = None
         self.AddressType = None
         self.CascadeRelease = None
+        self.EipAlgType = None
 
 
     def _deserialize(self, params):
@@ -143,6 +146,9 @@ class Address(AbstractModel):
         self.IsEipDirectConnection = params.get("IsEipDirectConnection")
         self.AddressType = params.get("AddressType")
         self.CascadeRelease = params.get("CascadeRelease")
+        if params.get("EipAlgType") is not None:
+            self.EipAlgType = AlgType()
+            self.EipAlgType._deserialize(params.get("EipAlgType"))
 
 
 class AddressTemplate(AbstractModel):
@@ -189,11 +195,14 @@ class AddressTemplateGroup(AbstractModel):
         :type AddressTemplateIdSet: list of str
         :param CreatedTime: Creation Time.
         :type CreatedTime: str
+        :param AddressTemplateSet: IP address template instance
+        :type AddressTemplateSet: list of AddressTemplateItem
         """
         self.AddressTemplateGroupName = None
         self.AddressTemplateGroupId = None
         self.AddressTemplateIdSet = None
         self.CreatedTime = None
+        self.AddressTemplateSet = None
 
 
     def _deserialize(self, params):
@@ -201,6 +210,33 @@ class AddressTemplateGroup(AbstractModel):
         self.AddressTemplateGroupId = params.get("AddressTemplateGroupId")
         self.AddressTemplateIdSet = params.get("AddressTemplateIdSet")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("AddressTemplateSet") is not None:
+            self.AddressTemplateSet = []
+            for item in params.get("AddressTemplateSet"):
+                obj = AddressTemplateItem()
+                obj._deserialize(item)
+                self.AddressTemplateSet.append(obj)
+
+
+class AddressTemplateItem(AbstractModel):
+    """Address information
+
+    """
+
+    def __init__(self):
+        """
+        :param From: Start address
+        :type From: str
+        :param To: End address
+        :type To: str
+        """
+        self.From = None
+        self.To = None
+
+
+    def _deserialize(self, params):
+        self.From = params.get("From")
+        self.To = params.get("To")
 
 
 class AddressTemplateSpecification(AbstractModel):
@@ -222,6 +258,27 @@ class AddressTemplateSpecification(AbstractModel):
     def _deserialize(self, params):
         self.AddressId = params.get("AddressId")
         self.AddressGroupId = params.get("AddressGroupId")
+
+
+class AlgType(AbstractModel):
+    """ALG protocol type
+
+    """
+
+    def __init__(self):
+        """
+        :param Ftp: Whether FTP ALG is enabled
+        :type Ftp: bool
+        :param Sip: Whether SIP ALG is enabled
+        :type Sip: bool
+        """
+        self.Ftp = None
+        self.Sip = None
+
+
+    def _deserialize(self, params):
+        self.Ftp = params.get("Ftp")
+        self.Sip = params.get("Sip")
 
 
 class AllocateAddressesRequest(AbstractModel):
@@ -253,13 +310,18 @@ class AllocateAddressesRequest(AbstractModel):
         :param AddressType: The EIP type. Default: EIP.
 <ul style="margin:0"><li>For a user who has activated the AIA whitelist, possible values are:<ul><li>AnycastEIP: an Anycast EIP address. For more information, see [Anycast Internet Acceleration](https://cloud.tencent.com/document/product/644).</li></ul>Note: Only certain regions support Anycast EIPs.</li></ul>
         :type AddressType: str
-        :param AnycastZone: The Anycast publishing region.
-<ul style="margin:0"><li>For a user who has activated the AIA whitelist, possible values are:<ul><li>ANYCAST_ZONE_GLOBAL: the global publishing region (the global AIA whitelist must be activated additionally.) </li><li>ANYCAST_ZONE_OVERSEAS: the publishing regions outside Mainland China </li></ul>Default: ANYCAST_ZONE_OVERSEAS.</li></ul>
+        :param AnycastZone: Anycast publishing region
+<ul style="margin:0"><li>Valid for users who have activated AIA. Values:<ul><li>ANYCAST_ZONE_GLOBAL: global publishing region </li><li>ANYCAST_ZONE_OVERSEAS: overseas publishing region</li><li><b>**[Disused]**</b> ANYCAST_ZONE_A: publishing region A (updated to ANYCAST_ZONE_GLOBAL)</li><li><b>**[Disused]**</b> ANYCAST_ZONE_B: publishing region B (updated to ANYCAST_ZONE_GLOBAL)</li></ul>Default: ANYCAST_ZONE_OVERSEAS.</li></ul>
         :type AnycastZone: str
-        :param ApplicableForCLB: Whether the Anycast EIP can be bound to Cloud Load Balancer (CLB) instances.
-<ul style="margin:0"><li>For a user who has activated the AIA whitelist, possible values are:<ul><li>TRUE: the Anycast EIP can be bound to CLB instances.</li>
-<li>FALSE: the Anycast EIP can be bound to CVMs, NAT gateways, and HA virtual IP addresses.</li></ul>Default: FALSE.</li></ul>
+        :param ApplicableForCLB: <b>**[Disused]**</b>
+Whether the Anycast EIP can be bound to CLB instances.
+<ul style="margin:0"><li>Valid for users who have activated the AIA. Values:<ul><li>TRUE: the Anycast EIP can be bound to CLB instances.</li>
+<li>FALSE: the Anycast EIP can be bound to CVMs, NAT gateways, and HAVIPs.</li></ul>Default: FALSE.</li></ul>
         :type ApplicableForCLB: bool
+        :param Tags: 
+        :type Tags: list of Tag
+        :param BandwidthPackageId: 
+        :type BandwidthPackageId: str
         """
         self.AddressCount = None
         self.InternetServiceProvider = None
@@ -268,6 +330,8 @@ class AllocateAddressesRequest(AbstractModel):
         self.AddressType = None
         self.AnycastZone = None
         self.ApplicableForCLB = None
+        self.Tags = None
+        self.BandwidthPackageId = None
 
 
     def _deserialize(self, params):
@@ -278,6 +342,13 @@ class AllocateAddressesRequest(AbstractModel):
         self.AddressType = params.get("AddressType")
         self.AnycastZone = params.get("AnycastZone")
         self.ApplicableForCLB = params.get("ApplicableForCLB")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
 
 
 class AllocateAddressesResponse(AbstractModel):
@@ -592,6 +663,44 @@ class AssociateAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateNetworkAclSubnetsRequest(AbstractModel):
+    """AssociateNetworkAclSubnets request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :type NetworkAclId: str
+        :param SubnetIds: Array of subnet instance IDs. Example: [subnet-12345678]
+        :type SubnetIds: list of str
+        """
+        self.NetworkAclId = None
+        self.SubnetIds = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.SubnetIds = params.get("SubnetIds")
+
+
+class AssociateNetworkAclSubnetsResponse(AbstractModel):
+    """AssociateNetworkAclSubnets response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AttachCcnInstancesRequest(AbstractModel):
     """AttachCcnInstances request structure.
 
@@ -742,6 +851,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param BandwidthLimitType: The limit type. INTER_REGION_LIMIT is the limit between regions. OUTER_REGION_LIMIT is a region egress limit.
 Note: This field may return null, indicating no valid value.
         :type BandwidthLimitType: str
+        :param TagSet: Tag key-value pairs.
+        :type TagSet: list of Tag
         """
         self.CcnId = None
         self.CcnName = None
@@ -752,6 +863,7 @@ Note: This field may return null, indicating no valid value.
         self.QosLevel = None
         self.InstanceChargeType = None
         self.BandwidthLimitType = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -764,6 +876,12 @@ Note: This field may return null, indicating no valid value.
         self.QosLevel = params.get("QosLevel")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.BandwidthLimitType = params.get("BandwidthLimitType")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class CcnAttachedInstance(AbstractModel):
@@ -1145,12 +1263,15 @@ class CreateCcnRequest(AbstractModel):
         :type InstanceChargeType: str
         :param BandwidthLimitType: The bandwidth limit type. OUTER_REGION_LIMIT: regional outbound limit. INTER_REGION_LIMIT: inter-regional limit. Default: OUTER_REGION_LIMIT.
         :type BandwidthLimitType: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.CcnName = None
         self.CcnDescription = None
         self.QosLevel = None
         self.InstanceChargeType = None
         self.BandwidthLimitType = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1159,6 +1280,12 @@ class CreateCcnRequest(AbstractModel):
         self.QosLevel = params.get("QosLevel")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.BandwidthLimitType = params.get("BandwidthLimitType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateCcnResponse(AbstractModel):
@@ -1387,6 +1514,8 @@ class CreateNatGatewayRequest(AbstractModel):
         :type PublicIpAddresses: list of str
         :param Zone: The availability zone, such as `ap-guangzhou-1`.
         :type Zone: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.NatGatewayName = None
         self.VpcId = None
@@ -1395,6 +1524,7 @@ class CreateNatGatewayRequest(AbstractModel):
         self.AddressCount = None
         self.PublicIpAddresses = None
         self.Zone = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1405,6 +1535,12 @@ class CreateNatGatewayRequest(AbstractModel):
         self.AddressCount = params.get("AddressCount")
         self.PublicIpAddresses = params.get("PublicIpAddresses")
         self.Zone = params.get("Zone")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateNatGatewayResponse(AbstractModel):
@@ -1511,6 +1647,50 @@ class CreateNetDetectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNetworkAclRequest(AbstractModel):
+    """CreateNetworkAcl request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of the DescribeVpcs API.
+        :type VpcId: str
+        :param NetworkAclName: Name of the network ACL. The maximum length is 60 bytes.
+        :type NetworkAclName: str
+        """
+        self.VpcId = None
+        self.NetworkAclName = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NetworkAclName = params.get("NetworkAclName")
+
+
+class CreateNetworkAclResponse(AbstractModel):
+    """CreateNetworkAcl response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAcl: Network ACL instance
+        :type NetworkAcl: :class:`tencentcloud.vpc.v20170312.models.NetworkAcl`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NetworkAcl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkAcl") is not None:
+            self.NetworkAcl = NetworkAcl()
+            self.NetworkAcl._deserialize(params.get("NetworkAcl"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNetworkInterfaceRequest(AbstractModel):
     """CreateNetworkInterface request structure.
 
@@ -1600,14 +1780,23 @@ class CreateRouteTableRequest(AbstractModel):
         :type VpcId: str
         :param RouteTableName: The route table name. The maximum length is 60 characters.
         :type RouteTableName: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.RouteTableName = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.RouteTableName = params.get("RouteTableName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateRouteTableResponse(AbstractModel):
@@ -1740,18 +1929,27 @@ class CreateSecurityGroupRequest(AbstractModel):
         :type GroupName: str
         :param GroupDescription: The remarks for the security group. The maximum length is 100 characters.
         :type GroupDescription: str
-        :param ProjectId: The project id is 0 by default. You can query this in the project management page of the Qcloud console.
+        :param ProjectId: Project ID. The default is 0. You can query it on the project management page of the Qcloud console.
         :type ProjectId: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.GroupName = None
         self.GroupDescription = None
         self.ProjectId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.GroupName = params.get("GroupName")
         self.GroupDescription = params.get("GroupDescription")
         self.ProjectId = params.get("ProjectId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateSecurityGroupResponse(AbstractModel):
@@ -1880,11 +2078,14 @@ class CreateSubnetRequest(AbstractModel):
         :type CidrBlock: str
         :param Zone: The ID of the availability zone in which the subnet resides. You can set up disaster recovery across availability zones by choosing different availability zones for different subnets.
         :type Zone: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.SubnetName = None
         self.CidrBlock = None
         self.Zone = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1892,6 +2093,12 @@ class CreateSubnetRequest(AbstractModel):
         self.SubnetName = params.get("SubnetName")
         self.CidrBlock = params.get("CidrBlock")
         self.Zone = params.get("Zone")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateSubnetResponse(AbstractModel):
@@ -1928,9 +2135,12 @@ class CreateSubnetsRequest(AbstractModel):
         :type VpcId: str
         :param Subnets: The subnet object list.
         :type Subnets: list of SubnetInput
+        :param Tags: Bound tags. Note that the collection of tags here is shared by all subnet objects in the list. You cannot specify tags for each subnet. Example: [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.Subnets = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1941,6 +2151,12 @@ class CreateSubnetsRequest(AbstractModel):
                 obj = SubnetInput()
                 obj._deserialize(item)
                 self.Subnets.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateSubnetsResponse(AbstractModel):
@@ -1986,12 +2202,15 @@ class CreateVpcRequest(AbstractModel):
         :type DnsServers: list of str
         :param DomainName: Domain name
         :type DomainName: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.VpcName = None
         self.CidrBlock = None
         self.EnableMulticast = None
         self.DnsServers = None
         self.DomainName = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2000,6 +2219,12 @@ class CreateVpcRequest(AbstractModel):
         self.EnableMulticast = params.get("EnableMulticast")
         self.DnsServers = params.get("DnsServers")
         self.DomainName = params.get("DomainName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateVpcResponse(AbstractModel):
@@ -2480,6 +2705,40 @@ class DeleteNetDetectRequest(AbstractModel):
 
 class DeleteNetDetectResponse(AbstractModel):
     """DeleteNetDetect response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNetworkAclRequest(AbstractModel):
+    """DeleteNetworkAcl request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :type NetworkAclId: str
+        """
+        self.NetworkAclId = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+
+
+class DeleteNetworkAclResponse(AbstractModel):
+    """DeleteNetworkAcl response structure.
 
     """
 
@@ -3922,6 +4181,73 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNetworkAclsRequest(AbstractModel):
+    """DescribeNetworkAcls request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclIds: Array of network ACL instance IDs, such as [acl-12345678]. Up to 100 instances are allowed for each request. This parameter does not support specifying `NetworkAclIds` and `Filters` at the same time.
+        :type NetworkAclIds: list of str
+        :param Filters: Filter condition. `NetworkAclIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as vpc-12345678.</li>
+<li>network-acl-id - String - (Filter condition) Network ACL instance ID, such as acl-12345678.</li>
+<li>network-acl-name - String - (Filter condition) Network ACL instance name.</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. Default: 0.
+        :type Offset: int
+        :param Limit: Returned quantity. Default: 20. Value range: 1-100.
+        :type Limit: int
+        """
+        self.NetworkAclIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclIds = params.get("NetworkAclIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeNetworkAclsResponse(AbstractModel):
+    """DescribeNetworkAcls response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclSet: List of instance details.
+        :type NetworkAclSet: list of NetworkAcl
+        :param TotalCount: Number of eligible instances.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NetworkAclSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkAclSet") is not None:
+            self.NetworkAclSet = []
+            for item in params.get("NetworkAclSet"):
+                obj = NetworkAcl()
+                obj._deserialize(item)
+                self.NetworkAclSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNetworkInterfaceLimitRequest(AbstractModel):
     """DescribeNetworkInterfaceLimit request structure.
 
@@ -3948,7 +4274,7 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
         """
         :param EniQuantity: ENI quota
         :type EniQuantity: int
-        :param EniPrivateIpAddressQuantity: The quota of IP addresses that can be allocated to each ENI.
+        :param EniPrivateIpAddressQuantity: Quota of IP addresses that can be allocated to each ENI.
         :type EniPrivateIpAddressQuantity: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4686,12 +5012,12 @@ class DescribeVpnConnectionsRequest(AbstractModel):
         """
         :param VpnConnectionIds: The instance ID of the VPN tunnel, such as `vpnx-f49l6u0z`. Each request can have a maximum of 100 instances. `VpnConnectionIds` and `Filters` cannot be specified at the same time.
         :type VpnConnectionIds: list of str
-        :param Filters: The filter condition. For details, see the Instance Filter Conditions Table. The upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. `VpnConnectionIds` and `Filters` cannot be specified at the same time.
-<li>vpc-id - String - The VPC instance ID, such as `vpc-0a36uwkr`.</li>
-<li>vpn-gateway-id - String - The VPN gateway instance ID, such as `vpngw-p4lmqawn`.</li>
-<li>customer-gateway-id - String - The customer gateway instance ID, such as `cgw-l4rblw63`.</li>
-<li>vpn-connection-name - String - The connection name, such as `test-vpn`.</li>
-<li>vpn-connection-id - String - The connection instance ID, such as `vpnx-5p7vkch8"`.</li>
+        :param Filters: Filter condition. In each request, the upper limit for `Filters` is 10 and 5 for `Filter.Values`. `VpnConnectionIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - VPC instance ID, such as `vpc-0a36uwkr`.</li>
+<li>vpn-gateway-id - String - VPN gateway instance ID, such as `vpngw-p4lmqawn`.</li>
+<li>customer-gateway-id - String - Customer gateway instance ID, such as `cgw-l4rblw63`.</li>
+<li>vpn-connection-name - String - Connection name, such as `test-vpn`.</li>
+<li>vpn-connection-id - String - Connection instance ID, such as `vpnx-5p7vkch8"`.</li>
         :type Filters: list of Filter
         :param Offset: The Offset. The default value is 0. For more information about Offset, see the relevant section in the API Introduction.
         :type Offset: int
@@ -5116,6 +5442,44 @@ class DisassociateNatGatewayAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisassociateNetworkAclSubnetsRequest(AbstractModel):
+    """DisassociateNetworkAclSubnets request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :type NetworkAclId: str
+        :param SubnetIds: Array of subnet instance IDs. Example: [subnet-12345678].
+        :type SubnetIds: list of str
+        """
+        self.NetworkAclId = None
+        self.SubnetIds = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.SubnetIds = params.get("SubnetIds")
+
+
+class DisassociateNetworkAclSubnetsResponse(AbstractModel):
+    """DisassociateNetworkAclSubnets response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
     """DownloadCustomerGatewayConfiguration request structure.
 
@@ -5310,6 +5674,8 @@ class HaVip(AbstractModel):
         :type State: str
         :param CreatedTime: Creation Time.
         :type CreatedTime: str
+        :param Business: Identifier for businesses that use HAVIP.
+        :type Business: str
         """
         self.HaVipId = None
         self.HaVipName = None
@@ -5321,6 +5687,7 @@ class HaVip(AbstractModel):
         self.AddressIp = None
         self.State = None
         self.CreatedTime = None
+        self.Business = None
 
 
     def _deserialize(self, params):
@@ -5334,6 +5701,7 @@ class HaVip(AbstractModel):
         self.AddressIp = params.get("AddressIp")
         self.State = params.get("State")
         self.CreatedTime = params.get("CreatedTime")
+        self.Business = params.get("Business")
 
 
 class HaVipAssociateAddressIpRequest(AbstractModel):
@@ -5987,6 +6355,44 @@ class ModifyCcnAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCcnRegionBandwidthLimitsTypeRequest(AbstractModel):
+    """ModifyCcnRegionBandwidthLimitsType request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN instance ID.
+        :type CcnId: str
+        :param BandwidthLimitType: CCN bandwidth limit type. INTER_REGION_LIMIT: limit between regions. OUTER_REGION_LIMIT: region egress limit.
+        :type BandwidthLimitType: str
+        """
+        self.CcnId = None
+        self.BandwidthLimitType = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.BandwidthLimitType = params.get("BandwidthLimitType")
+
+
+class ModifyCcnRegionBandwidthLimitsTypeResponse(AbstractModel):
+    """ModifyCcnRegionBandwidthLimitsType response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyHaVipAttributeRequest(AbstractModel):
     """ModifyHaVipAttribute request structure.
 
@@ -6205,6 +6611,84 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
 class ModifyNetDetectResponse(AbstractModel):
     """ModifyNetDetect response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNetworkAclAttributeRequest(AbstractModel):
+    """ModifyNetworkAclAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :type NetworkAclId: str
+        :param NetworkAclName: Name of the network ACL. The maximum length is 60 bytes.
+        :type NetworkAclName: str
+        """
+        self.NetworkAclId = None
+        self.NetworkAclName = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.NetworkAclName = params.get("NetworkAclName")
+
+
+class ModifyNetworkAclAttributeResponse(AbstractModel):
+    """ModifyNetworkAclAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNetworkAclEntriesRequest(AbstractModel):
+    """ModifyNetworkAclEntries request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclId: Network ACL instance ID. Example: acl-12345678.
+        :type NetworkAclId: str
+        :param NetworkAclEntrySet: Network ACL rule set.
+        :type NetworkAclEntrySet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclEntrySet`
+        """
+        self.NetworkAclId = None
+        self.NetworkAclEntrySet = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        if params.get("NetworkAclEntrySet") is not None:
+            self.NetworkAclEntrySet = NetworkAclEntrySet()
+            self.NetworkAclEntrySet._deserialize(params.get("NetworkAclEntrySet"))
+
+
+class ModifyNetworkAclEntriesResponse(AbstractModel):
+    """ModifyNetworkAclEntries response structure.
 
     """
 
@@ -6883,14 +7367,14 @@ class NetDetect(AbstractModel):
         :type DetectDestinationIp: list of str
         :param DetectSourceIp: The array of detection source IPv4 addresses automatically allocated by the system. The length is 2.
         :type DetectSourceIp: list of str
-        :param NextHopType: The type of the next hop. Currently supported types are:
+        :param NextHopType: Type of the next hop. Currently supported types are:
 VPN: VPN gateway;
 DIRECTCONNECT: direct connect gateway;
 PEERCONNECTION: peering connection;
 NAT: NAT gateway;
 NORMAL_CVM: normal CVM.
         :type NextHopType: str
-        :param NextHopDestination: The next-hop destination gateway. The value is related to NextHopType.
+        :param NextHopDestination: Next-hop destination gateway. The value is related to NextHopType.
 If NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.
 If NextHopType is set to DIRECTCONNECT, the value of this parameter is the direct connect gateway ID, such as dcg-12345678.
 If NextHopType is set to PEERCONNECTION, the value of this parameter is the peering connection ID, such as pcx-12345678.
@@ -6996,6 +7480,134 @@ class NetDetectState(AbstractModel):
                 obj = NetDetectIpState()
                 obj._deserialize(item)
                 self.NetDetectIpStateSet.append(obj)
+
+
+class NetworkAcl(AbstractModel):
+    """Network ACL
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `ID` of the `VPC` instance.
+        :type VpcId: str
+        :param NetworkAclId: `ID` of the network ACL instance.
+        :type NetworkAclId: str
+        :param NetworkAclName: Name of the network ACL. The maximum length is 60 bytes.
+        :type NetworkAclName: str
+        :param CreatedTime: Creation time.
+        :type CreatedTime: str
+        :param SubnetSet: Array of subnets associated with the network ACL.
+        :type SubnetSet: list of Subnet
+        :param IngressEntries: Inbound rules of the network ACL.
+        :type IngressEntries: list of NetworkAclEntry
+        :param EgressEntries: Outbound rules of the network ACL.
+        :type EgressEntries: list of NetworkAclEntry
+        """
+        self.VpcId = None
+        self.NetworkAclId = None
+        self.NetworkAclName = None
+        self.CreatedTime = None
+        self.SubnetSet = None
+        self.IngressEntries = None
+        self.EgressEntries = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.NetworkAclName = params.get("NetworkAclName")
+        self.CreatedTime = params.get("CreatedTime")
+        if params.get("SubnetSet") is not None:
+            self.SubnetSet = []
+            for item in params.get("SubnetSet"):
+                obj = Subnet()
+                obj._deserialize(item)
+                self.SubnetSet.append(obj)
+        if params.get("IngressEntries") is not None:
+            self.IngressEntries = []
+            for item in params.get("IngressEntries"):
+                obj = NetworkAclEntry()
+                obj._deserialize(item)
+                self.IngressEntries.append(obj)
+        if params.get("EgressEntries") is not None:
+            self.EgressEntries = []
+            for item in params.get("EgressEntries"):
+                obj = NetworkAclEntry()
+                obj._deserialize(item)
+                self.EgressEntries.append(obj)
+
+
+class NetworkAclEntry(AbstractModel):
+    """Network ACL rules.
+
+    """
+
+    def __init__(self):
+        """
+        :param ModifyTime: Modification time.
+        :type ModifyTime: str
+        :param Protocol: Protocol. Valid values: TCP, UDP, and ICMP.
+        :type Protocol: str
+        :param Port: Port (all, a single port, or a port range).
+        :type Port: str
+        :param CidrBlock: IP range or IP address (mutually exclusive).
+        :type CidrBlock: str
+        :param Ipv6CidrBlock: CIDR block or IPv6 address (mutually exclusive).
+        :type Ipv6CidrBlock: str
+        :param Action: ACCEPT or DROP.
+        :type Action: str
+        :param Description: Rule description, which is up to 100 bytes.
+        :type Description: str
+        """
+        self.ModifyTime = None
+        self.Protocol = None
+        self.Port = None
+        self.CidrBlock = None
+        self.Ipv6CidrBlock = None
+        self.Action = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ModifyTime = params.get("ModifyTime")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        self.Action = params.get("Action")
+        self.Description = params.get("Description")
+
+
+class NetworkAclEntrySet(AbstractModel):
+    """Network ACL rule set
+
+    """
+
+    def __init__(self):
+        """
+        :param Ingress: Inbound rules.
+        :type Ingress: list of NetworkAclEntry
+        :param Egress: Outbound rules.
+        :type Egress: list of NetworkAclEntry
+        """
+        self.Ingress = None
+        self.Egress = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ingress") is not None:
+            self.Ingress = []
+            for item in params.get("Ingress"):
+                obj = NetworkAclEntry()
+                obj._deserialize(item)
+                self.Ingress.append(obj)
+        if params.get("Egress") is not None:
+            self.Egress = []
+            for item in params.get("Egress"):
+                obj = NetworkAclEntry()
+                obj._deserialize(item)
+                self.Egress.append(obj)
 
 
 class NetworkInterface(AbstractModel):
@@ -7684,15 +8296,15 @@ class Route(AbstractModel):
         """
         :param DestinationCidrBlock: Destination IP range, such as 112.20.51.0/24. Values cannot be in the VPC IP range.
         :type DestinationCidrBlock: str
-        :param GatewayType: The type of the next hop. Currently supported types include:
-CVM: Public gateway-type CVM;
+        :param GatewayType: Type of the next hop. Currently supported types are:
+CVM: CVM of the public gateway type;
 VPN: VPN gateway;
-DIRECTCONNECT: Direct connect gateway;
-PEERCONNECTION: Peering connection;
+DIRECTCONNECT: direct connect gateway;
+PEERCONNECTION: peering connection;
 SSLVPN: sslvpn gateway;
 NAT: NAT gateway; 
-NORMAL_CVM: Normal CVM;
-EIP: The public IP of the CVM;
+NORMAL_CVM: normal CVM;
+EIP: public IP address of the CVM;
 CCN: Cloud Connect Network.
         :type GatewayType: str
         :param GatewayId: Next hop address. You simply need to specify the gateway ID of a different next hop type, and the system will automatically match the next hop address.
@@ -7710,6 +8322,8 @@ NETD: Network probe route. When creating a network probe route, the system deliv
 CCN: CCN route. The system delivers by default. It cannot be edited or deleted.
 Users can only add and operate USER-type routes.
         :type RouteType: str
+        :param RouteTableId: Route table instance ID, such as rtb-azd4dt1c.
+        :type RouteTableId: str
         """
         self.DestinationCidrBlock = None
         self.GatewayType = None
@@ -7718,6 +8332,7 @@ Users can only add and operate USER-type routes.
         self.RouteDescription = None
         self.Enabled = None
         self.RouteType = None
+        self.RouteTableId = None
 
 
     def _deserialize(self, params):
@@ -7728,6 +8343,7 @@ Users can only add and operate USER-type routes.
         self.RouteDescription = params.get("RouteDescription")
         self.Enabled = params.get("Enabled")
         self.RouteType = params.get("RouteType")
+        self.RouteTableId = params.get("RouteTableId")
 
 
 class RouteTable(AbstractModel):
@@ -7751,6 +8367,8 @@ class RouteTable(AbstractModel):
         :type Main: bool
         :param CreatedTime: Creation Time.
         :type CreatedTime: str
+        :param TagSet: Tag key-value pairs.
+        :type TagSet: list of Tag
         """
         self.VpcId = None
         self.RouteTableId = None
@@ -7759,6 +8377,7 @@ class RouteTable(AbstractModel):
         self.RouteSet = None
         self.Main = None
         self.CreatedTime = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -7779,6 +8398,12 @@ class RouteTable(AbstractModel):
                 self.RouteSet.append(obj)
         self.Main = params.get("Main")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class RouteTableAssociation(AbstractModel):
@@ -7821,6 +8446,8 @@ class SecurityGroup(AbstractModel):
         :type IsDefault: bool
         :param CreatedTime: Security group creation time.
         :type CreatedTime: str
+        :param TagSet: Tag key-value pairs.
+        :type TagSet: list of Tag
         """
         self.SecurityGroupId = None
         self.SecurityGroupName = None
@@ -7828,6 +8455,7 @@ class SecurityGroup(AbstractModel):
         self.ProjectId = None
         self.IsDefault = None
         self.CreatedTime = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -7837,6 +8465,12 @@ class SecurityGroup(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.IsDefault = params.get("IsDefault")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class SecurityGroupAssociationStatistics(AbstractModel):
@@ -8046,11 +8680,14 @@ class ServiceTemplateGroup(AbstractModel):
         :type ServiceTemplateIdSet: list of str
         :param CreatedTime: Creation Time.
         :type CreatedTime: str
+        :param ServiceTemplateSet: Protocol port template instance information.
+        :type ServiceTemplateSet: list of ServiceTemplate
         """
         self.ServiceTemplateGroupId = None
         self.ServiceTemplateGroupName = None
         self.ServiceTemplateIdSet = None
         self.CreatedTime = None
+        self.ServiceTemplateSet = None
 
 
     def _deserialize(self, params):
@@ -8058,6 +8695,12 @@ class ServiceTemplateGroup(AbstractModel):
         self.ServiceTemplateGroupName = params.get("ServiceTemplateGroupName")
         self.ServiceTemplateIdSet = params.get("ServiceTemplateIdSet")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("ServiceTemplateSet") is not None:
+            self.ServiceTemplateSet = []
+            for item in params.get("ServiceTemplateSet"):
+                obj = ServiceTemplate()
+                obj._deserialize(item)
+                self.ServiceTemplateSet.append(obj)
 
 
 class ServiceTemplateSpecification(AbstractModel):
@@ -8157,6 +8800,10 @@ class Subnet(AbstractModel):
         :type NetworkAclId: str
         :param IsRemoteVpcSnat: Whether it is a `SNAT` address pool subnet.
         :type IsRemoteVpcSnat: bool
+        :param TotalIpAddressCount: Total number of subnet `IP` addresses.
+        :type TotalIpAddressCount: int
+        :param TagSet: Tag key-value pairs
+        :type TagSet: list of Tag
         """
         self.VpcId = None
         self.SubnetId = None
@@ -8171,6 +8818,8 @@ class Subnet(AbstractModel):
         self.Ipv6CidrBlock = None
         self.NetworkAclId = None
         self.IsRemoteVpcSnat = None
+        self.TotalIpAddressCount = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -8187,6 +8836,13 @@ class Subnet(AbstractModel):
         self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         self.NetworkAclId = params.get("NetworkAclId")
         self.IsRemoteVpcSnat = params.get("IsRemoteVpcSnat")
+        self.TotalIpAddressCount = params.get("TotalIpAddressCount")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class SubnetInput(AbstractModel):
@@ -8671,7 +9327,7 @@ class VpnGateway(AbstractModel):
         :type VpcId: str
         :param VpnGatewayName: Gateway instance name.
         :type VpnGatewayName: str
-        :param Type: Gateway instance type: 'IPSEC' and 'SSL'.
+        :param Type: Gateway instance type. Valid values: 'IPSEC', 'SSL', and 'CCN'.
         :type Type: str
         :param State: Gateway instance status. 'PENDING': Creating; 'DELETING': Deleting; 'AVAILABLE': Running.
         :type State: str
@@ -8697,6 +9353,10 @@ class VpnGateway(AbstractModel):
         :type Zone: str
         :param VpnGatewayQuotaSet: Gateway bandwidth quota information.
         :type VpnGatewayQuotaSet: list of VpnGatewayQuota
+        :param Version: Gateway instance version.
+        :type Version: str
+        :param NetworkInstanceId: CCN instance ID when the value of Type is CCN.
+        :type NetworkInstanceId: str
         """
         self.VpnGatewayId = None
         self.VpcId = None
@@ -8714,6 +9374,8 @@ class VpnGateway(AbstractModel):
         self.RestrictState = None
         self.Zone = None
         self.VpnGatewayQuotaSet = None
+        self.Version = None
+        self.NetworkInstanceId = None
 
 
     def _deserialize(self, params):
@@ -8738,6 +9400,8 @@ class VpnGateway(AbstractModel):
                 obj = VpnGatewayQuota()
                 obj._deserialize(item)
                 self.VpnGatewayQuotaSet.append(obj)
+        self.Version = params.get("Version")
+        self.NetworkInstanceId = params.get("NetworkInstanceId")
 
 
 class VpnGatewayQuota(AbstractModel):

@@ -1301,6 +1301,82 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeImagesRequest(AbstractModel):
+    """DescribeImages request structure.
+
+    """
+
+
+class DescribeImagesResponse(AbstractModel):
+    """DescribeImages response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of images
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param ImageInstanceSet: Image information list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ImageInstanceSet: list of ImageInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ImageInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ImageInstanceSet") is not None:
+            self.ImageInstanceSet = []
+            for item in params.get("ImageInstanceSet"):
+                obj = ImageInstance()
+                obj._deserialize(item)
+                self.ImageInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRegionsRequest(AbstractModel):
+    """DescribeRegions request structure.
+
+    """
+
+
+class DescribeRegionsResponse(AbstractModel):
+    """DescribeRegions response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of regions
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param RegionInstanceSet: ## Region List
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionInstanceSet: list of RegionInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RegionInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RegionInstanceSet") is not None:
+            self.RegionInstanceSet = []
+            for item in params.get("RegionInstanceSet"):
+                obj = RegionInstance()
+                obj._deserialize(item)
+                self.RegionInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRouteTableConflictsRequest(AbstractModel):
     """DescribeRouteTableConflicts request structure.
 
@@ -1531,15 +1607,25 @@ class ExistedInstancesPara(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """Filter
+    """> Key-value pair filters used for conditional queries, such as filtering results by ID, name, and state.
+    > * If there are multiple `Filter` parameters, they are evaluated using the logical `AND` operator.
+    > * If a `Filter` contains multiple `Values`, they are evaluated using the logical `OR` operator.
+    >
+    > Take [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) as an example. You can use the following filters to query the instances in availability zone (`zone`) Guangzhou Zone 1 ***and*** whose billing plan (`instance-charge-type`) is pay-as-you-go:
+    ```
+    Filters.0.Name=zone
+    &Filters.0.Values.0=ap-guangzhou-1
+    &Filters.1.Name=instance-charge-type
+    &Filters.1.Values.0=POSTPAID_BY_HOUR
+    ```
 
     """
 
     def __init__(self):
         """
-        :param Name: Attribute name. If more than one Filter exists, the logical relationship between these Filters is AND.
+        :param Name: Filters.
         :type Name: str
-        :param Values: Attribute value. If there are multiple Values for one Filter, the logical relationship between the Values under the same Filter is OR.
+        :param Values: Filter values.
         :type Values: list of str
         """
         self.Name = None
@@ -1549,6 +1635,39 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+
+
+class ImageInstance(AbstractModel):
+    """Image details
+
+    """
+
+    def __init__(self):
+        """
+        :param Alias: Image alias
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Alias: str
+        :param OsName: Operating system name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OsName: str
+        :param ImageId: Image ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ImageId: str
+        :param OsCustomizeType: Container image tag, **DOCKER_CUSTOMIZE** (container customized tag), **GENERAL** (general tag, default value)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OsCustomizeType: str
+        """
+        self.Alias = None
+        self.OsName = None
+        self.ImageId = None
+        self.OsCustomizeType = None
+
+
+    def _deserialize(self, params):
+        self.Alias = params.get("Alias")
+        self.OsName = params.get("OsName")
+        self.ImageId = params.get("ImageId")
+        self.OsCustomizeType = params.get("OsCustomizeType")
 
 
 class Instance(AbstractModel):
@@ -1746,6 +1865,67 @@ Note: This field may return null, indicating that no valid value is found.
         self.KeepImageLogin = params.get("KeepImageLogin")
 
 
+class ModifyClusterAttributeRequest(AbstractModel):
+    """ModifyClusterAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ProjectId: Project of the Cluster
+        :type ProjectId: int
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param ClusterDesc: Cluster description
+        :type ClusterDesc: str
+        """
+        self.ClusterId = None
+        self.ProjectId = None
+        self.ClusterName = None
+        self.ClusterDesc = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ProjectId = params.get("ProjectId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterDesc = params.get("ClusterDesc")
+
+
+class ModifyClusterAttributeResponse(AbstractModel):
+    """ModifyClusterAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: Project of the Cluster
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: int
+        :param ClusterName: Cluster name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterName: str
+        :param ClusterDesc: Cluster description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterDesc: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ProjectId = None
+        self.ClusterName = None
+        self.ClusterDesc = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterDesc = params.get("ClusterDesc")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterEndpointSPRequest(AbstractModel):
     """ModifyClusterEndpointSP request structure.
 
@@ -1767,6 +1947,49 @@ class ModifyClusterEndpointSPResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RegionInstance(AbstractModel):
+    """Region information
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionName: Region name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionName: str
+        :param RegionId: Region ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionId: int
+        :param Status: Region status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param FeatureGates: Status of region-related features (return all attributes in JSON format)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FeatureGates: str
+        :param Alias: Region abbreviation
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Alias: str
+        :param Remark: Whitelisted location
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        """
+        self.RegionName = None
+        self.RegionId = None
+        self.Status = None
+        self.FeatureGates = None
+        self.Alias = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.RegionName = params.get("RegionName")
+        self.RegionId = params.get("RegionId")
+        self.Status = params.get("Status")
+        self.FeatureGates = params.get("FeatureGates")
+        self.Alias = params.get("Alias")
+        self.Remark = params.get("Remark")
 
 
 class RouteInfo(AbstractModel):

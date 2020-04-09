@@ -1330,6 +1330,84 @@ class DescribeRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReservedInstancesRequest(AbstractModel):
+    """DescribeReservedInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DryRun: Dry run. The default is false.
+        :type DryRun: bool
+        :param Offset: Offset. The default value is 0. For more information on `Offset`, see the relevant sections in API [Overview](https://cloud.tencent.com/document/api/213/15688).
+        :type Offset: int
+        :param Limit: Number of returned results. The default value is 20. The maximum is 100. For more information on `Limit`, see the relevant sections in API [Overview](https://cloud.tencent.com/document/api/213/15688).
+        :type Limit: int
+        :param Filters: <li><strong>zone</strong></li>
+<p style="padding-left: 30px;">Filters by the **<strong>availability zones</strong>** in which reserved instances can be purchased. For example, "ap-guangzhou-1".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: <a href="https://cloud.tencent.com/document/product/213/6091">list of availability zones</a></p>
+<li><strong>duration</strong></li>
+<p style="padding-left: 30px;">Filters by reserved instance **<strong>validity</strong>** (in seconds). For example, 31536000.</p><p style="padding-left: 30px;">Type: Integer</p><p style="padding-left: 30px;">Unit: second</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: 31536000 (1 year) | 94608000 (3 years)</p>
+<li><strong>instance-type</strong></li>
+<p style="padding-left: 30px;">Filters by **<strong>specifications of reserved instances</strong>**. For example, "S3.MEDIUM4".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: <a href="https://cloud.tencent.com/document/product/213/11518">list of reserved instance specifiations</a></p>
+<li><strong>offering-type</strong></li>
+<p style="padding-left: 30px;">Filters by **<strong>payment method</strong>**. For example, "All Upfront".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid value: All Upfront</p>
+<li><strong>product-description</strong></li>
+<p style="padding-left: 30px;">Filters by the **<strong>operating system</strong>** of the reserved instance. For example, "linux".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid value: linux</p>
+<li><strong>reserved-instances-id</strong></li>
+<p style="padding-left: 30px;">Filters by **<strong>reserved instance ID</strong>. Reserved instance IDs take the form "650c138f-ae7e-4750-952a-96841d6e9fc1".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p>
+<li><strong>state</strong></li>
+<p style="padding-left: 30px;">Filters by **<strong>reserved instance status</strong>. For example, "active".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required</p><p style="padding-left: 30px;">Valid values: "active" (created) | "pending" (waiting to be created) | "retired" (expired)</p>
+Each request can have up to 10 `Filters` and 5 `Filters.Values`.
+        :type Filters: list of Filter
+        """
+        self.DryRun = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.DryRun = params.get("DryRun")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeReservedInstancesResponse(AbstractModel):
+    """DescribeReservedInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of eligible reserved instances.
+        :type TotalCount: int
+        :param ReservedInstancesSet: List of eligible reserved instances.
+        :type ReservedInstancesSet: list of ReservedInstances
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ReservedInstancesSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ReservedInstancesSet") is not None:
+            self.ReservedInstancesSet = []
+            for item in params.get("ReservedInstancesSet"):
+                obj = ReservedInstances()
+                obj._deserialize(item)
+                self.ReservedInstancesSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZoneInstanceConfigInfosRequest(AbstractModel):
     """DescribeZoneInstanceConfigInfos request structure.
 
@@ -3396,6 +3474,70 @@ class RegionInfo(AbstractModel):
         self.Region = params.get("Region")
         self.RegionName = params.get("RegionName")
         self.RegionState = params.get("RegionState")
+
+
+class ReservedInstances(AbstractModel):
+    """Describes the information of the reserved instances the user has purchased
+
+    """
+
+    def __init__(self):
+        """
+        :param ReservedInstancesId: The ID of the purchased reserved instance, taking the form 650c138f-ae7e-4750-952a-96841d6e9fc1.
+        :type ReservedInstancesId: str
+        :param InstanceType: The type of the reserved instance. For example, S3.MEDIUM4.
+Returned value: <a href="https://cloud.tencent.com/document/product/213/11518">list of reserved instance types</a>
+        :type InstanceType: str
+        :param Zone: Availability zones in which the reserved instance can be purchased. For example, "ap-guangzhou-1".
+Returned values: <a href="https://cloud.tencent.com/document/product/213/6091">list of availability zones</a>
+        :type Zone: str
+        :param StartTime: Start time of the reserved instance billing, taking the form of 2019-10-23 00:00:00.
+        :type StartTime: str
+        :param EndTime: End time of the reserved instance, taking the form of 2019-10-23 00:00:00
+        :type EndTime: str
+        :param Duration: The **validity** of the reserved instance in seconds, which is the purchased usage period. For example, 31536000.
+Measurement unit: second.
+        :type Duration: int
+        :param InstanceCount: The number of reserved instances that have been purchased. For example, 10.
+        :type InstanceCount: int
+        :param ProductDescription: The operating system of the reserved instance. For example, "linux".
+Returned value: linux.
+        :type ProductDescription: str
+        :param State: The status of the reserved instance. For example, "active".
+Returned value: "active" (created) | "pending" (waiting to be created) | "retired" (expired).
+        :type State: str
+        :param CurrencyCode: The currency in which the reserved instance is billed. The ISO 4217 standard currency codes are used. For example, USD.
+Returned value: USD.
+        :type CurrencyCode: str
+        :param OfferingType: The payment method of the reserved instance. For example, "All Upfront".
+Returned value: All Upfront.
+        :type OfferingType: str
+        """
+        self.ReservedInstancesId = None
+        self.InstanceType = None
+        self.Zone = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Duration = None
+        self.InstanceCount = None
+        self.ProductDescription = None
+        self.State = None
+        self.CurrencyCode = None
+        self.OfferingType = None
+
+
+    def _deserialize(self, params):
+        self.ReservedInstancesId = params.get("ReservedInstancesId")
+        self.InstanceType = params.get("InstanceType")
+        self.Zone = params.get("Zone")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Duration = params.get("Duration")
+        self.InstanceCount = params.get("InstanceCount")
+        self.ProductDescription = params.get("ProductDescription")
+        self.State = params.get("State")
+        self.CurrencyCode = params.get("CurrencyCode")
+        self.OfferingType = params.get("OfferingType")
 
 
 class ResetInstanceRequest(AbstractModel):

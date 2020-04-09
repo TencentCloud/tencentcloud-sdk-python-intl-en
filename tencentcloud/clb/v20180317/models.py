@@ -1698,6 +1698,9 @@ Basic network does not support queries by VpcId.
         :type SecurityGroup: str
         :param MasterZone: Master AZ, such as "100001" (Guangzhou Zone 1)
         :type MasterZone: str
+        :param Filters: Each request can have up to 10 `Filters` and 100 `Filter.Values`. Detailed filter conditions:
+<li> internet-charge-type - Type: String - Required: No - Filter by CLB network billing mode, including `TRAFFIC_POSTPAID_BY_HOUR`</li>
+        :type Filters: list of Filter
         """
         self.LoadBalancerIds = None
         self.LoadBalancerType = None
@@ -1717,6 +1720,7 @@ Basic network does not support queries by VpcId.
         self.VpcId = None
         self.SecurityGroup = None
         self.MasterZone = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -1738,6 +1742,12 @@ Basic network does not support queries by VpcId.
         self.VpcId = params.get("VpcId")
         self.SecurityGroup = params.get("SecurityGroup")
         self.MasterZone = params.get("MasterZone")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeLoadBalancersResponse(AbstractModel):
@@ -2727,7 +2737,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param IsBlock: Whether VIP is blocked
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsBlock: bool
-        :param IsBlockTime: 
+        :param IsBlockTime: Time blocked or unblocked
+Note: this field may return null, indicating that no valid values can be obtained.
         :type IsBlockTime: str
         """
         self.LoadBalancerId = None
@@ -3191,8 +3202,12 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         :type Scheduler: str
         :param SessionExpireTime: Session persistence time
         :type SessionExpireTime: int
-        :param ForwardType: Forwarding protocol between CLB instance and real server. Value range: HTTP, HTTPS. Default value: HTTP
+        :param ForwardType: Forwarding protocol between CLB instance and real server. Default value: HTTP. Valid values: HTTP, HTTPS, TRPC.
         :type ForwardType: str
+        :param TrpcCallee: TRPC callee server route, which is required when `ForwardType` is `TRPC`.
+        :type TrpcCallee: str
+        :param TrpcFunc: TRPC calling service API, which is required when `ForwardType` is `TRPC`.
+        :type TrpcFunc: str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -3202,6 +3217,8 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         self.Scheduler = None
         self.SessionExpireTime = None
         self.ForwardType = None
+        self.TrpcCallee = None
+        self.TrpcFunc = None
 
 
     def _deserialize(self, params):
@@ -3215,6 +3232,8 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         self.Scheduler = params.get("Scheduler")
         self.SessionExpireTime = params.get("SessionExpireTime")
         self.ForwardType = params.get("ForwardType")
+        self.TrpcCallee = params.get("TrpcCallee")
+        self.TrpcFunc = params.get("TrpcFunc")
 
 
 class ModifyRuleResponse(AbstractModel):

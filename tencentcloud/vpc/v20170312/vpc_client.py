@@ -242,6 +242,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateNetworkAclSubnets(self, request):
+        """This API is used to associate a network ACL with subnets in a VPC instance.
+
+        :param request: Request instance for AssociateNetworkAclSubnets.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNetworkAclSubnetsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateNetworkAclSubnetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateNetworkAclSubnets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateNetworkAclSubnetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AttachCcnInstances(self, request):
         """This API (AttachCcnInstances) is used to load a network instance to a CCN instance. Network instances include VPCs and Direct Connect gateways.<br />
         The number of network instances that each CCN can be associated with is limited. For more information, see the product documentation. If you need to associate more instances, please contact online customer service.
@@ -272,9 +300,9 @@ class VpcClient(AbstractClient):
 
 
     def AttachClassicLinkVpc(self, request):
-        """This API (AttachClassicLinkVpc) is used to create a Classiclink between a VPC and a basic network device.
-        * The VPC and the basic network device must be in the same region.
-        * For the difference between VPCs and basic networks, see VPC product documentation-<a href="https://cloud.tencent.com/document/product/215/535#2.-.E7.A7.81.E6.9C.89.E7.BD.91.E7.BB.9C.E4.B8.8E.E5.9F.BA.E7.A1.80.E7.BD.91.E7.BB.9C">VPCs and basic networks</a>.
+        """This API is used to create a Classiclink between a VPC instance and a basic network device.
+        * The VPC instance and the basic network device must be in the same region.
+        * For differences between VPC and basic networks, see <a href="https://cloud.tencent.com/document/product/215/30720">VPC and Basic Networks</a>.
 
         :param request: Request instance for AttachClassicLinkVpc.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AttachClassicLinkVpcRequest`
@@ -302,11 +330,11 @@ class VpcClient(AbstractClient):
 
 
     def AttachNetworkInterface(self, request):
-        """This API (AttachNetworkInterface) is used to bind an ENI to a CVM.
-        * One CVM can be bound to multiple ENIs, but only one primary ENI. For more information on the limits, see <a href="https://cloud.tencent.com/document/product/215/6513">ENI use limits</a>.
+        """This API is used to bind an ENI to a CVM.
+        * One CVM can be bound to multiple ENIs, but only one primary ENI. For more information on the limits, see <a href="https://cloud.tencent.com/document/product/576/18527">ENI Use Limits</a>.
         * An ENI can only be bound to one CVM at a time.
-        * Only CVMs in running or shutdown status can be bound to an ENI. For more information about CVM status, see <a href="https://cloud.tencent.com/document/api/213/9452#instance_state">Tencent CVM information</a>.
-        * An ENI can only be bound to a CVM in VPC, and the CVM must reside in the same availability zone as the subnet of the ENI.
+        * Only CVMs in the running or shutdown state can be bound to an ENI. For more information on CVM states, see <a href="https://cloud.tencent.com/document/api/213/9452#InstanceStatus">Tencent CVM Information</a>.
+        * An ENI can only be bound to a CVM in a VPC instance, and the CVM must reside in the same availability zone as the subnet of the ENI.
 
         :param request: Request instance for AttachNetworkInterface.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AttachNetworkInterfaceRequest`
@@ -418,8 +446,9 @@ class VpcClient(AbstractClient):
 
 
     def CreateCcn(self, request):
-        """This API (CreateCcn) is used to create a Cloud Connect Network (CCN).<br />
-        Each account can only create a limited number of CCN instances. For more information, see the product documentation. If you need to create more instances, please contact the online customer service.
+        """This API is used to create a Cloud Connect Network (CCN).<br />
+        * You can bind a tag when creating a CCN instance. The tag list in the response indicates the tags that have been successfully added.
+        Each account can only create a limited number of CCN instances. For more information, see product documentation. To create more instances, contact the online customer service.
 
         :param request: Request instance for CreateCcn.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCcnRequest`
@@ -622,6 +651,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateNetworkAcl(self, request):
+        """This API is used to create a <a href="https://cloud.tencent.com/document/product/215/20088">network ACL</a>.
+        * The inbound and outbound rules for a new network ACL are "Deny All" by default. You need to call `ModifyNetworkAclEntries` after creation to set rules for the network ACL as needed.
+
+        :param request: Request instance for CreateNetworkAcl.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNetworkAcl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNetworkAclResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNetworkInterface(self, request):
         """This API is used to create one or more ENIs.
         * You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be in the same subnet as the ENI and is not occupied.
@@ -656,8 +714,9 @@ class VpcClient(AbstractClient):
 
 
     def CreateRouteTable(self, request):
-        """This API (CreateRouteTable) is used to create a route table.
-        * After the VPC has been created, the system will create a default route table with which all newly created subnets will be associated. By default, you can use this route table to manage your routing policies. If you have multiple routing policies, you can call the API for creating route table to create more route tables to manage your routing policies.
+        """This API is used to create a route table.
+        * After the VPC instance has been created, the system creates a default route table with which all newly created subnets will be associated. By default, you can use this route table to manage your routing policies. If you have multiple routing policies, you can call the API for creating route tables to create more route tables to manage these routing policies.
+        * You can bind a tag when creating a route table. The tag list in the response indicates the tags that have been successfully added.
 
         :param request: Request instance for CreateRouteTable.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateRouteTableRequest`
@@ -714,9 +773,10 @@ class VpcClient(AbstractClient):
 
 
     def CreateSecurityGroup(self, request):
-        """This API (CreateSecurityGroup) is used to create security groups (SecurityGroup).
-        * <a href="https://cloud.tencent.com/document/product/213/500#2.-.E5.AE.89.E5.85.A8.E7.BB.84.E7.9A.84.E9.99.90.E5.88.B6">Security group limits</a> for each project in each region under each account.
-        * Both the inbound and outbound rules for a newly created security group are Deny All by default. You need to call CreateSecurityGroupPolicies to set the security group rules according to your needs.
+        """This API is used to create a security group (SecurityGroup).
+        * Note the <a href="https://cloud.tencent.com/document/product/213/12453">maximum number of security groups</a> per project in each region under each account.
+        * Both the inbound and outbound rules for a newly created security group are "Deny All" by default. You need to call CreateSecurityGroupPolicies to set security group rules based on your needs.
+        * You can bind a tag when creating a security group. The tag list in the response indicates the tags that have been successfully added.
 
         :param request: Request instance for CreateSecurityGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSecurityGroupRequest`
@@ -838,12 +898,13 @@ class VpcClient(AbstractClient):
 
 
     def CreateSubnet(self, request):
-        """This API (CreateSubnet) is used to create subnets.
-        * You must create a VPC before creating a subnet.
-        * After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.
+        """This API is used to create a subnet.
+        * You must create a VPC instance before creating a subnet.
+        * After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC instance has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.
         * The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses).
-        * IP address ranges of different subnets cannot overlap with each other within the same VPC.
+        * IP address ranges of different subnets cannot overlap with each other within the same VPC instance.
         * A subnet is automatically associated with the default route table once created.
+        * You can bind a tag when creating a subnet. The tag list in the response indicates the tags that have been successfully added.
 
         :param request: Request instance for CreateSubnet.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSubnetRequest`
@@ -871,12 +932,13 @@ class VpcClient(AbstractClient):
 
 
     def CreateSubnets(self, request):
-        """This API (CreateSubnets) is used to create subnets in batches.
-        * You must create a VPC before creating a subnet.
+        """This API is used to create subnets in batches.
+        * You must create a VPC instance before creating a subnet.
         * After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.
         * The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses).
-        * IP address ranges of different subnets cannot overlap with each other within the same VPC.
+        * IP address ranges of different subnets cannot overlap with each other within the same VPC instance.
         * A subnet is automatically associated with the default route table once created.
+        * You can bind a tag when creating a subnet. The tag list in the response indicates the tags that have been successfully added.
 
         :param request: Request instance for CreateSubnets.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSubnetsRequest`
@@ -904,9 +966,10 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpc(self, request):
-        """This API (CreateVpc) is used to create a VPC.
-        * The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses). For more information, please see corresponding documents about VPC IP address ranges.
-        * The number of VPCs that can be created in a region is limited. For more information, please see <a href="https://intl.cloud.tencent.com/doc/product/215/537" title="VPC use limits">VPC use limits</a>. To request more resources, please contact the online customer service.
+        """This API is used to create a VPC instance.
+        * The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses). For more information, see the corresponding documents about VPC IP address ranges.
+        * The number of VPC instances that can be created in a region is limited. For more information, see <a href="https://intl.cloud.tencent.com/doc/product/215/537" title="VPC Use Limits">VPC Use Limits</a>. To request more resources, contact the online customer service.
+        * You can bind a tag when creating a VPC instance. The tag list in the response indicates the tags that have been successfully added.
 
         :param request: Request instance for CreateVpc.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcRequest`
@@ -1203,6 +1266,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNetDetectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteNetworkAcl(self, request):
+        """This API is used to delete a network ACL.
+
+        :param request: Request instance for DeleteNetworkAcl.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteNetworkAcl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNetworkAclResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1985,8 +2076,36 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNetworkAcls(self, request):
+        """This API is used to query a list of network ACLs.
+
+        :param request: Request instance for DescribeNetworkAcls.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkAclsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkAclsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNetworkAcls", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkAclsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNetworkInterfaceLimit(self, request):
-        """This API (DescribeNetworkInterfaceLimit) is used to query the ENI quota based on the CVM instance ID. It returns the ENI quota to which the CVM instance can be bound and the IP address quota that can be allocated to each ENI.
+        """This API is used to query the ENI quota based on the CVM instance ID. It returns the ENI quota to which the CVM instance can be bound and the IP address quota that can be allocated to each ENI.
 
         :param request: Request instance for DescribeNetworkInterfaceLimit.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkInterfaceLimitRequest`
@@ -2580,6 +2699,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisassociateNetworkAclSubnets(self, request):
+        """This API is used to disassociate a network ACL from subnets in a VPC instance.
+
+        :param request: Request instance for DisassociateNetworkAclSubnets.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateNetworkAclSubnetsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateNetworkAclSubnetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateNetworkAclSubnets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateNetworkAclSubnetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DownloadCustomerGatewayConfiguration(self, request):
         """This API (DownloadCustomerGatewayConfiguration) is used to download a VPN tunnel configuration.
 
@@ -2922,6 +3069,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyCcnRegionBandwidthLimitsType(self, request):
+        """This API is used to modify the bandwidth limit policy of a postpaid CCN instance.
+
+        :param request: Request instance for ModifyCcnRegionBandwidthLimitsType.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnRegionBandwidthLimitsTypeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnRegionBandwidthLimitsTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCcnRegionBandwidthLimitsType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCcnRegionBandwidthLimitsTypeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyHaVipAttribute(self, request):
         """This API (ModifyHaVipAttribute) is used to modify HAVIP attributes.
 
@@ -3048,6 +3223,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetDetectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNetworkAclAttribute(self, request):
+        """This API is used to modify the attributes of a network ACL.
+
+        :param request: Request instance for ModifyNetworkAclAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNetworkAclAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNetworkAclAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNetworkAclEntries(self, request):
+        """This API is used to modify (add or delete) the inbound and outbound rules of a network ACL.
+
+        :param request: Request instance for ModifyNetworkAclEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNetworkAclEntries", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNetworkAclEntriesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
