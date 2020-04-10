@@ -690,6 +690,156 @@ class CreateDBImportJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDBInstanceHourRequest(AbstractModel):
+    """CreateDBInstanceHour request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param GoodsNum: Number of instances. Value range: 1-100. Default value: 1.
+        :type GoodsNum: int
+        :param Memory: Instance memory size in MB. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported memory specifications.
+        :type Memory: int
+        :param Volume: Instance disk size in GB. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported disk specifications.
+        :type Volume: int
+        :param EngineVersion: MySQL version. Value range: 5.5, 5.6, 5.7. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported instance versions.
+        :type EngineVersion: str
+        :param UniqVpcId: VPC ID. If this parameter is not passed in, the basic network will be selected by default. Please use the [VPC list querying API](/document/api/215/15778) to query the VPCs.
+        :type UniqVpcId: str
+        :param UniqSubnetId: VPC subnet ID. If UniqVpcId is set, then UniqSubnetId will be required. Please use the [subnet list querying API](/document/api/215/15784) to query the subnet lists.
+        :type UniqSubnetId: str
+        :param ProjectId: Project ID. If this is left empty, the default project will be used. Please use the [project list querying API](https://cloud.tencent.com/document/product/378/4400) to get the project ID.
+        :type ProjectId: int
+        :param Zone: AZ information. By default, the system will automatically select an AZ. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported AZs.
+        :type Zone: str
+        :param MasterInstanceId: Instance ID, which is required and the same as the master instance ID when purchasing a read-only or disaster recovery instance. Please use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the instance IDs.
+        :type MasterInstanceId: str
+        :param InstanceRole: Instance type. Value range: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        :type InstanceRole: str
+        :param MasterRegion: AZ information of the master instance, which is required for purchasing disaster recovery instances.
+        :type MasterRegion: str
+        :param Port: Custom port. Value range: [1024-65535].
+        :type Port: int
+        :param Password: Sets the root account password. Rule: The password can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special characters (_+-&=!@#$%^*()). This parameter can be specified when purchasing the master instance and is meaningless for read-only or disaster recovery instances.
+        :type Password: str
+        :param ParamList: List of parameters in the format of ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can use the [default configurable parameter list querying API](https://cloud.tencent.com/document/api/236/32662) to query the parameters that can be configured.
+        :type ParamList: list of ParamInfo
+        :param ProtectMode: Data replication mode. Value range: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
+        :type ProtectMode: int
+        :param DeployMode: Multi-AZ. Value range: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
+        :type DeployMode: int
+        :param SlaveZone: AZ information of slave database 1, which is the `Zone` value by default. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
+        :type SlaveZone: str
+        :param BackupZone: AZ information of slave database 2, which is empty by default. This parameter can be specified when purchasing strong sync master instances and is meaningless for other types of instances.
+        :type BackupZone: str
+        :param SecurityGroup: Security group parameter. You can use the [project security group querying API](https://cloud.tencent.com/document/api/236/15850) to query the security group details of a project.
+        :type SecurityGroup: list of str
+        :param RoGroup: Read-only instance information. This parameter must be passed in when purchasing read-only instances.
+        :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
+        :param AutoRenewFlag: This field is meaningless when purchasing pay-as-you-go instances.
+        :type AutoRenewFlag: int
+        :param InstanceName: Instance name.
+        :type InstanceName: str
+        :param ResourceTags: Instance tag information.
+        :type ResourceTags: list of TagInfo
+        :param DeployGroupId: 
+        :type DeployGroupId: str
+        :param ClientToken: 
+        :type ClientToken: str
+        """
+        self.GoodsNum = None
+        self.Memory = None
+        self.Volume = None
+        self.EngineVersion = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.ProjectId = None
+        self.Zone = None
+        self.MasterInstanceId = None
+        self.InstanceRole = None
+        self.MasterRegion = None
+        self.Port = None
+        self.Password = None
+        self.ParamList = None
+        self.ProtectMode = None
+        self.DeployMode = None
+        self.SlaveZone = None
+        self.BackupZone = None
+        self.SecurityGroup = None
+        self.RoGroup = None
+        self.AutoRenewFlag = None
+        self.InstanceName = None
+        self.ResourceTags = None
+        self.DeployGroupId = None
+        self.ClientToken = None
+
+
+    def _deserialize(self, params):
+        self.GoodsNum = params.get("GoodsNum")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.EngineVersion = params.get("EngineVersion")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.ProjectId = params.get("ProjectId")
+        self.Zone = params.get("Zone")
+        self.MasterInstanceId = params.get("MasterInstanceId")
+        self.InstanceRole = params.get("InstanceRole")
+        self.MasterRegion = params.get("MasterRegion")
+        self.Port = params.get("Port")
+        self.Password = params.get("Password")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        self.ProtectMode = params.get("ProtectMode")
+        self.DeployMode = params.get("DeployMode")
+        self.SlaveZone = params.get("SlaveZone")
+        self.BackupZone = params.get("BackupZone")
+        self.SecurityGroup = params.get("SecurityGroup")
+        if params.get("RoGroup") is not None:
+            self.RoGroup = RoGroup()
+            self.RoGroup._deserialize(params.get("RoGroup"))
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.InstanceName = params.get("InstanceName")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.DeployGroupId = params.get("DeployGroupId")
+        self.ClientToken = params.get("ClientToken")
+
+
+class CreateDBInstanceHourResponse(AbstractModel):
+    """CreateDBInstanceHour response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DealIds: Short order ID.
+        :type DealIds: list of str
+        :param InstanceIds: List of instance IDs.
+        :type InstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealIds = None
+        self.InstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealIds = params.get("DealIds")
+        self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDeployGroupRequest(AbstractModel):
     """CreateDeployGroup request structure.
 
@@ -705,11 +855,14 @@ class CreateDeployGroupRequest(AbstractModel):
         :type Affinity: list of int
         :param LimitNum: Upper limit of instances on one physical machine as defined in affinity policy 1 of placement group.
         :type LimitNum: int
+        :param DevClass: Model attribute of placement group. Valid values: SH12+SH02, TS85.
+        :type DevClass: list of str
         """
         self.DeployGroupName = None
         self.Description = None
         self.Affinity = None
         self.LimitNum = None
+        self.DevClass = None
 
 
     def _deserialize(self, params):
@@ -717,6 +870,7 @@ class CreateDeployGroupRequest(AbstractModel):
         self.Description = params.get("Description")
         self.Affinity = params.get("Affinity")
         self.LimitNum = params.get("LimitNum")
+        self.DevClass = params.get("DevClass")
 
 
 class CreateDeployGroupResponse(AbstractModel):
@@ -2526,6 +2680,74 @@ class DescribeDeviceMonitorInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeErrorLogDataRequest(AbstractModel):
+    """DescribeErrorLogData request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param StartTime: Start timestamp.
+        :type StartTime: int
+        :param EndTime: End timestamp.
+        :type EndTime: int
+        :param KeyWords: List of keywords to match. Up to 15 keywords are supported.
+        :type KeyWords: list of str
+        :param Limit: Number of results to be returned per page. Maximum value: 400.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.KeyWords = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.KeyWords = params.get("KeyWords")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeErrorLogDataResponse(AbstractModel):
+    """DescribeErrorLogData response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param Items: Returned result.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Items: list of ErrlogItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ErrlogItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceParamRecordsRequest(AbstractModel):
     """DescribeInstanceParamRecords request structure.
 
@@ -2808,6 +3030,90 @@ class DescribeRollbackRangeTimeResponse(AbstractModel):
             self.Items = []
             for item in params.get("Items"):
                 obj = InstanceRollbackRangeTime()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSlowLogDataRequest(AbstractModel):
+    """DescribeSlowLogData request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param StartTime: Start timestamp.
+        :type StartTime: int
+        :param EndTime: End timestamp.
+        :type EndTime: int
+        :param UserHosts: Client Host list.
+        :type UserHosts: list of str
+        :param UserNames: Client username list.
+        :type UserNames: list of str
+        :param DataBases: Accessed database list.
+        :type DataBases: list of str
+        :param SortBy: Sort by field. Valid values: Timestamp, QueryTime, LockTime, RowsExamined, RowsSent.
+        :type SortBy: str
+        :param OrderBy: Sorting order. Valid values: ASC (ascending), DESC (descending).
+        :type OrderBy: str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of results to be returned at a time. Maximum value: 400.
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.UserHosts = None
+        self.UserNames = None
+        self.DataBases = None
+        self.SortBy = None
+        self.OrderBy = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.UserHosts = params.get("UserHosts")
+        self.UserNames = params.get("UserNames")
+        self.DataBases = params.get("DataBases")
+        self.SortBy = params.get("SortBy")
+        self.OrderBy = params.get("OrderBy")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSlowLogDataResponse(AbstractModel):
+    """DescribeSlowLogData response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param Items: Queried results.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Items: list of SlowLogItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SlowLogItem()
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.RequestId = params.get("RequestId")
@@ -3192,6 +3498,61 @@ class DescribeTimeWindowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUploadedFilesRequest(AbstractModel):
+    """DescribeUploadedFiles request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Path: File path. `OwnerUin` information of the root account should be entered in this field.
+        :type Path: str
+        :param Offset: Record offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of results to be returned for a single request. Default value: 20.
+        :type Limit: int
+        """
+        self.Path = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeUploadedFilesResponse(AbstractModel):
+    """DescribeUploadedFiles response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible SQL files.
+        :type TotalCount: int
+        :param Items: List of returned SQL files.
+        :type Items: list of SqlFileInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SqlFileInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DeviceCpuInfo(AbstractModel):
     """CPU load
 
@@ -3399,6 +3760,29 @@ class DrInfo(AbstractModel):
         self.SyncStatus = params.get("SyncStatus")
         self.InstanceName = params.get("InstanceName")
         self.InstanceType = params.get("InstanceType")
+
+
+class ErrlogItem(AbstractModel):
+    """Structured error log details
+
+    """
+
+    def __init__(self):
+        """
+        :param Timestamp: Error occurrence time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Timestamp: int
+        :param Content: Error details
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Content: str
+        """
+        self.Timestamp = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.Content = params.get("Content")
 
 
 class ImportRecord(AbstractModel):
@@ -5703,6 +6087,113 @@ class SlowLogInfo(AbstractModel):
         self.Type = params.get("Type")
 
 
+class SlowLogItem(AbstractModel):
+    """Structured slow log details
+
+    """
+
+    def __init__(self):
+        """
+        :param Timestamp: SQL execution time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Timestamp: int
+        :param QueryTime: SQL execution duration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type QueryTime: float
+        :param SqlText: SQL statement.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SqlText: str
+        :param UserHost: Client address.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UserHost: str
+        :param UserName: Username.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UserName: str
+        :param Database: Database name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Database: str
+        :param LockTime: Lock duration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LockTime: float
+        :param RowsExamined: Number of scanned rows.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RowsExamined: int
+        :param RowsSent: Number of rows in result set.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RowsSent: int
+        :param SqlTemplate: SQL template.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SqlTemplate: str
+        :param Md5: SQL statement MD5.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Md5: str
+        """
+        self.Timestamp = None
+        self.QueryTime = None
+        self.SqlText = None
+        self.UserHost = None
+        self.UserName = None
+        self.Database = None
+        self.LockTime = None
+        self.RowsExamined = None
+        self.RowsSent = None
+        self.SqlTemplate = None
+        self.Md5 = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.QueryTime = params.get("QueryTime")
+        self.SqlText = params.get("SqlText")
+        self.UserHost = params.get("UserHost")
+        self.UserName = params.get("UserName")
+        self.Database = params.get("Database")
+        self.LockTime = params.get("LockTime")
+        self.RowsExamined = params.get("RowsExamined")
+        self.RowsSent = params.get("RowsSent")
+        self.SqlTemplate = params.get("SqlTemplate")
+        self.Md5 = params.get("Md5")
+
+
+class SqlFileInfo(AbstractModel):
+    """SQL file information
+
+    """
+
+    def __init__(self):
+        """
+        :param UploadTime: Upload time
+        :type UploadTime: str
+        :param UploadInfo: Upload progress
+        :type UploadInfo: :class:`tencentcloud.cdb.v20170320.models.UploadInfo`
+        :param FileName: Filename
+        :type FileName: str
+        :param FileSize: File size in bytes
+        :type FileSize: int
+        :param IsUploadFinished: Whether upload is finished. Value range: 0 (not finished), 1 (finished)
+        :type IsUploadFinished: int
+        :param FileId: File ID
+        :type FileId: str
+        """
+        self.UploadTime = None
+        self.UploadInfo = None
+        self.FileName = None
+        self.FileSize = None
+        self.IsUploadFinished = None
+        self.FileId = None
+
+
+    def _deserialize(self, params):
+        self.UploadTime = params.get("UploadTime")
+        if params.get("UploadInfo") is not None:
+            self.UploadInfo = UploadInfo()
+            self.UploadInfo._deserialize(params.get("UploadInfo"))
+        self.FileName = params.get("FileName")
+        self.FileSize = params.get("FileSize")
+        self.IsUploadFinished = params.get("IsUploadFinished")
+        self.FileId = params.get("FileId")
+
+
 class StartBatchRollbackRequest(AbstractModel):
     """StartBatchRollback request structure.
 
@@ -6042,6 +6533,105 @@ class UpgradeDBInstanceEngineVersionResponse(AbstractModel):
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
+
+
+class UpgradeDBInstanceRequest(AbstractModel):
+    """UpgradeDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters.
+        :type InstanceId: str
+        :param Memory: Memory size (MB) after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/product/236/17229) to query the specifications of the memory that can be upgraded to.
+        :type Memory: int
+        :param Volume: Disk size (GB) after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/product/236/17229) to query the specifications of the disk that can be upgraded to.
+        :type Volume: int
+        :param ProtectMode: Data replication mode. Value range: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
+        :type ProtectMode: int
+        :param DeployMode: Deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
+        :type DeployMode: int
+        :param SlaveZone: AZ information of slave database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading master instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [purchasable instance specification querying API](https://cloud.tencent.com/document/product/236/17229) to query the supported AZs.
+        :type SlaveZone: str
+        :param EngineVersion: Version of master instance database engine. Value range: 5.5, 5.6, 5.7.
+        :type EngineVersion: str
+        :param WaitSwitch: Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://cloud.tencent.com/document/product/236/15864) to trigger the process.
+        :type WaitSwitch: int
+        :param BackupZone: AZ information of slave database 2, which is empty by default. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
+        :type BackupZone: str
+        :param InstanceRole: Instance type. Value range: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        :type InstanceRole: str
+        """
+        self.InstanceId = None
+        self.Memory = None
+        self.Volume = None
+        self.ProtectMode = None
+        self.DeployMode = None
+        self.SlaveZone = None
+        self.EngineVersion = None
+        self.WaitSwitch = None
+        self.BackupZone = None
+        self.InstanceRole = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.ProtectMode = params.get("ProtectMode")
+        self.DeployMode = params.get("DeployMode")
+        self.SlaveZone = params.get("SlaveZone")
+        self.EngineVersion = params.get("EngineVersion")
+        self.WaitSwitch = params.get("WaitSwitch")
+        self.BackupZone = params.get("BackupZone")
+        self.InstanceRole = params.get("InstanceRole")
+
+
+class UpgradeDBInstanceResponse(AbstractModel):
+    """UpgradeDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DealIds: Order ID.
+        :type DealIds: list of str
+        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealIds = None
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealIds = params.get("DealIds")
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class UploadInfo(AbstractModel):
+    """File upload description
+
+    """
+
+    def __init__(self):
+        """
+        :param AllSliceNum: Number of parts of the file
+        :type AllSliceNum: int
+        :param CompleteNum: Number of completed parts
+        :type CompleteNum: int
+        """
+        self.AllSliceNum = None
+        self.CompleteNum = None
+
+
+    def _deserialize(self, params):
+        self.AllSliceNum = params.get("AllSliceNum")
+        self.CompleteNum = params.get("CompleteNum")
 
 
 class ZoneConf(AbstractModel):
