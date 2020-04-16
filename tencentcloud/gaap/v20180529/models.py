@@ -2322,12 +2322,12 @@ class DescribeListenerStatisticsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End time
         :type EndTime: str
-        :param MetricNames: Statistical metric name list. It supports: ["InBandwidth", "OutBandwidth", "Concurrent", "InPackets", "OutPackets"]
+        :param MetricNames: Statistical metric name list. It supports:["InBandwidth", "OutBandwidth", "Concurrent", "InPackets", "OutPackets"]
         :type MetricNames: list of str
         :param Granularity: Monitoring granularity. It currently supports: 300, 3,600, and 86,400. Unit: seconds.
 Time range: ≤ 1 day, supported minimum granularity: 300 seconds;
-Time range: ≤ 7 days, supported minimum granularity: 3,600 seconds;
-Time range: > 7 days, supported minimum granularity: 86,400 seconds;
+Time range：≤ 7 days, supported minimum granularity:3,600 seconds;
+Time range: ＞7 days, supported minimum granularity:86,400 seconds;
         :type Granularity: int
         """
         self.ListenerId = None
@@ -3683,6 +3683,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Body: Configured response body (excluding HTTP header)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Body: str
+        :param Status: Rule status. 0: success
+Note: this field may return null, indicating that no valid value is obtained.
+        :type Status: int
         """
         self.ErrorPageId = None
         self.ListenerId = None
@@ -3692,6 +3695,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ClearHeaders = None
         self.SetHeaders = None
         self.Body = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -3708,6 +3712,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.SetHeaders.append(obj)
         self.Body = params.get("Body")
+        self.Status = params.get("Status")
 
 
 class DomainRuleSet(AbstractModel):
@@ -5258,6 +5263,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SupportSecurity: Whether security groups are supported.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SupportSecurity: int
+        :param BillingType: Billing mode. 0: bill by bandwidth; 1: bill by traffic
+Note: this field may return null, indicating that no valid value is obtained.
+        :type BillingType: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -5281,6 +5289,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ForwardIP = None
         self.TagSet = None
         self.SupportSecurity = None
+        self.BillingType = None
 
 
     def _deserialize(self, params):
@@ -5315,6 +5324,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.SupportSecurity = params.get("SupportSecurity")
+        self.BillingType = params.get("BillingType")
 
 
 class ProxySimpleInfo(AbstractModel):

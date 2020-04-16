@@ -247,6 +247,85 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourceTagsByTagKeysRequest(AbstractModel):
+    """DescribeResourceTagsByTagKeys request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceType: Service type
+        :type ServiceType: str
+        :param ResourcePrefix: Resource prefix
+        :type ResourcePrefix: str
+        :param ResourceRegion: Resource region
+        :type ResourceRegion: str
+        :param ResourceIds: Unique resource ID
+        :type ResourceIds: list of str
+        :param TagKeys: Resource tag key
+        :type TagKeys: list of str
+        :param Limit: Number of entries per page. Default value: 400
+        :type Limit: int
+        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter
+        :type Offset: int
+        """
+        self.ServiceType = None
+        self.ResourcePrefix = None
+        self.ResourceRegion = None
+        self.ResourceIds = None
+        self.TagKeys = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        self.ResourcePrefix = params.get("ResourcePrefix")
+        self.ResourceRegion = params.get("ResourceRegion")
+        self.ResourceIds = params.get("ResourceIds")
+        self.TagKeys = params.get("TagKeys")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeResourceTagsByTagKeysResponse(AbstractModel):
+    """DescribeResourceTagsByTagKeys response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of results
+        :type TotalCount: int
+        :param Offset: Data offset
+        :type Offset: int
+        :param Limit: Number of entries per page
+        :type Limit: int
+        :param Rows: Resource tag
+        :type Rows: list of ResourceIdTag
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Offset = None
+        self.Limit = None
+        self.Rows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = ResourceIdTag()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResourcesByTagsRequest(AbstractModel):
     """DescribeResourcesByTags request structure.
 
@@ -349,16 +428,20 @@ class DescribeTagKeysRequest(AbstractModel):
         :type Offset: int
         :param Limit: Page size. The default value is 0.
         :type Limit: int
+        :param ShowProject: Whether to show project
+        :type ShowProject: int
         """
         self.CreateUin = None
         self.Offset = None
         self.Limit = None
+        self.ShowProject = None
 
 
     def _deserialize(self, params):
         self.CreateUin = params.get("CreateUin")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ShowProject = params.get("ShowProject")
 
 
 class DescribeTagKeysResponse(AbstractModel):
@@ -478,12 +561,18 @@ class DescribeTagsRequest(AbstractModel):
         :type Limit: int
         :param CreateUin: Creator `Uin`. If not specified, `Uin` is only used as the query condition.
         :type CreateUin: int
+        :param TagKeys: Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored
+        :type TagKeys: list of str
+        :param ShowProject: Whether to show project tag
+        :type ShowProject: int
         """
         self.TagKey = None
         self.TagValue = None
         self.Offset = None
         self.Limit = None
         self.CreateUin = None
+        self.TagKeys = None
+        self.ShowProject = None
 
 
     def _deserialize(self, params):
@@ -492,6 +581,8 @@ class DescribeTagsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.CreateUin = params.get("CreateUin")
+        self.TagKeys = params.get("TagKeys")
+        self.ShowProject = params.get("ShowProject")
 
 
 class DescribeTagsResponse(AbstractModel):
@@ -582,6 +673,34 @@ class ModifyResourceTagsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ResourceIdTag(AbstractModel):
+    """Resource tag key value
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: Unique resource ID
+Note: this field may return null, indicating that no valid values can be obtained
+        :type ResourceId: str
+        :param TagKeyValues: Tag key-value pair
+Note: this field may return null, indicating that no valid values can be obtained
+        :type TagKeyValues: list of Tag
+        """
+        self.ResourceId = None
+        self.TagKeyValues = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        if params.get("TagKeyValues") is not None:
+            self.TagKeyValues = []
+            for item in params.get("TagKeyValues"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagKeyValues.append(obj)
 
 
 class ResourceTag(AbstractModel):

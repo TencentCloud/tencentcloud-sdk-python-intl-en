@@ -224,15 +224,15 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBInstanceHour(self, request):
-        """This API (CreateDBInstanceHour) is used to create a pay-as-you-go TencentDB instance (which can be a master, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.
+        """This API is used to create a pay-as-you-go TencentDB instance (which can be a master, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.
 
-        This is an asynchronous API. You can also use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.
+        This is an async API. You can also use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.
 
-        1. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported instance specifications first and then use the [instance prices querying API](https://cloud.tencent.com/document/api/236/18566) to query the prices of the supported instances;
+        1. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported instance specifications first and then use the [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566) API to query the prices of the supported instances;
         2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;
         3. MySQL v5.5, v5.6, and v5.7 are supported;
         4. Master instances, read-only instances, and disaster recovery instances can be created;
-        5. If Port, ParamList, or Password is set in the input parameters, the instance will be initialized.
+        5. If `Port`, `ParamList`, or `Password` is set in the input parameters, the instance will be initialized.
 
         :param request: Request instance for CreateDBInstanceHour.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceHourRequest`
@@ -1327,6 +1327,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRoGroups(self, request):
+        """This API is used to query the information of all RO groups of a TencentDB instance.
+
+        :param request: Request instance for DescribeRoGroups.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRoGroupsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeRoGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRoGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRoGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRollbackRangeTime(self, request):
         """This API (DescribeRollbackRangeTime) is used to query the time range available for instance rollback.
 
@@ -1356,7 +1384,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSlowLogData(self, request):
-        """This API is used to query the details of instance slow logs by search criteria. You can only query slow logs within a month.
+        """This API is used to search for slow logs of an instance by criteria. You can only view slow logs within a month.
 
         :param request: Request instance for DescribeSlowLogData.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogDataRequest`
@@ -1552,7 +1580,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeUploadedFiles(self, request):
-        """This API (DescribeUploadedFiles) is used to query the list of user-imported SQL files.
+        """This API is used to query the list of user-imported SQL files.
 
         :param request: Request instance for DescribeUploadedFiles.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeUploadedFilesRequest`
@@ -2176,6 +2204,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReleaseIsolatedDBInstances(self, request):
+        """This API is used to deisolate an isolated TencentDB instance.
+
+        :param request: Request instance for ReleaseIsolatedDBInstances.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ReleaseIsolatedDBInstancesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ReleaseIsolatedDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReleaseIsolatedDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseIsolatedDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RestartDBInstances(self, request):
         """This API (RestartDBInstances) is used to restart TencentDB instances.
 
@@ -2293,7 +2349,7 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeDBInstance(self, request):
-        """This API (UpgradeDBInstance) is used to upgrade a TencentDB instance, which can be a master instance, disaster recovery instance, or read-only instance.
+        """This API is used to upgrade or downgrade a TencentDB instance, which can be a master instance, disaster recovery instance, or read-only instance.
 
         :param request: Request instance for UpgradeDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceRequest`

@@ -284,22 +284,26 @@ class AttachRolePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: Policy ID
+        :param PolicyId: Policy ID. Either `PolicyId` or `PolicyName` must be entered
         :type PolicyId: int
         :param AttachRoleId: Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
         :type AttachRoleId: str
         :param AttachRoleName: Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
         :type AttachRoleName: str
+        :param PolicyName: Policy name. Either `PolicyId` or `PolicyName` must be entered
+        :type PolicyName: str
         """
         self.PolicyId = None
         self.AttachRoleId = None
         self.AttachRoleName = None
+        self.PolicyName = None
 
 
     def _deserialize(self, params):
         self.PolicyId = params.get("PolicyId")
         self.AttachRoleId = params.get("AttachRoleId")
         self.AttachRoleName = params.get("AttachRoleName")
+        self.PolicyName = params.get("PolicyName")
 
 
 class AttachRolePolicyResponse(AbstractModel):
@@ -904,22 +908,26 @@ class DetachRolePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: Policy ID
+        :param PolicyId: Policy ID. Either `PolicyId` or `PolicyName` must be entered
         :type PolicyId: int
         :param DetachRoleId: Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
         :type DetachRoleId: str
         :param DetachRoleName: Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
         :type DetachRoleName: str
+        :param PolicyName: Policy name. Either `PolicyId` or `PolicyName` must be entered
+        :type PolicyName: str
         """
         self.PolicyId = None
         self.DetachRoleId = None
         self.DetachRoleName = None
+        self.PolicyName = None
 
 
     def _deserialize(self, params):
         self.PolicyId = params.get("PolicyId")
         self.DetachRoleId = params.get("DetachRoleId")
         self.DetachRoleName = params.get("DetachRoleName")
+        self.PolicyName = params.get("PolicyName")
 
 
 class DetachRolePolicyResponse(AbstractModel):
@@ -1660,16 +1668,20 @@ class ListGroupsForUserRequest(AbstractModel):
         :type Rp: int
         :param Page: Page number; default is 1
         :type Page: int
+        :param SubUin: Sub-account UIN
+        :type SubUin: int
         """
         self.Uid = None
         self.Rp = None
         self.Page = None
+        self.SubUin = None
 
 
     def _deserialize(self, params):
         self.Uid = params.get("Uid")
         self.Rp = params.get("Rp")
         self.Page = params.get("Page")
+        self.SubUin = params.get("SubUin")
 
 
 class ListGroupsForUserResponse(AbstractModel):
@@ -2079,13 +2091,14 @@ class RoleInfo(AbstractModel):
         :type UpdateTime: str
         :param ConsoleLogin: If login is allowed for the role
         :type ConsoleLogin: int
-        :param RoleType: User role. Valid values: user, system
+        :param RoleType: User role. Valid values: `user`, `system`, `service_linked`
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RoleType: str
         :param SessionDuration: Valid period
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SessionDuration: int
-        :param DeletionTaskId: 
+        :param DeletionTaskId: Task identifier for deleting a service-linked role 
+Note: this field may return null, indicating that no valid values can be obtained.
         :type DeletionTaskId: str
         """
         self.RoleId = None
@@ -2157,7 +2170,7 @@ class SetFlagRequest(AbstractModel):
         :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
         :param OffsiteFlag: Remote login settings
         :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
-        :param NeedResetMfa: If MFA requires top-up
+        :param NeedResetMfa: Whether or not to reset MFA
         :type NeedResetMfa: int
         """
         self.OpUin = None
@@ -2232,7 +2245,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DeactivedDetail: List of deprecated products
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DeactivedDetail: list of str
-        :param IsServiceLinkedPolicy: 
+        :param IsServiceLinkedPolicy: The deletion task identifier used to check the deletion status of the service-linked role
+Note: this field may return null, indicating that no valid values can be obtained.
         :type IsServiceLinkedPolicy: int
         """
         self.PolicyId = None
@@ -2378,52 +2392,6 @@ class UpdateGroupRequest(AbstractModel):
 
 class UpdateGroupResponse(AbstractModel):
     """UpdateGroup response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class UpdatePolicyRequest(AbstractModel):
-    """UpdatePolicy request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param PolicyId: Policy ID
-        :type PolicyId: int
-        :param PolicyName: Policy name
-        :type PolicyName: str
-        :param Description: Policy description
-        :type Description: str
-        :param PolicyDocument: Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API
-        :type PolicyDocument: str
-        """
-        self.PolicyId = None
-        self.PolicyName = None
-        self.Description = None
-        self.PolicyDocument = None
-
-
-    def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.Description = params.get("Description")
-        self.PolicyDocument = params.get("PolicyDocument")
-
-
-class UpdatePolicyResponse(AbstractModel):
-    """UpdatePolicy response structure.
 
     """
 

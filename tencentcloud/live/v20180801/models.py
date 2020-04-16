@@ -541,7 +541,7 @@ class CreateLiveRecordRequest(AbstractModel):
         """
         :param StreamName: Stream name.
         :type StreamName: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
         :param DomainName: Push domain name. This parameter must be set for multi-domain name push.
         :type DomainName: str
@@ -549,7 +549,7 @@ class CreateLiveRecordRequest(AbstractModel):
 In scheduled recording mode, this field must be set; in real-time video recording mode, this field is ignored.
         :type StartTime: str
         :param EndTime: Recording end time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:30:01 is 2017-01-01+10%3a30%3a01.
-In scheduled recording mode, this field must be set; in real-time video recording mode, this field is optional. If the recording is set to real-time video recording mode through the Highlight parameter, the end time set should not be more than 30 minutes after the current time. If the set end time is more than 30 minutes after the current time, earlier than the current time or left blank, the actual end time will be 30 minutes after the current time.
+In scheduled recording mode, this field must be set; in real-time video recording mode, this field is optional. If the recording is set to real-time video recording mode through the `Highlight` parameter, the set end time should not be more than 30 minutes after the current time. If the set end time is more than 30 minutes after the current time, earlier than the current time, or left empty, the actual end time will be 30 minutes after the current time.
         :type EndTime: str
         :param RecordType: Recording type.
 "video": Audio-video recording **(default)**.
@@ -564,16 +564,16 @@ In both scheduled and real-time video recording modes, this parameter is valid a
 0: Real-time video recording mode is not enabled, i.e., the scheduled recording mode is used **(default)**. See [Sample 1](#.E7.A4.BA.E4.BE.8B1-.E5.88.9B.E5.BB.BA.E5.AE.9A.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).
 1: Real-time video recording mode is enabled. See [Sample 2](#.E7.A4.BA.E4.BE.8B2-.E5.88.9B.E5.BB.BA.E5.AE.9E.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).
         :type Highlight: int
-        :param MixStream: Mark for enabling A+B=C mixed stream recording.
+        :param MixStream: Flag for enabling A+B=C mixed stream recording.
 0: A+B=C mixed stream recording is not enabled **(default)**.
 1: A+B=C mixed stream recording is enabled.
 In both scheduled and real-time video recording modes, this parameter is valid.
         :type MixStream: int
         :param StreamParam: Recording stream parameter. The following parameters are supported currently:
-record_interval: Recording interval in seconds. Value range: 1,800–7,200
-storage_time: Recording file duration in seconds
-eg. record_interval=3600&storage_time=2592000
-Note: The parameter needs url encode.
+record_interval: recording interval in seconds. Value range: 1800-7200.
+storage_time: recording file storage duration in seconds.
+Example: record_interval=3600&storage_time=2592000.
+Note: the parameter needs to be URL-encoded.
 In both scheduled and real-time video recording modes, this parameter is valid.
         :type StreamParam: str
         """
@@ -609,7 +609,7 @@ class CreateLiveRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Task ID, which uniquely identifies the recording task globally.
+        :param TaskId: Task ID, which uniquely identifies a recording task globally.
         :type TaskId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1469,7 +1469,7 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
+        :param DomainName: Playback domain name.
 For transcoding at the domain name level, domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
         :type DomainName: str
         :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
@@ -2966,7 +2966,9 @@ class DomainInfo(AbstractModel):
         :type RentTag: int
         :param RentExpireTime: Expiration time of leased domain name
         :type RentExpireTime: str
-        :param IsMiniProgramLive: 
+        :param IsMiniProgramLive: 0: LVB,
+1: LVB on WeChat Mini Program.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type IsMiniProgramLive: int
         """
         self.Name = None
@@ -3996,7 +3998,7 @@ class ResumeLiveStreamRequest(AbstractModel):
         """
         :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
         :type AppName: str
-        :param DomainName: Your acceleration domain name.
+        :param DomainName: Your push domain name.
         :type DomainName: str
         :param StreamName: Stream name.
         :type StreamName: str

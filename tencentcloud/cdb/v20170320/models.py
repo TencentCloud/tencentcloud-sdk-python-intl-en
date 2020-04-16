@@ -697,43 +697,43 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GoodsNum: Number of instances. Value range: 1-100. Default value: 1.
+        :param GoodsNum: Number of instances. Value range: 1–100. Default value: 1.
         :type GoodsNum: int
-        :param Memory: Instance memory size in MB. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported memory specifications.
+        :param Memory: Instance memory size in MB. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported memory specifications.
         :type Memory: int
-        :param Volume: Instance disk size in GB. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported disk specifications.
+        :param Volume: Instance disk size in GB. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported disk specifications.
         :type Volume: int
-        :param EngineVersion: MySQL version. Value range: 5.5, 5.6, 5.7. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported instance versions.
+        :param EngineVersion: MySQL version. Valid values: 5.5, 5.6, 5.7. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported instance versions.
         :type EngineVersion: str
-        :param UniqVpcId: VPC ID. If this parameter is not passed in, the basic network will be selected by default. Please use the [VPC list querying API](/document/api/215/15778) to query the VPCs.
+        :param UniqVpcId: VPC ID. If this parameter is not passed in, the basic network will be selected by default. Please use the [DescribeVpcs](/document/api/215/15778) API to query the VPCs.
         :type UniqVpcId: str
-        :param UniqSubnetId: VPC subnet ID. If UniqVpcId is set, then UniqSubnetId will be required. Please use the [subnet list querying API](/document/api/215/15784) to query the subnet lists.
+        :param UniqSubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the [DescribeSubnets](/document/api/215/15784) API to query the subnet lists.
         :type UniqSubnetId: str
-        :param ProjectId: Project ID. If this is left empty, the default project will be used. Please use the [project list querying API](https://cloud.tencent.com/document/product/378/4400) to get the project ID.
+        :param ProjectId: Project ID. If this is left empty, the default project will be used. Please use the [DescribeProject](https://cloud.tencent.com/document/product/378/4400) API to get the project ID.
         :type ProjectId: int
-        :param Zone: AZ information. By default, the system will automatically select an AZ. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported AZs.
+        :param Zone: AZ information. By default, the system will automatically select an AZ. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported AZs.
         :type Zone: str
-        :param MasterInstanceId: Instance ID, which is required and the same as the master instance ID when purchasing a read-only or disaster recovery instance. Please use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the instance IDs.
+        :param MasterInstanceId: Instance ID, which is required and the same as the master instance ID when purchasing read-only or disaster recovery instances. Please use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance IDs.
         :type MasterInstanceId: str
-        :param InstanceRole: Instance type. Value range: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        :param InstanceRole: Instance type. Valid values: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
         :type InstanceRole: str
         :param MasterRegion: AZ information of the master instance, which is required for purchasing disaster recovery instances.
         :type MasterRegion: str
         :param Port: Custom port. Value range: [1024-65535].
         :type Port: int
-        :param Password: Sets the root account password. Rule: The password can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special characters (_+-&=!@#$%^*()). This parameter can be specified when purchasing the master instance and is meaningless for read-only or disaster recovery instances.
+        :param Password: Sets the root account password. Rule: the password can contain 8–64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
         :type Password: str
-        :param ParamList: List of parameters in the format of ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can use the [default configurable parameter list querying API](https://cloud.tencent.com/document/api/236/32662) to query the parameters that can be configured.
+        :param ParamList: List of parameters in the format of `ParamList.0.Name=auto_increment&ParamList.0.Value=1`. You can use the [DescribeDefaultParams](https://cloud.tencent.com/document/api/236/32662) API to query the configurable parameters.
         :type ParamList: list of ParamInfo
-        :param ProtectMode: Data replication mode. Value range: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
+        :param ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
         :type ProtectMode: int
-        :param DeployMode: Multi-AZ. Value range: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
+        :param DeployMode: Multi-AZ. Valid value: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
         :type DeployMode: int
         :param SlaveZone: AZ information of slave database 1, which is the `Zone` value by default. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
         :type SlaveZone: str
         :param BackupZone: AZ information of slave database 2, which is empty by default. This parameter can be specified when purchasing strong sync master instances and is meaningless for other types of instances.
         :type BackupZone: str
-        :param SecurityGroup: Security group parameter. You can use the [project security group querying API](https://cloud.tencent.com/document/api/236/15850) to query the security group details of a project.
+        :param SecurityGroup: Security group parameter. You can use the [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/236/15850) API to query the security group details of a project.
         :type SecurityGroup: list of str
         :param RoGroup: Read-only instance information. This parameter must be passed in when purchasing read-only instances.
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
@@ -743,10 +743,12 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type InstanceName: str
         :param ResourceTags: Instance tag information.
         :type ResourceTags: list of TagInfo
-        :param DeployGroupId: 
+        :param DeployGroupId: Placement group ID.
         :type DeployGroupId: str
-        :param ClientToken: 
+        :param ClientToken: A string that is used to guarantee the idempotency of the request, which is generated by the user and must be unique in each request on the same day. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
+        :param DeviceType: 
+        :type DeviceType: str
         """
         self.GoodsNum = None
         self.Memory = None
@@ -773,6 +775,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.ResourceTags = None
         self.DeployGroupId = None
         self.ClientToken = None
+        self.DeviceType = None
 
 
     def _deserialize(self, params):
@@ -813,6 +816,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
                 self.ResourceTags.append(obj)
         self.DeployGroupId = params.get("DeployGroupId")
         self.ClientToken = params.get("ClientToken")
+        self.DeviceType = params.get("DeviceType")
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
@@ -824,7 +828,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
         """
         :param DealIds: Short order ID.
         :type DealIds: list of str
-        :param InstanceIds: List of instance IDs.
+        :param InstanceIds: Instance ID list
         :type InstanceIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2988,6 +2992,49 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRoGroupsRequest(AbstractModel):
+    """DescribeRoGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of `cdb-c1nl9rpv` or `cdb-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeRoGroupsResponse(AbstractModel):
+    """DescribeRoGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RoGroups: RO group information array. An instance can be associated with multiple RO groups.
+        :type RoGroups: list of RoGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RoGroups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RoGroups") is not None:
+            self.RoGroups = []
+            for item in params.get("RoGroups"):
+                obj = RoGroup()
+                obj._deserialize(item)
+                self.RoGroups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRollbackRangeTimeRequest(AbstractModel):
     """DescribeRollbackRangeTime request structure.
 
@@ -3736,7 +3783,12 @@ class DrInfo(AbstractModel):
         :type InstanceId: str
         :param Region: Region information
         :type Region: str
-        :param SyncStatus: Instance synchronization status
+        :param SyncStatus: Instance sync status. Possible returned values include:
+0 - disaster recovery not synced;
+1 - disaster recovery syncing;
+2 - disaster recovery synced successfully;
+3 - disaster recovery sync failed;
+4 - repairing disaster recovery sync;
         :type SyncStatus: int
         :param InstanceName: Instance name
         :type InstanceName: str
@@ -4032,6 +4084,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param DeployGroupId: Placement group ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DeployGroupId: str
+        :param ZoneId: AZ ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: int
         """
         self.WanStatus = None
         self.Zone = None
@@ -4073,6 +4128,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ZoneName = None
         self.DeviceClass = None
         self.DeployGroupId = None
+        self.ZoneId = None
 
 
     def _deserialize(self, params):
@@ -4132,6 +4188,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ZoneName = params.get("ZoneName")
         self.DeviceClass = params.get("DeviceClass")
         self.DeployGroupId = params.get("DeployGroupId")
+        self.ZoneId = params.get("ZoneId")
 
 
 class InstanceRebootTime(AbstractModel):
@@ -5384,6 +5441,74 @@ class RegionSellConf(AbstractModel):
                 self.ZonesConf.append(obj)
 
 
+class ReleaseIsolatedDBInstancesRequest(AbstractModel):
+    """ReleaseIsolatedDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: Array of instance IDs in the format of `cdb-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the ID, whose value is the `InstanceId` value in the output parameters.
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class ReleaseIsolatedDBInstancesResponse(AbstractModel):
+    """ReleaseIsolatedDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Items: Deisolation result set.
+        :type Items: list of ReleaseResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ReleaseResult()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ReleaseResult(AbstractModel):
+    """Deisolation task result
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Code: Result value of instance deisolation. A returned value of 0 indicates success.
+        :type Code: int
+        :param Message: Error message for instance deisolation.
+        :type Message: str
+        """
+        self.InstanceId = None
+        self.Code = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+
+
 class RestartDBInstancesRequest(AbstractModel):
     """RestartDBInstances request structure.
 
@@ -5912,6 +6037,8 @@ class SellConfig(AbstractModel):
         :type Info: str
         :param Status: Status value
         :type Status: int
+        :param Tag: Tag value
+        :type Tag: int
         """
         self.Device = None
         self.Type = None
@@ -5926,6 +6053,7 @@ class SellConfig(AbstractModel):
         self.Iops = None
         self.Info = None
         self.Status = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -5942,6 +6070,7 @@ class SellConfig(AbstractModel):
         self.Iops = params.get("Iops")
         self.Info = params.get("Info")
         self.Status = params.get("Status")
+        self.Tag = params.get("Tag")
 
 
 class SellType(AbstractModel):
@@ -6170,7 +6299,7 @@ class SqlFileInfo(AbstractModel):
         :type FileName: str
         :param FileSize: File size in bytes
         :type FileSize: int
-        :param IsUploadFinished: Whether upload is finished. Value range: 0 (not finished), 1 (finished)
+        :param IsUploadFinished: Whether upload is finished. Valid values: 0 (not completed), 1 (completed)
         :type IsUploadFinished: int
         :param FileId: File ID
         :type FileId: str
@@ -6542,25 +6671,25 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters.
+        :param InstanceId: Instance ID in the format of `cdb-c1nl9rpv` or `cdbro-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the ID, whose value is the `InstanceId` value in output parameters.
         :type InstanceId: str
-        :param Memory: Memory size (MB) after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/product/236/17229) to query the specifications of the memory that can be upgraded to.
+        :param Memory: Memory size in MB after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the specifications of the memory that can be upgraded to.
         :type Memory: int
-        :param Volume: Disk size (GB) after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/product/236/17229) to query the specifications of the disk that can be upgraded to.
+        :param Volume: Disk size in GB after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the specifications of the disk that can be upgraded to.
         :type Volume: int
-        :param ProtectMode: Data replication mode. Value range: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
+        :param ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
         :type ProtectMode: int
-        :param DeployMode: Deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
+        :param DeployMode: Deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
         :type DeployMode: int
-        :param SlaveZone: AZ information of slave database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading master instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [purchasable instance specification querying API](https://cloud.tencent.com/document/product/236/17229) to query the supported AZs.
+        :param SlaveZone: AZ information of slave database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading master instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the supported AZs.
         :type SlaveZone: str
-        :param EngineVersion: Version of master instance database engine. Value range: 5.5, 5.6, 5.7.
+        :param EngineVersion: Version of master instance database engine. Valid values: 5.5, 5.6, 5.7.
         :type EngineVersion: str
-        :param WaitSwitch: Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://cloud.tencent.com/document/product/236/15864) to trigger the process.
+        :param WaitSwitch: Mode of switch to new instance. Valid values: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://cloud.tencent.com/document/product/236/15864) API to trigger the process.
         :type WaitSwitch: int
         :param BackupZone: AZ information of slave database 2, which is empty by default. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
         :type BackupZone: str
-        :param InstanceRole: Instance type. Value range: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        :param InstanceRole: Instance type. Valid values: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
         :type InstanceRole: str
         """
         self.InstanceId = None
@@ -6620,7 +6749,7 @@ class UploadInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AllSliceNum: Number of parts of the file
+        :param AllSliceNum: Number of parts of file
         :type AllSliceNum: int
         :param CompleteNum: Number of completed parts
         :type CompleteNum: int
@@ -6698,6 +6827,11 @@ class ZoneSellConf(AbstractModel):
         :type ZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
         :param DrZone: Information of the supported disaster recovery AZ
         :type DrZone: list of str
+        :param IsSupportRemoteRo: Whether cross-AZ read-only access is supported
+        :type IsSupportRemoteRo: bool
+        :param RemoteRoZone: Information of supported cross-AZ read-only zone
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RemoteRoZone: list of str
         """
         self.Status = None
         self.ZoneName = None
@@ -6713,6 +6847,8 @@ class ZoneSellConf(AbstractModel):
         self.SellType = None
         self.ZoneConf = None
         self.DrZone = None
+        self.IsSupportRemoteRo = None
+        self.RemoteRoZone = None
 
 
     def _deserialize(self, params):
@@ -6737,3 +6873,5 @@ class ZoneSellConf(AbstractModel):
             self.ZoneConf = ZoneConf()
             self.ZoneConf._deserialize(params.get("ZoneConf"))
         self.DrZone = params.get("DrZone")
+        self.IsSupportRemoteRo = params.get("IsSupportRemoteRo")
+        self.RemoteRoZone = params.get("RemoteRoZone")

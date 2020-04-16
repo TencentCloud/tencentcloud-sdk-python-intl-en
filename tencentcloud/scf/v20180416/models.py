@@ -335,7 +335,7 @@ class CreateTriggerRequest(AbstractModel):
         :type TriggerName: str
         :param Type: Trigger type. Currently, COS, CMQ, timer, and ckafka triggers are supported.
         :type Type: str
-        :param TriggerDesc: Parameter corresponding to the trigger. For a timer trigger, it should be a Linux cron expression; for a COS trigger, it should be a JSON string ({"event":"cos:ObjectCreated:*","filter":{"Prefix":"","Suffix":""}}), where `event` is the triggered COS event, `Prefix` in the `filter` is the corresponding file prefix filter, and `Suffix` is the corresponding suffix filter, and the `filter` can be left blank if not needed; for other triggers, please see the description of the specific trigger.
+        :param TriggerDesc: For parameters of triggers, see [Trigger Description](https://cloud.tencent.com/document/product/583/39901)
         :type TriggerDesc: str
         :param Namespace: Function namespace
         :type Namespace: str
@@ -760,14 +760,24 @@ class FunctionVersion(AbstractModel):
         :param Description: Version description
 Note: This field may return null, indicating that no valid values is found.
         :type Description: str
+        :param AddTime: The creation time
+Note: This field may return null, indicating that no valid value was found.
+        :type AddTime: str
+        :param ModTime: Update time
+Note: This field may return null, indicating that no valid value was found.
+        :type ModTime: str
         """
         self.Version = None
         self.Description = None
+        self.AddTime = None
+        self.ModTime = None
 
 
     def _deserialize(self, params):
         self.Version = params.get("Version")
         self.Description = params.get("Description")
+        self.AddTime = params.get("AddTime")
+        self.ModTime = params.get("ModTime")
 
 
 class GetFunctionAddressRequest(AbstractModel):
@@ -1026,7 +1036,8 @@ class GetFunctionResponse(AbstractModel):
         :param PublicNetConfig: Public network access configuration
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigOut`
-        :param OnsEnable: 
+        :param OnsEnable: Whether Ons is enabled
+Note: This field may return null, indicating that no valid value was found.
         :type OnsEnable: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1217,10 +1228,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type LayerVersion: int
         :param LayerName: Layer name
         :type LayerName: str
-        :param Status: Current status of a layer. Valid values:
-publishing
-available
-unavailable
+        :param Status: The status of the layer version. Values can be: 
+`Active`: normal
+`Publishing`: publishing
+`PublishFailed`: failed to publish
+`Deleted`: deleted
         :type Status: str
         """
         self.CompatibleRuntimes = None
@@ -1855,11 +1867,11 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type Publish: str
         :param L5Enable: Whether to enable L5 access. TRUE: enable; FALSE: not enable
         :type L5Enable: str
-        :param Layers: List of layer versions with which a function will be associated. Layers will be overwritten sequentially in the order in the list.
+        :param Layers: List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. 
         :type Layers: list of LayerVersionSimple
         :param DeadLetterConfig: Information of a dead letter queue associated with a function
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
-        :param OnsEnable: 
+        :param OnsEnable: Whether to enable Ons access. TRUE: enable; FALSE: not enable
         :type OnsEnable: str
         """
         self.FunctionName = None
