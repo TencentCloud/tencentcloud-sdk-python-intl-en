@@ -3849,6 +3849,8 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         :type TrpcCallee: str
         :param TrpcFunc: TRPC calling service API, which is required when `ForwardType` is `TRPC`.
         :type TrpcFunc: str
+        :param Quic: Whether to enable QUIC. Note: QUIC can be enabled only for HTTPS domain names
+        :type Quic: bool
         """
         self.Domain = None
         self.Url = None
@@ -3862,6 +3864,7 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         self.TargetType = None
         self.TrpcCallee = None
         self.TrpcFunc = None
+        self.Quic = None
 
 
     def _deserialize(self, params):
@@ -3881,6 +3884,7 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         self.TargetType = params.get("TargetType")
         self.TrpcCallee = params.get("TrpcCallee")
         self.TrpcFunc = params.get("TrpcFunc")
+        self.Quic = params.get("Quic")
 
 
 class RuleOutput(AbstractModel):
@@ -3939,6 +3943,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TrpcFunc: TRPC calling service API, which is valid when `ForwardType` is `TRPC`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TrpcFunc: str
+        :param QuicStatus: QUIC status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type QuicStatus: str
         """
         self.LocationId = None
         self.Domain = None
@@ -3960,6 +3967,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.WafDomainId = None
         self.TrpcCallee = None
         self.TrpcFunc = None
+        self.QuicStatus = None
 
 
     def _deserialize(self, params):
@@ -3991,6 +3999,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.WafDomainId = params.get("WafDomainId")
         self.TrpcCallee = params.get("TrpcCallee")
         self.TrpcFunc = params.get("TrpcFunc")
+        self.QuicStatus = params.get("QuicStatus")
 
 
 class RuleTargets(AbstractModel):
@@ -4026,6 +4035,48 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = Backend()
                 obj._deserialize(item)
                 self.Targets.append(obj)
+
+
+class SetLoadBalancerClsLogRequest(AbstractModel):
+    """SetLoadBalancerClsLog request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: CLB instance ID
+        :type LoadBalancerId: str
+        :param LogSetId: CLS logset ID
+        :type LogSetId: str
+        :param LogTopicId: CLS log topic ID
+        :type LogTopicId: str
+        """
+        self.LoadBalancerId = None
+        self.LogSetId = None
+        self.LogTopicId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LogSetId = params.get("LogSetId")
+        self.LogTopicId = params.get("LogTopicId")
+
+
+class SetLoadBalancerClsLogResponse(AbstractModel):
+    """SetLoadBalancerClsLog response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class SetLoadBalancerSecurityGroupsRequest(AbstractModel):

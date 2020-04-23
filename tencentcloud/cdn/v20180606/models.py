@@ -925,6 +925,73 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DeployTime = params.get("DeployTime")
 
 
+class ClsLogObject(AbstractModel):
+    """CLS log search object
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicId: Topic ID
+        :type TopicId: str
+        :param TopicName: Topic name
+        :type TopicName: str
+        :param Timestamp: Log time
+        :type Timestamp: str
+        :param Content: Log content
+        :type Content: str
+        :param Filename: Capture path
+        :type Filename: str
+        :param Source: Log source device
+        :type Source: str
+        """
+        self.TopicId = None
+        self.TopicName = None
+        self.Timestamp = None
+        self.Content = None
+        self.Filename = None
+        self.Source = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        self.Timestamp = params.get("Timestamp")
+        self.Content = params.get("Content")
+        self.Filename = params.get("Filename")
+        self.Source = params.get("Source")
+
+
+class ClsSearchLogs(AbstractModel):
+    """CLS log search result
+
+    """
+
+    def __init__(self):
+        """
+        :param Context: Cursor for more search results
+        :type Context: str
+        :param Listover: Whether all search results have been returned
+        :type Listover: bool
+        :param Results: Log content information
+        :type Results: list of ClsLogObject
+        """
+        self.Context = None
+        self.Listover = None
+        self.Results = None
+
+
+    def _deserialize(self, params):
+        self.Context = params.get("Context")
+        self.Listover = params.get("Listover")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = ClsLogObject()
+                obj._deserialize(item)
+                self.Results.append(obj)
+
+
 class Compatibility(AbstractModel):
     """Old configuration compatibility check
 
@@ -1014,6 +1081,57 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Algorithms = params.get("Algorithms")
 
 
+class CreateClsLogTopicRequest(AbstractModel):
+    """CreateClsLogTopic request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicName: Log topic name
+        :type TopicName: str
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param Channel: Connection channel. Default value: cdn
+        :type Channel: str
+        :param DomainAreaConfigs: Domain name region information
+        :type DomainAreaConfigs: list of DomainAreaConfig
+        """
+        self.TopicName = None
+        self.LogsetId = None
+        self.Channel = None
+        self.DomainAreaConfigs = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.LogsetId = params.get("LogsetId")
+        self.Channel = params.get("Channel")
+        if params.get("DomainAreaConfigs") is not None:
+            self.DomainAreaConfigs = []
+            for item in params.get("DomainAreaConfigs"):
+                obj = DomainAreaConfig()
+                obj._deserialize(item)
+                self.DomainAreaConfigs.append(obj)
+
+
+class CreateClsLogTopicResponse(AbstractModel):
+    """CreateClsLogTopic response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteCdnDomainRequest(AbstractModel):
     """DeleteCdnDomain request structure.
 
@@ -1034,6 +1152,48 @@ The domain name status should be `Disabled`
 
 class DeleteCdnDomainResponse(AbstractModel):
     """DeleteCdnDomain response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteClsLogTopicRequest(AbstractModel):
+    """DeleteClsLogTopic request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicId: Log topic ID
+        :type TopicId: str
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param Channel: Connection channel. Default value: cdn
+        :type Channel: str
+        """
+        self.TopicId = None
+        self.LogsetId = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.LogsetId = params.get("LogsetId")
+        self.Channel = params.get("Channel")
+
+
+class DeleteClsLogTopicResponse(AbstractModel):
+    """DeleteClsLogTopic response structure.
 
     """
 
@@ -1300,6 +1460,50 @@ class DescribeCdnIpResponse(AbstractModel):
                 obj = CdnIp()
                 obj._deserialize(item)
                 self.Ips.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCertDomainsRequest(AbstractModel):
+    """DescribeCertDomains request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Cert: Base64-encoded string of certificate in PEM format
+        :type Cert: str
+        """
+        self.Cert = None
+
+
+    def _deserialize(self, params):
+        self.Cert = params.get("Cert")
+
+
+class DescribeCertDomainsResponse(AbstractModel):
+    """DescribeCertDomains response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: List of domain names connected to CDN
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Domains: list of str
+        :param CertifiedDomains: List of CDN domain names with certificates configured
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CertifiedDomains: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Domains = None
+        self.CertifiedDomains = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.CertifiedDomains = params.get("CertifiedDomains")
         self.RequestId = params.get("RequestId")
 
 
@@ -2287,6 +2491,69 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DisableClsLogTopicRequest(AbstractModel):
+    """DisableClsLogTopic request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param TopicId: Log topic ID
+        :type TopicId: str
+        :param Channel: Connection channel. Default value: cdn
+        :type Channel: str
+        """
+        self.LogsetId = None
+        self.TopicId = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.Channel = params.get("Channel")
+
+
+class DisableClsLogTopicResponse(AbstractModel):
+    """DisableClsLogTopic response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DomainAreaConfig(AbstractModel):
+    """Domain name region configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: Domain name
+        :type Domain: str
+        :param Area: Region list, where the element can be `mainland/overseas`
+        :type Area: list of str
+        """
+        self.Domain = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Area = params.get("Area")
+
+
 class DomainFilter(AbstractModel):
     """Filter conditions for domain name query.
 
@@ -2426,6 +2693,48 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("CacheOptResult") is not None:
             self.CacheOptResult = CacheOptResult()
             self.CacheOptResult._deserialize(params.get("CacheOptResult"))
+        self.RequestId = params.get("RequestId")
+
+
+class EnableClsLogTopicRequest(AbstractModel):
+    """EnableClsLogTopic request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param TopicId: Log topic ID
+        :type TopicId: str
+        :param Channel: Connection channel. Default value: cdn
+        :type Channel: str
+        """
+        self.LogsetId = None
+        self.TopicId = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.Channel = params.get("Channel")
+
+
+class EnableClsLogTopicResponse(AbstractModel):
+    """EnableClsLogTopic response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2812,6 +3121,132 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Switch = params.get("Switch")
 
 
+class ListClsLogTopicsRequest(AbstractModel):
+    """ListClsLogTopics request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Channel: Connection channel. Default value: cdn
+        :type Channel: str
+        """
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.Channel = params.get("Channel")
+
+
+class ListClsLogTopicsResponse(AbstractModel):
+    """ListClsLogTopics response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Logset: Logset information
+        :type Logset: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
+        :param Topics: Log topic information list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Topics: list of TopicInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Logset = None
+        self.Topics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Logset") is not None:
+            self.Logset = LogSetInfo()
+            self.Logset._deserialize(params.get("Logset"))
+        if params.get("Topics") is not None:
+            self.Topics = []
+            for item in params.get("Topics"):
+                obj = TopicInfo()
+                obj._deserialize(item)
+                self.Topics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListClsTopicDomainsRequest(AbstractModel):
+    """ListClsTopicDomains request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param TopicId: Log topic ID
+        :type TopicId: str
+        :param Channel: Connection channel. Default value: cdn
+        :type Channel: str
+        """
+        self.LogsetId = None
+        self.TopicId = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.Channel = params.get("Channel")
+
+
+class ListClsTopicDomainsResponse(AbstractModel):
+    """ListClsTopicDomains response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AppId: Developer ID
+        :type AppId: int
+        :param Channel: Channel
+        :type Channel: str
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param TopicId: Log topic ID
+        :type TopicId: str
+        :param DomainAreaConfigs: Domain name region configuration, which may contain deleted domain names. If this is to be used in `ManageClsTopicDomains` API, you need to exclude deleted domain names by using the `ListCdnDomains` API.
+        :type DomainAreaConfigs: list of DomainAreaConfig
+        :param TopicName: Log topic name
+        :type TopicName: str
+        :param UpdateTime: Last modified time of log topic
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AppId = None
+        self.Channel = None
+        self.LogsetId = None
+        self.TopicId = None
+        self.DomainAreaConfigs = None
+        self.TopicName = None
+        self.UpdateTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.Channel = params.get("Channel")
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        if params.get("DomainAreaConfigs") is not None:
+            self.DomainAreaConfigs = []
+            for item in params.get("DomainAreaConfigs"):
+                obj = DomainAreaConfig()
+                obj._deserialize(item)
+                self.DomainAreaConfigs.append(obj)
+        self.TopicName = params.get("TopicName")
+        self.UpdateTime = params.get("UpdateTime")
+        self.RequestId = params.get("RequestId")
+
+
 class ListTopDataRequest(AbstractModel):
     """ListTopData request structure.
 
@@ -2921,6 +3356,52 @@ class ListTopDataResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class LogSetInfo(AbstractModel):
+    """Logset information
+
+    """
+
+    def __init__(self):
+        """
+        :param AppId: Developer ID
+        :type AppId: int
+        :param Channel: Channel
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Channel: str
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param LogsetName: Logset name
+        :type LogsetName: str
+        :param IsDefault: Whether it is the default logset
+        :type IsDefault: int
+        :param LogsetSavePeriod: Log retention period in days
+        :type LogsetSavePeriod: int
+        :param CreateTime: Creation date
+        :type CreateTime: str
+        :param Region: Region
+        :type Region: str
+        """
+        self.AppId = None
+        self.Channel = None
+        self.LogsetId = None
+        self.LogsetName = None
+        self.IsDefault = None
+        self.LogsetSavePeriod = None
+        self.CreateTime = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.Channel = params.get("Channel")
+        self.LogsetId = params.get("LogsetId")
+        self.LogsetName = params.get("LogsetName")
+        self.IsDefault = params.get("IsDefault")
+        self.LogsetSavePeriod = params.get("LogsetSavePeriod")
+        self.CreateTime = params.get("CreateTime")
+        self.Region = params.get("Region")
 
 
 class MainlandConfig(AbstractModel):
@@ -3106,6 +3587,57 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+
+
+class ManageClsTopicDomainsRequest(AbstractModel):
+    """ManageClsTopicDomains request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param TopicId: Log topic ID
+        :type TopicId: str
+        :param Channel: Connection channel. Default value: cdn
+        :type Channel: str
+        :param DomainAreaConfigs: Domain name region configuration. Note: if this field is empty, it means to unbind all domain names from the corresponding topic
+        :type DomainAreaConfigs: list of DomainAreaConfig
+        """
+        self.LogsetId = None
+        self.TopicId = None
+        self.Channel = None
+        self.DomainAreaConfigs = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.Channel = params.get("Channel")
+        if params.get("DomainAreaConfigs") is not None:
+            self.DomainAreaConfigs = []
+            for item in params.get("DomainAreaConfigs"):
+                obj = DomainAreaConfig()
+                obj._deserialize(item)
+                self.DomainAreaConfigs.append(obj)
+
+
+class ManageClsTopicDomainsResponse(AbstractModel):
+    """ManageClsTopicDomains response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class MapInfo(AbstractModel):
@@ -3983,6 +4515,78 @@ off: disabled
         self.Switch = params.get("Switch")
 
 
+class SearchClsLogRequest(AbstractModel):
+    """SearchClsLog request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: ID of logset to be queried
+        :type LogsetId: str
+        :param TopicIds: List of IDs of log topics to be queried, separated by commas
+        :type TopicIds: str
+        :param StartTime: Start time of log to be queried in the format of `YYYY-mm-dd HH:MM:SS`
+        :type StartTime: str
+        :param EndTime: End time of log to be queried in the format of `YYYY-mm-dd HH:MM:SS`
+        :type EndTime: str
+        :param Limit: Number of logs to be returned at a time. Maximum value: 100
+        :type Limit: int
+        :param Channel: Connection channel. Default value: cdn
+        :type Channel: str
+        :param Query: Content to be queried. For more information, please visit https://cloud.tencent.com/document/product/614/16982
+        :type Query: str
+        :param Context: This field is used when loading more results. Pass through the last `context` value returned to get more log content. Up to 10,000 logs can be obtained through the cursor. Please narrow down the time range as much as possible.
+        :type Context: str
+        :param Sort: Sorting by log time. Valid values: asc (ascending), desc (descending). Default value: desc
+        :type Sort: str
+        """
+        self.LogsetId = None
+        self.TopicIds = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Channel = None
+        self.Query = None
+        self.Context = None
+        self.Sort = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.TopicIds = params.get("TopicIds")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Channel = params.get("Channel")
+        self.Query = params.get("Query")
+        self.Context = params.get("Context")
+        self.Sort = params.get("Sort")
+
+
+class SearchClsLogResponse(AbstractModel):
+    """SearchClsLog response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Logs: Query result
+        :type Logs: :class:`tencentcloud.cdn.v20180606.models.ClsSearchLogs`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Logs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Logs") is not None:
+            self.Logs = ClsSearchLogs()
+            self.Logs._deserialize(params.get("Logs"))
+        self.RequestId = params.get("RequestId")
+
+
 class Seo(AbstractModel):
     """SEO configuration. This is disabled by default.
 
@@ -4422,6 +5026,36 @@ class TopDetailData(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+
+
+class TopicInfo(AbstractModel):
+    """CLS topic information
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicId: Topic ID
+        :type TopicId: str
+        :param TopicName: Topic name
+        :type TopicName: str
+        :param Enabled: Whether to enable publishing
+        :type Enabled: int
+        :param CreateTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        """
+        self.TopicId = None
+        self.TopicName = None
+        self.Enabled = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        self.Enabled = params.get("Enabled")
+        self.CreateTime = params.get("CreateTime")
 
 
 class UpdateDomainConfigRequest(AbstractModel):

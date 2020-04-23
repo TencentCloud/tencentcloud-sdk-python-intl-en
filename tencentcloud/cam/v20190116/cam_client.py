@@ -809,6 +809,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListCollaborators(self, request):
+        """This API is used to get the collaborator list.
+
+        :param request: Request instance for ListCollaborators.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListCollaboratorsRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListCollaboratorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListCollaborators", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListCollaboratorsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListEntitiesForPolicy(self, request):
         """This API (ListEntitiesForPolicy) is used to query the list of entities associated with a policy.
 
@@ -1033,34 +1061,6 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SetFlag(self, request):
-        """This API is used to set account verification for login and sensitive operation protection.
-
-        :param request: Request instance for SetFlag.
-        :type request: :class:`tencentcloud.cam.v20190116.models.SetFlagRequest`
-        :rtype: :class:`tencentcloud.cam.v20190116.models.SetFlagResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("SetFlag", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SetFlagResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def UpdateAssumeRolePolicy(self, request):
         """This API (UpdateAssumeRolePolicy) is used to modify the trust policy of a role.
 
@@ -1103,6 +1103,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRoleConsoleLogin(self, request):
+        """This API is used to modify a role’s login permissions.
+
+        :param request: Request instance for UpdateRoleConsoleLogin.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateRoleConsoleLoginRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateRoleConsoleLoginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateRoleConsoleLogin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRoleConsoleLoginResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

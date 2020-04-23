@@ -1128,6 +1128,12 @@ Note: This field may return null, indicating that no valid value was found.
         :param PolicyDocument: Policy document
 Note: This field may return null, indicating that no valid value was found.
         :type PolicyDocument: str
+        :param PresetAlias: Remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PresetAlias: str
+        :param IsServiceLinkedRolePolicy: Whether it is a service-linked policy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsServiceLinkedRolePolicy: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1137,6 +1143,8 @@ Note: This field may return null, indicating that no valid value was found.
         self.AddTime = None
         self.UpdateTime = None
         self.PolicyDocument = None
+        self.PresetAlias = None
+        self.IsServiceLinkedRolePolicy = None
         self.RequestId = None
 
 
@@ -1147,6 +1155,8 @@ Note: This field may return null, indicating that no valid value was found.
         self.AddTime = params.get("AddTime")
         self.UpdateTime = params.get("UpdateTime")
         self.PolicyDocument = params.get("PolicyDocument")
+        self.PresetAlias = params.get("PresetAlias")
+        self.IsServiceLinkedRolePolicy = params.get("IsServiceLinkedRolePolicy")
         self.RequestId = params.get("RequestId")
 
 
@@ -1594,6 +1604,57 @@ class ListAttachedUserPoliciesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListCollaboratorsRequest(AbstractModel):
+    """ListCollaborators request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: Number of entries per page. Default value: 20
+        :type Limit: int
+        :param Offset: Pagination start value. Default value: 0
+        :type Offset: int
+        """
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class ListCollaboratorsResponse(AbstractModel):
+    """ListCollaborators response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalNum: Total number
+        :type TotalNum: int
+        :param Data: Collaborator information
+        :type Data: list of SubAccountInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalNum = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalNum = params.get("TotalNum")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SubAccountInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListEntitiesForPolicyRequest(AbstractModel):
     """ListEntitiesForPolicy request structure.
 
@@ -1965,72 +2026,6 @@ class ListUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class LoginActionFlag(AbstractModel):
-    """Login and sensitive operation flag
-
-    """
-
-    def __init__(self):
-        """
-        :param Phone: Mobile phone
-        :type Phone: int
-        :param Token: Hard token
-        :type Token: int
-        :param Stoken: Soft token
-        :type Stoken: int
-        :param Wechat: WeChat
-        :type Wechat: int
-        :param Custom: Custom
-        :type Custom: int
-        """
-        self.Phone = None
-        self.Token = None
-        self.Stoken = None
-        self.Wechat = None
-        self.Custom = None
-
-
-    def _deserialize(self, params):
-        self.Phone = params.get("Phone")
-        self.Token = params.get("Token")
-        self.Stoken = params.get("Stoken")
-        self.Wechat = params.get("Wechat")
-        self.Custom = params.get("Custom")
-
-
-class OffsiteFlag(AbstractModel):
-    """Remote login settings
-
-    """
-
-    def __init__(self):
-        """
-        :param VerifyFlag: Verification identifier
-        :type VerifyFlag: int
-        :param NotifyPhone: Phone notification
-        :type NotifyPhone: int
-        :param NotifyEmail: Email notification
-        :type NotifyEmail: int
-        :param NotifyWechat: WeChat notification
-        :type NotifyWechat: int
-        :param Tips: Alert
-        :type Tips: int
-        """
-        self.VerifyFlag = None
-        self.NotifyPhone = None
-        self.NotifyEmail = None
-        self.NotifyWechat = None
-        self.Tips = None
-
-
-    def _deserialize(self, params):
-        self.VerifyFlag = params.get("VerifyFlag")
-        self.NotifyPhone = params.get("NotifyPhone")
-        self.NotifyEmail = params.get("NotifyEmail")
-        self.NotifyWechat = params.get("NotifyWechat")
-        self.Tips = params.get("Tips")
-
-
 class RemoveUserFromGroupRequest(AbstractModel):
     """RemoveUserFromGroup request structure.
 
@@ -2153,62 +2148,6 @@ class SAMLProviderInfo(AbstractModel):
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
-
-
-class SetFlagRequest(AbstractModel):
-    """SetFlag request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param OpUin: Set user UIN
-        :type OpUin: int
-        :param LoginFlag: Login settings
-        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param ActionFlag: Sensitive operation settings
-        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param OffsiteFlag: Remote login settings
-        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
-        :param NeedResetMfa: Whether or not to reset MFA
-        :type NeedResetMfa: int
-        """
-        self.OpUin = None
-        self.LoginFlag = None
-        self.ActionFlag = None
-        self.OffsiteFlag = None
-        self.NeedResetMfa = None
-
-
-    def _deserialize(self, params):
-        self.OpUin = params.get("OpUin")
-        if params.get("LoginFlag") is not None:
-            self.LoginFlag = LoginActionFlag()
-            self.LoginFlag._deserialize(params.get("LoginFlag"))
-        if params.get("ActionFlag") is not None:
-            self.ActionFlag = LoginActionFlag()
-            self.ActionFlag._deserialize(params.get("ActionFlag"))
-        if params.get("OffsiteFlag") is not None:
-            self.OffsiteFlag = OffsiteFlag()
-            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
-        self.NeedResetMfa = params.get("NeedResetMfa")
-
-
-class SetFlagResponse(AbstractModel):
-    """SetFlag response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
 
 
 class StrategyInfo(AbstractModel):
@@ -2392,6 +2331,48 @@ class UpdateGroupRequest(AbstractModel):
 
 class UpdateGroupResponse(AbstractModel):
     """UpdateGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateRoleConsoleLoginRequest(AbstractModel):
+    """UpdateRoleConsoleLogin request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ConsoleLogin: Whether login is allowed. 1: yes, 0: no
+        :type ConsoleLogin: int
+        :param RoleId: Role ID
+        :type RoleId: int
+        :param RoleName: Role name
+        :type RoleName: str
+        """
+        self.ConsoleLogin = None
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.ConsoleLogin = params.get("ConsoleLogin")
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+
+
+class UpdateRoleConsoleLoginResponse(AbstractModel):
+    """UpdateRoleConsoleLogin response structure.
 
     """
 

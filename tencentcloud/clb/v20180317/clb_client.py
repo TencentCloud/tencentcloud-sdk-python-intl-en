@@ -1368,6 +1368,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetLoadBalancerClsLog(self, request):
+        """This API is used to add, delete, and update the CLS topic of a CLB instance.
+
+        :param request: Request instance for SetLoadBalancerClsLog.
+        :type request: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerClsLogRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerClsLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetLoadBalancerClsLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetLoadBalancerClsLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetLoadBalancerSecurityGroups(self, request):
         """This API (SetLoadBalancerSecurityGroups) is used to bind/unbind security groups for a public network CLB instance. You can use the DescribeLoadBalancers API to query the security groups bound to a CLB instance. This API uses `set` semantics.
         During a binding operation, the input parameters need to be all security groups to be bound to the CLB instance (including those already bound ones and new ones).

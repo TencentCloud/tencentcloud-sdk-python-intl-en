@@ -53,6 +53,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateClsLogTopic(self, request):
+        """This API is used to create a log topic. Note: up to 10 log topics can be created under one logset.
+
+        :param request: Request instance for CreateClsLogTopic.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateClsLogTopicRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateClsLogTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClsLogTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClsLogTopicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCdnDomain(self, request):
         """This API is used to delete a specified acceleration domain name.
 
@@ -67,6 +95,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteClsLogTopic(self, request):
+        """This API is used to delete a log topic. Note: when a log topic is deleted, all logs of the domain names bound to it will no longer be published to the topic, and the logs previously published to the topic will be deleted. This action will take effect within 5–15 minutes.
+
+        :param request: Request instance for DeleteClsLogTopic.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DeleteClsLogTopicRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DeleteClsLogTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteClsLogTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClsLogTopicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -160,6 +216,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCdnIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCertDomains(self, request):
+        """This API is used to verify an SSL certificate and extract the domain names. It will then return the list of domain names connected to CDN and the list of domain names with the certificate configured.
+
+        :param request: Request instance for DescribeCertDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCertDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCertDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCertDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCertDomainsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -469,6 +553,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableClsLogTopic(self, request):
+        """This API is used to stop publishing to a log topic. Note: after a log topic is disabled, all logs of the domain names bound to it will no longer be published to the topic, and the logs that have already been published will be retained. This action will take effect within 5–15 minutes.
+
+        :param request: Request instance for DisableClsLogTopic.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DisableClsLogTopicRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DisableClsLogTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableClsLogTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableClsLogTopicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableCaches(self, request):
         """This API (EnableCaches) is used to unblock manually blocked URLs. After a URL is successfully unblocked, it takes about 5 to 10 minutes to take effect across the entire network. (This API is during beta test and not fully available now.)
 
@@ -483,6 +595,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableCachesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableClsLogTopic(self, request):
+        """This API is used to start publishing to a log topic. Note: after a log topic is enabled, all logs of the domain names bound to the topic will be published to it. This action will take effect within 5–15 minutes.
+
+        :param request: Request instance for EnableClsLogTopic.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.EnableClsLogTopicRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.EnableClsLogTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableClsLogTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableClsLogTopicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -525,6 +665,62 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListClsLogTopics(self, request):
+        """This API is used to display the list of log topics. Note: a logset can contain up to 10 log topics.
+
+        :param request: Request instance for ListClsLogTopics.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListClsLogTopicsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListClsLogTopicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListClsLogTopics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListClsLogTopicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListClsTopicDomains(self, request):
+        """This API is used to get the list of domain names bound to a log topic.
+
+        :param request: Request instance for ListClsTopicDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListClsTopicDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListClsTopicDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListClsTopicDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListClsTopicDomainsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListTopData(self, request):
         """This API is used to list data sorted the following ways by using different combinations of the Metric and Filter input parameters:
 
@@ -547,6 +743,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ManageClsTopicDomains(self, request):
+        """This API is used to manage the list of domain names bound to a log topic.
+
+        :param request: Request instance for ManageClsTopicDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ManageClsTopicDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ManageClsTopicDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ManageClsTopicDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ManageClsTopicDomainsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -635,6 +859,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PushUrlsCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchClsLog(self, request):
+        """This API is used to search for CLS logs. Search filters can be set to today, 24 hours (one of the last 7 days), and the last 7 days.
+
+        :param request: Request instance for SearchClsLog.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.SearchClsLogRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.SearchClsLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchClsLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchClsLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
