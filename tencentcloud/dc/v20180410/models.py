@@ -115,6 +115,8 @@ Default value: Non-zero.
         :type TencentAddress: str
         :param CustomerAddress: CustomerAddress: User-side IP address.
         :type CustomerAddress: str
+        :param TencentBackupAddress: TencentBackupAddress, i.e., Tencent-side standby IP address
+        :type TencentBackupAddress: str
         """
         self.DirectConnectId = None
         self.DirectConnectTunnelName = None
@@ -130,6 +132,7 @@ Default value: Non-zero.
         self.Vlan = None
         self.TencentAddress = None
         self.CustomerAddress = None
+        self.TencentBackupAddress = None
 
 
     def _deserialize(self, params):
@@ -154,6 +157,7 @@ Default value: Non-zero.
         self.Vlan = params.get("Vlan")
         self.TencentAddress = params.get("TencentAddress")
         self.CustomerAddress = params.get("CustomerAddress")
+        self.TencentBackupAddress = params.get("TencentBackupAddress")
 
 
 class CreateDirectConnectTunnelResponse(AbstractModel):
@@ -488,30 +492,30 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DirectConnectTunnel(AbstractModel):
-    """Dedicated tunnel information list.
+    """Dedicated tunnel information list
 
     """
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: Dedicated tunnel ID.
+        :param DirectConnectTunnelId: Dedicated tunnel ID
         :type DirectConnectTunnelId: str
         :param DirectConnectId: Connection ID.
         :type DirectConnectId: str
-        :param State: Dedicated tunnel status.
-AVAILABLE: Ready or connected.
-PENDING: Applying.
-ALLOCATING: Configuring.
-ALLOCATED: Configured.
-ALTERING: Modifying.
-DELETING: Deleting.
-DELETED: Deleted.
-COMFIRMING: To be accepted.
-REJECTED: Rejected.
+        :param State: Dedicated tunnel status
+AVAILABLE: ready or connected
+PENDING: applying
+ALLOCATING: configuring
+ALLOCATED: configured
+ALTERING: modifying
+DELETING: deleting
+DELETED: deleted
+CONFIRMING: to be accepted
+REJECTED: rejected
         :type State: str
         :param DirectConnectOwnerAccount: Connection owner, i.e., developer account ID.
         :type DirectConnectOwnerAccount: str
-        :param OwnerAccount: Dedicated tunnel owner, i.e., developer account ID.
+        :param OwnerAccount: Dedicated tunnel owner, i.e., developer account ID
         :type OwnerAccount: str
         :param NetworkType: Network type. Valid values: VPC, BMVPC, CCN.
  VPC: Virtual Private Cloud; BMVPC: BM VPC; CCN: Cloud Connect Network.
@@ -528,19 +532,19 @@ REJECTED: Rejected.
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
         :param RouteFilterPrefixes: User-side IP range.
         :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param Vlan: VLAN of a dedicated tunnel.
+        :param Vlan: Dedicated tunnel `Vlan`
         :type Vlan: int
         :param TencentAddress: TencentAddress: Tencent-side IP address.
         :type TencentAddress: str
         :param CustomerAddress: CustomerAddress: User-side IP address.
         :type CustomerAddress: str
-        :param DirectConnectTunnelName: Dedicated tunnel name.
+        :param DirectConnectTunnelName: Dedicated tunnel name
         :type DirectConnectTunnelName: str
-        :param CreatedTime: Creation time of a dedicated tunnel.
+        :param CreatedTime: Dedicated tunnel creation time
         :type CreatedTime: str
-        :param Bandwidth: Bandwidth value of a dedicated tunnel.
+        :param Bandwidth: Dedicated tunnel bandwidth value
         :type Bandwidth: int
-        :param TagSet: Tag value of a dedicated tunnel.
+        :param TagSet: Dedicated tunnel tag value
         :type TagSet: list of Tag
         :param NetDetectId: Associated custom network probe ID
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -557,7 +561,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param BfdEnable: Whether to enable BFD
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BfdEnable: int
-        :param AccessPointType: Access point type of a dedicated tunnel.
+        :param AccessPointType: Dedicated tunnel access point type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccessPointType: str
         :param DirectConnectGatewayName: Direct connect gateway name.
@@ -566,6 +570,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param VpcName: VPC name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VpcName: str
+        :param TencentBackupAddress: TencentBackupAddress, i.e., Tencent-side standby IP address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TencentBackupAddress: str
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -594,6 +601,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AccessPointType = None
         self.DirectConnectGatewayName = None
         self.VpcName = None
+        self.TencentBackupAddress = None
 
 
     def _deserialize(self, params):
@@ -636,6 +644,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AccessPointType = params.get("AccessPointType")
         self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
         self.VpcName = params.get("VpcName")
+        self.TencentBackupAddress = params.get("TencentBackupAddress")
 
 
 class Filter(AbstractModel):
@@ -680,6 +689,8 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
         :type CustomerAddress: str
         :param Bandwidth: Bandwidth value of a dedicated tunnel in Mbps.
         :type Bandwidth: int
+        :param TencentBackupAddress: Tencent-side standby IP address
+        :type TencentBackupAddress: str
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectTunnelName = None
@@ -688,6 +699,7 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
         self.TencentAddress = None
         self.CustomerAddress = None
         self.Bandwidth = None
+        self.TencentBackupAddress = None
 
 
     def _deserialize(self, params):
@@ -705,6 +717,7 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
         self.TencentAddress = params.get("TencentAddress")
         self.CustomerAddress = params.get("CustomerAddress")
         self.Bandwidth = params.get("Bandwidth")
+        self.TencentBackupAddress = params.get("TencentBackupAddress")
 
 
 class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):

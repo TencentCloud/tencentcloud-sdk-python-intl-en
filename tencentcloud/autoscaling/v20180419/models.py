@@ -54,6 +54,8 @@ class Activity(AbstractModel):
         :type ActivityRelatedInstanceSet: list of ActivtyRelatedInstance
         :param StatusMessageSimplified: Brief description of the scaling activity status.
         :type StatusMessageSimplified: str
+        :param LifecycleActionResultSet: Result of the lifecycle hook action in the scaling activity
+        :type LifecycleActionResultSet: list of LifecycleActionResultInfo
         """
         self.AutoScalingGroupId = None
         self.ActivityId = None
@@ -67,6 +69,7 @@ class Activity(AbstractModel):
         self.CreatedTime = None
         self.ActivityRelatedInstanceSet = None
         self.StatusMessageSimplified = None
+        self.LifecycleActionResultSet = None
 
 
     def _deserialize(self, params):
@@ -87,6 +90,12 @@ class Activity(AbstractModel):
                 obj._deserialize(item)
                 self.ActivityRelatedInstanceSet.append(obj)
         self.StatusMessageSimplified = params.get("StatusMessageSimplified")
+        if params.get("LifecycleActionResultSet") is not None:
+            self.LifecycleActionResultSet = []
+            for item in params.get("LifecycleActionResultSet"):
+                obj = LifecycleActionResultInfo()
+                obj._deserialize(item)
+                self.LifecycleActionResultSet.append(obj)
 
 
 class ActivtyRelatedInstance(AbstractModel):
@@ -731,7 +740,7 @@ class CreateNotificationConfigurationRequest(AbstractModel):
 <li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>
 <li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>
         :type NotificationTypes: list of str
-        :param NotificationUserGroupIds: Array of String | Notification group ID, which is the set of user group IDs and can be queried through the [DescribeUserGroup API](https://cloud.tencent.com/document/api/378/4404).
+        :param NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API.
         :type NotificationUserGroupIds: list of str
         """
         self.AutoScalingGroupId = None
@@ -869,7 +878,7 @@ class CreateScalingPolicyRequest(AbstractModel):
         :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
         :param Cooldown: Cooldown period in seconds. Default value: 300 seconds.
         :type Cooldown: int
-        :param NotificationUserGroupIds: Array of String | Notification group ID, which is the set of user group IDs and can be queried through the [DescribeUserGroup API](https://cloud.tencent.com/document/api/378/4404).
+        :param NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API.
         :type NotificationUserGroupIds: list of str
         """
         self.AutoScalingGroupId = None
@@ -2479,6 +2488,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.HostNameSettings._deserialize(params.get("HostNameSettings"))
 
 
+class LifecycleActionResultInfo(AbstractModel):
+    """Result information of the lifecycle hook action
+
+    """
+
+    def __init__(self):
+        """
+        :param LifecycleHookId: ID of the lifecycle hook
+        :type LifecycleHookId: str
+        :param InstanceId: ID of the instance
+        :type InstanceId: str
+        :param NotificationResult: Whether the notification is sent to CMQ successfully
+        :type NotificationResult: str
+        :param LifecycleActionResult: Result of the lifecyle hook action. Values: CONTINUE, ABANDON
+        :type LifecycleActionResult: str
+        :param ResultReason: Cause of the result
+        :type ResultReason: str
+        """
+        self.LifecycleHookId = None
+        self.InstanceId = None
+        self.NotificationResult = None
+        self.LifecycleActionResult = None
+        self.ResultReason = None
+
+
+    def _deserialize(self, params):
+        self.LifecycleHookId = params.get("LifecycleHookId")
+        self.InstanceId = params.get("InstanceId")
+        self.NotificationResult = params.get("NotificationResult")
+        self.LifecycleActionResult = params.get("LifecycleActionResult")
+        self.ResultReason = params.get("ResultReason")
+
+
 class LifecycleHook(AbstractModel):
     """Lifecycle hook
 
@@ -2893,7 +2935,7 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 <li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>
 <li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>
         :type NotificationTypes: list of str
-        :param NotificationUserGroupIds: Array of String | Notification group ID, which is the set of user group IDs and can be queried through the [DescribeUserGroup API](https://cloud.tencent.com/document/api/378/4404).
+        :param NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API.
         :type NotificationUserGroupIds: list of str
         """
         self.AutoScalingNotificationId = None
@@ -2943,7 +2985,7 @@ class ModifyScalingPolicyRequest(AbstractModel):
         :type Cooldown: int
         :param MetricAlarm: Alarm monitoring metric.
         :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
-        :param NotificationUserGroupIds: Array of String | Notification group ID, which is the set of user group IDs and can be queried through the [DescribeUserGroup API](https://cloud.tencent.com/document/api/378/4404).
+        :param NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API.
 If you want to clear the user group, you need to pass in the specific string "NULL" to the list.
         :type NotificationUserGroupIds: list of str
         """

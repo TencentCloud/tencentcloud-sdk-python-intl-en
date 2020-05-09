@@ -1974,6 +1974,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SortRule: Sort order of SORTLIST-type tables
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SortRule: int
+        :param DbClusterInfoStruct: Distributed index information of table
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DbClusterInfoStruct: str
         """
         self.TableName = None
         self.TableInstanceId = None
@@ -2001,6 +2004,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ApiAccessId = None
         self.SortFieldNum = None
         self.SortRule = None
+        self.DbClusterInfoStruct = None
 
 
     def _deserialize(self, params):
@@ -2037,6 +2041,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ApiAccessId = params.get("ApiAccessId")
         self.SortFieldNum = params.get("SortFieldNum")
         self.SortRule = params.get("SortRule")
+        self.DbClusterInfoStruct = params.get("DbClusterInfoStruct")
 
 
 class TableResultNew(AbstractModel):

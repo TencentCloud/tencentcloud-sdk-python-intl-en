@@ -23,7 +23,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
         :param DomainName: Push domain name.
         :type DomainName: str
@@ -93,11 +93,17 @@ Default value: 1.
 1: LCB.
 Default value: 0.
         :type IsDelayLive: int
+        :param IsMiniProgramLive: Whether it is LVB on Mini Program.
+0: LVB.
+1: LVB on Mini Program.
+Default value: 0.
+        :type IsMiniProgramLive: int
         """
         self.DomainName = None
         self.DomainType = None
         self.PlayType = None
         self.IsDelayLive = None
+        self.IsMiniProgramLive = None
 
 
     def _deserialize(self, params):
@@ -105,6 +111,7 @@ Default value: 0.
         self.DomainType = params.get("DomainType")
         self.PlayType = params.get("PlayType")
         self.IsDelayLive = params.get("IsDelayLive")
+        self.IsMiniProgramLive = params.get("IsMiniProgramLive")
 
 
 class AddLiveDomainResponse(AbstractModel):
@@ -135,13 +142,13 @@ class AddLiveWatermarkRequest(AbstractModel):
         :type PictureUrl: str
         :param WatermarkName: Watermark name.
         :type WatermarkName: str
-        :param XPosition: Display position: X-axis offset.
+        :param XPosition: Display position: X-axis offset. Default value: 0.
         :type XPosition: int
-        :param YPosition: Display position: Y-axis offset.
+        :param YPosition: Display position: Y-axis offset. Default value: 0.
         :type YPosition: int
-        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions.
+        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
         :type Width: int
-        :param Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions.
+        :param Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default.
         :type Height: int
         """
         self.PictureUrl = None
@@ -258,7 +265,7 @@ class CallBackRuleInfo(AbstractModel):
 
 
 class CallBackTemplateInfo(AbstractModel):
-    """Callback template information
+    """Callback template information.
 
     """
 
@@ -272,7 +279,7 @@ class CallBackTemplateInfo(AbstractModel):
         :type Description: str
         :param StreamBeginNotifyUrl: Stream starting callback URL.
         :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: Stream ending callback URL.
+        :param StreamEndNotifyUrl: Interruption callback URL.
         :type StreamEndNotifyUrl: str
         :param StreamMixNotifyUrl: Stream mixing callback URL.
         :type StreamMixNotifyUrl: str
@@ -310,8 +317,42 @@ class CallBackTemplateInfo(AbstractModel):
         self.CallbackKey = params.get("CallbackKey")
 
 
+class CancelCommonMixStreamRequest(AbstractModel):
+    """CancelCommonMixStream request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param MixStreamSessionId: ID of stream mix session (from applying for stream mix to canceling stream mix).
+        :type MixStreamSessionId: str
+        """
+        self.MixStreamSessionId = None
+
+
+    def _deserialize(self, params):
+        self.MixStreamSessionId = params.get("MixStreamSessionId")
+
+
+class CancelCommonMixStreamResponse(AbstractModel):
+    """CancelCommonMixStream response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CertInfo(AbstractModel):
-    """Certificate information
+    """Certificate information.
 
     """
 
@@ -327,8 +368,8 @@ class CertInfo(AbstractModel):
         :type CreateTime: str
         :param HttpsCrt: Certificate content.
         :type HttpsCrt: str
-        :param CertType: Certificate type.
-0: Tencent Cloud-hosted certificate
+        :param CertType: Certificate type:
+0: Tencent Cloud-hosted certificate.
 1: user-added certificate.
         :type CertType: int
         :param CertExpireTime: Certificate expiration time in UTC format.
@@ -355,6 +396,285 @@ class CertInfo(AbstractModel):
         self.CertType = params.get("CertType")
         self.CertExpireTime = params.get("CertExpireTime")
         self.DomainList = params.get("DomainList")
+
+
+class CommonMixControlParams(AbstractModel):
+    """General stream mix control parameter
+
+    """
+
+    def __init__(self):
+        """
+        :param UseMixCropCenter: Valid values: [0,1].
+If 1 is entered, when the layer resolution in the parameter is different from the actual video resolution, the video will be automatically cropped according to the resolution set by the layer.
+        :type UseMixCropCenter: int
+        """
+        self.UseMixCropCenter = None
+
+
+    def _deserialize(self, params):
+        self.UseMixCropCenter = params.get("UseMixCropCenter")
+
+
+class CommonMixCropParams(AbstractModel):
+    """General stream mix input crop parameter.
+
+    """
+
+    def __init__(self):
+        """
+        :param CropWidth: Crop width. Value range: [0,3000].
+        :type CropWidth: float
+        :param CropHeight: Crop height. Value range: [0,3000].
+        :type CropHeight: float
+        :param CropStartLocationX: Starting crop X coordinate. Value range: [0,3000].
+        :type CropStartLocationX: float
+        :param CropStartLocationY: Starting crop Y coordinate. Value range: [0,3000].
+        :type CropStartLocationY: float
+        """
+        self.CropWidth = None
+        self.CropHeight = None
+        self.CropStartLocationX = None
+        self.CropStartLocationY = None
+
+
+    def _deserialize(self, params):
+        self.CropWidth = params.get("CropWidth")
+        self.CropHeight = params.get("CropHeight")
+        self.CropStartLocationX = params.get("CropStartLocationX")
+        self.CropStartLocationY = params.get("CropStartLocationY")
+
+
+class CommonMixInputParam(AbstractModel):
+    """General stream mix input parameter.
+
+    """
+
+    def __init__(self):
+        """
+        :param InputStreamName: Input stream name of up to 80 bytes, which is a string containing letters, digits, and underscores.
+        :type InputStreamName: str
+        :param LayoutParams: Input stream layout parameter.
+        :type LayoutParams: :class:`tencentcloud.live.v20180801.models.CommonMixLayoutParams`
+        :param CropParams: Input stream crop parameter.
+        :type CropParams: :class:`tencentcloud.live.v20180801.models.CommonMixCropParams`
+        """
+        self.InputStreamName = None
+        self.LayoutParams = None
+        self.CropParams = None
+
+
+    def _deserialize(self, params):
+        self.InputStreamName = params.get("InputStreamName")
+        if params.get("LayoutParams") is not None:
+            self.LayoutParams = CommonMixLayoutParams()
+            self.LayoutParams._deserialize(params.get("LayoutParams"))
+        if params.get("CropParams") is not None:
+            self.CropParams = CommonMixCropParams()
+            self.CropParams._deserialize(params.get("CropParams"))
+
+
+class CommonMixLayoutParams(AbstractModel):
+    """General stream mix layout parameter.
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageLayer: Input layer. Value range: [1,16].
+1) For `image_layer` of background stream (i.e., main host video image or canvas), enter 1.
+2) For audio stream mix, this parameter is also required.
+        :type ImageLayer: int
+        :param InputType: Input type. Value range: [0,5].
+If this parameter is left empty, 0 will be used by default.
+0: the input stream is audio/video.
+2: the input stream is image.
+3: the input stream is canvas. 
+4: the input stream is audio.
+5: the input stream is pure video.
+        :type InputType: int
+        :param ImageWidth: Output width of input video image. Value range:
+Pixel: [0,3000]
+Percentage: [0.01,0.99]
+If this parameter is left empty, the input stream width will be used by default.
+If percentage is used, the expected output is (percentage * background width).
+        :type ImageWidth: float
+        :param ImageHeight: Output height of input video image. Value range:
+Pixel: [0,3000]
+Percentage: [0.01,0.99]
+If this parameter is left empty, the input stream height will be used by default.
+If percentage is used, the expected output is (percentage * background height).
+        :type ImageHeight: float
+        :param LocationX: X-axis offset of input in output video image. Value range:
+Pixel: [0,3000]
+Percentage: [0.01,0.99]
+If this parameter is left empty, 0 will be used by default.
+Horizontal offset from the top-left corner of main host background video image. 
+If percentage is used, the expected output is (percentage * background width).
+        :type LocationX: float
+        :param LocationY: Y-axis offset of input in output video image. Value range:
+Pixel: [0,3000]
+Percentage: [0.01,0.99]
+If this parameter is left empty, 0 will be used by default.
+Vertical offset from the top-left corner of main host background video image. 
+If percentage is used, the expected output is (percentage * background width)
+        :type LocationY: float
+        :param Color: When `InputType` is 3 (canvas), this value indicates the canvas color.
+Commonly used colors include:
+Red: 0xcc0033.
+Yellow: 0xcc9900.
+Green: 0xcccc33.
+Blue: 0x99CCFF.
+Black: 0x000000.
+White: 0xFFFFFF.
+Gray: 0x999999
+        :type Color: str
+        :param WatermarkId: When `InputType` is 2 (image), this value is the watermark ID.
+        :type WatermarkId: int
+        """
+        self.ImageLayer = None
+        self.InputType = None
+        self.ImageWidth = None
+        self.ImageHeight = None
+        self.LocationX = None
+        self.LocationY = None
+        self.Color = None
+        self.WatermarkId = None
+
+
+    def _deserialize(self, params):
+        self.ImageLayer = params.get("ImageLayer")
+        self.InputType = params.get("InputType")
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.Color = params.get("Color")
+        self.WatermarkId = params.get("WatermarkId")
+
+
+class CommonMixOutputParams(AbstractModel):
+    """General stream mix output parameter.
+
+    """
+
+    def __init__(self):
+        """
+        :param OutputStreamName: Output stream name.
+        :type OutputStreamName: str
+        :param OutputStreamType: Output stream type. Valid values: [0,1].
+If this parameter is left empty, 0 will be used by default.
+If the output stream is a stream in the input stream list, enter 0.
+If you want the stream mix result to be a new stream, enter 1.
+If this value is 1, `output_stream_id` cannot appear in `input_stram_list`, and there cannot be a stream with the same ID on the LVB backend.
+        :type OutputStreamType: int
+        :param OutputStreamBitRate: Output stream bitrate. Value range: [1,50000].
+If this parameter is left empty, the system will automatically determine.
+        :type OutputStreamBitRate: int
+        :param OutputStreamGop: Output stream GOP size. Value range: [1,10].
+If this parameter is left empty, the system will automatically determine.
+        :type OutputStreamGop: int
+        :param OutputStreamFrameRate: Output stream frame rate. Value range: [1,60].
+If this parameter is left empty, the system will automatically determine.
+        :type OutputStreamFrameRate: int
+        :param OutputAudioBitRate: Output stream audio bitrate. Value range: [1,500]
+If this parameter is left empty, the system will automatically determine.
+        :type OutputAudioBitRate: int
+        :param OutputAudioSampleRate: Output stream audio sample rate. Valid values: [96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000].
+If this parameter is left empty, the system will automatically determine.
+        :type OutputAudioSampleRate: int
+        :param OutputAudioChannels: Output stream audio sound channel. Valid values: [1,2].
+If this parameter is left empty, the system will automatically determine.
+        :type OutputAudioChannels: int
+        :param MixSei: SEI information in output stream. If there are no special needs, leave it empty.
+        :type MixSei: str
+        """
+        self.OutputStreamName = None
+        self.OutputStreamType = None
+        self.OutputStreamBitRate = None
+        self.OutputStreamGop = None
+        self.OutputStreamFrameRate = None
+        self.OutputAudioBitRate = None
+        self.OutputAudioSampleRate = None
+        self.OutputAudioChannels = None
+        self.MixSei = None
+
+
+    def _deserialize(self, params):
+        self.OutputStreamName = params.get("OutputStreamName")
+        self.OutputStreamType = params.get("OutputStreamType")
+        self.OutputStreamBitRate = params.get("OutputStreamBitRate")
+        self.OutputStreamGop = params.get("OutputStreamGop")
+        self.OutputStreamFrameRate = params.get("OutputStreamFrameRate")
+        self.OutputAudioBitRate = params.get("OutputAudioBitRate")
+        self.OutputAudioSampleRate = params.get("OutputAudioSampleRate")
+        self.OutputAudioChannels = params.get("OutputAudioChannels")
+        self.MixSei = params.get("MixSei")
+
+
+class CreateCommonMixStreamRequest(AbstractModel):
+    """CreateCommonMixStream request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param MixStreamSessionId: ID of stream mix session (from applying for stream mix to canceling stream mix).
+        :type MixStreamSessionId: str
+        :param InputStreamList: Input stream list for stream mix.
+        :type InputStreamList: list of CommonMixInputParam
+        :param OutputParams: Output stream parameter for stream mix.
+        :type OutputParams: :class:`tencentcloud.live.v20180801.models.CommonMixOutputParams`
+        :param MixStreamTemplateId: Input template ID. If this parameter is set, the output will be generated according to the default template layout, and there is no need to enter the custom position parameters.
+If this parameter is left empty, 0 will be used by default.
+For two input sources, 10, 20, 30, 40, and 50 are supported.
+For three input sources, 310, 390, and 391 are supported.
+For four input sources, 410 is supported.
+For five input sources, 510 and 590 are supported.
+For six input sources, 610 is supported.
+        :type MixStreamTemplateId: int
+        :param ControlParams: Special control parameter for stream mix. If there are no special needs, leave it empty.
+        :type ControlParams: :class:`tencentcloud.live.v20180801.models.CommonMixControlParams`
+        """
+        self.MixStreamSessionId = None
+        self.InputStreamList = None
+        self.OutputParams = None
+        self.MixStreamTemplateId = None
+        self.ControlParams = None
+
+
+    def _deserialize(self, params):
+        self.MixStreamSessionId = params.get("MixStreamSessionId")
+        if params.get("InputStreamList") is not None:
+            self.InputStreamList = []
+            for item in params.get("InputStreamList"):
+                obj = CommonMixInputParam()
+                obj._deserialize(item)
+                self.InputStreamList.append(obj)
+        if params.get("OutputParams") is not None:
+            self.OutputParams = CommonMixOutputParams()
+            self.OutputParams._deserialize(params.get("OutputParams"))
+        self.MixStreamTemplateId = params.get("MixStreamTemplateId")
+        if params.get("ControlParams") is not None:
+            self.ControlParams = CommonMixControlParams()
+            self.ControlParams._deserialize(params.get("ControlParams"))
+
+
+class CreateCommonMixStreamResponse(AbstractModel):
+    """CreateCommonMixStream response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreateLiveCallbackRuleRequest(AbstractModel):
@@ -406,28 +726,31 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: Template name, which is a non-empty string.
+        :param TemplateName: Template name.
 Maximum length: 255 bytes.
+Only letters, digits, underscores, and hyphens can be contained.
         :type TemplateName: str
         :param Description: Description.
 Maximum length: 1,024 bytes.
+Only letters, digits, underscores, and hyphens can be contained.
         :type Description: str
         :param StreamBeginNotifyUrl: Stream starting callback URL,
-Protocol-related document: [Event Message Notification](/document/product/267/32744).
+Protocol document: [Event Message Notification](/document/product/267/32744).
         :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: Stream ending callback URL,
-Protocol-related document: [Event Message Notification](/document/product/267/32744).
+        :param StreamEndNotifyUrl: Interruption callback URL,
+Protocol document: [Event Message Notification](/document/product/267/32744).
         :type StreamEndNotifyUrl: str
         :param RecordNotifyUrl: Recording callback URL,
-Protocol-related document: [Event Message Notification](/document/product/267/32744).
+Protocol document: [Event Message Notification](/document/product/267/32744).
         :type RecordNotifyUrl: str
         :param SnapshotNotifyUrl: Screencapturing callback URL,
-Protocol-related document: [Event Message Notification](/document/product/267/32744).
+Protocol document: [Event Message Notification](/document/product/267/32744).
         :type SnapshotNotifyUrl: str
         :param PornCensorshipNotifyUrl: Porn detection callback URL,
-Protocol-related document: [Event Message Notification](/document/product/267/32741).
+Protocol document: [Event Message Notification](/document/product/267/32741).
         :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: Callback key, which is shared by callback URLs. For more information on authentication callback, please see the callback format document
+        :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
+[Event Message Notification](/document/product/267/32744).
         :type CallbackKey: str
         """
         self.TemplateName = None
@@ -677,7 +1000,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: Template name, which is a non-empty string.
+        :param TemplateName: Template name. Only letters, digits, underscores, and hyphens can be contained.
         :type TemplateName: str
         :param Description: Message description
         :type Description: str
@@ -689,7 +1012,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param AacParam: AAC recording parameter, which is set when AAC recording is enabled.
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param IsDelayLive: 0: LVB,
+        :param IsDelayLive: LVB type. Default value: 0.
+0: LVB.
 1: LCB.
         :type IsDelayLive: int
         :param HlsSpecialParam: HLS-specific recording parameter.
@@ -807,10 +1131,11 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: Template name, which is a non-empty string.
+        :param TemplateName: Template name.
 Maximum length: 255 bytes.
+Only letters, digits, underscores, and hyphens can be contained.
         :type TemplateName: str
-        :param CosAppId: COS `AppId`.
+        :param CosAppId: COS application ID.
         :type CosAppId: int
         :param CosBucket: COS bucket name.
         :type CosBucket: str
@@ -818,6 +1143,7 @@ Maximum length: 255 bytes.
         :type CosRegion: str
         :param Description: Description.
 Maximum length: 1,024 bytes.
+Only letters, digits, underscores, and hyphens can be contained.
         :type Description: str
         :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
 Value range: 5–600s.
@@ -828,6 +1154,10 @@ Value range: 5–600s.
         :type Height: int
         :param PornFlag: Whether to enable porn detection. 0: no, 1: yes. Default value: 0
         :type PornFlag: int
+        :param CosPrefix: COS bucket folder prefix.
+        :type CosPrefix: str
+        :param CosFileName: COS filename.
+        :type CosFileName: str
         """
         self.TemplateName = None
         self.CosAppId = None
@@ -838,6 +1168,8 @@ Value range: 5–600s.
         self.Width = None
         self.Height = None
         self.PornFlag = None
+        self.CosPrefix = None
+        self.CosFileName = None
 
 
     def _deserialize(self, params):
@@ -850,6 +1182,8 @@ Value range: 5–600s.
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.PornFlag = params.get("PornFlag")
+        self.CosPrefix = params.get("CosPrefix")
+        self.CosFileName = params.get("CosFileName")
 
 
 class CreateLiveSnapshotTemplateResponse(AbstractModel):
@@ -1079,7 +1413,7 @@ class CreateLiveWatermarkRuleResponse(AbstractModel):
 
 
 class DelayInfo(AbstractModel):
-    """Information of the delayed playback
+    """Delayed playback information.
 
     """
 
@@ -1087,23 +1421,24 @@ class DelayInfo(AbstractModel):
         """
         :param DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param AppName: Push path, which is the same as the 
+ `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
         :param StreamName: Stream name.
         :type StreamName: str
         :param DelayInterval: Delay time in seconds.
         :type DelayInterval: int
-        :param CreateTime: Creation time in UTC format.
-Note: Beijing time is 8 hours ahead of UTC.
-Example: 2019-06-18T12:00:00Z (20:00:00, June 18, 2019, Beijing time).
+        :param CreateTime: Creation time in UTC time.
+Note: the difference between UTC time and Beijing time is 8 hours.
+Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
         :type CreateTime: str
-        :param ExpireTime: Expiration time in UTC format.
-Note: Beijing time is 8 hours ahead of UTC.
-Example: 2019-06-18T12:00:00Z (20:00:00, June 18, 2019, Beijing time).
+        :param ExpireTime: Expiration time in UTC time.
+Note: the difference between UTC time and Beijing time is 8 hours.
+Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
         :type ExpireTime: str
-        :param Status: Current status,
--1: Expired,
-1: Effective.
+        :param Status: Current status:
+-1: expired.
+1: in effect.
         :type Status: int
         """
         self.DomainName = None
@@ -1171,6 +1506,8 @@ class DeleteLiveCallbackTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
+1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](/document/product/267/32637) API call.
+2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](/document/product/267/32632) API.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -1278,7 +1615,8 @@ class DeleteLiveRecordRequest(AbstractModel):
         """
         :param StreamName: Stream name.
         :type StreamName: str
-        :param TaskId: Task ID, which uniquely identifies the recording task globally.
+        :param TaskId: Task ID, which uniquely identifies a recording task globally.
+Get the `TaskId` from the returned value of the [CreateLiveRecord](/document/product/267/30148) API.
         :type TaskId: int
         """
         self.StreamName = None
@@ -1436,6 +1774,8 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
+1. Get from the returned value of the [CreateLiveSnapshotTemplate](/document/product/267/32624) API call.
+2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](/document/product/267/32619) API.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -1520,6 +1860,8 @@ class DeleteLiveTranscodeTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
+1. Get the template ID in the returned value of the [CreateLiveTranscodeTemplate](/document/product/267/32646) API call.
+2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](/document/product/267/32641) API.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -1554,6 +1896,7 @@ class DeleteLiveWatermarkRequest(AbstractModel):
     def __init__(self):
         """
         :param WatermarkId: Watermark ID.
+Get the watermark ID in the returned value of the [AddLiveWatermark](/document/product/267/30154) API call.
         :type WatermarkId: int
         """
         self.WatermarkId = None
@@ -1589,7 +1932,7 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
         """
         :param DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path.
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
         :param StreamName: Stream name.
         :type StreamName: str
@@ -1662,6 +2005,8 @@ class DescribeLiveCallbackTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
+1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](/document/product/267/32637) API call.
+2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](/document/product/267/32632) API.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -2201,7 +2546,9 @@ class DescribeLiveRecordTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param IsDelayLive: Whether it is an LCB template
+        :param IsDelayLive: Whether it is an LCB template. Default value: 0.
+0: LVB.
+1: LCB.
         :type IsDelayLive: int
         """
         self.IsDelayLive = None
@@ -2277,6 +2624,7 @@ class DescribeLiveSnapshotTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
+Template ID returned by the [CreateLiveSnapshotTemplate](/document/product/267/32624) API call.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -2549,7 +2897,7 @@ Note: The difference between EndTime and StartTime cannot be greater than 30 day
 In UTC format, such as 2016-06-29T19:00:00Z.
 This supports querying data in the past 60 days.
         :type StartTime: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default. Fuzzy match is not supported.
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. Fuzzy match is not supported.
         :type AppName: str
         :param PageNum: Page number to get.
 Default value: 1.
@@ -2712,6 +3060,7 @@ class DescribeLiveTranscodeTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
+Note: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](/document/product/267/32646) API call.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -2942,32 +3291,41 @@ class DomainInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: LVB domain name
+        :param Name: LVB domain name.
         :type Name: str
-        :param Type: Domain name type. 0: push, 1: playback
+        :param Type: Domain name type:
+0: push.
+1: playback.
         :type Type: int
-        :param Status: Domain name status. 0: disabled, 1: enabled.
+        :param Status: Domain name status:
+0: deactivated.
+1: activated.
         :type Status: int
-        :param CreateTime: Creation time
+        :param CreateTime: Creation time.
         :type CreateTime: str
-        :param BCName: Whether there is a CNAME record pointing to a fixed rule. 0: no, 1: yes.
+        :param BCName: Whether there is a CNAME record pointing to a fixed rule domain name:
+0: no.
+1: yes.
         :type BCName: int
-        :param TargetDomain: Domain name corresponding to the CNAME record
+        :param TargetDomain: Domain name corresponding to CNAME record.
         :type TargetDomain: str
         :param PlayType: Playback region. This parameter is valid only if `Type` is 1.
-1: Mainland China, 2: global, 3: outside Mainland China.
+1: in Mainland China.
+2: global.
+3: outside Mainland China.
         :type PlayType: int
-        :param IsDelayLive: 0: LVB,
+        :param IsDelayLive: Whether it is LCB:
+0: LVB.
 1: LCB.
         :type IsDelayLive: int
-        :param CurrentCName: Information of currently used CNAME record
+        :param CurrentCName: Information of currently used CNAME record.
         :type CurrentCName: str
-        :param RentTag: Whether it is a leased domain name
+        :param RentTag: Disused parameter, which can be ignored.
         :type RentTag: int
-        :param RentExpireTime: Expiration time of leased domain name
+        :param RentExpireTime: Disused parameter, which can be ignored.
         :type RentExpireTime: str
-        :param IsMiniProgramLive: 0: LVB,
-1: LVB on WeChat Mini Program.
+        :param IsMiniProgramLive: 0: LVB.
+1: LVB on Mini Program.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsMiniProgramLive: int
         """
@@ -3222,7 +3580,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         :type Description: str
         :param StreamBeginNotifyUrl: Stream starting callback URL.
         :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: Stream ending callback URL.
+        :param StreamEndNotifyUrl: Interruption callback URL.
         :type StreamEndNotifyUrl: str
         :param RecordNotifyUrl: Recording callback URL.
         :type RecordNotifyUrl: str
@@ -3230,7 +3588,8 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         :type SnapshotNotifyUrl: str
         :param PornCensorshipNotifyUrl: Porn detection callback URL.
         :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: Callback key, which is shared by callback URLs. For more information on authentication callback, please see the callback format document.
+        :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
+[Event Message Notification](/document/product/267/32744).
         :type CallbackKey: str
         """
         self.TemplateId = None
@@ -3524,13 +3883,13 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param HlsParam: HLS recording parameter, which is set when HLS recording is enabled.
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: Mp4 recording parameter, which is set when Mp4 recording is enabled.
+        :param Mp4Param: MP4 recording parameter, which is set when MP4 recording is enabled.
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param AacParam: AAC recording parameter, which is set when AAC recording is enabled.
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param HlsSpecialParam: Custom HLS recording parameter.
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: Mp3 recording parameter, which is set when Mp3 recording is enabled.
+        :param Mp3Param: MP3 recording parameter, which is set when MP3 recording is enabled.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         self.TemplateId = None
@@ -3607,14 +3966,20 @@ Value range: 5–600s.
         :type Width: int
         :param Height: Screenshot height. Default value: 0 (original height).
         :type Height: int
-        :param PornFlag: Whether to enable porn detection. 0: no, 1: yes.
+        :param PornFlag: Whether to enable porn detection. Default value: 0.
+0: do not enable.
+1: enable.
         :type PornFlag: int
-        :param CosAppId: COS `AppId`.
+        :param CosAppId: COS application ID.
         :type CosAppId: int
         :param CosBucket: COS bucket name.
         :type CosBucket: str
         :param CosRegion: COS region.
         :type CosRegion: str
+        :param CosPrefix: COS bucket folder prefix.
+        :type CosPrefix: str
+        :param CosFileName: COS filename.
+        :type CosFileName: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -3626,6 +3991,8 @@ Value range: 5–600s.
         self.CosAppId = None
         self.CosBucket = None
         self.CosRegion = None
+        self.CosPrefix = None
+        self.CosFileName = None
 
 
     def _deserialize(self, params):
@@ -3639,6 +4006,8 @@ Value range: 5–600s.
         self.CosAppId = params.get("CosAppId")
         self.CosBucket = params.get("CosBucket")
         self.CosRegion = params.get("CosRegion")
+        self.CosPrefix = params.get("CosPrefix")
+        self.CosFileName = params.get("CosFileName")
 
 
 class ModifyLiveSnapshotTemplateResponse(AbstractModel):
@@ -3673,25 +4042,28 @@ h264/h265.
         :param Acodec: Audio encoding format:
 aac/mp3.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0–500. Default value: 0.
+        :param AudioBitrate: Audio bitrate. Default value: 0.
+Value range: 0–500.
         :type AudioBitrate: int
         :param Description: Template description.
         :type Description: str
-        :param VideoBitrate: Video bitrate. Value range: 100–8,000
+        :param VideoBitrate: Video bitrate. Value range: 100–8000 Kbps.
+Note: the bitrate value must be a multiple of 100.
         :type VideoBitrate: int
-        :param Width: Width. Value range: 0–3,000
+        :param Width: Width. Value range: 0-3000.
         :type Width: int
         :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
         :type NeedVideo: int
         :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
-        :param Height: Height. Value range: 0–3,000
+        :param Height: Height. Value range: 0-3000.
         :type Height: int
-        :param Fps: Frame rate. Value range: 0–200
+        :param Fps: Frame rate. Value range: 0–200.
         :type Fps: int
-        :param Gop: Keyframe interval in seconds. Value range: 0–50
+        :param Gop: Keyframe interval in seconds. Value range: 0–50.
         :type Gop: int
-        :param Rotate: Rotation angle. Valid values: 0, 90, 180, 270
+        :param Rotate: Rotation angle.
+0, 90, 180, 270.
         :type Rotate: int
         :param Profile: Encoding quality:
 baseline/main/high.
@@ -3702,7 +4074,7 @@ baseline/main/high.
         :type HeightToOrig: int
         :param FpsToOrig: Whether to not exceed the original frame rate. 0: no; 1: yes. Default value: 0.
         :type FpsToOrig: int
-        :param AdaptBitratePercent: VideoBitrate minus TESHD bitrate. Value range: 0.1–0.5.
+        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1–0.5.
         :type AdaptBitratePercent: float
         """
         self.TemplateId = None
@@ -3764,7 +4136,7 @@ class ModifyLiveTranscodeTemplateResponse(AbstractModel):
 
 
 class PlayAuthKeyInfo(AbstractModel):
-    """Playback authentication key information
+    """Playback authentication key information.
 
     """
 
@@ -3772,13 +4144,15 @@ class PlayAuthKeyInfo(AbstractModel):
         """
         :param DomainName: Domain name.
         :type DomainName: str
-        :param Enable: Whether to enable. 0: disabled; 1: enabled.
+        :param Enable: Whether to enable:
+0: disable.
+1: enable.
         :type Enable: int
         :param AuthKey: Authentication key.
         :type AuthKey: str
         :param AuthDelta: Validity period in seconds.
         :type AuthDelta: int
-        :param AuthBackKey: Authentication BackKey.
+        :param AuthBackKey: Authentication `BackKey`.
         :type AuthBackKey: str
         """
         self.DomainName = None
@@ -3797,14 +4171,14 @@ class PlayAuthKeyInfo(AbstractModel):
 
 
 class PublishTime(AbstractModel):
-    """Push time
+    """Push time.
 
     """
 
     def __init__(self):
         """
-        :param PublishTime: Push time
-In UTC format, for example: 2018-06-29T19:00:00Z.
+        :param PublishTime: Push time.
+In UTC format, such as 2018-06-29T19:00:00Z.
         :type PublishTime: str
         """
         self.PublishTime = None
@@ -3815,7 +4189,7 @@ In UTC format, for example: 2018-06-29T19:00:00Z.
 
 
 class PushAuthKeyInfo(AbstractModel):
-    """Push authentication key information
+    """Push authentication key information.
 
     """
 
@@ -3827,7 +4201,7 @@ class PushAuthKeyInfo(AbstractModel):
         :type Enable: int
         :param MasterAuthKey: Master authentication key.
         :type MasterAuthKey: str
-        :param BackupAuthKey: Backup authentication key.
+        :param BackupAuthKey: Standby authentication key.
         :type BackupAuthKey: str
         :param AuthDelta: Validity period in seconds.
         :type AuthDelta: int
@@ -3848,30 +4222,33 @@ class PushAuthKeyInfo(AbstractModel):
 
 
 class RecordParam(AbstractModel):
-    """Recording template parameter
+    """Recording template parameter.
 
     """
 
     def __init__(self):
         """
         :param RecordInterval: Recording interval.
-In seconds. Default value: 1,800.
-Value range: 300–7,200.
-This parameter is not valid for HLS, and a file is generated from push start to push end when HLS is recorded.
+In seconds. Default value: 1800.
+Value range: 300–7200.
+This parameter is not valid for HLS, and a file will be generated from push start to interruption during HLS recording.
         :type RecordInterval: int
-        :param StorageTime: Recording storage duration.
-In seconds. Value range: 0–93,312,000.
-0 represents permanent storage.
+        :param StorageTime: Recording storage period.
+In seconds. Value range: 0–93312000.
+0: permanent storage.
         :type StorageTime: int
-        :param Enable: Whether to enable recording in the current format. 0: no; 1: yes. Default value: 0.
+        :param Enable: Whether to enable recording in the current format. Default value: 0. 0: no, 1: yes.
         :type Enable: int
         :param VodSubAppId: VOD subapplication ID.
         :type VodSubAppId: int
+        :param VodFileName: 
+        :type VodFileName: str
         """
         self.RecordInterval = None
         self.StorageTime = None
         self.Enable = None
         self.VodSubAppId = None
+        self.VodFileName = None
 
 
     def _deserialize(self, params):
@@ -3879,6 +4256,7 @@ In seconds. Value range: 0–93,312,000.
         self.StorageTime = params.get("StorageTime")
         self.Enable = params.get("Enable")
         self.VodSubAppId = params.get("VodSubAppId")
+        self.VodFileName = params.get("VodFileName")
 
 
 class RecordTemplateInfo(AbstractModel):
@@ -3898,16 +4276,16 @@ class RecordTemplateInfo(AbstractModel):
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param HlsParam: HLS recording parameter.
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: Mp4 recording parameter.
+        :param Mp4Param: MP4 recording parameter.
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param AacParam: AAC recording parameter.
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param IsDelayLive: 0: LVB,
 1: LCB.
         :type IsDelayLive: int
-        :param HlsSpecialParam: Custom HLS recording parameter.
+        :param HlsSpecialParam: Custom HLS recording parameter
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: Mp3 recording parameter.
+        :param Mp3Param: MP3 recording parameter.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         self.TemplateId = None
@@ -4032,7 +4410,7 @@ class ResumeLiveStreamResponse(AbstractModel):
 
 
 class RuleInfo(AbstractModel):
-    """Rule information
+    """Rule information.
 
     """
 
@@ -4069,7 +4447,7 @@ class RuleInfo(AbstractModel):
 
 
 class SnapshotTemplateInfo(AbstractModel):
-    """Screencapturing template information
+    """Screencapturing template information.
 
     """
 
@@ -4079,22 +4457,30 @@ class SnapshotTemplateInfo(AbstractModel):
         :type TemplateId: int
         :param TemplateName: Template name.
         :type TemplateName: str
-        :param SnapshotInterval: Screencapturing interval in seconds. Value range: 5–300s.
+        :param SnapshotInterval: Screencapturing interval. Value range: 5–300s.
         :type SnapshotInterval: int
-        :param Width: Screenshot width. Value range: 0–3000. 0: original width and fit to the original aspect ratio
+        :param Width: Screenshot width. Value range: 0–3000. 
+0: original width and fit to the original ratio.
         :type Width: int
-        :param Height: Screenshot height. Value range: 0–2,000. 0: original height and fit to the original aspect ratio
+        :param Height: Screenshot height. Value range: 0–2000.
+0: original height and fit to the original ratio.
         :type Height: int
         :param PornFlag: Whether to enable porn detection. 0: no, 1: yes.
         :type PornFlag: int
-        :param CosAppId: COS `AppId`.
+        :param CosAppId: COS application ID.
         :type CosAppId: int
         :param CosBucket: COS bucket name.
         :type CosBucket: str
         :param CosRegion: COS region.
         :type CosRegion: str
-        :param Description: Template description
+        :param Description: Template description.
         :type Description: str
+        :param CosPrefix: COS bucket folder prefix.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CosPrefix: str
+        :param CosFileName: COS filename.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CosFileName: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -4106,6 +4492,8 @@ class SnapshotTemplateInfo(AbstractModel):
         self.CosBucket = None
         self.CosRegion = None
         self.Description = None
+        self.CosPrefix = None
+        self.CosFileName = None
 
 
     def _deserialize(self, params):
@@ -4119,6 +4507,8 @@ class SnapshotTemplateInfo(AbstractModel):
         self.CosBucket = params.get("CosBucket")
         self.CosRegion = params.get("CosRegion")
         self.Description = params.get("Description")
+        self.CosPrefix = params.get("CosPrefix")
+        self.CosFileName = params.get("CosFileName")
 
 
 class StopLiveRecordRequest(AbstractModel):
@@ -4173,12 +4563,10 @@ class StreamEventInfo(AbstractModel):
         :param StreamName: Stream name.
         :type StreamName: str
         :param StreamStartTime: Push start time.
-In UTC format.
-Example: 2019-01-07T12:00:00Z.
+In UTC format, such as 2019-01-07T12:00:00Z.
         :type StreamStartTime: str
         :param StreamEndTime: Push end time.
-In UTC format.
-Example: 2019-01-07T15:00:00Z.
+In UTC format, such as 2019-01-07T15:00:00Z.
         :type StreamEndTime: str
         :param StopReason: Stop reason.
         :type StopReason: str
@@ -4213,7 +4601,7 @@ Example: 2019-01-07T15:00:00Z.
 
 
 class StreamName(AbstractModel):
-    """List of stream names
+    """Stream name list.
 
     """
 
@@ -4226,12 +4614,10 @@ class StreamName(AbstractModel):
         :param DomainName: Push domain name.
         :type DomainName: str
         :param StreamStartTime: Push start time.
-In UTC format.
-Example: 2019-01-07T12:00:00Z.
+In UTC format, such as 2019-01-07T12:00:00Z.
         :type StreamStartTime: str
         :param StreamEndTime: Push end time.
-In UTC format.
-Example: 2019-01-07T15:00:00Z.
+In UTC format, such as 2019-01-07T15:00:00Z.
         :type StreamEndTime: str
         :param StopReason: Stop reason.
         :type StopReason: str
@@ -4300,7 +4686,7 @@ class StreamOnlineInfo(AbstractModel):
 
 
 class TemplateInfo(AbstractModel):
-    """Transcoding template information
+    """Transcoding template information.
 
     """
 
@@ -4309,25 +4695,24 @@ class TemplateInfo(AbstractModel):
         :param Vcodec: Video encoding format:
 h264/h265.
         :type Vcodec: str
-        :param VideoBitrate: Video bitrate in Kbps. Value range: 100–8,000
+        :param VideoBitrate: Video bitrate. Value range: 100–8000 Kbps.
         :type VideoBitrate: int
-        :param Acodec: Audio encoding format: AAC/MP3
-aac/mp3.
+        :param Acodec: Audio codec. Valid values: aac, mp3.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0–500
+        :param AudioBitrate: Audio bitrate. Value range: 0–500 Kbps.
         :type AudioBitrate: int
-        :param Width: Width. Value range: 0–3,000
+        :param Width: Width. Value range: 0–3000.
         :type Width: int
-        :param Height: Height. Value range: 0–3,000
+        :param Height: Height. Value range: 0–3000.
         :type Height: int
-        :param Fps: Frame rate. Value range: 0–200
+        :param Fps: Frame rate. Value range: 0–200 FPS.
         :type Fps: int
-        :param Gop: Keyframe interval in seconds. Value range: 1–50
+        :param Gop: Keyframe interval. Value range: 1–50s.
         :type Gop: int
-        :param Rotate: Rotation angle. Valid values: 0, 90, 180, 270
+        :param Rotate: Rotation angle. Valid values: 0, 90, 180, 270.
         :type Rotate: int
-        :param Profile: Encoding quality:
-baseline/main/high.
+        :param Profile: Encoding quality. Valid values:
+baseline, main, high.
         :type Profile: str
         :param BitrateToOrig: Whether to not exceed the original bitrate. 0: no; 1: yes.
         :type BitrateToOrig: int
@@ -4341,13 +4726,13 @@ baseline/main/high.
         :type NeedAudio: int
         :param TemplateId: Template ID.
         :type TemplateId: int
-        :param TemplateName: Template name
+        :param TemplateName: Template name.
         :type TemplateName: str
-        :param Description: Template description
+        :param Description: Template description.
         :type Description: str
-        :param AiTransCode: Whether it is a TESHD template. 0: no; 1: yes. Default value: 0.
+        :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
         :type AiTransCode: int
-        :param AdaptBitratePercent: VideoBitrate minus TESHD bitrate. Value range: 0.1–0.5.
+        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1–0.5.
         :type AdaptBitratePercent: float
         """
         self.Vcodec = None
@@ -4437,18 +4822,19 @@ class UpdateLiveWatermarkRequest(AbstractModel):
     def __init__(self):
         """
         :param WatermarkId: Watermark ID.
+Get the watermark ID in the returned value of the [AddLiveWatermark](/document/product/267/30154) API call.
         :type WatermarkId: int
         :param PictureUrl: Watermark image URL.
         :type PictureUrl: str
-        :param XPosition: Display position: X-axis offset.
+        :param XPosition: Display position: X-axis offset. Default value: 0.
         :type XPosition: int
-        :param YPosition: Display position: Y-axis offset.
+        :param YPosition: Display position: Y-axis offset. Default value: 0.
         :type YPosition: int
         :param WatermarkName: Watermark name.
         :type WatermarkName: str
-        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions.
+        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
         :type Width: int
-        :param Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions.
+        :param Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default.
         :type Height: int
         """
         self.WatermarkId = None
@@ -4488,7 +4874,7 @@ class UpdateLiveWatermarkResponse(AbstractModel):
 
 
 class WatermarkInfo(AbstractModel):
-    """Watermark information
+    """Watermark information.
 
     """
 
@@ -4508,9 +4894,9 @@ class WatermarkInfo(AbstractModel):
         :type Status: int
         :param CreateTime: Creation time.
         :type CreateTime: str
-        :param Width: Watermark width
+        :param Width: Watermark width.
         :type Width: int
-        :param Height: Watermark height
+        :param Height: Watermark height.
         :type Height: int
         """
         self.WatermarkId = None

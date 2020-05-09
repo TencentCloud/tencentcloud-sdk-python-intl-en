@@ -140,6 +140,63 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CancelCommonMixStream(self, request):
+        """This API is used to cancel a stream mix. It can be used basically in the same way as `mix_streamv2.cancel_mix_stream`.
+
+        :param request: Request instance for CancelCommonMixStream.
+        :type request: :class:`tencentcloud.live.v20180801.models.CancelCommonMixStreamRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CancelCommonMixStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelCommonMixStream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelCommonMixStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCommonMixStream(self, request):
+        """This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.cancel_mix_stream` API.
+        Note: currently, up to 16 streams can be mixed.
+
+        :param request: Request instance for CreateCommonMixStream.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateCommonMixStreamRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateCommonMixStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCommonMixStream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCommonMixStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLiveCallbackRule(self, request):
         """To create a callback rule, you need to first call the [CreateLiveCallbackTemplate](/document/product/267/32637) API to create a callback template and bind the returned template ID to the domain name/path.
         <br>Callback protocol-related document: [Event Message Notification](/document/product/267/32744).
@@ -170,8 +227,8 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveCallbackTemplate(self, request):
-        """After a callback template is created and a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](/document/product/267/32638) API and bind the template ID to the domain name/path.
-        <br>Callback protocol-related document: [Event Message Notification](/document/product/267/32744).
+        """This API is used to create a callback template. After a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](/document/product/267/32638) API to bind the template ID to the domain name/path.
+        <br>Callback protocol document: [Event Message Notification](/document/product/267/32744).
 
         :param request: Request instance for CreateLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveCallbackTemplateRequest`
@@ -327,8 +384,9 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveSnapshotRule(self, request):
-        """To create a screencapturing rule, you need to first call the [CreateLiveSnapshotTemplate](/document/product/267/32624) API to create a screencapturing template and bind the returned template ID to the stream.
-        <br>Screencapturing-related document: [LVB Screencapturing](/document/product/267/32737).
+        """This API is used to create a screencapturing rule. You need to first call the [CreateLiveSnapshotTemplate](/document/product/267/32624) API to create a screencapturing template to bind the returned template ID to the stream.
+        <br>Screencapturing document: [LVB Screencapturing](/document/product/267/32737).
+        Note: only one screencapturing template can be associated with one domain name.
 
         :param request: Request instance for CreateLiveSnapshotRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveSnapshotRuleRequest`
@@ -1087,7 +1145,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveForbidStreamList(self, request):
-        """This API is used to get the list of forbidden streams.
+        """This API is used to get the forbidden stream list.
 
         :param request: Request instance for DescribeLiveForbidStreamList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveForbidStreamListRequest`
@@ -1227,7 +1285,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveRecordTemplates(self, request):
-        """This API is used to get the list of recording templates.
+        """This API is used to get the recording template list.
 
         :param request: Request instance for DescribeLiveRecordTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveRecordTemplatesRequest`
@@ -1369,7 +1427,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamOnlineList(self, request):
-        """This API is used to return the list of live streams.
+        """This API is used to return the live stream list.
 
         :param request: Request instance for DescribeLiveStreamOnlineList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamOnlineListRequest`
@@ -1510,7 +1568,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTemplates(self, request):
-        """This API is used to get the list of transcoding templates.
+        """This API is used to get the transcoding template list.
 
         :param request: Request instance for DescribeLiveTranscodeTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeTemplatesRequest`

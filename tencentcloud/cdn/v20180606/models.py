@@ -2111,6 +2111,87 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReportDataRequest(AbstractModel):
+    """DescribeReportData request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Query start time
+        :type StartTime: str
+        :param EndTime: Query end time
+        :type EndTime: str
+        :param ReportType: Report type
+daily: daily report
+weekly: weekly report
+monthly: monthly report
+        :type ReportType: str
+        :param Area: Domain name acceleration region
+mainland: in Mainland China
+overseas: outside Mainland China
+        :type Area: str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of data entries. Default value: 1000.
+        :type Limit: int
+        :param Project: Filters by project ID
+        :type Project: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.ReportType = None
+        self.Area = None
+        self.Offset = None
+        self.Limit = None
+        self.Project = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.ReportType = params.get("ReportType")
+        self.Area = params.get("Area")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Project = params.get("Project")
+
+
+class DescribeReportDataResponse(AbstractModel):
+    """DescribeReportData response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainReport: Domain name-level data details.
+        :type DomainReport: list of ReportData
+        :param ProjectReport: Project-level data details
+        :type ProjectReport: list of ReportData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DomainReport = None
+        self.ProjectReport = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainReport") is not None:
+            self.DomainReport = []
+            for item in params.get("DomainReport"):
+                obj = ReportData()
+                obj._deserialize(item)
+                self.DomainReport.append(obj)
+        if params.get("ProjectReport") is not None:
+            self.ProjectReport = []
+            for item in params.get("ProjectReport"):
+                obj = ReportData()
+                obj._deserialize(item)
+                self.ProjectReport.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUrlViolationsRequest(AbstractModel):
     """DescribeUrlViolations request structure.
 
@@ -2307,6 +2388,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param AwsPrivateAccess: S3 bucket origin access authentication configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param SecurityConfig: SCDN configuration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SecurityConfig: :class:`tencentcloud.cdn.v20180606.models.SecurityConfig`
+        :param ImageOptimization: 
+        :type ImageOptimization: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`
+        :param UserAgentFilter: 
+        :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
         """
         self.ResourceId = None
         self.AppId = None
@@ -2348,6 +2436,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Readonly = None
         self.OriginPullTimeout = None
         self.AwsPrivateAccess = None
+        self.SecurityConfig = None
+        self.ImageOptimization = None
+        self.UserAgentFilter = None
 
 
     def _deserialize(self, params):
@@ -2447,6 +2538,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("AwsPrivateAccess") is not None:
             self.AwsPrivateAccess = AwsPrivateAccess()
             self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("SecurityConfig") is not None:
+            self.SecurityConfig = SecurityConfig()
+            self.SecurityConfig._deserialize(params.get("SecurityConfig"))
+        if params.get("ImageOptimization") is not None:
+            self.ImageOptimization = ImageOptimization()
+            self.ImageOptimization._deserialize(params.get("ImageOptimization"))
+        if params.get("UserAgentFilter") is not None:
+            self.UserAgentFilter = UserAgentFilter()
+            self.UserAgentFilter._deserialize(params.get("UserAgentFilter"))
 
 
 class DisableCachesRequest(AbstractModel):
@@ -4378,6 +4478,43 @@ class RegionMapRelation(AbstractModel):
         self.SubRegionIdList = params.get("SubRegionIdList")
 
 
+class ReportData(AbstractModel):
+    """CDN report data
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: Project ID/domain name ID.
+        :type ResourceId: str
+        :param Resource: Project name/domain name.
+        :type Resource: str
+        :param Value: Total traffic/max bandwidth in bytes and bps, respectively.
+        :type Value: int
+        :param Percentage: Percentage of individual resource out of all resources.
+        :type Percentage: float
+        :param BillingValue: Total billable traffic/max billable bandwidth in bytes and bps, respectively.
+        :type BillingValue: int
+        :param BillingPercentage: Percentage of billable amount out of total amount.
+        :type BillingPercentage: float
+        """
+        self.ResourceId = None
+        self.Resource = None
+        self.Value = None
+        self.Percentage = None
+        self.BillingValue = None
+        self.BillingPercentage = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Resource = params.get("Resource")
+        self.Value = params.get("Value")
+        self.Percentage = params.get("Percentage")
+        self.BillingValue = params.get("BillingValue")
+        self.BillingPercentage = params.get("BillingPercentage")
+
+
 class RequestHeader(AbstractModel):
     """Custom request header configuration. This is disabled by default.
 
@@ -4585,6 +4722,23 @@ class SearchClsLogResponse(AbstractModel):
             self.Logs = ClsSearchLogs()
             self.Logs._deserialize(params.get("Logs"))
         self.RequestId = params.get("RequestId")
+
+
+class SecurityConfig(AbstractModel):
+    """SCDN configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on|off
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
 
 
 class Seo(AbstractModel):

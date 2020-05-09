@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.monitor.v20180724 import models
+from tencentcloud.cmq.v20190304 import models
 
 
-class MonitorClient(AbstractClient):
-    _apiVersion = '2018-07-24'
-    _endpoint = 'monitor.tencentcloudapi.com'
+class CmqClient(AbstractClient):
+    _apiVersion = '2019-03-04'
+    _endpoint = 'cmq.tencentcloudapi.com'
 
 
-    def BindingPolicyObject(self, request):
-        """This API is used to bind an alarm policy to a specific object.
+    def ClearQueue(self, request):
+        """This API is used to clear all messages in a queue.
 
-        :param request: Request instance for BindingPolicyObject.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.BindingPolicyObjectRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.BindingPolicyObjectResponse`
+        :param request: Request instance for ClearQueue.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.ClearQueueRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.ClearQueueResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BindingPolicyObject", params)
+            body = self.call("ClearQueue", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BindingPolicyObjectResponse()
+                model = models.ClearQueueResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreatePolicyGroup(self, request):
-        """This API is used to add a policy group.
+    def ClearSubscriptionFilterTags(self, request):
+        """This API is used to clear the message tags of a subscriber.
 
-        :param request: Request instance for CreatePolicyGroup.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePolicyGroupRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreatePolicyGroupResponse`
+        :param request: Request instance for ClearSubscriptionFilterTags.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.ClearSubscriptionFilterTagsRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.ClearSubscriptionFilterTagsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePolicyGroup", params)
+            body = self.call("ClearSubscriptionFilterTags", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreatePolicyGroupResponse()
+                model = models.ClearSubscriptionFilterTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeletePolicyGroup(self, request):
-        """This API is used to delete an alarm policy group.
+    def CreateQueue(self, request):
+        """This API is used to create a queue.
 
-        :param request: Request instance for DeletePolicyGroup.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePolicyGroupRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeletePolicyGroupResponse`
+        :param request: Request instance for CreateQueue.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.CreateQueueRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.CreateQueueResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePolicyGroup", params)
+            body = self.call("CreateQueue", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeletePolicyGroupResponse()
+                model = models.CreateQueueResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAccidentEventList(self, request):
-        """This API is used to get the platform event list.
+    def CreateSubscribe(self, request):
+        """This API is used to create a subscription.
 
-        :param request: Request instance for DescribeAccidentEventList.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAccidentEventListRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAccidentEventListResponse`
+        :param request: Request instance for CreateSubscribe.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.CreateSubscribeRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.CreateSubscribeResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccidentEventList", params)
+            body = self.call("CreateSubscribe", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAccidentEventListResponse()
+                model = models.CreateSubscribeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +137,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeBaseMetrics(self, request):
-        """This API is used to get the details of basic metrics.
+    def CreateTopic(self, request):
+        """This API is used to create a topic.
 
-        :param request: Request instance for DescribeBaseMetrics.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBaseMetricsRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeBaseMetricsResponse`
+        :param request: Request instance for CreateTopic.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.CreateTopicRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.CreateTopicResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaseMetrics", params)
+            body = self.call("CreateTopic", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeBaseMetricsResponse()
+                model = models.CreateTopicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +165,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeBasicAlarmList(self, request):
-        """This API is used to get the basic alarm list.
+    def DeleteQueue(self, request):
+        """This API is used to delete a queue.
 
-        :param request: Request instance for DescribeBasicAlarmList.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBasicAlarmListRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeBasicAlarmListResponse`
+        :param request: Request instance for DeleteQueue.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.DeleteQueueRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.DeleteQueueResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBasicAlarmList", params)
+            body = self.call("DeleteQueue", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeBasicAlarmListResponse()
+                model = models.DeleteQueueResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeBindingPolicyObjectList(self, request):
-        """This API is used to get the bound object list.
+    def DeleteSubscribe(self, request):
+        """This API is used to delete a subscription.
 
-        :param request: Request instance for DescribeBindingPolicyObjectList.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListResponse`
+        :param request: Request instance for DeleteSubscribe.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.DeleteSubscribeRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.DeleteSubscribeResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBindingPolicyObjectList", params)
+            body = self.call("DeleteSubscribe", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeBindingPolicyObjectListResponse()
+                model = models.DeleteSubscribeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,20 +221,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePolicyConditionList(self, request):
-        """This API is used to get basic alarm policy conditions.
+    def DeleteTopic(self, request):
+        """This API is used to delete a topic.
 
-        :param request: Request instance for DescribePolicyConditionList.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListResponse`
+        :param request: Request instance for DeleteTopic.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.DeleteTopicRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.DeleteTopicResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePolicyConditionList", params)
+            body = self.call("DeleteTopic", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePolicyConditionListResponse()
+                model = models.DeleteTopicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,20 +249,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePolicyGroupInfo(self, request):
-        """This API is used to get details of a basic policy group.
+    def DescribeDeadLetterSourceQueues(self, request):
+        """This API is used to enumerate the source queues of a dead letter queue.
 
-        :param request: Request instance for DescribePolicyGroupInfo.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoResponse`
+        :param request: Request instance for DescribeDeadLetterSourceQueues.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.DescribeDeadLetterSourceQueuesRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.DescribeDeadLetterSourceQueuesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePolicyGroupInfo", params)
+            body = self.call("DescribeDeadLetterSourceQueues", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePolicyGroupInfoResponse()
+                model = models.DescribeDeadLetterSourceQueuesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,20 +277,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePolicyGroupList(self, request):
-        """This API is used to get the list of basic policy alarm groups.
+    def DescribeQueueDetail(self, request):
+        """This API is used to enumerate queues.
 
-        :param request: Request instance for DescribePolicyGroupList.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListResponse`
+        :param request: Request instance for DescribeQueueDetail.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.DescribeQueueDetailRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.DescribeQueueDetailResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePolicyGroupList", params)
+            body = self.call("DescribeQueueDetail", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePolicyGroupListResponse()
+                model = models.DescribeQueueDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -305,20 +305,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeProductEventList(self, request):
-        """This API is used to get the list of product events by page.
+    def DescribeSubscriptionDetail(self, request):
+        """This API is used to query subscription details.
 
-        :param request: Request instance for DescribeProductEventList.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListResponse`
+        :param request: Request instance for DescribeSubscriptionDetail.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.DescribeSubscriptionDetailRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.DescribeSubscriptionDetailResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProductEventList", params)
+            body = self.call("DescribeSubscriptionDetail", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeProductEventListResponse()
+                model = models.DescribeSubscriptionDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -333,22 +333,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetMonitorData(self, request):
-        """This API is used to get the monitoring data of a Tencent Cloud product by passing in the product's namespace, object dimension description, and monitoring metric.
-        API call rate limit: 20 calls/sec, 1,200 calls/min.
-        If you need to call a lot of metrics and objects, there may be cases where the call fails due to the rate limit. It is recommended to spread the call requests as much as possible over time.
+    def DescribeTopicDetail(self, request):
+        """This API is used to query topic details.
 
-        :param request: Request instance for GetMonitorData.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.GetMonitorDataRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.GetMonitorDataResponse`
+        :param request: Request instance for DescribeTopicDetail.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.DescribeTopicDetailRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.DescribeTopicDetailResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetMonitorData", params)
+            body = self.call("DescribeTopicDetail", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetMonitorDataResponse()
+                model = models.DescribeTopicDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -363,20 +361,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyAlarmReceivers(self, request):
-        """This API is used to modify alarm recipients.
+    def ModifyQueueAttribute(self, request):
+        """This API is used to modify queue attributes.
 
-        :param request: Request instance for ModifyAlarmReceivers.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmReceiversRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmReceiversResponse`
+        :param request: Request instance for ModifyQueueAttribute.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.ModifyQueueAttributeRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.ModifyQueueAttributeResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarmReceivers", params)
+            body = self.call("ModifyQueueAttribute", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyAlarmReceiversResponse()
+                model = models.ModifyQueueAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -391,26 +389,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def PutMonitorData(self, request):
-        """This API is used to customize monitoring data to be reported. The default API request rate limit is 50 requests/sec.
-        The default upper limit on metrics of a single tenant is 100.
-        A maximum of 30 metric/value pairs can be reported at a time. When an error is returned for a request, no metrics/values in the request will be saved.
+    def ModifySubscriptionAttribute(self, request):
+        """This API is used to modify subscription attributes.
 
-        The reporting timestamp is the timestamp when you want to save the data. It is recommended that you construct a timestamp at integer minutes.
-        The time range of a timestamp is from 300 seconds before the current time to the current time.
-        The data of the same IP metric/value pair must be reported by minute in chronological order.
-
-        :param request: Request instance for PutMonitorData.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.PutMonitorDataRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.PutMonitorDataResponse`
+        :param request: Request instance for ModifySubscriptionAttribute.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.ModifySubscriptionAttributeRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.ModifySubscriptionAttributeResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("PutMonitorData", params)
+            body = self.call("ModifySubscriptionAttribute", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.PutMonitorDataResponse()
+                model = models.ModifySubscriptionAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -425,20 +417,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SendCustomAlarmMsg(self, request):
-        """This API is used to send a custom alarm message.
+    def ModifyTopicAttribute(self, request):
+        """This API is used to modify topic attributes.
 
-        :param request: Request instance for SendCustomAlarmMsg.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.SendCustomAlarmMsgRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.SendCustomAlarmMsgResponse`
+        :param request: Request instance for ModifyTopicAttribute.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.ModifyTopicAttributeRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.ModifyTopicAttributeResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("SendCustomAlarmMsg", params)
+            body = self.call("ModifyTopicAttribute", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SendCustomAlarmMsgResponse()
+                model = models.ModifyTopicAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -453,20 +445,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UnBindingAllPolicyObject(self, request):
-        """This API is used to delete all bound objects.
+    def RewindQueue(self, request):
+        """This API is used to rewind a queue.
 
-        :param request: Request instance for UnBindingAllPolicyObject.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.UnBindingAllPolicyObjectRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.UnBindingAllPolicyObjectResponse`
+        :param request: Request instance for RewindQueue.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.RewindQueueRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.RewindQueueResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("UnBindingAllPolicyObject", params)
+            body = self.call("RewindQueue", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.UnBindingAllPolicyObjectResponse()
+                model = models.RewindQueueResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -481,20 +473,20 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UnBindingPolicyObject(self, request):
-        """This API is used to delete an object that is bound to a policy.
+    def UnbindDeadLetter(self, request):
+        """This API is used to unbind a dead letter queue.
 
-        :param request: Request instance for UnBindingPolicyObject.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.UnBindingPolicyObjectRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.UnBindingPolicyObjectResponse`
+        :param request: Request instance for UnbindDeadLetter.
+        :type request: :class:`tencentcloud.cmq.v20190304.models.UnbindDeadLetterRequest`
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.UnbindDeadLetterResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("UnBindingPolicyObject", params)
+            body = self.call("UnbindDeadLetter", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.UnBindingPolicyObjectResponse()
+                model = models.UnbindDeadLetterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

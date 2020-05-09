@@ -1165,6 +1165,8 @@ class InvokeRequest(AbstractModel):
         :type LogType: str
         :param Namespace: Namespace
         :type Namespace: str
+        :param RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
+        :type RoutingKey: str
         """
         self.FunctionName = None
         self.InvocationType = None
@@ -1172,6 +1174,7 @@ class InvokeRequest(AbstractModel):
         self.ClientContext = None
         self.LogType = None
         self.Namespace = None
+        self.RoutingKey = None
 
 
     def _deserialize(self, params):
@@ -1181,6 +1184,7 @@ class InvokeRequest(AbstractModel):
         self.ClientContext = params.get("ClientContext")
         self.LogType = params.get("LogType")
         self.Namespace = params.get("Namespace")
+        self.RoutingKey = params.get("RoutingKey")
 
 
 class InvokeResponse(AbstractModel):
@@ -1424,18 +1428,34 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function ID
+        :param FunctionName: Function Name
         :type FunctionName: str
-        :param Namespace: Namespace
+        :param Namespace: The namespace where the function locates
         :type Namespace: str
+        :param Offset: Data offset. The default value is `0`.
+        :type Offset: int
+        :param Limit: Return data length. The default value is `20`.
+        :type Limit: int
+        :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
+        :type Order: str
+        :param OrderBy: It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.
+        :type OrderBy: str
         """
         self.FunctionName = None
         self.Namespace = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.OrderBy = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
         self.Namespace = params.get("Namespace")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.OrderBy = params.get("OrderBy")
 
 
 class ListVersionByFunctionResponse(AbstractModel):
@@ -1450,11 +1470,15 @@ class ListVersionByFunctionResponse(AbstractModel):
         :param Versions: Function version list
 Note: This field may return null, indicating that no valid values is found.
         :type Versions: list of FunctionVersion
+        :param TotalCount: Total number of function versions
+Note: This field may return null, indicating that no valid value was found.
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.FunctionVersion = None
         self.Versions = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -1466,6 +1490,7 @@ Note: This field may return null, indicating that no valid values is found.
                 obj = FunctionVersion()
                 obj._deserialize(item)
                 self.Versions.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

@@ -31,8 +31,8 @@ class AssumeRoleRequest(AbstractModel):
         :type DurationSeconds: int
         :param Policy: Policy description
 Note:
-1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with the [TencentCloud API Specification](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
-2. For the policy syntax, please see [CAM Policy Syntax](https://cloud.tencent.com/document/product/598/10603).
+1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
+2. For the policy syntax, please see CAM’s [Syntax Logic](https://cloud.tencent.com/document/product/598/10603).
 3. The policy cannot contain the `principal` element.
         :type Policy: str
         """
@@ -58,7 +58,7 @@ class AssumeRoleResponse(AbstractModel):
         """
         :param Credentials: Temporary security credentials
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param ExpiredTime: Credentials expiration time. A Unix timestamp will be returned which is accurate down to the second
+        :param ExpiredTime: Credentials expiration time. A Unix timestamp will be returned which is accurate to the second
         :type ExpiredTime: int
         :param Expiration: Credentials expiration time in UTC time in ISO 8601 format.
         :type Expiration: str
@@ -87,7 +87,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SAMLAssertion: Base64-encoded SAML assertion information
+        :param SAMLAssertion: Base64-encoded SAML assertion
         :type SAMLAssertion: str
         :param PrincipalArn: Principal access description name
         :type PrincipalArn: str
@@ -120,9 +120,9 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Credentials: An object contains a triplet of `Token`, `TmpSecretId`, and `TmpSecretId`
+        :param Credentials: An object consists of the `Token`, `TmpSecretId`, and `TmpSecretId`
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param ExpiredTime: Credentials expiration time. A Unix timestamp will be returned which is accurate down to the second
+        :param ExpiredTime: Credentials expiration time. A Unix timestamp will be returned which is accurate to the second
         :type ExpiredTime: int
         :param Expiration: Credentials expiration time in UTC time in ISO 8601 format.
         :type Expiration: str
@@ -176,12 +176,12 @@ class GetFederationTokenRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: You can customize the caller name consisting of letters.
+        :param Name: The customizable name of the caller, consisting of letters
         :type Name: str
         :param Policy: Policy description
 Note:
-1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with the [TencentCloud API Specification](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
-2. For the policy syntax, please see [CAM Policy Syntax](https://cloud.tencent.com/document/product/598/10603).
+1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
+2. For the policy syntax, please see CAM’s [Syntax Logic](https://cloud.tencent.com/document/product/598/10603).
 3. The policy cannot contain the `principal` element.
         :type Policy: str
         :param DurationSeconds: Specifies the validity period of credentials in seconds. Default value: 1800. Maximum value: 7200
@@ -207,7 +207,7 @@ class GetFederationTokenResponse(AbstractModel):
         """
         :param Credentials: Temporary credentials
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param ExpiredTime: Temporary credentials expiration time. A Unix timestamp will be returned which is accurate down to the second
+        :param ExpiredTime: Temporary credentials expiration time. A Unix timestamp will be returned which is accurate to the second
         :type ExpiredTime: int
         :param Expiration: Credentials expiration time in UTC time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.

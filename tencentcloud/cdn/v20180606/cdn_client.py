@@ -496,6 +496,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeReportData(self, request):
+        """This API is used to query the daily/weekly/monthly report data at domain name/project levels.
+
+        :param request: Request instance for DescribeReportData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeReportDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeReportDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReportData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReportDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUrlViolations(self, request):
         """This API is used to query the list of domain name URLs containing regulation-violating content scanned and detected by the CDN system, and the current status of the URLs.
         It corresponds to the **Pornography Detection** page on the CDN Console.

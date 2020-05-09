@@ -278,7 +278,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DeleteTables(self, request):
-        """This API is used to drop a table based on the specified table information.
+        """This API is used to drop a specified table. Calling this API for the first time means to move the table to the recycle bin, while calling it again means to drop the table completely from the recycle bin.
 
         :param request: Request instance for DeleteTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTablesRequest`

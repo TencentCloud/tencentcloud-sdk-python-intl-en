@@ -16,6 +16,66 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActivateSubscribeRequest(AbstractModel):
+    """ActivateSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Subscription instance ID.
+        :type SubscribeId: str
+        :param InstanceId: Database Instance ID
+        :type InstanceId: str
+        :param SubscribeObjectType: Data subscription type. 0: full instance subscription, 1: data subscription, 2: structure subscription, 3: data subscription and structure subscription
+        :type SubscribeObjectType: int
+        :param Objects: Subscription object
+        :type Objects: :class:`tencentcloud.dts.v20180330.models.SubscribeObject`
+        :param UniqSubnetId: Subnet of data subscription service, which is the subnet of the database instance by default.
+        :type UniqSubnetId: str
+        :param Vport: Subscription service port. Default value: 7507
+        :type Vport: int
+        """
+        self.SubscribeId = None
+        self.InstanceId = None
+        self.SubscribeObjectType = None
+        self.Objects = None
+        self.UniqSubnetId = None
+        self.Vport = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.InstanceId = params.get("InstanceId")
+        self.SubscribeObjectType = params.get("SubscribeObjectType")
+        if params.get("Objects") is not None:
+            self.Objects = SubscribeObject()
+            self.Objects._deserialize(params.get("Objects"))
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.Vport = params.get("Vport")
+
+
+class ActivateSubscribeResponse(AbstractModel):
+    """ActivateSubscribe response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Data subscription configuration task ID.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class CompleteMigrateJobRequest(AbstractModel):
     """CompleteMigrateJob request structure.
 
@@ -190,6 +250,61 @@ class CreateMigrateJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSubscribeRequest(AbstractModel):
+    """CreateSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Subscribed database type. Currently, MySQL is supported
+        :type Product: str
+        :param PayType: Instance billing mode, which is always 1 (hourly billing),
+        :type PayType: int
+        :param Duration: Purchase duration in months, which is required if `PayType` is 0. Maximum value: 120 (this field is not required of global site users and is better to be hidden)
+        :type Duration: int
+        :param Count: Quantity. Default value: 1. Maximum value: 10
+        :type Count: int
+        :param AutoRenew: Whether to auto-renew. Default value: 0. This flag does not take effect for hourly billed instances (this field should be hidden from global site users)
+        :type AutoRenew: int
+        """
+        self.Product = None
+        self.PayType = None
+        self.Duration = None
+        self.Count = None
+        self.AutoRenew = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.PayType = params.get("PayType")
+        self.Duration = params.get("Duration")
+        self.Count = params.get("Count")
+        self.AutoRenew = params.get("AutoRenew")
+
+
+class CreateSubscribeResponse(AbstractModel):
+    """CreateSubscribe response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeIds: Data subscription instance ID array
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SubscribeIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SubscribeIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeIds = params.get("SubscribeIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -373,6 +488,48 @@ class DeleteSyncJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAsyncRequestInfoRequest(AbstractModel):
+    """DescribeAsyncRequestInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Task ID
+        :type AsyncRequestId: str
+        """
+        self.AsyncRequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+
+
+class DescribeAsyncRequestInfoResponse(AbstractModel):
+    """DescribeAsyncRequestInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Info: Task execution result information
+        :type Info: str
+        :param Status: Task execution status. Valid values: success, failed, running
+        :type Status: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Info = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Info = params.get("Info")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMigrateCheckJobRequest(AbstractModel):
     """DescribeMigrateCheckJob request structure.
 
@@ -491,6 +648,264 @@ class DescribeMigrateJobsResponse(AbstractModel):
                 obj = MigrateJobInfo()
                 obj._deserialize(item)
                 self.JobList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRegionConfRequest(AbstractModel):
+    """DescribeRegionConf request structure.
+
+    """
+
+
+class DescribeRegionConfResponse(AbstractModel):
+    """DescribeRegionConf response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of purchasable regions
+        :type TotalCount: int
+        :param Items: Purchasable region details
+        :type Items: list of SubscribeRegionConf
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SubscribeRegionConf()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSubscribeConfRequest(AbstractModel):
+    """DescribeSubscribeConf request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Subscription instance ID
+        :type SubscribeId: str
+        """
+        self.SubscribeId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+
+
+class DescribeSubscribeConfResponse(AbstractModel):
+    """DescribeSubscribeConf response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Subscription instance ID
+        :type SubscribeId: str
+        :param SubscribeName: Subscription instance name
+        :type SubscribeName: str
+        :param ChannelId: Subscription channel
+        :type ChannelId: str
+        :param Product: Subscribed database type
+        :type Product: str
+        :param InstanceId: Subscribed instance
+        :type InstanceId: str
+        :param InstanceStatus: Subscribed instance status. Valid values: running, offline, isolate
+        :type InstanceStatus: str
+        :param SubsStatus: Subscription instance status. Valid values: unconfigure, configuring, configured
+        :type SubsStatus: str
+        :param Status: Subscription instance lifecycle status. Valid values: normal, isolating, isolated, offlining
+        :type Status: str
+        :param CreateTime: Subscription instance creation time
+        :type CreateTime: str
+        :param IsolateTime: Subscription instance isolation time
+        :type IsolateTime: str
+        :param ExpireTime: Subscription instance expiration time
+        :type ExpireTime: str
+        :param OfflineTime: Subscription instance deactivation time
+        :type OfflineTime: str
+        :param ConsumeStartTime: Consumption starting time point of subscription instance
+        :type ConsumeStartTime: str
+        :param PayType: Subscription instance billing mode. 1: hourly billing
+        :type PayType: int
+        :param Vip: Subscription channel VIP
+        :type Vip: str
+        :param Vport: Subscription channel port
+        :type Vport: int
+        :param UniqVpcId: Subscription channel `VpcId`
+        :type UniqVpcId: str
+        :param UniqSubnetId: Subscription channel `SubnetId`
+        :type UniqSubnetId: str
+        :param SdkConsumedTime: Current SDK consumption time point
+        :type SdkConsumedTime: str
+        :param SdkHost: Subscription SDK IP address
+        :type SdkHost: str
+        :param SubscribeObjectType: Subscription object type. 0: full instance subscription, 1: DDL data subscription, 2: DML structure subscription, 3: DDL data subscription + DML structure subscription
+        :type SubscribeObjectType: int
+        :param SubscribeObjects: Subscription object, which is an empty array if `SubscribeObjectType` is 0
+        :type SubscribeObjects: list of SubscribeObject
+        :param ModifyTime: Modification time
+        :type ModifyTime: str
+        :param Region: Region
+        :type Region: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SubscribeId = None
+        self.SubscribeName = None
+        self.ChannelId = None
+        self.Product = None
+        self.InstanceId = None
+        self.InstanceStatus = None
+        self.SubsStatus = None
+        self.Status = None
+        self.CreateTime = None
+        self.IsolateTime = None
+        self.ExpireTime = None
+        self.OfflineTime = None
+        self.ConsumeStartTime = None
+        self.PayType = None
+        self.Vip = None
+        self.Vport = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.SdkConsumedTime = None
+        self.SdkHost = None
+        self.SubscribeObjectType = None
+        self.SubscribeObjects = None
+        self.ModifyTime = None
+        self.Region = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.SubscribeName = params.get("SubscribeName")
+        self.ChannelId = params.get("ChannelId")
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.SubsStatus = params.get("SubsStatus")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.IsolateTime = params.get("IsolateTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.OfflineTime = params.get("OfflineTime")
+        self.ConsumeStartTime = params.get("ConsumeStartTime")
+        self.PayType = params.get("PayType")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.SdkConsumedTime = params.get("SdkConsumedTime")
+        self.SdkHost = params.get("SdkHost")
+        self.SubscribeObjectType = params.get("SubscribeObjectType")
+        if params.get("SubscribeObjects") is not None:
+            self.SubscribeObjects = []
+            for item in params.get("SubscribeObjects"):
+                obj = SubscribeObject()
+                obj._deserialize(item)
+                self.SubscribeObjects.append(obj)
+        self.ModifyTime = params.get("ModifyTime")
+        self.Region = params.get("Region")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSubscribesRequest(AbstractModel):
+    """DescribeSubscribes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param SubscribeName: Data subscription instance name
+        :type SubscribeName: str
+        :param InstanceId: ID of bound database instance
+        :type InstanceId: str
+        :param ChannelId: Data subscription instance channel ID
+        :type ChannelId: str
+        :param PayType: Billing mode filter. Default value: 1 (pay-as-you-go)
+        :type PayType: str
+        :param Product: Subscribed database product, such as MySQL
+        :type Product: str
+        :param Status: Data subscription instance status. Valid values: creating, normal, isolating, isolated, offlining
+        :type Status: list of str
+        :param SubsStatus: Data subscription instance configuration status. Valid values: unconfigure, configuring, configured
+        :type SubsStatus: list of str
+        :param Offset: Starting offset of returned results
+        :type Offset: int
+        :param Limit: Number of results to be returned at a time
+        :type Limit: int
+        :param OrderDirection: Sorting order. Valid values: DESC, ASC. Default value: DESC, indicating descending by creation time
+        :type OrderDirection: str
+        """
+        self.SubscribeId = None
+        self.SubscribeName = None
+        self.InstanceId = None
+        self.ChannelId = None
+        self.PayType = None
+        self.Product = None
+        self.Status = None
+        self.SubsStatus = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.SubscribeName = params.get("SubscribeName")
+        self.InstanceId = params.get("InstanceId")
+        self.ChannelId = params.get("ChannelId")
+        self.PayType = params.get("PayType")
+        self.Product = params.get("Product")
+        self.Status = params.get("Status")
+        self.SubsStatus = params.get("SubsStatus")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderDirection = params.get("OrderDirection")
+
+
+class DescribeSubscribesResponse(AbstractModel):
+    """DescribeSubscribes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible instances.
+        :type TotalCount: int
+        :param Items: Information list of data subscription instances
+        :type Items: list of SubscribeInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SubscribeInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -653,6 +1068,61 @@ class DstInfo(AbstractModel):
         self.ReadOnly = params.get("ReadOnly")
 
 
+class ErrorInfo(AbstractModel):
+    """Message and prompt for migration task error
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorLog: Specific error log, including error code and error message
+        :type ErrorLog: str
+        :param HelpDoc: Help document URL corresponding to error
+        :type HelpDoc: str
+        """
+        self.ErrorLog = None
+        self.HelpDoc = None
+
+
+    def _deserialize(self, params):
+        self.ErrorLog = params.get("ErrorLog")
+        self.HelpDoc = params.get("HelpDoc")
+
+
+class IsolateSubscribeRequest(AbstractModel):
+    """IsolateSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Subscription instance ID
+        :type SubscribeId: str
+        """
+        self.SubscribeId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+
+
+class IsolateSubscribeResponse(AbstractModel):
+    """IsolateSubscribe response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MigrateDetailInfo(AbstractModel):
     """Describes the specific migration process
 
@@ -736,6 +1206,8 @@ class MigrateJobInfo(AbstractModel):
         :type Status: int
         :param Detail: Task details
         :type Detail: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`
+        :param ErrorInfo: Prompt message for task error, which is not null or empty when an error occurs with the task
+        :type ErrorInfo: list of ErrorInfo
         """
         self.JobId = None
         self.JobName = None
@@ -752,6 +1224,7 @@ class MigrateJobInfo(AbstractModel):
         self.EndTime = None
         self.Status = None
         self.Detail = None
+        self.ErrorInfo = None
 
 
     def _deserialize(self, params):
@@ -778,6 +1251,12 @@ class MigrateJobInfo(AbstractModel):
         if params.get("Detail") is not None:
             self.Detail = MigrateDetailInfo()
             self.Detail._deserialize(params.get("Detail"))
+        if params.get("ErrorInfo") is not None:
+            self.ErrorInfo = []
+            for item in params.get("ErrorInfo"):
+                obj = ErrorInfo()
+                obj._deserialize(item)
+                self.ErrorInfo.append(obj)
 
 
 class MigrateOption(AbstractModel):
@@ -951,6 +1430,179 @@ class ModifyMigrateJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySubscribeConsumeTimeRequest(AbstractModel):
+    """ModifySubscribeConsumeTime request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param ConsumeStartTime: Consumption starting time point in the format of `Y-m-d h:m:s`, i.e., the starting time point for data subscription. Value range: within the last 24 hours
+        :type ConsumeStartTime: str
+        """
+        self.SubscribeId = None
+        self.ConsumeStartTime = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.ConsumeStartTime = params.get("ConsumeStartTime")
+
+
+class ModifySubscribeConsumeTimeResponse(AbstractModel):
+    """ModifySubscribeConsumeTime response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySubscribeNameRequest(AbstractModel):
+    """ModifySubscribeName request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param SubscribeName: Data subscription instance name. Length limit: [1,60]
+        :type SubscribeName: str
+        """
+        self.SubscribeId = None
+        self.SubscribeName = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.SubscribeName = params.get("SubscribeName")
+
+
+class ModifySubscribeNameResponse(AbstractModel):
+    """ModifySubscribeName response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySubscribeObjectsRequest(AbstractModel):
+    """ModifySubscribeObjects request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param SubscribeObjectType: Data subscription type. Valid values: 0 (full instance subscription), 1 (data subscription), 2 (structure subscription), 3 (data subscription + structure subscription)
+        :type SubscribeObjectType: int
+        :param Objects: Information of subscribed table
+        :type Objects: list of SubscribeObject
+        """
+        self.SubscribeId = None
+        self.SubscribeObjectType = None
+        self.Objects = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.SubscribeObjectType = params.get("SubscribeObjectType")
+        if params.get("Objects") is not None:
+            self.Objects = []
+            for item in params.get("Objects"):
+                obj = SubscribeObject()
+                obj._deserialize(item)
+                self.Objects.append(obj)
+
+
+class ModifySubscribeObjectsResponse(AbstractModel):
+    """ModifySubscribeObjects response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Async task ID
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySubscribeVipVportRequest(AbstractModel):
+    """ModifySubscribeVipVport request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param DstUniqSubnetId: Specified destination subnet. If this parameter is passed in, `DstIp` must be in the destination subnet
+        :type DstUniqSubnetId: str
+        :param DstIp: Target IP. Either this field or `DstPort` must be passed in
+        :type DstIp: str
+        :param DstPort: Target port. Value range: [1025-65535]
+        :type DstPort: int
+        """
+        self.SubscribeId = None
+        self.DstUniqSubnetId = None
+        self.DstIp = None
+        self.DstPort = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.DstUniqSubnetId = params.get("DstUniqSubnetId")
+        self.DstIp = params.get("DstIp")
+        self.DstPort = params.get("DstPort")
+
+
+class ModifySubscribeVipVportResponse(AbstractModel):
+    """ModifySubscribeVipVport response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySyncJobRequest(AbstractModel):
     """ModifySyncJob request structure.
 
@@ -986,6 +1638,74 @@ For databases with a database-table structure:
 
 class ModifySyncJobResponse(AbstractModel):
     """ModifySyncJob response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class OfflineIsolatedSubscribeRequest(AbstractModel):
+    """OfflineIsolatedSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        """
+        self.SubscribeId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+
+
+class OfflineIsolatedSubscribeResponse(AbstractModel):
+    """OfflineIsolatedSubscribe response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetSubscribeRequest(AbstractModel):
+    """ResetSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        """
+        self.SubscribeId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+
+
+class ResetSubscribeResponse(AbstractModel):
+    """ResetSubscribe response structure.
 
     """
 
@@ -1179,6 +1899,169 @@ class StopMigrateJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SubscribeInfo(AbstractModel):
+    """Subscription instance information
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param SubscribeName: Data subscription instance name
+        :type SubscribeName: str
+        :param ChannelId: ID of channel bound to data subscription instance
+        :type ChannelId: str
+        :param Product: Name of product bound to data subscription instance
+        :type Product: str
+        :param InstanceId: ID of database instance bound to data subscription instance
+        :type InstanceId: str
+        :param InstanceStatus: Status of database instance bound to data subscription instance
+        :type InstanceStatus: str
+        :param SubsStatus: Data subscription instance configuration status. Valid values: unconfigure, configuring, configured
+        :type SubsStatus: str
+        :param ModifyTime: Last modified time
+        :type ModifyTime: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param IsolateTime: Isolation time
+        :type IsolateTime: str
+        :param ExpireTime: Expiration time
+        :type ExpireTime: str
+        :param OfflineTime: Deactivation time
+        :type OfflineTime: str
+        :param ConsumeStartTime: Last modified consumption starting time point. If it has never been modified, this field is 0
+        :type ConsumeStartTime: str
+        :param Region: Data subscription instance region
+        :type Region: str
+        :param PayType: Billing mode. 1: pay-as-you-go
+        :type PayType: int
+        :param Vip: Data subscription instance VIP
+        :type Vip: str
+        :param Vport: Data subscription instance Vport
+        :type Vport: int
+        :param UniqVpcId: Unique ID of the VPC where the data subscription instance VIP resides
+        :type UniqVpcId: str
+        :param UniqSubnetId: Unique ID of the subnet where the data subscription instance VIP resides
+        :type UniqSubnetId: str
+        :param Status: Data subscription instance status. Valid values: creating, normal, isolating, isolated, offlining, offline
+        :type Status: str
+        :param SdkConsumedTime: Timestamp of the last message confirmed by the SDK. If the SDK keeps consuming, this field can also be used as the current consumption time point of the SDK
+        :type SdkConsumedTime: str
+        """
+        self.SubscribeId = None
+        self.SubscribeName = None
+        self.ChannelId = None
+        self.Product = None
+        self.InstanceId = None
+        self.InstanceStatus = None
+        self.SubsStatus = None
+        self.ModifyTime = None
+        self.CreateTime = None
+        self.IsolateTime = None
+        self.ExpireTime = None
+        self.OfflineTime = None
+        self.ConsumeStartTime = None
+        self.Region = None
+        self.PayType = None
+        self.Vip = None
+        self.Vport = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.Status = None
+        self.SdkConsumedTime = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.SubscribeName = params.get("SubscribeName")
+        self.ChannelId = params.get("ChannelId")
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.SubsStatus = params.get("SubsStatus")
+        self.ModifyTime = params.get("ModifyTime")
+        self.CreateTime = params.get("CreateTime")
+        self.IsolateTime = params.get("IsolateTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.OfflineTime = params.get("OfflineTime")
+        self.ConsumeStartTime = params.get("ConsumeStartTime")
+        self.Region = params.get("Region")
+        self.PayType = params.get("PayType")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.Status = params.get("Status")
+        self.SdkConsumedTime = params.get("SdkConsumedTime")
+
+
+class SubscribeObject(AbstractModel):
+    """Data subscription object
+
+    """
+
+    def __init__(self):
+        """
+        :param ObjectsType: Data subscription object type. 0: database, 1: database table
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ObjectsType: int
+        :param DatabaseName: Name of subscribed database
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DatabaseName: str
+        :param TableNames: Array of table names in subscribed database
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TableNames: list of str
+        """
+        self.ObjectsType = None
+        self.DatabaseName = None
+        self.TableNames = None
+
+
+    def _deserialize(self, params):
+        self.ObjectsType = params.get("ObjectsType")
+        self.DatabaseName = params.get("DatabaseName")
+        self.TableNames = params.get("TableNames")
+
+
+class SubscribeRegionConf(AbstractModel):
+    """Sale information of data subscription region
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionName: Region name, such as Guangzhou
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionName: str
+        :param Region: Region ID, such as ap-guangzhou
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param Area: Region name, such as South China
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Area: str
+        :param IsDefaultRegion: Whether it is the default region. 0: no, 1: yes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsDefaultRegion: int
+        :param Status: Purchasable status of current region. 1: normal, 2: beta test, 3: not purchasable
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        """
+        self.RegionName = None
+        self.Region = None
+        self.Area = None
+        self.IsDefaultRegion = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RegionName = params.get("RegionName")
+        self.Region = params.get("Region")
+        self.Area = params.get("Area")
+        self.IsDefaultRegion = params.get("IsDefaultRegion")
+        self.Status = params.get("Status")
 
 
 class SyncCheckStepInfo(AbstractModel):

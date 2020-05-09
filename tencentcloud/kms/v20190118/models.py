@@ -202,6 +202,60 @@ class CreateKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateWhiteBoxKeyRequest(AbstractModel):
+    """CreateWhiteBoxKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter should be 1 to 60 letters, digits, `-`, and `_`; it must begin with a letter or digit and cannot be left empty.
+        :type Alias: str
+        :param Algorithm: All algorithm types for creating keys. Valid values: AES_256, SM4
+        :type Algorithm: str
+        :param Description: Key description of up to 1024 bytes
+        :type Description: str
+        """
+        self.Alias = None
+        self.Algorithm = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Alias = params.get("Alias")
+        self.Algorithm = params.get("Algorithm")
+        self.Description = params.get("Description")
+
+
+class CreateWhiteBoxKeyResponse(AbstractModel):
+    """CreateWhiteBoxKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EncryptKey: Base64-encoded encryption key
+        :type EncryptKey: str
+        :param DecryptKey: Base64-encoded decryption key
+        :type DecryptKey: str
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EncryptKey = None
+        self.DecryptKey = None
+        self.KeyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EncryptKey = params.get("EncryptKey")
+        self.DecryptKey = params.get("DecryptKey")
+        self.KeyId = params.get("KeyId")
+        self.RequestId = params.get("RequestId")
+
+
 class DecryptRequest(AbstractModel):
     """Decrypt request structure.
 
@@ -259,6 +313,40 @@ class DeleteImportedKeyMaterialRequest(AbstractModel):
 
 class DeleteImportedKeyMaterialResponse(AbstractModel):
     """DeleteImportedKeyMaterial response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteWhiteBoxKeyRequest(AbstractModel):
+    """DeleteWhiteBoxKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DeleteWhiteBoxKeyResponse(AbstractModel):
+    """DeleteWhiteBoxKey response structure.
 
     """
 
@@ -359,6 +447,154 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWhiteBoxDecryptKeyRequest(AbstractModel):
+    """DescribeWhiteBoxDecryptKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DescribeWhiteBoxDecryptKeyResponse(AbstractModel):
+    """DescribeWhiteBoxDecryptKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DecryptKey: Base64-encoded white-box decryption key
+        :type DecryptKey: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DecryptKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DecryptKey = params.get("DecryptKey")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
+    """DescribeWhiteBoxKeyDetails request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyStatus: Filter: key status. 0: disabled, 1: enabled
+        :type KeyStatus: int
+        """
+        self.KeyStatus = None
+
+
+    def _deserialize(self, params):
+        self.KeyStatus = params.get("KeyStatus")
+
+
+class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
+    """DescribeWhiteBoxKeyDetails response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyInfos: White-box key information list
+        :type KeyInfos: list of WhiteboxKeyInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.KeyInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeyInfos") is not None:
+            self.KeyInfos = []
+            for item in params.get("KeyInfos"):
+                obj = WhiteboxKeyInfo()
+                obj._deserialize(item)
+                self.KeyInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWhiteBoxKeyRequest(AbstractModel):
+    """DescribeWhiteBoxKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DescribeWhiteBoxKeyResponse(AbstractModel):
+    """DescribeWhiteBoxKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyInfo: White-box key information
+        :type KeyInfo: :class:`tencentcloud.kms.v20190118.models.WhiteboxKeyInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.KeyInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeyInfo") is not None:
+            self.KeyInfo = WhiteboxKeyInfo()
+            self.KeyInfo._deserialize(params.get("KeyInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWhiteBoxServiceStatusRequest(AbstractModel):
+    """DescribeWhiteBoxServiceStatus request structure.
+
+    """
+
+
+class DescribeWhiteBoxServiceStatusResponse(AbstractModel):
+    """DescribeWhiteBoxServiceStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceEnabled: Whether the user's white-box key service is available
+        :type ServiceEnabled: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ServiceEnabled = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceEnabled = params.get("ServiceEnabled")
+        self.RequestId = params.get("RequestId")
+
+
 class DisableKeyRequest(AbstractModel):
     """DisableKey request structure.
 
@@ -413,6 +649,74 @@ class DisableKeysRequest(AbstractModel):
 
 class DisableKeysResponse(AbstractModel):
     """DisableKeys response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisableWhiteBoxKeyRequest(AbstractModel):
+    """DisableWhiteBoxKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DisableWhiteBoxKeyResponse(AbstractModel):
+    """DisableWhiteBoxKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisableWhiteBoxKeysRequest(AbstractModel):
+    """DisableWhiteBoxKeys request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyIds: List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.
+        :type KeyIds: list of str
+        """
+        self.KeyIds = None
+
+
+    def _deserialize(self, params):
+        self.KeyIds = params.get("KeyIds")
+
+
+class DisableWhiteBoxKeysResponse(AbstractModel):
+    """DisableWhiteBoxKeys response structure.
 
     """
 
@@ -494,6 +798,124 @@ class EnableKeysResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableWhiteBoxKeyRequest(AbstractModel):
+    """EnableWhiteBoxKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class EnableWhiteBoxKeyResponse(AbstractModel):
+    """EnableWhiteBoxKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableWhiteBoxKeysRequest(AbstractModel):
+    """EnableWhiteBoxKeys request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyIds: List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.
+        :type KeyIds: list of str
+        """
+        self.KeyIds = None
+
+
+    def _deserialize(self, params):
+        self.KeyIds = params.get("KeyIds")
+
+
+class EnableWhiteBoxKeysResponse(AbstractModel):
+    """EnableWhiteBoxKeys response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EncryptByWhiteBoxRequest(AbstractModel):
+    """EncryptByWhiteBox request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        :param PlainText: Base64-encoded text to be encrypted. The size of the original text cannot exceed 4 KB.
+        :type PlainText: str
+        :param InitializationVector: Base64-encoded initialization vector of 16 bytes, which will be used by the encryption algorithm. If this parameter is not passed in, the backend service will generate a random one. You should save this value as a parameter for decryption.
+        :type InitializationVector: str
+        """
+        self.KeyId = None
+        self.PlainText = None
+        self.InitializationVector = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.PlainText = params.get("PlainText")
+        self.InitializationVector = params.get("InitializationVector")
+
+
+class EncryptByWhiteBoxResponse(AbstractModel):
+    """EncryptByWhiteBox response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InitializationVector: Base64-encoded initialization vector, which will be used by the encryption algorithm. If this parameter is passed in by the caller, it will be returned as-is; otherwise, the backend service will generate a random one and return it.
+        :type InitializationVector: str
+        :param CipherText: Base64-encoded ciphertext after encryption
+        :type CipherText: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InitializationVector = None
+        self.CipherText = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InitializationVector = params.get("InitializationVector")
+        self.CipherText = params.get("CipherText")
         self.RequestId = params.get("RequestId")
 
 
@@ -1136,3 +1558,60 @@ class UpdateKeyDescriptionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class WhiteboxKeyInfo(AbstractModel):
+    """White-box key information
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Globally unique white-box key ID
+        :type KeyId: str
+        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter should be 1 to 60 letters, digits, `-`, and `_`; it must begin with a letter or digit and cannot be left empty.
+        :type Alias: str
+        :param CreatorUin: Creator
+        :type CreatorUin: int
+        :param Description: Key description information
+        :type Description: str
+        :param CreateTime: Key creation time in Unix timestamp
+        :type CreateTime: int
+        :param Status: White-box key status. Valid values: Enabled, Disabled
+        :type Status: str
+        :param OwnerUin: Creator
+        :type OwnerUin: int
+        :param Algorithm: Key algorithm type
+        :type Algorithm: str
+        :param EncryptKey: Base64-encoded white-box encryption key
+        :type EncryptKey: str
+        :param DecryptKey: Base64-encoded white-box decryption key
+        :type DecryptKey: str
+        :param ResourceId: 
+        :type ResourceId: str
+        """
+        self.KeyId = None
+        self.Alias = None
+        self.CreatorUin = None
+        self.Description = None
+        self.CreateTime = None
+        self.Status = None
+        self.OwnerUin = None
+        self.Algorithm = None
+        self.EncryptKey = None
+        self.DecryptKey = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Alias = params.get("Alias")
+        self.CreatorUin = params.get("CreatorUin")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.OwnerUin = params.get("OwnerUin")
+        self.Algorithm = params.get("Algorithm")
+        self.EncryptKey = params.get("EncryptKey")
+        self.DecryptKey = params.get("DecryptKey")
+        self.ResourceId = params.get("ResourceId")

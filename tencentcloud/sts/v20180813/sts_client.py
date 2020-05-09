@@ -26,7 +26,7 @@ class StsClient(AbstractClient):
 
 
     def AssumeRole(self, request):
-        """This API is used to apply to assume a role.
+        """This API is used to request for the temporary security credentials of a role.
 
         :param request: Request instance for AssumeRole.
         :type request: :class:`tencentcloud.sts.v20180813.models.AssumeRoleRequest`
@@ -54,7 +54,7 @@ class StsClient(AbstractClient):
 
 
     def AssumeRoleWithSAML(self, request):
-        """This API is used to apply for temporary credentials for a role based on SAML assertion.
+        """This API is used to request for the temporary credentials for a role that has been authenticated via a SAML assertion.
 
         :param request: Request instance for AssumeRoleWithSAML.
         :type request: :class:`tencentcloud.sts.v20180813.models.AssumeRoleWithSAMLRequest`

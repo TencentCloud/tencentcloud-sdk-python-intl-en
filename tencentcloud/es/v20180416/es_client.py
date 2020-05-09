@@ -81,6 +81,62 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceLogs(self, request):
+        """This API is used to query the eligible ES cluster logs in the current region.
+
+        :param request: Request instance for DescribeInstanceLogs.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstanceLogsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeInstanceLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceOperations(self, request):
+        """This API is used to query the operation history of an instance by specified criteria.
+
+        :param request: Request instance for DescribeInstanceOperations.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstanceOperationsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeInstanceOperationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceOperations", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceOperationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstances(self, request):
         """This API is used to query all eligible instances in the current region under the current account.
 

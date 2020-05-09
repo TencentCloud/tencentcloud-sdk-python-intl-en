@@ -236,6 +236,150 @@ class DeleteInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceLogsRequest(AbstractModel):
+    """DescribeInstanceLogs request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param LogType: Log type. Default value: 1
+<li>1: master log</li>
+<li>2: search slow log</li>
+<li>3: index slow log</li>
+<li>4: GC log</li>
+        :type LogType: int
+        :param SearchKey: Search keyword, which supports LUCENE syntax, such as `level:WARN`, `ip:1.1.1.1`, and `message:test-index`
+        :type SearchKey: str
+        :param StartTime: Log start time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
+        :type StartTime: str
+        :param EndTime: Log end time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
+        :type EndTime: str
+        :param Offset: Pagination start value. Default value: 0
+        :type Offset: int
+        :param Limit: Number of entries per page. Default value: 100. Maximum value: 100
+        :type Limit: int
+        :param OrderByType: Time sorting order. Default value: 0
+<li>0: descending</li>
+<li>1: ascending</li>
+        :type OrderByType: int
+        """
+        self.InstanceId = None
+        self.LogType = None
+        self.SearchKey = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LogType = params.get("LogType")
+        self.SearchKey = params.get("SearchKey")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderByType = params.get("OrderByType")
+
+
+class DescribeInstanceLogsResponse(AbstractModel):
+    """DescribeInstanceLogs response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of returned logs
+        :type TotalCount: int
+        :param InstanceLogList: Log details list
+        :type InstanceLogList: list of InstanceLog
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceLogList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceLogList") is not None:
+            self.InstanceLogList = []
+            for item in params.get("InstanceLogList"):
+                obj = InstanceLog()
+                obj._deserialize(item)
+                self.InstanceLogList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceOperationsRequest(AbstractModel):
+    """DescribeInstanceOperations request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param StartTime: Start time, such as "2019-03-07 16:30:39"
+        :type StartTime: str
+        :param EndTime: End time, such as "2019-03-30 20:18:03"
+        :type EndTime: str
+        :param Offset: Pagination start value
+        :type Offset: int
+        :param Limit: Number of entries per page
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeInstanceOperationsResponse(AbstractModel):
+    """DescribeInstanceOperations response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of operation records
+        :type TotalCount: int
+        :param Operations: Operation history
+        :type Operations: list of Operation
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Operations = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Operations") is not None:
+            self.Operations = []
+            for item in params.get("Operations"):
+                obj = Operation()
+                obj._deserialize(item)
+                self.Operations.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstancesRequest(AbstractModel):
     """DescribeInstances request structure.
 
@@ -680,6 +824,81 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.SecurityType = params.get("SecurityType")
 
 
+class InstanceLog(AbstractModel):
+    """ES cluster log details
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: Log time
+        :type Time: str
+        :param Level: Log level
+        :type Level: str
+        :param Ip: Cluster node IP
+        :type Ip: str
+        :param Message: Log content
+        :type Message: str
+        """
+        self.Time = None
+        self.Level = None
+        self.Ip = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Level = params.get("Level")
+        self.Ip = params.get("Ip")
+        self.Message = params.get("Message")
+
+
+class KeyValue(AbstractModel):
+    """`OperationDetail` uses an array of this structure to describe the old and new configuration information
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: Key
+        :type Key: str
+        :param Value: Value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
+class LocalDiskInfo(AbstractModel):
+    """Local disk information of node
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalDiskType: Local disk type <li>LOCAL_SATA: big data </li><li>NVME_SSD: high IO</li>
+        :type LocalDiskType: str
+        :param LocalDiskSize: Size of a single local disk
+        :type LocalDiskSize: int
+        :param LocalDiskCount: Number of local disks
+        :type LocalDiskCount: int
+        """
+        self.LocalDiskType = None
+        self.LocalDiskSize = None
+        self.LocalDiskCount = None
+
+
+    def _deserialize(self, params):
+        self.LocalDiskType = params.get("LocalDiskType")
+        self.LocalDiskSize = params.get("LocalDiskSize")
+        self.LocalDiskCount = params.get("LocalDiskCount")
+
+
 class MasterNodeInfo(AbstractModel):
     """Information of the dedicated master node in an instance
 
@@ -741,12 +960,19 @@ Default value: hotData
         :type DiskType: str
         :param DiskSize: Node disk size in GB
         :type DiskSize: int
+        :param LocalDiskInfo: Local disk information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
+        :param DiskCount: Number of node disks
+        :type DiskCount: int
         """
         self.NodeNum = None
         self.NodeType = None
         self.Type = None
         self.DiskType = None
         self.DiskSize = None
+        self.LocalDiskInfo = None
+        self.DiskCount = None
 
 
     def _deserialize(self, params):
@@ -755,6 +981,89 @@ Default value: hotData
         self.Type = params.get("Type")
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
+        if params.get("LocalDiskInfo") is not None:
+            self.LocalDiskInfo = LocalDiskInfo()
+            self.LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
+        self.DiskCount = params.get("DiskCount")
+
+
+class Operation(AbstractModel):
+    """ES cluster operation details
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: Unique operation ID
+        :type Id: int
+        :param StartTime: Operation start time
+        :type StartTime: str
+        :param Type: Operation type
+        :type Type: str
+        :param Detail: Operation details
+        :type Detail: :class:`tencentcloud.es.v20180416.models.OperationDetail`
+        :param Result: Operation result
+        :type Result: str
+        :param Tasks: Workflow task information
+        :type Tasks: list of TaskDetail
+        :param Progress: Operation progress
+        :type Progress: float
+        """
+        self.Id = None
+        self.StartTime = None
+        self.Type = None
+        self.Detail = None
+        self.Result = None
+        self.Tasks = None
+        self.Progress = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.StartTime = params.get("StartTime")
+        self.Type = params.get("Type")
+        if params.get("Detail") is not None:
+            self.Detail = OperationDetail()
+            self.Detail._deserialize(params.get("Detail"))
+        self.Result = params.get("Result")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = TaskDetail()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.Progress = params.get("Progress")
+
+
+class OperationDetail(AbstractModel):
+    """Operation details
+
+    """
+
+    def __init__(self):
+        """
+        :param OldInfo: Original instance configuration information
+        :type OldInfo: list of KeyValue
+        :param NewInfo: Updated instance configuration information
+        :type NewInfo: list of KeyValue
+        """
+        self.OldInfo = None
+        self.NewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("OldInfo") is not None:
+            self.OldInfo = []
+            for item in params.get("OldInfo"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.OldInfo.append(obj)
+        if params.get("NewInfo") is not None:
+            self.NewInfo = []
+            for item in params.get("NewInfo"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.NewInfo.append(obj)
 
 
 class RestartInstanceRequest(AbstractModel):
@@ -795,6 +1104,51 @@ class RestartInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SubTaskDetail(AbstractModel):
+    """Information of subtask in workflow task in the instance operation history (such as each check item in a upgrade check task)
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Subtask name
+        :type Name: str
+        :param Result: Subtask result
+        :type Result: bool
+        :param ErrMsg: Subtask error message
+        :type ErrMsg: str
+        :param Type: Subtask type
+        :type Type: str
+        :param Status: Subtask status. 0: processing, 1: succeeded, -1: failed
+        :type Status: int
+        :param FailedIndices: Name of the index for which the check for upgrade failed
+        :type FailedIndices: list of str
+        :param FinishTime: Subtask end time
+        :type FinishTime: str
+        :param Level: Subtask level. 1: warning, 2: failed
+        :type Level: int
+        """
+        self.Name = None
+        self.Result = None
+        self.ErrMsg = None
+        self.Type = None
+        self.Status = None
+        self.FailedIndices = None
+        self.FinishTime = None
+        self.Level = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Result = params.get("Result")
+        self.ErrMsg = params.get("ErrMsg")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.FailedIndices = params.get("FailedIndices")
+        self.FinishTime = params.get("FinishTime")
+        self.Level = params.get("Level")
+
+
 class TagInfo(AbstractModel):
     """Instance tag information
 
@@ -814,6 +1168,40 @@ class TagInfo(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+
+
+class TaskDetail(AbstractModel):
+    """Information of workflow task in instance operation history
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Task name
+        :type Name: str
+        :param Progress: Task progress
+        :type Progress: float
+        :param FinishTime: Task completion time
+        :type FinishTime: str
+        :param SubTasks: Subtask
+        :type SubTasks: list of SubTaskDetail
+        """
+        self.Name = None
+        self.Progress = None
+        self.FinishTime = None
+        self.SubTasks = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Progress = params.get("Progress")
+        self.FinishTime = params.get("FinishTime")
+        if params.get("SubTasks") is not None:
+            self.SubTasks = []
+            for item in params.get("SubTasks"):
+                obj = SubTaskDetail()
+                obj._deserialize(item)
+                self.SubTasks.append(obj)
 
 
 class UpdateInstanceRequest(AbstractModel):
@@ -865,6 +1253,8 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
         :type KibanaPublicAccess: str
         :param KibanaPrivateAccess: Private network access status of Kibana
         :type KibanaPrivateAccess: str
+        :param BasicSecurityType: Enables or disables user authentication for ES Basic Edition v6.8 and above
+        :type BasicSecurityType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -884,6 +1274,7 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
         self.EsPublicAcl = None
         self.KibanaPublicAccess = None
         self.KibanaPrivateAccess = None
+        self.BasicSecurityType = None
 
 
     def _deserialize(self, params):
@@ -916,6 +1307,7 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
             self.EsPublicAcl._deserialize(params.get("EsPublicAcl"))
         self.KibanaPublicAccess = params.get("KibanaPublicAccess")
         self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
+        self.BasicSecurityType = params.get("BasicSecurityType")
 
 
 class UpdateInstanceResponse(AbstractModel):
@@ -944,7 +1336,7 @@ class UpgradeInstanceRequest(AbstractModel):
         """
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param EsVersion: Target ES version
+        :param EsVersion: Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1
         :type EsVersion: str
         :param CheckOnly: Whether to check for upgrade only. Default value: false
         :type CheckOnly: bool

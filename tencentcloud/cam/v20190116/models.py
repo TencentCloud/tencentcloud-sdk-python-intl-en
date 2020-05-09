@@ -2346,6 +2346,52 @@ class UpdateGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdatePolicyRequest(AbstractModel):
+    """UpdatePolicy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param PolicyName: Policy name
+        :type PolicyName: str
+        :param Description: Policy description
+        :type Description: str
+        :param PolicyDocument: Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API
+        :type PolicyDocument: str
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+        self.Description = None
+        self.PolicyDocument = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.Description = params.get("Description")
+        self.PolicyDocument = params.get("PolicyDocument")
+
+
+class UpdatePolicyResponse(AbstractModel):
+    """UpdatePolicy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateRoleConsoleLoginRequest(AbstractModel):
     """UpdateRoleConsoleLogin request structure.
 
