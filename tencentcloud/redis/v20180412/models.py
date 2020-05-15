@@ -401,14 +401,18 @@ class DelayDistribution(AbstractModel):
         :type Ladder: int
         :param Size: Size
         :type Size: int
+        :param Updatetime: Modification time
+        :type Updatetime: int
         """
         self.Ladder = None
         self.Size = None
+        self.Updatetime = None
 
 
     def _deserialize(self, params):
         self.Ladder = params.get("Ladder")
         self.Size = params.get("Size")
+        self.Updatetime = params.get("Updatetime")
 
 
 class DeleteInstanceAccountRequest(AbstractModel):
@@ -958,7 +962,7 @@ class DescribeInstanceMonitorTookDistRequest(AbstractModel):
         :type InstanceId: str
         :param Date: Time, such as "20190219"
         :type Date: str
-        :param SpanType: Request type. 1: string type; 2: all types
+        :param SpanType: Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours
         :type SpanType: int
         """
         self.InstanceId = None

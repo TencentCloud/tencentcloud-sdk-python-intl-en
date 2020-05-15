@@ -2079,6 +2079,62 @@ class DescribeDBInstanceGTIDResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceInfoRequest(AbstractModel):
+    """DescribeDBInstanceInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBInstanceInfoResponse(AbstractModel):
+    """DescribeDBInstanceInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param InstanceName: Instance name.
+        :type InstanceName: str
+        :param Encryption: Whether encryption is enabled. YES: enabled, NO: not enabled.
+        :type Encryption: str
+        :param KeyId: Encryption key ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyId: str
+        :param KeyRegion: Key region.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyRegion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Encryption = None
+        self.KeyId = None
+        self.KeyRegion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Encryption = params.get("Encryption")
+        self.KeyId = params.get("KeyId")
+        self.KeyRegion = params.get("KeyRegion")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstanceRebootTimeRequest(AbstractModel):
     """DescribeDBInstanceRebootTime request structure.
 
@@ -3081,6 +3137,66 @@ class DescribeRollbackRangeTimeResponse(AbstractModel):
             self.Items = []
             for item in params.get("Items"):
                 obj = InstanceRollbackRangeTime()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRollbackTaskDetailRequest(AbstractModel):
+    """DescribeRollbackTaskDetail request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID, which is the same as the instance ID displayed in the TencentDB Console. You can use the [DescribeDBInstances API](https://cloud.tencent.com/document/api/236/15872) to query the ID.
+        :type InstanceId: str
+        :param AsyncRequestId: Async task ID.
+        :type AsyncRequestId: str
+        :param Limit: Pagination parameter, i.e., the number of entries to be returned for a single request. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.AsyncRequestId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeRollbackTaskDetailResponse(AbstractModel):
+    """DescribeRollbackTaskDetail response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param Items: Rollback task details.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Items: list of RollbackTask
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RollbackTask()
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.RequestId = params.get("RequestId")
@@ -5838,8 +5954,10 @@ class RollbackDBName(AbstractModel):
     def __init__(self):
         """
         :param DatabaseName: Original database name before rollback
+Note: this field may return null, indicating that no valid values can be obtained.
         :type DatabaseName: str
         :param NewDatabaseName: New database name after rollback
+Note: this field may return null, indicating that no valid values can be obtained.
         :type NewDatabaseName: str
         """
         self.DatabaseName = None
@@ -5859,14 +5977,17 @@ class RollbackInstancesInfo(AbstractModel):
     def __init__(self):
         """
         :param InstanceId: TencentDB instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
         :param Strategy: Rollback policy. Value range: table, db, full. Default value: full. Table: expedited rollback mode, where only the selected table-level backups and binlogs are imported; for cross-table rollback, if the associated tables are not selected simultaneously, the rollback will fail; the parameter `Databases` must be empty under this mode. db: fast rollback mode, where only the selected database-level backups and binlogs are imported; for cross-database rollback, if the associated databases are not selected simultaneously, the rollback will fail. full: ordinary rollback mode, which imports all the backups and binlogs of the instance at a relatively low speed.
         :type Strategy: str
         :param RollbackTime: Database rollback time in the format of yyyy-mm-dd hh:mm:ss
         :type RollbackTime: str
         :param Databases: Information of the databases to be rolled back, which means rollback at the database level
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Databases: list of RollbackDBName
         :param Tables: Information of the tables to be rolled back, which means rollback at the table level
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Tables: list of RollbackTables
         """
         self.InstanceId = None
@@ -5902,8 +6023,10 @@ class RollbackTableName(AbstractModel):
     def __init__(self):
         """
         :param TableName: Original table name before rollback
+Note: this field may return null, indicating that no valid values can be obtained.
         :type TableName: str
         :param NewTableName: New table name after rollback
+Note: this field may return null, indicating that no valid values can be obtained.
         :type NewTableName: str
         """
         self.TableName = None
@@ -5923,8 +6046,10 @@ class RollbackTables(AbstractModel):
     def __init__(self):
         """
         :param Database: Database name
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Database: str
         :param Table: Table details
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Table: list of RollbackTableName
         """
         self.Database = None
@@ -5939,6 +6064,49 @@ class RollbackTables(AbstractModel):
                 obj = RollbackTableName()
                 obj._deserialize(item)
                 self.Table.append(obj)
+
+
+class RollbackTask(AbstractModel):
+    """Rollback task details
+
+    """
+
+    def __init__(self):
+        """
+        :param Info: Task execution information.
+        :type Info: str
+        :param Status: Task execution result. Valid values: INITIAL: initializing, RUNNING: running, SUCCESS: succeeded, FAILED: failed, KILLED: terminated, REMOVED: deleted, PAUSED: paused.
+        :type Status: str
+        :param Progress: Task execution progress. Value range: [0,100].
+        :type Progress: int
+        :param StartTime: Task start time.
+        :type StartTime: str
+        :param EndTime: Task end time.
+        :type EndTime: str
+        :param Detail: Rollback task details.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Detail: list of RollbackInstancesInfo
+        """
+        self.Info = None
+        self.Status = None
+        self.Progress = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Detail = None
+
+
+    def _deserialize(self, params):
+        self.Info = params.get("Info")
+        self.Status = params.get("Status")
+        self.Progress = params.get("Progress")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("Detail") is not None:
+            self.Detail = []
+            for item in params.get("Detail"):
+                obj = RollbackInstancesInfo()
+                obj._deserialize(item)
+                self.Detail.append(obj)
 
 
 class RollbackTimeRange(AbstractModel):

@@ -1052,12 +1052,18 @@ class DstInfo(AbstractModel):
         :type Port: int
         :param ReadOnly: Only valid for MySQL currently. For instance-level migration, the value range is: 1 (read-only), 0 (read/write)
         :type ReadOnly: int
+        :param User: Target database account
+        :type User: str
+        :param Password: Target database password
+        :type Password: str
         """
         self.InstanceId = None
         self.Region = None
         self.Ip = None
         self.Port = None
         self.ReadOnly = None
+        self.User = None
+        self.Password = None
 
 
     def _deserialize(self, params):
@@ -1066,6 +1072,8 @@ class DstInfo(AbstractModel):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
         self.ReadOnly = params.get("ReadOnly")
+        self.User = params.get("User")
+        self.Password = params.get("Password")
 
 
 class ErrorInfo(AbstractModel):
@@ -1134,9 +1142,9 @@ class MigrateDetailInfo(AbstractModel):
         :type StepAll: int
         :param StepNow: Current step
         :type StepNow: int
-        :param Progress: Overall progress, such as:
+        :param Progress: Overall progress, such as "10"
         :type Progress: str
-        :param CurrentStepProgress: Progress of the current step, such as:
+        :param CurrentStepProgress: Progress of current step, such as "1"
         :type CurrentStepProgress: str
         :param MasterSlaveDistance: Master/slave lag in MB, which is valid during incremental sync and currently supported by TencentDB for Redis and MySQL
         :type MasterSlaveDistance: int

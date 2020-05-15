@@ -241,8 +241,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param HiveMetaDb: Hive metadata
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HiveMetaDb: str
-        :param ServiceClass: 
+        :param ServiceClass: Cluster type: EMR, CLICKHOUSE, DRUID
+Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceClass: str
+        :param AliasInfo: Alias serialization of all nodes in cluster
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AliasInfo: str
+        :param ProductId: Cluster version ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProductId: int
         """
         self.Id = None
         self.ClusterId = None
@@ -271,6 +278,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Tags = None
         self.HiveMetaDb = None
         self.ServiceClass = None
+        self.AliasInfo = None
+        self.ProductId = None
 
 
     def _deserialize(self, params):
@@ -308,6 +317,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.Tags.append(obj)
         self.HiveMetaDb = params.get("HiveMetaDb")
         self.ServiceClass = params.get("ServiceClass")
+        self.AliasInfo = params.get("AliasInfo")
+        self.ProductId = params.get("ProductId")
 
 
 class CreateInstanceRequest(AbstractModel):
@@ -325,7 +336,11 @@ class CreateInstanceRequest(AbstractModel):
         :type ProductId: int
         :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param Software: List of deployed components. Different `ProductIds` correspond to components on different versions. For example, when `ProductId` is 4, this parameter can be `Software.0=hadoop-2.8.4&Software.1=zookeeper-3.4.9`; when `ProductId` is 2, this parameter can be `Software.0=hadoop-2.7.3&Software.1=zookeeper-3.4.9`.
+        :param Software: List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):
+<li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
+<li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
+<li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>
+<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>
         :type Software: list of str
         :param ResourceSpec: Node resource specification.
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
@@ -343,7 +358,8 @@ class CreateInstanceRequest(AbstractModel):
         :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
-<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>
+<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>
+<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>
         :type TimeSpan: int
         :param TimeUnit: Time unit of instance purchase duration. Valid values:
 <li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
@@ -782,6 +798,8 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 <li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
         :type TimeUnit: str
         :param TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
+<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>
+<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>
         :type TimeSpan: int
         :param ResourceSpec: Node specification queried for price.
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
@@ -794,7 +812,11 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 <li>0: does not enable high availability of node.</li>
 <li>1: enables high availability of node.</li>
         :type SupportHA: int
-        :param Software: List of deployed components.
+        :param Software: List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):
+<li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
+<li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
+<li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>
+<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>
         :type Software: list of str
         :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
@@ -1382,7 +1404,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: Tags bound to node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param AutoFlag: 
+        :param AutoFlag: Whether it is an automatically scalable node. 0: general node, 1: automatically scalable node.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type AutoFlag: int
         """
         self.AppId = None
@@ -1533,13 +1556,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Placement(AbstractModel):
-    """Location information of the cluster instance
+    """Location information of cluster instance
 
     """
 
     def __init__(self):
         """
-        :param ProjectId: ID of the project to which the instance belongs. You can call the `DescribeProject` API and see the `projectId` field in the response to get the value of this parameter. If it is left empty, the default project will be used.
+        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If 0 is entered, the default project will be used.
         :type ProjectId: int
         :param Zone: AZ where the instance resides, such as ap-guangzhou-1. You can call the `DescribeZones` API and see the `Zone` field to get the value of this parameter.
         :type Zone: str
@@ -1654,6 +1677,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: Tag
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
+        :param DiskNum: Number of disks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskNum: int
+        :param LocalDiskNum: Number of local disks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LocalDiskNum: int
         """
         self.Spec = None
         self.StorageType = None
@@ -1666,6 +1695,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DiskCnt = None
         self.InstanceType = None
         self.Tags = None
+        self.DiskNum = None
+        self.LocalDiskNum = None
 
 
     def _deserialize(self, params):
@@ -1690,6 +1721,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.DiskNum = params.get("DiskNum")
+        self.LocalDiskNum = params.get("LocalDiskNum")
 
 
 class Resource(AbstractModel):

@@ -115,6 +115,8 @@ class Address(AbstractModel):
         :type CascadeRelease: bool
         :param EipAlgType: Type of the protocol used in EIP ALG
         :type EipAlgType: :class:`tencentcloud.vpc.v20170312.models.AlgType`
+        :param InternetServiceProvider: The ISP of an EIP/Elastic IP, with possible return values currently including "CMCC", "CTCC", "CUCC" and "BGP"
+        :type InternetServiceProvider: str
         """
         self.AddressId = None
         self.AddressName = None
@@ -130,6 +132,7 @@ class Address(AbstractModel):
         self.AddressType = None
         self.CascadeRelease = None
         self.EipAlgType = None
+        self.InternetServiceProvider = None
 
 
     def _deserialize(self, params):
@@ -149,6 +152,28 @@ class Address(AbstractModel):
         if params.get("EipAlgType") is not None:
             self.EipAlgType = AlgType()
             self.EipAlgType._deserialize(params.get("EipAlgType"))
+        self.InternetServiceProvider = params.get("InternetServiceProvider")
+
+
+class AddressChargePrepaid(AbstractModel):
+    """EIP cost object
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: Purchase duration of instance
+        :type Period: int
+        :param RenewFlag: Whether auto-renewal is enabled
+        :type RenewFlag: str
+        """
+        self.Period = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
 
 
 class AddressTemplate(AbstractModel):
@@ -318,9 +343,9 @@ Whether the Anycast EIP can be bound to CLB instances.
 <ul style="margin:0"><li>Valid for users who have activated the AIA. Values:<ul><li>TRUE: the Anycast EIP can be bound to CLB instances.</li>
 <li>FALSE: the Anycast EIP can be bound to CVMs, NAT gateways, and HAVIPs.</li></ul>Default: FALSE.</li></ul>
         :type ApplicableForCLB: bool
-        :param Tags: 
+        :param Tags: List of tags to be bound.
         :type Tags: list of Tag
-        :param BandwidthPackageId: 
+        :param BandwidthPackageId: The unique ID of a BGP bandwidth package. If you configure this parameter and set InternetChargeType as BANDWIDTH_PACKAGE, the new EIP is added to this package and billed by the bandwidth package mode.
         :type BandwidthPackageId: str
         """
         self.AddressCount = None
@@ -385,9 +410,9 @@ class AssignIpv6AddressesRequest(AbstractModel):
         """
         :param NetworkInterfaceId: The `ID` of the ENI instance, such as `eni-m6dyj72l`.
         :type NetworkInterfaceId: str
-        :param Ipv6Addresses: The specified `IPv6` address list. You can specify a maximum of 10 at one time. The quota is calculated together with the `Ipv6AddressCount` input parameter.
+        :param Ipv6Addresses: A list of `IPv6` addresses. You can specify a maximum of 10 at one time. The quota is calculated together with that of `Ipv6AddressCount`, a required input parameter alternative to this one.
         :type Ipv6Addresses: list of Ipv6Address
-        :param Ipv6AddressCount: The number of automatically assigned `IPv6` addresses. The total number of private IP addresses cannot exceed the quota. The quota is calculated together with the `Ipv6Addresses` input parameter.
+        :param Ipv6AddressCount: The number of automatically assigned `IPv6` addresses. The total number of private IP addresses cannot exceed the quota. The quota is calculated together with that of `Ipv6Addresses`, a required input parameter alternative to this one.
         :type Ipv6AddressCount: int
         """
         self.NetworkInterfaceId = None
@@ -531,9 +556,9 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
         """
         :param NetworkInterfaceId: The ID of the ENI instance, such as `eni-m6dyj72l`.
         :type NetworkInterfaceId: str
-        :param PrivateIpAddresses: The information of the specified private IPs. You can specify a maximum of 10 each time.
+        :param PrivateIpAddresses: The information on private IP addresses, of which you can specify a maximum of 10 at a time. You should provide either this parameter or SecondaryPrivateIpAddressCount, or both.
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param SecondaryPrivateIpAddressCount: The number of private IP addresses that is newly applied for. The total number of private IP addresses cannot exceed the quota.
+        :param SecondaryPrivateIpAddressCount: The number of newly-applied private IP addresses. You should provide either this parameter or PrivateIpAddresses, or both. The total number of private IP addresses cannot exceed the quota. For more information, see<a href="/document/product/576/18527">ENI Use Limits</a>.
         :type SecondaryPrivateIpAddressCount: int
         """
         self.NetworkInterfaceId = None
@@ -686,6 +711,44 @@ class AssociateNetworkAclSubnetsRequest(AbstractModel):
 
 class AssociateNetworkAclSubnetsResponse(AbstractModel):
     """AssociateNetworkAclSubnets response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AssociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
+    """AssociateNetworkInterfaceSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceIds: ENI instance ID, e.g. eni-pxir56ns. You can enter up to 100 instances for each request.
+        :type NetworkInterfaceIds: list of str
+        :param SecurityGroupIds: The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups. You can enter up to 100 instances for each request.
+        :type SecurityGroupIds: list of str
+        """
+        self.NetworkInterfaceIds = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceIds = params.get("NetworkInterfaceIds")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class AssociateNetworkInterfaceSecurityGroupsResponse(AbstractModel):
+    """AssociateNetworkInterfaceSecurityGroups response structure.
 
     """
 
@@ -1060,6 +1123,57 @@ class CcnRoute(AbstractModel):
         self.InstanceUin = params.get("InstanceUin")
 
 
+class CheckAssistantCidrRequest(AbstractModel):
+    """CheckAssistantCidr request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :type VpcId: str
+        :param NewCidrBlocks: Load CIDR blocks to add. CIDR block set; format: e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :type NewCidrBlocks: list of str
+        :param OldCidrBlocks: Load CIDR blocks to delete. CIDR block set; Format: e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :type OldCidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.NewCidrBlocks = None
+        self.OldCidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NewCidrBlocks = params.get("NewCidrBlocks")
+        self.OldCidrBlocks = params.get("OldCidrBlocks")
+
+
+class CheckAssistantCidrResponse(AbstractModel):
+    """CheckAssistantCidr response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ConflictSourceSet: 
+        :type ConflictSourceSet: list of ConflictSource
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ConflictSourceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ConflictSourceSet") is not None:
+            self.ConflictSourceSet = []
+            for item in params.get("ConflictSourceSet"):
+                obj = ConflictSource()
+                obj._deserialize(item)
+                self.ConflictSourceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CheckNetDetectStateRequest(AbstractModel):
     """CheckNetDetectState request structure.
 
@@ -1083,13 +1197,13 @@ If NextHopType is set to PEERCONNECTION, the value of this parameter is the peer
 If NextHopType is set to NAT, the value of this parameter is the NAT gateway ID, such as nat-12345678.
 If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.
         :type NextHopDestination: str
-        :param NetDetectId: The ID of a network detection instance, such as netd-12345678.
+        :param NetDetectId: ID of a network inspector instance, e.g. netd-12345678. Enter at least one of this parameter, VpcId, SubnetId, and NetDetectName. Use NetDetectId if it is present.
         :type NetDetectId: str
-        :param VpcId: The `ID` of a `VPC` instance, such as `vpc-12345678`.
+        :param VpcId: ID of a `VPC` instance, e.g. `vpc-12345678`, which is used together with SubnetId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present.
         :type VpcId: str
-        :param SubnetId: The ID of a subnet instance, such as subnet-12345678.
+        :param SubnetId: ID of a subnet instance, e.g. `subnet-12345678`, which is used together with VpcId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present.
         :type SubnetId: str
-        :param NetDetectName: The name of a network detection instance. The maximum length is 60 characters.
+        :param NetDetectName: The name of a network inspector, up to 60 bytes in length. It is used together with VpcId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present.
         :type NetDetectName: str
         """
         self.DetectDestinationIp = None
@@ -1156,6 +1270,57 @@ class ClassicLinkInstance(AbstractModel):
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.InstanceId = params.get("InstanceId")
+
+
+class ConflictItem(AbstractModel):
+    """Conflict resource items.
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfilctId: Conflict resource ID
+        :type ConfilctId: str
+        :param DestinationItem: Conflict destination resource
+        :type DestinationItem: str
+        """
+        self.ConfilctId = None
+        self.DestinationItem = None
+
+
+    def _deserialize(self, params):
+        self.ConfilctId = params.get("ConfilctId")
+        self.DestinationItem = params.get("DestinationItem")
+
+
+class ConflictSource(AbstractModel):
+    """Conflict resource.
+
+    """
+
+    def __init__(self):
+        """
+        :param ConflictSourceId: Conflict resource ID
+        :type ConflictSourceId: str
+        :param SourceItem: Conflict resource
+        :type SourceItem: str
+        :param ConflictItemSet: Conflict resource items
+        :type ConflictItemSet: list of ConflictItem
+        """
+        self.ConflictSourceId = None
+        self.SourceItem = None
+        self.ConflictItemSet = None
+
+
+    def _deserialize(self, params):
+        self.ConflictSourceId = params.get("ConflictSourceId")
+        self.SourceItem = params.get("SourceItem")
+        if params.get("ConflictItemSet") is not None:
+            self.ConflictItemSet = []
+            for item in params.get("ConflictItemSet"):
+                obj = ConflictItem()
+                obj._deserialize(item)
+                self.ConflictItemSet.append(obj)
 
 
 class CreateAddressTemplateGroupRequest(AbstractModel):
@@ -1246,6 +1411,54 @@ class CreateAddressTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAssistantCidrRequest(AbstractModel):
+    """CreateAssistantCidr request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :type VpcId: str
+        :param CidrBlocks: CIDR set, e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :type CidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.CidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.CidrBlocks = params.get("CidrBlocks")
+
+
+class CreateAssistantCidrResponse(AbstractModel):
+    """CreateAssistantCidr response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AssistantCidrSet: A set of secondary CIDR blocks.
+Note: This field may return null, indicating that no valid value was found.
+        :type AssistantCidrSet: list of AssistantCidr
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AssistantCidrSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AssistantCidrSet") is not None:
+            self.AssistantCidrSet = []
+            for item in params.get("AssistantCidrSet"):
+                obj = AssistantCidr()
+                obj._deserialize(item)
+                self.AssistantCidrSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCcnRequest(AbstractModel):
     """CreateCcn request structure.
 
@@ -1308,6 +1521,50 @@ class CreateCcnResponse(AbstractModel):
         if params.get("Ccn") is not None:
             self.Ccn = CCN()
             self.Ccn._deserialize(params.get("Ccn"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCustomerGatewayRequest(AbstractModel):
+    """CreateCustomerGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayName: Customer gateway can be named freely, but the maximum length is 60 characters.
+        :type CustomerGatewayName: str
+        :param IpAddress: Customer gateway public IP.
+        :type IpAddress: str
+        """
+        self.CustomerGatewayName = None
+        self.IpAddress = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayName = params.get("CustomerGatewayName")
+        self.IpAddress = params.get("IpAddress")
+
+
+class CreateCustomerGatewayResponse(AbstractModel):
+    """CreateCustomerGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGateway: Customer gateway object
+        :type CustomerGateway: :class:`tencentcloud.vpc.v20170312.models.CustomerGateway`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CustomerGateway = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomerGateway") is not None:
+            self.CustomerGateway = CustomerGateway()
+            self.CustomerGateway._deserialize(params.get("CustomerGateway"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1975,6 +2232,60 @@ class CreateSecurityGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
+    """CreateSecurityGroupWithPolicies request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupName: Security group can be named freely, but cannot exceed 60 characters.
+        :type GroupName: str
+        :param GroupDescription: The remarks for the security group. The maximum length is 100 characters.
+        :type GroupDescription: str
+        :param ProjectId: The project id is 0 by default. You can query this in the project management page of the Qcloud console.
+        :type ProjectId: str
+        :param SecurityGroupPolicySet: Security group policy set.
+        :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
+        self.GroupName = None
+        self.GroupDescription = None
+        self.ProjectId = None
+        self.SecurityGroupPolicySet = None
+
+
+    def _deserialize(self, params):
+        self.GroupName = params.get("GroupName")
+        self.GroupDescription = params.get("GroupDescription")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+
+
+class CreateSecurityGroupWithPoliciesResponse(AbstractModel):
+    """CreateSecurityGroupWithPolicies response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroup: Security group object.
+        :type SecurityGroup: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SecurityGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroup") is not None:
+            self.SecurityGroup = SecurityGroup()
+            self.SecurityGroup._deserialize(params.get("SecurityGroup"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateServiceTemplateGroupRequest(AbstractModel):
     """CreateServiceTemplateGroup request structure.
 
@@ -2346,6 +2657,8 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
         :param Zone: The availability zone, such as `ap-guangzhou-2`.
         :type Zone: str
+        :param Type: VPN gateway type. Value: `CCN`, indicates CCN-type VPN gateway
+        :type Type: str
         """
         self.VpcId = None
         self.VpnGatewayName = None
@@ -2353,6 +2666,7 @@ class CreateVpnGatewayRequest(AbstractModel):
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
         self.Zone = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -2364,6 +2678,7 @@ class CreateVpnGatewayRequest(AbstractModel):
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.Zone = params.get("Zone")
+        self.Type = params.get("Type")
 
 
 class CreateVpnGatewayResponse(AbstractModel):
@@ -2389,6 +2704,35 @@ class CreateVpnGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CustomerGateway(AbstractModel):
+    """Customer Gateway
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayId: The unique ID of the customer gateway
+        :type CustomerGatewayId: str
+        :param CustomerGatewayName: Gateway Name
+        :type CustomerGatewayName: str
+        :param IpAddress: Public network address
+        :type IpAddress: str
+        :param CreatedTime: The creation time.
+        :type CreatedTime: str
+        """
+        self.CustomerGatewayId = None
+        self.CustomerGatewayName = None
+        self.IpAddress = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
+        self.CustomerGatewayName = params.get("CustomerGatewayName")
+        self.IpAddress = params.get("IpAddress")
+        self.CreatedTime = params.get("CreatedTime")
+
+
 class CustomerGatewayVendor(AbstractModel):
     """Customer gateway vendor information object.
 
@@ -2412,6 +2756,67 @@ class CustomerGatewayVendor(AbstractModel):
         self.Platform = params.get("Platform")
         self.SoftwareVersion = params.get("SoftwareVersion")
         self.VendorName = params.get("VendorName")
+
+
+class CvmInstance(AbstractModel):
+    """A CVM instance.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC instance ID.
+        :type VpcId: str
+        :param SubnetId: Subnet instance ID.
+        :type SubnetId: str
+        :param InstanceId: CVM instance ID.
+        :type InstanceId: str
+        :param InstanceName: CVM Name
+        :type InstanceName: str
+        :param InstanceState: CVM status.
+        :type InstanceState: str
+        :param CPU: Number of CPU cores in an instance (in core).
+        :type CPU: int
+        :param Memory: Instance’s memory capacity. Unit: GB.
+        :type Memory: int
+        :param CreatedTime: The creation time.
+        :type CreatedTime: str
+        :param InstanceType: 
+        :type InstanceType: str
+        :param EniLimit: Instance ENI quota (including primary ENIs).
+        :type EniLimit: int
+        :param EniIpLimit: Private IP quoata for instance ENIs (including primary ENIs).
+        :type EniIpLimit: int
+        :param InstanceEniCount: The number of ENIs (including primary ENIs) bound to a instance.
+        :type InstanceEniCount: int
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceState = None
+        self.CPU = None
+        self.Memory = None
+        self.CreatedTime = None
+        self.InstanceType = None
+        self.EniLimit = None
+        self.EniIpLimit = None
+        self.InstanceEniCount = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceState = params.get("InstanceState")
+        self.CPU = params.get("CPU")
+        self.Memory = params.get("Memory")
+        self.CreatedTime = params.get("CreatedTime")
+        self.InstanceType = params.get("InstanceType")
+        self.EniLimit = params.get("EniLimit")
+        self.EniIpLimit = params.get("EniIpLimit")
+        self.InstanceEniCount = params.get("InstanceEniCount")
 
 
 class DefaultVpcSubnet(AbstractModel):
@@ -2503,6 +2908,44 @@ class DeleteAddressTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAssistantCidrRequest(AbstractModel):
+    """DeleteAssistantCidr request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :type VpcId: str
+        :param CidrBlocks: CIDR set, e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :type CidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.CidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.CidrBlocks = params.get("CidrBlocks")
+
+
+class DeleteAssistantCidrResponse(AbstractModel):
+    """DeleteAssistantCidr response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteCcnRequest(AbstractModel):
     """DeleteCcn request structure.
 
@@ -2522,6 +2965,40 @@ class DeleteCcnRequest(AbstractModel):
 
 class DeleteCcnResponse(AbstractModel):
     """DeleteCcn response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCustomerGatewayRequest(AbstractModel):
+    """DeleteCustomerGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayId: The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the `DescribeCustomerGateways` API.
+        :type CustomerGatewayId: str
+        """
+        self.CustomerGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
+
+
+class DeleteCustomerGatewayResponse(AbstractModel):
+    """DeleteCustomerGateway response structure.
 
     """
 
@@ -3407,6 +3884,72 @@ class DescribeAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAssistantCidrRequest(AbstractModel):
+    """DescribeAssistantCidr request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcIds: The ID of a VPC instance set, such as `vpc-6v2ht8q5`.
+        :type VpcIds: list of str
+        :param Filters: Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        """
+        self.VpcIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpcIds = params.get("VpcIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAssistantCidrResponse(AbstractModel):
+    """DescribeAssistantCidr response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AssistantCidrSet: A set of eligible secondary CIDR blocks
+Note: This field may return null, indicating that no valid value was found.
+        :type AssistantCidrSet: list of AssistantCidr
+        :param TotalCount: Number of eligible instances.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AssistantCidrSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AssistantCidrSet") is not None:
+            self.AssistantCidrSet = []
+            for item in params.get("AssistantCidrSet"):
+                obj = AssistantCidr()
+                obj._deserialize(item)
+                self.AssistantCidrSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCcnAttachedInstancesRequest(AbstractModel):
     """DescribeCcnAttachedInstances request structure.
 
@@ -3696,6 +4239,105 @@ class DescribeClassicLinkInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCustomerGatewayVendorsRequest(AbstractModel):
+    """DescribeCustomerGatewayVendors request structure.
+
+    """
+
+
+class DescribeCustomerGatewayVendorsResponse(AbstractModel):
+    """DescribeCustomerGatewayVendors response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayVendorSet: Customer gateway vendor information object.
+        :type CustomerGatewayVendorSet: list of CustomerGatewayVendor
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CustomerGatewayVendorSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomerGatewayVendorSet") is not None:
+            self.CustomerGatewayVendorSet = []
+            for item in params.get("CustomerGatewayVendorSet"):
+                obj = CustomerGatewayVendor()
+                obj._deserialize(item)
+                self.CustomerGatewayVendorSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomerGatewaysRequest(AbstractModel):
+    """DescribeCustomerGateways request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayIds: Customer gateway ID, such as `cgw-2wqq41m9`. Each request can have a maximum of 100 instances. `CustomerGatewayIds` and `Filters` cannot be specified at the same time.
+        :type CustomerGatewayIds: list of str
+        :param Filters: The filter condition. For details, see the Instance Filter Conditions Table. The upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. `CustomerGatewayIds` and `Filters` cannot be specified at the same time.
+<li>customer-gateway-id - String - (Filter condition) The unique ID of the user gateway, such as `cgw-mgp33pll`.</li>
+<li>customer-gateway-name - String - (Filter condition) The name of the user gateway, such as `test-cgw`.</li>
+<li>ip-address - String - (Filter condition) The public IP address, such as `58.211.1.12`.</li>
+        :type Filters: list of Filter
+        :param Offset: The Offset. The default value is 0. For more information about Offset, see the relevant section in the API Introduction.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        """
+        self.CustomerGatewayIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayIds = params.get("CustomerGatewayIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeCustomerGatewaysResponse(AbstractModel):
+    """DescribeCustomerGateways response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewaySet: Customer gateway object list
+        :type CustomerGatewaySet: list of CustomerGateway
+        :param TotalCount: Number of eligible instances
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CustomerGatewaySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomerGatewaySet") is not None:
+            self.CustomerGatewaySet = []
+            for item in params.get("CustomerGatewaySet"):
+                obj = CustomerGateway()
+                obj._deserialize(item)
+                self.CustomerGatewaySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
     """DescribeDirectConnectGatewayCcnRoutes request structure.
 
@@ -3833,6 +4475,68 @@ class DescribeGatewayFlowMonitorDetailResponse(AbstractModel):
                 obj = GatewayFlowMonitorDetail()
                 obj._deserialize(item)
                 self.GatewayFlowMonitorDetailSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGatewayFlowQosRequest(AbstractModel):
+    """DescribeGatewayFlowQos request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: Gateway instance ID, which currently supports these types:
+ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
+ID of NAT gateway instance, e.g. `nat-ltjahce6`;
+ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :type GatewayId: str
+        :param IpAddresses: CVM private IP addresses with limited bandwidth.
+        :type IpAddresses: list of str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        """
+        self.GatewayId = None
+        self.IpAddresses = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        self.IpAddresses = params.get("IpAddresses")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeGatewayFlowQosResponse(AbstractModel):
+    """DescribeGatewayFlowQos response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayQosSet: List of instance details.
+        :type GatewayQosSet: list of GatewayQos
+        :param TotalCount: Number of eligible instances.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.GatewayQosSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GatewayQosSet") is not None:
+            self.GatewayQosSet = []
+            for item in params.get("GatewayQosSet"):
+                obj = GatewayQos()
+                obj._deserialize(item)
+                self.GatewayQosSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4255,7 +4959,7 @@ class DescribeNetworkInterfaceLimitRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: The ID of the CVM instance to be queried.
+        :param InstanceId: ID of a CVM instance or ENI to query
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4308,10 +5012,13 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>network-interface-name - String - (Filter condition) ENI instance name.</li>
 <li>network-interface-description - String - (Filter condition) ENI instance description.</li>
 <li>address-ip - String - (Filter condition) Private IPv4 address.</li>
+<li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>
+<li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>
+<li>is-primary - Boolean - Required: no - (Filter condition) Filters based on whether it is a primary ENI. If the value is ‘true’, filter only the primary ENI. If the value is ‘false’, filter only the secondary ENI. If the secondary filter parameter is provided, filter the both.</li>
         :type Filters: list of Filter
-        :param Offset: Offset. The default value is 0.
+        :param Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of values to be returned. The default value is 20. Maximum is 100.
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
         self.NetworkInterfaceIds = None
@@ -4341,7 +5048,7 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
         """
         :param NetworkInterfaceSet: List of instance details.
         :type NetworkInterfaceSet: list of NetworkInterface
-        :param TotalCount: The number of instances meeting the filter condition.
+        :param TotalCount: Number of eligible instances.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4409,7 +5116,7 @@ class DescribeRouteTablesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: The number of instances meeting the filter condition.
+        :param TotalCount: Number of eligible instances.
         :type TotalCount: int
         :param RouteTableSet: Route table object.
         :type RouteTableSet: list of RouteTable
@@ -4515,6 +5222,49 @@ class DescribeSecurityGroupPoliciesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityGroupReferencesRequest(AbstractModel):
+    """DescribeSecurityGroupReferences request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: A set of security group instance IDs, e.g. ['sg-12345678']
+        :type SecurityGroupIds: list of str
+        """
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class DescribeSecurityGroupReferencesResponse(AbstractModel):
+    """DescribeSecurityGroupReferences response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReferredSecurityGroupSet: Referred security groups.
+        :type ReferredSecurityGroupSet: list of ReferredSecurityGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReferredSecurityGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReferredSecurityGroupSet") is not None:
+            self.ReferredSecurityGroupSet = []
+            for item in params.get("ReferredSecurityGroupSet"):
+                obj = ReferredSecurityGroup()
+                obj._deserialize(item)
+                self.ReferredSecurityGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupsRequest(AbstractModel):
     """DescribeSecurityGroups request structure.
 
@@ -4531,9 +5281,9 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 <li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>
 <li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>
         :type Filters: list of Filter
-        :param Offset: Offset.
+        :param Offset: Offset. Default value: 0.
         :type Offset: str
-        :param Limit: The returned quantity.
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: str
         """
         self.SecurityGroupIds = None
@@ -4728,9 +5478,9 @@ class DescribeSubnetsRequest(AbstractModel):
 <li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
 <li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key is replaced with the specific tag key. For usage, refer to case 2.</li>
         :type Filters: list of Filter
-        :param Offset: Offset
+        :param Offset: Offset. Default value: 0.
         :type Offset: str
-        :param Limit: The returned quantity
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: str
         """
         self.SubnetIds = None
@@ -4788,9 +5538,9 @@ class DescribeTaskResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: The async job ID
+        :param TaskId: Async task ID. Either TaskId or DealName must be entered.
         :type TaskId: int
-        :param DealName: The billing order ID
+        :param DealName: Billing order No. Either TaskId or DealName must be entered.
         :type DealName: str
         """
         self.TaskId = None
@@ -4824,6 +5574,69 @@ class DescribeTaskResultResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpcInstancesRequest(AbstractModel):
+    """DescribeVpcInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: Filter condition. `RouteTableIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
+<li>instance-type - String - (Filter condition) CVM instance ID.</li>
+<li>instance-name - String - (Filter condition) CVM name.</li>
+        :type Filters: list of Filter
+        :param Offset: Offset.
+        :type Offset: int
+        :param Limit: The number of requested objects.
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVpcInstancesResponse(AbstractModel):
+    """DescribeVpcInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceSet: List of CVM instances.
+        :type InstanceSet: list of CvmInstance
+        :param TotalCount: The number of eligible CVM instances.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = CvmInstance()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4933,6 +5746,49 @@ class DescribeVpcPrivateIpAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpcResourceDashboardRequest(AbstractModel):
+    """DescribeVpcResourceDashboard request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcIds: Vpc instance ID, e.g. vpc-f1xjkw1b.
+        :type VpcIds: list of str
+        """
+        self.VpcIds = None
+
+
+    def _deserialize(self, params):
+        self.VpcIds = params.get("VpcIds")
+
+
+class DescribeVpcResourceDashboardResponse(AbstractModel):
+    """DescribeVpcResourceDashboard response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceDashboardSet: List of resource objects.
+        :type ResourceDashboardSet: list of ResourceDashboard
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ResourceDashboardSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceDashboardSet") is not None:
+            self.ResourceDashboardSet = []
+            for item in params.get("ResourceDashboardSet"):
+                obj = ResourceDashboard()
+                obj._deserialize(item)
+                self.ResourceDashboardSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpcsRequest(AbstractModel):
     """DescribeVpcs request structure.
 
@@ -4950,9 +5806,9 @@ class DescribeVpcsRequest(AbstractModel):
 <li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
 <li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key is replaced with the specific tag key. For usage, refer to case 2.</li>
         :type Filters: list of Filter
-        :param Offset: Offset
+        :param Offset: Offset. Default value: 0.
         :type Offset: str
-        :param Limit: The returned quantity
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: str
         """
         self.VpcIds = None
@@ -5069,6 +5925,61 @@ class DescribeVpnConnectionsResponse(AbstractModel):
                 obj = VpnConnection()
                 obj._deserialize(item)
                 self.VpnConnectionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpnGatewayCcnRoutesRequest(AbstractModel):
+    """DescribeVpnGatewayCcnRoutes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: The ID of the VPN gateway instance.
+        :type VpnGatewayId: str
+        :param Offset: Offset.
+        :type Offset: int
+        :param Limit: The returned quantity
+        :type Limit: int
+        """
+        self.VpnGatewayId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVpnGatewayCcnRoutesResponse(AbstractModel):
+    """DescribeVpnGatewayCcnRoutes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteSet: The CCN route (IDC IP range) list.
+        :type RouteSet: list of VpngwCcnRoutes
+        :param TotalCount: Number of objects that meet the condition.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RouteSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RouteSet") is not None:
+            self.RouteSet = []
+            for item in params.get("RouteSet"):
+                obj = VpngwCcnRoutes()
+                obj._deserialize(item)
+                self.RouteSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5362,6 +6273,43 @@ class DisableCcnRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableGatewayFlowMonitorRequest(AbstractModel):
+    """DisableGatewayFlowMonitor request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: Gateway instance ID, which currently supports these types:
+ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
+ID of NAT gateway instance, e.g. `nat-ltjahce6`;
+ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :type GatewayId: str
+        """
+        self.GatewayId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+
+
+class DisableGatewayFlowMonitorResponse(AbstractModel):
+    """DisableGatewayFlowMonitor response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateAddressRequest(AbstractModel):
     """DisassociateAddress request structure.
 
@@ -5480,6 +6428,44 @@ class DisassociateNetworkAclSubnetsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisassociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
+    """DisassociateNetworkInterfaceSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceIds: ENI instance ID, e.g. eni-pxir56ns. You can enter up to 100 instances for each request.
+        :type NetworkInterfaceIds: list of str
+        :param SecurityGroupIds: The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups. You can enter up to 100 instances for each request.
+        :type SecurityGroupIds: list of str
+        """
+        self.NetworkInterfaceIds = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceIds = params.get("NetworkInterfaceIds")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class DisassociateNetworkInterfaceSecurityGroupsResponse(AbstractModel):
+    """DisassociateNetworkInterfaceSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
     """DownloadCustomerGatewayConfiguration request structure.
 
@@ -5570,6 +6556,43 @@ class EnableCcnRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EnableGatewayFlowMonitorRequest(AbstractModel):
+    """EnableGatewayFlowMonitor request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: Gateway instance ID, which currently supports these types:
+ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
+ID of NAT gateway instance, e.g. `nat-ltjahce6`;
+ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :type GatewayId: str
+        """
+        self.GatewayId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+
+
+class EnableGatewayFlowMonitorResponse(AbstractModel):
+    """EnableGatewayFlowMonitor response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """Filter
 
@@ -5643,6 +6666,35 @@ class GatewayFlowMonitorDetail(AbstractModel):
         self.OutPkg = params.get("OutPkg")
         self.InTraffic = params.get("InTraffic")
         self.OutTraffic = params.get("OutTraffic")
+
+
+class GatewayQos(AbstractModel):
+    """Gateway bandwidth limit information
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC instance ID.
+        :type VpcId: str
+        :param IpAddress: CVM Private IP.
+        :type IpAddress: str
+        :param Bandwidth: Bandwidth limit value.
+        :type Bandwidth: int
+        :param CreateTime: The creation time.
+        :type CreateTime: str
+        """
+        self.VpcId = None
+        self.IpAddress = None
+        self.Bandwidth = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.IpAddress = params.get("IpAddress")
+        self.Bandwidth = params.get("Bandwidth")
+        self.CreateTime = params.get("CreateTime")
 
 
 class HaVip(AbstractModel):
@@ -5899,6 +6951,96 @@ class InquiryPriceCreateVpnGatewayRequest(AbstractModel):
 
 class InquiryPriceCreateVpnGatewayResponse(AbstractModel):
     """InquiryPriceCreateVpnGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: Product price.
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.Price`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = Price()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceRenewVpnGatewayRequest(AbstractModel):
+    """InquiryPriceRenewVpnGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: The ID of the VPN gateway instance.
+        :type VpnGatewayId: str
+        :param InstanceChargePrepaid: Specifies the purchased validity period, whether to enable auto-renewal. This parameter is required for monthly-subscription instances.
+        :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        """
+        self.VpnGatewayId = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class InquiryPriceRenewVpnGatewayResponse(AbstractModel):
+    """InquiryPriceRenewVpnGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: Product price.
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.Price`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = Price()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest(AbstractModel):
+    """InquiryPriceResetVpnGatewayInternetMaxBandwidth request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: The ID of the VPN gateway instance.
+        :type VpnGatewayId: str
+        :param InternetMaxBandwidthOut: The public network bandwidth configuration. Available bandwidth specifications: 5, 10, 20, 50, and 100. Unit: Mbps.
+        :type InternetMaxBandwidthOut: int
+        """
+        self.VpnGatewayId = None
+        self.InternetMaxBandwidthOut = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+
+
+class InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
+    """InquiryPriceResetVpnGatewayInternetMaxBandwidth response structure.
 
     """
 
@@ -6179,6 +7321,54 @@ class ModifyAddressAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAddressInternetChargeTypeRequest(AbstractModel):
+    """ModifyAddressInternetChargeType request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressId: Unique EIP ID, such as "eip-xxxx"
+        :type AddressId: str
+        :param InternetChargeType: The target billing method. It can be `BANDWIDTH_PREPAID_BY_MONTH` or `TRAFFIC_POSTPAID_BY_HOUR`
+        :type InternetChargeType: str
+        :param InternetMaxBandwidthOut: The target bandwidth value
+        :type InternetMaxBandwidthOut: int
+        :param AddressChargePrepaid: Billing details of monthly-subscribed network bandwidth. This parameter is required if the target billing method is `BANDWIDTH_PREPAID_BY_MONTH`.
+        :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
+        self.AddressId = None
+        self.InternetChargeType = None
+        self.InternetMaxBandwidthOut = None
+        self.AddressChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.AddressId = params.get("AddressId")
+        self.InternetChargeType = params.get("InternetChargeType")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        if params.get("AddressChargePrepaid") is not None:
+            self.AddressChargePrepaid = AddressChargePrepaid()
+            self.AddressChargePrepaid._deserialize(params.get("AddressChargePrepaid"))
+
+
+class ModifyAddressInternetChargeTypeResponse(AbstractModel):
+    """ModifyAddressInternetChargeType response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAddressTemplateAttributeRequest(AbstractModel):
     """ModifyAddressTemplateAttribute request structure.
 
@@ -6313,6 +7503,58 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAssistantCidrRequest(AbstractModel):
+    """ModifyAssistantCidr request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :type VpcId: str
+        :param NewCidrBlocks: Load CIDR blocks to add. CIDR block set; format: e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :type NewCidrBlocks: list of str
+        :param OldCidrBlocks: Load CIDR blocks to delete. CIDR block set; Format: e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :type OldCidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.NewCidrBlocks = None
+        self.OldCidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NewCidrBlocks = params.get("NewCidrBlocks")
+        self.OldCidrBlocks = params.get("OldCidrBlocks")
+
+
+class ModifyAssistantCidrResponse(AbstractModel):
+    """ModifyAssistantCidr response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AssistantCidrSet: A set of secondary CIDR blocks.
+Note: This field may return null, indicating that no valid value was found.
+        :type AssistantCidrSet: list of AssistantCidr
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AssistantCidrSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AssistantCidrSet") is not None:
+            self.AssistantCidrSet = []
+            for item in params.get("AssistantCidrSet"):
+                obj = AssistantCidr()
+                obj._deserialize(item)
+                self.AssistantCidrSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyCcnAttributeRequest(AbstractModel):
     """ModifyCcnAttribute request structure.
 
@@ -6378,6 +7620,89 @@ class ModifyCcnRegionBandwidthLimitsTypeRequest(AbstractModel):
 
 class ModifyCcnRegionBandwidthLimitsTypeResponse(AbstractModel):
     """ModifyCcnRegionBandwidthLimitsType response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCustomerGatewayAttributeRequest(AbstractModel):
+    """ModifyCustomerGatewayAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayId: The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the `DescribeCustomerGateways` API.
+        :type CustomerGatewayId: str
+        :param CustomerGatewayName: Customer gateway can be named freely, but the maximum length is 60 characters.
+        :type CustomerGatewayName: str
+        """
+        self.CustomerGatewayId = None
+        self.CustomerGatewayName = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
+        self.CustomerGatewayName = params.get("CustomerGatewayName")
+
+
+class ModifyCustomerGatewayAttributeResponse(AbstractModel):
+    """ModifyCustomerGatewayAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyGatewayFlowQosRequest(AbstractModel):
+    """ModifyGatewayFlowQos request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: Gateway instance ID, which currently supports these types:
+ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
+ID of NAT gateway instance, e.g. `nat-ltjahce6`;
+ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
+        :type GatewayId: str
+        :param Bandwidth: Bandwidth limit value.
+        :type Bandwidth: int
+        :param IpAddresses: CVM private IP addresses with limited bandwidth.
+        :type IpAddresses: list of str
+        """
+        self.GatewayId = None
+        self.Bandwidth = None
+        self.IpAddresses = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        self.Bandwidth = params.get("Bandwidth")
+        self.IpAddresses = params.get("IpAddresses")
+
+
+class ModifyGatewayFlowQosResponse(AbstractModel):
+    """ModifyGatewayFlowQos response structure.
 
     """
 
@@ -7198,6 +8523,49 @@ class ModifyVpnGatewayAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyVpnGatewayCcnRoutesRequest(AbstractModel):
+    """ModifyVpnGatewayCcnRoutes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: The ID of the VPN gateway instance.
+        :type VpnGatewayId: str
+        :param Routes: The CCN route (IDC IP range) list.
+        :type Routes: list of VpngwCcnRoutes
+        """
+        self.VpnGatewayId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpngwCcnRoutes()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+
+
+class ModifyVpnGatewayCcnRoutesResponse(AbstractModel):
+    """ModifyVpnGatewayCcnRoutes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class NatGateway(AbstractModel):
     """NAT gateway object.
 
@@ -7547,9 +8915,9 @@ class NetworkAclEntry(AbstractModel):
         """
         :param ModifyTime: Modification time.
         :type ModifyTime: str
-        :param Protocol: Protocol. Valid values: TCP, UDP, and ICMP.
+        :param Protocol: Protocol. Valid values: TCP, UDP, ICMP, ALL.
         :type Protocol: str
-        :param Port: Port (all, a single port, or a port range).
+        :param Port: Port. Valid values: all, single port, range. When Protocol takes the value `ALL` or `ICMP`, Port cannot be specified.
         :type Port: str
         :param CidrBlock: IP range or IP address (mutually exclusive).
         :type CidrBlock: str
@@ -7834,6 +9202,27 @@ class Quota(AbstractModel):
         self.QuotaLimit = params.get("QuotaLimit")
 
 
+class ReferredSecurityGroup(AbstractModel):
+    """Referred security groups
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: Security group instance ID.
+        :type SecurityGroupId: str
+        :param ReferredSecurityGroupIds: IDs of all referred security group instances.
+        :type ReferredSecurityGroupIds: list of str
+        """
+        self.SecurityGroupId = None
+        self.ReferredSecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.ReferredSecurityGroupIds = params.get("ReferredSecurityGroupIds")
+
+
 class RejectAttachCcnInstancesRequest(AbstractModel):
     """RejectAttachCcnInstances request structure.
 
@@ -7912,6 +9301,46 @@ class ReleaseAddressesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class RenewVpnGatewayRequest(AbstractModel):
+    """RenewVpnGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: The ID of the VPN gateway instance.
+        :type VpnGatewayId: str
+        :param InstanceChargePrepaid: Billing Methods
+        :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        """
+        self.VpnGatewayId = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class RenewVpnGatewayResponse(AbstractModel):
+    """RenewVpnGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -8287,6 +9716,187 @@ class ResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResourceDashboard(AbstractModel):
+    """VPC resource dashboard (all resource counts)
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: Vpc instance ID, e.g. vpc-f1xjkw1b.
+        :type VpcId: str
+        :param SubnetId: Subnet instance ID, such as subnet-bthucmmy.
+        :type SubnetId: str
+        :param Classiclink: Classiclink.
+        :type Classiclink: int
+        :param Dcg: Direct Connect gateway.
+        :type Dcg: int
+        :param Pcx: Peering connection.
+        :type Pcx: int
+        :param Ip: The total number of used IP addresses.
+        :type Ip: int
+        :param Nat: NAT gateway.
+        :type Nat: int
+        :param Vpngw: VPN gateway.
+        :type Vpngw: int
+        :param FlowLog: Flow log.
+        :type FlowLog: int
+        :param NetworkDetect: Network probing.
+        :type NetworkDetect: int
+        :param NetworkACL: Network ACL.
+        :type NetworkACL: int
+        :param CVM: Cloud Virtual Machine.
+        :type CVM: int
+        :param LB: Load balancer.
+        :type LB: int
+        :param CDB: Relational database.
+        :type CDB: int
+        :param Cmem: TencentDB for Memcached.
+        :type Cmem: int
+        :param CTSDB: Cloud time series database.
+        :type CTSDB: int
+        :param MariaDB: TencentDB for MariaDB (TDSQL).
+        :type MariaDB: int
+        :param SQLServer: TencentDB for SQL Server.
+        :type SQLServer: int
+        :param Postgres: TencentDB for PostgreSQL.
+        :type Postgres: int
+        :param NAS: Network attached storage.
+        :type NAS: int
+        :param Greenplumn: Snova data warehouse.
+        :type Greenplumn: int
+        :param Ckafka: Cloud Kafka (CKafka).
+        :type Ckafka: int
+        :param Grocery: Grocery.
+        :type Grocery: int
+        :param HSM: Data encryption service.
+        :type HSM: int
+        :param Tcaplus: Game storage - Tcaplus.
+        :type Tcaplus: int
+        :param Cnas: Cnas.
+        :type Cnas: int
+        :param TiDB: HTAP database - TiDB.
+        :type TiDB: int
+        :param Emr: EMR cluster.
+        :type Emr: int
+        :param SEAL: SEAL.
+        :type SEAL: int
+        :param CFS: Cloud file storage - CFS.
+        :type CFS: int
+        :param Oracle: Oracle.
+        :type Oracle: int
+        :param ElasticSearch: 
+        :type ElasticSearch: int
+        :param TBaaS: Blockchain service.
+        :type TBaaS: int
+        :param Itop: Itop.
+        :type Itop: int
+        :param DBAudit: Cloud database audit.
+        :type DBAudit: int
+        :param CynosDBPostgres: Enterprise TencentDB - CynosDB for Postgres.
+        :type CynosDBPostgres: int
+        :param Redis: TencentDB for Redis.
+        :type Redis: int
+        :param MongoDB: TencentDB for MongoDB.
+        :type MongoDB: int
+        :param DCDB: A distributed cloud database - TencentDB for TDSQL.
+        :type DCDB: int
+        :param CynosDBMySQL: An enterprise-grade TencentDB - CynosDB for MySQL.
+        :type CynosDBMySQL: int
+        :param Subnet: Subnets.
+        :type Subnet: int
+        :param RouteTable: Route table.
+        :type RouteTable: int
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.Classiclink = None
+        self.Dcg = None
+        self.Pcx = None
+        self.Ip = None
+        self.Nat = None
+        self.Vpngw = None
+        self.FlowLog = None
+        self.NetworkDetect = None
+        self.NetworkACL = None
+        self.CVM = None
+        self.LB = None
+        self.CDB = None
+        self.Cmem = None
+        self.CTSDB = None
+        self.MariaDB = None
+        self.SQLServer = None
+        self.Postgres = None
+        self.NAS = None
+        self.Greenplumn = None
+        self.Ckafka = None
+        self.Grocery = None
+        self.HSM = None
+        self.Tcaplus = None
+        self.Cnas = None
+        self.TiDB = None
+        self.Emr = None
+        self.SEAL = None
+        self.CFS = None
+        self.Oracle = None
+        self.ElasticSearch = None
+        self.TBaaS = None
+        self.Itop = None
+        self.DBAudit = None
+        self.CynosDBPostgres = None
+        self.Redis = None
+        self.MongoDB = None
+        self.DCDB = None
+        self.CynosDBMySQL = None
+        self.Subnet = None
+        self.RouteTable = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Classiclink = params.get("Classiclink")
+        self.Dcg = params.get("Dcg")
+        self.Pcx = params.get("Pcx")
+        self.Ip = params.get("Ip")
+        self.Nat = params.get("Nat")
+        self.Vpngw = params.get("Vpngw")
+        self.FlowLog = params.get("FlowLog")
+        self.NetworkDetect = params.get("NetworkDetect")
+        self.NetworkACL = params.get("NetworkACL")
+        self.CVM = params.get("CVM")
+        self.LB = params.get("LB")
+        self.CDB = params.get("CDB")
+        self.Cmem = params.get("Cmem")
+        self.CTSDB = params.get("CTSDB")
+        self.MariaDB = params.get("MariaDB")
+        self.SQLServer = params.get("SQLServer")
+        self.Postgres = params.get("Postgres")
+        self.NAS = params.get("NAS")
+        self.Greenplumn = params.get("Greenplumn")
+        self.Ckafka = params.get("Ckafka")
+        self.Grocery = params.get("Grocery")
+        self.HSM = params.get("HSM")
+        self.Tcaplus = params.get("Tcaplus")
+        self.Cnas = params.get("Cnas")
+        self.TiDB = params.get("TiDB")
+        self.Emr = params.get("Emr")
+        self.SEAL = params.get("SEAL")
+        self.CFS = params.get("CFS")
+        self.Oracle = params.get("Oracle")
+        self.ElasticSearch = params.get("ElasticSearch")
+        self.TBaaS = params.get("TBaaS")
+        self.Itop = params.get("Itop")
+        self.DBAudit = params.get("DBAudit")
+        self.CynosDBPostgres = params.get("CynosDBPostgres")
+        self.Redis = params.get("Redis")
+        self.MongoDB = params.get("MongoDB")
+        self.DCDB = params.get("DCDB")
+        self.CynosDBMySQL = params.get("CynosDBMySQL")
+        self.Subnet = params.get("Subnet")
+        self.RouteTable = params.get("RouteTable")
+
+
 class Route(AbstractModel):
     """Routing policy object
 
@@ -8494,6 +10104,8 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         :type CLB: int
         :param InstanceStatistics: The binding statistics for all instances.
         :type InstanceStatistics: list of InstanceStatistic
+        :param TotalCount: Total count of all resources (excluding resources referenced by security groups).
+        :type TotalCount: int
         """
         self.SecurityGroupId = None
         self.CVM = None
@@ -8502,6 +10114,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         self.SG = None
         self.CLB = None
         self.InstanceStatistics = None
+        self.TotalCount = None
 
 
     def _deserialize(self, params):
@@ -8517,6 +10130,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
                 obj = InstanceStatistic()
                 obj._deserialize(item)
                 self.InstanceStatistics.append(obj)
+        self.TotalCount = params.get("TotalCount")
 
 
 class SecurityGroupPolicy(AbstractModel):
@@ -9427,3 +11041,26 @@ class VpnGatewayQuota(AbstractModel):
         self.Bandwidth = params.get("Bandwidth")
         self.Cname = params.get("Cname")
         self.Name = params.get("Name")
+
+
+class VpngwCcnRoutes(AbstractModel):
+    """Information on VPN gateway-based CCN routes.
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteId: Route ID
+        :type RouteId: str
+        :param Status: Enable the route or not
+ENABLE: enable the route
+DISABLE: do not enable the route
+        :type Status: str
+        """
+        self.RouteId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RouteId = params.get("RouteId")
+        self.Status = params.get("Status")

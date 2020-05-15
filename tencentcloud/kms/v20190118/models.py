@@ -988,9 +988,9 @@ class GenerateDataKeyResponse(AbstractModel):
         """
         :param KeyId: 
         :type KeyId: str
-        :param Plaintext: 
+        :param Plaintext: Plaintext of the generated data key. The plaintext is Base64-encoded and can be used locally after having it Base64-decoded.
         :type Plaintext: str
-        :param CiphertextBlob: Base64-encoded ciphertext that is encrypted by `DataKey`. You should keep the ciphertext private.
+        :param CiphertextBlob: Ciphertext of the data key, which should be kept by yourself. KMS does not host user data keys. You can call the `Decrypt` API to get the plaintext of the data key from `CiphertextBlob`.
         :type CiphertextBlob: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1279,6 +1279,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ValidTo: It’s valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ValidTo: int
+        :param ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$keyId`.
+        :type ResourceId: str
         """
         self.KeyId = None
         self.Alias = None
@@ -1294,6 +1296,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.DeletionDate = None
         self.Origin = None
         self.ValidTo = None
+        self.ResourceId = None
 
 
     def _deserialize(self, params):
@@ -1311,6 +1314,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.DeletionDate = params.get("DeletionDate")
         self.Origin = params.get("Origin")
         self.ValidTo = params.get("ValidTo")
+        self.ResourceId = params.get("ResourceId")
 
 
 class ListAlgorithmsRequest(AbstractModel):
@@ -1587,7 +1591,7 @@ class WhiteboxKeyInfo(AbstractModel):
         :type EncryptKey: str
         :param DecryptKey: Base64-encoded white-box decryption key
         :type DecryptKey: str
-        :param ResourceId: 
+        :param ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$keyId`.
         :type ResourceId: str
         """
         self.KeyId = None

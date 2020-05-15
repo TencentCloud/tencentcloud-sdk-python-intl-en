@@ -782,6 +782,7 @@ class LiveClient(AbstractClient):
 
     def DeleteLiveTranscodeRule(self, request):
         """This API is used to delete a transcoding rule.
+        `DomainName+AppName+StreamName+TemplateId` uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. `TemplateId` is required. Even if other parameters are empty, you still need to pass in an empty string to make a strong match.
 
         :param request: Request instance for DeleteLiveTranscodeRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveTranscodeRuleRequest`
@@ -878,6 +879,62 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveWatermarkRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBillBandwidthAndFluxList(self, request):
+        """This API is used to query the data of billable LVB bandwidth and traffic.
+
+        :param request: Request instance for DescribeBillBandwidthAndFluxList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBillBandwidthAndFluxList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillBandwidthAndFluxListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroupProIspPlayInfoList(self, request):
+        """This API is used to query the downstream playback data by district and ISP.
+
+        :param request: Request instance for DescribeGroupProIspPlayInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeGroupProIspPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeGroupProIspPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGroupProIspPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupProIspPlayInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1665,6 +1722,90 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveWatermarksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProIspPlaySumInfoList(self, request):
+        """This API is used to query the average traffic per second, total traffic, and number of total requests by ISP and district in a certain period of time.
+
+        :param request: Request instance for DescribeProIspPlaySumInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeProIspPlaySumInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeProIspPlaySumInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProIspPlaySumInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProIspPlaySumInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamDayPlayInfoList(self, request):
+        """This API is used to query the playback data of each stream at the day level, including the total traffic.
+
+        :param request: Request instance for DescribeStreamDayPlayInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamDayPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamDayPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamDayPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamDayPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamPushInfoList(self, request):
+        """This API is used to query the upstream push quality data by stream ID, including frame rate, bitrate, elapsed time, and encoding format of audio and video files.
+
+        :param request: Request instance for DescribeStreamPushInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamPushInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamPushInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

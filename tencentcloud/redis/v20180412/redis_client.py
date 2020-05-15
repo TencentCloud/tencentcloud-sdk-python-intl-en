@@ -446,7 +446,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorTookDist(self, request):
-        """This API is used to query the big key size distribution of an instance
+        """This API is used to query the distribution of instance access duration.
 
         :param request: Request instance for DescribeInstanceMonitorTookDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTookDistRequest`

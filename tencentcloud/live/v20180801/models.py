@@ -189,6 +189,35 @@ class AddLiveWatermarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BillDataInfo(AbstractModel):
+    """Bandwidth and traffic information
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: Time point in the format of yyyy-mm-dd HH:MM:SS.
+        :type Time: str
+        :param Bandwidth: Bandwidth in Mbps.
+        :type Bandwidth: float
+        :param Flux: Traffic in MB.
+        :type Flux: float
+        :param PeakTime: 
+        :type PeakTime: str
+        """
+        self.Time = None
+        self.Bandwidth = None
+        self.Flux = None
+        self.PeakTime = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
+        self.PeakTime = params.get("PeakTime")
+
+
 class BindLiveDomainCertRequest(AbstractModel):
     """BindLiveDomainCert request structure.
 
@@ -351,6 +380,39 @@ class CancelCommonMixStreamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CdnPlayStatData(AbstractModel):
+    """Downstream playback statistical metrics
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: Time point in the format of yyyy-mm-dd HH:MM:SS.
+        :type Time: str
+        :param Bandwidth: Bandwidth in Mbps.
+        :type Bandwidth: float
+        :param Flux: Traffic in MB.
+        :type Flux: float
+        :param Request: Number of new requests.
+        :type Request: int
+        :param Online: Number of concurrent connections.
+        :type Online: int
+        """
+        self.Time = None
+        self.Bandwidth = None
+        self.Flux = None
+        self.Request = None
+        self.Online = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
+        self.Request = params.get("Request")
+        self.Online = params.get("Online")
+
+
 class CertInfo(AbstractModel):
     """Certificate information.
 
@@ -423,13 +485,13 @@ class CommonMixCropParams(AbstractModel):
 
     def __init__(self):
         """
-        :param CropWidth: Crop width. Value range: [0,3000].
+        :param CropWidth: Crop width. Value range: [0,2000].
         :type CropWidth: float
-        :param CropHeight: Crop height. Value range: [0,3000].
+        :param CropHeight: Crop height. Value range: [0,2000].
         :type CropHeight: float
-        :param CropStartLocationX: Starting crop X coordinate. Value range: [0,3000].
+        :param CropStartLocationX: Starting crop X coordinate. Value range: [0,2000].
         :type CropStartLocationX: float
-        :param CropStartLocationY: Starting crop Y coordinate. Value range: [0,3000].
+        :param CropStartLocationY: Starting crop Y coordinate. Value range: [0,2000].
         :type CropStartLocationY: float
         """
         self.CropWidth = None
@@ -494,26 +556,26 @@ If this parameter is left empty, 0 will be used by default.
 5: the input stream is pure video.
         :type InputType: int
         :param ImageWidth: Output width of input video image. Value range:
-Pixel: [0,3000]
+Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, the input stream width will be used by default.
 If percentage is used, the expected output is (percentage * background width).
         :type ImageWidth: float
         :param ImageHeight: Output height of input video image. Value range:
-Pixel: [0,3000]
+Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, the input stream height will be used by default.
 If percentage is used, the expected output is (percentage * background height).
         :type ImageHeight: float
         :param LocationX: X-axis offset of input in output video image. Value range:
-Pixel: [0,3000]
+Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, 0 will be used by default.
 Horizontal offset from the top-left corner of main host background video image. 
 If percentage is used, the expected output is (percentage * background width).
         :type LocationX: float
         :param LocationY: Y-axis offset of input in output video image. Value range:
-Pixel: [0,3000]
+Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, 0 will be used by default.
 Vertical offset from the top-left corner of main host background video image. 
@@ -1810,16 +1872,12 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
     def __init__(self):
         """
         :param DomainName: Playback domain name.
-For transcoding at the domain name level, domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
-Domain name+AppName+StreamName+TemplateId uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
         :param StreamName: Stream name.
-Domain name+AppName+StreamName+TemplateId uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
         :type StreamName: str
         :param TemplateId: Template ID.
-Domain name+AppName+StreamName+TemplateId uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
         :type TemplateId: int
         """
         self.DomainName = None
@@ -1962,6 +2020,156 @@ class DeleteLiveWatermarkRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
+    """DescribeBillBandwidthAndFluxList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
+        :type StartTime: str
+        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days.
+        :type EndTime: str
+        :param PlayDomains: LVB playback domain name. If it is left blank, the full data will be queried.
+        :type PlayDomains: list of str
+        :param MainlandOrOversea: Value range:
+Mainland: Query data for Mainland China,
+Oversea: Query data for regions outside Mainland China.
+Default: Query data for all regions.
+        :type MainlandOrOversea: str
+        :param Granularity: Data granularity. Supported granularity:
+5: 5-minute granularity (the query interval should be within 1 day),
+60: 1-hour granularity (the query interval should be within one month),
+1440: 1-day granularity (the query interval should be within one month).
+Default value: 5.
+        :type Granularity: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+        self.MainlandOrOversea = None
+        self.Granularity = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.Granularity = params.get("Granularity")
+
+
+class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
+    """DescribeBillBandwidthAndFluxList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PeakBandwidthTime: Time point of peak bandwidth value in the format of yyyy-mm-dd HH:MM:SS.
+        :type PeakBandwidthTime: str
+        :param PeakBandwidth: Bandwidth in Mbps.
+        :type PeakBandwidth: float
+        :param P95PeakBandwidthTime: Time point of the 95th percentile bandwidth value in the format of yyyy-mm-dd HH:MM:SS.
+        :type P95PeakBandwidthTime: str
+        :param P95PeakBandwidth: 95th percentile bandwidth in Mbps.
+        :type P95PeakBandwidth: float
+        :param SumFlux: Total traffic in MB.
+        :type SumFlux: float
+        :param DataInfoList: Detailed data information.
+        :type DataInfoList: list of BillDataInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PeakBandwidthTime = None
+        self.PeakBandwidth = None
+        self.P95PeakBandwidthTime = None
+        self.P95PeakBandwidth = None
+        self.SumFlux = None
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PeakBandwidthTime = params.get("PeakBandwidthTime")
+        self.PeakBandwidth = params.get("PeakBandwidth")
+        self.P95PeakBandwidthTime = params.get("P95PeakBandwidthTime")
+        self.P95PeakBandwidth = params.get("P95PeakBandwidth")
+        self.SumFlux = params.get("SumFlux")
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = BillDataInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
+    """DescribeGroupProIspPlayInfoList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
+        :type StartTime: str
+        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS
+The time interval is (0, 3 hours]. Data for the past month can be queried.
+        :type EndTime: str
+        :param PlayDomains: Playback domain name. If it is blank by default, the full data will be queried.
+        :type PlayDomains: list of str
+        :param ProvinceNames: List of districts. If it is blank by default, data of all districts will be returned.
+        :type ProvinceNames: list of str
+        :param IspNames: List of ISPs. If it is blank by default, data of all ISPs will be returned.
+        :type IspNames: list of str
+        :param MainlandOrOversea: Within or outside Mainland China. Value range: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If it is blank, data for all regions will be queried.
+        :type MainlandOrOversea: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+        self.ProvinceNames = None
+        self.IspNames = None
+        self.MainlandOrOversea = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+        self.ProvinceNames = params.get("ProvinceNames")
+        self.IspNames = params.get("IspNames")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+
+
+class DescribeGroupProIspPlayInfoListResponse(AbstractModel):
+    """DescribeGroupProIspPlayInfoList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: Data content.
+        :type DataInfoList: list of GroupProIspDataInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = GroupProIspDataInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3233,6 +3441,246 @@ class DescribeLiveWatermarksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProIspPlaySumInfoListRequest(AbstractModel):
+    """DescribeProIspPlaySumInfoList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start time (Beijing time).
+In the format of yyyy-mm-dd HH:MM:SS.
+        :type StartTime: str
+        :param EndTime: End time (Beijing time).
+In the format of yyyy-mm-dd HH:MM:SS.
+Note: EndTime and StartTime only support querying data on the past day.
+        :type EndTime: str
+        :param StatType: Statistics type. Value range: "Province", "Isp".
+        :type StatType: str
+        :param PlayDomains: If it is blank by default, the full data will be queried.
+        :type PlayDomains: list of str
+        :param PageNum: Page number.
+Value range: [1,1000],
+Default value: 1.
+        :type PageNum: int
+        :param PageSize: Number of entries per page. Value range: [1,1000],
+Default value: 20.
+        :type PageSize: int
+        :param MainlandOrOversea: 
+        :type MainlandOrOversea: str
+        :param OutLanguage: 
+        :type OutLanguage: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.StatType = None
+        self.PlayDomains = None
+        self.PageNum = None
+        self.PageSize = None
+        self.MainlandOrOversea = None
+        self.OutLanguage = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.StatType = params.get("StatType")
+        self.PlayDomains = params.get("PlayDomains")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.OutLanguage = params.get("OutLanguage")
+
+
+class DescribeProIspPlaySumInfoListResponse(AbstractModel):
+    """DescribeProIspPlaySumInfoList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalFlux: Total traffic.
+        :type TotalFlux: float
+        :param TotalRequest: Total number of requests.
+        :type TotalRequest: int
+        :param StatType: Statistics type.
+        :type StatType: str
+        :param PageSize: Number of results per page.
+        :type PageSize: int
+        :param PageNum: Page number.
+        :type PageNum: int
+        :param TotalNum: Total number of results.
+        :type TotalNum: int
+        :param TotalPage: Total number of pages.
+        :type TotalPage: int
+        :param DataInfoList: List of aggregated playback data by ISP or district.
+        :type DataInfoList: list of ProIspPlaySumInfo
+        :param AvgFluxPerSecond: Average bandwidth.
+        :type AvgFluxPerSecond: float
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalFlux = None
+        self.TotalRequest = None
+        self.StatType = None
+        self.PageSize = None
+        self.PageNum = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.DataInfoList = None
+        self.AvgFluxPerSecond = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalFlux = params.get("TotalFlux")
+        self.TotalRequest = params.get("TotalRequest")
+        self.StatType = params.get("StatType")
+        self.PageSize = params.get("PageSize")
+        self.PageNum = params.get("PageNum")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = ProIspPlaySumInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.AvgFluxPerSecond = params.get("AvgFluxPerSecond")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamDayPlayInfoListRequest(AbstractModel):
+    """DescribeStreamDayPlayInfoList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DayTime: Date,
+In the format of YYYY-mm-dd.
+        :type DayTime: str
+        :param PlayDomain: Playback domain name.
+        :type PlayDomain: str
+        :param PageNum: Page number. Value range: [1,10]. Default value: 1.
+        :type PageNum: int
+        :param PageSize: Number of entries per page. Value range: [100,1000]. Default value: 1,000.
+        :type PageSize: int
+        """
+        self.DayTime = None
+        self.PlayDomain = None
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.DayTime = params.get("DayTime")
+        self.PlayDomain = params.get("PlayDomain")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+
+
+class DescribeStreamDayPlayInfoListResponse(AbstractModel):
+    """DescribeStreamDayPlayInfoList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: Playback data information list.
+        :type DataInfoList: list of PlayDataInfoByStream
+        :param TotalNum: Total number.
+        :type TotalNum: int
+        :param TotalPage: Total number of pages.
+        :type TotalPage: int
+        :param PageNum: Page number where the current data resides.
+        :type PageNum: int
+        :param PageSize: Number of entries per page.
+        :type PageSize: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.PageNum = None
+        self.PageSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = PlayDataInfoByStream()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamPushInfoListRequest(AbstractModel):
+    """DescribeStreamPushInfoList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamName: Stream name.
+        :type StreamName: str
+        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
+        :type StartTime: str
+        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The maximum time interval is 6 hours. Data in the past 6 days can be queried.
+        :type EndTime: str
+        :param PushDomain: Push domain name.
+        :type PushDomain: str
+        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :type AppName: str
+        """
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.PushDomain = None
+        self.AppName = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PushDomain = params.get("PushDomain")
+        self.AppName = params.get("AppName")
+
+
+class DescribeStreamPushInfoListResponse(AbstractModel):
+    """DescribeStreamPushInfoList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: Returned data list.
+        :type DataInfoList: list of PushQualityData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = PushQualityData()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DomainCertInfo(AbstractModel):
     """Domain name certificate information
 
@@ -3546,6 +3994,36 @@ class ForbidStreamInfo(AbstractModel):
         self.StreamName = params.get("StreamName")
         self.CreateTime = params.get("CreateTime")
         self.ExpireTime = params.get("ExpireTime")
+
+
+class GroupProIspDataInfo(AbstractModel):
+    """Bandwidth, traffic, number of requests, and number of concurrent connections of an ISP in a district.
+
+    """
+
+    def __init__(self):
+        """
+        :param ProvinceName: District.
+        :type ProvinceName: str
+        :param IspName: ISP.
+        :type IspName: str
+        :param DetailInfoList: Detailed data at the minute level.
+        :type DetailInfoList: list of CdnPlayStatData
+        """
+        self.ProvinceName = None
+        self.IspName = None
+        self.DetailInfoList = None
+
+
+    def _deserialize(self, params):
+        self.ProvinceName = params.get("ProvinceName")
+        self.IspName = params.get("IspName")
+        if params.get("DetailInfoList") is not None:
+            self.DetailInfoList = []
+            for item in params.get("DetailInfoList"):
+                obj = CdnPlayStatData()
+                obj._deserialize(item)
+                self.DetailInfoList.append(obj)
 
 
 class HlsSpecialParam(AbstractModel):
@@ -4170,6 +4648,56 @@ class PlayAuthKeyInfo(AbstractModel):
         self.AuthBackKey = params.get("AuthBackKey")
 
 
+class PlayDataInfoByStream(AbstractModel):
+    """Stream-level playback information
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamName: Stream name.
+        :type StreamName: str
+        :param TotalFlux: Total traffic in MB.
+        :type TotalFlux: float
+        """
+        self.StreamName = None
+        self.TotalFlux = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.TotalFlux = params.get("TotalFlux")
+
+
+class ProIspPlaySumInfo(AbstractModel):
+    """Queries District/ISP playback information.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: District/ISP.
+        :type Name: str
+        :param TotalFlux: Total traffic in MB.
+        :type TotalFlux: float
+        :param TotalRequest: Total number of requests.
+        :type TotalRequest: int
+        :param AvgFluxPerSecond: Average download traffic in MB.
+        :type AvgFluxPerSecond: float
+        """
+        self.Name = None
+        self.TotalFlux = None
+        self.TotalRequest = None
+        self.AvgFluxPerSecond = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.TotalFlux = params.get("TotalFlux")
+        self.TotalRequest = params.get("TotalRequest")
+        self.AvgFluxPerSecond = params.get("AvgFluxPerSecond")
+
+
 class PublishTime(AbstractModel):
     """Push time.
 
@@ -4221,27 +4749,104 @@ class PushAuthKeyInfo(AbstractModel):
         self.AuthDelta = params.get("AuthDelta")
 
 
+class PushQualityData(AbstractModel):
+    """Push quality data of a stream.
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: Data time in the format of %Y-%m-%d %H:%M:%S.%ms and accurate down to the millisecond level.
+        :type Time: str
+        :param PushDomain: Push domain name.
+        :type PushDomain: str
+        :param AppName: Push path.
+        :type AppName: str
+        :param ClientIp: Push client IP.
+        :type ClientIp: str
+        :param BeginPushTime: Push start time in the format of %Y-%m-%d %H:%M:%S.%ms and accurate down to the millisecond level.
+        :type BeginPushTime: str
+        :param Resolution: Resolution information.
+        :type Resolution: str
+        :param VCodec: Video encoding format.
+        :type VCodec: str
+        :param ACodec: Audio encoding format.
+        :type ACodec: str
+        :param Sequence: Push serial number, which uniquely identifies a push.
+        :type Sequence: str
+        :param VideoFps: Video frame rate.
+        :type VideoFps: int
+        :param VideoRate: Video bitrate in bps.
+        :type VideoRate: int
+        :param AudioFps: Audio frame rate.
+        :type AudioFps: int
+        :param AudioRate: Audio bitrate in bps.
+        :type AudioRate: int
+        :param LocalTs: Local elapsed time in milliseconds. The greater the difference between audio/video elapsed time and local elapsed time, the poorer the push quality and the more serious the upstream lag.
+        :type LocalTs: int
+        :param VideoTs: Video elapsed time in milliseconds.
+        :type VideoTs: int
+        :param AudioTs: Audio elapsed time in milliseconds.
+        :type AudioTs: int
+        """
+        self.Time = None
+        self.PushDomain = None
+        self.AppName = None
+        self.ClientIp = None
+        self.BeginPushTime = None
+        self.Resolution = None
+        self.VCodec = None
+        self.ACodec = None
+        self.Sequence = None
+        self.VideoFps = None
+        self.VideoRate = None
+        self.AudioFps = None
+        self.AudioRate = None
+        self.LocalTs = None
+        self.VideoTs = None
+        self.AudioTs = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.PushDomain = params.get("PushDomain")
+        self.AppName = params.get("AppName")
+        self.ClientIp = params.get("ClientIp")
+        self.BeginPushTime = params.get("BeginPushTime")
+        self.Resolution = params.get("Resolution")
+        self.VCodec = params.get("VCodec")
+        self.ACodec = params.get("ACodec")
+        self.Sequence = params.get("Sequence")
+        self.VideoFps = params.get("VideoFps")
+        self.VideoRate = params.get("VideoRate")
+        self.AudioFps = params.get("AudioFps")
+        self.AudioRate = params.get("AudioRate")
+        self.LocalTs = params.get("LocalTs")
+        self.VideoTs = params.get("VideoTs")
+        self.AudioTs = params.get("AudioTs")
+
+
 class RecordParam(AbstractModel):
-    """Recording template parameter.
+    """Recording template parameter
 
     """
 
     def __init__(self):
         """
         :param RecordInterval: Recording interval.
-In seconds. Default value: 1800.
-Value range: 300–7200.
-This parameter is not valid for HLS, and a file will be generated from push start to interruption during HLS recording.
+In seconds. Default value: 1,800.
+Value range: 300–7,200.
+This parameter is not valid for HLS, and a file is generated from push start to push end when HLS is recorded.
         :type RecordInterval: int
-        :param StorageTime: Recording storage period.
-In seconds. Value range: 0–93312000.
-0: permanent storage.
+        :param StorageTime: Recording storage duration.
+In seconds. Value range: 0–93,312,000.
+0 represents permanent storage.
         :type StorageTime: int
-        :param Enable: Whether to enable recording in the current format. Default value: 0. 0: no, 1: yes.
+        :param Enable: Whether to enable recording in the current format. 0: no; 1: yes. Default value: 0.
         :type Enable: int
         :param VodSubAppId: VOD subapplication ID.
         :type VodSubAppId: int
-        :param VodFileName: 
+        :param VodFileName: Recording filename.
         :type VodFileName: str
         """
         self.RecordInterval = None

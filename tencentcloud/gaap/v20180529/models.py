@@ -203,7 +203,11 @@ class BindRealServer(AbstractModel):
         :type RealServerIP: str
         :param RealServerWeight: Origin server weight
         :type RealServerWeight: int
-        :param RealServerStatus: 
+        :param RealServerStatus: Origin server health check status. Valid values:
+0: normal;
+1: exceptional.
+If health check is not enabled, this status will always be normal.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type RealServerStatus: int
         :param RealServerPort: Origin server port number
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -1037,6 +1041,8 @@ For more information, please see How to Ensure Idempotence.
         :param ClonedProxyId: ID of the replicated connection. Only a running connection can be replicated.
 The connection is to be replicated if this parameter is set.
         :type ClonedProxyId: str
+        :param BillingType: Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)
+        :type BillingType: int
         """
         self.ProjectId = None
         self.ProxyName = None
@@ -1048,6 +1054,7 @@ The connection is to be replicated if this parameter is set.
         self.GroupId = None
         self.TagSet = None
         self.ClonedProxyId = None
+        self.BillingType = None
 
 
     def _deserialize(self, params):
@@ -1066,6 +1073,7 @@ The connection is to be replicated if this parameter is set.
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.ClonedProxyId = params.get("ClonedProxyId")
+        self.BillingType = params.get("BillingType")
 
 
 class CreateProxyResponse(AbstractModel):
@@ -3905,12 +3913,12 @@ class HTTPListener(AbstractModel):
         :type CreateTime: int
         :param Protocol: Listener protocol
         :type Protocol: str
-        :param ListenerStatus: Listener status:
+        :param ListenerStatus: Listener status. Valid values:
 0: running;
 1: creating;
 2: terminating;
 3: adjusting origin server;
-4: modifying configuration.
+4: adjusting configuration.
         :type ListenerStatus: int
         """
         self.ListenerId = None
@@ -3945,12 +3953,12 @@ class HTTPSListener(AbstractModel):
         :type Port: int
         :param Protocol: Listener protocol. The value is `HTTP`.
         :type Protocol: str
-        :param ListenerStatus: Listener status:
+        :param ListenerStatus: Listener status. Valid values:
 0: running;
 1: creating;
 2: terminating;
 3: adjusting origin server;
-4: modifying configuration.
+4: adjusting configuration.
         :type ListenerStatus: int
         :param CertificateId: Server SSL certificate ID of the listener
         :type CertificateId: str
@@ -4052,6 +4060,8 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type RealServerRegion: str
         :param Concurrent: Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It’s a new parameter.
         :type Concurrent: int
+        :param BillingType: Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)
+        :type BillingType: int
         """
         self.AccessRegion = None
         self.Bandwidth = None
@@ -4059,6 +4069,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.Concurrency = None
         self.RealServerRegion = None
         self.Concurrent = None
+        self.BillingType = None
 
 
     def _deserialize(self, params):
@@ -4068,6 +4079,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.Concurrency = params.get("Concurrency")
         self.RealServerRegion = params.get("RealServerRegion")
         self.Concurrent = params.get("Concurrent")
+        self.BillingType = params.get("BillingType")
 
 
 class InquiryPriceCreateProxyResponse(AbstractModel):
@@ -4077,14 +4089,21 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProxyDailyPrice: Basic cost of connection (unit: CNY/day).
+        :param ProxyDailyPrice: Basic price of connection in USD/day.
         :type ProxyDailyPrice: float
-        :param BandwidthUnitPrice: Connection bandwidth price gradient.
+        :param BandwidthUnitPrice: Tiered price of connection bandwidth.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type BandwidthUnitPrice: list of BandwidthPriceGradient
-        :param DiscountProxyDailyPrice: Discounted basic cost of connection (unit: CNY/day).
+        :param DiscountProxyDailyPrice: Discounted basic price of connection in USD/day.
         :type DiscountProxyDailyPrice: float
         :param Currency: Currency, which supports CNY, USD, etc.
         :type Currency: str
+        :param FlowUnitPrice: Connection traffic price in USD/GB.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FlowUnitPrice: float
+        :param DiscountFlowUnitPrice: Discounted connection traffic price in USD/GB.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiscountFlowUnitPrice: float
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4092,6 +4111,8 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
         self.BandwidthUnitPrice = None
         self.DiscountProxyDailyPrice = None
         self.Currency = None
+        self.FlowUnitPrice = None
+        self.DiscountFlowUnitPrice = None
         self.RequestId = None
 
 
@@ -4105,6 +4126,8 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
                 self.BandwidthUnitPrice.append(obj)
         self.DiscountProxyDailyPrice = params.get("DiscountProxyDailyPrice")
         self.Currency = params.get("Currency")
+        self.FlowUnitPrice = params.get("FlowUnitPrice")
+        self.DiscountFlowUnitPrice = params.get("DiscountFlowUnitPrice")
         self.RequestId = params.get("RequestId")
 
 
@@ -4579,12 +4602,15 @@ For more information, please see How to Ensure Idempotence.
         :type ClientToken: str
         :param ProxyId: Connection instance ID; It’s a new parameter.
         :type ProxyId: str
+        :param BillingType: Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)
+        :type BillingType: int
         """
         self.InstanceId = None
         self.Bandwidth = None
         self.Concurrent = None
         self.ClientToken = None
         self.ProxyId = None
+        self.BillingType = None
 
 
     def _deserialize(self, params):
@@ -4593,6 +4619,7 @@ For more information, please see How to Ensure Idempotence.
         self.Concurrent = params.get("Concurrent")
         self.ClientToken = params.get("ClientToken")
         self.ProxyId = params.get("ProxyId")
+        self.BillingType = params.get("BillingType")
 
 
 class ModifyProxyConfigurationResponse(AbstractModel):
@@ -5061,7 +5088,7 @@ class ProxyGroupDetail(AbstractModel):
 0: running normally;
 1: creating;
 4: terminating;
-11. Migrating.
+11: migrating;
         :type Status: int
         :param OwnerUin: Owner UIN
         :type OwnerUin: str
@@ -5142,11 +5169,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param RealServerRegionInfo: Target region
         :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         :param Status: Connection group status.
-Where:
+Valid values:
 0: running;
 1: creating;
 4: terminating;
-11: connection migrating.
+11: migrating connection;
         :type Status: str
         :param TagSet: Tag list.
         :type TagSet: list of TagPair
@@ -5218,16 +5245,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Bandwidth: int
         :param Concurrent: Concurrence. Unit: requests/second.
         :type Concurrent: int
-        :param Status: Connection status:
+        :param Status: Connection status. Valid values:
 RUNNING: running;
 CREATING: creating;
 DESTROYING: terminating;
 OPENING: enabling;
 CLOSING: disabling;
 CLOSED: disabled;
-ADJUSTING: adjusting configuration
-ISOLATING: isolating (it’s triggered when the account is in arrears);
-ISOLATED: isolated (it’s triggered when the account is in arrears);
+ADJUSTING: adjusting configuration;
+ISOLATING: isolating;
+ISOLATED: isolated;
+CLONING: copying;
 UNKNOWN: unknown status.
         :type Status: str
         :param Domain: Accessed domain name.
@@ -5367,14 +5395,14 @@ class ProxyStatus(AbstractModel):
         :param InstanceId: Connection instance ID.
         :type InstanceId: str
         :param Status: Connection status.
-Where:
+Valid values:
 RUNNING: running;
 CREATING: creating;
 DESTROYING: terminating;
 OPENING: enabling;
 CLOSING: disabling;
 CLOSED: disabled;
-ADJUSTING: adjusting configuration
+ADJUSTING: adjusting configuration;
 ISOLATING: isolating;
 ISOLATED: isolated;
 UNKNOWN: unknown status.
@@ -5456,7 +5484,7 @@ class RealServerStatus(AbstractModel):
         """
         :param RealServerId: Origin server ID.
         :type RealServerId: str
-        :param BindStatus: 0: not bound; 1: bound to rules or listeners.
+        :param BindStatus: 0: not bound, 1: bound to rule or listener.
         :type BindStatus: int
         :param ProxyId: ID of the connection bound to this origin server. This string is empty if they are not bound.
         :type ProxyId: str
@@ -5584,15 +5612,17 @@ class RuleInfo(AbstractModel):
         :type RealServerType: str
         :param Scheduler: Forwarding policy of the origin server
         :type Scheduler: str
-        :param HealthCheck: Health check identifier: 1 (enable), 0 (disable).
+        :param HealthCheck: Whether health check is enabled. 1: enabled, 0: disabled
         :type HealthCheck: int
-        :param RuleStatus: Origin server status. 0: running; 1: creating; 2: terminating; 3: binding or unbinding; 4: updating configuration
+        :param RuleStatus: Rule status. 0: running, 1: creating, 2: terminating, 3: binding/unbinding origin server, 4: updating configuration
         :type RuleStatus: int
         :param CheckParams: Health check parameters
         :type CheckParams: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
         :param RealServerSet: Bound origin server information
         :type RealServerSet: list of BindRealServer
-        :param BindStatus: Origin server binding status. 0: normal; 1: origin server IP exception; 2: origin server domain name resolution exception.
+        :param BindStatus: Origin server service status. 0: exceptional, 1: normal
+If health check is not enabled, this status will always be normal.
+As long as one origin server is exceptional, this status will be exceptional. Please view `RealServerSet` for the status of specific origin servers.
         :type BindStatus: int
         :param ForwardHost: The ‘host’ carried in the request forwarded from the connection to the origin server. `default` indicates directly forwarding the received “host”.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -5835,28 +5865,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RealServerType: str
         :param Protocol: Listener protocol: TCP.
         :type Protocol: str
-        :param ListenerStatus: Listener status:
+        :param ListenerStatus: Listener status. Valid values:
 0: running;
 1: creating;
 2: terminating;
 3: adjusting origin server;
 4: adjusting configuration.
         :type ListenerStatus: int
-        :param Scheduler: Origin server access policy of listeners:
+        :param Scheduler: Origin server access policy of listener. Valid values:
 rr: round robin;
 wrr: weighted round robin;
-lc: least connections.
+lc: least connection.
         :type Scheduler: str
         :param ConnectTimeout: Response timeout of origin server health check (unit: seconds).
         :type ConnectTimeout: int
         :param DelayLoop: Time interval of origin server health check (unit: seconds).
         :type DelayLoop: int
-        :param HealthCheck: Whether to enable the listener health check:
-0: disable;
-1: enable.
+        :param HealthCheck: Whether health check is enabled for listener. Valid values:
+0: disabled;
+1: enabled
         :type HealthCheck: int
-        :param BindStatus: Status of the origin server bound to listeners:
-0: exception;
+        :param BindStatus: Status of origin server bound to listener. Valid values:
+0: exceptional;
 1: normal.
         :type BindStatus: int
         :param RealServerSet: Information of the origin server bound to listeners
@@ -5968,7 +5998,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RealServerType: str
         :param Protocol: Listener protocol: UDP.
         :type Protocol: str
-        :param ListenerStatus: Listener status:
+        :param ListenerStatus: Listener status. Valid values:
 0: running;
 1: creating;
 2: terminating;
@@ -5977,7 +6007,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ListenerStatus: int
         :param Scheduler: Origin server access policy of listeners
         :type Scheduler: str
-        :param BindStatus: Origin server binding status of listeners. 0: normal; 1: IP exception; 2: domain name resolution exception.
+        :param BindStatus: Status of origin server bound to listener. 0: normal, 1: exceptional IP, 2: exceptional domain name resolution
         :type BindStatus: int
         :param RealServerSet: Information of the origin server bound to listeners
         :type RealServerSet: list of BindRealServer

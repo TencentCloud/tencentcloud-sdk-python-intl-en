@@ -879,6 +879,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBInstanceInfo(self, request):
+        """This API is used to query the basic information of an instance (instance ID, instance name, and whether encryption is enabled).
+
+        :param request: Request instance for DescribeDBInstanceInfo.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceInfoRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBInstanceInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBInstanceInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstanceRebootTime(self, request):
         """This API (DescribeDBInstanceRebootTime) is used to query the estimated time needed for a TencentDB instance to restart.
 
@@ -1369,6 +1397,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRollbackRangeTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRollbackTaskDetail(self, request):
+        """This API is used to query the details of a TencentDB instance rollback task.
+
+        :param request: Request instance for DescribeRollbackTaskDetail.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackTaskDetailRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRollbackTaskDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRollbackTaskDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
