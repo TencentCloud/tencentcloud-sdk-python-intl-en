@@ -802,14 +802,23 @@ class DeleteClusterRequest(AbstractModel):
         :type ClusterId: str
         :param InstanceDeleteMode: Policy used to delete an instance in the cluster: terminate (terminates the instance. Only available for instances on pay-as-you-go CVMs); retain (only removes it from the cluster. The instance will be retained.)
         :type InstanceDeleteMode: str
+        :param ResourceDeleteOptions: Specifies the policy to deal with resources in the cluster when the cluster is deleted. It only supports CBS now. The default policy is to retain CBS disks.
+        :type ResourceDeleteOptions: list of ResourceDeleteOption
         """
         self.ClusterId = None
         self.InstanceDeleteMode = None
+        self.ResourceDeleteOptions = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.InstanceDeleteMode = params.get("InstanceDeleteMode")
+        if params.get("ResourceDeleteOptions") is not None:
+            self.ResourceDeleteOptions = []
+            for item in params.get("ResourceDeleteOptions"):
+                obj = ResourceDeleteOption()
+                obj._deserialize(item)
+                self.ResourceDeleteOptions.append(obj)
 
 
 class DeleteClusterResponse(AbstractModel):
@@ -1135,6 +1144,11 @@ class DescribeClusterSecurityResponse(AbstractModel):
         :type PgwEndpoint: str
         :param SecurityPolicy: Cluster’s access policy group
         :type SecurityPolicy: list of str
+        :param Kubeconfig: Cluster Kubeconfig file
+Note: This field may return null, indicating that no valid value was found.
+        :type Kubeconfig: str
+        :param JnsGwEndpoint: 
+        :type JnsGwEndpoint: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1145,6 +1159,8 @@ class DescribeClusterSecurityResponse(AbstractModel):
         self.Domain = None
         self.PgwEndpoint = None
         self.SecurityPolicy = None
+        self.Kubeconfig = None
+        self.JnsGwEndpoint = None
         self.RequestId = None
 
 
@@ -1156,6 +1172,8 @@ class DescribeClusterSecurityResponse(AbstractModel):
         self.Domain = params.get("Domain")
         self.PgwEndpoint = params.get("PgwEndpoint")
         self.SecurityPolicy = params.get("SecurityPolicy")
+        self.Kubeconfig = params.get("Kubeconfig")
+        self.JnsGwEndpoint = params.get("JnsGwEndpoint")
         self.RequestId = params.get("RequestId")
 
 
@@ -1693,6 +1711,13 @@ Note: this field may return null, indicating that no valid value is obtained.
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param CreatedTime: Creation time
         :type CreatedTime: str
+        :param LanIP: Node private IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LanIP: str
+        :param NodePoolId: 
+        :type NodePoolId: str
+        :param AutoscalingGroupId: 
+        :type AutoscalingGroupId: str
         """
         self.InstanceId = None
         self.InstanceRole = None
@@ -1701,6 +1726,9 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.DrainStatus = None
         self.InstanceAdvancedSettings = None
         self.CreatedTime = None
+        self.LanIP = None
+        self.NodePoolId = None
+        self.AutoscalingGroupId = None
 
 
     def _deserialize(self, params):
@@ -1713,6 +1741,9 @@ Note: this field may return null, indicating that no valid value is obtained.
             self.InstanceAdvancedSettings = InstanceAdvancedSettings()
             self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
         self.CreatedTime = params.get("CreatedTime")
+        self.LanIP = params.get("LanIP")
+        self.NodePoolId = params.get("NodePoolId")
+        self.AutoscalingGroupId = params.get("AutoscalingGroupId")
 
 
 class InstanceAdvancedSettings(AbstractModel):
@@ -1990,6 +2021,27 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.FeatureGates = params.get("FeatureGates")
         self.Alias = params.get("Alias")
         self.Remark = params.get("Remark")
+
+
+class ResourceDeleteOption(AbstractModel):
+    """The policy to deal with resources in the cluster when the cluster is deleted.
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: Resource type, for example `CBS`
+        :type ResourceType: str
+        :param DeleteMode: Specifies the policy to deal with resources in the cluster when the cluster is deleted. It can be `terminate` or `retain`.
+        :type DeleteMode: str
+        """
+        self.ResourceType = None
+        self.DeleteMode = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.DeleteMode = params.get("DeleteMode")
 
 
 class RouteInfo(AbstractModel):

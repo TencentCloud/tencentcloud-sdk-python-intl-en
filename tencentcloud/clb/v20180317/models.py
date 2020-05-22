@@ -116,9 +116,9 @@ class AutoRewriteRequest(AbstractModel):
         """
         :param LoadBalancerId: CLB instance ID
         :type LoadBalancerId: str
-        :param ListenerId: HTTPS:443 listener ID
+        :param ListenerId: `HTTPS:443` listener ID
         :type ListenerId: str
-        :param Domains: Domain name to be redirected under an HTTPS:443 listener
+        :param Domains: The domain name to be redirected under the listener `HTTPS:443`. If it is left empty, all domain names under the listener `HTTPS:443` will be configured with redirects.
         :type Domains: list of str
         """
         self.LoadBalancerId = None
@@ -1148,12 +1148,15 @@ class DeleteRuleRequest(AbstractModel):
         :type Domain: str
         :param Url: Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified
         :type Url: str
+        :param NewDefaultServerDomain: A listener must be configured with a default domain name. If you need to delete the default domain name, you can specify another one as the new default domain name.
+        :type NewDefaultServerDomain: str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
         self.LocationIds = None
         self.Domain = None
         self.Url = None
+        self.NewDefaultServerDomain = None
 
 
     def _deserialize(self, params):
@@ -1162,6 +1165,7 @@ class DeleteRuleRequest(AbstractModel):
         self.LocationIds = params.get("LocationIds")
         self.Domain = params.get("Domain")
         self.Url = params.get("Url")
+        self.NewDefaultServerDomain = params.get("NewDefaultServerDomain")
 
 
 class DeleteRuleResponse(AbstractModel):
@@ -2970,6 +2974,8 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type Http2: bool
         :param DefaultServer: Whether to set this domain name as the default domain name. Note: Only one default domain name can be set under one listener.
         :type DefaultServer: bool
+        :param NewDefaultServerDomain: A listener must be configured with a default domain name. If you need to disable the default domain name, you must specify another one as the new default domain name.
+        :type NewDefaultServerDomain: str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -2978,6 +2984,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.Certificate = None
         self.Http2 = None
         self.DefaultServer = None
+        self.NewDefaultServerDomain = None
 
 
     def _deserialize(self, params):
@@ -2990,6 +2997,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
             self.Certificate._deserialize(params.get("Certificate"))
         self.Http2 = params.get("Http2")
         self.DefaultServer = params.get("DefaultServer")
+        self.NewDefaultServerDomain = params.get("NewDefaultServerDomain")
 
 
 class ModifyDomainAttributesResponse(AbstractModel):

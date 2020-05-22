@@ -1255,6 +1255,8 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
         :type KibanaPrivateAccess: str
         :param BasicSecurityType: Enables or disables user authentication for ES Basic Edition v6.8 and above
         :type BasicSecurityType: int
+        :param KibanaPrivatePort: Kibana private port
+        :type KibanaPrivatePort: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1275,6 +1277,7 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
         self.KibanaPublicAccess = None
         self.KibanaPrivateAccess = None
         self.BasicSecurityType = None
+        self.KibanaPrivatePort = None
 
 
     def _deserialize(self, params):
@@ -1308,6 +1311,7 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
         self.KibanaPublicAccess = params.get("KibanaPublicAccess")
         self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
         self.BasicSecurityType = params.get("BasicSecurityType")
+        self.KibanaPrivatePort = params.get("KibanaPrivatePort")
 
 
 class UpdateInstanceResponse(AbstractModel):

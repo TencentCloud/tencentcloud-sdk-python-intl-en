@@ -679,7 +679,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
         :type ObjLike: str
         :param InstanceGroupIds: Filter by instance group ID.
         :type InstanceGroupIds: list of int
-        :param MetricNames: 
+        :param MetricNames: Filtering by metric names
         :type MetricNames: list of str
         """
         self.Module = None
@@ -2709,7 +2709,7 @@ class ReceiverInfo(AbstractModel):
         :type NotifyWay: list of str
         :param ReceiverType: Recipient type. Valid values: group and user.
         :type ReceiverType: str
-        :param Id: Id
+        :param Id: ReceiverId
         :type Id: int
         :param SendFor: Call alarm notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is reported) and RECOVER (indicating that a notice is sent when the alarm is cleared).
         :type SendFor: list of str

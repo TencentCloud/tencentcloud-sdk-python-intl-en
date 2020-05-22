@@ -921,6 +921,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeConcurrentRecordStreamNum(self, request):
+        """This API is used to query the number of concurrent recording channels, which is applicable to LCB and LVB.
+
+        :param request: Request instance for DescribeConcurrentRecordStreamNum.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeConcurrentRecordStreamNumRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeConcurrentRecordStreamNumResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConcurrentRecordStreamNum", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConcurrentRecordStreamNumResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGroupProIspPlayInfoList(self, request):
         """This API is used to query the downstream playback data by district and ISP.
 
@@ -1737,7 +1765,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeProIspPlaySumInfoList(self, request):
-        """This API is used to query the average traffic per second, total traffic, and number of total requests by ISP and district in a certain period of time.
+        """This API is used to query the average traffic per second, total traffic, and number of total requests by country/region, district, and ISP in a certain period of time.
 
         :param request: Request instance for DescribeProIspPlaySumInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeProIspPlaySumInfoListRequest`
@@ -1793,7 +1821,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamPushInfoList(self, request):
-        """This API is used to query the upstream push quality data by stream ID, including frame rate, bitrate, elapsed time, and encoding format of audio and video files.
+        """This API is used to query the upstream push quality data by stream ID, including frame rate, bitrate, elapsed time, and codec of audio and video files.
 
         :param request: Request instance for DescribeStreamPushInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListRequest`
