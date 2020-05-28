@@ -391,12 +391,40 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPolicyGroup(self, request):
+        """This API is used to update policy group.
+
+        :param request: Request instance for ModifyPolicyGroup.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPolicyGroupRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyPolicyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPolicyGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPolicyGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PutMonitorData(self, request):
-        """This API is used to customize monitoring data to be reported. The default API request rate limit is 50 requests/sec.
+        """The default API request rate limit is 50 requests/sec.
         The default upper limit on metrics of a single tenant is 100.
         A maximum of 30 metric/value pairs can be reported at a time. When an error is returned for a request, no metrics/values in the request will be saved.
 
-        The reporting timestamp is the timestamp when you want to save the data. It is recommended that you construct a timestamp at integer minutes.
+        The reporting timestamp is the timestamp when you want to save the data. We recommend that you construct a timestamp at integer minutes.
         The time range of a timestamp is from 300 seconds before the current time to the current time.
         The data of the same IP metric/value pair must be reported by minute in chronological order.
 
@@ -426,7 +454,7 @@ class MonitorClient(AbstractClient):
 
 
     def SendCustomAlarmMsg(self, request):
-        """This API is used to send a custom alarm message.
+        """This API is used to send a custom alarm notification.
 
         :param request: Request instance for SendCustomAlarmMsg.
         :type request: :class:`tencentcloud.monitor.v20180724.models.SendCustomAlarmMsgRequest`

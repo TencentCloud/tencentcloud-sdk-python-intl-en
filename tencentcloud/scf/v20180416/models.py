@@ -37,6 +37,49 @@ class AccessInfo(AbstractModel):
         self.Vip = params.get("Vip")
 
 
+class Alias(AbstractModel):
+    """Version alias of function
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionVersion: Master version of alias
+        :type FunctionVersion: str
+        :param Name: Alias name
+        :type Name: str
+        :param RoutingConfig: Routing information of alias
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        :param Description: Description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param AddTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AddTime: str
+        :param ModTime: Update time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ModTime: str
+        """
+        self.FunctionVersion = None
+        self.Name = None
+        self.RoutingConfig = None
+        self.Description = None
+        self.AddTime = None
+        self.ModTime = None
+
+
+    def _deserialize(self, params):
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.Name = params.get("Name")
+        if params.get("RoutingConfig") is not None:
+            self.RoutingConfig = RoutingConfig()
+            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self.Description = params.get("Description")
+        self.AddTime = params.get("AddTime")
+        self.ModTime = params.get("ModTime")
+
+
 class Code(AbstractModel):
     """Function code
 
@@ -173,6 +216,62 @@ class CopyFunctionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAliasRequest(AbstractModel):
+    """CreateAlias request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Alias name, which must be unique in the function, can contain 1–64 letters, digits, `_`, and `-`, and must begin with a letter
+        :type Name: str
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param FunctionVersion: Master version of alias
+        :type FunctionVersion: str
+        :param Namespace: Function namespace
+        :type Namespace: str
+        :param RoutingConfig: Request routing configuration of alias
+        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        :param Description: Alias description
+        :type Description: str
+        """
+        self.Name = None
+        self.FunctionName = None
+        self.FunctionVersion = None
+        self.Namespace = None
+        self.RoutingConfig = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.FunctionName = params.get("FunctionName")
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.Namespace = params.get("Namespace")
+        if params.get("RoutingConfig") is not None:
+            self.RoutingConfig = RoutingConfig()
+            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self.Description = params.get("Description")
+
+
+class CreateAliasResponse(AbstractModel):
+    """CreateAlias response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateFunctionRequest(AbstractModel):
     """CreateFunction request structure.
 
@@ -188,13 +287,13 @@ class CreateFunctionRequest(AbstractModel):
         :type Handler: str
         :param Description: Function description. It can contain up to 1,000 characters including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
         :type Description: str
-        :param MemorySize: Memory size of a running function. The value ranges from 128 MB (default) to 1,536 MB with a granularity of 128 MB.
+        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128–3,072 MB in increments of 128 MB
         :type MemorySize: int
-        :param Timeout: The longest function running time. The unit is second (s). The value ranges from 1 to 300 seconds. The default value is 3 seconds.
+        :param Timeout: Maximum execution duration of function in seconds. Value range: 1–900 seconds. Default value: 3 seconds
         :type Timeout: int
         :param Environment: Function environment variable
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Runtime: Function running environment. Currently, only Python 2.7 (default), Python 3.6, Nodejs 6.10, PHP 5, PHP 7, Golang 1, and Java 8 are supported.
+        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, PHP5, PHP7, Golang1, Java8. Default value: Python2.7
         :type Runtime: str
         :param VpcConfig: Function VPC configuration
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
@@ -214,6 +313,8 @@ class CreateFunctionRequest(AbstractModel):
         :type Layers: list of LayerVersionSimple
         :param DeadLetterConfig: Dead letter queue parameter
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
+        :param PublicNetConfig: Public network access configuration
+        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         """
         self.FunctionName = None
         self.Code = None
@@ -232,6 +333,7 @@ class CreateFunctionRequest(AbstractModel):
         self.CodeSource = None
         self.Layers = None
         self.DeadLetterConfig = None
+        self.PublicNetConfig = None
 
 
     def _deserialize(self, params):
@@ -265,6 +367,9 @@ class CreateFunctionRequest(AbstractModel):
         if params.get("DeadLetterConfig") is not None:
             self.DeadLetterConfig = DeadLetterConfig()
             self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
+        if params.get("PublicNetConfig") is not None:
+            self.PublicNetConfig = PublicNetConfigIn()
+            self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
 
 
 class CreateFunctionResponse(AbstractModel):
@@ -411,6 +516,48 @@ class DeadLetterConfig(AbstractModel):
         self.FilterType = params.get("FilterType")
 
 
+class DeleteAliasRequest(AbstractModel):
+    """DeleteAlias request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Name: Alias name
+        :type Name: str
+        :param Namespace: Function namespace
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Name = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+
+
+class DeleteAliasResponse(AbstractModel):
+    """DeleteAlias response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteFunctionRequest(AbstractModel):
     """DeleteFunction request structure.
 
@@ -434,6 +581,44 @@ class DeleteFunctionRequest(AbstractModel):
 
 class DeleteFunctionResponse(AbstractModel):
     """DeleteFunction response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLayerVersionRequest(AbstractModel):
+    """DeleteLayerVersion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerName: Layer name
+        :type LayerName: str
+        :param LayerVersion: Version number
+        :type LayerVersion: int
+        """
+        self.LayerName = None
+        self.LayerVersion = None
+
+
+    def _deserialize(self, params):
+        self.LayerName = params.get("LayerName")
+        self.LayerVersion = params.get("LayerVersion")
+
+
+class DeleteLayerVersionResponse(AbstractModel):
+    """DeleteLayerVersion response structure.
 
     """
 
@@ -535,6 +720,23 @@ class DeleteTriggerResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class EipConfigIn(AbstractModel):
+    """Fixed IP configuration for public network access
+
+    """
+
+    def __init__(self):
+        """
+        :param EipStatus: Status of the EIP. Values: ['ENABLE','DISABLE']
+        :type EipStatus: str
+        """
+        self.EipStatus = None
+
+
+    def _deserialize(self, params):
+        self.EipStatus = params.get("EipStatus")
 
 
 class EipConfigOut(AbstractModel):
@@ -778,6 +980,77 @@ Note: This field may return null, indicating that no valid value was found.
         self.Description = params.get("Description")
         self.AddTime = params.get("AddTime")
         self.ModTime = params.get("ModTime")
+
+
+class GetAliasRequest(AbstractModel):
+    """GetAlias request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Name: Alias name
+        :type Name: str
+        :param Namespace: Function namespace
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Name = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+
+
+class GetAliasResponse(AbstractModel):
+    """GetAlias response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionVersion: Master version of alias
+        :type FunctionVersion: str
+        :param Name: Alias name
+        :type Name: str
+        :param RoutingConfig: Routing information of alias
+        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        :param Description: Alias description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param AddTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AddTime: str
+        :param ModTime: Update time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ModTime: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FunctionVersion = None
+        self.Name = None
+        self.RoutingConfig = None
+        self.Description = None
+        self.AddTime = None
+        self.ModTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.Name = params.get("Name")
+        if params.get("RoutingConfig") is not None:
+            self.RoutingConfig = RoutingConfig()
+            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self.Description = params.get("Description")
+        self.AddTime = params.get("AddTime")
+        self.ModTime = params.get("ModTime")
+        self.RequestId = params.get("RequestId")
 
 
 class GetFunctionAddressRequest(AbstractModel):
@@ -1146,6 +1419,84 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class GetLayerVersionRequest(AbstractModel):
+    """GetLayerVersion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerName: Layer name
+        :type LayerName: str
+        :param LayerVersion: Version number
+        :type LayerVersion: int
+        """
+        self.LayerName = None
+        self.LayerVersion = None
+
+
+    def _deserialize(self, params):
+        self.LayerName = params.get("LayerName")
+        self.LayerVersion = params.get("LayerVersion")
+
+
+class GetLayerVersionResponse(AbstractModel):
+    """GetLayerVersion response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CompatibleRuntimes: Compatible runtimes
+        :type CompatibleRuntimes: list of str
+        :param CodeSha256: SHA256 encoding of file on layer version
+        :type CodeSha256: str
+        :param Location: Download address of file on layer version
+        :type Location: str
+        :param AddTime: Version creation time
+        :type AddTime: str
+        :param Description: Version description
+        :type Description: str
+        :param LicenseInfo: License information
+        :type LicenseInfo: str
+        :param LayerVersion: Version number
+        :type LayerVersion: int
+        :param LayerName: Layer name
+        :type LayerName: str
+        :param Status: Current status of specific layer version. Valid values:
+Active: normal
+Publishing: publishing
+PublishFailed: publishing failed
+Deleted: deleted
+        :type Status: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CompatibleRuntimes = None
+        self.CodeSha256 = None
+        self.Location = None
+        self.AddTime = None
+        self.Description = None
+        self.LicenseInfo = None
+        self.LayerVersion = None
+        self.LayerName = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompatibleRuntimes = params.get("CompatibleRuntimes")
+        self.CodeSha256 = params.get("CodeSha256")
+        self.Location = params.get("Location")
+        self.AddTime = params.get("AddTime")
+        self.Description = params.get("Description")
+        self.LicenseInfo = params.get("LicenseInfo")
+        self.LayerVersion = params.get("LayerVersion")
+        self.LayerName = params.get("LayerName")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke request structure.
 
@@ -1279,6 +1630,70 @@ class LayerVersionSimple(AbstractModel):
         self.LayerVersion = params.get("LayerVersion")
 
 
+class ListAliasesRequest(AbstractModel):
+    """ListAliases request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Namespace: Function namespace
+        :type Namespace: str
+        :param FunctionVersion: If this parameter is provided, only aliases associated with this function version will be returned
+        :type FunctionVersion: str
+        :param Offset: Data offset. Default value: 0
+        :type Offset: str
+        :param Limit: Number of results to be returned. Default value: 20
+        :type Limit: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.FunctionVersion = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class ListAliasesResponse(AbstractModel):
+    """ListAliases response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Aliases: Alias list
+        :type Aliases: list of Alias
+        :param TotalCount: Total number of aliases
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Aliases = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Aliases") is not None:
+            self.Aliases = []
+            for item in params.get("Aliases"):
+                obj = Alias()
+                obj._deserialize(item)
+                self.Aliases.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class ListFunctionsRequest(AbstractModel):
     """ListFunctions request structure.
 
@@ -1362,6 +1777,112 @@ class ListFunctionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListLayerVersionsRequest(AbstractModel):
+    """ListLayerVersions request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerName: Layer name
+        :type LayerName: str
+        :param CompatibleRuntime: Compatible runtimes
+        :type CompatibleRuntime: list of str
+        """
+        self.LayerName = None
+        self.CompatibleRuntime = None
+
+
+    def _deserialize(self, params):
+        self.LayerName = params.get("LayerName")
+        self.CompatibleRuntime = params.get("CompatibleRuntime")
+
+
+class ListLayerVersionsResponse(AbstractModel):
+    """ListLayerVersions response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerVersions: Layer version list
+        :type LayerVersions: list of LayerVersionInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LayerVersions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LayerVersions") is not None:
+            self.LayerVersions = []
+            for item in params.get("LayerVersions"):
+                obj = LayerVersionInfo()
+                obj._deserialize(item)
+                self.LayerVersions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListLayersRequest(AbstractModel):
+    """ListLayers request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CompatibleRuntime: Compatible runtimes
+        :type CompatibleRuntime: str
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Limit
+        :type Limit: int
+        :param SearchKey: Query key, which fuzzily matches the name
+        :type SearchKey: str
+        """
+        self.CompatibleRuntime = None
+        self.Offset = None
+        self.Limit = None
+        self.SearchKey = None
+
+
+    def _deserialize(self, params):
+        self.CompatibleRuntime = params.get("CompatibleRuntime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchKey = params.get("SearchKey")
+
+
+class ListLayersResponse(AbstractModel):
+    """ListLayers response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Layers: Layer list
+        :type Layers: list of LayerVersionInfo
+        :param TotalCount: Total number of layers
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Layers = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Layers") is not None:
+            self.Layers = []
+            for item in params.get("Layers"):
+                obj = LayerVersionInfo()
+                obj._deserialize(item)
+                self.Layers.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class ListNamespacesRequest(AbstractModel):
     """ListNamespaces request structure.
 
@@ -1418,6 +1939,83 @@ class ListNamespacesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Namespaces.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class ListTriggersRequest(AbstractModel):
+    """ListTriggers request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Namespace: Namespace. Default value: default
+        :type Namespace: str
+        :param Offset: Data offset. Default value: 0
+        :type Offset: int
+        :param Limit: Number of results to be returned. Default value: 20
+        :type Limit: int
+        :param OrderBy: Indicates by which field to sort the returned results. Valid values: AddTime, ModTime. Default value: ModTime
+        :type OrderBy: str
+        :param Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC
+        :type Order: str
+        :param Filters: * Qualifier:
+Function version, i.e., alias
+        :type Filters: list of Filter
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderBy = None
+        self.Order = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+        self.Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class ListTriggersResponse(AbstractModel):
+    """ListTriggers response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of triggers
+        :type TotalCount: int
+        :param Triggers: Trigger list
+        :type Triggers: list of TriggerInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Triggers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Triggers") is not None:
+            self.Triggers = []
+            for item in params.get("Triggers"):
+                obj = TriggerInfo()
+                obj._deserialize(item)
+                self.Triggers.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1579,6 +2177,29 @@ class Namespace(AbstractModel):
         self.Type = params.get("Type")
 
 
+class PublicNetConfigIn(AbstractModel):
+    """Public network access configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param PublicNetStatus: Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']
+        :type PublicNetStatus: str
+        :param EipConfig: EIP configuration
+        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipConfigIn`
+        """
+        self.PublicNetStatus = None
+        self.EipConfig = None
+
+
+    def _deserialize(self, params):
+        self.PublicNetStatus = params.get("PublicNetStatus")
+        if params.get("EipConfig") is not None:
+            self.EipConfig = EipConfigIn()
+            self.EipConfig._deserialize(params.get("EipConfig"))
+
+
 class PublicNetConfigOut(AbstractModel):
     """Public network access configuration
 
@@ -1600,6 +2221,62 @@ class PublicNetConfigOut(AbstractModel):
         if params.get("EipConfig") is not None:
             self.EipConfig = EipConfigOut()
             self.EipConfig._deserialize(params.get("EipConfig"))
+
+
+class PublishLayerVersionRequest(AbstractModel):
+    """PublishLayerVersion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerName: Layer name, which can contain 1–64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore
+        :type LayerName: str
+        :param CompatibleRuntimes: Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.
+        :type CompatibleRuntimes: list of str
+        :param Content: Layer file source or content
+        :type Content: :class:`tencentcloud.scf.v20180416.models.Code`
+        :param Description: Layer version description
+        :type Description: str
+        :param LicenseInfo: Software license of layer
+        :type LicenseInfo: str
+        """
+        self.LayerName = None
+        self.CompatibleRuntimes = None
+        self.Content = None
+        self.Description = None
+        self.LicenseInfo = None
+
+
+    def _deserialize(self, params):
+        self.LayerName = params.get("LayerName")
+        self.CompatibleRuntimes = params.get("CompatibleRuntimes")
+        if params.get("Content") is not None:
+            self.Content = Code()
+            self.Content._deserialize(params.get("Content"))
+        self.Description = params.get("Description")
+        self.LicenseInfo = params.get("LicenseInfo")
+
+
+class PublishLayerVersionResponse(AbstractModel):
+    """PublishLayerVersion response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerVersion: Version number of the layer created in this request
+        :type LayerVersion: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LayerVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LayerVersion = params.get("LayerVersion")
+        self.RequestId = params.get("RequestId")
 
 
 class PublishVersionRequest(AbstractModel):
@@ -1721,6 +2398,37 @@ class Result(AbstractModel):
         self.InvokeResult = params.get("InvokeResult")
 
 
+class RoutingConfig(AbstractModel):
+    """Version routing configuration of alias
+
+    """
+
+    def __init__(self):
+        """
+        :param AdditionalVersionWeights: Additional version with random weight-based routing
+        :type AdditionalVersionWeights: list of VersionWeight
+        :param AddtionVersionMatchs: Additional version with rule-based routing
+        :type AddtionVersionMatchs: list of VersionMatch
+        """
+        self.AdditionalVersionWeights = None
+        self.AddtionVersionMatchs = None
+
+
+    def _deserialize(self, params):
+        if params.get("AdditionalVersionWeights") is not None:
+            self.AdditionalVersionWeights = []
+            for item in params.get("AdditionalVersionWeights"):
+                obj = VersionWeight()
+                obj._deserialize(item)
+                self.AdditionalVersionWeights.append(obj)
+        if params.get("AddtionVersionMatchs") is not None:
+            self.AddtionVersionMatchs = []
+            for item in params.get("AddtionVersionMatchs"):
+                obj = VersionMatch()
+                obj._deserialize(item)
+                self.AddtionVersionMatchs.append(obj)
+
+
 class Tag(AbstractModel):
     """Function tag
 
@@ -1763,6 +2471,8 @@ class Trigger(AbstractModel):
         :type Enable: int
         :param CustomArgument: Custom parameter
         :type CustomArgument: str
+        :param AvailableStatus: Trigger status
+        :type AvailableStatus: str
         """
         self.ModTime = None
         self.Type = None
@@ -1771,6 +2481,7 @@ class Trigger(AbstractModel):
         self.AddTime = None
         self.Enable = None
         self.CustomArgument = None
+        self.AvailableStatus = None
 
 
     def _deserialize(self, params):
@@ -1781,6 +2492,113 @@ class Trigger(AbstractModel):
         self.AddTime = params.get("AddTime")
         self.Enable = params.get("Enable")
         self.CustomArgument = params.get("CustomArgument")
+        self.AvailableStatus = params.get("AvailableStatus")
+
+
+class TriggerInfo(AbstractModel):
+    """Trigger information
+
+    """
+
+    def __init__(self):
+        """
+        :param Enable: Enablement switch
+        :type Enable: int
+        :param Qualifier: Function version or alias
+        :type Qualifier: str
+        :param TriggerName: Trigger name
+        :type TriggerName: str
+        :param Type: Trigger type
+        :type Type: str
+        :param TriggerDesc: Detailed configuration of trigger
+        :type TriggerDesc: str
+        :param AvailableStatus: Whether the trigger is available
+        :type AvailableStatus: str
+        :param CustomArgument: Custom parameter
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CustomArgument: str
+        :param AddTime: Trigger creation time
+        :type AddTime: str
+        :param ModTime: Trigger last modified time
+        :type ModTime: str
+        """
+        self.Enable = None
+        self.Qualifier = None
+        self.TriggerName = None
+        self.Type = None
+        self.TriggerDesc = None
+        self.AvailableStatus = None
+        self.CustomArgument = None
+        self.AddTime = None
+        self.ModTime = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.Qualifier = params.get("Qualifier")
+        self.TriggerName = params.get("TriggerName")
+        self.Type = params.get("Type")
+        self.TriggerDesc = params.get("TriggerDesc")
+        self.AvailableStatus = params.get("AvailableStatus")
+        self.CustomArgument = params.get("CustomArgument")
+        self.AddTime = params.get("AddTime")
+        self.ModTime = params.get("ModTime")
+
+
+class UpdateAliasRequest(AbstractModel):
+    """UpdateAlias request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Name: Alias name
+        :type Name: str
+        :param FunctionVersion: Master version of alias
+        :type FunctionVersion: str
+        :param Namespace: Function namespace
+        :type Namespace: str
+        :param RoutingConfig: Routing information of alias, which is required if you need to specify an additional version for the alias.
+        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        :param Description: Alias description
+        :type Description: str
+        """
+        self.FunctionName = None
+        self.Name = None
+        self.FunctionVersion = None
+        self.Namespace = None
+        self.RoutingConfig = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Name = params.get("Name")
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.Namespace = params.get("Namespace")
+        if params.get("RoutingConfig") is not None:
+            self.RoutingConfig = RoutingConfig()
+            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self.Description = params.get("Description")
+
+
+class UpdateAliasResponse(AbstractModel):
+    """UpdateAlias response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateFunctionCodeRequest(AbstractModel):
@@ -1870,11 +2688,11 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type FunctionName: str
         :param Description: Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
         :type Description: str
-        :param MemorySize: Memory size when the function is running. The value ranges from 128 MB (default) to 1,536 MB.
+        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128–3,072 MB in increments of 128 MB.
         :type MemorySize: int
-        :param Timeout: The longest function running time. The unit is second (s). The value ranges from 1 to 300 seconds. The default value is 3 seconds.
+        :param Timeout: Maximum execution duration of function in seconds. Value range: 1–900 seconds. Default value: 3 seconds
         :type Timeout: int
-        :param Runtime: Function running environment. Currently, only Python 2.7, Python 3.6, Nodejs 6.10, PHP 5, PHP 7, Golang 1, and Java 8 are supported.
+        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, PHP5, PHP7, Golang1, Java8
         :type Runtime: str
         :param Environment: Function environment variable
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
@@ -1896,8 +2714,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type Layers: list of LayerVersionSimple
         :param DeadLetterConfig: Information of a dead letter queue associated with a function
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
-        :param OnsEnable: Whether to enable Ons access. TRUE: enable; FALSE: not enable
-        :type OnsEnable: str
+        :param PublicNetConfig: Public network access configuration
+        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         """
         self.FunctionName = None
         self.Description = None
@@ -1914,7 +2732,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.L5Enable = None
         self.Layers = None
         self.DeadLetterConfig = None
-        self.OnsEnable = None
+        self.PublicNetConfig = None
 
 
     def _deserialize(self, params):
@@ -1944,7 +2762,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("DeadLetterConfig") is not None:
             self.DeadLetterConfig = DeadLetterConfig()
             self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
-        self.OnsEnable = params.get("OnsEnable")
+        if params.get("PublicNetConfig") is not None:
+            self.PublicNetConfig = PublicNetConfigIn()
+            self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
 
 
 class UpdateFunctionConfigurationResponse(AbstractModel):
@@ -2021,6 +2841,63 @@ class Variable(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+
+
+class VersionMatch(AbstractModel):
+    """Function version with match rule
+
+    """
+
+    def __init__(self):
+        """
+        :param Version: Function version name
+        :type Version: str
+        :param Key: Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching rule
+Header method:
+Enter "invoke.headers.User" for `key` and pass in `RoutingKey:{"User":"value"}` when invoking a function through `invoke` for invocation based on rule matching
+        :type Key: str
+        :param Method: Match method. Valid values:
+range: range match
+exact: exact string match
+        :type Method: str
+        :param Expression: Rule requirements for range match:
+It should be described in an open or closed range, i.e., `(a,b)` or `[a,b]`, where both a and b are integers
+Rule requirements for exact match:
+Exact string match
+        :type Expression: str
+        """
+        self.Version = None
+        self.Key = None
+        self.Method = None
+        self.Expression = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Key = params.get("Key")
+        self.Method = params.get("Method")
+        self.Expression = params.get("Expression")
+
+
+class VersionWeight(AbstractModel):
+    """Function version with weight
+
+    """
+
+    def __init__(self):
+        """
+        :param Version: Function version name
+        :type Version: str
+        :param Weight: Version weight
+        :type Weight: float
+        """
+        self.Version = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Weight = params.get("Weight")
 
 
 class VpcConfig(AbstractModel):

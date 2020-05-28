@@ -249,6 +249,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePolicyVersion(self, request):
+        """This API is used to add a policy version. After creating a policy version, you can easily change the policy by changing the policy version.
+
+        :param request: Request instance for CreatePolicyVersion.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreatePolicyVersionRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreatePolicyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePolicyVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePolicyVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRole(self, request):
         """This API (CreateRole) is used to create a role.
 
@@ -291,6 +319,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSAMLProviderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateServiceLinkedRole(self, request):
+        """This API is used to create a service-linked role.
+
+        :param request: Request instance for CreateServiceLinkedRole.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateServiceLinkedRoleRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateServiceLinkedRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateServiceLinkedRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateServiceLinkedRoleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -361,6 +417,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeletePolicyVersion(self, request):
+        """This API is used to delete a policy version of a policy.
+
+        :param request: Request instance for DeletePolicyVersion.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeletePolicyVersionRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeletePolicyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePolicyVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePolicyVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteRole(self, request):
         """This API (DeleteRole) is used to delete a specified role.
 
@@ -403,6 +487,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSAMLProviderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteServiceLinkedRole(self, request):
+        """This API is used to delete a service-linked role.
+
+        :param request: Request instance for DeleteServiceLinkedRole.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteServiceLinkedRoleRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteServiceLinkedRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteServiceLinkedRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteServiceLinkedRoleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -641,6 +753,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetPolicyVersion(self, request):
+        """This API is used to query policy version details.
+
+        :param request: Request instance for GetPolicyVersion.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetPolicyVersionRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetPolicyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetPolicyVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetPolicyVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetRole(self, request):
         """This API (GetRole) is used to get the details of a specified role.
 
@@ -683,6 +823,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetSAMLProviderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetServiceLinkedRoleDeletionStatus(self, request):
+        """This API is used to get the status of the service-linked role deletion based on the `TaskId`
+
+        :param request: Request instance for GetServiceLinkedRoleDeletionStatus.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetServiceLinkedRoleDeletionStatusRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetServiceLinkedRoleDeletionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetServiceLinkedRoleDeletionStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetServiceLinkedRoleDeletionStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -922,7 +1090,7 @@ class CamClient(AbstractClient):
 
 
     def ListPolicies(self, request):
-        """This API (ListPolicies) is used to query the list of policies.
+        """This API is used to query the policy list.
 
         :param request: Request instance for ListPolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListPoliciesRequest`
@@ -935,6 +1103,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListPolicyVersions(self, request):
+        """This API is used to get the list of policy versions.
+
+        :param request: Request instance for ListPolicyVersions.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListPolicyVersionsRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListPolicyVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListPolicyVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListPolicyVersionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1061,6 +1257,62 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetDefaultPolicyVersion(self, request):
+        """This API is used to set the operative policy version.
+
+        :param request: Request instance for SetDefaultPolicyVersion.
+        :type request: :class:`tencentcloud.cam.v20190116.models.SetDefaultPolicyVersionRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.SetDefaultPolicyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetDefaultPolicyVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetDefaultPolicyVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetMfaFlag(self, request):
+        """This API is used to set account verification for login and sensitive operations for sub-users.
+
+        :param request: Request instance for SetMfaFlag.
+        :type request: :class:`tencentcloud.cam.v20190116.models.SetMfaFlagRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.SetMfaFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetMfaFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetMfaFlagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateAssumeRolePolicy(self, request):
         """This API (UpdateAssumeRolePolicy) is used to modify the trust policy of a role.
 
@@ -1118,7 +1370,8 @@ class CamClient(AbstractClient):
 
 
     def UpdatePolicy(self, request):
-        """This API (UpdatePolicy) is used to update a policy.
+        """This API is used to update a policy.
+        This API will update the default version of an existing policy instead of creating a new one. If no policy exists, a default version will be created.
 
         :param request: Request instance for UpdatePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdatePolicyRequest`

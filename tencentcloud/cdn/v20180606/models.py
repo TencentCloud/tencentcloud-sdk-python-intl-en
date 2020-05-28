@@ -714,12 +714,17 @@ class CacheKey(AbstractModel):
 on: enable full-path cache (i.e., disable parameter filter)
 off: disable full-path cache (i.e., enable parameter filter)
         :type FullUrlCache: str
+        :param CaseSensitive: Whether the cache ignores letter case
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CaseSensitive: str
         """
         self.FullUrlCache = None
+        self.CaseSensitive = None
 
 
     def _deserialize(self, params):
         self.FullUrlCache = params.get("FullUrlCache")
+        self.CaseSensitive = params.get("CaseSensitive")
 
 
 class CacheOptResult(AbstractModel):
@@ -1122,13 +1127,18 @@ class CreateClsLogTopicResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TopicId: Topic ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TopicId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TopicId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1362,7 +1372,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End time, such as `2019-09-04 12:00:00`
         :type EndTime: str
-        :param Offset: Offset for paged queries. Default value: 0 (the first page)
+        :param Offset: Offset for paginated queries. Default value: 0
         :type Offset: int
         :param Limit: Limit on paged queries. Default value: 100. Maximum value: 1,000
         :type Limit: int
@@ -1372,6 +1382,9 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 `global`: specifies to return a download link of logs on acceleration within Mainland China and a link of logs on acceleration outside Mainland China.
 Default value: `mainland`.
         :type Area: str
+        :param LogType: The type of log to be downloaded.
+access: access logs
+        :type LogType: str
         """
         self.Domain = None
         self.StartTime = None
@@ -1379,6 +1392,7 @@ Default value: `mainland`.
         self.Offset = None
         self.Limit = None
         self.Area = None
+        self.LogType = None
 
 
     def _deserialize(self, params):
@@ -1388,6 +1402,7 @@ Default value: `mainland`.
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Area = params.get("Area")
+        self.LogType = params.get("LogType")
 
 
 class DescribeCdnDomainLogsResponse(AbstractModel):
@@ -1581,7 +1596,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Offset for paginated queries. Default value: 0 (the first page).
+        :param Offset: Offset for paginated queries. Default value: 0
         :type Offset: int
         :param Limit: Limit on paginated queries. Default value: 100. Maximum value: 1000.
         :type Limit: int
@@ -1955,7 +1970,7 @@ class DescribePurgeTasksRequest(AbstractModel):
         :param TaskId: Specifies a task ID when you want to query by task ID.
 You must specify either a task ID or a starting time for your query.
         :type TaskId: str
-        :param Offset: Offset for paged queries. Default value: 0 (the first page)
+        :param Offset: Offset for paginated queries. Default value: 0
         :type Offset: int
         :param Limit: Limit on paged queries. Default value: 20
         :type Limit: int
@@ -2043,7 +2058,7 @@ You must specify either a task ID or a starting time.
         :type TaskId: str
         :param Keyword: Specifies a keyword for your query. Please enter a domain name or a complete URL beginning with `http(s)://`
         :type Keyword: str
-        :param Offset: Offset for paged queries. Default value: 0 (the first page)
+        :param Offset: Offset for paginated queries. Default value: 0
         :type Offset: int
         :param Limit: Limit on paged queries. Default value: 20
         :type Limit: int
@@ -2199,7 +2214,7 @@ class DescribeUrlViolationsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Offset for paginated queries. Default value: 0 (the first page).
+        :param Offset: Offset for paginated queries. Default value: 0
         :type Offset: int
         :param Limit: Limit on paginated queries. Default value: 100.
         :type Limit: int
@@ -2391,9 +2406,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SecurityConfig: SCDN configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SecurityConfig: :class:`tencentcloud.cdn.v20180606.models.SecurityConfig`
-        :param ImageOptimization: 
+        :param ImageOptimization: `ImageOptimization` configuration
+Note: this field may return null, indicating that no valid values can be obtained.
         :type ImageOptimization: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`
-        :param UserAgentFilter: 
+        :param UserAgentFilter: `UA` blacklist/whitelist Configuration
+Note: this field may return null, indicating that no valid values can be obtained.
         :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
         """
         self.ResourceId = None
@@ -2965,7 +2982,7 @@ class GetDisableRecordsRequest(AbstractModel):
 disable: The URL remains disabled, and accessing it will return an error 403
 enable: The URL is enabled (unblocked) and can be normally accessed
         :type Status: str
-        :param Offset: Offset for paged queries. Default value: 0 (the first page)
+        :param Offset: Offset for paginated queries. Default value: 0
         :type Offset: int
         :param Limit: Limit on paged queries. Default value: 20
         :type Limit: int
@@ -3017,6 +3034,51 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self.UrlRecordList.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+
+
+class GuetzliAdapter(AbstractModel):
+    """Image optimization - `GuetzliAdapter` configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch. Valid values: on, off
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class Hsts(AbstractModel):
+    """`HSTS` configuration.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Whether to enable. Valid values: on, off.
+        :type Switch: str
+        :param MaxAge: `MaxAge` value.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxAge: int
+        :param IncludeSubDomains: Whether to include subdomain names. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IncludeSubDomains: str
+        """
+        self.Switch = None
+        self.MaxAge = None
+        self.IncludeSubDomains = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.MaxAge = params.get("MaxAge")
+        self.IncludeSubDomains = params.get("IncludeSubDomains")
 
 
 class HttpHeaderPathRule(AbstractModel):
@@ -3119,6 +3181,12 @@ deployed: successfully deployed
 failed: deployment failed
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SslStatus: str
+        :param TlsVersion: TLS version list. Valid values:
+TLSv1.0, TLSv1.1, TLSv1.2
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TlsVersion: list of str
+        :param Hsts: 
+        :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
         """
         self.Switch = None
         self.Http2 = None
@@ -3128,6 +3196,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ClientCertInfo = None
         self.Spdy = None
         self.SslStatus = None
+        self.TlsVersion = None
+        self.Hsts = None
 
 
     def _deserialize(self, params):
@@ -3143,6 +3213,44 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         self.Spdy = params.get("Spdy")
         self.SslStatus = params.get("SslStatus")
+        self.TlsVersion = params.get("TlsVersion")
+        if params.get("Hsts") is not None:
+            self.Hsts = Hsts()
+            self.Hsts._deserialize(params.get("Hsts"))
+
+
+class ImageOptimization(AbstractModel):
+    """`ImageOptimization` configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param WebpAdapter: `WebpAdapter` configuration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WebpAdapter: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
+        :param TpgAdapter: `TpgAdapter` configuration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TpgAdapter: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
+        :param GuetzliAdapter: `GuetzliAdapter` configuration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
+        """
+        self.WebpAdapter = None
+        self.TpgAdapter = None
+        self.GuetzliAdapter = None
+
+
+    def _deserialize(self, params):
+        if params.get("WebpAdapter") is not None:
+            self.WebpAdapter = WebpAdapter()
+            self.WebpAdapter._deserialize(params.get("WebpAdapter"))
+        if params.get("TpgAdapter") is not None:
+            self.TpgAdapter = TpgAdapter()
+            self.TpgAdapter._deserialize(params.get("TpgAdapter"))
+        if params.get("GuetzliAdapter") is not None:
+            self.GuetzliAdapter = GuetzliAdapter()
+            self.GuetzliAdapter._deserialize(params.get("GuetzliAdapter"))
 
 
 class IpFilter(AbstractModel):
@@ -3364,13 +3472,13 @@ Only supports data query at daily granularity. The date in the input parameter i
 Data generated before or at 23:59:59 on the end date will be returned.
 EndTime must be greater than or equal to StartTime
         :type EndTime: str
-        :param Metric: Objects to be sorted. Valid values:
-`url`: sorts access URLs with query string parameters included. Supported filters are `flux` and `request`.
-`path`: sorts access URLs with query string parameters excluded. Supported filters are `flux` and `request`. You need to be whitelisted before using this feature.
-`district`: sorts provinces or countries/regions. Supported filters are `flux` and `request`.
-`isp`: sorts ISPs. Supported filters are `flux` and `request`.
-`host`: sorts domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, `2XX`, `3XX`, `4XX`, `5XX` and `statusCode`.
-`originHost`: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, `origin_2XX`, `origin_3XX`, `oringin_4XX`, `origin_5XX` and `OriginStatusCode`
+        :param Metric: Object representing the sort criteria. The following objects are supported:
+url: sorts by access URL (including the query string). Supported filters are `flux` and `request`
+path: sorts by access URL (excluding the query string). Supported filters are `flux` and `request` (whitelist-based feature)
+district: sorts by district. Supported filters are `flux` and `request`
+isp: sorts by ISP. Supported filters are `flux` and `request`
+host: sorts by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, 2XX, 3XX, 4XX, 5XX, and `statusCode`
+originHost: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, `origin_2XX`, `origin_3XX`, `origin_4XX`, `origin_5XX`, and `OriginStatusCode`
         :type Metric: str
         :param Filter: Metric name used for sorting:
 flux: If Metric is `host`, it indicates the access traffic; if Metric is `originHost`, it indicates the origin-pull traffic.
@@ -3393,8 +3501,8 @@ OriginStatusCode: statistics of a specific origin-pull status code which is spec
         :param Project: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
 Please note that if domain names are specified, this parameter will be ignored.
         :type Project: int
-        :param Detail: Default value: `false`, indicating that results for all domain names are returned together when you query multiple domain names.
-If `Metric` is `Url`, `Path`, `District`, or `Isp` and `Filter` is `flux` or `request`, you can set this parameter to `true`, indicating that results for each domain name are returned.
+        :param Detail: Default is `false` for multi–domain name queries, which returns sorted results of all domain names. 
+If `Metric` is `url`, `path`, `district`, or `isp` and `Filter` is `flux` or `request`, it can be set to `true` to return the sorted results of each domain.
         :type Detail: bool
         :param Code: When Filter is `statusCode` or `OriginStatusCode`, enter a code to query and sort results.
         :type Code: str
@@ -3402,9 +3510,9 @@ If `Metric` is `Url`, `Path`, `District`, or `Isp` and `Filter` is `flux` or `re
 `mainland`: specifies to query CDN data within Mainland China;
 `overseas`: specifies to query CDN data outside Mainland China. Supported metrics are `url`, `district`, `host`, and `originHost`. If `Metric` is `originHost`, supported filters are `flux`, `request`, and `bandwidth`.
         :type Area: str
-        :param AreaType: Specifies a region type for the query. If it is left blank, data on the service region will be queried. This parameter is only valid when `Area` is `overseas` and `Metric` is `District` or `Host`.
-`server`: specifies to query data on the service region where Tencent Cloud CDN nodes are located;
-`client`: specifies to query data on the client region where the request devices are located; if `Metric` is `Host`, supported filters are `flux`, `request`, and `bandwidth`.
+        :param AreaType: The region type can be specified only when you query CDN data outside Mainland China and `Metric` is `district` or `host`; if you leave it empty, data of the service region will be queried (only applicable when `Area` is `overseas` and `Metric` is `district` or `host`)
+server: specifies to query data of service region (where a CDN node is located)
+client: specifies to query data of the client region (where a user request device is located). If `Metric` is `host`, `Filter` can only be `flux`, `request`, or `bandwidth`
         :type AreaType: str
         """
         self.StartTime = None
@@ -5212,6 +5320,24 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CreateTime = params.get("CreateTime")
 
 
+class TpgAdapter(AbstractModel):
+    """Image optimization - `TpgAdapter` configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch. Valid values: on, off
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class UpdateDomainConfigRequest(AbstractModel):
     """UpdateDomainConfig request structure.
 
@@ -5492,6 +5618,71 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UpdateTime = params.get("UpdateTime")
 
 
+class UserAgentFilter(AbstractModel):
+    """`UserAgent` blacklist/whitelist configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch. Valid values: on, off
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        :param FilterRules: UA blacklist/whitelist effect rule list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FilterRules: list of UserAgentFilterRule
+        """
+        self.Switch = None
+        self.FilterRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("FilterRules") is not None:
+            self.FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = UserAgentFilterRule()
+                obj._deserialize(item)
+                self.FilterRules.append(obj)
+
+
+class UserAgentFilterRule(AbstractModel):
+    """`UserAgent` blacklist/whitelist rule configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: Effective access path type
+all: all access paths are effective
+file: effective by file extension
+directory: effective by directory
+path: effective by full access path
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RuleType: str
+        :param RulePaths: Effective access paths
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RulePaths: list of str
+        :param UserAgents: `UserAgent` list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UserAgents: list of str
+        :param FilterType: Blacklist or whitelist. Valid values: blacklist, whitelist
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FilterType: str
+        """
+        self.RuleType = None
+        self.RulePaths = None
+        self.UserAgents = None
+        self.FilterType = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        self.UserAgents = params.get("UserAgents")
+        self.FilterType = params.get("FilterType")
+
+
 class VideoSeek(AbstractModel):
     """Video dragging configuration. This is disabled by default.
 
@@ -5551,3 +5742,21 @@ complain: appeal in process
         self.UrlStatus = params.get("UrlStatus")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class WebpAdapter(AbstractModel):
+    """Image optimization - `WebpAdapter` configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch. Valid values: on, off
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")

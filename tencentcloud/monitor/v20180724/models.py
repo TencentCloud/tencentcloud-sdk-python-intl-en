@@ -54,7 +54,7 @@ class BindingPolicyObjectRequest(AbstractModel):
         """
         :param GroupId: Policy group ID.
         :type GroupId: int
-        :param Module: Required. It is fixed to monitor.
+        :param Module: Required. The value is fixed to monitor.
         :type Module: str
         :param InstanceGroupId: Instance group ID.
         :type InstanceGroupId: int
@@ -97,7 +97,7 @@ class BindingPolicyObjectResponse(AbstractModel):
 
 
 class CreatePolicyGroupCondition(AbstractModel):
-    """Alarm threshold condition input when a policy is created.
+    """Alarm threshold condition passed in when a policy is created.
 
     """
 
@@ -109,15 +109,15 @@ class CreatePolicyGroupCondition(AbstractModel):
         :type AlarmNotifyType: int
         :param AlarmNotifyPeriod: Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.
         :type AlarmNotifyPeriod: int
-        :param CalcType: Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to. This parameter may not be set if a default comparative type is set for a metric.
+        :param CalcType: Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to. This parameter is optional if a default comparative type is configured for the metric.
         :type CalcType: int
-        :param CalcValue: Comparative value. This parameter may not be set if a metric has no requirement.
+        :param CalcValue: Comparative value. This parameter is optional if the metric has no requirement.
         :type CalcValue: float
-        :param CalcPeriod: Data statistics period in seconds. This parameter may not be set if a metric has a default value.
+        :param CalcPeriod: Data aggregation period in seconds. This parameter is optional if the metric has a default value.
         :type CalcPeriod: int
         :param ContinuePeriod: Number of consecutive periods after which an alarm will be triggered.
         :type ContinuePeriod: int
-        :param RuleId: If a metric is created based on a template, the RuleId of the metric in the template must be input.
+        :param RuleId: If a metric is created based on a template, the RuleId of the metric in the template must be passed in.
         :type RuleId: int
         """
         self.MetricId = None
@@ -142,7 +142,7 @@ class CreatePolicyGroupCondition(AbstractModel):
 
 
 class CreatePolicyGroupEventCondition(AbstractModel):
-    """Event alarm condition input when a policy is created.
+    """Event alarm condition passed in when a policy is created.
 
     """
 
@@ -152,9 +152,9 @@ class CreatePolicyGroupEventCondition(AbstractModel):
         :type EventId: int
         :param AlarmNotifyType: Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
         :type AlarmNotifyType: int
-        :param AlarmNotifyPeriod: Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm will be triggered only once. The value >0 indicates that an alarm will be triggered at the interval of triggerTime.
+        :param AlarmNotifyPeriod: Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.
         :type AlarmNotifyPeriod: int
-        :param RuleId: If a metric is created based on a template, the RuleId of the metric in the template must be input.
+        :param RuleId: If a metric is created based on a template, the RuleId of the metric in the template must be passed in.
         :type RuleId: int
         """
         self.EventId = None
@@ -181,7 +181,7 @@ class CreatePolicyGroupRequest(AbstractModel):
         :type GroupName: str
         :param Module: The value is fixed to monitor.
         :type Module: str
-        :param ViewName: Name of the view to which the policy group belongs. If the policy group is created based on a template, this parameter may not be set.
+        :param ViewName: Name of the view to which the policy group belongs. If the policy group is created based on a template, this parameter is optional.
         :type ViewName: str
         :param ProjectId: ID of the project to which the policy group belongs, which will be used for authentication.
         :type ProjectId: int
@@ -191,15 +191,15 @@ class CreatePolicyGroupRequest(AbstractModel):
         :type IsShielded: int
         :param Remark: Remarks of the policy group.
         :type Remark: str
-        :param InsertTime: Insertion time in the format of Unix timestamp. If you do not set this parameter, the background processing time is used.
+        :param InsertTime: Insertion time in the format of Unix timestamp. If this parameter is not configured, the backend processing time is used.
         :type InsertTime: int
-        :param Conditions: Alarm threshold rule in the policy group.
+        :param Conditions: Alarm threshold rules in the policy group.
         :type Conditions: list of CreatePolicyGroupCondition
         :param EventConditions: Event alarm rules in the policy group.
         :type EventConditions: list of CreatePolicyGroupEventCondition
-        :param BackEndCall: Whether to invoke at the background. Only when the value is 1, the rules in the background pull policy template are filled into the Conditions and EventConditions fields.
+        :param BackEndCall: Whether it is a backend call. If the value is 1, rules from the policy template will be used to fill in the `Conditions` and `EventConditions` fields.
         :type BackEndCall: int
-        :param IsUnionRule: The “AND” and “OR” rules for alarm metrics. The value 0 indicates “OR”, which means that an alarm will be reported when any rule is met. The value 1 indicates “AND”, which means that an alarm will be reported only when all rules are met.
+        :param IsUnionRule: The “AND” and “OR” rules for alarm metrics. The value 0 indicates “OR”, which means that an alarm will be triggered when any rule is met. The value 1 indicates “AND”, which means that an alarm will be triggered only when all rules are met.
         :type IsUnionRule: int
         """
         self.GroupName = None
@@ -390,9 +390,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: API module name. The value for the current API is monitor.
+        :param Module: API component name. The value for the current API is monitor.
         :type Module: str
-        :param StartTime: Start time, which is the timestamp one day earlier by default.
+        :param StartTime: Start time, which is the timestamp one day prior by default.
         :type StartTime: int
         :param EndTime: End time, which is the current timestamp by default.
         :type EndTime: int
@@ -402,11 +402,11 @@ class DescribeAccidentEventListRequest(AbstractModel):
         :type Offset: int
         :param UpdateTimeOrder: Sorting rule by UpdateTime. Valid values: asc and desc.
         :type UpdateTimeOrder: str
-        :param OccurTimeOrder: Sorting rule by OccurTime. Valid values: asc or desc. Sorting by UpdateTimeOrder takes a higher priority.
+        :param OccurTimeOrder: Sorting rule by OccurTime. Valid values: asc or desc. Sorting by UpdateTimeOrder takes priority.
         :type OccurTimeOrder: str
         :param AccidentType: Filter by event type. The value 1 indicates service issues. The value 2 indicates other subscriptions.
         :type AccidentType: list of int
-        :param AccidentEvent: Filter by event. The value 1 indicates CVM storage issues. The value 2 indicates CVM network connection issues. The value 3 indicates that the CVM runs exceptionally. The value 202 indicates that an ISP network jitter occurs.
+        :param AccidentEvent: Filter by event. The value 1 indicates CVM storage issues. The value 2 indicates CVM network connection issues. The value 3 indicates that the CVM has an exception. The value 202 indicates that an ISP network jitter occurs.
         :type AccidentEvent: list of int
         :param AccidentStatus: Filter by event status. The value 0 indicates that the event has been recovered. The value 1 indicates that the event has not been recovered.
         :type AccidentStatus: list of int
@@ -657,9 +657,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: API module name. The value for the current API is monitor.
+        :param Module: API component name. The value for the current API is monitor.
         :type Module: str
-        :param StartTime: Start time, which is the timestamp one day ago by default.
+        :param StartTime: Start time, which is the timestamp one day prior by default.
         :type StartTime: int
         :param EndTime: End time, which is the current timestamp by default.
         :type EndTime: int
@@ -899,7 +899,7 @@ Note: This field may return null, indicating that no valid value was found.
         :type Total: int
         :param NoShieldedSum: Number of object instances that are not shielded.
         :type NoShieldedSum: int
-        :param InstanceGroup: Bound instance group information. You do not need to set this parameter if no instance group is bound.
+        :param InstanceGroup: Bound instance group information. This parameter is not configured if no instance group is bound.
 Note: This field may return null, indicating that no valid value was found.
         :type InstanceGroup: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListInstanceGroup`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -1109,7 +1109,7 @@ class DescribePolicyConditionListConfigManualContinueTime(AbstractModel):
         :param Default: Default duration in seconds.
 Note: This field may return null, indicating that no valid value was found.
         :type Default: int
-        :param Keys: Optional duration in seconds.
+        :param Keys: Custom durations in seconds.
 Note: This field may return null, indicating that no valid value was found.
         :type Keys: list of int
         :param Need: Required or not.
@@ -1136,7 +1136,7 @@ class DescribePolicyConditionListConfigManualPeriod(AbstractModel):
         :param Default: Default period in seconds.
 Note: This field may return null, indicating that no valid value was found.
         :type Default: int
-        :param Keys: Optional period in seconds.
+        :param Keys: Custom periods in seconds.
 Note: This field may return null, indicating that no valid value was found.
         :type Keys: list of int
         :param Need: Required or not.
@@ -1163,7 +1163,7 @@ class DescribePolicyConditionListConfigManualPeriodNum(AbstractModel):
         :param Default: Number of default periods.
 Note: This field may return null, indicating that no valid value was found.
         :type Default: int
-        :param Keys: Number of optional periods.
+        :param Keys: Number of custom periods.
 Note: This field may return null, indicating that no valid value was found.
         :type Keys: list of int
         :param Need: Required or not.
@@ -1193,7 +1193,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param P10: Data aggregation method in a period of 10 seconds.
 Note: This field may return null, indicating that no valid value was found.
         :type P10: str
-        :param P60: Data aggregation method in a period of 1 second.
+        :param P60: Data aggregation method in a period of 1 minute.
 Note: This field may return null, indicating that no valid value was found.
         :type P60: str
         :param P300: Data aggregation method in a period of 5 minutes.
@@ -1246,7 +1246,7 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
         :type EventShowName: str
         :param NeedRecovered: Whether to recover.
         :type NeedRecovered: bool
-        :param Type: Event type, which is a reserved field. At present, it is fixed to 2.
+        :param Type: Event type, which is a reserved field. Currently, it is fixed to 2.
         :type Type: int
         """
         self.EventId = None
@@ -1318,7 +1318,7 @@ class DescribePolicyConditionListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Conditions: List of Alarm policy conditions.
+        :param Conditions: List of alarm policy conditions.
         :type Conditions: list of DescribePolicyConditionListCondition
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1338,7 +1338,7 @@ class DescribePolicyConditionListResponse(AbstractModel):
 
 
 class DescribePolicyGroupInfoCallback(AbstractModel):
-    """User callback information in the output of policy query
+    """User callback information output by the policy query
 
     """
 
@@ -1363,7 +1363,7 @@ class DescribePolicyGroupInfoCallback(AbstractModel):
 
 
 class DescribePolicyGroupInfoCondition(AbstractModel):
-    """Alarm threshold conditions in the output of policy query
+    """Alarm threshold conditions output by the policy query
 
     """
 
@@ -1371,7 +1371,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
         """
         :param MetricShowName: Metric name.
         :type MetricShowName: str
-        :param Period: Data statistics period in seconds.
+        :param Period: Data aggregation period in seconds.
         :type Period: int
         :param MetricId: Metric ID.
         :type MetricId: int
@@ -1419,7 +1419,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyGroupInfoConditionTpl(AbstractModel):
-    """Template-based policy group information in the output of policy query
+    """Template-based policy group information output by the policy query
 
     """
 
@@ -1467,7 +1467,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyGroupInfoEventCondition(AbstractModel):
-    """Event alarm conditions in the output of policy query
+    """Event alarm conditions output by the policy query
 
     """
 
@@ -1500,13 +1500,13 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
 
 class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
-    """Alarm recipient information in the output of policy query
+    """Alarm recipient information output by the policy query
 
     """
 
     def __init__(self):
         """
-        :param ReceiverGroupList: List of alarm receiver group IDs.
+        :param ReceiverGroupList: List of alarm recipient group IDs.
         :type ReceiverGroupList: list of int
         :param ReceiverUserList: List of alarm recipient IDs.
         :type ReceiverUserList: list of int
@@ -1516,22 +1516,22 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
         :type EndTime: int
         :param ReceiverType: Recipient type. Valid values: group and user.
         :type ReceiverType: str
-        :param NotifyWay: Alarm notification type. Valid values: "SMS", "SITE", "EMAIL", "CALL", and "WECHAT".
+        :param NotifyWay: Alarm notification method. Valid values: "SMS", "SITE", "EMAIL", "CALL", and "WECHAT".
         :type NotifyWay: list of str
-        :param UidList: Uid of the alarm call receiver.
+        :param UidList: Uid of the alarm call recipient.
 Note: This field may return null, indicating that no valid value was found.
         :type UidList: list of int
         :param RoundNumber: Number of alarm call rounds.
         :type RoundNumber: int
-        :param RoundInterval: Round interval of alarm calls in seconds.
+        :param RoundInterval: Intervals of alarm call rounds in seconds.
         :type RoundInterval: int
-        :param PersonInterval: Person interval of alarm calls in seconds.
+        :param PersonInterval: Alarm call intervals for individuals in seconds.
         :type PersonInterval: int
         :param NeedSendNotice: Whether to send an alarm call delivery notice. The value 0 indicates that no notice needs to be sent. The value 1 indicates that a notice needs to be sent.
         :type NeedSendNotice: int
-        :param SendFor: Alarm call notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is reported) and RECOVER (indicating that a notice is sent when the alarm is cleared).
+        :param SendFor: Alarm call notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is triggered) and RECOVER (indicating that a notice is sent when the alarm is recovered).
         :type SendFor: list of str
-        :param RecoverNotify: Notification method when an alarm is cleared. Valid value: SMS.
+        :param RecoverNotify: Notification method when an alarm is recovered. Valid value: SMS.
         :type RecoverNotify: list of str
         :param ReceiveLanguage: Alarm language.
 Note: This field may return null, indicating that no valid value was found.
@@ -1612,9 +1612,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
         :type ShowName: str
         :param LastEditUin: Uin that was last edited.
         :type LastEditUin: str
-        :param UpdateTime: Last update time.
+        :param UpdateTime: Last edited time.
         :type UpdateTime: str
-        :param Region: Regions that support this policy.
+        :param Region: Regions supported by this policy.
         :type Region: list of str
         :param DimensionGroup: List of policy type dimensions.
         :type DimensionGroup: list of str
@@ -1633,7 +1633,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param ConditionsTemp: Template-based policy group.
 Note: This field may return null, indicating that no valid value was found.
         :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
-        :param CanSetDefault: Whether the policy can be set as the default policy.
+        :param CanSetDefault: Whether the policy can be configured as the default policy.
         :type CanSetDefault: bool
         :param IsUnionRule: Whether the “AND” rule is used.
 Note: This field may return null, indicating that no valid value was found.
@@ -1716,9 +1716,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
         :type IsOpen: bool
         :param ViewName: Policy view name.
         :type ViewName: str
-        :param LastEditUin: Uin that is last edited.
+        :param LastEditUin: Uin that was last edited.
         :type LastEditUin: str
-        :param UpdateTime: Last update time.
+        :param UpdateTime: Last modified time.
         :type UpdateTime: int
         :param InsertTime: Creation time.
         :type InsertTime: int
@@ -1728,7 +1728,7 @@ class DescribePolicyGroupListGroup(AbstractModel):
         :type NoShieldedSum: int
         :param IsDefault: Whether it is the default policy. The value 0 indicates that it is not the default policy. The value 1 indicates that it is the default policy.
         :type IsDefault: int
-        :param CanSetDefault: Whether the policy can be set as the default policy.
+        :param CanSetDefault: Whether the policy can be configured as the default policy.
         :type CanSetDefault: bool
         :param ParentGroupId: Parent policy group ID.
         :type ParentGroupId: int
@@ -1751,7 +1751,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param InstanceGroup: Instance group that is bound to the policy group.
 Note: This field may return null, indicating that no valid value was found.
         :type InstanceGroup: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListGroupInstanceGroup`
-        :param IsUnionRule: The “AND” or “OR” rule. The value 0 indicates the “OR” rule (indicating that an alarm will be reported if any rule reaches the threshold condition). The value 1 indicates the “AND” rule (indicating that an alarm will be reported when all rules reach the threshold conditions).
+        :param IsUnionRule: The “AND” or “OR” rule. The value 0 indicates the “OR” rule (indicating that an alarm will be triggered if any rule meets the threshold condition). The value 1 indicates the “AND” rule (indicating that an alarm will be triggered when all rules meet the threshold conditions).
 Note: This field may return null, indicating that no valid value was found.
         :type IsUnionRule: int
         """
@@ -1820,7 +1820,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
-    """Instance group that is bound to a policy group returned by the DescribePolicyGroupList API
+    """Instance group that is bound to a policy group of the DescribePolicyGroupList API
 
     """
 
@@ -1830,7 +1830,7 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
         :type InstanceGroupId: int
         :param ViewName: Policy type view name.
         :type ViewName: str
-        :param LastEditUin: Uin that is last edited.
+        :param LastEditUin: Uin that was last edited.
         :type LastEditUin: str
         :param GroupName: Instance group name.
         :type GroupName: str
@@ -1991,19 +1991,19 @@ class DescribeProductEventListEvents(AbstractModel):
         :param EventId: Event ID.
 Note: This field may return null, indicating that no valid value was found.
         :type EventId: int
-        :param EventCName: Chinese event name.
+        :param EventCName: Event name in Chinese.
 Note: This field may return null, indicating that no valid value was found.
         :type EventCName: str
-        :param EventEName: English event name.
+        :param EventEName: Event name in English.
 Note: This field may return null, indicating that no valid value was found.
         :type EventEName: str
         :param EventName: Event name abbreviation.
 Note: This field may return null, indicating that no valid value was found.
         :type EventName: str
-        :param ProductCName: Chinese product name.
+        :param ProductCName: Product name in Chinese.
 Note: This field may return null, indicating that no valid value was found.
         :type ProductCName: str
-        :param ProductEName: English product name.
+        :param ProductEName: Product name in English.
 Note: This field may return null, indicating that no valid value was found.
         :type ProductEName: str
         :param ProductName: Product name abbreviation.
@@ -2116,10 +2116,10 @@ class DescribeProductEventListEventsDimensions(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: English dimension name.
+        :param Key: Dimension name in English.
 Note: This field may return null, indicating that no valid value was found.
         :type Key: str
-        :param Name: Chinese dimension name.
+        :param Name: Dimension name in Chinese.
 Note: This field may return null, indicating that no valid value was found.
         :type Name: str
         :param Value: Dimension value.
@@ -2173,7 +2173,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param UnConfigAlarmAmount: Number of events whose alarm statuses are not configured.
 Note: This field may return null, indicating that no valid value was found.
         :type UnConfigAlarmAmount: int
-        :param UnNormalEventAmount: Number of exceptional events.
+        :param UnNormalEventAmount: Number of events with exceptions.
 Note: This field may return null, indicating that no valid value was found.
         :type UnNormalEventAmount: int
         :param UnRecoverAmount: Number of events that have not been recovered.
@@ -2200,7 +2200,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: API module name. It is fixed to monitor.
+        :param Module: API component name. It is fixed to monitor.
         :type Module: str
         :param ProductName: Filter by product type. For example, “cvm” indicates Cloud Virtual Machine.
         :type ProductName: list of str
@@ -2212,7 +2212,7 @@ class DescribeProductEventListRequest(AbstractModel):
         :type Dimensions: list of DescribeProductEventListDimensions
         :param RegionList: Filter by region, such as by gz.
         :type RegionList: list of str
-        :param Type: Filter by event type. Valid values: ["status_change","abnormal"], which indicate events whose statuses have changed and exceptional events respectively.
+        :param Type: Filter by event type. Valid values: ["status_change","abnormal"], which indicate events whose statuses have changed and events with exceptions respectively.
         :type Type: list of str
         :param Status: Filter by event status. Valid values: ["recover","alarm","-"], which indicate that an event has been recovered, has not been recovered, and has no status respectively.
         :type Status: list of str
@@ -2222,7 +2222,7 @@ class DescribeProductEventListRequest(AbstractModel):
         :type IsAlarmConfig: int
         :param TimeOrder: Sorting by update time. The value ASC indicates the ascending order. The value DESC indicates the descending order. The default value is DESC.
         :type TimeOrder: str
-        :param StartTime: Start time, which is the timestamp one day ago by default.
+        :param StartTime: Start time, which is the timestamp one day prior by default.
         :type StartTime: int
         :param EndTime: End time, which is the current timestamp by default.
         :type EndTime: int
@@ -2586,7 +2586,7 @@ class ModifyAlarmReceiversRequest(AbstractModel):
         :type GroupId: int
         :param Module: Required. The value is fixed to monitor.
         :type Module: str
-        :param ReceiverInfos: New recipient information. If this parameter is not set, all recipients will be deleted.
+        :param ReceiverInfos: New recipient information. If this parameter is not configured, all recipients will be deleted.
         :type ReceiverInfos: list of ReceiverInfo
         """
         self.GroupId = None
@@ -2619,6 +2619,156 @@ class ModifyAlarmReceiversResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPolicyGroupCondition(AbstractModel):
+    """Modification of the metric threshold condition passed in by the alarm policy group.
+
+    """
+
+    def __init__(self):
+        """
+        :param MetricId: Metric ID.
+        :type MetricId: int
+        :param CalcType: Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to.
+        :type CalcType: int
+        :param CalcValue: Threshold.
+        :type CalcValue: str
+        :param CalcPeriod: Data period of the detected metric.
+        :type CalcPeriod: int
+        :param ContinuePeriod: Number of consecutive periods.
+        :type ContinuePeriod: int
+        :param AlarmNotifyType: Alarm sending and convergence type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
+        :type AlarmNotifyType: int
+        :param AlarmNotifyPeriod: Alarm sending period in seconds. If the value is less than 0, no alarm will be triggered. If the value is 0, an alarm will be triggered only once. If the value is greater than 0, an alarm will be triggered at the interval of triggerTime.
+        :type AlarmNotifyPeriod: int
+        :param RuleId: Rule ID. No filling means new addition while filling in ruleId means to modify existing rules.
+        :type RuleId: int
+        """
+        self.MetricId = None
+        self.CalcType = None
+        self.CalcValue = None
+        self.CalcPeriod = None
+        self.ContinuePeriod = None
+        self.AlarmNotifyType = None
+        self.AlarmNotifyPeriod = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.MetricId = params.get("MetricId")
+        self.CalcType = params.get("CalcType")
+        self.CalcValue = params.get("CalcValue")
+        self.CalcPeriod = params.get("CalcPeriod")
+        self.ContinuePeriod = params.get("ContinuePeriod")
+        self.AlarmNotifyType = params.get("AlarmNotifyType")
+        self.AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self.RuleId = params.get("RuleId")
+
+
+class ModifyPolicyGroupEventCondition(AbstractModel):
+    """Modification of the event alarm condition passed in by the alarm policy group.
+
+    """
+
+    def __init__(self):
+        """
+        :param EventId: Event ID.
+        :type EventId: int
+        :param AlarmNotifyType: Alarm sending and convergence type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
+        :type AlarmNotifyType: int
+        :param AlarmNotifyPeriod: Alarm sending period in seconds. If the value is less than 0, no alarm will be triggered. If the value is 0, an alarm will be triggered only once. If the value is greater than 0, an alarm will be triggered at the interval of triggerTime.
+        :type AlarmNotifyPeriod: int
+        :param RuleId: Rule ID. No filling means new addition while filling in ruleId means to modify existing rules.
+        :type RuleId: int
+        """
+        self.EventId = None
+        self.AlarmNotifyType = None
+        self.AlarmNotifyPeriod = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.AlarmNotifyType = params.get("AlarmNotifyType")
+        self.AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self.RuleId = params.get("RuleId")
+
+
+class ModifyPolicyGroupRequest(AbstractModel):
+    """ModifyPolicyGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: The value is fixed to monitor.
+        :type Module: str
+        :param GroupId: Policy group ID.
+        :type GroupId: int
+        :param ViewName: Alarm type.
+        :type ViewName: str
+        :param GroupName: Policy group name.
+        :type GroupName: str
+        :param IsUnionRule: The “AND” and “OR” rules for metric alarms. The value 1 indicates “AND”, which means that an alarm will be triggered only when all rules are met. The value 0 indicates “OR”, which means that an alarm will be triggered when any rule is met.
+        :type IsUnionRule: int
+        :param Conditions: Metric alarm condition rules. No filling indicates that all existing metric alarm condition rules will be deleted.
+        :type Conditions: list of ModifyPolicyGroupCondition
+        :param EventConditions: Event alarm conditions. No filling indicates that all existing event alarm conditions will be deleted.
+        :type EventConditions: list of ModifyPolicyGroupEventCondition
+        :param ConditionTempGroupId: Template-based policy group ID.
+        :type ConditionTempGroupId: int
+        """
+        self.Module = None
+        self.GroupId = None
+        self.ViewName = None
+        self.GroupName = None
+        self.IsUnionRule = None
+        self.Conditions = None
+        self.EventConditions = None
+        self.ConditionTempGroupId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.GroupId = params.get("GroupId")
+        self.ViewName = params.get("ViewName")
+        self.GroupName = params.get("GroupName")
+        self.IsUnionRule = params.get("IsUnionRule")
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = ModifyPolicyGroupCondition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        if params.get("EventConditions") is not None:
+            self.EventConditions = []
+            for item in params.get("EventConditions"):
+                obj = ModifyPolicyGroupEventCondition()
+                obj._deserialize(item)
+                self.EventConditions.append(obj)
+        self.ConditionTempGroupId = params.get("ConditionTempGroupId")
+
+
+class ModifyPolicyGroupResponse(AbstractModel):
+    """ModifyPolicyGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: Policy group ID.
+        :type GroupId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.GroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2705,23 +2855,23 @@ class ReceiverInfo(AbstractModel):
         :type StartTime: int
         :param EndTime: End time of the alarm period. The meaning is the same as that of StartTime.
         :type EndTime: int
-        :param NotifyWay: Alarm notification type. Valid values: "SMS", "SITE", "EMAIL", "CALL", and "WECHAT".
+        :param NotifyWay: Alarm notification method. Valid values: "SMS", "SITE", "EMAIL", "CALL", and "WECHAT".
         :type NotifyWay: list of str
         :param ReceiverType: Recipient type. Valid values: group and user.
         :type ReceiverType: str
         :param Id: ReceiverId
         :type Id: int
-        :param SendFor: Call alarm notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is reported) and RECOVER (indicating that a notice is sent when the alarm is cleared).
+        :param SendFor: Alarm call notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is triggered) and RECOVER (indicating that a notice is sent when the alarm is recovered).
         :type SendFor: list of str
-        :param UidList: Uid of the alarm call receiver.
+        :param UidList: Uid of the alarm call recipient.
         :type UidList: list of int
         :param RoundNumber: Number of alarm call rounds.
         :type RoundNumber: int
-        :param PersonInterval: Person interval of alarm calls in seconds.
+        :param PersonInterval: Alarm call intervals for individuals in seconds.
         :type PersonInterval: int
-        :param RoundInterval: Round interval of alarm calls in seconds.
+        :param RoundInterval: Intervals of alarm call rounds in seconds.
         :type RoundInterval: int
-        :param RecoverNotify: Notification method when an alarm is cleared. Valid value: SMS.
+        :param RecoverNotify: Notification method when an alarm is recovered. Valid value: SMS.
         :type RecoverNotify: list of str
         :param NeedSendNotice: Whether to send an alarm call delivery notice. The value 0 indicates that no notice needs to be sent. The value 1 indicates that a notice needs to be sent.
         :type NeedSendNotice: int
@@ -2774,7 +2924,7 @@ class SendCustomAlarmMsgRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: API module name. The value for the current API is monitor.
+        :param Module: API component name. The value for the current API is monitor.
         :type Module: str
         :param PolicyId: Message policy ID, which is configured on the custom message page of Cloud Monitor.
         :type PolicyId: str

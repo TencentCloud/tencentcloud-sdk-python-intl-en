@@ -59,6 +59,35 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAlias(self, request):
+        """This API is used to create an alias for a function version. You can use the alias to mark a specific function version such as DEV/RELEASE. You can also modify the version pointed to by the alias at any time.
+        An alias must point to a master version and can point to an additional version at the same time. If you specify an alias when invoking a function, the request will be sent to the versions pointed to by the alias. You can configure the ratio between the master version and additional version during request sending.
+
+        :param request: Request instance for CreateAlias.
+        :type request: :class:`tencentcloud.scf.v20180416.models.CreateAliasRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CreateAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAliasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateFunction(self, request):
         """This API is used to create a function based on the input parameters.
 
@@ -143,6 +172,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAlias(self, request):
+        """This API is used to delete an alias of a function version.
+
+        :param request: Request instance for DeleteAlias.
+        :type request: :class:`tencentcloud.scf.v20180416.models.DeleteAliasRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeleteAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAliasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteFunction(self, request):
         """This API is used to delete a function based on the input parameters.
 
@@ -157,6 +214,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLayerVersion(self, request):
+        """This API is used to delete a specified version of a specified layer. The deleted version cannot be associated with a function, but the deletion does not affect functions that are referencing this layer.
+
+        :param request: Request instance for DeleteLayerVersion.
+        :type request: :class:`tencentcloud.scf.v20180416.models.DeleteLayerVersionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeleteLayerVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLayerVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLayerVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -213,6 +298,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTriggerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetAlias(self, request):
+        """This API is used to get the alias details such as the name, description, version, and routing information.
+
+        :param request: Request instance for GetAlias.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetAliasRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAliasResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -311,6 +424,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetLayerVersion(self, request):
+        """This API is used to get the layer version details, including links used to download files in the layer.
+
+        :param request: Request instance for GetLayerVersion.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetLayerVersionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetLayerVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetLayerVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetLayerVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def Invoke(self, request):
         """This API is used to run a function.
 
@@ -325,6 +466,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InvokeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListAliases(self, request):
+        """This API is used to return the list of all aliases under a function. You can filter them by the specific function version.
+
+        :param request: Request instance for ListAliases.
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListAliasesRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListAliasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAliases", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAliasesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -367,6 +536,62 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListLayerVersions(self, request):
+        """This API is used to get the information of all versions of a specified layer.
+
+        :param request: Request instance for ListLayerVersions.
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListLayerVersionsRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListLayerVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListLayerVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListLayerVersionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListLayers(self, request):
+        """This API is used to return the list of all layers, including the information of the latest version of each layer. You can filter them by the compatible runtime.
+
+        :param request: Request instance for ListLayers.
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListLayersRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListLayersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListLayers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListLayersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListNamespaces(self, request):
         """This API is used to display a namespace list.
 
@@ -381,6 +606,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListNamespacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListTriggers(self, request):
+        """This API is used to get the function trigger list.
+
+        :param request: Request instance for ListTriggers.
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListTriggersRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListTriggersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListTriggers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListTriggersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -423,6 +676,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PublishLayerVersion(self, request):
+        """This API is used to create a version for a layer by using the given .zip file or COS object. Each time this API is called with the same layer name, a new version will be generated.
+
+        :param request: Request instance for PublishLayerVersion.
+        :type request: :class:`tencentcloud.scf.v20180416.models.PublishLayerVersionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.PublishLayerVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PublishLayerVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PublishLayerVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PublishVersion(self, request):
         """This API is used for users to release a new version of the function.
 
@@ -437,6 +718,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAlias(self, request):
+        """This API is used to update the configuration of an alias.
+
+        :param request: Request instance for UpdateAlias.
+        :type request: :class:`tencentcloud.scf.v20180416.models.UpdateAliasRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.UpdateAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAliasResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

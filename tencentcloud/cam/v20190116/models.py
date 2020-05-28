@@ -532,6 +532,53 @@ class CreatePolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePolicyVersionRequest(AbstractModel):
+    """CreatePolicyVersion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param PolicyDocument: The policy document to use as the content for the new version
+        :type PolicyDocument: str
+        :param SetAsDefault: Specifies whether to set this version as the default version
+        :type SetAsDefault: bool
+        """
+        self.PolicyId = None
+        self.PolicyDocument = None
+        self.SetAsDefault = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyDocument = params.get("PolicyDocument")
+        self.SetAsDefault = params.get("SetAsDefault")
+
+
+class CreatePolicyVersionResponse(AbstractModel):
+    """CreatePolicyVersion response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VersionId: Policy version ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VersionId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.VersionId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VersionId = params.get("VersionId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRoleRequest(AbstractModel):
     """CreateRole request structure.
 
@@ -633,6 +680,52 @@ class CreateSAMLProviderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateServiceLinkedRoleRequest(AbstractModel):
+    """CreateServiceLinkedRole request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param QCSServiceName: Authorized service, i.e., Tencent Cloud service entity with this role attached.
+        :type QCSServiceName: list of str
+        :param CustomSuffix: Custom suffix. A string you provide, which is combined with the service-provided prefix to form the complete role name.
+        :type CustomSuffix: str
+        :param Description: Role description.
+        :type Description: str
+        """
+        self.QCSServiceName = None
+        self.CustomSuffix = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.QCSServiceName = params.get("QCSServiceName")
+        self.CustomSuffix = params.get("CustomSuffix")
+        self.Description = params.get("Description")
+
+
+class CreateServiceLinkedRoleResponse(AbstractModel):
+    """CreateServiceLinkedRole response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleId: Role ID
+        :type RoleId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RoleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteGroupRequest(AbstractModel):
     """DeleteGroup request structure.
 
@@ -686,6 +779,44 @@ class DeletePolicyRequest(AbstractModel):
 
 class DeletePolicyResponse(AbstractModel):
     """DeletePolicy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePolicyVersionRequest(AbstractModel):
+    """DeletePolicyVersion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param VersionId: Policy version ID
+        :type VersionId: list of int non-negative
+        """
+        self.PolicyId = None
+        self.VersionId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.VersionId = params.get("VersionId")
+
+
+class DeletePolicyVersionResponse(AbstractModel):
+    """DeletePolicyVersion response structure.
 
     """
 
@@ -770,6 +901,44 @@ class DeleteSAMLProviderResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteServiceLinkedRoleRequest(AbstractModel):
+    """DeleteServiceLinkedRole request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleName: Name of the service-linked role to be deleted.
+        :type RoleName: str
+        """
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.RoleName = params.get("RoleName")
+
+
+class DeleteServiceLinkedRoleResponse(AbstractModel):
+    """DeleteServiceLinkedRole response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DeletionTaskId: Deletion task identifier, which can be used to check the status of a service-linked role deletion.
+        :type DeletionTaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DeletionTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeletionTaskId = params.get("DeletionTaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1160,6 +1329,51 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class GetPolicyVersionRequest(AbstractModel):
+    """GetPolicyVersion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param VersionId: Policy version ID
+        :type VersionId: int
+        """
+        self.PolicyId = None
+        self.VersionId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.VersionId = params.get("VersionId")
+
+
+class GetPolicyVersionResponse(AbstractModel):
+    """GetPolicyVersion response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyVersion: Policy version details
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PolicyVersion: :class:`tencentcloud.cam.v20190116.models.PolicyVersionDetail`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PolicyVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PolicyVersion") is not None:
+            self.PolicyVersion = PolicyVersionDetail()
+            self.PolicyVersion._deserialize(params.get("PolicyVersion"))
+        self.RequestId = params.get("RequestId")
+
+
 class GetRoleRequest(AbstractModel):
     """GetRole request structure.
 
@@ -1255,6 +1469,58 @@ class GetSAMLProviderResponse(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
         self.SAMLMetadata = params.get("SAMLMetadata")
+        self.RequestId = params.get("RequestId")
+
+
+class GetServiceLinkedRoleDeletionStatusRequest(AbstractModel):
+    """GetServiceLinkedRoleDeletionStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DeletionTaskId: Deletion task ID
+        :type DeletionTaskId: str
+        """
+        self.DeletionTaskId = None
+
+
+    def _deserialize(self, params):
+        self.DeletionTaskId = params.get("DeletionTaskId")
+
+
+class GetServiceLinkedRoleDeletionStatusResponse(AbstractModel):
+    """GetServiceLinkedRoleDeletionStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Status: NOT_STARTED, IN_PROGRESS, SUCCEEDED, FAILED
+        :type Status: str
+        :param Reason: Reasons why the deletion failed.
+        :type Reason: str
+        :param ServiceType: Service type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServiceType: str
+        :param ServiceName: Service name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServiceName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Reason = None
+        self.ServiceType = None
+        self.ServiceName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Reason = params.get("Reason")
+        self.ServiceType = params.get("ServiceType")
+        self.ServiceName = params.get("ServiceName")
         self.RequestId = params.get("RequestId")
 
 
@@ -1903,6 +2169,50 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class ListPolicyVersionsRequest(AbstractModel):
+    """ListPolicyVersions request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        """
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+
+
+class ListPolicyVersionsResponse(AbstractModel):
+    """ListPolicyVersions response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Versions: Policy version list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Versions: list of PolicyVersionItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Versions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Versions") is not None:
+            self.Versions = []
+            for item in params.get("Versions"):
+                obj = PolicyVersionItem()
+                obj._deserialize(item)
+                self.Versions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListSAMLProvidersRequest(AbstractModel):
     """ListSAMLProviders request structure.
 
@@ -2024,6 +2334,92 @@ class ListUsersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class LoginActionMfaFlag(AbstractModel):
+    """Login and sensitive operation flag
+
+    """
+
+    def __init__(self):
+        """
+        :param Phone: Mobile phone
+        :type Phone: int
+        :param Stoken: Soft token
+        :type Stoken: int
+        :param Wechat: WeChat
+        :type Wechat: int
+        """
+        self.Phone = None
+        self.Stoken = None
+        self.Wechat = None
+
+
+    def _deserialize(self, params):
+        self.Phone = params.get("Phone")
+        self.Stoken = params.get("Stoken")
+        self.Wechat = params.get("Wechat")
+
+
+class PolicyVersionDetail(AbstractModel):
+    """Policy version details
+
+    """
+
+    def __init__(self):
+        """
+        :param VersionId: Policy version ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VersionId: int
+        :param CreateDate: Policy version creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateDate: str
+        :param IsDefaultVersion: Whether it is the operative version. 0: no, 1: yes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsDefaultVersion: int
+        :param Document: Policy syntax text
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Document: str
+        """
+        self.VersionId = None
+        self.CreateDate = None
+        self.IsDefaultVersion = None
+        self.Document = None
+
+
+    def _deserialize(self, params):
+        self.VersionId = params.get("VersionId")
+        self.CreateDate = params.get("CreateDate")
+        self.IsDefaultVersion = params.get("IsDefaultVersion")
+        self.Document = params.get("Document")
+
+
+class PolicyVersionItem(AbstractModel):
+    """Policy version list element structure
+
+    """
+
+    def __init__(self):
+        """
+        :param VersionId: Policy version ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VersionId: int
+        :param CreateDate: Policy version creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateDate: str
+        :param IsDefaultVersion: Whether it is the operative version. 0: no, 1: yes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsDefaultVersion: int
+        """
+        self.VersionId = None
+        self.CreateDate = None
+        self.IsDefaultVersion = None
+
+
+    def _deserialize(self, params):
+        self.VersionId = params.get("VersionId")
+        self.CreateDate = params.get("CreateDate")
+        self.IsDefaultVersion = params.get("IsDefaultVersion")
 
 
 class RemoveUserFromGroupRequest(AbstractModel):
@@ -2148,6 +2544,90 @@ class SAMLProviderInfo(AbstractModel):
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
+
+
+class SetDefaultPolicyVersionRequest(AbstractModel):
+    """SetDefaultPolicyVersion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param VersionId: Policy version ID
+        :type VersionId: int
+        """
+        self.PolicyId = None
+        self.VersionId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.VersionId = params.get("VersionId")
+
+
+class SetDefaultPolicyVersionResponse(AbstractModel):
+    """SetDefaultPolicyVersion response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetMfaFlagRequest(AbstractModel):
+    """SetMfaFlag request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param OpUin: Sets user UIN
+        :type OpUin: int
+        :param LoginFlag: Sets login protection
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`
+        :param ActionFlag: Sets operation protection
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`
+        """
+        self.OpUin = None
+        self.LoginFlag = None
+        self.ActionFlag = None
+
+
+    def _deserialize(self, params):
+        self.OpUin = params.get("OpUin")
+        if params.get("LoginFlag") is not None:
+            self.LoginFlag = LoginActionMfaFlag()
+            self.LoginFlag._deserialize(params.get("LoginFlag"))
+        if params.get("ActionFlag") is not None:
+            self.ActionFlag = LoginActionMfaFlag()
+            self.ActionFlag._deserialize(params.get("ActionFlag"))
+
+
+class SetMfaFlagResponse(AbstractModel):
+    """SetMfaFlag response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class StrategyInfo(AbstractModel):
@@ -2355,17 +2835,20 @@ class UpdatePolicyRequest(AbstractModel):
         """
         :param PolicyId: Policy ID
         :type PolicyId: int
-        :param PolicyName: Policy name
+        :param PolicyName: Policy Name
         :type PolicyName: str
         :param Description: Policy description
         :type Description: str
-        :param PolicyDocument: Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API
+        :param PolicyDocument: Policy documentation, for example: `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://cloud.tencent.com/document/product/598/36221).
         :type PolicyDocument: str
+        :param Alias: Preset policy remark
+        :type Alias: str
         """
         self.PolicyId = None
         self.PolicyName = None
         self.Description = None
         self.PolicyDocument = None
+        self.Alias = None
 
 
     def _deserialize(self, params):
@@ -2373,6 +2856,7 @@ class UpdatePolicyRequest(AbstractModel):
         self.PolicyName = params.get("PolicyName")
         self.Description = params.get("Description")
         self.PolicyDocument = params.get("PolicyDocument")
+        self.Alias = params.get("Alias")
 
 
 class UpdatePolicyResponse(AbstractModel):
@@ -2382,13 +2866,18 @@ class UpdatePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param PolicyId: Policy ID
+Note: This field may return null, indicating that no valid value was found.
+        :type PolicyId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.PolicyId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
         self.RequestId = params.get("RequestId")
 
 
