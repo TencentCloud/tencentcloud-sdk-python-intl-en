@@ -221,6 +221,90 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMediaLiveChannelAlerts(self, request):
+        """This API is used to query the channel alarm information.
+
+        :param request: Request instance for DescribeMediaLiveChannelAlerts.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelAlertsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelAlertsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaLiveChannelAlerts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaLiveChannelAlertsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMediaLiveChannelInputStatistics(self, request):
+        """This API is used to query the input statistics.
+
+        :param request: Request instance for DescribeMediaLiveChannelInputStatistics.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelInputStatisticsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelInputStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaLiveChannelInputStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaLiveChannelInputStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMediaLiveChannelOutputStatistics(self, request):
+        """This API is used to query the output statistics of a channel.
+
+        :param request: Request instance for DescribeMediaLiveChannelOutputStatistics.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelOutputStatisticsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelOutputStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaLiveChannelOutputStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaLiveChannelOutputStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMediaLiveChannels(self, request):
         """This API is used to query the information of MediaLive channels in batches.
 

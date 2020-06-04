@@ -5031,6 +5031,7 @@ class Sort(AbstractModel):
         :param Key: Fields that can be sorted. Currently supports:
 `createTime`: domain name creation time.
 `certExpireTime`: certificate expiration time.
+Default value: createTime.
         :type Key: str
         :param Sequence: `asc` or `desc`. Default: `desc`.
         :type Sequence: str

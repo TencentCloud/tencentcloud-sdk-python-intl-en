@@ -60,6 +60,32 @@ class AudioPidSelectionInfo(AbstractModel):
         self.Pid = params.get("Pid")
 
 
+class AudioPipelineInputStatistics(AbstractModel):
+    """Pipeline input audio statistics.
+
+    """
+
+    def __init__(self):
+        """
+        :param Fps: Audio FPS.
+        :type Fps: int
+        :param Rate: Audio bitrate in bps.
+        :type Rate: int
+        :param Pid: Audio `Pid`, which is available only if the input is `rtp/udp`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Pid: int
+        """
+        self.Fps = None
+        self.Rate = None
+        self.Pid = None
+
+
+    def _deserialize(self, params):
+        self.Fps = params.get("Fps")
+        self.Rate = params.get("Rate")
+        self.Pid = params.get("Pid")
+
+
 class AudioSelectorInfo(AbstractModel):
     """Audio selector.
 
@@ -115,6 +141,37 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
         self.Acodec = params.get("Acodec")
         self.AudioBitrate = params.get("AudioBitrate")
         self.LanguageCode = params.get("LanguageCode")
+
+
+class ChannelAlertInfos(AbstractModel):
+    """Channel alarm information.
+
+    """
+
+    def __init__(self):
+        """
+        :param Pipeline0: Alarm details of pipeline 0 under this channel.
+        :type Pipeline0: list of ChannelPipelineAlerts
+        :param Pipeline1: Alarm details of pipeline 1 under this channel.
+        :type Pipeline1: list of ChannelPipelineAlerts
+        """
+        self.Pipeline0 = None
+        self.Pipeline1 = None
+
+
+    def _deserialize(self, params):
+        if params.get("Pipeline0") is not None:
+            self.Pipeline0 = []
+            for item in params.get("Pipeline0"):
+                obj = ChannelPipelineAlerts()
+                obj._deserialize(item)
+                self.Pipeline0.append(obj)
+        if params.get("Pipeline1") is not None:
+            self.Pipeline1 = []
+            for item in params.get("Pipeline1"):
+                obj = ChannelPipelineAlerts()
+                obj._deserialize(item)
+                self.Pipeline1.append(obj)
 
 
 class ChannelInfo(AbstractModel):
@@ -178,6 +235,83 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = VideoTemplateInfo()
                 obj._deserialize(item)
                 self.VideoTemplates.append(obj)
+
+
+class ChannelInputStatistics(AbstractModel):
+    """Channel output statistics.
+
+    """
+
+    def __init__(self):
+        """
+        :param InputId: Input ID.
+        :type InputId: str
+        :param Statistics: Input statistics.
+        :type Statistics: :class:`tencentcloud.mdl.v20200326.models.InputStatistics`
+        """
+        self.InputId = None
+        self.Statistics = None
+
+
+    def _deserialize(self, params):
+        self.InputId = params.get("InputId")
+        if params.get("Statistics") is not None:
+            self.Statistics = InputStatistics()
+            self.Statistics._deserialize(params.get("Statistics"))
+
+
+class ChannelOutputsStatistics(AbstractModel):
+    """Channel output information.
+
+    """
+
+    def __init__(self):
+        """
+        :param OutputGroupName: Output group name.
+        :type OutputGroupName: str
+        :param Statistics: Output group statistics.
+        :type Statistics: :class:`tencentcloud.mdl.v20200326.models.OutputsStatistics`
+        """
+        self.OutputGroupName = None
+        self.Statistics = None
+
+
+    def _deserialize(self, params):
+        self.OutputGroupName = params.get("OutputGroupName")
+        if params.get("Statistics") is not None:
+            self.Statistics = OutputsStatistics()
+            self.Statistics._deserialize(params.get("Statistics"))
+
+
+class ChannelPipelineAlerts(AbstractModel):
+    """Channel alarm details.
+
+    """
+
+    def __init__(self):
+        """
+        :param SetTime: Alarm start time in UTC time.
+        :type SetTime: str
+        :param ClearTime: Alarm end time in UTC time.
+This time is available only after the alarm ends.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClearTime: str
+        :param Type: Alarm type.
+        :type Type: str
+        :param Message: Alarm details.
+        :type Message: str
+        """
+        self.SetTime = None
+        self.ClearTime = None
+        self.Type = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.SetTime = params.get("SetTime")
+        self.ClearTime = params.get("ClearTime")
+        self.Type = params.get("Type")
+        self.Message = params.get("Message")
 
 
 class CreateMediaLiveChannelRequest(AbstractModel):
@@ -477,6 +611,152 @@ class DeleteMediaLiveInputSecurityGroupResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMediaLiveChannelAlertsRequest(AbstractModel):
+    """DescribeMediaLiveChannelAlerts request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ChannelId: Channel ID.
+        :type ChannelId: str
+        """
+        self.ChannelId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+
+
+class DescribeMediaLiveChannelAlertsResponse(AbstractModel):
+    """DescribeMediaLiveChannelAlerts response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Infos: Alarm information of two pipelines under this channel.
+        :type Infos: :class:`tencentcloud.mdl.v20200326.models.ChannelAlertInfos`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = ChannelAlertInfos()
+            self.Infos._deserialize(params.get("Infos"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMediaLiveChannelInputStatisticsRequest(AbstractModel):
+    """DescribeMediaLiveChannelInputStatistics request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ChannelId: Channel ID.
+        :type ChannelId: str
+        :param StartTime: Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.
+UTC time, such as `2020-01-01T12:00:00Z`.
+        :type StartTime: str
+        :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
+UTC time, such as `2020-01-01T12:00:00Z`.
+        :type EndTime: str
+        """
+        self.ChannelId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeMediaLiveChannelInputStatisticsResponse(AbstractModel):
+    """DescribeMediaLiveChannelInputStatistics response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Infos: Channel input statistics array.
+        :type Infos: list of ChannelInputStatistics
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = ChannelInputStatistics()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMediaLiveChannelOutputStatisticsRequest(AbstractModel):
+    """DescribeMediaLiveChannelOutputStatistics request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ChannelId: Channel ID.
+        :type ChannelId: str
+        :param StartTime: Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.
+UTC time, such as `2020-01-01T12:00:00Z`.
+        :type StartTime: str
+        :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
+UTC time, such as `2020-01-01T12:00:00Z`.
+        :type EndTime: str
+        """
+        self.ChannelId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeMediaLiveChannelOutputStatisticsResponse(AbstractModel):
+    """DescribeMediaLiveChannelOutputStatistics response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Infos: Channel output information.
+        :type Infos: list of ChannelOutputsStatistics
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = ChannelOutputsStatistics()
+                obj._deserialize(item)
+                self.Infos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -896,6 +1176,37 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InputAddress = params.get("InputAddress")
 
 
+class InputStatistics(AbstractModel):
+    """Input statistics.
+
+    """
+
+    def __init__(self):
+        """
+        :param Pipeline0: Input statistics of pipeline 0.
+        :type Pipeline0: list of PipelineInputStatistics
+        :param Pipeline1: Input statistics of pipeline 1.
+        :type Pipeline1: list of PipelineInputStatistics
+        """
+        self.Pipeline0 = None
+        self.Pipeline1 = None
+
+
+    def _deserialize(self, params):
+        if params.get("Pipeline0") is not None:
+            self.Pipeline0 = []
+            for item in params.get("Pipeline0"):
+                obj = PipelineInputStatistics()
+                obj._deserialize(item)
+                self.Pipeline0.append(obj)
+        if params.get("Pipeline1") is not None:
+            self.Pipeline1 = []
+            for item in params.get("Pipeline1"):
+                obj = PipelineInputStatistics()
+                obj._deserialize(item)
+                self.Pipeline1.append(obj)
+
+
 class ModifyMediaLiveChannelRequest(AbstractModel):
     """ModifyMediaLiveChannel request structure.
 
@@ -1150,6 +1461,105 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.Scte35Settings._deserialize(params.get("Scte35Settings"))
 
 
+class OutputsStatistics(AbstractModel):
+    """Channel output statistics.
+
+    """
+
+    def __init__(self):
+        """
+        :param Pipeline0: Output information of pipeline 0.
+        :type Pipeline0: list of PipelineOutputStatistics
+        :param Pipeline1: Output information of pipeline 1.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Pipeline1: list of PipelineOutputStatistics
+        """
+        self.Pipeline0 = None
+        self.Pipeline1 = None
+
+
+    def _deserialize(self, params):
+        if params.get("Pipeline0") is not None:
+            self.Pipeline0 = []
+            for item in params.get("Pipeline0"):
+                obj = PipelineOutputStatistics()
+                obj._deserialize(item)
+                self.Pipeline0.append(obj)
+        if params.get("Pipeline1") is not None:
+            self.Pipeline1 = []
+            for item in params.get("Pipeline1"):
+                obj = PipelineOutputStatistics()
+                obj._deserialize(item)
+                self.Pipeline1.append(obj)
+
+
+class PipelineInputStatistics(AbstractModel):
+    """Pipeline input statistics.
+
+    """
+
+    def __init__(self):
+        """
+        :param Timestamp: Data timestamp in seconds.
+        :type Timestamp: int
+        :param NetworkIn: Input bandwidth in bps.
+        :type NetworkIn: int
+        :param Video: Video information array.
+For `rtp/udp` input, the quantity is the number of `Pid` of the input video.
+For other inputs, the quantity is 1.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Video: list of VideoPipelineInputStatistics
+        :param Audio: Audio information array.
+For `rtp/udp` input, the quantity is the number of `Pid` of the input audio.
+For other inputs, the quantity is 1.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Audio: list of AudioPipelineInputStatistics
+        """
+        self.Timestamp = None
+        self.NetworkIn = None
+        self.Video = None
+        self.Audio = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.NetworkIn = params.get("NetworkIn")
+        if params.get("Video") is not None:
+            self.Video = []
+            for item in params.get("Video"):
+                obj = VideoPipelineInputStatistics()
+                obj._deserialize(item)
+                self.Video.append(obj)
+        if params.get("Audio") is not None:
+            self.Audio = []
+            for item in params.get("Audio"):
+                obj = AudioPipelineInputStatistics()
+                obj._deserialize(item)
+                self.Audio.append(obj)
+
+
+class PipelineOutputStatistics(AbstractModel):
+    """Channel output statistics.
+
+    """
+
+    def __init__(self):
+        """
+        :param Timestamp: Timestamp.
+In seconds, indicating data time.
+        :type Timestamp: int
+        :param NetworkOut: Output bandwidth in bps.
+        :type NetworkOut: int
+        """
+        self.Timestamp = None
+        self.NetworkOut = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.NetworkOut = params.get("NetworkOut")
+
+
 class Scte35SettingsInfo(AbstractModel):
     """SCTE-35 configuration information.
 
@@ -1233,6 +1643,32 @@ class StopMediaLiveChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class VideoPipelineInputStatistics(AbstractModel):
+    """Pipeline input video statistics.
+
+    """
+
+    def __init__(self):
+        """
+        :param Fps: Video FPS.
+        :type Fps: int
+        :param Rate: Video bitrate in bps.
+        :type Rate: int
+        :param Pid: Video `Pid`, which is available only if the input is `rtp/udp`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Pid: int
+        """
+        self.Fps = None
+        self.Rate = None
+        self.Pid = None
+
+
+    def _deserialize(self, params):
+        self.Fps = params.get("Fps")
+        self.Rate = params.get("Rate")
+        self.Pid = params.get("Pid")
 
 
 class VideoTemplateInfo(AbstractModel):

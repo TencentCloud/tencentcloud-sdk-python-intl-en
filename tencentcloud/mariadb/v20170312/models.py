@@ -1762,13 +1762,17 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.InstanceId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
         self.RequestId = params.get("RequestId")
 
 

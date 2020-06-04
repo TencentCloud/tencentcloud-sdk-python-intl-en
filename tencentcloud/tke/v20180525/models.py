@@ -71,10 +71,13 @@ class AddExistedInstancesResponse(AbstractModel):
     def __init__(self):
         """
         :param FailedInstanceIds: IDs of failed nodes
+Note: This field may return null, indicating that no valid value was found.
         :type FailedInstanceIds: list of str
         :param SuccInstanceIds: IDs of successful nodes
+Note: This field may return null, indicating that no valid value was found.
         :type SuccInstanceIds: list of str
         :param TimeoutInstanceIds: IDs of (successful or failed) nodes that timed out
+Note: This field may return null, indicating that no valid value was found.
         :type TimeoutInstanceIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -205,6 +208,8 @@ class ClusterAdvancedSettings(AbstractModel):
         :type NetworkType: str
         :param IsNonStaticIpMode: Whether a cluster in VPC-CNI mode uses dynamic IP addresses. The default value is FALSE, which indicates that static IP addresses are used.
         :type IsNonStaticIpMode: bool
+        :param DeletionProtection: Indicates whether to enable deletion protection
+        :type DeletionProtection: bool
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -213,6 +218,7 @@ class ClusterAdvancedSettings(AbstractModel):
         self.ExtraArgs = None
         self.NetworkType = None
         self.IsNonStaticIpMode = None
+        self.DeletionProtection = None
 
 
     def _deserialize(self, params):
@@ -225,6 +231,7 @@ class ClusterAdvancedSettings(AbstractModel):
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.NetworkType = params.get("NetworkType")
         self.IsNonStaticIpMode = params.get("IsNonStaticIpMode")
+        self.DeletionProtection = params.get("DeletionProtection")
 
 
 class ClusterBasicSettings(AbstractModel):
@@ -650,15 +657,20 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 
+        :param DiskType: Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
         :param FileSystem: File system (ext3/ext4/xfs)
+Note: This field may return null, indicating that no valid value was found.
         :type FileSystem: str
-        :param DiskSize: 
+        :param DiskSize: Disk size (G)
+Note: This field may return null, indicating that no valid value was found.
         :type DiskSize: int
-        :param AutoFormatAndMount: Whether to automatically format and mount the disk
+        :param AutoFormatAndMount: Whether the disk is auto-formatted and mounted
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type AutoFormatAndMount: bool
-        :param MountTarget: 
+        :param MountTarget: Mounting directory
+Note: This field may return null, indicating that no valid value was found.
         :type MountTarget: str
         """
         self.DiskType = None
@@ -781,13 +793,28 @@ class DeleteClusterInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param SuccInstanceIds: IDs of deleted instances
+Note: This field may return null, indicating that no valid value was found.
+        :type SuccInstanceIds: list of str
+        :param FailedInstanceIds: IDs of instances failed to be deleted
+Note: This field may return null, indicating that no valid value was found.
+        :type FailedInstanceIds: list of str
+        :param NotFoundInstanceIds: IDs of instances that cannot be found
+Note: This field may return null, indicating that no valid value was found.
+        :type NotFoundInstanceIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.SuccInstanceIds = None
+        self.FailedInstanceIds = None
+        self.NotFoundInstanceIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SuccInstanceIds = params.get("SuccInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.NotFoundInstanceIds = params.get("NotFoundInstanceIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -1143,11 +1170,13 @@ class DescribeClusterSecurityResponse(AbstractModel):
         :param PgwEndpoint: Cluster’s endpoint address
         :type PgwEndpoint: str
         :param SecurityPolicy: Cluster’s access policy group
+Note: This field may return null, indicating that no valid value was found.
         :type SecurityPolicy: list of str
         :param Kubeconfig: Cluster Kubeconfig file
 Note: This field may return null, indicating that no valid value was found.
         :type Kubeconfig: str
-        :param JnsGwEndpoint: 
+        :param JnsGwEndpoint: Access address of the cluster JnsGw
+Note: This field may return null, indicating that no valid value was found.
         :type JnsGwEndpoint: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1502,12 +1531,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param CreatedTime: Creation time, which follows the ISO8601 standard and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param InstanceChargeType: Instance’s billing mode. Value range:
-PREPAID: Prepaid (Monthly Subscription)
-POSTPAID_BY_HOUR: Postpaid (Pay-as-you-go)
-CDHPAID: CDH-paid. Only CDH is charged and instances on the CDH do not incur fees.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type InstanceChargeType: str
         :param CPU: Instance’s number of CPU cores. Unit: cores.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CPU: int
@@ -1520,6 +1543,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param InstanceType: Instance model.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceType: str
+        :param AutoscalingGroupId: Auto scaling group ID
+Note: This field may return null, indicating that no valid value was found.
+        :type AutoscalingGroupId: str
+        :param InstanceChargeType: Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)
+Note: This field may return null, indicating that no valid value was found.
+        :type InstanceChargeType: str
         """
         self.Usable = None
         self.UnusableReason = None
@@ -1529,11 +1558,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.PrivateIpAddresses = None
         self.PublicIpAddresses = None
         self.CreatedTime = None
-        self.InstanceChargeType = None
         self.CPU = None
         self.Memory = None
         self.OsName = None
         self.InstanceType = None
+        self.AutoscalingGroupId = None
+        self.InstanceChargeType = None
 
 
     def _deserialize(self, params):
@@ -1545,11 +1575,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.PrivateIpAddresses = params.get("PrivateIpAddresses")
         self.PublicIpAddresses = params.get("PublicIpAddresses")
         self.CreatedTime = params.get("CreatedTime")
-        self.InstanceChargeType = params.get("InstanceChargeType")
         self.CPU = params.get("CPU")
         self.Memory = params.get("Memory")
         self.OsName = params.get("OsName")
         self.InstanceType = params.get("InstanceType")
+        self.AutoscalingGroupId = params.get("AutoscalingGroupId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
 
 
 class ExistedInstancesForNode(AbstractModel):
@@ -1714,9 +1745,11 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param LanIP: Node private IP
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LanIP: str
-        :param NodePoolId: 
+        :param NodePoolId: Resource pool ID
+Note: this field may return null, indicating that no valid values can be obtained.
         :type NodePoolId: str
-        :param AutoscalingGroupId: 
+        :param AutoscalingGroupId: ID of the auto-scaling group
+Note: this field may return null, indicating that no valid value is obtained.
         :type AutoscalingGroupId: str
         """
         self.InstanceId = None
@@ -1754,18 +1787,24 @@ class InstanceAdvancedSettings(AbstractModel):
     def __init__(self):
         """
         :param MountTarget: Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.
+Note: This field may return null, indicating that no valid value was found.
         :type MountTarget: str
         :param DockerGraphPath: Specified value of dockerd --graph. Default value: /var/lib/docker
+Note: This field may return null, indicating that no valid value was found.
         :type DockerGraphPath: str
         :param UserScript: Base64-encoded user script, which will be executed after the K8s component starts running. You need to ensure the reentrant and retry logic of the script. The script and its log files can be viewed at the node path: /data/ccs_userscript/. If you want to initialize nodes before adding them to the scheduling list, you can use this parameter together with the unschedulable parameter. After the final initialization of userScript is completed, add the kubectl uncordon nodename --kubeconfig=/root/.kube/config command to enable the node for scheduling.
+Note: This field may return null, indicating that no valid value was found.
         :type UserScript: str
         :param Unschedulable: Sets whether the added node is schedulable. 0 (default): schedulable; other values: unschedulable. After node initialization is completed, you can run kubectl uncordon nodename to enable this node for scheduling.
         :type Unschedulable: int
-        :param Labels: 
+        :param Labels: Node label array
+Note: This field may return null, indicating that no valid value was found.
         :type Labels: list of Label
-        :param DataDisks: 
+        :param DataDisks: Data disk information
+Note: This field may return null, indicating that no valid value was found.
         :type DataDisks: list of DataDisk
         :param ExtraArgs: Information about node custom parameters
+Note: This field may return null, indicating that no valid value was found.
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         """
         self.MountTarget = None
