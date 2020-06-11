@@ -403,6 +403,40 @@ class CreateClusterAsGroupRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param AutoScalingGroupPara: The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry.
+        :type AutoScalingGroupPara: str
+        :param LaunchConfigurePara: The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it’s set through the **UserScript**.
+        :type LaunchConfigurePara: str
+        :param InstanceAdvancedSettings: Advanced configuration information of the node
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param Labels: Node label array
+        :type Labels: list of Label
+        """
+        self.ClusterId = None
+        self.AutoScalingGroupPara = None
+        self.LaunchConfigurePara = None
+        self.InstanceAdvancedSettings = None
+        self.Labels = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AutoScalingGroupPara = params.get("AutoScalingGroupPara")
+        self.LaunchConfigurePara = params.get("LaunchConfigurePara")
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+
 
 class CreateClusterAsGroupResponse(AbstractModel):
     """CreateClusterAsGroup response structure.
@@ -411,13 +445,21 @@ class CreateClusterAsGroupResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param LaunchConfigurationId: Launch configuration ID
+        :type LaunchConfigurationId: str
+        :param AutoScalingGroupId: Scaling group ID
+        :type AutoScalingGroupId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.LaunchConfigurationId = None
+        self.AutoScalingGroupId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -425,6 +467,25 @@ class CreateClusterEndpointRequest(AbstractModel):
     """CreateClusterEndpoint request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param SubnetId: The ID of the subnet where the cluster’s port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster’s VPC). 
+        :type SubnetId: str
+        :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).
+        :type IsExtranet: bool
+        """
+        self.ClusterId = None
+        self.SubnetId = None
+        self.IsExtranet = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SubnetId = params.get("SubnetId")
+        self.IsExtranet = params.get("IsExtranet")
 
 
 class CreateClusterEndpointResponse(AbstractModel):
@@ -449,6 +510,21 @@ class CreateClusterEndpointVipRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param SecurityPolicies: Security policy opens single IP or CIDR to the Internet (for example: “192.168.1.0/24”, with “reject all” as the default).
+        :type SecurityPolicies: list of str
+        """
+        self.ClusterId = None
+        self.SecurityPolicies = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SecurityPolicies = params.get("SecurityPolicies")
+
 
 class CreateClusterEndpointVipResponse(AbstractModel):
     """CreateClusterEndpointVip response structure.
@@ -457,13 +533,17 @@ class CreateClusterEndpointVipResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param RequestFlowId: Request job’s FlowId
+        :type RequestFlowId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.RequestFlowId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.RequestFlowId = params.get("RequestFlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -693,6 +773,25 @@ class DeleteClusterAsGroupsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ClusterId: The cluster ID, obtained through the [DescribeClusters](https://cloud.tencent.com/document/api/457/31862) API.
+        :type ClusterId: str
+        :param AutoScalingGroupIds: Cluster scaling group ID list
+        :type AutoScalingGroupIds: list of str
+        :param KeepInstance: Whether to keep nodes in the scaling group. Default to **false** (not keep)
+        :type KeepInstance: bool
+        """
+        self.ClusterId = None
+        self.AutoScalingGroupIds = None
+        self.KeepInstance = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AutoScalingGroupIds = params.get("AutoScalingGroupIds")
+        self.KeepInstance = params.get("KeepInstance")
+
 
 class DeleteClusterAsGroupsResponse(AbstractModel):
     """DeleteClusterAsGroups response structure.
@@ -716,6 +815,21 @@ class DeleteClusterEndpointRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).
+        :type IsExtranet: bool
+        """
+        self.ClusterId = None
+        self.IsExtranet = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.IsExtranet = params.get("IsExtranet")
+
 
 class DeleteClusterEndpointResponse(AbstractModel):
     """DeleteClusterEndpoint response structure.
@@ -738,6 +852,17 @@ class DeleteClusterEndpointVipRequest(AbstractModel):
     """DeleteClusterEndpointVip request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
 
 
 class DeleteClusterEndpointVipResponse(AbstractModel):
@@ -794,13 +919,10 @@ class DeleteClusterInstancesResponse(AbstractModel):
     def __init__(self):
         """
         :param SuccInstanceIds: IDs of deleted instances
-Note: This field may return null, indicating that no valid value was found.
         :type SuccInstanceIds: list of str
         :param FailedInstanceIds: IDs of instances failed to be deleted
-Note: This field may return null, indicating that no valid value was found.
         :type FailedInstanceIds: list of str
         :param NotFoundInstanceIds: IDs of instances that cannot be found
-Note: This field may return null, indicating that no valid value was found.
         :type NotFoundInstanceIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -946,6 +1068,21 @@ class DescribeClusterEndpointStatusRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).
+        :type IsExtranet: bool
+        """
+        self.ClusterId = None
+        self.IsExtranet = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.IsExtranet = params.get("IsExtranet")
+
 
 class DescribeClusterEndpointStatusResponse(AbstractModel):
     """DescribeClusterEndpointStatus response structure.
@@ -954,13 +1091,17 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Status: Queries cluster access port status (Created = successfully enabled; Creating = in the process of being enabled; NotFound = not enabled).
+        :type Status: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.Status = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -968,6 +1109,17 @@ class DescribeClusterEndpointVipStatusRequest(AbstractModel):
     """DescribeClusterEndpointVipStatus request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
 
 
 class DescribeClusterEndpointVipStatusResponse(AbstractModel):
@@ -977,13 +1129,21 @@ class DescribeClusterEndpointVipStatusResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Status: Port operation status (Creating = in the process of creation; CreateFailed = creation has failed; Created = creation completed; Deleting = in the process of deletion; DeletedFailed = deletion has failed; Deleted = deletion completed; NotFound = operation not found)
+        :type Status: str
+        :param ErrorMsg: Reason for operation failure
+        :type ErrorMsg: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.Status = None
+        self.ErrorMsg = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrorMsg = params.get("ErrorMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -2001,6 +2161,21 @@ class ModifyClusterEndpointSPRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param SecurityPolicies: Security policy opens single IP or CIDR block to the Internet (for example: “192.168.1.0/24”, with “reject all” as the default).
+        :type SecurityPolicies: list of str
+        """
+        self.ClusterId = None
+        self.SecurityPolicies = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SecurityPolicies = params.get("SecurityPolicies")
+
 
 class ModifyClusterEndpointSPResponse(AbstractModel):
     """ModifyClusterEndpointSP response structure.
@@ -2227,6 +2402,27 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
+
+
+class Tag(AbstractModel):
+    """The type of resource the label is bound to. Type currently supported is **cluster**.
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: Tag key.
+        :type Key: str
+        :param Value: Tag value.
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
 
 
 class TagSpecification(AbstractModel):

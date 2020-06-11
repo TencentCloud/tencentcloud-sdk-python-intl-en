@@ -56,11 +56,11 @@ class AllocateHostsRequest(AbstractModel):
         :type ClientToken: str
         :param HostChargePrepaid: Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.
         :type HostChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.ChargePrepaid`
-        :param HostChargeType: The billing method of an instance. Currently only `PREPAID` is supported.
+        :param HostChargeType: Instance billing model, only monthly or yearly subscription supported. Default value: `PREPAID'.
         :type HostChargeType: str
         :param HostType: CDH instance model. Default value: `HS1`.
         :type HostType: str
-        :param HostCount: The quantity of CDH instances you want to purchase.
+        :param HostCount: Quantity of CDH instances purchased. Default value: 1.
         :type HostCount: int
         :param TagSpecification: Tag description. You can specify the parameter to associate a tag with an instance.
         :type TagSpecification: list of TagSpecification
@@ -165,7 +165,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
         """
         :param SecurityGroupIds: ID of the security group to be associated, such as `sg-efil73jd`. Only one security group can be associated.
         :type SecurityGroupIds: list of str
-        :param InstanceIds: ID(s) of the instance(s) to be associated，such as `ins-lesecurk`. You can specify multiple instances.
+        :param InstanceIds: ID of the instance bound in the format of ins-lesecurk. You can specify up to 100 instances in each request.
         :type InstanceIds: list of str
         """
         self.SecurityGroupIds = None
@@ -290,7 +290,7 @@ class CreateImageRequest(AbstractModel):
         """
         :param ImageName: Image name
         :type ImageName: str
-        :param InstanceId: The ID of the instance used to create an image
+        :param InstanceId: Instance ID used to create an image.
         :type InstanceId: str
         :param ImageDescription: Image description
         :type ImageDescription: str
@@ -298,11 +298,11 @@ class CreateImageRequest(AbstractModel):
         :type ForcePoweroff: str
         :param Sysprep: Whether to enable Sysprep when creating a Windows image
         :type Sysprep: str
-        :param DataDiskIds: The ID of the data disk used to create an image
+        :param DataDiskIds: Specified data disk ID included in the full image created from the instance.
         :type DataDiskIds: list of str
-        :param SnapshotIds: The ID of the snapshot used to create an image. A system disk snapshot must be included.
+        :param SnapshotIds: Specified snapshot ID used to create an image. A system disk snapshot must be included. It cannot be passed together with `InstanceId`.
         :type SnapshotIds: list of str
-        :param DryRun: Verifies the validity of the request without affecting the resources involved.
+        :param DryRun: Success status of this request, without affecting the resources involved
         :type DryRun: bool
         """
         self.ImageName = None
@@ -450,7 +450,7 @@ class DeleteDisasterRecoverGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DisasterRecoverGroupIds: List of spread placement group IDs, which can be obtained by calling the [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810) API.
+        :param DisasterRecoverGroupIds: ID list of spread placement groups, obtainable via the [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810) API. You can operate up to 100 spread placement groups in each request.
         :type DisasterRecoverGroupIds: list of str
         """
         self.DisasterRecoverGroupIds = None
@@ -595,7 +595,7 @@ class DescribeDisasterRecoverGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DisasterRecoverGroupIds: List of spread placement group IDs.
+        :param DisasterRecoverGroupIds: ID list of spread placement groups. You can operate up to 100 spread placement groups in each request.
         :type DisasterRecoverGroupIds: list of str
         :param Name: Name of a spread placement group. Fuzzy match is supported.
         :type Name: str
@@ -654,12 +654,17 @@ class DescribeHostsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: Filters.
-<li> `zone` - String - Optional - Filter results by availability zone.</li>
-<li> `project-id` - Integer - Optional - Filter results by project ID. You can call `DescribeProject` or log in to the console to view the list of existing projects. You can also create a new project by calling `AddProject`.</li>
-<li> `host-id` - String - Optional - Filter results by CDH ID. CDH IDs are in the format of `host-11112222`.</li>
-<li> `host-name` - String - Optional - Filter results by CDH instance name.</li>
-<li> `host-state` - String - Optional - Filter results by CDH instance state. (PENDING: creating | LAUNCH_FAILURE: creation failed | RUNNING: running | EXPIRED: expired)</li>
+        :param Filters: <li><strong>zone</strong></li>
+<p style="padding-left: 30px;">Filter results by **<strong>availability zones</strong>**. For example, availability zone: ap-guangzhou-1;</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: <a href="https://cloud.tencent.com/document/product/213/6091">list of availability zones</a></p>
+<li><strong>project-id</strong></li>
+<p style="padding-left: 30px;">Filter results by **<strong>project ID</strong>**. You can query the existing project list through the [DescribeProject](https://cloud.tencent.com/document/api/378/4400) API or [CVM console](https://console.cloud.tencent.com/cvm/index), or create a project by calling the [AddProject](https://cloud.tencent.com/document/api/378/4398) API. For example, project ID: 1002189;</p><p style="padding-left: 30px;">Type: Integer</p><p style="padding-left: 30px;">Required: no</p>
+<li><strong>host-id</strong></li>
+<p style="padding-left: 30px;">Filter results by **<strong>[CDH](https://cloud.tencent.com/document/product/416) ID</strong>**. For example, [CDH](https://cloud.tencent.com/document/product/416) ID: host-xxxxxxxx;</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p>
+<li><strong>state</strong></li>
+<p style="padding-left: 30px;">Filter results by **<strong>CDH instance name</strong>**. </p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p>
+<li><strong>state</strong></li>
+<p style="padding-left: 30px;">Filter results by **<strong>CDH instance status </strong>**. (PENDING: creating | LAUNCH_FAILURE: creation failed | RUNNING: running | EXPIRED: expired)</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p>
+Each request can have up to 10 `Filters` and 5 `Filters.Values`.
         :type Filters: list of Filter
         :param Offset: Offset; default value: 0.
         :type Offset: int
@@ -932,9 +937,10 @@ class DescribeInstanceTypeConfigsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: Filters.
-<li> `zone` - String - Optional - Filter results by [availability zone](https://cloud.tencent.com/document/product/213/15753#ZoneInfo).</li>
-<li> `instance-family` - String - Optional - Filter results by instance model family, such as `S1`, `I1`, and `M1`.</li>
+        :param Filters: <li><strong>zone</strong></li>
+<p style="padding-left: 30px;">Filter results by **<strong>availability zones</strong>**. For example, availability zone: ap-guangzhou-1.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: <a href="https://cloud.tencent.com/document/product/213/6091">list of availability zones</a></p>
+<li><strong>instance-family</strong></li>
+<p style="padding-left: 30px;">Filter results by **<strong>instance models</strong>**. For example, instance models: S1, I1 and M1.</p><p style="padding-left: 30px;">Type: Integer</p><p style="padding-left: 30px;">Required: no</p>
 Each request can have up to 10 `Filters` and 1 `Filters.Values`.
         :type Filters: list of Filter
         """
@@ -1021,7 +1027,7 @@ class DescribeInstancesOperationLimitRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The instance ID format is `ins-xxxxxxxx`. For more information on the format of this parameter, see the `id.N` section of [API Introduction](https://cloud.tencent.com/document/api/213/15688)). The maximum number of instance IDs in each request is 100.
+        :param InstanceIds: Query by instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API. For example, instance ID: ins-xxxxxxxx. (For the specific format, refer to section `ids.N` of the API [Introduction](https://cloud.tencent.com/document/api/213/15688).) You can query up to 100 instances in each request.
         :type InstanceIds: list of str
         :param Operation: Operation on the instance(s).
 <li> INSTANCE_DEGRADE: downgrade the instance configurations</li>
@@ -1069,7 +1075,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: Instance ID(s) in the format of `ins-xxxxxxxx`. For more information on the format of this parameter, see the `id.N` section of [API Introduction](https://cloud.tencent.com/document/api/213/15688). The maximum number of instances in each request is 100. You cannot specify `InstanceIds` and `Filters` at the same time.
+        :param InstanceIds: Query by instance ID(s). For example, instance ID: `ins-xxxxxxxx`. For the specific format, refer to section `Ids.N` of the API [Introduction](https://cloud.tencent.com/document/api/213/15688). You can query up to 100 instances in each request. However, `InstanceIds` and `Filters` cannot be specified at the same time.
         :type InstanceIds: list of str
         :param Filters: Filters.
 <li> `zone` - String - Optional - Filter results by availability zone.</li>
@@ -1148,7 +1154,7 @@ class DescribeInstancesStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: Instance ID(s) in the format of `ins-xxxxxxxx`. For more information on the format of this parameter, see the `id.N` section of [API Introduction](https://cloud.tencent.com/document/api/213/15688). The maximum number of instances in each request is 100.
+        :param InstanceIds: Query by instance ID(s). For example, instance ID: `ins-xxxxxxxx`. For the specific format, refer to section `Ids.N` of the API [Introduction](https://cloud.tencent.com/document/api/213/15688). You can query up to 100 instances in each request.
         :type InstanceIds: list of str
         :param Offset: Offset; default value: 0. For more information on `Offset`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377).
         :type Offset: int
@@ -1175,7 +1181,7 @@ class DescribeInstancesStatusResponse(AbstractModel):
         """
         :param TotalCount: Number of instance states meeting the filtering conditions.
         :type TotalCount: int
-        :param InstanceStatusSet: List of [instance states](https://cloud.tencent.com/document/api/213/15728).
+        :param InstanceStatusSet: [Instance status](https://cloud.tencent.com/document/api/213/15728) list.
         :type InstanceStatusSet: list of InstanceStatus
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1327,6 +1333,94 @@ class DescribeRegionsResponse(AbstractModel):
                 obj = RegionInfo()
                 obj._deserialize(item)
                 self.RegionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReservedInstancesOfferingsRequest(AbstractModel):
+    """DescribeReservedInstancesOfferings request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DryRun: Dry run. Default value: false.
+        :type DryRun: bool
+        :param Offset: The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://cloud.tencent.com/document/api/213/15688).
+        :type Offset: int
+        :param Limit: The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://cloud.tencent.com/document/api/213/15688).
+        :type Limit: int
+        :param MaxDuration: The maximum duration as a filter, 
+in seconds.
+Default value: 94608000.
+        :type MaxDuration: int
+        :param MinDuration: The minimum duration as a filter, 
+in seconds.
+Default value: 2592000.
+        :type MinDuration: int
+        :param Filters: <li><strong>zone</strong></li>
+<p style="padding-left: 30px;">Filters by the **<strong>availability zones</strong>** in which the Reserved Instances can be purchased, such as ap-guangzhou-1.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: <a href="https://cloud.tencent.com/document/product/213/6091">Availability Zones</a></p>
+<li><strong>duration</strong></li>
+<p style="padding-left: 30px;">Filters by the **<strong>duration</strong>** of the Reserved Instance, in seconds. For example, 31536000.</p><p style="padding-left: 30px;">Type: Integer</p><p style="padding-left: 30px;">Unit: second</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: 31536000 (1 year) | 94608000 (3 years)</p>
+<li><strong>instance-type</strong></li>
+<p style="padding-left: 30px;">Filters by **<strong>type of the Reserved Instance</strong>**, such as S3.MEDIUM4..</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: <a href="https://cloud.tencent.com/document/product/213/11518">Instance Types</a></p>
+<li><strong>offering-type</strong></li>
+<p style="padding-left: 30px;">Filters by **<strong>payment term</strong>**, such as All Upfront.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid value: All Upfront</p>
+<li><strong>product-description</strong></li>
+<p style="padding-left: 30px;">Filters by the **<strong>platform description </strong>** (operating system) of the Reserved Instance, such as linux.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid value: linux</p>
+<li><strong>reserved-instances-offering-id</strong></li>
+<p style="padding-left: 30px;">Filters by **<strong>Reserved Instance ID</strong>, in the form of 650c138f-ae7e-4750-952a-96841d6e9fc1.</p><p style="padding-left: 30px;">Type: StringString</p><p style="padding-left: 30px;">Required: no</p>
+Each request can have up to 10 `Filters` and 5 `Filter.Values`.
+        :type Filters: list of Filter
+        """
+        self.DryRun = None
+        self.Offset = None
+        self.Limit = None
+        self.MaxDuration = None
+        self.MinDuration = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.DryRun = params.get("DryRun")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.MaxDuration = params.get("MaxDuration")
+        self.MinDuration = params.get("MinDuration")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeReservedInstancesOfferingsResponse(AbstractModel):
+    """DescribeReservedInstancesOfferings response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of Reserved Instances that meet the condition.
+        :type TotalCount: int
+        :param ReservedInstancesOfferingsSet: The list of Reserved Instances that meet the condition.
+        :type ReservedInstancesOfferingsSet: list of ReservedInstancesOffering
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ReservedInstancesOfferingsSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ReservedInstancesOfferingsSet") is not None:
+            self.ReservedInstancesOfferingsSet = []
+            for item in params.get("ReservedInstancesOfferingsSet"):
+                obj = ReservedInstancesOffering()
+                obj._deserialize(item)
+                self.ReservedInstancesOfferingsSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1658,8 +1752,8 @@ class Externals(AbstractModel):
         :param ReleaseAddress: Release address
 Note: This field may return null, indicating that no valid value is found.
         :type ReleaseAddress: bool
-        :param UnsupportNetworks: Unsupported network types
-Note: This field may return null, indicating that no valid value is found.
+        :param UnsupportNetworks: Not supported network. Value: <br><li>BASIC: classic network<br><li>VPC1.0: VPC1.0
+Note: This field may return null, indicating that no valid value was found.
         :type UnsupportNetworks: list of str
         :param StorageBlockAttr: Attributes of local HDD storage
 Note: This field may return null, indicating that no valid value is found.
@@ -2153,9 +2247,9 @@ class InquiryPriceResetInstancesTypeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The maximum number of instances in each request is 1.
+        :param InstanceIds: Instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API. The maximum number of instances in each request is 1.
         :type InstanceIds: list of str
-        :param InstanceType: Instance model. Different resource specifications are specified for different models. For specific values, see the instance resource specification table. You can also obtain the latest specification list by calling the API for querying the list of instance resource specifications.
+        :param InstanceType: Instance model. Resources vary with the instance model. Specific values can be found in the tables of [Instance Types] (https://cloud.tencent.com/document/product/213/11518) or in the latest specifications via the [DescribeInstanceTypeConfigs] (https://cloud.tencent.com/document/product/213/15749) API.
         :type InstanceType: str
         """
         self.InstanceIds = None
@@ -2270,7 +2364,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         :param InstanceCount: Number of instances to be purchased. Value range: [1, 100]; default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see [CVM instance purchase limit](https://intl.cloud.tencent.com/document/product/213/2664).
         :type InstanceCount: int
-        :param InstanceName: Instance name to be displayed. <br><li>If this parameter is not specified, "Unnamed" will be displayed by default. </li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`. </li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and the instance name body is `server_`, the instance names will be `server_1` and `server_2`.
+        :param InstanceName: Instance name to be displayed.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and name them as `server_`, the instance names will be displayed as `server_1` and `server_2`.</li><li>The instance name contains up to 60 characters (including pattern strings).
         :type InstanceName: str
         :param LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
@@ -2813,9 +2907,9 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param DiscountPrice: Discount price of a prepaid instance, in USD.
 Note: this field may return null, indicating that no valid value is obtained.
         :type DiscountPrice: float
-        :param Discount: Percentage of the original price. For example, if you enter "20", the discounted price will be 20% of the original price.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type Discount: int
+        :param Discount: Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Discount: float
         :param UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to the unit price for the usage between 0 and ∞ hours.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPriceDiscount: float
@@ -3014,16 +3108,20 @@ class ModifyHostsAttributeRequest(AbstractModel):
         :type HostName: str
         :param RenewFlag: Auto renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.
         :type RenewFlag: str
+        :param ProjectId: Project ID. You can create a project by using the [AddProject](https://cloud.tencent.com/doc/api/403/4398) API and obtain its ID from the response parameter `projectId` of the [`DescribeProject`](https://cloud.tencent.com/document/product/378/4400) API. Subsequently, the project ID can be used to filter results when you query instances by calling the [DescribeHosts](https://cloud.tencent.com/document/api/213/16474) API.
+        :type ProjectId: int
         """
         self.HostIds = None
         self.HostName = None
         self.RenewFlag = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
         self.HostIds = params.get("HostIds")
         self.HostName = params.get("HostName")
         self.RenewFlag = params.get("RenewFlag")
+        self.ProjectId = params.get("ProjectId")
 
 
 class ModifyHostsAttributeResponse(AbstractModel):
@@ -3176,9 +3274,9 @@ class ModifyInstancesProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
+        :param InstanceIds: Instance IDs. To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. You can operate up to 100 instances in each request.
         :type InstanceIds: list of str
-        :param ProjectId: Project ID. You can create a project by calling [AddProject](https://cloud.tencent.com/doc/api/403/4398). When calling [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) to query instances, the project IDs can be used to filter the results.
+        :param ProjectId: Project ID. You can create a project by using the [AddProject](https://cloud.tencent.com/doc/api/403/4398) API and obtain its ID from the response parameter `projectId` of the [`DescribeProject`](https://cloud.tencent.com/document/product/378/4400) API. Subsequently, the project ID can be used to filter results when you query instances by calling the [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API.
         :type ProjectId: int
         """
         self.InstanceIds = None
@@ -3409,6 +3507,56 @@ class Price(AbstractModel):
             self.BandwidthPrice._deserialize(params.get("BandwidthPrice"))
 
 
+class PurchaseReservedInstancesOfferingRequest(AbstractModel):
+    """PurchaseReservedInstancesOffering request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceCount: The number of the Reserved Instance you are purchasing.
+        :type InstanceCount: int
+        :param ReservedInstancesOfferingId: The ID of the Reserved Instance.
+        :type ReservedInstancesOfferingId: str
+        :param DryRun: Dry run
+        :type DryRun: bool
+        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
+        :type ClientToken: str
+        """
+        self.InstanceCount = None
+        self.ReservedInstancesOfferingId = None
+        self.DryRun = None
+        self.ClientToken = None
+
+
+    def _deserialize(self, params):
+        self.InstanceCount = params.get("InstanceCount")
+        self.ReservedInstancesOfferingId = params.get("ReservedInstancesOfferingId")
+        self.DryRun = params.get("DryRun")
+        self.ClientToken = params.get("ClientToken")
+
+
+class PurchaseReservedInstancesOfferingResponse(AbstractModel):
+    """PurchaseReservedInstancesOffering response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReservedInstanceId: 
+        :type ReservedInstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReservedInstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReservedInstanceId = params.get("ReservedInstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class RebootInstancesRequest(AbstractModel):
     """RebootInstances request structure.
 
@@ -3416,7 +3564,7 @@ class RebootInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
+        :param InstanceIds: Instance IDs. To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. You can operate up to 100 instances in each request.
         :type InstanceIds: list of str
         :param ForceReboot: Whether to force restart an instance after a normal restart fails. Valid values: <br><li>TRUE: force restart an instance after a normal restart fails <br><li>FALSE: do not force restart an instance after a normal restart fails <br><br>Default value: FALSE.
         :type ForceReboot: bool
@@ -3540,6 +3688,64 @@ Returned value: All Upfront.
         self.OfferingType = params.get("OfferingType")
 
 
+class ReservedInstancesOffering(AbstractModel):
+    """The information of the Reserved Instance offering.
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: The availability zones in which the Reserved Instance can be purchased, such as ap-guangzhou-1.
+Valid value: <a href="https://cloud.tencent.com/document/product/213/6091">Availability Zones</a>
+        :type Zone: str
+        :param CurrencyCode: The currency of the Reserved Instance you are purchasing. It's specified using ISO 4217 standard currency.
+Valid value: USD.
+        :type CurrencyCode: str
+        :param Duration: The **duration** of the Reserved Instance in seconds, which is the purchased usage period. For example, 31536000.
+Unit: second
+        :type Duration: int
+        :param FixedPrice: The purchase price of the Reserved Instance, such as 4000.0.
+Unit: this field uses the currency code specified in `currencyCode`, and only supports “USD” at this time.
+        :type FixedPrice: float
+        :param InstanceType: The instance type on which the Reserved Instance can be used, such as S3.MEDIUM4.
+Valid value: <a href="https://cloud.tencent.com/product/cvm/instances">Instance Types</a>
+        :type InstanceType: str
+        :param OfferingType: The payment term of the Reserved Instance, such as All Upfront.
+Valid value: All Upfront.
+        :type OfferingType: str
+        :param ReservedInstancesOfferingId: The ID of the Reserved Instance offering, such as 650c138f-ae7e-4750-952a-96841d6e9fc1.
+        :type ReservedInstancesOfferingId: str
+        :param ProductDescription: The platform description (operating system) of the Reserved Instance, such as linux.
+Valid value: linux.
+        :type ProductDescription: str
+        :param UsagePrice: The hourly usage price of the Reserved Instance, such as 0.0.
+Currently, the only supported payment is “All Upfront”, so the default value of `UsagePrice` is 0 USD/hr.
+Unit: USD/hr. This field uses the currency code specified in `currencyCode`, and only supports “USD” at this time.
+        :type UsagePrice: float
+        """
+        self.Zone = None
+        self.CurrencyCode = None
+        self.Duration = None
+        self.FixedPrice = None
+        self.InstanceType = None
+        self.OfferingType = None
+        self.ReservedInstancesOfferingId = None
+        self.ProductDescription = None
+        self.UsagePrice = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.CurrencyCode = params.get("CurrencyCode")
+        self.Duration = params.get("Duration")
+        self.FixedPrice = params.get("FixedPrice")
+        self.InstanceType = params.get("InstanceType")
+        self.OfferingType = params.get("OfferingType")
+        self.ReservedInstancesOfferingId = params.get("ReservedInstancesOfferingId")
+        self.ProductDescription = params.get("ProductDescription")
+        self.UsagePrice = params.get("UsagePrice")
+
+
 class ResetInstanceRequest(AbstractModel):
     """ResetInstance request structure.
 
@@ -3549,16 +3755,16 @@ class ResetInstanceRequest(AbstractModel):
         """
         :param InstanceId: Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response.
         :type InstanceId: str
-        :param ImageId: [Image](/document/product/213/4940) ID in the format of `img-xxx`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information; for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://cloud.tencent.com/document/api/213/15715) and look for `ImageId` in the response.</li>
-<br>The current image will be used by default.
+        :param ImageId: Specified effective [image](https://cloud.tencent.com/document/product/213/4940) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways:<br/><li>for IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE); for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list).</li><li>Call the API [DescribeImages](https://cloud.tencent.com/document/api/213/15715) and look for `ImageId` in the response.</li>
+<br>Default value: current image.
         :type ImageId: str
-        :param SystemDisk: Configuration of the system disk of the instance. For instances with a cloud disk as the system disk, you can expand the system disk by using this parameter to specify the new capacity after reinstallation. If the parameter is not specified, the system disk capacity remains unchanged by default. You can only expand the capacity of the system disk; reducing its capacity is not supported. When reinstalling the system, you can only modify the capacity of the system disk, not the type.
+        :param SystemDisk: System disk configurations in the instance. For instances with a cloud disk as the system disk, you can expand the capacity of the system disk to the specified value after re-installation by using this parameter. If the parameter is not specified, lower system disk capacity will be automatically expanded to the image size, and extra disk costs are generated. You can only expand but cannot reduce the system disk capacity. By re-installing the system, you only modify the system disk capacity, but not the type.
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         :param LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         :param EnhancedService: Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Monitor and Cloud Security. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
-        :param HostName: You can use this parameter to specify a new HostName for the instance when reinstalling the system.
+        :param HostName: Host name of the CVM, editable during the system reinstallation. <br><li>Periods (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name.<br><li>For Windows instances, the host name must consist of 2-15 characters , including uppercase and lowercase letters, numbers, or hyphens (-). It cannot contain periods (.) or contain only numbers.<br><li>For other instances, such as Linux instances, the host name must consist of 2-60 characters, including multiple periods (.), and allows uppercase and lowercase letters, numbers, or hyphens (-) between any two periods (.).
         :type HostName: str
         """
         self.InstanceId = None
@@ -3658,11 +3864,11 @@ class ResetInstancesPasswordRequest(AbstractModel):
         """
         :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :type InstanceIds: list of str
-        :param Password: Login password of the instance(s). The password requirements vary among different operating systems:
-For a Linux instance, the password must be 8 to 30 characters in length; password with more than 12 characters is recommended. It cannot begin with "/", and must contain at least one character from three of the following categories: <br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\`~!@#$%^&\*-+=\_|{}[]:;'<>,.?/:
-For a Windows CVM, the password must be 12 to 30 characters in length. It cannot begin with "/" or contain your username. It must contain at least one character from three of the following categories: <br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/:<br><li>If the specified instances include both `Linux` and `Windows` instances, you will need to follow the password requirements for `Windows` instances.
+        :param Password: Login password of the instance. The rule of password complexity varies with operating systems:
+For a Linux instance, the password must be 8 to 30 characters in length; password with more than 12 characters is recommended. It cannot begin with "/", and must contain at least three types of the following:<br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\`~!@#$%^&\*-+=\_|{}[]:;'<>,.?/
+For a Windows CVM, the password must be 12 to 30 characters in length. It cannot begin with "/" or contain your username. It must contain at least three types of the following:<br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/<li>If the specified instances include both `Linux` and `Windows` instances, you need to follow the password requirements for `Windows` instances.
         :type Password: str
-        :param UserName: Operating system username of the instance for which you want to reset the password. The length of the username cannot exceed 64 characters.
+        :param UserName: Username of the instance operating system for which the password needs to be reset. This parameter is limited to 64 characters.
         :type UserName: str
         :param ForceStop: Whether to force shut down a running instances. It is recommended to manually shut down a running instance before resetting the user password. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE. <br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be shut down normally.
         :type ForceStop: bool
@@ -3704,11 +3910,11 @@ class ResetInstancesTypeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The maximum number of instances in each request is 1.
+        :param InstanceIds: Instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API. The maximum number of instances for each request is 1.
         :type InstanceIds: list of str
         :param InstanceType: Instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749) to get the latest specification list or refer to [Instance Types](https://cloud.tencent.com/document/product/213/11518).
         :type InstanceType: str
-        :param ForceStop: Whether to force shut down a running instances. It is recommended to manually shut down a running instance before resetting the user password. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE. <br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be shut down normally.
+        :param ForceStop: Forced shutdown of a running instances. We recommend you firstly try to shut down a running instance manually. Valid values: <br><li>TRUE: forced shutdown of an instance after a normal shutdown fails.<br><li>FALSE: no forced shutdown of an instance after a normal shutdown fails.<br><br>Default value: FALSE.<br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force a CVM to shut off if the normal shutdown fails.
         :type ForceStop: bool
         """
         self.InstanceIds = None
@@ -3814,7 +4020,7 @@ class RunInstancesRequest(AbstractModel):
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         :param InstanceCount: The number of instances to be purchased. Value range: [1, 100]; default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on the quota, see [CVM instance purchase limit](https://intl.cloud.tencent.com/document/product/213/2664).
         :type InstanceCount: int
-        :param InstanceName: Instance name to be displayed. <br><li>If this parameter is not specified, "Unnamed" will be displayed by default. </li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`. </li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and the instance name body is `server_`, the instance names will be `server_1` and `server_2`.
+        :param InstanceName: Instance name to be displayed.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and name them as `server_`, the instance names will be displayed as `server_1` and `server_2`.</li><li>The instance name contains up to 60 characters (including pattern strings).
         :type InstanceName: str
         :param LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`

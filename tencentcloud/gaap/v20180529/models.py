@@ -3913,12 +3913,12 @@ class HTTPListener(AbstractModel):
         :type CreateTime: int
         :param Protocol: Listener protocol
         :type Protocol: str
-        :param ListenerStatus: Listener status. Valid values:
+        :param ListenerStatus: Listener status:
 0: running;
 1: creating;
 2: terminating;
 3: adjusting origin server;
-4: adjusting configuration.
+4: modifying configuration.
         :type ListenerStatus: int
         """
         self.ListenerId = None
@@ -3953,12 +3953,12 @@ class HTTPSListener(AbstractModel):
         :type Port: int
         :param Protocol: Listener protocol. The value is `HTTP`.
         :type Protocol: str
-        :param ListenerStatus: Listener status. Valid values:
+        :param ListenerStatus: Listener status:
 0: running;
 1: creating;
 2: terminating;
 3: adjusting origin server;
-4: adjusting configuration.
+4: modifying configuration.
         :type ListenerStatus: int
         :param CertificateId: Server SSL certificate ID of the listener
         :type CertificateId: str
@@ -5169,11 +5169,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param RealServerRegionInfo: Target region
         :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         :param Status: Connection group status.
-Valid values:
+Where:
 0: running;
 1: creating;
 4: terminating;
-11: migrating connection;
+11: connection migrating.
         :type Status: str
         :param TagSet: Tag list.
         :type TagSet: list of TagPair
@@ -5245,17 +5245,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Bandwidth: int
         :param Concurrent: Concurrence. Unit: requests/second.
         :type Concurrent: int
-        :param Status: Connection status. Valid values:
+        :param Status: Connection status:
 RUNNING: running;
 CREATING: creating;
 DESTROYING: terminating;
 OPENING: enabling;
 CLOSING: disabling;
 CLOSED: disabled;
-ADJUSTING: adjusting configuration;
-ISOLATING: isolating;
-ISOLATED: isolated;
-CLONING: copying;
+ADJUSTING: adjusting configuration
+ISOLATING: isolating (it’s triggered when the account is in arrears);
+ISOLATED: isolated (it’s triggered when the account is in arrears);
 UNKNOWN: unknown status.
         :type Status: str
         :param Domain: Accessed domain name.
