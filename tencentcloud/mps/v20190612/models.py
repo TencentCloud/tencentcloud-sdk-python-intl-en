@@ -85,13 +85,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AiAnalysisResult(AbstractModel):
-    """Intelligent analysis results
+    """智能分析结果
 
     """
 
 
 class AiAnalysisTaskInput(AbstractModel):
-    """AI video intelligent analysis input parameter types
+    """AI 视频智能分析输入参数类型
 
     """
 
@@ -4573,7 +4573,7 @@ class ImageWatermarkTemplate(AbstractModel):
 
 
 class LiveStreamAiRecognitionResultInfo(AbstractModel):
-    """Live stream AI recognition results
+    """直播流 AI 识别结果
 
     """
 
@@ -7468,13 +7468,13 @@ class ProcessMediaResponse(AbstractModel):
 
 
 class RawTranscodeParameter(AbstractModel):
-    """Specifications for custom transcoding.
+    """自定义转码的的规格参数。
 
     """
 
 
 class RawWatermarkParameter(AbstractModel):
-    """Custom watermark specifications.
+    """自定义水印规格参数。
 
     """
 
