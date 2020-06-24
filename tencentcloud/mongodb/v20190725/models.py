@@ -513,6 +513,135 @@ class DescribeDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSlowLogPatternsRequest(AbstractModel):
+    """DescribeSlowLogPatterns request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page
+        :type InstanceId: str
+        :param StartTime: Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.
+        :type StartTime: str
+        :param EndTime: End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.
+        :type EndTime: str
+        :param SlowMS: Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.
+        :type SlowMS: int
+        :param Offset: Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SlowMS = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SlowMS = params.get("SlowMS")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSlowLogPatternsResponse(AbstractModel):
+    """DescribeSlowLogPatterns response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: Total number of slow logs
+        :type Count: int
+        :param SlowLogPatterns: Slow log statistics
+        :type SlowLogPatterns: list of SlowLogPattern
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Count = None
+        self.SlowLogPatterns = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("SlowLogPatterns") is not None:
+            self.SlowLogPatterns = []
+            for item in params.get("SlowLogPatterns"):
+                obj = SlowLogPattern()
+                obj._deserialize(item)
+                self.SlowLogPatterns.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSlowLogsRequest(AbstractModel):
+    """DescribeSlowLogs request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page
+        :type InstanceId: str
+        :param StartTime: Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.
+        :type StartTime: str
+        :param EndTime: End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.
+        :type EndTime: str
+        :param SlowMS: Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.
+        :type SlowMS: int
+        :param Offset: Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SlowMS = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SlowMS = params.get("SlowMS")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSlowLogsResponse(AbstractModel):
+    """DescribeSlowLogs response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: Total number of slow logs
+        :type Count: int
+        :param SlowLogs: Slow log details
+        :type SlowLogs: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Count = None
+        self.SlowLogs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.SlowLogs = params.get("SlowLogs")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSpecInfoRequest(AbstractModel):
     """DescribeSpecInfo request structure.
 
@@ -553,6 +682,40 @@ class DescribeSpecInfoResponse(AbstractModel):
                 obj = SpecificationInfo()
                 obj._deserialize(item)
                 self.SpecInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class FlushInstanceRouterConfigRequest(AbstractModel):
+    """FlushInstanceRouterConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class FlushInstanceRouterConfigResponse(AbstractModel):
+    """FlushInstanceRouterConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -955,6 +1118,35 @@ class ShardInfo(AbstractModel):
         self.OplogSize = params.get("OplogSize")
         self.SecondaryNum = params.get("SecondaryNum")
         self.RealReplicaSetId = params.get("RealReplicaSetId")
+
+
+class SlowLogPattern(AbstractModel):
+    """Slow log statistics of MongoDB database
+
+    """
+
+    def __init__(self):
+        """
+        :param Pattern: Slow log pattern
+        :type Pattern: str
+        :param MaxTime: Maximum execution time
+        :type MaxTime: int
+        :param AverageTime: Average execution time
+        :type AverageTime: int
+        :param Total: Number of slow logs in this pattern
+        :type Total: int
+        """
+        self.Pattern = None
+        self.MaxTime = None
+        self.AverageTime = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        self.Pattern = params.get("Pattern")
+        self.MaxTime = params.get("MaxTime")
+        self.AverageTime = params.get("AverageTime")
+        self.Total = params.get("Total")
 
 
 class SpecItem(AbstractModel):

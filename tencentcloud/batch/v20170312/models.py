@@ -1967,8 +1967,8 @@ class Externals(AbstractModel):
         :param ReleaseAddress: Release address
 Note: This field may return null, indicating that no valid value is found.
         :type ReleaseAddress: bool
-        :param UnsupportNetworks: Unsupported network types
-Note: This field may return null, indicating that no valid value is found.
+        :param UnsupportNetworks: Not supported network. Value: <br><li>BASIC: classic network<br><li>VPC1.0: VPC1.0
+Note: This field may return null, indicating that no valid value was found.
         :type UnsupportNetworks: list of str
         :param StorageBlockAttr: Attributes of local HDD storage
 Note: This field may return null, indicating that no valid value is found.
@@ -2296,9 +2296,9 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param DiscountPrice: Discount price of a prepaid instance, in USD.
 Note: this field may return null, indicating that no valid value is obtained.
         :type DiscountPrice: float
-        :param Discount: Percentage of the original price. For example, if you enter "20", the discounted price will be 20% of the original price.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type Discount: int
+        :param Discount: Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Discount: float
         :param UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to the unit price for the usage between 0 and ∞ hours.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPriceDiscount: float

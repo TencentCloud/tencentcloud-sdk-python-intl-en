@@ -131,8 +131,8 @@ class Cluster(AbstractModel):
         :param ImageId: ID of the image used by the cluster
 Note: this field may return null, indicating that no valid value is obtained.
         :type ImageId: str
-        :param OsCustomizeType: OsCustomizeType
-Note: this field may return null, indicating that no valid value is obtained.
+        :param OsCustomizeType: Container image tag
+Note: This field may return null, indicating that no valid value was found.
         :type OsCustomizeType: str
         :param ContainerRuntime: Runtime environment of the cluster. Values can be `docker` or `containerd`.
 Note: this field may return null, indicating that no valid value is obtained.
@@ -140,6 +140,9 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param CreatedTime: Creation time
 Note: this field may return null, indicating that no valid value is obtained.
         :type CreatedTime: str
+        :param DeletionProtection: Whether Deletion Protection is enabled
+Note: this field may return null, indicating that no valid value is obtained.
+        :type DeletionProtection: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -158,6 +161,7 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.OsCustomizeType = None
         self.ContainerRuntime = None
         self.CreatedTime = None
+        self.DeletionProtection = None
 
 
     def _deserialize(self, params):
@@ -185,6 +189,7 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.OsCustomizeType = params.get("OsCustomizeType")
         self.ContainerRuntime = params.get("ContainerRuntime")
         self.CreatedTime = params.get("CreatedTime")
+        self.DeletionProtection = params.get("DeletionProtection")
 
 
 class ClusterAdvancedSettings(AbstractModel):
@@ -208,8 +213,6 @@ class ClusterAdvancedSettings(AbstractModel):
         :type NetworkType: str
         :param IsNonStaticIpMode: Whether a cluster in VPC-CNI mode uses dynamic IP addresses. The default value is FALSE, which indicates that static IP addresses are used.
         :type IsNonStaticIpMode: bool
-        :param DeletionProtection: Indicates whether to enable deletion protection
-        :type DeletionProtection: bool
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -218,7 +221,6 @@ class ClusterAdvancedSettings(AbstractModel):
         self.ExtraArgs = None
         self.NetworkType = None
         self.IsNonStaticIpMode = None
-        self.DeletionProtection = None
 
 
     def _deserialize(self, params):
@@ -231,7 +233,6 @@ class ClusterAdvancedSettings(AbstractModel):
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.NetworkType = params.get("NetworkType")
         self.IsNonStaticIpMode = params.get("IsNonStaticIpMode")
-        self.DeletionProtection = params.get("DeletionProtection")
 
 
 class ClusterBasicSettings(AbstractModel):

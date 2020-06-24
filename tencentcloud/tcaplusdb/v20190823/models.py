@@ -633,6 +633,53 @@ class DeleteTablesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterTagsRequest(AbstractModel):
+    """DescribeClusterTags request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterIds: The list of cluster IDs
+        :type ClusterIds: list of str
+        """
+        self.ClusterIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+
+
+class DescribeClusterTagsResponse(AbstractModel):
+    """DescribeClusterTags response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Rows: The information list of cluster tags
+        :type Rows: list of TagsInfoOfCluster
+        :param TotalCount: The number of returned results
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Rows = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = TagsInfoOfCluster()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClustersRequest(AbstractModel):
     """DescribeClusters request structure.
 
@@ -796,6 +843,57 @@ class DescribeRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTableGroupTagsRequest(AbstractModel):
+    """DescribeTableGroupTags request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The ID of the cluster where table group tags need to be queried
+        :type ClusterId: str
+        :param TableGroupIds: The list of IDs of the table groups whose tags need to be queried
+        :type TableGroupIds: list of str
+        """
+        self.ClusterId = None
+        self.TableGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.TableGroupIds = params.get("TableGroupIds")
+
+
+class DescribeTableGroupTagsResponse(AbstractModel):
+    """DescribeTableGroupTags response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Rows: The information list of table group tags
+        :type Rows: list of TagsInfoOfTableGroup
+        :param TotalCount: The number of returned results
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Rows = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = TagsInfoOfTableGroup()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTableGroupsRequest(AbstractModel):
     """DescribeTableGroups request structure.
 
@@ -861,6 +959,62 @@ class DescribeTableGroupsResponse(AbstractModel):
                 obj = TableGroupInfo()
                 obj._deserialize(item)
                 self.TableGroups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTableTagsRequest(AbstractModel):
+    """DescribeTableTags request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The ID of the cluster where a table resides
+        :type ClusterId: str
+        :param SelectedTables: Table list
+        :type SelectedTables: list of SelectedTableInfoNew
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class DescribeTableTagsResponse(AbstractModel):
+    """DescribeTableTags response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The total number of returned results
+        :type TotalCount: int
+        :param Rows: The information list of table tags
+        :type Rows: list of TagsInfoOfTable
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Rows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = TagsInfoOfTable()
+                obj._deserialize(item)
+                self.Rows.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1318,6 +1472,62 @@ class ModifyClusterPasswordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterTagsRequest(AbstractModel):
+    """ModifyClusterTags request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The ID of the cluster whose tags need to be modified
+        :type ClusterId: str
+        :param ReplaceTags: The list of tags to add or modify
+        :type ReplaceTags: list of TagInfoUnit
+        :param DeleteTags: Tags to delete
+        :type DeleteTags: list of TagInfoUnit
+        """
+        self.ClusterId = None
+        self.ReplaceTags = None
+        self.DeleteTags = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ReplaceTags") is not None:
+            self.ReplaceTags = []
+            for item in params.get("ReplaceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ReplaceTags.append(obj)
+        if params.get("DeleteTags") is not None:
+            self.DeleteTags = []
+            for item in params.get("DeleteTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.DeleteTags.append(obj)
+
+
+class ModifyClusterTagsResponse(AbstractModel):
+    """ModifyClusterTags response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: Task ID
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTableGroupNameRequest(AbstractModel):
     """ModifyTableGroupName request structure.
 
@@ -1357,6 +1567,66 @@ class ModifyTableGroupNameResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTableGroupTagsRequest(AbstractModel):
+    """ModifyTableGroupTags request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The ID of the cluster where table group tags need to be modified
+        :type ClusterId: str
+        :param TableGroupId: The ID of the table group whose tags need to be modified
+        :type TableGroupId: str
+        :param ReplaceTags: The list of tags to add or modify
+        :type ReplaceTags: list of TagInfoUnit
+        :param DeleteTags: Tags to delete
+        :type DeleteTags: list of TagInfoUnit
+        """
+        self.ClusterId = None
+        self.TableGroupId = None
+        self.ReplaceTags = None
+        self.DeleteTags = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.TableGroupId = params.get("TableGroupId")
+        if params.get("ReplaceTags") is not None:
+            self.ReplaceTags = []
+            for item in params.get("ReplaceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ReplaceTags.append(obj)
+        if params.get("DeleteTags") is not None:
+            self.DeleteTags = []
+            for item in params.get("DeleteTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.DeleteTags.append(obj)
+
+
+class ModifyTableGroupTagsResponse(AbstractModel):
+    """ModifyTableGroupTags response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: Task ID
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1452,6 +1722,80 @@ class ModifyTableQuotasResponse(AbstractModel):
         :param TotalCount: Number of scaled tables
         :type TotalCount: int
         :param TableResults: List of table scaling results
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = TableResultNew()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTableTagsRequest(AbstractModel):
+    """ModifyTableTags request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The ID of the cluster where table tags need to be modified
+        :type ClusterId: str
+        :param SelectedTables: The list of tables whose tags need to be modified
+        :type SelectedTables: list of SelectedTableInfoNew
+        :param ReplaceTags: The list of tags to add or modify
+        :type ReplaceTags: list of TagInfoUnit
+        :param DeleteTags: The list of tags to delete
+        :type DeleteTags: list of TagInfoUnit
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+        self.ReplaceTags = None
+        self.DeleteTags = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+        if params.get("ReplaceTags") is not None:
+            self.ReplaceTags = []
+            for item in params.get("ReplaceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ReplaceTags.append(obj)
+        if params.get("DeleteTags") is not None:
+            self.DeleteTags = []
+            for item in params.get("DeleteTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.DeleteTags.append(obj)
+
+
+class ModifyTableTagsResponse(AbstractModel):
+    """ModifyTableTags response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The total number of returned results
+        :type TotalCount: int
+        :param TableResults: Returned results
         :type TableResults: list of TableResultNew
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1974,9 +2318,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SortRule: Sort order of SORTLIST-type tables
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SortRule: int
-        :param DbClusterInfoStruct: Distributed index information of table
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DbClusterInfoStruct: str
         """
         self.TableName = None
         self.TableInstanceId = None
@@ -2004,7 +2345,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ApiAccessId = None
         self.SortFieldNum = None
         self.SortRule = None
-        self.DbClusterInfoStruct = None
 
 
     def _deserialize(self, params):
@@ -2041,7 +2381,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ApiAccessId = params.get("ApiAccessId")
         self.SortFieldNum = params.get("SortFieldNum")
         self.SortRule = params.get("SortRule")
-        self.DbClusterInfoStruct = params.get("DbClusterInfoStruct")
 
 
 class TableResultNew(AbstractModel):
@@ -2167,6 +2506,135 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.FileId = params.get("FileId")
         self.SuccKeyNum = params.get("SuccKeyNum")
         self.TotalKeyNum = params.get("TotalKeyNum")
+
+
+class TagInfoUnit(AbstractModel):
+    """Tag information unit
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
+class TagsInfoOfCluster(AbstractModel):
+    """Cluster tag information
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Tags: Tag information
+        :type Tags: list of TagInfoUnit
+        :param Error: Error message
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
+        self.ClusterId = None
+        self.Tags = None
+        self.Error = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
+
+
+class TagsInfoOfTable(AbstractModel):
+    """Table tag information
+
+    """
+
+    def __init__(self):
+        """
+        :param TableInstanceId: Table instance ID
+        :type TableInstanceId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param TableGroupId: Table group ID
+        :type TableGroupId: str
+        :param Tags: Tag information
+        :type Tags: list of TagInfoUnit
+        :param Error: Error message
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
+        self.TableInstanceId = None
+        self.TableName = None
+        self.TableGroupId = None
+        self.Tags = None
+        self.Error = None
+
+
+    def _deserialize(self, params):
+        self.TableInstanceId = params.get("TableInstanceId")
+        self.TableName = params.get("TableName")
+        self.TableGroupId = params.get("TableGroupId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
+
+
+class TagsInfoOfTableGroup(AbstractModel):
+    """Table group tag information
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param TableGroupId: Table group ID
+        :type TableGroupId: str
+        :param Tags: Tag information
+        :type Tags: list of TagInfoUnit
+        :param Error: Error message
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
+        self.ClusterId = None
+        self.TableGroupId = None
+        self.Tags = None
+        self.Error = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.TableGroupId = params.get("TableGroupId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
 
 
 class TaskInfoNew(AbstractModel):

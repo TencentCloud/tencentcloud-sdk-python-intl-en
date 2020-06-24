@@ -714,17 +714,12 @@ class CacheKey(AbstractModel):
 on: enable full-path cache (i.e., disable parameter filter)
 off: disable full-path cache (i.e., enable parameter filter)
         :type FullUrlCache: str
-        :param CaseSensitive: Whether the cache ignores letter case
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CaseSensitive: str
         """
         self.FullUrlCache = None
-        self.CaseSensitive = None
 
 
     def _deserialize(self, params):
         self.FullUrlCache = params.get("FullUrlCache")
-        self.CaseSensitive = params.get("CaseSensitive")
 
 
 class CacheOptResult(AbstractModel):
@@ -3054,33 +3049,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Switch = params.get("Switch")
 
 
-class Hsts(AbstractModel):
-    """`HSTS` configuration.
-
-    """
-
-    def __init__(self):
-        """
-        :param Switch: Whether to enable. Valid values: on, off.
-        :type Switch: str
-        :param MaxAge: `MaxAge` value.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MaxAge: int
-        :param IncludeSubDomains: Whether to include subdomain names. Valid values: on, off.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IncludeSubDomains: str
-        """
-        self.Switch = None
-        self.MaxAge = None
-        self.IncludeSubDomains = None
-
-
-    def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.MaxAge = params.get("MaxAge")
-        self.IncludeSubDomains = params.get("IncludeSubDomains")
-
-
 class HttpHeaderPathRule(AbstractModel):
     """HTTP header setting rules. Up to 100 entries can be set.
 
@@ -3181,12 +3149,6 @@ deployed: successfully deployed
 failed: deployment failed
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SslStatus: str
-        :param TlsVersion: TLS version list. Valid values:
-TLSv1.0, TLSv1.1, TLSv1.2
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TlsVersion: list of str
-        :param Hsts: 
-        :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
         """
         self.Switch = None
         self.Http2 = None
@@ -3196,8 +3158,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ClientCertInfo = None
         self.Spdy = None
         self.SslStatus = None
-        self.TlsVersion = None
-        self.Hsts = None
 
 
     def _deserialize(self, params):
@@ -3213,10 +3173,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         self.Spdy = params.get("Spdy")
         self.SslStatus = params.get("SslStatus")
-        self.TlsVersion = params.get("TlsVersion")
-        if params.get("Hsts") is not None:
-            self.Hsts = Hsts()
-            self.Hsts._deserialize(params.get("Hsts"))
 
 
 class ImageOptimization(AbstractModel):

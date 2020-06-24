@@ -305,6 +305,34 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterTags(self, request):
+        """This API is used to get the associated tag list of a cluster.
+
+        :param request: Request instance for DescribeClusterTags.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeClusterTagsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeClusterTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusters(self, request):
         """This API is used to query the TcaplusDB cluster list, including cluster details.
 
@@ -389,6 +417,34 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTableGroupTags(self, request):
+        """This API is used to get the associated tag list of a table group.
+
+        :param request: Request instance for DescribeTableGroupTags.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTableGroupTagsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTableGroupTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTableGroupTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTableGroupTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTableGroups(self, request):
         """This API is used to query the table group list.
 
@@ -403,6 +459,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTableGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTableTags(self, request):
+        """This API is used to get table tags.
+
+        :param request: Request instance for DescribeTableTags.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTableTagsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTableTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTableTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTableTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -585,6 +669,34 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyClusterTags(self, request):
+        """This API is used to modify cluster tags.
+
+        :param request: Request instance for ModifyClusterTags.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterTagsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyTableGroupName(self, request):
         """This API is used to rename a TcaplusDB table group.
 
@@ -599,6 +711,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTableGroupNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTableGroupTags(self, request):
+        """This API is used to modify table group tags.
+
+        :param request: Request instance for ModifyTableGroupTags.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableGroupTagsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableGroupTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTableGroupTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTableGroupTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -655,6 +795,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTableQuotasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTableTags(self, request):
+        """This API is used to modify table tags.
+
+        :param request: Request instance for ModifyTableTags.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableTagsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTableTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTableTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

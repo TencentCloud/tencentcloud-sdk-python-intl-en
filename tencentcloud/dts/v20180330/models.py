@@ -2072,6 +2072,50 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Status = params.get("Status")
 
 
+class SwitchDrToMasterRequest(AbstractModel):
+    """SwitchDrToMaster request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DstInfo: Disaster recovery instance information
+        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
+        :param DatabaseType: Database type (such as MySQL)
+        :type DatabaseType: str
+        """
+        self.DstInfo = None
+        self.DatabaseType = None
+
+
+    def _deserialize(self, params):
+        if params.get("DstInfo") is not None:
+            self.DstInfo = SyncInstanceInfo()
+            self.DstInfo._deserialize(params.get("DstInfo"))
+        self.DatabaseType = params.get("DatabaseType")
+
+
+class SwitchDrToMasterResponse(AbstractModel):
+    """SwitchDrToMaster response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Backend async task request ID
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class SyncCheckStepInfo(AbstractModel):
     """Check steps for a disaster recovery task
 

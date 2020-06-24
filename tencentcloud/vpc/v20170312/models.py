@@ -80,6 +80,56 @@ class AccountAttribute(AbstractModel):
         self.AttributeValues = params.get("AttributeValues")
 
 
+class AddBandwidthPackageResourcesRequest(AbstractModel):
+    """AddBandwidthPackageResources request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceIds: ResourceId, such as 'eip-xxxx', 'lb-xxxx'
+        :type ResourceIds: list of str
+        :param BandwidthPackageId: The unique ID of the bandwidth package, such as 'bwp-xxxx'
+        :type BandwidthPackageId: str
+        :param NetworkType: The bandwidth package type, including 'BGP', 'SINGLEISP', 'ANYCAST'
+        :type NetworkType: str
+        :param ResourceType: The resource type, including 'Address', 'LoadBalance'
+        :type ResourceType: str
+        :param Protocol: 
+        :type Protocol: str
+        """
+        self.ResourceIds = None
+        self.BandwidthPackageId = None
+        self.NetworkType = None
+        self.ResourceType = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.ResourceIds = params.get("ResourceIds")
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.NetworkType = params.get("NetworkType")
+        self.ResourceType = params.get("ResourceType")
+        self.Protocol = params.get("Protocol")
+
+
+class AddBandwidthPackageResourcesResponse(AbstractModel):
+    """AddBandwidthPackageResources response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Address(AbstractModel):
     """Detailed EIP information
 
@@ -688,6 +738,52 @@ class AssociateAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateNatGatewayAddressRequest(AbstractModel):
+    """AssociateNatGatewayAddress request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
+        :type NatGatewayId: str
+        :param AddressCount: The number of EIPs that needs to be applied for. The system will create N number of EIPs according to your requirements. Either AddressCount or PublicAddresses must be passed in.
+        :type AddressCount: int
+        :param PublicIpAddresses: The EIP array bound to the NAT gateway. Either AddressCount or PublicAddresses must be passed in.
+        :type PublicIpAddresses: list of str
+        :param Zone: The EIP zone. This is passed in when EIP is automatically assigned.
+        :type Zone: str
+        """
+        self.NatGatewayId = None
+        self.AddressCount = None
+        self.PublicIpAddresses = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.AddressCount = params.get("AddressCount")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.Zone = params.get("Zone")
+
+
+class AssociateNatGatewayAddressResponse(AbstractModel):
+    """AssociateNatGatewayAddress response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateNetworkAclSubnetsRequest(AbstractModel):
     """AssociateNetworkAclSubnets request structure.
 
@@ -885,6 +981,56 @@ class AttachNetworkInterfaceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class BandwidthPackage(AbstractModel):
+    """Structure of information on the bandwidth package
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: The unique ID of the bandwidth package
+        :type BandwidthPackageId: str
+        :param NetworkType: The bandwidth package type, including 'BGP', 'SINGLEISP', 'ANYCAST'
+        :type NetworkType: str
+        :param ChargeType: The bandwidth package billing type, including 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'
+        :type ChargeType: str
+        :param BandwidthPackageName: The name of the bandwidth package
+        :type BandwidthPackageName: str
+        :param CreatedTime: The creation time of the bandwidth package, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
+        :type CreatedTime: str
+        :param Status: The status of the bandwidth package, including 'CREATING', 'CREATED', 'DELETING', and 'DELETED'.
+        :type Status: str
+        :param ResourceSet: The resource information of the bandwidth package
+        :type ResourceSet: list of Resource
+        :param Bandwidth: The size limit of the bandwidth package. Unit: Mbps. -1 indicates there is no limit.
+        :type Bandwidth: int
+        """
+        self.BandwidthPackageId = None
+        self.NetworkType = None
+        self.ChargeType = None
+        self.BandwidthPackageName = None
+        self.CreatedTime = None
+        self.Status = None
+        self.ResourceSet = None
+        self.Bandwidth = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.NetworkType = params.get("NetworkType")
+        self.ChargeType = params.get("ChargeType")
+        self.BandwidthPackageName = params.get("BandwidthPackageName")
+        self.CreatedTime = params.get("CreatedTime")
+        self.Status = params.get("Status")
+        if params.get("ResourceSet") is not None:
+            self.ResourceSet = []
+            for item in params.get("ResourceSet"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.ResourceSet.append(obj)
+        self.Bandwidth = params.get("Bandwidth")
 
 
 class CCN(AbstractModel):
@@ -1459,6 +1605,77 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class CreateBandwidthPackageRequest(AbstractModel):
+    """CreateBandwidthPackage request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkType: The bandwidth package type, including 'BGP', 'SINGLEISP', 'ANYCAST'
+        :type NetworkType: str
+        :param ChargeType: The bandwidth package billing type, including 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'
+        :type ChargeType: str
+        :param BandwidthPackageName: The name of the bandwidth package
+        :type BandwidthPackageName: str
+        :param BandwidthPackageCount: The number of bandwidth packages (non-upward accounts can only enter 1)
+        :type BandwidthPackageCount: int
+        :param InternetMaxBandwidth: The size limit of the bandwidth package. Unit: Mbps. -1 indicates there is no limit.
+        :type InternetMaxBandwidth: int
+        :param Tags: 
+        :type Tags: list of Tag
+        :param Protocol: 
+        :type Protocol: str
+        """
+        self.NetworkType = None
+        self.ChargeType = None
+        self.BandwidthPackageName = None
+        self.BandwidthPackageCount = None
+        self.InternetMaxBandwidth = None
+        self.Tags = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.NetworkType = params.get("NetworkType")
+        self.ChargeType = params.get("ChargeType")
+        self.BandwidthPackageName = params.get("BandwidthPackageName")
+        self.BandwidthPackageCount = params.get("BandwidthPackageCount")
+        self.InternetMaxBandwidth = params.get("InternetMaxBandwidth")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.Protocol = params.get("Protocol")
+
+
+class CreateBandwidthPackageResponse(AbstractModel):
+    """CreateBandwidthPackage response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: The ID of the bandwidth package
+        :type BandwidthPackageId: str
+        :param BandwidthPackageIds: The IDs of the bandwidth package (valid when the applied number is greater than 1)
+        :type BandwidthPackageIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BandwidthPackageId = None
+        self.BandwidthPackageIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.BandwidthPackageIds = params.get("BandwidthPackageIds")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCcnRequest(AbstractModel):
     """CreateCcn request structure.
 
@@ -1652,6 +1869,130 @@ class CreateDirectConnectGatewayCcnRoutesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDirectConnectGatewayRequest(AbstractModel):
+    """CreateDirectConnectGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayName: The name of the Direct Connect gateway
+        :type DirectConnectGatewayName: str
+        :param NetworkType: The type of the associated network. Available values are:
+<li>VPC - VPC</li>
+<li>CCN - CCN</li>
+        :type NetworkType: str
+        :param NetworkInstanceId: <li>When the NetworkType is VPC, this value is the VPC instance ID</li>
+<li>When the NetworkType is CCN, this value is the CCN instance ID</li>
+        :type NetworkInstanceId: str
+        :param GatewayType: The type of the gateway. Available values are:
+<li>NORMAL - (Default) Standard type. Note: CCN only supports the standard type</li>
+<li>NAT - NAT-type</li>NAT-type supports network address switch configuration. After the type is confirmed, it cannot be modified. A VPC can create one NAT-type Direct Connect gateway and one non-NAT-type Direct Connect gateway
+        :type GatewayType: str
+        """
+        self.DirectConnectGatewayName = None
+        self.NetworkType = None
+        self.NetworkInstanceId = None
+        self.GatewayType = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
+        self.NetworkType = params.get("NetworkType")
+        self.NetworkInstanceId = params.get("NetworkInstanceId")
+        self.GatewayType = params.get("GatewayType")
+
+
+class CreateDirectConnectGatewayResponse(AbstractModel):
+    """CreateDirectConnectGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGateway: Direct Connect gateway object.
+        :type DirectConnectGateway: :class:`tencentcloud.vpc.v20170312.models.DirectConnectGateway`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DirectConnectGateway = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DirectConnectGateway") is not None:
+            self.DirectConnectGateway = DirectConnectGateway()
+            self.DirectConnectGateway._deserialize(params.get("DirectConnectGateway"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateFlowLogRequest(AbstractModel):
+    """CreateFlowLog request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :type VpcId: str
+        :param FlowLogName: The name of the flow log instance
+        :type FlowLogName: str
+        :param ResourceType: The type of resources to which the flow log belongs. VPC|SUBNET|NETWORKINTERFACE
+        :type ResourceType: str
+        :param ResourceId: The unique ID of the resource
+        :type ResourceId: str
+        :param TrafficType: The collection type of the flow log. ACCEPT|REJECT|ALL
+        :type TrafficType: str
+        :param CloudLogId: The storage ID of the flow log
+        :type CloudLogId: str
+        :param FlowLogDescription: The description of the flow log instance
+        :type FlowLogDescription: str
+        """
+        self.VpcId = None
+        self.FlowLogName = None
+        self.ResourceType = None
+        self.ResourceId = None
+        self.TrafficType = None
+        self.CloudLogId = None
+        self.FlowLogDescription = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogName = params.get("FlowLogName")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
+        self.TrafficType = params.get("TrafficType")
+        self.CloudLogId = params.get("CloudLogId")
+        self.FlowLogDescription = params.get("FlowLogDescription")
+
+
+class CreateFlowLogResponse(AbstractModel):
+    """CreateFlowLog response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowLog: The information of the created flow log
+        :type FlowLog: list of FlowLog
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowLog = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowLog") is not None:
+            self.FlowLog = []
+            for item in params.get("FlowLog"):
+                obj = FlowLog()
+                obj._deserialize(item)
+                self.FlowLog.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2946,6 +3287,40 @@ class DeleteAssistantCidrResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteBandwidthPackageRequest(AbstractModel):
+    """DeleteBandwidthPackage request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: The bwpID of the bandwidth package to be deleted
+        :type BandwidthPackageId: str
+        """
+        self.BandwidthPackageId = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+
+
+class DeleteBandwidthPackageResponse(AbstractModel):
+    """DeleteBandwidthPackage response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteCcnRequest(AbstractModel):
     """DeleteCcn request structure.
 
@@ -3037,6 +3412,78 @@ class DeleteDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
 class DeleteDirectConnectGatewayCcnRoutesResponse(AbstractModel):
     """DeleteDirectConnectGatewayCcnRoutes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDirectConnectGatewayRequest(AbstractModel):
+    """DeleteDirectConnectGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayId: The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`.
+        :type DirectConnectGatewayId: str
+        """
+        self.DirectConnectGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+
+
+class DeleteDirectConnectGatewayResponse(AbstractModel):
+    """DeleteDirectConnectGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteFlowLogRequest(AbstractModel):
+    """DeleteFlowLog request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :type VpcId: str
+        :param FlowLogId: The unique ID of the flow log
+        :type FlowLogId: str
+        """
+        self.VpcId = None
+        self.FlowLogId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogId = params.get("FlowLogId")
+
+
+class DeleteFlowLogResponse(AbstractModel):
+    """DeleteFlowLog response structure.
 
     """
 
@@ -3950,6 +4397,109 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBandwidthPackageQuotaRequest(AbstractModel):
+    """DescribeBandwidthPackageQuota request structure.
+
+    """
+
+
+class DescribeBandwidthPackageQuotaResponse(AbstractModel):
+    """DescribeBandwidthPackageQuota response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaSet: The data structure of the bandwidth package quota
+        :type QuotaSet: list of Quota
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.QuotaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaSet") is not None:
+            self.QuotaSet = []
+            for item in params.get("QuotaSet"):
+                obj = Quota()
+                obj._deserialize(item)
+                self.QuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBandwidthPackagesRequest(AbstractModel):
+    """DescribeBandwidthPackages request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageIds: The bandwidth package ID. Batch operation is supported.
+        :type BandwidthPackageIds: list of str
+        :param Filters: The upper limit for `Filters` in each request is 10. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filtering conditions are as follows:
+<li> bandwidth-package_id - String - Required: No - (Filter condition) Filter by the unique ID of the bandwidth package.</li>
+<li> bandwidth-package-name - String - Required: No - (Filter condition) Filter by the bandwidth package name. Fuzzy filtering is not supported.</li>
+<li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Types include 'BGP', 'SINGLEISP', and 'ANYCAST'.</li>
+<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing type. Billing types include 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'</li>
+<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Resource types include 'Address' and 'LoadBalance'</li>
+<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as 'eip-xxxx', 'lb-xxxx'</li>
+<li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>
+        :type Filters: list of Filter
+        :param Offset: Queries bandwidth package offset
+        :type Offset: int
+        :param Limit: Queries the limit on the number of bandwidth packages
+        :type Limit: int
+        """
+        self.BandwidthPackageIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageIds = params.get("BandwidthPackageIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeBandwidthPackagesResponse(AbstractModel):
+    """DescribeBandwidthPackages response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of bandwidth packages meeting the condition
+        :type TotalCount: int
+        :param BandwidthPackageSet: The description of the bandwidth packages
+        :type BandwidthPackageSet: list of BandwidthPackage
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BandwidthPackageSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BandwidthPackageSet") is not None:
+            self.BandwidthPackageSet = []
+            for item in params.get("BandwidthPackageSet"):
+                obj = BandwidthPackage()
+                obj._deserialize(item)
+                self.BandwidthPackageSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCcnAttachedInstancesRequest(AbstractModel):
     """DescribeCcnAttachedInstances request structure.
 
@@ -4396,6 +4946,215 @@ class DescribeDirectConnectGatewayCcnRoutesResponse(AbstractModel):
                 obj = DirectConnectGatewayCcnRoute()
                 obj._deserialize(item)
                 self.RouteSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDirectConnectGatewaysRequest(AbstractModel):
+    """DescribeDirectConnectGateways request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayIds: The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`.
+        :type DirectConnectGatewayIds: list of str
+        :param Filters: Filter condition. `DirectConnectGatewayIds` and `Filters` cannot be specified at the same time.
+<li>direct-connect-gateway-id - String - The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`.</li>
+<li>direct-connect-gateway-name - String - The name of the Direct Connect gateway. The default is fuzzy query.</li>
+<li>direct-connect-gateway-ip - String - The `IP` of the Direct Connect gateway.</li>
+<li>gateway-type - String - The gateway type. Available values: `NORMAL` (Normal-type), `NAT` (NAT-type).</li>
+<li>network-type- String - The network type. Available values: `VPC` (VPC-type), `CCN` (CCN-type).</li>
+<li>ccn-id - String - The `ID` of the CCN where the Direct Connect gateway is located.</li>
+<li>vpc-id - String - The `ID` of the VPC where the Direct Connect gateway is located.</li>
+        :type Filters: list of Filter
+        :param Offset: Offset.
+        :type Offset: int
+        :param Limit: The returned quantity.
+        :type Limit: int
+        """
+        self.DirectConnectGatewayIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayIds = params.get("DirectConnectGatewayIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeDirectConnectGatewaysResponse(AbstractModel):
+    """DescribeDirectConnectGateways response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of objects meeting the condition.
+        :type TotalCount: int
+        :param DirectConnectGatewaySet: The object array of the Direct Connect gateway.
+        :type DirectConnectGatewaySet: list of DirectConnectGateway
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DirectConnectGatewaySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DirectConnectGatewaySet") is not None:
+            self.DirectConnectGatewaySet = []
+            for item in params.get("DirectConnectGatewaySet"):
+                obj = DirectConnectGateway()
+                obj._deserialize(item)
+                self.DirectConnectGatewaySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFlowLogRequest(AbstractModel):
+    """DescribeFlowLog request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :type VpcId: str
+        :param FlowLogId: The unique ID of the flow log
+        :type FlowLogId: str
+        """
+        self.VpcId = None
+        self.FlowLogId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogId = params.get("FlowLogId")
+
+
+class DescribeFlowLogResponse(AbstractModel):
+    """DescribeFlowLog response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowLog: Flow log information
+        :type FlowLog: list of FlowLog
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowLog = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowLog") is not None:
+            self.FlowLog = []
+            for item in params.get("FlowLog"):
+                obj = FlowLog()
+                obj._deserialize(item)
+                self.FlowLog.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFlowLogsRequest(AbstractModel):
+    """DescribeFlowLogs request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :type VpcId: str
+        :param FlowLogId: The unique ID of the flow log
+        :type FlowLogId: str
+        :param FlowLogName: The name of the flow log instance
+        :type FlowLogName: str
+        :param ResourceType: The type of resource to which the flow log belongs. VPC|SUBNET|NETWORKINTERFACE
+        :type ResourceType: str
+        :param ResourceId: The unique ID of the resource
+        :type ResourceId: str
+        :param TrafficType: The collection type of the flow log. ACCEPT|REJECT|ALL
+        :type TrafficType: str
+        :param CloudLogId: The storage ID of the flow log
+        :type CloudLogId: str
+        :param CloudLogState: Flow log storage ID status
+        :type CloudLogState: str
+        :param OrderField: Order by field. Supported fields: flowLogName, createTime. The default value is createTime.
+        :type OrderField: str
+        :param OrderDirection: Ascending (asc) and descending (desc). The default value is desc.
+        :type OrderDirection: str
+        :param Offset: Offset. The default value is 0.
+        :type Offset: int
+        :param Limit: The number of rows per page. The default value is 10.
+        :type Limit: int
+        """
+        self.VpcId = None
+        self.FlowLogId = None
+        self.FlowLogName = None
+        self.ResourceType = None
+        self.ResourceId = None
+        self.TrafficType = None
+        self.CloudLogId = None
+        self.CloudLogState = None
+        self.OrderField = None
+        self.OrderDirection = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogId = params.get("FlowLogId")
+        self.FlowLogName = params.get("FlowLogName")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
+        self.TrafficType = params.get("TrafficType")
+        self.CloudLogId = params.get("CloudLogId")
+        self.CloudLogState = params.get("CloudLogState")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeFlowLogsResponse(AbstractModel):
+    """DescribeFlowLogs response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowLog: The flow log instance set
+        :type FlowLog: list of FlowLog
+        :param TotalNum: The total number of flow logs
+        :type TotalNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowLog = None
+        self.TotalNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowLog") is not None:
+            self.FlowLog = []
+            for item in params.get("FlowLog"):
+                obj = FlowLog()
+                obj._deserialize(item)
+                self.FlowLog.append(obj)
+        self.TotalNum = params.get("TotalNum")
         self.RequestId = params.get("RequestId")
 
 
@@ -6210,6 +6969,76 @@ class DetachNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DirectConnectGateway(AbstractModel):
+    """Direct Connect gateway object.
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayId: Direct Connect `ID`.
+        :type DirectConnectGatewayId: str
+        :param DirectConnectGatewayName: Direct Connect gateway name.
+        :type DirectConnectGatewayName: str
+        :param VpcId: The `ID` of the `VPC` instance associated with the Direct Connect gateway.
+        :type VpcId: str
+        :param NetworkType: The associated network type:
+<li>`VPC` - VPC</li>
+<li>`CCN` - CCN</li>
+        :type NetworkType: str
+        :param NetworkInstanceId: The `ID` of the associated network instance:
+<li>When the NetworkType is `VPC`, this value is the VPC instance `ID`</li>
+<li>When the NetworkType is `CCN`, this value is the CCN instance `ID`</li>
+        :type NetworkInstanceId: str
+        :param GatewayType: Gateway type:
+<li>NORMAL - Standard type. Note: CCN only supports the standard type</li>
+<li>NAT - NAT type</li>
+NAT type supports network address switch configuration. After the type is confirmed, it cannot be modified. A VPC can create one NAT-type Direct Connect gateway and one non-NAT-type Direct Connect gateway
+        :type GatewayType: str
+        :param CreateTime: Creation Time.
+        :type CreateTime: str
+        :param DirectConnectGatewayIp: Direct Connect gateway IP.
+        :type DirectConnectGatewayIp: str
+        :param CcnId: The `ID` of the `CCN` instance associated with the Direct Connect gateway.
+        :type CcnId: str
+        :param CcnRouteType: The route-learning type of the CCN:
+<li>`BGP` - Automatic learning.</li>
+<li>`STATIC` - Static, that is, user-configured.</li>
+        :type CcnRouteType: str
+        :param EnableBGP: Whether BGP is enabled.
+        :type EnableBGP: bool
+        :param EnableBGPCommunity: 
+        :type EnableBGPCommunity: bool
+        """
+        self.DirectConnectGatewayId = None
+        self.DirectConnectGatewayName = None
+        self.VpcId = None
+        self.NetworkType = None
+        self.NetworkInstanceId = None
+        self.GatewayType = None
+        self.CreateTime = None
+        self.DirectConnectGatewayIp = None
+        self.CcnId = None
+        self.CcnRouteType = None
+        self.EnableBGP = None
+        self.EnableBGPCommunity = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
+        self.VpcId = params.get("VpcId")
+        self.NetworkType = params.get("NetworkType")
+        self.NetworkInstanceId = params.get("NetworkInstanceId")
+        self.GatewayType = params.get("GatewayType")
+        self.CreateTime = params.get("CreateTime")
+        self.DirectConnectGatewayIp = params.get("DirectConnectGatewayIp")
+        self.CcnId = params.get("CcnId")
+        self.CcnRouteType = params.get("CcnRouteType")
+        self.EnableBGP = params.get("EnableBGP")
+        self.EnableBGPCommunity = params.get("EnableBGPCommunity")
+
+
 class DirectConnectGatewayCcnRoute(AbstractModel):
     """The object of the CCN route (IDC IP range) of the Direct Connect gateway
 
@@ -6633,6 +7462,59 @@ class FilterObject(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+
+
+class FlowLog(AbstractModel):
+    """Flow Log
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :type VpcId: str
+        :param FlowLogId: The unique ID of the flow log
+        :type FlowLogId: str
+        :param FlowLogName: The name of the flow log instance
+        :type FlowLogName: str
+        :param ResourceType: The type of resource to which the flow log belongs. VPC|SUBNET|NETWORKINTERFACE
+        :type ResourceType: str
+        :param ResourceId: The unique ID of the resource
+        :type ResourceId: str
+        :param TrafficType: The collection type of the flow log. ACCEPT|REJECT|ALL
+        :type TrafficType: str
+        :param CloudLogId: The storage ID of the flow log
+        :type CloudLogId: str
+        :param CloudLogState: Flow log storage ID status
+        :type CloudLogState: str
+        :param FlowLogDescription: Flow log description
+        :type FlowLogDescription: str
+        :param CreatedTime: Flow log creation time
+        :type CreatedTime: str
+        """
+        self.VpcId = None
+        self.FlowLogId = None
+        self.FlowLogName = None
+        self.ResourceType = None
+        self.ResourceId = None
+        self.TrafficType = None
+        self.CloudLogId = None
+        self.CloudLogState = None
+        self.FlowLogDescription = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogId = params.get("FlowLogId")
+        self.FlowLogName = params.get("FlowLogName")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
+        self.TrafficType = params.get("TrafficType")
+        self.CloudLogId = params.get("CloudLogId")
+        self.CloudLogState = params.get("CloudLogState")
+        self.FlowLogDescription = params.get("FlowLogDescription")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class GatewayFlowMonitorDetail(AbstractModel):
@@ -7555,6 +8437,44 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class ModifyBandwidthPackageAttributeRequest(AbstractModel):
+    """ModifyBandwidthPackageAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: The unique ID of the bandwidth package
+        :type BandwidthPackageId: str
+        :param BandwidthPackageName: The name of the bandwidth package
+        :type BandwidthPackageName: str
+        """
+        self.BandwidthPackageId = None
+        self.BandwidthPackageName = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.BandwidthPackageName = params.get("BandwidthPackageName")
+
+
+class ModifyBandwidthPackageAttributeResponse(AbstractModel):
+    """ModifyBandwidthPackageAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyCcnAttributeRequest(AbstractModel):
     """ModifyCcnAttribute request structure.
 
@@ -7673,6 +8593,94 @@ class ModifyCustomerGatewayAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
+    """ModifyDirectConnectGatewayAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayId: The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`.
+        :type DirectConnectGatewayId: str
+        :param DirectConnectGatewayName: Direct connect gateway can be named freely, but the maximum length is 60 characters.
+        :type DirectConnectGatewayName: str
+        :param CcnRouteType: CCN route learning type. Available values: `BGP` (Automatic learning), `STATIC` (Static, that is, user-configured). Modifying `CcnRouteType` is only possible if the Direct Connect is CCN-type and the BGP function is enabled.
+        :type CcnRouteType: str
+        """
+        self.DirectConnectGatewayId = None
+        self.DirectConnectGatewayName = None
+        self.CcnRouteType = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
+        self.CcnRouteType = params.get("CcnRouteType")
+
+
+class ModifyDirectConnectGatewayAttributeResponse(AbstractModel):
+    """ModifyDirectConnectGatewayAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyFlowLogAttributeRequest(AbstractModel):
+    """ModifyFlowLogAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :type VpcId: str
+        :param FlowLogId: The unique ID of the flow log
+        :type FlowLogId: str
+        :param FlowLogName: The name of the flow log instance
+        :type FlowLogName: str
+        :param FlowLogDescription: The description of the flow log instance
+        :type FlowLogDescription: str
+        """
+        self.VpcId = None
+        self.FlowLogId = None
+        self.FlowLogName = None
+        self.FlowLogDescription = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogId = params.get("FlowLogId")
+        self.FlowLogName = params.get("FlowLogName")
+        self.FlowLogDescription = params.get("FlowLogDescription")
+
+
+class ModifyFlowLogAttributeResponse(AbstractModel):
+    """ModifyFlowLogAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyGatewayFlowQosRequest(AbstractModel):
     """ModifyGatewayFlowQos request structure.
 
@@ -7685,7 +8693,7 @@ ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
 ID of NAT gateway instance, e.g. `nat-ltjahce6`;
 ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
         :type GatewayId: str
-        :param Bandwidth: Bandwidth limit value.
+        :param Bandwidth: Bandwidth limit value. Valid values: >0, limited to a specified Mbps; 0, completely limited; -1, no bandwidth limit.
         :type Bandwidth: int
         :param IpAddresses: CVM private IP addresses with limited bandwidth.
         :type IpAddresses: list of str
@@ -9304,6 +10312,48 @@ class ReleaseAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RemoveBandwidthPackageResourcesRequest(AbstractModel):
+    """RemoveBandwidthPackageResources request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: The unique ID of the bandwidth package, such as 'bwp-xxxx'
+        :type BandwidthPackageId: str
+        :param ResourceType: The resource type, including `Address`, `LoadBalance`
+        :type ResourceType: str
+        :param ResourceIds: ResourceId, such as 'eip-xxxx', 'lb-xxxx'
+        :type ResourceIds: list of str
+        """
+        self.BandwidthPackageId = None
+        self.ResourceType = None
+        self.ResourceIds = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceIds = params.get("ResourceIds")
+
+
+class RemoveBandwidthPackageResourcesResponse(AbstractModel):
+    """RemoveBandwidthPackageResources response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RenewVpnGatewayRequest(AbstractModel):
     """RenewVpnGateway request structure.
 
@@ -9714,6 +10764,31 @@ class ResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Resource(AbstractModel):
+    """The structure of information on bandwidth package
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: The bandwidth package resource type, including 'Address', and 'LoadBalance'
+        :type ResourceType: str
+        :param ResourceId: The bandwidth package ResourceId, such as `eip-xxxx`, `lb-xxxx`
+        :type ResourceId: str
+        :param AddressIp: Bandwidth package resource IP
+        :type AddressIp: str
+        """
+        self.ResourceType = None
+        self.ResourceId = None
+        self.AddressIp = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
+        self.AddressIp = params.get("AddressIp")
 
 
 class ResourceDashboard(AbstractModel):

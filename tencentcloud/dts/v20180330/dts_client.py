@@ -858,3 +858,31 @@ class DtsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchDrToMaster(self, request):
+        """This API is used to promote a disaster recovery instance to a master instance, which will stop sync from the original master instance and end the master/slave relationship.
+
+        :param request: Request instance for SwitchDrToMaster.
+        :type request: :class:`tencentcloud.dts.v20180330.models.SwitchDrToMasterRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.SwitchDrToMasterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchDrToMaster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchDrToMasterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

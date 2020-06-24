@@ -3394,6 +3394,60 @@ class StartupInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SwitchInstanceVipRequest(AbstractModel):
+    """SwitchInstanceVip request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SrcInstanceId: Source instance ID
+        :type SrcInstanceId: str
+        :param DstInstanceId: Target instance ID
+        :type DstInstanceId: str
+        :param TimeDelay: The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than TimeDelay, the VIP will not be switched. It is recommended to set an acceptable value based on the actual business conditions.
+        :type TimeDelay: int
+        :param ForceSwitch: Whether to force the switch when DTS is disconnected. 1: yes; 0: no
+        :type ForceSwitch: int
+        :param SwitchTime: now: switch now; syncComplete: switch after sync is completed
+        :type SwitchTime: str
+        """
+        self.SrcInstanceId = None
+        self.DstInstanceId = None
+        self.TimeDelay = None
+        self.ForceSwitch = None
+        self.SwitchTime = None
+
+
+    def _deserialize(self, params):
+        self.SrcInstanceId = params.get("SrcInstanceId")
+        self.DstInstanceId = params.get("DstInstanceId")
+        self.TimeDelay = params.get("TimeDelay")
+        self.ForceSwitch = params.get("ForceSwitch")
+        self.SwitchTime = params.get("SwitchTime")
+
+
+class SwitchInstanceVipResponse(AbstractModel):
+    """SwitchInstanceVip response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class TaskInfoDetail(AbstractModel):
     """Task details
 

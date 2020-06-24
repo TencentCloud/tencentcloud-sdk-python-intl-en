@@ -1229,6 +1229,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SwitchInstanceVip(self, request):
+        """This API is used to swap the VIPs of instances for instance disaster recovery switch in scenarios where cross-AZ disaster recovery is supported through DTS. After the VIPs of the source and target instances are swapped, the target instance can be written into and the DTS sync task between them will be disconnected.
+
+        :param request: Request instance for SwitchInstanceVip.
+        :type request: :class:`tencentcloud.redis.v20180412.models.SwitchInstanceVipRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.SwitchInstanceVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchInstanceVip", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchInstanceVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpgradeInstance(self, request):
         """This API is used to upgrade an instance.
 

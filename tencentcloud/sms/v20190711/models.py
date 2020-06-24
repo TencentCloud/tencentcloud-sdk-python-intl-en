@@ -440,9 +440,9 @@ class DescribeSignListStatus(AbstractModel):
         """
         :param SignId: Signature ID
         :type SignId: int
-        :param International: Whether it is Global SMS:
+        :param International: Whether it is Global SMS. Valid values:
 0: Mainland China SMS.
-1: Global SMS.
+1: Global SMS
         :type International: int
         :param StatusCode: Signature application status. Valid values:
 0: approved.
@@ -579,9 +579,9 @@ class DescribeTemplateListStatus(AbstractModel):
         """
         :param TemplateId: Template ID
         :type TemplateId: int
-        :param International: Whether it is Global SMS:
+        :param International: Whether it is Global SMS. Valid values:
 0: Mainland China SMS.
-1: Global SMS.
+1: Global SMS
         :type International: int
         :param StatusCode: Signature application status. Valid values:
 0: approved.

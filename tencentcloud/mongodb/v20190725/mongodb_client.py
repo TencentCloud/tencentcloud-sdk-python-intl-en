@@ -193,6 +193,62 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSlowLogPatterns(self, request):
+        """This API is used to get the slow log statistics of a database instance.
+
+        :param request: Request instance for DescribeSlowLogPatterns.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSlowLogPatternsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeSlowLogPatternsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSlowLogPatterns", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSlowLogPatternsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSlowLogs(self, request):
+        """This API is used to get the slow log information of a TencentDB instance. Only slow logs for the last 7 days can be queried.
+
+        :param request: Request instance for DescribeSlowLogs.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSlowLogsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeSlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSlowLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSlowLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSpecInfo(self, request):
         """This API is used to query the purchasable instance specifications.
 
@@ -207,6 +263,34 @@ class MongodbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSpecInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def FlushInstanceRouterConfig(self, request):
+        """This API is used to run the `FlushRouterConfig` command on all mongos instances.
+
+        :param request: Request instance for FlushInstanceRouterConfig.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.FlushInstanceRouterConfigRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.FlushInstanceRouterConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("FlushInstanceRouterConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.FlushInstanceRouterConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

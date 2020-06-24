@@ -293,7 +293,7 @@ class CreateFunctionRequest(AbstractModel):
         :type Timeout: int
         :param Environment: Function environment variable
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, PHP5, PHP7, Golang1, Java8. Default value: Python2.7
+        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Golang1 and Java8. Default value: Python2.7
         :type Runtime: str
         :param VpcConfig: Function VPC configuration
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
@@ -920,6 +920,8 @@ class FunctionLog(AbstractModel):
         :type Level: str
         :param Source: Log source
         :type Source: str
+        :param RetryNum: Number of retries
+        :type RetryNum: int
         """
         self.FunctionName = None
         self.RetMsg = None
@@ -933,6 +935,7 @@ class FunctionLog(AbstractModel):
         self.Log = None
         self.Level = None
         self.Source = None
+        self.RetryNum = None
 
 
     def _deserialize(self, params):
@@ -948,6 +951,7 @@ class FunctionLog(AbstractModel):
         self.Log = params.get("Log")
         self.Level = params.get("Level")
         self.Source = params.get("Source")
+        self.RetryNum = params.get("RetryNum")
 
 
 class FunctionVersion(AbstractModel):
@@ -2692,7 +2696,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type MemorySize: int
         :param Timeout: Maximum execution duration of function in seconds. Value range: 1–900 seconds. Default value: 3 seconds
         :type Timeout: int
-        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, PHP5, PHP7, Golang1, Java8
+        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Golang1 and Java8
         :type Runtime: str
         :param Environment: Function environment variable
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`

@@ -91,6 +91,108 @@ class CloseDBExtranetAccessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDBInstancesRequest(AbstractModel):
+    """CreateDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
+        :type SpecCode: str
+        :param DBVersion: PostgreSQL kernel version. Currently, only two versions are supported: 9.3.5 and 9.5.4.
+        :type DBVersion: str
+        :param Storage: Instance capacity size in GB.
+        :type Storage: int
+        :param InstanceCount: Number of instances purchased at a time. Value range: 1–100.
+        :type InstanceCount: int
+        :param Period: Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.
+        :type Period: int
+        :param Zone: AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
+        :type Zone: str
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param InstanceChargeType: Instance billing type.
+        :type InstanceChargeType: str
+        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: no.
+        :type AutoVoucher: int
+        :param VoucherIds: Voucher ID list (only one voucher can be specified currently).
+        :type VoucherIds: list of str
+        :param VpcId: VPC ID.
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID.
+        :type SubnetId: str
+        :param AutoRenewFlag: Renewal flag. 0: normal renewal (default), 1: auto-renewal.
+        :type AutoRenewFlag: int
+        :param ActivityId: 
+        :type ActivityId: int
+        :param Name: 
+        :type Name: str
+        """
+        self.SpecCode = None
+        self.DBVersion = None
+        self.Storage = None
+        self.InstanceCount = None
+        self.Period = None
+        self.Zone = None
+        self.ProjectId = None
+        self.InstanceChargeType = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.AutoRenewFlag = None
+        self.ActivityId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.SpecCode = params.get("SpecCode")
+        self.DBVersion = params.get("DBVersion")
+        self.Storage = params.get("Storage")
+        self.InstanceCount = params.get("InstanceCount")
+        self.Period = params.get("Period")
+        self.Zone = params.get("Zone")
+        self.ProjectId = params.get("ProjectId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.ActivityId = params.get("ActivityId")
+        self.Name = params.get("Name")
+
+
+class CreateDBInstancesResponse(AbstractModel):
+    """CreateDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DealNames: Order number list. Each instance corresponds to an order number.
+        :type DealNames: list of str
+        :param BillId: 
+        :type BillId: str
+        :param DBInstanceIdSet: 
+        :type DBInstanceIdSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealNames = None
+        self.BillId = None
+        self.DBInstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
+        self.BillId = params.get("BillId")
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
 class DBBackup(AbstractModel):
     """Database backup information
 
@@ -536,6 +638,74 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstancesRequest(AbstractModel):
+    """DescribeDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: Filter. Valid values: db-instance-id, db-instance-name
+        :type Filters: list of Filter
+        :param Limit: Number of entries returned per page. Default value: 10.
+        :type Limit: int
+        :param Offset: Page number, starting from 0.
+        :type Offset: int
+        :param OrderBy: 
+        :type OrderBy: str
+        :param OrderByType: 
+        :type OrderByType: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+
+
+class DescribeDBInstancesResponse(AbstractModel):
+    """DescribeDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of instances found.
+        :type TotalCount: int
+        :param DBInstanceSet: Instance details set.
+        :type DBInstanceSet: list of DBInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DBInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DBInstanceSet") is not None:
+            self.DBInstanceSet = []
+            for item in params.get("DBInstanceSet"):
+                obj = DBInstance()
+                obj._deserialize(item)
+                self.DBInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBSlowlogsRequest(AbstractModel):
     """DescribeDBSlowlogs request structure.
 
@@ -860,6 +1030,29 @@ class ErrLogDetail(AbstractModel):
         self.Database = params.get("Database")
         self.ErrTime = params.get("ErrTime")
         self.ErrMsg = params.get("ErrMsg")
+
+
+class Filter(AbstractModel):
+    """Key-value pair filter for conditional filtering queries, such as filter ID and name
+    * If more than one filter exists, the logical relationship between these filters is `AND`.
+    * If multiple values exist in one filter, the logical relationship between these values is `OR`.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Filter name.
+        :type Name: str
+        :param Values: One or more filter values.
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
 
 
 class InitDBInstancesRequest(AbstractModel):
@@ -1456,6 +1649,68 @@ class SpecItemInfo(AbstractModel):
         self.Qps = params.get("Qps")
         self.Pid = params.get("Pid")
         self.Type = params.get("Type")
+
+
+class UpgradeDBInstanceRequest(AbstractModel):
+    """UpgradeDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Memory: Instance memory size in GB after upgrade
+        :type Memory: int
+        :param Storage: Instance disk size in GB after upgrade
+        :type Storage: int
+        :param DBInstanceId: Instance ID in the format of postgres-lnp6j617
+        :type DBInstanceId: str
+        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: no
+        :type AutoVoucher: int
+        :param VoucherIds: Voucher ID list (only one voucher can be specified currently)
+        :type VoucherIds: list of str
+        :param ActivityId: 
+        :type ActivityId: int
+        """
+        self.Memory = None
+        self.Storage = None
+        self.DBInstanceId = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.ActivityId = None
+
+
+    def _deserialize(self, params):
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.ActivityId = params.get("ActivityId")
+
+
+class UpgradeDBInstanceResponse(AbstractModel):
+    """UpgradeDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DealName: Transaction name.
+        :type DealName: str
+        :param BillId: 
+        :type BillId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.BillId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.BillId = params.get("BillId")
+        self.RequestId = params.get("RequestId")
 
 
 class Xlog(AbstractModel):

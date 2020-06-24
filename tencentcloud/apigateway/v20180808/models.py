@@ -115,7 +115,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Protocol: API protocol.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Protocol: str
-        :param IsDebugAfterCharge: Whether to enable debugging on purchase.
+        :param IsDebugAfterCharge: Whether to enable debugging after purchase.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsDebugAfterCharge: bool
         :param AuthType: Authorization type.
@@ -187,13 +187,13 @@ class ApiInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Unique ID of API's service.
+        :param ServiceId: Unique service ID of API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceId: str
-        :param ServiceName: Name of API's service.
+        :param ServiceName: Service name of API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceName: str
-        :param ServiceDesc: Description of API's service.
+        :param ServiceDesc: Service description of API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceDesc: str
         :param ApiId: Unique API ID.
@@ -229,7 +229,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param OauthConfig: OAuth configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
-        :param IsDebugAfterCharge: Whether to enable debugging on purchase (reserved for the marketplace).
+        :param IsDebugAfterCharge: Whether to enable debugging after purchase (reserved field for the marketplace).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsDebugAfterCharge: bool
         :param RequestConfig: Request frontend configuration.
@@ -238,16 +238,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ResponseType: Return type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseType: str
-        :param ResponseSuccessExample: Successful response sample of custom response configuration.
+        :param ResponseSuccessExample: Sample response for successful custom response configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseSuccessExample: str
-        :param ResponseFailExample: Response failure sample of custom response configuration.
+        :param ResponseFailExample: Sample response for failed custom response configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseFailExample: str
         :param ResponseErrorCodes: Custom error code configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseErrorCodes: list of ErrorCodes
-        :param RequestParameters: Frontend request parameters.
+        :param RequestParameters: Frontend request parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RequestParameters: list of ReqParameter
         :param ServiceTimeout: API backend service timeout period in seconds.
@@ -259,67 +259,67 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ServiceConfig: API backend service configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
-        :param ServiceParameters: API backend service parameters.
+        :param ServiceParameters: API backend service parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceParameters: list of ServiceParameter
-        :param ConstantParameters: Constant parameters.
+        :param ConstantParameters: Constant parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ConstantParameters: list of ConstantParameter
-        :param ServiceMockReturnMessage: Returned information of API backend mocking. This parameter is required when `ServiceType` is `Mock`.
+        :param ServiceMockReturnMessage: Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceMockReturnMessage: str
-        :param ServiceScfFunctionName: SCF function name. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfFunctionName: SCF function name, which takes effect if the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceScfFunctionName: str
-        :param ServiceScfFunctionNamespace: SCF function namespace. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfFunctionNamespace: SCF function namespace, which takes effect if the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceScfFunctionNamespace: str
-        :param ServiceScfFunctionQualifier: SCF function version. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfFunctionQualifier: SCF function version, which takes effect if the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceScfFunctionQualifier: str
-        :param ServiceScfIsIntegratedResponse: Whether to enable integrated response.
+        :param ServiceScfIsIntegratedResponse: Whether integrated response is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceScfIsIntegratedResponse: bool
-        :param ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`
+        :param ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketRegisterFunctionName: str
-        :param ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketRegisterFunctionNamespace: str
-        :param ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketRegisterFunctionQualifier: str
-        :param ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketCleanupFunctionName: str
-        :param ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketCleanupFunctionNamespace: str
-        :param ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketCleanupFunctionQualifier: str
-        :param InternalDomain: WebSocket pushback address.
+        :param InternalDomain: WebSocket callback address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InternalDomain: str
-        :param ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketTransportFunctionName: str
-        :param ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketTransportFunctionNamespace: str
-        :param ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketTransportFunctionQualifier: str
         :param MicroServices: List of microservices bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MicroServices: list of MicroService
-        :param MicroServicesInfo: Microservice detailed information.
+        :param MicroServicesInfo: Microservice details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MicroServicesInfo: list of int
-        :param ServiceTsfLoadBalanceConf: Microservice load balancing configuration.
+        :param ServiceTsfLoadBalanceConf: Load balancing configuration of microservice.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
-        :param ServiceTsfHealthCheckConf: Microservice health check configuration.
+        :param ServiceTsfHealthCheckConf: Health check configuration of microservice.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
         :param EnableCORS: Whether to enable CORS.
@@ -531,7 +531,7 @@ class ApiRequestConfig(AbstractModel):
 
 
 class ApiUsagePlan(AbstractModel):
-    """Details of the usage plans bound to API or service
+    """Details of usage plans bound to API or service
 
     """
 
@@ -655,13 +655,13 @@ class BindEnvironmentRequest(AbstractModel):
         """
         :param UsagePlanIds: List of unique IDs of the usage plans to be bound.
         :type UsagePlanIds: list of str
-        :param BindType: Binding type. Valid values: API, SERVICE (default value).
+        :param BindType: Binding type. Valid values: API, SERVICE. Default value: SERVICE.
         :type BindType: str
         :param Environment: Environment to be bound.
         :type Environment: str
         :param ServiceId: Unique ID of the service to be bound.
         :type ServiceId: str
-        :param ApiIds: Unique API ID array. This parameter will be required when `bindType` is `API`.
+        :param ApiIds: Unique API ID array, which is required if `bindType` is `API`.
         :type ApiIds: list of str
         """
         self.UsagePlanIds = None
@@ -708,11 +708,11 @@ class BindIPStrategyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Unique ID of the service of the IP policy to be bound.
+        :param ServiceId: Unique service ID of the IP policy to be bound.
         :type ServiceId: str
         :param StrategyId: Unique ID of the IP policy to be bound.
         :type StrategyId: str
-        :param EnvironmentName: Environment to be bound to IP policy
+        :param EnvironmentName: Environment to be bound to IP policy.
         :type EnvironmentName: str
         :param BindApiIds: List of APIs to be bound to IP policy.
         :type BindApiIds: list of str
@@ -806,17 +806,17 @@ class BindSubDomainRequest(AbstractModel):
         :type ServiceId: str
         :param SubDomain: Custom domain name to be bound.
         :type SubDomain: str
-        :param Protocol: Protocols supported by service. Valid values: http, https, http&https.
+        :param Protocol: Protocol supported by service. Valid values: http, https, http&https.
         :type Protocol: str
-        :param NetType: Network type. Valid values: INNER, OUTER.
+        :param NetType: Network type. Valid values: OUTER, INNER.
         :type NetType: str
-        :param IsDefaultMapping: Whether to use the default path mapping. The default value is `true`. If the value is `false`, the custom path mapping will be used and `PathMappingSet` is required.
+        :param IsDefaultMapping: Whether the default path mapping is used. The default value is `true`. If the value is `false`, the custom path mapping will be used and `PathMappingSet` will be required in this case.
         :type IsDefaultMapping: bool
         :param NetSubDomain: Default domain name.
         :type NetSubDomain: str
-        :param CertificateId: Unique ID of the certificate of the custom domain name to be bound. The certificate can be uploaded only when `Protocol` is `https` or `http&https`.
+        :param CertificateId: Unique certificate ID of the custom domain name to be bound. The certificate can be uploaded if `Protocol` is `https` or `http&https`.
         :type CertificateId: str
-        :param PathMappingSet: Custom domain name path mapping. It can contain up to 3 `Environment` parameters which can be set to only `test`, `prepub`, or `release`.
+        :param PathMappingSet: Custom domain name path mapping. It can contain up to 3 `Environment` values which can be set to only `test`, `prepub`, and `release`, respectively.
         :type PathMappingSet: list of PathMapping
         """
         self.ServiceId = None
@@ -863,19 +863,19 @@ class BindSubDomainResponse(AbstractModel):
 
 
 class ConstantParameter(AbstractModel):
-    """Constant parameters
+    """Constant parameter
 
     """
 
     def __init__(self):
         """
-        :param Name: Constant parameter name. This parameter takes effect only when `ServiceType` is `HTTP`.
+        :param Name: Constant parameter name, which is used only if `ServiceType` is `HTTP`.
         :type Name: str
-        :param Desc: Constant parameter description. This parameter takes effect only when `ServiceType` is `HTTP`.
+        :param Desc: Constant parameter description, which is used only if `ServiceType` is `HTTP`.
         :type Desc: str
-        :param Position: Constant parameter location. This parameter takes effect only when `ServiceType` is `HTTP`.
+        :param Position: Constant parameter position, which is used only if `ServiceType` is `HTTP`.
         :type Position: str
-        :param DefaultValue: Constant parameter default value. This parameter takes effect only when `ServiceType` is `HTTP`.
+        :param DefaultValue: Default value of constant parameter, which is used only if `ServiceType` is `HTTP`.
         :type DefaultValue: str
         """
         self.Name = None
@@ -902,9 +902,9 @@ class CreateApiKeyRequest(AbstractModel):
         :type SecretName: str
         :param AccessKeyType: Key type. Valid values: auto, manual (custom key). Default value: auto.
         :type AccessKeyType: str
-        :param AccessKeyId: Custom key ID, which is required when `AccessKeyType` is `manual`. It can contain 5 to 50 letters, digits, and underscores.
+        :param AccessKeyId: Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5–50 letters, digits, and underscores.
         :type AccessKeyId: str
-        :param AccessKeySecret: Custom key, which is required when `AccessKeyType` is `manual`. It can contain 10 to 50 letters, digits, and underscores.
+        :param AccessKeySecret: Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10–50 letters, digits, and underscores.
         :type AccessKeySecret: str
         """
         self.SecretName = None
@@ -951,7 +951,7 @@ class CreateApiRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Unique ID of API's service.
+        :param ServiceId: Unique service ID of API.
         :type ServiceId: str
         :param ServiceType: API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
         :type ServiceType: str
@@ -971,19 +971,19 @@ class CreateApiRequest(AbstractModel):
         :type AuthType: str
         :param EnableCORS: Whether to enable CORS.
         :type EnableCORS: bool
-        :param ConstantParameters: Constant parameters.
+        :param ConstantParameters: Constant parameter.
         :type ConstantParameters: list of ConstantParameter
-        :param RequestParameters: Frontend request parameters.
+        :param RequestParameters: Frontend request parameter.
         :type RequestParameters: list of RequestParameter
-        :param ApiBusinessType: This field takes effect when `AuthType` is `OAUTH`. NORMAL: business API. OAUTH: authorization API.
+        :param ApiBusinessType: This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.
         :type ApiBusinessType: str
-        :param ServiceMockReturnMessage: Returned information of API backend mocking. This parameter is required when `ServiceType` is `Mock`.
+        :param ServiceMockReturnMessage: Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
         :type ServiceMockReturnMessage: str
         :param MicroServices: List of microservices bound to API.
         :type MicroServices: list of MicroServiceReq
-        :param ServiceTsfLoadBalanceConf: Microservice load balancing configuration.
+        :param ServiceTsfLoadBalanceConf: Load balancing configuration of microservice.
         :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
-        :param ServiceTsfHealthCheckConf: Microservice health check configuration.
+        :param ServiceTsfHealthCheckConf: Health check configuration of microservice.
         :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
         :param TargetServices: `target` type backend resource information (in beta test).
         :type TargetServices: list of TargetServicesReq
@@ -991,49 +991,49 @@ class CreateApiRequest(AbstractModel):
         :type TargetServicesLoadBalanceConf: int
         :param TargetServicesHealthCheckConf: `target` health check configuration (in beta test).
         :type TargetServicesHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
-        :param ServiceScfFunctionName: SCF function name. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfFunctionName: SCF function name, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionName: str
-        :param ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionName: str
-        :param ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionName: str
-        :param ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionName: str
-        :param ServiceScfFunctionNamespace: SCF function namespace. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfFunctionNamespace: SCF function namespace, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionNamespace: str
-        :param ServiceScfFunctionQualifier: SCF function version. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfFunctionQualifier: SCF function version, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionQualifier: str
-        :param ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionNamespace: str
-        :param ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionQualifier: str
-        :param ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionNamespace: str
-        :param ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionQualifier: str
-        :param ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionNamespace: str
-        :param ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionQualifier: str
-        :param ServiceScfIsIntegratedResponse: Whether to enable response integration. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfIsIntegratedResponse: Whether to enable response integration, which takes effect if the backend type is `SCF`.
         :type ServiceScfIsIntegratedResponse: bool
-        :param IsDebugAfterCharge: Billing after debugging starts (reserved for marketplace).
+        :param IsDebugAfterCharge: Billing after debugging starts (reserved field for marketplace).
         :type IsDebugAfterCharge: bool
-        :param IsDeleteResponseErrorCodes: Whether to delete the custom response configuration error codes. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
+        :param IsDeleteResponseErrorCodes: Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
         :type IsDeleteResponseErrorCodes: bool
         :param ResponseType: Return type.
         :type ResponseType: str
-        :param ResponseSuccessExample: Successful response sample of custom response configuration.
+        :param ResponseSuccessExample: Sample response for successful custom response configuration.
         :type ResponseSuccessExample: str
-        :param ResponseFailExample: Response failure sample of custom response configuration.
+        :param ResponseFailExample: Sample response for failed custom response configuration.
         :type ResponseFailExample: str
         :param ServiceConfig: API backend service configuration.
         :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
-        :param AuthRelationApiId: Unique ID of associated authorization API. This parameter takes effect only when `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
+        :param AuthRelationApiId: Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
         :type AuthRelationApiId: str
-        :param ServiceParameters: API backend service parameters.
+        :param ServiceParameters: API backend service parameter.
         :type ServiceParameters: list of ServiceParameter
-        :param OauthConfig: OAuth configuration. This parameter takes effect when `AuthType` is `OAUTH`.
+        :param OauthConfig: OAuth configuration, which takes effect if `AuthType` is `OAUTH`.
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         :param ResponseErrorCodes: Custom error code configuration.
         :type ResponseErrorCodes: list of ResponseErrorCodeReq
@@ -1204,7 +1204,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateApiRsp(AbstractModel):
-    """Returned parameters for API creation
+    """Return of API creation
 
     """
 
@@ -1304,9 +1304,9 @@ class CreateServiceRequest(AbstractModel):
         :type ServiceDesc: str
         :param ExclusiveSetName: Self-deployed cluster name, which is used to specify the self-deployed cluster where the service is to be created.
         :type ExclusiveSetName: str
-        :param NetTypes: Network type list, which is used to specify the supported network types. `INNER` indicates access over private network, and `OUTER` indicates access over public network. The default value is `OUTER`.
+        :param NetTypes: Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
         :type NetTypes: list of str
-        :param IpVersion: IP version number. Valid values: IPv4 (default value), IPv6
+        :param IpVersion: IP version number. Valid values: IPv4, IPv6. Default value: IPv4.
         :type IpVersion: str
         :param SetServerName: Cluster name, which is reserved and used by the `tsf serverless` type.
         :type SetServerName: str
@@ -1349,11 +1349,11 @@ class CreateServiceResponse(AbstractModel):
         :type ServiceDesc: str
         :param OuterSubDomain: Default public network domain name.
         :type OuterSubDomain: str
-        :param InnerSubDomain: Default domain name of VPC private network
+        :param InnerSubDomain: Default private network domain name of VPC
         :type InnerSubDomain: str
         :param CreatedTime: Service creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
         :type CreatedTime: str
-        :param NetTypes: Network type list. `INNER` indicates access over private network, and `OUTER` indicates access over public network.
+        :param NetTypes: Network type list. INNER: private network access; OUTER: public network access.
         :type NetTypes: list of str
         :param IpVersion: IP version number.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -1483,7 +1483,7 @@ class DeleteApiRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Unique ID of API's service.
+        :param ServiceId: Unique service ID of API.
         :type ServiceId: str
         :param ApiId: Unique API ID.
         :type ApiId: str
@@ -1526,7 +1526,7 @@ class DeleteIPStrategyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Unique ID of the service of the IP policy to be deleted.
+        :param ServiceId: Unique service ID of the IP policy to be deleted.
         :type ServiceId: str
         :param StrategyId: Unique ID of the IP policy to be deleted.
         :type StrategyId: str
@@ -1612,7 +1612,7 @@ class DeleteServiceSubDomainMappingRequest(AbstractModel):
         :type ServiceId: str
         :param SubDomain: Custom domain name bound to service.
         :type SubDomain: str
-        :param Environment: Name of the environment whose mapping is to be deleted. Valid values: test (testing environment), prepub (pre-publish environment), release (release environment).
+        :param Environment: Name of the environment whose mapping is to be deleted. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :type Environment: str
         """
         self.ServiceId = None
@@ -1762,25 +1762,25 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param UniqVpcId: Unique VPC ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UniqVpcId: str
-        :param ApiType: API type. Valid values (general API), TSF (microservice API).
+        :param ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiType: str
         :param Protocol: API protocol.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Protocol: str
-        :param IsDebugAfterCharge: Whether to enable debugging on purchase (reserved for the marketplace)
+        :param IsDebugAfterCharge: Whether to enable debugging after purchase (reserved field for the marketplace)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsDebugAfterCharge: bool
         :param AuthType: API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthType: str
-        :param ApiBusinessType: OAuth API type. This parameter takes effect when `AuthType` is `OAUTH`. Valid values: NORMAL (business API), OAUTH (authorization API).
+        :param ApiBusinessType: OAuth API type, which is valid if `AuthType` is `OAUTH`. Valid values: NORMAL (business API), OAUTH (authorization API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiBusinessType: str
-        :param AuthRelationApiId: Unique ID of associated authorization API. This parameter takes effect only when `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
+        :param AuthRelationApiId: Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthRelationApiId: str
-        :param OauthConfig: OAuth configuration information. This parameter takes effect when `AuthType` is `OAUTH`.
+        :param OauthConfig: OAuth configuration information, which takes effect if `AuthType` is `OAUTH`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         :param RelationBuniessApiIds: List of business APIs associated with authorization API.
@@ -1848,13 +1848,13 @@ class DescribeApiEnvironmentStrategyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Unique ID of the service of API.
+        :param ServiceId: Unique service ID of API.
         :type ServiceId: str
         :param EnvironmentNames: Environment list.
         :type EnvironmentNames: list of str
         :param ApiId: Unique API ID.
         :type ApiId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -1946,7 +1946,7 @@ class DescribeApiRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Unique ID of API's service.
+        :param ServiceId: Unique service ID of API.
         :type ServiceId: str
         :param ApiId: Unique API ID.
         :type ApiId: str
@@ -1992,7 +1992,7 @@ class DescribeApiUsagePlanRequest(AbstractModel):
         """
         :param ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -2047,14 +2047,16 @@ class DescribeLogSearchRequest(AbstractModel):
         :type ServiceId: str
         :param Filters: Exact search by `apiid` or `reqid`
         :type Filters: list of Filter
-        :param Limit: Number of logs returned at a time. Up to 100 logs can be returned at a time
+        :param Limit: Number of logs to be returned at a time. Maximum value: 100
         :type Limit: int
         :param ConText: Subsequent content can be obtained based on the `ConText` returned last time. Up to 10,000 data entries can be obtained
         :type ConText: str
-        :param Sort: Log sorting by time in ascending order (asc) or descending order (desc). The default value is `desc`
+        :param Sort: Sorting by time. Valid values: asc (ascending), desc (descending). Default value: desc
         :type Sort: str
-        :param Query: Fuzzy search of logs by keyword
+        :param Query: Fuzzy search for log by keyword
         :type Query: str
+        :param LogQuerys: 
+        :type LogQuerys: list of LogQuery
         """
         self.StartTime = None
         self.EndTime = None
@@ -2064,6 +2066,7 @@ class DescribeLogSearchRequest(AbstractModel):
         self.ConText = None
         self.Sort = None
         self.Query = None
+        self.LogQuerys = None
 
 
     def _deserialize(self, params):
@@ -2080,6 +2083,12 @@ class DescribeLogSearchRequest(AbstractModel):
         self.ConText = params.get("ConText")
         self.Sort = params.get("Sort")
         self.Query = params.get("Query")
+        if params.get("LogQuerys") is not None:
+            self.LogQuerys = []
+            for item in params.get("LogQuerys"):
+                obj = LogQuery()
+                obj._deserialize(item)
+                self.LogQuerys.append(obj)
 
 
 class DescribeLogSearchResponse(AbstractModel):
@@ -2091,7 +2100,7 @@ class DescribeLogSearchResponse(AbstractModel):
         """
         :param ConText: Cursor for getting more search results. If the value is `""`, there will be no subsequent results
         :type ConText: str
-        :param LogSet: The returned result contains zero or multiple logs, which are in the following format:
+        :param LogSet: The returned result contains any number of logs, which are in the following format:
 '[$app_id][$env_name][$service_id][$http_host][$api_id][$uri][$scheme][rsp_st:$status][ups_st:$upstream_status]'
 '[cip:$remote_addr][uip:$upstream_addr][vip:$server_addr][rsp_len:$bytes_sent][req_len:$request_length]'
 '[req_t:$request_time][ups_rsp_t:$upstream_response_time][ups_conn_t:$upstream_connect_time][ups_head_t:$upstream_header_time]’
@@ -2106,21 +2115,21 @@ api_id: API ID.
 uri: request path.
 scheme: HTTP/HTTPS protocol.
 rsp_st: request response status code.
-ups_st: backend business server response status code (if the request is passed through to the backend, this variable will not be empty. If the request is blocked in API Gateway, this variable will be `-`).
+ups_st: backend business server response status code (if the request is passed through to the backend, this variable will not be empty. If the request is blocked in API Gateway, this variable will be displayed as `-`).
 cip: client IP.
 uip: backend business service (upstream) IP.
 vip: VIP requested to be accessed.
 rsp_len: response length.
 req_len: request length.
 req_t: total request response time.
-ups_rsp_t: total backend response time (time between connection establishment by API Gateway and backend response reception).
-ups_conn_t: time when the backend business server is successfully connected.
-ups_head_t: time when the backend response head arrives.
+ups_rsp_t: total backend response time (time between connection establishment by API Gateway and backend response receipt).
+ups_conn_t: time when the backend business server is successfully connected to.
+ups_head_t: time when the backend response header arrives.
 err_msg: error message.
-tcp_rtt: client TCP connection information. RTT (Round Trip Time) consists of three parts: link propagation delay, end system processing delay, queuing and processing delay in router cache.
+tcp_rtt: client TCP connection information. RTT (Round Trip Time) consists of three parts: link propagation delay, end system processing delay, and queuing delay in router cache.
 req_id: request ID.
         :type LogSet: list of str
-        :param TotalCount: Number of logs returned for a search (`TotalCount <= Limit`)
+        :param TotalCount: Number of logs returned for one search (`TotalCount <= Limit`)
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2147,7 +2156,7 @@ class DescribeServiceEnvironmentListRequest(AbstractModel):
         """
         :param ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -2198,7 +2207,7 @@ class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
         :type ServiceId: str
         :param EnvironmentName: Environment name.
         :type EnvironmentName: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -2249,7 +2258,7 @@ class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
         """
         :param ServiceId: Unique service ID.
         :type ServiceId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -2298,7 +2307,7 @@ class DescribeServiceReleaseVersionRequest(AbstractModel):
         """
         :param ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -2371,7 +2380,7 @@ class DescribeServiceResponse(AbstractModel):
         :param ServiceDesc: Service description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceDesc: str
-        :param Protocol: Protocols supported by service. Valid values: http, https, http&https.
+        :param Protocol: Protocol supported by service. Valid values: http, https, http&https.
         :type Protocol: str
         :param CreatedTime: Service creation time.
         :type CreatedTime: str
@@ -2379,13 +2388,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type ModifiedTime: str
         :param ExclusiveSetName: Self-deployed cluster name.
         :type ExclusiveSetName: str
-        :param NetTypes: Network type list. `INNER` indicates access over private network, and `OUTER` indicates access over public network.
+        :param NetTypes: Network type list. INNER: private network access; OUTER: public network access.
         :type NetTypes: list of str
-        :param InternalSubDomain: Private network access subdomain name.
+        :param InternalSubDomain: Subdomain name for private network access.
         :type InternalSubDomain: str
-        :param OuterSubDomain: Public network access subdomain name.
+        :param OuterSubDomain: Subdomain name for public network access.
         :type OuterSubDomain: str
-        :param InnerHttpPort: Port number for HTTP access over private network.
+        :param InnerHttpPort: Service port number for HTTP access over private network.
         :type InnerHttpPort: int
         :param InnerHttpsPort: Port number for HTTPS access over private network.
         :type InnerHttpsPort: int
@@ -2521,7 +2530,7 @@ class DescribeServiceSubDomainsRequest(AbstractModel):
         """
         :param ServiceId: Unique service ID.
         :type ServiceId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -2544,7 +2553,7 @@ class DescribeServiceSubDomainsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Custom service domain names.
+        :param Result: Custom service domain name query.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.DomainSets`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2569,7 +2578,7 @@ class DescribeServiceUsagePlanRequest(AbstractModel):
         """
         :param ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -2618,9 +2627,9 @@ class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
         """
         :param UsagePlanId: Unique ID of the usage plan to be queried.
         :type UsagePlanId: str
-        :param BindType: Binding type. Valid values: API, SERVICE (default value).
+        :param BindType: Binding type. Valid values: API, SERVICE. Default value: SERVICE.
         :type BindType: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -2712,7 +2721,7 @@ class DescribeUsagePlanSecretIdsRequest(AbstractModel):
         """
         :param UsagePlanId: Unique ID of bound usage plan.
         :type UsagePlanId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -2792,15 +2801,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DocumentSDK(AbstractModel):
-    """API documentation download
+    """API document download
 
     """
 
     def __init__(self):
         """
-        :param DocumentURL: Download link of generated file. Generated documents are stored in COS.
+        :param DocumentURL: Download link of generated file. Generated documents will be stored in COS.
         :type DocumentURL: str
-        :param SdkURL: Download link of generated SDK file. Generated SDKs are stored in COS.
+        :param SdkURL: Download link of generated SDK file. Generated SDK files will be stored in COS.
         :type SdkURL: str
         """
         self.DocumentURL = None
@@ -2810,6 +2819,43 @@ class DocumentSDK(AbstractModel):
     def _deserialize(self, params):
         self.DocumentURL = params.get("DocumentURL")
         self.SdkURL = params.get("SdkURL")
+
+
+class DomainSetList(AbstractModel):
+    """Custom service domain name list
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Domain name.
+        :type DomainName: str
+        :param Status: Domain name resolution status. True: success; Flase: failure.
+        :type Status: int
+        :param CertificateId: Certificate ID.
+        :type CertificateId: str
+        :param IsDefaultMapping: Whether the default path mapping is used.
+        :type IsDefaultMapping: bool
+        :param Protocol: Custom domain name protocol type.
+        :type Protocol: str
+        :param NetType: Network type. Valid values: INNER, OUTER.
+        :type NetType: str
+        """
+        self.DomainName = None
+        self.Status = None
+        self.CertificateId = None
+        self.IsDefaultMapping = None
+        self.Protocol = None
+        self.NetType = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.Status = params.get("Status")
+        self.CertificateId = params.get("CertificateId")
+        self.IsDefaultMapping = params.get("IsDefaultMapping")
+        self.Protocol = params.get("Protocol")
+        self.NetType = params.get("NetType")
 
 
 class DomainSets(AbstractModel):
@@ -2888,7 +2934,7 @@ class Environment(AbstractModel):
         :type EnvironmentName: str
         :param Url: Access path.
         :type Url: str
-        :param Status: Release status. 1: released. 0: not released.
+        :param Status: Release status. 1: published. 0: not published.
         :type Status: int
         :param VersionName: Running version.
         :type VersionName: str
@@ -2940,7 +2986,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Msg: Custom response configuration error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Msg: str
-        :param Desc: Remarks of the custom response configuration error code.
+        :param Desc: Custom response configuration error code remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Desc: str
         :param ConvertedCode: Custom error code conversion.
@@ -2966,7 +3012,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Filter(AbstractModel):
-    """>Key-value pair filters for conditional filtering queries, such as filter ID, name, and status
+    """>Key-value pair filter for conditional filtering queries, such as filtering ID, name, status, etc.
     > * If there are multiple `Filter`, the relationship among them is logical `AND`.
     > * If there are multiple `Values` in the same `Filter`, the relationship among them is logical `OR`.
     >
@@ -2998,7 +3044,7 @@ class GenerateApiDocumentRequest(AbstractModel):
         """
         :param ServiceId: Unique service ID of the document to be created.
         :type ServiceId: str
-        :param GenEnvironment: Environment of the service for which the SDK is to be created.
+        :param GenEnvironment: Environment of the service for which to create an SDK.
         :type GenEnvironment: str
         :param GenLanguage: Programming language of the SDK to be created. Currently, only Python and JavaScript are supported.
         :type GenLanguage: str
@@ -3021,7 +3067,7 @@ class GenerateApiDocumentResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: API documentation and SDK link.
+        :param Result: API document and SDK link.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.DocumentSDK`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3044,7 +3090,7 @@ class HealthCheckConf(AbstractModel):
 
     def __init__(self):
         """
-        :param IsHealthCheck: Whether to enable health check.
+        :param IsHealthCheck: Whether health check is enabled.
         :type IsHealthCheck: bool
         :param RequestVolumeThreshold: Health check threshold.
         :type RequestVolumeThreshold: int
@@ -3243,7 +3289,7 @@ class ModifyApiIncrementRequest(AbstractModel):
         :type ApiId: str
         :param BusinessType: Authorization type of the API to be modified (you can select `OAUTH`, i.e., authorization API)
         :type BusinessType: str
-        :param PublicKey: Public key value to be modified of OAuth API
+        :param PublicKey: Public key value to be modified by OAuth API
         :type PublicKey: str
         :param LoginRedirectUrl: OAuth API redirect address
         :type LoginRedirectUrl: str
@@ -3287,7 +3333,7 @@ class ModifyApiRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Unique ID of API's service.
+        :param ServiceId: Unique service ID of API.
         :type ServiceId: str
         :param ServiceType: API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
         :type ServiceType: str
@@ -3299,81 +3345,81 @@ class ModifyApiRequest(AbstractModel):
         :type ApiName: str
         :param ApiDesc: Custom API description.
         :type ApiDesc: str
-        :param ApiType: API type. Valid values: NORMAL (default value), TSF.
+        :param ApiType: API type. Valid values: NORMAL, TSF. Default value: NORMAL.
         :type ApiType: str
-        :param AuthType: API authentication type. Valid values: SECRET, NONE (default), OAUTH.
+        :param AuthType: API authentication type. Valid values: SECRET, NONE, OAUTH. Default value: NONE.
         :type AuthType: str
-        :param AuthRequired: Whether signature authentication is required. `True` indicates yes while `False` indicates no. This parameter is to be disused.
+        :param AuthRequired: Whether signature authentication is required. True: yes; False: no. This parameter is to be disused.
         :type AuthRequired: bool
         :param ServiceTimeout: API backend service timeout period in seconds.
         :type ServiceTimeout: int
         :param Protocol: API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.
         :type Protocol: str
-        :param EnableCORS: Whether to enable CORS. `True` indicates yes while `False` indicates no.
+        :param EnableCORS: Whether to enable CORS. True: yes; False: no.
         :type EnableCORS: bool
-        :param ConstantParameters: Constant parameters.
+        :param ConstantParameters: Constant parameter.
         :type ConstantParameters: list of ConstantParameter
-        :param RequestParameters: Frontend request parameters.
+        :param RequestParameters: Frontend request parameter.
         :type RequestParameters: list of ReqParameter
-        :param ApiBusinessType: This field takes effect when `AuthType` is `OAUTH`. NORMAL: business API. OAUTH: authorization API.
+        :param ApiBusinessType: This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.
         :type ApiBusinessType: str
-        :param ServiceMockReturnMessage: Returned information of API backend mocking. This parameter is required when `ServiceType` is `Mock`.
+        :param ServiceMockReturnMessage: Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
         :type ServiceMockReturnMessage: str
         :param MicroServices: List of microservices bound to API.
         :type MicroServices: list of MicroServiceReq
-        :param ServiceTsfLoadBalanceConf: Microservice load balancing configuration.
+        :param ServiceTsfLoadBalanceConf: Load balancing configuration of microservice.
         :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
-        :param ServiceTsfHealthCheckConf: Microservice health check configuration.
+        :param ServiceTsfHealthCheckConf: Health check configuration of microservice.
         :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
         :param TargetServicesLoadBalanceConf: `target` type load balancing configuration (in beta test).
         :type TargetServicesLoadBalanceConf: int
         :param TargetServicesHealthCheckConf: `target` health check configuration (in beta test).
         :type TargetServicesHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
-        :param ServiceScfFunctionName: SCF function name. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfFunctionName: SCF function name, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionName: str
-        :param ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionName: str
-        :param ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionName: str
-        :param ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionName: str
-        :param ServiceScfFunctionNamespace: SCF function namespace. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfFunctionNamespace: SCF function namespace, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionNamespace: str
-        :param ServiceScfFunctionQualifier: SCF function version. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfFunctionQualifier: SCF function version, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionQualifier: str
-        :param ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionNamespace: str
-        :param ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionQualifier: str
-        :param ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionNamespace: str
-        :param ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionQualifier: str
-        :param ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionNamespace: str
-        :param ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionQualifier: str
-        :param ServiceScfIsIntegratedResponse: Whether to enable response integration. This parameter takes effect when the backend type is `SCF`.
+        :param ServiceScfIsIntegratedResponse: Whether to enable response integration, which takes effect if the backend type is `SCF`.
         :type ServiceScfIsIntegratedResponse: bool
-        :param IsDebugAfterCharge: Billing after debugging starts (reserved for marketplace).
+        :param IsDebugAfterCharge: Billing after debugging starts (reserved field for marketplace).
         :type IsDebugAfterCharge: bool
         :param TagSpecifications: Tag.
         :type TagSpecifications: :class:`tencentcloud.apigateway.v20180808.models.Tag`
-        :param IsDeleteResponseErrorCodes: Whether to delete the custom response configuration error codes. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
+        :param IsDeleteResponseErrorCodes: Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
         :type IsDeleteResponseErrorCodes: bool
         :param ResponseType: Return type.
         :type ResponseType: str
-        :param ResponseSuccessExample: Successful response sample of custom response configuration.
+        :param ResponseSuccessExample: Sample response for successful custom response configuration.
         :type ResponseSuccessExample: str
-        :param ResponseFailExample: Response failure sample of custom response configuration.
+        :param ResponseFailExample: Sample response for failed custom response configuration.
         :type ResponseFailExample: str
         :param ServiceConfig: API backend service configuration.
         :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
-        :param AuthRelationApiId: Unique ID of associated authorization API. This parameter takes effect only when `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
+        :param AuthRelationApiId: Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
         :type AuthRelationApiId: str
-        :param ServiceParameters: API backend service parameters.
+        :param ServiceParameters: API backend service parameter.
         :type ServiceParameters: list of ServiceParameter
-        :param OauthConfig: OAuth configuration. This parameter takes effect when `AuthType` is `OAUTH`.
+        :param OauthConfig: OAuth configuration, which takes effect if `AuthType` is `OAUTH`.
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         :param ResponseErrorCodes: Custom error code configuration.
         :type ResponseErrorCodes: list of ResponseErrorCodeReq
@@ -3536,7 +3582,7 @@ class ModifyIPStrategyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Unique ID of the service of the policy to be modified.
+        :param ServiceId: Unique service ID of the policy to be modified.
         :type ServiceId: str
         :param StrategyId: Unique ID of the policy to be modified.
         :type StrategyId: str
@@ -3632,13 +3678,13 @@ class ModifyServiceRequest(AbstractModel):
         """
         :param ServiceId: Unique ID of the service to be modified.
         :type ServiceId: str
-        :param ServiceName: Modified service name.
+        :param ServiceName: Service name after modification.
         :type ServiceName: str
-        :param ServiceDesc: Modified service description.
+        :param ServiceDesc: Service description after modification.
         :type ServiceDesc: str
-        :param Protocol: Modified service frontend request type, such as `http`, `https`, and `http&https`.
+        :param Protocol: Service frontend request type after modification, such as `http`, `https`, and `http&https`.
         :type Protocol: str
-        :param NetTypes: Network type list, which is used to specify the supported network types. `INNER` indicates access over private network, and `OUTER` indicates access over public network. The default value is `OUTER`.
+        :param NetTypes: Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
         :type NetTypes: list of str
         """
         self.ServiceId = None
@@ -3682,15 +3728,15 @@ class ModifySubDomainRequest(AbstractModel):
         """
         :param ServiceId: Unique service ID.
         :type ServiceId: str
-        :param SubDomain: Custom domain name for which the path mapping is to be modified.
+        :param SubDomain: Custom domain name whose path mapping is to be modified.
         :type SubDomain: str
-        :param IsDefaultMapping: Whether to change to the default path mapping. true: use the default path mapping. false: use the custom path mapping.
+        :param IsDefaultMapping: Whether to change to the default path mapping. true: use the default path mapping; false: use the custom path mapping.
         :type IsDefaultMapping: bool
-        :param CertificateId: Certificate ID, which is required when the HTTPS protocol is included.
+        :param CertificateId: Certificate ID, which is required if the HTTPS protocol is included.
         :type CertificateId: str
-        :param Protocol: Modified custom domain name protocol type. Valid values: http, https, http&https.
+        :param Protocol: Custom domain name protocol type after modification. Valid values: http, https, http&https.
         :type Protocol: str
-        :param PathMappingSet: Modified path mapping list.
+        :param PathMappingSet: Path mapping list after modification.
         :type PathMappingSet: list of PathMapping
         :param NetType: Network type. Valid values: INNER, OUTER.
         :type NetType: str
@@ -3749,9 +3795,9 @@ class ModifyUsagePlanRequest(AbstractModel):
         """
         :param UsagePlanId: Unique usage plan ID.
         :type UsagePlanId: str
-        :param UsagePlanName: Modified custom usage plan name.
+        :param UsagePlanName: Custom usage plan name after modification.
         :type UsagePlanName: str
-        :param UsagePlanDesc: Modified custom usage plan description.
+        :param UsagePlanDesc: Custom usage plan description after modification.
         :type UsagePlanDesc: str
         :param MaxRequestNum: Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.
         :type MaxRequestNum: int
@@ -3844,7 +3890,7 @@ class PathMapping(AbstractModel):
 
 
 class ReleaseService(AbstractModel):
-    """Service publishing returned result
+    """Returned result of service publishing
 
     """
 
@@ -3853,7 +3899,7 @@ class ReleaseService(AbstractModel):
         :param ReleaseDesc: Release remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReleaseDesc: str
-        :param ReleaseVersion: Release version ID.
+        :param ReleaseVersion: Published version ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReleaseVersion: str
         """
@@ -3875,7 +3921,7 @@ class ReleaseServiceRequest(AbstractModel):
         """
         :param ServiceId: Unique ID of the service to be published.
         :type ServiceId: str
-        :param EnvironmentName: Name of the environment to be published. Valid values: test (testing environment), prepub (pre-publish environment), release (release environment).
+        :param EnvironmentName: Name of the environment to be published. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :type EnvironmentName: str
         :param ReleaseDesc: Release description.
         :type ReleaseDesc: str
@@ -3918,6 +3964,43 @@ class ReleaseServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReqParameter(AbstractModel):
+    """Request parameter
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: API frontend parameter name.
+        :type Name: str
+        :param Position: API frontend parameter position, such as `head`. Valid values: head, query, path.
+        :type Position: str
+        :param Type: API frontend parameter type, such as `String` and `int`.
+        :type Type: str
+        :param DefaultValue: Default value of API frontend parameter.
+        :type DefaultValue: str
+        :param Required: Whether the API frontend parameter is required. True: yes; False: no.
+        :type Required: bool
+        :param Desc: API frontend parameter remarks.
+        :type Desc: str
+        """
+        self.Name = None
+        self.Position = None
+        self.Type = None
+        self.DefaultValue = None
+        self.Required = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Position = params.get("Position")
+        self.Type = params.get("Type")
+        self.DefaultValue = params.get("DefaultValue")
+        self.Required = params.get("Required")
+        self.Desc = params.get("Desc")
+
+
 class RequestConfig(AbstractModel):
     """Frontend path configuration
 
@@ -3950,13 +4033,13 @@ class RequestParameter(AbstractModel):
         :type Name: str
         :param Desc: Description
         :type Desc: str
-        :param Position: Parameter location
+        :param Position: Parameter position
         :type Position: str
         :param Type: Parameter type
         :type Type: str
         :param DefaultValue: Default value
         :type DefaultValue: str
-        :param Required: Required
+        :param Required: Whether it is required
         :type Required: bool
         """
         self.Name = None
@@ -3977,7 +4060,7 @@ class RequestParameter(AbstractModel):
 
 
 class ResponseErrorCodeReq(AbstractModel):
-    """Error code input parameters
+    """Error code input parameter
 
     """
 
@@ -3987,7 +4070,7 @@ class ResponseErrorCodeReq(AbstractModel):
         :type Code: int
         :param Msg: Custom response configuration error message.
         :type Msg: str
-        :param Desc: Remarks of the custom response configuration error code.
+        :param Desc: Custom response configuration error code remarks.
         :type Desc: str
         :param ConvertedCode: Custom error code conversion.
         :type ConvertedCode: int
@@ -4016,15 +4099,15 @@ class ServiceConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: Backend type. This parameter takes effect when VPC is enabled. Currently, only `clb` is supported.
+        :param Product: Backend type, which takes effect when VPC is enabled. Currently, only `clb` is supported.
         :type Product: str
         :param UniqVpcId: Unique VPC ID.
         :type UniqVpcId: str
-        :param Url: API backend service URL. This parameter is required when `ServiceType` is `HTTP`.
+        :param Url: API backend service URL, which is required if `ServiceType` is `HTTP`.
         :type Url: str
-        :param Path: API backend service path, such as `/path`. If `ServiceType` is `HTTP`, this parameter will be required. The frontend and backend paths can be different.
+        :param Path: API backend service path, such as `/path`, which is required if `ServiceType` is `HTTP`. The frontend and backend paths can be different.
         :type Path: str
-        :param Method: API backend service request method, such as `GET`. If `ServiceType` is `HTTP`, this parameter will be required. The frontend and backend methods can be different
+        :param Method: API backend service request method, such as `GET`, which is required if `ServiceType` is `HTTP`. The frontend and backend methods can be different
         :type Method: str
         """
         self.Product = None
@@ -4052,7 +4135,7 @@ class ServiceEnvironmentSet(AbstractModel):
         :param TotalCount: Total number of environments bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param EnvironmentList: List of environments bound to service
+        :param EnvironmentList: List of environments bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnvironmentList: list of Environment
         """
@@ -4083,7 +4166,7 @@ class ServiceEnvironmentStrategy(AbstractModel):
         :type Url: str
         :param Status: Release status.
         :type Status: int
-        :param VersionName: Release version ID.
+        :param VersionName: Published version number.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VersionName: str
         :param Strategy: Throttling value.
@@ -4105,13 +4188,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ServiceEnvironmentStrategyStatus(AbstractModel):
-    """List of policies bound to environment.
+    """List of policies bound to environment
 
     """
 
     def __init__(self):
         """
-        :param TotalCount: Throttling policy number.
+        :param TotalCount: Number of throttling policies.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param EnvironmentList: Throttling policy list.
@@ -4139,25 +4222,25 @@ class ServiceParameter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: API backend service parameter name. This parameter takes effect only when `ServiceType` is `HTTP`. Frontend and backend parameter names can be different.
+        :param Name: API backend service parameter name, which is used only if `ServiceType` is `HTTP`. The frontend and backend parameter names can be different.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param Position: API backend service parameter position, such as `head`. This parameter takes effect only when `ServiceType` is `HTTP`.
+        :param Position: Position of API backend service parameter, such as `head`, which is used only if `ServiceType` is `HTTP`. The positions of frontend and backend parameters can be different.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Position: str
-        :param RelevantRequestParameterPosition: Position of the API frontend parameter corresponding to backend service parameter, such as `head`. This parameter takes effect only when `ServiceType` is `HTTP`.
+        :param RelevantRequestParameterPosition: Position of the API frontend parameter corresponding to the backend service parameter, such as `head`, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RelevantRequestParameterPosition: str
-        :param RelevantRequestParameterName: Name of the API frontend parameter corresponding to backend service parameter. This parameter takes effect only when `ServiceType` is `HTTP`.
+        :param RelevantRequestParameterName: Name of the API frontend parameter corresponding to the backend service parameter, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RelevantRequestParameterName: str
-        :param DefaultValue: API backend service parameter default value. This parameter takes effect only when `ServiceType` is `HTTP`.
+        :param DefaultValue: Default value of API backend service parameter, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DefaultValue: str
-        :param RelevantRequestParameterDesc: API backend service parameter remarks. This parameter takes effect only when `ServiceType` is `HTTP`.
+        :param RelevantRequestParameterDesc: API backend service parameter remarks, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RelevantRequestParameterDesc: str
-        :param RelevantRequestParameterType: API backend service parameter type. This parameter takes effect only when `ServiceType` is `HTTP`.
+        :param RelevantRequestParameterType: API backend service parameter type, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RelevantRequestParameterType: str
         """
@@ -4187,7 +4270,7 @@ class ServiceReleaseHistory(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of release versions.
+        :param TotalCount: Total number of published versions.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param VersionList: Historical version list.
@@ -4243,7 +4326,7 @@ class ServiceReleaseVersion(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of release versions.
+        :param TotalCount: Total number of published versions.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param VersionList: Release version list.
@@ -4271,7 +4354,7 @@ class ServiceSubDomainMappings(AbstractModel):
 
     def __init__(self):
         """
-        :param IsDefaultMapping: Whether to use the default path mapping. true: use the default path mapping. false: use the custom path mapping (`PathMappingSet` is required).
+        :param IsDefaultMapping: Whether the default path mapping is used. true: use the default path mapping; false: use the custom path mapping (`PathMappingSet` is required in this case).
         :type IsDefaultMapping: bool
         :param PathMappingSet: Custom path mapping list.
         :type PathMappingSet: list of PathMapping
@@ -4379,13 +4462,13 @@ class TsfLoadBalanceConfResp(AbstractModel):
 
     def __init__(self):
         """
-        :param IsLoadBalance: Whether to enable load balancing.
+        :param IsLoadBalance: Whether load balancing is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsLoadBalance: bool
         :param Method: Load balancing method.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Method: str
-        :param SessionStickRequired: Whether to enable session persistence.
+        :param SessionStickRequired: Whether session persistence is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SessionStickRequired: bool
         :param SessionStickTimeout: Session persistence timeout period.
@@ -4412,7 +4495,7 @@ class UnBindEnvironmentRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BindType: Binding type. Valid values: API, SERVICE (default value).
+        :param BindType: Binding type. Valid values: API, SERVICE. Default value: SERVICE.
         :type BindType: str
         :param UsagePlanIds: List of unique IDs of the usage plans to be bound.
         :type UsagePlanIds: list of str
@@ -4420,7 +4503,7 @@ class UnBindEnvironmentRequest(AbstractModel):
         :type Environment: str
         :param ServiceId: Unique ID of the service to be unbound.
         :type ServiceId: str
-        :param ApiIds: Unique API ID array. This parameter will be required when `BindType` is `API`.
+        :param ApiIds: Unique API ID array, which is required if `BindType` is `API`.
         :type ApiIds: list of str
         """
         self.BindType = None
@@ -4605,7 +4688,7 @@ class UnReleaseServiceRequest(AbstractModel):
         """
         :param ServiceId: Unique ID of the service to be deactivated.
         :type ServiceId: str
-        :param EnvironmentName: Name of the environment to be deactivated. Valid values: test (testing environment), prepub (pre-publish environment), release (release environment).
+        :param EnvironmentName: Name of the environment to be deactivated. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :type EnvironmentName: str
         :param ApiIds: List of APIs to be deactivated, which is a reserved field.
         :type ApiIds: list of str
@@ -4650,9 +4733,9 @@ class UpdateApiKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessKeyId: ID of the key to be updated.
+        :param AccessKeyId: ID of the key to be changed.
         :type AccessKeyId: str
-        :param AccessKeySecret: Key to be updated, which is required when a custom key is updated. It can contain 10 to 50 letters, digits, and underscores.
+        :param AccessKeySecret: Key to be updated, which is required when a custom key is updated. It can contain 10–50 letters, digits, and underscores.
         :type AccessKeySecret: str
         """
         self.AccessKeyId = None
@@ -4671,7 +4754,7 @@ class UpdateApiKeyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Changed key details.
+        :param Result: Key details after change.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -4695,9 +4778,9 @@ class UpdateServiceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Unique ID of the service to be switch to.
+        :param ServiceId: Unique ID of the service to be switch.
         :type ServiceId: str
-        :param EnvironmentName: Name of the environment to be switched to. Valid values: test (testing environment), prepub (pre-publish environment), release (release environment).
+        :param EnvironmentName: Name of the environment to be switched to. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :type EnvironmentName: str
         :param VersionName: Number of the version to be switched to.
         :type VersionName: str
@@ -4780,6 +4863,29 @@ class UsagePlan(AbstractModel):
         self.ModifiedTime = params.get("ModifiedTime")
 
 
+class UsagePlanBindEnvironment(AbstractModel):
+    """Information of environment bound to usage plan
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvironmentName: Environment name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EnvironmentName: str
+        :param ServiceId: Unique service ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServiceId: str
+        """
+        self.EnvironmentName = None
+        self.ServiceId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.ServiceId = params.get("ServiceId")
+
+
 class UsagePlanBindSecret(AbstractModel):
     """Key bound to usage plan
 
@@ -4858,7 +4964,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Method: API method.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Method: str
-        :param Environment: Name of the bound environment.
+        :param Environment: Name of bound environment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Environment: str
         :param InUseRequestNum: Used quota.
@@ -4867,7 +4973,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MaxRequestNum: Maximum number of requests.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxRequestNum: int
-        :param MaxRequestNumPreSec: Maximum requests per second.
+        :param MaxRequestNumPreSec: Maximum number of requests per second.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxRequestNumPreSec: int
         :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
@@ -4919,7 +5025,7 @@ class UsagePlanEnvironmentStatus(AbstractModel):
         :param TotalCount: Number of environments of the service bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param EnvironmentList: Environment status of the services bound to usage plan.
+        :param EnvironmentList: Environment status of services bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnvironmentList: list of UsagePlanEnvironment
         """
@@ -4935,3 +5041,86 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = UsagePlanEnvironment()
                 obj._deserialize(item)
                 self.EnvironmentList.append(obj)
+
+
+class UsagePlanInfo(AbstractModel):
+    """Usage plan details (as modification made on a complex type by `yunapi` will be directly synced to the production environment and you cannot query which APIs reference the complex type, you need to create a complex type different from the previous `UsagePlan`)
+
+    """
+
+    def __init__(self):
+        """
+        :param UsagePlanId: Unique usage plan ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UsagePlanId: str
+        :param UsagePlanName: Usage plan name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UsagePlanName: str
+        :param UsagePlanDesc: Usage plan description.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UsagePlanDesc: str
+        :param InitQuota: Number of initialization calls.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InitQuota: int
+        :param MaxRequestNumPreSec: Limit of requests per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxRequestNumPreSec: int
+        :param MaxRequestNum: Maximum number of calls.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxRequestNum: int
+        :param IsHide: Whether to hide.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsHide: int
+        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreatedTime: str
+        :param ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ModifiedTime: str
+        :param BindSecretIdTotalCount: Number of bound keys.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BindSecretIdTotalCount: int
+        :param BindSecretIds: Details of bound keys.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BindSecretIds: list of str
+        :param BindEnvironmentTotalCount: Number of bound environments.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BindEnvironmentTotalCount: int
+        :param BindEnvironments: Details of bound environments.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type BindEnvironments: list of UsagePlanBindEnvironment
+        """
+        self.UsagePlanId = None
+        self.UsagePlanName = None
+        self.UsagePlanDesc = None
+        self.InitQuota = None
+        self.MaxRequestNumPreSec = None
+        self.MaxRequestNum = None
+        self.IsHide = None
+        self.CreatedTime = None
+        self.ModifiedTime = None
+        self.BindSecretIdTotalCount = None
+        self.BindSecretIds = None
+        self.BindEnvironmentTotalCount = None
+        self.BindEnvironments = None
+
+
+    def _deserialize(self, params):
+        self.UsagePlanId = params.get("UsagePlanId")
+        self.UsagePlanName = params.get("UsagePlanName")
+        self.UsagePlanDesc = params.get("UsagePlanDesc")
+        self.InitQuota = params.get("InitQuota")
+        self.MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
+        self.MaxRequestNum = params.get("MaxRequestNum")
+        self.IsHide = params.get("IsHide")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ModifiedTime = params.get("ModifiedTime")
+        self.BindSecretIdTotalCount = params.get("BindSecretIdTotalCount")
+        self.BindSecretIds = params.get("BindSecretIds")
+        self.BindEnvironmentTotalCount = params.get("BindEnvironmentTotalCount")
+        if params.get("BindEnvironments") is not None:
+            self.BindEnvironments = []
+            for item in params.get("BindEnvironments"):
+                obj = UsagePlanBindEnvironment()
+                obj._deserialize(item)
+                self.BindEnvironments.append(obj)

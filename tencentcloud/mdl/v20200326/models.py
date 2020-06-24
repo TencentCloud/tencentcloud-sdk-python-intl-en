@@ -72,7 +72,6 @@ class AudioPipelineInputStatistics(AbstractModel):
         :param Rate: Audio bitrate in bps.
         :type Rate: int
         :param Pid: Audio `Pid`, which is available only if the input is `rtp/udp`.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Pid: int
         """
         self.Fps = None
@@ -294,7 +293,6 @@ class ChannelPipelineAlerts(AbstractModel):
         :type SetTime: str
         :param ClearTime: Alarm end time in UTC time.
 This time is available only after the alarm ends.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type ClearTime: str
         :param Type: Alarm type.
         :type Type: str
@@ -487,31 +485,6 @@ class CreateMediaLiveInputSecurityGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DashRemuxSettingsInfo(AbstractModel):
-    """DASH configuration information.
-
-    """
-
-    def __init__(self):
-        """
-        :param SegmentDuration: Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
-        :type SegmentDuration: int
-        :param SegmentNumber: Number of segments. Value range: [1,30]. Default value: 5.
-        :type SegmentNumber: int
-        :param PeriodTriggers: Whether to enable multi-period. Valid values: CLOSE/OPEN. Default value: CLOSE.
-        :type PeriodTriggers: str
-        """
-        self.SegmentDuration = None
-        self.SegmentNumber = None
-        self.PeriodTriggers = None
-
-
-    def _deserialize(self, params):
-        self.SegmentDuration = params.get("SegmentDuration")
-        self.SegmentNumber = params.get("SegmentNumber")
-        self.PeriodTriggers = params.get("PeriodTriggers")
-
-
 class DeleteMediaLiveChannelRequest(AbstractModel):
     """DeleteMediaLiveChannel request structure.
 
@@ -669,16 +642,20 @@ UTC time, such as `2020-01-01T12:00:00Z`.
         :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
 UTC time, such as `2020-01-01T12:00:00Z`.
         :type EndTime: str
+        :param Period: 
+        :type Period: str
         """
         self.ChannelId = None
         self.StartTime = None
         self.EndTime = None
+        self.Period = None
 
 
     def _deserialize(self, params):
         self.ChannelId = params.get("ChannelId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Period = params.get("Period")
 
 
 class DescribeMediaLiveChannelInputStatisticsResponse(AbstractModel):
@@ -722,16 +699,20 @@ UTC time, such as `2020-01-01T12:00:00Z`.
         :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
 UTC time, such as `2020-01-01T12:00:00Z`.
         :type EndTime: str
+        :param Period: 
+        :type Period: str
         """
         self.ChannelId = None
         self.StartTime = None
         self.EndTime = None
+        self.Period = None
 
 
     def _deserialize(self, params):
         self.ChannelId = params.get("ChannelId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Period = params.get("Period")
 
 
 class DescribeMediaLiveChannelOutputStatisticsResponse(AbstractModel):
@@ -976,90 +957,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Infos.append(obj)
         self.RequestId = params.get("RequestId")
-
-
-class DestinationInfo(AbstractModel):
-    """Relay destination address.
-
-    """
-
-    def __init__(self):
-        """
-        :param OutputUrl: Relay destination address. Length limit: [1,512].
-        :type OutputUrl: str
-        :param AuthKey: Authentication key. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AuthKey: str
-        :param Username: Authentication username. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Username: str
-        :param Password: Authentication password. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Password: str
-        """
-        self.OutputUrl = None
-        self.AuthKey = None
-        self.Username = None
-        self.Password = None
-
-
-    def _deserialize(self, params):
-        self.OutputUrl = params.get("OutputUrl")
-        self.AuthKey = params.get("AuthKey")
-        self.Username = params.get("Username")
-        self.Password = params.get("Password")
-
-
-class DrmSettingsInfo(AbstractModel):
-    """DRM configuration information, which takes effect only for HLS and DASH.
-
-    """
-
-    def __init__(self):
-        """
-        :param State: Whether to enable DRM encryption. Valid value: CLOSE/OPEN. Default value: CLOSE.
-Currently, this is supported only for HLS/DASH/HLS_ARCHIVE/DASH_ARCHIVE.
-        :type State: str
-        :param ContentId: `ContentId` of DRM encryption, which will be automatically created if this parameter is left empty.
-For more information on the custom creation method, please visit https://cloud.tencent.com/document/product/1000/40960
-        :type ContentId: str
-        """
-        self.State = None
-        self.ContentId = None
-
-
-    def _deserialize(self, params):
-        self.State = params.get("State")
-        self.ContentId = params.get("ContentId")
-
-
-class HlsRemuxSettingsInfo(AbstractModel):
-    """HLS protocol configuration.
-
-    """
-
-    def __init__(self):
-        """
-        :param SegmentDuration: Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
-        :type SegmentDuration: int
-        :param SegmentNumber: Number of segments. Value range: [1,30]. Default value: 5.
-        :type SegmentNumber: int
-        :param PdtInsertion: Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.
-        :type PdtInsertion: str
-        :param PdtDuration: PDT duration in seconds. Value range: (0,3000]. Default value: 600.
-        :type PdtDuration: int
-        """
-        self.SegmentDuration = None
-        self.SegmentNumber = None
-        self.PdtInsertion = None
-        self.PdtDuration = None
-
-
-    def _deserialize(self, params):
-        self.SegmentDuration = params.get("SegmentDuration")
-        self.SegmentNumber = params.get("SegmentNumber")
-        self.PdtInsertion = params.get("PdtInsertion")
-        self.PdtDuration = params.get("PdtDuration")
 
 
 class InputInfo(AbstractModel):
@@ -1365,102 +1262,6 @@ class ModifyMediaLiveInputSecurityGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class OutputGroupsInfo(AbstractModel):
-    """Channel output group information.
-
-    """
-
-    def __init__(self):
-        """
-        :param Name: Channel output group name, which can contain 1–32 letters, digits, and underscores and must be unique at the channel level.
-        :type Name: str
-        :param Type: Output protocol type.
-Valid values: HLS/DASH/RTP/RTMP/HLS_ARCHIVE/DASH_ARCHIVE.
-        :type Type: str
-        :param Outputs: Output information.
-Quantity limit: [1,1] for RTMP/RTP; [1,10] for HLS/DASH.
-        :type Outputs: list of OutputInfo
-        :param Destinations: Relay destination address. Quantity limit: [1,2].
-        :type Destinations: list of DestinationInfo
-        :param HlsRemuxSettings: HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type HlsRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`
-        :param DashRemuxSettings: DASH protocol configuration information, which takes effect only for DASH/DSAH_ARCHIVE.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DashRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.DashRemuxSettingsInfo`
-        :param DrmSettings: DRM configuration information.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DrmSettings: :class:`tencentcloud.mdl.v20200326.models.DrmSettingsInfo`
-        """
-        self.Name = None
-        self.Type = None
-        self.Outputs = None
-        self.Destinations = None
-        self.HlsRemuxSettings = None
-        self.DashRemuxSettings = None
-        self.DrmSettings = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        if params.get("Outputs") is not None:
-            self.Outputs = []
-            for item in params.get("Outputs"):
-                obj = OutputInfo()
-                obj._deserialize(item)
-                self.Outputs.append(obj)
-        if params.get("Destinations") is not None:
-            self.Destinations = []
-            for item in params.get("Destinations"):
-                obj = DestinationInfo()
-                obj._deserialize(item)
-                self.Destinations.append(obj)
-        if params.get("HlsRemuxSettings") is not None:
-            self.HlsRemuxSettings = HlsRemuxSettingsInfo()
-            self.HlsRemuxSettings._deserialize(params.get("HlsRemuxSettings"))
-        if params.get("DashRemuxSettings") is not None:
-            self.DashRemuxSettings = DashRemuxSettingsInfo()
-            self.DashRemuxSettings._deserialize(params.get("DashRemuxSettings"))
-        if params.get("DrmSettings") is not None:
-            self.DrmSettings = DrmSettingsInfo()
-            self.DrmSettings._deserialize(params.get("DrmSettings"))
-
-
-class OutputInfo(AbstractModel):
-    """Output information.
-
-    """
-
-    def __init__(self):
-        """
-        :param Name: Output name.
-        :type Name: str
-        :param AudioTemplateNames: Audio transcoding template name array.
-Quantity limit: [0,1] for RTMP; [0,20] for others.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AudioTemplateNames: list of str
-        :param VideoTemplateNames: Video transcoding template name array. Quantity limit: [0,1].
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VideoTemplateNames: list of str
-        :param Scte35Settings: SCTE-35 information configuration.
-        :type Scte35Settings: :class:`tencentcloud.mdl.v20200326.models.Scte35SettingsInfo`
-        """
-        self.Name = None
-        self.AudioTemplateNames = None
-        self.VideoTemplateNames = None
-        self.Scte35Settings = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.AudioTemplateNames = params.get("AudioTemplateNames")
-        self.VideoTemplateNames = params.get("VideoTemplateNames")
-        if params.get("Scte35Settings") is not None:
-            self.Scte35Settings = Scte35SettingsInfo()
-            self.Scte35Settings._deserialize(params.get("Scte35Settings"))
-
-
 class OutputsStatistics(AbstractModel):
     """Channel output statistics.
 
@@ -1471,7 +1272,6 @@ class OutputsStatistics(AbstractModel):
         :param Pipeline0: Output information of pipeline 0.
         :type Pipeline0: list of PipelineOutputStatistics
         :param Pipeline1: Output information of pipeline 1.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Pipeline1: list of PipelineOutputStatistics
         """
         self.Pipeline0 = None
@@ -1507,12 +1307,10 @@ class PipelineInputStatistics(AbstractModel):
         :param Video: Video information array.
 For `rtp/udp` input, the quantity is the number of `Pid` of the input video.
 For other inputs, the quantity is 1.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Video: list of VideoPipelineInputStatistics
         :param Audio: Audio information array.
 For `rtp/udp` input, the quantity is the number of `Pid` of the input audio.
 For other inputs, the quantity is 1.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Audio: list of AudioPipelineInputStatistics
         """
         self.Timestamp = None
@@ -1558,23 +1356,6 @@ In seconds, indicating data time.
     def _deserialize(self, params):
         self.Timestamp = params.get("Timestamp")
         self.NetworkOut = params.get("NetworkOut")
-
-
-class Scte35SettingsInfo(AbstractModel):
-    """SCTE-35 configuration information.
-
-    """
-
-    def __init__(self):
-        """
-        :param Behavior: Whether to pass through SCTE-35 information. Valid values: NO_PASSTHROUGH/PASSTHROUGH. Default value: NO_PASSTHROUGH.
-        :type Behavior: str
-        """
-        self.Behavior = None
-
-
-    def _deserialize(self, params):
-        self.Behavior = params.get("Behavior")
 
 
 class StartMediaLiveChannelRequest(AbstractModel):
@@ -1657,7 +1438,6 @@ class VideoPipelineInputStatistics(AbstractModel):
         :param Rate: Video bitrate in bps.
         :type Rate: int
         :param Pid: Video `Pid`, which is available only if the input is `rtp/udp`.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Pid: int
         """
         self.Fps = None

@@ -53,6 +53,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddBandwidthPackageResources(self, request):
+        """This API is used to add bandwidth package resources. This includes [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on.
+
+        :param request: Request instance for AddBandwidthPackageResources.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AddBandwidthPackageResourcesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddBandwidthPackageResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddBandwidthPackageResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddBandwidthPackageResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AllocateAddresses(self, request):
         """This API is used to apply for one or more [Elastic IP Addresses](https://cloud.tencent.com/document/product/213/1941) (EIPs for short).
         * An EIP is a static IP address that is dedicated for dynamic cloud computing. You can quickly re-map an EIP to another instance under your account to protect against instance failures.
@@ -228,6 +256,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AssociateNatGatewayAddress(self, request):
+        """This API (AssociateNatGatewayAddress) is used to bind a NAT gateway to an Elastic IP (EIP).
+
+        :param request: Request instance for AssociateNatGatewayAddress.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNatGatewayAddressRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateNatGatewayAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateNatGatewayAddress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateNatGatewayAddressResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -532,6 +588,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBandwidthPackage(self, request):
+        """This API is used to support the creation of [Device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+
+        :param request: Request instance for CreateBandwidthPackage.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateBandwidthPackageRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateBandwidthPackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBandwidthPackage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBandwidthPackageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCcn(self, request):
         """This API is used to create a Cloud Connect Network (CCN).<br />
         * You can bind a tag when creating a CCN instance. The tag list in the response indicates the tags that have been successfully added.
@@ -626,6 +710,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDirectConnectGateway(self, request):
+        """This API (CreateDirectConnectGateway) is used to create a Direct Connect gateway.
+
+        :param request: Request instance for CreateDirectConnectGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDirectConnectGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDirectConnectGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDirectConnectGatewayCcnRoutes(self, request):
         """This API (CreateDirectConnectGatewayCcnRoutes) is used to create the CCN route (IDC IP range) of a Direct Connect gateway.
 
@@ -640,6 +752,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDirectConnectGatewayCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateFlowLog(self, request):
+        """This API (CreateFlowLog) is used to create flow logs.
+
+        :param request: Request instance for CreateFlowLog.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateFlowLogRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateFlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateFlowLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFlowLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -921,15 +1061,19 @@ class VpcClient(AbstractClient):
     def CreateSecurityGroupPolicies(self, request):
         """This API is used to create security group policies (SecurityGroupPolicy).
 
-        * The `Version` field indicates the version number of a security group policy, which will automatically increment by 1 every time you update the security policy, to prevent the expiration of the updated routing policies. If this field is left empty, any conflicts will be ignored.
-        * The value of the `Protocol` field can be TCP, UDP, ICMP, ICMPV6, GRE, or ALL.
-        * The `CidrBlock` field allows you to enter any string that conforms to the CIDR format. (More details) In a basic network, if a CidrBlock contains private IP addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.
-        * The `Ipv6CidrBlock` field allows you to enter any string that conforms to the IPv6 CIDR format. (More details) In a basic network, if an Ipv6CidrBlock contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.
-        * The SecurityGroupId field allows you to enter the IDs of security groups that are in the same project as the security group to be modified, including the ID of the security group itself, to represent private IP addresses of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.
-        * The Port field allows you to enter a single port number, or two port numbers separated by a minus sign to represent a port range, such as 80 or 8000-8010. The Port field is accepted only if the value of the Protocol field is TCP or UDP. In other words, if the value of the Protocol field is not TCP or UDP, Protocol and Port are exclusive and cannot be entered at the same time, otherwise an error will occur with the API.
-        * The Action field only allows you to enter ACCEPT or DROP.
-        * CidrBlock, Ipv6CidrBlock, SecurityGroupId, and AddressTemplate are exclusive and cannot be entered at the same time. Protocol + Port and ServiceTemplate are mutually exclusive and cannot be entered at the same time.
-        * Only policies in one direction can be created in each request. If you need to specify the PolicyIndex parameter, the indexes of policies must be consistent.
+        For parameters of SecurityGroupPolicySet,
+        </ul>
+        <li>`Version`: the version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>
+        <li>When creating the `Egress` and `Ingress` polices,<ul>
+        <li>`Protocol`: allows TCP, UDP, ICMP, ICMPV6, GRE, or ALL.</li>
+        <li>*`CidrBlock`: a CIDR block in the correct format. In a classic network, if a `CidrBlock` contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>
+        <li>`Ipv6CidrBlock`: an IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>
+        <li>`SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IPs of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the group ID while being used to match network messages.</li>
+        <li>`Port`: a single port number such as 80, or a port range in the format of “8000-8010”. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`. Otherwise `Protocol` and `Port` are mutually exclusive.</li>
+        <li>`Action`: only allows `ACCEPT` or `DROP`.</li>
+        <li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port`and `ServiceTemplate` are mutually exclusive.</li>
+        <li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies.</li>
+        </ul></li></ul>
 
         :param request: Request instance for CreateSecurityGroupPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSecurityGroupPoliciesRequest`
@@ -1292,6 +1436,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteBandwidthPackage(self, request):
+        """This API is used to support the deletion of shared bandwidth packages, including [Device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85).
+
+        :param request: Request instance for DeleteBandwidthPackage.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteBandwidthPackageRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteBandwidthPackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteBandwidthPackage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteBandwidthPackageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCcn(self, request):
         """This API (DeleteCcn) is used to delete CCNs.
         * After deletion, the routes between all instances associated with the CCN will be deleted, and the network will be interrupted. Please confirm this operation in advance.
@@ -1350,6 +1522,37 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDirectConnectGateway(self, request):
+        """This API (DeleteDirectConnectGateway) is used to delete Direct Connect gateways.
+        <li>For a NAT gateway, NAT and ACL rules will be cleaned upon the deletion of a Direct Connect gateway.
+        <li>After the deletion of a Direct Connect gateway, the routing policy associated with the gateway in the route table will also be deleted.
+        This API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to query the `QueryTask` API.
+
+        :param request: Request instance for DeleteDirectConnectGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDirectConnectGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDirectConnectGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDirectConnectGatewayCcnRoutes(self, request):
         """This API (DeleteDirectConnectGatewayCcnRoutes) is used to delete the CCN routes (IDC IP range) of a Direct Connect gateway.
 
@@ -1364,6 +1567,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDirectConnectGatewayCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteFlowLog(self, request):
+        """This API (DeleteFlowLog) is used to delete flow logs.
+
+        :param request: Request instance for DeleteFlowLog.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteFlowLogRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteFlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteFlowLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteFlowLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2006,6 +2237,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBandwidthPackageQuota(self, request):
+        """This API is used to query the account’s maximum number of bandwidth packages and their usage in the current region.
+
+        :param request: Request instance for DescribeBandwidthPackageQuota.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageQuotaRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBandwidthPackageQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBandwidthPackageQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBandwidthPackages(self, request):
+        """This API is used to query bandwidth package information, including the unique ID of the bandwidth package, the type, the billing mode, the name, and the resource information.
+
+        :param request: Request instance for DescribeBandwidthPackages.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackagesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBandwidthPackages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBandwidthPackagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCcnAttachedInstances(self, request):
         """This API (DescribeCcnAttachedInstances) is used to query the network instances associated with the CCN instance.
 
@@ -2188,6 +2475,90 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDirectConnectGatewayCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDirectConnectGateways(self, request):
+        """This API (DescribeDirectConnectGateways) is used to query Direct Connect gateways.
+
+        :param request: Request instance for DescribeDirectConnectGateways.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewaysRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDirectConnectGateways", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDirectConnectGatewaysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFlowLog(self, request):
+        """This API (DescribeFlowLog) is used to query flow log instance information.
+
+        :param request: Request instance for DescribeFlowLog.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFlowLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlowLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFlowLogs(self, request):
+        """This API (DescribeFlowLogs) is used to query and obtain the flow log set.
+
+        :param request: Request instance for DescribeFlowLogs.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFlowLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlowLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3675,6 +4046,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyBandwidthPackageAttribute(self, request):
+        """This API is used to modify bandwidth package attributes, including the bandwidth package name, and so on.
+
+        :param request: Request instance for ModifyBandwidthPackageAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBandwidthPackageAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBandwidthPackageAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCcnAttribute(self, request):
         """This API (ModifyCcnAttribute) is used to modify CCN attributes.
 
@@ -3745,6 +4144,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCustomerGatewayAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDirectConnectGatewayAttribute(self, request):
+        """This API (ModifyDirectConnectGatewayAttribute) is used to modify the Direct Connect gateway attributes.
+
+        :param request: Request instance for ModifyDirectConnectGatewayAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyDirectConnectGatewayAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyDirectConnectGatewayAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDirectConnectGatewayAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDirectConnectGatewayAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyFlowLogAttribute(self, request):
+        """This API (ModifyFlowLogAttribute) is used to modify flow log attributes.
+
+        :param request: Request instance for ModifyFlowLogAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyFlowLogAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyFlowLogAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyFlowLogAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyFlowLogAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4096,17 +4551,22 @@ class VpcClient(AbstractClient):
 
 
     def ModifySecurityGroupPolicies(self, request):
-        """This API (ModifySecurityGroupPolicies) is used to reset the egress and ingress policies (SecurityGroupPolicy) of a security group.
+        """This API is used to reset the egress and ingress policies (SecurityGroupPolicy) of a security group.
 
-        * This API deletes all the current egress and ingress policies, and then adds new Egress and Ingress policies. It does not support custom PolicyIndex indexes.
-        * If SecurityGroupPolicySet.Version is set to 0, all policies will be cleared, and Egress and Ingress will be ignored.
-        * The value of the Protocol field can be TCP, UDP, ICMP, ICMPV6, GRE, or ALL.
-        * The CidrBlock field allows you to enter any string that conforms to the CIDR format. (More details) In a basic network, if a CidrBlock contains private IP addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.
-        * The Ipv6CidrBlock field allows you to enter any string that conforms to the IPv6 CIDR format. (More details) In a basic network, if an Ipv6CidrBlock contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.
-        * The SecurityGroupId field allows you to enter the IDs of security groups that are in the same project as the security group to be modified, including the ID of the security group itself, to represent private IP addresses of all CVMs under the security group. If this field is used, this policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.
-        * The Port field allows you to enter a single port number, or two port numbers separated by a minus sign to represent a port range, such as 80 or 8000-8010. The Port field can be used only when the value of the Protocol field is TCP or UDP.
-        * The Action field only allows you to enter ACCEPT or DROP.
-        * CidrBlock, Ipv6CidrBlock, SecurityGroupId, and AddressTemplate are exclusive and cannot be entered at the same time. Protocol + Port and ServiceTemplate are mutually exclusive and cannot be entered at the same time.
+        </ul>
+        <li>This API deletes all the existing egress and ingress policies, and then adds `Egress` and `Ingress policies`. It does not support custom indexes `PolicyIndex`.</li>
+        <li>For parameters of SecurityGroupPolicySet,<ul>
+        	<li>If `SecurityGroupPolicySet.Version` is set to 0, all policies will be cleared, and `Egress` and `Ingress` will be ignored.</li>
+        	<li>If `SecurityGroupPolicySet.Version` is not set to 0, add `Egress` and `Ingress` policies:<ul>
+        		<li>`Protocol`: allows TCP, UDP, ICMP, ICMPV6, GRE, or ALL.</li>
+        		<li>`CidrBlock`: a CIDR block in the correct format. In a classic network, if a `CidrBlock` contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>
+        		<li>`Ipv6CidrBlock`: an IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>
+        		<li>`SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IPs of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.</li>
+        		<li>`Port`: a single port number such as 80, or a port range in the format of “8000-8010”. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`.</li>
+        		<li>`Action`: only allows ACCEPT or DROP.</li>
+        		<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>
+        </ul></li></ul></li>
+        </ul>
 
         :param request: Request instance for ModifySecurityGroupPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifySecurityGroupPoliciesRequest`
@@ -4373,6 +4833,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseAddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveBandwidthPackageResources(self, request):
+        """This API is used to delete bandwidth package resources. This includes [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on.
+
+        :param request: Request instance for RemoveBandwidthPackageResources.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.RemoveBandwidthPackageResourcesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.RemoveBandwidthPackageResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RemoveBandwidthPackageResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveBandwidthPackageResourcesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

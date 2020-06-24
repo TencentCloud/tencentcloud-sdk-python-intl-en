@@ -4922,6 +4922,61 @@ If `Key` is "RuleNum", `Value` indicates the number of resource rules
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSchedulingDomainListRequest(AbstractModel):
+    """DescribeSchedulingDomainList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: Number of items in a page. Returned results are not paged if you enter “0”.
+        :type Limit: int
+        :param Offset: Starting offset of the page. Value: (number of pages - 1) * items per page
+        :type Offset: int
+        :param Domain: (Optional) Filter by specific domain name
+        :type Domain: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Domain = params.get("Domain")
+
+
+class DescribeSchedulingDomainListResponse(AbstractModel):
+    """DescribeSchedulingDomainList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: Total number of scheduling domain names
+        :type Total: int
+        :param DomainList: List of scheduling domain names
+        :type DomainList: list of SchedulingDomain
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.DomainList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("DomainList") is not None:
+            self.DomainList = []
+            for item in params.get("DomainList"):
+                obj = SchedulingDomain()
+                obj._deserialize(item)
+                self.DomainList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecIndexRequest(AbstractModel):
     """DescribeSecIndex request structure.
 
@@ -7671,6 +7726,63 @@ class ResourceIp(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.IpList = params.get("IpList")
+
+
+class SchedulingDomain(AbstractModel):
+    """Scheduling domain name information
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: Scheduling domain name
+        :type Domain: str
+        :param BGPIpList: List of BGP IPs
+        :type BGPIpList: list of str
+        :param CTCCIpList: List of CTCC IPs
+        :type CTCCIpList: list of str
+        :param CUCCIpList: List of CUCC IPs
+        :type CUCCIpList: list of str
+        :param CMCCIpList: List of CMCC IPs
+        :type CMCCIpList: list of str
+        :param OverseaIpList: List of IPs outside Mainland China
+        :type OverseaIpList: list of str
+        :param Method: Scheduling method. It only supports `priority` now.
+        :type Method: str
+        :param CreateTime: The creation time.
+        :type CreateTime: str
+        :param TTL: 
+        :type TTL: int
+        :param Status: Status
+        :type Status: int
+        :param ModifyTime: Modification time
+        :type ModifyTime: str
+        """
+        self.Domain = None
+        self.BGPIpList = None
+        self.CTCCIpList = None
+        self.CUCCIpList = None
+        self.CMCCIpList = None
+        self.OverseaIpList = None
+        self.Method = None
+        self.CreateTime = None
+        self.TTL = None
+        self.Status = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.BGPIpList = params.get("BGPIpList")
+        self.CTCCIpList = params.get("CTCCIpList")
+        self.CUCCIpList = params.get("CUCCIpList")
+        self.CMCCIpList = params.get("CMCCIpList")
+        self.OverseaIpList = params.get("OverseaIpList")
+        self.Method = params.get("Method")
+        self.CreateTime = params.get("CreateTime")
+        self.TTL = params.get("TTL")
+        self.Status = params.get("Status")
+        self.ModifyTime = params.get("ModifyTime")
 
 
 class SuccessCode(AbstractModel):
