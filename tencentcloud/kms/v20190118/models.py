@@ -138,6 +138,17 @@ class CancelKeyDeletionRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param KeyId: Unique ID of the CMK for which to cancel schedule deletion
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
 
 class CancelKeyDeletionResponse(AbstractModel):
     """CancelKeyDeletion response structure.
@@ -146,13 +157,17 @@ class CancelKeyDeletionResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param KeyId: Unique ID of the CMK for which the schedule deletion is canceled
+        :type KeyId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.KeyId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
         self.RequestId = params.get("RequestId")
 
 
@@ -192,13 +207,45 @@ class CreateKeyResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
+        :param Alias: Alias that makes a key more recognizable and understandable
+        :type Alias: str
+        :param CreateTime: Key creation time in UNIX timestamp format
+        :type CreateTime: int
+        :param Description: CMK description
+        :type Description: str
+        :param KeyState: CMK status
+        :type KeyState: str
+        :param KeyUsage: CMK usage
+        :type KeyUsage: str
+        :param TagCode: Tag operation return code. 0: success; 1: internal error; 2: business processing error
+        :type TagCode: int
+        :param TagMsg: Tag operation return information
+        :type TagMsg: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.KeyId = None
+        self.Alias = None
+        self.CreateTime = None
+        self.Description = None
+        self.KeyState = None
+        self.KeyUsage = None
+        self.TagCode = None
+        self.TagMsg = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Alias = params.get("Alias")
+        self.CreateTime = params.get("CreateTime")
+        self.Description = params.get("Description")
+        self.KeyState = params.get("KeyState")
+        self.KeyUsage = params.get("KeyUsage")
+        self.TagCode = params.get("TagCode")
+        self.TagMsg = params.get("TagMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -284,13 +331,21 @@ class DecryptResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
+        :param Plaintext: Decrypted plaintext. This field is Base64-encoded. In order to get the original plaintext, the Base64-decoding is needed
+        :type Plaintext: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.KeyId = None
+        self.Plaintext = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Plaintext = params.get("Plaintext")
         self.RequestId = params.get("RequestId")
 
 
@@ -485,6 +540,49 @@ class DescribeWhiteBoxDecryptKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWhiteBoxDeviceFingerprintsRequest(AbstractModel):
+    """DescribeWhiteBoxDeviceFingerprints request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: White-box key ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DescribeWhiteBoxDeviceFingerprintsResponse(AbstractModel):
+    """DescribeWhiteBoxDeviceFingerprints response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceFingerprints: Device fingerprint list
+        :type DeviceFingerprints: list of DeviceFingerprint
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DeviceFingerprints = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceFingerprints") is not None:
+            self.DeviceFingerprints = []
+            for item in params.get("DeviceFingerprints"):
+                obj = DeviceFingerprint()
+                obj._deserialize(item)
+                self.DeviceFingerprints.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
     """DescribeWhiteBoxKeyDetails request structure.
 
@@ -595,10 +693,43 @@ class DescribeWhiteBoxServiceStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeviceFingerprint(AbstractModel):
+    """Device fingerprint
+
+    """
+
+    def __init__(self):
+        """
+        :param Identity: Fingerprint information collected by device fingerprint collector. Its format must satisfy the following regular expression: ^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$
+        :type Identity: str
+        :param Description: Description, such as IP and device name. Length limit: 1,024 bytes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        """
+        self.Identity = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Identity = params.get("Identity")
+        self.Description = params.get("Description")
+
+
 class DisableKeyRequest(AbstractModel):
     """DisableKey request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
 
 
 class DisableKeyResponse(AbstractModel):
@@ -623,6 +754,17 @@ class DisableKeyRotationRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
 
 class DisableKeyRotationResponse(AbstractModel):
     """DisableKeyRotation response structure.
@@ -645,6 +787,17 @@ class DisableKeysRequest(AbstractModel):
     """DisableKeys request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param KeyIds: List of IDs of the CMKs to be disabled in batches. Up to 100 CMKs are supported at a time
+        :type KeyIds: list of str
+        """
+        self.KeyIds = None
+
+
+    def _deserialize(self, params):
+        self.KeyIds = params.get("KeyIds")
 
 
 class DisableKeysResponse(AbstractModel):
@@ -737,6 +890,17 @@ class EnableKeyRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
 
 class EnableKeyResponse(AbstractModel):
     """EnableKey response structure.
@@ -760,6 +924,17 @@ class EnableKeyRotationRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
 
 class EnableKeyRotationResponse(AbstractModel):
     """EnableKeyRotation response structure.
@@ -782,6 +957,17 @@ class EnableKeysRequest(AbstractModel):
     """EnableKeys request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param KeyIds: List of IDs of the CMKs to be enabled in batches. Up to 100 CMKs are supported at a time
+        :type KeyIds: list of str
+        """
+        self.KeyIds = None
+
+
+    def _deserialize(self, params):
+        self.KeyIds = params.get("KeyIds")
 
 
 class EnableKeysResponse(AbstractModel):
@@ -924,6 +1110,25 @@ class EncryptRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param KeyId: Globally unique ID of the CMK generated by calling the `CreateKey` API
+        :type KeyId: str
+        :param Plaintext: Encrypted plaintext data. This field must be Base64-encoded. The maximum size of the original data is 4 KB
+        :type Plaintext: str
+        :param EncryptionContext: JSON string of key-value pair. If this parameter is specified, the same parameter needs to be provided when the `Decrypt` API is called. It is up to 1,024 characters
+        :type EncryptionContext: str
+        """
+        self.KeyId = None
+        self.Plaintext = None
+        self.EncryptionContext = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Plaintext = params.get("Plaintext")
+        self.EncryptionContext = params.get("EncryptionContext")
+
 
 class EncryptResponse(AbstractModel):
     """Encrypt response structure.
@@ -1051,6 +1256,17 @@ class GetKeyRotationStatusRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
 
 class GetKeyRotationStatusResponse(AbstractModel):
     """GetKeyRotationStatus response structure.
@@ -1059,13 +1275,17 @@ class GetKeyRotationStatusResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param KeyRotationEnabled: Whether key rotation is enabled
+        :type KeyRotationEnabled: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.KeyRotationEnabled = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.KeyRotationEnabled = params.get("KeyRotationEnabled")
         self.RequestId = params.get("RequestId")
 
 
@@ -1186,13 +1406,21 @@ class GetServiceStatusResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param ServiceEnabled: Whether the KMS service has been activated. true: activated
+        :type ServiceEnabled: bool
+        :param InvalidType: Service unavailability type. 0: not purchased; 1: normal; 2: suspended due to arrears; 3: resource released
+        :type InvalidType: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.ServiceEnabled = None
+        self.InvalidType = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ServiceEnabled = params.get("ServiceEnabled")
+        self.InvalidType = params.get("InvalidType")
         self.RequestId = params.get("RequestId")
 
 
@@ -1240,6 +1468,23 @@ class ImportKeyMaterialResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Key(AbstractModel):
+    """Returned CMK list information
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Globally unique CMK ID.
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
 
 
 class KeyMetadata(AbstractModel):
@@ -1439,9 +1684,84 @@ class ListKeysRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param Offset: This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0
+        :type Offset: int
+        :param Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200
+        :type Limit: int
+        :param Role: Filter by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service
+        :type Role: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Role = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Role = params.get("Role")
+
 
 class ListKeysResponse(AbstractModel):
     """ListKeys response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Keys: CMK list array
+        :type Keys: list of Key
+        :param TotalCount: Total number of CMKs
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Keys = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Keys") is not None:
+            self.Keys = []
+            for item in params.get("Keys"):
+                obj = Key()
+                obj._deserialize(item)
+                self.Keys.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class OverwriteWhiteBoxDeviceFingerprintsRequest(AbstractModel):
+    """OverwriteWhiteBoxDeviceFingerprints request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: White-box key ID
+        :type KeyId: str
+        :param DeviceFingerprints: Device fingerprint list. If the list is empty, it means to delete all fingerprint information corresponding to the key. There can be up to 200 entries in the list.
+        :type DeviceFingerprints: list of DeviceFingerprint
+        """
+        self.KeyId = None
+        self.DeviceFingerprints = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        if params.get("DeviceFingerprints") is not None:
+            self.DeviceFingerprints = []
+            for item in params.get("DeviceFingerprints"):
+                obj = DeviceFingerprint()
+                obj._deserialize(item)
+                self.DeviceFingerprints.append(obj)
+
+
+class OverwriteWhiteBoxDeviceFingerprintsResponse(AbstractModel):
+    """OverwriteWhiteBoxDeviceFingerprints response structure.
 
     """
 
@@ -1462,6 +1782,29 @@ class ReEncryptRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param CiphertextBlob: Ciphertext to be re-encrypted
+        :type CiphertextBlob: str
+        :param DestinationKeyId: CMK used for re-encryption. If this parameter is empty, the ciphertext will be re-encrypted by using the original CMK (as long as the key is not rotated, the ciphertext will not be refreshed)
+        :type DestinationKeyId: str
+        :param SourceEncryptionContext: JSON string of the key-value pair used during ciphertext encryption by `CiphertextBlob`. If not used during encryption, this parameter will be empty
+        :type SourceEncryptionContext: str
+        :param DestinationEncryptionContext: JSON string of the key-value pair used during re-encryption. If this field is used, the same string should be entered when the returned new ciphertext is decrypted
+        :type DestinationEncryptionContext: str
+        """
+        self.CiphertextBlob = None
+        self.DestinationKeyId = None
+        self.SourceEncryptionContext = None
+        self.DestinationEncryptionContext = None
+
+
+    def _deserialize(self, params):
+        self.CiphertextBlob = params.get("CiphertextBlob")
+        self.DestinationKeyId = params.get("DestinationKeyId")
+        self.SourceEncryptionContext = params.get("SourceEncryptionContext")
+        self.DestinationEncryptionContext = params.get("DestinationEncryptionContext")
+
 
 class ReEncryptResponse(AbstractModel):
     """ReEncrypt response structure.
@@ -1470,13 +1813,29 @@ class ReEncryptResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param CiphertextBlob: Re-encrypted ciphertext
+        :type CiphertextBlob: str
+        :param KeyId: CMK used for re-encryption
+        :type KeyId: str
+        :param SourceKeyId: CMK used by ciphertext before re-encryption
+        :type SourceKeyId: str
+        :param ReEncrypted: `true` indicates that the ciphertext has been re-encrypted. When re-encryption is initiated by using the same CMK, as long as the CMK is not rotated, no actual re-encryption will be performed, and the original ciphertext will be returned
+        :type ReEncrypted: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.CiphertextBlob = None
+        self.KeyId = None
+        self.SourceKeyId = None
+        self.ReEncrypted = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.CiphertextBlob = params.get("CiphertextBlob")
+        self.KeyId = params.get("KeyId")
+        self.SourceKeyId = params.get("SourceKeyId")
+        self.ReEncrypted = params.get("ReEncrypted")
         self.RequestId = params.get("RequestId")
 
 
@@ -1484,6 +1843,21 @@ class ScheduleKeyDeletionRequest(AbstractModel):
     """ScheduleKeyDeletion request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        :param PendingWindowInDays: Schedule deletion time range. Value range: [7,30]
+        :type PendingWindowInDays: int
+        """
+        self.KeyId = None
+        self.PendingWindowInDays = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.PendingWindowInDays = params.get("PendingWindowInDays")
 
 
 class ScheduleKeyDeletionResponse(AbstractModel):
@@ -1493,13 +1867,21 @@ class ScheduleKeyDeletionResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param DeletionDate: Schedule deletion execution time
+        :type DeletionDate: int
+        :param KeyId: Unique ID of the CMK scheduled for deletion
+        :type KeyId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.DeletionDate = None
+        self.KeyId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.DeletionDate = params.get("DeletionDate")
+        self.KeyId = params.get("KeyId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1507,6 +1889,21 @@ class UpdateAliasRequest(AbstractModel):
     """UpdateAlias request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param Alias: New alias containing 1–60 characters or digits
+        :type Alias: str
+        :param KeyId: Globally unique CMK ID
+        :type KeyId: str
+        """
+        self.Alias = None
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.Alias = params.get("Alias")
+        self.KeyId = params.get("KeyId")
 
 
 class UpdateAliasResponse(AbstractModel):

@@ -529,6 +529,34 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRoute(self, request):
+        """This API is used to view route information.
+
+        :param request: Request instance for DescribeRoute.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeRouteRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRoute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRouteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTopic(self, request):
         """API domain name: https://ckafka.tencentcloudapi.com
         This API is used to get the list of topics in a CKafka instance of a user.

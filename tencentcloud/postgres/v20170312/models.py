@@ -126,8 +126,10 @@ class CreateDBInstancesRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param ActivityId: 
         :type ActivityId: int
-        :param Name: 
+        :param Name: Instance name (which will be supported in the future)
         :type Name: str
+        :param NeedSupportIpv6: 
+        :type NeedSupportIpv6: int
         """
         self.SpecCode = None
         self.DBVersion = None
@@ -144,6 +146,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.AutoRenewFlag = None
         self.ActivityId = None
         self.Name = None
+        self.NeedSupportIpv6 = None
 
 
     def _deserialize(self, params):
@@ -162,6 +165,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.ActivityId = params.get("ActivityId")
         self.Name = params.get("Name")
+        self.NeedSupportIpv6 = params.get("NeedSupportIpv6")
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -475,7 +479,7 @@ class DescribeDBBackupsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: Query end time in the format of 2018-06-10 17:06:38
         :type EndTime: str
-        :param Limit: Number of entries returned per page for backup list. Default value: 20. Minimum value: 1. Maximum value: 100.
+        :param Limit: Number of entries to be returned per page for backup list. Default value: 20. Minimum value: 1. Maximum value: 100. (If this parameter is left empty or 0, the default value will be used)
         :type Limit: int
         :param Offset: Page number for data return in paged query. Pagination starts from 0. Default value: 0.
         :type Offset: int
@@ -841,6 +845,44 @@ class DescribeDBXlogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDatabasesRequest(AbstractModel):
+    """DescribeDatabases request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+
+
+class DescribeDatabasesResponse(AbstractModel):
+    """DescribeDatabases response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Items: Database information
+        :type Items: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Items = params.get("Items")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOrdersRequest(AbstractModel):
     """DescribeOrders request structure.
 
@@ -1003,6 +1045,40 @@ class DescribeZonesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DestroyDBInstanceRequest(AbstractModel):
+    """DestroyDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: ID of the instance to be deleted
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+
+
+class DestroyDBInstanceResponse(AbstractModel):
+    """DestroyDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ErrLogDetail(AbstractModel):
     """Error log details
 
@@ -1102,6 +1178,118 @@ class InitDBInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceCreateDBInstancesRequest(AbstractModel):
+    """InquiryPriceCreateDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
+        :type Zone: str
+        :param SpecCode: Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
+        :type SpecCode: str
+        :param Storage: Storage capacity size in GB.
+        :type Storage: int
+        :param InstanceCount: Number of instances. Maximum value: 100. If you need to create more instances at a time, please contact customer service.
+        :type InstanceCount: int
+        :param Period: Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.
+        :type Period: int
+        :param Pid: Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.
+        :type Pid: int
+        :param InstanceChargeType: Instance billing type. Valid value: POSTPAID_BY_HOUR (pay-as-you-go)
+        :type InstanceChargeType: str
+        """
+        self.Zone = None
+        self.SpecCode = None
+        self.Storage = None
+        self.InstanceCount = None
+        self.Period = None
+        self.Pid = None
+        self.InstanceChargeType = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.SpecCode = params.get("SpecCode")
+        self.Storage = params.get("Storage")
+        self.InstanceCount = params.get("InstanceCount")
+        self.Period = params.get("Period")
+        self.Pid = params.get("Pid")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+
+
+class InquiryPriceCreateDBInstancesResponse(AbstractModel):
+    """InquiryPriceCreateDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param OriginalPrice: Original price in 0.01 CNY.
+        :type OriginalPrice: int
+        :param Price: Discounted price in 0.01 CNY.
+        :type Price: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.OriginalPrice = None
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Price = params.get("Price")
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceRenewDBInstanceRequest(AbstractModel):
+    """InquiryPriceRenewDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param Period: Renewal duration in months. Maximum value: 48
+        :type Period: int
+        """
+        self.DBInstanceId = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.Period = params.get("Period")
+
+
+class InquiryPriceRenewDBInstanceResponse(AbstractModel):
+    """InquiryPriceRenewDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param OriginalPrice: Total cost before discount; for example, 24650 indicates 246.5 CNY
+        :type OriginalPrice: int
+        :param Price: Actual amount payable; for example, 24650 indicates 246.5 CNY
+        :type Price: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.OriginalPrice = None
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Price = params.get("Price")
         self.RequestId = params.get("RequestId")
 
 
@@ -1458,6 +1646,56 @@ class RegionInfo(AbstractModel):
         self.RegionState = params.get("RegionState")
 
 
+class RenewInstanceRequest(AbstractModel):
+    """RenewInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: Instance ID in the format of `postgres-6fego161`
+        :type DBInstanceId: str
+        :param Period: Renewal duration in months
+        :type Period: int
+        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: 0
+        :type AutoVoucher: int
+        :param VoucherIds: Voucher ID list (only one voucher can be specified currently)
+        :type VoucherIds: list of str
+        """
+        self.DBInstanceId = None
+        self.Period = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.Period = params.get("Period")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+
+
+class RenewInstanceResponse(AbstractModel):
+    """RenewInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DealName: Order name
+        :type DealName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.RequestId = params.get("RequestId")
+
+
 class ResetAccountPasswordRequest(AbstractModel):
     """ResetAccountPassword request structure.
 
@@ -1535,6 +1773,48 @@ class RestartDBInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class SetAutoRenewFlagRequest(AbstractModel):
+    """SetAutoRenewFlag request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceIdSet: Instance ID array
+        :type DBInstanceIdSet: list of str
+        :param AutoRenewFlag: Renewal flag. 0: normal renewal, 1: auto-renewal, 2: no renewal upon expiration
+        :type AutoRenewFlag: int
+        """
+        self.DBInstanceIdSet = None
+        self.AutoRenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+
+
+class SetAutoRenewFlagResponse(AbstractModel):
+    """SetAutoRenewFlag response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: Number of successfully set instances
+        :type Count: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Count = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
         self.RequestId = params.get("RequestId")
 
 

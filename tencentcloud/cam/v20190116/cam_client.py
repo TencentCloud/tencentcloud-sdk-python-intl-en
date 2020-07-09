@@ -893,6 +893,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListAccessKeys(self, request):
+        """This API is used to list the access keys associated with a specified CAM user.
+
+        :param request: Request instance for ListAccessKeys.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListAccessKeysRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListAccessKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAccessKeys", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAccessKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListAttachedGroupPolicies(self, request):
         """This API (ListAttachedGroupPolicies) is used to query the list of policies associated with a user group.
 

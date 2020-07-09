@@ -399,6 +399,31 @@ class BatchTarget(AbstractModel):
         self.LocationId = params.get("LocationId")
 
 
+class BlockedIP(AbstractModel):
+    """IP added to blacklist 12306
+
+    """
+
+    def __init__(self):
+        """
+        :param IP: Blacklisted IP
+        :type IP: str
+        :param CreateTime: Blacklisted time
+        :type CreateTime: str
+        :param ExpireTime: Expiration time
+        :type ExpireTime: str
+        """
+        self.IP = None
+        self.CreateTime = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.IP = params.get("IP")
+        self.CreateTime = params.get("CreateTime")
+        self.ExpireTime = params.get("ExpireTime")
+
+
 class CertIdRelatedWithLoadBalancers(AbstractModel):
     """Certificate ID and list of CLB instances associated with it
 
@@ -757,6 +782,8 @@ They represent weighted round robin and least connections, respectively. Default
         :type Scheduler: str
         :param SniSwitch: Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners
         :type SniSwitch: int
+        :param TargetType: Target real server type. `NODE`: binding a general node; `TARGETGROUP`: binding a target group.
+        :type TargetType: str
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -767,6 +794,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.SessionExpireTime = None
         self.Scheduler = None
         self.SniSwitch = None
+        self.TargetType = None
 
 
     def _deserialize(self, params):
@@ -783,6 +811,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.SessionExpireTime = params.get("SessionExpireTime")
         self.Scheduler = params.get("Scheduler")
         self.SniSwitch = params.get("SniSwitch")
+        self.TargetType = params.get("TargetType")
 
 
 class CreateListenerResponse(AbstractModel):
@@ -899,6 +928,49 @@ class CreateLoadBalancerResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLoadBalancerSnatIpsRequest(AbstractModel):
+    """CreateLoadBalancerSnatIps request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: Unique CLB instance ID, such as lb-12345678
+        :type LoadBalancerId: str
+        :param SnatIps: Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet
+        :type SnatIps: list of SnatIp
+        """
+        self.LoadBalancerId = None
+        self.SnatIps = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("SnatIps") is not None:
+            self.SnatIps = []
+            for item in params.get("SnatIps"):
+                obj = SnatIp()
+                obj._deserialize(item)
+                self.SnatIps.append(obj)
+
+
+class CreateLoadBalancerSnatIpsResponse(AbstractModel):
+    """CreateLoadBalancerSnatIps response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1046,6 +1118,44 @@ class DeleteListenerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLoadBalancerListenersRequest(AbstractModel):
+    """DeleteLoadBalancerListeners request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: CLB instance ID
+        :type LoadBalancerId: str
+        :param ListenerIds: Array of IDs of the listeners to be deleted. If this parameter is left empty, all listeners of the CLB instance will be deleted
+        :type ListenerIds: list of str
+        """
+        self.LoadBalancerId = None
+        self.ListenerIds = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerIds = params.get("ListenerIds")
+
+
+class DeleteLoadBalancerListenersResponse(AbstractModel):
+    """DeleteLoadBalancerListeners response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteLoadBalancerRequest(AbstractModel):
     """DeleteLoadBalancer request structure.
 
@@ -1065,6 +1175,44 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
 class DeleteLoadBalancerResponse(AbstractModel):
     """DeleteLoadBalancer response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLoadBalancerSnatIpsRequest(AbstractModel):
+    """DeleteLoadBalancerSnatIps request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: Unique CLB instance ID, such as lb-12345678
+        :type LoadBalancerId: str
+        :param Ips: Array of the SNAT IP addresses to be deleted
+        :type Ips: list of str
+        """
+        self.LoadBalancerId = None
+        self.Ips = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.Ips = params.get("Ips")
+
+
+class DeleteLoadBalancerSnatIpsResponse(AbstractModel):
+    """DeleteLoadBalancerSnatIps response structure.
 
     """
 
@@ -1356,6 +1504,103 @@ class DeregisterTargetsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBlockIPListRequest(AbstractModel):
+    """DescribeBlockIPList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: CLB instance ID.
+        :type LoadBalancerId: str
+        :param Offset: Data offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Maximum number of IPs to be returned. Default value: 100000.
+        :type Limit: int
+        """
+        self.LoadBalancerId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeBlockIPListResponse(AbstractModel):
+    """DescribeBlockIPList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BlockedIPCount: Number of returned IPs
+        :type BlockedIPCount: int
+        :param ClientIPField: Field for getting real client IP
+        :type ClientIPField: str
+        :param BlockedIPList: List of IPs added to blacklist 12360
+        :type BlockedIPList: list of BlockedIP
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BlockedIPCount = None
+        self.ClientIPField = None
+        self.BlockedIPList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BlockedIPCount = params.get("BlockedIPCount")
+        self.ClientIPField = params.get("ClientIPField")
+        if params.get("BlockedIPList") is not None:
+            self.BlockedIPList = []
+            for item in params.get("BlockedIPList"):
+                obj = BlockedIP()
+                obj._deserialize(item)
+                self.BlockedIPList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBlockIPTaskRequest(AbstractModel):
+    """DescribeBlockIPTask request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: Async task ID returned by the `ModifyBlockIPList` API
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeBlockIPTaskResponse(AbstractModel):
+    """DescribeBlockIPTask response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 1: running; 2: failed; 6: succeeded
+        :type Status: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -2950,6 +3195,70 @@ class ManualRewriteResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBlockIPListRequest(AbstractModel):
+    """ModifyBlockIPList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerIds: CLB instance ID
+        :type LoadBalancerIds: list of str
+        :param Type: Operation type. Valid values:
+<li> add_customized_field (sets header initially to enable the blacklist feature)</li>
+<li> set_customized_field (modifies header)</li>
+<li> del_customized_field (deletes header)</li>
+<li> add_blocked (adds to blacklist)</li>
+<li> del_blocked (deletes from blacklist)</li>
+<li> flush_blocked (clears blacklist)</li>
+        :type Type: str
+        :param ClientIPField: Name of the header field that stores real client IPs
+        :type ClientIPField: str
+        :param BlockIPList: List of blocked IPs. The array can contain up to 200,000 entries in one operation
+        :type BlockIPList: list of str
+        :param ExpireTime: Expiration time in seconds. Default value: 3600
+        :type ExpireTime: int
+        :param AddStrategy: IP adding policy. Valid values: fifo (if a blacklist is full, new IPs added to the blacklist will adopt the first-in first-out policy)
+        :type AddStrategy: str
+        """
+        self.LoadBalancerIds = None
+        self.Type = None
+        self.ClientIPField = None
+        self.BlockIPList = None
+        self.ExpireTime = None
+        self.AddStrategy = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self.Type = params.get("Type")
+        self.ClientIPField = params.get("ClientIPField")
+        self.BlockIPList = params.get("BlockIPList")
+        self.ExpireTime = params.get("ExpireTime")
+        self.AddStrategy = params.get("AddStrategy")
+
+
+class ModifyBlockIPListResponse(AbstractModel):
+    """ModifyBlockIPList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param JodId: Async task ID
+        :type JodId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.JodId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JodId = params.get("JodId")
         self.RequestId = params.get("RequestId")
 
 

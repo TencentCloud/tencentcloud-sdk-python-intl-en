@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tag.v20180813 import models
+from tencentcloud.gse.v20191112 import models
 
 
-class TagClient(AbstractClient):
-    _apiVersion = '2018-08-13'
-    _endpoint = 'tag.tencentcloudapi.com'
+class GseClient(AbstractClient):
+    _apiVersion = '2019-11-12'
+    _endpoint = 'gse.tencentcloudapi.com'
 
 
-    def AddResourceTag(self, request):
-        """This API is used to associate resources with tags.
+    def CreateGameServerSession(self, request):
+        """This API is used to create a game server session.
 
-        :param request: Request instance for AddResourceTag.
-        :type request: :class:`tencentcloud.tag.v20180813.models.AddResourceTagRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.AddResourceTagResponse`
+        :param request: Request instance for CreateGameServerSession.
+        :type request: :class:`tencentcloud.gse.v20191112.models.CreateGameServerSessionRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.CreateGameServerSessionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("AddResourceTag", params)
+            body = self.call("CreateGameServerSession", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddResourceTagResponse()
+                model = models.CreateGameServerSessionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateTag(self, request):
-        """This API is used to create a tag key and tag value pair.
+    def DescribeGameServerSessionDetails(self, request):
+        """This API is used to query the list of game server session details.
 
-        :param request: Request instance for CreateTag.
-        :type request: :class:`tencentcloud.tag.v20180813.models.CreateTagRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.CreateTagResponse`
+        :param request: Request instance for DescribeGameServerSessionDetails.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionDetailsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionDetailsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTag", params)
+            body = self.call("DescribeGameServerSessionDetails", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateTagResponse()
+                model = models.DescribeGameServerSessionDetailsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteResourceTag(self, request):
-        """This API is used to unassociate tags and resources.
+    def DescribeGameServerSessionPlacement(self, request):
+        """This API is used to query the placement of a game server session.
 
-        :param request: Request instance for DeleteResourceTag.
-        :type request: :class:`tencentcloud.tag.v20180813.models.DeleteResourceTagRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.DeleteResourceTagResponse`
+        :param request: Request instance for DescribeGameServerSessionPlacement.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionPlacementRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionPlacementResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteResourceTag", params)
+            body = self.call("DescribeGameServerSessionPlacement", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteResourceTagResponse()
+                model = models.DescribeGameServerSessionPlacementResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteTag(self, request):
-        """This API is used to delete a tag key and tag value pair.
+    def DescribeGameServerSessions(self, request):
+        """This API is used to query the list of game server sessions.
 
-        :param request: Request instance for DeleteTag.
-        :type request: :class:`tencentcloud.tag.v20180813.models.DeleteTagRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.DeleteTagResponse`
+        :param request: Request instance for DescribeGameServerSessions.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTag", params)
+            body = self.call("DescribeGameServerSessions", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteTagResponse()
+                model = models.DescribeGameServerSessionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +137,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeResourceTags(self, request):
-        """This API is used to query the tags associated with a resource.
+    def DescribePlayerSessions(self, request):
+        """This API is used to get the list of player sessions.
 
-        :param request: Request instance for DescribeResourceTags.
-        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsResponse`
+        :param request: Request instance for DescribePlayerSessions.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribePlayerSessionsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribePlayerSessionsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceTags", params)
+            body = self.call("DescribePlayerSessions", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeResourceTagsResponse()
+                model = models.DescribePlayerSessionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +165,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeResourceTagsByResourceIds(self, request):
-        """This API is used to query tag key and value pairs for existing resources.
+    def GetGameServerSessionLogUrl(self, request):
+        """This API is used to get the log URL of a game server session.
 
-        :param request: Request instance for DescribeResourceTagsByResourceIds.
-        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByResourceIdsRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByResourceIdsResponse`
+        :param request: Request instance for GetGameServerSessionLogUrl.
+        :type request: :class:`tencentcloud.gse.v20191112.models.GetGameServerSessionLogUrlRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GetGameServerSessionLogUrlResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceTagsByResourceIds", params)
+            body = self.call("GetGameServerSessionLogUrl", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeResourceTagsByResourceIdsResponse()
+                model = models.GetGameServerSessionLogUrlResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeResourceTagsByTagKeys(self, request):
-        """This API is used to get resource tags based on tag keys.
+    def GetInstanceAccess(self, request):
+        """This API is used to get the credentials required for instance login.
 
-        :param request: Request instance for DescribeResourceTagsByTagKeys.
-        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByTagKeysRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByTagKeysResponse`
+        :param request: Request instance for GetInstanceAccess.
+        :type request: :class:`tencentcloud.gse.v20191112.models.GetInstanceAccessRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GetInstanceAccessResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceTagsByTagKeys", params)
+            body = self.call("GetInstanceAccess", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeResourceTagsByTagKeysResponse()
+                model = models.GetInstanceAccessResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,20 +221,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeResourcesByTags(self, request):
-        """This API is used to query resources by tags.
+    def JoinGameServerSession(self, request):
+        """This API is used to join a game server session.
 
-        :param request: Request instance for DescribeResourcesByTags.
-        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourcesByTagsRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeResourcesByTagsResponse`
+        :param request: Request instance for JoinGameServerSession.
+        :type request: :class:`tencentcloud.gse.v20191112.models.JoinGameServerSessionRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.JoinGameServerSessionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourcesByTags", params)
+            body = self.call("JoinGameServerSession", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeResourcesByTagsResponse()
+                model = models.JoinGameServerSessionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,20 +249,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTagKeys(self, request):
-        """This API is used to query tag keys in an existing tag list.
+    def SearchGameServerSessions(self, request):
+        """This API is used to search in the list of game server sessions.
 
-        :param request: Request instance for DescribeTagKeys.
-        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagKeysRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeTagKeysResponse`
+        :param request: Request instance for SearchGameServerSessions.
+        :type request: :class:`tencentcloud.gse.v20191112.models.SearchGameServerSessionsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.SearchGameServerSessionsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagKeys", params)
+            body = self.call("SearchGameServerSessions", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTagKeysResponse()
+                model = models.SearchGameServerSessionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,20 +277,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTagValues(self, request):
-        """This API is used to query tag values in an existing tag list.
+    def StartGameServerSessionPlacement(self, request):
+        """This API is used to start placing a game server session.
 
-        :param request: Request instance for DescribeTagValues.
-        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagValuesRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeTagValuesResponse`
+        :param request: Request instance for StartGameServerSessionPlacement.
+        :type request: :class:`tencentcloud.gse.v20191112.models.StartGameServerSessionPlacementRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.StartGameServerSessionPlacementResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagValues", params)
+            body = self.call("StartGameServerSessionPlacement", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTagValuesResponse()
+                model = models.StartGameServerSessionPlacementResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -305,20 +305,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTags(self, request):
-        """This API is used to query existing tag lists.
+    def StopGameServerSessionPlacement(self, request):
+        """This API is used to stop placing a game server session.
 
-        :param request: Request instance for DescribeTags.
-        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagsRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeTagsResponse`
+        :param request: Request instance for StopGameServerSessionPlacement.
+        :type request: :class:`tencentcloud.gse.v20191112.models.StopGameServerSessionPlacementRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.StopGameServerSessionPlacementResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTags", params)
+            body = self.call("StopGameServerSessionPlacement", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTagsResponse()
+                model = models.StopGameServerSessionPlacementResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -333,48 +333,20 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyResourceTags(self, request):
-        """This API is used to modify all tags associated with a resource.
+    def UpdateGameServerSession(self, request):
+        """This API is used to update a game server session.
 
-        :param request: Request instance for ModifyResourceTags.
-        :type request: :class:`tencentcloud.tag.v20180813.models.ModifyResourceTagsRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.ModifyResourceTagsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyResourceTags", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyResourceTagsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def UpdateResourceTagValue(self, request):
-        """This API is used to modify the values of tags associated with a resource (the tag key does not change).
-
-        :param request: Request instance for UpdateResourceTagValue.
-        :type request: :class:`tencentcloud.tag.v20180813.models.UpdateResourceTagValueRequest`
-        :rtype: :class:`tencentcloud.tag.v20180813.models.UpdateResourceTagValueResponse`
+        :param request: Request instance for UpdateGameServerSession.
+        :type request: :class:`tencentcloud.gse.v20191112.models.UpdateGameServerSessionRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.UpdateGameServerSessionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateResourceTagValue", params)
+            body = self.call("UpdateGameServerSession", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.UpdateResourceTagValueResponse()
+                model = models.UpdateGameServerSessionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

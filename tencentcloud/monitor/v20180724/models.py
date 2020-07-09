@@ -1363,7 +1363,7 @@ class DescribePolicyGroupInfoCallback(AbstractModel):
 
 
 class DescribePolicyGroupInfoCondition(AbstractModel):
-    """Alarm threshold conditions output by the policy query
+    """Alarm threshold conditions output by the policy query.
 
     """
 
@@ -1381,17 +1381,16 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
         :type Unit: str
         :param AlarmNotifyType: Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
         :type AlarmNotifyType: int
-        :param AlarmNotifyPeriod: Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.
+        :param AlarmNotifyPeriod: Alarm sending period in seconds. If the value is less than 0, no alarm will be triggered. If the value is 0, an alarm will be triggered only once. If the value is greater than 0, an alarm will be triggered at the interval of `triggerTime`.
         :type AlarmNotifyPeriod: int
         :param CalcType: Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to. The value 7 indicates day-on-day increase. The value 8 indicates day-on-day decrease. The value 9 indicates week-on-week increase. The value 10 indicates week-on-week decrease. The value 11 indicates periodical increase. The value 12 indicates periodical decrease.
-Note: This field may return null, indicating that no valid value was found.
         :type CalcType: int
         :param CalcValue: Threshold.
-Note: This field may return null, indicating that no valid value was found.
         :type CalcValue: str
         :param ContinueTime: Duration at which an alarm will be triggered in seconds.
-Note: This field may return null, indicating that no valid value was found.
         :type ContinueTime: int
+        :param MetricName: Alarm metric name.
+        :type MetricName: str
         """
         self.MetricShowName = None
         self.Period = None
@@ -1403,6 +1402,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.CalcType = None
         self.CalcValue = None
         self.ContinueTime = None
+        self.MetricName = None
 
 
     def _deserialize(self, params):
@@ -1416,6 +1416,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.CalcType = params.get("CalcType")
         self.CalcValue = params.get("CalcValue")
         self.ContinueTime = params.get("ContinueTime")
+        self.MetricName = params.get("MetricName")
 
 
 class DescribePolicyGroupInfoConditionTpl(AbstractModel):

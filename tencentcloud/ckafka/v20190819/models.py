@@ -1323,6 +1323,46 @@ class DescribeInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRouteRequest(AbstractModel):
+    """DescribeRoute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Unique instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeRouteResponse(AbstractModel):
+    """DescribeRoute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Returned result set of route information
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.RouteResponse`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = RouteResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopicAttributesRequest(AbstractModel):
     """DescribeTopicAttributes request structure.
 
@@ -2499,6 +2539,77 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.Partition = params.get("Partition")
         self.Offset = params.get("Offset")
+
+
+class Route(AbstractModel):
+    """Route entity object
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessType: Instance connection method
+0: PLAINTEXT (plaintext method, which does not carry user information and is supported for legacy versions and Community Edition)
+1: SASL_PLAINTEXT (plaintext method, which authenticates the login through SASL before data start and is supported only for Community Edition)
+2: SSL (SSL-encrypted communication, which does not carry user information and is supported for legacy versions and Community Edition)
+3: SASL_SSL (SSL-encrypted communication, which authenticates the login through SASL before data start and is supported only for Community Edition)
+        :type AccessType: int
+        :param RouteId: Route ID
+        :type RouteId: int
+        :param VipType: VIP network type (1: public network TGW; 2: classic network; 3: VPC; 4: Tencent Cloud-supported environment (generally used for internal instances); 5: SSL public network access; 6: BM VPC)
+        :type VipType: int
+        :param VipList: Virtual IP list
+        :type VipList: list of VipEntity
+        :param Domain: Domain name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Domain: str
+        :param DomainPort: Domain name port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DomainPort: int
+        """
+        self.AccessType = None
+        self.RouteId = None
+        self.VipType = None
+        self.VipList = None
+        self.Domain = None
+        self.DomainPort = None
+
+
+    def _deserialize(self, params):
+        self.AccessType = params.get("AccessType")
+        self.RouteId = params.get("RouteId")
+        self.VipType = params.get("VipType")
+        if params.get("VipList") is not None:
+            self.VipList = []
+            for item in params.get("VipList"):
+                obj = VipEntity()
+                obj._deserialize(item)
+                self.VipList.append(obj)
+        self.Domain = params.get("Domain")
+        self.DomainPort = params.get("DomainPort")
+
+
+class RouteResponse(AbstractModel):
+    """Returned object for route information
+
+    """
+
+    def __init__(self):
+        """
+        :param Routers: Route information list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Routers: list of Route
+        """
+        self.Routers = None
+
+
+    def _deserialize(self, params):
+        if params.get("Routers") is not None:
+            self.Routers = []
+            for item in params.get("Routers"):
+                obj = Route()
+                obj._deserialize(item)
+                self.Routers.append(obj)
 
 
 class SubscribedInfo(AbstractModel):

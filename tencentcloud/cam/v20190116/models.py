@@ -16,6 +16,31 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessKey(AbstractModel):
+    """Access key list
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessKeyId: Access key ID
+        :type AccessKeyId: str
+        :param Status: Key status. Valid values: Active (activated), Inactive (not activated)
+        :type Status: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        """
+        self.AccessKeyId = None
+        self.Status = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.AccessKeyId = params.get("AccessKeyId")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+
+
 class AddUserRequest(AbstractModel):
     """AddUser request structure.
 
@@ -1695,6 +1720,50 @@ class GroupMemberInfo(AbstractModel):
         self.UserType = params.get("UserType")
         self.CreateTime = params.get("CreateTime")
         self.IsReceiverOwner = params.get("IsReceiverOwner")
+
+
+class ListAccessKeysRequest(AbstractModel):
+    """ListAccessKeys request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetUin: `UIN` of the specified user. If this parameter is left empty, access keys of the current user will be listed by default
+        :type TargetUin: int
+        """
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+
+
+class ListAccessKeysResponse(AbstractModel):
+    """ListAccessKeys response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessKeys: Access key list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AccessKeys: list of AccessKey
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AccessKeys = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessKeys") is not None:
+            self.AccessKeys = []
+            for item in params.get("AccessKeys"):
+                obj = AccessKey()
+                obj._deserialize(item)
+                self.AccessKeys.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class ListAttachedGroupPoliciesRequest(AbstractModel):

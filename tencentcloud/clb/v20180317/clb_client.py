@@ -226,6 +226,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLoadBalancerSnatIps(self, request):
+        """This API is used to add a SNAT IP for a SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.
+
+        :param request: Request instance for CreateLoadBalancerSnatIps.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateLoadBalancerSnatIpsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateLoadBalancerSnatIpsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLoadBalancerSnatIps", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLoadBalancerSnatIpsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRule(self, request):
         """This API (CreateRule) is used to create a forwarding rule under an existing layer-7 CLB listener, where real servers must be bound to the rule instead of the listener.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
@@ -327,6 +355,63 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoadBalancerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLoadBalancerListeners(self, request):
+        """This API is used to delete multiple listeners of a CLB instance.
+        This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
+
+        :param request: Request instance for DeleteLoadBalancerListeners.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerListenersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerListenersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLoadBalancerListeners", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLoadBalancerListenersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLoadBalancerSnatIps(self, request):
+        """This API is used to delete a SNAT IP for a SnatPro CLB instance.
+
+        :param request: Request instance for DeleteLoadBalancerSnatIps.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerSnatIpsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerSnatIpsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLoadBalancerSnatIps", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLoadBalancerSnatIpsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -499,6 +584,62 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeregisterTargetsFromClassicalLBResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBlockIPList(self, request):
+        """This API is used to query the list of blocked IPs (blacklist) of a CLB instance. (This API is in beta test. To use it, please submit a ticket.)
+
+        :param request: Request instance for DescribeBlockIPList.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPListRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBlockIPList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBlockIPListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBlockIPTask(self, request):
+        """This API is used to query the execution status of an async IP blocking (blacklisting) task by the async task ID returned by the `ModifyBlockIPList` API. (This API is in beta test. To use it, please submit a ticket.)
+
+        :param request: Request instance for DescribeBlockIPTask.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPTaskRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBlockIPTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBlockIPTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -948,6 +1089,35 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManualRewriteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBlockIPList(self, request):
+        """This API is used to modify the client IP blacklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blacklist can contain up to 2,000,000 entries.
+        (This API is in beta test. To use it, please submit a ticket.)
+
+        :param request: Request instance for ModifyBlockIPList.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyBlockIPListRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyBlockIPListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBlockIPList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBlockIPListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -277,6 +277,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDatabases(self, request):
+        """This API is used to pull the list of databases.
+
+        :param request: Request instance for DescribeDatabases.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDatabasesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDatabases", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDatabasesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOrders(self, request):
         """This API is used to get order information.
 
@@ -389,6 +417,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DestroyDBInstance(self, request):
+        """This API is used to terminate the instance corresponding to a specified `DBInstanceId`.
+
+        :param request: Request instance for DestroyDBInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DestroyDBInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DestroyDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DestroyDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InitDBInstances(self, request):
         """This API is used to initialize a TencentDB for PostgreSQL instance.
 
@@ -403,6 +459,62 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InitDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryPriceCreateDBInstances(self, request):
+        """This API is used to query the purchase price of one or multiple instances.
+
+        :param request: Request instance for InquiryPriceCreateDBInstances.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceCreateDBInstancesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceCreateDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceCreateDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceCreateDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryPriceRenewDBInstance(self, request):
+        """This API is used to query the renewal price of an instance.
+
+        :param request: Request instance for InquiryPriceRenewDBInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceRenewDBInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceRenewDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceRenewDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceRenewDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -557,6 +669,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RenewInstance(self, request):
+        """This API is used to renew an instance.
+
+        :param request: Request instance for RenewInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.RenewInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.RenewInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RenewInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenewInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResetAccountPassword(self, request):
         """This API is used to reset the account password of an instance.
 
@@ -599,6 +739,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetAutoRenewFlag(self, request):
+        """This API is used to set auto-renewal.
+
+        :param request: Request instance for SetAutoRenewFlag.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.SetAutoRenewFlagRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.SetAutoRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetAutoRenewFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetAutoRenewFlagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

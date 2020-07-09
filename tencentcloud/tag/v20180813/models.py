@@ -326,6 +326,90 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourceTagsRequest(AbstractModel):
+    """DescribeResourceTags request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateUin: Creator `uin`
+        :type CreateUin: int
+        :param ResourceRegion: Resource region.
+        :type ResourceRegion: str
+        :param ServiceType: Service type.
+        :type ServiceType: str
+        :param ResourcePrefix: Resource prefix
+        :type ResourcePrefix: str
+        :param ResourceId: Unique resource ID
+        :type ResourceId: str
+        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter
+        :type Offset: int
+        :param Limit: Number of entries per page. Default value: 15
+        :type Limit: int
+        :param CosResourceId: Whether it is a COS resource ID
+        :type CosResourceId: int
+        """
+        self.CreateUin = None
+        self.ResourceRegion = None
+        self.ServiceType = None
+        self.ResourcePrefix = None
+        self.ResourceId = None
+        self.Offset = None
+        self.Limit = None
+        self.CosResourceId = None
+
+
+    def _deserialize(self, params):
+        self.CreateUin = params.get("CreateUin")
+        self.ResourceRegion = params.get("ResourceRegion")
+        self.ServiceType = params.get("ServiceType")
+        self.ResourcePrefix = params.get("ResourcePrefix")
+        self.ResourceId = params.get("ResourceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.CosResourceId = params.get("CosResourceId")
+
+
+class DescribeResourceTagsResponse(AbstractModel):
+    """DescribeResourceTags response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of results
+        :type TotalCount: int
+        :param Offset: Data offset.
+        :type Offset: int
+        :param Limit: Number of entries per page.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Limit: int
+        :param Rows: Resource tag
+        :type Rows: list of TagResource
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Offset = None
+        self.Limit = None
+        self.Rows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = TagResource()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResourcesByTagsRequest(AbstractModel):
     """DescribeResourcesByTags request structure.
 
