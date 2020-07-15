@@ -26,9 +26,9 @@ class ApigatewayClient(AbstractClient):
 
 
     def BindEnvironment(self, request):
-        """This API is used to bind a usage plan to a service environment.
+        """This API is used to bind a usage plan to a service or API.
         After you publish a service to an environment, if the API requires authentication and can be called only when it is bound to a usage plan, you can use this API to bind a usage plan to the specified environment.
-        Currently, a usage plan can be bound to an API; however, under the same service, usage plans bound to a service and usage plans bound to an API cannot coexist. Therefore, in an environment to which a service-level usage plan has already been bound, please use the `DemoteServiceUsagePlan` API to demote it.
+        Currently, a usage plan can be bound to an API; however, under the same service, usage plans bound to a service and usage plans bound to an API cannot coexist. Therefore, in an environment to which a service-level usage plan has already been bound, please use the `DemoteServiceUsagePlan` API to degrade it.
 
         :param request: Request instance for BindEnvironment.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.BindEnvironmentRequest`
@@ -453,8 +453,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DemoteServiceUsagePlan(self, request):
-        """This API is used to demote a usage plan of a service in an environment to the API level.
-
+        """This API is used to degrade a usage plan of a service in an environment to the API level.
         This operation will be denied if there are no APIs under the service.
         This operation will also be denied if the current environment has not been published.
 
@@ -568,6 +567,35 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApiKeysStatus(self, request):
+        """This API is used to query the list of keys.
+        If you have created multiple API key pairs, you can use this API to query the information of one or more keys. This API does not display the `secretKey`.
+
+        :param request: Request instance for DescribeApiKeysStatus.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiKeysStatusRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiKeysStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiKeysStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiKeysStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApiUsagePlan(self, request):
         """This API is used to query the details of API usage plans in a service.
         To make authentication and throttling for a service take effect, you need to bind a usage plan to it. This API is used to query all usage plans bound to a service and APIs under it.
@@ -583,6 +611,118 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiUsagePlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApisStatus(self, request):
+        """This API is used to view a certain API or the list of all APIs under a service and relevant information.
+
+        :param request: Request instance for DescribeApisStatus.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApisStatusRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApisStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApisStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApisStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIPStrategy(self, request):
+        """This API is used to query IP policy details.
+
+        :param request: Request instance for DescribeIPStrategy.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategyRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIPStrategy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIPStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIPStrategyApisStatus(self, request):
+        """This API is used to query the list of APIs to which an IP policy can be bound, i.e., the difference set between all APIs under the service and the APIs already bound to the policy.
+
+        :param request: Request instance for DescribeIPStrategyApisStatus.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategyApisStatusRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategyApisStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIPStrategyApisStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIPStrategyApisStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIPStrategysStatus(self, request):
+        """This API is used to query the list of service IP policies.
+
+        :param request: Request instance for DescribeIPStrategysStatus.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategysStatusRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategysStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIPStrategysStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIPStrategysStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -854,6 +994,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeServicesStatus(self, request):
+        """This API is used to query the list of one or more services and return relevant domain name, time, and other information.
+
+        :param request: Request instance for DescribeServicesStatus.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeServicesStatusRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeServicesStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeServicesStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeServicesStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUsagePlan(self, request):
         """This API is used to query the details of a usage plan, such as its name, QPS, creation time, and bound environment.
 
@@ -926,6 +1094,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsagePlanSecretIdsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUsagePlansStatus(self, request):
+        """This API is used to query the list of usage plans.
+
+        :param request: Request instance for DescribeUsagePlansStatus.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUsagePlansStatusRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeUsagePlansStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUsagePlansStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUsagePlansStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

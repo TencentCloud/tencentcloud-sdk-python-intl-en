@@ -940,7 +940,7 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
         """
         :param LoadBalancerId: Unique CLB instance ID, such as lb-12345678
         :type LoadBalancerId: str
-        :param SnatIps: Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet
+        :param SnatIps: Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet.
         :type SnatIps: list of SnatIp
         """
         self.LoadBalancerId = None
@@ -1127,7 +1127,7 @@ class DeleteLoadBalancerListenersRequest(AbstractModel):
         """
         :param LoadBalancerId: CLB instance ID
         :type LoadBalancerId: str
-        :param ListenerIds: Array of IDs of the listeners to be deleted. If this parameter is left empty, all listeners of the CLB instance will be deleted
+        :param ListenerIds: Array of IDs of the listeners to be deleted. If this parameter is left empty, all listeners of the CLB instance will be deleted.
         :type ListenerIds: list of str
         """
         self.LoadBalancerId = None
@@ -1518,7 +1518,7 @@ class DescribeBlockIPListRequest(AbstractModel):
         :type LoadBalancerId: str
         :param Offset: Data offset. Default value: 0.
         :type Offset: int
-        :param Limit: Maximum number of IPs to be returned. Default value: 100000.
+        :param Limit: Maximum number of IPs to be returned. Default value: 100,000.
         :type Limit: int
         """
         self.LoadBalancerId = None
@@ -3211,17 +3211,17 @@ class ModifyBlockIPListRequest(AbstractModel):
 <li> add_customized_field (sets header initially to enable the blacklist feature)</li>
 <li> set_customized_field (modifies header)</li>
 <li> del_customized_field (deletes header)</li>
-<li> add_blocked (adds to blacklist)</li>
-<li> del_blocked (deletes from blacklist)</li>
+<li> add_blocked (adds IPs to blacklist)</li>
+<li> del_blocked (deletes IPs from blacklist)</li>
 <li> flush_blocked (clears blacklist)</li>
         :type Type: str
-        :param ClientIPField: Name of the header field that stores real client IPs
+        :param ClientIPField: Header field that stores real client IPs
         :type ClientIPField: str
-        :param BlockIPList: List of blocked IPs. The array can contain up to 200,000 entries in one operation
+        :param BlockIPList: List of blocked IPs. The array can contain up to 200,000 entries in one operation.
         :type BlockIPList: list of str
         :param ExpireTime: Expiration time in seconds. Default value: 3600
         :type ExpireTime: int
-        :param AddStrategy: IP adding policy. Valid values: fifo (if a blacklist is full, new IPs added to the blacklist will adopt the first-in first-out policy)
+        :param AddStrategy: IP adding policy. Valid value: fifo (if a blacklist is full, new IPs added to the blacklist will adopt the first-in first-out policy)
         :type AddStrategy: str
         """
         self.LoadBalancerIds = None

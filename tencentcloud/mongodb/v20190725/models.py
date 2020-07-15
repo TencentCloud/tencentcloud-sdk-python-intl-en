@@ -252,6 +252,113 @@ class CreateDBInstanceHourResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDBInstanceRequest(AbstractModel):
+    """CreateDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of slave nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
+        :type NodeNum: int
+        :param Memory: Instance memory size in GB.
+        :type Memory: int
+        :param Volume: Instance disk size in GB.
+        :type Volume: int
+        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition.
+        :type MongoVersion: str
+        :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10.
+        :type GoodsNum: int
+        :param Zone: Instance region name in the format of ap-guangzhou-2.
+        :type Zone: str
+        :param Period: Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
+        :type Period: int
+        :param MachineCode: Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO).
+        :type MachineCode: str
+        :param ClusterType: Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster).
+        :type ClusterType: str
+        :param ReplicateSetNum: Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API.
+        :type ReplicateSetNum: int
+        :param ProjectId: Project ID. If this parameter is not set, the default project will be used.
+        :type ProjectId: int
+        :param VpcId: VPC ID. If this parameter is not set, the classic network will be used. Please use the `DescribeVpcs` API to query the VPC list.
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the `DescribeSubnets` API to query the subnet list.
+        :type SubnetId: str
+        :param Password: Instance password. If this parameter is not set, you need to set an instance password through the `SetPassword` API after creating an instance. The password can only contain 8–16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()`.
+        :type Password: str
+        :param Tags: Instance tag information.
+        :type Tags: list of TagInfo
+        :param AutoRenewFlag: Auto-renewal flag. Valid values: 0 (auto-renewal not enabled), 1 (auto-renewal enabled). Default value: 0.
+        :type AutoRenewFlag: int
+        """
+        self.NodeNum = None
+        self.Memory = None
+        self.Volume = None
+        self.MongoVersion = None
+        self.GoodsNum = None
+        self.Zone = None
+        self.Period = None
+        self.MachineCode = None
+        self.ClusterType = None
+        self.ReplicateSetNum = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Password = None
+        self.Tags = None
+        self.AutoRenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.NodeNum = params.get("NodeNum")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.MongoVersion = params.get("MongoVersion")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Zone = params.get("Zone")
+        self.Period = params.get("Period")
+        self.MachineCode = params.get("MachineCode")
+        self.ClusterType = params.get("ClusterType")
+        self.ReplicateSetNum = params.get("ReplicateSetNum")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Password = params.get("Password")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+
+
+class CreateDBInstanceResponse(AbstractModel):
+    """CreateDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DealId: Order ID.
+        :type DealId: str
+        :param InstanceIds: List of IDs of created instances.
+        :type InstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealId = None
+        self.InstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class DBInstanceInfo(AbstractModel):
     """Instance information
 
@@ -271,6 +378,32 @@ class DBInstanceInfo(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Region = params.get("Region")
+
+
+class DBInstancePrice(AbstractModel):
+    """Instance price
+
+    """
+
+    def __init__(self):
+        """
+        :param UnitPrice: Unit price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UnitPrice: float
+        :param OriginalPrice: Original price.
+        :type OriginalPrice: float
+        :param DiscountPrice: Discounted price.
+        :type DiscountPrice: float
+        """
+        self.UnitPrice = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.UnitPrice = params.get("UnitPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
 
 
 class DescribeBackupAccessRequest(AbstractModel):
@@ -415,6 +548,56 @@ class DescribeDBBackupsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BackupList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceDealRequest(AbstractModel):
+    """DescribeDBInstanceDeal request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DealId: Order ID. It is returned by the `CreateDBInstance` and other APIs.
+        :type DealId: str
+        """
+        self.DealId = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+
+
+class DescribeDBInstanceDealResponse(AbstractModel):
+    """DescribeDBInstanceDeal response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Order status. Valid values: 1 (unpaid), 2 (paid), 3 (delivering), 4 (delivered), 5 (delivery failed), 6 (refunded), 7 (order closed), 8 (order closed because it failed to be paid within timeout period).
+        :type Status: int
+        :param OriginalPrice: Original price of the order.
+        :type OriginalPrice: float
+        :param DiscountPrice: Discounted price of the order.
+        :type DiscountPrice: float
+        :param Action: Operation performed by the order. Valid values: purchase, renew, upgrade, downgrade, refund.
+        :type Action: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+        self.Action = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.Action = params.get("Action")
         self.RequestId = params.get("RequestId")
 
 
@@ -717,6 +900,202 @@ class FlushInstanceRouterConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class InquirePriceCreateDBInstancesRequest(AbstractModel):
+    """InquirePriceCreateDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: Instance region name in the format of ap-guangzhou-2.
+        :type Zone: str
+        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of slave nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
+        :type NodeNum: int
+        :param Memory: Instance memory size in GB.
+        :type Memory: int
+        :param Volume: Instance disk size in GB.
+        :type Volume: int
+        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.
+        :type MongoVersion: str
+        :param MachineCode: Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).
+        :type MachineCode: str
+        :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10.
+        :type GoodsNum: int
+        :param Period: Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
+        :type Period: int
+        :param ClusterType: Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).
+        :type ClusterType: str
+        :param ReplicateSetNum: Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.
+        :type ReplicateSetNum: int
+        """
+        self.Zone = None
+        self.NodeNum = None
+        self.Memory = None
+        self.Volume = None
+        self.MongoVersion = None
+        self.MachineCode = None
+        self.GoodsNum = None
+        self.Period = None
+        self.ClusterType = None
+        self.ReplicateSetNum = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.NodeNum = params.get("NodeNum")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.MongoVersion = params.get("MongoVersion")
+        self.MachineCode = params.get("MachineCode")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Period = params.get("Period")
+        self.ClusterType = params.get("ClusterType")
+        self.ReplicateSetNum = params.get("ReplicateSetNum")
+
+
+class InquirePriceCreateDBInstancesResponse(AbstractModel):
+    """InquirePriceCreateDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: Price.
+        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = DBInstancePrice()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
+    """InquirePriceModifyDBInstanceSpec request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console.
+        :type InstanceId: str
+        :param Memory: Instance memory size in GB after specification adjustment.
+        :type Memory: int
+        :param Volume: Instance disk size in GB after specification adjustment.
+        :type Volume: int
+        """
+        self.InstanceId = None
+        self.Memory = None
+        self.Volume = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+
+
+class InquirePriceModifyDBInstanceSpecResponse(AbstractModel):
+    """InquirePriceModifyDBInstanceSpec response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: Price.
+        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = DBInstancePrice()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePriceRenewDBInstancesRequest(AbstractModel):
+    """InquirePriceRenewDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console. This API supports operations on up to 5 instances at a time.
+        :type InstanceIds: list of str
+        :param InstanceChargePrepaid: The parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set automatic renewal, and other attributes of the monthly subscription instance.
+        :type InstanceChargePrepaid: :class:`tencentcloud.mongodb.v20190725.models.InstanceChargePrepaid`
+        """
+        self.InstanceIds = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class InquirePriceRenewDBInstancesResponse(AbstractModel):
+    """InquirePriceRenewDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: Price.
+        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = DBInstancePrice()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InstanceChargePrepaid(AbstractModel):
+    """Description on the billing mode of an instance
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: Purchased usage period (in month). Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36. Default value: 1.
+        :type Period: int
+        :param RenewFlag: Auto-renewal flag. Valid values:
+NOTIFY_AND_AUTO_RENEW: notify expiration and renew automatically
+NOTIFY_AND_MANUAL_RENEW: notify expiration but not renew automatically
+DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify expiration nor renew automatically
+
+Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis when the account balance is sufficient.
+        :type RenewFlag: str
+        """
+        self.Period = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
 
 
 class InstanceDetail(AbstractModel):
@@ -1060,6 +1439,46 @@ class RenameInstanceRequest(AbstractModel):
 
 class RenameInstanceResponse(AbstractModel):
     """RenameInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RenewDBInstancesRequest(AbstractModel):
+    """RenewDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: IDs of one or more instances to be operated. The value can be obtained from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 100 instances can be requested at a time.
+        :type InstanceIds: list of str
+        :param InstanceChargePrepaid: The parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set automatic renewal, and other attributes of the monthly subscription instance. This parameter is mandatory in monthly subscription.
+        :type InstanceChargePrepaid: :class:`tencentcloud.mongodb.v20190725.models.InstanceChargePrepaid`
+        """
+        self.InstanceIds = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class RenewDBInstancesResponse(AbstractModel):
+    """RenewDBInstances response structure.
 
     """
 

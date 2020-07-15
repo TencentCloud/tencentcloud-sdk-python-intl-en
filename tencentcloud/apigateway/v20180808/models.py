@@ -509,6 +509,34 @@ class ApiKey(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
 
 
+class ApiKeysStatus(AbstractModel):
+    """Key list
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible API keys.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param ApiKeySet: API key list.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ApiKeySet: list of ApiKey
+        """
+        self.TotalCount = None
+        self.ApiKeySet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ApiKeySet") is not None:
+            self.ApiKeySet = []
+            for item in params.get("ApiKeySet"):
+                obj = ApiKey()
+                obj._deserialize(item)
+                self.ApiKeySet.append(obj)
+
+
 class ApiRequestConfig(AbstractModel):
     """API request configuration
 
@@ -644,6 +672,32 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = ApiUsagePlan()
                 obj._deserialize(item)
                 self.ApiUsagePlanList.append(obj)
+
+
+class ApisStatus(AbstractModel):
+    """API list status description
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible APIs.
+        :type TotalCount: int
+        :param ApiIdStatusSet: API list.
+        :type ApiIdStatusSet: list of DesApisStatus
+        """
+        self.TotalCount = None
+        self.ApiIdStatusSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ApiIdStatusSet") is not None:
+            self.ApiIdStatusSet = []
+            for item in params.get("ApiIdStatusSet"):
+                obj = DesApisStatus()
+                obj._deserialize(item)
+                self.ApiIdStatusSet.append(obj)
 
 
 class BindEnvironmentRequest(AbstractModel):
@@ -1939,6 +1993,60 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApiKeysStatusRequest(AbstractModel):
+    """DescribeApiKeysStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter. Valid values: AccessKeyId, AccessKeySecret, SecretName, NotUsagePlanId, Status, KeyWord (match with `name` or `path`).
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeApiKeysStatusResponse(AbstractModel):
+    """DescribeApiKeysStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Key list.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKeysStatus`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApiKeysStatus()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeApiRequest(AbstractModel):
     """DescribeApi request structure.
 
@@ -2032,6 +2140,245 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApisStatusRequest(AbstractModel):
+    """DescribeApisStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: Unique service ID of API.
+        :type ServiceId: str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Filters: API filter. Valid values: ApiId, ApiName, ApiPath, ApiType, AuthRelationApiId, AuthType, ApiBuniessType, NotUsagePlanId, Environment, Tags (whose values are the list of `$tag_key:tag_value`), TagKeys (whose values are the list of tag keys).
+        :type Filters: list of Filter
+        """
+        self.ServiceId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeApisStatusResponse(AbstractModel):
+    """DescribeApisStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: List of API details.
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApisStatus`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApisStatus()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIPStrategyApisStatusRequest(AbstractModel):
+    """DescribeIPStrategyApisStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: Unique service ID.
+        :type ServiceId: str
+        :param StrategyId: Unique policy ID.
+        :type StrategyId: str
+        :param EnvironmentName: Policy environment.
+        :type EnvironmentName: str
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter. Valid values: ApiPath, ApiName, KeyWord (fuzzy search by `Path` and `Name`).
+        :type Filters: list of Filter
+        """
+        self.ServiceId = None
+        self.StrategyId = None
+        self.EnvironmentName = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.StrategyId = params.get("StrategyId")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeIPStrategyApisStatusResponse(AbstractModel):
+    """DescribeIPStrategyApisStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: List of APIs bound to environment.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategyApiStatus`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = IPStrategyApiStatus()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIPStrategyRequest(AbstractModel):
+    """DescribeIPStrategy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: Unique service ID.
+        :type ServiceId: str
+        :param StrategyId: Unique IP policy ID.
+        :type StrategyId: str
+        :param EnvironmentName: Environment associated with policy.
+        :type EnvironmentName: str
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter, which is a reserved field. Filtering is not supported currently.
+        :type Filters: list of Filter
+        """
+        self.ServiceId = None
+        self.StrategyId = None
+        self.EnvironmentName = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.StrategyId = params.get("StrategyId")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeIPStrategyResponse(AbstractModel):
+    """DescribeIPStrategy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: IP policy details.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategy`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = IPStrategy()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIPStrategysStatusRequest(AbstractModel):
+    """DescribeIPStrategysStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: Unique service ID.
+        :type ServiceId: str
+        :param Filters: Filter. Valid values: StrategyName.
+        :type Filters: list of Filter
+        """
+        self.ServiceId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeIPStrategysStatusResponse(AbstractModel):
+    """DescribeIPStrategysStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: List of eligible policies.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategysStatus`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = IPStrategysStatus()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLogSearchRequest(AbstractModel):
     """DescribeLogSearch request structure.
 
@@ -2045,7 +2392,7 @@ class DescribeLogSearchRequest(AbstractModel):
         :type EndTime: str
         :param ServiceId: Service ID
         :type ServiceId: str
-        :param Filters: Exact search by `apiid` or `reqid`
+        :param Filters: Reserved field
         :type Filters: list of Filter
         :param Limit: Number of logs to be returned at a time. Maximum value: 100
         :type Limit: int
@@ -2053,9 +2400,19 @@ class DescribeLogSearchRequest(AbstractModel):
         :type ConText: str
         :param Sort: Sorting by time. Valid values: asc (ascending), desc (descending). Default value: desc
         :type Sort: str
-        :param Query: Fuzzy search for log by keyword
+        :param Query: Reserved field
         :type Query: str
-        :param LogQuerys: 
+        :param LogQuerys: Search criterion. Valid values:
+req_id: "="
+api_id: "="
+cip: "="
+uip: ":"
+err_msg: ":"
+rsp_st: "=", "!=", ":", ">", "<"
+req_t: ">=", "<="
+
+Note:
+":" indicates included, and "!=" indicates not equal to. For the meanings of fields, please see the `LogSet` description of the output parameter
         :type LogQuerys: list of LogQuery
         """
         self.StartTime = None
@@ -2618,6 +2975,60 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeServicesStatusRequest(AbstractModel):
+    """DescribeServicesStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter. Valid values: ServiceId, ServiceName, NotUsagePlanId, Environment, IpVersion.
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeServicesStatusResponse(AbstractModel):
+    """DescribeServicesStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Service list query result.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServicesStatus`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ServicesStatus()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
     """DescribeUsagePlanEnvironments request structure.
 
@@ -2761,6 +3172,60 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUsagePlansStatusRequest(AbstractModel):
+    """DescribeUsagePlansStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Filters: Usage plan filter. Valid values: UsagePlanId, UsagePlanName, NotServiceId, NotApiId, Environment.
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeUsagePlansStatusResponse(AbstractModel):
+    """DescribeUsagePlansStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Usage plan list.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlansStatus`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = UsagePlansStatus()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DisableApiKeyRequest(AbstractModel):
     """DisableApiKey request structure.
 
@@ -2830,7 +3295,7 @@ class DomainSetList(AbstractModel):
         """
         :param DomainName: Domain name.
         :type DomainName: str
-        :param Status: Domain name resolution status. True: success; Flase: failure.
+        :param Status: Domain name resolution status. True: success; False: failure.
         :type Status: int
         :param CertificateId: Certificate ID.
         :type CertificateId: str
@@ -2924,7 +3389,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Environment(AbstractModel):
-    """Environment
+    """Information of service release environment.
 
     """
 
@@ -2974,7 +3439,7 @@ class EnvironmentStrategy(AbstractModel):
 
 
 class ErrorCodes(AbstractModel):
-    """ErrorCodes
+    """Custom error code
 
     """
 
@@ -3175,8 +3640,130 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.BindApis.append(obj)
 
 
+class IPStrategyApi(AbstractModel):
+    """List of APIs bound to policy
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiId: Unique API ID.
+        :type ApiId: str
+        :param ApiName: Custom API name.
+        :type ApiName: str
+        :param ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API).
+        :type ApiType: str
+        :param Path: API path, such as `/path`.
+        :type Path: str
+        :param Method: API request method, such as `GET`.
+        :type Method: str
+        :param OtherIPStrategyId: Unique ID of another policy bound to API.
+        :type OtherIPStrategyId: str
+        :param OtherEnvironmentName: Environment bound to API.
+        :type OtherEnvironmentName: str
+        """
+        self.ApiId = None
+        self.ApiName = None
+        self.ApiType = None
+        self.Path = None
+        self.Method = None
+        self.OtherIPStrategyId = None
+        self.OtherEnvironmentName = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.ApiName = params.get("ApiName")
+        self.ApiType = params.get("ApiType")
+        self.Path = params.get("Path")
+        self.Method = params.get("Method")
+        self.OtherIPStrategyId = params.get("OtherIPStrategyId")
+        self.OtherEnvironmentName = params.get("OtherEnvironmentName")
+
+
+class IPStrategyApiStatus(AbstractModel):
+    """Details of API bound to IP policy
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of APIs bound to environment.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param ApiIdStatusSet: Details of APIs bound to environment.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ApiIdStatusSet: list of IPStrategyApi
+        """
+        self.TotalCount = None
+        self.ApiIdStatusSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ApiIdStatusSet") is not None:
+            self.ApiIdStatusSet = []
+            for item in params.get("ApiIdStatusSet"):
+                obj = IPStrategyApi()
+                obj._deserialize(item)
+                self.ApiIdStatusSet.append(obj)
+
+
+class IPStrategysStatus(AbstractModel):
+    """Policy list
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of policies.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param StrategySet: Policy list.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StrategySet: list of IPStrategy
+        """
+        self.TotalCount = None
+        self.StrategySet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("StrategySet") is not None:
+            self.StrategySet = []
+            for item in params.get("StrategySet"):
+                obj = IPStrategy()
+                obj._deserialize(item)
+                self.StrategySet.append(obj)
+
+
+class LogQuery(AbstractModel):
+    """Search criterion input parameter
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Search field
+        :type Name: str
+        :param Operator: Operator
+        :type Operator: str
+        :param Value: Search value
+        :type Value: str
+        """
+        self.Name = None
+        self.Operator = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
+
+
 class MicroService(AbstractModel):
-    """MicroService
+    """Information of microservice bound to API.
 
     """
 
@@ -4092,6 +4679,94 @@ class ResponseErrorCodeReq(AbstractModel):
         self.NeedConvert = params.get("NeedConvert")
 
 
+class Service(AbstractModel):
+    """Service list display
+
+    """
+
+    def __init__(self):
+        """
+        :param InnerHttpsPort: Port for HTTPS access over private network.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InnerHttpsPort: int
+        :param ServiceDesc: Custom service description.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServiceDesc: str
+        :param Protocol: Service frontend request type, such as `http`, `https`, and `http&https`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ModifiedTime: str
+        :param NetTypes: Network types supported by service.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NetTypes: list of str
+        :param ExclusiveSetName: Dedicated cluster name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExclusiveSetName: str
+        :param ServiceId: Unique service ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServiceId: str
+        :param IpVersion: IP version.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IpVersion: str
+        :param AvailableEnvironments: List of published environments, such as test, prepub, and release.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AvailableEnvironments: list of str
+        :param ServiceName: Custom service name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServiceName: str
+        :param OuterSubDomain: Public domain name assigned by the system for this service.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OuterSubDomain: str
+        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreatedTime: str
+        :param InnerHttpPort: Port for HTTP access over private network.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InnerHttpPort: int
+        :param InnerSubDomain: Private domain name automatically assigned by the system for this service.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InnerSubDomain: str
+        :param TradeIsolateStatus: Billing status of service.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TradeIsolateStatus: int
+        """
+        self.InnerHttpsPort = None
+        self.ServiceDesc = None
+        self.Protocol = None
+        self.ModifiedTime = None
+        self.NetTypes = None
+        self.ExclusiveSetName = None
+        self.ServiceId = None
+        self.IpVersion = None
+        self.AvailableEnvironments = None
+        self.ServiceName = None
+        self.OuterSubDomain = None
+        self.CreatedTime = None
+        self.InnerHttpPort = None
+        self.InnerSubDomain = None
+        self.TradeIsolateStatus = None
+
+
+    def _deserialize(self, params):
+        self.InnerHttpsPort = params.get("InnerHttpsPort")
+        self.ServiceDesc = params.get("ServiceDesc")
+        self.Protocol = params.get("Protocol")
+        self.ModifiedTime = params.get("ModifiedTime")
+        self.NetTypes = params.get("NetTypes")
+        self.ExclusiveSetName = params.get("ExclusiveSetName")
+        self.ServiceId = params.get("ServiceId")
+        self.IpVersion = params.get("IpVersion")
+        self.AvailableEnvironments = params.get("AvailableEnvironments")
+        self.ServiceName = params.get("ServiceName")
+        self.OuterSubDomain = params.get("OuterSubDomain")
+        self.CreatedTime = params.get("CreatedTime")
+        self.InnerHttpPort = params.get("InnerHttpPort")
+        self.InnerSubDomain = params.get("InnerSubDomain")
+        self.TradeIsolateStatus = params.get("TradeIsolateStatus")
+
+
 class ServiceConfig(AbstractModel):
     """ServiceConfig
 
@@ -4401,8 +5076,36 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.ServiceUsagePlanList.append(obj)
 
 
+class ServicesStatus(AbstractModel):
+    """Service list display
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of services in list.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param ServiceSet: Service list details.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ServiceSet: list of Service
+        """
+        self.TotalCount = None
+        self.ServiceSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ServiceSet") is not None:
+            self.ServiceSet = []
+            for item in params.get("ServiceSet"):
+                obj = Service()
+                obj._deserialize(item)
+                self.ServiceSet.append(obj)
+
+
 class Tag(AbstractModel):
-    """API tag
+    """Information of tag bound to API.
 
     """
 
@@ -4943,7 +5646,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlanEnvironment(AbstractModel):
-    """Usage plan binding details
+    """Details of environments bound to usage plan.
 
     """
 
@@ -5016,7 +5719,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlanEnvironmentStatus(AbstractModel):
-    """Usage plan binding details
+    """List of environments bound to usage plan.
 
     """
 
@@ -5044,7 +5747,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlanInfo(AbstractModel):
-    """Usage plan details (as modification made on a complex type by `yunapi` will be directly synced to the production environment and you cannot query which APIs reference the complex type, you need to create a complex type different from the previous `UsagePlan`)
+    """Usage plan details.
 
     """
 
@@ -5124,3 +5827,79 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = UsagePlanBindEnvironment()
                 obj._deserialize(item)
                 self.BindEnvironments.append(obj)
+
+
+class UsagePlanStatusInfo(AbstractModel):
+    """Usage plan list display.
+
+    """
+
+    def __init__(self):
+        """
+        :param UsagePlanId: Unique usage plan ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UsagePlanId: str
+        :param UsagePlanName: Custom usage plan name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UsagePlanName: str
+        :param UsagePlanDesc: Custom usage plan description.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UsagePlanDesc: str
+        :param MaxRequestNumPreSec: Maximum number of requests per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxRequestNumPreSec: int
+        :param MaxRequestNum: Total number of requests allowed. `-1` indicates no limit.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxRequestNum: int
+        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreatedTime: str
+        :param ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ModifiedTime: str
+        """
+        self.UsagePlanId = None
+        self.UsagePlanName = None
+        self.UsagePlanDesc = None
+        self.MaxRequestNumPreSec = None
+        self.MaxRequestNum = None
+        self.CreatedTime = None
+        self.ModifiedTime = None
+
+
+    def _deserialize(self, params):
+        self.UsagePlanId = params.get("UsagePlanId")
+        self.UsagePlanName = params.get("UsagePlanName")
+        self.UsagePlanDesc = params.get("UsagePlanDesc")
+        self.MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
+        self.MaxRequestNum = params.get("MaxRequestNum")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ModifiedTime = params.get("ModifiedTime")
+
+
+class UsagePlansStatus(AbstractModel):
+    """Usage plan list
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible usage plans.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param UsagePlanStatusSet: Usage plan list.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UsagePlanStatusSet: list of UsagePlanStatusInfo
+        """
+        self.TotalCount = None
+        self.UsagePlanStatusSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("UsagePlanStatusSet") is not None:
+            self.UsagePlanStatusSet = []
+            for item in params.get("UsagePlanStatusSet"):
+                obj = UsagePlanStatusInfo()
+                obj._deserialize(item)
+                self.UsagePlanStatusSet.append(obj)

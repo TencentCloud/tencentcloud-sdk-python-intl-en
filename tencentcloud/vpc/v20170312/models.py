@@ -87,15 +87,15 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceIds: ResourceId, such as 'eip-xxxx', 'lb-xxxx'
+        :param ResourceIds: The unique ID of the source, such as 'eip-xxxx' and 'lb-xxxx'. EIP and LB resources are currently supported.
         :type ResourceIds: list of str
-        :param BandwidthPackageId: The unique ID of the bandwidth package, such as 'bwp-xxxx'
+        :param BandwidthPackageId: The unique ID of the bandwidth package, such as 'bwp-xxxx'.
         :type BandwidthPackageId: str
-        :param NetworkType: The bandwidth package type, including 'BGP', 'SINGLEISP', 'ANYCAST'
+        :param NetworkType: The type of the bandwidth package. Valid value: 'BGP'. Internal resources will be represented by 'BGP IP'.
         :type NetworkType: str
-        :param ResourceType: The resource type, including 'Address', 'LoadBalance'
+        :param ResourceType: The resource type, including 'Address' and 'LoadBalance'.
         :type ResourceType: str
-        :param Protocol: 
+        :param Protocol: The protocol type of the bandwidth package. Valid values: 'ipv4' and 'ipv6'.
         :type Protocol: str
         """
         self.ResourceIds = None
@@ -747,9 +747,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         """
         :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
         :type NatGatewayId: str
-        :param AddressCount: The number of EIPs that needs to be applied for. The system will create N number of EIPs according to your requirements. Either AddressCount or PublicAddresses must be passed in.
+        :param AddressCount: The number of EIPs you want to apply for. The system will create the same number of EIPs as you require. Either `AddressCount` or `PublicAddresses` must be passed in.
         :type AddressCount: int
-        :param PublicIpAddresses: The EIP array bound to the NAT gateway. Either AddressCount or PublicAddresses must be passed in.
+        :param PublicIpAddresses: The EIP array bound to the NAT gateway. Either `AddressCount` or `PublicAddresses` must be passed in.
         :type PublicIpAddresses: list of str
         :param Zone: The EIP zone. This is passed in when EIP is automatically assigned.
         :type Zone: str
@@ -984,27 +984,27 @@ class AttachNetworkInterfaceResponse(AbstractModel):
 
 
 class BandwidthPackage(AbstractModel):
-    """Structure of information on the bandwidth package
+    """The structure of information of the bandwidth package.
 
     """
 
     def __init__(self):
         """
-        :param BandwidthPackageId: The unique ID of the bandwidth package
+        :param BandwidthPackageId: The unique ID of the bandwidth package.
         :type BandwidthPackageId: str
-        :param NetworkType: The bandwidth package type, including 'BGP', 'SINGLEISP', 'ANYCAST'
+        :param NetworkType: The bandwidth package type. Valid values: 'BGP', 'SINGLEISP', and 'ANYCAST'
         :type NetworkType: str
-        :param ChargeType: The bandwidth package billing type, including 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'
+        :param ChargeType: The bandwidth package billing mode. Valid values: 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'
         :type ChargeType: str
-        :param BandwidthPackageName: The name of the bandwidth package
+        :param BandwidthPackageName: The name of the bandwidth package.
         :type BandwidthPackageName: str
         :param CreatedTime: The creation time of the bandwidth package, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
         :type CreatedTime: str
-        :param Status: The status of the bandwidth package, including 'CREATING', 'CREATED', 'DELETING', and 'DELETED'.
+        :param Status: The status of the bandwidth package. Valid values: 'CREATING', 'CREATED', 'DELETING', and 'DELETED'.
         :type Status: str
-        :param ResourceSet: The resource information of the bandwidth package
+        :param ResourceSet: The resource information of the bandwidth package.
         :type ResourceSet: list of Resource
-        :param Bandwidth: The size limit of the bandwidth package. Unit: Mbps. -1 indicates there is no limit.
+        :param Bandwidth: The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit.
         :type Bandwidth: int
         """
         self.BandwidthPackageId = None
@@ -1156,6 +1156,51 @@ class CcnAttachedInstance(AbstractModel):
         self.State = params.get("State")
         self.AttachedTime = params.get("AttachedTime")
         self.CcnUin = params.get("CcnUin")
+
+
+class CcnBandwidthInfo(AbstractModel):
+    """The information of the cross-region bandwidth limit for CCN instances.
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: The CCN ID that the bandwidth belongs to.
+Note: this field may return null, indicating that no valid value was found.
+        :type CcnId: str
+        :param CreatedTime: The creation time of the instance.
+Note: this field may return null, indicating that no valid value was found.
+        :type CreatedTime: str
+        :param ExpiredTime: The expiration time of the instance.
+Note: this field may return null, indicating that no valid value was found.
+        :type ExpiredTime: str
+        :param RegionFlowControlId: The unique ID of the bandwidth instance.
+Note: this field may return null, indicating that no valid value was found.
+        :type RegionFlowControlId: str
+        :param RenewFlag: The billing flag.
+Note: this field may return null, indicating that no valid value was found.
+        :type RenewFlag: str
+        :param CcnRegionBandwidthLimit: The information of bandwidth regions and bandwidth caps.
+Note: this field may return null, indicating that no valid value was found.
+        :type CcnRegionBandwidthLimit: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
+        """
+        self.CcnId = None
+        self.CreatedTime = None
+        self.ExpiredTime = None
+        self.RegionFlowControlId = None
+        self.RenewFlag = None
+        self.CcnRegionBandwidthLimit = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.RegionFlowControlId = params.get("RegionFlowControlId")
+        self.RenewFlag = params.get("RenewFlag")
+        if params.get("CcnRegionBandwidthLimit") is not None:
+            self.CcnRegionBandwidthLimit = CcnRegionBandwidthLimit()
+            self.CcnRegionBandwidthLimit._deserialize(params.get("CcnRegionBandwidthLimit"))
 
 
 class CcnInstance(AbstractModel):
@@ -1557,6 +1602,88 @@ class CreateAddressTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
+    """CreateAndAttachNetworkInterface request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: The ID of the VPC instance. You can obtain the parameter value from the `VpcId` field in the returned result of the `DescribeVpcs` API.
+        :type VpcId: str
+        :param NetworkInterfaceName: The name of the ENI. The maximum length is 60 bytes.
+        :type NetworkInterfaceName: str
+        :param SubnetId: The subnet instance ID of the ENI, such as 'subnet-0ap8nwca'.
+        :type SubnetId: str
+        :param InstanceId: The CVM instance ID.
+        :type InstanceId: str
+        :param PrivateIpAddresses: The information of the specified private IPs. You can specify a maximum of 10 IPs each time.
+        :type PrivateIpAddresses: list of PrivateIpAddressSpecification
+        :param SecondaryPrivateIpAddressCount: The number of private IP addresses you can apply for. The total number of private IP addresses cannot exceed the quota.
+        :type SecondaryPrivateIpAddressCount: int
+        :param SecurityGroupIds: The security group to be bound with, such as ['sg-1dd51d'].
+        :type SecurityGroupIds: list of str
+        :param NetworkInterfaceDescription: The ENI description. You can enter any information within 60 characters.
+        :type NetworkInterfaceDescription: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
+        """
+        self.VpcId = None
+        self.NetworkInterfaceName = None
+        self.SubnetId = None
+        self.InstanceId = None
+        self.PrivateIpAddresses = None
+        self.SecondaryPrivateIpAddressCount = None
+        self.SecurityGroupIds = None
+        self.NetworkInterfaceDescription = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NetworkInterfaceName = params.get("NetworkInterfaceName")
+        self.SubnetId = params.get("SubnetId")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("PrivateIpAddresses") is not None:
+            self.PrivateIpAddresses = []
+            for item in params.get("PrivateIpAddresses"):
+                obj = PrivateIpAddressSpecification()
+                obj._deserialize(item)
+                self.PrivateIpAddresses.append(obj)
+        self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class CreateAndAttachNetworkInterfaceResponse(AbstractModel):
+    """CreateAndAttachNetworkInterface response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterface: The ENI instance.
+        :type NetworkInterface: :class:`tencentcloud.vpc.v20170312.models.NetworkInterface`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NetworkInterface = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkInterface") is not None:
+            self.NetworkInterface = NetworkInterface()
+            self.NetworkInterface._deserialize(params.get("NetworkInterface"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAssistantCidrRequest(AbstractModel):
     """CreateAssistantCidr request structure.
 
@@ -1612,19 +1739,19 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NetworkType: The bandwidth package type, including 'BGP', 'SINGLEISP', 'ANYCAST'
+        :param NetworkType: The bandwidth package type. Valid values: 'BGP', 'SINGLEISP', and 'ANYCAST'.
         :type NetworkType: str
-        :param ChargeType: The bandwidth package billing type, including 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'
+        :param ChargeType: The bandwidth package billing mode. Valid values: 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'.
         :type ChargeType: str
-        :param BandwidthPackageName: The name of the bandwidth package
+        :param BandwidthPackageName: The name of the bandwidth package.
         :type BandwidthPackageName: str
-        :param BandwidthPackageCount: The number of bandwidth packages (non-upward accounts can only enter 1)
+        :param BandwidthPackageCount: The number of bandwidth packages (enter 1 for bill-by-CVM accounts).
         :type BandwidthPackageCount: int
-        :param InternetMaxBandwidth: The size limit of the bandwidth package. Unit: Mbps. -1 indicates there is no limit.
+        :param InternetMaxBandwidth: The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit.
         :type InternetMaxBandwidth: int
-        :param Tags: 
+        :param Tags: The list of tags to be bound.
         :type Tags: list of Tag
-        :param Protocol: 
+        :param Protocol: The protocol type of the bandwidth package. Valid values: 'ipv4' and 'ipv6'. Default value: 'ipv4'.
         :type Protocol: str
         """
         self.NetworkType = None
@@ -1658,9 +1785,9 @@ class CreateBandwidthPackageResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BandwidthPackageId: The ID of the bandwidth package
+        :param BandwidthPackageId: The unique ID of the bandwidth package.
         :type BandwidthPackageId: str
-        :param BandwidthPackageIds: The IDs of the bandwidth package (valid when the applied number is greater than 1)
+        :param BandwidthPackageIds: The unique ID list of the bandwidth package (effective only when you apply for more than 1 bandwidth packages).
         :type BandwidthPackageIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1879,18 +2006,18 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectGatewayName: The name of the Direct Connect gateway
+        :param DirectConnectGatewayName: The name of the direct connect gateway.
         :type DirectConnectGatewayName: str
-        :param NetworkType: The type of the associated network. Available values are:
-<li>VPC - VPC</li>
-<li>CCN - CCN</li>
+        :param NetworkType: The type of the associated network. Valid values:
+<li>VPC</li>
+<li>CCN</li>
         :type NetworkType: str
         :param NetworkInstanceId: <li>When the NetworkType is VPC, this value is the VPC instance ID</li>
 <li>When the NetworkType is CCN, this value is the CCN instance ID</li>
         :type NetworkInstanceId: str
-        :param GatewayType: The type of the gateway. Available values are:
+        :param GatewayType: The type of the gateway. Valid values:
 <li>NORMAL - (Default) Standard type. Note: CCN only supports the standard type</li>
-<li>NAT - NAT-type</li>NAT-type supports network address switch configuration. After the type is confirmed, it cannot be modified. A VPC can create one NAT-type Direct Connect gateway and one non-NAT-type Direct Connect gateway
+<li>NAT - NAT type</li>NAT gateway supports network address translation. The specified type cannot be modified. A VPC can create one NAT direct connect gateway and one non-NAT direct connect gateway
         :type GatewayType: str
         """
         self.DirectConnectGatewayName = None
@@ -1913,7 +2040,7 @@ class CreateDirectConnectGatewayResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectGateway: Direct Connect gateway object.
+        :param DirectConnectGateway: The object of the direct connect gateway.
         :type DirectConnectGateway: :class:`tencentcloud.vpc.v20170312.models.DirectConnectGateway`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1936,17 +2063,17 @@ class CreateFlowLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
         :type VpcId: str
-        :param FlowLogName: The name of the flow log instance
+        :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
-        :param ResourceType: The type of resources to which the flow log belongs. VPC|SUBNET|NETWORKINTERFACE
+        :param ResourceType: The type of resources to which the flow log belongs. Valid values: 'VPC', 'SUBNET' and 'NETWORKINTERFACE'.
         :type ResourceType: str
-        :param ResourceId: The unique ID of the resource
+        :param ResourceId: The unique ID of the resource.
         :type ResourceId: str
-        :param TrafficType: The collection type of the flow log. ACCEPT|REJECT|ALL
+        :param TrafficType: The collection type of the flow log. Valid values: 'ACCEPT', 'REJECT' and 'ALL'.
         :type TrafficType: str
-        :param CloudLogId: The storage ID of the flow log
+        :param CloudLogId: The storage ID of the flow log.
         :type CloudLogId: str
         :param FlowLogDescription: The description of the flow log instance
         :type FlowLogDescription: str
@@ -1977,7 +2104,7 @@ class CreateFlowLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowLog: The information of the created flow log
+        :param FlowLog: The information of the flow log created.
         :type FlowLog: list of FlowLog
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3294,7 +3421,7 @@ class DeleteBandwidthPackageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BandwidthPackageId: The bwpID of the bandwidth package to be deleted
+        :param BandwidthPackageId: The unique ID of the bandwidth package to be deleted.
         :type BandwidthPackageId: str
         """
         self.BandwidthPackageId = None
@@ -3434,7 +3561,7 @@ class DeleteDirectConnectGatewayRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectGatewayId: The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`.
+        :param DirectConnectGatewayId: The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`.
         :type DirectConnectGatewayId: str
         """
         self.DirectConnectGatewayId = None
@@ -3468,9 +3595,9 @@ class DeleteFlowLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
         :type VpcId: str
-        :param FlowLogId: The unique ID of the flow log
+        :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
         """
         self.VpcId = None
@@ -4410,7 +4537,7 @@ class DescribeBandwidthPackageQuotaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param QuotaSet: The data structure of the bandwidth package quota
+        :param QuotaSet: The quota of the bandwidth package.
         :type QuotaSet: list of Quota
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4436,20 +4563,20 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BandwidthPackageIds: The bandwidth package ID. Batch operation is supported.
+        :param BandwidthPackageIds: The unique ID list of bandwidth packages.
         :type BandwidthPackageIds: list of str
-        :param Filters: The upper limit for `Filters` in each request is 10. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filtering conditions are as follows:
+        :param Filters: Each request can have up to 10 `Filters`. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
 <li> bandwidth-package_id - String - Required: No - (Filter condition) Filter by the unique ID of the bandwidth package.</li>
 <li> bandwidth-package-name - String - Required: No - (Filter condition) Filter by the bandwidth package name. Fuzzy filtering is not supported.</li>
 <li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Types include 'BGP', 'SINGLEISP', and 'ANYCAST'.</li>
-<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing type. Billing types include 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'</li>
-<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Resource types include 'Address' and 'LoadBalance'</li>
-<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as 'eip-xxxx', 'lb-xxxx'</li>
+<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing mode. Billing modes include 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'.</li>
+<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Resource types include 'Address' and 'LoadBalance'.</li>
+<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as 'eip-xxxx' and 'lb-xxxx'.</li>
 <li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>
         :type Filters: list of Filter
-        :param Offset: Queries bandwidth package offset
+        :param Offset: Queries the bandwidth package offset.
         :type Offset: int
-        :param Limit: Queries the limit on the number of bandwidth packages
+        :param Limit: Queries the limit on the number of bandwidth packages.
         :type Limit: int
         """
         self.BandwidthPackageIds = None
@@ -4477,9 +4604,9 @@ class DescribeBandwidthPackagesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: The number of bandwidth packages meeting the condition
+        :param TotalCount: The number of eligible bandwidth packages.
         :type TotalCount: int
-        :param BandwidthPackageSet: The description of the bandwidth packages
+        :param BandwidthPackageSet: The description of the bandwidth packages.
         :type BandwidthPackageSet: list of BandwidthPackage
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4956,18 +5083,18 @@ class DescribeDirectConnectGatewaysRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectGatewayIds: The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`.
+        :param DirectConnectGatewayIds: The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`.
         :type DirectConnectGatewayIds: list of str
-        :param Filters: Filter condition. `DirectConnectGatewayIds` and `Filters` cannot be specified at the same time.
-<li>direct-connect-gateway-id - String - The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`.</li>
-<li>direct-connect-gateway-name - String - The name of the Direct Connect gateway. The default is fuzzy query.</li>
-<li>direct-connect-gateway-ip - String - The `IP` of the Direct Connect gateway.</li>
-<li>gateway-type - String - The gateway type. Available values: `NORMAL` (Normal-type), `NAT` (NAT-type).</li>
-<li>network-type- String - The network type. Available values: `VPC` (VPC-type), `CCN` (CCN-type).</li>
-<li>ccn-id - String - The `ID` of the CCN where the Direct Connect gateway is located.</li>
-<li>vpc-id - String - The `ID` of the VPC where the Direct Connect gateway is located.</li>
+        :param Filters: Filter condition. `DirectConnectGatewayIds` and `Filters` cannot be specified at the same time..
+<li>direct-connect-gateway-id - String - The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`.</li>
+<li>direct-connect-gateway-name - String - The name of the direct connect gateway. The default is fuzzy query.</li>
+<li>direct-connect-gateway-ip - String - The `IP` of the direct connect gateway.</li>
+<li>gateway-type - String - The gateway type. Valid values: `NORMAL` (Standard type), `NAT` (NAT type).</li>
+<li>network-type- String - The network type. Valid values: `VPC` (VPC type), `CCN` (CCN type).</li>
+<li>ccn-id - String - The `ID` of the CCN where the direct connect gateway resides.</li>
+<li>vpc-id - String - The `ID` of the VPC where the direct connect gateway resides.</li>
         :type Filters: list of Filter
-        :param Offset: Offset.
+        :param Offset: The offset.
         :type Offset: int
         :param Limit: The returned quantity.
         :type Limit: int
@@ -4997,9 +5124,9 @@ class DescribeDirectConnectGatewaysResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: The number of objects meeting the condition.
+        :param TotalCount: The number of eligible objects.
         :type TotalCount: int
-        :param DirectConnectGatewaySet: The object array of the Direct Connect gateway.
+        :param DirectConnectGatewaySet: The object array of the direct connect gateway.
         :type DirectConnectGatewaySet: list of DirectConnectGateway
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5027,9 +5154,9 @@ class DescribeFlowLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
         :type VpcId: str
-        :param FlowLogId: The unique ID of the flow log
+        :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
         """
         self.VpcId = None
@@ -5048,7 +5175,7 @@ class DescribeFlowLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowLog: Flow log information
+        :param FlowLog: The flow log information.
         :type FlowLog: list of FlowLog
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5074,30 +5201,34 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
         :type VpcId: str
-        :param FlowLogId: The unique ID of the flow log
+        :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
-        :param FlowLogName: The name of the flow log instance
+        :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
-        :param ResourceType: The type of resource to which the flow log belongs. VPC|SUBNET|NETWORKINTERFACE
+        :param ResourceType: The type of resource to which the flow log belongs. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.
         :type ResourceType: str
-        :param ResourceId: The unique ID of the resource
+        :param ResourceId: The unique ID of the resource.
         :type ResourceId: str
-        :param TrafficType: The collection type of the flow log. ACCEPT|REJECT|ALL
+        :param TrafficType: The collection type of the flow log. Valid values: 'ACCEPT', 'REJECT' and 'ALL'.
         :type TrafficType: str
-        :param CloudLogId: The storage ID of the flow log
+        :param CloudLogId: The storage ID of the flow log.
         :type CloudLogId: str
-        :param CloudLogState: Flow log storage ID status
+        :param CloudLogState: The storage ID status of the flow log.
         :type CloudLogState: str
-        :param OrderField: Order by field. Supported fields: flowLogName, createTime. The default value is createTime.
+        :param OrderField: Order by field. Valid values: 'flowLogName' and 'createTime'. Default value: 'createTime'.
         :type OrderField: str
-        :param OrderDirection: Ascending (asc) and descending (desc). The default value is desc.
+        :param OrderDirection: In ascending (asc) or descending (desc) order. Default value: 'desc'.
         :type OrderDirection: str
-        :param Offset: Offset. The default value is 0.
+        :param Offset: The offset. Default value: 0.
         :type Offset: int
-        :param Limit: The number of rows per page. The default value is 10.
+        :param Limit: The number of rows per page. Default vaue: 10.
         :type Limit: int
+        :param Filters: Filter condition. `FlowLogIds` and `Filters` cannot be specified at the same time.
+<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
+<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key.</li>
+        :type Filters: :class:`tencentcloud.vpc.v20170312.models.Filter`
         """
         self.VpcId = None
         self.FlowLogId = None
@@ -5111,6 +5242,7 @@ class DescribeFlowLogsRequest(AbstractModel):
         self.OrderDirection = None
         self.Offset = None
         self.Limit = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -5126,6 +5258,9 @@ class DescribeFlowLogsRequest(AbstractModel):
         self.OrderDirection = params.get("OrderDirection")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = Filter()
+            self.Filters._deserialize(params.get("Filters"))
 
 
 class DescribeFlowLogsResponse(AbstractModel):
@@ -5135,9 +5270,9 @@ class DescribeFlowLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowLog: The flow log instance set
+        :param FlowLog: The instance set of flow logs.
         :type FlowLog: list of FlowLog
-        :param TotalNum: The total number of flow logs
+        :param TotalNum: The total number of flow logs.
         :type TotalNum: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -6970,44 +7105,44 @@ class DetachNetworkInterfaceResponse(AbstractModel):
 
 
 class DirectConnectGateway(AbstractModel):
-    """Direct Connect gateway object.
+    """The direct connect gateway object.
 
     """
 
     def __init__(self):
         """
-        :param DirectConnectGatewayId: Direct Connect `ID`.
+        :param DirectConnectGatewayId: The direct connect gateway `ID`.
         :type DirectConnectGatewayId: str
-        :param DirectConnectGatewayName: Direct Connect gateway name.
+        :param DirectConnectGatewayName: The direct connect gateway name.
         :type DirectConnectGatewayName: str
-        :param VpcId: The `ID` of the `VPC` instance associated with the Direct Connect gateway.
+        :param VpcId: The `ID` of the `VPC` instance associated with the direct connect gateway.
         :type VpcId: str
         :param NetworkType: The associated network type:
 <li>`VPC` - VPC</li>
 <li>`CCN` - CCN</li>
         :type NetworkType: str
         :param NetworkInstanceId: The `ID` of the associated network instance:
-<li>When the NetworkType is `VPC`, this value is the VPC instance `ID`</li>
-<li>When the NetworkType is `CCN`, this value is the CCN instance `ID`</li>
+<li>When the `NetworkType` is `VPC`, this value is the VPC instance `ID`</li>
+<li>When the `NetworkType` is `CCN`, this value is the CCN instance `ID`</li>
         :type NetworkInstanceId: str
-        :param GatewayType: Gateway type:
+        :param GatewayType: The gateway type:
 <li>NORMAL - Standard type. Note: CCN only supports the standard type</li>
-<li>NAT - NAT type</li>
-NAT type supports network address switch configuration. After the type is confirmed, it cannot be modified. A VPC can create one NAT-type Direct Connect gateway and one non-NAT-type Direct Connect gateway
+<li>NAT type</li>
+The NAT type supports network address translation. The specified type cannot be modified. A VPC can create one NAT direct connect gateway and one non-NAT direct connect gateway
         :type GatewayType: str
-        :param CreateTime: Creation Time.
+        :param CreateTime: The creation time.
         :type CreateTime: str
-        :param DirectConnectGatewayIp: Direct Connect gateway IP.
+        :param DirectConnectGatewayIp: The direct connect gateway IP.
         :type DirectConnectGatewayIp: str
-        :param CcnId: The `ID` of the `CCN` instance associated with the Direct Connect gateway.
+        :param CcnId: The `ID` of the `CCN` instance associated with the direct connect gateway.
         :type CcnId: str
         :param CcnRouteType: The route-learning type of the CCN:
 <li>`BGP` - Automatic learning.</li>
 <li>`STATIC` - Static, that is, user-configured.</li>
         :type CcnRouteType: str
-        :param EnableBGP: Whether BGP is enabled.
+        :param EnableBGP: Whether the BGP is enabled.
         :type EnableBGP: bool
-        :param EnableBGPCommunity: 
+        :param EnableBGPCommunity: Whether the `community` attribute of the BGP is enabled.
         :type EnableBGPCommunity: bool
         """
         self.DirectConnectGatewayId = None
@@ -7471,25 +7606,25 @@ class FlowLog(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
         :type VpcId: str
-        :param FlowLogId: The unique ID of the flow log
+        :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
-        :param FlowLogName: The name of the flow log instance
+        :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
-        :param ResourceType: The type of resource to which the flow log belongs. VPC|SUBNET|NETWORKINTERFACE
+        :param ResourceType: The type of resource to which the flow log belongs. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.
         :type ResourceType: str
-        :param ResourceId: The unique ID of the resource
+        :param ResourceId: The unique ID of the resource.
         :type ResourceId: str
-        :param TrafficType: The collection type of the flow log. ACCEPT|REJECT|ALL
+        :param TrafficType: The collection type of the flow log. Valid values: 'ACCEPT', 'REJECT' and 'ALL'.
         :type TrafficType: str
-        :param CloudLogId: The storage ID of the flow log
+        :param CloudLogId: The storage ID of the flow log.
         :type CloudLogId: str
-        :param CloudLogState: Flow log storage ID status
+        :param CloudLogState: The storage ID status of the flow log.
         :type CloudLogState: str
-        :param FlowLogDescription: Flow log description
+        :param FlowLogDescription: The flow log description.
         :type FlowLogDescription: str
-        :param CreatedTime: Flow log creation time
+        :param CreatedTime: The creation time of the flow log.
         :type CreatedTime: str
         """
         self.VpcId = None
@@ -7577,6 +7712,82 @@ class GatewayQos(AbstractModel):
         self.IpAddress = params.get("IpAddress")
         self.Bandwidth = params.get("Bandwidth")
         self.CreateTime = params.get("CreateTime")
+
+
+class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
+    """GetCcnRegionBandwidthLimits request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: The CCN instance ID, such as `ccn-f49l6u0z`.
+        :type CcnId: str
+        :param Filters: The filter condition.
+<li>sregion - String - (Filter condition) Filter by the source region, such as 'ap-guangzhou'.</li>
+<li>dregion - String - (Filter condition) Filter by the destination region, such as 'ap-shanghai-bm'.</li>
+        :type Filters: list of Filter
+        :param SortedBy: The sorting condition. Valid values: 'BandwidthLimit' and 'ExpireTime'.
+        :type SortedBy: str
+        :param Offset: The offset.
+        :type Offset: int
+        :param Limit: The returned quantity.
+        :type Limit: int
+        :param OrderBy: In ascending or descending order. Valid values: 'ASC' and 'DESC'.
+        :type OrderBy: str
+        """
+        self.CcnId = None
+        self.Filters = None
+        self.SortedBy = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderBy = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.SortedBy = params.get("SortedBy")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+
+
+class GetCcnRegionBandwidthLimitsResponse(AbstractModel):
+    """GetCcnRegionBandwidthLimits response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnBandwidthSet: The CCN outbound bandwidths in each region.
+Note: this field may return null, indicating that no valid value was found.
+        :type CcnBandwidthSet: list of CcnBandwidthInfo
+        :param TotalCount: The number of eligible objects.
+Note: this field may return null, indicating that no valid value was found.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CcnBandwidthSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CcnBandwidthSet") is not None:
+            self.CcnBandwidthSet = []
+            for item in params.get("CcnBandwidthSet"):
+                obj = CcnBandwidthInfo()
+                obj._deserialize(item)
+                self.CcnBandwidthSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
 
 
 class HaVip(AbstractModel):
@@ -8444,18 +8655,22 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BandwidthPackageId: The unique ID of the bandwidth package
+        :param BandwidthPackageId: The unique ID of the bandwidth package.
         :type BandwidthPackageId: str
-        :param BandwidthPackageName: The name of the bandwidth package
+        :param BandwidthPackageName: The name of the bandwidth package.
         :type BandwidthPackageName: str
+        :param ChargeType: The billing mode of the bandwidth package.
+        :type ChargeType: str
         """
         self.BandwidthPackageId = None
         self.BandwidthPackageName = None
+        self.ChargeType = None
 
 
     def _deserialize(self, params):
         self.BandwidthPackageId = params.get("BandwidthPackageId")
         self.BandwidthPackageName = params.get("BandwidthPackageName")
+        self.ChargeType = params.get("ChargeType")
 
 
 class ModifyBandwidthPackageAttributeResponse(AbstractModel):
@@ -8600,11 +8815,11 @@ class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectGatewayId: The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`.
+        :param DirectConnectGatewayId: The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`.
         :type DirectConnectGatewayId: str
-        :param DirectConnectGatewayName: Direct connect gateway can be named freely, but the maximum length is 60 characters.
+        :param DirectConnectGatewayName: The direct connect gateway name. You can enter any name within 60 characters.
         :type DirectConnectGatewayName: str
-        :param CcnRouteType: CCN route learning type. Available values: `BGP` (Automatic learning), `STATIC` (Static, that is, user-configured). Modifying `CcnRouteType` is only possible if the Direct Connect is CCN-type and the BGP function is enabled.
+        :param CcnRouteType: The CCN route-learning type. Valid values: `BGP` (Automatic learning), `STATIC` (Static, that is, user-configured). You can only modify `CcnRouteType` for a CCN direct connect gateway with BGP enabled.
         :type CcnRouteType: str
         """
         self.DirectConnectGatewayId = None
@@ -8642,13 +8857,13 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID
+        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
         :type VpcId: str
-        :param FlowLogId: The unique ID of the flow log
+        :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
-        :param FlowLogName: The name of the flow log instance
+        :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
-        :param FlowLogDescription: The description of the flow log instance
+        :param FlowLogDescription: The description of the flow log instance.
         :type FlowLogDescription: str
         """
         self.VpcId = None
@@ -10319,11 +10534,11 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BandwidthPackageId: The unique ID of the bandwidth package, such as 'bwp-xxxx'
+        :param BandwidthPackageId: The unique ID of the bandwidth package, such as 'bwp-xxxx'.
         :type BandwidthPackageId: str
-        :param ResourceType: The resource type, including `Address`, `LoadBalance`
+        :param ResourceType: The resource type. Valid values: 'Address' and 'LoadBalance'.
         :type ResourceType: str
-        :param ResourceIds: ResourceId, such as 'eip-xxxx', 'lb-xxxx'
+        :param ResourceIds: The resource IP, such as 'eip-xxxx' and 'lb-xxxx'.
         :type ResourceIds: list of str
         """
         self.BandwidthPackageId = None
@@ -10767,7 +10982,7 @@ class ResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
 
 
 class Resource(AbstractModel):
-    """The structure of information on bandwidth package
+    """The structure of information of the bandwidth package.
 
     """
 
@@ -10775,9 +10990,9 @@ class Resource(AbstractModel):
         """
         :param ResourceType: The bandwidth package resource type, including 'Address', and 'LoadBalance'
         :type ResourceType: str
-        :param ResourceId: The bandwidth package ResourceId, such as `eip-xxxx`, `lb-xxxx`
+        :param ResourceId: The bandwidth package ID, such as 'eip-xxxx' and 'lb-xxxx'.
         :type ResourceId: str
-        :param AddressIp: Bandwidth package resource IP
+        :param AddressIp: The bandwidth package resource IP.
         :type AddressIp: str
         """
         self.ResourceType = None
@@ -11009,6 +11224,10 @@ Users can only add and operate USER-type routes.
         :type RouteType: str
         :param RouteTableId: Route table instance ID, such as rtb-azd4dt1c.
         :type RouteTableId: str
+        :param DestinationIpv6CidrBlock: Destination IPv6 IP range, which cannot be included in VPC IP range, such as 2402:4e00:1000:810b::/64.
+        :type DestinationIpv6CidrBlock: str
+        :param RouteItemId: Unique routing policy ID.
+        :type RouteItemId: str
         """
         self.DestinationCidrBlock = None
         self.GatewayType = None
@@ -11018,6 +11237,8 @@ Users can only add and operate USER-type routes.
         self.Enabled = None
         self.RouteType = None
         self.RouteTableId = None
+        self.DestinationIpv6CidrBlock = None
+        self.RouteItemId = None
 
 
     def _deserialize(self, params):
@@ -11029,6 +11250,8 @@ Users can only add and operate USER-type routes.
         self.Enabled = params.get("Enabled")
         self.RouteType = params.get("RouteType")
         self.RouteTableId = params.get("RouteTableId")
+        self.DestinationIpv6CidrBlock = params.get("DestinationIpv6CidrBlock")
+        self.RouteItemId = params.get("RouteItemId")
 
 
 class RouteTable(AbstractModel):
@@ -11481,7 +11704,7 @@ class Subnet(AbstractModel):
         :type RouteTableId: str
         :param CreatedTime: Creation Time.
         :type CreatedTime: str
-        :param AvailableIpAddressCount: The number of available `IP`s.
+        :param AvailableIpAddressCount: The number of available `IPv4`.
         :type AvailableIpAddressCount: int
         :param Ipv6CidrBlock: The `IPv6` `CIDR` of the subnet.
         :type Ipv6CidrBlock: str
@@ -11489,7 +11712,7 @@ class Subnet(AbstractModel):
         :type NetworkAclId: str
         :param IsRemoteVpcSnat: Whether it is a `SNAT` address pool subnet.
         :type IsRemoteVpcSnat: bool
-        :param TotalIpAddressCount: Total number of subnet `IP` addresses.
+        :param TotalIpAddressCount: The total number of `IPv4` in the subnet.
         :type TotalIpAddressCount: int
         :param TagSet: Tag key-value pairs
         :type TagSet: list of Tag

@@ -59,6 +59,48 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Status = params.get("Status")
 
 
+class AssociateSecurityGroupsRequest(AbstractModel):
+    """AssociateSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :type Product: str
+        :param SecurityGroupId: ID of the security group to be associated in the format of sg-efil73jd.
+        :type SecurityGroupId: str
+        :param InstanceIds: ID(s) of the instance(s) to be associated in the format of ins-lesecurk. You can specify multiple instances.
+        :type InstanceIds: list of str
+        """
+        self.Product = None
+        self.SecurityGroupId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class AssociateSecurityGroupsResponse(AbstractModel):
+    """AssociateSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BigKeyInfo(AbstractModel):
     """Big key details
 
@@ -237,7 +279,7 @@ class CreateInstanceAccountRequest(AbstractModel):
         :type AccountPassword: str
         :param ReadonlyPolicy: Routing policy. Enter `master` for master node or `replication` for slave node
         :type ReadonlyPolicy: list of str
-        :param Privilege: Read/write policy. Enter `r` for read-only, `w` for write-only, or `rw` for read/write
+        :param Privilege: Read/write policy. Valid values: r (read-only), rw (read/write).
         :type Privilege: str
         :param Remark: Sub-account description information
         :type Remark: str
@@ -289,7 +331,7 @@ class CreateInstancesRequest(AbstractModel):
         """
         :param ZoneId: AZ ID of instance
         :type ZoneId: int
-        :param TypeId: Instance type. 2: Redis 2.8 Master-Slave Edition, 3: Redis 3.2 Master-Slave Edition (CKV Master-Slave Edition), 4: Redis 3.2 Cluster Edition (CKV Cluster Edition), 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,
+        :param TypeId: Instance type. Valid values: 2 (Redis 2.8 memory edition in standard architecture), 3 (Redis 3.2 memory edition in standard architecture), 4 (CKV 3.2 memory edition in standard architecture), 6 (Redis 4.0 memory edition in standard architecture), 7 (Redis 4.0 memory edition in cluster architecture), 8 (Redis 5.0 memory edition in standard architecture), 9 (Redis 5.0 memory edition in cluster architecture).
         :type TypeId: int
         :param MemSize: Instance capacity in MB. The actual value is subject to the specifications returned by the purchasable specification querying API |
         :type MemSize: int
@@ -299,7 +341,7 @@ class CreateInstancesRequest(AbstractModel):
         :type Period: int
         :param BillingMode: Billing method. 0: pay as you go
         :type BillingMode: int
-        :param Password: Instance password. Rules: 1. It can contain 8-16 characters; 2. It must contain at least two of the following three types of characters: letters, digits, and special characters !@^*(). (When creating a password-free instance, you can leave this field along and it will be ignored.)
+        :param Password: Instance password. It can contain 8-30 characters and must contain at least two of the following types of characters: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/). It cannot stat with the symbol (/).
         :type Password: str
         :param VpcId: VPC ID such as vpc-sad23jfdfk. If this parameter is not passed in, the basic network will be selected by default. Please use the VPC list querying API to query.
         :type VpcId: str
@@ -313,15 +355,15 @@ class CreateInstancesRequest(AbstractModel):
         :type SecurityGroupIdList: list of str
         :param VPort: User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024,65535]
         :type VPort: int
-        :param RedisShardNum: Number of instance shards. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, Redis 2.8 standalone edition, and Redis 4.0 master-slave edition
+        :param RedisShardNum: Number of shards in an instance. This parameter is required for cluster edition instances. Valid values: 3, 5, 8, 12, 16, 24, 32, 64, 96, 128.
         :type RedisShardNum: int
-        :param RedisReplicasNum: Number of instance replicas. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, and Redis 2.8 standalone edition
+        :param RedisReplicasNum: Number of replicas in an instance. Redis 2.8 standard edition and CKV standard edition support 1 replica. Standard/cluster edition 4.0 and 5.0 support 1-5 replicas.
         :type RedisReplicasNum: int
-        :param ReplicasReadonly: Whether to support read-only replicas. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, and Redis 2.8 standalone edition |
+        :param ReplicasReadonly: Whether to support read-only replicas. Neither Redis 2.8 standard edition nor CKV standard edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed on slave nodes. To enable read-only replicas, we recommend you create 2 or more replicas.
         :type ReplicasReadonly: bool
-        :param InstanceName: Instance name
+        :param InstanceName: Instance name. It contains only letters, digits, underscores, and dashes with a length of up to 60 characters.
         :type InstanceName: str
-        :param NoAuth: Whether to support the password-free feature. Value range: true (password-free instance); false (password-enabled instance). Default value: false
+        :param NoAuth: Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access.
         :type NoAuth: bool
         """
         self.ZoneId = None
@@ -549,6 +591,53 @@ class DescribeBackupUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBSecurityGroupsRequest(AbstractModel):
+    """DescribeDBSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :type Product: str
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.
+        :type InstanceId: str
+        """
+        self.Product = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBSecurityGroupsResponse(AbstractModel):
+    """DescribeDBSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: Security group rules.
+        :type Groups: list of SecurityGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceAccountRequest(AbstractModel):
     """DescribeInstanceAccount request structure.
 
@@ -671,6 +760,137 @@ class DescribeInstanceBackupsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BackupSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceDTSInfoRequest(AbstractModel):
+    """DescribeInstanceDTSInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeInstanceDTSInfoResponse(AbstractModel):
+    """DescribeInstanceDTSInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: DTS task ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type JobId: str
+        :param JobName: DTS task name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type JobName: str
+        :param Status: Task status. Valid values: 1 (Creating), 3 (Checking), 4 (CheckPass), 5 (CheckNotPass), 7 (Running), 8 (ReadyComplete), 9 (Success), 10 (Failed), 11 (Stopping), 12 (Completing)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param StatusDesc: Status description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StatusDesc: str
+        :param Offset: Synchronization latency in bytes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Offset: int
+        :param CutDownTime: Disconnection time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CutDownTime: str
+        :param SrcInfo: Source instance information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SrcInfo: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`
+        :param DstInfo: Target instance information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DstInfo: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.JobName = None
+        self.Status = None
+        self.StatusDesc = None
+        self.Offset = None
+        self.CutDownTime = None
+        self.SrcInfo = None
+        self.DstInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.JobName = params.get("JobName")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.Offset = params.get("Offset")
+        self.CutDownTime = params.get("CutDownTime")
+        if params.get("SrcInfo") is not None:
+            self.SrcInfo = DescribeInstanceDTSInstanceInfo()
+            self.SrcInfo._deserialize(params.get("SrcInfo"))
+        if params.get("DstInfo") is not None:
+            self.DstInfo = DescribeInstanceDTSInstanceInfo()
+            self.DstInfo._deserialize(params.get("DstInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceDTSInstanceInfo(AbstractModel):
+    """Details of instances in a DTS task
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: Region ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RegionId: int
+        :param InstanceId: Instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param SetId: Repository ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SetId: int
+        :param ZoneId: Availability zone ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: int
+        :param Type: Instance type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Type: int
+        :param InstanceName: Instance name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param Vip: Instance access address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Vip: str
+        :param Status: Status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        """
+        self.RegionId = None
+        self.InstanceId = None
+        self.SetId = None
+        self.ZoneId = None
+        self.Type = None
+        self.InstanceName = None
+        self.Vip = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.InstanceId = params.get("InstanceId")
+        self.SetId = params.get("SetId")
+        self.ZoneId = params.get("ZoneId")
+        self.Type = params.get("Type")
+        self.InstanceName = params.get("InstanceName")
+        self.Vip = params.get("Vip")
+        self.Status = params.get("Status")
 
 
 class DescribeInstanceDealDetailRequest(AbstractModel):
@@ -1525,6 +1745,69 @@ class DescribeProjectSecurityGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProjectSecurityGroupsRequest(AbstractModel):
+    """DescribeProjectSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb.
+        :type Product: str
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param Offset: Offset.
+        :type Offset: int
+        :param Limit: The number of security groups to be pulled.
+        :type Limit: int
+        :param SearchKey: Search criteria. You can enter a security group ID or name.
+        :type SearchKey: str
+        """
+        self.Product = None
+        self.ProjectId = None
+        self.Offset = None
+        self.Limit = None
+        self.SearchKey = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.ProjectId = params.get("ProjectId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchKey = params.get("SearchKey")
+
+
+class DescribeProjectSecurityGroupsResponse(AbstractModel):
+    """DescribeProjectSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: Security group rules.
+        :type Groups: list of SecurityGroup
+        :param Total: Total number of the security groups meeting the condition.
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogRequest(AbstractModel):
     """DescribeSlowLog request structure.
 
@@ -1839,6 +2122,48 @@ class DisableReplicaReadonlyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisassociateSecurityGroupsRequest(AbstractModel):
+    """DisassociateSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :type Product: str
+        :param SecurityGroupId: Security group ID.
+        :type SecurityGroupId: str
+        :param InstanceIds: Instance ID list, which is an array of one or more instance IDs.
+        :type InstanceIds: list of str
+        """
+        self.Product = None
+        self.SecurityGroupId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DisassociateSecurityGroupsResponse(AbstractModel):
+    """DisassociateSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EnableReplicaReadonlyRequest(AbstractModel):
     """EnableReplicaReadonly request structure.
 
@@ -1904,6 +2229,51 @@ class HotKeyInfo(AbstractModel):
         self.Key = params.get("Key")
         self.Type = params.get("Type")
         self.Count = params.get("Count")
+
+
+class Inbound(AbstractModel):
+    """Security group inbound rule
+
+    """
+
+    def __init__(self):
+        """
+        :param Action: Policy. Valid values: ACCEPT, DROP.
+        :type Action: str
+        :param AddressModule: All the addresses that the address group ID represents.
+        :type AddressModule: str
+        :param CidrIp: Source IP or IP address range, such as 192.168.0.0/16.
+        :type CidrIp: str
+        :param Desc: Description.
+        :type Desc: str
+        :param IpProtocol: Network protocol, such as UDP and TCP, etc.
+        :type IpProtocol: str
+        :param PortRange: Port.
+        :type PortRange: str
+        :param ServiceModule: All the protocols and ports that the service group ID represents.
+        :type ServiceModule: str
+        :param Id: All the addresses that the security group ID represents.
+        :type Id: str
+        """
+        self.Action = None
+        self.AddressModule = None
+        self.CidrIp = None
+        self.Desc = None
+        self.IpProtocol = None
+        self.PortRange = None
+        self.ServiceModule = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.AddressModule = params.get("AddressModule")
+        self.CidrIp = params.get("CidrIp")
+        self.Desc = params.get("Desc")
+        self.IpProtocol = params.get("IpProtocol")
+        self.PortRange = params.get("PortRange")
+        self.ServiceModule = params.get("ServiceModule")
+        self.Id = params.get("Id")
 
 
 class InstanceClusterNode(AbstractModel):
@@ -2715,6 +3085,48 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
+    """ModifyDBInstanceSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :type Product: str
+        :param SecurityGroupIds: The ID list of the security groups to be modified, which is an array of one or more security group IDs.
+        :type SecurityGroupIds: list of str
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.
+        :type InstanceId: str
+        """
+        self.Product = None
+        self.SecurityGroupIds = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.InstanceId = params.get("InstanceId")
+
+
+class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
+    """ModifyDBInstanceSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstanceAccountRequest(AbstractModel):
     """ModifyInstanceAccount request structure.
 
@@ -2954,6 +3366,51 @@ class ModifyNetworkConfigResponse(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.Vip = params.get("Vip")
         self.RequestId = params.get("RequestId")
+
+
+class Outbound(AbstractModel):
+    """Security group outbound rule
+
+    """
+
+    def __init__(self):
+        """
+        :param Action: Policy. Valid values: ACCEPT, DROP.
+        :type Action: str
+        :param AddressModule: All the addresses that the address group ID represents.
+        :type AddressModule: str
+        :param CidrIp: Source IP or IP address range, such as 192.168.0.0/16.
+        :type CidrIp: str
+        :param Desc: Description.
+        :type Desc: str
+        :param IpProtocol: Network protocol, such as UDP and TCP, etc.
+        :type IpProtocol: str
+        :param PortRange: Port.
+        :type PortRange: str
+        :param ServiceModule: All the protocols and ports that the service group ID represents.
+        :type ServiceModule: str
+        :param Id: All the addresses that the security group ID represents.
+        :type Id: str
+        """
+        self.Action = None
+        self.AddressModule = None
+        self.CidrIp = None
+        self.Desc = None
+        self.IpProtocol = None
+        self.PortRange = None
+        self.ServiceModule = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.AddressModule = params.get("AddressModule")
+        self.CidrIp = params.get("CidrIp")
+        self.Desc = params.get("Desc")
+        self.IpProtocol = params.get("IpProtocol")
+        self.PortRange = params.get("PortRange")
+        self.ServiceModule = params.get("ServiceModule")
+        self.Id = params.get("Id")
 
 
 class ProductConf(AbstractModel):
@@ -3230,6 +3687,57 @@ class RestoreInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SecurityGroup(AbstractModel):
+    """Security group rules
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateTime: Creation time in the format of yyyy-mm-dd hh:mm:ss.
+        :type CreateTime: str
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param SecurityGroupId: Security group ID.
+        :type SecurityGroupId: str
+        :param SecurityGroupName: Security group name.
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: Security group remarks.
+        :type SecurityGroupRemark: str
+        :param Outbound: Outbound rule.
+        :type Outbound: list of Outbound
+        :param Inbound: Inbound rule.
+        :type Inbound: list of Inbound
+        """
+        self.CreateTime = None
+        self.ProjectId = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupRemark = None
+        self.Outbound = None
+        self.Inbound = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.ProjectId = params.get("ProjectId")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupRemark = params.get("SecurityGroupRemark")
+        if params.get("Outbound") is not None:
+            self.Outbound = []
+            for item in params.get("Outbound"):
+                obj = Outbound()
+                obj._deserialize(item)
+                self.Outbound.append(obj)
+        if params.get("Inbound") is not None:
+            self.Inbound = []
+            for item in params.get("Inbound"):
+                obj = Inbound()
+                obj._deserialize(item)
+                self.Inbound.append(obj)
+
+
 class SecurityGroupDetail(AbstractModel):
     """Security group details
 
@@ -3401,15 +3909,15 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SrcInstanceId: Source instance ID
+        :param SrcInstanceId: Source instance ID.
         :type SrcInstanceId: str
-        :param DstInstanceId: Target instance ID
+        :param DstInstanceId: Target instance ID.
         :type DstInstanceId: str
-        :param TimeDelay: The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than TimeDelay, the VIP will not be switched. It is recommended to set an acceptable value based on the actual business conditions.
+        :param TimeDelay: The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than `TimeDelay`, the VIP will not be switched. We recommend setting an acceptable value based on the actual business conditions.
         :type TimeDelay: int
-        :param ForceSwitch: Whether to force the switch when DTS is disconnected. 1: yes; 0: no
+        :param ForceSwitch: Whether to force the switch when DTS is disconnected. Valid values: 1 (yes), 0 (no).
         :type ForceSwitch: int
-        :param SwitchTime: now: switch now; syncComplete: switch after sync is completed
+        :param SwitchTime: Valid values: now (switch now), syncComplete (switch after sync is completed).
         :type SwitchTime: str
         """
         self.SrcInstanceId = None

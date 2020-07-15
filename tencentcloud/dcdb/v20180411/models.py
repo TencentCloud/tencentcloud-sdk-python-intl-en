@@ -83,12 +83,16 @@ class CloseDBExtranetAccessRequest(AbstractModel):
         """
         :param InstanceId: ID of an instance for which to disable public network access. The ID is in the format of dcdbt-ow728lmc and can be obtained through the `DescribeDCDBInstances` API.
         :type InstanceId: str
+        :param Ipv6Flag: Whether IPv6 is used. Default value: 0
+        :type Ipv6Flag: int
         """
         self.InstanceId = None
+        self.Ipv6Flag = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.Ipv6Flag = params.get("Ipv6Flag")
 
 
 class CloseDBExtranetAccessResponse(AbstractModel):
@@ -1756,12 +1760,16 @@ class OpenDBExtranetAccessRequest(AbstractModel):
         """
         :param InstanceId: ID of an instance for which to enable public network access. The ID is in the format of dcdbt-ow728lmc.
         :type InstanceId: str
+        :param Ipv6Flag: Whether IPv6 is used. Default value: 0
+        :type Ipv6Flag: int
         """
         self.InstanceId = None
+        self.Ipv6Flag = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.Ipv6Flag = params.get("Ipv6Flag")
 
 
 class OpenDBExtranetAccessResponse(AbstractModel):

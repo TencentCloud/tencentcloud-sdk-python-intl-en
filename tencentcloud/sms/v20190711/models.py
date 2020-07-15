@@ -1195,6 +1195,8 @@ class SendStatus(AbstractModel):
         :type Code: str
         :param Message: SMS request error message.
         :type Message: str
+        :param IsoCode: Country code or region code, such as CN and US. If the country code or region code is not obtained, the returned value will be 'DEF' by default. For more information on the supported list, see price overview for non-Mainland China regions.
+        :type IsoCode: str
         """
         self.SerialNo = None
         self.PhoneNumber = None
@@ -1202,6 +1204,7 @@ class SendStatus(AbstractModel):
         self.SessionContext = None
         self.Code = None
         self.Message = None
+        self.IsoCode = None
 
 
     def _deserialize(self, params):
@@ -1211,6 +1214,7 @@ class SendStatus(AbstractModel):
         self.SessionContext = params.get("SessionContext")
         self.Code = params.get("Code")
         self.Message = params.get("Message")
+        self.IsoCode = params.get("IsoCode")
 
 
 class SendStatusStatistics(AbstractModel):

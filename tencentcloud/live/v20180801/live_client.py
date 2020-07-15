@@ -26,9 +26,10 @@ class LiveClient(AbstractClient):
 
 
     def AddDelayLiveStream(self, request):
-        """This API is used to set the delay time for the stream.
-        Note: If you want to set delayed playback before pushing, you need to set 5 minutes in advance.
+        """This API is used to set the delay time for a stream.
+        Note: if you want to set delayed playback before pushing, you need to do so 5 minutes in advance.
         Currently, this API only supports stream granularity, and the feature supporting domain name and application granularities will be available in the future.
+        Use case: for important live streams, you can set delayed playback in advance to avoid contingency issues.
 
         :param request: Request instance for AddDelayLiveStream.
         :type request: :class:`tencentcloud.live.v20180801.models.AddDelayLiveStreamRequest`
@@ -291,14 +292,15 @@ class LiveClient(AbstractClient):
         - Mode description
           This API supports two recording modes:
           1. Scheduled recording mode **(default mode)**.
-            The start time and end time need to be passed in, and the recording task will automatically start and end based on the time parameters.
+            The start time and end time need to be passed in, according to which the recording task will start and end automatically. Before the set end time expires (provided that `StopLiveRecord` is not called to terminate the task prematurely), the recording task is valid and will be started even after the push is interrupted and restarted multiple times.
           2. Real-time video recording mode.
             The start time passed in will be ignored, and recording will be started immediately after the recording task is created. The recording duration can be up to 30 minutes. If the end time passed in is more than 30 minutes after the current time, it will be counted as 30 minutes. Real-time video recording is mainly used for recording highlight scenes, and you are recommended to keep the duration within 5 minutes.
 
         - Precautions
-          1. The API call timeout period should be set to more than 3 seconds; otherwise, retries and frequent calls may result in repeated recording tasks.
+          1. The API call timeout period should be set to more than 3 seconds; otherwise, retries and calls by different start/end time values may result in repeated recording tasks and thus incur additional recording fees.
           2. Subject to the audio and video file formats (FLV/MP4/HLS), the video codec of H.264 and audio codec of AAC are supported.
-          3. In order to avoid malicious or non-subjective frequent API requests, the maximum number of tasks that can be created in scheduled recording mode is limited: up to 4,000 tasks can be created per day (excluding deleted ones), and up to 400 ones can run concurrently. If you need a higher upper limit, please submit a ticket for application.
+          3. In order to avoid malicious or unintended frequent API requests, the maximum number of tasks that can be created in scheduled recording mode is limited: up to 4,000 tasks can be created per day (excluding deleted ones), and up to 400 ones can run concurrently. If you need a higher upper limit, please submit a ticket for application.
+          4. This calling method does not support recording streams outside Mainland China for the time being.
 
         :param request: Request instance for CreateLiveRecord.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveRecordRequest`
@@ -514,6 +516,42 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveWatermarkRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRecordTask(self, request):
+        """This API is used to create a recording task that starts and ends at specified times and records by using the configuration corresponding to a specified recording template ID.
+        - Prerequisites
+        1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.
+        2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the corresponding document.
+        - Precautions
+        1. An interruption will end the current recording and generate a recording file. The task will still be valid before the end time expires, and as long as the stream is pushed normally during the period, it will record normally, regardless of whether the push is interrupted or restarted multiple times.
+        2. Creating recording tasks with overlapping time periods must be avoided. If there are multiple tasks with overlapping time periods for the same stream, the system will start three recording tasks at most to avoid repeated recording.
+        3. The record of a created recording task will be retained for 3 months on the platform.
+        4. The current recording task management APIs (CreateRecordTask/StopRecordTask/DeleteRecordTask) are not compatible with the legacy APIs (CreateLiveRecord/StopLiveRecord/DeleteLiveRecord), and they cannot be mixed.
+
+        :param request: Request instance for CreateRecordTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateRecordTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateRecordTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRecordTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRecordTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -893,6 +931,62 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteRecordTask(self, request):
+        """This API is used to delete a recording task configuration. The deletion does not affect running tasks and takes effect only for new pushes.
+
+        :param request: Request instance for DeleteRecordTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteRecordTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteRecordTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRecordTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRecordTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAllStreamPlayInfoList(self, request):
+        """This API is used to query the downstream information of all streams at a specified point in time (at a 1-minute granularity).
+
+        :param request: Request instance for DescribeAllStreamPlayInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeAllStreamPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeAllStreamPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllStreamPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllStreamPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBillBandwidthAndFluxList(self, request):
         """This API is used to query the data of billable LVB bandwidth and traffic.
 
@@ -963,6 +1057,35 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupProIspPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHttpStatusInfoList(self, request):
+        """This API is used to query the number of each playback HTTP status code at a 5-minute granularity in a certain period of time.
+        Note: data can be queried one hour after it is generated. For example, data between 10:00 and 10:59 cannot be queried until 12:00.
+
+        :param request: Request instance for DescribeHttpStatusInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeHttpStatusInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeHttpStatusInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHttpStatusInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHttpStatusInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1187,6 +1310,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDomainCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveDomainPlayInfoList(self, request):
+        """This API is used to query the real-time downstream playback data at the domain name level. As it takes certain time to process data, the API queries quasi-real-time data generated 4 minutes ago by default.
+
+        :param request: Request instance for DescribeLiveDomainPlayInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveDomainPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainPlayInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1568,6 +1719,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveStreamPushInfoList(self, request):
+        """This API is used to query the push information of all real-time streams, including client IP, server IP, frame rate, bitrate, domain name, and push start time.
+
+        :param request: Request instance for DescribeLiveStreamPushInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamPushInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamPushInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveStreamPushInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveStreamPushInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveStreamState(self, request):
         """This API is used to return the stream status such as active, inactive, or forbidden.
 
@@ -1582,6 +1761,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveStreamStateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveTranscodeDetailInfo(self, request):
+        """This API is used to query the details of transcoding on a specified day or in a specified period of time.
+
+        :param request: Request instance for DescribeLiveTranscodeDetailInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeDetailInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeDetailInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveTranscodeDetailInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveTranscodeDetailInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1764,6 +1971,63 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePlayErrorCodeDetailInfoList(self, request):
+        """This API is used to query the information of downstream playback error codes, i.e., the occurrences of each HTTP error code (4xx and 5xx) at a 1-minute granularity in a certain period of time.
+
+
+        :param request: Request instance for DescribePlayErrorCodeDetailInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeDetailInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeDetailInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePlayErrorCodeDetailInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePlayErrorCodeDetailInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePlayErrorCodeSumInfoList(self, request):
+        """This API is used to query the information of downstream playback error codes.
+
+        :param request: Request instance for DescribePlayErrorCodeSumInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeSumInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeSumInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePlayErrorCodeSumInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePlayErrorCodeSumInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProIspPlaySumInfoList(self, request):
         """This API is used to query the average traffic per second, total traffic, and number of total requests by country/region, district, and ISP in a certain period of time.
 
@@ -1778,6 +2042,62 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProIspPlaySumInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProvinceIspPlayInfoList(self, request):
+        """This API is used to query the downstream playback data of a specified ISP in a specified district, including bandwidth, traffic, number of requests, and number of concurrent connections.
+
+        :param request: Request instance for DescribeProvinceIspPlayInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeProvinceIspPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeProvinceIspPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProvinceIspPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProvinceIspPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScreenShotSheetNumList(self, request):
+        """The API is used to query the number of screenshots as an LVB value-added service.
+
+        :param request: Request instance for DescribeScreenShotSheetNumList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeScreenShotSheetNumListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeScreenShotSheetNumListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScreenShotSheetNumList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScreenShotSheetNumListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1820,6 +2140,35 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStreamPlayInfoList(self, request):
+        """This API is used to query the playback data and supports querying playback details by stream name and aggregated data by playback domain name. The data has a delay of about 4 minutes.
+        Note: to query by `AppName`, you need to submit a ticket for application.
+
+        :param request: Request instance for DescribeStreamPlayInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStreamPushInfoList(self, request):
         """This API is used to query the upstream push quality data by stream ID, including frame rate, bitrate, elapsed time, and codec of audio and video files.
 
@@ -1834,6 +2183,62 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamPushInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTopClientIpSumInfoList(self, request):
+        """This API is used to query the information of the top n client IPs in a certain period of time (top 1,000 is supported currently).
+
+        :param request: Request instance for DescribeTopClientIpSumInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeTopClientIpSumInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeTopClientIpSumInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTopClientIpSumInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTopClientIpSumInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVisitTopSumInfoList(self, request):
+        """This API is used to query the information of the top n domain names or stream IDs in a certain period of time (top 1,000 is supported currently).
+
+        :param request: Request instance for DescribeVisitTopSumInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeVisitTopSumInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeVisitTopSumInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVisitTopSumInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVisitTopSumInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2282,6 +2687,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopLiveRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopRecordTask(self, request):
+        """This API is used to end a recording prematurely and terminate the running recording task. After the task is successfully terminated, it will no longer start.
+
+        :param request: Request instance for StopRecordTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.StopRecordTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopRecordTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopRecordTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopRecordTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

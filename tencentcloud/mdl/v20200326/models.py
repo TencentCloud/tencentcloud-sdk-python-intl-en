@@ -401,7 +401,7 @@ Valid values: RTMP_PUSH/RTP_PUSH/UDP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.
         :param SecurityGroupIds: ID of the input security group to be bound.
 Only one security group can be associated.
         :type SecurityGroupIds: list of str
-        :param InputSettings: Input settings information, two sets of which need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.
+        :param InputSettings: Input settings information, one or two sets of which need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.
         :type InputSettings: list of InputSettingInfo
         """
         self.Name = None
@@ -483,6 +483,31 @@ class CreateMediaLiveInputSecurityGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.RequestId = params.get("RequestId")
+
+
+class DashRemuxSettingsInfo(AbstractModel):
+    """DASH configuration information.
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentDuration: Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
+        :type SegmentDuration: int
+        :param SegmentNumber: Number of segments. Value range: [1,30]. Default value: 5.
+        :type SegmentNumber: int
+        :param PeriodTriggers: Whether to enable multi-period. Valid values: CLOSE/OPEN. Default value: CLOSE.
+        :type PeriodTriggers: str
+        """
+        self.SegmentDuration = None
+        self.SegmentNumber = None
+        self.PeriodTriggers = None
+
+
+    def _deserialize(self, params):
+        self.SegmentDuration = params.get("SegmentDuration")
+        self.SegmentNumber = params.get("SegmentNumber")
+        self.PeriodTriggers = params.get("PeriodTriggers")
 
 
 class DeleteMediaLiveChannelRequest(AbstractModel):
@@ -642,7 +667,7 @@ UTC time, such as `2020-01-01T12:00:00Z`.
         :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
 UTC time, such as `2020-01-01T12:00:00Z`.
         :type EndTime: str
-        :param Period: 
+        :param Period: Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min.
         :type Period: str
         """
         self.ChannelId = None
@@ -699,7 +724,7 @@ UTC time, such as `2020-01-01T12:00:00Z`.
         :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
 UTC time, such as `2020-01-01T12:00:00Z`.
         :type EndTime: str
-        :param Period: 
+        :param Period: Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min.
         :type Period: str
         """
         self.ChannelId = None
@@ -959,6 +984,143 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DestinationInfo(AbstractModel):
+    """Relay destination address.
+
+    """
+
+    def __init__(self):
+        """
+        :param OutputUrl: Relay destination address. Length limit: [1,512].
+        :type OutputUrl: str
+        :param AuthKey: Authentication key. Length limit: [1,128].
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AuthKey: str
+        :param Username: Authentication username. Length limit: [1,128].
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Username: str
+        :param Password: Authentication password. Length limit: [1,128].
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Password: str
+        """
+        self.OutputUrl = None
+        self.AuthKey = None
+        self.Username = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.OutputUrl = params.get("OutputUrl")
+        self.AuthKey = params.get("AuthKey")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+
+
+class DrmKey(AbstractModel):
+    """Custom DRM key.
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: DRM key, which is a 32-bit hexadecimal string.
+Note: uppercase letters in the string will be automatically converted to lowercase ones.
+        :type Key: str
+        :param Track: Required for Widevine encryption. Valid values: SD, HD, UHD1, UHD2, AUDIO, ALL.
+ALL refers to all tracks. If this parameter is set to ALL, no other tracks can be added.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Track: str
+        :param KeyId: Required for Widevine encryption. It is a 32-bit hexadecimal string.
+Note: uppercase letters in the string will be automatically converted to lowercase ones.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeyId: str
+        :param Iv: Required when FairPlay uses the AES encryption method. It is a 32-bit hexadecimal string.
+For more information about this parameter, please see: 
+https://tools.ietf.org/html/rfc3826
+Note: uppercase letters in the string will be automatically converted to lowercase ones.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Iv: str
+        """
+        self.Key = None
+        self.Track = None
+        self.KeyId = None
+        self.Iv = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Track = params.get("Track")
+        self.KeyId = params.get("KeyId")
+        self.Iv = params.get("Iv")
+
+
+class DrmSettingsInfo(AbstractModel):
+    """Drm配置信息，目前只对HLS和DASH有效。
+
+    """
+
+    def __init__(self):
+        """
+        :param State: 
+        :type State: str
+        :param ContentId: When `Scheme` is set to TencentDRM, this parameter should be set to the `ContentId` of DRM encryption, and if this parameter is left empty, a `ContentId` will be automatically created. For more information, please see [here](https://cloud.tencent.com/document/product/1000/40960).
+When `Scheme` is set to CustomDRMKeys, this parameter is required and should be specified by the user.
+        :type ContentId: str
+        :param Scheme: Valid values: TencentDRM, CustomDRMKeys. If this parameter is left empty, TencentDRM will be used by default.
+TencentDRM refers to Tencent digital rights management (DRM) encryption. For more information, please see [here](https://cloud.tencent.com/solution/drm).
+CustomDRMKeys refers to an encryption key customized by the user.
+        :type Scheme: str
+        :param Keys: The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Keys: list of DrmKey
+        """
+        self.State = None
+        self.ContentId = None
+        self.Scheme = None
+        self.Keys = None
+
+
+    def _deserialize(self, params):
+        self.State = params.get("State")
+        self.ContentId = params.get("ContentId")
+        self.Scheme = params.get("Scheme")
+        if params.get("Keys") is not None:
+            self.Keys = []
+            for item in params.get("Keys"):
+                obj = DrmKey()
+                obj._deserialize(item)
+                self.Keys.append(obj)
+
+
+class HlsRemuxSettingsInfo(AbstractModel):
+    """HLS protocol configuration.
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentDuration: Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
+        :type SegmentDuration: int
+        :param SegmentNumber: Number of segments. Value range: [1,30]. Default value: 5.
+        :type SegmentNumber: int
+        :param PdtInsertion: Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.
+        :type PdtInsertion: str
+        :param PdtDuration: PDT duration in seconds. Value range: (0,3000]. Default value: 600.
+        :type PdtDuration: int
+        """
+        self.SegmentDuration = None
+        self.SegmentNumber = None
+        self.PdtInsertion = None
+        self.PdtDuration = None
+
+
+    def _deserialize(self, params):
+        self.SegmentDuration = params.get("SegmentDuration")
+        self.SegmentNumber = params.get("SegmentNumber")
+        self.PdtInsertion = params.get("PdtInsertion")
+        self.PdtDuration = params.get("PdtDuration")
+
+
 class InputInfo(AbstractModel):
     """Input information.
 
@@ -1104,6 +1266,23 @@ class InputStatistics(AbstractModel):
                 self.Pipeline1.append(obj)
 
 
+class MediaPackageSettingsInfo(AbstractModel):
+    """Configuration information related to associating with the media packaging service.
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: Media packaging ID.
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+
+
 class ModifyMediaLiveChannelRequest(AbstractModel):
     """ModifyMediaLiveChannel request structure.
 
@@ -1191,16 +1370,28 @@ class ModifyMediaLiveInputRequest(AbstractModel):
         :type Name: str
         :param SecurityGroupIds: List of IDs of bound security groups.
         :type SecurityGroupIds: list of str
+        :param InputSettings: Input settings information.
+One or two sets of settings need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.
+This parameter can be left empty for RTP_PUSH and UDP_PUSH.
+Note: if it is left empty or the array is empty, the original `InputSettings` value will be used.
+        :type InputSettings: list of InputSettingInfo
         """
         self.Id = None
         self.Name = None
         self.SecurityGroupIds = None
+        self.InputSettings = None
 
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("InputSettings") is not None:
+            self.InputSettings = []
+            for item in params.get("InputSettings"):
+                obj = InputSettingInfo()
+                obj._deserialize(item)
+                self.InputSettings.append(obj)
 
 
 class ModifyMediaLiveInputResponse(AbstractModel):
@@ -1260,6 +1451,105 @@ class ModifyMediaLiveInputSecurityGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class OutputGroupsInfo(AbstractModel):
+    """频道输出组信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 
+        :type Name: str
+        :param Type: Output protocol type.
+Valid values: HLS, DASH, HLS_ARCHIVE, HLS_MEDIA_PACKAGE, DASH_MEDIA_PACKAGE.
+        :type Type: str
+        :param Outputs: 
+        :type Outputs: list of OutputInfo
+        :param Destinations: 
+        :type Destinations: list of DestinationInfo
+        :param HlsRemuxSettings: 
+        :type HlsRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`
+        :param DashRemuxSettings: 
+        :type DashRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.DashRemuxSettingsInfo`
+        :param DrmSettings: 
+        :type DrmSettings: :class:`tencentcloud.mdl.v20200326.models.DrmSettingsInfo`
+        :param MediaPackageSettings: Configuration information of media packaging, which is required when `Type` is set to MediaPackage.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MediaPackageSettings: :class:`tencentcloud.mdl.v20200326.models.MediaPackageSettingsInfo`
+        """
+        self.Name = None
+        self.Type = None
+        self.Outputs = None
+        self.Destinations = None
+        self.HlsRemuxSettings = None
+        self.DashRemuxSettings = None
+        self.DrmSettings = None
+        self.MediaPackageSettings = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        if params.get("Outputs") is not None:
+            self.Outputs = []
+            for item in params.get("Outputs"):
+                obj = OutputInfo()
+                obj._deserialize(item)
+                self.Outputs.append(obj)
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = DestinationInfo()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
+        if params.get("HlsRemuxSettings") is not None:
+            self.HlsRemuxSettings = HlsRemuxSettingsInfo()
+            self.HlsRemuxSettings._deserialize(params.get("HlsRemuxSettings"))
+        if params.get("DashRemuxSettings") is not None:
+            self.DashRemuxSettings = DashRemuxSettingsInfo()
+            self.DashRemuxSettings._deserialize(params.get("DashRemuxSettings"))
+        if params.get("DrmSettings") is not None:
+            self.DrmSettings = DrmSettingsInfo()
+            self.DrmSettings._deserialize(params.get("DrmSettings"))
+        if params.get("MediaPackageSettings") is not None:
+            self.MediaPackageSettings = MediaPackageSettingsInfo()
+            self.MediaPackageSettings._deserialize(params.get("MediaPackageSettings"))
+
+
+class OutputInfo(AbstractModel):
+    """Output information.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Output name.
+        :type Name: str
+        :param AudioTemplateNames: Audio transcoding template name array.
+Quantity limit: [0,1] for RTMP; [0,20] for others.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AudioTemplateNames: list of str
+        :param VideoTemplateNames: Video transcoding template name array. Quantity limit: [0,1].
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VideoTemplateNames: list of str
+        :param Scte35Settings: SCTE-35 information configuration.
+        :type Scte35Settings: :class:`tencentcloud.mdl.v20200326.models.Scte35SettingsInfo`
+        """
+        self.Name = None
+        self.AudioTemplateNames = None
+        self.VideoTemplateNames = None
+        self.Scte35Settings = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.AudioTemplateNames = params.get("AudioTemplateNames")
+        self.VideoTemplateNames = params.get("VideoTemplateNames")
+        if params.get("Scte35Settings") is not None:
+            self.Scte35Settings = Scte35SettingsInfo()
+            self.Scte35Settings._deserialize(params.get("Scte35Settings"))
 
 
 class OutputsStatistics(AbstractModel):
@@ -1356,6 +1646,23 @@ In seconds, indicating data time.
     def _deserialize(self, params):
         self.Timestamp = params.get("Timestamp")
         self.NetworkOut = params.get("NetworkOut")
+
+
+class Scte35SettingsInfo(AbstractModel):
+    """SCTE-35 configuration information.
+
+    """
+
+    def __init__(self):
+        """
+        :param Behavior: Whether to pass through SCTE-35 information. Valid values: NO_PASSTHROUGH/PASSTHROUGH. Default value: NO_PASSTHROUGH.
+        :type Behavior: str
+        """
+        self.Behavior = None
+
+
+    def _deserialize(self, params):
+        self.Behavior = params.get("Behavior")
 
 
 class StartMediaLiveChannelRequest(AbstractModel):

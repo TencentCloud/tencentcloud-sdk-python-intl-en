@@ -54,7 +54,7 @@ class VpcClient(AbstractClient):
 
 
     def AddBandwidthPackageResources(self, request):
-        """This API is used to add bandwidth package resources. This includes [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on.
+        """This API is used to add a bandwidth package resource including [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on.
 
         :param request: Request instance for AddBandwidthPackageResources.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AddBandwidthPackageResourcesRequest`
@@ -271,7 +271,7 @@ class VpcClient(AbstractClient):
 
 
     def AssociateNatGatewayAddress(self, request):
-        """This API (AssociateNatGatewayAddress) is used to bind a NAT gateway to an Elastic IP (EIP).
+        """This API is used to bind a NAT Gateway to an Elastic IP (EIP).
 
         :param request: Request instance for AssociateNatGatewayAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNatGatewayAddressRequest`
@@ -560,6 +560,39 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAndAttachNetworkInterface(self, request):
+        """This API is used to create an ENI and bind it to a CVM.
+        * You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be idle and in the same subnet as the ENI.
+        * When creating an ENI, you can specify the number of private IP addresses that you want to apply for. The system will randomly generate private IP addresses.
+        * An ENI can only be bound to a limited number of IP addresses. For more information about resource limits, see <a href="/document/product/576/18527">ENI Use Limits</a>.
+        * You can bind an existing security group when creating an ENI.
+        * You can bind a tag when creating an ENI. The tag list in the response indicates the tags that have been successfully added.
+
+        :param request: Request instance for CreateAndAttachNetworkInterface.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAndAttachNetworkInterfaceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateAndAttachNetworkInterfaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAndAttachNetworkInterface", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAndAttachNetworkInterfaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAssistantCidr(self, request):
         """This API (CreateAssistantCidr) is used to batch create secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)
 
@@ -589,7 +622,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateBandwidthPackage(self, request):
-        """This API is used to support the creation of [Device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+        """This API is used to create [device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
 
         :param request: Request instance for CreateBandwidthPackage.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateBandwidthPackageRequest`
@@ -711,7 +744,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateDirectConnectGateway(self, request):
-        """This API (CreateDirectConnectGateway) is used to create a Direct Connect gateway.
+        """This API is used to create a direct connect gateway.
 
         :param request: Request instance for CreateDirectConnectGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayRequest`
@@ -767,7 +800,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateFlowLog(self, request):
-        """This API (CreateFlowLog) is used to create flow logs.
+        """This API is used to create a flow log.
 
         :param request: Request instance for CreateFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateFlowLogRequest`
@@ -1437,7 +1470,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteBandwidthPackage(self, request):
-        """This API is used to support the deletion of shared bandwidth packages, including [Device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85).
+        """This API is used to delete bandwidth packages, including [device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85).
 
         :param request: Request instance for DeleteBandwidthPackage.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteBandwidthPackageRequest`
@@ -1523,10 +1556,10 @@ class VpcClient(AbstractClient):
 
 
     def DeleteDirectConnectGateway(self, request):
-        """This API (DeleteDirectConnectGateway) is used to delete Direct Connect gateways.
-        <li>For a NAT gateway, NAT and ACL rules will be cleaned upon the deletion of a Direct Connect gateway.
-        <li>After the deletion of a Direct Connect gateway, the routing policy associated with the gateway in the route table will also be deleted.
-        This API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to query the `QueryTask` API.
+        """This API is used to delete a direct connect gateway.
+        <li>For a NAT gateway, NAT and ACL rules will be cleared upon the deletion of a direct connect gateway.
+        <li>After the deletion of a direct connect gateway, the routing policy associated with the gateway in the route table will also be deleted.
+        This API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to poll the `QueryTask` API.
 
         :param request: Request instance for DeleteDirectConnectGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayRequest`
@@ -1582,7 +1615,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteFlowLog(self, request):
-        """This API (DeleteFlowLog) is used to delete flow logs.
+        """This API is used to delete a flow log.
 
         :param request: Request instance for DeleteFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteFlowLogRequest`
@@ -2238,7 +2271,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeBandwidthPackageQuota(self, request):
-        """This API is used to query the account’s maximum number of bandwidth packages and their usage in the current region.
+        """This API is used to query the maximum and used number of bandwidth packages under the account in the current region.
 
         :param request: Request instance for DescribeBandwidthPackageQuota.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageQuotaRequest`
@@ -2490,7 +2523,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeDirectConnectGateways(self, request):
-        """This API (DescribeDirectConnectGateways) is used to query Direct Connect gateways.
+        """This API is used to query direct connect gateways.
 
         :param request: Request instance for DescribeDirectConnectGateways.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewaysRequest`
@@ -2518,7 +2551,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeFlowLog(self, request):
-        """This API (DescribeFlowLog) is used to query flow log instance information.
+        """This API is used to query flow log instance information.
 
         :param request: Request instance for DescribeFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogRequest`
@@ -2546,7 +2579,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeFlowLogs(self, request):
-        """This API (DescribeFlowLogs) is used to query and obtain the flow log set.
+        """This API is used to query and obtain the flow log set.
 
         :param request: Request instance for DescribeFlowLogs.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogsRequest`
@@ -3675,6 +3708,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetCcnRegionBandwidthLimits(self, request):
+        """This API is used to query the CCN bandwidth limits across regions. The monthly-subscribed CCN only supports the cross-region bandwidth limit, while the pay-as-you-go CCN supports both the cross-region and region egress bandwidth limit. Note: currently, this feature is in beta test. To use it, please [contact sales](https://intl.cloud.tencent.com/contact-sales).
+
+        :param request: Request instance for GetCcnRegionBandwidthLimits.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.GetCcnRegionBandwidthLimitsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.GetCcnRegionBandwidthLimitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetCcnRegionBandwidthLimits", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetCcnRegionBandwidthLimitsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def HaVipAssociateAddressIp(self, request):
         """This API (HaVipAssociateAddressIp) is used to bind an EIP to an HAVIP.<br />
         This API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to query the `QueryTask` API.
@@ -4047,7 +4108,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyBandwidthPackageAttribute(self, request):
-        """This API is used to modify bandwidth package attributes, including the bandwidth package name, and so on.
+        """This API is used to modify the attributes of a bandwidth package, including the bandwidth package name, and so on.
 
         :param request: Request instance for ModifyBandwidthPackageAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageAttributeRequest`
@@ -4159,7 +4220,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyDirectConnectGatewayAttribute(self, request):
-        """This API (ModifyDirectConnectGatewayAttribute) is used to modify the Direct Connect gateway attributes.
+        """This API is used to modify the attributes of a direct connect gateway.
 
         :param request: Request instance for ModifyDirectConnectGatewayAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyDirectConnectGatewayAttributeRequest`
@@ -4187,7 +4248,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyFlowLogAttribute(self, request):
-        """This API (ModifyFlowLogAttribute) is used to modify flow log attributes.
+        """This API is used to modify the attributes of a flow log.
 
         :param request: Request instance for ModifyFlowLogAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyFlowLogAttributeRequest`
@@ -4848,7 +4909,7 @@ class VpcClient(AbstractClient):
 
 
     def RemoveBandwidthPackageResources(self, request):
-        """This API is used to delete bandwidth package resources. This includes [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on.
+        """This API is used to delete a bandwidth package resource, including [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on.
 
         :param request: Request instance for RemoveBandwidthPackageResources.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RemoveBandwidthPackageResourcesRequest`
