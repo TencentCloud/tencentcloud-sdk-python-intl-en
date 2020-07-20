@@ -700,7 +700,7 @@ class DeviceFingerprint(AbstractModel):
 
     def __init__(self):
         """
-        :param Identity: Fingerprint information collected by device fingerprint collector. Its format must satisfy the following regular expression: ^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$
+        :param Identity: Fingerprint information collected by device fingerprint collector. Its format must be in the following regular expression: ^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$
         :type Identity: str
         :param Description: Description, such as IP and device name. Length limit: 1,024 bytes
 Note: this field may return null, indicating that no valid values can be obtained.

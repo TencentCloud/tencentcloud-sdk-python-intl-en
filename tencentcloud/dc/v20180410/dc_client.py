@@ -53,6 +53,37 @@ class DcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDirectConnect(self, request):
+        """This API is used to apply for a connection.
+        When calling this API, please note that:
+        You need to complete identity verification for your account; otherwise, you cannot apply for a connection;
+        If there is any connection in arrears under your account, you cannot apply for more connections.
+
+        :param request: Request instance for CreateDirectConnect.
+        :type request: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDirectConnect", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDirectConnectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDirectConnectTunnel(self, request):
         """This API is used to create a dedicated tunnel.
 
@@ -81,6 +112,35 @@ class DcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDirectConnect(self, request):
+        """This API is used to delete a connection.
+        Only connected connections can be deleted.
+
+        :param request: Request instance for DeleteDirectConnect.
+        :type request: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDirectConnect", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDirectConnectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDirectConnectTunnel(self, request):
         """This API is used to delete a dedicated tunnel.
 
@@ -95,6 +155,34 @@ class DcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDirectConnectTunnelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccessPoints(self, request):
+        """This API is used to query connection access points.
+
+        :param request: Request instance for DescribeAccessPoints.
+        :type request: :class:`tencentcloud.dc.v20180410.models.DescribeAccessPointsRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DescribeAccessPointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccessPoints", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccessPointsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -151,6 +239,34 @@ class DcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDirectConnectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDirectConnectAttribute(self, request):
+        """This API is used to modify connection attributes.
+
+        :param request: Request instance for ModifyDirectConnectAttribute.
+        :type request: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectAttributeRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDirectConnectAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDirectConnectAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -25,6 +25,34 @@ class MpsClient(AbstractClient):
     _endpoint = 'mps.tencentcloudapi.com'
 
 
+    def CreateAIAnalysisTemplate(self, request):
+        """This API is used to create a custom content analysis template. Up to 50 templates can be created.
+
+        :param request: Request instance for CreateAIAnalysisTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAIAnalysisTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAIAnalysisTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAIAnalysisTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAIAnalysisTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAIRecognitionTemplate(self, request):
         """This API is used to create a custom content recognition template. Up to 50 templates can be created.
 
@@ -39,6 +67,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAdaptiveDynamicStreamingTemplate(self, request):
+        """This API is used to create up to 100 adaptive bitrate streaming templates.
+
+        :param request: Request instance for CreateAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAdaptiveDynamicStreamingTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -343,6 +399,36 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAIAnalysisTemplate(self, request):
+        """This API is used to delete a custom content analysis template.
+
+        Note: templates with an ID below 10000 are preset and cannot be deleted.
+
+        :param request: Request instance for DeleteAIAnalysisTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAIAnalysisTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteAIAnalysisTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAIAnalysisTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAIAnalysisTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAIRecognitionTemplate(self, request):
         """This API is used to delete a custom content recognition template.
 
@@ -357,6 +443,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAdaptiveDynamicStreamingTemplate(self, request):
+        """This API is used to delete an adaptive bitrate streaming template.
+
+        :param request: Request instance for DeleteAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAdaptiveDynamicStreamingTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -651,6 +765,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAIAnalysisTemplates(self, request):
+        """This API is used to get the list of content analysis templates based on unique template ID. The returned result includes all eligible custom and preset video content analysis templates.
+
+        :param request: Request instance for DescribeAIAnalysisTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAIAnalysisTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAIAnalysisTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAIAnalysisTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAIAnalysisTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAIRecognitionTemplates(self, request):
         """This API is used to get the list of content recognition templates based on unique template ID. The return result includes all eligible custom and preset content recognition templates.
 
@@ -665,6 +807,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAIRecognitionTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAdaptiveDynamicStreamingTemplates(self, request):
+        """This API is used to query the list of adaptive bitrate streaming templates and supports paginated queries by filters.
+
+        :param request: Request instance for DescribeAdaptiveDynamicStreamingTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAdaptiveDynamicStreamingTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAdaptiveDynamicStreamingTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAdaptiveDynamicStreamingTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -749,6 +919,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageSpriteTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMediaMetaData(self, request):
+        """This API is used to get the metadata of media, such as video image width/height, codec, length, and frame rate.
+
+        :param request: Request instance for DescribeMediaMetaData.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeMediaMetaDataRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeMediaMetaDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaMetaData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaMetaDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1045,6 +1243,38 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EditMedia(self, request):
+        """This API is used to edit a video (by clipping, splicing, etc.) to generate a new VOD video. Editing features include:
+
+        1. Clipping a file to generate a new video;
+        2. Splicing multiple files to generate a new video;
+        3. Clipping multiple files and then splicing the clips to generate a new video.
+
+        :param request: Request instance for EditMedia.
+        :type request: :class:`tencentcloud.mps.v20190612.models.EditMediaRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EditMedia", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EditMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableWorkflow(self, request):
         """This API is used to enable a workflow.
 
@@ -1073,6 +1303,65 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ManageTask(self, request):
+        """This API is used to manage an initiated task.
+        > Note: currently, you can only terminate an ongoing live stream processing task.
+
+        :param request: Request instance for ManageTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ManageTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ManageTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ManageTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ManageTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAIAnalysisTemplate(self, request):
+        """This API is used to modify a custom content analysis template.
+
+        Note: templates with an ID below 10000 are preset and cannot be modified.
+
+        :param request: Request instance for ModifyAIAnalysisTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAIAnalysisTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyAIAnalysisTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAIAnalysisTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAIAnalysisTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAIRecognitionTemplate(self, request):
         """This API is used to modify a custom content recognition template.
 
@@ -1087,6 +1376,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAdaptiveDynamicStreamingTemplate(self, request):
+        """This API is used to modify an adaptive bitrate streaming template.
+
+        :param request: Request instance for ModifyAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAdaptiveDynamicStreamingTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

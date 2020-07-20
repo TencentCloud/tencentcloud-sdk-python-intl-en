@@ -246,8 +246,9 @@ class MLIDCardOCRResponse(AbstractModel):
         :param Sex: Gender
         :type Sex: str
         :param Warn: Alarm code
--9103 Alarm for photographed document
--9102 Alarm for photocopied document
+-9103	Alarm for photographed document
+-9102	Alarm for photocopied document
+-9106       Alarm for covered card
         :type Warn: list of int
         :param Image: Identity photo
         :type Image: str
@@ -261,6 +262,14 @@ class MLIDCardOCRResponse(AbstractModel):
     }
 }
         :type AdvancedInfo: str
+        :param Type: Certificate types
+MyKad: Malaysian Identity Card
+MyPR: Malaysia Permanent Resident Identity Card
+MyTentera: Malaysian Armed Forces Identity Card
+MyKAS: Malaysian Temporary Resident Identity Card
+POLIS: Royal Malaysia Police Identity Card
+IKAD: Malaysia Temporary Employment Visit Pass
+        :type Type: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -271,6 +280,7 @@ class MLIDCardOCRResponse(AbstractModel):
         self.Warn = None
         self.Image = None
         self.AdvancedInfo = None
+        self.Type = None
         self.RequestId = None
 
 
@@ -282,6 +292,7 @@ class MLIDCardOCRResponse(AbstractModel):
         self.Warn = params.get("Warn")
         self.Image = params.get("Image")
         self.AdvancedInfo = params.get("AdvancedInfo")
+        self.Type = params.get("Type")
         self.RequestId = params.get("RequestId")
 
 

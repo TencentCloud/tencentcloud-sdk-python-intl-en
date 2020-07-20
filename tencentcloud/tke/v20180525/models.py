@@ -95,6 +95,27 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class AutoScalingGroupRange(AbstractModel):
+    """Maximum and minimum number of pods in cluster-associated scaling groups
+
+    """
+
+    def __init__(self):
+        """
+        :param MinSize: Minimum number of pods in a scaling group
+        :type MinSize: int
+        :param MaxSize: Maximum number of pods in a scaling group
+        :type MaxSize: int
+        """
+        self.MinSize = None
+        self.MaxSize = None
+
+
+    def _deserialize(self, params):
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
+
+
 class Cluster(AbstractModel):
     """Cluster information struct
 
@@ -213,6 +234,10 @@ class ClusterAdvancedSettings(AbstractModel):
         :type NetworkType: str
         :param IsNonStaticIpMode: Whether a cluster in VPC-CNI mode uses dynamic IP addresses. The default value is FALSE, which indicates that static IP addresses are used.
         :type IsNonStaticIpMode: bool
+        :param DeletionProtection: 
+        :type DeletionProtection: bool
+        :param KubeProxyMode: Cluster network proxy model
+        :type KubeProxyMode: str
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -221,6 +246,8 @@ class ClusterAdvancedSettings(AbstractModel):
         self.ExtraArgs = None
         self.NetworkType = None
         self.IsNonStaticIpMode = None
+        self.DeletionProtection = None
+        self.KubeProxyMode = None
 
 
     def _deserialize(self, params):
@@ -233,6 +260,153 @@ class ClusterAdvancedSettings(AbstractModel):
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.NetworkType = params.get("NetworkType")
         self.IsNonStaticIpMode = params.get("IsNonStaticIpMode")
+        self.DeletionProtection = params.get("DeletionProtection")
+        self.KubeProxyMode = params.get("KubeProxyMode")
+
+
+class ClusterAsGroup(AbstractModel):
+    """Cluster-associated scaling group information
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: Scaling group ID
+        :type AutoScalingGroupId: str
+        :param Status: Scaling group status (enabled, enabling, disabled, disabling, updating, deleting, scaleDownEnabling, scaleDownDisabling)
+        :type Status: str
+        :param IsUnschedulable: Whether the node is set to unschedulable
+Note: this field may return null, indicating that no valid value was found.
+        :type IsUnschedulable: bool
+        :param Labels: Scaling group label list
+Note: this field may return null, indicating that no valid value was found.
+        :type Labels: list of Label
+        :param CreatedTime: Creation time
+        :type CreatedTime: str
+        """
+        self.AutoScalingGroupId = None
+        self.Status = None
+        self.IsUnschedulable = None
+        self.Labels = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.Status = params.get("Status")
+        self.IsUnschedulable = params.get("IsUnschedulable")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        self.CreatedTime = params.get("CreatedTime")
+
+
+class ClusterAsGroupAttribute(AbstractModel):
+    """Cluster scaling group attributes
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: Scaling group ID
+        :type AutoScalingGroupId: str
+        :param AutoScalingGroupEnabled: Whether it is enabled
+        :type AutoScalingGroupEnabled: bool
+        :param AutoScalingGroupRange: Maximum and minimum number of pods in a scaling group
+        :type AutoScalingGroupRange: :class:`tencentcloud.tke.v20180525.models.AutoScalingGroupRange`
+        """
+        self.AutoScalingGroupId = None
+        self.AutoScalingGroupEnabled = None
+        self.AutoScalingGroupRange = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.AutoScalingGroupEnabled = params.get("AutoScalingGroupEnabled")
+        if params.get("AutoScalingGroupRange") is not None:
+            self.AutoScalingGroupRange = AutoScalingGroupRange()
+            self.AutoScalingGroupRange._deserialize(params.get("AutoScalingGroupRange"))
+
+
+class ClusterAsGroupOption(AbstractModel):
+    """Cluster auto scaling configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param IsScaleDownEnabled: Whether to enable scale-down
+Note: this field may return null, indicating that no valid value was found.
+        :type IsScaleDownEnabled: bool
+        :param Expander: Scale-up selection algorithm when there are multiple scaling groups (random: random selection. most-pods: pod with the most types. least-waste: least waste of resources. The default value is random.)
+Note: this field may return null, indicating that no valid value was found.
+        :type Expander: str
+        :param MaxEmptyBulkDelete: Max concurrent scale-down volume
+Note: this field may return null, indicating that no valid value was found.
+        :type MaxEmptyBulkDelete: int
+        :param ScaleDownDelay: Number of minutes after cluster scale-up when the system starts judging whether to perform scale-down
+Note: this field may return null, indicating that no valid value was found.
+        :type ScaleDownDelay: int
+        :param ScaleDownUnneededTime: Number of consecutive minutes of idleness after which the node is subject to scale-down (default value: 10)
+Note: this field may return null, indicating that no valid value was found.
+        :type ScaleDownUnneededTime: int
+        :param ScaleDownUtilizationThreshold: Percentage of node resource usage below which the node is considered to be idle (default value: 50)
+Note: this field may return null, indicating that no valid value was found.
+        :type ScaleDownUtilizationThreshold: int
+        :param SkipNodesWithLocalStorage: Whether to skip scale-down for nodes with local storage pods (default value: False)
+Note: this field may return null, indicating that no valid value was found.
+        :type SkipNodesWithLocalStorage: bool
+        :param SkipNodesWithSystemPods: Whether to skip scale-down for nodes with pods in the kube-system namespace that are not managed by DaemonSet (default value: False)
+Note: this field may return null, indicating that no valid value was found.
+        :type SkipNodesWithSystemPods: bool
+        :param IgnoreDaemonSetsUtilization: Whether to ignore DaemonSet pods by default when calculating resource usage (default value: False: do not ignore)
+Note: this field may return null, indicating that no valid value was found.
+        :type IgnoreDaemonSetsUtilization: bool
+        :param OkTotalUnreadyCount: Number at which CA health detection is triggered (default value: 3). After the number specified in OkTotalUnreadyCount is exceeded, CA will perform health detection.
+Note: this field may return null, indicating that no valid value was found.
+        :type OkTotalUnreadyCount: int
+        :param MaxTotalUnreadyPercentage: Max percentage of unready nodes. After the max percentage is exceeded, CA will stop operation.
+Note: this field may return null, indicating that no valid value was found.
+        :type MaxTotalUnreadyPercentage: int
+        :param ScaleDownUnreadyTime: Amount of time before unready nodes become eligible for scale-down
+Note: this field may return null, indicating that no valid value was found.
+        :type ScaleDownUnreadyTime: int
+        :param UnregisteredNodeRemovalTime: Waiting time before CA deletes nodes that are not registered in Kubernetes
+Note: this field may return null, indicating that no valid value was found.
+        :type UnregisteredNodeRemovalTime: int
+        """
+        self.IsScaleDownEnabled = None
+        self.Expander = None
+        self.MaxEmptyBulkDelete = None
+        self.ScaleDownDelay = None
+        self.ScaleDownUnneededTime = None
+        self.ScaleDownUtilizationThreshold = None
+        self.SkipNodesWithLocalStorage = None
+        self.SkipNodesWithSystemPods = None
+        self.IgnoreDaemonSetsUtilization = None
+        self.OkTotalUnreadyCount = None
+        self.MaxTotalUnreadyPercentage = None
+        self.ScaleDownUnreadyTime = None
+        self.UnregisteredNodeRemovalTime = None
+
+
+    def _deserialize(self, params):
+        self.IsScaleDownEnabled = params.get("IsScaleDownEnabled")
+        self.Expander = params.get("Expander")
+        self.MaxEmptyBulkDelete = params.get("MaxEmptyBulkDelete")
+        self.ScaleDownDelay = params.get("ScaleDownDelay")
+        self.ScaleDownUnneededTime = params.get("ScaleDownUnneededTime")
+        self.ScaleDownUtilizationThreshold = params.get("ScaleDownUtilizationThreshold")
+        self.SkipNodesWithLocalStorage = params.get("SkipNodesWithLocalStorage")
+        self.SkipNodesWithSystemPods = params.get("SkipNodesWithSystemPods")
+        self.IgnoreDaemonSetsUtilization = params.get("IgnoreDaemonSetsUtilization")
+        self.OkTotalUnreadyCount = params.get("OkTotalUnreadyCount")
+        self.MaxTotalUnreadyPercentage = params.get("MaxTotalUnreadyPercentage")
+        self.ScaleDownUnreadyTime = params.get("ScaleDownUnreadyTime")
+        self.UnregisteredNodeRemovalTime = params.get("UnregisteredNodeRemovalTime")
 
 
 class ClusterBasicSettings(AbstractModel):
@@ -1061,6 +1235,106 @@ class DeleteClusterRouteTableResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterAsGroupOptionRequest(AbstractModel):
+    """DescribeClusterAsGroupOption request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeClusterAsGroupOptionResponse(AbstractModel):
+    """DescribeClusterAsGroupOption response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterAsGroupOption: Cluster auto scaling attributes
+Note: this field may return null, indicating that no valid value was found.
+        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClusterAsGroupOption = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterAsGroupOption") is not None:
+            self.ClusterAsGroupOption = ClusterAsGroupOption()
+            self.ClusterAsGroupOption._deserialize(params.get("ClusterAsGroupOption"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterAsGroupsRequest(AbstractModel):
+    """DescribeClusterAsGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param AutoScalingGroupIds: Scaling group ID list. If this value is null, it indicates that all cluster-associated scaling groups are pulled.
+        :type AutoScalingGroupIds: list of str
+        :param Offset: Offset. This value defaults to 0. For more information on Offset, see the relevant sections in API [Overview](https://cloud.tencent.com/document/api/213/15688).
+        :type Offset: int
+        :param Limit: Number of returned results. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant sections in API [Overview](https://cloud.tencent.com/document/api/213/15688).
+        :type Limit: int
+        """
+        self.ClusterId = None
+        self.AutoScalingGroupIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AutoScalingGroupIds = params.get("AutoScalingGroupIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeClusterAsGroupsResponse(AbstractModel):
+    """DescribeClusterAsGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of scaling groups associated with the cluster
+        :type TotalCount: int
+        :param ClusterAsGroupSet: Cluster-associated scaling group list
+        :type ClusterAsGroupSet: list of ClusterAsGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterAsGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterAsGroupSet") is not None:
+            self.ClusterAsGroupSet = []
+            for item in params.get("ClusterAsGroupSet"):
+                obj = ClusterAsGroup()
+                obj._deserialize(item)
+                self.ClusterAsGroupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2094,6 +2368,46 @@ Note: This field may return null, indicating that no valid value is found.
         self.Password = params.get("Password")
         self.KeyIds = params.get("KeyIds")
         self.KeepImageLogin = params.get("KeepImageLogin")
+
+
+class ModifyClusterAsGroupAttributeRequest(AbstractModel):
+    """ModifyClusterAsGroupAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterAsGroupAttribute: Cluster-associated scaling group attributes
+        :type ClusterAsGroupAttribute: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupAttribute`
+        """
+        self.ClusterId = None
+        self.ClusterAsGroupAttribute = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ClusterAsGroupAttribute") is not None:
+            self.ClusterAsGroupAttribute = ClusterAsGroupAttribute()
+            self.ClusterAsGroupAttribute._deserialize(params.get("ClusterAsGroupAttribute"))
+
+
+class ModifyClusterAsGroupAttributeResponse(AbstractModel):
+    """ModifyClusterAsGroupAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyClusterAttributeRequest(AbstractModel):

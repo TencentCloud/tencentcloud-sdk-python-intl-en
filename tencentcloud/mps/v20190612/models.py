@@ -16,6 +16,63 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIAnalysisTemplateItem(AbstractModel):
+    """AI-based intelligent analysis template details
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of intelligent analysis template.
+        :type Definition: int
+        :param Name: Intelligent analysis template name.
+        :type Name: str
+        :param Comment: Intelligent analysis template description.
+        :type Comment: str
+        :param ClassificationConfigure: Control parameter of intelligent categorization task.
+        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`
+        :param TagConfigure: Control parameter of intelligent tagging task.
+        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`
+        :param CoverConfigure: Control parameter of intelligent cover generating task.
+        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
+        :param FrameTagConfigure: Control parameter of intelligent frame-specific tagging task.
+        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
+        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/862/37710#52).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/862/37710#52).
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.ClassificationConfigure = None
+        self.TagConfigure = None
+        self.CoverConfigure = None
+        self.FrameTagConfigure = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("ClassificationConfigure") is not None:
+            self.ClassificationConfigure = ClassificationConfigureInfo()
+            self.ClassificationConfigure._deserialize(params.get("ClassificationConfigure"))
+        if params.get("TagConfigure") is not None:
+            self.TagConfigure = TagConfigureInfo()
+            self.TagConfigure._deserialize(params.get("TagConfigure"))
+        if params.get("CoverConfigure") is not None:
+            self.CoverConfigure = CoverConfigureInfo()
+            self.CoverConfigure._deserialize(params.get("CoverConfigure"))
+        if params.get("FrameTagConfigure") is not None:
+            self.FrameTagConfigure = FrameTagConfigureInfo()
+            self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class AIRecognitionTemplateItem(AbstractModel):
     """Details of a video content recognition template
 
@@ -84,16 +141,551 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UpdateTime = params.get("UpdateTime")
 
 
+class AdaptiveDynamicStreamingInfoItem(AbstractModel):
+    """Adaptive bitrate streaming information
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Adaptive bitrate streaming specification.
+        :type Definition: int
+        :param Package: Container format. Valid values: HLS, MPEG-DASH.
+        :type Package: str
+        :param Path: Playback address.
+        :type Path: str
+        :param Storage: Storage location of adaptive bitrate streaming files.
+        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self.Definition = None
+        self.Package = None
+        self.Path = None
+        self.Storage = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Package = params.get("Package")
+        self.Path = params.get("Path")
+        if params.get("Storage") is not None:
+            self.Storage = TaskOutputStorage()
+            self.Storage._deserialize(params.get("Storage"))
+
+
+class AdaptiveDynamicStreamingTaskInput(AbstractModel):
+    """Input parameter type of adaptive bitrate streaming
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Adaptive bitrate streaming template ID.
+        :type Definition: int
+        :param WatermarkSet: List of up to 10 image or text watermarks.
+        :type WatermarkSet: list of WatermarkInput
+        :param OutputStorage: Target bucket of an output file after transcoded to adaptive bitrate streaming. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: The relative or absolute output path of the manifest file after transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}.{format}`.
+        :type OutputObjectPath: str
+        :param SubStreamObjectName: The relative output path of the substream file after transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.
+        :type SubStreamObjectName: str
+        :param SegmentObjectName: The relative output path of the segment file after transcoded to adaptive bitrate streaming (in HLS format only). If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
+        :type SegmentObjectName: str
+        """
+        self.Definition = None
+        self.WatermarkSet = None
+        self.OutputStorage = None
+        self.OutputObjectPath = None
+        self.SubStreamObjectName = None
+        self.SegmentObjectName = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        if params.get("WatermarkSet") is not None:
+            self.WatermarkSet = []
+            for item in params.get("WatermarkSet"):
+                obj = WatermarkInput()
+                obj._deserialize(item)
+                self.WatermarkSet.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputObjectPath = params.get("OutputObjectPath")
+        self.SubStreamObjectName = params.get("SubStreamObjectName")
+        self.SegmentObjectName = params.get("SegmentObjectName")
+
+
+class AdaptiveDynamicStreamingTemplate(AbstractModel):
+    """Details of an adaptive bitrate streaming template
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of an adaptive bitrate streaming template.
+        :type Definition: int
+        :param Type: Template type. Valid values:
+<li>Preset: preset template;</li>
+<li>Custom: custom template.</li>
+        :type Type: str
+        :param Name: Name of an adaptive bitrate streaming template.
+        :type Name: str
+        :param Comment: Description of an adaptive bitrate streaming template.
+        :type Comment: str
+        :param Format: Adaptive bitrate streaming format. Valid values:
+<li>HLS;</li>
+<li>MPEG-DASH.</li>
+        :type Format: str
+        :param StreamInfos: Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type DisableHigherVideoResolution: int
+        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.Format = None
+        self.StreamInfos = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class AdaptiveStreamTemplate(AbstractModel):
+    """Adaptive bitrate streaming parameter template
+
+    """
+
+    def __init__(self):
+        """
+        :param Video: Video parameter information.
+        :type Video: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        :param Audio: Audio parameter information.
+        :type Audio: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param RemoveAudio: Whether to remove audio stream. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type RemoveAudio: int
+        :param RemoveVideo: Whether to remove video stream. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type RemoveVideo: int
+        """
+        self.Video = None
+        self.Audio = None
+        self.RemoveAudio = None
+        self.RemoveVideo = None
+
+
+    def _deserialize(self, params):
+        if params.get("Video") is not None:
+            self.Video = VideoTemplateInfo()
+            self.Video._deserialize(params.get("Video"))
+        if params.get("Audio") is not None:
+            self.Audio = AudioTemplateInfo()
+            self.Audio._deserialize(params.get("Audio"))
+        self.RemoveAudio = params.get("RemoveAudio")
+        self.RemoveVideo = params.get("RemoveVideo")
+
+
 class AiAnalysisResult(AbstractModel):
     """Intelligent analysis results
 
     """
+
+    def __init__(self):
+        """
+        :param Type: 
+        :type Type: str
+        :param ClassificationTask: 
+        :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
+        :param CoverTask: 
+        :type CoverTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverResult`
+        :param TagTask: 
+        :type TagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`
+        :param FrameTagTask: 
+        :type FrameTagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`
+        """
+        self.Type = None
+        self.ClassificationTask = None
+        self.CoverTask = None
+        self.TagTask = None
+        self.FrameTagTask = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("ClassificationTask") is not None:
+            self.ClassificationTask = AiAnalysisTaskClassificationResult()
+            self.ClassificationTask._deserialize(params.get("ClassificationTask"))
+        if params.get("CoverTask") is not None:
+            self.CoverTask = AiAnalysisTaskCoverResult()
+            self.CoverTask._deserialize(params.get("CoverTask"))
+        if params.get("TagTask") is not None:
+            self.TagTask = AiAnalysisTaskTagResult()
+            self.TagTask._deserialize(params.get("TagTask"))
+        if params.get("FrameTagTask") is not None:
+            self.FrameTagTask = AiAnalysisTaskFrameTagResult()
+            self.FrameTagTask._deserialize(params.get("FrameTagTask"))
+
+
+class AiAnalysisTaskClassificationInput(AbstractModel):
+    """Input type of intelligent categorization task
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Intelligent video categorization template ID.
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskClassificationOutput(AbstractModel):
+    """Result information of intelligent categorization
+
+    """
+
+    def __init__(self):
+        """
+        :param ClassificationSet: List of intelligently generated video categories.
+        :type ClassificationSet: list of MediaAiAnalysisClassificationItem
+        """
+        self.ClassificationSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClassificationSet") is not None:
+            self.ClassificationSet = []
+            for item in params.get("ClassificationSet"):
+                obj = MediaAiAnalysisClassificationItem()
+                obj._deserialize(item)
+                self.ClassificationSet.append(obj)
+
+
+class AiAnalysisTaskClassificationResult(AbstractModel):
+    """Result type of intelligent categorization task
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCode: Error code. 0: success; other values: failure.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of intelligent categorization task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationInput`
+        :param Output: Output of intelligent categorization task.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskClassificationInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskClassificationOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiAnalysisTaskCoverInput(AbstractModel):
+    """Input type of intelligent categorization task
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Intelligent video cover generating template ID.
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskCoverOutput(AbstractModel):
+    """Result information of intelligent cover generating
+
+    """
+
+    def __init__(self):
+        """
+        :param CoverSet: List of intelligently generated covers.
+        :type CoverSet: list of MediaAiAnalysisCoverItem
+        :param OutputStorage: Storage location of intelligently generated cover.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self.CoverSet = None
+        self.OutputStorage = None
+
+
+    def _deserialize(self, params):
+        if params.get("CoverSet") is not None:
+            self.CoverSet = []
+            for item in params.get("CoverSet"):
+                obj = MediaAiAnalysisCoverItem()
+                obj._deserialize(item)
+                self.CoverSet.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+
+
+class AiAnalysisTaskCoverResult(AbstractModel):
+    """Result type of intelligent cover generating task
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCode: Error code. 0: success; other values: failure.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of intelligent cover generating task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverInput`
+        :param Output: Output of intelligent cover generating task.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskCoverInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskCoverOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiAnalysisTaskFrameTagInput(AbstractModel):
+    """Input type of intelligent frame-specific tagging task
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Intelligent frame-specific video tagging template ID.
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskFrameTagOutput(AbstractModel):
+    """Result information of intelligent frame-specific tagging
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentSet: List of frame-specific video tags.
+        :type SegmentSet: list of MediaAiAnalysisFrameTagSegmentItem
+        """
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaAiAnalysisFrameTagSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiAnalysisTaskFrameTagResult(AbstractModel):
+    """Result type of intelligent frame-specific tagging
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCode: Error code. 0: success; other values: failure.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of intelligent frame-specific tagging task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagInput`
+        :param Output: Output of intelligent frame-specific tagging task.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskFrameTagInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskFrameTagOutput()
+            self.Output._deserialize(params.get("Output"))
 
 
 class AiAnalysisTaskInput(AbstractModel):
     """AI video intelligent analysis input parameter types
 
     """
+
+    def __init__(self):
+        """
+        :param Definition: 
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskTagInput(AbstractModel):
+    """Input type of intelligent tagging task
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Intelligent video tagging template ID.
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskTagOutput(AbstractModel):
+    """Result information of intelligent tagging
+
+    """
+
+    def __init__(self):
+        """
+        :param TagSet: List of intelligently generated video tags.
+        :type TagSet: list of MediaAiAnalysisTagItem
+        """
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = MediaAiAnalysisTagItem()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+
+
+class AiAnalysisTaskTagResult(AbstractModel):
+    """Result type of intelligent tagging task
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCode: Error code. 0: success; other values: failure.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of intelligent tagging task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagInput`
+        :param Output: Output of intelligent tagging task.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskTagInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskTagOutput()
+            self.Output._deserialize(params.get("Output"))
 
 
 class AiContentReviewResult(AbstractModel):
@@ -1057,9 +1649,11 @@ class AiReviewPoliticalTaskOutput(AbstractModel):
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param Label: Tag of the detected politically sensitive information in video. Valid values:
-<li>politician: Politically sensitive figure.</li>
-<li>violation_photo: Violating photo.</li>
+        :param Label: Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://cloud.tencent.com/document/api/862/37615#AiReviewPoliticalTaskOutput) and this parameter is as follows:
+violation_photo:
+<li>violation_photo: violating photo.</li>
+Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
+<li>politician: politically sensitive figure.</li>
         :type Label: str
         :param SegmentSet: List of video segments that contain the detected politically sensitive information.
         :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
@@ -2000,9 +2594,8 @@ When the outer `Container` parameter is `m4a`, the valid values include:
 <li>libmp3lame;</li>
 <li>ac3.</li>
 When the outer `Container` parameter is `mp4` or `flv`, the valid values include:
-<li>libfdk_aac: More suitable for mp4;</li>
-<li>libmp3lame: More suitable for flv;</li>
-<li>mp2.</li>
+<li>libfdk_aac: more suitable for mp4;</li>
+<li>libmp3lame: more suitable for flv.</li>
 When the outer `Container` parameter is `hls`, the valid values include:
 <li>libfdk_aac;</li>
 <li>libmp3lame.</li>
@@ -2087,6 +2680,44 @@ In Hz.
         self.AudioChannel = params.get("AudioChannel")
 
 
+class ClassificationConfigureInfo(AbstractModel):
+    """Control parameter of intelligent categorization task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of intelligent categorization task. Valid values:
+<li>ON: enables intelligent categorization task;</li>
+<li>OFF: disables intelligent categorization task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class ClassificationConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of intelligent categorization task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of intelligent categorization task. Valid values:
+<li>ON: enables intelligent categorization task;</li>
+<li>OFF: disables intelligent categorization task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class ContentReviewTemplateItem(AbstractModel):
     """Details of a content audit template
 
@@ -2109,6 +2740,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param PoliticalConfigure: Politically sensitive information detection control parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
+        :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
+<li>Abusive;</li>
+<li>Drug-related.</li>
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
         :param UserDefineConfigure: Custom content audit control parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
@@ -2123,6 +2759,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.PornConfigure = None
         self.TerrorismConfigure = None
         self.PoliticalConfigure = None
+        self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
         self.CreateTime = None
         self.UpdateTime = None
@@ -2141,6 +2778,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("PoliticalConfigure") is not None:
             self.PoliticalConfigure = PoliticalConfigureInfo()
             self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("ProhibitedConfigure") is not None:
+            self.ProhibitedConfigure = ProhibitedConfigureInfo()
+            self.ProhibitedConfigure._deserialize(params.get("ProhibitedConfigure"))
         if params.get("UserDefineConfigure") is not None:
             self.UserDefineConfigure = UserDefineConfigureInfo()
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
@@ -2223,6 +2863,110 @@ class CosOutputStorage(AbstractModel):
         self.Region = params.get("Region")
 
 
+class CoverConfigureInfo(AbstractModel):
+    """Control parameter of intelligent cover generating task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of intelligent cover generating task. Valid values:
+<li>ON: enables intelligent cover generating task;</li>
+<li>OFF: disables intelligent cover generating task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class CoverConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of intelligent cover generating task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of intelligent cover generating task. Valid values:
+<li>ON: enables intelligent cover generating task;</li>
+<li>OFF: disables intelligent cover generating task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class CreateAIAnalysisTemplateRequest(AbstractModel):
+    """CreateAIAnalysisTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Video content analysis template name. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Video content analysis template description. Length limit: 256 characters.
+        :type Comment: str
+        :param ClassificationConfigure: Control parameter of intelligent categorization task.
+        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`
+        :param TagConfigure: Control parameter of intelligent tagging task.
+        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`
+        :param CoverConfigure: Control parameter of intelligent cover generating task.
+        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
+        :param FrameTagConfigure: Control parameter of intelligent frame-specific tagging task.
+        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
+        """
+        self.Name = None
+        self.Comment = None
+        self.ClassificationConfigure = None
+        self.TagConfigure = None
+        self.CoverConfigure = None
+        self.FrameTagConfigure = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("ClassificationConfigure") is not None:
+            self.ClassificationConfigure = ClassificationConfigureInfo()
+            self.ClassificationConfigure._deserialize(params.get("ClassificationConfigure"))
+        if params.get("TagConfigure") is not None:
+            self.TagConfigure = TagConfigureInfo()
+            self.TagConfigure._deserialize(params.get("TagConfigure"))
+        if params.get("CoverConfigure") is not None:
+            self.CoverConfigure = CoverConfigureInfo()
+            self.CoverConfigure._deserialize(params.get("CoverConfigure"))
+        if params.get("FrameTagConfigure") is not None:
+            self.FrameTagConfigure = FrameTagConfigureInfo()
+            self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+
+
+class CreateAIAnalysisTemplateResponse(AbstractModel):
+    """CreateAIAnalysisTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of video content analysis template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAIRecognitionTemplateRequest(AbstractModel):
     """CreateAIRecognitionTemplate request structure.
 
@@ -2282,6 +3026,78 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
     def __init__(self):
         """
         :param Definition: Unique ID of a video content recognition template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """CreateAdaptiveDynamicStreamingTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Format: Adaptive bitrate streaming format. Valid values:
+<li>HLS,</li>
+<li>MPEG-DASH.</li>
+        :type Format: str
+        :param StreamInfos: Parameter information of output substreams for transcoding to adaptive bitrate streaming. Up to 10 substreams can be output.
+Note: the frame rate of each substream must be consistent; otherwise, the frame rate of the first substream is used as the output frame rate.
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param Name: Template name. Length limit: 64 characters.
+        :type Name: str
+        :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+Default value: 0.
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+Default value: 0.
+        :type DisableHigherVideoResolution: int
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        """
+        self.Format = None
+        self.StreamInfos = None
+        self.Name = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.Name = params.get("Name")
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        self.Comment = params.get("Comment")
+
+
+class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """CreateAdaptiveDynamicStreamingTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of an adaptive bitrate streaming template.
         :type Definition: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3001,6 +3817,40 @@ class CreateWorkflowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAIAnalysisTemplateRequest(AbstractModel):
+    """DeleteAIAnalysisTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of video content analysis template.
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class DeleteAIAnalysisTemplateResponse(AbstractModel):
+    """DeleteAIAnalysisTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteAIRecognitionTemplateRequest(AbstractModel):
     """DeleteAIRecognitionTemplate request structure.
 
@@ -3020,6 +3870,40 @@ class DeleteAIRecognitionTemplateRequest(AbstractModel):
 
 class DeleteAIRecognitionTemplateResponse(AbstractModel):
     """DeleteAIRecognitionTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """DeleteAdaptiveDynamicStreamingTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of an adaptive bitrate streaming template.
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """DeleteAdaptiveDynamicStreamingTemplate response structure.
 
     """
 
@@ -3375,6 +4259,61 @@ class DeleteWorkflowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAIAnalysisTemplatesRequest(AbstractModel):
+    """DescribeAIAnalysisTemplates request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: Unique ID filter of video content analysis templates. Array length limit: 10.
+        :type Definitions: list of int
+        :param Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAIAnalysisTemplatesResponse(AbstractModel):
+    """DescribeAIAnalysisTemplates response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param AIAnalysisTemplateSet: List of video content analysis template details.
+        :type AIAnalysisTemplateSet: list of AIAnalysisTemplateItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AIAnalysisTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AIAnalysisTemplateSet") is not None:
+            self.AIAnalysisTemplateSet = []
+            for item in params.get("AIAnalysisTemplateSet"):
+                obj = AIAnalysisTemplateItem()
+                obj._deserialize(item)
+                self.AIAnalysisTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAIRecognitionTemplatesRequest(AbstractModel):
     """DescribeAIRecognitionTemplates request structure.
 
@@ -3427,6 +4366,67 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
                 obj = AIRecognitionTemplateItem()
                 obj._deserialize(item)
                 self.AIRecognitionTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
+    """DescribeAdaptiveDynamicStreamingTemplates request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: Unique ID filter of adaptive bitrate streaming templates. Array length limit: 100.
+        :type Definitions: list of int non-negative
+        :param Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Type: Template type filter. Valid values:
+<li>Preset: preset template;</li>
+<li>Custom: custom template.</li>
+        :type Type: str
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+
+
+class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
+    """DescribeAdaptiveDynamicStreamingTemplates response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param AdaptiveDynamicStreamingTemplateSet: List of adaptive bitrate streaming template details.
+        :type AdaptiveDynamicStreamingTemplateSet: list of AdaptiveDynamicStreamingTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AdaptiveDynamicStreamingTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AdaptiveDynamicStreamingTemplateSet") is not None:
+            self.AdaptiveDynamicStreamingTemplateSet = []
+            for item in params.get("AdaptiveDynamicStreamingTemplateSet"):
+                obj = AdaptiveDynamicStreamingTemplate()
+                obj._deserialize(item)
+                self.AdaptiveDynamicStreamingTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3604,6 +4604,48 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
                 obj = ImageSpriteTemplate()
                 obj._deserialize(item)
                 self.ImageSpriteTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMediaMetaDataRequest(AbstractModel):
+    """DescribeMediaMetaData request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InputInfo: Input information of file for metadata getting.
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        self.InputInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self.InputInfo = MediaInputInfo()
+            self.InputInfo._deserialize(params.get("InputInfo"))
+
+
+class DescribeMediaMetaDataResponse(AbstractModel):
+    """DescribeMediaMetaData response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param MetaData: Media metadata.
+        :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.MetaData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4253,6 +5295,104 @@ class DisableWorkflowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EditMediaFileInfo(AbstractModel):
+    """VOD video file editing information
+
+    """
+
+    def __init__(self):
+        """
+        :param InputInfo: Video input information.
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param StartTimeOffset: Start time offset of video clipping in seconds.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of video clipping in seconds.
+        :type EndTimeOffset: float
+        """
+        self.InputInfo = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self.InputInfo = MediaInputInfo()
+            self.InputInfo._deserialize(params.get("InputInfo"))
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+
+
+class EditMediaRequest(AbstractModel):
+    """EditMedia request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FileInfos: Information of input video file.
+        :type FileInfos: list of EditMediaFileInfo
+        :param OutputStorage: Target storage of video processing output file.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: Target path of video processing output file.
+        :type OutputObjectPath: str
+        :param TaskNotifyConfig: Event notification information of task. If this parameter is left empty, no event notifications will be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :type SessionId: str
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        """
+        self.FileInfos = None
+        self.OutputStorage = None
+        self.OutputObjectPath = None
+        self.TaskNotifyConfig = None
+        self.TasksPriority = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        if params.get("FileInfos") is not None:
+            self.FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = EditMediaFileInfo()
+                obj._deserialize(item)
+                self.FileInfos.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputObjectPath = params.get("OutputObjectPath")
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = TaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self.TasksPriority = params.get("TasksPriority")
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+
+
+class EditMediaResponse(AbstractModel):
+    """EditMedia response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: Video editing task ID, which can be used to query the status of an editing task.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class EnableWorkflowRequest(AbstractModel):
     """EnableWorkflow request structure.
 
@@ -4370,6 +5510,44 @@ There can be up to 10 tags, each with a length limit of 16 characters.
         self.DefaultLibraryLabelSet = params.get("DefaultLibraryLabelSet")
         self.UserDefineLibraryLabelSet = params.get("UserDefineLibraryLabelSet")
         self.FaceLibrary = params.get("FaceLibrary")
+
+
+class FrameTagConfigureInfo(AbstractModel):
+    """Control parameter of intelligent frame-specific tagging task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of intelligent frame-specific tagging task. Valid values:
+<li>ON: enables intelligent frame-specific tagging task;</li>
+<li>OFF: disables intelligent frame-specific tagging task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class FrameTagConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of intelligent frame-specific tagging task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of intelligent frame-specific tagging task. Valid values:
+<li>ON: enables intelligent frame-specific tagging task;</li>
+<li>OFF: disables intelligent frame-specific tagging task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
 
 
 class ImageSpriteTaskInput(AbstractModel):
@@ -4576,6 +5754,94 @@ class LiveStreamAiRecognitionResultInfo(AbstractModel):
     """Live stream AI recognition results
 
     """
+
+    def __init__(self):
+        """
+        :param ResultSet: 
+        :type ResultSet: list of LiveStreamAiRecognitionResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = LiveStreamAiRecognitionResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+
+
+class LiveStreamAiRecognitionResultItem(AbstractModel):
+    """AI-based live stream recognition result
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Result type. Valid values:
+<li>FaceRecognition: face recognition,</li>
+<li>AsrWordsRecognition: speech keyword recognition,</li>
+<li>OcrWordsRecognition: text keyword recognition,</li>
+<li>AsrFullTextRecognition: full speech recognition,</li>
+<li>OcrFullTextRecognition: full text recognition.</li>
+        :type Type: str
+        :param FaceRecognitionResultSet: Face recognition result, which is valid when `Type` is
+`FaceRecognition`.
+        :type FaceRecognitionResultSet: list of LiveStreamFaceRecognitionResult
+        :param AsrWordsRecognitionResultSet: Speech keyword recognition result, which is valid when `Type` is
+`AsrWordsRecognition`.
+        :type AsrWordsRecognitionResultSet: list of LiveStreamAsrWordsRecognitionResult
+        :param OcrWordsRecognitionResultSet: Text keyword recognition result, which is valid when `Type` is
+`OcrWordsRecognition`.
+        :type OcrWordsRecognitionResultSet: list of LiveStreamOcrWordsRecognitionResult
+        :param AsrFullTextRecognitionResultSet: Full speech recognition result, which is valid when `Type` is
+`AsrFullTextRecognition`.
+        :type AsrFullTextRecognitionResultSet: list of LiveStreamAsrFullTextRecognitionResult
+        :param OcrFullTextRecognitionResultSet: Full text recognition result, which is valid when `Type` is
+`OcrFullTextRecognition`.
+        :type OcrFullTextRecognitionResultSet: list of LiveStreamOcrFullTextRecognitionResult
+        """
+        self.Type = None
+        self.FaceRecognitionResultSet = None
+        self.AsrWordsRecognitionResultSet = None
+        self.OcrWordsRecognitionResultSet = None
+        self.AsrFullTextRecognitionResultSet = None
+        self.OcrFullTextRecognitionResultSet = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("FaceRecognitionResultSet") is not None:
+            self.FaceRecognitionResultSet = []
+            for item in params.get("FaceRecognitionResultSet"):
+                obj = LiveStreamFaceRecognitionResult()
+                obj._deserialize(item)
+                self.FaceRecognitionResultSet.append(obj)
+        if params.get("AsrWordsRecognitionResultSet") is not None:
+            self.AsrWordsRecognitionResultSet = []
+            for item in params.get("AsrWordsRecognitionResultSet"):
+                obj = LiveStreamAsrWordsRecognitionResult()
+                obj._deserialize(item)
+                self.AsrWordsRecognitionResultSet.append(obj)
+        if params.get("OcrWordsRecognitionResultSet") is not None:
+            self.OcrWordsRecognitionResultSet = []
+            for item in params.get("OcrWordsRecognitionResultSet"):
+                obj = LiveStreamOcrWordsRecognitionResult()
+                obj._deserialize(item)
+                self.OcrWordsRecognitionResultSet.append(obj)
+        if params.get("AsrFullTextRecognitionResultSet") is not None:
+            self.AsrFullTextRecognitionResultSet = []
+            for item in params.get("AsrFullTextRecognitionResultSet"):
+                obj = LiveStreamAsrFullTextRecognitionResult()
+                obj._deserialize(item)
+                self.AsrFullTextRecognitionResultSet.append(obj)
+        if params.get("OcrFullTextRecognitionResultSet") is not None:
+            self.OcrFullTextRecognitionResultSet = []
+            for item in params.get("OcrFullTextRecognitionResultSet"):
+                obj = LiveStreamOcrFullTextRecognitionResult()
+                obj._deserialize(item)
+                self.OcrFullTextRecognitionResultSet.append(obj)
 
 
 class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
@@ -4851,6 +6117,172 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
         self.Label = params.get("Label")
 
 
+class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
+    """ASR-based full live stream recognition
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: Recognized text.
+        :type Text: str
+        :param StartPtsTime: Start PTS time of recognized segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of recognized segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :type Confidence: float
+        """
+        self.Text = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+
+
+class LiveStreamAsrWordsRecognitionResult(AbstractModel):
+    """AI-based ASR-based live streaming keyword recognition result
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: Speech keyword.
+        :type Word: str
+        :param StartPtsTime: Start PTS time of recognized segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of recognized segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :type Confidence: float
+        """
+        self.Word = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+
+
+class LiveStreamFaceRecognitionResult(AbstractModel):
+    """AI-based live streaming face recognition result
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: Unique ID of figure.
+        :type Id: str
+        :param Name: Figure name.
+        :type Name: str
+        :param Type: Figure library type, indicating to which figure library the recognized figure belongs:
+<li>Default: default figure library</li><li>UserDefine: custom figure library</li>
+        :type Type: str
+        :param StartPtsTime: Start PTS time of recognized segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of recognized segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :type Confidence: float
+        :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
+        """
+        self.Id = None
+        self.Name = None
+        self.Type = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+
+
+class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
+    """OCR-based full live stream recognition
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: Speech text.
+        :type Text: str
+        :param StartPtsTime: Start PTS time of recognized segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of recognized segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :type Confidence: float
+        :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
+        """
+        self.Text = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+
+
+class LiveStreamOcrWordsRecognitionResult(AbstractModel):
+    """AI-based OCR-based live streaming keyword recognition result
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: Text keyword.
+        :type Word: str
+        :param StartPtsTime: Start PTS time of recognized segment in seconds.
+        :type StartPtsTime: float
+        :param EndPtsTime: End PTS time of recognized segment in seconds.
+        :type EndPtsTime: float
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :type Confidence: float
+        :param AreaCoords: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :type AreaCoords: list of int
+        """
+        self.Word = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.AreaCoords = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoords = params.get("AreaCoords")
+
+
 class LiveStreamProcessErrorInfo(AbstractModel):
     """Information of a live stream processing error
 
@@ -4936,6 +6368,159 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self.CmqRegion = params.get("CmqRegion")
         self.QueueName = params.get("QueueName")
         self.TopicName = params.get("TopicName")
+
+
+class ManageTaskRequest(AbstractModel):
+    """ManageTask request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param OperationType: Operation type. Valid values:
+<li>Abort: terminates task.</li>
+        :type OperationType: str
+        :param TaskId: Video processing task ID.
+        :type TaskId: str
+        """
+        self.OperationType = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.OperationType = params.get("OperationType")
+        self.TaskId = params.get("TaskId")
+
+
+class ManageTaskResponse(AbstractModel):
+    """ManageTask response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class MediaAiAnalysisClassificationItem(AbstractModel):
+    """Intelligent categorization result
+
+    """
+
+    def __init__(self):
+        """
+        :param Classification: Name of intelligently generated category.
+        :type Classification: str
+        :param Confidence: Confidence of intelligently generated category between 0 and 100.
+        :type Confidence: float
+        """
+        self.Classification = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Classification = params.get("Classification")
+        self.Confidence = params.get("Confidence")
+
+
+class MediaAiAnalysisCoverItem(AbstractModel):
+    """Information of intelligently generated cover
+
+    """
+
+    def __init__(self):
+        """
+        :param CoverPath: Storage path of intelligently generated cover.
+        :type CoverPath: str
+        :param Confidence: Confidence of intelligently generated cover between 0 and 100.
+        :type Confidence: float
+        """
+        self.CoverPath = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.CoverPath = params.get("CoverPath")
+        self.Confidence = params.get("Confidence")
+
+
+class MediaAiAnalysisFrameTagItem(AbstractModel):
+    """Result information of intelligent frame-specific tagging
+
+    """
+
+    def __init__(self):
+        """
+        :param Tag: Frame-specific tag name.
+        :type Tag: str
+        :param Confidence: Confidence of intelligently generated frame-specific tag between 0 and 100.
+        :type Confidence: float
+        """
+        self.Tag = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Tag = params.get("Tag")
+        self.Confidence = params.get("Confidence")
+
+
+class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
+    """List of frame-specific tag segments
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: Start time offset of frame-specific tag.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of frame-specific tag.
+        :type EndTimeOffset: float
+        :param TagSet: List of tags in time period.
+        :type TagSet: list of MediaAiAnalysisFrameTagItem
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = MediaAiAnalysisFrameTagItem()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+
+
+class MediaAiAnalysisTagItem(AbstractModel):
+    """Result information of intelligent tagging
+
+    """
+
+    def __init__(self):
+        """
+        :param Tag: Tag name.
+        :type Tag: str
+        :param Confidence: Confidence of tag between 0 and 100.
+        :type Confidence: float
+        """
+        self.Tag = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Tag = params.get("Tag")
+        self.Confidence = params.get("Confidence")
 
 
 class MediaAnimatedGraphicsItem(AbstractModel):
@@ -5352,6 +6937,44 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.AudioDuration = params.get("AudioDuration")
 
 
+class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
+    """Result type of adaptive bitrate streaming task
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCode: Error code. 0: success; other values: failure.
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        :param Input: Input of an adaptive bitrate streaming task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
+        :param Output: Output of an adaptive bitrate streaming task.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingInfoItem`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AdaptiveDynamicStreamingTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AdaptiveDynamicStreamingInfoItem()
+            self.Output._deserialize(params.get("Output"))
+
+
 class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
     """Result type of an animated image generating task
 
@@ -5451,12 +7074,15 @@ class MediaProcessTaskInput(AbstractModel):
         :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
         :param ImageSpriteTaskSet: List of image sprite generating tasks.
         :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
+        :param AdaptiveDynamicStreamingTaskSet: List of adaptive bitrate streaming tasks.
+        :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
         """
         self.TranscodeTaskSet = None
         self.AnimatedGraphicTaskSet = None
         self.SnapshotByTimeOffsetTaskSet = None
         self.SampleSnapshotTaskSet = None
         self.ImageSpriteTaskSet = None
+        self.AdaptiveDynamicStreamingTaskSet = None
 
 
     def _deserialize(self, params):
@@ -5490,6 +7116,12 @@ class MediaProcessTaskInput(AbstractModel):
                 obj = ImageSpriteTaskInput()
                 obj._deserialize(item)
                 self.ImageSpriteTaskSet.append(obj)
+        if params.get("AdaptiveDynamicStreamingTaskSet") is not None:
+            self.AdaptiveDynamicStreamingTaskSet = []
+            for item in params.get("AdaptiveDynamicStreamingTaskSet"):
+                obj = AdaptiveDynamicStreamingTaskInput()
+                obj._deserialize(item)
+                self.AdaptiveDynamicStreamingTaskSet.append(obj)
 
 
 class MediaProcessTaskResult(AbstractModel):
@@ -5523,6 +7155,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ImageSpriteTask: Query result of an image sprite generating task, which is valid when task type is `ImageSprite`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
+        :param AdaptiveDynamicStreamingTask: Query result of an adaptive bitrate streaming task, which is valid if the task type is `AdaptiveDynamicStreaming`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
         """
         self.Type = None
         self.TranscodeTask = None
@@ -5530,6 +7165,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.SnapshotByTimeOffsetTask = None
         self.SampleSnapshotTask = None
         self.ImageSpriteTask = None
+        self.AdaptiveDynamicStreamingTask = None
 
 
     def _deserialize(self, params):
@@ -5549,6 +7185,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ImageSpriteTask") is not None:
             self.ImageSpriteTask = MediaProcessTaskImageSpriteResult()
             self.ImageSpriteTask._deserialize(params.get("ImageSpriteTask"))
+        if params.get("AdaptiveDynamicStreamingTask") is not None:
+            self.AdaptiveDynamicStreamingTask = MediaProcessTaskAdaptiveDynamicStreamingResult()
+            self.AdaptiveDynamicStreamingTask._deserialize(params.get("AdaptiveDynamicStreamingTask"))
 
 
 class MediaProcessTaskSampleSnapshotResult(AbstractModel):
@@ -5889,6 +7528,72 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Fps = params.get("Fps")
 
 
+class ModifyAIAnalysisTemplateRequest(AbstractModel):
+    """ModifyAIAnalysisTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of video content analysis template.
+        :type Definition: int
+        :param Name: Video content analysis template name. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Video content analysis template description. Length limit: 256 characters.
+        :type Comment: str
+        :param ClassificationConfigure: Control parameter of intelligent categorization task.
+        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfoForUpdate`
+        :param TagConfigure: Control parameter of intelligent tagging task.
+        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfoForUpdate`
+        :param CoverConfigure: Control parameter of intelligent cover generating task.
+        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfoForUpdate`
+        :param FrameTagConfigure: Control parameter of intelligent frame-specific tagging task.
+        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfoForUpdate`
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.ClassificationConfigure = None
+        self.TagConfigure = None
+        self.CoverConfigure = None
+        self.FrameTagConfigure = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("ClassificationConfigure") is not None:
+            self.ClassificationConfigure = ClassificationConfigureInfoForUpdate()
+            self.ClassificationConfigure._deserialize(params.get("ClassificationConfigure"))
+        if params.get("TagConfigure") is not None:
+            self.TagConfigure = TagConfigureInfoForUpdate()
+            self.TagConfigure._deserialize(params.get("TagConfigure"))
+        if params.get("CoverConfigure") is not None:
+            self.CoverConfigure = CoverConfigureInfoForUpdate()
+            self.CoverConfigure._deserialize(params.get("CoverConfigure"))
+        if params.get("FrameTagConfigure") is not None:
+            self.FrameTagConfigure = FrameTagConfigureInfoForUpdate()
+            self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+
+
+class ModifyAIAnalysisTemplateResponse(AbstractModel):
+    """ModifyAIAnalysisTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAIRecognitionTemplateRequest(AbstractModel):
     """ModifyAIRecognitionTemplate request structure.
 
@@ -5946,6 +7651,76 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
 class ModifyAIRecognitionTemplateResponse(AbstractModel):
     """ModifyAIRecognitionTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """ModifyAdaptiveDynamicStreamingTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of an adaptive bitrate streaming template.
+        :type Definition: int
+        :param Name: Template name. Length limit: 64 characters.
+        :type Name: str
+        :param Format: Adaptive bitrate streaming format. Valid values:
+<li>HLS,</li>
+<li>MPEG-DASH.</li>
+        :type Format: str
+        :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type DisableHigherVideoResolution: int
+        :param StreamInfos: Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.
+Note: the frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate.
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Format = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.StreamInfos = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Format = params.get("Format")
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.Comment = params.get("Comment")
+
+
+class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """ModifyAdaptiveDynamicStreamingTemplate response structure.
 
     """
 
@@ -6945,11 +8720,15 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 <li>ON: Enables a politically sensitive information detection in image task;</li>
 <li>OFF: Disables a politically sensitive information detection in image task.</li>
         :type Switch: str
-        :param LabelSet: Filter tag for politically sensitive information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>violation_photo: Violating photo;</li>
-<li>politician: Politically sensitive figure;</li>
-<li>entertainment: Entertainment celebrity;</li>
-<li>sport: Sports celebrity.</li>
+        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>violation_photo: violating photo;</li>
+<li>politician: sensitive figure;</li>
+<li>entertainment: entertainment celebrity;</li>
+<li>sport: sports figure;</li>
+<li>entrepreneur: business figure;</li>
+<li>scholar: educator;</li>
+<li>celebrity: public-known figure;</li>
+<li>military: military figure.</li>
         :type LabelSet: list of str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0–100.
         :type BlockConfidence: int
@@ -6980,11 +8759,15 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON: Enables a politically sensitive information detection in image task;</li>
 <li>OFF: Disables a politically sensitive information detection in image task.</li>
         :type Switch: str
-        :param LabelSet: Filter tag for politically sensitive information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>violation_photo: Violating photo;</li>
-<li>politician: Politically sensitive figure;</li>
-<li>entertainment: Entertainment celebrity;</li>
-<li>sport: Sports celebrity.</li>
+        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>violation_photo: violating photo;</li>
+<li>politician: sensitive figure;</li>
+<li>entertainment: entertainment celebrity;</li>
+<li>sport: sports figure;</li>
+<li>entrepreneur: business figure;</li>
+<li>scholar: educator;</li>
+<li>celebrity: public-known figure;</li>
+<li>military: military figure.</li>
         :type LabelSet: list of str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
         :type BlockConfidence: int
@@ -7467,16 +9250,190 @@ class ProcessMediaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class RawTranscodeParameter(AbstractModel):
-    """Specifications for custom transcoding.
+class ProhibitedAsrReviewTemplateInfo(AbstractModel):
+    """
 
     """
+
+    def __init__(self):
+        """
+        :param Switch: 
+        :type Switch: str
+        :param BlockConfidence: 
+        :type BlockConfidence: int
+        :param ReviewConfidence: 
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class ProhibitedConfigureInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param AsrReviewInfo: 
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfo`
+        :param OcrReviewInfo: 
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfo`
+        """
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = ProhibitedAsrReviewTemplateInfo()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = ProhibitedOcrReviewTemplateInfo()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
+class ProhibitedOcrReviewTemplateInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 
+        :type Switch: str
+        :param BlockConfidence: 
+        :type BlockConfidence: int
+        :param ReviewConfidence: 
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class RawImageWatermarkInput(AbstractModel):
+    """Input parameter of image watermark template
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageContent: Input content of watermark image. JPEG and PNG images are supported.
+        :type ImageContent: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param Width: Watermark width. % and px formats are supported:
+<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>
+<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>
+Default value: 10%.
+        :type Width: str
+        :param Height: Watermark height. % and px formats are supported:
+<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px.</li>
+Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
+        :type Height: str
+        """
+        self.ImageContent = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageContent") is not None:
+            self.ImageContent = MediaInputInfo()
+            self.ImageContent._deserialize(params.get("ImageContent"))
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
+class RawTranscodeParameter(AbstractModel):
+    """Specifications for custom transcoding
+
+    """
+
+    def __init__(self):
+        """
+        :param Container: 
+        :type Container: str
+        :param RemoveVideo: 
+        :type RemoveVideo: int
+        :param RemoveAudio: 
+        :type RemoveAudio: int
+        :param VideoTemplate: 
+        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        :param AudioTemplate: 
+        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param TEHDConfig: 
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        """
+        self.Container = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.VideoTemplate = None
+        self.AudioTemplate = None
+        self.TEHDConfig = None
+
+
+    def _deserialize(self, params):
+        self.Container = params.get("Container")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoTemplate") is not None:
+            self.VideoTemplate = VideoTemplateInfo()
+            self.VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self.AudioTemplate = AudioTemplateInfo()
+            self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfig()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
 
 
 class RawWatermarkParameter(AbstractModel):
     """Custom watermark specifications.
 
     """
+
+    def __init__(self):
+        """
+        :param Type: 
+        :type Type: str
+        :param CoordinateOrigin: 
+        :type CoordinateOrigin: str
+        :param XPos: 
+        :type XPos: str
+        :param YPos: 
+        :type YPos: str
+        :param ImageTemplate: 
+        :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.RawImageWatermarkInput`
+        """
+        self.Type = None
+        self.CoordinateOrigin = None
+        self.XPos = None
+        self.YPos = None
+        self.ImageTemplate = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.CoordinateOrigin = params.get("CoordinateOrigin")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        if params.get("ImageTemplate") is not None:
+            self.ImageTemplate = RawImageWatermarkInput()
+            self.ImageTemplate._deserialize(params.get("ImageTemplate"))
 
 
 class ResetWorkflowRequest(AbstractModel):
@@ -7942,6 +9899,44 @@ If this parameter is left blank, no modification will be made.
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.MaxVideoBitrate = params.get("MaxVideoBitrate")
+
+
+class TagConfigureInfo(AbstractModel):
+    """Control parameter of intelligent tagging task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of intelligent tagging task. Valid values:
+<li>ON: enables intelligent tagging task;</li>
+<li>OFF: disables intelligent tagging task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class TagConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of intelligent tagging task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of intelligent tagging task. Valid values:
+<li>ON: enables intelligent tagging task;</li>
+<li>OFF: disables intelligent tagging task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
 
 
 class TaskNotifyConfig(AbstractModel):

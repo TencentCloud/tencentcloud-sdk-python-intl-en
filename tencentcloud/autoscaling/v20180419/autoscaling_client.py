@@ -111,6 +111,36 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAutoScalingGroupFromInstance(self, request):
+        """This API is used to create launch configurations and scaling groups from an instance.
+
+        Note: the pay-as-you-go instance in the scaling group that is created from a monthly-subscribed instance can be expanded.
+
+        :param request: Request instance for CreateAutoScalingGroupFromInstance.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateAutoScalingGroupFromInstanceRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateAutoScalingGroupFromInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAutoScalingGroupFromInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAutoScalingGroupFromInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLaunchConfiguration(self, request):
         """This API (CreateLaunchConfiguration) is used to create a launch configuration.
 
@@ -1189,6 +1219,68 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetInstancesProtectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartAutoScalingInstances(self, request):
+        """This API is used to launch CVM instances in the scaling group.
+        * After the instance is launched and in the `IN_SERVICE` status, the desired capacity increases, but the desired capacity cannot exceed the maximum value.
+        * This API supports batch operation. Up to 100 instances can be launched in each request.
+
+        :param request: Request instance for StartAutoScalingInstances.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.StartAutoScalingInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.StartAutoScalingInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartAutoScalingInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartAutoScalingInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopAutoScalingInstances(self, request):
+        """This API is used to shut down CVM instances in the scaling group.
+        * Use the `SOFT_FIRST` shutdown, which means the CVM will be forcibly shut down if the soft shutdown fails.
+        * Shutting down instances in the `IN_SERVICE` status will reduce the desired capacity, but the desired capacity cannot be less than the minimum value.
+        * To use the `STOP_CHARGING` shutdown, the instances you want to shut down must satisfy the conditions of [no charges when shut down](https://cloud.tencent.com/document/product/213/19918).
+        * This API supports batch operation. Up to 100 instances can be shut down in each request.
+
+        :param request: Request instance for StopAutoScalingInstances.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.StopAutoScalingInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.StopAutoScalingInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopAutoScalingInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopAutoScalingInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

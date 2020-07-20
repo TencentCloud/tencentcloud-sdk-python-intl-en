@@ -390,6 +390,64 @@ class CompleteLifecycleActionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
+    """CreateAutoScalingGroupFromInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupName: The scaling group name. It must be unique under your account. The name can only contain Chinese characters, English letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes.
+        :type AutoScalingGroupName: str
+        :param InstanceId: The instance ID.
+        :type InstanceId: str
+        :param MinSize: The maximum number of instances. Value range: 0-2000.
+        :type MinSize: int
+        :param MaxSize: The minimum number of instances. Value range: 0-2000.
+        :type MaxSize: int
+        :param DesiredCapacity: The desired capacity. Its value must be greater than the minimum and smaller than the maximum.
+        :type DesiredCapacity: int
+        :param InheritInstanceTag: Whether to inherit the instance tag. Default value: False
+        :type InheritInstanceTag: bool
+        """
+        self.AutoScalingGroupName = None
+        self.InstanceId = None
+        self.MinSize = None
+        self.MaxSize = None
+        self.DesiredCapacity = None
+        self.InheritInstanceTag = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupName = params.get("AutoScalingGroupName")
+        self.InstanceId = params.get("InstanceId")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
+        self.DesiredCapacity = params.get("DesiredCapacity")
+        self.InheritInstanceTag = params.get("InheritInstanceTag")
+
+
+class CreateAutoScalingGroupFromInstanceResponse(AbstractModel):
+    """CreateAutoScalingGroupFromInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: The scaling group ID.
+        :type AutoScalingGroupId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AutoScalingGroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAutoScalingGroupRequest(AbstractModel):
     """CreateAutoScalingGroup request structure.
 
@@ -437,12 +495,14 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 Common reasons why an availability zone or subnet is unavailable include stock-out of CVM instances or CBS cloud disks in the availability zone, insufficient quota in the availability zone, or insufficient IPs in the subnet.
 If an availability zone or subnet in Zones/SubnetIds does not exist, a verification error will be reported regardless of the value of ZonesCheckPolicy.
         :type ZonesCheckPolicy: str
-        :param Tags: List of tag descriptions. This parameter is used to bind a tag to an auto scaling group as well as the corresponding resource instances.
+        :param Tags: List of tag descriptions. This parameter is used to bind a tag to a scaling group as well as corresponding resource instances. Each scaling group can have up to 30 tags.
         :type Tags: list of Tag
         :param ServiceSettings: Service settings such as unhealthy instance replacement.
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
         :param Ipv6AddressCount: 
         :type Ipv6AddressCount: int
+        :param MultiZoneSubnetPolicy: 
+        :type MultiZoneSubnetPolicy: str
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -462,6 +522,7 @@ If an availability zone or subnet in Zones/SubnetIds does not exist, a verificat
         self.Tags = None
         self.ServiceSettings = None
         self.Ipv6AddressCount = None
+        self.MultiZoneSubnetPolicy = None
 
 
     def _deserialize(self, params):
@@ -495,6 +556,7 @@ If an availability zone or subnet in Zones/SubnetIds does not exist, a verificat
             self.ServiceSettings = ServiceSettings()
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
 
 
 class CreateAutoScalingGroupResponse(AbstractModel):
@@ -2069,14 +2131,18 @@ class ExecuteScalingPolicyRequest(AbstractModel):
         :type AutoScalingPolicyId: str
         :param HonorCooldown: Whether to check if the auto scaling group is in the cooldown period. Default value: false
         :type HonorCooldown: bool
+        :param TriggerSource: Trigger source that executes a scaling policy. Valid values: API and CLOUD_MONITOR. Default value: API. The value `CLOUD_MONITOR` is specific to the Cloud Monitor service.
+        :type TriggerSource: str
         """
         self.AutoScalingPolicyId = None
         self.HonorCooldown = None
+        self.TriggerSource = None
 
 
     def _deserialize(self, params):
         self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
         self.HonorCooldown = params.get("HonorCooldown")
+        self.TriggerSource = params.get("TriggerSource")
 
 
 class ExecuteScalingPolicyResponse(AbstractModel):
@@ -2336,16 +2402,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param PublicIpAssigned: Whether to assign a public IP. Value range: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you are free to choose whether to enable the public IP (which is enabled by default). If the public network bandwidth is 0 Mbps, no public IP will be allowed to be assigned.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PublicIpAssigned: bool
+        :param BandwidthPackageId: Bandwidth package ID. You can obtain the parameter value from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209) API.
+Note: this field may return null, indicating that no valid value was found.
+        :type BandwidthPackageId: str
         """
         self.InternetChargeType = None
         self.InternetMaxBandwidthOut = None
         self.PublicIpAssigned = None
+        self.BandwidthPackageId = None
 
 
     def _deserialize(self, params):
         self.InternetChargeType = params.get("InternetChargeType")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self.PublicIpAssigned = params.get("PublicIpAssigned")
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
 
 
 class LaunchConfiguration(AbstractModel):
@@ -3436,6 +3507,97 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.MaxPrice = params.get("MaxPrice")
         self.SpotInstanceType = params.get("SpotInstanceType")
+
+
+class StartAutoScalingInstancesRequest(AbstractModel):
+    """StartAutoScalingInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: The scaling group ID.
+        :type AutoScalingGroupId: str
+        :param InstanceIds: The list of the CVM instances you want to launch.
+        :type InstanceIds: list of str
+        """
+        self.AutoScalingGroupId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class StartAutoScalingInstancesResponse(AbstractModel):
+    """StartAutoScalingInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: The scaling activity ID.
+        :type ActivityId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+
+
+class StopAutoScalingInstancesRequest(AbstractModel):
+    """StopAutoScalingInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: The scaling group ID.
+        :type AutoScalingGroupId: str
+        :param InstanceIds: The list of the CVM instances you want to shut down.
+        :type InstanceIds: list of str
+        :param StoppedMode: Whether the shutdown instances will be charged. Valid values:  
+KEEP_CHARGING: keep charging after shutdown.  
+STOP_CHARGING: stop charging after shutdown.
+Default value: KEEP_CHARGING.
+        :type StoppedMode: str
+        """
+        self.AutoScalingGroupId = None
+        self.InstanceIds = None
+        self.StoppedMode = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.StoppedMode = params.get("StoppedMode")
+
+
+class StopAutoScalingInstancesResponse(AbstractModel):
+    """StopAutoScalingInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: The scaling activity ID.
+        :type ActivityId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
 
 
 class SystemDisk(AbstractModel):

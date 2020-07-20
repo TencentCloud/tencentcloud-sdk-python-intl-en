@@ -50,6 +50,43 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AccessPoint(AbstractModel):
+    """Access point information.
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessPointName: Access point name.
+        :type AccessPointName: str
+        :param AccessPointId: Unique access point ID.
+        :type AccessPointId: str
+        :param State: Access point status. Valid values: available, unavailable.
+        :type State: str
+        :param Location: Access point location.
+        :type Location: str
+        :param LineOperator: List of ISPs supported by access point.
+        :type LineOperator: list of str
+        :param RegionId: ID of the region that manages the access point.
+        :type RegionId: str
+        """
+        self.AccessPointName = None
+        self.AccessPointId = None
+        self.State = None
+        self.Location = None
+        self.LineOperator = None
+        self.RegionId = None
+
+
+    def _deserialize(self, params):
+        self.AccessPointName = params.get("AccessPointName")
+        self.AccessPointId = params.get("AccessPointId")
+        self.State = params.get("State")
+        self.Location = params.get("Location")
+        self.LineOperator = params.get("LineOperator")
+        self.RegionId = params.get("RegionId")
+
+
 class BgpPeer(AbstractModel):
     """BGP parameter, including Asn and AuthKey.
 
@@ -69,6 +106,105 @@ class BgpPeer(AbstractModel):
     def _deserialize(self, params):
         self.Asn = params.get("Asn")
         self.AuthKey = params.get("AuthKey")
+
+
+class CreateDirectConnectRequest(AbstractModel):
+    """CreateDirectConnect request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectName: Connection name.
+        :type DirectConnectName: str
+        :param AccessPointId: Access point of connection.
+You can call `DescribeAccessPoints` to get the region ID. The selected access point must exist and be available.
+        :type AccessPointId: str
+        :param LineOperator: ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).
+        :type LineOperator: str
+        :param Location: Local IDC location.
+        :type Location: str
+        :param PortType: Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX.
+        :type PortType: str
+        :param CircuitCode: Circuit code of connection, which is provided by the ISP or connection provider.
+        :type CircuitCode: str
+        :param Bandwidth: Connection port bandwidth in Mbps. Value range: [2,10240]. Default value: 1000.
+        :type Bandwidth: int
+        :param RedundantDirectConnectId: ID of redundant connection.
+        :type RedundantDirectConnectId: str
+        :param Vlan: VLAN for connection debugging, which is enabled and automatically assigned by default.
+        :type Vlan: int
+        :param TencentAddress: Tencent-side IP address for connection debugging, which is automatically assigned by default.
+        :type TencentAddress: str
+        :param CustomerAddress: User-side IP address for connection debugging, which is automatically assigned by default.
+        :type CustomerAddress: str
+        :param CustomerName: Name of connection applicant, which is obtained from the account system by default.
+        :type CustomerName: str
+        :param CustomerContactMail: Email address of connection applicant, which is obtained from the account system by default.
+        :type CustomerContactMail: str
+        :param CustomerContactNumber: Contact number of connection applicant, which is obtained from the account system by default.
+        :type CustomerContactNumber: str
+        :param FaultReportContactPerson: Fault reporting contact person.
+        :type FaultReportContactPerson: str
+        :param FaultReportContactNumber: Fault reporting contact number.
+        :type FaultReportContactNumber: str
+        """
+        self.DirectConnectName = None
+        self.AccessPointId = None
+        self.LineOperator = None
+        self.Location = None
+        self.PortType = None
+        self.CircuitCode = None
+        self.Bandwidth = None
+        self.RedundantDirectConnectId = None
+        self.Vlan = None
+        self.TencentAddress = None
+        self.CustomerAddress = None
+        self.CustomerName = None
+        self.CustomerContactMail = None
+        self.CustomerContactNumber = None
+        self.FaultReportContactPerson = None
+        self.FaultReportContactNumber = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectName = params.get("DirectConnectName")
+        self.AccessPointId = params.get("AccessPointId")
+        self.LineOperator = params.get("LineOperator")
+        self.Location = params.get("Location")
+        self.PortType = params.get("PortType")
+        self.CircuitCode = params.get("CircuitCode")
+        self.Bandwidth = params.get("Bandwidth")
+        self.RedundantDirectConnectId = params.get("RedundantDirectConnectId")
+        self.Vlan = params.get("Vlan")
+        self.TencentAddress = params.get("TencentAddress")
+        self.CustomerAddress = params.get("CustomerAddress")
+        self.CustomerName = params.get("CustomerName")
+        self.CustomerContactMail = params.get("CustomerContactMail")
+        self.CustomerContactNumber = params.get("CustomerContactNumber")
+        self.FaultReportContactPerson = params.get("FaultReportContactPerson")
+        self.FaultReportContactNumber = params.get("FaultReportContactNumber")
+
+
+class CreateDirectConnectResponse(AbstractModel):
+    """CreateDirectConnect response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectIdSet: Connection ID.
+        :type DirectConnectIdSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DirectConnectIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectIdSet = params.get("DirectConnectIdSet")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateDirectConnectTunnelRequest(AbstractModel):
@@ -181,6 +317,40 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDirectConnectRequest(AbstractModel):
+    """DeleteDirectConnect request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectId: Connection ID.
+        :type DirectConnectId: str
+        """
+        self.DirectConnectId = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectId = params.get("DirectConnectId")
+
+
+class DeleteDirectConnectResponse(AbstractModel):
+    """DeleteDirectConnect response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDirectConnectTunnelRequest(AbstractModel):
     """DeleteDirectConnectTunnel request structure.
 
@@ -212,6 +382,63 @@ class DeleteDirectConnectTunnelResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccessPointsRequest(AbstractModel):
+    """DescribeAccessPoints request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: Access point region, which can be queried through `DescribeRegions`.
+
+You can call `DescribeRegions` to get the region ID.
+        :type RegionId: str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        """
+        self.RegionId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAccessPointsResponse(AbstractModel):
+    """DescribeAccessPoints response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessPointSet: Access point information.
+        :type AccessPointSet: list of AccessPoint
+        :param TotalCount: Number of eligible access points.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AccessPointSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessPointSet") is not None:
+            self.AccessPointSet = []
+            for item in params.get("AccessPointSet"):
+                obj = AccessPoint()
+                obj._deserialize(item)
+                self.AccessPointSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -428,6 +655,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ChargeState: Billing status
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ChargeState: str
+        :param StartTime: Connection activation time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -455,6 +685,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AccessPointType = None
         self.IdcCity = None
         self.ChargeState = None
+        self.StartTime = None
 
 
     def _deserialize(self, params):
@@ -489,6 +720,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AccessPointType = params.get("AccessPointType")
         self.IdcCity = params.get("IdcCity")
         self.ChargeState = params.get("ChargeState")
+        self.StartTime = params.get("StartTime")
 
 
 class DirectConnectTunnel(AbstractModel):
@@ -666,6 +898,80 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+
+
+class ModifyDirectConnectAttributeRequest(AbstractModel):
+    """ModifyDirectConnectAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectId: Connection ID.
+        :type DirectConnectId: str
+        :param DirectConnectName: Connection name.
+        :type DirectConnectName: str
+        :param CircuitCode: Circuit code of connection, which is provided by the ISP or connection provider.
+        :type CircuitCode: str
+        :param Vlan: VLAN for connection debugging.
+        :type Vlan: int
+        :param TencentAddress: Tencent-side IP address for connection debugging.
+        :type TencentAddress: str
+        :param CustomerAddress: User-side IP address for connection debugging.
+        :type CustomerAddress: str
+        :param CustomerName: Name of connection applicant, which is obtained from the account system by default.
+        :type CustomerName: str
+        :param CustomerContactMail: Email address of connection applicant, which is obtained from the account system by default.
+        :type CustomerContactMail: str
+        :param CustomerContactNumber: Contact number of connection applicant, which is obtained from the account system by default.
+        :type CustomerContactNumber: str
+        :param FaultReportContactPerson: Fault reporting contact person.
+        :type FaultReportContactPerson: str
+        :param FaultReportContactNumber: Fault reporting contact number.
+        :type FaultReportContactNumber: str
+        """
+        self.DirectConnectId = None
+        self.DirectConnectName = None
+        self.CircuitCode = None
+        self.Vlan = None
+        self.TencentAddress = None
+        self.CustomerAddress = None
+        self.CustomerName = None
+        self.CustomerContactMail = None
+        self.CustomerContactNumber = None
+        self.FaultReportContactPerson = None
+        self.FaultReportContactNumber = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectId = params.get("DirectConnectId")
+        self.DirectConnectName = params.get("DirectConnectName")
+        self.CircuitCode = params.get("CircuitCode")
+        self.Vlan = params.get("Vlan")
+        self.TencentAddress = params.get("TencentAddress")
+        self.CustomerAddress = params.get("CustomerAddress")
+        self.CustomerName = params.get("CustomerName")
+        self.CustomerContactMail = params.get("CustomerContactMail")
+        self.CustomerContactNumber = params.get("CustomerContactNumber")
+        self.FaultReportContactPerson = params.get("FaultReportContactPerson")
+        self.FaultReportContactNumber = params.get("FaultReportContactNumber")
+
+
+class ModifyDirectConnectAttributeResponse(AbstractModel):
+    """ModifyDirectConnectAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):

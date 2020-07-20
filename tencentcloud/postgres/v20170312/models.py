@@ -62,12 +62,16 @@ class CloseDBExtranetAccessRequest(AbstractModel):
         """
         :param DBInstanceId: Instance ID in the format of postgres-6r233v55
         :type DBInstanceId: str
+        :param IsIpv6: Whether to disable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)
+        :type IsIpv6: int
         """
         self.DBInstanceId = None
+        self.IsIpv6 = None
 
 
     def _deserialize(self, params):
         self.DBInstanceId = params.get("DBInstanceId")
+        self.IsIpv6 = params.get("IsIpv6")
 
 
 class CloseDBExtranetAccessResponse(AbstractModel):
@@ -128,7 +132,7 @@ class CreateDBInstancesRequest(AbstractModel):
         :type ActivityId: int
         :param Name: Instance name (which will be supported in the future)
         :type Name: str
-        :param NeedSupportIpv6: 
+        :param NeedSupportIpv6: Whether to support IPv6 address access. Valid values: 1 (yes), 0 (no)
         :type NeedSupportIpv6: int
         """
         self.SpecCode = None
@@ -269,13 +273,13 @@ class DBInstance(AbstractModel):
         :type ProjectId: int
         :param VpcId: VPC ID
         :type VpcId: str
-        :param SubnetId: SubnetId
+        :param SubnetId: Subnet ID
         :type SubnetId: str
         :param DBInstanceId: Instance ID
         :type DBInstanceId: str
         :param DBInstanceName: Instance name
         :type DBInstanceName: str
-        :param DBInstanceStatus: Instance status
+        :param DBInstanceStatus: Instance status. Valid values: applying, init (to be initialized), initing (initializing), running, limited run, isolated, recycling, recycled, job running, offline, migrating, expanding, readonly, restarting
         :type DBInstanceStatus: str
         :param DBInstanceMemory: Assigned instance memory size in GB
         :type DBInstanceMemory: int
@@ -309,6 +313,12 @@ class DBInstance(AbstractModel):
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
         :param Type: Machine type
         :type Type: str
+        :param AppId: 
+        :type AppId: int
+        :param Uid: 
+        :type Uid: int
+        :param SupportIpv6: Whether the instance supports IPv6 address access. Valid values: 1 (yes), 0 (no)
+        :type SupportIpv6: int
         """
         self.Region = None
         self.Zone = None
@@ -334,6 +344,9 @@ class DBInstance(AbstractModel):
         self.AutoRenew = None
         self.DBInstanceNetInfo = None
         self.Type = None
+        self.AppId = None
+        self.Uid = None
+        self.SupportIpv6 = None
 
 
     def _deserialize(self, params):
@@ -366,10 +379,13 @@ class DBInstance(AbstractModel):
                 obj._deserialize(item)
                 self.DBInstanceNetInfo.append(obj)
         self.Type = params.get("Type")
+        self.AppId = params.get("AppId")
+        self.Uid = params.get("Uid")
+        self.SupportIpv6 = params.get("SupportIpv6")
 
 
 class DBInstanceNetInfo(AbstractModel):
-    """Instance network connection information
+    """Instance network connection information.
 
     """
 
@@ -377,11 +393,11 @@ class DBInstanceNetInfo(AbstractModel):
         """
         :param Address: DNS domain name
         :type Address: str
-        :param Ip: Ip
+        :param Ip: IP address
         :type Ip: str
         :param Port: Connection port address
         :type Port: int
-        :param NetType: Network type. 1: inner (private network address), 2: public (public network address)
+        :param NetType: Network type. Valid values: inner (private address of classic network), private (private address of VPC), public (public address of classic network/VPC)
         :type NetType: str
         :param Status: Network connection status
         :type Status: str
@@ -1551,12 +1567,16 @@ class OpenDBExtranetAccessRequest(AbstractModel):
         """
         :param DBInstanceId: Instance ID in the format of postgres-hez4fh0v
         :type DBInstanceId: str
+        :param IsIpv6: Whether to enable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)
+        :type IsIpv6: int
         """
         self.DBInstanceId = None
+        self.IsIpv6 = None
 
 
     def _deserialize(self, params):
         self.DBInstanceId = params.get("DBInstanceId")
+        self.IsIpv6 = params.get("IsIpv6")
 
 
 class OpenDBExtranetAccessResponse(AbstractModel):
@@ -2041,11 +2061,14 @@ class ZoneInfo(AbstractModel):
         :type ZoneId: int
         :param ZoneState: Availability status. UNAVAILABLE: unavailable, AVAILABLE: available
         :type ZoneState: str
+        :param ZoneSupportIpv6: Whether the availability zone supports IPv6 address access
+        :type ZoneSupportIpv6: int
         """
         self.Zone = None
         self.ZoneName = None
         self.ZoneId = None
         self.ZoneState = None
+        self.ZoneSupportIpv6 = None
 
 
     def _deserialize(self, params):
@@ -2053,3 +2076,4 @@ class ZoneInfo(AbstractModel):
         self.ZoneName = params.get("ZoneName")
         self.ZoneId = params.get("ZoneId")
         self.ZoneState = params.get("ZoneState")
+        self.ZoneSupportIpv6 = params.get("ZoneSupportIpv6")

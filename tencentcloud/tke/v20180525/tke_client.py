@@ -417,6 +417,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterAsGroupOption(self, request):
+        """Cluster auto scaling configuration
+
+        :param request: Request instance for DescribeClusterAsGroupOption.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupOptionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupOptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterAsGroupOption", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterAsGroupOptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterAsGroups(self, request):
+        """Cluster-associated scaling group list
+
+        :param request: Request instance for DescribeClusterAsGroups.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterAsGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterAsGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterEndpointStatus(self, request):
         """Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)
 
@@ -711,6 +767,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTableConflictsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterAsGroupAttribute(self, request):
+        """Modify cluster scaling group attributes
+
+        :param request: Request instance for ModifyClusterAsGroupAttribute.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAsGroupAttributeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAsGroupAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterAsGroupAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterAsGroupAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

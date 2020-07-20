@@ -425,6 +425,11 @@ Default value: FALSE<br>
 This parameter is only used with `RunInstances`.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Encrypt: bool
+        :param KmsKeyId: ID of the custom CMK in the format of “UUID” or “kms-abcd1234”. This parameter is used to encrypt cloud disks.
+
+Currently, this parameter is only used in the `RunInstances` API.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KmsKeyId: str
         """
         self.DiskSize = None
         self.DiskType = None
@@ -432,6 +437,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.DeleteWithInstance = None
         self.SnapshotId = None
         self.Encrypt = None
+        self.KmsKeyId = None
 
 
     def _deserialize(self, params):
@@ -441,6 +447,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.SnapshotId = params.get("SnapshotId")
         self.Encrypt = params.get("Encrypt")
+        self.KmsKeyId = params.get("KmsKeyId")
 
 
 class DeleteDisasterRecoverGroupsRequest(AbstractModel):
@@ -2797,6 +2804,20 @@ Note: This field may return null, indicating that no valid value is found.
         :param SoldOutReason: Details of out-of-stock items
 Note: this field may return null, indicating that no valid value is obtained.
         :type SoldOutReason: str
+        :param InstanceBandwidth: 
+        :type InstanceBandwidth: float
+        :param InstancePps: 
+        :type InstancePps: int
+        :param StorageBlockAmount: 
+        :type StorageBlockAmount: int
+        :param CpuType: 
+        :type CpuType: str
+        :param Gpu: Number of GPUs of the instance.
+        :type Gpu: int
+        :param Fpga: Number of FPGAs of the instance.
+        :type Fpga: int
+        :param Remark: Descriptive information of the instance.
+        :type Remark: str
         """
         self.Zone = None
         self.InstanceType = None
@@ -2811,6 +2832,13 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.Status = None
         self.Price = None
         self.SoldOutReason = None
+        self.InstanceBandwidth = None
+        self.InstancePps = None
+        self.StorageBlockAmount = None
+        self.CpuType = None
+        self.Gpu = None
+        self.Fpga = None
+        self.Remark = None
 
 
     def _deserialize(self, params):
@@ -2836,6 +2864,13 @@ Note: this field may return null, indicating that no valid value is obtained.
             self.Price = ItemPrice()
             self.Price._deserialize(params.get("Price"))
         self.SoldOutReason = params.get("SoldOutReason")
+        self.InstanceBandwidth = params.get("InstanceBandwidth")
+        self.InstancePps = params.get("InstancePps")
+        self.StorageBlockAmount = params.get("StorageBlockAmount")
+        self.CpuType = params.get("CpuType")
+        self.Gpu = params.get("Gpu")
+        self.Fpga = params.get("Fpga")
+        self.Remark = params.get("Remark")
 
 
 class InternetAccessible(AbstractModel):

@@ -137,6 +137,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBillingData(self, request):
+        """This API is used to query billing data details.
+
+        :param request: Request instance for DescribeBillingData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeBillingDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeBillingDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBillingData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillingDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCdnData(self, request):
         """This API (DescribeCdnData) is used to query CDN real-time access monitoring data and supports the following metrics:
 
@@ -314,6 +342,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIpStatus(self, request):
+        """This API is used to query the status of the edge servers and intermediate nodes on the domain name acceleration platform. Note: edge servers are not generally available. This API can only be used by whitelisted accounts.
+
+        :param request: Request instance for DescribeIpStatus.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeIpStatusRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeIpStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIpStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIpStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeIpVisit(self, request):
         """This API (DescribeIpVisit) is used to query the number of users who remain active for 5 minutes and the detailed number of daily active users.
 
@@ -439,6 +495,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePurgeQuota(self, request):
+        """This API is used to query the purge usage quota and daily available usage for an account.
+
+        :param request: Request instance for DescribePurgeQuota.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeQuotaRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePurgeQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePurgeQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePurgeTasks(self, request):
         """This API is used to query the record and progress of URL or directory purge tasks submitted via the `PurgePathCache` or `PurgeUrlsCache` APIs.
 
@@ -453,6 +537,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePurgeTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePushQuota(self, request):
+        """This API is used to query the prefetch quota and daily available usage.
+
+        :param request: Request instance for DescribePushQuota.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePushQuotaRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribePushQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePushQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePushQuotaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

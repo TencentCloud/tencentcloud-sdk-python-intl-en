@@ -91,11 +91,11 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
         :type ResourceIds: list of str
         :param BandwidthPackageId: The unique ID of the bandwidth package, such as 'bwp-xxxx'.
         :type BandwidthPackageId: str
-        :param NetworkType: The type of the bandwidth package. Valid value: 'BGP'. Internal resources will be represented by 'BGP IP'.
+        :param NetworkType: The network type of the bandwidth package. Valid value: `BGP`, indicating that the internal resource is a BGP IP.
         :type NetworkType: str
-        :param ResourceType: The resource type, including 'Address' and 'LoadBalance'.
+        :param ResourceType: The resource type, including `Address` and `LoadBalance`.
         :type ResourceType: str
-        :param Protocol: The protocol type of the bandwidth package. Valid values: 'ipv4' and 'ipv6'.
+        :param Protocol: The protocol type of the bandwidth package. Valid values: `ipv4` and `ipv6`.
         :type Protocol: str
         """
         self.ResourceIds = None
@@ -749,9 +749,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         :type NatGatewayId: str
         :param AddressCount: The number of EIPs you want to apply for. The system will create the same number of EIPs as you require. Either `AddressCount` or `PublicAddresses` must be passed in.
         :type AddressCount: int
-        :param PublicIpAddresses: The EIP array bound to the NAT gateway. Either `AddressCount` or `PublicAddresses` must be passed in.
+        :param PublicIpAddresses: Array of the EIPs bound to the NAT gateway. Either `AddressCount` or `PublicAddresses` must be passed in.
         :type PublicIpAddresses: list of str
-        :param Zone: The EIP zone. This is passed in when EIP is automatically assigned.
+        :param Zone: The availability zone of the EIP, which is passed in when the EIP is automatically assigned.
         :type Zone: str
         """
         self.NatGatewayId = None
@@ -1159,48 +1159,20 @@ class CcnAttachedInstance(AbstractModel):
 
 
 class CcnBandwidthInfo(AbstractModel):
-    """The information of the cross-region bandwidth limit for CCN instances.
+    """
 
     """
 
     def __init__(self):
         """
-        :param CcnId: The CCN ID that the bandwidth belongs to.
-Note: this field may return null, indicating that no valid value was found.
-        :type CcnId: str
-        :param CreatedTime: The creation time of the instance.
-Note: this field may return null, indicating that no valid value was found.
-        :type CreatedTime: str
-        :param ExpiredTime: The expiration time of the instance.
-Note: this field may return null, indicating that no valid value was found.
-        :type ExpiredTime: str
-        :param RegionFlowControlId: The unique ID of the bandwidth instance.
-Note: this field may return null, indicating that no valid value was found.
-        :type RegionFlowControlId: str
-        :param RenewFlag: The billing flag.
-Note: this field may return null, indicating that no valid value was found.
+        :param RenewFlag: 
         :type RenewFlag: str
-        :param CcnRegionBandwidthLimit: The information of bandwidth regions and bandwidth caps.
-Note: this field may return null, indicating that no valid value was found.
-        :type CcnRegionBandwidthLimit: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
         """
-        self.CcnId = None
-        self.CreatedTime = None
-        self.ExpiredTime = None
-        self.RegionFlowControlId = None
         self.RenewFlag = None
-        self.CcnRegionBandwidthLimit = None
 
 
     def _deserialize(self, params):
-        self.CcnId = params.get("CcnId")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ExpiredTime = params.get("ExpiredTime")
-        self.RegionFlowControlId = params.get("RegionFlowControlId")
         self.RenewFlag = params.get("RenewFlag")
-        if params.get("CcnRegionBandwidthLimit") is not None:
-            self.CcnRegionBandwidthLimit = CcnRegionBandwidthLimit()
-            self.CcnRegionBandwidthLimit._deserialize(params.get("CcnRegionBandwidthLimit"))
 
 
 class CcnInstance(AbstractModel):
@@ -2071,7 +2043,7 @@ class CreateFlowLogRequest(AbstractModel):
         :type ResourceType: str
         :param ResourceId: The unique ID of the resource.
         :type ResourceId: str
-        :param TrafficType: The collection type of the flow log. Valid values: 'ACCEPT', 'REJECT' and 'ALL'.
+        :param TrafficType: Type of the flow logs to be collected. Valid values: `ACCEPT`, `REJECT` and `ALL`.
         :type TrafficType: str
         :param CloudLogId: The storage ID of the flow log.
         :type CloudLogId: str
@@ -4574,9 +4546,9 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 <li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as 'eip-xxxx' and 'lb-xxxx'.</li>
 <li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>
         :type Filters: list of Filter
-        :param Offset: Queries the bandwidth package offset.
+        :param Offset: Offset of the query results
         :type Offset: int
-        :param Limit: Queries the limit on the number of bandwidth packages.
+        :param Limit: Max number of the bandwidth packages to be returned.
         :type Limit: int
         """
         self.BandwidthPackageIds = None
@@ -4606,7 +4578,7 @@ class DescribeBandwidthPackagesResponse(AbstractModel):
         """
         :param TotalCount: The number of eligible bandwidth packages.
         :type TotalCount: int
-        :param BandwidthPackageSet: The description of the bandwidth packages.
+        :param BandwidthPackageSet: Detail information of the bandwidth package.
         :type BandwidthPackageSet: list of BandwidthPackage
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5083,20 +5055,20 @@ class DescribeDirectConnectGatewaysRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectGatewayIds: The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`.
+        :param DirectConnectGatewayIds: The unique ID of the direct connect gateway, such as `dcg-9o233uri`.
         :type DirectConnectGatewayIds: list of str
-        :param Filters: Filter condition. `DirectConnectGatewayIds` and `Filters` cannot be specified at the same time..
-<li>direct-connect-gateway-id - String - The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`.</li>
+        :param Filters: Filter condition. `DirectConnectGatewayIds` and `Filters` cannot be specified at the same time.
+<li>direct-connect-gateway-id - String - The unique ID of the direct connect gateway, such as `dcg-9o233uri`.</li>
 <li>direct-connect-gateway-name - String - The name of the direct connect gateway. The default is fuzzy query.</li>
-<li>direct-connect-gateway-ip - String - The `IP` of the direct connect gateway.</li>
+<li>direct-connect-gateway-ip - String - The IP of the direct connect gateway.</li>
 <li>gateway-type - String - The gateway type. Valid values: `NORMAL` (Standard type), `NAT` (NAT type).</li>
 <li>network-type- String - The network type. Valid values: `VPC` (VPC type), `CCN` (CCN type).</li>
-<li>ccn-id - String - The `ID` of the CCN where the direct connect gateway resides.</li>
-<li>vpc-id - String - The `ID` of the VPC where the direct connect gateway resides.</li>
+<li>ccn-id - String - The ID of the CCN where the direct connect gateway resides.</li>
+<li>vpc-id - String - The ID of the VPC where the direct connect gateway resides.</li>
         :type Filters: list of Filter
         :param Offset: The offset.
         :type Offset: int
-        :param Limit: The returned quantity.
+        :param Limit: Max number of results returned
         :type Limit: int
         """
         self.DirectConnectGatewayIds = None
@@ -5207,11 +5179,11 @@ class DescribeFlowLogsRequest(AbstractModel):
         :type FlowLogId: str
         :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
-        :param ResourceType: The type of resource to which the flow log belongs. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.
+        :param ResourceType: The resource type of the flow log. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.
         :type ResourceType: str
         :param ResourceId: The unique ID of the resource.
         :type ResourceId: str
-        :param TrafficType: The collection type of the flow log. Valid values: 'ACCEPT', 'REJECT' and 'ALL'.
+        :param TrafficType: Type of flow logs to be collected. Valid values: 'ACCEPT', 'REJECT' and 'ALL'.
         :type TrafficType: str
         :param CloudLogId: The storage ID of the flow log.
         :type CloudLogId: str
@@ -5219,11 +5191,11 @@ class DescribeFlowLogsRequest(AbstractModel):
         :type CloudLogState: str
         :param OrderField: Order by field. Valid values: 'flowLogName' and 'createTime'. Default value: 'createTime'.
         :type OrderField: str
-        :param OrderDirection: In ascending (asc) or descending (desc) order. Default value: 'desc'.
+        :param OrderDirection: In ascending (`asc`) or descending (`desc`) order. Default value: 'desc'.
         :type OrderDirection: str
         :param Offset: The offset. Default value: 0.
         :type Offset: int
-        :param Limit: The number of rows per page. Default vaue: 10.
+        :param Limit: The number of rows per page. Default value: 10.
         :type Limit: int
         :param Filters: Filter condition. `FlowLogIds` and `Filters` cannot be specified at the same time.
 <li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
@@ -7111,19 +7083,19 @@ class DirectConnectGateway(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectGatewayId: The direct connect gateway `ID`.
+        :param DirectConnectGatewayId: The direct connect gateway ID.
         :type DirectConnectGatewayId: str
         :param DirectConnectGatewayName: The direct connect gateway name.
         :type DirectConnectGatewayName: str
-        :param VpcId: The `ID` of the `VPC` instance associated with the direct connect gateway.
+        :param VpcId: The ID of the VPC instance associated with the direct connect gateway.
         :type VpcId: str
         :param NetworkType: The associated network type:
 <li>`VPC` - VPC</li>
 <li>`CCN` - CCN</li>
         :type NetworkType: str
-        :param NetworkInstanceId: The `ID` of the associated network instance:
-<li>When the `NetworkType` is `VPC`, this value is the VPC instance `ID`</li>
-<li>When the `NetworkType` is `CCN`, this value is the CCN instance `ID`</li>
+        :param NetworkInstanceId: The ID of the associated network instance:
+<li>When the `NetworkType` is `VPC`, this value is the VPC instance ID</li>
+<li>When the `NetworkType` is `CCN`, this value is the CCN instance ID</li>
         :type NetworkInstanceId: str
         :param GatewayType: The gateway type:
 <li>NORMAL - Standard type. Note: CCN only supports the standard type</li>
@@ -7134,7 +7106,7 @@ The NAT type supports network address translation. The specified type cannot be 
         :type CreateTime: str
         :param DirectConnectGatewayIp: The direct connect gateway IP.
         :type DirectConnectGatewayIp: str
-        :param CcnId: The `ID` of the `CCN` instance associated with the direct connect gateway.
+        :param CcnId: The ID of the CCN instance associated with the direct connect gateway.
         :type CcnId: str
         :param CcnRouteType: The route-learning type of the CCN:
 <li>`BGP` - Automatic learning.</li>
@@ -7612,11 +7584,11 @@ class FlowLog(AbstractModel):
         :type FlowLogId: str
         :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
-        :param ResourceType: The type of resource to which the flow log belongs. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.
+        :param ResourceType: The resource type of the flow log. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.
         :type ResourceType: str
         :param ResourceId: The unique ID of the resource.
         :type ResourceId: str
-        :param TrafficType: The collection type of the flow log. Valid values: 'ACCEPT', 'REJECT' and 'ALL'.
+        :param TrafficType: Type of flow logs to be collected. Valid values: `ACCEPT`, `REJECT` and `ALL`.
         :type TrafficType: str
         :param CloudLogId: The storage ID of the flow log.
         :type CloudLogId: str
@@ -7727,7 +7699,7 @@ class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
 <li>sregion - String - (Filter condition) Filter by the source region, such as 'ap-guangzhou'.</li>
 <li>dregion - String - (Filter condition) Filter by the destination region, such as 'ap-shanghai-bm'.</li>
         :type Filters: list of Filter
-        :param SortedBy: The sorting condition. Valid values: 'BandwidthLimit' and 'ExpireTime'.
+        :param SortedBy: The sorting condition. Valid values: `BandwidthLimit` and `ExpireTime`.
         :type SortedBy: str
         :param Offset: The offset.
         :type Offset: int
@@ -7765,7 +7737,7 @@ class GetCcnRegionBandwidthLimitsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CcnBandwidthSet: The CCN outbound bandwidths in each region.
+        :param CcnBandwidthSet: The outbound bandwidth limits of regions in a CCN instance.
 Note: this field may return null, indicating that no valid value was found.
         :type CcnBandwidthSet: list of CcnBandwidthInfo
         :param TotalCount: The number of eligible objects.
@@ -8815,7 +8787,7 @@ class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectGatewayId: The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`.
+        :param DirectConnectGatewayId: The unique ID of the direct connect gateway, such as `dcg-9o233uri`.
         :type DirectConnectGatewayId: str
         :param DirectConnectGatewayName: The direct connect gateway name. You can enter any name within 60 characters.
         :type DirectConnectGatewayName: str
@@ -8859,11 +8831,11 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
         """
         :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
         :type VpcId: str
-        :param FlowLogId: The unique ID of the flow log.
+        :param FlowLogId: The unique ID of the flow log collector.
         :type FlowLogId: str
-        :param FlowLogName: The name of the flow log instance.
+        :param FlowLogName: The name of the flow log collector.
         :type FlowLogName: str
-        :param FlowLogDescription: The description of the flow log instance.
+        :param FlowLogDescription: The description of the flow log collector.
         :type FlowLogDescription: str
         """
         self.VpcId = None
@@ -8908,7 +8880,7 @@ ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
 ID of NAT gateway instance, e.g. `nat-ltjahce6`;
 ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
         :type GatewayId: str
-        :param Bandwidth: Bandwidth limit value. Valid values: >0, limited to a specified Mbps; 0, completely limited; -1, no bandwidth limit.
+        :param Bandwidth: Bandwidth limit value in Mbps. Valid values: >0: set the limit to the specified value. 0: block all traffic. -1: no bandwidth limit.
         :type Bandwidth: int
         :param IpAddresses: CVM private IP addresses with limited bandwidth.
         :type IpAddresses: list of str
@@ -10534,11 +10506,11 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BandwidthPackageId: The unique ID of the bandwidth package, such as 'bwp-xxxx'.
+        :param BandwidthPackageId: The unique ID of the bandwidth package, such as `bwp-xxxx`.
         :type BandwidthPackageId: str
-        :param ResourceType: The resource type. Valid values: 'Address' and 'LoadBalance'.
+        :param ResourceType: The resource type. Valid values: `Address` and `LoadBalance`.
         :type ResourceType: str
-        :param ResourceIds: The resource IP, such as 'eip-xxxx' and 'lb-xxxx'.
+        :param ResourceIds: The resource IP, such as `eip-xxxx` and `lb-xxxx`.
         :type ResourceIds: list of str
         """
         self.BandwidthPackageId = None
@@ -10988,9 +10960,9 @@ class Resource(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceType: The bandwidth package resource type, including 'Address', and 'LoadBalance'
+        :param ResourceType: The bandwidth package resource type, including `Address`, and `LoadBalance`
         :type ResourceType: str
-        :param ResourceId: The bandwidth package ID, such as 'eip-xxxx' and 'lb-xxxx'.
+        :param ResourceId: The bandwidth package ID, such as `eip-xxxx` and `lb-xxxx`.
         :type ResourceId: str
         :param AddressIp: The bandwidth package resource IP.
         :type AddressIp: str
@@ -11704,7 +11676,7 @@ class Subnet(AbstractModel):
         :type RouteTableId: str
         :param CreatedTime: Creation Time.
         :type CreatedTime: str
-        :param AvailableIpAddressCount: The number of available `IPv4`.
+        :param AvailableIpAddressCount: The number of available IPv4 addresses
         :type AvailableIpAddressCount: int
         :param Ipv6CidrBlock: The `IPv6` `CIDR` of the subnet.
         :type Ipv6CidrBlock: str
@@ -11712,7 +11684,7 @@ class Subnet(AbstractModel):
         :type NetworkAclId: str
         :param IsRemoteVpcSnat: Whether it is a `SNAT` address pool subnet.
         :type IsRemoteVpcSnat: bool
-        :param TotalIpAddressCount: The total number of `IPv4` in the subnet.
+        :param TotalIpAddressCount: The total number of IPv4 addresses in the subnet.
         :type TotalIpAddressCount: int
         :param TagSet: Tag key-value pairs
         :type TagSet: list of Tag
