@@ -210,11 +210,11 @@ class CreateAccountRequest(AbstractModel):
         :type Host: str
         :param Password: Account password, which can contain 6–32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
         :type Password: str
-        :param ReadOnly: Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the slave will be used first, and if it is unavailable, the master will be used; 2: the slave will be used first, and if it is unavailable, the operation will fail.
+        :param ReadOnly: Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the subordinate will be used first, and if it is unavailable, the main will be used; 2: the subordinate will be used first, and if it is unavailable, the operation will fail.
         :type ReadOnly: int
         :param Description: Account remarks, which can contain 0–256 letters, digits, and common symbols.
         :type Description: str
-        :param DelayThresh: Determines whether the slave is unavailable based on the passed-in time
+        :param DelayThresh: Determines whether the subordinate is unavailable based on the passed-in time
         :type DelayThresh: int
         """
         self.InstanceId = None
@@ -286,9 +286,9 @@ class DBAccount(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: Last updated time
         :type UpdateTime: str
-        :param ReadOnly: Read-only flag. 0: no; 1: for the account's SQL requests, the slave will be used first, and if it is unavailable, the master will be used; 2: the slave will be used first, and if it is unavailable, the operation will fail.
+        :param ReadOnly: Read-only flag. 0: no; 1: for the account's SQL requests, the subordinate will be used first, and if it is unavailable, the main will be used; 2: the subordinate will be used first, and if it is unavailable, the operation will fail.
         :type ReadOnly: int
-        :param DelayThresh: This field is meaningful for read-only accounts, indicating to select a slave where the master/slave delay is below this value
+        :param DelayThresh: This field is meaningful for read-only accounts, indicating to select a subordinate where the main/subordinate delay is below this value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DelayThresh: int
         """
@@ -393,7 +393,7 @@ class DBInstance(AbstractModel):
         :type UniqueSubnetId: str
         :param OriginSerialId: Original ID of instance (this field is obsolete and should not be depended on)
         :type OriginSerialId: str
-        :param NodeCount: Number of nodes. 2: one master and one slave, 3: one master and two slaves
+        :param NodeCount: Number of nodes. 2: one main and one subordinate, 3: one main and two subordinates
         :type NodeCount: int
         :param IsTmp: Whether it is a temp instance. 0: no, non-zero value: yes
         :type IsTmp: int
@@ -987,7 +987,7 @@ class DescribeDBPerformanceDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End date in the format of `yyyy-mm-dd`
         :type EndTime: str
-        :param MetricName: Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_master_switched, slave_delay
+        :param MetricName: Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_main_switched, subordinate_delay
         :type MetricName: str
         """
         self.InstanceId = None
@@ -1010,33 +1010,33 @@ class DescribeDBPerformanceDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Master: Master node performance monitoring data
-        :type Master: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
-        :param Slave1: Slave 1 performance monitoring data
+        :param Main: Main node performance monitoring data
+        :type Main: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
+        :param Subordinate1: Subordinate 1 performance monitoring data
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
-        :param Slave2: Slave 2 performance monitoring data. If the instance is one-master-one-slave, it does not have this field
+        :type Subordinate1: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
+        :param Subordinate2: Subordinate 2 performance monitoring data. If the instance is one-main-one-subordinate, it does not have this field
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
+        :type Subordinate2: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Master = None
-        self.Slave1 = None
-        self.Slave2 = None
+        self.Main = None
+        self.Subordinate1 = None
+        self.Subordinate2 = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Master") is not None:
-            self.Master = PerformanceMonitorSet()
-            self.Master._deserialize(params.get("Master"))
-        if params.get("Slave1") is not None:
-            self.Slave1 = PerformanceMonitorSet()
-            self.Slave1._deserialize(params.get("Slave1"))
-        if params.get("Slave2") is not None:
-            self.Slave2 = PerformanceMonitorSet()
-            self.Slave2._deserialize(params.get("Slave2"))
+        if params.get("Main") is not None:
+            self.Main = PerformanceMonitorSet()
+            self.Main._deserialize(params.get("Main"))
+        if params.get("Subordinate1") is not None:
+            self.Subordinate1 = PerformanceMonitorSet()
+            self.Subordinate1._deserialize(params.get("Subordinate1"))
+        if params.get("Subordinate2") is not None:
+            self.Subordinate2 = PerformanceMonitorSet()
+            self.Subordinate2._deserialize(params.get("Subordinate2"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1053,7 +1053,7 @@ class DescribeDBPerformanceRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End date in the format of `yyyy-mm-dd`
         :type EndTime: str
-        :param MetricName: Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_master_switched, slave_delay
+        :param MetricName: Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_main_switched, subordinate_delay
         :type MetricName: str
         """
         self.InstanceId = None
@@ -1092,10 +1092,10 @@ class DescribeDBPerformanceResponse(AbstractModel):
         :type DiskIops: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param ConnActive: Number of active connections
         :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param IsMasterSwitched: Whether master/slave switch occurred. 1: yes, 0: no
-        :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param SlaveDelay: Master/slave delay
-        :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param IsMainSwitched: Whether main/subordinate switch occurred. 1: yes, 0: no
+        :type IsMainSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param SubordinateDelay: Main/subordinate delay
+        :type SubordinateDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1107,8 +1107,8 @@ class DescribeDBPerformanceResponse(AbstractModel):
         self.MemHitRate = None
         self.DiskIops = None
         self.ConnActive = None
-        self.IsMasterSwitched = None
-        self.SlaveDelay = None
+        self.IsMainSwitched = None
+        self.SubordinateDelay = None
         self.RequestId = None
 
 
@@ -1137,12 +1137,12 @@ class DescribeDBPerformanceResponse(AbstractModel):
         if params.get("ConnActive") is not None:
             self.ConnActive = MonitorData()
             self.ConnActive._deserialize(params.get("ConnActive"))
-        if params.get("IsMasterSwitched") is not None:
-            self.IsMasterSwitched = MonitorData()
-            self.IsMasterSwitched._deserialize(params.get("IsMasterSwitched"))
-        if params.get("SlaveDelay") is not None:
-            self.SlaveDelay = MonitorData()
-            self.SlaveDelay._deserialize(params.get("SlaveDelay"))
+        if params.get("IsMainSwitched") is not None:
+            self.IsMainSwitched = MonitorData()
+            self.IsMainSwitched._deserialize(params.get("IsMainSwitched"))
+        if params.get("SubordinateDelay") is not None:
+            self.SubordinateDelay = MonitorData()
+            self.SubordinateDelay._deserialize(params.get("SubordinateDelay"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1182,33 +1182,33 @@ class DescribeDBResourceUsageDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Master: Master node resource usage monitoring node
-        :type Master: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
-        :param Slave1: Slave 1 resource usage monitoring node
+        :param Main: Main node resource usage monitoring node
+        :type Main: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
+        :param Subordinate1: Subordinate 1 resource usage monitoring node
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
-        :param Slave2: Slave 2 resource usage monitoring node
+        :type Subordinate1: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
+        :param Subordinate2: Subordinate 2 resource usage monitoring node
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
+        :type Subordinate2: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Master = None
-        self.Slave1 = None
-        self.Slave2 = None
+        self.Main = None
+        self.Subordinate1 = None
+        self.Subordinate2 = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Master") is not None:
-            self.Master = ResourceUsageMonitorSet()
-            self.Master._deserialize(params.get("Master"))
-        if params.get("Slave1") is not None:
-            self.Slave1 = ResourceUsageMonitorSet()
-            self.Slave1._deserialize(params.get("Slave1"))
-        if params.get("Slave2") is not None:
-            self.Slave2 = ResourceUsageMonitorSet()
-            self.Slave2._deserialize(params.get("Slave2"))
+        if params.get("Main") is not None:
+            self.Main = ResourceUsageMonitorSet()
+            self.Main._deserialize(params.get("Main"))
+        if params.get("Subordinate1") is not None:
+            self.Subordinate1 = ResourceUsageMonitorSet()
+            self.Subordinate1._deserialize(params.get("Subordinate1"))
+        if params.get("Subordinate2") is not None:
+            self.Subordinate2 = ResourceUsageMonitorSet()
+            self.Subordinate2._deserialize(params.get("Subordinate2"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1305,8 +1305,8 @@ class DescribeDBSlowLogsRequest(AbstractModel):
         :type OrderBy: str
         :param OrderByType: Sorting order. Valid values: desc, asc
         :type OrderByType: str
-        :param Slave: Whether to query slow queries of the slave. 0: master, 1: slave
-        :type Slave: int
+        :param Subordinate: Whether to query slow queries of the subordinate. 0: main, 1: subordinate
+        :type Subordinate: int
         """
         self.InstanceId = None
         self.Offset = None
@@ -1316,7 +1316,7 @@ class DescribeDBSlowLogsRequest(AbstractModel):
         self.Db = None
         self.OrderBy = None
         self.OrderByType = None
-        self.Slave = None
+        self.Subordinate = None
 
 
     def _deserialize(self, params):
@@ -1328,7 +1328,7 @@ class DescribeDBSlowLogsRequest(AbstractModel):
         self.Db = params.get("Db")
         self.OrderBy = params.get("OrderBy")
         self.OrderByType = params.get("OrderByType")
-        self.Slave = params.get("Slave")
+        self.Subordinate = params.get("Subordinate")
 
 
 class DescribeDBSlowLogsResponse(AbstractModel):
@@ -2091,8 +2091,8 @@ class PerformanceMonitorSet(AbstractModel):
         :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param MemHitRate: Cache hit rate
         :type MemHitRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param SlaveDelay: Master/slave delay
-        :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param SubordinateDelay: Main/subordinate delay
+        :type SubordinateDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param SelectTotal: Number of SELECT operations
         :type SelectTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param LongQuery: Number of slow queries
@@ -2101,19 +2101,19 @@ class PerformanceMonitorSet(AbstractModel):
         :type DeleteTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param InsertTotal: Number of INSERT operations
         :type InsertTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param IsMasterSwitched: Whether master/slave switch occurred. 1: yes, 0: no
-        :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
+        :param IsMainSwitched: Whether main/subordinate switch occurred. 1: yes, 0: no
+        :type IsMainSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         """
         self.UpdateTotal = None
         self.DiskIops = None
         self.ConnActive = None
         self.MemHitRate = None
-        self.SlaveDelay = None
+        self.SubordinateDelay = None
         self.SelectTotal = None
         self.LongQuery = None
         self.DeleteTotal = None
         self.InsertTotal = None
-        self.IsMasterSwitched = None
+        self.IsMainSwitched = None
 
 
     def _deserialize(self, params):
@@ -2129,9 +2129,9 @@ class PerformanceMonitorSet(AbstractModel):
         if params.get("MemHitRate") is not None:
             self.MemHitRate = MonitorData()
             self.MemHitRate._deserialize(params.get("MemHitRate"))
-        if params.get("SlaveDelay") is not None:
-            self.SlaveDelay = MonitorData()
-            self.SlaveDelay._deserialize(params.get("SlaveDelay"))
+        if params.get("SubordinateDelay") is not None:
+            self.SubordinateDelay = MonitorData()
+            self.SubordinateDelay._deserialize(params.get("SubordinateDelay"))
         if params.get("SelectTotal") is not None:
             self.SelectTotal = MonitorData()
             self.SelectTotal._deserialize(params.get("SelectTotal"))
@@ -2144,9 +2144,9 @@ class PerformanceMonitorSet(AbstractModel):
         if params.get("InsertTotal") is not None:
             self.InsertTotal = MonitorData()
             self.InsertTotal._deserialize(params.get("InsertTotal"))
-        if params.get("IsMasterSwitched") is not None:
-            self.IsMasterSwitched = MonitorData()
-            self.IsMasterSwitched._deserialize(params.get("IsMasterSwitched"))
+        if params.get("IsMainSwitched") is not None:
+            self.IsMainSwitched = MonitorData()
+            self.IsMainSwitched._deserialize(params.get("IsMainSwitched"))
 
 
 class ResetAccountPasswordRequest(AbstractModel):

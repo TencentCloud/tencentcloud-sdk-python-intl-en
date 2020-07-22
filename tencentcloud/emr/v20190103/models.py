@@ -208,9 +208,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Config: Cluster product configuration information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Config: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigOutter`
-        :param MasterIp: Public IP of master node
+        :param MainIp: Public IP of main node
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type MasterIp: str
+        :type MainIp: str
         :param EmrVersion: EMR version
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EmrVersion: str
@@ -266,7 +266,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AddTime = None
         self.RunTime = None
         self.Config = None
-        self.MasterIp = None
+        self.MainIp = None
         self.EmrVersion = None
         self.ChargeType = None
         self.TradeVersion = None
@@ -300,7 +300,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Config") is not None:
             self.Config = EmrProductConfigOutter()
             self.Config._deserialize(params.get("Config"))
-        self.MasterIp = params.get("MasterIp")
+        self.MainIp = params.get("MainIp")
         self.EmrVersion = params.get("EmrVersion")
         self.ChargeType = params.get("ChargeType")
         self.TradeVersion = params.get("TradeVersion")
@@ -381,10 +381,10 @@ class CreateInstanceRequest(AbstractModel):
         :type AutoRenew: int
         :param ClientToken: Client token.
         :type ClientToken: str
-        :param NeedMasterWan: Whether to enable public IP access for master node. Valid values:
-<li>NEED_MASTER_WAN: enables public IP for master node.</li>
-<li>NOT_NEED_MASTER_WAN: does not enable.</li>Public IP is enabled for master node by default.
-        :type NeedMasterWan: str
+        :param NeedMainWan: Whether to enable public IP access for main node. Valid values:
+<li>NEED_MASTER_WAN: enables public IP for main node.</li>
+<li>NOT_NEED_MASTER_WAN: does not enable.</li>Public IP is enabled for main node by default.
+        :type NeedMainWan: str
         :param RemoteLoginAtCreate: Whether to enable remote public network login, i.e., port 22. When `SgId` is not empty, this parameter does not take effect.
         :type RemoteLoginAtCreate: int
         :param CheckSecurity: Whether to enable secure cluster. 0: no; other values: yes.
@@ -423,7 +423,7 @@ class CreateInstanceRequest(AbstractModel):
         self.PreExecutedFileSettings = None
         self.AutoRenew = None
         self.ClientToken = None
-        self.NeedMasterWan = None
+        self.NeedMainWan = None
         self.RemoteLoginAtCreate = None
         self.CheckSecurity = None
         self.ExtendFsField = None
@@ -467,7 +467,7 @@ class CreateInstanceRequest(AbstractModel):
                 self.PreExecutedFileSettings.append(obj)
         self.AutoRenew = params.get("AutoRenew")
         self.ClientToken = params.get("ClientToken")
-        self.NeedMasterWan = params.get("NeedMasterWan")
+        self.NeedMainWan = params.get("NeedMainWan")
         self.RemoteLoginAtCreate = params.get("RemoteLoginAtCreate")
         self.CheckSecurity = params.get("CheckSecurity")
         self.ExtendFsField = params.get("ExtendFsField")
@@ -539,7 +539,7 @@ class DescribeClusterNodesRequest(AbstractModel):
         :type InstanceId: str
         :param NodeFlag: Node flag. Valid values:
 <li>all: gets the information of nodes in all types except TencentDB information.</li>
-<li>master: gets master node information.</li>
+<li>main: gets main node information.</li>
 <li>core: gets core node information.</li>
 <li>task: gets task node information.</li>
 <li>common: gets common node information.</li>
@@ -696,9 +696,9 @@ class EmrProductConfigOutter(AbstractModel):
         :param SoftInfo: Software information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SoftInfo: list of str
-        :param MasterNodeSize: Number of master nodes
+        :param MainNodeSize: Number of main nodes
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type MasterNodeSize: int
+        :type MainNodeSize: int
         :param CoreNodeSize: Number of core nodes
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CoreNodeSize: int
@@ -708,9 +708,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ComNodeSize: Number of common nodes
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ComNodeSize: int
-        :param MasterResource: Master node resource
+        :param MainResource: Main node resource
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type MasterResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        :type MainResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
         :param CoreResource: Core node resource
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CoreResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
@@ -743,11 +743,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type CbsEncrypt: int
         """
         self.SoftInfo = None
-        self.MasterNodeSize = None
+        self.MainNodeSize = None
         self.CoreNodeSize = None
         self.TaskNodeSize = None
         self.ComNodeSize = None
-        self.MasterResource = None
+        self.MainResource = None
         self.CoreResource = None
         self.TaskResource = None
         self.ComResource = None
@@ -762,13 +762,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.SoftInfo = params.get("SoftInfo")
-        self.MasterNodeSize = params.get("MasterNodeSize")
+        self.MainNodeSize = params.get("MainNodeSize")
         self.CoreNodeSize = params.get("CoreNodeSize")
         self.TaskNodeSize = params.get("TaskNodeSize")
         self.ComNodeSize = params.get("ComNodeSize")
-        if params.get("MasterResource") is not None:
-            self.MasterResource = OutterResource()
-            self.MasterResource._deserialize(params.get("MasterResource"))
+        if params.get("MainResource") is not None:
+            self.MainResource = OutterResource()
+            self.MainResource._deserialize(params.get("MainResource"))
         if params.get("CoreResource") is not None:
             self.CoreResource = OutterResource()
             self.CoreResource._deserialize(params.get("CoreResource"))
@@ -1246,14 +1246,14 @@ class NewResourceSpec(AbstractModel):
 
     def __init__(self):
         """
-        :param MasterResourceSpec: Describes master node resource
-        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param MainResourceSpec: Describes main node resource
+        :type MainResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
         :param CoreResourceSpec: Describes core node resource
         :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
         :param TaskResourceSpec: Describes task node resource
         :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
-        :param MasterCount: Number of master nodes
-        :type MasterCount: int
+        :param MainCount: Number of main nodes
+        :type MainCount: int
         :param CoreCount: Number of core nodes
         :type CoreCount: int
         :param TaskCount: Number of task nodes
@@ -1263,10 +1263,10 @@ class NewResourceSpec(AbstractModel):
         :param CommonCount: Number of common nodes
         :type CommonCount: int
         """
-        self.MasterResourceSpec = None
+        self.MainResourceSpec = None
         self.CoreResourceSpec = None
         self.TaskResourceSpec = None
-        self.MasterCount = None
+        self.MainCount = None
         self.CoreCount = None
         self.TaskCount = None
         self.CommonResourceSpec = None
@@ -1274,16 +1274,16 @@ class NewResourceSpec(AbstractModel):
 
 
     def _deserialize(self, params):
-        if params.get("MasterResourceSpec") is not None:
-            self.MasterResourceSpec = Resource()
-            self.MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
+        if params.get("MainResourceSpec") is not None:
+            self.MainResourceSpec = Resource()
+            self.MainResourceSpec._deserialize(params.get("MainResourceSpec"))
         if params.get("CoreResourceSpec") is not None:
             self.CoreResourceSpec = Resource()
             self.CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
         if params.get("TaskResourceSpec") is not None:
             self.TaskResourceSpec = Resource()
             self.TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
-        self.MasterCount = params.get("MasterCount")
+        self.MainCount = params.get("MainCount")
         self.CoreCount = params.get("CoreCount")
         self.TaskCount = params.get("TaskCount")
         if params.get("CommonResourceSpec") is not None:
@@ -1308,7 +1308,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param OrderNo: Machine instance ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrderNo: str
-        :param WanIp: Public IP bound to master node
+        :param WanIp: Public IP bound to main node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WanIp: str
         :param Flag: Node type

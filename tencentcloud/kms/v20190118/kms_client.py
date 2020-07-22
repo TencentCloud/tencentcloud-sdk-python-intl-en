@@ -110,7 +110,7 @@ class KmsClient(AbstractClient):
 
 
     def CreateKey(self, request):
-        """Create a master key CMK (Custom Master Key) for user management data keys
+        """Create a main key CMK (Custom Main Key) for user management data keys
 
         :param request: Request instance for CreateKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.CreateKeyRequest`
@@ -446,7 +446,7 @@ class KmsClient(AbstractClient):
 
 
     def DisableKey(self, request):
-        """This API is used to disable a master key. The disabled key cannot be used for encryption and decryption operations.
+        """This API is used to disable a main key. The disabled key cannot be used for encryption and decryption operations.
 
         :param request: Request instance for DisableKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableKeyRequest`
@@ -1007,7 +1007,7 @@ class KmsClient(AbstractClient):
 
 
     def ListKeyDetail(self, request):
-        """Get the master key list details according to the specified Offset and Limit.
+        """Get the main key list details according to the specified Offset and Limit.
 
         :param request: Request instance for ListKeyDetail.
         :type request: :class:`tencentcloud.kms.v20190118.models.ListKeyDetailRequest`

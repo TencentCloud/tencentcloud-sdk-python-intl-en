@@ -259,7 +259,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of slave nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
+        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of subordinate nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
         :type NodeNum: int
         :param Memory: Instance memory size in GB.
         :type Memory: int
@@ -911,7 +911,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         """
         :param Zone: Instance region name in the format of ap-guangzhou-2.
         :type Zone: str
-        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of slave nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
+        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of subordinate nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
         :type NodeNum: int
         :param Memory: Instance memory size in GB.
         :type Memory: int
@@ -1145,7 +1145,7 @@ class InstanceDetail(AbstractModel):
         :type CpuNum: int
         :param MachineType: Instance machine type
         :type MachineType: str
-        :param SecondaryNum: Number of slave nodes of an instance
+        :param SecondaryNum: Number of subordinate nodes of an instance
         :type SecondaryNum: int
         :param ReplicationSetNum: Number of instance shards
         :type ReplicationSetNum: int
@@ -1165,7 +1165,7 @@ class InstanceDetail(AbstractModel):
         :type StandbyInstances: list of DBInstanceInfo
         :param CloneInstances: Information of temp instances
         :type CloneInstances: list of DBInstanceInfo
-        :param RelatedInstance: Information of associated instances. For a promoted instance, this field represents information of its temp instance; for a temp instance, this field represents information of its promoted instance; and for a read-only/disaster recovery instance, this field represents information of its master instance
+        :param RelatedInstance: Information of associated instances. For a promoted instance, this field represents information of its temp instance; for a temp instance, this field represents information of its promoted instance; and for a read-only/disaster recovery instance, this field represents information of its main instance
         :type RelatedInstance: :class:`tencentcloud.mongodb.v20190725.models.DBInstanceInfo`
         :param Tags: Instance tag information set
         :type Tags: list of TagInfo
@@ -1513,7 +1513,7 @@ class ShardInfo(AbstractModel):
         :type Volume: int
         :param OplogSize: Shard oplog size in MB
         :type OplogSize: int
-        :param SecondaryNum: Number of slave nodes of a shard
+        :param SecondaryNum: Number of subordinate nodes of a shard
         :type SecondaryNum: int
         :param RealReplicaSetId: Shard physical ID
         :type RealReplicaSetId: str
@@ -1603,17 +1603,17 @@ class SpecItem(AbstractModel):
         :type EngineName: str
         :param ClusterType: Cluster type. Valid values: 1 (sharding cluster), 0 (replica set cluster)
         :type ClusterType: int
-        :param MinNodeNum: Minimum number of slave nodes in a replica set
+        :param MinNodeNum: Minimum number of subordinate nodes in a replica set
         :type MinNodeNum: int
-        :param MaxNodeNum: Maximum number of slave nodes in a replica set
+        :param MaxNodeNum: Maximum number of subordinate nodes in a replica set
         :type MaxNodeNum: int
         :param MinReplicateSetNum: Minimum number of shards
         :type MinReplicateSetNum: int
         :param MaxReplicateSetNum: Maximum number of shards
         :type MaxReplicateSetNum: int
-        :param MinReplicateSetNodeNum: Minimum number of slave nodes in a shard
+        :param MinReplicateSetNodeNum: Minimum number of subordinate nodes in a shard
         :type MinReplicateSetNodeNum: int
-        :param MaxReplicateSetNodeNum: Maximum number of slave nodes in a shard
+        :param MaxReplicateSetNodeNum: Maximum number of subordinate nodes in a shard
         :type MaxReplicateSetNodeNum: int
         :param MachineType: Server type. Valid values: 0 (HIO), 4 (HIO10G)
         :type MachineType: str

@@ -111,7 +111,7 @@ class GmeClient(AbstractClient):
 
 
     def ModifyAppStatus(self, request):
-        """This API is used to change the status of an application's master switch.
+        """This API is used to change the status of an application's main switch.
 
         :param request: Request instance for ModifyAppStatus.
         :type request: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusRequest`

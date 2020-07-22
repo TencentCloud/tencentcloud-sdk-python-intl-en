@@ -860,20 +860,20 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SwitchDrToMaster(self, request):
-        """This API is used to promote a disaster recovery instance to a master instance, which will stop sync from the original master instance and end the master/slave relationship.
+    def SwitchDrToMain(self, request):
+        """This API is used to promote a disaster recovery instance to a main instance, which will stop sync from the original main instance and end the main/subordinate relationship.
 
-        :param request: Request instance for SwitchDrToMaster.
-        :type request: :class:`tencentcloud.dts.v20180330.models.SwitchDrToMasterRequest`
-        :rtype: :class:`tencentcloud.dts.v20180330.models.SwitchDrToMasterResponse`
+        :param request: Request instance for SwitchDrToMain.
+        :type request: :class:`tencentcloud.dts.v20180330.models.SwitchDrToMainRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.SwitchDrToMainResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchDrToMaster", params)
+            body = self.call("SwitchDrToMain", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SwitchDrToMasterResponse()
+                model = models.SwitchDrToMainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

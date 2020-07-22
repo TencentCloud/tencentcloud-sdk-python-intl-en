@@ -3058,13 +3058,13 @@ class DomainFilter(AbstractModel):
     def __init__(self):
         """
         :param Name: Filter field name, the list supported is as follows:
-- origin: master origin server.
+- origin: main origin server.
 - domain: domain name.
 - resourceId: domain name id.
 - status: domain name status. Values include `online`, `offline`, or `processing`.
 - serviceType: service type. Values include `web`, `download`, or `media`.
 - projectId: project ID.
-- domainType: master origin server type, `cname` indicates external origin, `COS` indicates COS origin.
+- domainType: main origin server type, `cname` indicates external origin, `COS` indicates COS origin.
 - fullUrlCache: full-path cache, which can be on or off.
 - https: whether to configure HTTPS, which can be on, off or processing.
 - originPullProtocol: origin-pull protocol type. HTTP, follow, or HTTPS are supported.
@@ -4377,11 +4377,11 @@ class Origin(AbstractModel):
 
     def __init__(self):
         """
-        :param Origins: Master origin server list
+        :param Origins: Main origin server list
 When modifying the origin server, you need to enter the corresponding OriginType.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Origins: list of str
-        :param OriginType: Master origin server type
+        :param OriginType: Main origin server type
 The following types are supported for input parameters:
 domain: domain name type
 cos: COS origin
@@ -4395,7 +4395,7 @@ When modifying `Origins`, you need to enter the corresponding OriginType.
 The IPv6 feature is not generally available yet. Please send in a whitelist application to use this feature.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginType: str
-        :param ServerName: Host header used when accessing the master origin server. If left empty, the acceleration domain name will be used by default.
+        :param ServerName: Host header used when accessing the main origin server. If left empty, the acceleration domain name will be used by default.
 If a wildcard domain name is accessed, then the sub-domain name during the access will be used by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServerName: str
@@ -4419,7 +4419,7 @@ ip: IP list used as origin server
 When modifying BackupOrigins, you need to enter the corresponding BackupOriginType.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BackupOriginType: str
-        :param BackupServerName: Host header used when accessing the backup origin server. If left empty, the ServerName of master origin server will be used by default.
+        :param BackupServerName: Host header used when accessing the backup origin server. If left empty, the ServerName of main origin server will be used by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BackupServerName: str
         :param BasePath: Origin-pull path

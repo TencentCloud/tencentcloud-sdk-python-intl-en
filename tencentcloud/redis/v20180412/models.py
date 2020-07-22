@@ -35,7 +35,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Privilege: Read/write policy. r: read-only; w: write-only; rw: read/write
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Privilege: str
-        :param ReadonlyPolicy: Routing policy. master: master node; replication: slave node
+        :param ReadonlyPolicy: Routing policy. main: main node; replication: subordinate node
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReadonlyPolicy: list of str
         :param Status: Sub-account status. 1: account is being changed; 2: account is valid; -4: account has been deleted
@@ -277,7 +277,7 @@ class CreateInstanceAccountRequest(AbstractModel):
         :type AccountName: str
         :param AccountPassword: Sub-account password
         :type AccountPassword: str
-        :param ReadonlyPolicy: Routing policy. Enter `master` for master node or `replication` for slave node
+        :param ReadonlyPolicy: Routing policy. Enter `main` for main node or `replication` for subordinate node
         :type ReadonlyPolicy: list of str
         :param Privilege: Read/write policy. Valid values: r (read-only), rw (read/write).
         :type Privilege: str
@@ -359,7 +359,7 @@ class CreateInstancesRequest(AbstractModel):
         :type RedisShardNum: int
         :param RedisReplicasNum: Number of replicas in an instance. Redis 2.8 standard edition and CKV standard edition support 1 replica. Standard/cluster edition 4.0 and 5.0 support 1-5 replicas.
         :type RedisReplicasNum: int
-        :param ReplicasReadonly: Whether to support read-only replicas. Neither Redis 2.8 standard edition nor CKV standard edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed on slave nodes. To enable read-only replicas, we recommend you create 2 or more replicas.
+        :param ReplicasReadonly: Whether to support read-only replicas. Neither Redis 2.8 standard edition nor CKV standard edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the main node and read requests will be distributed on subordinate nodes. To enable read-only replicas, we recommend you create 2 or more replicas.
         :type ReplicasReadonly: bool
         :param InstanceName: Instance name. It contains only letters, digits, underscores, and dashes with a length of up to 60 characters.
         :type InstanceName: str
@@ -1497,16 +1497,16 @@ class DescribeInstanceShardsRequest(AbstractModel):
         """
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param FilterSlave: Whether to filter out the slave node information
-        :type FilterSlave: bool
+        :param FilterSubordinate: Whether to filter out the subordinate node information
+        :type FilterSubordinate: bool
         """
         self.InstanceId = None
-        self.FilterSlave = None
+        self.FilterSubordinate = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.FilterSlave = params.get("FilterSlave")
+        self.FilterSubordinate = params.get("FilterSubordinate")
 
 
 class DescribeInstanceShardsResponse(AbstractModel):
@@ -1574,7 +1574,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type RegionIds: list of int
         :param Status: Instance status. 0: to be initialized; 1: in process; 2: running; -2: isolated; -3: to be deleted
         :type Status: list of int
-        :param TypeVersion: Type edition. 1: standalone edition; 2: master-slave edition; 3: cluster edition
+        :param TypeVersion: Type edition. 1: standalone edition; 2: main-subordinate edition; 3: cluster edition
         :type TypeVersion: int
         :param EngineName: Engine information: Redis-2.8, Redis-4.0, CKV
         :type EngineName: str
@@ -1582,7 +1582,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type AutoRenew: list of int
         :param BillingMode: Billing method. postpaid: pay-as-you-go; prepaid: monthly subscription
         :type BillingMode: str
-        :param Type: Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Slave Edition, 3: CKV Master-Slave Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,
+        :param Type: Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Main-Subordinate Edition, 3: CKV Main-Subordinate Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Main-Subordinate Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Main-Subordinate Edition, 9: Redis 5.0 Cluster Edition,
         :type Type: int
         :param SearchKeys: Search keywords, which can be instance ID, instance name, or complete IP
         :type SearchKeys: list of str
@@ -2173,7 +2173,7 @@ class EnableReplicaReadonlyRequest(AbstractModel):
         """
         :param InstanceId: Serial ID of an instance
         :type InstanceId: str
-        :param ReadonlyPolicy: Account routing policy. If `master` or `replication` is entered, it means to route to the master or slave node; if this is left blank, it means to write into the master node and read from the slave node by default
+        :param ReadonlyPolicy: Account routing policy. If `main` or `replication` is entered, it means to route to the main or subordinate node; if this is left blank, it means to write into the main node and read from the subordinate node by default
         :type ReadonlyPolicy: list of str
         """
         self.InstanceId = None
@@ -2287,7 +2287,7 @@ class InstanceClusterNode(AbstractModel):
         :type Name: str
         :param RunId: ID of the runtime node of an instance
         :type RunId: str
-        :param Role: Cluster role. 0: master; 1: slave
+        :param Role: Cluster role. 0: main; 1: subordinate
         :type Role: int
         :param Status: Node status. 0: readwrite; 1: read; 2: backup
         :type Status: int
@@ -2670,7 +2670,7 @@ class InstanceSet(AbstractModel):
         :type Size: float
         :param SizeUsed: This field has been disused
         :type SizeUsed: float
-        :param Type: Instance type. 1: Redis 2.8 cluster edition; 2: Redis 2.8 master-slave edition; 3: CKV master-slave edition (Redis 3.2); 4: CKV cluster edition (Redis 3.2); 5: Redis 2.8 standalone edition; 6: Redis 4.0 master-slave edition; 7: Redis 4.0 cluster edition
+        :param Type: Instance type. 1: Redis 2.8 cluster edition; 2: Redis 2.8 main-subordinate edition; 3: CKV main-subordinate edition (Redis 3.2); 4: CKV cluster edition (Redis 3.2); 5: Redis 2.8 standalone edition; 6: Redis 4.0 main-subordinate edition; 7: Redis 4.0 cluster edition
         :type Type: int
         :param AutoRenewFlag: Whether to set the auto-renewal flag for an instance. 1: auto-renewal set; 0: auto-renewal not set
         :type AutoRenewFlag: int
@@ -2678,7 +2678,7 @@ class InstanceSet(AbstractModel):
         :type DeadlineTime: str
         :param Engine: Engine: Redis community edition, Tencent Cloud CKV
         :type Engine: str
-        :param ProductType: Product type: Redis 2.8 cluster edition, Redis 2.8 master-slave edition, Redis 3.2 master-slave edition (CKV master-slave edition), Redis 3.2 cluster edition (CKV cluster edition), Redis 2.8 standalone edition, Redis 4.0 cluster edition
+        :param ProductType: Product type: Redis 2.8 cluster edition, Redis 2.8 main-subordinate edition, Redis 3.2 main-subordinate edition (CKV main-subordinate edition), Redis 3.2 cluster edition (CKV cluster edition), Redis 2.8 standalone edition, Redis 4.0 cluster edition
         :type ProductType: str
         :param UniqVpcId: VPC ID, such as vpc-fk33jsf43kgv
         :type UniqVpcId: str
@@ -2706,8 +2706,8 @@ class InstanceSet(AbstractModel):
         :type PriceId: int
         :param CloseTime: Isolation time
         :type CloseTime: str
-        :param SlaveReadWeight: Read weight of a slave node
-        :type SlaveReadWeight: int
+        :param SubordinateReadWeight: Read weight of a subordinate node
+        :type SubordinateReadWeight: int
         :param InstanceTags: Instance tag information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceTags: list of InstanceTagInfo
@@ -2771,7 +2771,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RedisReplicasNum = None
         self.PriceId = None
         self.CloseTime = None
-        self.SlaveReadWeight = None
+        self.SubordinateReadWeight = None
         self.InstanceTags = None
         self.ProjectName = None
         self.NoAuth = None
@@ -2822,7 +2822,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RedisReplicasNum = params.get("RedisReplicasNum")
         self.PriceId = params.get("PriceId")
         self.CloseTime = params.get("CloseTime")
-        self.SlaveReadWeight = params.get("SlaveReadWeight")
+        self.SubordinateReadWeight = params.get("SubordinateReadWeight")
         if params.get("InstanceTags") is not None:
             self.InstanceTags = []
             for item in params.get("InstanceTags"):
@@ -3142,7 +3142,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
         :type AccountPassword: str
         :param Remark: Sub-account description information
         :type Remark: str
-        :param ReadonlyPolicy: Sub-account routing policy. Enter `master` to route to the master node or `slave` to route to the slave node
+        :param ReadonlyPolicy: Sub-account routing policy. Enter `main` to route to the main node or `subordinate` to route to the subordinate node
         :type ReadonlyPolicy: list of str
         :param Privilege: Sub-account read/write policy. Enter `r` for read-only, `w` for write-only, or `rw` for read/write
         :type Privilege: str
@@ -3420,9 +3420,9 @@ class ProductConf(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Product type. 2: Redis master-slave edition; 3: CKV master-slave edition; 4: CKV cluster edition; 5: Redis standalone edition; 7: Redis cluster edition
+        :param Type: Product type. 2: Redis main-subordinate edition; 3: CKV main-subordinate edition; 4: CKV cluster edition; 5: Redis standalone edition; 7: Redis cluster edition
         :type Type: int
-        :param TypeName: Product name: Redis master-slave edition, CKV master-slave edition, CKV cluster edition, Redis standalone edition, or Redis cluster edition
+        :param TypeName: Product name: Redis main-subordinate edition, CKV main-subordinate edition, CKV cluster edition, Redis standalone edition, or Redis cluster edition
         :type TypeName: str
         :param MinBuyNum: Minimum purchasable quantity
         :type MinBuyNum: int
@@ -4086,9 +4086,9 @@ class UpgradeInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param MemSize: Shard size in MB
         :type MemSize: int
-        :param RedisShardNum: Number of shards. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, and Redis 2.8 standalone edition
+        :param RedisShardNum: Number of shards. This parameter can be left blank for Redis 2.8 main-subordinate edition, CKV main-subordinate edition, and Redis 2.8 standalone edition
         :type RedisShardNum: int
-        :param RedisReplicasNum: Number of replicas. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, and Redis 2.8 standalone edition
+        :param RedisReplicasNum: Number of replicas. This parameter can be left blank for Redis 2.8 main-subordinate edition, CKV main-subordinate edition, and Redis 2.8 standalone edition
         :type RedisReplicasNum: int
         """
         self.InstanceId = None

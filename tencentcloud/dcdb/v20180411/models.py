@@ -210,11 +210,11 @@ class CreateAccountRequest(AbstractModel):
         :type Host: str
         :param Password: Account password, which can contain 6–32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
         :type Password: str
-        :param ReadOnly: Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the slave will be used first, and if it is unavailable, the master will be used; 2: the slave will be used first, and if it is unavailable, the operation will fail; 3: only the slave will be read from.
+        :param ReadOnly: Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the subordinate will be used first, and if it is unavailable, the main will be used; 2: the subordinate will be used first, and if it is unavailable, the operation will fail; 3: only the subordinate will be read from.
         :type ReadOnly: int
         :param Description: Account remarks, which can contain 0–256 letters, digits, and common symbols.
         :type Description: str
-        :param DelayThresh: If the slave delay exceeds the set value of this parameter, the slave will be deemed to have failed.
+        :param DelayThresh: If the subordinate delay exceeds the set value of this parameter, the subordinate will be deemed to have failed.
 It is recommended that this parameter be set to a value greater than 10. This parameter takes effect when `ReadOnly` is 1 or 2.
         :type DelayThresh: int
         """
@@ -287,9 +287,9 @@ class DBAccount(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: Last updated time
         :type UpdateTime: str
-        :param ReadOnly: Read-only flag. 0: no; 1: for the account's SQL requests, the slave will be used first, and if it is unavailable, the master will be used; 2: the slave will be used first, and if it is unavailable, the operation will fail.
+        :param ReadOnly: Read-only flag. 0: no; 1: for the account's SQL requests, the subordinate will be used first, and if it is unavailable, the main will be used; 2: the subordinate will be used first, and if it is unavailable, the operation will fail.
         :type ReadOnly: int
-        :param DelayThresh: If the slave delay exceeds the set value of this parameter, the slave will be deemed to have failed.
+        :param DelayThresh: If the subordinate delay exceeds the set value of this parameter, the subordinate will be deemed to have failed.
 It is recommended that this parameter be set to a value greater than 10. This parameter takes effect when `ReadOnly` is 1 or 2.
         :type DelayThresh: int
         """
@@ -382,7 +382,7 @@ class DCDBInstanceInfo(AbstractModel):
         :type Uin: str
         :param ShardDetail: Shard details
         :type ShardDetail: list of ShardInfo
-        :param NodeCount: Number of nodes. 2: one master and one slave; 3: one master and two slaves
+        :param NodeCount: Number of nodes. 2: one main and one subordinate; 3: one main and two subordinates
         :type NodeCount: int
         :param IsTmp: Temporary instance flag. 0: non-temporary instance
         :type IsTmp: int
@@ -543,7 +543,7 @@ class DCDBShardInfo(AbstractModel):
         :type Storage: int
         :param PeriodEndTime: Expiration time
         :type PeriodEndTime: str
-        :param NodeCount: Number of nodes. 2: one master and one slave; 3: one master and two slaves
+        :param NodeCount: Number of nodes. 2: one main and one subordinate; 3: one main and two subordinates
         :type NodeCount: int
         :param StorageUsage: Storage utilization in %
         :type StorageUsage: float
@@ -558,12 +558,12 @@ class DCDBShardInfo(AbstractModel):
         :param Paymode: Billing mode
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Paymode: str
-        :param ShardMasterZone: Master AZ of a shard
+        :param ShardMainZone: Main AZ of a shard
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type ShardMasterZone: str
-        :param ShardSlaveZones: List of slave AZs of a shard
+        :type ShardMainZone: str
+        :param ShardSubordinateZones: List of subordinate AZs of a shard
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type ShardSlaveZones: list of str
+        :type ShardSubordinateZones: list of str
         :param Cpu: Number of CPU cores
         :type Cpu: int
         """
@@ -588,8 +588,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Pid = None
         self.ProxyVersion = None
         self.Paymode = None
-        self.ShardMasterZone = None
-        self.ShardSlaveZones = None
+        self.ShardMainZone = None
+        self.ShardSubordinateZones = None
         self.Cpu = None
 
 
@@ -615,8 +615,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Pid = params.get("Pid")
         self.ProxyVersion = params.get("ProxyVersion")
         self.Paymode = params.get("Paymode")
-        self.ShardMasterZone = params.get("ShardMasterZone")
-        self.ShardSlaveZones = params.get("ShardSlaveZones")
+        self.ShardMainZone = params.get("ShardMainZone")
+        self.ShardSubordinateZones = params.get("ShardSubordinateZones")
         self.Cpu = params.get("Cpu")
 
 
@@ -2010,7 +2010,7 @@ class ShardInfo(AbstractModel):
         :type Storage: int
         :param ShardId: Numeric ID of a shard
         :type ShardId: int
-        :param NodeCount: Number of nodes. 2: one master and one slave; 3: one master and two slaves
+        :param NodeCount: Number of nodes. 2: one main and one subordinate; 3: one main and two subordinates
         :type NodeCount: int
         :param Pid: Product type ID (this field is obsolete and should not be depended on)
         :type Pid: int

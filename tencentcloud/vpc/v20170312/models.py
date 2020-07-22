@@ -9576,7 +9576,7 @@ class ModifyVpcAttributeRequest(AbstractModel):
         :type VpcName: str
         :param EnableMulticast: Whether multicast is enabled. `true`: Enabled. `false`: Off.
         :type EnableMulticast: str
-        :param DnsServers: DNS address. A maximum of 4 addresses is supported. The first one is master server by default, and the rest are slave servers.
+        :param DnsServers: DNS address. A maximum of 4 addresses is supported. The first one is main server by default, and the rest are subordinate servers.
         :type DnsServers: list of str
         :param DomainName: Domain name
         :type DomainName: str

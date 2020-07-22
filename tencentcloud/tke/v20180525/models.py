@@ -147,7 +147,7 @@ class Cluster(AbstractModel):
         :type ClusterStatus: str
         :param Property: 
         :type Property: str
-        :param ClusterMaterNodeNum: Number of master nodes currently in the cluster
+        :param ClusterMaterNodeNum: Number of main nodes currently in the cluster
         :type ClusterMaterNodeNum: int
         :param ImageId: ID of the image used by the cluster
 Note: this field may return null, indicating that no valid value is obtained.
@@ -505,7 +505,7 @@ class ClusterCIDRSettings(AbstractModel):
 
 
 class ClusterExtraArgs(AbstractModel):
-    """Cluster master custom parameter
+    """Cluster main custom parameter
 
     """
 
