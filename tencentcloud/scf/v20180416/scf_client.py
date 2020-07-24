@@ -61,7 +61,7 @@ class ScfClient(AbstractClient):
 
     def CreateAlias(self, request):
         """This API is used to create an alias for a function version. You can use the alias to mark a specific function version such as DEV/RELEASE. You can also modify the version pointed to by the alias at any time.
-        An alias must point to a master version and can point to an additional version at the same time. If you specify an alias when invoking a function, the request will be sent to the versions pointed to by the alias. You can configure the ratio between the master version and additional version during request sending.
+        An alias must point to a main version and can point to an additional version at the same time. If you specify an alias when invoking a function, the request will be sent to the versions pointed to by the alias. You can configure the ratio between the main version and additional version during request sending.
 
         :param request: Request instance for CreateAlias.
         :type request: :class:`tencentcloud.scf.v20180416.models.CreateAliasRequest`

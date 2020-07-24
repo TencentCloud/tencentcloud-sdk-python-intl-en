@@ -80,18 +80,18 @@ Node disk size in GB
         :type AutoVoucher: int
         :param VoucherIds: List of voucher IDs (only one voucher can be specified at a time currently)
         :type VoucherIds: list of str
-        :param EnableDedicatedMaster: This parameter has been disused. Please use `NodeInfoList`
-Whether to create a dedicated master node <li>true: yes </li><li>false: no </li>Default value: false
-        :type EnableDedicatedMaster: bool
-        :param MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of dedicated master nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)
-        :type MasterNodeNum: int
-        :param MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
-Dedicated master node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
-        :type MasterNodeType: str
-        :param MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
-Dedicated master node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently
-        :type MasterNodeDiskSize: int
+        :param EnableDedicatedMain: This parameter has been disused. Please use `NodeInfoList`
+Whether to create a dedicated main node <li>true: yes </li><li>false: no </li>Default value: false
+        :type EnableDedicatedMain: bool
+        :param MainNodeNum: This parameter has been disused. Please use `NodeInfoList`
+Number of dedicated main nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMain` is `true`)
+        :type MainNodeNum: int
+        :param MainNodeType: This parameter has been disused. Please use `NodeInfoList`
+Dedicated main node type, which must be passed in if `EnableDedicatedMain` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :type MainNodeType: str
+        :param MainNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
+Dedicated main node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently
+        :type MainNodeDiskSize: int
         :param ClusterNameInConf: ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized
         :type ClusterNameInConf: str
         :param DeployMode: Cluster deployment mode <li>0: single-AZ deployment </li><li>1: multi-AZ deployment </li>Default value: 0
@@ -123,10 +123,10 @@ Dedicated master node disk size in GB, which is optional. If passed in, it can o
         self.TimeUnit = None
         self.AutoVoucher = None
         self.VoucherIds = None
-        self.EnableDedicatedMaster = None
-        self.MasterNodeNum = None
-        self.MasterNodeType = None
-        self.MasterNodeDiskSize = None
+        self.EnableDedicatedMain = None
+        self.MainNodeNum = None
+        self.MainNodeType = None
+        self.MainNodeDiskSize = None
         self.ClusterNameInConf = None
         self.DeployMode = None
         self.MultiZoneInfo = None
@@ -153,10 +153,10 @@ Dedicated master node disk size in GB, which is optional. If passed in, it can o
         self.TimeUnit = params.get("TimeUnit")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
-        self.EnableDedicatedMaster = params.get("EnableDedicatedMaster")
-        self.MasterNodeNum = params.get("MasterNodeNum")
-        self.MasterNodeType = params.get("MasterNodeType")
-        self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
+        self.EnableDedicatedMain = params.get("EnableDedicatedMain")
+        self.MainNodeNum = params.get("MainNodeNum")
+        self.MainNodeType = params.get("MainNodeType")
+        self.MainNodeDiskSize = params.get("MainNodeDiskSize")
         self.ClusterNameInConf = params.get("ClusterNameInConf")
         self.DeployMode = params.get("DeployMode")
         if params.get("MultiZoneInfo") is not None:
@@ -246,7 +246,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
         :param InstanceId: Cluster instance ID
         :type InstanceId: str
         :param LogType: Log type. Default value: 1
-<li>1: master log</li>
+<li>1: main log</li>
 <li>2: search slow log</li>
 <li>3: index slow log</li>
 <li>4: GC log</li>
@@ -629,8 +629,8 @@ class InstanceInfo(AbstractModel):
         :type InstanceType: int
         :param IkConfig: IK analyzer configuration
         :type IkConfig: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`
-        :param MasterNodeInfo: Dedicated master node configuration
-        :type MasterNodeInfo: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`
+        :param MainNodeInfo: Dedicated main node configuration
+        :type MainNodeInfo: :class:`tencentcloud.es.v20180416.models.MainNodeInfo`
         :param CosBackup: Auto-backup to COS configuration
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
         :param AllowCosBackup: Whether to allow auto-backup to COS
@@ -720,7 +720,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Deadline = None
         self.InstanceType = None
         self.IkConfig = None
-        self.MasterNodeInfo = None
+        self.MainNodeInfo = None
         self.CosBackup = None
         self.AllowCosBackup = None
         self.TagList = None
@@ -779,9 +779,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("IkConfig") is not None:
             self.IkConfig = EsDictionaryInfo()
             self.IkConfig._deserialize(params.get("IkConfig"))
-        if params.get("MasterNodeInfo") is not None:
-            self.MasterNodeInfo = MasterNodeInfo()
-            self.MasterNodeInfo._deserialize(params.get("MasterNodeInfo"))
+        if params.get("MainNodeInfo") is not None:
+            self.MainNodeInfo = MainNodeInfo()
+            self.MainNodeInfo._deserialize(params.get("MainNodeInfo"))
         if params.get("CosBackup") is not None:
             self.CosBackup = CosBackup()
             self.CosBackup._deserialize(params.get("CosBackup"))
@@ -899,49 +899,49 @@ class LocalDiskInfo(AbstractModel):
         self.LocalDiskCount = params.get("LocalDiskCount")
 
 
-class MasterNodeInfo(AbstractModel):
-    """Information of the dedicated master node in an instance
+class MainNodeInfo(AbstractModel):
+    """Information of the dedicated main node in an instance
 
     """
 
     def __init__(self):
         """
-        :param EnableDedicatedMaster: Whether to enable the dedicated master node
-        :type EnableDedicatedMaster: bool
-        :param MasterNodeType: Dedicated master node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
-        :type MasterNodeType: str
-        :param MasterNodeNum: Number of dedicated master nodes
-        :type MasterNodeNum: int
-        :param MasterNodeCpuNum: Number of CPU cores of the dedicated master node
-        :type MasterNodeCpuNum: int
-        :param MasterNodeMemSize: Memory size of the dedicated master node in GB
-        :type MasterNodeMemSize: int
-        :param MasterNodeDiskSize: Disk size of the dedicated master node in GB
-        :type MasterNodeDiskSize: int
-        :param MasterNodeDiskType: Disk type of the dedicated master node
-        :type MasterNodeDiskType: str
+        :param EnableDedicatedMain: Whether to enable the dedicated main node
+        :type EnableDedicatedMain: bool
+        :param MainNodeType: Dedicated main node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :type MainNodeType: str
+        :param MainNodeNum: Number of dedicated main nodes
+        :type MainNodeNum: int
+        :param MainNodeCpuNum: Number of CPU cores of the dedicated main node
+        :type MainNodeCpuNum: int
+        :param MainNodeMemSize: Memory size of the dedicated main node in GB
+        :type MainNodeMemSize: int
+        :param MainNodeDiskSize: Disk size of the dedicated main node in GB
+        :type MainNodeDiskSize: int
+        :param MainNodeDiskType: Disk type of the dedicated main node
+        :type MainNodeDiskType: str
         """
-        self.EnableDedicatedMaster = None
-        self.MasterNodeType = None
-        self.MasterNodeNum = None
-        self.MasterNodeCpuNum = None
-        self.MasterNodeMemSize = None
-        self.MasterNodeDiskSize = None
-        self.MasterNodeDiskType = None
+        self.EnableDedicatedMain = None
+        self.MainNodeType = None
+        self.MainNodeNum = None
+        self.MainNodeCpuNum = None
+        self.MainNodeMemSize = None
+        self.MainNodeDiskSize = None
+        self.MainNodeDiskType = None
 
 
     def _deserialize(self, params):
-        self.EnableDedicatedMaster = params.get("EnableDedicatedMaster")
-        self.MasterNodeType = params.get("MasterNodeType")
-        self.MasterNodeNum = params.get("MasterNodeNum")
-        self.MasterNodeCpuNum = params.get("MasterNodeCpuNum")
-        self.MasterNodeMemSize = params.get("MasterNodeMemSize")
-        self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
-        self.MasterNodeDiskType = params.get("MasterNodeDiskType")
+        self.EnableDedicatedMain = params.get("EnableDedicatedMain")
+        self.MainNodeType = params.get("MainNodeType")
+        self.MainNodeNum = params.get("MainNodeNum")
+        self.MainNodeCpuNum = params.get("MainNodeCpuNum")
+        self.MainNodeMemSize = params.get("MainNodeMemSize")
+        self.MainNodeDiskSize = params.get("MainNodeDiskSize")
+        self.MainNodeDiskType = params.get("MainNodeDiskType")
 
 
 class NodeInfo(AbstractModel):
-    """Specification information of a node type in the cluster (such as hot data node, warm data node, or dedicated master node), including node type, number of nodes, node specification, disk type, and disk size. If `Type` is not specified, it will be a hot data node by default; if the node is a master node, then the `DiskType` and `DiskSize` parameters will be ignored (as a master node has no data disks)
+    """Specification information of a node type in the cluster (such as hot data node, warm data node, or dedicated main node), including node type, number of nodes, node specification, disk type, and disk size. If `Type` is not specified, it will be a hot data node by default; if the node is a main node, then the `DiskType` and `DiskSize` parameters will be ignored (as a main node has no data disks)
 
     """
 
@@ -953,7 +953,7 @@ class NodeInfo(AbstractModel):
         :type NodeType: str
         :param Type: Node type <li>hotData: hot data node</li>
 <li>warmData: warm data node</li>
-<li>dedicatedMaster: dedicated master node</li>
+<li>dedicatedMain: dedicated main node</li>
 Default value: hotData
         :type Type: str
         :param DiskType: Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD
@@ -1230,15 +1230,15 @@ Disk size in GB
         :param NodeType: This parameter has been disused. Please use `NodeInfoList`
 Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
         :type NodeType: str
-        :param MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of dedicated master nodes (only 3 and 5 are supported)
-        :type MasterNodeNum: int
-        :param MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
-Dedicated master node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
-        :type MasterNodeType: str
-        :param MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
-Dedicated master node disk size in GB. This is 50 GB by default and currently cannot be customized
-        :type MasterNodeDiskSize: int
+        :param MainNodeNum: This parameter has been disused. Please use `NodeInfoList`
+Number of dedicated main nodes (only 3 and 5 are supported)
+        :type MainNodeNum: int
+        :param MainNodeType: This parameter has been disused. Please use `NodeInfoList`
+Dedicated main node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :type MainNodeType: str
+        :param MainNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
+Dedicated main node disk size in GB. This is 50 GB by default and currently cannot be customized
+        :type MainNodeDiskSize: int
         :param ForceRestart: Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false
         :type ForceRestart: bool
         :param CosBackup: Auto-backup to COS
@@ -1266,9 +1266,9 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
         self.EsAcl = None
         self.DiskSize = None
         self.NodeType = None
-        self.MasterNodeNum = None
-        self.MasterNodeType = None
-        self.MasterNodeDiskSize = None
+        self.MainNodeNum = None
+        self.MainNodeType = None
+        self.MainNodeDiskSize = None
         self.ForceRestart = None
         self.CosBackup = None
         self.NodeInfoList = None
@@ -1291,9 +1291,9 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
             self.EsAcl._deserialize(params.get("EsAcl"))
         self.DiskSize = params.get("DiskSize")
         self.NodeType = params.get("NodeType")
-        self.MasterNodeNum = params.get("MasterNodeNum")
-        self.MasterNodeType = params.get("MasterNodeType")
-        self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
+        self.MainNodeNum = params.get("MainNodeNum")
+        self.MainNodeType = params.get("MainNodeType")
+        self.MainNodeDiskSize = params.get("MainNodeDiskSize")
         self.ForceRestart = params.get("ForceRestart")
         if params.get("CosBackup") is not None:
             self.CosBackup = CosBackup()

@@ -1146,10 +1146,10 @@ class MigrateDetailInfo(AbstractModel):
         :type Progress: str
         :param CurrentStepProgress: Progress of current step, such as "1"
         :type CurrentStepProgress: str
-        :param MasterSlaveDistance: Master/slave lag in MB, which is valid during incremental sync and currently supported by TencentDB for Redis and MySQL
-        :type MasterSlaveDistance: int
-        :param SecondsBehindMaster: Master/slave lag in seconds, which is valid during incremental sync and currently supported by TencentDB for MySQL
-        :type SecondsBehindMaster: int
+        :param MainSubordinateDistance: Main/subordinate lag in MB, which is valid during incremental sync and currently supported by TencentDB for Redis and MySQL
+        :type MainSubordinateDistance: int
+        :param SecondsBehindMain: Main/subordinate lag in seconds, which is valid during incremental sync and currently supported by TencentDB for MySQL
+        :type SecondsBehindMain: int
         :param StepInfo: Step information
         :type StepInfo: list of MigrateStepDetailInfo
         """
@@ -1157,8 +1157,8 @@ class MigrateDetailInfo(AbstractModel):
         self.StepNow = None
         self.Progress = None
         self.CurrentStepProgress = None
-        self.MasterSlaveDistance = None
-        self.SecondsBehindMaster = None
+        self.MainSubordinateDistance = None
+        self.SecondsBehindMain = None
         self.StepInfo = None
 
 
@@ -1167,8 +1167,8 @@ class MigrateDetailInfo(AbstractModel):
         self.StepNow = params.get("StepNow")
         self.Progress = params.get("Progress")
         self.CurrentStepProgress = params.get("CurrentStepProgress")
-        self.MasterSlaveDistance = params.get("MasterSlaveDistance")
-        self.SecondsBehindMaster = params.get("SecondsBehindMaster")
+        self.MainSubordinateDistance = params.get("MainSubordinateDistance")
+        self.SecondsBehindMain = params.get("SecondsBehindMain")
         if params.get("StepInfo") is not None:
             self.StepInfo = []
             for item in params.get("StepInfo"):
@@ -1289,9 +1289,9 @@ class MigrateOption(AbstractModel):
         :param ExternParams: Additional parameters for different databases, which are described in JSON format. 
 The following parameters can be defined for Redis: 
 { 
-	"ClientOutputBufferHardLimit":512, 	Hard capacity limit of slave buffer (MB) 
-	"ClientOutputBufferSoftLimit":512, 	Soft capacity limit of slave buffer (MB) 
-	"ClientOutputBufferPersistTime":60, Soft limit duration of slave buffer (s) 
+	"ClientOutputBufferHardLimit":512, 	Hard capacity limit of subordinate buffer (MB) 
+	"ClientOutputBufferSoftLimit":512, 	Soft capacity limit of subordinate buffer (MB) 
+	"ClientOutputBufferPersistTime":60, Soft limit duration of subordinate buffer (s) 
 	"ReplBacklogSize":512, 	Circular buffer capacity limit (MB) 
 	"ReplTimeout":120, 		Replication timeout period (s) 
 }
@@ -2072,8 +2072,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Status = params.get("Status")
 
 
-class SwitchDrToMasterRequest(AbstractModel):
-    """SwitchDrToMaster request structure.
+class SwitchDrToMainRequest(AbstractModel):
+    """SwitchDrToMain request structure.
 
     """
 
@@ -2095,8 +2095,8 @@ class SwitchDrToMasterRequest(AbstractModel):
         self.DatabaseType = params.get("DatabaseType")
 
 
-class SwitchDrToMasterResponse(AbstractModel):
-    """SwitchDrToMaster response structure.
+class SwitchDrToMainResponse(AbstractModel):
+    """SwitchDrToMain response structure.
 
     """
 
@@ -2160,10 +2160,10 @@ class SyncDetailInfo(AbstractModel):
         :type Progress: str
         :param CurrentStepProgress: Progress of the current step
         :type CurrentStepProgress: str
-        :param MasterSlaveDistance: Master/slave delay in MB
-        :type MasterSlaveDistance: int
-        :param SecondsBehindMaster: Master/slave delay in seconds
-        :type SecondsBehindMaster: int
+        :param MainSubordinateDistance: Main/subordinate delay in MB
+        :type MainSubordinateDistance: int
+        :param SecondsBehindMain: Main/subordinate delay in seconds
+        :type SecondsBehindMain: int
         :param StepInfo: Step information
         :type StepInfo: list of SyncStepDetailInfo
         """
@@ -2171,8 +2171,8 @@ class SyncDetailInfo(AbstractModel):
         self.StepNow = None
         self.Progress = None
         self.CurrentStepProgress = None
-        self.MasterSlaveDistance = None
-        self.SecondsBehindMaster = None
+        self.MainSubordinateDistance = None
+        self.SecondsBehindMain = None
         self.StepInfo = None
 
 
@@ -2181,8 +2181,8 @@ class SyncDetailInfo(AbstractModel):
         self.StepNow = params.get("StepNow")
         self.Progress = params.get("Progress")
         self.CurrentStepProgress = params.get("CurrentStepProgress")
-        self.MasterSlaveDistance = params.get("MasterSlaveDistance")
-        self.SecondsBehindMaster = params.get("SecondsBehindMaster")
+        self.MainSubordinateDistance = params.get("MainSubordinateDistance")
+        self.SecondsBehindMain = params.get("SecondsBehindMain")
         if params.get("StepInfo") is not None:
             self.StepInfo = []
             for item in params.get("StepInfo"):
@@ -2192,7 +2192,7 @@ class SyncDetailInfo(AbstractModel):
 
 
 class SyncInstanceInfo(AbstractModel):
-    """Instance information of disaster recovery sync, which records the information of the master instance or disaster recovery instance
+    """Instance information of disaster recovery sync, which records the information of the main instance or disaster recovery instance
 
     """
 

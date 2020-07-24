@@ -289,9 +289,9 @@ class DBInstance(AbstractModel):
         :type DBInstanceCpu: int
         :param DBInstanceClass: Purchasable specification ID
         :type DBInstanceClass: str
-        :param DBInstanceType: Instance type. 1: primary (master instance), 2: readonly (read-only instance), 3: guard (disaster recovery instance), 4: temp (temp instance)
+        :param DBInstanceType: Instance type. 1: primary (main instance), 2: readonly (read-only instance), 3: guard (disaster recovery instance), 4: temp (temp instance)
         :type DBInstanceType: str
-        :param DBInstanceVersion: Instance edition. Currently, only `standard` edition (dual-server high-availability one-master-one-slave edition) is supported
+        :param DBInstanceVersion: Instance edition. Currently, only `standard` edition (dual-server high-availability one-main-one-subordinate edition) is supported
         :type DBInstanceVersion: str
         :param DBCharset: Instance database character set
         :type DBCharset: str
