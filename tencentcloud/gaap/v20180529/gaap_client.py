@@ -166,6 +166,34 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloseProxyGroup(self, request):
+        """This API is used to disable a connection group. Once disabled, the connection group will no longer generate traffic, but the basic connection configuration fees will still be incurred every day.
+
+        :param request: Request instance for CloseProxyGroup.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.CloseProxyGroupRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.CloseProxyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloseProxyGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseProxyGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseSecurityPolicy(self, request):
         """This API is used to disable security policies.
 
@@ -979,6 +1007,34 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDomainErrorPageInfoByIds(self, request):
+        """This API is used to query the corresponding error response by a custom error ID.
+
+        :param request: Request instance for DescribeDomainErrorPageInfoByIds.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoByIdsRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoByIdsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDomainErrorPageInfoByIds", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainErrorPageInfoByIdsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGroupAndStatisticsProxy(self, request):
         """This is an internal API. It is used to query the information of connections and connection groups from which the statistics can be derived.
 
@@ -1372,7 +1428,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRealServerStatistics(self, request):
-        """This API (DescribeRealServerStatistics) is used to query the statistics of an origin server’s health check results. Origin server status displayed as 1: normal, or 0: exceptional. The queried origin server must be bound to a listener or rule. The bound listener or rule ID must be specified when querying. This API supports displaying origin server status statistics for the past 1, 3, 6, 12, and 24 hours, with a granularity of 1 minute.
+        """This API (DescribeRealServerStatistics) is used to query the statistics of an origin server's health check results. Origin server status displayed as 1: normal, or 0: exceptional. The queried origin server must be bound to a listener or rule. The bound listener or rule ID must be specified when querying. This API supports displaying origin server status statistics for the past 1, 3, 6, 12, and 24 hours, with a granularity of 1 minute.
 
         :param request: Request instance for DescribeRealServerStatistics.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRealServerStatisticsRequest`
@@ -2198,6 +2254,34 @@ class GaapClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenProxiesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenProxyGroup(self, request):
+        """This API is used to enable all connections in a connection group.
+
+        :param request: Request instance for OpenProxyGroup.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.OpenProxyGroupRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.OpenProxyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OpenProxyGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenProxyGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

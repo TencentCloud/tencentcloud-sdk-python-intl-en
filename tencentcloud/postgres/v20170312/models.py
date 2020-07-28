@@ -108,7 +108,7 @@ class CreateDBInstancesRequest(AbstractModel):
         :type DBVersion: str
         :param Storage: Instance capacity size in GB.
         :type Storage: int
-        :param InstanceCount: Number of instances purchased at a time. Value range: 1–100.
+        :param InstanceCount: Number of instances purchased at a time. Value range: 1-100.
         :type InstanceCount: int
         :param Period: Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.
         :type Period: int
@@ -426,7 +426,7 @@ class DescribeAccountsRequest(AbstractModel):
         """
         :param DBInstanceId: Instance ID in the format of postgres-6fego161
         :type DBInstanceId: str
-        :param Limit: Number of entries returned per page. Default value: 20. Value range: 1–100.
+        :param Limit: Number of entries returned per page. Default value: 20. Value range: 1-100.
         :type Limit: int
         :param Offset: Page number for data return in paged query. Pagination starts from 0
         :type Offset: int
@@ -564,7 +564,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
         :type DatabaseName: str
         :param SearchKeys: Search keyword
         :type SearchKeys: list of str
-        :param Limit: Number of entries returned per page. Value range: 1–100
+        :param Limit: Number of entries returned per page. Value range: 1-100
         :type Limit: int
         :param Offset: Page number for data return in paged query. Pagination starts from 0
         :type Offset: int
@@ -745,7 +745,7 @@ class DescribeDBSlowlogsRequest(AbstractModel):
         :type OrderBy: str
         :param OrderByType: Sorting order. desc: descending, asc: ascending
         :type OrderByType: str
-        :param Limit: Number of entries returned per page. Value range: 1–100. Default value: 20.
+        :param Limit: Number of entries returned per page. Value range: 1-100. Default value: 20.
         :type Limit: int
         :param Offset: Page number for data return in paged query. Pagination starts from 0
         :type Offset: int
@@ -813,7 +813,7 @@ class DescribeDBXlogsRequest(AbstractModel):
         :type EndTime: str
         :param Offset: Page number for data return in paged query. Pagination starts from 0
         :type Offset: int
-        :param Limit: Number of entries returned per page in paged query. Value range: 1–100.
+        :param Limit: Number of entries returned per page in paged query. Value range: 1-100.
         :type Limit: int
         """
         self.DBInstanceId = None
@@ -2030,12 +2030,15 @@ class Xlog(AbstractModel):
         :type InternalAddr: str
         :param ExternalAddr: Download address on public network
         :type ExternalAddr: str
+        :param Size: 
+        :type Size: int
         """
         self.Id = None
         self.StartTime = None
         self.EndTime = None
         self.InternalAddr = None
         self.ExternalAddr = None
+        self.Size = None
 
 
     def _deserialize(self, params):
@@ -2044,6 +2047,7 @@ class Xlog(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.InternalAddr = params.get("InternalAddr")
         self.ExternalAddr = params.get("ExternalAddr")
+        self.Size = params.get("Size")
 
 
 class ZoneInfo(AbstractModel):
@@ -2061,7 +2065,7 @@ class ZoneInfo(AbstractModel):
         :type ZoneId: int
         :param ZoneState: Availability status. UNAVAILABLE: unavailable, AVAILABLE: available
         :type ZoneState: str
-        :param ZoneSupportIpv6: Whether the availability zone supports IPv6 address access
+        :param ZoneSupportIpv6: Whether the AZ supports IPv6 address access
         :type ZoneSupportIpv6: int
         """
         self.Zone = None

@@ -397,13 +397,13 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AutoScalingGroupName: The scaling group name. It must be unique under your account. The name can only contain Chinese characters, English letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes.
+        :param AutoScalingGroupName: The scaling group name. It must be unique under your account. The name can only contain letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes.
         :type AutoScalingGroupName: str
         :param InstanceId: The instance ID.
         :type InstanceId: str
-        :param MinSize: The maximum number of instances. Value range: 0-2000.
+        :param MinSize: The minimum number of instances. Value range: 0 - 2000.
         :type MinSize: int
-        :param MaxSize: The minimum number of instances. Value range: 0-2000.
+        :param MaxSize: The maximum number of instances. Value range: 0 - 2000.
         :type MaxSize: int
         :param DesiredCapacity: The desired capacity. Its value must be greater than the minimum and smaller than the maximum.
         :type DesiredCapacity: int
@@ -495,7 +495,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 Common reasons why an availability zone or subnet is unavailable include stock-out of CVM instances or CBS cloud disks in the availability zone, insufficient quota in the availability zone, or insufficient IPs in the subnet.
 If an availability zone or subnet in Zones/SubnetIds does not exist, a verification error will be reported regardless of the value of ZonesCheckPolicy.
         :type ZonesCheckPolicy: str
-        :param Tags: List of tag descriptions. This parameter is used to bind a tag to a scaling group as well as corresponding resource instances. Each scaling group can have up to 30 tags.
+        :param Tags: List of tag descriptions. In this parameter, you can specify the tags to be bound with a scaling group as well as corresponding resource instances. Each scaling group can have up to 30 tags.
         :type Tags: list of Tag
         :param ServiceSettings: Service settings such as unhealthy instance replacement.
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
@@ -632,6 +632,10 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
         :type CamRoleName: str
         :param HostNameSettings: CVM HostName settings.
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        :param InstanceNameSettings: 
+        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        :param InstanceChargePrepaid: 
+        :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         """
         self.LaunchConfigurationName = None
         self.ImageId = None
@@ -651,6 +655,8 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
         self.InstanceTags = None
         self.CamRoleName = None
         self.HostNameSettings = None
+        self.InstanceNameSettings = None
+        self.InstanceChargePrepaid = None
 
 
     def _deserialize(self, params):
@@ -694,6 +700,12 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
         if params.get("HostNameSettings") is not None:
             self.HostNameSettings = HostNameSettings()
             self.HostNameSettings._deserialize(params.get("HostNameSettings"))
+        if params.get("InstanceNameSettings") is not None:
+            self.InstanceNameSettings = InstanceNameSettings()
+            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
 
 
 class CreateLaunchConfigurationResponse(AbstractModel):
@@ -734,7 +746,7 @@ class CreateLifecycleHookRequest(AbstractModel):
         :type DefaultResult: str
         :param HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-3,600. Default value: 300
         :type HeartbeatTimeout: int
-        :param NotificationMetadata: Additional information sent by Auto Scaling to the notification target. Default value is “”. Maximum length is 1024 characters.
+        :param NotificationMetadata: Additional information sent by Auto Scaling to the notification target. Default value is ''. Maximum length is 1024 characters.
         :type NotificationMetadata: str
         :param NotificationTarget: Notification target
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
@@ -2131,7 +2143,7 @@ class ExecuteScalingPolicyRequest(AbstractModel):
         :type AutoScalingPolicyId: str
         :param HonorCooldown: Whether to check if the auto scaling group is in the cooldown period. Default value: false
         :type HonorCooldown: bool
-        :param TriggerSource: Trigger source that executes a scaling policy. Valid values: API and CLOUD_MONITOR. Default value: API. The value `CLOUD_MONITOR` is specific to the Cloud Monitor service.
+        :param TriggerSource: Source that triggers the scaling policy. Valid values: API and CLOUD_MONITOR. Default value: API. The value `CLOUD_MONITOR` is specific to the Cloud Monitor service.
         :type TriggerSource: str
         """
         self.AutoScalingPolicyId = None
@@ -2365,6 +2377,27 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.MarketType = params.get("MarketType")
 
 
+class InstanceNameSettings(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceName: 
+        :type InstanceName: str
+        :param InstanceNameStyle: 
+        :type InstanceNameStyle: str
+        """
+        self.InstanceName = None
+        self.InstanceNameStyle = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceNameStyle = params.get("InstanceNameStyle")
+
+
 class InstanceTag(AbstractModel):
     """Instance tag. This parameter is used to bind tags to newly added instances.
 
@@ -2402,7 +2435,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param PublicIpAssigned: Whether to assign a public IP. Value range: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you are free to choose whether to enable the public IP (which is enabled by default). If the public network bandwidth is 0 Mbps, no public IP will be allowed to be assigned.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PublicIpAssigned: bool
-        :param BandwidthPackageId: Bandwidth package ID. You can obtain the parameter value from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209) API.
+        :param BandwidthPackageId: Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209) API.
 Note: this field may return null, indicating that no valid value was found.
         :type BandwidthPackageId: str
         """
@@ -2478,6 +2511,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type LastOperationInstanceTypesCheckPolicy: str
         :param HostNameSettings: CVM HostName settings.
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        :param InstanceNameSettings: 
+        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        :param InstanceChargePrepaid: 
+        :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -2503,6 +2540,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CamRoleName = None
         self.LastOperationInstanceTypesCheckPolicy = None
         self.HostNameSettings = None
+        self.InstanceNameSettings = None
+        self.InstanceChargePrepaid = None
 
 
     def _deserialize(self, params):
@@ -2557,6 +2596,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("HostNameSettings") is not None:
             self.HostNameSettings = HostNameSettings()
             self.HostNameSettings._deserialize(params.get("HostNameSettings"))
+        if params.get("InstanceNameSettings") is not None:
+            self.InstanceNameSettings = InstanceNameSettings()
+            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
 
 
 class LifecycleActionResultInfo(AbstractModel):
@@ -2777,6 +2822,8 @@ If an availability zone or subnet in Zones/SubnetIds does not exist, a verificat
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
         :param Ipv6AddressCount: 
         :type Ipv6AddressCount: int
+        :param MultiZoneSubnetPolicy: 
+        :type MultiZoneSubnetPolicy: str
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -2794,6 +2841,7 @@ If an availability zone or subnet in Zones/SubnetIds does not exist, a verificat
         self.ZonesCheckPolicy = None
         self.ServiceSettings = None
         self.Ipv6AddressCount = None
+        self.MultiZoneSubnetPolicy = None
 
 
     def _deserialize(self, params):
@@ -2815,6 +2863,7 @@ If an availability zone or subnet in Zones/SubnetIds does not exist, a verificat
             self.ServiceSettings = ServiceSettings()
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
 
 
 class ModifyAutoScalingGroupResponse(AbstractModel):
@@ -3437,12 +3486,16 @@ class ServiceSettings(AbstractModel):
         """
         :param ReplaceMonitorUnhealthy: Enables unhealthy instance replacement. If this feature is enabled, AS will replace instances that are flagged as unhealthy by Cloud Monitor. If this parameter is not specified, the value will be False by default.
         :type ReplaceMonitorUnhealthy: bool
+        :param ScalingMode: 
+        :type ScalingMode: str
         """
         self.ReplaceMonitorUnhealthy = None
+        self.ScalingMode = None
 
 
     def _deserialize(self, params):
         self.ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
+        self.ScalingMode = params.get("ScalingMode")
 
 
 class SetInstancesProtectionRequest(AbstractModel):
@@ -3518,7 +3571,7 @@ class StartAutoScalingInstancesRequest(AbstractModel):
         """
         :param AutoScalingGroupId: The scaling group ID.
         :type AutoScalingGroupId: str
-        :param InstanceIds: The list of the CVM instances you want to launch.
+        :param InstanceIds: The list of the CVM instances you want to start up.
         :type InstanceIds: list of str
         """
         self.AutoScalingGroupId = None
@@ -3720,6 +3773,10 @@ If a model in InstanceTypes does not exist or has been deactivated, a verificati
         :type CamRoleName: str
         :param HostNameSettings: CVM HostName settings.
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        :param InstanceNameSettings: 
+        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        :param InstanceChargePrepaid: 
+        :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3739,6 +3796,8 @@ If a model in InstanceTypes does not exist or has been deactivated, a verificati
         self.InstanceTags = None
         self.CamRoleName = None
         self.HostNameSettings = None
+        self.InstanceNameSettings = None
+        self.InstanceChargePrepaid = None
 
 
     def _deserialize(self, params):
@@ -3782,6 +3841,12 @@ If a model in InstanceTypes does not exist or has been deactivated, a verificati
         if params.get("HostNameSettings") is not None:
             self.HostNameSettings = HostNameSettings()
             self.HostNameSettings._deserialize(params.get("HostNameSettings"))
+        if params.get("InstanceNameSettings") is not None:
+            self.InstanceNameSettings = InstanceNameSettings()
+            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
 
 
 class UpgradeLaunchConfigurationResponse(AbstractModel):

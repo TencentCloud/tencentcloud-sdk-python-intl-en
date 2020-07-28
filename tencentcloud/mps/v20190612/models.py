@@ -183,14 +183,14 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type Definition: int
         :param WatermarkSet: List of up to 10 image or text watermarks.
         :type WatermarkSet: list of WatermarkInput
-        :param OutputStorage: Target bucket of an output file after transcoded to adaptive bitrate streaming. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+        :param OutputStorage: Target bucket of an output file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputObjectPath: The relative or absolute output path of the manifest file after transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}.{format}`.
+        :param OutputObjectPath: The relative or absolute output path of the manifest file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}.{format}`.
         :type OutputObjectPath: str
-        :param SubStreamObjectName: The relative output path of the substream file after transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.
+        :param SubStreamObjectName: The relative output path of the substream file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.
         :type SubStreamObjectName: str
-        :param SegmentObjectName: The relative output path of the segment file after transcoded to adaptive bitrate streaming (in HLS format only). If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
+        :param SegmentObjectName: The relative output path of the segment file after being transcoded to adaptive bitrate streaming (in HLS format only). If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
         :type SegmentObjectName: str
         """
         self.Definition = None
@@ -730,6 +730,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param PoliticalOcrTask: Query result of an OCR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Ocr`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PoliticalOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`
+        :param TerrorismOcrTask: 
+        :type TerrorismOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismOcrResult`
+        :param ProhibitedAsrTask: 
+        :type ProhibitedAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedAsrResult`
+        :param ProhibitedOcrTask: 
+        :type ProhibitedOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedOcrResult`
         """
         self.Type = None
         self.SampleRate = None
@@ -741,6 +747,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.PornOcrTask = None
         self.PoliticalAsrTask = None
         self.PoliticalOcrTask = None
+        self.TerrorismOcrTask = None
+        self.ProhibitedAsrTask = None
+        self.ProhibitedOcrTask = None
 
 
     def _deserialize(self, params):
@@ -768,6 +777,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("PoliticalOcrTask") is not None:
             self.PoliticalOcrTask = AiReviewTaskPoliticalOcrResult()
             self.PoliticalOcrTask._deserialize(params.get("PoliticalOcrTask"))
+        if params.get("TerrorismOcrTask") is not None:
+            self.TerrorismOcrTask = AiReviewTaskTerrorismOcrResult()
+            self.TerrorismOcrTask._deserialize(params.get("TerrorismOcrTask"))
+        if params.get("ProhibitedAsrTask") is not None:
+            self.ProhibitedAsrTask = AiReviewTaskProhibitedAsrResult()
+            self.ProhibitedAsrTask._deserialize(params.get("ProhibitedAsrTask"))
+        if params.get("ProhibitedOcrTask") is not None:
+            self.ProhibitedOcrTask = AiReviewTaskProhibitedOcrResult()
+            self.ProhibitedOcrTask._deserialize(params.get("ProhibitedOcrTask"))
 
 
 class AiContentReviewTaskInput(AbstractModel):
@@ -945,7 +963,7 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Confidence of a recognition segment. Value range: 0–100.
+        :param Confidence: Confidence of a recognition segment. Value range: 0-100.
         :type Confidence: float
         :param StartTimeOffset: Start time offset of a recognition segment in seconds.
         :type StartTimeOffset: float
@@ -1081,7 +1099,7 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End time offset of a recognition segment in seconds.
         :type EndTimeOffset: float
-        :param Confidence: Confidence of a recognition segment. Value range: 0–100.
+        :param Confidence: Confidence of a recognition segment. Value range: 0-100.
         :type Confidence: float
         """
         self.StartTimeOffset = None
@@ -1219,7 +1237,7 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End time offset of a recognition segment in seconds.
         :type EndTimeOffset: float
-        :param Confidence: Confidence of a recognition segment. Value range: 0–100.
+        :param Confidence: Confidence of a recognition segment. Value range: 0-100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -1368,7 +1386,7 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Confidence of a recognition segment. Value range: 0–100.
+        :param Confidence: Confidence of a recognition segment. Value range: 0-100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -1500,7 +1518,7 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End time offset of a recognition segment in seconds.
         :type EndTimeOffset: float
-        :param Confidence: Confidence of a recognition segment. Value range: 0–100.
+        :param Confidence: Confidence of a recognition segment. Value range: 0-100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -1653,7 +1671,7 @@ class AiReviewPoliticalTaskOutput(AbstractModel):
 violation_photo:
 <li>violation_photo: violating photo.</li>
 Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
-<li>politician: politically sensitive figure.</li>
+<li>politician: political figure.</li>
         :type Label: str
         :param SegmentSet: List of video segments that contain the detected politically sensitive information.
         :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
@@ -1830,6 +1848,100 @@ class AiReviewPornTaskOutput(AbstractModel):
             self.SegmentSet = []
             for item in params.get("SegmentSet"):
                 obj = MediaContentReviewSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiReviewProhibitedAsrTaskInput(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewProhibitedAsrTaskOutput(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 
+        :type Confidence: float
+        :param Suggestion: 
+        :type Suggestion: str
+        :param SegmentSet: 
+        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewAsrTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiReviewProhibitedOcrTaskInput(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewProhibitedOcrTaskOutput(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 
+        :type Confidence: float
+        :param Suggestion: 
+        :type Suggestion: str
+        :param SegmentSet: 
+        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
 
@@ -2066,6 +2178,117 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.Output._deserialize(params.get("Output"))
 
 
+class AiReviewTaskProhibitedAsrResult(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 
+        :type Status: str
+        :param ErrCode: 
+        :type ErrCode: int
+        :param Message: 
+        :type Message: str
+        :param Input: 
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskInput`
+        :param Output: 
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewProhibitedAsrTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewProhibitedAsrTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTaskProhibitedOcrResult(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 
+        :type Status: str
+        :param ErrCode: 
+        :type ErrCode: int
+        :param Message: 
+        :type Message: str
+        :param Input: 
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskInput`
+        :param Output: 
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewProhibitedOcrTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewProhibitedOcrTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTaskTerrorismOcrResult(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 
+        :type Status: str
+        :param ErrCode: 
+        :type ErrCode: int
+        :param Message: 
+        :type Message: str
+        :param Input: 
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskInput`
+        :param Output: 
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewTerrorismOcrTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewTerrorismOcrTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
 class AiReviewTaskTerrorismResult(AbstractModel):
     """Result type of a terrorism information detection task during content audit
 
@@ -2102,6 +2325,53 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiReviewTerrorismTaskOutput()
             self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTerrorismOcrTaskInput(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewTerrorismOcrTaskOutput(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 
+        :type Confidence: float
+        :param Suggestion: 
+        :type Suggestion: str
+        :param SegmentSet: 
+        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewOcrTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
 
 
 class AiReviewTerrorismTaskInput(AbstractModel):
@@ -3118,6 +3388,8 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param Fps: Video frame rate in Hz. Value range: [1, 30].
+        :type Fps: int
         :param Width: Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
@@ -3132,8 +3404,8 @@ Default value: 0.
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
 Default value: 0.
         :type Height: int
-        :param Fps: Video frame rate in Hz. Value range: [1, 30].
-        :type Fps: int
+        :param ResolutionAdaptive: 
+        :type ResolutionAdaptive: str
         :param Format: Animated image format. Valid values: gif; webp. Default value: gif.
         :type Format: str
         :param Quality: Image quality. Value range: [1, 100]. Default value: 75.
@@ -3143,9 +3415,10 @@ Default value: 0.
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
         """
+        self.Fps = None
         self.Width = None
         self.Height = None
-        self.Fps = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Quality = None
         self.Name = None
@@ -3153,9 +3426,10 @@ Default value: 0.
 
 
     def _deserialize(self, params):
+        self.Fps = params.get("Fps")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
-        self.Fps = params.get("Fps")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Quality = params.get("Quality")
         self.Name = params.get("Name")
@@ -3200,6 +3474,8 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
         :param PoliticalConfigure: Politically sensitive information detection control parameter.
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
+        :param ProhibitedConfigure: 
+        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
         :param UserDefineConfigure: Custom content audit control parameter.
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
         """
@@ -3208,6 +3484,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         self.PornConfigure = None
         self.TerrorismConfigure = None
         self.PoliticalConfigure = None
+        self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
 
 
@@ -3223,6 +3500,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         if params.get("PoliticalConfigure") is not None:
             self.PoliticalConfigure = PoliticalConfigureInfo()
             self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("ProhibitedConfigure") is not None:
+            self.ProhibitedConfigure = ProhibitedConfigureInfo()
+            self.ProhibitedConfigure._deserialize(params.get("ProhibitedConfigure"))
         if params.get("UserDefineConfigure") is not None:
             self.UserDefineConfigure = UserDefineConfigureInfo()
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
@@ -3256,10 +3536,6 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Width: Subimage width of an image sprite in px. Value range: [128, 4,096].
-        :type Width: int
-        :param Height: Subimage height of an image sprite in px. Value range: [128, 4,096].
-        :type Height: int
         :param SampleType: Sampling type. Valid values:
 <li>Percent: By percent.</li>
 <li>Time: By time interval.</li>
@@ -3274,24 +3550,40 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         :type ColumnCount: int
         :param Name: Name of an image sprite generating template. Length limit: 64 characters.
         :type Name: str
+        :param Width: Subimage width of an image sprite in px. Value range: [128, 4,096].
+        :type Width: int
+        :param Height: Subimage height of an image sprite in px. Value range: [128, 4,096].
+        :type Height: int
+        :param ResolutionAdaptive: 
+        :type ResolutionAdaptive: str
+        :param FillType: 
+        :type FillType: str
+        :param Comment: 
+        :type Comment: str
         """
-        self.Width = None
-        self.Height = None
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
         self.ColumnCount = None
         self.Name = None
+        self.Width = None
+        self.Height = None
+        self.ResolutionAdaptive = None
+        self.FillType = None
+        self.Comment = None
 
 
     def _deserialize(self, params):
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
         self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self.FillType = params.get("FillType")
+        self.Comment = params.get("Comment")
 
 
 class CreateImageSpriteTemplateResponse(AbstractModel):
@@ -3324,9 +3616,6 @@ class CreatePersonSampleRequest(AbstractModel):
         """
         :param Name: Name of a figure. Length limit: 20 characters.
         :type Name: str
-        :param FaceContents: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a face image. Only JPEG and PNG images are supported. Array length limit: 5 images.
-Note: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.
-        :type FaceContents: list of str
         :param Usages: Figure sample use case. Valid values:
 1. Recognition: It is used for content recognition, equivalent to `Recognition.Face`.
 2. Review: It is used for content audit, equivalent to `Review.Face`.
@@ -3334,23 +3623,26 @@ Note: The image must be a relatively clear full-face photo of a figure in at lea
         :type Usages: list of str
         :param Description: Figure description. Length limit: 1,024 characters.
         :type Description: str
+        :param FaceContents: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a face image. Only JPEG and PNG images are supported. Array length limit: 5 images.
+Note: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.
+        :type FaceContents: list of str
         :param Tags: Figure tag
 <li>Array length limit: 20 tags;</li>
 <li>Tag length limit: 128 characters.</li>
         :type Tags: list of str
         """
         self.Name = None
-        self.FaceContents = None
         self.Usages = None
         self.Description = None
+        self.FaceContents = None
         self.Tags = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
-        self.FaceContents = params.get("FaceContents")
         self.Usages = params.get("Usages")
         self.Description = params.get("Description")
+        self.FaceContents = params.get("FaceContents")
         self.Tags = params.get("Tags")
 
 
@@ -3393,10 +3685,6 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Width: Image width in px. Value range: [128, 4,096].
-        :type Width: int
-        :param Height: Image height in px. Value range: [128, 4,096].
-        :type Height: int
         :param SampleType: Sampled screencapturing type. Valid values:
 <li>Percent: By percent.</li>
 <li>Time: By time interval.</li>
@@ -3407,28 +3695,40 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
         :type SampleInterval: int
         :param Name: Name of a sampled screencapturing template. Length limit: 64 characters.
         :type Name: str
+        :param Width: Image width in px. Value range: [128, 4,096].
+        :type Width: int
+        :param Height: Image height in px. Value range: [128, 4,096].
+        :type Height: int
+        :param ResolutionAdaptive: 
+        :type ResolutionAdaptive: str
         :param Format: Image format. Valid values: jpg; png. Default value: jpg.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param FillType: 
+        :type FillType: str
         """
-        self.Width = None
-        self.Height = None
         self.SampleType = None
         self.SampleInterval = None
         self.Name = None
+        self.Width = None
+        self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
+        self.FillType = params.get("FillType")
 
 
 class CreateSampleSnapshotTemplateResponse(AbstractModel):
@@ -3459,30 +3759,38 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param Name: Name of a time point screencapturing template. Length limit: 64 characters.
+        :type Name: str
         :param Width: Image width in px. Value range: [128, 4,096].
         :type Width: int
         :param Height: Image height in px. Value range: [128, 4,096].
         :type Height: int
-        :param Name: Name of a time point screencapturing template. Length limit: 64 characters.
-        :type Name: str
+        :param ResolutionAdaptive: 
+        :type ResolutionAdaptive: str
         :param Format: Image format. Valid values: jpg; png. Default value: jpg.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param FillType: 
+        :type FillType: str
         """
+        self.Name = None
         self.Width = None
         self.Height = None
-        self.Name = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
+        self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
-        self.Name = params.get("Name")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
+        self.FillType = params.get("FillType")
 
 
 class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
@@ -4885,6 +5193,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param WorkflowTask: Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WorkflowTask: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        :param EditMediaTask: 
+        :type EditMediaTask: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
         :param LiveStreamProcessTask: Information of a live stream processing task. This field has a value only when `TaskType` is `LiveStreamProcessTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LiveStreamProcessTask: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`
@@ -4906,6 +5216,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BeginProcessTime = None
         self.FinishTime = None
         self.WorkflowTask = None
+        self.EditMediaTask = None
         self.LiveStreamProcessTask = None
         self.TaskNotifyConfig = None
         self.TasksPriority = None
@@ -4923,6 +5234,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("WorkflowTask") is not None:
             self.WorkflowTask = WorkflowTask()
             self.WorkflowTask._deserialize(params.get("WorkflowTask"))
+        if params.get("EditMediaTask") is not None:
+            self.EditMediaTask = EditMediaTask()
+            self.EditMediaTask._deserialize(params.get("EditMediaTask"))
         if params.get("LiveStreamProcessTask") is not None:
             self.LiveStreamProcessTask = LiveStreamProcessTask()
             self.LiveStreamProcessTask._deserialize(params.get("LiveStreamProcessTask"))
@@ -5337,7 +5651,7 @@ class EditMediaRequest(AbstractModel):
         :type OutputObjectPath: str
         :param TaskNotifyConfig: Event notification information of task. If this parameter is left empty, no event notifications will be obtained.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
@@ -5393,6 +5707,92 @@ class EditMediaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EditMediaTask(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 
+        :type TaskId: str
+        :param Status: 
+        :type Status: str
+        :param ErrCode: 
+        :type ErrCode: int
+        :param Message: 
+        :type Message: str
+        :param Input: 
+        :type Input: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskInput`
+        :param Output: 
+        :type Output: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskOutput`
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = EditMediaTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = EditMediaTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class EditMediaTaskInput(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param FileInfoSet: 
+        :type FileInfoSet: list of EditMediaFileInfo
+        """
+        self.FileInfoSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("FileInfoSet") is not None:
+            self.FileInfoSet = []
+            for item in params.get("FileInfoSet"):
+                obj = EditMediaFileInfo()
+                obj._deserialize(item)
+                self.FileInfoSet.append(obj)
+
+
+class EditMediaTaskOutput(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param OutputStorage: 
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param Path: 
+        :type Path: str
+        """
+        self.OutputStorage = None
+        self.Path = None
+
+
+    def _deserialize(self, params):
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.Path = params.get("Path")
+
+
 class EnableWorkflowRequest(AbstractModel):
     """EnableWorkflow request structure.
 
@@ -5438,7 +5838,7 @@ class FaceConfigureInfo(AbstractModel):
 <li>ON: Enables an intelligent face recognition task;</li>
 <li>OFF: Disables an intelligent face recognition task.</li>
         :type Switch: str
-        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0–100. Default value: 95.
+        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100. Default value: 95.
         :type Score: float
         :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:
 <li>entertainment: Entertainment celebrity;</li>
@@ -5481,7 +5881,7 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 <li>ON: Enables an intelligent face recognition task;</li>
 <li>OFF: Disables an intelligent face recognition task.</li>
         :type Switch: str
-        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0–100.
+        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100.
         :type Score: float
         :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:
 <li>entertainment: Entertainment celebrity;</li>
@@ -5627,6 +6027,8 @@ class ImageSpriteTemplate(AbstractModel):
 <li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 Default value: black.
         :type FillType: str
+        :param Comment: 
+        :type Comment: str
         """
         self.Definition = None
         self.Type = None
@@ -5641,6 +6043,7 @@ Default value: black.
         self.CreateTime = None
         self.UpdateTime = None
         self.FillType = None
+        self.Comment = None
 
 
     def _deserialize(self, params):
@@ -5657,6 +6060,7 @@ Default value: black.
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
+        self.Comment = params.get("Comment")
 
 
 class ImageWatermarkInput(AbstractModel):
@@ -6130,7 +6534,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of recognized segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         """
         self.Text = None
@@ -6159,7 +6563,7 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of recognized segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         """
         self.Word = None
@@ -6193,7 +6597,7 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of recognized segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -6230,7 +6634,7 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of recognized segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -6263,7 +6667,7 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of recognized segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         :param AreaCoords: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoords: list of int
@@ -6715,7 +7119,28 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type Suggestion: str
         :param Name: Name of a politically sensitive figure or violating photo.
         :type Name: str
-        :param Label: Tag of politically sensitive information detection result of a suspected segment.
+        :param Label: Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://cloud.tencent.com/document/api/862/37615#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
+violation_photo:
+<li>violation_photo: violating photo.</li>
+politician:
+<li>nation_politician: head of state/government;</li>
+<li>province_politician: province/state leader;</li>
+<li>bureau_politician: ministry leader;</li>
+<li>county_politician: county/city leader;</li>
+<li>rural_politician: town leader;</li>
+<li>sensitive_politician: politically sensitive figure.</li>
+entertainment:
+<li>sensitive_entertainment: sensitive entertainment celebrity.</li>
+sport:
+<li>sensitive_sport: sensitive sports figure.</li>
+entrepreneur:
+<li>sensitive_entrepreneur: sensitive business figure.</li>
+scholar:
+<li>sensitive_scholar: sensitive educator.</li>
+celebrity:
+<li>sensitive_celebrity: sensitive well-known figure.</li>
+military:
+<li>sensitive_military: militarily sensitive figure.</li>
         :type Label: str
         :param Url: URL of a suspected image (which will not be permanently stored
  and will be deleted after `PicUrlExpireTime`).
@@ -7761,6 +8186,8 @@ Default value: 0.
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
 Default value: 0.
         :type Height: int
+        :param ResolutionAdaptive: 
+        :type ResolutionAdaptive: str
         :param Format: Animated image format. Valid values: gif, webp.
         :type Format: str
         :param Fps: Video frame rate in Hz. Value range: [1, 30].
@@ -7774,6 +8201,7 @@ Default value: 0.
         self.Name = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Fps = None
         self.Quality = None
@@ -7785,6 +8213,7 @@ Default value: 0.
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Fps = params.get("Fps")
         self.Quality = params.get("Quality")
@@ -7827,6 +8256,8 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfoForUpdate`
         :param PoliticalConfigure: Politically sensitive information detection control parameter.
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfoForUpdate`
+        :param ProhibitedConfigure: 
+        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfoForUpdate`
         :param UserDefineConfigure: Custom content audit control parameter.
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfoForUpdate`
         """
@@ -7836,6 +8267,7 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         self.PornConfigure = None
         self.TerrorismConfigure = None
         self.PoliticalConfigure = None
+        self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
 
 
@@ -7852,6 +8284,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         if params.get("PoliticalConfigure") is not None:
             self.PoliticalConfigure = PoliticalConfigureInfoForUpdate()
             self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("ProhibitedConfigure") is not None:
+            self.ProhibitedConfigure = ProhibitedConfigureInfoForUpdate()
+            self.ProhibitedConfigure._deserialize(params.get("ProhibitedConfigure"))
         if params.get("UserDefineConfigure") is not None:
             self.UserDefineConfigure = UserDefineConfigureInfoForUpdate()
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
@@ -7889,6 +8324,8 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         :type Width: int
         :param Height: Subimage height of an image sprite in px. Value range: [128, 4,096].
         :type Height: int
+        :param ResolutionAdaptive: 
+        :type ResolutionAdaptive: str
         :param SampleType: Sampling type. Valid values:
 <li>Percent: By percent.</li>
 <li>Time: By time interval.</li>
@@ -7901,15 +8338,22 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         :type RowCount: int
         :param ColumnCount: Subimage column count of an image sprite.
         :type ColumnCount: int
+        :param FillType: 
+        :type FillType: str
+        :param Comment: 
+        :type Comment: str
         """
         self.Definition = None
         self.Name = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
         self.ColumnCount = None
+        self.FillType = None
+        self.Comment = None
 
 
     def _deserialize(self, params):
@@ -7917,10 +8361,13 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
+        self.FillType = params.get("FillType")
+        self.Comment = params.get("Comment")
 
 
 class ModifyImageSpriteTemplateResponse(AbstractModel):
@@ -8032,6 +8479,8 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
         :type Width: int
         :param Height: Image height in px. Value range: [128, 4,096].
         :type Height: int
+        :param ResolutionAdaptive: 
+        :type ResolutionAdaptive: str
         :param SampleType: Sampled screencapturing type. Valid values:
 <li>Percent: By percent.</li>
 <li>Time: By time interval.</li>
@@ -8044,15 +8493,19 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param FillType: 
+        :type FillType: str
         """
         self.Definition = None
         self.Name = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.SampleType = None
         self.SampleInterval = None
         self.Format = None
         self.Comment = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -8060,10 +8513,12 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
+        self.FillType = params.get("FillType")
 
 
 class ModifySampleSnapshotTemplateResponse(AbstractModel):
@@ -8098,17 +8553,23 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
         :type Width: int
         :param Height: Image height in px. Value range: [128, 4,096].
         :type Height: int
+        :param ResolutionAdaptive: 
+        :type ResolutionAdaptive: str
         :param Format: Image format. Valid values: jpg, png.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param FillType: 
+        :type FillType: str
         """
         self.Definition = None
         self.Name = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -8116,8 +8577,10 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
+        self.FillType = params.get("FillType")
 
 
 class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
@@ -8349,6 +8812,47 @@ class ModifyWordSampleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MosaicInput(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param CoordinateOrigin: 
+        :type CoordinateOrigin: str
+        :param XPos: 
+        :type XPos: str
+        :param YPos: 
+        :type YPos: str
+        :param Width: 
+        :type Width: str
+        :param Height: 
+        :type Height: str
+        :param StartTimeOffset: 
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 
+        :type EndTimeOffset: float
+        """
+        self.CoordinateOrigin = None
+        self.XPos = None
+        self.YPos = None
+        self.Width = None
+        self.Height = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+
+
+    def _deserialize(self, params):
+        self.CoordinateOrigin = params.get("CoordinateOrigin")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+
+
 class NumberFormat(AbstractModel):
     """Rule of the `{number}` variable in the output file name.
 
@@ -8566,6 +9070,8 @@ class ParseNotificationResponse(AbstractModel):
         :param WorkflowTaskEvent: Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WorkflowTaskEvent: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        :param EditMediaTaskEvent: 
+        :type EditMediaTaskEvent: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
         :type SessionId: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
@@ -8575,6 +9081,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """
         self.EventType = None
         self.WorkflowTaskEvent = None
+        self.EditMediaTaskEvent = None
         self.SessionId = None
         self.SessionContext = None
         self.RequestId = None
@@ -8585,6 +9092,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("WorkflowTaskEvent") is not None:
             self.WorkflowTaskEvent = WorkflowTask()
             self.WorkflowTaskEvent._deserialize(params.get("WorkflowTaskEvent"))
+        if params.get("EditMediaTaskEvent") is not None:
+            self.EditMediaTaskEvent = EditMediaTask()
+            self.EditMediaTaskEvent._deserialize(params.get("EditMediaTaskEvent"))
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         self.RequestId = params.get("RequestId")
@@ -8601,9 +9111,9 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 <li>ON: Enables a politically sensitive information detection in speech task;</li>
 <li>OFF: Disables a politically sensitive information detection in speech task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -8628,9 +9138,9 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON: Enables a politically sensitive information detection in speech task;</li>
 <li>OFF: Disables a politically sensitive information detection in speech task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -8722,17 +9232,17 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
         :type Switch: str
         :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
 <li>violation_photo: violating photo;</li>
-<li>politician: sensitive figure;</li>
+<li>politician: political figure;</li>
 <li>entertainment: entertainment celebrity;</li>
 <li>sport: sports figure;</li>
 <li>entrepreneur: business figure;</li>
 <li>scholar: educator;</li>
-<li>celebrity: public-known figure;</li>
+<li>celebrity: well-known figure;</li>
 <li>military: military figure.</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -8761,17 +9271,17 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
         :type Switch: str
         :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
 <li>violation_photo: violating photo;</li>
-<li>politician: sensitive figure;</li>
+<li>politician: political figure;</li>
 <li>entertainment: entertainment celebrity;</li>
 <li>sport: sports figure;</li>
 <li>entrepreneur: business figure;</li>
 <li>scholar: educator;</li>
-<li>celebrity: public-known figure;</li>
+<li>celebrity: well-known figure;</li>
 <li>military: military figure.</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -8798,9 +9308,9 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 <li>ON: Enables a politically sensitive information detection in text task;</li>
 <li>OFF: Disables a politically sensitive information detection in text task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -8825,9 +9335,9 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON: Enables a politically sensitive information detection in text task;</li>
 <li>OFF: Disables a politically sensitive information detection in text task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -8852,9 +9362,9 @@ class PornAsrReviewTemplateInfo(AbstractModel):
 <li>ON: Enables a porn information detection in speech task;</li>
 <li>OFF: Disables a porn information detection in speech task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -8879,9 +9389,9 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON: Enables a porn information detection in speech task;</li>
 <li>OFF: Disables a porn information detection in speech task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -8977,9 +9487,9 @@ class PornImgReviewTemplateInfo(AbstractModel):
 <li>intimacy: Intimacy;</li>
 <li>sexy: Sexiness.</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 0 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 0 will be used by default. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -9012,9 +9522,9 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>intimacy: Intimacy;</li>
 <li>sexy: Sexiness.</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -9041,9 +9551,9 @@ class PornOcrReviewTemplateInfo(AbstractModel):
 <li>ON: Enables a porn information detection in text task;</li>
 <li>OFF: Disables a porn information detection in text task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -9068,9 +9578,9 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON: Enables a porn information detection in text task;</li>
 <li>OFF: Disables a porn information detection in text task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -9275,6 +9785,31 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
         self.ReviewConfidence = params.get("ReviewConfidence")
 
 
+class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 
+        :type Switch: str
+        :param BlockConfidence: 
+        :type BlockConfidence: int
+        :param ReviewConfidence: 
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
 class ProhibitedConfigureInfo(AbstractModel):
     """
 
@@ -9300,7 +9835,57 @@ class ProhibitedConfigureInfo(AbstractModel):
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
+class ProhibitedConfigureInfoForUpdate(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param AsrReviewInfo: 
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: 
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfoForUpdate`
+        """
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = ProhibitedAsrReviewTemplateInfoForUpdate()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = ProhibitedOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
 class ProhibitedOcrReviewTemplateInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 
+        :type Switch: str
+        :param BlockConfidence: 
+        :type BlockConfidence: int
+        :param ReviewConfidence: 
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
     """
 
     """
@@ -9663,6 +10248,8 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         """
         :param Definition: ID of a time point screencapturing template.
         :type Definition: int
+        :param ExtTimeOffsetSet: 
+        :type ExtTimeOffsetSet: list of str
         :param TimeOffsetSet: List of time points of screenshots in <font color=red>seconds</font>.
         :type TimeOffsetSet: list of float
         :param WatermarkSet: List of up to 10 image or text watermarks.
@@ -9678,6 +10265,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
         self.Definition = None
+        self.ExtTimeOffsetSet = None
         self.TimeOffsetSet = None
         self.WatermarkSet = None
         self.OutputStorage = None
@@ -9687,6 +10275,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.ExtTimeOffsetSet = params.get("ExtTimeOffsetSet")
         self.TimeOffsetSet = params.get("TimeOffsetSet")
         if params.get("WatermarkSet") is not None:
             self.WatermarkSet = []
@@ -10041,14 +10630,20 @@ class TerrorismConfigureInfo(AbstractModel):
         :param ImgReviewInfo: Control parameter of a terrorism information detection in image task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
+        :param OcrReviewInfo: 
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
+        self.OcrReviewInfo = None
 
 
     def _deserialize(self, params):
         if params.get("ImgReviewInfo") is not None:
             self.ImgReviewInfo = TerrorismImgReviewTemplateInfo()
             self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = TerrorismOcrReviewTemplateInfo()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
 class TerrorismConfigureInfoForUpdate(AbstractModel):
@@ -10060,14 +10655,20 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
         """
         :param ImgReviewInfo: Control parameter of a terrorism information detection in image task.
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: 
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfoForUpdate`
         """
         self.ImgReviewInfo = None
+        self.OcrReviewInfo = None
 
 
     def _deserialize(self, params):
         if params.get("ImgReviewInfo") is not None:
             self.ImgReviewInfo = TerrorismImgReviewTemplateInfoForUpdate()
             self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = TerrorismOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
 class TerrorismImgReviewTemplateInfo(AbstractModel):
@@ -10091,9 +10692,9 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>explosion: Explosions and fires;</li>
 <li>terrorists: Terrorists.</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 80 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 80 will be used by default. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10130,9 +10731,9 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>explosion: Explosions and fires;</li>
 <li>terrorists: Terrorists.</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10144,6 +10745,56 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class TerrorismOcrReviewTemplateInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 
+        :type Switch: str
+        :param BlockConfidence: 
+        :type BlockConfidence: int
+        :param ReviewConfidence: 
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 
+        :type Switch: str
+        :param BlockConfidence: 
+        :type BlockConfidence: int
+        :param ReviewConfidence: 
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
         self.BlockConfidence = params.get("BlockConfidence")
         self.ReviewConfidence = params.get("ReviewConfidence")
 
@@ -10229,6 +10880,8 @@ class TranscodeTaskInput(AbstractModel):
         :param WatermarkSet: List of up to 10 image or text watermarks.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WatermarkSet: list of WatermarkInput
+        :param MosaicSet: 
+        :type MosaicSet: list of MosaicInput
         :param OutputStorage: Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -10243,6 +10896,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Definition = None
         self.RawParameter = None
         self.WatermarkSet = None
+        self.MosaicSet = None
         self.OutputStorage = None
         self.OutputObjectPath = None
         self.SegmentObjectName = None
@@ -10260,6 +10914,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self.WatermarkSet.append(obj)
+        if params.get("MosaicSet") is not None:
+            self.MosaicSet = []
+            for item in params.get("MosaicSet"):
+                obj = MosaicInput()
+                obj._deserialize(item)
+                self.MosaicSet.append(obj)
         if params.get("OutputStorage") is not None:
             self.OutputStorage = TaskOutputStorage()
             self.OutputStorage._deserialize(params.get("OutputStorage"))
@@ -10368,9 +11028,9 @@ class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
         :param LabelSet: Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10400,9 +11060,9 @@ class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
         :param LabelSet: Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10497,9 +11157,9 @@ class UserDefineFaceReviewTemplateInfo(AbstractModel):
         :param LabelSet: Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10529,9 +11189,9 @@ class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
         :param LabelSet: Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10561,9 +11221,9 @@ class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
         :param LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10593,9 +11253,9 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
         :param LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10648,6 +11308,8 @@ Default value: 0.
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
 Default value: 0.
         :type Height: int
+        :param Gop: 
+        :type Gop: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
@@ -10660,6 +11322,7 @@ Default value: black.
         self.ResolutionAdaptive = None
         self.Width = None
         self.Height = None
+        self.Gop = None
         self.FillType = None
 
 
@@ -10670,6 +11333,7 @@ Default value: black.
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.Gop = params.get("Gop")
         self.FillType = params.get("FillType")
 
 
@@ -10703,6 +11367,8 @@ If the value is 0, the bitrate of the video will be the same as that of the sour
         :type Width: int
         :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
         :type Height: int
+        :param Gop: 
+        :type Gop: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
@@ -10715,6 +11381,7 @@ Default value: black.
         self.ResolutionAdaptive = None
         self.Width = None
         self.Height = None
+        self.Gop = None
         self.FillType = None
 
 
@@ -10725,6 +11392,7 @@ Default value: black.
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.Gop = params.get("Gop")
         self.FillType = params.get("FillType")
 
 

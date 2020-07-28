@@ -249,23 +249,15 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         :type Name: str
         :param Comment: Description of a transcoding to adaptive bitrate streaming template.
         :type Comment: str
-        :param PackageType: Container type. Valid values:
-<li>hls; </li>
-<li>dash.</li>
-        :type PackageType: str
+        :param Format: Adaptive bitstream format. Valid value:
+<li>HLS.</li>
+        :type Format: str
         :param DrmType: DRM type. Valid values:
 <li>FairPlay;</li>
 <li>SimpleAES;</li>
 <li>Widevine.</li>
 If this field is a blank string, DRM will not be performed on the video.
         :type DrmType: str
-        :param VideoTrackTemplateSet: List of video track templates.
-        :type VideoTrackTemplateSet: list of VideoTrackTemplateInfo
-        :param AudioTrackTemplateSet: List of audio track templates.
-        :type AudioTrackTemplateSet: list of AudioTrackTemplateInfo
-        :param Format: Adaptive bitstream format. Valid value:
-<li>HLS.</li>
-        :type Format: str
         :param StreamInfos: Parameter information of input stream for adaptive bitrate streaming. Up to 10 streams can be input.
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param DisableHigherVideoBitrate: Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
@@ -285,11 +277,8 @@ If this field is a blank string, DRM will not be performed on the video.
         self.Type = None
         self.Name = None
         self.Comment = None
-        self.PackageType = None
-        self.DrmType = None
-        self.VideoTrackTemplateSet = None
-        self.AudioTrackTemplateSet = None
         self.Format = None
+        self.DrmType = None
         self.StreamInfos = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
@@ -302,21 +291,8 @@ If this field is a blank string, DRM will not be performed on the video.
         self.Type = params.get("Type")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
-        self.PackageType = params.get("PackageType")
-        self.DrmType = params.get("DrmType")
-        if params.get("VideoTrackTemplateSet") is not None:
-            self.VideoTrackTemplateSet = []
-            for item in params.get("VideoTrackTemplateSet"):
-                obj = VideoTrackTemplateInfo()
-                obj._deserialize(item)
-                self.VideoTrackTemplateSet.append(obj)
-        if params.get("AudioTrackTemplateSet") is not None:
-            self.AudioTrackTemplateSet = []
-            for item in params.get("AudioTrackTemplateSet"):
-                obj = AudioTrackTemplateInfo()
-                obj._deserialize(item)
-                self.AudioTrackTemplateSet.append(obj)
         self.Format = params.get("Format")
+        self.DrmType = params.get("DrmType")
         if params.get("StreamInfos") is not None:
             self.StreamInfos = []
             for item in params.get("StreamInfos"):
@@ -1109,7 +1085,7 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         :param StartTimeOffset: Start time offset of recognized segment in seconds.
         :type StartTimeOffset: float
@@ -1245,7 +1221,7 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End time offset of recognition segment in seconds.
         :type EndTimeOffset: float
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         """
         self.StartTimeOffset = None
@@ -1383,7 +1359,7 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End time offset of recognition segment in seconds.
         :type EndTimeOffset: float
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -1463,11 +1439,11 @@ class AiRecognitionTaskHeadTailResultOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param HeadConfidence: Confidence of recognized opening credits. Value range: 0–100.
+        :param HeadConfidence: Confidence of recognized opening credits. Value range: 0-100.
         :type HeadConfidence: float
         :param HeadTimeOffset: End time point of video opening credits in seconds.
         :type HeadTimeOffset: float
-        :param TailConfidence: Confidence of recognized closing credits. Value range: 0–100.
+        :param TailConfidence: Confidence of recognized closing credits. Value range: 0-100.
         :type TailConfidence: float
         :param TailTimeOffset: Start time point of video closing credits in seconds.
         :type TailTimeOffset: float
@@ -1616,7 +1592,7 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End time offset of recognition segment in seconds.
         :type EndTimeOffset: float
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -1748,7 +1724,7 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -1880,7 +1856,7 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End time offset of recognition segment in seconds.
         :type EndTimeOffset: float
-        :param Confidence: Confidence of recognized segment. Value range: 0–100.
+        :param Confidence: Confidence of recognized segment. Value range: 0-100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -1987,7 +1963,7 @@ class AiRecognitionTaskSegmentSegmentItem(AbstractModel):
         :type FileId: str
         :param SegmentUrl: Split video segment URL.
         :type SegmentUrl: str
-        :param Confidence: Confidence of split segment. Value range: 0–100.
+        :param Confidence: Confidence of split segment. Value range: 0-100.
         :type Confidence: float
         :param StartTimeOffset: Start time offset of split segment in seconds.
         :type StartTimeOffset: float
@@ -2150,10 +2126,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>block.</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Suggestion: str
-        :param Label: Tag of detected politically sensitive information in video. Valid values:
-<li>politician: politically sensitive figure.</li>
+        :param Label: Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
+violation_photo:
 <li>violation_photo: violating photo.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
+<li>politician: political figure.</li>
         :type Label: str
         :param SegmentSet: List of video segments that contain the detected politically sensitive information.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2978,6 +2955,209 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.SegmentSet.append(obj)
 
 
+class AiSampleFaceInfo(AbstractModel):
+    """AI-based sample management - face information.
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceId: Face image ID.
+        :type FaceId: str
+        :param Url: Face image address.
+        :type Url: str
+        """
+        self.FaceId = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.FaceId = params.get("FaceId")
+        self.Url = params.get("Url")
+
+
+class AiSampleFaceOperation(AbstractModel):
+    """AI-based sample management - face data operation.
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Operation type. Valid values: add, delete, reset. The `reset` operation will clear the existing face data of a figure and add `FaceContents` as the specified face data.
+        :type Type: str
+        :param FaceIds: Face ID set, which is required if `Type` is `delete`.
+        :type FaceIds: list of str
+        :param FaceContents: String set generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) the face image.
+<li>This field is required if `Type` is `add` or `reset`;</li>
+<li>Array length limit: 5 images.</li>
+Note: the image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.
+        :type FaceContents: list of str
+        """
+        self.Type = None
+        self.FaceIds = None
+        self.FaceContents = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.FaceIds = params.get("FaceIds")
+        self.FaceContents = params.get("FaceContents")
+
+
+class AiSampleFailFaceInfo(AbstractModel):
+    """AI-based sample management - face information failed to be processed.
+
+    """
+
+    def __init__(self):
+        """
+        :param Index: It corresponds to incorrect image subscripts in the `FaceContents` input parameter, starting from 0.
+        :type Index: int
+        :param ErrCode: Error code. Valid values:
+<li>0: success;</li>
+<li>Other values: failure.</li>
+        :type ErrCode: int
+        :param Message: Error message.
+        :type Message: str
+        """
+        self.Index = None
+        self.ErrCode = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Index = params.get("Index")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+
+
+class AiSamplePerson(AbstractModel):
+    """AI-based sample management - figure information.
+
+    """
+
+    def __init__(self):
+        """
+        :param PersonId: Figure ID.
+        :type PersonId: str
+        :param Name: Figure name.
+        :type Name: str
+        :param Description: Figure description.
+        :type Description: str
+        :param FaceInfoSet: Face information.
+        :type FaceInfoSet: list of AiSampleFaceInfo
+        :param TagSet: Figure tag.
+        :type TagSet: list of str
+        :param UsageSet: Use case.
+        :type UsageSet: list of str
+        :param CreateTime: Creation time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :type UpdateTime: str
+        """
+        self.PersonId = None
+        self.Name = None
+        self.Description = None
+        self.FaceInfoSet = None
+        self.TagSet = None
+        self.UsageSet = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        if params.get("FaceInfoSet") is not None:
+            self.FaceInfoSet = []
+            for item in params.get("FaceInfoSet"):
+                obj = AiSampleFaceInfo()
+                obj._deserialize(item)
+                self.FaceInfoSet.append(obj)
+        self.TagSet = params.get("TagSet")
+        self.UsageSet = params.get("UsageSet")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class AiSampleTagOperation(AbstractModel):
+    """AI-based sample management - tag operation.
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Operation type. Valid values: add, delete, reset.
+        :type Type: str
+        :param Tags: Tag. Length limit: 128 characters.
+        :type Tags: list of str
+        """
+        self.Type = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Tags = params.get("Tags")
+
+
+class AiSampleWord(AbstractModel):
+    """AI-based sample management - keyword output information.
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: Keyword.
+        :type Keyword: str
+        :param TagSet: Keyword tag.
+        :type TagSet: list of str
+        :param UsageSet: Keyword use case.
+        :type UsageSet: list of str
+        :param CreateTime: Creation time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :type UpdateTime: str
+        """
+        self.Keyword = None
+        self.TagSet = None
+        self.UsageSet = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.TagSet = params.get("TagSet")
+        self.UsageSet = params.get("UsageSet")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class AiSampleWordInfo(AbstractModel):
+    """AI-based sample management - keyword input information.
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: Keyword. Length limit: 20 characters.
+        :type Keyword: str
+        :param Tags: Keyword tag
+<li>Array length limit: 20 tags;</li>
+<li>Tag length limit: 128 characters.</li>
+        :type Tags: list of str
+        """
+        self.Keyword = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.Tags = params.get("Tags")
+
+
 class AnimatedGraphicTaskInput(AbstractModel):
     """Animated image generating task type
 
@@ -3105,6 +3285,8 @@ class ApplyUploadRequest(AbstractModel):
         :type SourceContext: str
         :param SessionContext: Session context, which is used to pass through the user request information. If the `Procedure` parameter is specified, the [task flow status change callback](/document/product/266/9636) API will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
+        :param ExtInfo: 
+        :type ExtInfo: str
         :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
@@ -3117,6 +3299,7 @@ class ApplyUploadRequest(AbstractModel):
         self.ClassId = None
         self.SourceContext = None
         self.SessionContext = None
+        self.ExtInfo = None
         self.SubAppId = None
 
 
@@ -3130,6 +3313,7 @@ class ApplyUploadRequest(AbstractModel):
         self.ClassId = params.get("ClassId")
         self.SourceContext = params.get("SourceContext")
         self.SessionContext = params.get("SessionContext")
+        self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -3202,6 +3386,30 @@ class AsrFullTextConfigureInfo(AbstractModel):
         self.SubtitleFormat = params.get("SubtitleFormat")
 
 
+class AsrFullTextConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of full speech recognition task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of full speech recognition task. Valid values:
+<li>ON: enables intelligent full speech recognition task;</li>
+<li>OFF: disables intelligent full speech recognition task.</li>
+        :type Switch: str
+        :param SubtitleFormat: Format of generated subtitles file. If an empty string is entered, no subtitles files will be generated. Valid values:
+<li>vtt: generates a WebVTT subtitles file.</li>
+        :type SubtitleFormat: str
+        """
+        self.Switch = None
+        self.SubtitleFormat = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.SubtitleFormat = params.get("SubtitleFormat")
+
+
 class AsrWordsConfigureInfo(AbstractModel):
     """Speech keyword recognition control parameter.
 
@@ -3214,6 +3422,30 @@ class AsrWordsConfigureInfo(AbstractModel):
 <li>OFF: disables speech keyword recognition task.</li>
         :type Switch: str
         :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        """
+        self.Switch = None
+        self.LabelSet = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+
+
+class AsrWordsConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of speech keyword recognition.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of speech keyword recognition task. Valid values:
+<li>ON: enables speech keyword recognition task;</li>
+<li>OFF: disables speech keyword recognition task.</li>
+        :type Switch: str
+        :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results will be returned.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: list of str
         """
@@ -3365,85 +3597,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.AudioOperations.append(obj)
 
 
-class AudioTrackTemplateInfo(AbstractModel):
-    """Information of a transcoding to adaptive bitrate streaming audio track template.
-
-    """
-
-    def __init__(self):
-        """
-        :param Definition: Unique ID of a template.
-        :type Definition: int
-        :param Codec: Audio track encoder.
-When `Container` is `mp3`, the valid value is:
-<li>libmp3lame.</li>
-When `Container` is `ogg` or `flac`, the valid value is:
-<li>flac.</li>
-When `Container` is `m4a`, the valid values include:
-<li>libfdk_aac;</li>
-<li>libmp3lame;</li>
-<li>ac3.</li>
-When the video track's `Container` is `mp4` or `flv`, the valid values include:
-<li>libfdk_aac: more suitable for mp4;</li>
-<li>libmp3lame: more suitable for flv;</li>
-<li>mp2.</li>
-When the video track's `Container` is `hls`, the valid values include:
-<li>libfdk_aac;</li>
-<li>libmp3lame.</li>
-        :type Codec: str
-        :param Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256].
-If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
-        :type Bitrate: int
-        :param SampleRate: Audio stream sample rate. Valid values:
-<li>32,000</li>
-<li>44,100</li>
-<li>48,000</li>
-In Hz.
-        :type SampleRate: int
-        :param Type: Template type. Valid values:
-<li>Preset: preset template;</li>
-<li>Custom: custom template.</li>
-        :type Type: str
-        :param Name: Template name. Length limit: 64 characters.
-        :type Name: str
-        :param Comment: Template description. Length limit: 256 characters.
-        :type Comment: str
-        :param AudioChannel: Audio channel system. Valid values:
-<li>1: Mono</li>
-<li>2: Dual</li>
-<li>6: Stereo</li>
-Default value: 2.
-        :type AudioChannel: int
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
-        :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
-        :type UpdateTime: str
-        """
-        self.Definition = None
-        self.Codec = None
-        self.Bitrate = None
-        self.SampleRate = None
-        self.Type = None
-        self.Name = None
-        self.Comment = None
-        self.AudioChannel = None
-        self.CreateTime = None
-        self.UpdateTime = None
-
-
-    def _deserialize(self, params):
-        self.Definition = params.get("Definition")
-        self.Codec = params.get("Codec")
-        self.Bitrate = params.get("Bitrate")
-        self.SampleRate = params.get("SampleRate")
-        self.Type = params.get("Type")
-        self.Name = params.get("Name")
-        self.Comment = params.get("Comment")
-        self.AudioChannel = params.get("AudioChannel")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-
-
 class AudioTransform(AbstractModel):
     """Audio operation
 
@@ -3481,7 +3634,7 @@ class AudioVolumeParam(AbstractModel):
 <li>1: muted.</li>
 Default value: 0.
         :type Mute: int
-        :param Gain: Audio gain. Value range: 0–10.
+        :param Gain: Audio gain. Value range: 0-10.
 <li>If the value is greater than 1, the volume will be increased.</li>
 <li>If the value is smaller than 1, the volume will be decreased.</li>
 <li>0 and 1: no change.</li>
@@ -3509,10 +3662,10 @@ class Canvas(AbstractModel):
 <li>White: white background</li>
 Default value: Black.
         :type Color: str
-        :param Width: Canvas width, which is the width of the output video. Value range: 0–4096 px.
+        :param Width: Canvas width, which is the width of the output video. Value range: 0-4096 px.
 Default value: 0, which means that the value is the same as the video width of the first video segment in the first video track.
         :type Width: int
-        :param Height: Canvas height, which is the height (or long side) of the output video. Value range: 0–4096 px.
+        :param Height: Canvas height, which is the height (or long side) of the output video. Value range: 0-4096 px.
 Default value: 0, which means that the value is the same as the video height of the first video segment in the first video track.
         :type Height: int
         """
@@ -3759,12 +3912,18 @@ class ComposeMediaRequest(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
         :param Canvas: Canvas used for composing video file.
         :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
+        :param SessionContext: 
+        :type SessionContext: str
+        :param SessionId: 
+        :type SessionId: str
         :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Tracks = None
         self.Output = None
         self.Canvas = None
+        self.SessionContext = None
+        self.SessionId = None
         self.SubAppId = None
 
 
@@ -3781,6 +3940,8 @@ class ComposeMediaRequest(AbstractModel):
         if params.get("Canvas") is not None:
             self.Canvas = Canvas()
             self.Canvas._deserialize(params.get("Canvas"))
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -4062,7 +4223,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
-Note: this parameter is not supported yet.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
         :param UserDefineConfigure: Custom content audit control parameter.
@@ -4288,6 +4448,185 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAIRecognitionTemplateRequest(AbstractModel):
+    """CreateAIRecognitionTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Video content recognition template name. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Description of video content recognition template. Length limit: 256 characters.
+        :type Comment: str
+        :param HeadTailConfigure: Control parameter of video opening and ending credits recognition.
+        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
+        :param SegmentConfigure: Control parameter of video splitting recognition.
+        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfo`
+        :param FaceConfigure: Control parameter of face recognition.
+        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`
+        :param OcrFullTextConfigure: Control parameter of full text recognition.
+        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfo`
+        :param OcrWordsConfigure: Control parameter of text keyword recognition.
+        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`
+        :param AsrFullTextConfigure: Control parameter of full speech recognition.
+        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
+        :param AsrWordsConfigure: Control parameter of speech keyword recognition.
+        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
+        :param ObjectConfigure: Control parameter of object recognition.
+        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
+        :param ScreenshotInterval: Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.
+        :type ScreenshotInterval: float
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.Comment = None
+        self.HeadTailConfigure = None
+        self.SegmentConfigure = None
+        self.FaceConfigure = None
+        self.OcrFullTextConfigure = None
+        self.OcrWordsConfigure = None
+        self.AsrFullTextConfigure = None
+        self.AsrWordsConfigure = None
+        self.ObjectConfigure = None
+        self.ScreenshotInterval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("HeadTailConfigure") is not None:
+            self.HeadTailConfigure = HeadTailConfigureInfo()
+            self.HeadTailConfigure._deserialize(params.get("HeadTailConfigure"))
+        if params.get("SegmentConfigure") is not None:
+            self.SegmentConfigure = SegmentConfigureInfo()
+            self.SegmentConfigure._deserialize(params.get("SegmentConfigure"))
+        if params.get("FaceConfigure") is not None:
+            self.FaceConfigure = FaceConfigureInfo()
+            self.FaceConfigure._deserialize(params.get("FaceConfigure"))
+        if params.get("OcrFullTextConfigure") is not None:
+            self.OcrFullTextConfigure = OcrFullTextConfigureInfo()
+            self.OcrFullTextConfigure._deserialize(params.get("OcrFullTextConfigure"))
+        if params.get("OcrWordsConfigure") is not None:
+            self.OcrWordsConfigure = OcrWordsConfigureInfo()
+            self.OcrWordsConfigure._deserialize(params.get("OcrWordsConfigure"))
+        if params.get("AsrFullTextConfigure") is not None:
+            self.AsrFullTextConfigure = AsrFullTextConfigureInfo()
+            self.AsrFullTextConfigure._deserialize(params.get("AsrFullTextConfigure"))
+        if params.get("AsrWordsConfigure") is not None:
+            self.AsrWordsConfigure = AsrWordsConfigureInfo()
+            self.AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("ObjectConfigure") is not None:
+            self.ObjectConfigure = ObjectConfigureInfo()
+            self.ObjectConfigure._deserialize(params.get("ObjectConfigure"))
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateAIRecognitionTemplateResponse(AbstractModel):
+    """CreateAIRecognitionTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of video content recognition template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """CreateAdaptiveDynamicStreamingTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Format: Adaptive bitstream format. Valid values:
+<li>HLS.</li>
+        :type Format: str
+        :param StreamInfos: Parameter information of output substream for adaptive bitrate streaming. Up to 10 substreams can be output.
+Note: the frame rate of all substreams must be the same; otherwise, the frame rate of the first substream will be used as the output frame rate.
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param Name: Template name. Length limit: 64 characters.
+        :type Name: str
+        :param DrmType: DRM scheme type. Valid values:
+<li>SimpleAES.</li>
+If this field is an empty string, DRM will not be performed on the video.
+        :type DrmType: str
+        :param DisableHigherVideoBitrate: Whether to prohibit transcoding video from low bitrate to high bitrate. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+Default value: no.
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+Default value: no.
+        :type DisableHigherVideoResolution: int
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Format = None
+        self.StreamInfos = None
+        self.Name = None
+        self.DrmType = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.Name = params.get("Name")
+        self.DrmType = params.get("DrmType")
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """CreateAdaptiveDynamicStreamingTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of adaptive bitrate streaming template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
     """CreateAnimatedGraphicsTemplate request structure.
 
@@ -4380,7 +4719,7 @@ class CreateClassRequest(AbstractModel):
         """
         :param ParentId: Parent category ID. For a first-level category, enter `-1`.
         :type ParentId: int
-        :param ClassName: Category name. Length limit: 1–64 characters.
+        :param ClassName: Category name. Length limit: 1-64 characters.
         :type ClassName: str
         :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -4414,6 +4753,94 @@ class CreateClassResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.ClassId = params.get("ClassId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateContentReviewTemplateRequest(AbstractModel):
+    """CreateContentReviewTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReviewWallSwitch: Switch controlling whether to add audit result to review list (for human review).
+<li>ON: yes;</li>
+<li>OFF: no.</li>
+        :type ReviewWallSwitch: str
+        :param Name: Content audit template name. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Description of content audit template. Length limit: 256 characters.
+        :type Comment: str
+        :param PornConfigure: Control parameter of porn detection.
+        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
+        :param TerrorismConfigure: Control parameter of terrorism information detection.
+        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
+        :param PoliticalConfigure: Control parameter of politically sensitive information detection.
+        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
+        :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
+<li>Abusive;</li>
+<li>Drug-related.</li>
+        :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
+        :param UserDefineConfigure: Control parameter of custom content audit.
+        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
+        :param ScreenshotInterval: Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.
+        :type ScreenshotInterval: float
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.ReviewWallSwitch = None
+        self.Name = None
+        self.Comment = None
+        self.PornConfigure = None
+        self.TerrorismConfigure = None
+        self.PoliticalConfigure = None
+        self.ProhibitedConfigure = None
+        self.UserDefineConfigure = None
+        self.ScreenshotInterval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.ReviewWallSwitch = params.get("ReviewWallSwitch")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("PornConfigure") is not None:
+            self.PornConfigure = PornConfigureInfo()
+            self.PornConfigure._deserialize(params.get("PornConfigure"))
+        if params.get("TerrorismConfigure") is not None:
+            self.TerrorismConfigure = TerrorismConfigureInfo()
+            self.TerrorismConfigure._deserialize(params.get("TerrorismConfigure"))
+        if params.get("PoliticalConfigure") is not None:
+            self.PoliticalConfigure = PoliticalConfigureInfo()
+            self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("ProhibitedConfigure") is not None:
+            self.ProhibitedConfigure = ProhibitedConfigureInfo()
+            self.ProhibitedConfigure._deserialize(params.get("ProhibitedConfigure"))
+        if params.get("UserDefineConfigure") is not None:
+            self.UserDefineConfigure = UserDefineConfigureInfo()
+            self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateContentReviewTemplateResponse(AbstractModel):
+    """CreateContentReviewTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of content audit template.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
         self.RequestId = params.get("RequestId")
 
 
@@ -4492,6 +4919,13 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         :type ColumnCount: int
         :param Name: Name of an image sprite generating template. Length limit: 64 characters.
         :type Name: str
+        :param Comment: 
+        :type Comment: str
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+Default value: black.
+        :type FillType: str
         :param Width: Maximum value of the width (or long side) of a subimage in an image sprite in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
 <li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
@@ -4513,22 +4947,18 @@ Default value: open.
         :type ResolutionAdaptive: str
         :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
-        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
-<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-Default value: black.
-        :type FillType: str
         """
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
         self.ColumnCount = None
         self.Name = None
+        self.Comment = None
+        self.FillType = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
         self.SubAppId = None
-        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -4537,11 +4967,12 @@ Default value: black.
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
         self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.FillType = params.get("FillType")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.SubAppId = params.get("SubAppId")
-        self.FillType = params.get("FillType")
 
 
 class CreateImageSpriteTemplateResponse(AbstractModel):
@@ -4565,6 +4996,81 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePersonSampleRequest(AbstractModel):
+    """CreatePersonSample request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Figure name. Length limit: 20 characters.
+        :type Name: str
+        :param Usages: Figure use case. Valid values:
+1. Recognition: it is used for content recognition and equivalent to `Recognition.Face`.
+2. Review: it is used for content audit and equivalent to `Review.Face`.
+3. All: it is used for content recognition and content audit and equivalent to 1+2 above.
+        :type Usages: list of str
+        :param Description: Figure description. Length limit: 1,024 characters.
+        :type Description: str
+        :param FaceContents: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) face image. Only JPEG and PNG images are supported. Array length limit: 5 images.
+Note: the image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.
+        :type FaceContents: list of str
+        :param Tags: Figure tag
+<li>Array length limit: 20 tags;</li>
+<li>Tag length limit: 128 characters.</li>
+        :type Tags: list of str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.Usages = None
+        self.Description = None
+        self.FaceContents = None
+        self.Tags = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Usages = params.get("Usages")
+        self.Description = params.get("Description")
+        self.FaceContents = params.get("FaceContents")
+        self.Tags = params.get("Tags")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreatePersonSampleResponse(AbstractModel):
+    """CreatePersonSample response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Person: Figure information.
+        :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
+        :param FailFaceInfoSet: Face information failed to be processed.
+        :type FailFaceInfoSet: list of AiSampleFailFaceInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Person = None
+        self.FailFaceInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Person") is not None:
+            self.Person = AiSamplePerson()
+            self.Person._deserialize(params.get("Person"))
+        if params.get("FailFaceInfoSet") is not None:
+            self.FailFaceInfoSet = []
+            for item in params.get("FailFaceInfoSet"):
+                obj = AiSampleFailFaceInfo()
+                obj._deserialize(item)
+                self.FailFaceInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateProcedureTemplateRequest(AbstractModel):
     """CreateProcedureTemplate request structure.
 
@@ -4574,6 +5080,8 @@ class CreateProcedureTemplateRequest(AbstractModel):
         """
         :param Name: Task flow name (up to 20 characters).
         :type Name: str
+        :param Comment: 
+        :type Comment: str
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
         :param AiContentReviewTask: Parameter of AI-based content audit task.
@@ -4586,6 +5094,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         :type SubAppId: int
         """
         self.Name = None
+        self.Comment = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
@@ -4595,6 +5104,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
@@ -4807,6 +5317,135 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSubAppIdRequest(AbstractModel):
+    """CreateSubAppId request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Subapplication name. Length limit: 40 characters.
+        :type Name: str
+        :param Description: Subapplication overview. Length limit: 300 characters.
+        :type Description: str
+        """
+        self.Name = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+
+
+class CreateSubAppIdResponse(AbstractModel):
+    """CreateSubAppId response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: ID of created subapplication.
+        :type SubAppId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SubAppId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSuperPlayerConfigRequest(AbstractModel):
+    """CreateSuperPlayerConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Player configuration name, which can contain up to 64 letters, digits, underscores, and hyphens (such as test_ABC-123) and must be unique under a user.
+        :type Name: str
+        :param DrmSwitch: Switch of DRM-protected adaptive bitstream playback:
+<li>ON: enabled, indicating to play back only output adaptive bitstreams protected by DRM;</li>
+<li>OFF: disabled, indicating to play back unencrypted output adaptive bitstreams.</li>
+Default value: OFF.
+        :type DrmSwitch: str
+        :param AdaptiveDynamicStreamingDefinition: ID of the unencrypted adaptive bitrate streaming template that allows output, which is required if `DrmSwitch` is `OFF`.
+        :type AdaptiveDynamicStreamingDefinition: int
+        :param DrmStreamingsInfo: Content of the DRM-protected adaptive bitrate streaming template that allows output, which is required if `DrmSwitch` is `ON`.
+        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`
+        :param ImageSpriteDefinition: ID of the image sprite generating template that allows output.
+        :type ImageSpriteDefinition: int
+        :param ResolutionNames: Display name of player for substreams with different resolutions. If this parameter is left empty or an empty array, the default configuration will be used:
+<li>MinEdgeLength: 240, Name: LD;</li>
+<li>MinEdgeLength: 480, Name: SD;</li>
+<li>MinEdgeLength: 720, Name: HD;</li>
+<li>MinEdgeLength: 1080, Name: FHD;</li>
+<li>MinEdgeLength: 1440, Name: 2K;</li>
+<li>MinEdgeLength: 2160, Name: 4K;</li>
+<li>MinEdgeLength: 4320, Name: 8K.</li>
+        :type ResolutionNames: list of ResolutionNameInfo
+        :param Domain: 
+        :type Domain: str
+        :param Scheme: 
+        :type Scheme: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.DrmSwitch = None
+        self.AdaptiveDynamicStreamingDefinition = None
+        self.DrmStreamingsInfo = None
+        self.ImageSpriteDefinition = None
+        self.ResolutionNames = None
+        self.Domain = None
+        self.Scheme = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.DrmSwitch = params.get("DrmSwitch")
+        self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
+        if params.get("DrmStreamingsInfo") is not None:
+            self.DrmStreamingsInfo = DrmStreamingsInfo()
+            self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
+        if params.get("ResolutionNames") is not None:
+            self.ResolutionNames = []
+            for item in params.get("ResolutionNames"):
+                obj = ResolutionNameInfo()
+                obj._deserialize(item)
+                self.ResolutionNames.append(obj)
+        self.Domain = params.get("Domain")
+        self.Scheme = params.get("Scheme")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateSuperPlayerConfigResponse(AbstractModel):
+    """CreateSuperPlayerConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTranscodeTemplateRequest(AbstractModel):
     """CreateTranscodeTemplate request structure.
 
@@ -4987,6 +5626,61 @@ class CreateWatermarkTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateWordSamplesRequest(AbstractModel):
+    """CreateWordSamples request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Usages: <b>Keyword use case. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition;
+2. Recognition.Asr: ASR-based content recognition;
+3. Review.Ocr: OCR-based content audit;
+4. Review.Asr: ASR-based content audit;
+<b>These values can be merged as follows:</b>
+5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;
+6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;
+7. All: ASR-based and OCR-based content recognition and audit, which is equivalent to 1+2+3+4 above;
+        :type Usages: list of str
+        :param Words: Keyword. Array length limit: 100.
+        :type Words: list of AiSampleWordInfo
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Usages = None
+        self.Words = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Usages = params.get("Usages")
+        if params.get("Words") is not None:
+            self.Words = []
+            for item in params.get("Words"):
+                obj = AiSampleWordInfo()
+                obj._deserialize(item)
+                self.Words.append(obj)
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateWordSamplesResponse(AbstractModel):
+    """CreateWordSamples response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteAIAnalysisTemplateRequest(AbstractModel):
     """DeleteAIAnalysisTemplate request structure.
 
@@ -5063,6 +5757,44 @@ class DeleteAIRecognitionTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """DeleteAdaptiveDynamicStreamingTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of adaptive bitrate streaming template.
+        :type Definition: int
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """DeleteAdaptiveDynamicStreamingTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
     """DeleteAnimatedGraphicsTemplate request structure.
 
@@ -5101,6 +5833,82 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteClassRequest(AbstractModel):
+    """DeleteClass request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClassId: Category ID
+        :type ClassId: int
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.ClassId = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.ClassId = params.get("ClassId")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteClassResponse(AbstractModel):
+    """DeleteClass response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteContentReviewTemplateRequest(AbstractModel):
+    """DeleteContentReviewTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of content audit template.
+        :type Definition: int
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteContentReviewTemplateResponse(AbstractModel):
+    """DeleteContentReviewTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteImageSpriteTemplateRequest(AbstractModel):
     """DeleteImageSpriteTemplate request structure.
 
@@ -5124,6 +5932,91 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
 
 class DeleteImageSpriteTemplateResponse(AbstractModel):
     """DeleteImageSpriteTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteMediaRequest(AbstractModel):
+    """DeleteMedia request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: Unique media file ID.
+        :type FileId: str
+        :param DeleteParts: Content to be deleted. The default value is "[]", which indicates to delete the media file and all its corresponding files generated by video processing.
+        :type DeleteParts: list of MediaDeleteItem
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.DeleteParts = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        if params.get("DeleteParts") is not None:
+            self.DeleteParts = []
+            for item in params.get("DeleteParts"):
+                obj = MediaDeleteItem()
+                obj._deserialize(item)
+                self.DeleteParts.append(obj)
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteMediaResponse(AbstractModel):
+    """DeleteMedia response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePersonSampleRequest(AbstractModel):
+    """DeletePersonSample request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PersonId: Figure ID.
+        :type PersonId: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.PersonId = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeletePersonSampleResponse(AbstractModel):
+    """DeletePersonSample response structure.
 
     """
 
@@ -5253,6 +6146,82 @@ class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteSuperPlayerConfigRequest(AbstractModel):
+    """DeleteSuperPlayerConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Player configuration name.
+        :type Name: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteSuperPlayerConfigResponse(AbstractModel):
+    """DeleteSuperPlayerConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTranscodeTemplateRequest(AbstractModel):
+    """DeleteTranscodeTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of transcoding template.
+        :type Definition: int
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteTranscodeTemplateResponse(AbstractModel):
+    """DeleteTranscodeTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteWatermarkTemplateRequest(AbstractModel):
     """DeleteWatermarkTemplate request structure.
 
@@ -5276,6 +6245,44 @@ class DeleteWatermarkTemplateRequest(AbstractModel):
 
 class DeleteWatermarkTemplateResponse(AbstractModel):
     """DeleteWatermarkTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteWordSamplesRequest(AbstractModel):
+    """DeleteWordSamples request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Keywords: Keyword. Array length limit: 100 words.
+        :type Keywords: list of str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Keywords = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Keywords = params.get("Keywords")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteWordSamplesResponse(AbstractModel):
+    """DeleteWordSamples response structure.
 
     """
 
@@ -5474,6 +6481,50 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAllClassRequest(AbstractModel):
+    """DescribeAllClass request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeAllClassResponse(AbstractModel):
+    """DescribeAllClass response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClassInfoSet: Category information set
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClassInfoSet: list of MediaClassInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClassInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClassInfoSet") is not None:
+            self.ClassInfoSet = []
+            for item in params.get("ClassInfoSet"):
+                obj = MediaClassInfo()
+                obj._deserialize(item)
+                self.ClassInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
     """DescribeAnimatedGraphicsTemplates request structure.
 
@@ -5536,71 +6587,6 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
                 obj = AnimatedGraphicsTemplate()
                 obj._deserialize(item)
                 self.AnimatedGraphicsTemplateSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeAudioTrackTemplatesRequest(AbstractModel):
-    """DescribeAudioTrackTemplates request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param Definitions: Unique ID filter of templates. Array length limit: 100.
-        :type Definitions: list of int non-negative
-        :param Offset: Paged offset. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
-        :type Limit: int
-        :param Type: Template type filter. Valid values:
-<li>Preset: preset template;</li>
-<li>Custom: custom template.</li>
-        :type Type: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
-        """
-        self.Definitions = None
-        self.Offset = None
-        self.Limit = None
-        self.Type = None
-        self.SubAppId = None
-
-
-    def _deserialize(self, params):
-        self.Definitions = params.get("Definitions")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
-
-
-class DescribeAudioTrackTemplatesResponse(AbstractModel):
-    """DescribeAudioTrackTemplates response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: Number of eligible entries.
-        :type TotalCount: int
-        :param AudioTrackTemplateSet: List of audio track template details.
-        :type AudioTrackTemplateSet: list of AudioTrackTemplateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.AudioTrackTemplateSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("AudioTrackTemplateSet") is not None:
-            self.AudioTrackTemplateSet = []
-            for item in params.get("AudioTrackTemplateSet"):
-                obj = AudioTrackTemplateInfo()
-                obj._deserialize(item)
-                self.AudioTrackTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5846,10 +6832,8 @@ class DescribeMediaInfosResponse(AbstractModel):
     def __init__(self):
         """
         :param MediaInfoSet: Media file information list.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type MediaInfoSet: list of MediaInfo
         :param NotExistFileIdSet: List of IDs of files that do not exist.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type NotExistFileIdSet: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5923,6 +6907,82 @@ class DescribeMediaProcessUsageDataResponse(AbstractModel):
                 obj = TaskStatData()
                 obj._deserialize(item)
                 self.MediaProcessDataSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePersonSamplesRequest(AbstractModel):
+    """DescribePersonSamples request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Pulled figure type. Valid values:
+<li>UserDefine: custom figure library;</li>
+<li>Default: default figure library.</li>
+
+Default value: UserDefine (the custom figure library will be pulled.)
+Note: the default figure library can be pulled only through "figure name" or "figure ID + figure name", and only one face image will be returned.
+        :type Type: str
+        :param PersonIds: Figure ID. Array length limit: 100.
+        :type PersonIds: list of str
+        :param Names: Figure name. Array length limit: 20.
+        :type Names: list of str
+        :param Tags: Figure tag. Array length limit: 20.
+        :type Tags: list of str
+        :param Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of entries to be returned. Default value: 100. Maximum value: 100.
+        :type Limit: int
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Type = None
+        self.PersonIds = None
+        self.Names = None
+        self.Tags = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.PersonIds = params.get("PersonIds")
+        self.Names = params.get("Names")
+        self.Tags = params.get("Tags")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribePersonSamplesResponse(AbstractModel):
+    """DescribePersonSamples response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param PersonSet: Figure information.
+        :type PersonSet: list of AiSamplePerson
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PersonSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PersonSet") is not None:
+            self.PersonSet = []
+            for item in params.get("PersonSet"):
+                obj = AiSamplePerson()
+                obj._deserialize(item)
+                self.PersonSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6330,6 +7390,71 @@ class DescribeSubAppIdsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSuperPlayerConfigsRequest(AbstractModel):
+    """DescribeSuperPlayerConfigs request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Names: Player configuration name filter. Array length limit: 100.
+        :type Names: list of str
+        :param Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of entries to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param Type: Player configuration type filter. Valid values:
+<li>Preset: preset configuration;</li>
+<li>Custom: custom configuration.</li>
+        :type Type: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Names = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Names = params.get("Names")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeSuperPlayerConfigsResponse(AbstractModel):
+    """DescribeSuperPlayerConfigs response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param PlayerConfigSet: Player configuration array.
+        :type PlayerConfigSet: list of PlayerConfig
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PlayerConfigSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PlayerConfigSet") is not None:
+            self.PlayerConfigSet = []
+            for item in params.get("PlayerConfigSet"):
+                obj = PlayerConfig()
+                obj._deserialize(item)
+                self.PlayerConfigSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskDetailRequest(AbstractModel):
     """DescribeTaskDetail request structure.
 
@@ -6481,6 +7606,69 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTasksRequest(AbstractModel):
+    """DescribeTasks request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).
+        :type Status: str
+        :param FileId: Filter: file ID.
+        :type FileId: str
+        :param Limit: Number of entries to be returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param ScrollToken: Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.
+        :type ScrollToken: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Status = None
+        self.FileId = None
+        self.Limit = None
+        self.ScrollToken = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.FileId = params.get("FileId")
+        self.Limit = params.get("Limit")
+        self.ScrollToken = params.get("ScrollToken")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeTasksResponse(AbstractModel):
+    """DescribeTasks response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskSet: Task overview list.
+        :type TaskSet: list of TaskSimpleInfo
+        :param ScrollToken: Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is empty, there is no more data.
+        :type ScrollToken: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskSet = None
+        self.ScrollToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskSet") is not None:
+            self.TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = TaskSimpleInfo()
+                obj._deserialize(item)
+                self.TaskSet.append(obj)
+        self.ScrollToken = params.get("ScrollToken")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTranscodeTemplatesRequest(AbstractModel):
     """DescribeTranscodeTemplates request structure.
 
@@ -6559,71 +7747,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
-class DescribeVideoTrackTemplatesRequest(AbstractModel):
-    """DescribeVideoTrackTemplates request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param Definitions: Unique ID filter of templates. Array length limit: 100.
-        :type Definitions: list of int non-negative
-        :param Offset: Paged offset. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
-        :type Limit: int
-        :param Type: Template type filter. Valid values:
-<li>Preset: preset template;</li>
-<li>Custom: custom template.</li>
-        :type Type: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
-        """
-        self.Definitions = None
-        self.Offset = None
-        self.Limit = None
-        self.Type = None
-        self.SubAppId = None
-
-
-    def _deserialize(self, params):
-        self.Definitions = params.get("Definitions")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
-
-
-class DescribeVideoTrackTemplatesResponse(AbstractModel):
-    """DescribeVideoTrackTemplates response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: Number of eligible entries.
-        :type TotalCount: int
-        :param VideoTrackTemplateSet: List of video track template details.
-        :type VideoTrackTemplateSet: list of VideoTrackTemplateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.VideoTrackTemplateSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("VideoTrackTemplateSet") is not None:
-            self.VideoTrackTemplateSet = []
-            for item in params.get("VideoTrackTemplateSet"):
-                obj = VideoTrackTemplateInfo()
-                obj._deserialize(item)
-                self.VideoTrackTemplateSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeWatermarkTemplatesRequest(AbstractModel):
     """DescribeWatermarkTemplates request structure.
 
@@ -6690,6 +7813,115 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.WatermarkTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DescribeWordSamplesRequest(AbstractModel):
+    """DescribeWordSamples request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Usages: <b>Keyword use case filter. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition;
+2. Recognition.Asr: ASR-based content recognition;
+3. Review.Ocr: OCR-based content audit;
+4. Review.Asr: ASR-based content audit;
+<b>These values can be merged as follows:</b>
+5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;
+6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;
+Multiple elements can be selected, and the relationship between them is "OR", i.e., any keyword use case that contains any element in this field set will be deemed eligible.
+        :type Usages: list of str
+        :param Keywords: Keyword filter. Array length limit: 100 words.
+        :type Keywords: list of str
+        :param Tags: Tag filter. Array length limit: 20 words.
+        :type Tags: list of str
+        :param Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of entries to be returned. Default value: 100. Maximum value: 100.
+        :type Limit: int
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Usages = None
+        self.Keywords = None
+        self.Tags = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Usages = params.get("Usages")
+        self.Keywords = params.get("Keywords")
+        self.Tags = params.get("Tags")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeWordSamplesResponse(AbstractModel):
+    """DescribeWordSamples response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param WordSet: Keyword information.
+        :type WordSet: list of AiSampleWord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.WordSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("WordSet") is not None:
+            self.WordSet = []
+            for item in params.get("WordSet"):
+                obj = AiSampleWord()
+                obj._deserialize(item)
+                self.WordSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DrmStreamingsInfo(AbstractModel):
+    """DRM-protected adaptive bitstream playback information
+
+    """
+
+    def __init__(self):
+        """
+        :param SimpleAesDefinition: ID of the adaptive bitrate streaming template whose protection type is SimpleAES.
+        :type SimpleAesDefinition: int
+        """
+        self.SimpleAesDefinition = None
+
+
+    def _deserialize(self, params):
+        self.SimpleAesDefinition = params.get("SimpleAesDefinition")
+
+
+class DrmStreamingsInfoForUpdate(AbstractModel):
+    """Modification object of DRM-protected adaptive bitstream playback information
+
+    """
+
+    def __init__(self):
+        """
+        :param SimpleAesDefinition: ID of the adaptive bitrate streaming template whose protection type is SimpleAES.
+        :type SimpleAesDefinition: int
+        """
+        self.SimpleAesDefinition = None
+
+
+    def _deserialize(self, params):
+        self.SimpleAesDefinition = params.get("SimpleAesDefinition")
 
 
 class EditMediaFileInfo(AbstractModel):
@@ -6772,7 +8004,7 @@ class EditMediaRequest(AbstractModel):
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`
         :param SessionContext: Identifies the source context which is used to pass through the user request information. The `EditMediaComplete` callback and task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
         :param SessionId: ID used for task deduplication. If there was a request with the same ID in the last day, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
@@ -7224,7 +8456,7 @@ class FaceConfigureInfo(AbstractModel):
 <li>ON: enables intelligent face recognition task;</li>
 <li>OFF: disables intelligent face recognition task.</li>
         :type Switch: str
-        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0–100. Default value: 95.
+        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100. Default value: 95.
         :type Score: float
         :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the default figures will be returned. Valid values:
 <li>entertainment: entertainment celebrity;</li>
@@ -7239,6 +8471,48 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 <li>UserDefine: custom figure library.</li>
 <li>All: both default and custom figure libraries will be used.</li>
 Default value: All (both default and custom figure libraries will be used.)
+        :type FaceLibrary: str
+        """
+        self.Switch = None
+        self.Score = None
+        self.DefaultLibraryLabelSet = None
+        self.UserDefineLibraryLabelSet = None
+        self.FaceLibrary = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Score = params.get("Score")
+        self.DefaultLibraryLabelSet = params.get("DefaultLibraryLabelSet")
+        self.UserDefineLibraryLabelSet = params.get("UserDefineLibraryLabelSet")
+        self.FaceLibrary = params.get("FaceLibrary")
+
+
+class FaceConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of face recognition task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of face recognition task. Valid values:
+<li>ON: enables intelligent face recognition task;</li>
+<li>OFF: disables intelligent face recognition task.</li>
+        :type Switch: str
+        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0–100.
+        :type Score: float
+        :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the default figures will be returned. Valid values:
+<li>entertainment: entertainment celebrity;</li>
+<li>sport: sports celebrity;</li>
+<li>politician: politically sensitive figure.</li>
+        :type DefaultLibraryLabelSet: list of str
+        :param UserDefineLibraryLabelSet: Custom figure filter tag, which specifies the custom figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the custom figures will be returned. Valid values:
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type UserDefineLibraryLabelSet: list of str
+        :param FaceLibrary: Figure library. Valid values:
+<li>Default: default figure library;</li>
+<li>UserDefine: custom figure library.</li>
+<li>All: both default and custom figure libraries will be used.</li>
         :type FaceLibrary: str
         """
         self.Switch = None
@@ -7419,6 +8693,25 @@ class HeadTailConfigureInfo(AbstractModel):
         self.Switch = params.get("Switch")
 
 
+class HeadTailConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of video opening and ending credits recognition task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of video opening and ending credits recognition task. Valid values:
+<li>ON: enables video opening and ending credits recognition task;</li>
+<li>OFF: disables video opening and ending credits recognition task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class HighlightSegmentItem(AbstractModel):
     """List of intelligently generated highlights.
 
@@ -7550,6 +8843,8 @@ Default value: open.
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 Default value: black.
         :type FillType: str
+        :param Comment: 
+        :type Comment: str
         """
         self.Definition = None
         self.Type = None
@@ -7564,6 +8859,7 @@ Default value: black.
         self.CreateTime = None
         self.UpdateTime = None
         self.FillType = None
+        self.Comment = None
 
 
     def _deserialize(self, params):
@@ -7580,6 +8876,7 @@ Default value: black.
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
+        self.Comment = params.get("Comment")
 
 
 class ImageTransform(AbstractModel):
@@ -7593,7 +8890,7 @@ class ImageTransform(AbstractModel):
 <li> Rotate: image rotation.</li>
 <li> Flip: image flipping.</li>
         :type Type: str
-        :param RotateAngle: Rotation angle of image with its center point as origin. Value range: 0–360. This parameter is valid if `Type` is `Rotate`.
+        :param RotateAngle: Rotation angle of image with its center point as origin. Value range: 0-360. This parameter is valid if `Type` is `Rotate`.
         :type RotateAngle: float
         :param Flip: Image flipping action. Valid values:
 <li>Horizental: horizontal flipping, i.e., horizontally mirrored.</li>
@@ -8132,9 +9429,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TagSet: Tag information of media file.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TagSet: list of str
-        :param Vid: Unique ID of LVB recording file
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Vid: Unique ID of an LVB recording file.
         :type Vid: str
+        :param Category: 
+        :type Category: str
+        :param Status: File status. Valid values: Normal, Forbidden.
+
+*Note: this field is not supported yet.
+        :type Status: str
         """
         self.Name = None
         self.Description = None
@@ -8151,6 +9453,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.StorageRegion = None
         self.TagSet = None
         self.Vid = None
+        self.Category = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -8171,6 +9475,41 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.StorageRegion = params.get("StorageRegion")
         self.TagSet = params.get("TagSet")
         self.Vid = params.get("Vid")
+        self.Category = params.get("Category")
+        self.Status = params.get("Status")
+
+
+class MediaClassInfo(AbstractModel):
+    """Category information description
+
+    """
+
+    def __init__(self):
+        """
+        :param ClassId: Category ID
+        :type ClassId: int
+        :param ParentId: Parent category ID, which is -1 for a first-level category.
+        :type ParentId: int
+        :param ClassName: Category name
+        :type ClassName: str
+        :param Level: Category level. 0 for first-level category, up to 3, i.e., up to 4 levels of categories are allowed.
+        :type Level: int
+        :param SubClassIdSet: Set of IDs of the immediate subcategories in current category
+        :type SubClassIdSet: list of int
+        """
+        self.ClassId = None
+        self.ParentId = None
+        self.ClassName = None
+        self.Level = None
+        self.SubClassIdSet = None
+
+
+    def _deserialize(self, params):
+        self.ClassId = params.get("ClassId")
+        self.ParentId = params.get("ParentId")
+        self.ClassName = params.get("ClassName")
+        self.Level = params.get("Level")
+        self.SubClassIdSet = params.get("SubClassIdSet")
 
 
 class MediaContentReviewAsrTextSegmentItem(AbstractModel):
@@ -8289,7 +9628,28 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type Suggestion: str
         :param Name: Name of a politically sensitive figure or violating photo.
         :type Name: str
-        :param Label: Tag of politically sensitive information detection result of a suspected segment.
+        :param Label: Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
+violation_photo:
+<li>violation_photo: violating photo.</li>
+politician:
+<li>nation_politician: head of state/government;</li>
+<li>province_politician: province/state leader;</li>
+<li>bureau_politician: ministry leader;</li>
+<li>county_politician: county/city leader;</li>
+<li>rural_politician: town leader;</li>
+<li>sensitive_politician: politically sensitive figure.</li>
+entertainment:
+<li>sensitive_entertainment: sensitive entertainment celebrity.</li>
+sport:
+<li>sensitive_sport: sensitive sports figure.</li>
+entrepreneur:
+<li>sensitive_entrepreneur: sensitive business figure.</li>
+scholar:
+<li>sensitive_scholar: sensitive educator.</li>
+celebrity:
+<li>sensitive_celebrity: sensitive well-known figure.</li>
+military:
+<li>sensitive_military: militarily sensitive figure.</li>
         :type Label: str
         :param Url: URL of a suspected image (which will not be permanently stored
  and will be deleted after `PicUrlExpireTime`).
@@ -8373,6 +9733,30 @@ class MediaContentReviewSegmentItem(AbstractModel):
         self.Url = params.get("Url")
         self.PicUrlExpireTimeStamp = params.get("PicUrlExpireTimeStamp")
         self.PicUrlExpireTime = params.get("PicUrlExpireTime")
+
+
+class MediaDeleteItem(AbstractModel):
+    """Content to be deleted when a VOD video is deleted
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Type of the content to be deleted. If this field is left empty, the parameter will be invalid. Valid values:
+<li>TranscodeFiles: deletes transcoded files.</li>
+<li>WechatPublishFiles: deletes files published on WeChat.</li>
+        :type Type: str
+        :param Definition: ID of the template for which to delete the videos of the type specified by the `Type` parameter. For the template definition, please see [Transcoding Template](https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
+Default value: 0, which indicates to delete all videos of the type specified by the `Type` parameter.
+        :type Definition: int
+        """
+        self.Type = None
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Definition = params.get("Definition")
 
 
 class MediaImageSpriteInfo(AbstractModel):
@@ -8585,7 +9969,7 @@ class MediaKeyFrameDescItem(AbstractModel):
         """
         :param TimeOffset: Offset time of video timestamp in seconds.
         :type TimeOffset: float
-        :param Content: Content string of timestamp containing 1–128 characters.
+        :param Content: Content string of timestamp containing 1-128 characters.
         :type Content: str
         """
         self.TimeOffset = None
@@ -9757,6 +11141,177 @@ class ModifyAIAnalysisTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAIRecognitionTemplateRequest(AbstractModel):
+    """ModifyAIRecognitionTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of video content recognition template.
+        :type Definition: int
+        :param Name: Video content recognition template name. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Description of video content recognition template. Length limit: 256 characters.
+        :type Comment: str
+        :param HeadTailConfigure: Control parameter of video opening and ending credits recognition.
+        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfoForUpdate`
+        :param SegmentConfigure: Control parameter of video splitting recognition.
+        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfoForUpdate`
+        :param FaceConfigure: Control parameter of face recognition.
+        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfoForUpdate`
+        :param OcrFullTextConfigure: Control parameter of full text recognition.
+        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfoForUpdate`
+        :param OcrWordsConfigure: Control parameter of text keyword recognition.
+        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfoForUpdate`
+        :param AsrFullTextConfigure: Control parameter of full speech recognition.
+        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfoForUpdate`
+        :param AsrWordsConfigure: Control parameter of speech keyword recognition.
+        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfoForUpdate`
+        :param ObjectConfigure: Control parameter of object recognition.
+        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfoForUpdate`
+        :param ScreenshotInterval: Frame capturing interval in seconds. Minimum value: 0.5 seconds.
+        :type ScreenshotInterval: float
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.HeadTailConfigure = None
+        self.SegmentConfigure = None
+        self.FaceConfigure = None
+        self.OcrFullTextConfigure = None
+        self.OcrWordsConfigure = None
+        self.AsrFullTextConfigure = None
+        self.AsrWordsConfigure = None
+        self.ObjectConfigure = None
+        self.ScreenshotInterval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("HeadTailConfigure") is not None:
+            self.HeadTailConfigure = HeadTailConfigureInfoForUpdate()
+            self.HeadTailConfigure._deserialize(params.get("HeadTailConfigure"))
+        if params.get("SegmentConfigure") is not None:
+            self.SegmentConfigure = SegmentConfigureInfoForUpdate()
+            self.SegmentConfigure._deserialize(params.get("SegmentConfigure"))
+        if params.get("FaceConfigure") is not None:
+            self.FaceConfigure = FaceConfigureInfoForUpdate()
+            self.FaceConfigure._deserialize(params.get("FaceConfigure"))
+        if params.get("OcrFullTextConfigure") is not None:
+            self.OcrFullTextConfigure = OcrFullTextConfigureInfoForUpdate()
+            self.OcrFullTextConfigure._deserialize(params.get("OcrFullTextConfigure"))
+        if params.get("OcrWordsConfigure") is not None:
+            self.OcrWordsConfigure = OcrWordsConfigureInfoForUpdate()
+            self.OcrWordsConfigure._deserialize(params.get("OcrWordsConfigure"))
+        if params.get("AsrFullTextConfigure") is not None:
+            self.AsrFullTextConfigure = AsrFullTextConfigureInfoForUpdate()
+            self.AsrFullTextConfigure._deserialize(params.get("AsrFullTextConfigure"))
+        if params.get("AsrWordsConfigure") is not None:
+            self.AsrWordsConfigure = AsrWordsConfigureInfoForUpdate()
+            self.AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("ObjectConfigure") is not None:
+            self.ObjectConfigure = ObjectConfigureInfoForUpdate()
+            self.ObjectConfigure._deserialize(params.get("ObjectConfigure"))
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyAIRecognitionTemplateResponse(AbstractModel):
+    """ModifyAIRecognitionTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """ModifyAdaptiveDynamicStreamingTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of adaptive bitrate streaming template.
+        :type Definition: int
+        :param Name: Template name. Length limit: 64 characters.
+        :type Name: str
+        :param Format: Adaptive bitstream format. Valid values:
+<li>HLS.</li>
+        :type Format: str
+        :param DisableHigherVideoBitrate: Whether to prohibit transcoding video from low bitrate to high bitrate. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type DisableHigherVideoResolution: int
+        :param StreamInfos: Parameter information of input stream for adaptive bitrate streaming. Up to 10 streams can be input.
+Note: the frame rate of all streams must be the same; otherwise, the frame rate of the first stream will be used as the output frame rate.
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Format = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.StreamInfos = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Format = params.get("Format")
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """ModifyAdaptiveDynamicStreamingTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
     """ModifyAnimatedGraphicsTemplate request structure.
 
@@ -9840,6 +11395,136 @@ class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClassRequest(AbstractModel):
+    """ModifyClass request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClassId: Category ID
+        :type ClassId: int
+        :param ClassName: Category name, which can contain 1–64 characters.
+        :type ClassName: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.ClassId = None
+        self.ClassName = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.ClassId = params.get("ClassId")
+        self.ClassName = params.get("ClassName")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyClassResponse(AbstractModel):
+    """ModifyClass response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyContentReviewTemplateRequest(AbstractModel):
+    """ModifyContentReviewTemplate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Unique ID of content audit template.
+        :type Definition: int
+        :param Name: Content audit template name. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: Description of content audit template. Length limit: 256 characters.
+        :type Comment: str
+        :param PornConfigure: Control parameter of porn detection.
+        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfoForUpdate`
+        :param TerrorismConfigure: Control parameter of terrorism information detection.
+        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfoForUpdate`
+        :param PoliticalConfigure: Control parameter of politically sensitive information detection.
+        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfoForUpdate`
+        :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
+<li>Abusive;</li>
+<li>Drug-related.</li>
+        :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfoForUpdate`
+        :param UserDefineConfigure: Control parameter of custom content audit.
+        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfoForUpdate`
+        :param ScreenshotInterval: Frame capturing interval in seconds. Minimum value: 0.5 seconds.
+        :type ScreenshotInterval: float
+        :param ReviewWallSwitch: Switch controlling whether to add audit result to review list (for human review).
+<li>ON: yes;</li>
+<li>OFF: no.</li>
+        :type ReviewWallSwitch: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.PornConfigure = None
+        self.TerrorismConfigure = None
+        self.PoliticalConfigure = None
+        self.ProhibitedConfigure = None
+        self.UserDefineConfigure = None
+        self.ScreenshotInterval = None
+        self.ReviewWallSwitch = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("PornConfigure") is not None:
+            self.PornConfigure = PornConfigureInfoForUpdate()
+            self.PornConfigure._deserialize(params.get("PornConfigure"))
+        if params.get("TerrorismConfigure") is not None:
+            self.TerrorismConfigure = TerrorismConfigureInfoForUpdate()
+            self.TerrorismConfigure._deserialize(params.get("TerrorismConfigure"))
+        if params.get("PoliticalConfigure") is not None:
+            self.PoliticalConfigure = PoliticalConfigureInfoForUpdate()
+            self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("ProhibitedConfigure") is not None:
+            self.ProhibitedConfigure = ProhibitedConfigureInfoForUpdate()
+            self.ProhibitedConfigure._deserialize(params.get("ProhibitedConfigure"))
+        if params.get("UserDefineConfigure") is not None:
+            self.UserDefineConfigure = UserDefineConfigureInfoForUpdate()
+            self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        self.ReviewWallSwitch = params.get("ReviewWallSwitch")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyContentReviewTemplateResponse(AbstractModel):
+    """ModifyContentReviewTemplate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyImageSpriteTemplateRequest(AbstractModel):
     """ModifyImageSpriteTemplate request structure.
 
@@ -9872,13 +11557,15 @@ Default value: open.
         :type RowCount: int
         :param ColumnCount: Subimage column count of an image sprite.
         :type ColumnCount: int
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 Default value: black.
         :type FillType: str
+        :param Comment: 
+        :type Comment: str
+        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
         """
         self.Definition = None
         self.Name = None
@@ -9889,8 +11576,9 @@ Default value: black.
         self.SampleInterval = None
         self.RowCount = None
         self.ColumnCount = None
-        self.SubAppId = None
         self.FillType = None
+        self.Comment = None
+        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -9903,8 +11591,9 @@ Default value: black.
         self.SampleInterval = params.get("SampleInterval")
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
-        self.SubAppId = params.get("SubAppId")
         self.FillType = params.get("FillType")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
 
 
 class ModifyImageSpriteTemplateResponse(AbstractModel):
@@ -9921,6 +11610,180 @@ class ModifyImageSpriteTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyMediaInfoRequest(AbstractModel):
+    """ModifyMediaInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: Unique media file ID.
+        :type FileId: str
+        :param Name: Media filename, which can contain up to 64 characters.
+        :type Name: str
+        :param Description: Media file description, which can contain up to 128 characters.
+        :type Description: str
+        :param ClassId: Media file category ID.
+        :type ClassId: int
+        :param ExpireTime: Media file expiration time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The value `9999-12-31T23:59:59Z` indicates that the media file never expires. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted.
+        :type ExpireTime: str
+        :param CoverData: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) the video cover image file (such as .jpeg or .png file). Only .gif, .jpeg, and .png image formats are supported.
+        :type CoverData: str
+        :param AddKeyFrameDescs: Set of video timestamps to be added. If a timestamp already exists at an offset time point, it will be overwritten. Up to 100 timestamps can be added to one media file. In the same request, the time offset parameters of `AddKeyFrameDescs` must be different from those of `DeleteKeyFrameDescs`.
+        :type AddKeyFrameDescs: list of MediaKeyFrameDescItem
+        :param DeleteKeyFrameDescs: Time offset of the set of video timestamps to be deleted in seconds. In the same request, the time offset parameters of `AddKeyFrameDescs` must be different from those of `DeleteKeyFrameDescs`.
+        :type DeleteKeyFrameDescs: list of float
+        :param ClearKeyFrameDescs: The value `1` indicates to delete all timestamps in the video. Other values are meaningless.
+In the same request, `ClearKeyFrameDescs` and `AddKeyFrameDescs` cannot be present at the same time.
+        :type ClearKeyFrameDescs: int
+        :param AddTags: Set of tags to be added. Up to 16 tags can be added to one media file, and one tag can contain up to 16 characters. In the same request, the parameters of `AddTags` must be different from those of `DeleteTags`.
+        :type AddTags: list of str
+        :param DeleteTags: Set of tags to be deleted. In the same request, the parameters of `AddTags` must be different from those of `DeleteTags`.
+        :type DeleteTags: list of str
+        :param ClearTags: The value `1` indicates to delete all tags of the media file. Other values are meaningless.
+In the same request, `ClearTags` and `AddTags` cannot be present at the same time.
+        :type ClearTags: int
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.Name = None
+        self.Description = None
+        self.ClassId = None
+        self.ExpireTime = None
+        self.CoverData = None
+        self.AddKeyFrameDescs = None
+        self.DeleteKeyFrameDescs = None
+        self.ClearKeyFrameDescs = None
+        self.AddTags = None
+        self.DeleteTags = None
+        self.ClearTags = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
+        self.CoverData = params.get("CoverData")
+        if params.get("AddKeyFrameDescs") is not None:
+            self.AddKeyFrameDescs = []
+            for item in params.get("AddKeyFrameDescs"):
+                obj = MediaKeyFrameDescItem()
+                obj._deserialize(item)
+                self.AddKeyFrameDescs.append(obj)
+        self.DeleteKeyFrameDescs = params.get("DeleteKeyFrameDescs")
+        self.ClearKeyFrameDescs = params.get("ClearKeyFrameDescs")
+        self.AddTags = params.get("AddTags")
+        self.DeleteTags = params.get("DeleteTags")
+        self.ClearTags = params.get("ClearTags")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyMediaInfoResponse(AbstractModel):
+    """ModifyMediaInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CoverUrl: URL of new video cover.
+* Note: this returned value is valid only if the request carries `CoverData`.*
+        :type CoverUrl: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CoverUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CoverUrl = params.get("CoverUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPersonSampleRequest(AbstractModel):
+    """ModifyPersonSample request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PersonId: Figure ID.
+        :type PersonId: str
+        :param Name: Name. Length limit: 128 characters.
+        :type Name: str
+        :param Description: Description. Length limit: 1,024 characters.
+        :type Description: str
+        :param Usages: Figure use case. Valid values:
+1. Recognition: it is used for content recognition and equivalent to `Recognition.Face`.
+2. Review: it is used for content audit and equivalent to `Review.Face`.
+3. All: it is used for content recognition and content audit and equivalent to 1+2 above.
+        :type Usages: list of str
+        :param FaceOperationInfo: Face operation information.
+        :type FaceOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleFaceOperation`
+        :param TagOperationInfo: Tag operation information.
+        :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.PersonId = None
+        self.Name = None
+        self.Description = None
+        self.Usages = None
+        self.FaceOperationInfo = None
+        self.TagOperationInfo = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.Usages = params.get("Usages")
+        if params.get("FaceOperationInfo") is not None:
+            self.FaceOperationInfo = AiSampleFaceOperation()
+            self.FaceOperationInfo._deserialize(params.get("FaceOperationInfo"))
+        if params.get("TagOperationInfo") is not None:
+            self.TagOperationInfo = AiSampleTagOperation()
+            self.TagOperationInfo._deserialize(params.get("TagOperationInfo"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyPersonSampleResponse(AbstractModel):
+    """ModifyPersonSample response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Person: Figure information.
+        :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
+        :param FailFaceInfoSet: Face information failed to be processed.
+        :type FailFaceInfoSet: list of AiSampleFailFaceInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Person = None
+        self.FailFaceInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Person") is not None:
+            self.Person = AiSamplePerson()
+            self.Person._deserialize(params.get("Person"))
+        if params.get("FailFaceInfoSet") is not None:
+            self.FailFaceInfoSet = []
+            for item in params.get("FailFaceInfoSet"):
+                obj = AiSampleFailFaceInfo()
+                obj._deserialize(item)
+                self.FailFaceInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -10186,6 +12049,85 @@ class ModifySubAppIdStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySuperPlayerConfigRequest(AbstractModel):
+    """ModifySuperPlayerConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Player configuration name.
+        :type Name: str
+        :param DrmSwitch: Switch of DRM-protected adaptive bitstream playback:
+<li>ON: enabled, indicating to play back only output adaptive bitstreams protected by DRM;</li>
+<li>OFF: disabled, indicating to play back unencrypted output adaptive bitstreams.</li>
+        :type DrmSwitch: str
+        :param AdaptiveDynamicStreamingDefinition: ID of the unencrypted adaptive bitrate streaming template that allows output.
+        :type AdaptiveDynamicStreamingDefinition: int
+        :param DrmStreamingsInfo: Content of the DRM-protected adaptive bitrate streaming template that allows output.
+        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfoForUpdate`
+        :param ImageSpriteDefinition: ID of the image sprite generating template that allows output.
+        :type ImageSpriteDefinition: int
+        :param ResolutionNames: Display name of player for substreams with different resolutions.
+        :type ResolutionNames: list of ResolutionNameInfo
+        :param Domain: 
+        :type Domain: str
+        :param Scheme: 
+        :type Scheme: str
+        :param Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.DrmSwitch = None
+        self.AdaptiveDynamicStreamingDefinition = None
+        self.DrmStreamingsInfo = None
+        self.ImageSpriteDefinition = None
+        self.ResolutionNames = None
+        self.Domain = None
+        self.Scheme = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.DrmSwitch = params.get("DrmSwitch")
+        self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
+        if params.get("DrmStreamingsInfo") is not None:
+            self.DrmStreamingsInfo = DrmStreamingsInfoForUpdate()
+            self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
+        if params.get("ResolutionNames") is not None:
+            self.ResolutionNames = []
+            for item in params.get("ResolutionNames"):
+                obj = ResolutionNameInfo()
+                obj._deserialize(item)
+                self.ResolutionNames.append(obj)
+        self.Domain = params.get("Domain")
+        self.Scheme = params.get("Scheme")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifySuperPlayerConfigResponse(AbstractModel):
+    """ModifySuperPlayerConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTranscodeTemplateRequest(AbstractModel):
     """ModifyTranscodeTemplate request structure.
 
@@ -10355,6 +12297,62 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class ModifyWordSampleRequest(AbstractModel):
+    """ModifyWordSample request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: Keyword. Length limit: 128 characters.
+        :type Keyword: str
+        :param Usages: <b>Keyword use case. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition;
+2. Recognition.Asr: ASR-based content recognition;
+3. Review.Ocr: OCR-based content audit;
+4. Review.Asr: ASR-based content audit;
+<b>These values can be merged as follows:</b>
+5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;
+6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;
+7. All: ASR-based and OCR-based content recognition and audit, which is equivalent to 1+2+3+4 above;
+        :type Usages: list of str
+        :param TagOperationInfo: Tag operation information.
+        :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
+        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Keyword = None
+        self.Usages = None
+        self.TagOperationInfo = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.Usages = params.get("Usages")
+        if params.get("TagOperationInfo") is not None:
+            self.TagOperationInfo = AiSampleTagOperation()
+            self.TagOperationInfo._deserialize(params.get("TagOperationInfo"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyWordSampleResponse(AbstractModel):
+    """ModifyWordSample response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MosaicInput(AbstractModel):
     """Blur parameter type of video processing task
 
@@ -10443,7 +12441,52 @@ Default value: All, i.e., both default and custom object libraries will be used.
         self.ObjectLibrary = params.get("ObjectLibrary")
 
 
+class ObjectConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of object recognition task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of object recognition task. Valid values:
+<li>ON: enables intelligent object recognition task;</li>
+<li>OFF: disables intelligent object recognition task.</li>
+        :type Switch: str
+        :param ObjectLibrary: Object library. Valid values:
+<li>Default: default object library;</li>
+<li>UserDefine: custom object library.</li>
+<li>All: both default and custom object libraries will be used.</li>
+        :type ObjectLibrary: str
+        """
+        self.Switch = None
+        self.ObjectLibrary = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.ObjectLibrary = params.get("ObjectLibrary")
+
+
 class OcrFullTextConfigureInfo(AbstractModel):
+    """Control parameter of full text recognition task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of full text recognition task. Valid values:
+<li>ON: enables intelligent full text recognition task;</li>
+<li>OFF: disables intelligent full text recognition task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class OcrFullTextConfigureInfoForUpdate(AbstractModel):
     """Control parameter of full text recognition task
 
     """
@@ -10474,6 +12517,30 @@ class OcrWordsConfigureInfo(AbstractModel):
 <li>OFF: disables text keyword recognition task.</li>
         :type Switch: str
         :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        """
+        self.Switch = None
+        self.LabelSet = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+
+
+class OcrWordsConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of text keyword recognition.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of text keyword recognition task. Valid values:
+<li>ON: enables text keyword recognition task;</li>
+<li>OFF: disables text keyword recognition task.</li>
+        :type Switch: str
+        :param LabelSet: Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results will be returned.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: list of str
         """
@@ -10546,6 +12613,122 @@ Default value: 0, which means that the value is the same as the video frame rate
         self.Fps = params.get("Fps")
 
 
+class ParseStreamingManifestRequest(AbstractModel):
+    """ParseStreamingManifest request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaManifestContent: Index file content to be parsed.
+        :type MediaManifestContent: str
+        :param ManifestType: Video index file format, which is `m3u8` by default.
+<li>m3u8</li>
+<li>mpd</li>
+        :type ManifestType: str
+        """
+        self.MediaManifestContent = None
+        self.ManifestType = None
+
+
+    def _deserialize(self, params):
+        self.MediaManifestContent = params.get("MediaManifestContent")
+        self.ManifestType = params.get("ManifestType")
+
+
+class ParseStreamingManifestResponse(AbstractModel):
+    """ParseStreamingManifest response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaSegmentSet: Segment file list.
+        :type MediaSegmentSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.MediaSegmentSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MediaSegmentSet = params.get("MediaSegmentSet")
+        self.RequestId = params.get("RequestId")
+
+
+class PlayerConfig(AbstractModel):
+    """Player configuration details
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Player configuration name.
+        :type Name: str
+        :param Type: Player configuration type. Valid values:
+<li>Preset: preset configuration;</li>
+<li>Custom: custom configuration.</li>
+        :type Type: str
+        :param DrmSwitch: Switch of DRM-protected adaptive bitstream playback:
+<li>ON: enabled, indicating to play back only output adaptive bitstreams protected by DRM;</li>
+<li>OFF: disabled, indicating to play back unencrypted output adaptive bitstreams.</li>
+        :type DrmSwitch: str
+        :param AdaptiveDynamicStreamingDefinition: ID of the unencrypted adaptive bitrate streaming template that allows output.
+        :type AdaptiveDynamicStreamingDefinition: int
+        :param DrmStreamingsInfo: Content of the DRM-protected adaptive bitrate streaming template that allows output.
+        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`
+        :param ImageSpriteDefinition: ID of the image sprite generating template that allows output.
+        :type ImageSpriteDefinition: int
+        :param ResolutionNameSet: Display name of player for substreams with different resolutions.
+        :type ResolutionNameSet: list of ResolutionNameInfo
+        :param CreateTime: Creation time of player configuration in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type CreateTime: str
+        :param UpdateTime: Last modified time of player configuration in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type UpdateTime: str
+        :param Domain: 
+        :type Domain: str
+        :param Scheme: 
+        :type Scheme: str
+        :param Comment: Template description.
+        :type Comment: str
+        """
+        self.Name = None
+        self.Type = None
+        self.DrmSwitch = None
+        self.AdaptiveDynamicStreamingDefinition = None
+        self.DrmStreamingsInfo = None
+        self.ImageSpriteDefinition = None
+        self.ResolutionNameSet = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Domain = None
+        self.Scheme = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.DrmSwitch = params.get("DrmSwitch")
+        self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
+        if params.get("DrmStreamingsInfo") is not None:
+            self.DrmStreamingsInfo = DrmStreamingsInfo()
+            self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
+        if params.get("ResolutionNameSet") is not None:
+            self.ResolutionNameSet = []
+            for item in params.get("ResolutionNameSet"):
+                obj = ResolutionNameInfo()
+                obj._deserialize(item)
+                self.ResolutionNameSet.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Domain = params.get("Domain")
+        self.Scheme = params.get("Scheme")
+        self.Comment = params.get("Comment")
+
+
 class PoliticalAsrReviewTemplateInfo(AbstractModel):
     """Control parameter of politically sensitive information detection in speech task
 
@@ -10557,9 +12740,36 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 <li>ON: enables politically sensitive information detection in speech task;</li>
 <li>OFF: disables politically sensitive information detection in speech task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of politically sensitive information detection in speech task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of politically sensitive information detection in speech task. Valid values:
+<li>ON: enables politically sensitive information detection in speech task;</li>
+<li>OFF: disables politically sensitive information detection in speech task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10607,6 +12817,37 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
+class PoliticalConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of politically sensitive information detection task.
+
+    """
+
+    def __init__(self):
+        """
+        :param ImgReviewInfo: Control parameter of politically sensitive information detection in video image.
+        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfoForUpdate`
+        :param AsrReviewInfo: Control parameter of politically sensitive information detection in speech.
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: Control parameter of politically sensitive information detection in text.
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfoForUpdate`
+        """
+        self.ImgReviewInfo = None
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImgReviewInfo") is not None:
+            self.ImgReviewInfo = PoliticalImgReviewTemplateInfoForUpdate()
+            self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = PoliticalAsrReviewTemplateInfoForUpdate()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = PoliticalOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
 class PoliticalImgReviewTemplateInfo(AbstractModel):
     """Control parameter of politically sensitive information detection in video image task
 
@@ -10618,15 +12859,58 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 <li>ON: enables politically sensitive information detection in video image task;</li>
 <li>OFF: disables politically sensitive information detection in video image task.</li>
         :type Switch: str
-        :param LabelSet: Filter tag for politically sensitive information detection in video image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
 <li>violation_photo: violating photo;</li>
-<li>politician: politically sensitive figure;</li>
+<li>politician: political figure;</li>
 <li>entertainment: entertainment celebrity;</li>
-<li>sport: sports celebrity.</li>
+<li>sport: sports figure;</li>
+<li>entrepreneur: business figure;</li>
+<li>scholar: educator;</li>
+<li>celebrity: well-known figure;</li>
+<li>military: military figure.</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of politically sensitive information detection in video image task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of politically sensitive information detection in video image task. Valid values:
+<li>ON: enables politically sensitive information detection in video image task;</li>
+<li>OFF: disables politically sensitive information detection in video image task.</li>
+        :type Switch: str
+        :param LabelSet: Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>violation_photo: violating photo;</li>
+<li>politician: political figure;</li>
+<li>entertainment: entertainment celebrity;</li>
+<li>sport: sports figure;</li>
+<li>entrepreneur: business figure;</li>
+<li>scholar: educator;</li>
+<li>celebrity: well-known figure;</li>
+<li>military: military figure.</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10653,9 +12937,36 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 <li>ON: enables politically sensitive information detection in text task;</li>
 <li>OFF: disables politically sensitive information detection in text task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of politically sensitive information detection in text task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of politically sensitive information detection in text task. Valid values:
+<li>ON: enables politically sensitive information detection in text task;</li>
+<li>OFF: disables politically sensitive information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10680,9 +12991,36 @@ class PornAsrReviewTemplateInfo(AbstractModel):
 <li>ON: enables porn information detection in speech task;</li>
 <li>OFF: disables porn information detection in speech task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of porn detection in speech task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of porn detection in speech task. Valid values:
+<li>ON: enables porn detection in speech task;</li>
+<li>OFF: disables porn detection in speech task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10730,6 +13068,37 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
+class PornConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of porn detection task.
+
+    """
+
+    def __init__(self):
+        """
+        :param ImgReviewInfo: Control parameter of porn detection in video image.
+        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfoForUpdate`
+        :param AsrReviewInfo: Control parameter of porn detection in speech.
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: Control parameter of porn detection in text.
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfoForUpdate`
+        """
+        self.ImgReviewInfo = None
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImgReviewInfo") is not None:
+            self.ImgReviewInfo = PornImgReviewTemplateInfoForUpdate()
+            self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = PornAsrReviewTemplateInfoForUpdate()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = PornOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
 class PornImgReviewTemplateInfo(AbstractModel):
     """Control parameter of porn information detection in video image task
 
@@ -10747,9 +13116,44 @@ class PornImgReviewTemplateInfo(AbstractModel):
 <li>intimacy: intimacy;</li>
 <li>sexy: sexiness.</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 0 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 0 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PornImgReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of porn detection in video image task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of porn detection in video image task. Valid values:
+<li>ON: enables porn detection in video image task;</li>
+<li>OFF: disables porn detection in video image task.</li>
+        :type Switch: str
+        :param LabelSet: Filter tag for porn detection in video image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>porn: porn;</li>
+<li>vulgar: vulgarity;</li>
+<li>intimacy: intimacy;</li>
+<li>sexy: sexiness.</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10776,9 +13180,36 @@ class PornOcrReviewTemplateInfo(AbstractModel):
 <li>ON: enables porn information detection in text task;</li>
 <li>OFF: disables porn information detection in text task.</li>
         :type Switch: str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of porn detection in text task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of porn detection in text task. Valid values:
+<li>ON: enables porn detection in text task;</li>
+<li>OFF: disables porn detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -10927,6 +13358,8 @@ class ProcedureTemplate(AbstractModel):
 <li>Preset: preset task flow template;</li>
 <li>Custom: custom task flow template.</li>
         :type Type: str
+        :param Comment: 
+        :type Comment: str
         :param MediaProcessTask: Parameter of video processing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
@@ -10949,6 +13382,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         """
         self.Name = None
         self.Type = None
+        self.Comment = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
@@ -10961,6 +13395,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
+        self.Comment = params.get("Comment")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
@@ -10991,7 +13426,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type FileId: str
         :param ProcedureName: [Task flow template](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name.
         :type ProcedureName: str
-        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
         :param TasksNotifyMode: Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.
         :type TasksNotifyMode: str
@@ -11063,7 +13498,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: Type parameter of video content recognition task.
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
         :param TasksNotifyMode: Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.
         :type TasksNotifyMode: str
@@ -11147,7 +13582,7 @@ class ProcessMediaRequest(AbstractModel):
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: Type parameter of video content recognition task.
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
         :param TasksNotifyMode: Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.
         :type TasksNotifyMode: str
@@ -11227,6 +13662,33 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
 <li>ON: enables prohibited information detection in speech task;</li>
 <li>OFF: disables prohibited information detection in speech task.</li>
         :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of prohibited information detection in speech task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of prohibited information detection in speech task. Valid values:
+<li>ON: enables prohibited information detection in speech task;</li>
+<li>OFF: disables prohibited information detection in speech task.</li>
+        :type Switch: str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
         :type BlockConfidence: int
         :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
@@ -11270,7 +13732,59 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
+class ProhibitedConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of prohibited information detection task
+
+    """
+
+    def __init__(self):
+        """
+        :param AsrReviewInfo: Control parameter of prohibited information detection in speech.
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: Control parameter of prohibited information detection in text.
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedOcrReviewTemplateInfoForUpdate`
+        """
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = ProhibitedAsrReviewTemplateInfoForUpdate()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = ProhibitedOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
 class ProhibitedOcrReviewTemplateInfo(AbstractModel):
+    """Control parameter of prohibited information detection in text task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of prohibited information detection in text task. Valid values:
+<li>ON: enables prohibited information detection in text task;</li>
+<li>OFF: disables prohibited information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
     """Control parameter of prohibited information detection in text task
 
     """
@@ -11352,8 +13866,8 @@ class PullUploadRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaUrl: URL of the media to be pulled. Media files in HLS and Dash formats cannot be pulled currently.
-For the supported extensions, please see [Media Types](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B).
+        :param MediaUrl: URL of the media to be pulled. Supported media format: HLS; unsupported media format: DASH.
+For more information about supported extensions, please see [Media Types](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B).
         :type MediaUrl: str
         :param MediaName: Media name.
         :type MediaName: str
@@ -11375,6 +13889,8 @@ For the supported extensions, please see [Media Types](https://cloud.tencent.com
         :type ExtInfo: str
         :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
+        :param SourceContext: Source context, which is used to pass through the user request information. The [upload callback](/document/product/266/7830) API will return the value of this field. It can contain up to 250 characters.
+        :type SourceContext: str
         """
         self.MediaUrl = None
         self.MediaName = None
@@ -11387,6 +13903,7 @@ For the supported extensions, please see [Media Types](https://cloud.tencent.com
         self.SessionId = None
         self.ExtInfo = None
         self.SubAppId = None
+        self.SourceContext = None
 
 
     def _deserialize(self, params):
@@ -11401,6 +13918,7 @@ For the supported extensions, please see [Media Types](https://cloud.tencent.com
         self.SessionId = params.get("SessionId")
         self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
+        self.SourceContext = params.get("SourceContext")
 
 
 class PullUploadResponse(AbstractModel):
@@ -11532,6 +14050,8 @@ class ResetProcedureTemplateRequest(AbstractModel):
         """
         :param Name: Task flow name
         :type Name: str
+        :param Comment: 
+        :type Comment: str
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
         :param AiContentReviewTask: Parameter of AI-based content audit task.
@@ -11544,6 +14064,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
         :type SubAppId: int
         """
         self.Name = None
+        self.Comment = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
@@ -11553,6 +14074,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
@@ -11583,6 +14105,27 @@ class ResetProcedureTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ResolutionNameInfo(AbstractModel):
+    """Player substream name information
+
+    """
+
+    def __init__(self):
+        """
+        :param MinEdgeLength: Length of video short side in px.
+        :type MinEdgeLength: int
+        :param Name: Display name.
+        :type Name: str
+        """
+        self.MinEdgeLength = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.MinEdgeLength = params.get("MinEdgeLength")
+        self.Name = params.get("Name")
 
 
 class SampleSnapshotTaskInput(AbstractModel):
@@ -11736,6 +14279,11 @@ class SearchMediaRequest(AbstractModel):
         :param Limit: <div id="p_limit">Number of entries returned by a paged query. Default value: 10. Entries from No. "Offset" to No. "Offset + Limit - 1" will be returned.
 <li>Value range: "Offset + Limit" cannot be more than 5,000. (For more information, please see <a href="#maxResultsDesc">Limit on the Number of Results Returned by API</a>)</li></div>
         :type Limit: int
+        :param Categories: File type:
+<li>Video: video file</li>
+<li>Audio: audio file</li>
+<li>Image: image file</li>
+        :type Categories: list of str
         :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
@@ -11750,6 +14298,7 @@ class SearchMediaRequest(AbstractModel):
         self.Sort = None
         self.Offset = None
         self.Limit = None
+        self.Categories = None
         self.SubAppId = None
 
 
@@ -11767,6 +14316,7 @@ class SearchMediaRequest(AbstractModel):
             self.Sort._deserialize(params.get("Sort"))
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Categories = params.get("Categories")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -11803,6 +14353,25 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SegmentConfigureInfo(AbstractModel):
+    """Control parameter of video splitting recognition task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of video splitting recognition task. Valid values:
+<li>ON: enables intelligent video splitting recognition task;</li>
+<li>OFF: disables intelligent video splitting recognition task.</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class SegmentConfigureInfoForUpdate(AbstractModel):
     """Control parameter of video splitting recognition task
 
     """
@@ -11950,6 +14519,8 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         """
         :param Definition: Time point screencapturing template ID.
         :type Definition: int
+        :param ExtTimeOffsetSet: 
+        :type ExtTimeOffsetSet: list of str
         :param TimeOffsetSet: List of time points for screencapturing in <font color=red>milliseconds</font>.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TimeOffsetSet: list of float
@@ -11958,12 +14529,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
+        self.ExtTimeOffsetSet = None
         self.TimeOffsetSet = None
         self.WatermarkSet = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.ExtTimeOffsetSet = params.get("ExtTimeOffsetSet")
         self.TimeOffsetSet = params.get("TimeOffsetSet")
         if params.get("WatermarkSet") is not None:
             self.WatermarkSet = []
@@ -12401,6 +14974,56 @@ class TagConfigureInfoForUpdate(AbstractModel):
         self.Switch = params.get("Switch")
 
 
+class TaskSimpleInfo(AbstractModel):
+    """Task overview information
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: Task ID.
+        :type TaskId: str
+        :param TaskType: Task type. Valid values:
+<li>Procedure: video processing task;</li>
+<li>EditMedia: video editing task</li>
+<li>WechatDistribute: release on WeChat task.</li>
+Task types compatible with v2017:
+<li>Transcode: transcoding task;</li>
+<li>SnapshotByTimeOffset: video screencapturing task</li>
+<li>Concat: video splicing task;</li>
+<li>Clip: video clipping task;</li>
+<li>ImageSprites: image sprite generating task.</li>
+        :type TaskType: str
+        :param CreateTime: Creation time of task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :type CreateTime: str
+        :param BeginProcessTime: Start time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). If the task has not been started yet, this field will be empty.
+        :type BeginProcessTime: str
+        :param FinishTime: End time of task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). If the task has not been completed yet, this field will be empty.
+        :type FinishTime: str
+        :param SessionId: ID used for deduplication if there was a request with the same ID in the last seven days.
+        :type SessionId: str
+        :param SessionContext: Source context, which is used to pass through the user request information.
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.TaskType = None
+        self.CreateTime = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskType = params.get("TaskType")
+        self.CreateTime = params.get("CreateTime")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+
+
 class TaskStatData(AbstractModel):
     """Video processing task statistics.
 
@@ -12554,6 +15177,31 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
+class TerrorismConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of terrorism information detection task.
+
+    """
+
+    def __init__(self):
+        """
+        :param ImgReviewInfo: Control parameter of terrorism information detection in video image task.
+        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: Control parameter of terrorism information detection in text task.
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismOcrReviewTemplateInfoForUpdate`
+        """
+        self.ImgReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImgReviewInfo") is not None:
+            self.ImgReviewInfo = TerrorismImgReviewTemplateInfoForUpdate()
+            self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = TerrorismOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
 class TerrorismImgReviewTemplateInfo(AbstractModel):
     """Control parameter of terrorism information detection in video image task
 
@@ -12575,9 +15223,48 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>explosion: explosions and fires;</li>
 <li>terrorists: terrorists.</li>
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 80 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 80 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of terrorism information detection in video image task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of terrorism information detection in video image task. Valid values:
+<li>ON: enables terrorism information detection in video image task;</li>
+<li>OFF: disables terrorism information detection in video image task.</li>
+        :type Switch: str
+        :param LabelSet: Filter tag for terrorism information detection in video image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>guns: weapons and guns;</li>
+<li>crowd: crowd;</li>
+<li>bloody: bloody scenes;</li>
+<li>police: police force;</li>
+<li>banners: terrorism flags;</li>
+<li>militant: militants;</li>
+<li>explosion: explosions and fires;</li>
+<li>terrorists: terrorists.</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -12594,6 +15281,33 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
 
 class TerrorismOcrReviewTemplateInfo(AbstractModel):
+    """Control parameter of terrorism information detection in text task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of terrorism information detection in text task. Valid values:
+<li>ON: enables terrorism information detection in text task;</li>
+<li>OFF: disables terrorism information detection in text task.</li>
+        :type Switch: str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
     """Control parameter of terrorism information detection in text task
 
     """
@@ -12976,9 +15690,41 @@ class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
         :param LabelSet: Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of custom speech audit task
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of custom speech audit task. Valid values:
+<li>ON: enables custom speech audit task;</li>
+<li>OFF: disables custom speech audit task.</li>
+        :type Switch: str
+        :param LabelSet: Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -13028,6 +15774,37 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
+class UserDefineConfigureInfoForUpdate(AbstractModel):
+    """Control parameter of custom audit task.
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceReviewInfo: Control parameter of custom figure audit.
+        :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfoForUpdate`
+        :param AsrReviewInfo: Control parameter of custom speech audit.
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: Control parameter of custom text audit.
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfoForUpdate`
+        """
+        self.FaceReviewInfo = None
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("FaceReviewInfo") is not None:
+            self.FaceReviewInfo = UserDefineFaceReviewTemplateInfoForUpdate()
+            self.FaceReviewInfo._deserialize(params.get("FaceReviewInfo"))
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = UserDefineAsrTextReviewTemplateInfoForUpdate()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = UserDefineOcrTextReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
 class UserDefineFaceReviewTemplateInfo(AbstractModel):
     """Control parameter of custom figure audit task
 
@@ -13042,9 +15819,41 @@ class UserDefineFaceReviewTemplateInfo(AbstractModel):
         :param LabelSet: Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of custom figure audit task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of custom figure audit task. Valid values:
+<li>ON: enables custom figure audit task;</li>
+<li>OFF: disables custom figure audit task.</li>
+        :type Switch: str
+        :param LabelSet: Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -13074,9 +15883,41 @@ class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
         :param LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
 There can be up to 10 tags, each with a length limit of 16 characters.
         :type LabelSet: list of str
-        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
-        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
+    """Control parameter of custom text audit task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Switch of custom text audit task. Valid values:
+<li>ON: enables custom text audit task;</li>
+<li>OFF: disables custom text audit task.</li>
+        :type Switch: str
+        :param LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :type LabelSet: list of str
+        :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
+        :type BlockConfidence: int
+        :param ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -13296,94 +16137,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = AudioTransform()
                 obj._deserialize(item)
                 self.AudioOperations.append(obj)
-
-
-class VideoTrackTemplateInfo(AbstractModel):
-    """Information of a transcoding to adaptive bitrate streaming video track template.
-
-    """
-
-    def __init__(self):
-        """
-        :param Definition: Unique ID of a video track template.
-        :type Definition: int
-        :param Codec: Encoder. Valid values:
-<li>libx264: H.264</li>
-<li>libx265: H.265</li>
-Currently, a resolution within 640*480p must be specified for H.265.
-        :type Codec: str
-        :param Fps: Video frame rate in Hz. Value range: [0, 60].
-If the value is 0, the frame rate will be the same as that of the source video.
-        :type Fps: int
-        :param Bitrate: Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].
-If the value is 0, the bitrate of the video will be the same as that of the source video.
-        :type Bitrate: int
-        :param Name: Template name. Length limit: 64 characters.
-        :type Name: str
-        :param Comment: Template description. Length limit: 256 characters.
-        :type Comment: str
-        :param Type: Template type. Valid values:
-<li>Preset: preset template;</li>
-<li>Custom: custom template.</li>
-        :type Type: str
-        :param ResolutionAdaptive: Resolution adaption. Valid values:
-<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
-<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
-Default value: open.
-        :type ResolutionAdaptive: str
-        :param Width: Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
-<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
-<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
-<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
-<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.
-        :type Width: int
-        :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
-<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
-<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
-<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
-<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
-Default value: 0.
-        :type Height: int
-        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
-<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-Default value: black.
-        :type FillType: str
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
-        :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
-        :type UpdateTime: str
-        """
-        self.Definition = None
-        self.Codec = None
-        self.Fps = None
-        self.Bitrate = None
-        self.Name = None
-        self.Comment = None
-        self.Type = None
-        self.ResolutionAdaptive = None
-        self.Width = None
-        self.Height = None
-        self.FillType = None
-        self.CreateTime = None
-        self.UpdateTime = None
-
-
-    def _deserialize(self, params):
-        self.Definition = params.get("Definition")
-        self.Codec = params.get("Codec")
-        self.Fps = params.get("Fps")
-        self.Bitrate = params.get("Bitrate")
-        self.Name = params.get("Name")
-        self.Comment = params.get("Comment")
-        self.Type = params.get("Type")
-        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.FillType = params.get("FillType")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
 
 
 class WatermarkCycleConfigForUpdate(AbstractModel):

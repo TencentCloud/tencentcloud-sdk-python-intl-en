@@ -495,19 +495,19 @@ class CommonTimeWindow(AbstractModel):
 
     def __init__(self):
         """
-        :param Monday: Time window on Monday in the format of 02:00–06:00
+        :param Monday: Time window on Monday in the format of 02:00-06:00
         :type Monday: str
-        :param Tuesday: Time window on Tuesday in the format of 02:00–06:00
+        :param Tuesday: Time window on Tuesday in the format of 02:00-06:00
         :type Tuesday: str
-        :param Wednesday: Time window on Wednesday in the format of 02:00–06:00
+        :param Wednesday: Time window on Wednesday in the format of 02:00-06:00
         :type Wednesday: str
-        :param Thursday: Time window on Thursday in the format of 02:00–06:00
+        :param Thursday: Time window on Thursday in the format of 02:00-06:00
         :type Thursday: str
-        :param Friday: Time window on Friday in the format of 02:00–06:00
+        :param Friday: Time window on Friday in the format of 02:00-06:00
         :type Friday: str
-        :param Saturday: Time window on Saturday in the format of 02:00–06:00
+        :param Saturday: Time window on Saturday in the format of 02:00-06:00
         :type Saturday: str
-        :param Sunday: Time window on Sunday in the format of 02:00–06:00
+        :param Sunday: Time window on Sunday in the format of 02:00-06:00
         :type Sunday: str
         """
         self.Monday = None
@@ -697,7 +697,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GoodsNum: Number of instances. Value range: 1–100. Default value: 1.
+        :param GoodsNum: Number of instances. Value range: 1-100. Default value: 1.
         :type GoodsNum: int
         :param Memory: Instance memory size in MB. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported memory specifications.
         :type Memory: int
@@ -721,7 +721,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type MasterRegion: str
         :param Port: Custom port. Value range: [1024-65535].
         :type Port: int
-        :param Password: Sets the root account password. Rule: the password can contain 8–64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
+        :param Password: Sets the root account password. Rule: the password can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
         :type Password: str
         :param ParamList: List of parameters in the format of `ParamList.0.Name=auto_increment&ParamList.0.Value=1`. You can use the [DescribeDefaultParams](https://cloud.tencent.com/document/api/236/32662) API to query the configurable parameters.
         :type ParamList: list of ParamInfo
@@ -4723,7 +4723,7 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type InstanceId: str
         :param ExpireDays: Backup file retention period in days. Value range: 7-732.
         :type ExpireDays: int
-        :param StartTime: (This parameter will be disused. The `BackupTimeWindow` parameter is recommended.) Backup time range in the format of 02:00–06:00, with the start time and end time on the hour. Valid values: 00:00–12:00, 02:00–06:00, 06:00–10:00, 10:00–14:00, 14:00–18:00, 18:00–22:00, 22:00–02:00.
+        :param StartTime: (This parameter will be disused. The `BackupTimeWindow` parameter is recommended.) Backup time range in the format of 02:00-06:00, with the start time and end time on the hour. Valid values: 00:00-12:00, 02:00-06:00, 06:00-10:00, 10:00-14:00, 14:00-18:00, 18:00-22:00, 22:00-02:00.
         :type StartTime: str
         :param BackupMethod: Automatic backup mode. Only `physical` (physical cold backup) is supported
         :type BackupMethod: str
@@ -4899,7 +4899,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: Unified subnet ID.
         :type UniqSubnetId: str
-        :param ReleaseDuration: Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0–168 hours. Default value: 24 hours.
+        :param ReleaseDuration: Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0-168 hours. Default value: 24 hours.
         :type ReleaseDuration: int
         """
         self.InstanceId = None
@@ -4952,9 +4952,15 @@ class ModifyInstanceParamRequest(AbstractModel):
         :type InstanceIds: list of str
         :param ParamList: List of parameters to be modified. Every element is a combination of `Name` (parameter name) and `CurrentValue` (new value).
         :type ParamList: list of Parameter
+        :param TemplateId: 
+        :type TemplateId: int
+        :param WaitSwitch: 
+        :type WaitSwitch: int
         """
         self.InstanceIds = None
         self.ParamList = None
+        self.TemplateId = None
+        self.WaitSwitch = None
 
 
     def _deserialize(self, params):
@@ -4965,6 +4971,8 @@ class ModifyInstanceParamRequest(AbstractModel):
                 obj = Parameter()
                 obj._deserialize(item)
                 self.ParamList.append(obj)
+        self.TemplateId = params.get("TemplateId")
+        self.WaitSwitch = params.get("WaitSwitch")
 
 
 class ModifyInstanceParamResponse(AbstractModel):
@@ -6808,16 +6816,20 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         :type EngineVersion: str
         :param WaitSwitch: Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://cloud.tencent.com/document/product/236/15864) to trigger the process.
         :type WaitSwitch: int
+        :param UpgradeSubversion: Whether to upgrade kernel minor version. Valid values: 1 (upgrade kernel minor version), 0 (upgrade database engine).
+        :type UpgradeSubversion: int
         """
         self.InstanceId = None
         self.EngineVersion = None
         self.WaitSwitch = None
+        self.UpgradeSubversion = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.EngineVersion = params.get("EngineVersion")
         self.WaitSwitch = params.get("WaitSwitch")
+        self.UpgradeSubversion = params.get("UpgradeSubversion")
 
 
 class UpgradeDBInstanceEngineVersionResponse(AbstractModel):

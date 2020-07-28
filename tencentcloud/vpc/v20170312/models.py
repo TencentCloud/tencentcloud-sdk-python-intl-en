@@ -1052,7 +1052,7 @@ class CCN(AbstractModel):
         :type CreateTime: str
         :param State: The instance status. 'ISOLATED': Being isolated (instance is in arrears and service is suspended). 'AVAILABLE': Operating.
         :type State: str
-        :param QosLevel: The instance service quality. ’PT’: Platinum , 'AU': Gold, 'AG': Silver.
+        :param QosLevel: The instance service quality. 'PT': Platinum , 'AU': Gold, 'AG': Silver.
         :type QosLevel: str
         :param InstanceChargeType: The billing method. POSTPAID indicates postpaid.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -1159,20 +1159,48 @@ class CcnAttachedInstance(AbstractModel):
 
 
 class CcnBandwidthInfo(AbstractModel):
-    """
+    """The information of the cross-region bandwidth limit for CCN instances.
 
     """
 
     def __init__(self):
         """
-        :param RenewFlag: 
+        :param CcnId: The CCN ID that the bandwidth belongs to.
+Note: this field may return null, indicating that no valid value was found.
+        :type CcnId: str
+        :param CreatedTime: The creation time of the instance.
+Note: this field may return null, indicating that no valid value was found.
+        :type CreatedTime: str
+        :param ExpiredTime: The expiration time of the instance.
+Note: this field may return null, indicating that no valid value was found.
+        :type ExpiredTime: str
+        :param RegionFlowControlId: The unique ID of the bandwidth instance.
+Note: this field may return null, indicating that no valid value was found.
+        :type RegionFlowControlId: str
+        :param RenewFlag: The billing flag.
+Note: this field may return null, indicating that no valid value was found.
         :type RenewFlag: str
+        :param CcnRegionBandwidthLimit: The information of bandwidth regions and bandwidth caps.
+Note: this field may return null, indicating that no valid value was found.
+        :type CcnRegionBandwidthLimit: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
         """
+        self.CcnId = None
+        self.CreatedTime = None
+        self.ExpiredTime = None
+        self.RegionFlowControlId = None
         self.RenewFlag = None
+        self.CcnRegionBandwidthLimit = None
 
 
     def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.RegionFlowControlId = params.get("RegionFlowControlId")
         self.RenewFlag = params.get("RenewFlag")
+        if params.get("CcnRegionBandwidthLimit") is not None:
+            self.CcnRegionBandwidthLimit = CcnRegionBandwidthLimit()
+            self.CcnRegionBandwidthLimit._deserialize(params.get("CcnRegionBandwidthLimit"))
 
 
 class CcnInstance(AbstractModel):
@@ -1786,7 +1814,7 @@ class CreateCcnRequest(AbstractModel):
         :type CcnName: str
         :param CcnDescription: The description of the CCN. The maximum length is 100 characters.
         :type CcnDescription: str
-        :param QosLevel: CCN service quality, 'PT': Platinum, 'AU': Gold, 'AG': Silver. The default is ‘AU’.
+        :param QosLevel: CCN service quality, 'PT': Platinum, 'AU': Gold, 'AG': Silver. The default is 'AU'.
         :type QosLevel: str
         :param InstanceChargeType: The billing method. POSTPAID: postpaid by traffic. Default: POSTPAID.
         :type InstanceChargeType: str
@@ -2035,7 +2063,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
+        :param VpcId: ID of the VPC instance
         :type VpcId: str
         :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
@@ -3217,7 +3245,7 @@ class CvmInstance(AbstractModel):
         :type InstanceState: str
         :param CPU: Number of CPU cores in an instance (in core).
         :type CPU: int
-        :param Memory: Instance’s memory capacity. Unit: GB.
+        :param Memory: Instance's memory capacity. Unit: GB.
         :type Memory: int
         :param CreatedTime: The creation time.
         :type CreatedTime: str
@@ -3567,7 +3595,7 @@ class DeleteFlowLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
+        :param VpcId: ID of the VPC instance
         :type VpcId: str
         :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
@@ -5126,7 +5154,7 @@ class DescribeFlowLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
+        :param VpcId: ID of the VPC instance
         :type VpcId: str
         :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
@@ -5173,7 +5201,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
+        :param VpcId: ID of the VPC instance
         :type VpcId: str
         :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
@@ -5880,7 +5908,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>address-ip - String - (Filter condition) Private IPv4 address.</li>
 <li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>
 <li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>
-<li>is-primary - Boolean - Required: no - (Filter condition) Filters based on whether it is a primary ENI. If the value is ‘true’, filter only the primary ENI. If the value is ‘false’, filter only the secondary ENI. If the secondary filter parameter is provided, filter the both.</li>
+<li>is-primary - Boolean - Required: no - (Filter condition) Filters based on whether it is a primary ENI. If the value is 'true', filter only the primary ENI. If the value is 'false', filter only the secondary ENI. If the secondary filter parameter is provided, filter the both.</li>
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -7578,7 +7606,7 @@ class FlowLog(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
+        :param VpcId: ID of the VPC instance
         :type VpcId: str
         :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
@@ -8829,13 +8857,13 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The VPC ID or the unified ID. We recommend you use the unified ID.
+        :param VpcId: ID of the VPC instance
         :type VpcId: str
-        :param FlowLogId: The unique ID of the flow log collector.
+        :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
-        :param FlowLogName: The name of the flow log collector.
+        :param FlowLogName: The name of the flow log.
         :type FlowLogName: str
-        :param FlowLogDescription: The description of the flow log collector.
+        :param FlowLogDescription: The description of the flow log.
         :type FlowLogDescription: str
         """
         self.VpcId = None
@@ -9776,7 +9804,7 @@ class NatGateway(AbstractModel):
         :type CreatedTime: str
         :param State: The status of the NAT gateway.
  'PENDING': Creating, 'DELETING': Deleting, 'AVAILABLE': Operating, 'UPDATING': Upgrading,
-‘FAILED’: Failed.
+'FAILED': Failed.
         :type State: str
         :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the gateway. Unit: Mbps.
         :type InternetMaxBandwidthOut: int
@@ -10340,7 +10368,7 @@ class PrivateIpAddressSpecification(AbstractModel):
         :type Primary: bool
         :param PublicIpAddress: Public IP address.
         :type PublicIpAddress: str
-        :param AddressId: EIP instance ID, such as `eip-11112222`。
+        :param AddressId: EIP instance ID, such as `eip-11112222`.
         :type AddressId: str
         :param Description: Private IP description.
         :type Description: str

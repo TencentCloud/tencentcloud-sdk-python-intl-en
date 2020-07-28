@@ -172,6 +172,62 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAIRecognitionTemplate(self, request):
+        """This API is used to create a custom video content recognition template. Up to 50 templates can be created.
+
+        :param request: Request instance for CreateAIRecognitionTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAIRecognitionTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAIRecognitionTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAdaptiveDynamicStreamingTemplate(self, request):
+        """This API is used to create an adaptive bitrate streaming template. Up to 100 templates can be created.
+
+        :param request: Request instance for CreateAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAdaptiveDynamicStreamingTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAnimatedGraphicsTemplate(self, request):
         """This API is used to create a custom animated image generating template. Up to 16 templates can be created.
 
@@ -231,6 +287,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateContentReviewTemplate(self, request):
+        """This API is used to create a custom video content audit template. Up to 50 templates can be created.
+
+        :param request: Request instance for CreateContentReviewTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateContentReviewTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateContentReviewTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateImageSpriteTemplate(self, request):
         """This API is used to create a custom image sprite generating template. Up to 16 templates can be created.
 
@@ -245,6 +329,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageSpriteTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePersonSample(self, request):
+        """This API is used to create a figure sample for video processing operations such as content recognition and audit using the face recognition technology.
+
+        :param request: Request instance for CreatePersonSample.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreatePersonSampleRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreatePersonSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePersonSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -343,6 +455,62 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSubAppId(self, request):
+        """This API is used to create a VOD subapplication.
+
+        :param request: Request instance for CreateSubAppId.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateSubAppIdRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateSubAppIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSubAppId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSubAppIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSuperPlayerConfig(self, request):
+        """This API is used to create a superplayer configuration. Up to 100 configurations can be created.
+
+        :param request: Request instance for CreateSuperPlayerConfig.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateSuperPlayerConfigRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateSuperPlayerConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSuperPlayerConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSuperPlayerConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTranscodeTemplate(self, request):
         """This API is used to create a custom transcoding template. Up to 100 templates can be created.
 
@@ -385,6 +553,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWatermarkTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateWordSamples(self, request):
+        """This API is used to create keyword samples in batches for video processing operations such as content recognition and audit by using the OCR and ASR technologies.
+
+        :param request: Request instance for CreateWordSamples.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateWordSamplesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateWordSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateWordSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWordSamplesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -457,6 +653,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAdaptiveDynamicStreamingTemplate(self, request):
+        """This API is used to delete an adaptive bitrate streaming template.
+
+        :param request: Request instance for DeleteAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAdaptiveDynamicStreamingTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAnimatedGraphicsTemplate(self, request):
         """This API is used to delete a custom animated image generating template.
 
@@ -485,6 +709,63 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteClass(self, request):
+        """* A category can be deleted only if it has no subcategories and associated media files;
+        * Otherwise, [delete the media files](/document/product/266/31764) and subcategories first before deleting the category.
+
+        :param request: Request instance for DeleteClass.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteClassRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteClassResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteClass", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClassResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteContentReviewTemplate(self, request):
+        """This API is used to delete a custom video content audit template.
+
+        :param request: Request instance for DeleteContentReviewTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteContentReviewTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteContentReviewTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteImageSpriteTemplate(self, request):
         """This API is used to delete an image sprite generating template.
 
@@ -499,6 +780,63 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageSpriteTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteMedia(self, request):
+        """* This API is used to delete a media file and its corresponding files generated by video processing (such as transcoded videos, image sprites, screenshots, and videos published on WeChat);
+        * The transcoded video files or video files published on WeChat can be deleted separately for a specified video ID.
+
+        :param request: Request instance for DeleteMedia.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteMedia", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePersonSample(self, request):
+        """This API is used to delete a figure sample based on figure ID.
+
+        :param request: Request instance for DeletePersonSample.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeletePersonSampleRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeletePersonSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePersonSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -597,6 +935,63 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteSuperPlayerConfig(self, request):
+        """This API is used to delete a superplayer configuration.
+        *Note: preset player configurations cannot be deleted.*
+
+        :param request: Request instance for DeleteSuperPlayerConfig.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteSuperPlayerConfigRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteSuperPlayerConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSuperPlayerConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSuperPlayerConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTranscodeTemplate(self, request):
+        """This API is used to delete a custom transcoding template.
+
+        :param request: Request instance for DeleteTranscodeTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTranscodeTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTranscodeTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteWatermarkTemplate(self, request):
         """This API is used to delete a custom watermarking template.
 
@@ -611,6 +1006,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWatermarkTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteWordSamples(self, request):
+        """This API is used to delete keyword samples in batches.
+
+        :param request: Request instance for DeleteWordSamples.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteWordSamplesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteWordSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWordSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWordSamplesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -709,20 +1132,20 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAnimatedGraphicsTemplates(self, request):
-        """This API is used to query the list of animated image generating templates and supports paged queries by filters.
+    def DescribeAllClass(self, request):
+        """* This API is used to get the information of all categories.
 
-        :param request: Request instance for DescribeAnimatedGraphicsTemplates.
-        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAnimatedGraphicsTemplatesRequest`
-        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAnimatedGraphicsTemplatesResponse`
+        :param request: Request instance for DescribeAllClass.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAllClassRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAllClassResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAnimatedGraphicsTemplates", params)
+            body = self.call("DescribeAllClass", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAnimatedGraphicsTemplatesResponse()
+                model = models.DescribeAllClassResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -737,20 +1160,20 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAudioTrackTemplates(self, request):
-        """This API is used to query the list of transcoding to adaptive bitrate streaming audio track templates and supports paged queries by filters.
+    def DescribeAnimatedGraphicsTemplates(self, request):
+        """This API is used to query the list of animated image generating templates and supports paged queries by filters.
 
-        :param request: Request instance for DescribeAudioTrackTemplates.
-        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAudioTrackTemplatesRequest`
-        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAudioTrackTemplatesResponse`
+        :param request: Request instance for DescribeAnimatedGraphicsTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAnimatedGraphicsTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAnimatedGraphicsTemplatesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAudioTrackTemplates", params)
+            body = self.call("DescribeAnimatedGraphicsTemplates", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAudioTrackTemplatesResponse()
+                model = models.DescribeAnimatedGraphicsTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -907,6 +1330,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMediaProcessUsageDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePersonSamples(self, request):
+        """This API is used to query the information of figure samples and supports paginated queries by figure ID, name, and tag.
+
+        :param request: Request instance for DescribePersonSamples.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribePersonSamplesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribePersonSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePersonSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePersonSamplesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1125,6 +1576,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSuperPlayerConfigs(self, request):
+        """This API is used to query the list of superplayer configurations and supports paginated queries by filters.
+
+        :param request: Request instance for DescribeSuperPlayerConfigs.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSuperPlayerConfigsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeSuperPlayerConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSuperPlayerConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSuperPlayerConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTaskDetail(self, request):
         """This API is used to query the details of execution status and result of a task submitted in the last 3 days by task ID.
 
@@ -1139,6 +1618,36 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTasks(self, request):
+        """* This API is used to query the task list;
+        * If there are many data entries in the list, one single call of the API may not be able to pull the entire list. The `ScrollToken` parameter can be used to pull the list in batches;
+        * Only tasks in the last three days (72 hours) can be queried.
+
+        :param request: Request instance for DescribeTasks.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeTasksRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1181,34 +1690,6 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeVideoTrackTemplates(self, request):
-        """This API is used to query the list of transcoding to adaptive bitrate streaming video track templates and supports paged queries by filters.
-
-        :param request: Request instance for DescribeVideoTrackTemplates.
-        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeVideoTrackTemplatesRequest`
-        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeVideoTrackTemplatesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeVideoTrackTemplates", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeVideoTrackTemplatesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeWatermarkTemplates(self, request):
         """This API is used to query custom watermarking templates and supports paged queries by filters.
 
@@ -1223,6 +1704,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWatermarkTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWordSamples(self, request):
+        """This API is used to perform paginated queries of keyword sample information by use case, keyword, and tag.
+
+        :param request: Request instance for DescribeWordSamples.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeWordSamplesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeWordSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWordSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWordSamplesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1305,7 +1814,7 @@ class VodClient(AbstractClient):
 
     def ForbidMediaDistribution(self, request):
         """* After a media file is forbidden, except previewing it in the VOD Console, accessing the URLs of its various resources (such as source file, output files, and screenshots) in other scenarios will return error 403.
-          It takes about 5–10 minutes for a forbidding/unblocking operation to take effect across the entire network.
+          It takes about 5-10 minutes for a forbidding/unblocking operation to take effect across the entire network.
 
         :param request: Request instance for ForbidMediaDistribution.
         :type request: :class:`tencentcloud.vod.v20180717.models.ForbidMediaDistributionRequest`
@@ -1413,6 +1922,62 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAIRecognitionTemplate(self, request):
+        """This API is used to modify a custom video content recognition template.
+
+        :param request: Request instance for ModifyAIRecognitionTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyAIRecognitionTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAIRecognitionTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAdaptiveDynamicStreamingTemplate(self, request):
+        """This API is used to modify an adaptive bitrate streaming template.
+
+        :param request: Request instance for ModifyAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAdaptiveDynamicStreamingTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAnimatedGraphicsTemplate(self, request):
         """This API is used to modify a custom animated image generating template.
 
@@ -1441,6 +2006,62 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyClass(self, request):
+        """This API is used to modify the category of a media file.
+
+        :param request: Request instance for ModifyClass.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyClassRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyClassResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClass", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClassResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyContentReviewTemplate(self, request):
+        """This API is used to modify a custom video content audit template.
+
+        :param request: Request instance for ModifyContentReviewTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyContentReviewTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyContentReviewTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyImageSpriteTemplate(self, request):
         """This API is used to modify a custom image sprite generating template.
 
@@ -1455,6 +2076,62 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyImageSpriteTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMediaInfo(self, request):
+        """This API is used to modify the attributes of a media file, including category, name, description, tag, expiration time, timestamp information, and video cover.
+
+        :param request: Request instance for ModifyMediaInfo.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyMediaInfoRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyMediaInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMediaInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMediaInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPersonSample(self, request):
+        """This API is used to modify figure sample information based on figure ID, such as modifying the name and description and adding/deleting/resetting a face or tag. There should be at least one image left after the face deletion operation; otherwise, please use the reset operation.
+
+        :param request: Request instance for ModifyPersonSample.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyPersonSampleRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyPersonSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPersonSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1581,6 +2258,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifySuperPlayerConfig(self, request):
+        """This API is used to modify a superplayer configuration.
+
+        :param request: Request instance for ModifySuperPlayerConfig.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifySuperPlayerConfigRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifySuperPlayerConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySuperPlayerConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySuperPlayerConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyTranscodeTemplate(self, request):
         """This API is used to modify a custom transcoding template.
 
@@ -1623,6 +2328,62 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWatermarkTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyWordSample(self, request):
+        """This API is used to modify the use case and tag of a keyword. The keyword itself cannot be modified, but you can delete it and create another one if needed.
+
+        :param request: Request instance for ModifyWordSample.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyWordSampleRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyWordSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWordSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWordSampleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ParseStreamingManifest(self, request):
+        """This API is used to parse the index file content and return the list of segment files to be uploaded when an HLS video is uploaded. A segment file path must be a relative path of the current directory or subdirectory instead of a URL or absolute path.
+
+        :param request: Request instance for ParseStreamingManifest.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ParseStreamingManifestRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ParseStreamingManifestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ParseStreamingManifest", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ParseStreamingManifestResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1712,6 +2473,8 @@ class VodClient(AbstractClient):
         1. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);
         2. Intelligent content analysis (tag, category, cover, and frame-specific tag);
         3. Intelligent content recognition (opening and closing credits, face, full text, text keyword, full speech, speech keyword, and object).
+
+        If the event notification is used, its type is [Task Flow Status Change](https://cloud.tencent.com/document/product/266/9636).
 
         :param request: Request instance for ProcessMediaByUrl.
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByUrlRequest`

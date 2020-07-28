@@ -226,7 +226,7 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
         """
         :param Policy: The policy for executing the scheduled snapshot.
         :type Policy: list of Policy
-        :param AutoSnapshotPolicyName: The name of the scheduled snapshot policy to be created. If it is left empty, the default is “Not named”. The maximum length cannot exceed 60 bytes.
+        :param AutoSnapshotPolicyName: The name of the scheduled snapshot policy to be created. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.
         :type AutoSnapshotPolicyName: str
         :param IsActivated: Whether or not the scheduled snapshot policy is activated. FALSE: Not activated. TRUE: Activated. The default value is TRUE.
         :type IsActivated: bool
@@ -297,7 +297,7 @@ class CreateDisksRequest(AbstractModel):
         :type DiskChargeType: str
         :param Placement: The location of the instance. The availability zone and the project that the instance belongs to can be specified using this parameter. If the project is not specified, it will be created under the default project.
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
-        :param DiskName: The displayed name of the cloud disk. If it is left empty, the default is “Not named”. The maximum length cannot exceed 60 bytes.
+        :param DiskName: The displayed name of the cloud disk. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.
         :type DiskName: str
         :param DiskCount: If the number of cloud disks to be created is left empty, the default is 1. There is a limit to the maximum number of cloud disks that can be created for a single request. For more information, please see [CBS Use Limits](https://cloud.tencent.com/doc/product/362/5145).
         :type DiskCount: int
@@ -685,9 +685,9 @@ class DescribeDiskOperationLogsRequest(AbstractModel):
         :param Filters: Filter conditions. The following conditions are supported:
 <li>disk-id - Array of String - Required or not: Yes - Filter by cloud disk ID, with maximum of 10 cloud disk IDs able to be specified per request.
         :type Filters: list of Filter
-        :param BeginTime: The start time of the operation logs to be queried, for example: “2019-11-22 00:00:00"
+        :param BeginTime: The start time of the operation logs to be queried, for example: '2019-11-22 00:00:00"
         :type BeginTime: str
-        :param EndTime: The end time of the operation logs to be queried, for example: “2019-11-22 23:59:59"
+        :param EndTime: The end time of the operation logs to be queried, for example: '2019-11-22 23:59:59"
         :type EndTime: str
         """
         self.Filters = None
@@ -861,9 +861,9 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
         :param Filters: Filter conditions. The following conditions are supported:
 <li>snapshot-id - Array of String - Required or not: Yes - Filter by snapshot ID, with maximum of 10 snapshot IDs able to be specified per request.
         :type Filters: list of Filter
-        :param BeginTime: The start time of the operation logs to be queried, for example: “2019-11-22 00:00:00"
+        :param BeginTime: The start time of the operation logs to be queried, for example: '2019-11-22 00:00:00"
         :type BeginTime: str
-        :param EndTime: The end time of the operation logs to be queried, for example: “2019-11-22 23:59:59"
+        :param EndTime: The end time of the operation logs to be queried, for example: '2019-11-22 23:59:59"
         :type EndTime: str
         """
         self.Filters = None
@@ -1137,7 +1137,7 @@ Note: This field may return null, indicating that no valid value was found.
         :type MigratePercent: int
         :param Shareable: Whether or not cloud disk is shareable cloud disk.
         :type Shareable: bool
-        :param InstanceIdList: For non-shareable cloud disks, this parameter is null. For shareable cloud disks, this parameters indicates this cloud disk’s Instance IDs currently mounted to the CVM.
+        :param InstanceIdList: For non-shareable cloud disks, this parameter is null. For shareable cloud disks, this parameters indicates this cloud disk's Instance IDs currently mounted to the CVM.
         :type InstanceIdList: list of str
         :param SnapshotCount: The total number of snapshots of the cloud disk.
         :type SnapshotCount: int
@@ -1551,7 +1551,7 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
         :type AutoSnapshotPolicyId: str
         :param Policy: The policy for executing the scheduled snapshot.
         :type Policy: list of Policy
-        :param AutoSnapshotPolicyName: The name of the scheduled snapshot policy to be created. If it is left empty, the default is “Not named”. The maximum length cannot exceed 60 bytes.
+        :param AutoSnapshotPolicyName: The name of the scheduled snapshot policy to be created. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.
         :type AutoSnapshotPolicyName: str
         :param IsActivated: Whether or not the scheduled snapshot policy is activated. FALSE: Not activated. TRUE: Activated. The default value is TRUE.
         :type IsActivated: bool

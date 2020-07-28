@@ -82,7 +82,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAdaptiveDynamicStreamingTemplate(self, request):
-        """This API is used to create up to 100 adaptive bitrate streaming templates.
+        """This API is used to create an adaptive bitrate streaming template. Up up to 100 such templates can be created.
 
         :param request: Request instance for CreateAdaptiveDynamicStreamingTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAdaptiveDynamicStreamingTemplateRequest`

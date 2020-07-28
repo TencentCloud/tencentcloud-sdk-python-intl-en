@@ -108,6 +108,9 @@ class ClusterInfo(AbstractModel):
         :param OldPasswordExpireTime: If `PasswordStatus` is `unmodifiable`, the old password has not expired, and this field will display its expiration time; otherwise, this field will be empty
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OldPasswordExpireTime: str
+        :param ApiAccessIpv6: TcaplusDB SDK connection parameter for accessing IPv6 addresses
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ApiAccessIpv6: str
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -123,6 +126,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ApiAccessIp = None
         self.ApiAccessPort = None
         self.OldPasswordExpireTime = None
+        self.ApiAccessIpv6 = None
 
 
     def _deserialize(self, params):
@@ -140,6 +144,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ApiAccessIp = params.get("ApiAccessIp")
         self.ApiAccessPort = params.get("ApiAccessPort")
         self.OldPasswordExpireTime = params.get("OldPasswordExpireTime")
+        self.ApiAccessIpv6 = params.get("ApiAccessIpv6")
 
 
 class CompareIdlFilesRequest(AbstractModel):
@@ -291,14 +296,20 @@ class CreateClusterRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: ID of the subnet instance bound to a cluster in the format of `subnet-pxir56ns`
         :type SubnetId: str
-        :param Password: Cluster access password, which must contain lowercase letters (a–z), uppercase letters (A–Z), and digits (0–9).
+        :param Password: Cluster access password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).
         :type Password: str
+        :param ResourceTags: 
+        :type ResourceTags: list of TagInfoUnit
+        :param Ipv6Enable: Whether to enable IPv6 address access for clusters
+        :type Ipv6Enable: int
         """
         self.IdlType = None
         self.ClusterName = None
         self.VpcId = None
         self.SubnetId = None
         self.Password = None
+        self.ResourceTags = None
+        self.Ipv6Enable = None
 
 
     def _deserialize(self, params):
@@ -307,6 +318,13 @@ class CreateClusterRequest(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.Password = params.get("Password")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.Ipv6Enable = params.get("Ipv6Enable")
 
 
 class CreateClusterResponse(AbstractModel):
@@ -343,16 +361,25 @@ class CreateTableGroupRequest(AbstractModel):
         :type TableGroupName: str
         :param TableGroupId: Table group ID, which can be customized but must be unique in one cluster. If it is not specified, the auto-increment mode will be used.
         :type TableGroupId: str
+        :param ResourceTags: 
+        :type ResourceTags: list of TagInfoUnit
         """
         self.ClusterId = None
         self.TableGroupName = None
         self.TableGroupId = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.TableGroupName = params.get("TableGroupName")
         self.TableGroupId = params.get("TableGroupId")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateTableGroupResponse(AbstractModel):
@@ -389,10 +416,13 @@ class CreateTablesRequest(AbstractModel):
         :type IdlFiles: list of IdlFileInfo
         :param SelectedTables: Information list of tables to be created
         :type SelectedTables: list of SelectedTableInfoNew
+        :param ResourceTags: 
+        :type ResourceTags: list of TagInfoUnit
         """
         self.ClusterId = None
         self.IdlFiles = None
         self.SelectedTables = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -409,6 +439,12 @@ class CreateTablesRequest(AbstractModel):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
                 self.SelectedTables.append(obj)
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateTablesResponse(AbstractModel):
@@ -695,11 +731,14 @@ class DescribeClustersRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned results in query list. Default value: 20
         :type Limit: int
+        :param Ipv6Enable: Whether to enable IPv6 address access
+        :type Ipv6Enable: int
         """
         self.ClusterIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.Ipv6Enable = None
 
 
     def _deserialize(self, params):
@@ -712,6 +751,7 @@ class DescribeClustersRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Ipv6Enable = params.get("Ipv6Enable")
 
 
 class DescribeClustersResponse(AbstractModel):
@@ -1435,7 +1475,7 @@ class ModifyClusterPasswordRequest(AbstractModel):
         :type OldPassword: str
         :param OldPasswordExpireTime: Expected expiration time of old cluster password
         :type OldPasswordExpireTime: str
-        :param NewPassword: New cluster password, which must contain lowercase letters (a–z), uppercase letters (A–Z), and digits (0–9).
+        :param NewPassword: New cluster password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).
         :type NewPassword: str
         :param Mode: Update mode. 1: updates password, 2: updates old password expiration time. Default value: 1
         :type Mode: str
@@ -2055,16 +2095,20 @@ class RegionInfo(AbstractModel):
         :type RegionAbbr: str
         :param RegionId: Region ID
         :type RegionId: int
+        :param Ipv6Enable: Whether to support IPv6 address access. Valid values: 0 (support), 1 (not support)
+        :type Ipv6Enable: int
         """
         self.RegionName = None
         self.RegionAbbr = None
         self.RegionId = None
+        self.Ipv6Enable = None
 
 
     def _deserialize(self, params):
         self.RegionName = params.get("RegionName")
         self.RegionAbbr = params.get("RegionAbbr")
         self.RegionId = params.get("RegionId")
+        self.Ipv6Enable = params.get("Ipv6Enable")
 
 
 class RollbackTablesRequest(AbstractModel):
@@ -2264,7 +2308,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TableGroupName: Name of the table group where a table resides
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TableGroupName: str
-        :param KeyStruct: JSON string of table’s primary key field structure
+        :param KeyStruct: JSON string of table's primary key field structure
 Note: this field may return null, indicating that no valid values can be obtained.
         :type KeyStruct: str
         :param ValueStruct: JSON string of table non-primary key field structure
@@ -2300,7 +2344,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param CreatedTime: Table creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param UpdatedTime: Table’s last modified time
+        :param UpdatedTime: Table's last modified time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UpdatedTime: str
         :param Memo: Table remarks
@@ -2318,6 +2362,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SortRule: Sort order of SORTLIST-type tables
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SortRule: int
+        :param DbClusterInfoStruct: 
+        :type DbClusterInfoStruct: str
         """
         self.TableName = None
         self.TableInstanceId = None
@@ -2345,6 +2391,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ApiAccessId = None
         self.SortFieldNum = None
         self.SortRule = None
+        self.DbClusterInfoStruct = None
 
 
     def _deserialize(self, params):
@@ -2381,6 +2428,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ApiAccessId = params.get("ApiAccessId")
         self.SortFieldNum = params.get("SortFieldNum")
         self.SortRule = params.get("SortRule")
+        self.DbClusterInfoStruct = params.get("DbClusterInfoStruct")
 
 
 class TableResultNew(AbstractModel):

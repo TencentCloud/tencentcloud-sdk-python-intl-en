@@ -177,7 +177,7 @@ class CvmClient(AbstractClient):
         * You only need to specify a name, and the system will automatically create a key pair and return its `ID` and the public and private keys.
         * The name of the key pair must be unique.
         * You can save the private key to a file and use it as an authentication method for `SSH`.
-        * Tencent Cloud does not save users’ private keys. Be sure to save it yourself.
+        * Tencent Cloud does not save users' private keys. Be sure to save it yourself.
 
         :param request: Request instance for CreateKeyPair.
         :type request: :class:`tencentcloud.cvm.v20170312.models.CreateKeyPairRequest`
@@ -1281,7 +1281,7 @@ class CvmClient(AbstractClient):
     def ModifyInstancesAttribute(self, request):
         """This API is used to modify the attributes of an instance. Currently you can only use the API to modify the name and the associated security groups of the instance.
 
-        * Instance names are used only for users’ convenience. Tencent Cloud does not use the name for ticket submission or instance management.
+        * Instance names are used only for users' convenience. Tencent Cloud does not use the name for ticket submission or instance management.
         * Batch operations are supported. The maximum number of instances in each request is 100.
         * When you change the security groups associated with an instance, the original security groups will be disassociated.
 
