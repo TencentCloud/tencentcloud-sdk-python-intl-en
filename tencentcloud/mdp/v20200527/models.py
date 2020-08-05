@@ -342,10 +342,10 @@ class EndpointAuthInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param WhiteIpList: The security group whitelist in CIDR format.
+        :param WhiteIpList: The security group allowlist in CIDR format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WhiteIpList: list of str
-        :param BlackIpList: The security group blacklist in CIDR format.
+        :param BlackIpList: The security group blocklist in CIDR format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BlackIpList: list of str
         :param AuthKey: The authentication key. Its value is same as `X-TENCENT-PACKAGE` set in the HTTP request header.

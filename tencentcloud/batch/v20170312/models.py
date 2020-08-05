@@ -352,6 +352,12 @@ class ComputeEnvView(AbstractModel):
         :type EnvType: str
         :param DesiredComputeNodeCount: Number of desired compute nodes
         :type DesiredComputeNodeCount: int
+        :param ResourceType: 
+        :type ResourceType: str
+        :param NextAction: 
+        :type NextAction: str
+        :param AttachedComputeNodeCount: 
+        :type AttachedComputeNodeCount: int
         """
         self.EnvId = None
         self.EnvName = None
@@ -360,6 +366,9 @@ class ComputeEnvView(AbstractModel):
         self.ComputeNodeMetrics = None
         self.EnvType = None
         self.DesiredComputeNodeCount = None
+        self.ResourceType = None
+        self.NextAction = None
+        self.AttachedComputeNodeCount = None
 
 
     def _deserialize(self, params):
@@ -374,6 +383,9 @@ class ComputeEnvView(AbstractModel):
             self.ComputeNodeMetrics._deserialize(params.get("ComputeNodeMetrics"))
         self.EnvType = params.get("EnvType")
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        self.ResourceType = params.get("ResourceType")
+        self.NextAction = params.get("NextAction")
+        self.AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
 
 
 class ComputeNode(AbstractModel):
@@ -403,6 +415,10 @@ class ComputeNode(AbstractModel):
         :type PrivateIpAddresses: list of str
         :param PublicIpAddresses: Public IP of the instance
         :type PublicIpAddresses: list of str
+        :param ResourceType: 
+        :type ResourceType: str
+        :param ResourceOrigin: 
+        :type ResourceOrigin: str
         """
         self.ComputeNodeId = None
         self.ComputeNodeInstanceId = None
@@ -414,6 +430,8 @@ class ComputeNode(AbstractModel):
         self.AgentVersion = None
         self.PrivateIpAddresses = None
         self.PublicIpAddresses = None
+        self.ResourceType = None
+        self.ResourceOrigin = None
 
 
     def _deserialize(self, params):
@@ -427,6 +445,8 @@ class ComputeNode(AbstractModel):
         self.AgentVersion = params.get("AgentVersion")
         self.PrivateIpAddresses = params.get("PrivateIpAddresses")
         self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceOrigin = params.get("ResourceOrigin")
 
 
 class ComputeNodeMetrics(AbstractModel):
@@ -598,6 +618,11 @@ Default value: FALSE<br>
 This parameter is only used with `RunInstances`.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Encrypt: bool
+        :param KmsKeyId: ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.
+
+Currently, this parameter is only used in the `RunInstances` API.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KmsKeyId: str
         """
         self.DiskSize = None
         self.DiskType = None
@@ -605,6 +630,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.DeleteWithInstance = None
         self.SnapshotId = None
         self.Encrypt = None
+        self.KmsKeyId = None
 
 
     def _deserialize(self, params):
@@ -614,6 +640,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.SnapshotId = params.get("SnapshotId")
         self.Encrypt = params.get("Encrypt")
+        self.KmsKeyId = params.get("KmsKeyId")
 
 
 class DeleteComputeEnvRequest(AbstractModel):
@@ -1055,6 +1082,12 @@ class DescribeComputeEnvResponse(AbstractModel):
         :type DesiredComputeNodeCount: int
         :param EnvType: Compute environment type
         :type EnvType: str
+        :param ResourceType: 
+        :type ResourceType: str
+        :param NextAction: 
+        :type NextAction: str
+        :param AttachedComputeNodeCount: 
+        :type AttachedComputeNodeCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1066,6 +1099,9 @@ class DescribeComputeEnvResponse(AbstractModel):
         self.ComputeNodeMetrics = None
         self.DesiredComputeNodeCount = None
         self.EnvType = None
+        self.ResourceType = None
+        self.NextAction = None
+        self.AttachedComputeNodeCount = None
         self.RequestId = None
 
 
@@ -1087,6 +1123,9 @@ class DescribeComputeEnvResponse(AbstractModel):
             self.ComputeNodeMetrics._deserialize(params.get("ComputeNodeMetrics"))
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
         self.EnvType = params.get("EnvType")
+        self.ResourceType = params.get("ResourceType")
+        self.NextAction = params.get("NextAction")
+        self.AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2207,6 +2246,20 @@ Note: This field may return null, indicating that no valid value is found.
         :param SoldOutReason: Details of out-of-stock items
 Note: this field may return null, indicating that no valid value is obtained.
         :type SoldOutReason: str
+        :param InstanceBandwidth: 
+        :type InstanceBandwidth: float
+        :param InstancePps: 
+        :type InstancePps: int
+        :param StorageBlockAmount: 
+        :type StorageBlockAmount: int
+        :param CpuType: 
+        :type CpuType: str
+        :param Gpu: Number of GPUs of the instance.
+        :type Gpu: int
+        :param Fpga: Number of FPGAs of the instance.
+        :type Fpga: int
+        :param Remark: Descriptive information of the instance.
+        :type Remark: str
         """
         self.Zone = None
         self.InstanceType = None
@@ -2221,6 +2274,13 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.Status = None
         self.Price = None
         self.SoldOutReason = None
+        self.InstanceBandwidth = None
+        self.InstancePps = None
+        self.StorageBlockAmount = None
+        self.CpuType = None
+        self.Gpu = None
+        self.Fpga = None
+        self.Remark = None
 
 
     def _deserialize(self, params):
@@ -2246,6 +2306,13 @@ Note: this field may return null, indicating that no valid value is obtained.
             self.Price = ItemPrice()
             self.Price._deserialize(params.get("Price"))
         self.SoldOutReason = params.get("SoldOutReason")
+        self.InstanceBandwidth = params.get("InstanceBandwidth")
+        self.InstancePps = params.get("InstancePps")
+        self.StorageBlockAmount = params.get("StorageBlockAmount")
+        self.CpuType = params.get("CpuType")
+        self.Gpu = params.get("Gpu")
+        self.Fpga = params.get("Fpga")
+        self.Remark = params.get("Remark")
 
 
 class InternetAccessible(AbstractModel):
@@ -2284,7 +2351,7 @@ class ItemPrice(AbstractModel):
 
     def __init__(self):
         """
-        :param UnitPrice: The original unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to the unit price for the usage between 0 and ∞ hours.
+        :param UnitPrice: The original unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPrice: float
         :param ChargeUnit: Billing unit for pay-as-you-go mode. Valid values: <br><li>HOUR: billed on an hourly basis. It's used for hourly postpaid instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. It's used for postpaid products that are billed by the hourly traffic (`TRAFFIC_POSTPAID_BY_HOUR`).
@@ -2299,7 +2366,7 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param Discount: Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Discount: float
-        :param UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to the unit price for the usage between 0 and ∞ hours.
+        :param UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPriceDiscount: float
         :param UnitPriceSecondStep: Original unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
@@ -2785,7 +2852,7 @@ class OutputMappingConfig(AbstractModel):
 
 
 class Placement(AbstractModel):
-    """Describes the location of an instance, including its availability zone, project, host (for CDH products only), master host IP, etc.
+    """Describes the location of an instance, including its availability zone, project, host (for CDH products only), primary host IP, etc.
 
     """
 

@@ -178,7 +178,7 @@ class CCFrequencyRule(AbstractModel):
         :type Mode: str
         :param Period: Reference period in seconds. Valid values: [10, 30, 60]
         :type Period: int
-        :param ReqNumber: Number of access requests. Value range: [1–10000]
+        :param ReqNumber: Number of access requests. Value range: [1-10000]
         :type ReqNumber: int
         :param Act: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
         :type Act: str
@@ -308,7 +308,7 @@ class CCRuleConfig(AbstractModel):
         """
         :param Period: Reference period in seconds. Valid values: [10, 30, 60]
         :type Period: int
-        :param ReqNumber: Number of access requests. Value range: [1–10000]
+        :param ReqNumber: Number of access requests. Value range: [1-10000]
         :type ReqNumber: int
         :param Action: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
         :type Action: str
@@ -465,7 +465,7 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
         :type Mode: str
         :param Period: Reference period in seconds. Valid values: [10, 30, 60]
         :type Period: int
-        :param ReqNumber: Number of access requests. Value range: [1–10000]
+        :param ReqNumber: Number of access requests. Value range: [1-10000]
         :type ReqNumber: int
         :param Act: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
         :type Act: str
@@ -721,7 +721,7 @@ class CreateDDoSPolicyRequest(AbstractModel):
         :type Name: str
         :param PortLimits: Ports to be closed. If no ports are to be closed, enter an empty array
         :type PortLimits: list of DDoSPolicyPortLimit
-        :param IpAllowDenys: IP blacklist/whitelist. Enter an empty array if there is no IP blacklist/whitelist
+        :param IpAllowDenys: IP blocklist/allowlist. Enter an empty array if there is no IP blocklist/allowlist
         :type IpAllowDenys: list of IpBlackWhite
         :param PacketFilters: Packet filter. Enter an empty array if there are no packets to filter
         :type PacketFilters: list of DDoSPolicyPacketFilter
@@ -1073,7 +1073,7 @@ class CreateL7RuleCertRequest(AbstractModel):
         """
         :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
         :type Business: str
-        :param Id: Anti-DDoS instance ID
+        :param Id: The resource instance ID, such as the ID of an Anti-DDoS Advanced instance or the ID of an Anti-DDoS Ultimate instance.
         :type Id: str
         :param RuleId: Rule ID
         :type RuleId: str
@@ -1666,7 +1666,7 @@ class DDosPolicy(AbstractModel):
         :type PortLimits: list of DDoSPolicyPortLimit
         :param PacketFilters: Packet filter
         :type PacketFilters: list of DDoSPolicyPacketFilter
-        :param IpBlackWhiteLists: IP blacklist/whitelist
+        :param IpBlackWhiteLists: IP blocklist/allowlist
         :type IpBlackWhiteLists: list of IpBlackWhite
         :param PolicyId: Policy ID
         :type PolicyId: str
@@ -2548,8 +2548,8 @@ class DescribeCCIpAllowDenyRequest(AbstractModel):
         :type Business: str
         :param Id: Anti-DDoS instance ID
         :type Id: str
-        :param Type: Blacklist or whitelist. Valid values: [white (whitelist), black (blacklist)]
-Note: this array can only have one value. It cannot get the blacklist and whitelist at the same time
+        :param Type: Blocklist or allowlist. Valid values: [white (allowlist), black (blocklist)]
+Note: this array can only have one value. It cannot get the blocklist and allowlist at the same time
         :type Type: list of str
         :param Limit: Pagination parameter
         :type Limit: int
@@ -2586,10 +2586,10 @@ class DescribeCCIpAllowDenyResponse(AbstractModel):
         :type Data: list of KeyValue
         :param Total: Number of records
         :type Total: int
-        :param RecordList: Returned Blacklist/whitelist record,
+        :param RecordList: Returned Blocklist/allowlist record,
 If "Key":"ip", "Value": IP;
 If "Key":"domain", "Value": domain name.
-If "Key":"type", "Value" can be `white` (whitelist) or `black` (blacklist).
+If "Key":"type", "Value" can be `white` (allowlist) or `black` (blocklist).
 If "Key":"protocol", "Value": CC protection protocol (HTTP or HTTPS);
         :type RecordList: list of KeyValueRecord
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -2783,7 +2783,7 @@ class DescribeCCUrlAllowRequest(AbstractModel):
         :type Business: str
         :param Id: Anti-DDoS instance ID
         :type Id: str
-        :param Type: Blacklist or whitelist. Valid value: [white (whitelist)]. Currently, only whitelist is supported.
+        :param Type: Blocklist or allowlist. Valid value: [white (allowlist)]. Currently, only allowlist is supported.
 Note: this array can only have one value which can only be `white`
         :type Type: list of str
         :param Limit: Pagination parameter
@@ -2821,10 +2821,10 @@ class DescribeCCUrlAllowResponse(AbstractModel):
         :type Data: list of KeyValue
         :param Total: Total number of records
         :type Total: int
-        :param RecordList: Returned Blacklist/whitelist record,
+        :param RecordList: Returned Blocklist/allowlist record,
 If "Key":"url", "Value": URL;
 If "Key":"domain", "Value": domain name.
-If "Key":"type", "Value" can be `white` (whitelist) or `black` (blacklist).
+If "Key":"type", "Value" can be `white` (allowlist) or `black` (blocklist).
 If "Key":"protocol", "Value": CC protection type (HTTP protection or HTTPS domain name protection);
         :type RecordList: list of KeyValueRecord
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -4929,7 +4929,7 @@ class DescribeSchedulingDomainListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: Number of items in a page. Returned results are not paged if you enter “0”.
+        :param Limit: Number of items in a page. Returned results are not paged if you enter '0'.
         :type Limit: int
         :param Offset: Starting offset of the page. Value: (number of pages - 1) * items per page
         :type Offset: int
@@ -5383,7 +5383,7 @@ class DescribleRegionCountResponse(AbstractModel):
 
 
 class IpBlackWhite(AbstractModel):
-    """IP blacklist/whitelist
+    """IP blocklist/allowlist
 
     """
 
@@ -5391,7 +5391,7 @@ class IpBlackWhite(AbstractModel):
         """
         :param Ip: IP address
         :type Ip: str
-        :param Type: Blacklist/whitelist type. Valid values: [black, white]
+        :param Type: Blocklist/allowlist type. Valid values: [black, white]
         :type Type: str
         """
         self.Ip = None
@@ -5767,6 +5767,9 @@ class L7RuleEntry(AbstractModel):
         :type CCLevel: str
         :param HttpsToHttpEnable: 
         :type HttpsToHttpEnable: int
+        :param VirtualPort: Access port number.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VirtualPort: int
         """
         self.Protocol = None
         self.Domain = None
@@ -5787,6 +5790,7 @@ class L7RuleEntry(AbstractModel):
         self.CCThreshold = None
         self.CCLevel = None
         self.HttpsToHttpEnable = None
+        self.VirtualPort = None
 
 
     def _deserialize(self, params):
@@ -5814,6 +5818,7 @@ class L7RuleEntry(AbstractModel):
         self.CCThreshold = params.get("CCThreshold")
         self.CCLevel = params.get("CCLevel")
         self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
+        self.VirtualPort = params.get("VirtualPort")
 
 
 class L7RuleHealth(AbstractModel):
@@ -5932,7 +5937,7 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
         :type Mode: str
         :param Period: Reference period in seconds. Valid values: [10, 30, 60]
         :type Period: int
-        :param ReqNumber: Number of access requests. Value range: [1–10000]
+        :param ReqNumber: Number of access requests. Value range: [1-10000]
         :type ReqNumber: int
         :param Act: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
         :type Act: str
@@ -6110,9 +6115,9 @@ class ModifyCCIpAllowDenyRequest(AbstractModel):
         :type Id: str
         :param Method: add: add, delete: delete
         :type Method: str
-        :param Type: Blacklist/whitelist type. Valid values: [white (whitelist), black (blacklist)]
+        :param Type: Blocklist/allowlist type. Valid values: [white (allowlist), black (blocklist)]
         :type Type: str
-        :param IpList: Blacklisted/whitelisted IP array
+        :param IpList: Blocklisted/whitelisted IP array
         :type IpList: list of str
         :param Protocol: CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `Domain` and `RuleId` fields are required;
         :type Protocol: str
@@ -6436,7 +6441,7 @@ class ModifyCCUrlAllowRequest(AbstractModel):
         :type Id: str
         :param Method: add: add, delete: delete
         :type Method: str
-        :param Type: Blacklist/whitelist type. Valid value: [white (whitelist)]
+        :param Type: Blocklist/allowlist type. Valid value: [white (allowlist)]
         :type Type: str
         :param UrlList: URL array. URL format:
 http://domain name/cgi
@@ -6947,7 +6952,7 @@ class ModifyDDoSPolicyRequest(AbstractModel):
         :type DropOptions: list of DDoSPolicyDropOption
         :param PortLimits: Port disablement. If no ports are to be disabled, enter an empty array
         :type PortLimits: list of DDoSPolicyPortLimit
-        :param IpAllowDenys: IP blacklist/whitelist. Enter an empty array if there is no IP blacklist/whitelist
+        :param IpAllowDenys: IP blocklist/allowlist. Enter an empty array if there is no IP blocklist/allowlist
         :type IpAllowDenys: list of IpBlackWhite
         :param PacketFilters: Packet filter. Enter an empty array if there are no packets to filter
         :type PacketFilters: list of DDoSPolicyPacketFilter
@@ -7516,6 +7521,106 @@ class ModifyNetReturnSwitchResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNewDomainRulesRequest(AbstractModel):
+    """ModifyNewDomainRules request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).
+        :type Business: str
+        :param Id: Anti-DDoS instance ID.
+        :type Id: str
+        :param Rule: Domain name forwarding rule.
+        :type Rule: :class:`tencentcloud.dayu.v20180709.models.NewL7RuleEntry`
+        """
+        self.Business = None
+        self.Id = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        if params.get("Rule") is not None:
+            self.Rule = NewL7RuleEntry()
+            self.Rule._deserialize(params.get("Rule"))
+
+
+class ModifyNewDomainRulesResponse(AbstractModel):
+    """ModifyNewDomainRules response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: Success code.
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNewL4RuleRequest(AbstractModel):
+    """ModifyNewL4Rule request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).
+        :type Business: str
+        :param Id: Anti-DDoS instance ID.
+        :type Id: str
+        :param Rule: Forwarding rule.
+        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`
+        """
+        self.Business = None
+        self.Id = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        if params.get("Rule") is not None:
+            self.Rule = L4RuleEntry()
+            self.Rule._deserialize(params.get("Rule"))
+
+
+class ModifyNewL4RuleResponse(AbstractModel):
+    """ModifyNewL4Rule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: Success code.
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyResBindDDoSPolicyRequest(AbstractModel):
     """ModifyResBindDDoSPolicy request structure.
 
@@ -7614,6 +7719,121 @@ class ModifyResourceRenewFlagResponse(AbstractModel):
             self.Success = SuccessCode()
             self.Success._deserialize(params.get("Success"))
         self.RequestId = params.get("RequestId")
+
+
+class NewL7RuleEntry(AbstractModel):
+    """Layer-7 rule.
+
+    """
+
+    def __init__(self):
+        """
+        :param Protocol: Forwarding protocol. Valid values: `http` and `https`.
+        :type Protocol: str
+        :param Domain: Forwarding domain name.
+        :type Domain: str
+        :param SourceType: Forwarding method. Valid values: `1` (by domain name); `2` (by IP).
+        :type SourceType: int
+        :param KeepTime: Session persistence duration, in seconds.
+        :type KeepTime: int
+        :param SourceList: List of sources
+        :type SourceList: list of L4RuleSource
+        :param LbType: Load balancing method. Valid value: `1` (weighed polling).
+        :type LbType: int
+        :param KeepEnable: Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).
+        :type KeepEnable: int
+        :param RuleId: Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.
+        :type RuleId: str
+        :param CertType: Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.
+        :type CertType: int
+        :param SSLId: When the certificate source is Tencent Cloud managed certificate, this field must be set to the ID of the managed certificate.
+        :type SSLId: str
+        :param Cert: [Disused] When the certificate is an external certificate, the certificate content should be provided here. 
+        :type Cert: str
+        :param PrivateKey: [Disused] When the certificate is an external certificate, the certificate key should be provided here. 
+        :type PrivateKey: str
+        :param RuleName: Rule description.
+        :type RuleName: str
+        :param Status: Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).
+        :type Status: int
+        :param CCStatus: CC protection status. Valid values: `0` (disabled) and `1` (enabled).
+        :type CCStatus: int
+        :param CCEnable: CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).
+        :type CCEnable: int
+        :param CCThreshold: CC protection threshold based on HTTPS.
+        :type CCThreshold: int
+        :param CCLevel: CC protection level based on HTTPS.
+        :type CCLevel: str
+        :param Region: Region code.
+        :type Region: int
+        :param Id: Anti-DDoS instance ID.
+        :type Id: str
+        :param Ip: Anti-DDoS instance IP address.
+        :type Ip: str
+        :param ModifyTime: Modification time.
+        :type ModifyTime: str
+        :param HttpsToHttpEnable: Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). The default value is disabled.
+        :type HttpsToHttpEnable: int
+        :param VirtualPort: Access port number.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VirtualPort: int
+        """
+        self.Protocol = None
+        self.Domain = None
+        self.SourceType = None
+        self.KeepTime = None
+        self.SourceList = None
+        self.LbType = None
+        self.KeepEnable = None
+        self.RuleId = None
+        self.CertType = None
+        self.SSLId = None
+        self.Cert = None
+        self.PrivateKey = None
+        self.RuleName = None
+        self.Status = None
+        self.CCStatus = None
+        self.CCEnable = None
+        self.CCThreshold = None
+        self.CCLevel = None
+        self.Region = None
+        self.Id = None
+        self.Ip = None
+        self.ModifyTime = None
+        self.HttpsToHttpEnable = None
+        self.VirtualPort = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
+        self.SourceType = params.get("SourceType")
+        self.KeepTime = params.get("KeepTime")
+        if params.get("SourceList") is not None:
+            self.SourceList = []
+            for item in params.get("SourceList"):
+                obj = L4RuleSource()
+                obj._deserialize(item)
+                self.SourceList.append(obj)
+        self.LbType = params.get("LbType")
+        self.KeepEnable = params.get("KeepEnable")
+        self.RuleId = params.get("RuleId")
+        self.CertType = params.get("CertType")
+        self.SSLId = params.get("SSLId")
+        self.Cert = params.get("Cert")
+        self.PrivateKey = params.get("PrivateKey")
+        self.RuleName = params.get("RuleName")
+        self.Status = params.get("Status")
+        self.CCStatus = params.get("CCStatus")
+        self.CCEnable = params.get("CCEnable")
+        self.CCThreshold = params.get("CCThreshold")
+        self.CCLevel = params.get("CCLevel")
+        self.Region = params.get("Region")
+        self.Id = params.get("Id")
+        self.Ip = params.get("Ip")
+        self.ModifyTime = params.get("ModifyTime")
+        self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
+        self.VirtualPort = params.get("VirtualPort")
 
 
 class OrderBy(AbstractModel):

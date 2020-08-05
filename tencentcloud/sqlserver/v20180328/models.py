@@ -376,6 +376,18 @@ class CreateDBInstancesRequest(AbstractModel):
         :type DBVersion: str
         :param AutoRenewFlag: Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
         :type AutoRenewFlag: int
+        :param SecurityGroupList: 
+        :type SecurityGroupList: list of str
+        :param Weekly: 
+        :type Weekly: list of int
+        :param StartTime: 
+        :type StartTime: str
+        :param Span: 
+        :type Span: int
+        :param HAType: 
+        :type HAType: str
+        :param MultiZones: 
+        :type MultiZones: bool
         """
         self.Zone = None
         self.Memory = None
@@ -390,6 +402,12 @@ class CreateDBInstancesRequest(AbstractModel):
         self.VoucherIds = None
         self.DBVersion = None
         self.AutoRenewFlag = None
+        self.SecurityGroupList = None
+        self.Weekly = None
+        self.StartTime = None
+        self.Span = None
+        self.HAType = None
+        self.MultiZones = None
 
 
     def _deserialize(self, params):
@@ -406,6 +424,12 @@ class CreateDBInstancesRequest(AbstractModel):
         self.VoucherIds = params.get("VoucherIds")
         self.DBVersion = params.get("DBVersion")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SecurityGroupList = params.get("SecurityGroupList")
+        self.Weekly = params.get("Weekly")
+        self.StartTime = params.get("StartTime")
+        self.Span = params.get("Span")
+        self.HAType = params.get("HAType")
+        self.MultiZones = params.get("MultiZones")
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -648,7 +672,7 @@ class DBInstance(AbstractModel):
         :type VpcId: int
         :param SubnetId: Instance VPC subnet ID, which will be 0 if the basic network is used
         :type SubnetId: int
-        :param Status: Instance status. Valid values: <li>1: applying </li> <li>2: running </li> <li>3: restrictedly running (master/slave switching) </li> <li>4: isolated </li> <li>5: repossessing </li> <li>6: repossessed </li> <li>7: task running (e.g., backing up or rolling back the instance) </li> <li>8: decommissioned </li> <li>9: scaling </li> <li>10: migrating </li> <li>11: read-only </li> <li>12: restarting </li>
+        :param Status: Instance status. Valid values: <li>1: applying </li> <li>2: running </li> <li>3: restrictedly running (primary/secondary switching) </li> <li>4: isolated </li> <li>5: repossessing </li> <li>6: repossessed </li> <li>7: task running (e.g., backing up or rolling back the instance) </li> <li>8: decommissioned </li> <li>9: scaling </li> <li>10: migrating </li> <li>11: read-only </li> <li>12: restarting </li>
         :type Status: int
         :param Vip: Instance access IP
         :type Vip: str
@@ -698,6 +722,14 @@ class DBInstance(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: Unique string-type ID of instance subnet in the format of `subnet-xxx`, which is an empty string if the basic network is used
         :type UniqSubnetId: str
+        :param IsolateOperator: 
+        :type IsolateOperator: str
+        :param SubFlag: 
+        :type SubFlag: str
+        :param ROFlag: 
+        :type ROFlag: str
+        :param HAFlag: 
+        :type HAFlag: str
         """
         self.InstanceId = None
         self.Name = None
@@ -731,6 +763,10 @@ class DBInstance(AbstractModel):
         self.Pid = None
         self.UniqVpcId = None
         self.UniqSubnetId = None
+        self.IsolateOperator = None
+        self.SubFlag = None
+        self.ROFlag = None
+        self.HAFlag = None
 
 
     def _deserialize(self, params):
@@ -766,6 +802,10 @@ class DBInstance(AbstractModel):
         self.Pid = params.get("Pid")
         self.UniqVpcId = params.get("UniqVpcId")
         self.UniqSubnetId = params.get("UniqSubnetId")
+        self.IsolateOperator = params.get("IsolateOperator")
+        self.SubFlag = params.get("SubFlag")
+        self.ROFlag = params.get("ROFlag")
+        self.HAFlag = params.get("HAFlag")
 
 
 class DBPrivilege(AbstractModel):
@@ -1020,7 +1060,7 @@ class DescribeAccountsRequest(AbstractModel):
         """
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param Limit: Number of results per page. Value range: 1–100. Default value: 20
+        :param Limit: Number of results per page. Value range: 1-100. Default value: 20
         :type Limit: int
         :param Offset: Page number. Default value: 0
         :type Offset: int
@@ -1083,7 +1123,7 @@ class DescribeBackupsRequest(AbstractModel):
         :type EndTime: str
         :param InstanceId: Instance ID in the format of mssql-njj2mtpl
         :type InstanceId: str
-        :param Limit: Number of results per page. Value range: 1–100. Default value: 20
+        :param Limit: Number of results per page. Value range: 1-100. Default value: 20
         :type Limit: int
         :param Offset: Page number. Default value: 0
         :type Offset: int
@@ -1145,7 +1185,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :param Status: Instance status. Valid values:
 <li>1: applying</li>
 <li>2: running</li>
-<li>3: running restrictedly (master/slave switching)</li>
+<li>3: running restrictedly (primary/secondary switching)</li>
 <li>4: isolated</li>
 <li>5: repossessing</li>
 <li>6: repossessed</li>
@@ -1158,7 +1198,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Status: int
         :param Offset: Page number. Default value: 0
         :type Offset: int
-        :param Limit: Number of results per page. Value range: 1–100. Default value: 100
+        :param Limit: Number of results per page. Value range: 1-100. Default value: 100
         :type Limit: int
         :param InstanceIdSet: One or more instance IDs in the format of mssql-si2823jyl
         :type InstanceIdSet: list of str
@@ -1229,7 +1269,7 @@ class DescribeDBsRequest(AbstractModel):
         """
         :param InstanceIdSet: Instance ID
         :type InstanceIdSet: list of str
-        :param Limit: Number of results per page. Value range: 1–100. Default value: 20
+        :param Limit: Number of results per page. Value range: 1-100. Default value: 20
         :type Limit: int
         :param Offset: Page number. Default value: 0
         :type Offset: int
@@ -1423,7 +1463,7 @@ class DescribeMigrationsRequest(AbstractModel):
         :type StatusSet: list of int
         :param MigrateName: Migration task name (fuzzy match)
         :type MigrateName: str
-        :param Limit: Number of results per page. Value range: 1–100. Default value: 100
+        :param Limit: Number of results per page. Value range: 1-100. Default value: 100
         :type Limit: int
         :param Offset: Page number. Default value: 0
         :type Offset: int
@@ -1669,7 +1709,7 @@ class DescribeSlowlogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: Query end time
         :type EndTime: str
-        :param Limit: Number of results per page. Value range: 1–100. Default value: 20
+        :param Limit: Number of results per page. Value range: 1-100. Default value: 20
         :type Limit: int
         :param Offset: Page number. Default value: 0
         :type Offset: int
@@ -1770,12 +1810,18 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         :type Storage: int
         :param InstanceChargeType: Billing type. Valid value: POSTPAID.
         :type InstanceChargeType: str
-        :param Period: Length of purchase in months. Value range: 1–48. Default value: 1
+        :param Period: Length of purchase in months. Value range: 1-48. Default value: 1
         :type Period: int
-        :param GoodsNum: Number of instances purchased at a time. Value range: 1–100. Default value: 1
+        :param GoodsNum: Number of instances purchased at a time. Value range: 1-100. Default value: 1
         :type GoodsNum: int
         :param DBVersion: SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). Default value: 2008R2.
         :type DBVersion: str
+        :param Cpu: 
+        :type Cpu: int
+        :param InstanceType: 
+        :type InstanceType: str
+        :param MachineType: 
+        :type MachineType: str
         """
         self.Zone = None
         self.Memory = None
@@ -1784,6 +1830,9 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self.Period = None
         self.GoodsNum = None
         self.DBVersion = None
+        self.Cpu = None
+        self.InstanceType = None
+        self.MachineType = None
 
 
     def _deserialize(self, params):
@@ -1794,6 +1843,9 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self.Period = params.get("Period")
         self.GoodsNum = params.get("GoodsNum")
         self.DBVersion = params.get("DBVersion")
+        self.Cpu = params.get("Cpu")
+        self.InstanceType = params.get("InstanceType")
+        self.MachineType = params.get("MachineType")
 
 
 class InquiryPriceCreateDBInstancesResponse(AbstractModel):
@@ -1834,16 +1886,20 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
         :type Memory: int
         :param Storage: Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity
         :type Storage: int
+        :param Cpu: 
+        :type Cpu: int
         """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Memory = params.get("Memory")
         self.Storage = params.get("Storage")
+        self.Cpu = params.get("Cpu")
 
 
 class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
@@ -2821,12 +2877,15 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type AutoVoucher: int
         :param VoucherIds: Voucher ID (currently, only one voucher can be used per order)
         :type VoucherIds: list of str
+        :param Cpu: 
+        :type Cpu: int
         """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -2835,6 +2894,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.Storage = params.get("Storage")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        self.Cpu = params.get("Cpu")
 
 
 class UpgradeDBInstanceResponse(AbstractModel):

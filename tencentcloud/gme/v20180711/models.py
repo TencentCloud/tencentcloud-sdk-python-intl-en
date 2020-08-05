@@ -423,7 +423,7 @@ class RealtimeSpeechConf(AbstractModel):
         """
         :param Status: Voice chat status. Valid values: open, close
         :type Status: str
-        :param Quality: Voice chat sound quality type. Valid values: high (HD), ordinary (SD). Default value: high. SD sound quality is only available to whitelisted users. To try it out, please contact your Tencent Cloud rep.
+        :param Quality: Voice chat sound quality type. Valid values: high (HD), ordinary (SD). Default value: high. SD sound quality is only available to allowllisted users. To try it out, please contact your Tencent Cloud rep.
         :type Quality: str
         """
         self.Status = None

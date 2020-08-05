@@ -101,7 +101,7 @@ media: streaming media VOD acceleration
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
         :param ProjectId: Project ID. Default value: 0, indicating `Default Project`
         :type ProjectId: int
-        :param IpFilter: IP blacklist/whitelist configuration
+        :param IpFilter: IP blocklist/allowlist configuration
         :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         :param IpFreqLimit: IP access limit configuration
         :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
@@ -446,7 +446,7 @@ Unit: second. The maximum value is 31536000.
         :param FileExtensions: File extension list settings determining if authentication should be performed
 If it contains an asterisk (*), this indicates all files.
         :type FileExtensions: list of str
-        :param FilterType: whitelist: indicates that all file types apart from the FileExtensions list are authenticated
+        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
 blacklist: indicates that only the file types in the FileExtensions list are authenticated
         :type FilterType: str
         """
@@ -482,7 +482,7 @@ Unit: second. The maximum value is 31536000.
         :param FileExtensions: File extension list settings determining if authentication should be performed
 If it contains an asterisk (*), this indicates all files.
         :type FileExtensions: list of str
-        :param FilterType: whitelist: indicates that all file types apart from the FileExtensions list are authenticated
+        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
 blacklist: indicates that only the file types in the FileExtensions list are authenticated
         :type FilterType: str
         """
@@ -519,7 +519,7 @@ Unit: second. The maximum value is 31536000.
         :param FileExtensions: File extension list settings determining if authentication should be performed
 If it contains an asterisk (*), this indicates all files.
         :type FileExtensions: list of str
-        :param FilterType: whitelist: indicates that all file types apart from the FileExtensions list are authenticated
+        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
 blacklist: indicates that only the file types in the FileExtensions list are authenticated
         :type FilterType: str
         """
@@ -556,7 +556,7 @@ Unit: second. The maximum value is 31536000.
         :param FileExtensions: File extension list settings determining if authentication should be performed
 If it contains an asterisk (*), this indicates all files.
         :type FileExtensions: list of str
-        :param FilterType: whitelist: indicates that all file types apart from the FileExtensions list are authenticated
+        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
 blacklist: indicates that only the file types in the FileExtensions list are authenticated
         :type FilterType: str
         :param SignParam: Signature parameter name
@@ -1521,14 +1521,14 @@ all: All protocols
 http: specifies the HTTP metric to be queried
 https: specifies the HTTPS metric to be queried
         :type Protocol: str
-        :param DataSource: Specifies the data source to be queried, which can be seen as the whitelist function.
+        :param DataSource: Specifies the data source to be queried, which can be seen as the allowlist function.
         :type DataSource: str
         :param IpProtocol: Specified IP protocol to be queried. If this parameter is left empty, all protocols will be queried
 all: all protocols
 ipv4: specifies to query IPv4 metrics
 ipv6: specifies to query IPv6 metrics
 If the IP protocol to be queried is specified, the district and ISP cannot be specified at the same time
-Note: non-IPv6 whitelisted users cannot specify `ipv4` and `ipv6` for query
+Note: non-IPv6 allowlisted users cannot specify `ipv4` and `ipv6` for query
         :type IpProtocol: str
         :param Area: Specifies a service region. If this value is left blank, CDN data within Mainland China will be queried.
 `mainland`: specifies to query CDN data within Mainland China;
@@ -2673,7 +2673,7 @@ media: streaming VOD acceleration
         :type UpdateTime: str
         :param Origin: Origin server configuration
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param IpFilter: IP blacklist/whitelist configuration
+        :param IpFilter: IP blocklist/allowlist configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         :param IpFreqLimit: IP access frequency limit configuration
@@ -3058,13 +3058,13 @@ class DomainFilter(AbstractModel):
     def __init__(self):
         """
         :param Name: Filter field name, the list supported is as follows:
-- origin: master origin server.
+- origin: primary origin server.
 - domain: domain name.
 - resourceId: domain name id.
 - status: domain name status. Values include `online`, `offline`, or `processing`.
 - serviceType: service type. Values include `web`, `download`, or `media`.
 - projectId: project ID.
-- domainType: master origin server type, `cname` indicates external origin, `COS` indicates COS origin.
+- domainType: primary origin server type, `cname` indicates external origin, `COS` indicates COS origin.
 - fullUrlCache: full-path cache, which can be on or off.
 - https: whether to configure HTTPS, which can be on, off or processing.
 - originPullProtocol: origin-pull protocol type. HTTP, follow, or HTTPS are supported.
@@ -3650,24 +3650,24 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class IpFilter(AbstractModel):
-    """IP blacklist/whitelist configuration. This is disabled by default.
+    """IP blocklist/allowlist configuration. This is disabled by default.
 
     """
 
     def __init__(self):
         """
-        :param Switch: IP blacklist/whitelist configuration switch
+        :param Switch: IP blocklist/allowlist configuration switch
 on: enabled
 off: disabled
         :type Switch: str
-        :param FilterType: IP blacklist/whitelist type
-whitelist: whitelist
-blacklist: blacklist
+        :param FilterType: IP blocklist/allowlist type
+whitelist: allowlist
+blacklist: blocklist
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FilterType: str
-        :param Filters: IP blacklist/whitelist list
+        :param Filters: IP blocklist/allowlist list
 Supports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges.
-Up to 50 whitelists or blacklists can be entered
+Up to 50 allowlists or blocklists can be entered
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Filters: list of str
         """
@@ -3905,7 +3905,7 @@ Data generated before or at 23:59:59 on the end date will be returned
         :type EndTime: str
         :param Metric: Object representing the sort criteria. The following objects are supported:
 url: sorts by access URL (including the query string). Supported filters are `flux` and `request`
-path: sorts by access URL (excluding the query string). Supported filters are `flux` and `request` (whitelist-based feature)
+path: sorts by access URL (excluding the query string). Supported filters are `flux` and `request` (allowlist-based feature)
 district: sorts by district. Supported filters are `flux` and `request`
 isp: sorts by ISP. Supported filters are `flux` and `request`
 host: sorts by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, 2XX, 3XX, 4XX, 5XX, and `statusCode`
@@ -3932,7 +3932,7 @@ OriginStatusCode: statistics of a specific origin-pull status code which is spec
         :param Project: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
 Please note that if domain names are specified, this parameter will be ignored.
         :type Project: int
-        :param Detail: Default is `false` for multi–domain name queries, which returns sorted results of all domain names. 
+        :param Detail: Default is `false` for multi-domain name queries, which returns sorted results of all domain names. 
 If `Metric` is `url`, `path`, `district`, or `isp` and `Filter` is `flux` or `request`, it can be set to `true` to return the sorted results of each domain.
         :type Detail: bool
         :param Code: When Filter is `statusCode` or `OriginStatusCode`, enter a code to query and sort results.
@@ -4086,7 +4086,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Https: HTTPS configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param IpFilter: IP blacklist/whitelist configuration.
+        :param IpFilter: IP blocklist/allowlist configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         :param IpFreqLimit: IP access limit configuration.
@@ -4381,7 +4381,7 @@ class Origin(AbstractModel):
 When modifying the origin server, you need to enter the corresponding OriginType.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Origins: list of str
-        :param OriginType: Master origin server type
+        :param OriginType: Primary origin server type
 The following types are supported for input parameters:
 domain: domain name type
 cos: COS origin
@@ -4392,10 +4392,10 @@ The following types of output parameters are added:
 image: Cloud Infinite origin
 ftp: legacy FTP origin, which is no longer maintained.
 When modifying `Origins`, you need to enter the corresponding OriginType.
-The IPv6 feature is not generally available yet. Please send in a whitelist application to use this feature.
+The IPv6 feature is not generally available yet. Please send in a allowlist application to use this feature.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginType: str
-        :param ServerName: Host header used when accessing the master origin server. If left empty, the acceleration domain name will be used by default.
+        :param ServerName: Host header used when accessing the primary origin server. If left empty, the acceleration domain name will be used by default.
 If a wildcard domain name is accessed, then the sub-domain name during the access will be used by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServerName: str
@@ -4419,7 +4419,7 @@ ip: IP list used as origin server
 When modifying BackupOrigins, you need to enter the corresponding BackupOriginType.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BackupOriginType: str
-        :param BackupServerName: Host header used when accessing the backup origin server. If left empty, the ServerName of master origin server will be used by default.
+        :param BackupServerName: Host header used when accessing the backup origin server. If left empty, the ServerName of primary origin server will be used by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BackupServerName: str
         :param BasePath: Origin-pull path
@@ -4541,7 +4541,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Https: HTTPS configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param IpFilter: IP blacklist/whitelist configuration.
+        :param IpFilter: IP blocklist/allowlist configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         :param IpFreqLimit: IP access limit configuration.
@@ -4780,12 +4780,20 @@ class PurgeUrlsCacheRequest(AbstractModel):
         """
         :param Urls: List of URLs. The protocol header such as "http://" or "https://" needs to be included.
         :type Urls: list of str
+        :param Area: Purging region
+The acceleration region of the acceleration domain name will be purged if this parameter is not passed in
+If `mainland` is passed in, only the content cached on nodes in the Chinese mainland will be purged
+If `overseas` is passed in, only the content cached on nodes outside the Chinese mainland will be purged
+The specified purging region should match the domain name acceleration region
+        :type Area: str
         """
         self.Urls = None
+        self.Area = None
 
 
     def _deserialize(self, params):
         self.Urls = params.get("Urls")
+        self.Area = params.get("Area")
 
 
 class PurgeUrlsCacheResponse(AbstractModel):
@@ -4990,17 +4998,17 @@ off: disabled
 
 
 class Referer(AbstractModel):
-    """Referer blacklist/whitelist configuration. This is disabled by default.
+    """Referer blocklist/allowlist configuration. This is disabled by default.
 
     """
 
     def __init__(self):
         """
-        :param Switch: Referer blacklist/whitelist configuration switch
+        :param Switch: Referer blocklist/allowlist configuration switch
 on: enabled
 off: disabled
         :type Switch: str
-        :param RefererRules: Referer blacklist/whitelist configuration rule
+        :param RefererRules: Referer blocklist/allowlist configuration rule
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RefererRules: list of RefererRule
         """
@@ -5019,7 +5027,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class RefererRule(AbstractModel):
-    """Referer blacklist/whitelist configuration rules, which is effective for specific resources.
+    """Referer blocklist/allowlist configuration rules, which is effective for specific resources.
 
     """
 
@@ -5038,8 +5046,8 @@ For `directory`, enter the path, such as /xxx/test/.
 For `path`, enter the corresponding absolute path, such as /xxx/test.html.
         :type RulePaths: list of str
         :param RefererType: Referer configuration types
-whitelist: whitelist
-blacklist: blacklist
+whitelist: allowlist
+blacklist: blocklist
         :type RefererType: str
         :param Referers: Referer content list
         :type Referers: list of str
@@ -5516,9 +5524,9 @@ This conflicts with CompareMaxAge. The two cannot be enabled at the same time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FollowOrigin: str
         :param IgnoreCacheControl: Forced cache
-on: enabled
-off: disabled
-This is disabled by default. If enabled, `no-store` and `no-cache` resources returned from the origin server will be cached according to CacheRules rules.
+on: enable
+off: disable
+This is disabled by default. If enabled, the `no-store` and `no-cache` resources returned from the origin server will be cached according to `CacheRules` rules.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IgnoreCacheControl: str
         :param IgnoreSetCookie: Ignores the Set-Cookie header of the origin server
@@ -5928,7 +5936,7 @@ class UpdateDomainConfigRequest(AbstractModel):
         :type ProjectId: int
         :param Origin: Origin server configuration
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param IpFilter: IP blacklist/whitelist configuration
+        :param IpFilter: IP blocklist/allowlist configuration
         :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         :param IpFreqLimit: IP access limit configuration
         :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
@@ -5989,7 +5997,7 @@ global: global acceleration
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         :param AwsPrivateAccess: Origin access authentication for S3 bucket
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
-        :param UserAgentFilter: UA blacklist/whitelist Configuration
+        :param UserAgentFilter: UA blocklist/allowlist Configuration
         :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
         """
         self.Domain = None
@@ -6202,7 +6210,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class UserAgentFilter(AbstractModel):
-    """`UserAgent` blacklist/whitelist configuration
+    """`UserAgent` blocklist/allowlist configuration
 
     """
 
@@ -6211,7 +6219,7 @@ class UserAgentFilter(AbstractModel):
         :param Switch: Switch. Valid values: on, off
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Switch: str
-        :param FilterRules: UA blacklist/whitelist effect rule list
+        :param FilterRules: UA blocklist/allowlist effect rule list
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FilterRules: list of UserAgentFilterRule
         """
@@ -6230,7 +6238,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UserAgentFilterRule(AbstractModel):
-    """`UserAgent` blacklist/whitelist rule configuration
+    """`UserAgent` blocklist/allowlist rule configuration
 
     """
 
@@ -6249,7 +6257,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param UserAgents: `UserAgent` list
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserAgents: list of str
-        :param FilterType: Blacklist or whitelist. Valid values: blacklist, whitelist
+        :param FilterType: blocklist or allowlist. Valid values: blacklist, whitelist
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FilterType: str
         """

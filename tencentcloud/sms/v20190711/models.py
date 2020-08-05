@@ -863,12 +863,15 @@ Note: this parameter is currently fixed at 0.
         :type PhoneNumber: str
         :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
+        :param EndDateTime: 
+        :type EndDateTime: int
         """
         self.SendDateTime = None
         self.Offset = None
         self.Limit = None
         self.PhoneNumber = None
         self.SmsSdkAppid = None
+        self.EndDateTime = None
 
 
     def _deserialize(self, params):
@@ -877,6 +880,7 @@ Note: this parameter is currently fixed at 0.
         self.Limit = params.get("Limit")
         self.PhoneNumber = params.get("PhoneNumber")
         self.SmsSdkAppid = params.get("SmsSdkAppid")
+        self.EndDateTime = params.get("EndDateTime")
 
 
 class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
@@ -1015,12 +1019,15 @@ Note: this parameter is currently fixed at 0.
         :type PhoneNumber: str
         :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
+        :param EndDateTime: 
+        :type EndDateTime: int
         """
         self.SendDateTime = None
         self.Offset = None
         self.Limit = None
         self.PhoneNumber = None
         self.SmsSdkAppid = None
+        self.EndDateTime = None
 
 
     def _deserialize(self, params):
@@ -1029,6 +1036,7 @@ Note: this parameter is currently fixed at 0.
         self.Limit = params.get("Limit")
         self.PhoneNumber = params.get("PhoneNumber")
         self.SmsSdkAppid = params.get("SmsSdkAppid")
+        self.EndDateTime = params.get("EndDateTime")
 
 
 class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):

@@ -178,7 +178,7 @@ class CreateKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1–60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.
+        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.
         :type Alias: str
         :param Description: 
         :type Description: str
@@ -186,11 +186,14 @@ class CreateKeyRequest(AbstractModel):
         :type KeyUsage: str
         :param Type: Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.
         :type Type: int
+        :param Tags: 
+        :type Tags: list of Tag
         """
         self.Alias = None
         self.Description = None
         self.KeyUsage = None
         self.Type = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -198,6 +201,12 @@ class CreateKeyRequest(AbstractModel):
         self.Description = params.get("Description")
         self.KeyUsage = params.get("KeyUsage")
         self.Type = params.get("Type")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateKeyResponse(AbstractModel):
@@ -262,16 +271,25 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
         :type Algorithm: str
         :param Description: Key description of up to 1024 bytes
         :type Description: str
+        :param Tags: 
+        :type Tags: list of Tag
         """
         self.Alias = None
         self.Algorithm = None
         self.Description = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.Alias = params.get("Alias")
         self.Algorithm = params.get("Algorithm")
         self.Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateWhiteBoxKeyResponse(AbstractModel):
@@ -287,12 +305,18 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
         :type DecryptKey: str
         :param KeyId: Globally unique white-box key ID
         :type KeyId: str
+        :param TagCode: 
+        :type TagCode: int
+        :param TagMsg: 
+        :type TagMsg: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.EncryptKey = None
         self.DecryptKey = None
         self.KeyId = None
+        self.TagCode = None
+        self.TagMsg = None
         self.RequestId = None
 
 
@@ -300,6 +324,8 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
         self.EncryptKey = params.get("EncryptKey")
         self.DecryptKey = params.get("DecryptKey")
         self.KeyId = params.get("KeyId")
+        self.TagCode = params.get("TagCode")
+        self.TagMsg = params.get("TagMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -1437,7 +1463,7 @@ class ImportKeyMaterialRequest(AbstractModel):
         :type ImportToken: str
         :param KeyId: Specifies the CMK into which to import key material, which must be the same as the one specified by `GetParametersForImport`.
         :type KeyId: str
-        :param ValidTo: Unix timestamp of the key material’s expiration time. If this value is empty or 0, the key material will never expire. To specify the expiration time, it should be later than the current time. Maximum value: 2147443200.
+        :param ValidTo: Unix timestamp of the key material's expiration time. If this value is empty or 0, the key material will never expire. To specify the expiration time, it should be later than the current time. Maximum value: 2147443200.
         :type ValidTo: int
         """
         self.EncryptedKeyMaterial = None
@@ -1521,7 +1547,7 @@ class KeyMetadata(AbstractModel):
         :param Origin: CMK key material type. TENCENT_KMS: created by KMS; EXTERNAL: imported by user.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Origin: str
-        :param ValidTo: It’s valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.
+        :param ValidTo: It's valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ValidTo: int
         :param ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$keyId`.
@@ -1885,6 +1911,27 @@ class ScheduleKeyDeletionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Tag(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 
+        :type TagKey: str
+        :param TagValue: 
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class UpdateAliasRequest(AbstractModel):
     """UpdateAlias request structure.
 
@@ -1892,7 +1939,7 @@ class UpdateAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Alias: New alias containing 1–60 characters or digits
+        :param Alias: New alias containing 1-60 characters or digits
         :type Alias: str
         :param KeyId: Globally unique CMK ID
         :type KeyId: str

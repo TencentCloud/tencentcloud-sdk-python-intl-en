@@ -599,7 +599,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeBlockIPList(self, request):
-        """This API is used to query the list of blocked IPs (blacklist) of a CLB instance. (This API is in beta test. To use it, please submit a ticket.)
+        """This API is used to query the list of blocked IPs (blocklist) of a CLB instance. (This API is in beta test. To use it, please submit a ticket.)
 
         :param request: Request instance for DescribeBlockIPList.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPListRequest`
@@ -627,7 +627,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeBlockIPTask(self, request):
-        """This API is used to query the execution status of an async IP blocking (blacklisting) task by the async task ID returned by the `ModifyBlockIPList` API. (This API is in beta test. To use it, please submit a ticket.)
+        """This API is used to query the execution status of an async IP blocking (blocklisting) task by the async task ID returned by the `ModifyBlockIPList` API. (This API is in beta test. To use it, please submit a ticket.)
 
         :param request: Request instance for DescribeBlockIPTask.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPTaskRequest`
@@ -1104,7 +1104,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyBlockIPList(self, request):
-        """This API is used to modify the client IP blacklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blacklist can contain up to 2,000,000 entries.
+        """This API is used to modify the client IP blocklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blocklist can contain up to 2,000,000 entries.
         (This API is in beta test. To use it, please submit a ticket.)
 
         :param request: Request instance for ModifyBlockIPList.

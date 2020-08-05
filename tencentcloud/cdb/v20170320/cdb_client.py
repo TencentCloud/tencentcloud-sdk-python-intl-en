@@ -224,14 +224,14 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBInstanceHour(self, request):
-        """This API is used to create a pay-as-you-go TencentDB instance (which can be a master, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.
+        """This API is used to create a pay-as-you-go TencentDB instance (which can be a primary, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.
 
         This is an async API. You can also use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.
 
         1. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported instance specifications first and then use the [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566) API to query the prices of the supported instances;
         2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;
         3. MySQL v5.5, v5.6, and v5.7 are supported;
-        4. Master instances, read-only instances, and disaster recovery instances can be created;
+        4. primary instances, read-only instances, and disaster recovery instances can be created;
         5. If `Port`, `ParamList`, or `Password` is set in the input parameters, the instance will be initialized.
 
         :param request: Request instance for CreateDBInstanceHour.
@@ -936,7 +936,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstances(self, request):
-        """This API (DescribeDBInstances) is used to query the list of TencentDB instances (which can be master, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, access address, and instance status.
+        """This API (DescribeDBInstances) is used to query the list of TencentDB instances (which can be primary, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, access address, and instance status.
 
         :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstancesRequest`
@@ -1369,6 +1369,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRoGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRoMinScale(self, request):
+        """This API is used to query the minimum specification of a read-only instance that can be purchased or upgraded to.
+
+        :param request: Request instance for DescribeRoMinScale.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRoMinScaleRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeRoMinScaleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRoMinScale", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRoMinScaleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2292,7 +2320,7 @@ class CdbClient(AbstractClient):
         """This API (RestartDBInstances) is used to restart TencentDB instances.
 
         Note:
-        1. This API only supports restarting master instances.
+        1. This API only supports restarting primary instances.
         2. The instance status must be normal, and no other async tasks are in progress.
 
         :param request: Request instance for RestartDBInstances.
@@ -2377,7 +2405,7 @@ class CdbClient(AbstractClient):
 
 
     def SwitchForUpgrade(self, request):
-        """This API (SwitchForUpgrade) is used to switch to a new instance. You can initiate this process when the master instance being upgraded is pending switch.
+        """This API (SwitchForUpgrade) is used to switch to a new instance. You can initiate this process when the primary instance being upgraded is pending switch.
 
         :param request: Request instance for SwitchForUpgrade.
         :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchForUpgradeRequest`
@@ -2405,7 +2433,7 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeDBInstance(self, request):
-        """This API is used to upgrade or downgrade a TencentDB instance, which can be a master instance, disaster recovery instance, or read-only instance.
+        """This API is used to upgrade or downgrade a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.
 
         :param request: Request instance for UpgradeDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceRequest`
@@ -2433,7 +2461,7 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeDBInstanceEngineVersion(self, request):
-        """This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a master instance, disaster recovery instance, or read-only instance.
+        """This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.
 
         :param request: Request instance for UpgradeDBInstanceEngineVersion.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceEngineVersionRequest`

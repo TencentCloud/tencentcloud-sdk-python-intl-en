@@ -1268,7 +1268,7 @@ Maximum length: 1,024 bytes.
 Only letters, digits, underscores, and hyphens can be contained.
         :type Description: str
         :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
-Value range: 5–600s.
+Value range: 5-600s.
         :type SnapshotInterval: int
         :param Width: Screenshot width. Default value: 0 (original width).
         :type Width: int
@@ -1384,7 +1384,7 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         """
         :param TemplateName: Template name, such as 900 900p. This can be only a combination of letters and digits.
         :type TemplateName: str
-        :param VideoBitrate: Video bitrate. Value range: 100–8,000.
+        :param VideoBitrate: Video bitrate. Value range: 100-8,000.
 Note: The bitrate must be a multiple of 100.
         :type VideoBitrate: int
         :param Vcodec: Video encoding format. Valid values: h264, h265. Default value: h264.
@@ -1392,7 +1392,7 @@ Note: The bitrate must be a multiple of 100.
         :param Acodec: Audio encoding in ACC format. Default value: original audio format.
 Note: This parameter will take effect later.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0–500. Default value: 0.
+        :param AudioBitrate: Audio bitrate. Value range: 0-500. Default value: 0.
         :type AudioBitrate: int
         :param Description: Template description.
         :type Description: str
@@ -1421,7 +1421,7 @@ baseline/main/high. Default value: baseline.
         :type FpsToOrig: int
         :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
         :type AiTransCode: int
-        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1–0.5.
+        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5.
         :type AdaptBitratePercent: float
         """
         self.TemplateName = None
@@ -2901,9 +2901,9 @@ class DescribeLiveDomainsRequest(AbstractModel):
         :type DomainStatus: int
         :param DomainType: Filter by domain name type. 0: push. 1: playback
         :type DomainType: int
-        :param PageSize: Number of entries per page. Value range: 10–100. Default value: 10.
+        :param PageSize: Number of entries per page. Value range: 10-100. Default value: 10.
         :type PageSize: int
-        :param PageNum: Page number to get. Value range: 1–100000. Default value: 1.
+        :param PageNum: Page number to get. Value range: 1-100000. Default value: 1.
         :type PageNum: int
         :param IsDelayLive: 0: LVB, 1: LCB. Default value: 0.
         :type IsDelayLive: int
@@ -5784,7 +5784,7 @@ Maximum length: 255 bytes.
 Maximum length: 1,024 bytes.
         :type Description: str
         :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
-Value range: 5–600s.
+Value range: 5-600s.
         :type SnapshotInterval: int
         :param Width: Screenshot width. Default value: 0 (original width).
         :type Width: int
@@ -5867,11 +5867,11 @@ h264/h265.
 aac/mp3.
         :type Acodec: str
         :param AudioBitrate: Audio bitrate. Default value: 0.
-Value range: 0–500.
+Value range: 0-500.
         :type AudioBitrate: int
         :param Description: Template description.
         :type Description: str
-        :param VideoBitrate: Video bitrate. Value range: 100–8000 Kbps.
+        :param VideoBitrate: Video bitrate. Value range: 100-8000 Kbps.
 Note: the bitrate value must be a multiple of 100.
         :type VideoBitrate: int
         :param Width: Width. Value range: 0-3000.
@@ -5882,9 +5882,9 @@ Note: the bitrate value must be a multiple of 100.
         :type NeedAudio: int
         :param Height: Height. Value range: 0-3000.
         :type Height: int
-        :param Fps: Frame rate. Value range: 0–200.
+        :param Fps: Frame rate. Value range: 0-200.
         :type Fps: int
-        :param Gop: Keyframe interval in seconds. Value range: 0–50.
+        :param Gop: Keyframe interval in seconds. Value range: 0-50.
         :type Gop: int
         :param Rotate: Rotation angle.
 0, 90, 180, 270.
@@ -5898,7 +5898,7 @@ baseline/main/high.
         :type HeightToOrig: int
         :param FpsToOrig: Whether to not exceed the original frame rate. 0: no; 1: yes. Default value: 0.
         :type FpsToOrig: int
-        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1–0.5.
+        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5.
         :type AdaptBitratePercent: float
         """
         self.TemplateId = None
@@ -6433,11 +6433,11 @@ class RecordParam(AbstractModel):
         """
         :param RecordInterval: Recording interval.
 In seconds. Default value: 1800.
-Value range: 300–7200.
+Value range: 300-7200.
 This parameter is not valid for HLS, and a file will be generated from push start to interruption during HLS recording.
         :type RecordInterval: int
         :param StorageTime: Recording storage period.
-In seconds. Value range: 0–93312000.
+In seconds. Value range: 0-93312000.
 0: permanent storage.
         :type StorageTime: int
         :param Enable: Whether to enable recording in the current format. Default value: 0. 0: no, 1: yes.
@@ -6678,12 +6678,12 @@ class SnapshotTemplateInfo(AbstractModel):
         :type TemplateId: int
         :param TemplateName: Template name.
         :type TemplateName: str
-        :param SnapshotInterval: Screencapturing interval. Value range: 5–300s.
+        :param SnapshotInterval: Screencapturing interval. Value range: 5-300s.
         :type SnapshotInterval: int
-        :param Width: Screenshot width. Value range: 0–3000. 
+        :param Width: Screenshot width. Value range: 0-3000. 
 0: original width and fit to the original ratio.
         :type Width: int
-        :param Height: Screenshot height. Value range: 0–2000.
+        :param Height: Screenshot height. Value range: 0-2000.
 0: original height and fit to the original ratio.
         :type Height: int
         :param PornFlag: Whether to enable porn detection. 0: no, 1: yes.
@@ -6950,19 +6950,19 @@ class TemplateInfo(AbstractModel):
         :param Vcodec: Video encoding format:
 h264/h265.
         :type Vcodec: str
-        :param VideoBitrate: Video bitrate. Value range: 100–8000 Kbps.
+        :param VideoBitrate: Video bitrate. Value range: 100-8000 Kbps.
         :type VideoBitrate: int
         :param Acodec: Audio codec. Valid values: aac, mp3.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0–500 Kbps.
+        :param AudioBitrate: Audio bitrate. Value range: 0-500 Kbps.
         :type AudioBitrate: int
-        :param Width: Width. Value range: 0–3000.
+        :param Width: Width. Value range: 0-3000.
         :type Width: int
-        :param Height: Height. Value range: 0–3000.
+        :param Height: Height. Value range: 0-3000.
         :type Height: int
-        :param Fps: Frame rate. Value range: 0–200 FPS.
+        :param Fps: Frame rate. Value range: 0-200 FPS.
         :type Fps: int
-        :param Gop: Keyframe interval. Value range: 1–50s.
+        :param Gop: Keyframe interval. Value range: 1-50s.
         :type Gop: int
         :param Rotate: Rotation angle. Valid values: 0, 90, 180, 270.
         :type Rotate: int
@@ -6987,7 +6987,7 @@ baseline, main, high.
         :type Description: str
         :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
         :type AiTransCode: int
-        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1–0.5.
+        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5.
         :type AdaptBitratePercent: float
         """
         self.Vcodec = None

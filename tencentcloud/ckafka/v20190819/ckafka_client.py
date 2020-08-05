@@ -110,7 +110,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateTopicIpWhiteList(self, request):
-        """This API is used to create a topic IP whitelist.
+        """This API is used to create a topic IP allowlist.
 
         :param request: Request instance for CreateTopicIpWhiteList.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateTopicIpWhiteListRequest`
@@ -222,7 +222,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteTopicIpWhiteList(self, request):
-        """This API is used to delete a topic IP whitelist.
+        """This API is used to delete a topic IP allowlist.
 
         :param request: Request instance for DeleteTopicIpWhiteList.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteTopicIpWhiteListRequest`

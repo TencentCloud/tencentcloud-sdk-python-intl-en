@@ -194,9 +194,9 @@ class EsClient(AbstractClient):
 
 
     def UpdateInstance(self, request):
-        """This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blacklist/whitelist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:
+        """This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blocklist/allowlist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:
         - InstanceName: renames an instance (only for instance identification)
-        - NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding master nodes, adding cold nodes, etc.)
+        - NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding primary nodes, adding cold nodes, etc.)
         - EsConfig: modifies cluster configuration
         - Password: changes the password of the default user "elastic"
         - EsAcl: modifies the ACL

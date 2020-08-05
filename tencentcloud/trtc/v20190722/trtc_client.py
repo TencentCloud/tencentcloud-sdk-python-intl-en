@@ -25,8 +25,64 @@ class TrtcClient(AbstractClient):
     _endpoint = 'trtc.tencentcloudapi.com'
 
 
+    def CreateTroubleInfo(self, request):
+        """This API is used to create exception information.
+
+        :param request: Request instance for CreateTroubleInfo.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateTroubleInfoRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateTroubleInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTroubleInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTroubleInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAbnormalEvent(self, request):
+        """This API is used to query users’ exceptional experience events according to `SDKAppID` and return the exceptional experience ID and possible causes. It queries data in last 24 hours, and the query period is up to 1 hour which can start and end on different days. For more information about exceptional experience ID mapping, please see here.
+
+        :param request: Request instance for DescribeAbnormalEvent.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAbnormalEventRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeAbnormalEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAbnormalEvent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAbnormalEventResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCallDetail(self, request):
-        """This API is used to query the user list and user call quality data in a specified time period. It can query data of up to 6 users for the last 5 days, and the query time range cannot exceed 1 hour.
+        """This API is used to query the user list and user call quality data in a specified time period. It queries data of up to 6 users in the last 5 days. The query period is up to 1 hour, which must start and end on the same day.
 
         :param request: Request instance for DescribeCallDetail.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailRequest`
@@ -53,8 +109,36 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDetailEvent(self, request):
+        """This API is used to query detailed events of a user such as room entry/exit and video enablement/disablement during a call. It can query data for the last 5 days.
+
+        :param request: Request instance for DescribeDetailEvent.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeDetailEventRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeDetailEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDetailEvent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDetailEventResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeHistoryScale(self, request):
-        """This API is used to query the number of historical rooms and users for the last 5 days. It can query once per minute.
+        """This API is used to query the daily numbers of rooms and users under a specified `sdkqppid`. It can query data once per minute for the last 5 days. If a day has not ended, the numbers of rooms and users on the day cannot be queried.
 
         :param request: Request instance for DescribeHistoryScale.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeHistoryScaleRequest`
@@ -235,6 +319,75 @@ class TrtcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartMCUMixTranscode(self, request):
+        """This API is used to enable On-Cloud MixTranscoding and specify the layout position of each channel of video image in the mixed video image.
+
+        There may be multiple channels of audio/video streams in a TRTC room. You can call this API to request the Tencent Cloud server to combine multiple channels of video images into one channel, specify the position of each channel, and mix the multiple channels of audio so as to output one channel of audio/video stream for easier recording and live streaming.
+
+        You can use this API to perform the following operations:
+        - Set the image and audio quality parameters of the final live stream, including video resolution, video bitrate, video frame rate, and audio quality.
+        - Set the image layout, i.e., positions of all channels of images. You only need to set the layout once when enabling On-Cloud MixTranscoding, and the layout engine will automatically arrange the video images in the configured layout in subsequent operations.
+        - Set the recording file name for future playback.
+        - Set the CDN live stream ID for live streaming over CDN.
+
+        Currently, the following layout templates are supported:
+        - Floating template: the entire screen will be covered by the video image of the first user who enters the room, and the video images of other users will be displayed as small images in horizontal rows from the bottom-left corner in room entry sequence. The screen can contain up to 4 lines with 4 small images each row, which float over the big image. Up to 1 big image and 15 small images are supported. If a user sends audio only, the user will still use an image spot.
+        - 9-grid template: the screen is divided into user video images with the same dimensions. The more the users, the smaller the image dimensions. Up to 16 images are supported. If a user sends audio only, the user will still use an image spot.
+        - Screen sharing template: it is suitable for video conferencing and online education. The shared screen (or camera of the anchor) is always displayed in the big image on the left of the screen, and the video images of other users are vertically displayed on the right in up to 2 columns with up to 8 small images in each column. Up to 1 big image and 15 small images are supported. If a user sends audio only, the user will still use an image spot.
+
+        :param request: Request instance for StartMCUMixTranscode.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StartMCUMixTranscodeRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StartMCUMixTranscodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartMCUMixTranscode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartMCUMixTranscodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopMCUMixTranscode(self, request):
+        """This API is used to end On-Cloud MixTranscoding.
+
+        :param request: Request instance for StopMCUMixTranscode.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StopMCUMixTranscodeRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StopMCUMixTranscodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopMCUMixTranscode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopMCUMixTranscodeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

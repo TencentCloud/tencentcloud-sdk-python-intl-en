@@ -150,6 +150,60 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBSpaceStatusRequest(AbstractModel):
+    """DescribeDBSpaceStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param RangeDays: Query period in days. The end date is the current date and the query period is 7 days by default.
+        :type RangeDays: int
+        """
+        self.InstanceId = None
+        self.RangeDays = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RangeDays = params.get("RangeDays")
+
+
+class DescribeDBSpaceStatusResponse(AbstractModel):
+    """DescribeDBSpaceStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Growth: Disk usage growth in MB.
+        :type Growth: int
+        :param Remain: Available disk space in MB.
+        :type Remain: int
+        :param Total: Total disk space in MB.
+        :type Total: int
+        :param AvailableDays: Estimated number of available days.
+        :type AvailableDays: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Growth = None
+        self.Remain = None
+        self.Total = None
+        self.AvailableDays = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Growth = params.get("Growth")
+        self.Remain = params.get("Remain")
+        self.Total = params.get("Total")
+        self.AvailableDays = params.get("AvailableDays")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
     """DescribeSlowLogTimeSeriesStats request structure.
 
@@ -282,6 +336,116 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
+    """DescribeTopSpaceTableTimeSeries request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Limit: Number of returned top tables. Default value: 20. Maximum value: 20.
+        :type Limit: int
+        :param SortBy: Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.
+        :type SortBy: str
+        :param StartDate: Start date. It can be as early as 6 days before the current date, and defaults to 6 days before the end date.
+        :type StartDate: str
+        :param EndDate: End date. It can be as early as 6 days before the current date, and defaults to the current date.
+        :type EndDate: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.SortBy = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
+
+class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
+    """DescribeTopSpaceTableTimeSeries response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TopSpaceTableTimeSeries: Time series list of the returned space statistics of top tables.
+        :type TopSpaceTableTimeSeries: list of TableSpaceTimeSeries
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TopSpaceTableTimeSeries = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopSpaceTableTimeSeries") is not None:
+            self.TopSpaceTableTimeSeries = []
+            for item in params.get("TopSpaceTableTimeSeries"):
+                obj = TableSpaceTimeSeries()
+                obj._deserialize(item)
+                self.TopSpaceTableTimeSeries.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopSpaceTablesRequest(AbstractModel):
+    """DescribeTopSpaceTables request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Limit: Number of returned top tables. Default value: 20. Maximum value: 20.
+        :type Limit: int
+        :param SortBy: Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.
+        :type SortBy: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.SortBy = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+
+
+class DescribeTopSpaceTablesResponse(AbstractModel):
+    """DescribeTopSpaceTables response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TopSpaceTables: List of the returned space statistics of top tables.
+        :type TopSpaceTables: list of TableSpaceData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TopSpaceTables = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopSpaceTables") is not None:
+            self.TopSpaceTables = []
+            for item in params.get("TopSpaceTables"):
+                obj = TableSpaceData()
+                obj._deserialize(item)
+                self.TopSpaceTables.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DiagHistoryEventItem(AbstractModel):
     """Instance diagnosis event
 
@@ -336,6 +500,58 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InstanceId = params.get("InstanceId")
         self.Metric = params.get("Metric")
         self.Region = params.get("Region")
+
+
+class MonitorFloatMetric(AbstractModel):
+    """Monitoring data in float type
+
+    """
+
+    def __init__(self):
+        """
+        :param Metric: Metric name.
+        :type Metric: str
+        :param Unit: Metric unit.
+        :type Unit: str
+        :param Values: Metric value.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Values: list of float
+        """
+        self.Metric = None
+        self.Unit = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Metric = params.get("Metric")
+        self.Unit = params.get("Unit")
+        self.Values = params.get("Values")
+
+
+class MonitorFloatMetricSeriesData(AbstractModel):
+    """Monitoring metric value in float type in a unit of time interval
+
+    """
+
+    def __init__(self):
+        """
+        :param Series: Monitoring metric.
+        :type Series: list of MonitorFloatMetric
+        :param Timestamp: Timestamp corresponding to monitoring metric.
+        :type Timestamp: list of int
+        """
+        self.Series = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        if params.get("Series") is not None:
+            self.Series = []
+            for item in params.get("Series"):
+                obj = MonitorFloatMetric()
+                obj._deserialize(item)
+                self.Series.append(obj)
+        self.Timestamp = params.get("Timestamp")
 
 
 class MonitorMetric(AbstractModel):
@@ -481,6 +697,90 @@ class SlowLogTopSqlItem(AbstractModel):
         self.LockTimeRatio = params.get("LockTimeRatio")
         self.RowsExaminedRatio = params.get("RowsExaminedRatio")
         self.RowsSentRatio = params.get("RowsSentRatio")
+
+
+class TableSpaceData(AbstractModel):
+    """Database table space statistics.
+
+    """
+
+    def __init__(self):
+        """
+        :param TableName: Table name.
+        :type TableName: str
+        :param TableSchema: Database name.
+        :type TableSchema: str
+        :param Engine: Database table storage engine.
+        :type Engine: str
+        :param DataLength: Data space in MB.
+        :type DataLength: float
+        :param IndexLength: Index space in MB.
+        :type IndexLength: float
+        :param DataFree: Fragmented space in MB.
+        :type DataFree: float
+        :param TotalLength: Total space usage in MB.
+        :type TotalLength: float
+        :param FragRatio: Fragmented rate (%).
+        :type FragRatio: float
+        :param TableRows: Number of rows.
+        :type TableRows: int
+        :param PhysicalFileSize: Size in MB of the physical file exclusive to a table.
+        :type PhysicalFileSize: float
+        """
+        self.TableName = None
+        self.TableSchema = None
+        self.Engine = None
+        self.DataLength = None
+        self.IndexLength = None
+        self.DataFree = None
+        self.TotalLength = None
+        self.FragRatio = None
+        self.TableRows = None
+        self.PhysicalFileSize = None
+
+
+    def _deserialize(self, params):
+        self.TableName = params.get("TableName")
+        self.TableSchema = params.get("TableSchema")
+        self.Engine = params.get("Engine")
+        self.DataLength = params.get("DataLength")
+        self.IndexLength = params.get("IndexLength")
+        self.DataFree = params.get("DataFree")
+        self.TotalLength = params.get("TotalLength")
+        self.FragRatio = params.get("FragRatio")
+        self.TableRows = params.get("TableRows")
+        self.PhysicalFileSize = params.get("PhysicalFileSize")
+
+
+class TableSpaceTimeSeries(AbstractModel):
+    """Time series of database table space data
+
+    """
+
+    def __init__(self):
+        """
+        :param TableName: Table name.
+        :type TableName: str
+        :param TableSchema: Database name.
+        :type TableSchema: str
+        :param Engine: Database table storage engine.
+        :type Engine: str
+        :param SeriesData: Monitoring metric data in a unit of time interval.
+        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorFloatMetricSeriesData`
+        """
+        self.TableName = None
+        self.TableSchema = None
+        self.Engine = None
+        self.SeriesData = None
+
+
+    def _deserialize(self, params):
+        self.TableName = params.get("TableName")
+        self.TableSchema = params.get("TableSchema")
+        self.Engine = params.get("Engine")
+        if params.get("SeriesData") is not None:
+            self.SeriesData = MonitorFloatMetricSeriesData()
+            self.SeriesData._deserialize(params.get("SeriesData"))
 
 
 class TimeSlice(AbstractModel):

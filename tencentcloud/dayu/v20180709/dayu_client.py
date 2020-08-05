@@ -866,7 +866,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeCCIpAllowDeny(self, request):
-        """This API is used to get the CC IP blacklist/whitelist.
+        """This API is used to get the CC IP blocklist/allowlist.
 
         :param request: Request instance for DescribeCCIpAllowDeny.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCIpAllowDenyRequest`
@@ -950,7 +950,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeCCUrlAllow(self, request):
-        """This API is used to get the CC URL whitelist.
+        """This API is used to get the CC URL allowlist.
 
         :param request: Request instance for DescribeCCUrlAllow.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCUrlAllowRequest`
@@ -2126,7 +2126,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCIpAllowDeny(self, request):
-        """This API is used to add/remove a CC IP to/from the blacklist/whitelist.
+        """This API is used to add/remove a CC IP to/from the blocklist/allowlist.
 
         :param request: Request instance for ModifyCCIpAllowDeny.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCIpAllowDenyRequest`
@@ -2266,7 +2266,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCUrlAllow(self, request):
-        """This API is used to add/remove a CC URL to/from the whitelist.
+        """This API is used to add/remove a CC URL to/from the allowlist.
 
         :param request: Request instance for ModifyCCUrlAllow.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCUrlAllowRequest`
@@ -2727,6 +2727,62 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetReturnSwitchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNewDomainRules(self, request):
+        """This API is used to modify layer-7 forwarding rules.
+
+        :param request: Request instance for ModifyNewDomainRules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyNewDomainRulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyNewDomainRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNewDomainRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNewDomainRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNewL4Rule(self, request):
+        """This API is used to modify layer-4 forwarding rules.
+
+        :param request: Request instance for ModifyNewL4Rule.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyNewL4RuleRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyNewL4RuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNewL4Rule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNewL4RuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

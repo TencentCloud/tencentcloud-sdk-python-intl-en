@@ -26,7 +26,7 @@ class YunjingClient(AbstractClient):
 
 
     def AddLoginWhiteList(self, request):
-        """This API is used to add a whitelist rule.
+        """This API is used to add a allowlist rule.
 
         :param request: Request instance for AddLoginWhiteList.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.AddLoginWhiteListRequest`
@@ -222,7 +222,7 @@ class YunjingClient(AbstractClient):
 
 
     def DeleteLoginWhiteList(self, request):
-        """This API is used to delete a whitelist rule.
+        """This API is used to delete a allowlist rule.
 
         :param request: Request instance for DeleteLoginWhiteList.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteLoginWhiteListRequest`
@@ -698,7 +698,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeLoginWhiteList(self, request):
-        """This API is used to get the list of login whitelist entries.
+        """This API is used to get the list of login allowlist entries.
 
         :param request: Request instance for DescribeLoginWhiteList.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeLoginWhiteListRequest`
@@ -1734,7 +1734,7 @@ class YunjingClient(AbstractClient):
 
 
     def ModifyLoginWhiteList(self, request):
-        """This API is used to edit a whitelist rule.
+        """This API is used to edit a allowlist rule.
 
         :param request: Request instance for ModifyLoginWhiteList.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.ModifyLoginWhiteListRequest`

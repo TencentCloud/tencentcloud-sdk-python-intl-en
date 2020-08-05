@@ -182,12 +182,18 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: VPC subnet ID. If VpcId is set, then SubnetId will be required
         :type SubnetId: str
-        :param Password: Instance password. If this parameter is not set, you need to set an instance password through the password setting API after creating an instance. The password can only contain 8–16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()` |
+        :param Password: Instance password. If this parameter is not set, you need to set an instance password through the password setting API after creating an instance. The password can only contain 8-16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()` |
         :type Password: str
         :param ProjectId: Project ID. If this parameter is not set, the default project will be used
         :type ProjectId: int
         :param Tags: Instance tag information
         :type Tags: list of TagInfo
+        :param Clone: 
+        :type Clone: int
+        :param Father: 
+        :type Father: str
+        :param SecurityGroup: 
+        :type SecurityGroup: list of str
         """
         self.Memory = None
         self.Volume = None
@@ -203,6 +209,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.Password = None
         self.ProjectId = None
         self.Tags = None
+        self.Clone = None
+        self.Father = None
+        self.SecurityGroup = None
 
 
     def _deserialize(self, params):
@@ -225,6 +234,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Clone = params.get("Clone")
+        self.Father = params.get("Father")
+        self.SecurityGroup = params.get("SecurityGroup")
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
@@ -259,7 +271,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of slave nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
+        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
         :type NodeNum: int
         :param Memory: Instance memory size in GB.
         :type Memory: int
@@ -285,12 +297,20 @@ class CreateDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the `DescribeSubnets` API to query the subnet list.
         :type SubnetId: str
-        :param Password: Instance password. If this parameter is not set, you need to set an instance password through the `SetPassword` API after creating an instance. The password can only contain 8–16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()`.
+        :param Password: Instance password. If this parameter is not set, you need to set an instance password through the `SetPassword` API after creating an instance. The password can only contain 8-16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()`.
         :type Password: str
         :param Tags: Instance tag information.
         :type Tags: list of TagInfo
         :param AutoRenewFlag: Auto-renewal flag. Valid values: 0 (auto-renewal not enabled), 1 (auto-renewal enabled). Default value: 0.
         :type AutoRenewFlag: int
+        :param AutoVoucher: 
+        :type AutoVoucher: int
+        :param Clone: 
+        :type Clone: int
+        :param Father: 
+        :type Father: str
+        :param SecurityGroup: 
+        :type SecurityGroup: list of str
         """
         self.NodeNum = None
         self.Memory = None
@@ -308,6 +328,10 @@ class CreateDBInstanceRequest(AbstractModel):
         self.Password = None
         self.Tags = None
         self.AutoRenewFlag = None
+        self.AutoVoucher = None
+        self.Clone = None
+        self.Father = None
+        self.SecurityGroup = None
 
 
     def _deserialize(self, params):
@@ -332,6 +356,10 @@ class CreateDBInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.Clone = params.get("Clone")
+        self.Father = params.get("Father")
+        self.SecurityGroup = params.get("SecurityGroup")
 
 
 class CreateDBInstanceResponse(AbstractModel):
@@ -470,12 +498,20 @@ class DescribeClientConnectionsRequest(AbstractModel):
         """
         :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
         :type InstanceId: str
+        :param Limit: 
+        :type Limit: int
+        :param Offset: 
+        :type Offset: int
         """
         self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
 
 
 class DescribeClientConnectionsResponse(AbstractModel):
@@ -487,10 +523,13 @@ class DescribeClientConnectionsResponse(AbstractModel):
         """
         :param Clients: Client connection information, including client IP and number of connections
         :type Clients: list of ClientConnection
+        :param TotalCount: 
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Clients = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -501,6 +540,7 @@ class DescribeClientConnectionsResponse(AbstractModel):
                 obj = ClientConnection()
                 obj._deserialize(item)
                 self.Clients.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -622,7 +662,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type SubnetId: str
         :param PayMode: Billing type. Valid value: 0 (pay-as-you-go)
         :type PayMode: int
-        :param Limit: Number of results to be returned for a single request. Valid values: 1–100. Default value: 20
+        :param Limit: Number of results to be returned for a single request. Valid values: 1-100. Default value: 20
         :type Limit: int
         :param Offset: Offset. Default value: 0
         :type Offset: int
@@ -911,7 +951,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         """
         :param Zone: Instance region name in the format of ap-guangzhou-2.
         :type Zone: str
-        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of slave nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
+        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
         :type NodeNum: int
         :param Memory: Instance memory size in GB.
         :type Memory: int
@@ -1145,7 +1185,7 @@ class InstanceDetail(AbstractModel):
         :type CpuNum: int
         :param MachineType: Instance machine type
         :type MachineType: str
-        :param SecondaryNum: Number of slave nodes of an instance
+        :param SecondaryNum: Number of secondary nodes of an instance
         :type SecondaryNum: int
         :param ReplicationSetNum: Number of instance shards
         :type ReplicationSetNum: int
@@ -1165,7 +1205,7 @@ class InstanceDetail(AbstractModel):
         :type StandbyInstances: list of DBInstanceInfo
         :param CloneInstances: Information of temp instances
         :type CloneInstances: list of DBInstanceInfo
-        :param RelatedInstance: Information of associated instances. For a promoted instance, this field represents information of its temp instance; for a temp instance, this field represents information of its promoted instance; and for a read-only/disaster recovery instance, this field represents information of its master instance
+        :param RelatedInstance: Information of associated instances. For a promoted instance, this field represents information of its temp instance; for a temp instance, this field represents information of its promoted instance; and for a read-only/disaster recovery instance, this field represents information of its primary instance
         :type RelatedInstance: :class:`tencentcloud.mongodb.v20190725.models.DBInstanceInfo`
         :param Tags: Instance tag information set
         :type Tags: list of TagInfo
@@ -1513,7 +1553,7 @@ class ShardInfo(AbstractModel):
         :type Volume: int
         :param OplogSize: Shard oplog size in MB
         :type OplogSize: int
-        :param SecondaryNum: Number of slave nodes of a shard
+        :param SecondaryNum: Number of secondary nodes of a shard
         :type SecondaryNum: int
         :param RealReplicaSetId: Shard physical ID
         :type RealReplicaSetId: str
@@ -1603,17 +1643,17 @@ class SpecItem(AbstractModel):
         :type EngineName: str
         :param ClusterType: Cluster type. Valid values: 1 (sharding cluster), 0 (replica set cluster)
         :type ClusterType: int
-        :param MinNodeNum: Minimum number of slave nodes in a replica set
+        :param MinNodeNum: Minimum number of secondary nodes in a replica set
         :type MinNodeNum: int
-        :param MaxNodeNum: Maximum number of slave nodes in a replica set
+        :param MaxNodeNum: Maximum number of secondary nodes in a replica set
         :type MaxNodeNum: int
         :param MinReplicateSetNum: Minimum number of shards
         :type MinReplicateSetNum: int
         :param MaxReplicateSetNum: Maximum number of shards
         :type MaxReplicateSetNum: int
-        :param MinReplicateSetNodeNum: Minimum number of slave nodes in a shard
+        :param MinReplicateSetNodeNum: Minimum number of secondary nodes in a shard
         :type MinReplicateSetNodeNum: int
-        :param MaxReplicateSetNodeNum: Maximum number of slave nodes in a shard
+        :param MaxReplicateSetNodeNum: Maximum number of secondary nodes in a shard
         :type MaxReplicateSetNodeNum: int
         :param MachineType: Server type. Valid values: 0 (HIO), 4 (HIO10G)
         :type MachineType: str

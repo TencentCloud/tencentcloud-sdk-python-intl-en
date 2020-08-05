@@ -175,19 +175,19 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
 
 class BackupConfig(AbstractModel):
-    """Configuration information of ECDB slave database 2. This field is only applicable to ECDB instances
+    """Configuration information of ECDB secondary database 2. This field is only applicable to ECDB instances
 
     """
 
     def __init__(self):
         """
-        :param ReplicationMode: Replication mode of slave database 2. Value range: async, semi-sync
+        :param ReplicationMode: Replication mode of secondary database 2. Value range: async, semi-sync
         :type ReplicationMode: str
-        :param Zone: Name of the AZ of slave database 2, such as ap-shanghai-1
+        :param Zone: Name of the AZ of secondary database 2, such as ap-shanghai-1
         :type Zone: str
-        :param Vip: Private IP address of slave database 2
+        :param Vip: Private IP address of secondary database 2
         :type Vip: str
-        :param Vport: Access port of slave database 2
+        :param Vport: Access port of secondary database 2
         :type Vport: int
         """
         self.ReplicationMode = None
@@ -713,25 +713,25 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ProjectId: int
         :param Zone: AZ information. By default, the system will automatically select an AZ. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported AZs.
         :type Zone: str
-        :param MasterInstanceId: Instance ID, which is required and the same as the master instance ID when purchasing read-only or disaster recovery instances. Please use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance IDs.
+        :param MasterInstanceId: Instance ID, which is required and the same as the primary instance ID when purchasing read-only or disaster recovery instances. Please use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance IDs.
         :type MasterInstanceId: str
-        :param InstanceRole: Instance type. Valid values: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        :param InstanceRole: Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
         :type InstanceRole: str
-        :param MasterRegion: AZ information of the master instance, which is required for purchasing disaster recovery instances.
+        :param MasterRegion: AZ information of the primary instance, which is required for purchasing disaster recovery instances.
         :type MasterRegion: str
         :param Port: Custom port. Value range: [1024-65535].
         :type Port: int
-        :param Password: Sets the root account password. Rule: the password can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
+        :param Password: Sets the root account password. Rule: the password can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
         :type Password: str
         :param ParamList: List of parameters in the format of `ParamList.0.Name=auto_increment&ParamList.0.Value=1`. You can use the [DescribeDefaultParams](https://cloud.tencent.com/document/api/236/32662) API to query the configurable parameters.
         :type ParamList: list of ParamInfo
-        :param ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
+        :param ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
         :type ProtectMode: int
-        :param DeployMode: Multi-AZ. Valid value: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
+        :param DeployMode: Multi-AZ. Valid value: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
         :type DeployMode: int
-        :param SlaveZone: AZ information of slave database 1, which is the `Zone` value by default. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances.
+        :param SlaveZone: AZ information of secondary database 1, which is the `Zone` value by default. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
         :type SlaveZone: str
-        :param BackupZone: AZ information of slave database 2, which is empty by default. This parameter can be specified when purchasing strong sync master instances and is meaningless for other types of instances.
+        :param BackupZone: AZ information of secondary database 2, which is empty by default. This parameter can be specified when purchasing strong sync primary instances and is meaningless for other types of instances.
         :type BackupZone: str
         :param SecurityGroup: Security group parameter. You can use the [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/236/15850) API to query the security group details of a project.
         :type SecurityGroup: list of str
@@ -966,7 +966,7 @@ class DBSwitchInfo(AbstractModel):
         """
         :param SwitchTime: Switch time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-09-03 01:34:31
         :type SwitchTime: str
-        :param SwitchType: Switch type. Value range: TRANSFER (data migration), MASTER2SLAVE (master/slave switch), RECOVERY (master/slave recovery)
+        :param SwitchType: Switch type. Value range: TRANSFER (data migration), MASTER2SLAVE (primary/secondary switch), RECOVERY (primary/secondary recovery)
         :type SwitchType: str
         """
         self.SwitchTime = None
@@ -2007,15 +2007,15 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProtectMode: Data protection mode of the master instance. Value range: 0 (async replication), 1 (semi-sync replication), 2 (strong sync replication).
+        :param ProtectMode: Data protection mode of the primary instance. Value range: 0 (async replication), 1 (semi-sync replication), 2 (strong sync replication).
         :type ProtectMode: int
         :param DeployMode: Master instance deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ)
         :type DeployMode: int
         :param Zone: Instance AZ information in the format of "ap-shanghai-1".
         :type Zone: str
-        :param SlaveConfig: Configuration information of the slave database.
+        :param SlaveConfig: Configuration information of the secondary database.
         :type SlaveConfig: :class:`tencentcloud.cdb.v20170320.models.SlaveConfig`
-        :param BackupConfig: Configuration information of slave database 2 of a strong sync instance.
+        :param BackupConfig: Configuration information of secondary database 2 of a strong sync instance.
         :type BackupConfig: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2191,7 +2191,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         """
         :param ProjectId: Project ID. You can use the [project list querying API](https://cloud.tencent.com/document/product/378/4400) to query the project ID.
         :type ProjectId: int
-        :param InstanceTypes: Instance type. Value range: 1 (master), 2 (disaster recovery), 3 (read-only).
+        :param InstanceTypes: Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only).
         :type InstanceTypes: list of int non-negative
         :param Vips: Private IP address of the instance.
         :type Vips: list of str
@@ -2207,7 +2207,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type PayTypes: list of int non-negative
         :param InstanceNames: Instance name.
         :type InstanceNames: list of str
-        :param TaskStatus: Instance task status. Value range: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - activating slave <br>4 - public network access enabled <br>5 - batch operation in progress <br>6 - rolling back <br>7 - public network access not enabled <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built instance <br>13 - dropping table <br>14 - creating and syncing disaster recovery instance <br>15 - pending upgrade and switch <br>16 - upgrade and switch in progress <br>17 - upgrade and switch completed
+        :param TaskStatus: Instance task status. Valid values: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - enabling secondary instance access <br>4 - enabling public network access <br>5 - batch operation in progress <br>6 - rolling back <br>7 - disabling public network access <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built database <br>13 - dropping tables <br>14 - Disaster recovery instance creating sync task <br>15 - waiting for switch <br>16 - switching <br>17 - upgrade and switch completed <br>19 - parameter settings to be executed
         :type TaskStatus: list of int non-negative
         :param EngineVersions: Version of the instance database engine. Value range: 5.1, 5.5, 5.6, 5.7.
         :type EngineVersions: list of str
@@ -2233,11 +2233,11 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InitFlag: Initialization flag. Value range: 0 (not initialized), 1 (initialized).
         :type InitFlag: int
-        :param WithDr: Whether instances corresponding to the disaster recovery relationship are included. Valid values: 0 (not included), 1 (included). Default value: 1. If a master instance is pulled, the data of the disaster recovery relationship will be in the `DrInfo` field. If a disaster recovery instance is pulled, the data of the disaster recovery relationship will be in the `MasterInfo` field. The disaster recovery relationship contains only partial basic data. To get the detailed data, you need to call an API to pull it.
+        :param WithDr: Whether instances corresponding to the disaster recovery relationship are included. Valid values: 0 (not included), 1 (included). Default value: 1. If a primary instance is pulled, the data of the disaster recovery relationship will be in the `DrInfo` field. If a disaster recovery instance is pulled, the data of the disaster recovery relationship will be in the `MasterInfo` field. The disaster recovery relationship contains only partial basic data. To get the detailed data, you need to call an API to pull it.
         :type WithDr: int
         :param WithRo: Whether read-only instances are included. Valid values: 0 (not included), 1 (included). Default value: 1.
         :type WithRo: int
-        :param WithMaster: Whether master instances are included. Valid values: 0 (not included), 1 (included). Default value: 1.
+        :param WithMaster: Whether primary instances are included. Valid values: 0 (not included), 1 (included). Default value: 1.
         :type WithMaster: int
         :param DeployGroupIds: Placement group ID list.
         :type DeployGroupIds: list of str
@@ -3095,6 +3095,52 @@ class DescribeRoGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRoMinScaleRequest(AbstractModel):
+    """DescribeRoMinScale request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RoInstanceId: Read-only instance ID in the format of "cdbro-c1nl9rpv". Its value is the same as the instance ID in the TencentDB Console. This parameter and the `MasterInstanceId` parameter cannot both be empty.
+        :type RoInstanceId: str
+        :param MasterInstanceId: Primary instance ID in the format of "cdbro-c1nl9rpv". Its value is the same as the instance ID in the TencentDB Console. This parameter and the `RoInstanceId` parameter cannot both be empty. Note: when the parameters are passed in with `RoInstanceId`, the return value refers to the minimum specification to which a read-only instance can be upgraded; when the parameters are passed in with `MasterInstanceId` but without `RoInstanceId`, the return value refers to the minimum purchasable specification for a read-only instance.
+        :type MasterInstanceId: str
+        """
+        self.RoInstanceId = None
+        self.MasterInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.RoInstanceId = params.get("RoInstanceId")
+        self.MasterInstanceId = params.get("MasterInstanceId")
+
+
+class DescribeRoMinScaleResponse(AbstractModel):
+    """DescribeRoMinScale response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Memory: Memory size in MB.
+        :type Memory: int
+        :param Volume: Disk size in GB.
+        :type Volume: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Memory = None
+        self.Volume = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRollbackRangeTimeRequest(AbstractModel):
     """DescribeRollbackRangeTime request structure.
 
@@ -3529,7 +3575,7 @@ class DescribeTasksRequest(AbstractModel):
 8 - enabling GTID of a TencentDB instance;
 9 - upgrading a read-only instance;
 10 - rolling back databases in batches;
-11 - upgrading a master instance;
+11 - upgrading a primary instance;
 12 - deleting a TencentDB table;
 13 - promoting a disaster recovery instance.
         :type TaskTypes: list of int
@@ -4132,7 +4178,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Status: int
         :param VpcId: VPC ID, such as 51102
         :type VpcId: int
-        :param SlaveInfo: Information of a slave server
+        :param SlaveInfo: Information of a secondary server
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SlaveInfo: :class:`tencentcloud.cdb.v20170320.models.SlaveInfo`
         :param InstanceId: Instance ID
@@ -4148,7 +4194,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RoGroups: list of RoGroup
         :param SubnetId: Subnet ID, such as 2333
         :type SubnetId: int
-        :param InstanceType: Instance type. Value range: 1 (master), 2 (disaster recovery), 3 (read-only)
+        :param InstanceType: Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only)
         :type InstanceType: int
         :param ProjectId: Project ID
         :type ProjectId: int
@@ -4158,9 +4204,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type DeadlineTime: str
         :param DeployMode: AZ deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ)
         :type DeployMode: int
-        :param TaskStatus: Instance task status. 0 - no task; 1 - upgrading; 2 - importing data; 3 - activating slave; 4 - enabling public network access; 5 - batch operation in progress; 6 - rolling back; 7 - disabling public network access; 8 - changing password; 9 - renaming instance; 10 - restarting; 12 - migrating self-built instance; 13 - dropping table; 14 - creating and syncing disaster recovery instance; 15 - pending upgrade and switch; 16 - upgrade and switch in progress; 17 - upgrade and switch completed
+        :param TaskStatus: Instance task status. 0 - no task; 1 - upgrading; 2 - importing data; 3 - activating secondary; 4 - enabling public network access; 5 - batch operation in progress; 6 - rolling back; 7 - disabling public network access; 8 - changing password; 9 - renaming instance; 10 - restarting; 12 - migrating self-built instance; 13 - dropping table; 14 - creating and syncing disaster recovery instance; 15 - pending upgrade and switch; 16 - upgrade and switch in progress; 17 - upgrade and switch completed
         :type TaskStatus: int
-        :param MasterInfo: Details of a master instance
+        :param MasterInfo: Details of a primary instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
         :param DeviceType: Instance type. Value range: HA (High-Availability Edition), FE (Finance Edition), BASIC (Basic Edition)
@@ -4952,9 +4998,9 @@ class ModifyInstanceParamRequest(AbstractModel):
         :type InstanceIds: list of str
         :param ParamList: List of parameters to be modified. Every element is a combination of `Name` (parameter name) and `CurrentValue` (new value).
         :type ParamList: list of Parameter
-        :param TemplateId: 
+        :param TemplateId: Template ID. At least one of `ParamList` and `TemplateId` must be passed in.
         :type TemplateId: int
-        :param WaitSwitch: 
+        :param WaitSwitch: When to perform the parameter adjustment task. Default value: 0. Valid values: 0 - execute immediately, 1 - execute during window. When its value is 1, only one instance ID can be passed in (i.e., only one `InstanceIds` can be passed in).
         :type WaitSwitch: int
         """
         self.InstanceIds = None
@@ -5693,7 +5739,7 @@ class RoGroup(AbstractModel):
         :type RoGroupId: str
         :param RoGroupName: Read-only group name.
         :type RoGroupName: str
-        :param RoOfflineDelay: Whether to enable the function of isolating an instance that exceeds the latency threshold. If it is enabled, when the latency between the read-only instance and the master instance exceeds the latency threshold, the read-only instance will be isolated. Valid values: 1 (enabled), 0 (not enabled)
+        :param RoOfflineDelay: Whether to enable the function of isolating an instance that exceeds the latency threshold. If it is enabled, when the latency between the read-only instance and the primary instance exceeds the latency threshold, the read-only instance will be isolated. Valid values: 1 (enabled), 0 (not enabled)
         :type RoOfflineDelay: int
         :param RoMaxDelayTime: Latency threshold
         :type RoMaxDelayTime: int
@@ -5818,13 +5864,13 @@ class RoInstanceInfo(AbstractModel):
         :type InstanceId: str
         :param Status: RO instance status. Value range: 0 (creating), 1 (running), 4 (deleting)
         :type Status: int
-        :param InstanceType: Instance type. Value range: 1 (master), 2 (disaster recovery), 3 (read-only)
+        :param InstanceType: Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only)
         :type InstanceType: int
         :param InstanceName: RO instance name
         :type InstanceName: str
         :param HourFeeStatus: Pay-as-you-go billing status. Value range: 1 (normal), 2 (in arrears)
         :type HourFeeStatus: int
-        :param TaskStatus: RO instance task status. Value range: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - activating slave <br>4 - public network access enabled <br>5 - batch operation in progress <br>6 - rolling back <br>7 - public network access not enabled <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built instance <br>13 - dropping table <br>14 - creating and syncing disaster recovery instance
+        :param TaskStatus: RO instance task status. Value range: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - activating secondary <br>4 - public network access enabled <br>5 - batch operation in progress <br>6 - rolling back <br>7 - public network access not enabled <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built instance <br>13 - dropping table <br>14 - creating and syncing disaster recovery instance
         :type TaskStatus: int
         :param Memory: RO instance memory size in MB
         :type Memory: int
@@ -6295,9 +6341,9 @@ class SlaveConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param ReplicationMode: Replication mode of the slave database. Value range: async, semi-sync
+        :param ReplicationMode: Replication mode of the secondary database. Value range: async, semi-sync
         :type ReplicationMode: str
-        :param Zone: AZ name of the slave database, such as ap-shanghai-1
+        :param Zone: AZ name of the secondary database, such as ap-shanghai-1
         :type Zone: str
         """
         self.ReplicationMode = None
@@ -6316,9 +6362,9 @@ class SlaveInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param First: Information of slave server 1
+        :param First: Information of secondary server 1
         :type First: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
-        :param Second: Information of slave server 2
+        :param Second: Information of secondary server 2
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Second: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
@@ -6764,7 +6810,7 @@ class TaskDetail(AbstractModel):
 "OPEN GTID" - enabling GTID of a TencentDB instance;
 "UPGRADE RO" - upgrading a read-only instance;
 "BATCH ROLLBACK" - rolling back databases in batches;
-"UPGRADE MASTER" - upgrading a master instance;
+"UPGRADE MASTER" - upgrading a primary instance;
 "DROP TABLES" - dropping a TencentDB table;
 "SWITCH DR TO MASTER" - promoting a disaster recovery instance.
         :type TaskType: str
@@ -6812,7 +6858,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         """
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters.
         :type InstanceId: str
-        :param EngineVersion: Version of master instance database engine. Value range: 5.6, 5.7
+        :param EngineVersion: Version of primary instance database engine. Value range: 5.6, 5.7
         :type EngineVersion: str
         :param WaitSwitch: Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://cloud.tencent.com/document/product/236/15864) to trigger the process.
         :type WaitSwitch: int
@@ -6866,19 +6912,19 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type Memory: int
         :param Volume: Disk size in GB after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the specifications of the disk that can be upgraded to.
         :type Volume: int
-        :param ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
+        :param ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.
         :type ProtectMode: int
-        :param DeployMode: Deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
+        :param DeployMode: Deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.
         :type DeployMode: int
-        :param SlaveZone: AZ information of slave database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading master instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the supported AZs.
+        :param SlaveZone: AZ information of secondary database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading primary instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the supported AZs.
         :type SlaveZone: str
-        :param EngineVersion: Version of master instance database engine. Valid values: 5.5, 5.6, 5.7.
+        :param EngineVersion: Version of primary instance database engine. Valid values: 5.5, 5.6, 5.7.
         :type EngineVersion: str
         :param WaitSwitch: Mode of switch to new instance. Valid values: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://cloud.tencent.com/document/product/236/15864) API to trigger the process.
         :type WaitSwitch: int
-        :param BackupZone: AZ information of slave database 2, which is empty by default. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances.
+        :param BackupZone: AZ information of secondary database 2, which is empty by default. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.
         :type BackupZone: str
-        :param InstanceRole: Instance type. Valid values: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        :param InstanceRole: Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
         :type InstanceRole: str
         """
         self.InstanceId = None
@@ -6961,7 +7007,7 @@ class ZoneConf(AbstractModel):
         """
         :param DeployMode: AZ deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ)
         :type DeployMode: list of int
-        :param MasterZone: AZ where the master instance is located
+        :param MasterZone: AZ where the primary instance is located
         :type MasterZone: list of str
         :param SlaveZone: AZ where salve database 1 is located when the instance is deployed in multi-AZ mode
         :type SlaveZone: list of str

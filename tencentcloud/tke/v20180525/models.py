@@ -147,7 +147,7 @@ class Cluster(AbstractModel):
         :type ClusterStatus: str
         :param Property: 
         :type Property: str
-        :param ClusterMaterNodeNum: Number of master nodes currently in the cluster
+        :param ClusterMaterNodeNum: Number of primary nodes currently in the cluster
         :type ClusterMaterNodeNum: int
         :param ImageId: ID of the image used by the cluster
 Note: this field may return null, indicating that no valid value is obtained.
@@ -273,7 +273,7 @@ class ClusterAsGroup(AbstractModel):
         """
         :param AutoScalingGroupId: Scaling group ID
         :type AutoScalingGroupId: str
-        :param Status: Scaling group status (enabled, enabling, disabled, disabling, updating, deleting, scaleDownEnabling, scaleDownDisabling)
+        :param Status: Scaling group status (`enabled`, `enabling`, `disabled`, `disabling`, `updating`, `deleting`, `scaleDownEnabling`, `scaleDownDisabling`)
         :type Status: str
         :param IsUnschedulable: Whether the node is set to unschedulable
 Note: this field may return null, indicating that no valid value was found.
@@ -338,28 +338,28 @@ class ClusterAsGroupOption(AbstractModel):
 
     def __init__(self):
         """
-        :param IsScaleDownEnabled: Whether to enable scale-down
+        :param IsScaleDownEnabled: Whether to enable scale-in
 Note: this field may return null, indicating that no valid value was found.
         :type IsScaleDownEnabled: bool
-        :param Expander: Scale-up selection algorithm when there are multiple scaling groups (random: random selection. most-pods: pod with the most types. least-waste: least waste of resources. The default value is random.)
+        :param Expander: The scale-out method when there are multiple scaling groups. `random`: select a random scaling group. `most-pods`: choose the scaling group that can schedule the most pods. `least-waste`: select the scaling group that can ensure the fewest remaining resources after Pod scheduling.. The default value is `random`.)
 Note: this field may return null, indicating that no valid value was found.
         :type Expander: str
-        :param MaxEmptyBulkDelete: Max concurrent scale-down volume
+        :param MaxEmptyBulkDelete: Max concurrent scale-in volume
 Note: this field may return null, indicating that no valid value was found.
         :type MaxEmptyBulkDelete: int
-        :param ScaleDownDelay: Number of minutes after cluster scale-up when the system starts judging whether to perform scale-down
+        :param ScaleDownDelay: Number of minutes after cluster scale-out when the system starts judging whether to perform scale-in
 Note: this field may return null, indicating that no valid value was found.
         :type ScaleDownDelay: int
-        :param ScaleDownUnneededTime: Number of consecutive minutes of idleness after which the node is subject to scale-down (default value: 10)
+        :param ScaleDownUnneededTime: Number of consecutive minutes of idleness after which the node is subject to scale-in (default value: 10)
 Note: this field may return null, indicating that no valid value was found.
         :type ScaleDownUnneededTime: int
         :param ScaleDownUtilizationThreshold: Percentage of node resource usage below which the node is considered to be idle (default value: 50)
 Note: this field may return null, indicating that no valid value was found.
         :type ScaleDownUtilizationThreshold: int
-        :param SkipNodesWithLocalStorage: Whether to skip scale-down for nodes with local storage pods (default value: False)
+        :param SkipNodesWithLocalStorage: During scale-in, ignore nodes with local storage pods (default value: False)
 Note: this field may return null, indicating that no valid value was found.
         :type SkipNodesWithLocalStorage: bool
-        :param SkipNodesWithSystemPods: Whether to skip scale-down for nodes with pods in the kube-system namespace that are not managed by DaemonSet (default value: False)
+        :param SkipNodesWithSystemPods: During scale-in, ignore nodes with pods in the kube-system namespace that are not managed by DaemonSet (default value: False)
 Note: this field may return null, indicating that no valid value was found.
         :type SkipNodesWithSystemPods: bool
         :param IgnoreDaemonSetsUtilization: Whether to ignore DaemonSet pods by default when calculating resource usage (default value: False: do not ignore)
@@ -371,7 +371,7 @@ Note: this field may return null, indicating that no valid value was found.
         :param MaxTotalUnreadyPercentage: Max percentage of unready nodes. After the max percentage is exceeded, CA will stop operation.
 Note: this field may return null, indicating that no valid value was found.
         :type MaxTotalUnreadyPercentage: int
-        :param ScaleDownUnreadyTime: Amount of time before unready nodes become eligible for scale-down
+        :param ScaleDownUnreadyTime: Amount of time before unready nodes become eligible for scale-in
 Note: this field may return null, indicating that no valid value was found.
         :type ScaleDownUnreadyTime: int
         :param UnregisteredNodeRemovalTime: Waiting time before CA deletes nodes that are not registered in Kubernetes
@@ -470,7 +470,7 @@ class ClusterCIDRSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterCIDR: CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC’s CIDR or the CIDRs of other clusters in the same VPC
+        :param ClusterCIDR: CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC
         :type ClusterCIDR: str
         :param IgnoreClusterCIDRConflict: Whether to ignore ClusterCIDR conflict errors, which are not ignored by default
         :type IgnoreClusterCIDRConflict: bool
@@ -505,7 +505,7 @@ class ClusterCIDRSettings(AbstractModel):
 
 
 class ClusterExtraArgs(AbstractModel):
-    """Cluster master custom parameter
+    """Cluster primary custom parameter
 
     """
 
@@ -539,7 +539,7 @@ class ClusterNetworkSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterCIDR: CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC’s CIDR or the CIDRs of other clusters in the same VPC.
+        :param ClusterCIDR: CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC.
         :type ClusterCIDR: str
         :param IgnoreClusterCIDRConflict: Whether to ignore ClusterCIDR conflict errors. It defaults to not ignore.
         :type IgnoreClusterCIDRConflict: bool
@@ -584,7 +584,7 @@ class CreateClusterAsGroupRequest(AbstractModel):
         :type ClusterId: str
         :param AutoScalingGroupPara: The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry.
         :type AutoScalingGroupPara: str
-        :param LaunchConfigurePara: The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it’s set through the **UserScript**.
+        :param LaunchConfigurePara: The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**.
         :type LaunchConfigurePara: str
         :param InstanceAdvancedSettings: Advanced configuration information of the node
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
@@ -647,7 +647,7 @@ class CreateClusterEndpointRequest(AbstractModel):
         """
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param SubnetId: The ID of the subnet where the cluster’s port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster’s VPC). 
+        :param SubnetId: The ID of the subnet where the cluster's port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster's VPC). 
         :type SubnetId: str
         :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).
         :type IsExtranet: bool
@@ -689,7 +689,7 @@ class CreateClusterEndpointVipRequest(AbstractModel):
         """
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param SecurityPolicies: Security policy opens single IP or CIDR to the Internet (for example: “192.168.1.0/24”, with “reject all” as the default).
+        :param SecurityPolicies: Security policy opens single IP or CIDR to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).
         :type SecurityPolicies: list of str
         """
         self.ClusterId = None
@@ -708,7 +708,7 @@ class CreateClusterEndpointVipResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestFlowId: Request job’s FlowId
+        :param RequestFlowId: Request job's FlowId
         :type RequestFlowId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1592,19 +1592,19 @@ class DescribeClusterSecurityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: Cluster’s account name
+        :param UserName: Cluster's account name
         :type UserName: str
-        :param Password: Cluster’s password
+        :param Password: Cluster's password
         :type Password: str
-        :param CertificationAuthority: Cluster’s access CA certificate
+        :param CertificationAuthority: Cluster's access CA certificate
         :type CertificationAuthority: str
-        :param ClusterExternalEndpoint: Cluster’s access address
+        :param ClusterExternalEndpoint: Cluster's access address
         :type ClusterExternalEndpoint: str
         :param Domain: Domain name accessed by the cluster
         :type Domain: str
-        :param PgwEndpoint: Cluster’s endpoint address
+        :param PgwEndpoint: Cluster's endpoint address
         :type PgwEndpoint: str
-        :param SecurityPolicy: Cluster’s access policy group
+        :param SecurityPolicy: Cluster's access policy group
 Note: This field may return null, indicating that no valid value was found.
         :type SecurityPolicy: list of str
         :param Kubeconfig: Cluster Kubeconfig file
@@ -1715,9 +1715,9 @@ class DescribeExistedInstancesRequest(AbstractModel):
         """
         :param ClusterId: Cluster ID. Enter the `ClusterId` field returned when you call the DescribeClusters API (Only VPC ID obtained through `ClusterId` need filtering conditions. When comparing statuses, the nodes on all clusters in this region will be used for comparison. You cannot specify `InstanceIds` and `ClusterId` at the same time.)
         :type ClusterId: str
-        :param InstanceIds: Query by one or more instance ID(s). Instance ID format: ins-xxxxxxxx. (Refer to section ID.N of the API overview for this parameter’s specific format.) Up to 100 instances are allowed for each request. You cannot specify InstanceIds and Filters at the same time.
+        :param InstanceIds: Query by one or more instance ID(s). Instance ID format: ins-xxxxxxxx. (Refer to section ID.N of the API overview for this parameter's specific format.) Up to 100 instances are allowed for each request. You cannot specify InstanceIds and Filters at the same time.
         :type InstanceIds: list of str
-        :param Filters: Filter condition. For fields and other information, see [the DescribeInstances API](https://cloud.tencent.com/document/api/213/15728). If a ClusterId has been set, then the cluster’s VPC ID will be attached as a query field. In this situation, if a "vpc-id" is specified in Filter, then the specified VPC ID must be consistent with the cluster’s VPC ID.
+        :param Filters: Filter condition. For fields and other information, see [the DescribeInstances API](https://cloud.tencent.com/document/api/213/15728). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a "vpc-id" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID.
         :type Filters: list of Filter
         :param VagueIpAddress: Filter by instance IP (Supports both private and public IPs)
         :type VagueIpAddress: str
@@ -1957,19 +1957,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param InstanceName: Instance name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceName: str
-        :param PrivateIpAddresses: List of private IPs of the instance’s primary ENI.
+        :param PrivateIpAddresses: List of private IPs of the instance's primary ENI.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PrivateIpAddresses: list of str
-        :param PublicIpAddresses: List of public IPs of the instance’s primary ENI.
+        :param PublicIpAddresses: List of public IPs of the instance's primary ENI.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PublicIpAddresses: list of str
         :param CreatedTime: Creation time, which follows the ISO8601 standard and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param CPU: Instance’s number of CPU cores. Unit: cores.
+        :param CPU: Instance's number of CPU cores. Unit: cores.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CPU: int
-        :param Memory: Instance’s memory capacity. Unit: GB.
+        :param Memory: Instance's memory capacity. Unit: GB.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Memory: int
         :param OsName: Operating system name.
@@ -2155,7 +2155,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Instance(AbstractModel):
-    """Cluster’s instance information
+    """Cluster's instance information
 
     """
 
@@ -2480,7 +2480,7 @@ class ModifyClusterEndpointSPRequest(AbstractModel):
         """
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param SecurityPolicies: Security policy opens single IP or CIDR block to the Internet (for example: “192.168.1.0/24”, with “reject all” as the default).
+        :param SecurityPolicies: Security policy opens single IP or CIDR block to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).
         :type SecurityPolicies: list of str
         """
         self.ClusterId = None

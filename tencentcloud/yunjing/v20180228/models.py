@@ -1475,7 +1475,7 @@ class DescribeLoginWhiteListResponse(AbstractModel):
         """
         :param TotalCount: Total number of records
         :type TotalCount: int
-        :param LoginWhiteLists: Login whitelist array
+        :param LoginWhiteLists: Login allowlist array
         :type LoginWhiteLists: list of LoginWhiteLists
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2397,6 +2397,16 @@ class DescribeSecurityTrendsResponse(AbstractModel):
         :type Vuls: list of SecurityTrend
         :param BaseLines: Baseline statistics array.
         :type BaseLines: list of SecurityTrend
+        :param MaliciousRequests: 
+        :type MaliciousRequests: list of SecurityTrend
+        :param HighRiskBashs: 
+        :type HighRiskBashs: list of SecurityTrend
+        :param ReverseShells: 
+        :type ReverseShells: list of SecurityTrend
+        :param PrivilegeEscalations: 
+        :type PrivilegeEscalations: list of SecurityTrend
+        :param CyberAttacks: 
+        :type CyberAttacks: list of SecurityTrend
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2405,6 +2415,11 @@ class DescribeSecurityTrendsResponse(AbstractModel):
         self.BruteAttacks = None
         self.Vuls = None
         self.BaseLines = None
+        self.MaliciousRequests = None
+        self.HighRiskBashs = None
+        self.ReverseShells = None
+        self.PrivilegeEscalations = None
+        self.CyberAttacks = None
         self.RequestId = None
 
 
@@ -2439,6 +2454,36 @@ class DescribeSecurityTrendsResponse(AbstractModel):
                 obj = SecurityTrend()
                 obj._deserialize(item)
                 self.BaseLines.append(obj)
+        if params.get("MaliciousRequests") is not None:
+            self.MaliciousRequests = []
+            for item in params.get("MaliciousRequests"):
+                obj = SecurityTrend()
+                obj._deserialize(item)
+                self.MaliciousRequests.append(obj)
+        if params.get("HighRiskBashs") is not None:
+            self.HighRiskBashs = []
+            for item in params.get("HighRiskBashs"):
+                obj = SecurityTrend()
+                obj._deserialize(item)
+                self.HighRiskBashs.append(obj)
+        if params.get("ReverseShells") is not None:
+            self.ReverseShells = []
+            for item in params.get("ReverseShells"):
+                obj = SecurityTrend()
+                obj._deserialize(item)
+                self.ReverseShells.append(obj)
+        if params.get("PrivilegeEscalations") is not None:
+            self.PrivilegeEscalations = []
+            for item in params.get("PrivilegeEscalations"):
+                obj = SecurityTrend()
+                obj._deserialize(item)
+                self.PrivilegeEscalations.append(obj)
+        if params.get("CyberAttacks") is not None:
+            self.CyberAttacks = []
+            for item in params.get("CyberAttacks"):
+                obj = SecurityTrend()
+                obj._deserialize(item)
+                self.CyberAttacks.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2489,6 +2534,21 @@ class DescribeTagsRequest(AbstractModel):
     """DescribeTags request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param MachineType: 
+        :type MachineType: str
+        :param MachineRegion: 
+        :type MachineRegion: str
+        """
+        self.MachineType = None
+        self.MachineRegion = None
+
+
+    def _deserialize(self, params):
+        self.MachineType = params.get("MachineType")
+        self.MachineRegion = params.get("MachineRegion")
 
 
 class DescribeTagsResponse(AbstractModel):
@@ -3407,7 +3467,7 @@ class ImpactedHost(AbstractModel):
 
 
 class LoginWhiteLists(AbstractModel):
-    """Login whitelist
+    """Login allowlist
 
     """
 
@@ -3433,6 +3493,10 @@ class LoginWhiteLists(AbstractModel):
         :type MachineName: str
         :param HostIp: Server IP
         :type HostIp: str
+        :param StartTime: 
+        :type StartTime: str
+        :param EndTime: 
+        :type EndTime: str
         """
         self.Id = None
         self.Uuid = None
@@ -3444,6 +3508,8 @@ class LoginWhiteLists(AbstractModel):
         self.ModifyTime = None
         self.MachineName = None
         self.HostIp = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
@@ -3462,6 +3528,8 @@ class LoginWhiteLists(AbstractModel):
         self.ModifyTime = params.get("ModifyTime")
         self.MachineName = params.get("MachineName")
         self.HostIp = params.get("HostIp")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class LoginWhiteListsRule(AbstractModel):
@@ -3479,10 +3547,14 @@ class LoginWhiteListsRule(AbstractModel):
         :type UserName: str
         :param IsGlobal: Whether this rule is applied to all servers under the current account
         :type IsGlobal: bool
-        :param HostIp: Server for which the whitelist takes effect
+        :param HostIp: Server for which the allowlist takes effect
         :type HostIp: str
         :param Id: Rule ID, used for rule updating
         :type Id: int
+        :param StartTime: 
+        :type StartTime: str
+        :param EndTime: 
+        :type EndTime: str
         """
         self.Places = None
         self.SrcIp = None
@@ -3490,6 +3562,8 @@ class LoginWhiteListsRule(AbstractModel):
         self.IsGlobal = None
         self.HostIp = None
         self.Id = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
@@ -3504,6 +3578,8 @@ class LoginWhiteListsRule(AbstractModel):
         self.IsGlobal = params.get("IsGlobal")
         self.HostIp = params.get("HostIp")
         self.Id = params.get("Id")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class Machine(AbstractModel):
@@ -3543,6 +3619,14 @@ class Machine(AbstractModel):
         :type MalwareNum: int
         :param Tag: Tag information
         :type Tag: list of MachineTag
+        :param BaselineNum: 
+        :type BaselineNum: int
+        :param CyberAttackNum: 
+        :type CyberAttackNum: int
+        :param SecurityStatus: 
+        :type SecurityStatus: str
+        :param InvasionNum: 
+        :type InvasionNum: int
         """
         self.MachineName = None
         self.MachineOs = None
@@ -3556,6 +3640,10 @@ class Machine(AbstractModel):
         self.PayMode = None
         self.MalwareNum = None
         self.Tag = None
+        self.BaselineNum = None
+        self.CyberAttackNum = None
+        self.SecurityStatus = None
+        self.InvasionNum = None
 
 
     def _deserialize(self, params):
@@ -3576,6 +3664,10 @@ class Machine(AbstractModel):
                 obj = MachineTag()
                 obj._deserialize(item)
                 self.Tag.append(obj)
+        self.BaselineNum = params.get("BaselineNum")
+        self.CyberAttackNum = params.get("CyberAttackNum")
+        self.SecurityStatus = params.get("SecurityStatus")
+        self.InvasionNum = params.get("InvasionNum")
 
 
 class MachineTag(AbstractModel):
@@ -3589,14 +3681,18 @@ class MachineTag(AbstractModel):
         :type Rid: int
         :param Name: Tag name
         :type Name: str
+        :param TagId: 
+        :type TagId: int
         """
         self.Rid = None
         self.Name = None
+        self.TagId = None
 
 
     def _deserialize(self, params):
         self.Rid = params.get("Rid")
         self.Name = params.get("Name")
+        self.TagId = params.get("TagId")
 
 
 class MaliciousRequest(AbstractModel):
@@ -4300,11 +4396,14 @@ class SecurityDynamic(AbstractModel):
         :type EventType: str
         :param Message: Security event message.
         :type Message: str
+        :param SecurityLevel: 
+        :type SecurityLevel: str
         """
         self.Uuid = None
         self.EventTime = None
         self.EventType = None
         self.Message = None
+        self.SecurityLevel = None
 
 
     def _deserialize(self, params):
@@ -4312,6 +4411,7 @@ class SecurityDynamic(AbstractModel):
         self.EventTime = params.get("EventTime")
         self.EventType = params.get("EventType")
         self.Message = params.get("Message")
+        self.SecurityLevel = params.get("SecurityLevel")
 
 
 class SecurityTrend(AbstractModel):

@@ -31,7 +31,7 @@ class AddEcdnDomainRequest(AbstractModel):
         :type Area: str
         :param ProjectId: Project ID. Default value: 0.
         :type ProjectId: int
-        :param IpFilter: IP blacklist/whitelist configuration.
+        :param IpFilter: IP block/allowlist configuration.
         :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
         :param IpFreqLimit: IP access limit configuration.
         :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
@@ -547,9 +547,9 @@ dynamic_bandwidth: dynamic bandwidth in bps
         :type Metrics: list of str
         :param Interval: Time granularity, which can be:
 1 day	 1, 5, 15, 30, 60, 120, 240, 1440 
-2–3 days 15, 30, 60, 120, 240, 1440
-4–7 days 30, 60, 120, 240, 1440
-8–90 days	 60, 120, 240, 1440
+2-3 days 15, 30, 60, 120, 240, 1440
+4-7 days 30, 60, 120, 240, 1440
+8-90 days	 60, 120, 240, 1440
         :type Interval: int
         :param Domains: Specifies the list of domain names to be queried
 
@@ -848,7 +848,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type UpdateTime: str
         :param Origin: Origin server configuration.
         :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`
-        :param IpFilter: IP blacklist/whitelist configuration.
+        :param IpFilter: IP blocklist/allowlist configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
         :param IpFreqLimit: IP access limit configuration.
@@ -1052,6 +1052,31 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RedirectStatusCode = params.get("RedirectStatusCode")
 
 
+class Hsts(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 
+        :type Switch: str
+        :param MaxAge: 
+        :type MaxAge: int
+        :param IncludeSubDomains: 
+        :type IncludeSubDomains: str
+        """
+        self.Switch = None
+        self.MaxAge = None
+        self.IncludeSubDomains = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.MaxAge = params.get("MaxAge")
+        self.IncludeSubDomains = params.get("IncludeSubDomains")
+
+
 class HttpHeaderPathRule(AbstractModel):
     """Path-specific HTTP header setting rule.
 
@@ -1122,6 +1147,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SslStatus: HTTPS certificate deployment status. Valid values: closed (disabled), deploying (deploying), deployed (deployment succeeded), failed (deployment failed). This parameter cannot be used as an input parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SslStatus: str
+        :param Hsts: 
+        :type Hsts: :class:`tencentcloud.ecdn.v20191012.models.Hsts`
         """
         self.Switch = None
         self.Http2 = None
@@ -1131,6 +1158,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ClientCertInfo = None
         self.Spdy = None
         self.SslStatus = None
+        self.Hsts = None
 
 
     def _deserialize(self, params):
@@ -1146,21 +1174,24 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         self.Spdy = params.get("Spdy")
         self.SslStatus = params.get("SslStatus")
+        if params.get("Hsts") is not None:
+            self.Hsts = Hsts()
+            self.Hsts._deserialize(params.get("Hsts"))
 
 
 class IpFilter(AbstractModel):
-    """IP blacklist/whitelist.
+    """IP blocklist/allowlist.
 
     """
 
     def __init__(self):
         """
-        :param Switch: IP blacklist/whitelist switch. Valid values: on, off.
+        :param Switch: IP blocklist/allowlist switch. Valid values: on, off.
         :type Switch: str
-        :param FilterType: IP blacklist/whitelist type. Valid values: whitelist, blacklist.
+        :param FilterType: IP blocklist/allowlist type. Valid values: whitelist, blacklist.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FilterType: str
-        :param Filters: IP blacklist/whitelist list.
+        :param Filters: IP blocklist/allowlist list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Filters: list of str
         """
@@ -1611,7 +1642,7 @@ class UpdateDomainConfigRequest(AbstractModel):
         :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`
         :param ProjectId: Project ID.
         :type ProjectId: int
-        :param IpFilter: IP blacklist/whitelist configuration.
+        :param IpFilter: IP blocklist/allowlist configuration.
         :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
         :param IpFreqLimit: IP access limit configuration.
         :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`

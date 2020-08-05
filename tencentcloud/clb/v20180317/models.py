@@ -400,7 +400,7 @@ class BatchTarget(AbstractModel):
 
 
 class BlockedIP(AbstractModel):
-    """IP added to blacklist 12306
+    """IP added to blocklist 12306
 
     """
 
@@ -1543,7 +1543,7 @@ class DescribeBlockIPListResponse(AbstractModel):
         :type BlockedIPCount: int
         :param ClientIPField: Field for getting real client IP
         :type ClientIPField: str
-        :param BlockedIPList: List of IPs added to blacklist 12360
+        :param BlockedIPList: List of IPs added to blocklist 12360
         :type BlockedIPList: list of BlockedIP
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3208,12 +3208,12 @@ class ModifyBlockIPListRequest(AbstractModel):
         :param LoadBalancerIds: CLB instance ID
         :type LoadBalancerIds: list of str
         :param Type: Operation type. Valid values:
-<li> add_customized_field (sets header initially to enable the blacklist feature)</li>
+<li> add_customized_field (sets header initially to enable the blocklist feature)</li>
 <li> set_customized_field (modifies header)</li>
 <li> del_customized_field (deletes header)</li>
-<li> add_blocked (adds IPs to blacklist)</li>
-<li> del_blocked (deletes IPs from blacklist)</li>
-<li> flush_blocked (clears blacklist)</li>
+<li> add_blocked (adds IPs to blocklist)</li>
+<li> del_blocked (deletes IPs from blocklist)</li>
+<li> flush_blocked (clears blocklist)</li>
         :type Type: str
         :param ClientIPField: Header field that stores real client IPs
         :type ClientIPField: str
@@ -3221,7 +3221,7 @@ class ModifyBlockIPListRequest(AbstractModel):
         :type BlockIPList: list of str
         :param ExpireTime: Expiration time in seconds. Default value: 3600
         :type ExpireTime: int
-        :param AddStrategy: IP adding policy. Valid value: fifo (if a blacklist is full, new IPs added to the blacklist will adopt the first-in first-out policy)
+        :param AddStrategy: IP adding policy. Valid value: fifo (if a blocklist is full, new IPs added to the blocklist will adopt the first-in first-out policy)
         :type AddStrategy: str
         """
         self.LoadBalancerIds = None

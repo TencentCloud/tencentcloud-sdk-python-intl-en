@@ -57,7 +57,7 @@ class CreateInstanceRequest(AbstractModel):
         :param InstanceName: Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
         :type InstanceName: str
         :param NodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of nodes (2–50)
+Number of nodes (2-50)
         :type NodeNum: int
         :param ChargeType: Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR
         :type ChargeType: str
@@ -81,16 +81,16 @@ Node disk size in GB
         :param VoucherIds: List of voucher IDs (only one voucher can be specified at a time currently)
         :type VoucherIds: list of str
         :param EnableDedicatedMaster: This parameter has been disused. Please use `NodeInfoList`
-Whether to create a dedicated master node <li>true: yes </li><li>false: no </li>Default value: false
+Whether to create a dedicated primary node <li>true: yes </li><li>false: no </li>Default value: false
         :type EnableDedicatedMaster: bool
         :param MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of dedicated master nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)
+Number of dedicated primary nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)
         :type MasterNodeNum: int
         :param MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
-Dedicated master node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+Dedicated primary node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
         :type MasterNodeType: str
         :param MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
-Dedicated master node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently
+Dedicated primary node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently
         :type MasterNodeDiskSize: int
         :param ClusterNameInConf: ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized
         :type ClusterNameInConf: str
@@ -246,7 +246,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
         :param InstanceId: Cluster instance ID
         :type InstanceId: str
         :param LogType: Log type. Default value: 1
-<li>1: master log</li>
+<li>1: primary log</li>
 <li>2: search slow log</li>
 <li>3: index slow log</li>
 <li>4: GC log</li>
@@ -496,9 +496,9 @@ class EsAcl(AbstractModel):
 
     def __init__(self):
         """
-        :param BlackIpList: Kibana access blacklist
+        :param BlackIpList: Kibana access blocklist
         :type BlackIpList: list of str
-        :param WhiteIpList: Kibana access whitelist
+        :param WhiteIpList: Kibana access allowlist
         :type WhiteIpList: list of str
         """
         self.BlackIpList = None
@@ -521,9 +521,18 @@ class EsDictionaryInfo(AbstractModel):
         :type MainDict: list of DictInfo
         :param Stopwords: List of stop words
         :type Stopwords: list of DictInfo
+        :param QQDict: 
+        :type QQDict: list of DictInfo
+        :param Synonym: 
+        :type Synonym: list of DictInfo
+        :param UpdateType: 
+        :type UpdateType: str
         """
         self.MainDict = None
         self.Stopwords = None
+        self.QQDict = None
+        self.Synonym = None
+        self.UpdateType = None
 
 
     def _deserialize(self, params):
@@ -539,6 +548,19 @@ class EsDictionaryInfo(AbstractModel):
                 obj = DictInfo()
                 obj._deserialize(item)
                 self.Stopwords.append(obj)
+        if params.get("QQDict") is not None:
+            self.QQDict = []
+            for item in params.get("QQDict"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self.QQDict.append(obj)
+        if params.get("Synonym") is not None:
+            self.Synonym = []
+            for item in params.get("Synonym"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self.Synonym.append(obj)
+        self.UpdateType = params.get("UpdateType")
 
 
 class EsPublicAcl(AbstractModel):
@@ -548,9 +570,9 @@ class EsPublicAcl(AbstractModel):
 
     def __init__(self):
         """
-        :param BlackIpList: Access blacklist
+        :param BlackIpList: Access blocklist
         :type BlackIpList: list of str
-        :param WhiteIpList: Access whitelist
+        :param WhiteIpList: Access allowlist
         :type WhiteIpList: list of str
         """
         self.BlackIpList = None
@@ -629,7 +651,7 @@ class InstanceInfo(AbstractModel):
         :type InstanceType: int
         :param IkConfig: IK analyzer configuration
         :type IkConfig: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`
-        :param MasterNodeInfo: Dedicated master node configuration
+        :param MasterNodeInfo: Dedicated primary node configuration
         :type MasterNodeInfo: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`
         :param CosBackup: Auto-backup to COS configuration
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
@@ -900,25 +922,25 @@ class LocalDiskInfo(AbstractModel):
 
 
 class MasterNodeInfo(AbstractModel):
-    """Information of the dedicated master node in an instance
+    """Information of the dedicated primary node in an instance
 
     """
 
     def __init__(self):
         """
-        :param EnableDedicatedMaster: Whether to enable the dedicated master node
+        :param EnableDedicatedMaster: Whether to enable the dedicated primary node
         :type EnableDedicatedMaster: bool
-        :param MasterNodeType: Dedicated master node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        :param MasterNodeType: Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
         :type MasterNodeType: str
-        :param MasterNodeNum: Number of dedicated master nodes
+        :param MasterNodeNum: Number of dedicated primary nodes
         :type MasterNodeNum: int
-        :param MasterNodeCpuNum: Number of CPU cores of the dedicated master node
+        :param MasterNodeCpuNum: Number of CPU cores of the dedicated primary node
         :type MasterNodeCpuNum: int
-        :param MasterNodeMemSize: Memory size of the dedicated master node in GB
+        :param MasterNodeMemSize: Memory size of the dedicated primary node in GB
         :type MasterNodeMemSize: int
-        :param MasterNodeDiskSize: Disk size of the dedicated master node in GB
+        :param MasterNodeDiskSize: Disk size of the dedicated primary node in GB
         :type MasterNodeDiskSize: int
-        :param MasterNodeDiskType: Disk type of the dedicated master node
+        :param MasterNodeDiskType: Disk type of the dedicated primary node
         :type MasterNodeDiskType: str
         """
         self.EnableDedicatedMaster = None
@@ -941,7 +963,7 @@ class MasterNodeInfo(AbstractModel):
 
 
 class NodeInfo(AbstractModel):
-    """Specification information of a node type in the cluster (such as hot data node, warm data node, or dedicated master node), including node type, number of nodes, node specification, disk type, and disk size. If `Type` is not specified, it will be a hot data node by default; if the node is a master node, then the `DiskType` and `DiskSize` parameters will be ignored (as a master node has no data disks)
+    """Specification information of a node type in the cluster (such as hot data node, warm data node, or dedicated primary node), including node type, number of nodes, node specification, disk type, and disk size. If `Type` is not specified, it will be a hot data node by default; if the node is a primary node, then the `DiskType` and `DiskSize` parameters will be ignored (as a primary node has no data disks)
 
     """
 
@@ -953,7 +975,7 @@ class NodeInfo(AbstractModel):
         :type NodeType: str
         :param Type: Node type <li>hotData: hot data node</li>
 <li>warmData: warm data node</li>
-<li>dedicatedMaster: dedicated master node</li>
+<li>dedicatedMaster: dedicated primary node</li>
 Default value: hotData
         :type Type: str
         :param DiskType: Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD
@@ -965,6 +987,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
         :param DiskCount: Number of node disks
         :type DiskCount: int
+        :param DiskEncrypt: 
+        :type DiskEncrypt: int
         """
         self.NodeNum = None
         self.NodeType = None
@@ -973,6 +997,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DiskSize = None
         self.LocalDiskInfo = None
         self.DiskCount = None
+        self.DiskEncrypt = None
 
 
     def _deserialize(self, params):
@@ -985,6 +1010,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.LocalDiskInfo = LocalDiskInfo()
             self.LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
         self.DiskCount = params.get("DiskCount")
+        self.DiskEncrypt = params.get("DiskEncrypt")
 
 
 class Operation(AbstractModel):
@@ -1216,11 +1242,11 @@ class UpdateInstanceRequest(AbstractModel):
         :param InstanceName: Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
         :type InstanceName: str
         :param NodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of nodes (2–50)
+Number of nodes (2-50)
         :type NodeNum: int
         :param EsConfig: Configuration item (JSON string). Only the following items are supported currently: <li>action.destructive_requires_name</li><li>indices.fielddata.cache.size</li><li>indices.query.bool.max_clause_count</li>
         :type EsConfig: str
-        :param Password: Password of the default user “elastic“, which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
+        :param Password: Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
         :type Password: str
         :param EsAcl: Access control list
         :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
@@ -1231,13 +1257,13 @@ Disk size in GB
 Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
         :type NodeType: str
         :param MasterNodeNum: This parameter has been disused. Please use `NodeInfoList`
-Number of dedicated master nodes (only 3 and 5 are supported)
+Number of dedicated primary nodes (only 3 and 5 are supported)
         :type MasterNodeNum: int
         :param MasterNodeType: This parameter has been disused. Please use `NodeInfoList`
-Dedicated master node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
         :type MasterNodeType: str
         :param MasterNodeDiskSize: This parameter has been disused. Please use `NodeInfoList`
-Dedicated master node disk size in GB. This is 50 GB by default and currently cannot be customized
+Dedicated primary node disk size in GB. This is 50 GB by default and currently cannot be customized
         :type MasterNodeDiskSize: int
         :param ForceRestart: Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false
         :type ForceRestart: bool
@@ -1257,6 +1283,8 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
         :type BasicSecurityType: int
         :param KibanaPrivatePort: Kibana private port
         :type KibanaPrivatePort: int
+        :param ScaleType: 
+        :type ScaleType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1278,6 +1306,7 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
         self.KibanaPrivateAccess = None
         self.BasicSecurityType = None
         self.KibanaPrivatePort = None
+        self.ScaleType = None
 
 
     def _deserialize(self, params):
@@ -1312,6 +1341,7 @@ Dedicated master node disk size in GB. This is 50 GB by default and currently ca
         self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.KibanaPrivatePort = params.get("KibanaPrivatePort")
+        self.ScaleType = params.get("ScaleType")
 
 
 class UpdateInstanceResponse(AbstractModel):

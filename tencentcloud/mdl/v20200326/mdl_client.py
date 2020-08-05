@@ -277,6 +277,34 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMediaLiveChannelLogs(self, request):
+        """This API is used to query MediaLive channel logs, such as push event logs.
+
+        :param request: Request instance for DescribeMediaLiveChannelLogs.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelLogsRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveChannelLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaLiveChannelLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaLiveChannelLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMediaLiveChannelOutputStatistics(self, request):
         """This API is used to query the output statistics of a channel.
 

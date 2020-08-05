@@ -17,7 +17,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccessInfo(AbstractModel):
-    """HTTP domain name–related information
+    """HTTP domain name-related information
 
     """
 
@@ -44,7 +44,7 @@ class Alias(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionVersion: Master version of alias
+        :param FunctionVersion: Master version pointed to by the alias
         :type FunctionVersion: str
         :param Name: Alias name
         :type Name: str
@@ -78,6 +78,80 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Description = params.get("Description")
         self.AddTime = params.get("AddTime")
         self.ModTime = params.get("ModTime")
+
+
+class CfsConfig(AbstractModel):
+    """File system (CFS) configuration description
+
+    """
+
+    def __init__(self):
+        """
+        :param CfsInsList: File system information list
+        :type CfsInsList: list of CfsInsInfo
+        """
+        self.CfsInsList = None
+
+
+    def _deserialize(self, params):
+        if params.get("CfsInsList") is not None:
+            self.CfsInsList = []
+            for item in params.get("CfsInsList"):
+                obj = CfsInsInfo()
+                obj._deserialize(item)
+                self.CfsInsList.append(obj)
+
+
+class CfsInsInfo(AbstractModel):
+    """Configuration information of the CFS instance associated with function
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: User ID
+        :type UserId: str
+        :param UserGroupId: User group ID
+        :type UserGroupId: str
+        :param CfsId: CFS instance ID
+        :type CfsId: str
+        :param MountInsId: File system mount target ID
+        :type MountInsId: str
+        :param LocalMountDir: Local mount target
+        :type LocalMountDir: str
+        :param RemoteMountDir: Remote mount target
+        :type RemoteMountDir: str
+        :param IpAddress: File system IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IpAddress: str
+        :param MountVpcId: VPC ID of file system
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MountVpcId: str
+        :param MountSubnetId: VPC subnet ID of file system
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MountSubnetId: str
+        """
+        self.UserId = None
+        self.UserGroupId = None
+        self.CfsId = None
+        self.MountInsId = None
+        self.LocalMountDir = None
+        self.RemoteMountDir = None
+        self.IpAddress = None
+        self.MountVpcId = None
+        self.MountSubnetId = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserGroupId = params.get("UserGroupId")
+        self.CfsId = params.get("CfsId")
+        self.MountInsId = params.get("MountInsId")
+        self.LocalMountDir = params.get("LocalMountDir")
+        self.RemoteMountDir = params.get("RemoteMountDir")
+        self.IpAddress = params.get("IpAddress")
+        self.MountVpcId = params.get("MountVpcId")
+        self.MountSubnetId = params.get("MountSubnetId")
 
 
 class Code(AbstractModel):
@@ -223,11 +297,11 @@ class CreateAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Alias name, which must be unique in the function, can contain 1–64 letters, digits, `_`, and `-`, and must begin with a letter
+        :param Name: Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter
         :type Name: str
         :param FunctionName: Function name
         :type FunctionName: str
-        :param FunctionVersion: Master version of alias
+        :param FunctionVersion: Master version pointed to by the alias
         :type FunctionVersion: str
         :param Namespace: Function namespace
         :type Namespace: str
@@ -283,13 +357,13 @@ class CreateFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param Code: Function code. Note: You cannot specify `Cos` and `ZipFile` at the same time.
         :type Code: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param Handler: Name of the handler, which is in the “file name.handler name” form. Use periods (.) to separate a file name and function name. The file name and function name must start and end with a letter and can contain 2 to 60 characters, including letters, digits, hyphens (-), and underscores (_).
+        :param Handler: Name of the handler, which is in the 'file name.handler name' form. Use periods (.) to separate a file name and function name. The file name and function name must start and end with a letter and can contain 2 to 60 characters, including letters, digits, hyphens (-), and underscores (_).
         :type Handler: str
         :param Description: Function description. It can contain up to 1,000 characters including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
         :type Description: str
-        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128–3,072 MB in increments of 128 MB
+        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3072 MB in increments of 128 MB
         :type MemorySize: int
-        :param Timeout: Maximum execution duration of function in seconds. Value range: 1–900 seconds. Default value: 3 seconds
+        :param Timeout: Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds
         :type Timeout: int
         :param Environment: Function environment variable
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
@@ -315,6 +389,8 @@ class CreateFunctionRequest(AbstractModel):
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
         :param PublicNetConfig: Public network access configuration
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
+        :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system
+        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         """
         self.FunctionName = None
         self.Code = None
@@ -334,6 +410,7 @@ class CreateFunctionRequest(AbstractModel):
         self.Layers = None
         self.DeadLetterConfig = None
         self.PublicNetConfig = None
+        self.CfsConfig = None
 
 
     def _deserialize(self, params):
@@ -370,6 +447,9 @@ class CreateFunctionRequest(AbstractModel):
         if params.get("PublicNetConfig") is not None:
             self.PublicNetConfig = PublicNetConfigIn()
             self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
+        if params.get("CfsConfig") is not None:
+            self.CfsConfig = CfsConfig()
+            self.CfsConfig._deserialize(params.get("CfsConfig"))
 
 
 class CreateFunctionResponse(AbstractModel):
@@ -1018,7 +1098,7 @@ class GetAliasResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionVersion: Master version of alias
+        :param FunctionVersion: Master version pointed to by the alias
         :type FunctionVersion: str
         :param Name: Alias name
         :type Name: str
@@ -1316,6 +1396,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param OnsEnable: Whether Ons is enabled
 Note: This field may return null, indicating that no valid value was found.
         :type OnsEnable: str
+        :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
+        :param AvailableStatus: Function billing status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AvailableStatus: str
+        :param Qualifier: Function version
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Qualifier: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1354,6 +1443,9 @@ Note: This field may return null, indicating that no valid value was found.
         self.AddTime = None
         self.PublicNetConfig = None
         self.OnsEnable = None
+        self.CfsConfig = None
+        self.AvailableStatus = None
+        self.Qualifier = None
         self.RequestId = None
 
 
@@ -1420,6 +1512,11 @@ Note: This field may return null, indicating that no valid value was found.
             self.PublicNetConfig = PublicNetConfigOut()
             self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
         self.OnsEnable = params.get("OnsEnable")
+        if params.get("CfsConfig") is not None:
+            self.CfsConfig = CfsConfig()
+            self.CfsConfig._deserialize(params.get("CfsConfig"))
+        self.AvailableStatus = params.get("AvailableStatus")
+        self.Qualifier = params.get("Qualifier")
         self.RequestId = params.get("RequestId")
 
 
@@ -1453,9 +1550,9 @@ class GetLayerVersionResponse(AbstractModel):
         """
         :param CompatibleRuntimes: Compatible runtimes
         :type CompatibleRuntimes: list of str
-        :param CodeSha256: SHA256 encoding of file on layer version
+        :param CodeSha256: SHA256 encoding of version file on the layer
         :type CodeSha256: str
-        :param Location: Download address of file on layer version
+        :param Location: Download address of version file on the layer
         :type Location: str
         :param AddTime: Version creation time
         :type AddTime: str
@@ -1645,7 +1742,7 @@ class ListAliasesRequest(AbstractModel):
         :type FunctionName: str
         :param Namespace: Function namespace
         :type Namespace: str
-        :param FunctionVersion: If this parameter is provided, only aliases associated with this function version will be returned
+        :param FunctionVersion: If this parameter is provided, only aliases associated with this function version will be returned.
         :type FunctionVersion: str
         :param Offset: Data offset. Default value: 0
         :type Offset: str
@@ -1966,7 +2063,7 @@ class ListTriggersRequest(AbstractModel):
         :param Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC
         :type Order: str
         :param Filters: * Qualifier:
-Function version, i.e., alias
+Function version, alias
         :type Filters: list of Filter
         """
         self.FunctionName = None
@@ -2234,7 +2331,7 @@ class PublishLayerVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerName: Layer name, which can contain 1–64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore
+        :param LayerName: Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore
         :type LayerName: str
         :param CompatibleRuntimes: Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.
         :type CompatibleRuntimes: list of str
@@ -2506,7 +2603,7 @@ class TriggerInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Enable: Enablement switch
+        :param Enable: Whether to enable
         :type Enable: int
         :param Qualifier: Function version or alias
         :type Qualifier: str
@@ -2560,7 +2657,7 @@ class UpdateAliasRequest(AbstractModel):
         :type FunctionName: str
         :param Name: Alias name
         :type Name: str
-        :param FunctionVersion: Master version of alias
+        :param FunctionVersion: Master version pointed to by the alias
         :type FunctionVersion: str
         :param Namespace: Function namespace
         :type Namespace: str
@@ -2692,9 +2789,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type FunctionName: str
         :param Description: Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
         :type Description: str
-        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128–3,072 MB in increments of 128 MB.
+        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.
         :type MemorySize: int
-        :param Timeout: Maximum execution duration of function in seconds. Value range: 1–900 seconds. Default value: 3 seconds
+        :param Timeout: Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds
         :type Timeout: int
         :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Golang1 and Java8
         :type Runtime: str
@@ -2720,6 +2817,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
         :param PublicNetConfig: Public network access configuration
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
+        :param CfsConfig: File system configuration input parameter, which is used for the function to bind the file system
+        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         """
         self.FunctionName = None
         self.Description = None
@@ -2737,6 +2836,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.Layers = None
         self.DeadLetterConfig = None
         self.PublicNetConfig = None
+        self.CfsConfig = None
 
 
     def _deserialize(self, params):
@@ -2769,6 +2869,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("PublicNetConfig") is not None:
             self.PublicNetConfig = PublicNetConfigIn()
             self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
+        if params.get("CfsConfig") is not None:
+            self.CfsConfig = CfsConfig()
+            self.CfsConfig._deserialize(params.get("CfsConfig"))
 
 
 class UpdateFunctionConfigurationResponse(AbstractModel):

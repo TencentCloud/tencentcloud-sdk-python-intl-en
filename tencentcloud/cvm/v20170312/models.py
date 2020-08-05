@@ -3489,7 +3489,7 @@ class OsVersion(AbstractModel):
 
 
 class Placement(AbstractModel):
-    """Describes the location of an instance, including its availability zone, project, host (for CDH products only), master host IP, etc.
+    """Describes the location of an instance, including its availability zone, project, host (for CDH products only), primary host IP, etc.
 
     """
 

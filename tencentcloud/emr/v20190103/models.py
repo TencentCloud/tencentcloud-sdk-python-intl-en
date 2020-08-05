@@ -349,7 +349,7 @@ class CreateInstanceRequest(AbstractModel):
 <li>1: enables high availability of node.</li>
         :type SupportHA: int
         :param InstanceName: Instance name.
-<li>Length limit: 6–36 characters.</li>
+<li>Length limit: 6-36 characters.</li>
 <li>Only letters, numbers, dashes (-), and underscores (_) are supported.</li>
         :type InstanceName: str
         :param PayMode: Instance billing mode. Valid values:
@@ -551,11 +551,17 @@ Note: only the above values are supported for the time being. Entering other val
         :type Offset: int
         :param Limit: Number of returned results per page. Default value: 100. Maximum value: 100
         :type Limit: int
+        :param HardwareResourceType: 
+        :type HardwareResourceType: str
+        :param SearchFields: 
+        :type SearchFields: list of SearchItem
         """
         self.InstanceId = None
         self.NodeFlag = None
         self.Offset = None
         self.Limit = None
+        self.HardwareResourceType = None
+        self.SearchFields = None
 
 
     def _deserialize(self, params):
@@ -563,6 +569,13 @@ Note: only the above values are supported for the time being. Entering other val
         self.NodeFlag = params.get("NodeFlag")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.HardwareResourceType = params.get("HardwareResourceType")
+        if params.get("SearchFields") is not None:
+            self.SearchFields = []
+            for item in params.get("SearchFields"):
+                obj = SearchItem()
+                obj._deserialize(item)
+                self.SearchFields.append(obj)
 
 
 class DescribeClusterNodesResponse(AbstractModel):
@@ -580,12 +593,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TagKeys: List of tag keys owned by user
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TagKeys: list of str
+        :param HardwareResourceTypeList: 
+        :type HardwareResourceTypeList: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TotalCnt = None
         self.NodeList = None
         self.TagKeys = None
+        self.HardwareResourceTypeList = None
         self.RequestId = None
 
 
@@ -598,6 +614,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.NodeList.append(obj)
         self.TagKeys = params.get("TagKeys")
+        self.HardwareResourceTypeList = params.get("HardwareResourceTypeList")
         self.RequestId = params.get("RequestId")
 
 
@@ -1404,9 +1421,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: Tags bound to node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param AutoFlag: Whether it is an automatically scalable node. 0: general node, 1: automatically scalable node.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AutoFlag: 
         :type AutoFlag: int
+        :param HardwareResourceType: 
+        :type HardwareResourceType: str
         """
         self.AppId = None
         self.SerialNo = None
@@ -1444,6 +1462,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Destroyable = None
         self.Tags = None
         self.AutoFlag = None
+        self.HardwareResourceType = None
 
 
     def _deserialize(self, params):
@@ -1495,6 +1514,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.AutoFlag = params.get("AutoFlag")
+        self.HardwareResourceType = params.get("HardwareResourceType")
 
 
 class OutterResource(AbstractModel):
@@ -1574,6 +1594,43 @@ class Placement(AbstractModel):
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.Zone = params.get("Zone")
+
+
+class PodSpec(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceProviderIdentifier: 
+        :type ResourceProviderIdentifier: str
+        :param ResourceProviderType: 
+        :type ResourceProviderType: str
+        :param NodeType: 
+        :type NodeType: str
+        :param Cpu: 
+        :type Cpu: int
+        :param Memory: 
+        :type Memory: int
+        :param DataVolumes: 
+        :type DataVolumes: list of str
+        """
+        self.ResourceProviderIdentifier = None
+        self.ResourceProviderType = None
+        self.NodeType = None
+        self.Cpu = None
+        self.Memory = None
+        self.DataVolumes = None
+
+
+    def _deserialize(self, params):
+        self.ResourceProviderIdentifier = params.get("ResourceProviderIdentifier")
+        self.ResourceProviderType = params.get("ResourceProviderType")
+        self.NodeType = params.get("NodeType")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.DataVolumes = params.get("DataVolumes")
 
 
 class PreExecuteFileSettings(AbstractModel):
@@ -1848,6 +1905,10 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type DisasterRecoverGroupIds: list of str
         :param Tags: List of tags bound to added nodes.
         :type Tags: list of Tag
+        :param HardwareResourceType: 
+        :type HardwareResourceType: str
+        :param PodSpec: 
+        :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -1863,6 +1924,8 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.ServiceNodeInfo = None
         self.DisasterRecoverGroupIds = None
         self.Tags = None
+        self.HardwareResourceType = None
+        self.PodSpec = None
 
 
     def _deserialize(self, params):
@@ -1890,6 +1953,10 @@ class ScaleOutInstanceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.HardwareResourceType = params.get("HardwareResourceType")
+        if params.get("PodSpec") is not None:
+            self.PodSpec = PodSpec()
+            self.PodSpec._deserialize(params.get("PodSpec"))
 
 
 class ScaleOutInstanceResponse(AbstractModel):
@@ -1931,6 +1998,27 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.FlowId = params.get("FlowId")
         self.BillId = params.get("BillId")
         self.RequestId = params.get("RequestId")
+
+
+class SearchItem(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchType: 
+        :type SearchType: str
+        :param SearchValue: 
+        :type SearchValue: str
+        """
+        self.SearchType = None
+        self.SearchValue = None
+
+
+    def _deserialize(self, params):
+        self.SearchType = params.get("SearchType")
+        self.SearchValue = params.get("SearchValue")
 
 
 class Tag(AbstractModel):

@@ -319,7 +319,7 @@ class CreateAclRequest(AbstractModel):
         :type ResourceName: str
         :param Operation: ACL operation mode. 0: UNKNOWN, 1: ANY, 2: ALL, 3: READ, 4: WRITE, 5: CREATE, 6: DELETE, 7: ALTER, 8: DESCRIBE, 9: CLUSTER_ACTION, 10: DESCRIBE_CONFIGS, 11: ALTER_CONFIGS
         :type Operation: int
-        :param PermissionType: Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to whitelist), and other fields will be used for future ACLs compatible with open-source Kafka
+        :param PermissionType: Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to allowlist), and other fields will be used for future ACLs compatible with open-source Kafka
         :type PermissionType: int
         :param Host: The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
         :type Host: str
@@ -427,7 +427,7 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
         :type InstanceId: str
         :param TopicName: Topic name
         :type TopicName: str
-        :param IpWhiteList: IP whitelist list
+        :param IpWhiteList: IP allowlist list
         :type IpWhiteList: list of str
         """
         self.InstanceId = None
@@ -448,7 +448,7 @@ class CreateTopicIpWhiteListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Result of deleting topic IP whitelist
+        :param Result: Result of deleting topic IP allowlist
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -479,9 +479,9 @@ class CreateTopicRequest(AbstractModel):
         :type PartitionNum: int
         :param ReplicaNum: Number of replicas, which cannot be higher than the number of brokers. Maximum value: 3
         :type ReplicaNum: int
-        :param EnableWhiteList: IP whitelist switch. 1: enabled, 0: disabled. Default value: 0
+        :param EnableWhiteList: IP allowlist switch. 1: enabled, 0: disabled. Default value: 0
         :type EnableWhiteList: int
-        :param IpWhiteList: IP whitelist list for quota limit, which is required if `enableWhileList` is 1
+        :param IpWhiteList: IP allowlist list for quota limit, which is required if `enableWhileList` is 1
         :type IpWhiteList: list of str
         :param CleanUpPolicy: Log cleanup policy, which is `delete` by default. `delete`: logs will be deleted by save time; `compact`: logs will be compressed by key; `compact, delete`: logs will be compressed by key and deleted by save time.
         :type CleanUpPolicy: str
@@ -628,7 +628,7 @@ class DeleteAclRequest(AbstractModel):
         :type ResourceName: str
         :param Operation: ACL operation mode. 0: UNKNOWN, 1: ANY, 2: ALL, 3: READ, 4: WRITE, 5: CREATE, 6: DELETE, 7: ALTER, 8: DESCRIBE, 9: CLUSTER_ACTION, 10: DESCRIBE_CONFIGS, 11: ALTER_CONFIGS, 12: IDEMPOTEN_WRITE. Currently, CKafka only supports `READ` and `WRITE`, and other values will be used for future ACLs compatible with open-source Kafka
         :type Operation: int
-        :param PermissionType: Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to whitelist), and other fields will be used for future ACLs compatible with open-source Kafka
+        :param PermissionType: Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to allowlist), and other fields will be used for future ACLs compatible with open-source Kafka
         :type PermissionType: int
         :param Host: The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
         :type Host: str
@@ -688,7 +688,7 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
         :type InstanceId: str
         :param TopicName: Topic name
         :type TopicName: str
-        :param IpWhiteList: IP whitelist list
+        :param IpWhiteList: IP allowlist list
         :type IpWhiteList: list of str
         """
         self.InstanceId = None
@@ -709,7 +709,7 @@ class DeleteTopicIpWhiteListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Result of deleting topic IP whitelist
+        :param Result: Result of deleting topic IP allowlist
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2420,7 +2420,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type TopicName: str
         :param Note: Topic remarks string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
         :type Note: str
-        :param EnableWhiteList: IP whitelist switch. 1: enabled, 0: disabled.
+        :param EnableWhiteList: IP allowlist switch. 1: enabled, 0: disabled.
         :type EnableWhiteList: int
         :param MinInsyncReplicas: Default value: 1.
         :type MinInsyncReplicas: int
@@ -2707,9 +2707,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Note: str
         :param PartitionNum: Number of partitions
         :type PartitionNum: int
-        :param EnableWhiteList: IP whitelist switch. 1: enabled, 0: disabled
+        :param EnableWhiteList: IP allowlist switch. 1: enabled, 0: disabled
         :type EnableWhiteList: int
-        :param IpWhiteList: IP whitelist list
+        :param IpWhiteList: IP allowlist list
         :type IpWhiteList: list of str
         :param Config: Topic configuration array
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.Config`
@@ -2764,9 +2764,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Note: str
         :param CreateTime: Creation time
         :type CreateTime: int
-        :param EnableWhiteList: Whether to enable IP authentication whitelist. true: yes, false: no
+        :param EnableWhiteList: Whether to enable IP authentication allowlist. true: yes, false: no
         :type EnableWhiteList: bool
-        :param IpWhiteListCount: Number of IPs in IP whitelist
+        :param IpWhiteListCount: Number of IPs in IP allowlist
         :type IpWhiteListCount: int
         :param ForwardCosBucket: COS bucket for data backup: address of the destination COS bucket
 Note: this field may return null, indicating that no valid values can be obtained.

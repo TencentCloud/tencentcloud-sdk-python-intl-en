@@ -204,17 +204,17 @@ class CreateAccountRequest(AbstractModel):
         """
         :param InstanceId: Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
         :type InstanceId: str
-        :param UserName: Login username, which can contain 1–32 letters, digits, underscores, and hyphens.
+        :param UserName: Login username, which can contain 1-32 letters, digits, underscores, and hyphens.
         :type UserName: str
         :param Host: Host that can be logged in to, which is in the same format as the host of the MySQL account and supports wildcards, such as %, 10.%, and 10.20.%.
         :type Host: str
-        :param Password: Account password, which can contain 6–32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
+        :param Password: Account password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
         :type Password: str
-        :param ReadOnly: Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the slave will be used first, and if it is unavailable, the master will be used; 2: the slave will be used first, and if it is unavailable, the operation will fail.
+        :param ReadOnly: Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail.
         :type ReadOnly: int
-        :param Description: Account remarks, which can contain 0–256 letters, digits, and common symbols.
+        :param Description: Account remarks, which can contain 0-256 letters, digits, and common symbols.
         :type Description: str
-        :param DelayThresh: Determines whether the slave is unavailable based on the passed-in time
+        :param DelayThresh: Determines whether the secondary is unavailable based on the passed-in time
         :type DelayThresh: int
         """
         self.InstanceId = None
@@ -286,9 +286,9 @@ class DBAccount(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: Last updated time
         :type UpdateTime: str
-        :param ReadOnly: Read-only flag. 0: no; 1: for the account's SQL requests, the slave will be used first, and if it is unavailable, the master will be used; 2: the slave will be used first, and if it is unavailable, the operation will fail.
+        :param ReadOnly: Read-only flag. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail.
         :type ReadOnly: int
-        :param DelayThresh: This field is meaningful for read-only accounts, indicating to select a slave where the master/slave delay is below this value
+        :param DelayThresh: This field is meaningful for read-only accounts, indicating to select a secondary where the primary/secondary delay is below this value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DelayThresh: int
         """
@@ -393,7 +393,7 @@ class DBInstance(AbstractModel):
         :type UniqueSubnetId: str
         :param OriginSerialId: Original ID of instance (this field is obsolete and should not be depended on)
         :type OriginSerialId: str
-        :param NodeCount: Number of nodes. 2: one master and one slave, 3: one master and two slaves
+        :param NodeCount: Number of nodes. 2: one primary and one secondary, 3: one primary and two secondaries
         :type NodeCount: int
         :param IsTmp: Whether it is a temp instance. 0: no, non-zero value: yes
         :type IsTmp: int
@@ -1015,7 +1015,7 @@ class DescribeDBPerformanceDetailsResponse(AbstractModel):
         :param Slave1: Slave 1 performance monitoring data
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
-        :param Slave2: Slave 2 performance monitoring data. If the instance is one-master-one-slave, it does not have this field
+        :param Slave2: Slave 2 performance monitoring data. If the instance is one-primary-one-secondary, it does not have this field
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -1092,9 +1092,9 @@ class DescribeDBPerformanceResponse(AbstractModel):
         :type DiskIops: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param ConnActive: Number of active connections
         :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param IsMasterSwitched: Whether master/slave switch occurred. 1: yes, 0: no
+        :param IsMasterSwitched: Whether primary/secondary switch occurred. 1: yes, 0: no
         :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param SlaveDelay: Master/slave delay
+        :param SlaveDelay: primary/secondary delay
         :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1305,7 +1305,7 @@ class DescribeDBSlowLogsRequest(AbstractModel):
         :type OrderBy: str
         :param OrderByType: Sorting order. Valid values: desc, asc
         :type OrderByType: str
-        :param Slave: Whether to query slow queries of the slave. 0: master, 1: slave
+        :param Slave: Whether to query slow queries of the secondary. 0: primary, 1: secondary
         :type Slave: int
         """
         self.InstanceId = None
@@ -1659,7 +1659,7 @@ class ModifyAccountDescriptionRequest(AbstractModel):
         :type UserName: str
         :param Host: Access host allowed for user. An account is uniquely identified by username and host.
         :type Host: str
-        :param Description: New account remarks, which can contain 0–256 characters.
+        :param Description: New account remarks, which can contain 0-256 characters.
         :type Description: str
         """
         self.InstanceId = None
@@ -2091,7 +2091,7 @@ class PerformanceMonitorSet(AbstractModel):
         :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param MemHitRate: Cache hit rate
         :type MemHitRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param SlaveDelay: Master/slave delay
+        :param SlaveDelay: Primary/Secondary delay
         :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param SelectTotal: Number of SELECT operations
         :type SelectTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
@@ -2101,7 +2101,7 @@ class PerformanceMonitorSet(AbstractModel):
         :type DeleteTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param InsertTotal: Number of INSERT operations
         :type InsertTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param IsMasterSwitched: Whether master/slave switch occurred. 1: yes, 0: no
+        :param IsMasterSwitched: Whether primary/Secondary switch occurred. 1: yes, 0: no
         :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         """
         self.UpdateTotal = None
@@ -2162,7 +2162,7 @@ class ResetAccountPasswordRequest(AbstractModel):
         :type UserName: str
         :param Host: Access host allowed for user. An account is uniquely identified by username and host.
         :type Host: str
-        :param Password: New password, which can contain 6–32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
+        :param Password: New password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
         :type Password: str
         """
         self.InstanceId = None

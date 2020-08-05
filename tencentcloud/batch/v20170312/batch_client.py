@@ -29,7 +29,7 @@ class BatchClient(AbstractClient):
         """This API is used to add existing instances to the compute environment.
         Considerations: <br/>
         1. The instance should not be in the batch compute system.<br/>
-        2. The instance status should be “running”.<br/>
+        2. The instance status should be 'running'.<br/>
         3. It supports dedicated CVMs and pay-as-you-go instances that billed on an hourly basis. Spot instances are not supported.<b/>
 
         For instances added to the compute environment, their UserData will be reset and the operating systems will be reinstalled.
