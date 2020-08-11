@@ -1272,6 +1272,63 @@ class CreateNetReturnResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNewL7RulesUploadRequest(AbstractModel):
+    """CreateNewL7RulesUpload request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).
+        :type Business: str
+        :param IdList: Resource ID list.
+        :type IdList: list of str
+        :param VipList: Resource IP address list.
+        :type VipList: list of str
+        :param Rules: Rule list.
+        :type Rules: list of L7RuleEntry
+        """
+        self.Business = None
+        self.IdList = None
+        self.VipList = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.IdList = params.get("IdList")
+        self.VipList = params.get("VipList")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = L7RuleEntry()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class CreateNewL7RulesUploadResponse(AbstractModel):
+    """CreateNewL7RulesUpload response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: Success code.
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUnblockIpRequest(AbstractModel):
     """CreateUnblockIp request structure.
 

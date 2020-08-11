@@ -753,6 +753,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMaintenanceWindow(self, request):
+        """This API is used to query instance maintenance window. The maintenance window specifies a time period during which compatible version upgrade, architecture upgrade, backend maintenance, and other operations can be performed to avoid affecting business.
+
+        :param request: Request instance for DescribeMaintenanceWindow.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeMaintenanceWindowRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeMaintenanceWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMaintenanceWindow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMaintenanceWindowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProductInfo(self, request):
         """This API is used to query the purchasable capacity specifications of Redis instances in the specified AZ and instance type. If you are not in the allowlist for the AZ or instance type, you cannot view the details of the capacity specifications. To apply for the eligibility, please submit a ticket.
 
@@ -1257,6 +1285,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyMaintenanceWindow(self, request):
+        """This API is used to modify instance maintenance window. The maintenance window specifies a time period during which compatible version upgrade, architecture upgrade, backend maintenance, and other operations can be performed to avoid affecting business. Note: if the compatible version upgrade or architecture upgrade task has been initiated for an instance, its maintenance window cannot be modified.
+
+        :param request: Request instance for ModifyMaintenanceWindow.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyMaintenanceWindowRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyMaintenanceWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMaintenanceWindow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMaintenanceWindowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyNetworkConfig(self, request):
         """This API is used to modify the network configuration of an instance.
 
@@ -1439,6 +1495,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeInstanceVersion(self, request):
+        """This API is used to upgrade compatible instance version (for example, from Redis 2.8 to 4.0), or upgrade instance architecture (for example, from standard architecture to cluster architecture).
+
+        :param request: Request instance for UpgradeInstanceVersion.
+        :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceVersionRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeInstanceVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeInstanceVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

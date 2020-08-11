@@ -81,6 +81,34 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BindCloudResource(self, request):
+        """This API is used to bind a key with a Tencent Cloud resource. If the key has been set to be expired automatically, the setting will be canceled to ensure that the key will not be invalid automatically. If the key and the resource has already been bound, the call will still be successful.
+
+        :param request: Request instance for BindCloudResource.
+        :type request: :class:`tencentcloud.kms.v20190118.models.BindCloudResourceRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.BindCloudResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindCloudResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindCloudResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelKeyDeletion(self, request):
         """Cancel the scheduled deletion of CMK
 
@@ -1132,6 +1160,34 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScheduleKeyDeletionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindCloudResource(self, request):
+        """This API is used to unbind a key with a Tencent Cloud resource, indicating that the Tencent Cloud resource will not use the key any longer.
+
+        :param request: Request instance for UnbindCloudResource.
+        :type request: :class:`tencentcloud.kms.v20190118.models.UnbindCloudResourceRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.UnbindCloudResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindCloudResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindCloudResourceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

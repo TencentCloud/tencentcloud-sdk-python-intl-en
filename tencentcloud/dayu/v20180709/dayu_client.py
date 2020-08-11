@@ -445,6 +445,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateNewL7RulesUpload(self, request):
+        """This API is used to batch upload Layer-7 forwarding rules.
+
+        :param request: Request instance for CreateNewL7RulesUpload.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.CreateNewL7RulesUploadRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateNewL7RulesUploadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNewL7RulesUpload", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNewL7RulesUploadResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUnblockIp(self, request):
         """This API is used to unblock an IP.
 

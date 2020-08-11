@@ -315,6 +315,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateRoInstanceIp(self, request):
+        """This API is used to create a VIP exclusive to a TencentDB read-only instance.
+
+        :param request: Request instance for CreateRoInstanceIp.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateRoInstanceIpRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateRoInstanceIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRoInstanceIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRoInstanceIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAccounts(self, request):
         """This API (DeleteAccounts) is used to delete TencentDB accounts.
 

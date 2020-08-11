@@ -141,6 +141,35 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def HKIDCardOCR(self, request):
+        """This API is used to recognize key fields on the photo side of a Hong Kong (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute. It can check for card authenticity and crop the identity photo.
+        This API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://cloud.tencent.com/about/connect).
+
+        :param request: Request instance for HKIDCardOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.HKIDCardOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.HKIDCardOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("HKIDCardOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.HKIDCardOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def MLIDCardOCR(self, request):
         """This API is used to recognize a Malaysian identity card. Recognizable fields include identity card number, name, gender, and address. It has the features of cropping identity photos and alarming for photographed or photocopied documents.
         This API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://cloud.tencent.com/about/connect).

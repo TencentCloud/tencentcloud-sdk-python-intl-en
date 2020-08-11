@@ -170,6 +170,122 @@ class GeneralBasicOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class HKIDCardOCRRequest(AbstractModel):
+    """HKIDCardOCR request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DetectFake: Whether to check for authenticity.
+        :type DetectFake: bool
+        :param ReturnHeadImage: Whether to return identity photo.
+        :type ReturnHeadImage: bool
+        :param ImageBase64: Base64-encoded value of image.
+Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
+Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
+        :type ImageBase64: str
+        :param ImageUrl: URL of the image.
+Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
+Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
+The download speed and stability of non-Tencent Cloud URLs may be low.
+        :type ImageUrl: str
+        """
+        self.DetectFake = None
+        self.ReturnHeadImage = None
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.DetectFake = params.get("DetectFake")
+        self.ReturnHeadImage = params.get("ReturnHeadImage")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class HKIDCardOCRResponse(AbstractModel):
+    """HKIDCardOCR response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CnName: Name in Chinese
+        :type CnName: str
+        :param EnName: Name in English
+        :type EnName: str
+        :param TelexCode: Telecode for the name in Chinese
+        :type TelexCode: str
+        :param Sex: Gender. Valid values: Male, Female
+        :type Sex: str
+        :param Birthday: Date of birth
+        :type Birthday: str
+        :param Permanent: Permanent identity card.
+0: non-permanent;
+1: permanent;
+-1: unknown.
+        :type Permanent: int
+        :param IdNum: Identity card number
+        :type IdNum: str
+        :param Symbol: Document symbol, i.e., the symbol under the date of birth, such as "***AZ"
+        :type Symbol: str
+        :param FirstIssueDate: First issue date
+        :type FirstIssueDate: str
+        :param CurrentIssueDate: Last receipt date
+        :type CurrentIssueDate: str
+        :param FakeDetectResult: Authenticity check.
+0: unable to judge (because the image is blurred, incomplete, reflective, too dark, etc.);
+1: forged;
+2: authentic.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type FakeDetectResult: int
+        :param HeadImage: Base64-encoded identity photo
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HeadImage: str
+        :param WarningCode: Multiple alarm codes. If the ID card is spoofed, photocopied, or doctored, the corresponding alarm code will be returned.
+-9102: alarm for photocopied document
+-9103: alarm for spoofed document
+-9104: alarm for doctored document
+-9105: alarm for forged document
+        :type WarningCode: list of int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CnName = None
+        self.EnName = None
+        self.TelexCode = None
+        self.Sex = None
+        self.Birthday = None
+        self.Permanent = None
+        self.IdNum = None
+        self.Symbol = None
+        self.FirstIssueDate = None
+        self.CurrentIssueDate = None
+        self.FakeDetectResult = None
+        self.HeadImage = None
+        self.WarningCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CnName = params.get("CnName")
+        self.EnName = params.get("EnName")
+        self.TelexCode = params.get("TelexCode")
+        self.Sex = params.get("Sex")
+        self.Birthday = params.get("Birthday")
+        self.Permanent = params.get("Permanent")
+        self.IdNum = params.get("IdNum")
+        self.Symbol = params.get("Symbol")
+        self.FirstIssueDate = params.get("FirstIssueDate")
+        self.CurrentIssueDate = params.get("CurrentIssueDate")
+        self.FakeDetectResult = params.get("FakeDetectResult")
+        self.HeadImage = params.get("HeadImage")
+        self.WarningCode = params.get("WarningCode")
+        self.RequestId = params.get("RequestId")
+
+
 class ItemCoord(AbstractModel):
     """Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`
 
@@ -395,7 +511,7 @@ class TextDetection(AbstractModel):
         """
         :param DetectedText: Recognized text line content
         :type DetectedText: str
-        :param Confidence: Confidence. Value range: 0–100
+        :param Confidence: Confidence. Value range: 0-100
         :type Confidence: int
         :param Polygon: Text line coordinates, which are represented as 4 vertex coordinates
 Note: this field may return null, indicating that no valid values can be obtained.

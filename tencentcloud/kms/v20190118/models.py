@@ -133,6 +133,48 @@ class AsymmetricSm2DecryptResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BindCloudResourceRequest(AbstractModel):
+    """BindCloudResource request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK ID
+        :type KeyId: str
+        :param ProductId: Unique ID of a Tencent Cloud service
+        :type ProductId: str
+        :param ResourceId: Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.
+        :type ResourceId: str
+        """
+        self.KeyId = None
+        self.ProductId = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.ProductId = params.get("ProductId")
+        self.ResourceId = params.get("ResourceId")
+
+
+class BindCloudResourceResponse(AbstractModel):
+    """BindCloudResource response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CancelKeyDeletionRequest(AbstractModel):
     """CancelKeyDeletion request structure.
 
@@ -1930,6 +1972,48 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+
+
+class UnbindCloudResourceRequest(AbstractModel):
+    """UnbindCloudResource request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK ID
+        :type KeyId: str
+        :param ProductId: Unique ID of a Tencent Cloud service
+        :type ProductId: str
+        :param ResourceId: Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.
+        :type ResourceId: str
+        """
+        self.KeyId = None
+        self.ProductId = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.ProductId = params.get("ProductId")
+        self.ResourceId = params.get("ResourceId")
+
+
+class UnbindCloudResourceResponse(AbstractModel):
+    """UnbindCloudResource response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateAliasRequest(AbstractModel):

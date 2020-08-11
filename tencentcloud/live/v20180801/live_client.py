@@ -170,8 +170,9 @@ class LiveClient(AbstractClient):
 
 
     def CreateCommonMixStream(self, request):
-        """This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.cancel_mix_stream` API.
+        """This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.start_mix_stream_advanced` API.
         Note: currently, up to 16 streams can be mixed.
+        Best practice: https://cloud.tencent.com/document/product/267/45566
 
         :param request: Request instance for CreateCommonMixStream.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateCommonMixStreamRequest`
@@ -1043,6 +1044,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDeliverBandwidthList(self, request):
+        """This API is used to query the billable bandwidth of live stream relaying in the last 3 months. The query period is up to 31 days.
+
+        :param request: Request instance for DescribeDeliverBandwidthList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeDeliverBandwidthListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeDeliverBandwidthListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeliverBandwidthList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeliverBandwidthListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGroupProIspPlayInfoList(self, request):
         """This API is used to query the downstream playback data by district and ISP.
 
@@ -1663,7 +1692,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamOnlineList(self, request):
-        """This API is used to return the live stream list.
+        """This API is used to return a list of live streams. It queries the information of live streams after they are pushed successfully.
+        Note: this API can query up to 20,000 streams. If you want to query more than 20,000 streams, please contact after-sales service.
 
         :param request: Request instance for DescribeLiveStreamOnlineList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamOnlineListRequest`

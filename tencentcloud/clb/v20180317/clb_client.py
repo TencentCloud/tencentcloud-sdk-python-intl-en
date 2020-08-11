@@ -167,6 +167,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateClsLogSet(self, request):
+        """This API is used to create a CLB exclusive logset for storing CLB logs.
+
+        :param request: Request instance for CreateClsLogSet.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateClsLogSetRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateClsLogSetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClsLogSet", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClsLogSetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateListener(self, request):
         """This API is used to create a listener for a CLB instance.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
@@ -297,6 +325,34 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTargetGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateTopic(self, request):
+        """This API is used to create a topic with the full-text index and key-value index enabled by default. The creation will fail if there is no CLB exclusive logset.
+
+        :param request: Request instance for CreateTopic.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateTopicRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTopicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -752,6 +808,34 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassicalLBTargetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClsLogSet(self, request):
+        """This API is used to obtain the CLB exclusive logset of a user.
+
+        :param request: Request instance for DescribeClsLogSet.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClsLogSetRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClsLogSetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClsLogSet", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClsLogSetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

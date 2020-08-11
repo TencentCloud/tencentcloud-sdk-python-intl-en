@@ -190,6 +190,29 @@ class AddLiveWatermarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BandwidthInfo(AbstractModel):
+    """Bandwidth information
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: Format of return value:
+yyyy-mm-dd HH:MM:SS
+The time accuracy matches with the query granularity.
+        :type Time: str
+        :param Bandwidth: Bandwidth.
+        :type Bandwidth: float
+        """
+        self.Time = None
+        self.Bandwidth = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Bandwidth = params.get("Bandwidth")
+
+
 class BillDataInfo(AbstractModel):
     """Bandwidth and traffic information.
 
@@ -500,21 +523,24 @@ class ClientIpPlaySumInfo(AbstractModel):
 
 
 class CommonMixControlParams(AbstractModel):
-    """General stream mix control parameter
+    """
 
     """
 
     def __init__(self):
         """
-        :param UseMixCropCenter: Valid values: [0,1].
-If 1 is entered, when the layer resolution in the parameter is different from the actual video resolution, the video will be automatically cropped according to the resolution set by the layer.
+        :param UseMixCropCenter: 
         :type UseMixCropCenter: int
+        :param AllowCopy: 
+        :type AllowCopy: int
         """
         self.UseMixCropCenter = None
+        self.AllowCopy = None
 
 
     def _deserialize(self, params):
         self.UseMixCropCenter = params.get("UseMixCropCenter")
+        self.AllowCopy = params.get("AllowCopy")
 
 
 class CommonMixCropParams(AbstractModel):
@@ -1397,12 +1423,14 @@ Note: This parameter will take effect later.
         :param Description: Template description.
         :type Description: str
         :param Width: Width. Default value: 0.
+Value range: [0-3000].
         :type Width: int
         :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
         :type NeedVideo: int
         :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
         :param Height: Height. Default value: 0.
+Value range: [0-3000].
         :type Height: int
         :param Fps: Frame rate. Default value: 0.
         :type Fps: int
@@ -2413,6 +2441,53 @@ class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
             self.DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = ConcurrentRecordStreamNum()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeliverBandwidthListRequest(AbstractModel):
+    """DescribeDeliverBandwidthList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start time in the format of "%Y-%m-%d %H:%M:%S".
+        :type StartTime: str
+        :param EndTime: End time in the format of "%Y-%m-%d %H:%M:%S". Data in the last 3 months can be queried, and the query period is up to 1 month.
+        :type EndTime: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeDeliverBandwidthListResponse(AbstractModel):
+    """DescribeDeliverBandwidthList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: Billable bandwidth of live stream relaying.
+        :type DataInfoList: list of BandwidthInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = BandwidthInfo()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")
@@ -5389,7 +5464,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID.
+        :param TemplateId: Template ID returned by the `DescribeLiveCallbackTemplates` API.
         :type TemplateId: int
         :param TemplateName: Template name.
         :type TemplateName: str

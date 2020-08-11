@@ -1666,6 +1666,48 @@ class DescribeInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMaintenanceWindowRequest(AbstractModel):
+    """DescribeMaintenanceWindow request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeMaintenanceWindowResponse(AbstractModel):
+    """DescribeMaintenanceWindow response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start time of the maintenance window, such as 17:00.
+        :type StartTime: str
+        :param EndTime: End time of the maintenance window, such as 19:00.
+        :type EndTime: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProductInfoRequest(AbstractModel):
     """DescribeProductInfo request structure.
 
@@ -3302,6 +3344,52 @@ class ModifyInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyMaintenanceWindowRequest(AbstractModel):
+    """ModifyMaintenanceWindow request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param StartTime: Start time of the maintenance window, such as 17:00
+        :type StartTime: str
+        :param EndTime: End time of the maintenance window, such as 19:00
+        :type EndTime: str
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class ModifyMaintenanceWindowResponse(AbstractModel):
+    """ModifyMaintenanceWindow response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Modification status. Valid values: success, failed.
+        :type Status: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNetworkConfigRequest(AbstractModel):
     """ModifyNetworkConfig request structure.
 
@@ -4106,6 +4194,52 @@ class UpgradeInstanceRequest(AbstractModel):
 
 class UpgradeInstanceResponse(AbstractModel):
     """UpgradeInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DealId: Order ID
+        :type DealId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeInstanceVersionRequest(AbstractModel):
+    """UpgradeInstanceVersion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetInstanceType: Target instance type. Its value is the same as the `Type` parameter of the `CreateInstances` API.
+        :type TargetInstanceType: str
+        :param SwitchOption: Switch mode. Valid values: 1 (switch during the maintenance window), 2 (switch immediately).
+        :type SwitchOption: int
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.TargetInstanceType = None
+        self.SwitchOption = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.TargetInstanceType = params.get("TargetInstanceType")
+        self.SwitchOption = params.get("SwitchOption")
+        self.InstanceId = params.get("InstanceId")
+
+
+class UpgradeInstanceVersionResponse(AbstractModel):
+    """UpgradeInstanceVersion response structure.
 
     """
 

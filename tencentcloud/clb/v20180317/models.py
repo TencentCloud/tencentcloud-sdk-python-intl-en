@@ -756,6 +756,48 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Zone = params.get("Zone")
 
 
+class CreateClsLogSetRequest(AbstractModel):
+    """CreateClsLogSet request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: Logset retention period in days; max value: 90
+        :type Period: int
+        :param LogsetName: Logset name, which must be unique among all CLS logsets; default value: clb_logset
+        :type LogsetName: str
+        """
+        self.Period = None
+        self.LogsetName = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.LogsetName = params.get("LogsetName")
+
+
+class CreateClsLogSetResponse(AbstractModel):
+    """CreateClsLogSet response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: Logset ID.
+        :type LogsetId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LogsetId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateListenerRequest(AbstractModel):
     """CreateListener request structure.
 
@@ -1077,6 +1119,48 @@ class CreateTargetGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TargetGroupId = params.get("TargetGroupId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTopicRequest(AbstractModel):
+    """CreateTopic request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicName: Log topic name
+        :type TopicName: str
+        :param PartitionCount: The number of topic partitions, which changes as partitions are split or merged. Each log topic can have up to 50 partitions. If this parameter is not passed in, 1 partition will be created by default and up to 10 partitions are allowed to be created.
+        :type PartitionCount: int
+        """
+        self.TopicName = None
+        self.PartitionCount = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.PartitionCount = params.get("PartitionCount")
+
+
+class CreateTopicResponse(AbstractModel):
+    """CreateTopic response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicId: Log topic ID
+        :type TopicId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TopicId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1796,6 +1880,33 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = ClassicalTarget()
                 obj._deserialize(item)
                 self.Targets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClsLogSetRequest(AbstractModel):
+    """DescribeClsLogSet request structure.
+
+    """
+
+
+class DescribeClsLogSetResponse(AbstractModel):
+    """DescribeClsLogSet response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LogsetId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
         self.RequestId = params.get("RequestId")
 
 

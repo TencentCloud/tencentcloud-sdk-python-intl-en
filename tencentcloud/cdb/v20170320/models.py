@@ -957,6 +957,64 @@ class CreateParamTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRoInstanceIpRequest(AbstractModel):
+    """CreateRoInstanceIp request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Read-only instance ID in the format of "cdbro-3i70uj0k". Its value is the same as the read-only instance ID in the TencentDB Console.
+        :type InstanceId: str
+        :param UniqSubnetId: Subnet descriptor, such as "subnet-1typ0s7d".
+        :type UniqSubnetId: str
+        :param UniqVpcId: VPC descriptor, such as "vpc-xxx". If this field is passed in, `UniqSubnetId` will be required.
+        :type UniqVpcId: str
+        """
+        self.InstanceId = None
+        self.UniqSubnetId = None
+        self.UniqVpcId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.UniqVpcId = params.get("UniqVpcId")
+
+
+class CreateRoInstanceIpResponse(AbstractModel):
+    """CreateRoInstanceIp response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RoVpcId: VPC ID of the read-only instance.
+        :type RoVpcId: int
+        :param RoSubnetId: Subnet ID of the read-only instance.
+        :type RoSubnetId: int
+        :param RoVip: Private IP address of the read-only instance.
+        :type RoVip: str
+        :param RoVport: Private port number of the read-only instance.
+        :type RoVport: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RoVpcId = None
+        self.RoSubnetId = None
+        self.RoVip = None
+        self.RoVport = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoVpcId = params.get("RoVpcId")
+        self.RoSubnetId = params.get("RoSubnetId")
+        self.RoVip = params.get("RoVip")
+        self.RoVport = params.get("RoVport")
+        self.RequestId = params.get("RequestId")
+
+
 class DBSwitchInfo(AbstractModel):
     """TencentDB instance switch records
 
