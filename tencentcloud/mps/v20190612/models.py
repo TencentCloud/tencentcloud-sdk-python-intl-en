@@ -37,9 +37,9 @@ class AIAnalysisTemplateItem(AbstractModel):
         :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
         :param FrameTagConfigure: Control parameter of intelligent frame-specific tagging task.
         :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/862/37710#52).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/862/37710#52).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -101,9 +101,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param AsrWordsConfigure: Speech keyword recognition control parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
-        :param CreateTime: Creation time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -248,9 +248,9 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 <li>0: no,</li>
 <li>1: yes.</li>
         :type DisableHigherVideoResolution: int
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -1667,7 +1667,7 @@ class AiReviewPoliticalTaskOutput(AbstractModel):
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param Label: Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://cloud.tencent.com/document/api/862/37615#AiReviewPoliticalTaskOutput) and this parameter is as follows:
+        :param Label: Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) and this parameter is as follows:
 violation_photo:
 <li>violation_photo: violating photo.</li>
 Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
@@ -2531,9 +2531,9 @@ class AiSamplePerson(AbstractModel):
         :type TagSet: list of str
         :param UsageSet: Use case.
         :type UsageSet: list of str
-        :param CreateTime: Creation time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         """
         self.PersonId = None
@@ -2596,9 +2596,9 @@ class AiSampleWord(AbstractModel):
         :type TagSet: list of str
         :param UsageSet: Keyword use case.
         :type UsageSet: list of str
-        :param CreateTime: Creation time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         """
         self.Keyword = None
@@ -2717,9 +2717,9 @@ Default value: open.
         :type Fps: int
         :param Quality: Image quality.
         :type Quality: float
-        :param CreateTime: Creation time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -3018,9 +3018,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param UserDefineConfigure: Custom content audit control parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
-        :param CreateTime: Creation time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -5184,11 +5184,11 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>PROCESSING: Processing;</li>
 <li>FINISH: Completed.</li>
         :type Status: str
-        :param CreateTime: Creation time of a task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param BeginProcessTime: Start time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param BeginProcessTime: Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type BeginProcessTime: str
-        :param FinishTime: End time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param FinishTime: End time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type FinishTime: str
         :param WorkflowTask: Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -5207,6 +5207,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type SessionId: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
+        :param ExtInfo: Extended information field, used in specific scenarios.
+        :type ExtInfo: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -5222,6 +5224,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TasksPriority = None
         self.SessionId = None
         self.SessionContext = None
+        self.ExtInfo = None
         self.RequestId = None
 
 
@@ -5246,6 +5249,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TasksPriority = params.get("TasksPriority")
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
+        self.ExtInfo = params.get("ExtInfo")
         self.RequestId = params.get("RequestId")
 
 
@@ -5651,7 +5655,7 @@ class EditMediaRequest(AbstractModel):
         :type OutputObjectPath: str
         :param TaskNotifyConfig: Event notification information of task. If this parameter is left empty, no event notifications will be obtained.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
+        :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
@@ -6018,9 +6022,9 @@ class ImageSpriteTemplate(AbstractModel):
         :type RowCount: int
         :param ColumnCount: Subimage column count of an image sprite.
         :type ColumnCount: int
-        :param CreateTime: Creation time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -6073,14 +6077,14 @@ class ImageWatermarkInput(AbstractModel):
         :param ImageContent: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.
         :type ImageContent: str
         :param Width: Watermark width. % and px formats are supported:
-<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>
-<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>
+<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width. For example, `10%` means that `Width` is 10% of the video width;</li>
+<li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>
 Default value: 10%.
         :type Width: str
         :param Height: Watermark height. % and px formats are supported:
-<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
-<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>
-Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
+<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
+Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
         :type Height: str
         """
         self.ImageContent = None
@@ -6104,13 +6108,13 @@ class ImageWatermarkInputForUpdate(AbstractModel):
         :param ImageContent: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.
         :type ImageContent: str
         :param Width: Watermark width. % and px formats are supported:
-<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>
-<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>
+<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width. For example, `10%` means that `Width` is 10% of the video width;</li>
+<li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>
         :type Width: str
         :param Height: Watermark height. % and px formats are supported:
-<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
-<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>
-`0px` means that `Height` will be proportionally scaled according to the video width.
+<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
+Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
         :type Height: str
         """
         self.ImageContent = None
@@ -6138,8 +6142,8 @@ class ImageWatermarkTemplate(AbstractModel):
 <li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>
         :type Width: str
         :param Height: Watermark height. % and px formats are supported:
-<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
-<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px;</li>
+<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels.</li>
 `0px` means that `Height` will be proportionally scaled according to the video width.
         :type Height: str
         """
@@ -6277,7 +6281,7 @@ class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
         :param Url: URL of a suspected image (which will not be permanently stored
 and will be deleted after `PicUrlExpireTime`).
         :type Url: str
-        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type PicUrlExpireTime: str
         """
         self.StartPtsTime = None
@@ -6330,7 +6334,7 @@ class LiveStreamAiReviewImagePornResult(AbstractModel):
         :param Url: URL of a suspected image (which will not be permanently stored
 and will be deleted after `PicUrlExpireTime`).
         :type Url: str
-        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type PicUrlExpireTime: str
         """
         self.StartPtsTime = None
@@ -6383,7 +6387,7 @@ class LiveStreamAiReviewImageTerrorismResult(AbstractModel):
         :param Url: URL of a suspected image (which will not be permanently stored
 and will be deleted after `PicUrlExpireTime`).
         :type Url: str
-        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type PicUrlExpireTime: str
         """
         self.StartPtsTime = None
@@ -6534,7 +6538,7 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of recognized segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Confidence of recognized segment. Value range: 0-100.
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
         :type Confidence: float
         """
         self.Text = None
@@ -6563,7 +6567,7 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of recognized segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Confidence of recognized segment. Value range: 0-100.
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
         :type Confidence: float
         """
         self.Word = None
@@ -6597,7 +6601,7 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of recognized segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Confidence of recognized segment. Value range: 0-100.
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -6634,7 +6638,7 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of recognized segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Confidence of recognized segment. Value range: 0-100.
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
         :type Confidence: float
         :param AreaCoordSet: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
@@ -6667,7 +6671,7 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: End PTS time of recognized segment in seconds.
         :type EndPtsTime: float
-        :param Confidence: Confidence of recognized segment. Value range: 0-100.
+        :param Confidence: Confidence of recognized segment. Value range: 0–100.
         :type Confidence: float
         :param AreaCoords: Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
         :type AreaCoords: list of int
@@ -6938,7 +6942,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
         :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param Path: Path to a generated animated image file.
         :type Path: str
-        :param Definition: ID of an animated image generating template. For more information, please see [Animated Image Generating Parameter Template](https://cloud.tencent.com/document/product/266/33481#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param Definition: ID of an animated image generating template. For more information, please see [Animated Image Generating Parameter Template](https://intl.cloud.tencent.com/document/product/266/33481?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).
         :type Definition: int
         :param Container: Animated image format, such as gif.
         :type Container: str
@@ -7075,7 +7079,7 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
         :param Url: URL of a suspected image (which will not be permanently stored
 and will be deleted after `PicUrlExpireTime`).
         :type Url: str
-        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
@@ -7119,7 +7123,7 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type Suggestion: str
         :param Name: Name of a politically sensitive figure or violating photo.
         :type Name: str
-        :param Label: Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://cloud.tencent.com/document/api/862/37615#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
+        :param Label: Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
 violation_photo:
 <li>violation_photo: violating photo.</li>
 politician:
@@ -7129,6 +7133,7 @@ politician:
 <li>county_politician: county/city leader;</li>
 <li>rural_politician: town leader;</li>
 <li>sensitive_politician: politically sensitive figure.</li>
+<li>foreign_politician: head of a foreign country/government.</li>
 entertainment:
 <li>sensitive_entertainment: sensitive entertainment celebrity.</li>
 sport:
@@ -7138,7 +7143,8 @@ entrepreneur:
 scholar:
 <li>sensitive_scholar: sensitive educator.</li>
 celebrity:
-<li>sensitive_celebrity: sensitive well-known figure.</li>
+<li>sensitive_celebrity: sensitive well-known figure;</li>
+<li>historical_celebrity: well-known historical figure.</li>
 military:
 <li>sensitive_military: militarily sensitive figure.</li>
         :type Label: str
@@ -7147,7 +7153,7 @@ military:
         :type Url: str
         :param AreaCoordSet: Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.
         :type AreaCoordSet: list of int
-        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
@@ -7196,7 +7202,7 @@ class MediaContentReviewSegmentItem(AbstractModel):
         :param Url: URL of a suspected image (which will not be permanently stored
  and will be deleted after `PicUrlExpireTime`).
         :type Url: str
-        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param PicUrlExpireTime: Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
@@ -7225,7 +7231,7 @@ class MediaImageSpriteItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Image sprite specification. For more information, please see [Image Sprite Parameter Template](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param Definition: Image sprite specification. For more information, please see [Image Sprite Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
         :type Definition: int
         :param Height: Subimage height of an image sprite.
         :type Height: int
@@ -7747,7 +7753,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://cloud.tencent.com/document/product/266/33480#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param Definition: Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
         :type Definition: int
         :param SampleType: Sample type. Valid values:
 <li>Percent: Samples at the specified percentage interval.</li>
@@ -7790,7 +7796,7 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param Definition: Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
         :type Definition: int
         :param PicInfoSet: Information set of screenshots of the same specification. Each element represents a screenshot.
         :type PicInfoSet: list of MediaSnapshotByTimePicInfoItem
@@ -7851,7 +7857,7 @@ class MediaTranscodeItem(AbstractModel):
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param Path: Path to an output video file.
         :type Path: str
-        :param Definition: Transcoding specification ID. For more information, please see [Transcoding Parameter Template](https://cloud.tencent.com/document/product/266/33478#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
+        :param Definition: Transcoding specification ID. For more information, please see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
         :type Definition: int
         :param Bitrate: Sum of the average bitrate of a video stream and that of an audio stream in bps.
         :type Bitrate: int
@@ -8613,7 +8619,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type Container: str
         :param Name: Name of a transcoding template. Length limit: 64 characters.
         :type Name: str
-        :param Comment: Template description. Length limit: 256 bytes.
+        :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
         :param RemoveVideo: Whether to remove video data. Valid values:
 <li>0: Retain</li>
@@ -10196,9 +10202,9 @@ Default value: open.
         :type SampleType: str
         :param SampleInterval: Sampling interval.
         :type SampleInterval: int
-        :param CreateTime: Creation time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -10330,9 +10336,9 @@ Default value: open.
         :type ResolutionAdaptive: str
         :param Format: Image format.
         :type Format: str
-        :param CreateTime: Creation time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -10598,11 +10604,11 @@ class TaskSimpleInfo(AbstractModel):
 <li> WorkflowTask: Workflow processing task;</li>
 <li> LiveProcessTask: Live stream processing task.</li>
         :type TaskType: str
-        :param CreateTime: Creation time of a task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param BeginProcessTime: Start time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been started yet, this field will be `0000-00-00T00:00:00Z`.
+        :param BeginProcessTime: Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been started yet, this field will be `0000-00-00T00:00:00Z`.
         :type BeginProcessTime: str
-        :param FinishTime: End time of a task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been completed yet, this field will be `0000-00-00T00:00:00Z`.
+        :param FinishTime: End time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been completed yet, this field will be `0000-00-00T00:00:00Z`.
         :type FinishTime: str
         """
         self.TaskId = None
@@ -10885,7 +10891,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param OutputStorage: Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputObjectPath: Path to a master output file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}.{format}`.
+        :param OutputObjectPath: Path to a primary output file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}.{format}`.
         :type OutputObjectPath: str
         :param SegmentObjectName: Path to an output file part (the path to ts during transcoding to HLS), which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}_{number}.{format}`.
         :type SegmentObjectName: str
@@ -10972,9 +10978,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>Video: Video container format that can contain both video stream and audio stream;</li>
 <li>PureAudio: Audio container format that can contain only audio stream.</li>
         :type ContainerType: str
-        :param CreateTime: Creation time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -11475,9 +11481,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SvgTemplate: SVG watermarking template. This field is valid when `Type` is `svg`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SvgTemplate: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInput`
-        :param CreateTime: Creation time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of a template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         :param CoordinateOrigin: Origin position. Valid values:
 <li>topLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>
@@ -11559,9 +11565,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type TaskPriority: int
         :param OutputDir: Target directory of a video processing output file, such as `/movie/201907/`.
         :type OutputDir: str
-        :param CreateTime: Creation time of a workflow in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of a workflow in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         """
         self.WorkflowId = None

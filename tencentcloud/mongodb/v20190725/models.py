@@ -153,6 +153,52 @@ class ClientConnection(AbstractModel):
         self.Count = params.get("Count")
 
 
+class CreateBackupDBInstanceRequest(AbstractModel):
+    """CreateBackupDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param BackupMethod: Valid values: 0 (logical backup), 1 (physical backup)
+        :type BackupMethod: int
+        :param BackupRemark: Backup remarks
+        :type BackupRemark: str
+        """
+        self.InstanceId = None
+        self.BackupMethod = None
+        self.BackupRemark = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMethod = params.get("BackupMethod")
+        self.BackupRemark = params.get("BackupRemark")
+
+
+class CreateBackupDBInstanceResponse(AbstractModel):
+    """CreateBackupDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: The status of the queried backup process.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDBInstanceHourRequest(AbstractModel):
     """CreateDBInstanceHour request structure.
 
@@ -432,6 +478,44 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.UnitPrice = params.get("UnitPrice")
         self.OriginalPrice = params.get("OriginalPrice")
         self.DiscountPrice = params.get("DiscountPrice")
+
+
+class DescribeAsyncRequestInfoRequest(AbstractModel):
+    """DescribeAsyncRequestInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Async request ID
+        :type AsyncRequestId: str
+        """
+        self.AsyncRequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+
+
+class DescribeAsyncRequestInfoResponse(AbstractModel):
+    """DescribeAsyncRequestInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Status.
+        :type Status: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeBackupAccessRequest(AbstractModel):
@@ -1531,6 +1615,52 @@ class RenewDBInstancesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetDBInstancePasswordRequest(AbstractModel):
+    """ResetDBInstancePassword request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param UserName: Instance account name
+        :type UserName: str
+        :param Password: New password
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.UserName = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+
+
+class ResetDBInstancePasswordResponse(AbstractModel):
+    """ResetDBInstancePassword response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Async request ID, which is used to query the running status of the process.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 

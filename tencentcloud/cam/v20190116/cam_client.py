@@ -473,6 +473,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteRolePermissionsBoundary(self, request):
+        """This API is used to delete a role permission boundary.
+
+        :param request: Request instance for DeleteRolePermissionsBoundary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteRolePermissionsBoundaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteRolePermissionsBoundaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRolePermissionsBoundary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRolePermissionsBoundaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteSAMLProvider(self, request):
         """This API is used to delete a SAML identity provider.
 
@@ -543,6 +571,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteUserPermissionsBoundary(self, request):
+        """This API is used to delete a user permission boundary.
+
+        :param request: Request instance for DeleteUserPermissionsBoundary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteUserPermissionsBoundaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteUserPermissionsBoundaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteUserPermissionsBoundary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteUserPermissionsBoundaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1257,6 +1313,62 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PutRolePermissionsBoundary(self, request):
+        """This API is used to set a role permission boundary.
+
+        :param request: Request instance for PutRolePermissionsBoundary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.PutRolePermissionsBoundaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.PutRolePermissionsBoundaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutRolePermissionsBoundary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutRolePermissionsBoundaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PutUserPermissionsBoundary(self, request):
+        """This API is used to set a user permission boundary.
+
+        :param request: Request instance for PutUserPermissionsBoundary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.PutUserPermissionsBoundaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.PutUserPermissionsBoundaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutUserPermissionsBoundary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutUserPermissionsBoundaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RemoveUserFromGroup(self, request):
         """This API is used to delete users from a user group.
 
@@ -1427,7 +1539,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateRoleConsoleLogin(self, request):
-        """This API is used to modify a role’s login permissions.
+        """This API is used to modify a role's login permissions.
 
         :param request: Request instance for UpdateRoleConsoleLogin.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateRoleConsoleLoginRequest`

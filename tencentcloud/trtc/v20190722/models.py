@@ -212,7 +212,7 @@ class DescribeCallDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://cloud.tencent.com/document/product/647/44050).
+        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
         :type CommId: str
         :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 5 days.
         :type StartTime: int
@@ -301,7 +301,7 @@ class DescribeDetailEventRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://cloud.tencent.com/document/product/647/44050).
+        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
         :type CommId: str
         :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 5 days.
         :type StartTime: int
@@ -596,9 +596,9 @@ class DescribeRoomInformationRequest(AbstractModel):
         :type EndTime: int
         :param RoomId: Room ID of uint type
         :type RoomId: str
-        :param PageNumber: Page index. If it is left empty, 10 entries will be returned by default.
+        :param PageNumber: Page index starting from 0 (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default)
         :type PageNumber: str
-        :param PageSize: Page size. Maximum value: 100. If it is left empty, 10 entries will be returned by default.
+        :param PageSize: Number of entries per page (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default. Maximum value: 100)
         :type PageSize: str
         """
         self.SdkAppId = None
@@ -780,7 +780,7 @@ class EventMessage(AbstractModel):
         :type Type: int
         :param Time: Event reporting time in the format of UNIX timestamp, such as 1589891188801ms
         :type Time: int
-        :param EventId: Event ID. Events divide into SDK events and WebRTC events. For more information, please see Appendix - Event ID Mapping Table at https://cloud.tencent.com/document/product/647/44916
+        :param EventId: Event ID. Events divide into SDK events and WebRTC events. For more information, please see Appendix - Event ID Mapping Table at https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1
         :type EventId: int
         :param ParamOne: First event parameter, such as video resolution width
         :type ParamOne: int
@@ -809,13 +809,13 @@ class LayoutParams(AbstractModel):
 
     def __init__(self):
         """
-        :param Template: On-Cloud MixTranscoding layout template ID. 0: floating template (default value); 1: 9-grid template; 2: screen sharing template
+        :param Template: On-cloud stream mix layout template ID. 0: floating template (default value); 1: grid template; 2: screen sharing template; 3: picture-in-picture template.
         :type Template: int
-        :param MainVideoUserId: ID of the user in the big image on the left, which takes effect in the screen sharing template
+        :param MainVideoUserId: ID of the user in the big image, which takes effect in a screen sharing, floating, or picture-in-picture template.
         :type MainVideoUserId: str
-        :param MainVideoStreamType: Stream type of the big image on the left, which takes effect in the screen sharing template. 0: camera; 1: screen sharing. If a web user's stream is displayed in the big image on the left, enter 0 for this parameter
+        :param MainVideoStreamType: Stream type of the big image, which takes effect in a screen sharing, floating, or picture-in-picture template. 0: camera; 1: screen sharing. If a web user's stream is displayed in the big image on the left, enter 0 for this parameter.
         :type MainVideoStreamType: int
-        :param SmallVideoLayoutParams: 
+        :param SmallVideoLayoutParams: Layout parameter of the small image, which takes effect in a picture-in-picture template.
         :type SmallVideoLayoutParams: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`
         """
         self.Template = None
@@ -1034,23 +1034,23 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SmallVideoLayoutParams(AbstractModel):
-    """
+    """Layout parameter of the small image, which takes effect in a picture-in-picture template
 
     """
 
     def __init__(self):
         """
-        :param UserId: 
+        :param UserId: ID of the user in the small image.
         :type UserId: str
-        :param StreamType: 
+        :param StreamType: Stream type of the small image. 0: camera; 1: screen sharing. If a web user's stream is displayed in the small image, enter 0 for this parameter.
         :type StreamType: int
-        :param ImageWidth: 
+        :param ImageWidth: Output width of the small image in pixels. If this parameter is left empty, 0 will be used by default.
         :type ImageWidth: int
-        :param ImageHeight: 
+        :param ImageHeight: Output height of the small image in pixels. If this parameter is left empty, 0 will be used by default.
         :type ImageHeight: int
-        :param LocationX: 
+        :param LocationX: Output X-axis offset of the small image in pixels. The sum of `LocationX` and `ImageWidth` cannot exceed the total width of the output mixed stream. If this parameter is left empty, 0 will be used by default.
         :type LocationX: int
-        :param LocationY: 
+        :param LocationY: Output Y-axis offset of the small image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the output mixed stream. If this parameter is left empty, 0 will be used by default.
         :type LocationY: int
         """
         self.UserId = None
@@ -1198,7 +1198,7 @@ class UserInformation(AbstractModel):
         :type UserId: str
         :param JoinTs: 
         :type JoinTs: int
-        :param LeaveTs: 
+        :param LeaveTs: The time when the user exits the room. If the user is still in the room, the current time will be returned
         :type LeaveTs: int
         :param DeviceType: 
         :type DeviceType: str

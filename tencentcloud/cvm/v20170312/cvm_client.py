@@ -116,7 +116,7 @@ class CvmClient(AbstractClient):
 
 
     def CreateDisasterRecoverGroup(self, request):
-        """This API is used to create a [spread placement group](https://cloud.tencent.com/document/product/213/15486). After you create one, you can specify it for an instance when you [create the instance](https://cloud.tencent.com/document/api/213/15730),
+        """This API is used to create a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). After you create one, you can specify it for an instance when you [create the instance](https://intl.cloud.tencent.com/document/api/213/15730?from_cn_redirect=1),
 
         :param request: Request instance for CreateDisasterRecoverGroup.
         :type request: :class:`tencentcloud.cvm.v20170312.models.CreateDisasterRecoverGroupRequest`
@@ -205,7 +205,7 @@ class CvmClient(AbstractClient):
 
 
     def DeleteDisasterRecoverGroups(self, request):
-        """This API is used to delete a [spread placement group](https://cloud.tencent.com/document/product/213/15486). Only empty placement groups can be deleted. To delete a non-empty group, you need to terminate all the CVM instances in it first. Otherwise, the deletion will fail.
+        """This API is used to delete a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). Only empty placement groups can be deleted. To delete a non-empty group, you need to terminate all the CVM instances in it first. Otherwise, the deletion will fail.
 
         :param request: Request instance for DeleteDisasterRecoverGroups.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteDisasterRecoverGroupsRequest`
@@ -235,7 +235,7 @@ class CvmClient(AbstractClient):
     def DeleteImages(self, request):
         """This API is used to delete images.
 
-        * If the [ImageState](https://cloud.tencent.com/document/api/213/9452#image_state) of an image is `Creating` or `In Use`, it cannot be deleted. Use [DescribeImages](https://cloud.tencent.com/document/api/213/9418) to query the image state.
+        * If the [ImageState](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#image_state) of an image is `Creating` or `In Use`, it cannot be deleted. Use [DescribeImages](https://intl.cloud.tencent.com/document/api/213/9418?from_cn_redirect=1) to query the image state.
         * You can only create up to 10 custom images in each region. If you have used up the quota, you can delete images to create new ones.
         * A shared image cannot be deleted.
 
@@ -296,7 +296,7 @@ class CvmClient(AbstractClient):
 
 
     def DescribeDisasterRecoverGroupQuota(self, request):
-        """This API is used to query the quota of [spread placement groups](https://cloud.tencent.com/document/product/213/15486).
+        """This API is used to query the quota of [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).
 
         :param request: Request instance for DescribeDisasterRecoverGroupQuota.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeDisasterRecoverGroupQuotaRequest`
@@ -324,7 +324,7 @@ class CvmClient(AbstractClient):
 
 
     def DescribeDisasterRecoverGroups(self, request):
-        """This API is used to query the information on [spread placement groups](https://cloud.tencent.com/document/product/213/15486).
+        """This API is used to query the information on [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).
 
         :param request: Request instance for DescribeDisasterRecoverGroups.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeDisasterRecoverGroupsRequest`
@@ -525,7 +525,7 @@ class CvmClient(AbstractClient):
     def DescribeInstanceTypeConfigs(self, request):
         """This API is used to query the model configuration of an instance.
 
-        * You can filter the query results with `zone` or `instance-family`. For more information on filtering conditions, see [`Filter`](https://cloud.tencent.com/document/api/213/15753#Filter).
+        * You can filter the query results with `zone` or `instance-family`. For more information on filtering conditions, see [`Filter`](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#Filter).
         * If no parameter is defined, the model configuration of all the instances in the specified region will be returned.
 
         :param request: Request instance for DescribeInstanceTypeConfigs.
@@ -888,9 +888,9 @@ class CvmClient(AbstractClient):
     def DisassociateInstancesKeyPairs(self, request):
         """This API is used to unbind one or more key pairs from one or more instances.
 
-        * It only supports [`STOPPED`](https://cloud.tencent.com/document/product/213/15753#InstanceStatus) Linux instances.
+        * It only supports [`STOPPED`](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#InstanceStatus) Linux instances.
         * After a key pair is disassociated from an instance, you can log in to the instance with password.
-        * If you did not set a password for the instance, you will not be able to log in via SSH after the unbinding. In this case, you can call [ResetInstancesPassword](https://cloud.tencent.com/document/api/213/15736) to set a login password.
+        * If you did not set a password for the instance, you will not be able to log in via SSH after the unbinding. In this case, you can call [ResetInstancesPassword](https://intl.cloud.tencent.com/document/api/213/15736?from_cn_redirect=1) to set a login password.
         * Batch operations are supported. The maximum number of instances in each request is 100. If instances not available for the operation are selected, you will get an error code.
 
         :param request: Request instance for DisassociateInstancesKeyPairs.
@@ -977,7 +977,7 @@ class CvmClient(AbstractClient):
     def ImportKeyPair(self, request):
         """This API is used to import key pairs.
 
-        * You can use this API to import key pairs to a user account, but the key pairs will not be automatically associated with any instance. You may use [AssociasteInstancesKeyPair](https://cloud.tencent.com/document/api/213/9404) to associate key pairs with instances.
+        * You can use this API to import key pairs to a user account, but the key pairs will not be automatically associated with any instance. You may use [AssociasteInstancesKeyPair](https://intl.cloud.tencent.com/document/api/213/9404?from_cn_redirect=1) to associate key pairs with instances.
         * You need to specify the names of the key pairs and the content of the public keys.
         * If you only have private keys, you can convert them to public keys with the `SSL` tool before importing them.
 
@@ -1010,7 +1010,7 @@ class CvmClient(AbstractClient):
         """This API is used to query the price for reinstalling an instance.
 
         * If you have specified the `ImageId` parameter, the price query is performed with the specified image. Otherwise, the image used by the current instance is used.
-        * You can only query the price for reinstallation caused by switching between Linux and Windows OS. And the [system disk type](https://cloud.tencent.com/document/api/213/15753#SystemDisk) of the instance must be `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
+        * You can only query the price for reinstallation caused by switching between Linux and Windows OS. And the [system disk type](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#SystemDisk) of the instance must be `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
         * Currently, this API only supports instances in Mainland China regions.
 
         :param request: Request instance for InquiryPriceResetInstance.
@@ -1041,7 +1041,7 @@ class CvmClient(AbstractClient):
     def InquiryPriceResetInstancesInternetMaxBandwidth(self, request):
         """This API is used to query the price for upgrading the public bandwidth cap of an instance.
 
-        * The allowed bandwidth cap varies for different models. For details, see [Purchasing Network Bandwidth](https://cloud.tencent.com/document/product/213/509).
+        * The allowed bandwidth cap varies for different models. For details, see [Purchasing Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/509?from_cn_redirect=1).
         * For bandwidth billed by the `TRAFFIC_POSTPAID_BY_HOUR` method, changing the bandwidth cap through this API takes effect in real time. You can increase or reduce bandwidth within applicable limits.
 
         :param request: Request instance for InquiryPriceResetInstancesInternetMaxBandwidth.
@@ -1072,8 +1072,8 @@ class CvmClient(AbstractClient):
     def InquiryPriceResetInstancesType(self, request):
         """This API is used to query the price for adjusting the instance model.
 
-        * Currently, you can only use this API to query the prices of instances whose [system disk type](https://cloud.tencent.com/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
-        * Currently, you cannot use this API to query the prices of [CDH](https://cloud.tencent.com/document/product/416) instances.
+        * Currently, you can only use this API to query the prices of instances whose [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
+        * Currently, you cannot use this API to query the prices of [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.
 
         :param request: Request instance for InquiryPriceResetInstancesType.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResetInstancesTypeRequest`
@@ -1103,8 +1103,8 @@ class CvmClient(AbstractClient):
     def InquiryPriceResizeInstanceDisks(self, request):
         """This API is used to query the price for expanding data disks of an instance.
 
-        * Currently, you can only use this API to query the price of non-elastic data disks whose [disk type](/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is non-elastic.
-        * Currently, you cannot use this API to query the price for [CDH](https://cloud.tencent.com/document/product/416) instances. *Also, you can only query the price of expanding one data disk at a time.
+        * Currently, you can only use this API to query the price of non-elastic data disks whose [disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is non-elastic.
+        * Currently, you cannot use this API to query the price for [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances. *Also, you can only query the price of expanding one data disk at a time.
 
         :param request: Request instance for InquiryPriceResizeInstanceDisks.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResizeInstanceDisksRequest`
@@ -1132,7 +1132,7 @@ class CvmClient(AbstractClient):
 
 
     def InquiryPriceRunInstances(self, request):
-        """This API is used to query the price of creating instances. You can only use this API for instances whose configuration is within the purchase limit. For more information, see [RunInstances](https://cloud.tencent.com/document/api/213/15730).
+        """This API is used to query the price of creating instances. You can only use this API for instances whose configuration is within the purchase limit. For more information, see [RunInstances](https://intl.cloud.tencent.com/document/api/213/15730?from_cn_redirect=1).
 
         :param request: Request instance for InquiryPriceRunInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceRunInstancesRequest`
@@ -1160,7 +1160,7 @@ class CvmClient(AbstractClient):
 
 
     def ModifyDisasterRecoverGroupAttribute(self, request):
-        """This API is used to modify the attributes of [spread placement groups](https://cloud.tencent.com/document/product/213/15486).
+        """This API is used to modify the attributes of [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).
 
         :param request: Request instance for ModifyDisasterRecoverGroupAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyDisasterRecoverGroupAttributeRequest`
@@ -1313,11 +1313,11 @@ class CvmClient(AbstractClient):
     def ModifyInstancesProject(self, request):
         """This API is used to change the project to which an instance belongs.
 
-        * Project is a virtual concept. You can create multiple projects under one account, manage different resources in each project, and assign different instances to different projects. You may use the [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API to query instances and use the project ID to filter results.
-        * You cannot modify the project of an instance that is bound to a load balancer. You need to firstly unbind the load balancer from the instance by using the [`DeregisterInstancesFromLoadBalancer`](https://cloud.tencent.com/document/api/214/1258) API.
-        [^_^]: # (If you modify the project of an instance, security groups associated with the instance will be automatically disassociated. You can use the [`ModifyInstancesAttribute`](https://cloud.tencent.com/document/api/213/15739) API to associate the instance with the security groups again.
+        * Project is a virtual concept. You can create multiple projects under one account, manage different resources in each project, and assign different instances to different projects. You may use the [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API to query instances and use the project ID to filter results.
+        * You cannot modify the project of an instance that is bound to a load balancer. You need to firstly unbind the load balancer from the instance by using the [`DeregisterInstancesFromLoadBalancer`](https://intl.cloud.tencent.com/document/api/214/1258?from_cn_redirect=1) API.
+        [^_^]: # (If you modify the project of an instance, security groups associated with the instance will be automatically disassociated. You can use the [`ModifyInstancesAttribute`](https://intl.cloud.tencent.com/document/api/213/15739?from_cn_redirect=1) API to associate the instance with the security groups again.
         * Batch operations are supported. You can operate up to 100 instances in each request.
-        * You can call the [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful.
+        * You can call the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful.
 
         :param request: Request instance for ModifyInstancesProject.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesProjectRequest`
@@ -1347,7 +1347,7 @@ class CvmClient(AbstractClient):
     def ModifyInstancesVpcAttribute(self, request):
         """This API is used to modify the VPC attributes of an instance, such as the VPC IP address.
         * By default, the instances will shut down when you perform this operation and restart upon completion.
-        * If the specified VPC ID and subnet ID (the subnet must be in the same availability zone as the instance) are different from the VPC where the specified instance resides, the instance will be migrated to a subnet of the specified VPC. Before performing this operation, make sure that the specified instance is not bound with an [ENI](https://cloud.tencent.com/document/product/576) or [CLB](https://cloud.tencent.com/document/product/214).
+        * If the specified VPC ID and subnet ID (the subnet must be in the same availability zone as the instance) are different from the VPC where the specified instance resides, the instance will be migrated to a subnet of the specified VPC. Before performing this operation, make sure that the specified instance is not bound with an [ENI](https://intl.cloud.tencent.com/document/product/576?from_cn_redirect=1) or [CLB](https://intl.cloud.tencent.com/document/product/214?from_cn_redirect=1).
 
         :param request: Request instance for ModifyInstancesVpcAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesVpcAttributeRequest`
@@ -1474,7 +1474,7 @@ class CvmClient(AbstractClient):
         * The system disk will be formatted and reset. Therefore, make sure that no important files are stored on the system disk.
         * If the operating system switches between `Linux` and `Windows`, the system disk `ID` of the instance will change, and the snapshots that are associated with the system disk can no longer be used to roll back and restore data.
         * If no password is specified, you will get a random password via internal message.
-        * You can only use this API to switch the operating system between `Linux` and `Windows` for instances whose [system disk type](https://cloud.tencent.com/document/api/213/9452#SystemDisk) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
+        * You can only use this API to switch the operating system between `Linux` and `Windows` for instances whose [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#SystemDisk) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
         * Currently, this API only supports instances in Mainland China regions.
 
         :param request: Request instance for ResetInstance.
@@ -1505,7 +1505,7 @@ class CvmClient(AbstractClient):
     def ResetInstancesInternetMaxBandwidth(self, request):
         """This API is used to change the public bandwidth cap of an instance.
 
-        * The allowed bandwidth cap varies for different models. For details, see [Purchasing Network Bandwidth](https://cloud.tencent.com/document/product/213/509).
+        * The allowed bandwidth cap varies for different models. For details, see [Purchasing Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/509?from_cn_redirect=1).
         * For bandwidth billed by the `TRAFFIC_POSTPAID_BY_HOUR` method, changing the bandwidth cap through this API takes effect in real time. Users can increase or reduce bandwidth within applicable limits.
 
         :param request: Request instance for ResetInstancesInternetMaxBandwidth.
@@ -1539,7 +1539,7 @@ class CvmClient(AbstractClient):
         * To modify the password of the administrator account: the name of the administrator account varies with the operating system. In Windows, it is `Administrator`; in Ubuntu, it is `ubuntu`; in Linux, it is `root`.
         * To reset the password of a running instance, you need to set the parameter `ForceStop` to `True` for a forced shutdown. If not, only passwords of stopped instances can be reset.
         * Batch operations are supported. You can reset the passwords of up to 100 instances to the same value once.
-        * You can call the [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful.
+        * You can call the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful.
 
         :param request: Request instance for ResetInstancesPassword.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ResetInstancesPasswordRequest`
@@ -1568,8 +1568,8 @@ class CvmClient(AbstractClient):
 
     def ResetInstancesType(self, request):
         """This API is used to change the model of an instance.
-        * You can only use this API to change the models of instances whose [system disk type](/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
-        * Currently, you cannot use this API to change the models of [CDH](https://cloud.tencent.com/document/product/416) instances.
+        * You can only use this API to change the models of instances whose [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
+        * Currently, you cannot use this API to change the models of [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.
 
         :param request: Request instance for ResetInstancesType.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ResetInstancesTypeRequest`
@@ -1599,8 +1599,8 @@ class CvmClient(AbstractClient):
     def ResizeInstanceDisks(self, request):
         """This API (ResizeInstanceDisks) is used to expand the data disks of an instance.
 
-        * Currently, you can only use the API to expand non-elastic data disks whose [disk type](/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is non-elastic.
-        * Currently, this API does not support [CDH](https://cloud.tencent.com/document/product/416) instances.
+        * Currently, you can only use the API to expand non-elastic data disks whose [disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is non-elastic.
+        * Currently, this API does not support [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.
         * Currently, only one data disk can be expanded at a time.
 
         :param request: Request instance for ResizeInstanceDisks.
@@ -1631,10 +1631,10 @@ class CvmClient(AbstractClient):
     def RunInstances(self, request):
         """This API is used to create one or more instances with a specified configuration.
 
-        * After an instance is created successfully, it will start up automatically, and the [instance state](/document/api/213/9452#instance_state) will become "Running".
+        * After an instance is created successfully, it will start up automatically, and the [instance state](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#instance_state) will become "Running".
         * If you create a pay-as-you-go instance billed on an hourly basis, an amount equivalent to the hourly rate will be frozen before the creation. Make sure your account balance is sufficient before calling this API.
-        * The number of instances you can purchase through this API is subject to the [CVM instance purchase limit](https://cloud.tencent.com/document/product/213/2664). Both the instances created through this API and the console will be counted toward the quota.
-        * This API is an async API. An instance `ID` list will be returned after you successfully make a creation request. However, it does not mean the creation has been completed. The state of the instance will be `Creating` during the creation. You can use [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) to query the status of the instance. If the status changes from `Creating` to `Running`, it means that the instance has been created successfully.
+        * The number of instances you can purchase through this API is subject to the [CVM instance purchase limit](https://intl.cloud.tencent.com/document/product/213/2664?from_cn_redirect=1). Both the instances created through this API and the console will be counted toward the quota.
+        * This API is an async API. An instance `ID` list will be returned after you successfully make a creation request. However, it does not mean the creation has been completed. The state of the instance will be `Creating` during the creation. You can use [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) to query the status of the instance. If the status changes from `Creating` to `Running`, it means that the instance has been created successfully.
 
         :param request: Request instance for RunInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.RunInstancesRequest`

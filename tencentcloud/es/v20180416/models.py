@@ -511,7 +511,7 @@ class EsAcl(AbstractModel):
 
 
 class EsDictionaryInfo(AbstractModel):
-    """ES IK dictionary information
+    """ES dictionary information
 
     """
 
@@ -521,11 +521,11 @@ class EsDictionaryInfo(AbstractModel):
         :type MainDict: list of DictInfo
         :param Stopwords: List of stop words
         :type Stopwords: list of DictInfo
-        :param QQDict: 
+        :param QQDict: QQ dictionary list
         :type QQDict: list of DictInfo
-        :param Synonym: 
+        :param Synonym: Synonym dictionary list
         :type Synonym: list of DictInfo
-        :param UpdateType: 
+        :param UpdateType: Update dictionary type
         :type UpdateType: str
         """
         self.MainDict = None
@@ -987,7 +987,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
         :param DiskCount: Number of node disks
         :type DiskCount: int
-        :param DiskEncrypt: 
+        :param DiskEncrypt: Whether to encrypt node disk. 0: no (default); 1: yes.
         :type DiskEncrypt: int
         """
         self.NodeNum = None
@@ -1283,7 +1283,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         :type BasicSecurityType: int
         :param KibanaPrivatePort: Kibana private port
         :type KibanaPrivatePort: int
-        :param ScaleType: 
+        :param ScaleType: 0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart
         :type ScaleType: int
         """
         self.InstanceId = None
@@ -1346,6 +1346,52 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
 class UpdateInstanceResponse(AbstractModel):
     """UpdateInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdatePluginsRequest(AbstractModel):
+    """UpdatePlugins request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstallPluginList: List of names of the plugins to be installed
+        :type InstallPluginList: list of str
+        :param RemovePluginList: List of names of the plugins to be uninstalled
+        :type RemovePluginList: list of str
+        :param ForceRestart: Whether to force restart
+        :type ForceRestart: bool
+        """
+        self.InstanceId = None
+        self.InstallPluginList = None
+        self.RemovePluginList = None
+        self.ForceRestart = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstallPluginList = params.get("InstallPluginList")
+        self.RemovePluginList = params.get("RemovePluginList")
+        self.ForceRestart = params.get("ForceRestart")
+
+
+class UpdatePluginsResponse(AbstractModel):
+    """UpdatePlugins response structure.
 
     """
 

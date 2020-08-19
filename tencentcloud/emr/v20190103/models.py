@@ -551,9 +551,9 @@ Note: only the above values are supported for the time being. Entering other val
         :type Offset: int
         :param Limit: Number of returned results per page. Default value: 100. Maximum value: 100
         :type Limit: int
-        :param HardwareResourceType: 
+        :param HardwareResourceType: Resource type. Valid values: all, host, pod. Default value: all
         :type HardwareResourceType: str
-        :param SearchFields: 
+        :param SearchFields: Searchable field
         :type SearchFields: list of SearchItem
         """
         self.InstanceId = None
@@ -593,7 +593,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TagKeys: List of tag keys owned by user
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TagKeys: list of str
-        :param HardwareResourceTypeList: 
+        :param HardwareResourceTypeList: Resource type list
+Note: this field may return null, indicating that no valid values can be obtained.
         :type HardwareResourceTypeList: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1423,7 +1424,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Tags: list of Tag
         :param AutoFlag: 
         :type AutoFlag: int
-        :param HardwareResourceType: 
+        :param HardwareResourceType: Resource type. Valid values: host, pod
+Note: this field may return null, indicating that no valid values can be obtained.
         :type HardwareResourceType: str
         """
         self.AppId = None
@@ -1597,23 +1599,23 @@ class Placement(AbstractModel):
 
 
 class PodSpec(AbstractModel):
-    """
+    """Resource description for container resource expansion
 
     """
 
     def __init__(self):
         """
-        :param ResourceProviderIdentifier: 
+        :param ResourceProviderIdentifier: Identifier of external resource provider, such as "cls-a1cd23fa".
         :type ResourceProviderIdentifier: str
-        :param ResourceProviderType: 
+        :param ResourceProviderType: Type of external resource provider, such as "tke". Currently, only "tke" is supported.
         :type ResourceProviderType: str
-        :param NodeType: 
+        :param NodeType: Purpose of the resource, i.e., node type, which currently can only be "TASK".
         :type NodeType: str
-        :param Cpu: 
+        :param Cpu: Number of CPU cores.
         :type Cpu: int
-        :param Memory: 
+        :param Memory: Memory size in GB.
         :type Memory: int
-        :param DataVolumes: 
+        :param DataVolumes: Mount point of resource for host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod.
         :type DataVolumes: list of str
         """
         self.ResourceProviderIdentifier = None
@@ -1905,9 +1907,9 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type DisasterRecoverGroupIds: list of str
         :param Tags: List of tags bound to added nodes.
         :type Tags: list of Tag
-        :param HardwareResourceType: 
+        :param HardwareResourceType: Resource type selected for expansion. Valid values: host (general CVM resource), pod (resource provided by TKE cluster)
         :type HardwareResourceType: str
-        :param PodSpec: 
+        :param PodSpec: Specified information such as pod specification and source for expansion with pod resources
         :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
         """
         self.TimeUnit = None
@@ -2001,15 +2003,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SearchItem(AbstractModel):
-    """
+    """Search field
 
     """
 
     def __init__(self):
         """
-        :param SearchType: 
+        :param SearchType: Searchable type
         :type SearchType: str
-        :param SearchValue: 
+        :param SearchValue: Searchable value
         :type SearchValue: str
         """
         self.SearchType = None

@@ -222,6 +222,8 @@ class Backup(AbstractModel):
         :type Strategy: int
         :param BackupWay: Backup mode. 0: scheduled, 1: manual
         :type BackupWay: int
+        :param BackupName: Backup name, which can be customized.
+        :type BackupName: str
         """
         self.FileName = None
         self.Size = None
@@ -234,6 +236,7 @@ class Backup(AbstractModel):
         self.DBs = None
         self.Strategy = None
         self.BackupWay = None
+        self.BackupName = None
 
 
     def _deserialize(self, params):
@@ -248,6 +251,7 @@ class Backup(AbstractModel):
         self.DBs = params.get("DBs")
         self.Strategy = params.get("Strategy")
         self.BackupWay = params.get("BackupWay")
+        self.BackupName = params.get("BackupName")
 
 
 class CreateAccountRequest(AbstractModel):
@@ -376,17 +380,17 @@ class CreateDBInstancesRequest(AbstractModel):
         :type DBVersion: str
         :param AutoRenewFlag: Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
         :type AutoRenewFlag: int
-        :param SecurityGroupList: 
+        :param SecurityGroupList: Security group list, which contains security group IDs in the format of sg-xxx.
         :type SecurityGroupList: list of str
-        :param Weekly: 
+        :param Weekly: Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).
         :type Weekly: list of int
-        :param StartTime: 
+        :param StartTime: Configuration of the maintenance window, which specifies the start time of daily maintenance.
         :type StartTime: str
-        :param Span: 
+        :param Span: Configuration of the maintenance window, which specifies the maintenance duration in hours.
         :type Span: int
-        :param HAType: 
+        :param HAType: The type of purchased high-availability instance. Valid values: DUAL (dual-server high availability), CLUSTER (cluster). Default value: DUAL.
         :type HAType: str
-        :param MultiZones: 
+        :param MultiZones: Whether to deploy across availability zones. Default value: false.
         :type MultiZones: bool
         """
         self.Zone = None
@@ -722,13 +726,17 @@ class DBInstance(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: Unique string-type ID of instance subnet in the format of `subnet-xxx`, which is an empty string if the basic network is used
         :type UniqSubnetId: str
-        :param IsolateOperator: 
+        :param IsolateOperator: Instance isolation.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type IsolateOperator: str
-        :param SubFlag: 
+        :param SubFlag: Pub/sub flag. Valid values: SUB (subscribe instance), PUB (publish instance). If it is left empty, it refers to a regular instance without a pub/sub design.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type SubFlag: str
-        :param ROFlag: 
+        :param ROFlag: Read-only flag. Valid values: RO (read-only instance), MASTER (primary instance with read-only instances). If it is left empty, it refers to an instance which is not read-only and has no RO group.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type ROFlag: str
-        :param HAFlag: 
+        :param HAFlag: Disaster recovery type. Valid values: MIRROR (image), ALWAYSON (AlwaysOn), SINGLE (singleton).
+Note: this field may return null, indicating that no valid values can be obtained.
         :type HAFlag: str
         """
         self.InstanceId = None
@@ -1816,11 +1824,11 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         :type GoodsNum: int
         :param DBVersion: SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). Default value: 2008R2.
         :type DBVersion: str
-        :param Cpu: 
+        :param Cpu: The number of CPU cores of the instance you want to purchase.
         :type Cpu: int
-        :param InstanceType: 
+        :param InstanceType: The type of purchased instance. Valid values: HA (high-availability edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (basic edition). Default value: HA.
         :type InstanceType: str
-        :param MachineType: 
+        :param MachineType: The host type of purchased instance. Valid values: PM (physical machine), CLOUD_PREMIUM (physical machine with premium cloud disk), CLOUD_SSD (physical machine with SSD). Default value: PM.
         :type MachineType: str
         """
         self.Zone = None
@@ -1886,7 +1894,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
         :type Memory: int
         :param Storage: Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity
         :type Storage: int
-        :param Cpu: 
+        :param Cpu: The number of CUP cores after the instance is upgraded, which cannot be smaller than that of the current cores.
         :type Cpu: int
         """
         self.InstanceId = None
@@ -2223,6 +2231,60 @@ class ModifyAccountRemarkResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupStrategyRequest(AbstractModel):
+    """ModifyBackupStrategy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param BackupType: Backup mode, which supports daily backup only. Valid value: daily.
+        :type BackupType: str
+        :param BackupTime: Backup time. Value range: an integer from 0 to 23.
+        :type BackupTime: int
+        :param BackupDay: Backup interval in days when the `BackupType` is `daily`. Valid value: 1.
+        :type BackupDay: int
+        """
+        self.InstanceId = None
+        self.BackupType = None
+        self.BackupTime = None
+        self.BackupDay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupType = params.get("BackupType")
+        self.BackupTime = params.get("BackupTime")
+        self.BackupDay = params.get("BackupDay")
+
+
+class ModifyBackupStrategyResponse(AbstractModel):
+    """ModifyBackupStrategy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Errno: Returned error code.
+        :type Errno: int
+        :param Msg: Returned error message.
+        :type Msg: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Errno = None
+        self.Msg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Errno = params.get("Errno")
+        self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
 
 
@@ -2877,7 +2939,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type AutoVoucher: int
         :param VoucherIds: Voucher ID (currently, only one voucher can be used per order)
         :type VoucherIds: list of str
-        :param Cpu: 
+        :param Cpu: The number of CUP cores after the instance is upgraded.
         :type Cpu: int
         """
         self.InstanceId = None

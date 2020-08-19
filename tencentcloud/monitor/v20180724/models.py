@@ -199,7 +199,7 @@ class CreatePolicyGroupRequest(AbstractModel):
         :type EventConditions: list of CreatePolicyGroupEventCondition
         :param BackEndCall: Whether it is a backend call. If the value is 1, rules from the policy template will be used to fill in the `Conditions` and `EventConditions` fields.
         :type BackEndCall: int
-        :param IsUnionRule: The “AND” and “OR” rules for alarm metrics. The value 0 indicates “OR”, which means that an alarm will be triggered when any rule is met. The value 1 indicates “AND”, which means that an alarm will be triggered only when all rules are met.
+        :param IsUnionRule: The 'AND' and 'OR' rules for alarm metrics. The value 0 indicates 'OR', which means that an alarm will be triggered when any rule is met. The value 1 indicates 'AND', which means that an alarm will be triggered only when all rules are met.
         :type IsUnionRule: int
         """
         self.GroupName = None
@@ -483,9 +483,9 @@ class DescribeBaseMetricsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Namespace: Service namespace. Different Tencent Cloud services have different namespaces. For more information on service namespaces, see the monitoring API documentation of each product. For example, you can see [CVM Monitoring APIs](https://cloud.tencent.com/document/api/248/30385) for the namespace of CVM.
+        :param Namespace: Service namespace. Tencent Cloud services have different namespaces. For more information on service namespaces, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the namespace of CVM
         :type Namespace: str
-        :param MetricName: Metric name. Different Tencent Cloud services have different metric names. For more information on service metric names, see the monitoring API documentation of each product. For example, you can see the [CVM Monitoring APIs](https://cloud.tencent.com/document/api/248/30385) for the metric names of CVM.
+        :param MetricName: Metric name. Tencent Cloud services have different metric names. For more information on metric names, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the metric names of CVM
         :type MetricName: str
         """
         self.Namespace = None
@@ -1442,7 +1442,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param InsertTime: Creation time.
 Note: This field may return null, indicating that no valid value was found.
         :type InsertTime: int
-        :param IsUnionRule: Whether the “AND” rule is used.
+        :param IsUnionRule: Whether the 'AND' rule is used.
 Note: This field may return null, indicating that no valid value was found.
         :type IsUnionRule: int
         """
@@ -1511,7 +1511,7 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
         :type ReceiverGroupList: list of int
         :param ReceiverUserList: List of alarm recipient IDs.
         :type ReceiverUserList: list of int
-        :param StartTime: Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates “10:0:0”.
+        :param StartTime: Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates '10:0:0'.
         :type StartTime: int
         :param EndTime: End time of the alarm period. The meaning is the same as that of StartTime.
         :type EndTime: int
@@ -1636,7 +1636,7 @@ Note: This field may return null, indicating that no valid value was found.
         :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
         :param CanSetDefault: Whether the policy can be configured as the default policy.
         :type CanSetDefault: bool
-        :param IsUnionRule: Whether the “AND” rule is used.
+        :param IsUnionRule: Whether the 'AND' rule is used.
 Note: This field may return null, indicating that no valid value was found.
         :type IsUnionRule: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -1752,7 +1752,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param InstanceGroup: Instance group that is bound to the policy group.
 Note: This field may return null, indicating that no valid value was found.
         :type InstanceGroup: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListGroupInstanceGroup`
-        :param IsUnionRule: The “AND” or “OR” rule. The value 0 indicates the “OR” rule (indicating that an alarm will be triggered if any rule meets the threshold condition). The value 1 indicates the “AND” rule (indicating that an alarm will be triggered when all rules meet the threshold conditions).
+        :param IsUnionRule: The 'AND' or 'OR' rule. The value 0 indicates the 'OR' rule (indicating that an alarm will be triggered if any rule meets the threshold condition). The value 1 indicates the 'AND' rule (indicating that an alarm will be triggered when all rules meet the threshold conditions).
 Note: This field may return null, indicating that no valid value was found.
         :type IsUnionRule: int
         """
@@ -1894,8 +1894,10 @@ class DescribePolicyGroupListRequest(AbstractModel):
         :type Dimensions: str
         :param ConditionTempGroupId: Template-based policy group IDs, which are separated by commas.
         :type ConditionTempGroupId: str
-        :param ReceiverType: Filter by recipient or recipient group. The value “user” indicates by recipient. The value “group” indicates by recipient group.
+        :param ReceiverType: Filter by recipient or recipient group. The value 'user' indicates by recipient. The value 'group' indicates by recipient group.
         :type ReceiverType: str
+        :param IsOpen: Filter conditions. Whether the alarm policy has been enabled or disabled
+        :type IsOpen: bool
         """
         self.Module = None
         self.Limit = None
@@ -1911,6 +1913,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
         self.Dimensions = None
         self.ConditionTempGroupId = None
         self.ReceiverType = None
+        self.IsOpen = None
 
 
     def _deserialize(self, params):
@@ -1928,6 +1931,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
         self.Dimensions = params.get("Dimensions")
         self.ConditionTempGroupId = params.get("ConditionTempGroupId")
         self.ReceiverType = params.get("ReceiverType")
+        self.IsOpen = params.get("IsOpen")
 
 
 class DescribePolicyGroupListResponse(AbstractModel):
@@ -2203,7 +2207,7 @@ class DescribeProductEventListRequest(AbstractModel):
         """
         :param Module: API component name. It is fixed to monitor.
         :type Module: str
-        :param ProductName: Filter by product type. For example, “cvm” indicates Cloud Virtual Machine.
+        :param ProductName: Filter by product type. For example, 'cvm' indicates Cloud Virtual Machine.
         :type ProductName: list of str
         :param EventName: Filter by product name. For example, "guest_reboot" indicates server restart.
         :type EventName: list of str
@@ -2355,9 +2359,9 @@ class GetMonitorDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Namespace: Namespace. Each Tencent Cloud product has a namespace
+        :param Namespace: Namespace. For detailed namespace descriptions of each Tencent Cloud service, see the corresponding [Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1) documentation
         :type Namespace: str
-        :param MetricName: Metric name. For detailed metric descriptions of each Tencent Cloud product, see the corresponding [Monitoring API](https://cloud.tencent.com/document/product/248/30384) document
+        :param MetricName: Metric name. For detailed metric descriptions of each Tencent Cloud service, see the corresponding [Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1) documentation
         :type MetricName: str
         :param Instances: Combination of instance object dimensions
         :type Instances: list of Instance
@@ -2712,7 +2716,7 @@ class ModifyPolicyGroupRequest(AbstractModel):
         :type ViewName: str
         :param GroupName: Policy group name.
         :type GroupName: str
-        :param IsUnionRule: The “AND” and “OR” rules for metric alarms. The value 1 indicates “AND”, which means that an alarm will be triggered only when all rules are met. The value 0 indicates “OR”, which means that an alarm will be triggered when any rule is met.
+        :param IsUnionRule: The 'AND' and 'OR' rules for metric alarms. The value 1 indicates 'AND', which means that an alarm will be triggered only when all rules are met. The value 0 indicates 'OR', which means that an alarm will be triggered when any rule is met.
         :type IsUnionRule: int
         :param Conditions: Metric alarm condition rules. No filling indicates that all existing metric alarm condition rules will be deleted.
         :type Conditions: list of ModifyPolicyGroupCondition
@@ -2852,7 +2856,7 @@ class ReceiverInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates “10:0:0”.
+        :param StartTime: Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates '10:0:0'.
         :type StartTime: int
         :param EndTime: End time of the alarm period. The meaning is the same as that of StartTime.
         :type EndTime: int

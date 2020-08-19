@@ -371,7 +371,7 @@ class AllocateAddressesRequest(AbstractModel):
 <li>CUCC: China Unicom</li></ul>Note: Only certain regions support static single-line IP addresses.</li></ul>
         :type InternetServiceProvider: str
         :param InternetChargeType: The EIP billing method.
-<ul style="margin:0"><li>For a user who has activated bandwidth billing by IP allowlist, possible values are:<ul><li>BANDWIDTH_PACKAGE: paid by the [bandwidth package](https://cloud.tencent.com/document/product/684/15255) (The bandwidth sharing allowlist must be activated additionally.)</li>
+<ul style="margin:0"><li>For a user who has activated bandwidth billing by IP allowlist, possible values are:<ul><li>BANDWIDTH_PACKAGE: paid by the [bandwidth package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1) (The bandwidth sharing allowlist must be activated additionally.)</li>
 <li>BANDWIDTH_POSTPAID_BY_HOUR: bandwidth postpaid by hour</li>
 <li>TRAFFIC_POSTPAID_BY_HOUR: traffic postpaid by hour</li></ul>Default: TRAFFIC_POSTPAID_BY_HOUR</li>.
 <li>For users who do not use bill-by-bandwidth billing mode, InternetChargeType is consistent with that of the instance bound to the EIP. Therefore, it is unnecessary to pass in this parameter.</li></ul>
@@ -383,7 +383,7 @@ class AllocateAddressesRequest(AbstractModel):
 <li>For a user who has not activated bandwidth billing by IP allowlist, InternetMaxBandwidthOut is consistent with that of the instance bound to the EIP. Therefore, it is unnecessary to pass in this parameter.</li></ul>
         :type InternetMaxBandwidthOut: int
         :param AddressType: The EIP type. Default: EIP.
-<ul style="margin:0"><li>For a user who has activated the AIA allowlist, possible values are:<ul><li>AnycastEIP: an Anycast EIP address. For more information, see [Anycast Internet Acceleration](https://cloud.tencent.com/document/product/644).</li></ul>Note: Only certain regions support Anycast EIPs.</li></ul>
+<ul style="margin:0"><li>For a user who has activated the AIA allowlist, possible values are:<ul><li>AnycastEIP: an Anycast EIP address. For more information, see [Anycast Internet Acceleration](https://intl.cloud.tencent.com/document/product/644?from_cn_redirect=1).</li></ul>Note: Only certain regions support Anycast EIPs.</li></ul>
         :type AddressType: str
         :param AnycastZone: Anycast publishing region
 <ul style="margin:0"><li>Valid for users who have activated AIA. Values:<ul><li>ANYCAST_ZONE_GLOBAL: global publishing region </li><li>ANYCAST_ZONE_OVERSEAS: overseas publishing region</li><li><b>**[Disused]**</b> ANYCAST_ZONE_A: publishing region A (updated to ANYCAST_ZONE_GLOBAL)</li><li><b>**[Disused]**</b> ANYCAST_ZONE_B: publishing region B (updated to ANYCAST_ZONE_GLOBAL)</li></ul>Default: ANYCAST_ZONE_OVERSEAS.</li></ul>
@@ -435,7 +435,7 @@ class AllocateAddressesResponse(AbstractModel):
         """
         :param AddressSet: List of the unique IDs of the requested EIPs.
         :type AddressSet: list of str
-        :param TaskId: The Async task ID. You can use the [DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271) API to query the task status.
+        :param TaskId: The Async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
         :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -697,11 +697,11 @@ class AssociateAddressRequest(AbstractModel):
         """
         :param AddressId: The unique ID of the EIP, such as `eip-11112222`.
         :type AddressId: str
-        :param InstanceId: The ID of the instance to be bound, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API.
+        :param InstanceId: The ID of the instance to be bound, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param NetworkInterfaceId: The ID of the ENI to be bonud, such as `eni-11112222`. `NetworkInterfaceId` and `InstanceId` cannot be specified at the same time. You can query the ENI ID by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `networkInterfaceId` field in the returned result of [DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817) API.
+        :param NetworkInterfaceId: The ID of the ENI to be bonud, such as `eni-11112222`. `NetworkInterfaceId` and `InstanceId` cannot be specified at the same time. You can query the ENI ID by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `networkInterfaceId` field in the returned result of [DescribeNetworkInterfaces](https://intl.cloud.tencent.com/document/api/215/15817?from_cn_redirect=1) API.
         :type NetworkInterfaceId: str
-        :param PrivateIpAddress: The private IP to be bound. If you specify `NetworkInterfaceId`, then you must also specify `PrivateIpAddress`, indicating the EIP is bound to the specified private IP of the specified ENI. At the same time, you must ensure the specified `PrivateIpAddress` is a private IP on the `NetworkInterfaceId`. You can query the private IP of the specified ENI by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `privateIpAddress` field in the returned result of [DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817) API.
+        :param PrivateIpAddress: The private IP to be bound. If you specify `NetworkInterfaceId`, then you must also specify `PrivateIpAddress`, indicating the EIP is bound to the specified private IP of the specified ENI. At the same time, you must ensure the specified `PrivateIpAddress` is a private IP on the `NetworkInterfaceId`. You can query the private IP of the specified ENI by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `privateIpAddress` field in the returned result of [DescribeNetworkInterfaces](https://intl.cloud.tencent.com/document/api/215/15817?from_cn_redirect=1) API.
         :type PrivateIpAddress: str
         """
         self.AddressId = None
@@ -724,7 +724,7 @@ class AssociateAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: The async task ID. You can use the [DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271) API to query the task status.
+        :param TaskId: The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
         :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1052,7 +1052,7 @@ class CCN(AbstractModel):
         :type CreateTime: str
         :param State: The instance status. 'ISOLATED': Being isolated (instance is in arrears and service is suspended). 'AVAILABLE': Operating.
         :type State: str
-        :param QosLevel: The instance service quality. 'PT': Platinum , 'AU': Gold, 'AG': Silver.
+        :param QosLevel: The instance service quality. ’PT’: Platinum , 'AU': Gold, 'AG': Silver.
         :type QosLevel: str
         :param InstanceChargeType: The billing method. POSTPAID indicates postpaid.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -1180,7 +1180,7 @@ Note: this field may return null, indicating that no valid value was found.
         :param RenewFlag: The billing flag.
 Note: this field may return null, indicating that no valid value was found.
         :type RenewFlag: str
-        :param CcnRegionBandwidthLimit: The information of bandwidth regions and bandwidth caps.
+        :param CcnRegionBandwidthLimit: The information of the bandwidth regions and bandwidth caps. The parameter is only returned for the cross-region limit mode, but not for egress limit.
 Note: this field may return null, indicating that no valid value was found.
         :type CcnRegionBandwidthLimit: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
         """
@@ -2241,6 +2241,8 @@ class CreateNatGatewayRequest(AbstractModel):
         :type Zone: str
         :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
+        :param SubnetId: Subnet of the NAT gateway
+        :type SubnetId: str
         """
         self.NatGatewayName = None
         self.VpcId = None
@@ -2250,6 +2252,7 @@ class CreateNatGatewayRequest(AbstractModel):
         self.PublicIpAddresses = None
         self.Zone = None
         self.Tags = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -2266,6 +2269,7 @@ class CreateNatGatewayRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.SubnetId = params.get("SubnetId")
 
 
 class CreateNatGatewayResponse(AbstractModel):
@@ -5444,11 +5448,12 @@ class DescribeHaVipsRequest(AbstractModel):
         :param HaVipIds: The unique `ID` of the `HAVIP`, such as `havip-9o233uri`.
         :type HaVipIds: list of str
         :param Filters: Filter condition. `HaVipIds` and `Filters` cannot be specified at the same time.
-<li>havip-id - String - The unique `ID` of the `HAVIP`, such as `havip-9o233uri`.</li>
-<li>havip-name - String - `HAVIP` name.</li>
-<li>vpc-id - String - The `ID` of the VPC where `HAVIP` is located.</li>
-<li>subnet-id - String - The `ID` of the subnet where `HAVIP` is located.</li>
-<li>address-ip - String - The `EIP` to which `HAVIP` is bound.</li>
+li>havip-id - String - The unique ID of the HAVIP, such as `havip-9o233uri`.</li>
+<li>havip-name - String - HAVIP name.</li>
+<li>vpc-id - String - VPC ID of the HAVIP.</li>
+<li>subnet-id - String - Subnet ID of the HAVIP.</li>
+<li>vip - String - Virtual IP address of the HAVIP.</li>
+<li>address-ip - String - Bound EIP.</li>
         :type Filters: list of Filter
         :param Offset: Offset
         :type Offset: int
@@ -5901,14 +5906,15 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
 <li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>
 <li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>
-<li>attachment.instance-id - String - (Filter condition) CVM instance ID, such as `ins-3nqpdn3i`.</li>
-<li>groups.security-group-id - String - (Filter condition) Instance ID of the security group, such as `sg-f9ekbxeq`.</li>
+<li>attachment.instance-id - String - (Filter condition) ID of the bound CVM instance, such as `ins-3nqpdn3i`.</li>
+<li>groups.security-group-id - String - (Filter condition) ID of the bound security group, such as `sg-f9ekbxeq`.</li>
 <li>network-interface-name - String - (Filter condition) ENI instance name.</li>
 <li>network-interface-description - String - (Filter condition) ENI instance description.</li>
-<li>address-ip - String - (Filter condition) Private IPv4 address.</li>
-<li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>
-<li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>
-<li>is-primary - Boolean - Required: no - (Filter condition) Filters based on whether it is a primary ENI. If the value is 'true', filter only the primary ENI. If the value is 'false', filter only the secondary ENI. If the secondary filter parameter is provided, filter the both.</li>
+<li>address-ip - String - (Filter condition) Private IPv4 address. A single IP will be fuzzily matched with the suffix, while multiple IPs will be exactly matched. It can be used with `ip-exact-match` to query and exactly match a single IP.</li>
+<li>ip-exact-match - Boolean - (Filter condition) Exact match by private IPv4 address. The first value will be returned if multiple values are found.</li>
+<li>tag-key - String - Required: no - (Filter condition) Filter by tag key. See Example 2 for the detailed usage.</li>
+<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>
+<li>is-primary - Boolean - Required: no - (Filter condition) Filter based on whether it is a primary ENI. If the value is `true`, filter only the primary ENI. If the value is `false`, filter only the secondary ENI. If this parameter is not specified, filter the both.</li>
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -7105,45 +7111,48 @@ class DetachNetworkInterfaceResponse(AbstractModel):
 
 
 class DirectConnectGateway(AbstractModel):
-    """The direct connect gateway object.
+    """Direct Connect gateway object.
 
     """
 
     def __init__(self):
         """
-        :param DirectConnectGatewayId: The direct connect gateway ID.
+        :param DirectConnectGatewayId: Direct Connect `ID`.
         :type DirectConnectGatewayId: str
-        :param DirectConnectGatewayName: The direct connect gateway name.
+        :param DirectConnectGatewayName: Direct Connect gateway name.
         :type DirectConnectGatewayName: str
-        :param VpcId: The ID of the VPC instance associated with the direct connect gateway.
+        :param VpcId: The `ID` of the `VPC` instance associated with the Direct Connect gateway.
         :type VpcId: str
         :param NetworkType: The associated network type:
 <li>`VPC` - VPC</li>
 <li>`CCN` - CCN</li>
         :type NetworkType: str
-        :param NetworkInstanceId: The ID of the associated network instance:
-<li>When the `NetworkType` is `VPC`, this value is the VPC instance ID</li>
-<li>When the `NetworkType` is `CCN`, this value is the CCN instance ID</li>
+        :param NetworkInstanceId: The `ID` of the associated network instance:
+<li>When the NetworkType is `VPC`, this value is the VPC instance `ID`</li>
+<li>When the NetworkType is `CCN`, this value is the CCN instance `ID`</li>
         :type NetworkInstanceId: str
-        :param GatewayType: The gateway type:
+        :param GatewayType: Gateway type:
 <li>NORMAL - Standard type. Note: CCN only supports the standard type</li>
-<li>NAT type</li>
-The NAT type supports network address translation. The specified type cannot be modified. A VPC can create one NAT direct connect gateway and one non-NAT direct connect gateway
+<li>NAT - NAT type</li>
+NAT type supports network address switch configuration. After the type is confirmed, it cannot be modified. A VPC can create one NAT-type Direct Connect gateway and one non-NAT-type Direct Connect gateway
         :type GatewayType: str
-        :param CreateTime: The creation time.
+        :param CreateTime: Creation Time.
         :type CreateTime: str
-        :param DirectConnectGatewayIp: The direct connect gateway IP.
+        :param DirectConnectGatewayIp: Direct Connect gateway IP.
         :type DirectConnectGatewayIp: str
-        :param CcnId: The ID of the CCN instance associated with the direct connect gateway.
+        :param CcnId: The `ID` of the `CCN` instance associated with the Direct Connect gateway.
         :type CcnId: str
         :param CcnRouteType: The route-learning type of the CCN:
 <li>`BGP` - Automatic learning.</li>
 <li>`STATIC` - Static, that is, user-configured.</li>
         :type CcnRouteType: str
-        :param EnableBGP: Whether the BGP is enabled.
+        :param EnableBGP: Whether BGP is enabled.
         :type EnableBGP: bool
-        :param EnableBGPCommunity: Whether the `community` attribute of the BGP is enabled.
+        :param EnableBGPCommunity: 
         :type EnableBGPCommunity: bool
+        :param NatGatewayId: ID of the NAT gateway bound.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type NatGatewayId: str
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
@@ -7157,6 +7166,7 @@ The NAT type supports network address translation. The specified type cannot be 
         self.CcnRouteType = None
         self.EnableBGP = None
         self.EnableBGPCommunity = None
+        self.NatGatewayId = None
 
 
     def _deserialize(self, params):
@@ -7172,6 +7182,7 @@ The NAT type supports network address translation. The specified type cannot be 
         self.CcnRouteType = params.get("CcnRouteType")
         self.EnableBGP = params.get("EnableBGP")
         self.EnableBGPCommunity = params.get("EnableBGPCommunity")
+        self.NatGatewayId = params.get("NatGatewayId")
 
 
 class DirectConnectGatewayCcnRoute(AbstractModel):
@@ -7283,7 +7294,7 @@ class DisassociateAddressRequest(AbstractModel):
         """
         :param AddressId: The unique ID of the EIP, such as `eip-11112222`.
         :type AddressId: str
-        :param ReallocateNormalPublicIp: Whether a common public IP is assigned after the EIP is unbound. Value range:<br><li>TRUE: Indicates that after the EIP is unbound, a common public IP is assigned.<br><li>FALSE: Indicates that after the EIP is unbound, a common public IP is not assigned.<br>Default value: FALSE.<br><br>The parameter can be specified only under the following conditions:<br><li>It can only be specified when you unbind an EIP from the primary private IP of the primary ENI.<br><li>After an EIP is unbound, you can assign public IPs to an account up to 10 times per day. For more information, use the [DescribeAddressQuota] (https://cloud.tencent.com/document/api/213/1378) API.
+        :param ReallocateNormalPublicIp: Whether a common public IP is assigned after the EIP is unbound. Value range:<br><li>TRUE: Indicates that after the EIP is unbound, a common public IP is assigned.<br><li>FALSE: Indicates that after the EIP is unbound, a common public IP is not assigned.<br>Default value: FALSE.<br><br>The parameter can be specified only under the following conditions:<br><li>It can only be specified when you unbind an EIP from the primary private IP of the primary ENI.<br><li>After an EIP is unbound, you can assign public IPs to an account up to 10 times per day. For more information, use the [DescribeAddressQuota] (https://intl.cloud.tencent.com/document/api/213/1378?from_cn_redirect=1) API.
         :type ReallocateNormalPublicIp: bool
         """
         self.AddressId = None
@@ -7302,7 +7313,7 @@ class DisassociateAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: The async task ID. You can use the [DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271) API to query the task status.
+        :param TaskId: The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
         :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -8582,7 +8593,7 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: The async task ID. You can use the [DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271) API to query the task status.
+        :param TaskId: The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
         :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -9804,7 +9815,7 @@ class NatGateway(AbstractModel):
         :type CreatedTime: str
         :param State: The status of the NAT gateway.
  'PENDING': Creating, 'DELETING': Deleting, 'AVAILABLE': Operating, 'UPDATING': Upgrading,
-'FAILED': Failed.
+‘FAILED’: Failed.
         :type State: str
         :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the gateway. Unit: Mbps.
         :type InternetMaxBandwidthOut: int
@@ -10513,7 +10524,7 @@ class ReleaseAddressesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: The async task ID. You can use the [DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271) API to query the task status.
+        :param TaskId: The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
         :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -11210,7 +11221,7 @@ CCN: Cloud Connect Network.
         :param GatewayId: Next hop address. You simply need to specify the gateway ID of a different next hop type, and the system will automatically match the next hop address.
 Important note: When the GatewayType is EIP, the GatewayId has a fixed value `0`
         :type GatewayId: str
-        :param RouteId: The ID of the routing policy.
+        :param RouteId: Routing policy ID. The IPv4 routing policy will have a meaningful value, while the IPv6 routing policy is always 0. We recommend using the unique ID `RouteItemId` for the routing policy.
         :type RouteId: int
         :param RouteDescription: The description of the routing policy.
         :type RouteDescription: str
@@ -11269,7 +11280,7 @@ class RouteTable(AbstractModel):
         :type RouteTableName: str
         :param AssociationSet: The association relationships of the route table.
         :type AssociationSet: list of RouteTableAssociation
-        :param RouteSet: Route table policy set.
+        :param RouteSet: IPv4 routing policy set.
         :type RouteSet: list of Route
         :param Main: Whether it is the default route table.
         :type Main: bool
@@ -11816,7 +11827,7 @@ class TransformAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: The ID of the instance with a common public IP to be operated on, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://cloud.tencent.com/document/api/213/9389) API.
+        :param InstanceId: The ID of the instance with a common public IP to be operated on, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/9389?from_cn_redirect=1) API.
         :type InstanceId: str
         """
         self.InstanceId = None

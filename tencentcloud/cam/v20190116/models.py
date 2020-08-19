@@ -103,9 +103,9 @@ class AddUserResponse(AbstractModel):
         :type Name: str
         :param Password: If the combination of input parameters indicates that a random password should be generated, the generated password is returned
         :type Password: str
-        :param SecretId: Sub-user’s key ID
+        :param SecretId: Sub-user's key ID
         :type SecretId: str
-        :param SecretKey: Sub-user’s secret key
+        :param SecretKey: Sub-user's secret key
         :type SecretKey: str
         :param Uid: Sub-user UID
         :type Uid: int
@@ -262,7 +262,8 @@ Note: This field may return null, indicating that no valid value was found.
         :type PolicyType: str
         :param Remark: 
         :type Remark: str
-        :param OperateOwnerUin: 
+        :param OperateOwnerUin: Root account of the operator associating the policy
+Note: this field may return null, indicating that no valid values can be obtained.
         :type OperateOwnerUin: str
         :param OperateUin: 
         :type OperateUin: str
@@ -520,7 +521,7 @@ class CreatePolicyRequest(AbstractModel):
         """
         :param PolicyName: Policy name
         :type PolicyName: str
-        :param PolicyDocument: Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API
+        :param PolicyDocument: Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1) API
         :type PolicyDocument: str
         :param Description: Policy description
         :type Description: str
@@ -857,6 +858,44 @@ class DeletePolicyVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRolePermissionsBoundaryRequest(AbstractModel):
+    """DeleteRolePermissionsBoundary request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleId: Role ID (either it or the role name must be entered)
+        :type RoleId: str
+        :param RoleName: Role name (either it or the role ID must be entered)
+        :type RoleName: str
+        """
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+
+
+class DeleteRolePermissionsBoundaryResponse(AbstractModel):
+    """DeleteRolePermissionsBoundary response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteRoleRequest(AbstractModel):
     """DeleteRole request structure.
 
@@ -964,6 +1003,40 @@ class DeleteServiceLinkedRoleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DeletionTaskId = params.get("DeletionTaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUserPermissionsBoundaryRequest(AbstractModel):
+    """DeleteUserPermissionsBoundary request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetUin: Sub-account `Uin`
+        :type TargetUin: int
+        """
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+
+
+class DeleteUserPermissionsBoundaryResponse(AbstractModel):
+    """DeleteUserPermissionsBoundary response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2491,6 +2564,86 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IsDefaultVersion = params.get("IsDefaultVersion")
 
 
+class PutRolePermissionsBoundaryRequest(AbstractModel):
+    """PutRolePermissionsBoundary request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        :param RoleId: Role ID (either it or the role name must be entered)
+        :type RoleId: str
+        :param RoleName: Role name (either it or the role ID must be entered)
+        :type RoleName: str
+        """
+        self.PolicyId = None
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+
+
+class PutRolePermissionsBoundaryResponse(AbstractModel):
+    """PutRolePermissionsBoundary response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PutUserPermissionsBoundaryRequest(AbstractModel):
+    """PutUserPermissionsBoundary request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetUin: Sub-account `Uin`
+        :type TargetUin: int
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        """
+        self.TargetUin = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+        self.PolicyId = params.get("PolicyId")
+
+
+class PutUserPermissionsBoundaryResponse(AbstractModel):
+    """PutUserPermissionsBoundary response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RemoveUserFromGroupRequest(AbstractModel):
     """RemoveUserFromGroup request structure.
 
@@ -2902,13 +3055,13 @@ class UpdatePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: Policy ID
+        :param PolicyId: Policy ID. Either `PolicyId` or `PolicyName` must be entered
         :type PolicyId: int
-        :param PolicyName: Policy Name
+        :param PolicyName: Policy name. Either `PolicyName` or `PolicyId` must be entered
         :type PolicyName: str
         :param Description: Policy description
         :type Description: str
-        :param PolicyDocument: Policy documentation, for example: `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://cloud.tencent.com/document/product/598/36221).
+        :param PolicyDocument: Policy documentation, for example: `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1).
         :type PolicyDocument: str
         :param Alias: Preset policy remark
         :type Alias: str
@@ -2935,8 +3088,8 @@ class UpdatePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: Policy ID
-Note: This field may return null, indicating that no valid value was found.
+        :param PolicyId: Policy ID, which will be returned only if the input parameter is `PolicyName`
+Note: this field may return null, indicating that no valid values can be obtained.
         :type PolicyId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

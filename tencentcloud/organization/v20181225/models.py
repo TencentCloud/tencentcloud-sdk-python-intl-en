@@ -152,9 +152,9 @@ class CreateOrganizationResponse(AbstractModel):
         """
         :param OrgId: Organization ID
         :type OrgId: int
-        :param Nickname: Creator’s name
+        :param Nickname: Creator's name
         :type Nickname: str
-        :param Mail: Creator’s email address
+        :param Mail: Creator's email address
         :type Mail: str
         :param OrgType: Organization type
         :type OrgType: int
@@ -418,9 +418,9 @@ class GetOrganizationResponse(AbstractModel):
         :type OrgId: int
         :param HostUin: Creator UIN
         :type HostUin: int
-        :param Nickname: Creator’s name
+        :param Nickname: Creator's name
         :type Nickname: str
-        :param Mail: Creator’s email address
+        :param Mail: Creator's email address
         :type Mail: str
         :param OrgType: Organization type
         :type OrgType: int
@@ -692,9 +692,9 @@ class OrgInvitation(AbstractModel):
         :type Uin: int
         :param HostUin: Creator UIN
         :type HostUin: int
-        :param HostName: Creator’s name
+        :param HostName: Creator's name
         :type HostName: str
-        :param HostMail: Creator’s email address
+        :param HostMail: Creator's email address
         :type HostMail: str
         :param Status: Invitation status. `-1`: expired; `0`: normal; `1`: accepted; `2`: invalid; `3`: cancelled
         :type Status: int

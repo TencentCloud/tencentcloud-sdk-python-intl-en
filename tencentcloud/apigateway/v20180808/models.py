@@ -1301,7 +1301,7 @@ class CreateIPStrategyRequest(AbstractModel):
         :type ServiceId: str
         :param StrategyName: Custom policy name.
         :type StrategyName: str
-        :param StrategyType: Policy type. Valid values: WHITE (whitelist), BLACK (blacklist).
+        :param StrategyType: Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
         :type StrategyType: str
         :param StrategyData: Policy details.
         :type StrategyData: str
@@ -1356,7 +1356,7 @@ class CreateServiceRequest(AbstractModel):
         :type Protocol: str
         :param ServiceDesc: Custom service description.
         :type ServiceDesc: str
-        :param ExclusiveSetName: Self-deployed cluster name, which is used to specify the self-deployed cluster where the service is to be created.
+        :param ExclusiveSetName: Dedicated cluster name, which is used to specify the dedicated cluster where the service is to be created.
         :type ExclusiveSetName: str
         :param NetTypes: Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
         :type NetTypes: list of str
@@ -2743,7 +2743,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type CreatedTime: str
         :param ModifiedTime: Service modification time.
         :type ModifiedTime: str
-        :param ExclusiveSetName: Self-deployed cluster name.
+        :param ExclusiveSetName: Dedicated cluster name.
         :type ExclusiveSetName: str
         :param NetTypes: Network type list. INNER: private network access; OUTER: public network access.
         :type NetTypes: list of str
@@ -2774,6 +2774,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SetId: Reserved field.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SetId: int
+        :param Tags: 
+        :type Tags: list of Tag
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2797,6 +2799,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IpVersion = None
         self.UserType = None
         self.SetId = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -2831,6 +2834,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IpVersion = params.get("IpVersion")
         self.UserType = params.get("UserType")
         self.SetId = params.get("SetId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3590,7 +3599,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param StrategyName: Custom policy name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StrategyName: str
-        :param StrategyType: Policy type. Valid values: WHITE (whitelist), BLACK (blacklist).
+        :param StrategyType: Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StrategyType: str
         :param StrategyData: IP list.
@@ -4731,6 +4740,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TradeIsolateStatus: Billing status of service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TradeIsolateStatus: int
+        :param Tags: 
+        :type Tags: list of Tag
         """
         self.InnerHttpsPort = None
         self.ServiceDesc = None
@@ -4747,6 +4758,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InnerHttpPort = None
         self.InnerSubDomain = None
         self.TradeIsolateStatus = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -4765,6 +4777,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InnerHttpPort = params.get("InnerHttpPort")
         self.InnerSubDomain = params.get("InnerSubDomain")
         self.TradeIsolateStatus = params.get("TradeIsolateStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class ServiceConfig(AbstractModel):

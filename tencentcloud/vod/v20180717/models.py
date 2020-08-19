@@ -43,9 +43,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
         :param HighlightConfigure: Control parameter of an intelligent highlight generating task.
         :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -122,9 +122,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
         :param ScreenshotInterval: Screencapturing interval in seconds.
         :type ScreenshotInterval: float
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -268,9 +268,9 @@ If this field is a blank string, DRM will not be performed on the video.
 <li>0: no,</li>
 <li>1: yes.</li>
         :type DisableHigherVideoResolution: int
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -2126,7 +2126,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>block.</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Suggestion: str
-        :param Label: Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/266/34187#PoliticalImgReviewTemplateInfo?from_cn_redirect=1) and this parameter is as follows:
+        :param Label: Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
 violation_photo:
 <li>violation_photo: violating photo.</li>
 Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
@@ -3050,9 +3050,9 @@ class AiSamplePerson(AbstractModel):
         :type TagSet: list of str
         :param UsageSet: Use case.
         :type UsageSet: list of str
-        :param CreateTime: Creation time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         """
         self.PersonId = None
@@ -3115,9 +3115,9 @@ class AiSampleWord(AbstractModel):
         :type TagSet: list of str
         :param UsageSet: Keyword use case.
         :type UsageSet: list of str
-        :param CreateTime: Creation time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         """
         self.Keyword = None
@@ -3225,9 +3225,9 @@ Default value: open.
         :type Fps: int
         :param Quality: Image quality.
         :type Quality: float
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -3266,28 +3266,28 @@ class ApplyUploadRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaType: Media type. For the detailed valid values, please see [Upload Overview](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
+        :param MediaType: Media type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
         :type MediaType: str
         :param MediaName: Media name.
         :type MediaName: str
-        :param CoverType: Cover type. For the detailed valid values, please see [Upload Overview](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
+        :param CoverType: Cover type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
         :type CoverType: str
-        :param Procedure: Subsequent task operation on a media file, i.e., after a media file is uploaded, task flow operations will be initiated automatically. This parameter value is a task flow template name. VOD supports [creating task flow templates](/document/product/266/33819) and naming the templates.
+        :param Procedure: Subsequent task operation on a media file, i.e., after a media file is uploaded, task flow operations will be initiated automatically. This parameter value is a task flow template name. VOD supports [creating task flow templates](https://intl.cloud.tencent.com/document/product/266/33819?from_cn_redirect=1) and naming the templates.
         :type Procedure: str
-        :param ExpireTime: Expiration time of a media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param ExpireTime: Expiration time of a media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type ExpireTime: str
         :param StorageRegion: Specifies upload region. This is only applicable to users that have special requirements for the upload region.
         :type StorageRegion: str
-        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](/document/product/266/7812) API.
+        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.
 <li>Default value: 0, which means "Other".</li>
         :type ClassId: int
-        :param SourceContext: Source context, which is used to pass through the user request information. The [upload callback](/document/product/266/7830) API will return the value of this field. It can contain up to 250 characters.
+        :param SourceContext: Source context, which is used to pass through the user request information. The [upload callback](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) API will return the value of this field. It can contain up to 250 characters.
         :type SourceContext: str
-        :param SessionContext: Session context, which is used to pass through the user request information. If the `Procedure` parameter is specified, the [task flow status change callback](/document/product/266/9636) API will return the value of this field. It can contain up to 1,000 characters.
+        :param SessionContext: Session context, which is used to pass through the user request information. If the `Procedure` parameter is specified, the [task flow status change callback](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) API will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
         :param ExtInfo: 
         :type ExtInfo: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.MediaType = None
@@ -3759,7 +3759,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ClipTask2017(AbstractModel):
-    """Video clipping task information. This structure is only used for tasks initiated by the [ClipVideo](https://cloud.tencent.com/document/product/266/10156) API in v2017.
+    """Video clipping task information. This structure is only used for tasks initiated by the [ClipVideo](https://intl.cloud.tencent.com/document/product/266/10156?from_cn_redirect=1) API in v2017.
 
     """
 
@@ -3794,7 +3794,7 @@ class CommitUploadRequest(AbstractModel):
         """
         :param VodSessionKey: VOD session, which takes the returned value (VodSessionKey) of the `ApplyUpload` API.
         :type VodSessionKey: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.VodSessionKey = None
@@ -3848,10 +3848,10 @@ class ComposeMediaOutput(AbstractModel):
         :type FileName: str
         :param Description: Description, which can contain up to 128 characters.
         :type Description: str
-        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](/document/product/266/7812) API.
+        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.
 <li>Default value: 0, which means "Other".</li>
         :type ClassId: int
-        :param ExpireTime: Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param ExpireTime: Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         :param Container: Container. Valid values: mp4, mp3. mp3 is for audio files.
         :type Container: str
@@ -3916,7 +3916,7 @@ class ComposeMediaRequest(AbstractModel):
         :type SessionContext: str
         :param SessionId: 
         :type SessionId: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Tracks = None
@@ -4066,10 +4066,10 @@ class ComposeMediaTaskOutput(AbstractModel):
         :type FileUrl: str
         :param MediaName: Filename of up to 64 characters.
         :type MediaName: str
-        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](/document/product/266/7812) API.
+        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.
 <li>Default value: 0, which means "Other".</li>
         :type ClassId: int
-        :param ExpireTime: Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param ExpireTime: Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         """
         self.FileType = None
@@ -4130,7 +4130,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ConcatTask2017(AbstractModel):
-    """Video splicing task information. This structure is only used for tasks initiated by the [ConcatVideo](https://cloud.tencent.com/document/product/266/7821) API in v2017.
+    """Video splicing task information. This structure is only used for tasks initiated by the [ConcatVideo](https://intl.cloud.tencent.com/document/product/266/7821?from_cn_redirect=1) API in v2017.
 
     """
 
@@ -4162,12 +4162,12 @@ class ConfirmEventsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EventHandles: Event handler, i.e., the `EventSet. EventHandle` field in the output parameters of the [event notification pulling](/document/product/266/33433) API.
+        :param EventHandles: Event handler, i.e., the `EventSet. EventHandle` field in the output parameters of the [event notification pulling](https://intl.cloud.tencent.com/document/product/266/33433?from_cn_redirect=1) API.
 Array length limit: 16.
         :type EventHandles: list of str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.EventHandles = None
@@ -4234,9 +4234,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type ReviewWallSwitch: str
         :param ScreenshotInterval: Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.
         :type ScreenshotInterval: float
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -4393,7 +4393,7 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
         :param HighlightConfigure: Control parameter of an intelligent highlight generating task.
         :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Name = None
@@ -4477,7 +4477,7 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
         :param ScreenshotInterval: Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.
         :type ScreenshotInterval: float
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Name = None
@@ -4577,7 +4577,7 @@ Default value: no.
         :type DisableHigherVideoResolution: int
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Format = None
@@ -4663,7 +4663,7 @@ Default value: open.
         :type Name: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Fps = None
@@ -4721,7 +4721,7 @@ class CreateClassRequest(AbstractModel):
         :type ParentId: int
         :param ClassName: Category name. Length limit: 1-64 characters.
         :type ClassName: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.ParentId = None
@@ -4785,7 +4785,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
         :param ScreenshotInterval: Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.
         :type ScreenshotInterval: float
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.ReviewWallSwitch = None
@@ -4845,7 +4845,7 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
 
 class CreateImageSpriteTask2017(AbstractModel):
-    """Image sprite generating task. This structure is only used for tasks initiated by the [CreateImageSprite](https://cloud.tencent.com/document/product/266/8101) API in v2017.
+    """Image sprite generating task. This structure is only used for tasks initiated by the [CreateImageSprite](https://intl.cloud.tencent.com/document/product/266/8101?from_cn_redirect=1) API in v2017.
 
     """
 
@@ -4864,7 +4864,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param FileId: ID of generated image sprite file.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FileId: str
-        :param Definition: Image sprite specification. For more information, please see [Image Sprite Generating Template](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param Definition: Image sprite specification. For more information, please see [Image Sprite Generating Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Definition: int
         :param TotalCount: Total number of subimages in image sprite.
@@ -4945,7 +4945,7 @@ Default value: 0.
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
 Default value: open.
         :type ResolutionAdaptive: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.SampleType = None
@@ -5019,7 +5019,7 @@ Note: the image must be a relatively clear full-face photo of a figure in at lea
 <li>Array length limit: 20 tags;</li>
 <li>Tag length limit: 128 characters.</li>
         :type Tags: list of str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Name = None
@@ -5090,7 +5090,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: Type parameter of AI-based content recognition task.
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Name = None
@@ -5177,7 +5177,7 @@ Default value: open.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -5265,7 +5265,7 @@ Default value: open.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -5388,15 +5388,15 @@ Default value: OFF.
 <li>MinEdgeLength: 2160, Name: 4K;</li>
 <li>MinEdgeLength: 4320, Name: 8K.</li>
         :type ResolutionNames: list of ResolutionNameInfo
-        :param Domain: Domain name used for playback. If it is left empty or set to `Default`, the domain name configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used.
+        :param Domain: Domain name used for playback. If it is left empty or set to `Default`, the domain name configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used.
         :type Domain: str
-        :param Scheme: Scheme used for playback. If it is left empty or set to `Default`, the scheme configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used. Other valid values:
+        :param Scheme: Scheme used for playback. If it is left empty or set to `Default`, the scheme configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used. Other valid values:
 <li>HTTP;</li>
 <li>HTTPS.</li>
         :type Scheme: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Name = None
@@ -5477,7 +5477,7 @@ Default value: 0.
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
         :param TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Container = None
@@ -5569,7 +5569,7 @@ Default value: 0 px.
         :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInput`
         :param SvgTemplate: SVG watermarking template. This field is required when `Type` is `svg` and is invalid when `Type` is `image` or `text`.
         :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInput`
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Type = None
@@ -5647,7 +5647,7 @@ class CreateWordSamplesRequest(AbstractModel):
         :type Usages: list of str
         :param Words: Keyword. Array length limit: 100.
         :type Words: list of AiSampleWordInfo
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Usages = None
@@ -5692,7 +5692,7 @@ class DeleteAIAnalysisTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of video content analysis template.
         :type Definition: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -5730,7 +5730,7 @@ class DeleteAIRecognitionTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of video content recognition template.
         :type Definition: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -5768,7 +5768,7 @@ class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of adaptive bitrate streaming template.
         :type Definition: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -5806,7 +5806,7 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of an animated image generating template.
         :type Definition: int
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -5844,7 +5844,7 @@ class DeleteClassRequest(AbstractModel):
         """
         :param ClassId: Category ID
         :type ClassId: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.ClassId = None
@@ -5882,7 +5882,7 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of content audit template.
         :type Definition: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -5920,7 +5920,7 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of an image sprite generating template.
         :type Definition: int
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -5960,7 +5960,7 @@ class DeleteMediaRequest(AbstractModel):
         :type FileId: str
         :param DeleteParts: Content to be deleted. The default value is "[]", which indicates to delete the media file and all its corresponding files generated by video processing.
         :type DeleteParts: list of MediaDeleteItem
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.FileId = None
@@ -6005,7 +6005,7 @@ class DeletePersonSampleRequest(AbstractModel):
         """
         :param PersonId: Figure ID.
         :type PersonId: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.PersonId = None
@@ -6043,7 +6043,7 @@ class DeleteProcedureTemplateRequest(AbstractModel):
         """
         :param Name: Task flow name.
         :type Name: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Name = None
@@ -6081,7 +6081,7 @@ class DeleteSampleSnapshotTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of a sampled screencapturing template.
         :type Definition: int
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -6119,7 +6119,7 @@ class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of a specified time point screencapturing template.
         :type Definition: int
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -6157,7 +6157,7 @@ class DeleteSuperPlayerConfigRequest(AbstractModel):
         """
         :param Name: Player configuration name.
         :type Name: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Name = None
@@ -6195,7 +6195,7 @@ class DeleteTranscodeTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of transcoding template.
         :type Definition: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -6233,7 +6233,7 @@ class DeleteWatermarkTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of watermarking template.
         :type Definition: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -6271,7 +6271,7 @@ class DeleteWordSamplesRequest(AbstractModel):
         """
         :param Keywords: Keyword. Array length limit: 100 words.
         :type Keywords: list of str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Keywords = None
@@ -6313,7 +6313,7 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definitions = None
@@ -6372,7 +6372,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definitions = None
@@ -6435,7 +6435,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definitions = None
@@ -6490,7 +6490,7 @@ class DescribeAllClassRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.SubAppId = None
@@ -6544,7 +6544,7 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definitions = None
@@ -6599,9 +6599,9 @@ class DescribeCDNUsageDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param StartTime: Start date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type StartTime: str
-        :param EndTime: End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The end date must be after the start date.
+        :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). The end date must be after the start date.
         :type EndTime: str
         :param DataType: CDN statistics type. Valid values:
 <li>Flux: traffic in bytes.</li>
@@ -6616,7 +6616,7 @@ When the value of this field is 1, the total usage of all subapplications (inclu
         :type DataInterval: int
         :param DomainNames: List of domain names. The usage data of up to 20 domain names can be queried at a time. You can specify multiple domain names and query their combined usage data. The usage data of all domain names will be returned by default.
         :type DomainNames: list of str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
 When the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin. In this case, only 1-day granularity is supported.
         :type SubAppId: int
         """
@@ -6680,7 +6680,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definitions = None
@@ -6743,7 +6743,7 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definitions = None
@@ -6812,7 +6812,7 @@ class DescribeMediaInfosRequest(AbstractModel):
 <li>adaptiveDynamicStreamingInfo (information of adaptive bitrate streaming).</li>
 <li>miniProgramReviewInfo (WeChat Mini Program audit information).</li>
         :type Filters: list of str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.FileIds = None
@@ -6863,14 +6863,14 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param StartTime: Start date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type StartTime: str
-        :param EndTime: End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.
+        :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.
         :type EndTime: str
         :param Type: Type of video processing task to be queried. Valid value: Transcode. Default value: Transcode.
 <li>Transcode: transcoding</li>
         :type Type: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.StartTime = None
@@ -6936,7 +6936,7 @@ Note: the default figure library can be pulled only through "figure name" or "fi
         :type Offset: int
         :param Limit: Number of entries to be returned. Default value: 100. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Type = None
@@ -7005,7 +7005,7 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Names = None
@@ -7060,11 +7060,11 @@ class DescribeReviewDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param StartTime: Start date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type StartTime: str
-        :param EndTime: End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The end date must be after the start date.
+        :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). The end date must be after the start date.
         :type EndTime: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.StartTime = None
@@ -7129,7 +7129,7 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definitions = None
@@ -7194,7 +7194,7 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definitions = None
@@ -7249,7 +7249,7 @@ class DescribeStorageDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.SubAppId = None
@@ -7299,9 +7299,9 @@ class DescribeStorageDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param StartTime: Start time in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type StartTime: str
-        :param EndTime: End time in ISO 8601 format, which must be after the start time. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param EndTime: End time in ISO 8601 format, which must be after the start time. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type EndTime: str
         :param Interval: Query time interval. Valid values:
 <li>Minute: once per minute.</li>
@@ -7315,7 +7315,7 @@ The default value is determined by the time span. `Minute` will be used if the t
 <li>InfrequentStorage: Standard_IA storage.</li>
 Default value: TotalStorage.
         :type StorageType: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
 When the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin.
         :type SubAppId: int
         """
@@ -7409,7 +7409,7 @@ class DescribeSuperPlayerConfigsRequest(AbstractModel):
 <li>Preset: preset configuration;</li>
 <li>Custom: custom configuration.</li>
         :type Type: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Names = None
@@ -7466,7 +7466,7 @@ class DescribeTaskDetailRequest(AbstractModel):
         """
         :param TaskId: Video processing task ID.
         :type TaskId: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.TaskId = None
@@ -7505,11 +7505,11 @@ Task types compatible with v2017:
 <li>PROCESSING: processing;</li>
 <li>FINISH: completed.</li>
         :type Status: str
-        :param CreateTime: Creation time of task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param BeginProcessTime: Start time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param BeginProcessTime: Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type BeginProcessTime: str
-        :param FinishTime: End time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param FinishTime: End time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type FinishTime: str
         :param ProcedureTask: Video processing task information. This field has a value only when `TaskType` is `Procedure`.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -7623,7 +7623,7 @@ class DescribeTasksRequest(AbstractModel):
         :type Limit: int
         :param ScrollToken: Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.
         :type ScrollToken: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Status = None
@@ -7696,7 +7696,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definitions = None
@@ -7768,7 +7768,7 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 <li>Default value: 10;</li>
 <li>Maximum value: 100.</li>
         :type Limit: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definitions = None
@@ -7842,7 +7842,7 @@ Multiple elements can be selected, and the relationship between them is "OR", i.
         :type Offset: int
         :param Limit: Number of entries to be returned. Default value: 100. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Usages = None
@@ -7964,10 +7964,10 @@ class EditMediaOutputConfig(AbstractModel):
         :type MediaName: str
         :param Type: Output file format. Valid values: mp4, hls. Default value: mp4.
         :type Type: str
-        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](/document/product/266/7812) API.
+        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.
 <li>Default value: 0, which means "Other".</li>
         :type ClassId: int
-        :param ExpireTime: Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param ExpireTime: Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         """
         self.MediaName = None
@@ -8000,7 +8000,7 @@ class EditMediaRequest(AbstractModel):
 <li>10: the input with the highest resolution will be used as the benchmark;</li>
 <li>20: the input with the highest bitrate will be used as the benchmark;</li>
         :type Definition: int
-        :param ProcedureName: [Task flow template](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name, which should be entered if you want to perform a task flow on the generated new video.
+        :param ProcedureName: [Task flow template](https://intl.cloud.tencent.com/document/product/266/11700?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name, which should be entered if you want to perform a task flow on the generated new video.
         :type ProcedureName: str
         :param OutputConfig: Configuration of file generated after editing.
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`
@@ -8010,7 +8010,7 @@ class EditMediaRequest(AbstractModel):
         :type TasksPriority: int
         :param SessionId: ID used for task deduplication. If there was a request with the same ID in the last day, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.InputType = None
@@ -8080,10 +8080,10 @@ class EditMediaStreamInfo(AbstractModel):
         """
         :param StreamId: ID of recorded stream
         :type StreamId: str
-        :param StartTime: Start time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param StartTime: Start time of stream clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StartTime: str
-        :param EndTime: End time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param EndTime: End time of stream clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EndTime: str
         """
@@ -8220,11 +8220,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MediaName: Output filename of up to 64 characters, which is generated by the system by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MediaName: str
-        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](/document/product/266/7812) API.
+        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.
 <li>Default value: 0, which means "Other".</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClassId: int
-        :param ExpireTime: Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param ExpireTime: Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
         """
@@ -8405,7 +8405,7 @@ class ExecuteFunctionRequest(AbstractModel):
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.FunctionName = None
@@ -8491,21 +8491,30 @@ Default value: All (both default and custom figure libraries will be used.)
 
 
 class FaceConfigureInfoForUpdate(AbstractModel):
-    """
+    """Control parameter of face recognition task
 
     """
 
     def __init__(self):
         """
-        :param Switch: 
+        :param Switch: Switch of face recognition task. Valid values:
+<li>ON: enables intelligent face recognition task;</li>
+<li>OFF: disables intelligent face recognition task.</li>
         :type Switch: str
-        :param Score: 
+        :param Score: Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0–100.
         :type Score: float
-        :param DefaultLibraryLabelSet: 
+        :param DefaultLibraryLabelSet: Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the default figures will be returned. Valid values:
+<li>entertainment: entertainment celebrity;</li>
+<li>sport: sports celebrity;</li>
+<li>politician: politically sensitive figure.</li>
         :type DefaultLibraryLabelSet: list of str
-        :param UserDefineLibraryLabelSet: 
+        :param UserDefineLibraryLabelSet: Custom figure filter tag, which specifies the custom figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the custom figures will be returned. Valid values:
+There can be up to 10 tags, each with a length limit of 16 characters.
         :type UserDefineLibraryLabelSet: list of str
-        :param FaceLibrary: 
+        :param FaceLibrary: Figure library. Valid values:
+<li>Default: default figure library;</li>
+<li>UserDefine: custom figure library.</li>
+<li>All: both default and custom figure libraries will be used.</li>
         :type FaceLibrary: str
         """
         self.Switch = None
@@ -8586,7 +8595,7 @@ class ForbidMediaDistributionRequest(AbstractModel):
         :type FileIds: list of str
         :param Operation: forbid: forbids, recover: unblocks.
         :type Operation: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.FileIds = None
@@ -8827,9 +8836,9 @@ Default value: open.
         :type RowCount: int
         :param ColumnCount: Subimage column count of an image sprite.
         :type ColumnCount: int
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -9000,17 +9009,17 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamId: [LVB code](https://cloud.tencent.com/document/product/267/5959) of a stream.
+        :param StreamId: [LVB code](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) of a stream.
         :type StreamId: str
-        :param StartTime: Start time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param StartTime: Start time of stream clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type StartTime: str
-        :param EndTime: End time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param EndTime: End time of stream clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type EndTime: str
         :param IsPersistence: Whether to clip persistently. 0: no, 1: yes. Default: no.
         :type IsPersistence: int
-        :param ExpireTime: Storage expiration time of video generated by persistent clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). `9999-12-31T23:59:59Z` means `never expire`. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter will be valid only when `IsPersistence` is 1. By default, the video will never expire.
+        :param ExpireTime: Storage expiration time of video generated by persistent clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). `9999-12-31T23:59:59Z` means `never expire`. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter will be valid only when `IsPersistence` is 1. By default, the video will never expire.
         :type ExpireTime: str
-        :param Procedure: VOD task flow processing for video generated by persistent clipping. For more information, please see [Specifying Task Flow After Upload](https://cloud.tencent.com/document/product/266/9759). This parameter will be valid only when `IsPersistence` is 1.
+        :param Procedure: VOD task flow processing for video generated by persistent clipping. For more information, please see [Specifying Task Flow After Upload](https://intl.cloud.tencent.com/document/product/266/9759?from_cn_redirect=1). This parameter will be valid only when `IsPersistence` is 1.
         :type Procedure: str
         :param MetaDataRequired: Whether the metadata of clipped video needs to be returned. 0: no, 1: yes. Default value: no.
         :type MetaDataRequired: int
@@ -9018,7 +9027,7 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type Host: str
         :param ExtInfo: Reserved field. Do not enter a value for it.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.StreamId = None
@@ -9292,7 +9301,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
         :param Url: Address of generated animated image.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Url: str
-        :param Definition: Animated image generating template ID. For more information, please see [Animated Image Generating Parameter Template](https://cloud.tencent.com/document/product/266/33481#.3Cspan-id-.3D-.22zdt.22.3E.3C.2Fspan.3E.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param Definition: Animated image generating template ID. For more information, please see [Animated Image Generating Parameter Template](https://intl.cloud.tencent.com/document/product/266/33481?from_cn_redirect=1#.3Cspan-id-.3D-.22zdt.22.3E.3C.2Fspan.3E.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Definition: int
         :param Container: Animated image format, such as gif.
@@ -9386,13 +9395,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Description: Media file description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param CreateTime: Creation time of media file in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of media file in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param UpdateTime: Last update time of media file (by an operation that triggers updating of media file information such as modifying video attributes or initiating video processing) in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last update time of media file (by an operation that triggers updating of media file information such as modifying video attributes or initiating video processing) in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
-        :param ExpireTime: Expiration time of media file in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. `9999-12-31T23:59:59Z` means "never expire".
+        :param ExpireTime: Expiration time of media file in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. `9999-12-31T23:59:59Z` means "never expire".
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
         :param ClassId: Category ID of media file.
@@ -9416,7 +9425,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SourceInfo: Source information of media file.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SourceInfo: :class:`tencentcloud.vod.v20180717.models.MediaSourceData`
-        :param StorageRegion: Storage region of media file, such as ap-guangzhou. For more information, please see [Region List](https://cloud.tencent.com/document/api/213/15692#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).
+        :param StorageRegion: Storage region of media file, such as ap-guangzhou. For more information, please see [Region List](https://intl.cloud.tencent.com/document/api/213/15692?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StorageRegion: str
         :param TagSet: Tag information of media file.
@@ -9577,7 +9586,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Url: URL of a suspected image (which will not be permanently stored
 and will be deleted after `PicUrlExpireTime`).
         :type Url: str
-        :param PicUrlExpireTime: Expiration time of suspected image URL in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param PicUrlExpireTime: Expiration time of suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
@@ -9621,7 +9630,7 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type Suggestion: str
         :param Name: Name of a politically sensitive figure or violating photo.
         :type Name: str
-        :param Label: Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
+        :param Label: Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:
 violation_photo:
 <li>violation_photo: violating photo.</li>
 politician:
@@ -9653,7 +9662,7 @@ military:
         :type AreaCoordSet: list of int
         :param PicUrlExpireTimeStamp: This field has been disused. Please use `PicUrlExpireTime`.
         :type PicUrlExpireTimeStamp: int
-        :param PicUrlExpireTime: Expiration time of suspected image URL in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param PicUrlExpireTime: Expiration time of suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
@@ -9706,7 +9715,7 @@ class MediaContentReviewSegmentItem(AbstractModel):
         :type Url: str
         :param PicUrlExpireTimeStamp: This field has been disused. Please use `PicUrlExpireTime`.
         :type PicUrlExpireTimeStamp: int
-        :param PicUrlExpireTime: Expiration time of suspected image URL in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param PicUrlExpireTime: Expiration time of suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
@@ -9741,7 +9750,7 @@ class MediaDeleteItem(AbstractModel):
 <li>TranscodeFiles: deletes transcoded files.</li>
 <li>WechatPublishFiles: deletes files published on WeChat.</li>
         :type Type: str
-        :param Definition: ID of the template for which to delete the videos of the type specified by the `Type` parameter. For the template definition, please see [Transcoding Template](https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
+        :param Definition: ID of the template for which to delete the videos of the type specified by the `Type` parameter. For the template definition, please see [Transcoding Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
 Default value: 0, which indicates to delete all videos of the type specified by the `Type` parameter.
         :type Definition: int
         """
@@ -9784,7 +9793,7 @@ class MediaImageSpriteItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Image sprite specification. For more information, please see [Image Sprite Parameter Template](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param Definition: Image sprite specification. For more information, please see [Image Sprite Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Definition: int
         :param Height: Subimage height of image sprite.
@@ -10663,7 +10672,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://cloud.tencent.com/document/product/266/33480#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param Definition: Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Definition: int
         :param SampleType: Sample type. Valid values:
@@ -10728,7 +10737,7 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param Definition: Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Definition: int
         :param PicInfoSet: Information set of screenshots of the same specification. Each element represents a screenshot.
@@ -10927,7 +10936,7 @@ class MediaTranscodeItem(AbstractModel):
         :param Url: Address of output video file.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Url: str
-        :param Definition: Transcoding specification ID. For more information, please see [Transcoding Parameter Template](https://cloud.tencent.com/document/product/266/33478#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
+        :param Definition: Transcoding specification ID. For more information, please see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Definition: int
         :param Bitrate: Sum of the average bitrate of a video stream and that of an audio stream in bps.
@@ -11083,7 +11092,7 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
         :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfoForUpdate`
         :param HighlightConfigure: Control parameter of an intelligent highlight generating task.
         :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfoForUpdate`
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -11167,7 +11176,7 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfoForUpdate`
         :param ScreenshotInterval: Frame capturing interval in seconds. Minimum value: 0.5 seconds.
         :type ScreenshotInterval: float
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -11261,7 +11270,7 @@ Note: the frame rate of all streams must be the same; otherwise, the frame rate 
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -11345,7 +11354,7 @@ Default value: open.
         :type Quality: float
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -11401,7 +11410,7 @@ class ModifyClassRequest(AbstractModel):
         :type ClassId: int
         :param ClassName: Category name, which can contain 1–64 characters.
         :type ClassName: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.ClassId = None
@@ -11463,7 +11472,7 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 <li>ON: yes;</li>
 <li>OFF: no.</li>
         :type ReviewWallSwitch: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -11559,7 +11568,7 @@ Default value: black.
         :type FillType: str
         :param Comment: 
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -11623,7 +11632,7 @@ class ModifyMediaInfoRequest(AbstractModel):
         :type Description: str
         :param ClassId: Media file category ID.
         :type ClassId: int
-        :param ExpireTime: Media file expiration time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The value `9999-12-31T23:59:59Z` indicates that the media file never expires. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted.
+        :param ExpireTime: Media file expiration time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). The value `9999-12-31T23:59:59Z` indicates that the media file never expires. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted.
         :type ExpireTime: str
         :param CoverData: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) the video cover image file (such as .jpeg or .png file). Only .gif, .jpeg, and .png image formats are supported.
         :type CoverData: str
@@ -11641,7 +11650,7 @@ In the same request, `ClearKeyFrameDescs` and `AddKeyFrameDescs` cannot be prese
         :param ClearTags: The value `1` indicates to delete all tags of the media file. Other values are meaningless.
 In the same request, `ClearTags` and `AddTags` cannot be present at the same time.
         :type ClearTags: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.FileId = None
@@ -11724,7 +11733,7 @@ class ModifyPersonSampleRequest(AbstractModel):
         :type FaceOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleFaceOperation`
         :param TagOperationInfo: Tag operation information.
         :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.PersonId = None
@@ -11824,7 +11833,7 @@ Default value: open.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -11912,7 +11921,7 @@ Default value: open.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -12065,16 +12074,16 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         :type ImageSpriteDefinition: int
         :param ResolutionNames: Display name of player for substreams with different resolutions.
         :type ResolutionNames: list of ResolutionNameInfo
-        :param Domain: Domain name used for playback. If its value is `Default`, the domain name configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used.
+        :param Domain: Domain name used for playback. If its value is `Default`, the domain name configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used.
         :type Domain: str
         :param Scheme: Scheme used for playback. Valid values:
-<li>Default: the scheme configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used;</li>
+<li>Default: the scheme configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used;</li>
 <li>HTTP;</li>
 <li>HTTPS.</li>
         :type Scheme: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Name = None
@@ -12155,7 +12164,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
         :param TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -12239,7 +12248,7 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
         :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInputForUpdate`
         :param SvgTemplate: SVG watermarking template. This field is only valid for SVG watermarking templates.
         :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInputForUpdate`
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Definition = None
@@ -12316,7 +12325,7 @@ class ModifyWordSampleRequest(AbstractModel):
         :type Usages: list of str
         :param TagOperationInfo: Tag operation information.
         :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Keyword = None
@@ -12680,14 +12689,14 @@ class PlayerConfig(AbstractModel):
         :type ImageSpriteDefinition: int
         :param ResolutionNameSet: Display name of player for substreams with different resolutions.
         :type ResolutionNameSet: list of ResolutionNameInfo
-        :param CreateTime: Creation time of player configuration in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param CreateTime: Creation time of player configuration in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of player configuration in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param UpdateTime: Last modified time of player configuration in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
-        :param Domain: Domain name used for playback. If its value is `Default`, the domain name configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used.
+        :param Domain: Domain name used for playback. If its value is `Default`, the domain name configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used.
         :type Domain: str
         :param Scheme: Scheme used for playback. Valid values:
-<li>Default: the scheme configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used;</li>
+<li>Default: the scheme configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used;</li>
 <li>HTTP;</li>
 <li>HTTPS.</li>
         :type Scheme: str
@@ -13244,18 +13253,18 @@ Note: this field may return null, indicating that no valid values can be obtaine
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
         :param FileId: Media file ID.
-<li>If the task flow is initiated by [ProcessMedia](https://cloud.tencent.com/document/product/266/33427), this field means the `FileId` in [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo);</li>
-<li>If the task flow is initiated by [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426), this field means the `Id` in [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo).</li>
+<li>If the task flow is initiated by [ProcessMedia](https://intl.cloud.tencent.com/document/product/266/33427?from_cn_redirect=1), this field means the `FileId` in [MediaInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInfo);</li>
+<li>If the task flow is initiated by [ProcessMediaByUrl](https://intl.cloud.tencent.com/document/product/266/33426?from_cn_redirect=1), this field means the `Id` in [MediaInputInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInputInfo).</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FileId: str
         :param FileName: Media filename
-<li>If the task flow is initiated by [ProcessMedia](https://cloud.tencent.com/document/product/266/33427), this field means the `BasicInfo.Name` in [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo);</li>
-<li>If the task flow is initiated by [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426), this field means the `Name` in [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo).</li>
+<li>If the task flow is initiated by [ProcessMedia](https://intl.cloud.tencent.com/document/product/266/33427?from_cn_redirect=1), this field means the `BasicInfo.Name` in [MediaInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInfo);</li>
+<li>If the task flow is initiated by [ProcessMediaByUrl](https://intl.cloud.tencent.com/document/product/266/33426?from_cn_redirect=1), this field means the `Name` in [MediaInputInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInputInfo).</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FileName: str
         :param FileUrl: Media file address
-<li>If the task flow is initiated by [ProcessMedia](https://cloud.tencent.com/document/product/266/33427), this field means the `BasicInfo.MediaUrl` in [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo);</li>
-<li>If the task flow is initiated by [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426), this field means the `Url` in [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo).</li>
+<li>If the task flow is initiated by [ProcessMedia](https://intl.cloud.tencent.com/document/product/266/33427?from_cn_redirect=1), this field means the `BasicInfo.MediaUrl` in [MediaInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInfo);</li>
+<li>If the task flow is initiated by [ProcessMediaByUrl](https://intl.cloud.tencent.com/document/product/266/33426?from_cn_redirect=1), this field means the `Url` in [MediaInputInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInputInfo).</li>
         :type FileUrl: str
         :param MetaData: Source video metadata.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
@@ -13376,9 +13385,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MiniProgramPublishTask: Parameter of a release on WeChat Mini Program task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTaskInput`
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         """
         self.Name = None
@@ -13425,7 +13434,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         """
         :param FileId: Media file ID.
         :type FileId: str
-        :param ProcedureName: [Task flow template](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name.
+        :param ProcedureName: [Task flow template](https://intl.cloud.tencent.com/document/product/266/11700?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name.
         :type ProcedureName: str
         :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
@@ -13437,7 +13446,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.FileId = None
@@ -13507,7 +13516,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
         :type SessionContext: str
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.InputInfo = None
@@ -13573,7 +13582,7 @@ class ProcessMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](/document/product/266/7830) or [VOD Console](https://console.cloud.tencent.com/vod/media).
+        :param FileId: Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).
         :type FileId: str
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
@@ -13593,7 +13602,7 @@ class ProcessMediaRequest(AbstractModel):
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.FileId = None
@@ -13821,7 +13830,7 @@ class PullEventsRequest(AbstractModel):
         """
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.ExtInfo = None
@@ -13868,21 +13877,21 @@ class PullUploadRequest(AbstractModel):
     def __init__(self):
         """
         :param MediaUrl: URL of the media to be pulled. Supported media format: HLS; unsupported media format: DASH.
-For more information about supported extensions, please see [Media Types](https://intl.cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B?from_cn_redirect=1).
+For more information about supported extensions, please see [Media Types](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B).
         :type MediaUrl: str
         :param MediaName: Media name.
         :type MediaName: str
         :param CoverUrl: URL of video cover to be pulled. Only gif, jpeg, and png formats are supported.
         :type CoverUrl: str
-        :param Procedure: Subsequent task for media. For more information, please see [Specifying Task Flow After Upload](https://cloud.tencent.com/document/product/266/9759).
+        :param Procedure: Subsequent task for media. For more information, please see [Specifying Task Flow After Upload](https://intl.cloud.tencent.com/document/product/266/9759?from_cn_redirect=1).
         :type Procedure: str
-        :param ExpireTime: Expiration time of media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param ExpireTime: Expiration time of media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         :param StorageRegion: Specifies upload region. This is only applicable to users that have special requirements for the upload region:
-<li>If it is left empty, the upload region is your [default region](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4);</li>
-<li>If it is specified, please make sure that the upload region has been [enabled for storage](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4).</li>
+<li>If it is left empty, the upload region is your [default region](https://intl.cloud.tencent.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4);</li>
+<li>If it is specified, please make sure that the upload region has been [enabled for storage](https://intl.cloud.tencent.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4).</li>
         :type StorageRegion: str
-        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [CreateClass](https://cloud.tencent.com/document/product/266/7812) API.
+        :param ClassId: Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.
         :type ClassId: int
         :param SessionContext: The source context which is used to pass through the user request information. After `Procedure` is specified, the task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
@@ -13890,7 +13899,7 @@ For more information about supported extensions, please see [Media Types](https:
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         :param SourceContext: Source context, which is used to pass through the user request information. The [upload callback](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) API will return the value of this field. It can contain up to 250 characters.
         :type SourceContext: str
@@ -14015,7 +14024,7 @@ class PushUrlCacheRequest(AbstractModel):
         """
         :param Urls: List of prefetched URLs. Up to 20 ones can be specified at a time.
         :type Urls: list of str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Urls = None
@@ -14063,7 +14072,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: Type parameter of AI-based content recognition task.
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Name = None
@@ -14200,9 +14209,9 @@ Default value: open.
         :type SampleType: str
         :param SampleInterval: Sampling interval.
         :type SampleInterval: int
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -14260,15 +14269,15 @@ class SearchMediaRequest(AbstractModel):
         :type ClassIds: list of int
         :param StartTime: Start time in the creation time range.
 <li>After or at the start time.</li>
-<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).</li>
+<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :type StartTime: str
         :param EndTime: End time in the creation time range.
 <li>Before the end time.</li>
-<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).</li>
+<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :type EndTime: str
-        :param SourceType: Media file source. For valid values, please see [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData).
+        :param SourceType: Media file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
         :type SourceType: str
-        :param StreamId: [LVB code](https://cloud.tencent.com/document/product/267/5959) of a stream.
+        :param StreamId: [LVB code](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) of a stream.
         :type StreamId: str
         :param Vid: Unique ID of LVB recording file.
         :type Vid: str
@@ -14287,7 +14296,7 @@ class SearchMediaRequest(AbstractModel):
 <li>Audio: audio file</li>
 <li>Image: image file</li>
         :type Categories: list of str
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Text = None
@@ -14406,7 +14415,7 @@ class SimpleHlsClipRequest(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End offset time of clipping in seconds. Default value: 0, which means to clip till the end of the video. A negative number indicates how many seconds from the end of the video clipping will end. For example, -10 means that clipping will end at the 10th second from the end.
         :type EndTimeOffset: float
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Url = None
@@ -14480,7 +14489,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SnapshotByTimeOffsetTask2017(AbstractModel):
-    """Time point screencapturing task information. This structure is only used for tasks initiated by the [CreateSnapshotByTimeOffset](https://cloud.tencent.com/document/product/266/8102) API in v2017.
+    """Time point screencapturing task information. This structure is only used for tasks initiated by the [CreateSnapshotByTimeOffset](https://intl.cloud.tencent.com/document/product/266/8102?from_cn_redirect=1) API in v2017.
 
     """
 
@@ -14490,7 +14499,7 @@ class SnapshotByTimeOffsetTask2017(AbstractModel):
         :type TaskId: str
         :param FileId: Screenshot file ID.
         :type FileId: str
-        :param Definition: screenshot specification. For more information, please see [Parameter Template for Time Point Screencapturing](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param Definition: screenshot specification. For more information, please see [Parameter Template for Time Point Screencapturing](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
         :type Definition: int
         :param SnapshotInfoSet: Result information of screencapturing.
         :type SnapshotInfoSet: list of SnapshotByTimeOffset2017
@@ -14587,9 +14596,9 @@ Default value: open.
         :type ResolutionAdaptive: str
         :param Format: Image format.
         :type Format: str
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -14680,7 +14689,7 @@ class StatDataItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Start time of data time range in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). For example, if the time granularity is 1-day, `2018-12-01T00:00:00+08:00` represents the time range between December 1, 2018 (inclusive) and December 2, 2018 (not inclusive).
+        :param Time: Start time of data time range in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). For example, if the time granularity is 1-day, `2018-12-01T00:00:00+08:00` represents the time range between December 1, 2018 (inclusive) and December 2, 2018 (not inclusive).
 <li>For data at hourly level, `2019-08-22T00:00:00+08:00` indicates the statistics between 00:00 and 01:00 AM on August 22, 2019.</li>
 <li>For data at daily level, `2019-08-22T00:00:00+08:00` indicates statistics on August 22, 2019.</li>
         :type Time: str
@@ -14785,7 +14794,7 @@ class SubAppIdInfo(AbstractModel):
         :type Name: str
         :param Description: Subapplication overview.
         :type Description: str
-        :param CreateTime: Subapplication creation time of task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Subapplication creation time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
         :param Status: Subapplication status. Valid values:
 <li>On: enabled;</li>
@@ -14997,11 +15006,11 @@ Task types compatible with v2017:
 <li>Clip: video clipping task;</li>
 <li>ImageSprites: image sprite generating task.</li>
         :type TaskType: str
-        :param CreateTime: Creation time of task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param BeginProcessTime: Start time of task execution in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). If the task has not been started yet, this field will be empty.
+        :param BeginProcessTime: Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). If the task has not been started yet, this field will be empty.
         :type BeginProcessTime: str
-        :param FinishTime: End time of task in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). If the task has not been completed yet, this field will be empty.
+        :param FinishTime: End time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). If the task has not been completed yet, this field will be empty.
         :type FinishTime: str
         :param SessionId: ID used for deduplication if there was a request with the same ID in the last seven days.
         :type SessionId: str
@@ -15106,7 +15115,7 @@ class TaskStatDataItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Start time of data time range in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, if the time granularity is 1-day, `2018-12-01T00:00:00+08:00` represents the time range between December 1, 2018 (inclusive) and December 2, 2018 (not inclusive).
+        :param Time: Start time of data time range in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, if the time granularity is 1-day, `2018-12-01T00:00:00+08:00` represents the time range between December 1, 2018 (inclusive) and December 2, 2018 (not inclusive).
         :type Time: str
         :param Count: Number of tasks.
         :type Count: int
@@ -15413,7 +15422,7 @@ class TranscodePlayInfo2017(AbstractModel):
         """
         :param Url: Playback address.
         :type Url: str
-        :param Definition: Transcoding specification ID. For more information, please see [Transcoding Parameter Template](https://cloud.tencent.com/document/product/266/33478#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
+        :param Definition: Transcoding specification ID. For more information, please see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
         :type Definition: int
         :param Bitrate: Sum of the average bitrate of a video stream and that of an audio stream in bps.
         :type Bitrate: int
@@ -15438,7 +15447,7 @@ class TranscodePlayInfo2017(AbstractModel):
 
 
 class TranscodeTask2017(AbstractModel):
-    """Video transcoding task information. This structure is only used for tasks initiated by the [ConvertVodFile](https://cloud.tencent.com/document/product/266/7822) API in v2017.
+    """Video transcoding task information. This structure is only used for tasks initiated by the [ConvertVodFile](https://intl.cloud.tencent.com/document/product/266/7822?from_cn_redirect=1) API in v2017.
 
     """
 
@@ -15574,9 +15583,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>Video: video container that can contain both video stream and audio stream;</li>
 <li>PureAudio: audio container that can contain only audio stream.</li>
         :type ContainerType: str
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         """
         self.Definition = None
@@ -16244,9 +16253,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SvgTemplate: SVG watermarking template. This field is valid when `Type` is `svg`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInput`
-        :param CreateTime: Creation time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param UpdateTime: Last modified time of template in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
         :param CoordinateOrigin: Origin position. Valid values:
 <li>topLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>
@@ -16301,7 +16310,7 @@ class WeChatMiniProgramPublishRequest(AbstractModel):
         :type FileId: str
         :param SourceDefinition: ID of the transcoding template corresponding to the published video. 0 represents the source video.
         :type SourceDefinition: int
-        :param SubAppId: [Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.FileId = None

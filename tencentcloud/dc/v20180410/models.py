@@ -51,24 +51,27 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
 
 
 class AccessPoint(AbstractModel):
-    """Access point information.
+    """
 
     """
 
     def __init__(self):
         """
-        :param AccessPointName: Access point name.
+        :param AccessPointName: 
         :type AccessPointName: str
-        :param AccessPointId: Unique access point ID.
+        :param AccessPointId: 
         :type AccessPointId: str
-        :param State: Access point status. Valid values: available, unavailable.
+        :param State: 
         :type State: str
-        :param Location: Access point location.
+        :param Location: 
         :type Location: str
-        :param LineOperator: List of ISPs supported by access point.
+        :param LineOperator: 
         :type LineOperator: list of str
-        :param RegionId: ID of the region that manages the access point.
+        :param RegionId: 
         :type RegionId: str
+        :param AvailablePortType: Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type AvailablePortType: list of str
         """
         self.AccessPointName = None
         self.AccessPointId = None
@@ -76,6 +79,7 @@ class AccessPoint(AbstractModel):
         self.Location = None
         self.LineOperator = None
         self.RegionId = None
+        self.AvailablePortType = None
 
 
     def _deserialize(self, params):
@@ -85,6 +89,7 @@ class AccessPoint(AbstractModel):
         self.Location = params.get("Location")
         self.LineOperator = params.get("LineOperator")
         self.RegionId = params.get("RegionId")
+        self.AvailablePortType = params.get("AvailablePortType")
 
 
 class BgpPeer(AbstractModel):
@@ -122,12 +127,12 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
         :type AccessPointId: str
         :param LineOperator: ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).
         :type LineOperator: str
-        :param Location: Local IDC location.
-        :type Location: str
         :param PortType: Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX.
         :type PortType: str
         :param CircuitCode: Circuit code of connection, which is provided by the ISP or connection provider.
         :type CircuitCode: str
+        :param Location: Local IDC location.
+        :type Location: str
         :param Bandwidth: Connection port bandwidth in Mbps. Value range: [2,10240]. Default value: 1000.
         :type Bandwidth: int
         :param RedundantDirectConnectId: ID of redundant connection.
@@ -148,13 +153,15 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
         :type FaultReportContactPerson: str
         :param FaultReportContactNumber: Fault reporting contact number.
         :type FaultReportContactNumber: str
+        :param SignLaw: Whether the connection applicant has signed the service agreement. Default value: true.
+        :type SignLaw: bool
         """
         self.DirectConnectName = None
         self.AccessPointId = None
         self.LineOperator = None
-        self.Location = None
         self.PortType = None
         self.CircuitCode = None
+        self.Location = None
         self.Bandwidth = None
         self.RedundantDirectConnectId = None
         self.Vlan = None
@@ -165,15 +172,16 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
         self.CustomerContactNumber = None
         self.FaultReportContactPerson = None
         self.FaultReportContactNumber = None
+        self.SignLaw = None
 
 
     def _deserialize(self, params):
         self.DirectConnectName = params.get("DirectConnectName")
         self.AccessPointId = params.get("AccessPointId")
         self.LineOperator = params.get("LineOperator")
-        self.Location = params.get("Location")
         self.PortType = params.get("PortType")
         self.CircuitCode = params.get("CircuitCode")
+        self.Location = params.get("Location")
         self.Bandwidth = params.get("Bandwidth")
         self.RedundantDirectConnectId = params.get("RedundantDirectConnectId")
         self.Vlan = params.get("Vlan")
@@ -184,6 +192,7 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
         self.CustomerContactNumber = params.get("CustomerContactNumber")
         self.FaultReportContactPerson = params.get("FaultReportContactPerson")
         self.FaultReportContactNumber = params.get("FaultReportContactNumber")
+        self.SignLaw = params.get("SignLaw")
 
 
 class CreateDirectConnectResponse(AbstractModel):
@@ -555,11 +564,15 @@ class DescribeDirectConnectsResponse(AbstractModel):
         :type DirectConnectSet: list of DirectConnect
         :param TotalCount: Number of eligible connection lists.
         :type TotalCount: int
+        :param AllSignLaw: Whether all connections under the account have the service agreement signed.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type AllSignLaw: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.DirectConnectSet = None
         self.TotalCount = None
+        self.AllSignLaw = None
         self.RequestId = None
 
 
@@ -571,6 +584,7 @@ class DescribeDirectConnectsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DirectConnectSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.AllSignLaw = params.get("AllSignLaw")
         self.RequestId = params.get("RequestId")
 
 
@@ -655,9 +669,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ChargeState: Billing status
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ChargeState: str
-        :param StartTime: Connection activation time.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param StartTime: 
         :type StartTime: str
+        :param SignLaw: Whether the connection has the service agreement signed.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type SignLaw: bool
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -686,6 +702,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IdcCity = None
         self.ChargeState = None
         self.StartTime = None
+        self.SignLaw = None
 
 
     def _deserialize(self, params):
@@ -721,33 +738,34 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IdcCity = params.get("IdcCity")
         self.ChargeState = params.get("ChargeState")
         self.StartTime = params.get("StartTime")
+        self.SignLaw = params.get("SignLaw")
 
 
 class DirectConnectTunnel(AbstractModel):
-    """Dedicated tunnel information list
+    """Dedicated tunnel information list.
 
     """
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: Dedicated tunnel ID
+        :param DirectConnectTunnelId: Dedicated tunnel ID.
         :type DirectConnectTunnelId: str
         :param DirectConnectId: Connection ID.
         :type DirectConnectId: str
-        :param State: Dedicated tunnel status
-AVAILABLE: ready or connected
-PENDING: applying
-ALLOCATING: configuring
-ALLOCATED: configured
-ALTERING: modifying
-DELETING: deleting
-DELETED: deleted
-CONFIRMING: to be accepted
-REJECTED: rejected
+        :param State: Dedicated tunnel status.
+AVAILABLE: Ready or connected.
+PENDING: Applying.
+ALLOCATING: Configuring.
+ALLOCATED: Configured.
+ALTERING: Modifying.
+DELETING: Deleting.
+DELETED: Deleted.
+COMFIRMING: To be accepted.
+REJECTED: Rejected.
         :type State: str
         :param DirectConnectOwnerAccount: Connection owner, i.e., developer account ID.
         :type DirectConnectOwnerAccount: str
-        :param OwnerAccount: Dedicated tunnel owner, i.e., developer account ID
+        :param OwnerAccount: Dedicated tunnel owner, i.e., developer account ID.
         :type OwnerAccount: str
         :param NetworkType: Network type. Valid values: VPC, BMVPC, CCN.
  VPC: Virtual Private Cloud; BMVPC: BM VPC; CCN: Cloud Connect Network.
@@ -764,19 +782,19 @@ REJECTED: rejected
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
         :param RouteFilterPrefixes: User-side IP range.
         :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param Vlan: Dedicated tunnel `Vlan`
+        :param Vlan: VLAN of a dedicated tunnel.
         :type Vlan: int
         :param TencentAddress: TencentAddress: Tencent-side IP address.
         :type TencentAddress: str
         :param CustomerAddress: CustomerAddress: User-side IP address.
         :type CustomerAddress: str
-        :param DirectConnectTunnelName: Dedicated tunnel name
+        :param DirectConnectTunnelName: Dedicated tunnel name.
         :type DirectConnectTunnelName: str
-        :param CreatedTime: Dedicated tunnel creation time
+        :param CreatedTime: Creation time of a dedicated tunnel.
         :type CreatedTime: str
-        :param Bandwidth: Dedicated tunnel bandwidth value
+        :param Bandwidth: Bandwidth value of a dedicated tunnel.
         :type Bandwidth: int
-        :param TagSet: Dedicated tunnel tag value
+        :param TagSet: Tag value of a dedicated tunnel.
         :type TagSet: list of Tag
         :param NetDetectId: Associated custom network probe ID
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -793,7 +811,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param BfdEnable: Whether to enable BFD
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BfdEnable: int
-        :param AccessPointType: Dedicated tunnel access point type
+        :param AccessPointType: Access point type of a dedicated tunnel.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccessPointType: str
         :param DirectConnectGatewayName: Direct connect gateway name.
@@ -802,9 +820,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param VpcName: VPC name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VpcName: str
-        :param TencentBackupAddress: TencentBackupAddress, i.e., Tencent-side standby IP address
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TencentBackupAddress: 
         :type TencentBackupAddress: str
+        :param SignLaw: Whether the connection associated with the dedicated tunnel has the service agreement signed.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type SignLaw: bool
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -834,6 +854,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DirectConnectGatewayName = None
         self.VpcName = None
         self.TencentBackupAddress = None
+        self.SignLaw = None
 
 
     def _deserialize(self, params):
@@ -877,6 +898,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
         self.VpcName = params.get("VpcName")
         self.TencentBackupAddress = params.get("TencentBackupAddress")
+        self.SignLaw = params.get("SignLaw")
 
 
 class Filter(AbstractModel):
@@ -929,6 +951,8 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         :type FaultReportContactPerson: str
         :param FaultReportContactNumber: Fault reporting contact number.
         :type FaultReportContactNumber: str
+        :param SignLaw: Whether the connection applicant has signed the service agreement.
+        :type SignLaw: bool
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -941,6 +965,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         self.CustomerContactNumber = None
         self.FaultReportContactPerson = None
         self.FaultReportContactNumber = None
+        self.SignLaw = None
 
 
     def _deserialize(self, params):
@@ -955,6 +980,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         self.CustomerContactNumber = params.get("CustomerContactNumber")
         self.FaultReportContactPerson = params.get("FaultReportContactPerson")
         self.FaultReportContactNumber = params.get("FaultReportContactNumber")
+        self.SignLaw = params.get("SignLaw")
 
 
 class ModifyDirectConnectAttributeResponse(AbstractModel):
