@@ -134,6 +134,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type Name: str
         :param NeedSupportIpv6: Whether to support IPv6 address access. Valid values: 1 (yes), 0 (no)
         :type NeedSupportIpv6: int
+        :param TagList: The information of tags to be associated with instances. This parameter is left empty by default.
+        :type TagList: list of Tag
         """
         self.SpecCode = None
         self.DBVersion = None
@@ -151,6 +153,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.ActivityId = None
         self.Name = None
         self.NeedSupportIpv6 = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -170,6 +173,12 @@ class CreateDBInstancesRequest(AbstractModel):
         self.ActivityId = params.get("ActivityId")
         self.Name = params.get("Name")
         self.NeedSupportIpv6 = params.get("NeedSupportIpv6")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -273,13 +282,13 @@ class DBInstance(AbstractModel):
         :type ProjectId: int
         :param VpcId: VPC ID
         :type VpcId: str
-        :param SubnetId: Subnet ID
+        :param SubnetId: SubnetId
         :type SubnetId: str
         :param DBInstanceId: Instance ID
         :type DBInstanceId: str
         :param DBInstanceName: Instance name
         :type DBInstanceName: str
-        :param DBInstanceStatus: Instance status. Valid values: applying, init (to be initialized), initing (initializing), running, limited run, isolated, recycling, recycled, job running, offline, migrating, expanding, readonly, restarting
+        :param DBInstanceStatus: Instance status
         :type DBInstanceStatus: str
         :param DBInstanceMemory: Assigned instance memory size in GB
         :type DBInstanceMemory: int
@@ -289,9 +298,9 @@ class DBInstance(AbstractModel):
         :type DBInstanceCpu: int
         :param DBInstanceClass: Purchasable specification ID
         :type DBInstanceClass: str
-        :param DBInstanceType: Instance type. 1: primary (primary instance), 2: readonly (read-only instance), 3: guard (disaster recovery instance), 4: temp (temp instance)
+        :param DBInstanceType: Instance type. 1: primary (master instance), 2: readonly (read-only instance), 3: guard (disaster recovery instance), 4: temp (temp instance)
         :type DBInstanceType: str
-        :param DBInstanceVersion: Instance edition. Currently, only `standard` edition (dual-server high-availability one-primary-one-secondary edition) is supported
+        :param DBInstanceVersion: Instance edition. Currently, only `standard` edition (dual-server high-availability one-master-one-slave edition) is supported
         :type DBInstanceVersion: str
         :param DBCharset: Instance database character set
         :type DBCharset: str
@@ -317,8 +326,11 @@ class DBInstance(AbstractModel):
         :type AppId: int
         :param Uid: 
         :type Uid: int
-        :param SupportIpv6: Whether the instance supports IPv6 address access. Valid values: 1 (yes), 0 (no)
+        :param SupportIpv6: 
         :type SupportIpv6: int
+        :param TagList: The information of tags associated with instances.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TagList: list of Tag
         """
         self.Region = None
         self.Zone = None
@@ -347,6 +359,7 @@ class DBInstance(AbstractModel):
         self.AppId = None
         self.Uid = None
         self.SupportIpv6 = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -382,10 +395,16 @@ class DBInstance(AbstractModel):
         self.AppId = params.get("AppId")
         self.Uid = params.get("Uid")
         self.SupportIpv6 = params.get("SupportIpv6")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
 
 
 class DBInstanceNetInfo(AbstractModel):
-    """Instance network connection information.
+    """Instance network connection information
 
     """
 
@@ -393,11 +412,11 @@ class DBInstanceNetInfo(AbstractModel):
         """
         :param Address: DNS domain name
         :type Address: str
-        :param Ip: IP address
+        :param Ip: Ip
         :type Ip: str
         :param Port: Connection port address
         :type Port: int
-        :param NetType: Network type. Valid values: inner (private address of classic network), private (private address of VPC), public (public address of classic network/VPC)
+        :param NetType: Network type. 1: inner (private network address), 2: public (public network address)
         :type NetType: str
         :param Status: Network connection status
         :type Status: str
@@ -665,7 +684,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: Filter. Valid values: db-instance-id, db-instance-name
+        :param Filters: Filter condition. Valid values: db-instance-id, db-instance-name, db-project-id, db-pay-mode, db-tag-key.
         :type Filters: list of Filter
         :param Limit: Number of entries returned per page. Default value: 10.
         :type Limit: int
@@ -1899,7 +1918,7 @@ class SpecInfo(AbstractModel):
 
 
 class SpecItemInfo(AbstractModel):
-    """Specification information
+    """Specification description
 
     """
 
@@ -1949,6 +1968,27 @@ class SpecItemInfo(AbstractModel):
         self.Qps = params.get("Qps")
         self.Pid = params.get("Pid")
         self.Type = params.get("Type")
+
+
+class Tag(AbstractModel):
+    """The information of tags associated with instances, including `TagKey` and `TagValue`
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class UpgradeDBInstanceRequest(AbstractModel):

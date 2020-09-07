@@ -222,7 +222,7 @@ class TiwClient(AbstractClient):
 
 
     def SetOnlineRecordCallback(self, request):
-        """This API is used to set the real-time recording callback address.
+        """This API is used to set the real-time recording callback address. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).
 
         :param request: Request instance for SetOnlineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackRequest`
@@ -250,7 +250,7 @@ class TiwClient(AbstractClient):
 
 
     def SetOnlineRecordCallbackKey(self, request):
-        """This API is used to set the authentication key for the real-time recording callback.
+        """This API is used to set the callback authentication key for real-time recording. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
 
         :param request: Request instance for SetOnlineRecordCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackKeyRequest`
@@ -278,7 +278,7 @@ class TiwClient(AbstractClient):
 
 
     def SetTranscodeCallback(self, request):
-        """This API is used to set the document transcoding callback address.
+        """This API is used to set the callback address for document transcoding. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).
 
         :param request: Request instance for SetTranscodeCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackRequest`
@@ -306,7 +306,7 @@ class TiwClient(AbstractClient):
 
 
     def SetTranscodeCallbackKey(self, request):
-        """This API is used to set the authentication key for the document transcoding callback.
+        """This API is used to set the callback authentication key for document transcoding. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
 
         :param request: Request instance for SetTranscodeCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackKeyRequest`

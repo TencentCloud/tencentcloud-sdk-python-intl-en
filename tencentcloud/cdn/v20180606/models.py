@@ -1192,7 +1192,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type MaxLength: int
         :param Algorithms: File compression algorithm
 gzip: specifies Gzip compression
-brotli: this can be enabled when the Gzip compression is specified
+brotli: specifies Brotli compression
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Algorithms: list of str
         """
@@ -1401,7 +1401,7 @@ overseas: outside the mainland of China
 If this parameter is left empty, `mainland` will be used by default
         :type Area: str
         :param District: Country/region to be queried if `Area` is `overseas`
-For district or country/region codes, please see [District Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
+For district or country/region codes, please see [District Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
 If this parameter is left empty, all countries/regions will be queried
         :type District: int
         :param Metric: Billing statistics type
@@ -1508,12 +1508,12 @@ Please note that if domain names are specified, this parameter will be ignored.
 You can set it to true to return the details for each Domain (the statusCode metric is currently not supported)
         :type Detail: bool
         :param Isp: Specifies an ISP when you query the CDN data within Mainland China. If this is left blank, all ISPs will be queried.
-To view ISP codes, see [ISP Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
+To view ISP codes, see [ISP Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
 If you have specified an ISP, you cannot specify a province or an IP protocol for the same query.
         :type Isp: int
         :param District: Specifies a province when you query the CDN data within Mainland China. If this is left blank, all provinces will be queried.
 Specifies a country/region when you query the CDN data outside Mainland China. If this is left blank, all countries/regions will be queried.
-To view codes of provinces or countries/regions, see [Province Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
+To view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
 If you have specified a province for your query on CDN data within mainland China, you cannot specify an ISP or an IP protocol for the same query.
         :type District: int
         :param Protocol: Specifies the protocol to be queried; if you leave it blank, all protocols will be queried.
@@ -1776,7 +1776,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Offset for paginated queries. Default value: 0 (the first page).
+        :param Offset: Offset for paginated queries. Default value: 0
         :type Offset: int
         :param Limit: Limit on paginated queries. Default value: 100. Maximum value: 1000.
         :type Limit: int
@@ -2673,7 +2673,7 @@ media: streaming VOD acceleration
         :type UpdateTime: str
         :param Origin: Origin server configuration
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param IpFilter: IP blocklist/allowlist configuration
+        :param IpFilter: IP blacklist/whitelist configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         :param IpFreqLimit: IP access frequency limit configuration
@@ -2784,9 +2784,19 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type ImageOptimization: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`
         :param UserAgentFilter: 
         :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
-        :param AccessControl: Access control
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AccessControl: 
         :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
+        :param Advance: Whether to support advanced configuration items
+on: supported
+off: not supported
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Advance: str
+        :param UrlRedirect: URL redirect configuration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
+        :param AccessPort: Access port configuration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AccessPort: list of int
         """
         self.ResourceId = None
         self.AppId = None
@@ -2832,6 +2842,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ImageOptimization = None
         self.UserAgentFilter = None
         self.AccessControl = None
+        self.Advance = None
+        self.UrlRedirect = None
+        self.AccessPort = None
 
 
     def _deserialize(self, params):
@@ -2943,6 +2956,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("AccessControl") is not None:
             self.AccessControl = AccessControl()
             self.AccessControl._deserialize(params.get("AccessControl"))
+        self.Advance = params.get("Advance")
+        if params.get("UrlRedirect") is not None:
+            self.UrlRedirect = UrlRedirect()
+            self.UrlRedirect._deserialize(params.get("UrlRedirect"))
+        self.AccessPort = params.get("AccessPort")
 
 
 class DisableCachesRequest(AbstractModel):
@@ -4381,7 +4399,7 @@ class Origin(AbstractModel):
 When modifying the origin server, you need to enter the corresponding OriginType.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Origins: list of str
-        :param OriginType: Primary origin server type
+        :param OriginType: Master origin server type
 The following types are supported for input parameters:
 domain: domain name type
 cos: COS origin
@@ -4392,10 +4410,10 @@ The following types of output parameters are added:
 image: Cloud Infinite origin
 ftp: legacy FTP origin, which is no longer maintained.
 When modifying `Origins`, you need to enter the corresponding OriginType.
-The IPv6 feature is not generally available yet. Please send in a allowlist application to use this feature.
+The IPv6 feature is not generally available yet. Please send in a whitelist application to use this feature.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginType: str
-        :param ServerName: Host header used when accessing the primary origin server. If left empty, the acceleration domain name will be used by default.
+        :param ServerName: Host header used when accessing the master origin server. If left empty, the acceleration domain name will be used by default.
 If a wildcard domain name is accessed, then the sub-domain name during the access will be used by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServerName: str
@@ -4419,12 +4437,9 @@ ip: IP list used as origin server
 When modifying BackupOrigins, you need to enter the corresponding BackupOriginType.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BackupOriginType: str
-        :param BackupServerName: Host header used when accessing the backup origin server. If left empty, the ServerName of primary origin server will be used by default.
+        :param BackupServerName: Host header used when accessing the backup origin server. If left empty, the ServerName of master origin server will be used by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BackupServerName: str
-        :param BasePath: Origin-pull path
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BasePath: str
         """
         self.Origins = None
         self.OriginType = None
@@ -4434,7 +4449,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.BackupOrigins = None
         self.BackupOriginType = None
         self.BackupServerName = None
-        self.BasePath = None
 
 
     def _deserialize(self, params):
@@ -4446,7 +4460,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.BackupOrigins = params.get("BackupOrigins")
         self.BackupOriginType = params.get("BackupOriginType")
         self.BackupServerName = params.get("BackupServerName")
-        self.BasePath = params.get("BasePath")
 
 
 class OriginPullOptimization(AbstractModel):
@@ -4883,16 +4896,20 @@ Default value: `TencentCdn`
 `global`: prefetches resources to global nodes
 Default value: `mainland`. You can prefetch a URL to nodes in a region provided that CDN service has been enabled for the domain name in the URL in the region.
         :type Area: str
+        :param Layer: If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node
+        :type Layer: str
         """
         self.Urls = None
         self.UserAgent = None
         self.Area = None
+        self.Layer = None
 
 
     def _deserialize(self, params):
         self.Urls = params.get("Urls")
         self.UserAgent = params.get("UserAgent")
         self.Area = params.get("Area")
+        self.Layer = params.get("Layer")
 
 
 class PushUrlsCacheResponse(AbstractModel):
@@ -5356,7 +5373,7 @@ class SearchClsLogRequest(AbstractModel):
         :type Limit: int
         :param Channel: Connection channel. Default value: cdn
         :type Channel: str
-        :param Query: Content to be queried. For more information, please visit https://cloud.tencent.com/document/product/614/16982
+        :param Query: Content to be queried. For more information, please visit https://intl.cloud.tencent.com/document/product/614/16982?from_cn_redirect=1
         :type Query: str
         :param Context: This field is used when loading more results. Pass through the last `context` value returned to get more log content. Up to 10,000 logs can be obtained through the cursor. Please narrow down the time range as much as possible.
         :type Context: str
@@ -5999,6 +6016,12 @@ global: global acceleration
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         :param UserAgentFilter: UA blocklist/allowlist Configuration
         :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
+        :param AccessControl: Access control
+        :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
+        :param UrlRedirect: URL redirect configuration
+        :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
+        :param AccessPort: Access port configuration
+        :type AccessPort: list of int
         """
         self.Domain = None
         self.ProjectId = None
@@ -6031,6 +6054,9 @@ global: global acceleration
         self.OriginPullTimeout = None
         self.AwsPrivateAccess = None
         self.UserAgentFilter = None
+        self.AccessControl = None
+        self.UrlRedirect = None
+        self.AccessPort = None
 
 
     def _deserialize(self, params):
@@ -6119,6 +6145,13 @@ global: global acceleration
         if params.get("UserAgentFilter") is not None:
             self.UserAgentFilter = UserAgentFilter()
             self.UserAgentFilter._deserialize(params.get("UserAgentFilter"))
+        if params.get("AccessControl") is not None:
+            self.AccessControl = AccessControl()
+            self.AccessControl._deserialize(params.get("AccessControl"))
+        if params.get("UrlRedirect") is not None:
+            self.UrlRedirect = UrlRedirect()
+            self.UrlRedirect._deserialize(params.get("UrlRedirect"))
+        self.AccessPort = params.get("AccessPort")
 
 
 class UpdateDomainConfigResponse(AbstractModel):
@@ -6207,6 +6240,60 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RealUrl = params.get("RealUrl")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class UrlRedirect(AbstractModel):
+    """URL redirect configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: URL redirect configuration switch
+on: enabled
+off: disabled
+        :type Switch: str
+        :param PathRules: URL redirect rule, which is required if `Switch` is `on`. There can be up to 10 rules.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PathRules: list of UrlRedirectRule
+        """
+        self.Switch = None
+        self.PathRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("PathRules") is not None:
+            self.PathRules = []
+            for item in params.get("PathRules"):
+                obj = UrlRedirectRule()
+                obj._deserialize(item)
+                self.PathRules.append(obj)
+
+
+class UrlRedirectRule(AbstractModel):
+    """URL redirect rule configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param RedirectStatusCode: Redirect status code. Valid values: 301, 302
+        :type RedirectStatusCode: int
+        :param Pattern: Pattern of the URL to be matched, which can contain up to 1,024 characters. Full-path match and regex match are supported.
+        :type Pattern: str
+        :param RedirectUrl: Target URL, which must begin with `/` and can contain up to 1,024 characters.
+        :type RedirectUrl: str
+        """
+        self.RedirectStatusCode = None
+        self.Pattern = None
+        self.RedirectUrl = None
+
+
+    def _deserialize(self, params):
+        self.RedirectStatusCode = params.get("RedirectStatusCode")
+        self.Pattern = params.get("Pattern")
+        self.RedirectUrl = params.get("RedirectUrl")
 
 
 class UserAgentFilter(AbstractModel):

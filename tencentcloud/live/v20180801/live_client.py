@@ -85,7 +85,7 @@ class LiveClient(AbstractClient):
 
 
     def AddLiveWatermark(self, request):
-        """After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](/document/product/267/32629) API and bind the watermark ID to the stream.
+        """After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](https://intl.cloud.tencent.com/document/product/267/32629?from_cn_redirect=1) API and bind the watermark ID to the stream.
 
         :param request: Request instance for AddLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.AddLiveWatermarkRequest`
@@ -172,7 +172,7 @@ class LiveClient(AbstractClient):
     def CreateCommonMixStream(self, request):
         """This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.start_mix_stream_advanced` API.
         Note: currently, up to 16 streams can be mixed.
-        Best practice: https://cloud.tencent.com/document/product/267/45566
+        Best practice: https://intl.cloud.tencent.com/document/product/267/45566?from_cn_redirect=1
 
         :param request: Request instance for CreateCommonMixStream.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateCommonMixStreamRequest`
@@ -200,8 +200,8 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveCallbackRule(self, request):
-        """To create a callback rule, you need to first call the [CreateLiveCallbackTemplate](/document/product/267/32637) API to create a callback template and bind the returned template ID to the domain name/path.
-        <br>Callback protocol-related document: [Event Message Notification](/document/product/267/32744).
+        """To create a callback rule, you need to first call the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API to create a callback template and bind the returned template ID to the domain name/path.
+        <br>Callback protocol-related document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveCallbackRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveCallbackRuleRequest`
@@ -229,8 +229,9 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveCallbackTemplate(self, request):
-        """This API is used to create a callback template. After a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](/document/product/267/32638) API to bind the template ID to the domain name/path.
-        <br>Callback protocol document: [Event Message Notification](/document/product/267/32744).
+        """After a callback template is created and a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](https://intl.cloud.tencent.com/document/product/267/32638?from_cn_redirect=1) API and bind the template ID to the domain name/path.
+        <br>Callback protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
+        Note: at least enter one callback URL.
 
         :param request: Request instance for CreateLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveCallbackTemplateRequest`
@@ -288,7 +289,7 @@ class LiveClient(AbstractClient):
     def CreateLiveRecord(self, request):
         """- Prerequisites
           1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.
-          2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the [corresponding document](https://cloud.tencent.com/document/product/266/2838).
+          2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the [corresponding document](https://intl.cloud.tencent.com/document/product/266/2838?from_cn_redirect=1).
 
         - Mode description
           This API supports two recording modes:
@@ -329,8 +330,8 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveRecordRule(self, request):
-        """To create a recording rule, you need to first call the [CreateLiveRecordTemplate](/document/product/267/32614) API to create a recording template and bind the returned template ID to the stream.
-        <br>Recording-related document: [LVB Recording](/document/product/267/32739).
+        """To create a recording rule, you need to first call the [CreateLiveRecordTemplate](https://intl.cloud.tencent.com/document/product/267/32614?from_cn_redirect=1) API to create a recording template and bind the returned template ID to the stream.
+        <br>Recording-related document: [LVB Recording](https://intl.cloud.tencent.com/document/product/267/32739?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveRecordRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveRecordRuleRequest`
@@ -358,8 +359,8 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveRecordTemplate(self, request):
-        """After a recording template is created and a template ID is successfully returned, you need to call the [CreateLiveRecordRule](/document/product/267/32615) API and bind the template ID to the stream.
-        <br>Recording-related document: [LVB Recording](/document/product/267/32739).
+        """After a recording template is created and a template ID is successfully returned, you need to call the [CreateLiveRecordRule](https://intl.cloud.tencent.com/document/product/267/32615?from_cn_redirect=1) API and bind the template ID to the stream.
+        <br>Recording-related document: [LVB Recording](https://intl.cloud.tencent.com/document/product/267/32739?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveRecordTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveRecordTemplateRequest`
@@ -387,8 +388,8 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveSnapshotRule(self, request):
-        """This API is used to create a screencapturing rule. You need to first call the [CreateLiveSnapshotTemplate](/document/product/267/32624) API to create a screencapturing template to bind the returned template ID to the stream.
-        <br>Screencapturing document: [LVB Screencapturing](/document/product/267/32737).
+        """This API is used to create a screencapturing rule. You need to first call the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API to create a screencapturing template to bind the returned template ID to the stream.
+        <br>Screencapturing document: [LVB Screencapturing](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).
         Note: only one screencapturing template can be associated with one domain name.
 
         :param request: Request instance for CreateLiveSnapshotRule.
@@ -417,8 +418,8 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveSnapshotTemplate(self, request):
-        """After a screencapturing template is created and a template ID is successfully returned, you need to call the [CreateLiveSnapshotRule](/document/product/267/32625) API and bind the template ID to the stream.
-        <br>Screencapturing-related document: [LVB Screencapturing](/document/product/267/32737).
+        """After a screencapturing template is created and a template ID is successfully returned, you need to call the [CreateLiveSnapshotRule](https://intl.cloud.tencent.com/document/product/267/32625?from_cn_redirect=1) API and bind the template ID to the stream.
+        <br>Screencapturing-related document: [LVB Screencapturing](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveSnapshotTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveSnapshotTemplateRequest`
@@ -446,8 +447,8 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTranscodeRule(self, request):
-        """To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](/document/product/267/32646) API to create a transcoding template and bind the returned template ID to the stream.
-        <br>Transcoding-related document: [LVB Remuxing and Transcoding](/document/product/267/32736).
+        """To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API to create a transcoding template and bind the returned template ID to the stream.
+        <br>Transcoding-related document: [LVB Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveTranscodeRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveTranscodeRuleRequest`
@@ -475,8 +476,8 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTranscodeTemplate(self, request):
-        """After a transcoding template is created and a template ID is successfully returned, you need to call the [CreateLiveTranscodeRule](/document/product/267/32647) API and bind the returned template ID to the stream.
-        <br>Transcoding-related document: [LVB Remuxing and Transcoding](/document/product/267/32736).
+        """After a transcoding template is created and a template ID is successfully returned, you need to call the [CreateLiveTranscodeRule](https://intl.cloud.tencent.com/document/product/267/32647?from_cn_redirect=1) API and bind the returned template ID to the stream.
+        <br>Transcoding-related document: [LVB Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveTranscodeTemplateRequest`
@@ -504,7 +505,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveWatermarkRule(self, request):
-        """To create a watermarking rule, you need to first call the [AddLiveWatermark](/document/product/267/30154) API to add a watermark and bind the returned watermark ID to the stream.
+        """To create a watermarking rule, you need to first call the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API to add a watermark and bind the returned watermark ID to the stream.
 
         :param request: Request instance for CreateLiveWatermarkRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveWatermarkRuleRequest`
@@ -680,7 +681,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecord(self, request):
-        """Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](/document/product/267/30146) API.
+        """Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](https://intl.cloud.tencent.com/document/product/267/30146?from_cn_redirect=1) API.
 
         :param request: Request instance for DeleteLiveRecord.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordRequest`
@@ -2171,8 +2172,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamPlayInfoList(self, request):
-        """This API is used to query the playback data and supports querying playback details by stream name and aggregated data by playback domain name. The data has a delay of about 4 minutes.
-        Note: to query by `AppName`, you need to submit a ticket for application.
+        """This API is used to query the playback data. It supports querying the playback details by stream name and aggregated data by playback domain name. Data in the last 4 minutes or so cannot be queried due to delay.
+        Note: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.
 
         :param request: Request instance for DescribeStreamPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPlayInfoListRequest`

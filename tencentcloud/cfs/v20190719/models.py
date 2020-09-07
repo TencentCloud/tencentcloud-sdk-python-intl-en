@@ -84,11 +84,14 @@ class AvailableType(AbstractModel):
         """
         :param Protocols: Protocol and sale details
         :type Protocols: list of AvailableProtoStatus
-        :param Type: Storage class. Valid values: SD (standard), HP (high-performance)
+        :param Type: Storage class. Valid values: `SD` (standard storage) and `HP` (high-performance storage)
         :type Type: str
+        :param Prepayment: Indicates whether prepaid is supported. `true`: yes; `false`: no
+        :type Prepayment: bool
         """
         self.Protocols = None
         self.Type = None
+        self.Prepayment = None
 
 
     def _deserialize(self, params):
@@ -99,6 +102,7 @@ class AvailableType(AbstractModel):
                 obj._deserialize(item)
                 self.Protocols.append(obj)
         self.Type = params.get("Type")
+        self.Prepayment = params.get("Prepayment")
 
 
 class AvailableZone(AbstractModel):
@@ -146,7 +150,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: AZ name, such as "ap-beijing-1". For the list of regions and AZs, please see [Overview](https://cloud.tencent.com/document/product/582/13225)
+        :param Zone: AZ name, such as "ap-beijing-1". For the list of regions and AZs, please see [Overview](https://intl.cloud.tencent.com/document/product/582/13225?from_cn_redirect=1)
         :type Zone: str
         :param NetInterface: Network type. Valid values: VPC (VPC), BASIC (basic network)
         :type NetInterface: str
@@ -253,9 +257,9 @@ class CreateCfsPGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Permission group name, which can contain 1–64 Chinese characters, letters, numbers, underscores, or dashes
+        :param Name: Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes
         :type Name: str
-        :param DescInfo: Permission group description, which can contain 1–255 characters
+        :param DescInfo: Permission group description, which can contain 1-255 characters
         :type DescInfo: str
         """
         self.Name = None
@@ -315,7 +319,7 @@ class CreateCfsRuleRequest(AbstractModel):
         :type PGroupId: str
         :param AuthClientIp: You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.
         :type AuthClientIp: str
-        :param Priority: Rule priority. Value range: 1–100. 1 represents the highest priority, while 100 the lowest
+        :param Priority: Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest
         :type Priority: int
         :param RWPermission: Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO
         :type RWPermission: str
@@ -570,6 +574,49 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCfsFileSystemClientsRequest(AbstractModel):
+    """DescribeCfsFileSystemClients request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: File system ID
+        :type FileSystemId: str
+        """
+        self.FileSystemId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+
+
+class DescribeCfsFileSystemClientsResponse(AbstractModel):
+    """DescribeCfsFileSystemClients response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientList: Client list
+        :type ClientList: list of FileSystemClient
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClientList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClientList") is not None:
+            self.ClientList = []
+            for item in params.get("ClientList"):
+                obj = FileSystemClient()
+                obj._deserialize(item)
+                self.ClientList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCfsFileSystemsRequest(AbstractModel):
     """DescribeCfsFileSystems request structure.
 
@@ -774,6 +821,43 @@ class DescribeMountTargetsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FileSystemClient(AbstractModel):
+    """Information on the file system client
+
+    """
+
+    def __init__(self):
+        """
+        :param CfsVip: IP address of the file system
+        :type CfsVip: str
+        :param ClientIp: Client IP
+        :type ClientIp: str
+        :param VpcId: File system VPCID
+        :type VpcId: str
+        :param Zone: Name of the availability zone, e.g. ap-beijing-1. For more information, see regions and availability zones in the Overview document
+        :type Zone: str
+        :param ZoneName: AZ name
+        :type ZoneName: str
+        :param MountDirectory: Path in which the file system is mounted to the client
+        :type MountDirectory: str
+        """
+        self.CfsVip = None
+        self.ClientIp = None
+        self.VpcId = None
+        self.Zone = None
+        self.ZoneName = None
+        self.MountDirectory = None
+
+
+    def _deserialize(self, params):
+        self.CfsVip = params.get("CfsVip")
+        self.ClientIp = params.get("ClientIp")
+        self.VpcId = params.get("VpcId")
+        self.Zone = params.get("Zone")
+        self.ZoneName = params.get("ZoneName")
+        self.MountDirectory = params.get("MountDirectory")
+
+
 class FileSystemInfo(AbstractModel):
     """Basic information of a file system
 
@@ -801,7 +885,7 @@ class FileSystemInfo(AbstractModel):
         :type Protocol: str
         :param StorageType: File system storage class
         :type StorageType: str
-        :param StorageResourcePkg: Prepaid storage pack bound to a file system (not supported currently)
+        :param StorageResourcePkg: Prepaid storage pack bound with the file system
         :type StorageResourcePkg: str
         :param BandwidthResourcePkg: Prepaid bandwidth pack bound to a file system (not supported currently)
         :type BandwidthResourcePkg: str
@@ -815,6 +899,8 @@ class FileSystemInfo(AbstractModel):
         :type KmsKeyId: str
         :param AppId: Application ID
         :type AppId: int
+        :param BandwidthLimit: The upper limit on the file system’s throughput, which is determined based on its current usage, and bound resource packs for both storage and throughput
+        :type BandwidthLimit: float
         """
         self.CreationTime = None
         self.CreationToken = None
@@ -833,6 +919,7 @@ class FileSystemInfo(AbstractModel):
         self.Encrypted = None
         self.KmsKeyId = None
         self.AppId = None
+        self.BandwidthLimit = None
 
 
     def _deserialize(self, params):
@@ -855,6 +942,7 @@ class FileSystemInfo(AbstractModel):
         self.Encrypted = params.get("Encrypted")
         self.KmsKeyId = params.get("KmsKeyId")
         self.AppId = params.get("AppId")
+        self.BandwidthLimit = params.get("BandwidthLimit")
 
 
 class MountInfo(AbstractModel):
@@ -979,7 +1067,7 @@ class PGroupRuleInfo(AbstractModel):
         :type RWPermission: str
         :param UserPermission: User permission. all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions.
         :type UserPermission: str
-        :param Priority: Rule priority. Value range: 1–100. 1 represents the highest priority, while 100 the lowest
+        :param Priority: Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest
         :type Priority: int
         """
         self.RuleId = None
@@ -1148,7 +1236,7 @@ class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FsLimit: File system capacity limit in GB. Value range: 0–1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity.
+        :param FsLimit: File system capacity limit in GB. Value range: 0-1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity.
         :type FsLimit: int
         :param FileSystemId: File system ID
         :type FileSystemId: str
@@ -1188,9 +1276,9 @@ class UpdateCfsPGroupRequest(AbstractModel):
         """
         :param PGroupId: Permission group ID
         :type PGroupId: str
-        :param Name: Permission group name, which can contain 1–64 Chinese characters, letters, numbers, underscores, or dashes
+        :param Name: Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes
         :type Name: str
-        :param DescInfo: Permission group description, which can contain 1–255 characters
+        :param DescInfo: Permission group description, which can contain 1-255 characters
         :type DescInfo: str
         """
         self.PGroupId = None
@@ -1250,7 +1338,7 @@ class UpdateCfsRuleRequest(AbstractModel):
         :type RWPermission: str
         :param UserPermission: User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.
         :type UserPermission: str
-        :param Priority: Rule priority. Value range: 1–100. 1 represents the highest priority, while 100 the lowest
+        :param Priority: Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest
         :type Priority: int
         """
         self.PGroupId = None

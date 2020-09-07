@@ -249,6 +249,34 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCfsFileSystemClients(self, request):
+        """This API is used to query clients on which this file system is mounted. To do so, the client needs to have the CFS monitoring plugin installed.
+
+        :param request: Request instance for DescribeCfsFileSystemClients.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsFileSystemClientsRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsFileSystemClientsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCfsFileSystemClients", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCfsFileSystemClientsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCfsFileSystems(self, request):
         """This API is used to query file systems.
 

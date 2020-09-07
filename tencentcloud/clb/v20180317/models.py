@@ -826,6 +826,8 @@ They represent weighted round robin and least connections, respectively. Default
         :type SniSwitch: int
         :param TargetType: Target real server type. `NODE`: binding a general node; `TARGETGROUP`: binding a target group.
         :type TargetType: str
+        :param SessionType: Session persistence type. Valid values: Normal: the default session persistence type; QUIC_CID: session persistence by QUIC connection ID. The `QUIC_CID` value can only be configured in UDP listeners. If this field is not specified, the default session persistence type will be used.
+        :type SessionType: str
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -837,6 +839,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.Scheduler = None
         self.SniSwitch = None
         self.TargetType = None
+        self.SessionType = None
 
 
     def _deserialize(self, params):
@@ -854,6 +857,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.Scheduler = params.get("Scheduler")
         self.SniSwitch = params.get("SniSwitch")
         self.TargetType = params.get("TargetType")
+        self.SessionType = params.get("SessionType")
 
 
 class CreateListenerResponse(AbstractModel):
@@ -913,6 +917,8 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         :type VipIsp: str
         :param Tags: Tags a CLB instance when purchasing it
         :type Tags: list of TagInfo
+        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :type ClientToken: str
         """
         self.LoadBalancerType = None
         self.Forward = None
@@ -927,6 +933,7 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         self.InternetAccessible = None
         self.VipIsp = None
         self.Tags = None
+        self.ClientToken = None
 
 
     def _deserialize(self, params):
@@ -950,6 +957,7 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.ClientToken = params.get("ClientToken")
 
 
 class CreateLoadBalancerResponse(AbstractModel):
@@ -2013,6 +2021,85 @@ class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLoadBalancersDetailRequest(AbstractModel):
+    """DescribeLoadBalancersDetail request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: Number of CLB instance lists returned. Default value: 20; maximum value: 100.
+        :type Limit: int
+        :param Offset: Starting offset of the CLB instance list returned. Default value: 0
+        :type Offset: int
+        :param Fields: List of fields to be returned. The `LoadBalancerId` and `LoadBalancerName` are returned by default.
+        :type Fields: list of str
+        :param TargetType: Target type. Valid values: NODE and GROUP. If the list of fields contains `TargetId`, `TargetAddress`, `TargetPort`, `TargetWeight` and other fields, `Target` of the target group or non-target group must be exported.
+        :type TargetType: str
+        :param Filters: Filter condition of querying lists describing CLB instance details:
+<li> loadbalancer-id - String - Required: no - (Filter condition) CLB instance ID, such as "lb-12345678". </li>
+<li> project-id - String - Required: no - (Filter condition) Project ID, such as "0" and "123".</li>
+<li> network - String - Required: no - (Filter condition) Network type of the CLB instance, such as "Public" and "Private".</li>
+<li> vip - String - Required: no - (Filter condition) CLB instance VIP, such as "1.1.1.1" and "2204::22:3". </li>
+<li> target-ip - String - Required: no - (Filter condition) Private IP of the target real servers, such as"1.1.1.1" and "2203::214:4".</li>
+<li> vpcid - String - Required: no - (Filter condition) Identifier of the VPC instance to which the CLB instance belongs, such as "vpc-12345678".</li>
+<li> zone - String - Required: no - (Filter condition) Availability zone where the CLB instance resides, such as "ap-guangzhou-1".</li>
+<li> tag-key - String - Required: no - (Filter condition) Tag key of the CLB instance, such as "name".</li>
+<li> tag:* - String - Required: no - (Filter condition) CLB instance tag, followed by tag key after the colon ':'. For example, use {"Name": "tag:name","Values": ["zhangsan", "lisi"]} to filter the tag key “name” with the tag value “zhangsan” and “lisi”.</li>
+<li> fuzzy-search - String - Required: no - (Filter condition) Fuzzy search for CLB instance VIP and CLB instance name, such as "1.1".</li>
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Fields = None
+        self.TargetType = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Fields = params.get("Fields")
+        self.TargetType = params.get("TargetType")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeLoadBalancersDetailResponse(AbstractModel):
+    """DescribeLoadBalancersDetail response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of lists describing CLB instance details.
+        :type TotalCount: int
+        :param LoadBalancerDetailSet: List of CLB instance details.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LoadBalancerDetailSet: list of LoadBalancerDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.LoadBalancerDetailSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("LoadBalancerDetailSet") is not None:
+            self.LoadBalancerDetailSet = []
+            for item in params.get("LoadBalancerDetailSet"):
+                obj = LoadBalancerDetail()
+                obj._deserialize(item)
+                self.LoadBalancerDetailSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLoadBalancersRequest(AbstractModel):
     """DescribeLoadBalancers request structure.
 
@@ -2137,6 +2224,38 @@ class DescribeLoadBalancersResponse(AbstractModel):
                 obj = LoadBalancer()
                 obj._deserialize(item)
                 self.LoadBalancerSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeQuotaRequest(AbstractModel):
+    """DescribeQuota request structure.
+
+    """
+
+
+class DescribeQuotaResponse(AbstractModel):
+    """DescribeQuota response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaSet: Quota list
+        :type QuotaSet: list of Quota
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.QuotaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaSet") is not None:
+            self.QuotaSet = []
+            for item in params.get("QuotaSet"):
+                obj = Quota()
+                obj._deserialize(item)
+                self.QuotaSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2829,6 +2948,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param TargetGroup: Basic information of a bound target group. This field will be returned when a target group is bound to a listener.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TargetGroup: :class:`tencentcloud.clb.v20180317.models.BasicTargetGroupInfo`
+        :param SessionType: Session persistence type. Valid values: Normal: the default session persistence type; QUIC_CID: session persistence by QUIC connection ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SessionType: str
+        :param KeepaliveEnable: Whether a persistent connection is enabled (This parameter can only be configured in HTTP/HTTPS listeners)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type KeepaliveEnable: int
         """
         self.ListenerId = None
         self.Protocol = None
@@ -2844,6 +2969,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.EndPort = None
         self.TargetType = None
         self.TargetGroup = None
+        self.SessionType = None
+        self.KeepaliveEnable = None
 
 
     def _deserialize(self, params):
@@ -2872,6 +2999,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("TargetGroup") is not None:
             self.TargetGroup = BasicTargetGroupInfo()
             self.TargetGroup._deserialize(params.get("TargetGroup"))
+        self.SessionType = params.get("SessionType")
+        self.KeepaliveEnable = params.get("KeepaliveEnable")
 
 
 class ListenerBackend(AbstractModel):
@@ -3085,10 +3214,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param IPv6Mode: This field is meaningful only when the IP address version is `ipv6`. Valid values: IPv6Nat64, IPv6FullChain
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IPv6Mode: str
-        :param SnatPro: Whether to enable SnatPro
+        :param SnatPro: Whether to enable SnatPro.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SnatPro: bool
-        :param SnatIps: SnatIp list after SnatPro load balancing is enabled
+        :param SnatIps: `SnatIp` list after SnatPro load balancing is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SnatIps: list of SnatIp
         :param SlaType: Performance guarantee specification
@@ -3100,9 +3229,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param IsBlockTime: Time blocked or unblocked
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsBlockTime: str
-        :param LocalBgp: Whether the IP type is the local BGP
-Note: this field may return null, indicating that no valid values can be obtained
+        :param LocalBgp: 
         :type LocalBgp: bool
+        :param ClusterTag: Dedicated layer-7 tag.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClusterTag: str
+        :param MixIpTarget: If the layer-7 listener of an IPv6FullChain CLB instance is enabled, the CLB instance can be bound with an IPv4 and an IPv6 CVM instance simultaneously.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MixIpTarget: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3149,6 +3283,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IsBlock = None
         self.IsBlockTime = None
         self.LocalBgp = None
+        self.ClusterTag = None
+        self.MixIpTarget = None
 
 
     def _deserialize(self, params):
@@ -3224,6 +3360,182 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.IsBlock = params.get("IsBlock")
         self.IsBlockTime = params.get("IsBlockTime")
         self.LocalBgp = params.get("LocalBgp")
+        self.ClusterTag = params.get("ClusterTag")
+        self.MixIpTarget = params.get("MixIpTarget")
+
+
+class LoadBalancerDetail(AbstractModel):
+    """CLB instance details
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: CLB instance ID.
+        :type LoadBalancerId: str
+        :param LoadBalancerName: CLB instance name.
+        :type LoadBalancerName: str
+        :param LoadBalancerType: CLB instance network type:
+Public: public network; Private: private network.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LoadBalancerType: str
+        :param Status: CLB instance status, including:
+0: creating; 1: running.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param Address: CLB instance VIP.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Address: str
+        :param AddressIPv6: IPv6 VIP address of the CLB instance.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AddressIPv6: str
+        :param AddressIPVersion: IP version of the CLB instance. Valid values: IPv4, IPv6.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AddressIPVersion: str
+        :param IPv6Mode: IPv6 address type of the CLB instance. Valid values: IPv6Nat64, IPv6FullChain.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IPv6Mode: str
+        :param Zone: Availability zone where the CLB instance resides.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Zone: str
+        :param AddressIsp: ISP to which the CLB IP address belongs.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AddressIsp: str
+        :param VpcId: ID of the VPC instance to which the CLB instance belongs.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param ProjectId: ID of the project to which the CLB instance belongs. 0: default project.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: int
+        :param CreateTime: CLB instance creation time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param ChargeType: CLB instance billing mode.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ChargeType: str
+        :param NetworkAttributes: CLB instance network attribute.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NetworkAttributes: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        :param PrepaidAttributes: Pay-as-you-go attribute of the CLB instance.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PrepaidAttributes: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        :param ExtraInfo: Reserved field, which can be ignored generally.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ExtraInfo: :class:`tencentcloud.clb.v20180317.models.ExtraInfo`
+        :param ConfigId: Custom configuration ID at the CLB instance level.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConfigId: str
+        :param Tags: CLB instance tag information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of TagInfo
+        :param ListenerId: CLB listener ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ListenerId: str
+        :param Protocol: Listener protocol.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param Port: Listener port.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Port: int
+        :param LocationId: Forwarding rule ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LocationId: str
+        :param Domain: Domain name of the forwarding rule.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Domain: str
+        :param Url: Forwarding rule path.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Url: str
+        :param TargetId: ID of target real servers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TargetId: str
+        :param TargetAddress: Address of target real servers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TargetAddress: str
+        :param TargetPort: Listening port of target real servers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TargetPort: int
+        :param TargetWeight: Forwarding weight of target real servers.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TargetWeight: int
+        :param Isolation: 0: not isolated; 1: isolated.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Isolation: int
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.LoadBalancerType = None
+        self.Status = None
+        self.Address = None
+        self.AddressIPv6 = None
+        self.AddressIPVersion = None
+        self.IPv6Mode = None
+        self.Zone = None
+        self.AddressIsp = None
+        self.VpcId = None
+        self.ProjectId = None
+        self.CreateTime = None
+        self.ChargeType = None
+        self.NetworkAttributes = None
+        self.PrepaidAttributes = None
+        self.ExtraInfo = None
+        self.ConfigId = None
+        self.Tags = None
+        self.ListenerId = None
+        self.Protocol = None
+        self.Port = None
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+        self.TargetId = None
+        self.TargetAddress = None
+        self.TargetPort = None
+        self.TargetWeight = None
+        self.Isolation = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.LoadBalancerType = params.get("LoadBalancerType")
+        self.Status = params.get("Status")
+        self.Address = params.get("Address")
+        self.AddressIPv6 = params.get("AddressIPv6")
+        self.AddressIPVersion = params.get("AddressIPVersion")
+        self.IPv6Mode = params.get("IPv6Mode")
+        self.Zone = params.get("Zone")
+        self.AddressIsp = params.get("AddressIsp")
+        self.VpcId = params.get("VpcId")
+        self.ProjectId = params.get("ProjectId")
+        self.CreateTime = params.get("CreateTime")
+        self.ChargeType = params.get("ChargeType")
+        if params.get("NetworkAttributes") is not None:
+            self.NetworkAttributes = InternetAccessible()
+            self.NetworkAttributes._deserialize(params.get("NetworkAttributes"))
+        if params.get("PrepaidAttributes") is not None:
+            self.PrepaidAttributes = LBChargePrepaid()
+            self.PrepaidAttributes._deserialize(params.get("PrepaidAttributes"))
+        if params.get("ExtraInfo") is not None:
+            self.ExtraInfo = ExtraInfo()
+            self.ExtraInfo._deserialize(params.get("ExtraInfo"))
+        self.ConfigId = params.get("ConfigId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.ListenerId = params.get("ListenerId")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        self.TargetId = params.get("TargetId")
+        self.TargetAddress = params.get("TargetAddress")
+        self.TargetPort = params.get("TargetPort")
+        self.TargetWeight = params.get("TargetWeight")
+        self.Isolation = params.get("Isolation")
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -3940,6 +4252,37 @@ class ModifyTargetWeightResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Quota(AbstractModel):
+    """Quota description. All quotas are in the current region.
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaId: Quota name. Valid values:
+<li> TOTAL_OPEN_CLB_QUOTA: quota of public network CLB instances in the current region</li>
+<li> TOTAL_INTERNAL_CLB_QUOTA: quota of private network CLB instances in the current region</li>
+<li> TOTAL_LISTENER_QUOTA: quota of listeners under one CLB instance</li>
+<li> TOTAL_LISTENER_RULE_QUOTA: quota of forwarding rules under one listener</li>
+<li> TOTAL_TARGET_BIND_QUOTA: quota of CVM instances can be bound under one forwarding rule</li>
+        :type QuotaId: str
+        :param QuotaCurrent: Currently used quantity. If it is `null`, it is meaningless.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type QuotaCurrent: int
+        :param QuotaLimit: Quota limit.
+        :type QuotaLimit: int
+        """
+        self.QuotaId = None
+        self.QuotaCurrent = None
+        self.QuotaLimit = None
+
+
+    def _deserialize(self, params):
+        self.QuotaId = params.get("QuotaId")
+        self.QuotaCurrent = params.get("QuotaCurrent")
+        self.QuotaLimit = params.get("QuotaLimit")
+
+
 class RegisterTargetGroupInstancesRequest(AbstractModel):
     """RegisterTargetGroupInstances request structure.
 
@@ -4263,7 +4606,7 @@ class RuleInput(AbstractModel):
         :type Url: str
         :param SessionExpireTime: Session persistence time in seconds. Value range: 30-3,600. Setting it to 0 indicates that session persistence is disabled.
         :type SessionExpireTime: int
-        :param HealthCheck: Health check information
+        :param HealthCheck: Health check information. For more information, please see [Health Check](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1)
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         :param Certificate: Certificate information
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`

@@ -823,7 +823,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClsLogSet(self, request):
-        """This API is used to obtain the CLB exclusive logset of a user.
+        """This API is used to get the CLB dedicated logset.
 
         :param request: Request instance for DescribeClsLogSet.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClsLogSetRequest`
@@ -920,6 +920,62 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLoadBalancersDetail(self, request):
+        """This API is used to query CLB instance details, including listener, rules, and target real servers.
+
+        :param request: Request instance for DescribeLoadBalancersDetail.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancersDetailRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancersDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLoadBalancersDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLoadBalancersDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeQuota(self, request):
+        """This API is used to query various quotas in the current region.
+
+        :param request: Request instance for DescribeQuota.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeQuotaRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQuotaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

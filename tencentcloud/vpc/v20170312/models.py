@@ -738,6 +738,48 @@ class AssociateAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
+    """AssociateDirectConnectGatewayNatGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: The direct connect gateway ID.
+        :type VpcId: str
+        :param NatGatewayId: The NAT Gateway ID.
+        :type NatGatewayId: str
+        :param DirectConnectGatewayId: The ID of the VPC instance, which can be obtained from the `VpcId` field in response of the `DescribeVpcs` API.
+        :type DirectConnectGatewayId: str
+        """
+        self.VpcId = None
+        self.NatGatewayId = None
+        self.DirectConnectGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+
+
+class AssociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
+    """AssociateDirectConnectGatewayNatGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateNatGatewayAddressRequest(AbstractModel):
     """AssociateNatGatewayAddress request structure.
 
@@ -1062,6 +1104,8 @@ Note: This field may return null, indicating no valid value.
         :type BandwidthLimitType: str
         :param TagSet: Tag key-value pairs.
         :type TagSet: list of Tag
+        :param RoutePriorityFlag: Whether the CCN route priority feature is supported. Valid values: False: do not support; True: support.
+        :type RoutePriorityFlag: bool
         """
         self.CcnId = None
         self.CcnName = None
@@ -1073,6 +1117,7 @@ Note: This field may return null, indicating no valid value.
         self.InstanceChargeType = None
         self.BandwidthLimitType = None
         self.TagSet = None
+        self.RoutePriorityFlag = None
 
 
     def _deserialize(self, params):
@@ -1091,6 +1136,7 @@ Note: This field may return null, indicating no valid value.
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.RoutePriorityFlag = params.get("RoutePriorityFlag")
 
 
 class CcnAttachedInstance(AbstractModel):
@@ -1132,6 +1178,8 @@ class CcnAttachedInstance(AbstractModel):
         :type AttachedTime: str
         :param CcnUin: The UIN (root account) to which the CCN belongs.
         :type CcnUin: str
+        :param InstanceArea: General location of the associated instance, such as CHINA_MAINLAND.
+        :type InstanceArea: str
         """
         self.CcnId = None
         self.InstanceType = None
@@ -1143,6 +1191,7 @@ class CcnAttachedInstance(AbstractModel):
         self.State = None
         self.AttachedTime = None
         self.CcnUin = None
+        self.InstanceArea = None
 
 
     def _deserialize(self, params):
@@ -1156,6 +1205,7 @@ class CcnAttachedInstance(AbstractModel):
         self.State = params.get("State")
         self.AttachedTime = params.get("AttachedTime")
         self.CcnUin = params.get("CcnUin")
+        self.InstanceArea = params.get("InstanceArea")
 
 
 class CcnBandwidthInfo(AbstractModel):
@@ -1290,6 +1340,14 @@ class CcnRoute(AbstractModel):
         :type Enabled: bool
         :param InstanceUin: The UIN (root account) to which the associated instance belongs
         :type InstanceUin: str
+        :param ExtraState: Additional status of the route
+        :type ExtraState: str
+        :param IsBgp: Whether it is a dynamic route
+        :type IsBgp: bool
+        :param RoutePriority: Route priority
+        :type RoutePriority: int
+        :param InstanceExtraName: Next hop port name (associated instance’s port name)
+        :type InstanceExtraName: str
         """
         self.RouteId = None
         self.DestinationCidrBlock = None
@@ -1300,6 +1358,10 @@ class CcnRoute(AbstractModel):
         self.UpdateTime = None
         self.Enabled = None
         self.InstanceUin = None
+        self.ExtraState = None
+        self.IsBgp = None
+        self.RoutePriority = None
+        self.InstanceExtraName = None
 
 
     def _deserialize(self, params):
@@ -1312,6 +1374,10 @@ class CcnRoute(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.Enabled = params.get("Enabled")
         self.InstanceUin = params.get("InstanceUin")
+        self.ExtraState = params.get("ExtraState")
+        self.IsBgp = params.get("IsBgp")
+        self.RoutePriority = params.get("RoutePriority")
+        self.InstanceExtraName = params.get("InstanceExtraName")
 
 
 class CheckAssistantCidrRequest(AbstractModel):
@@ -1879,14 +1945,23 @@ class CreateCustomerGatewayRequest(AbstractModel):
         :type CustomerGatewayName: str
         :param IpAddress: Customer gateway public IP.
         :type IpAddress: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.CustomerGatewayName = None
         self.IpAddress = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.CustomerGatewayName = params.get("CustomerGatewayName")
         self.IpAddress = params.get("IpAddress")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateCustomerGatewayResponse(AbstractModel):
@@ -3056,6 +3131,8 @@ class CreateVpnConnectionRequest(AbstractModel):
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         :param IPSECOptionsSpecification: IPSec configuration. The IPSec secure session configuration is provided by Tencent Cloud.
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.VpnGatewayId = None
@@ -3065,6 +3142,7 @@ class CreateVpnConnectionRequest(AbstractModel):
         self.SecurityPolicyDatabases = None
         self.IKEOptionsSpecification = None
         self.IPSECOptionsSpecification = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3085,6 +3163,12 @@ class CreateVpnConnectionRequest(AbstractModel):
         if params.get("IPSECOptionsSpecification") is not None:
             self.IPSECOptionsSpecification = IPSECOptionsSpecification()
             self.IPSECOptionsSpecification._deserialize(params.get("IPSECOptionsSpecification"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateVpnConnectionResponse(AbstractModel):
@@ -3131,6 +3215,8 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type Zone: str
         :param Type: VPN gateway type. Value: `CCN`, indicates CCN-type VPN gateway
         :type Type: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.VpnGatewayName = None
@@ -3139,6 +3225,7 @@ class CreateVpnGatewayRequest(AbstractModel):
         self.InstanceChargePrepaid = None
         self.Zone = None
         self.Type = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3151,6 +3238,12 @@ class CreateVpnGatewayRequest(AbstractModel):
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.Zone = params.get("Zone")
         self.Type = params.get("Type")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateVpnGatewayResponse(AbstractModel):
@@ -5592,7 +5685,8 @@ class DescribeNatGatewaysRequest(AbstractModel):
         :param Filters: Filter condition. `NatGatewayIds` and `Filters` cannot be specified at the same time.
 <li>nat-gateway-id - String - (Filter condition) The ID of the protocol port template instance, such as `nat-123xx454`.</li>
 <li>vpc-id - String - (Filter condition) The unique ID of the VPC, such as `vpc-123xx454`.</li>
-<li>nat-gateway-name - String - (Filter condition) The ID of the protocol port template instance, such as `test_nat`.</li>
+<li>nat-gateway-name - String - (Filter condition) The name of the protocol port template instance, such as `test_nat`.</li>
+<li>tag-key - String - (Filter condition) The tag key, such as `test-key`.</li>
         :type Filters: list of Filter
         :param Offset: Offset. The default value is 0.
         :type Offset: int
@@ -7327,6 +7421,48 @@ class DisassociateAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisassociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
+    """DisassociateDirectConnectGatewayNatGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: The direct connect gateway ID.
+        :type VpcId: str
+        :param NatGatewayId: The NAT Gateway ID.
+        :type NatGatewayId: str
+        :param DirectConnectGatewayId: The ID of the VPC instance, which can be obtained from the `VpcId` field in response of the `DescribeVpcs` API.
+        :type DirectConnectGatewayId: str
+        """
+        self.VpcId = None
+        self.NatGatewayId = None
+        self.DirectConnectGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+
+
+class DisassociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
+    """DisassociateDirectConnectGatewayNatGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateNatGatewayAddressRequest(AbstractModel):
     """DisassociateNatGatewayAddress request structure.
 
@@ -7336,7 +7472,7 @@ class DisassociateNatGatewayAddressRequest(AbstractModel):
         """
         :param NatGatewayId: The ID of the NAT gateway, such as `nat-df45454`.
         :type NatGatewayId: str
-        :param PublicIpAddresses: The array of EIPs bound to the NAT gateway.
+        :param PublicIpAddresses: Array of the EIPs to be unbound from the NAT gateway.
         :type PublicIpAddresses: list of str
         """
         self.NatGatewayId = None
@@ -9831,6 +9967,12 @@ class NatGateway(AbstractModel):
         :type VpcId: str
         :param Zone: The availability zone in which the NAT gateway is located.
         :type Zone: str
+        :param DirectConnectGatewayIds: 
+        :type DirectConnectGatewayIds: list of str
+        :param SubnetId: 
+        :type SubnetId: str
+        :param TagSet: Tag key-value pair.
+        :type TagSet: list of Tag
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -9843,6 +9985,9 @@ class NatGateway(AbstractModel):
         self.DestinationIpPortTranslationNatRuleSet = None
         self.VpcId = None
         self.Zone = None
+        self.DirectConnectGatewayIds = None
+        self.SubnetId = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -9867,6 +10012,14 @@ class NatGateway(AbstractModel):
                 self.DestinationIpPortTranslationNatRuleSet.append(obj)
         self.VpcId = params.get("VpcId")
         self.Zone = params.get("Zone")
+        self.DirectConnectGatewayIds = params.get("DirectConnectGatewayIds")
+        self.SubnetId = params.get("SubnetId")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class NatGatewayAddress(AbstractModel):
@@ -11449,9 +11602,9 @@ class SecurityGroupPolicy(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyIndex: Security group policy index number.
+        :param PolicyIndex: The index number of security group rules, which dynamically changes with the rules. This parameter can be obtained via the `DescribeSecurityGroupPolicies` API and used with the `Version` field in the returned value of the API.
         :type PolicyIndex: int
-        :param Protocol: Protocol. Values: TCP, UDP, ICMP
+        :param Protocol: Protocol. Valid values: TCP, UDP, ICMP, ICMPv6, ALL.
         :type Protocol: str
         :param Port: Port (all, discrete port, range).
         :type Port: str

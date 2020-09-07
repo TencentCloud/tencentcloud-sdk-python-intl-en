@@ -25,6 +25,34 @@ class KmsClient(AbstractClient):
     _endpoint = 'kms.tencentcloudapi.com'
 
 
+    def ArchiveKey(self, request):
+        """This API is used to archive keys. The archived keys can only be used for decryption but not encryption.
+
+        :param request: Request instance for ArchiveKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ArchiveKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ArchiveKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ArchiveKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ArchiveKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AsymmetricRsaDecrypt(self, request):
         """This API is used to decrypt data with the specified private key that is encrypted with RSA asymmetric cryptographic algorithm. The ciphertext must be encrypted with the corresponding public key. The asymmetric key must be in `Enabled` state for decryption.
 
@@ -95,6 +123,34 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindCloudResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CancelKeyArchive(self, request):
+        """This API is used to unarchive keys. If a key is unarchived, its status will be `Enabled`.
+
+        :param request: Request instance for CancelKeyArchive.
+        :type request: :class:`tencentcloud.kms.v20190118.models.CancelKeyArchiveRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.CancelKeyArchiveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelKeyArchive", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelKeyArchiveResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -935,6 +991,34 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPublicKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetRegions(self, request):
+        """This API is used to obtain the list of supported regions.
+
+        :param request: Request instance for GetRegions.
+        :type request: :class:`tencentcloud.kms.v20190118.models.GetRegionsRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.GetRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRegionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

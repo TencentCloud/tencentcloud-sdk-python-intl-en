@@ -231,7 +231,8 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCdnIp(self, request):
-        """This API is used to query CDN IP ownership.
+        """This API is used to query the CDN IP ownership.
+        (Note: the request rate limit of this API is subject to the limit in CDN, which is 200 calls/10 minutes).
 
         :param request: Request instance for DescribeCdnIp.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnIpRequest`

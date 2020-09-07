@@ -34,7 +34,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
         :param ExpireTime: Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.
 Notes:
 1. The configuration will expire after 7 days by default and can last up to 7 days.
-2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type ExpireTime: str
         """
         self.AppName = None
@@ -531,7 +531,8 @@ class CommonMixControlParams(AbstractModel):
         """
         :param UseMixCropCenter: 
         :type UseMixCropCenter: int
-        :param AllowCopy: 
+        :param AllowCopy: Value range: [0,1].
+If this parameter is set to 1, when both `InputStreamList` and `OutputParams.OutputStreamType` are set to 1, you can copy a stream instead of canceling it.
         :type AllowCopy: int
         """
         self.UseMixCropCenter = None
@@ -883,23 +884,26 @@ Maximum length: 1,024 bytes.
 Only letters, digits, underscores, and hyphens can be contained.
         :type Description: str
         :param StreamBeginNotifyUrl: Stream starting callback URL,
-Protocol document: [Event Message Notification](/document/product/267/32744).
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type StreamBeginNotifyUrl: str
         :param StreamEndNotifyUrl: Interruption callback URL,
-Protocol document: [Event Message Notification](/document/product/267/32744).
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type StreamEndNotifyUrl: str
         :param RecordNotifyUrl: Recording callback URL,
-Protocol document: [Event Message Notification](/document/product/267/32744).
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type RecordNotifyUrl: str
         :param SnapshotNotifyUrl: Screencapturing callback URL,
-Protocol document: [Event Message Notification](/document/product/267/32744).
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type SnapshotNotifyUrl: str
         :param PornCensorshipNotifyUrl: Porn detection callback URL,
-Protocol document: [Event Message Notification](/document/product/267/32741).
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32741?from_cn_redirect=1).
         :type PornCensorshipNotifyUrl: str
         :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
-[Event Message Notification](/document/product/267/32744).
+[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type CallbackKey: str
+        :param StreamMixNotifyUrl: Stream mixing callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
+        :type StreamMixNotifyUrl: str
         """
         self.TemplateName = None
         self.Description = None
@@ -909,6 +913,7 @@ Protocol document: [Event Message Notification](/document/product/267/32741).
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
+        self.StreamMixNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -920,6 +925,7 @@ Protocol document: [Event Message Notification](/document/product/267/32741).
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
+        self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
 
 
 class CreateLiveCallbackTemplateResponse(AbstractModel):
@@ -1286,6 +1292,7 @@ Only letters, digits, underscores, and hyphens can be contained.
         :param CosAppId: COS application ID.
         :type CosAppId: int
         :param CosBucket: COS bucket name.
+Note: the value of `CosBucket` cannot contain `-[appid]`.
         :type CosBucket: str
         :param CosRegion: COS region.
         :type CosRegion: str
@@ -1294,7 +1301,7 @@ Maximum length: 1,024 bytes.
 Only letters, digits, underscores, and hyphens can be contained.
         :type Description: str
         :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
-Value range: 5-600s.
+Value range: 5-300s.
         :type SnapshotInterval: int
         :param Width: Screenshot width. Default value: 0 (original width).
         :type Width: int
@@ -1302,9 +1309,15 @@ Value range: 5-600s.
         :type Height: int
         :param PornFlag: Whether to enable porn detection. 0: no, 1: yes. Default value: 0
         :type PornFlag: int
-        :param CosPrefix: COS bucket folder prefix.
+        :param CosPrefix: COS Bucket folder prefix.
+If no value is entered, the default value
+`/{Year}-{Month}-{Day}`
+will be used.
         :type CosPrefix: str
         :param CosFileName: COS filename.
+If no value is entered, the default value 
+`{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}`
+will be used.
         :type CosFileName: str
         """
         self.TemplateName = None
@@ -1449,7 +1462,10 @@ baseline/main/high. Default value: baseline.
         :type FpsToOrig: int
         :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
         :type AiTransCode: int
-        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5.
+        :param AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
+Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
+
+Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
         """
         self.TemplateName = None
@@ -1529,7 +1545,7 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
         :type AppName: str
         :param StreamName: Stream name.
         :type StreamName: str
-        :param TemplateId: Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](/document/product/267/30154) API.
+        :param TemplateId: Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API.
         :type TemplateId: int
         """
         self.DomainName = None
@@ -1757,8 +1773,8 @@ class DeleteLiveCallbackTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
-1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](/document/product/267/32637) API call.
-2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](/document/product/267/32632) API.
+1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.
+2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -2024,8 +2040,8 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
-1. Get from the returned value of the [CreateLiveSnapshotTemplate](/document/product/267/32624) API call.
-2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](/document/product/267/32619) API.
+1. Get from the returned value of the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.
+2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](https://intl.cloud.tencent.com/document/product/267/32619?from_cn_redirect=1) API.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -2106,8 +2122,8 @@ class DeleteLiveTranscodeTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
-1. Get the template ID in the returned value of the [CreateLiveTranscodeTemplate](/document/product/267/32646) API call.
-2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](/document/product/267/32641) API.
+1. Get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.
+2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](https://intl.cloud.tencent.com/document/product/267/32641?from_cn_redirect=1) API.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -2142,7 +2158,7 @@ class DeleteLiveWatermarkRequest(AbstractModel):
     def __init__(self):
         """
         :param WatermarkId: Watermark ID.
-Watermark ID obtained in the returned value of the [AddLiveWatermark](/document/product/267/30154) API call.
+Watermark ID obtained in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.
 Watermark ID returned by the `DescribeLiveWatermarks` API.
         :type WatermarkId: int
         """
@@ -2564,13 +2580,12 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time (Beijing time),
-In the format of `yyyy-mm-dd HH:MM:SS`.
-`StartTime` cannot be more than 3 months ago.
+        :param StartTime: Start time (Beijing time).
+Format: yyyy-mm-dd HH:MM:SS.
         :type StartTime: str
-        :param EndTime: End time (Beijing time),
-In the format of `yyyy-mm-dd HH:MM:SS`.
-Note: `EndTime` and `StartTime` only support querying data for the last day.
+        :param EndTime: End time (Beijing time).
+Format: yyyy-mm-dd HH:MM:SS.
+Note: data in the last 3 months can be queried and the query period is up to 1 day.
         :type EndTime: str
         :param PlayDomains: Playback domain name list.
         :type PlayDomains: list of str
@@ -2652,8 +2667,8 @@ class DescribeLiveCallbackTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
-1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](/document/product/267/32637) API call.
-2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](/document/product/267/32632) API.
+1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.
+2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -3334,7 +3349,7 @@ class DescribeLiveSnapshotTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
-Template ID returned by the [CreateLiveSnapshotTemplate](/document/product/267/32624) API call.
+Template ID returned by the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -3936,7 +3951,7 @@ class DescribeLiveTranscodeTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
-Note: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](/document/product/267/32646) API call.
+Note: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -4313,9 +4328,9 @@ In the format of `yyyy-mm-dd HH:MM:SS`.
 In the format of `yyyy-mm-dd HH:MM:SS`.
 Note: `EndTime` and `StartTime` only support querying data for the last day.
         :type EndTime: str
-        :param StatType: Statistics type. Valid values: Province, Isp, CountryOrArea.
+        :param StatType: Statistics type. Valid values: Province (district), Isp (ISP), CountryOrArea (country or region).
         :type StatType: str
-        :param PlayDomains: If this parameter is left empty, full data will be queried.
+        :param PlayDomains: Playback domain name list. If it is left empty, it refers to all playback domain names.
         :type PlayDomains: list of str
         :param PageNum: Page number. Value range: [1,1000]. Default value: 1.
         :type PageNum: int
@@ -4639,9 +4654,9 @@ If this parameter is left empty, data of live streams of all playback domain nam
         :param StreamName: Stream name (exact match).
 If this parameter is left empty, full playback data will be queried.
         :type StreamName: str
-        :param AppName: Push path, which is the same as the `AppName` in the playback address, subject to exact match, and valid if `StreamName` is passed in.
-If this parameter is left empty, full playback data will be queried.
-Note: to query by `AppName`, you need to submit a ticket for application.
+        :param AppName: Push address. Its value is the same as the `AppName` in playback address. It supports exact match, and takes effect only when `StreamName` is passed at the same time.
+If it is left empty, the full playback data will be queried.
+Note: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.
         :type AppName: str
         """
         self.StartTime = None
@@ -4897,7 +4912,7 @@ Default value: 20.
         :type PageSize: int
         :param TopIndex: Bandwidth metric. Valid values: "Domain", "StreamId".
         :type TopIndex: str
-        :param OrderParam: Sorting metric. Valid values: "AvgFluxPerSecond", "TotalRequest" (default), "TotalFlux".
+        :param OrderParam: Sorting metric. Valid values: AvgFluxPerSecond (sort by average traffic per second), TotalRequest (sort by total requests), TotalFlux (sort by total traffic). Default value: TotalRequest.
         :type OrderParam: str
         :param TotalNum: Total number of results.
         :type TotalNum: int
@@ -5246,7 +5261,7 @@ class ForbidLiveStreamRequest(AbstractModel):
         :param ResumeTime: Time to resume the stream in UTC format, such as 2018-11-29T19:00:00Z.
 Notes:
 1. The duration of forbidding is 7 days by default and can be up to 90 days.
-2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type ResumeTime: str
         :param Reason: Reason for forbidding.
 Note: Be sure to enter the reason for forbidding to avoid any faulty operations.
@@ -5347,7 +5362,8 @@ class HlsSpecialParam(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowContinueDuration: HLS timeout period.
+        :param FlowContinueDuration: Timeout period for restarting an interrupted HLS push.
+Value range: [0, 1,800].
         :type FlowContinueDuration: int
         """
         self.FlowContinueDuration = None
@@ -5481,7 +5497,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         :param PornCensorshipNotifyUrl: Porn detection callback URL.
         :type PornCensorshipNotifyUrl: str
         :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
-[Event Message Notification](/document/product/267/32744).
+[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type CallbackKey: str
         """
         self.TemplateId = None
@@ -5859,7 +5875,7 @@ Maximum length: 255 bytes.
 Maximum length: 1,024 bytes.
         :type Description: str
         :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
-Value range: 5-600s.
+Value range: 5-300s.
         :type SnapshotInterval: int
         :param Width: Screenshot width. Default value: 0 (original width).
         :type Width: int
@@ -5872,6 +5888,7 @@ Value range: 5-600s.
         :param CosAppId: COS application ID.
         :type CosAppId: int
         :param CosBucket: COS bucket name.
+Note: the value of `CosBucket` cannot contain `-[appid]`.
         :type CosBucket: str
         :param CosRegion: COS region.
         :type CosRegion: str
@@ -5973,7 +5990,10 @@ baseline/main/high.
         :type HeightToOrig: int
         :param FpsToOrig: Whether to not exceed the original frame rate. 0: no; 1: yes. Default value: 0.
         :type FpsToOrig: int
-        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5.
+        :param AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
+Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
+
+Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
         """
         self.TemplateId = None
@@ -7228,7 +7248,7 @@ class UpdateLiveWatermarkRequest(AbstractModel):
     def __init__(self):
         """
         :param WatermarkId: Watermark ID.
-Get the watermark ID in the returned value of the [AddLiveWatermark](/document/product/267/30154) API call.
+Get the watermark ID in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.
         :type WatermarkId: int
         :param PictureUrl: Watermark image URL.
         :type PictureUrl: str

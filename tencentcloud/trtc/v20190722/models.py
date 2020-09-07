@@ -803,7 +803,7 @@ class EventMessage(AbstractModel):
 
 
 class LayoutParams(AbstractModel):
-    """MCU On-Cloud MixTranscoding layout parameters
+    """
 
     """
 
@@ -817,11 +817,14 @@ class LayoutParams(AbstractModel):
         :type MainVideoStreamType: int
         :param SmallVideoLayoutParams: Layout parameter of the small image, which takes effect in a picture-in-picture template.
         :type SmallVideoLayoutParams: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`
+        :param MainVideoRightAlign: You can set the layout parameter as 1 or 0 in the screen sharing template. 1: big image on the right and small images on the left, 0: big image on the left and small images on the right. The default value is 0. 
+        :type MainVideoRightAlign: int
         """
         self.Template = None
         self.MainVideoUserId = None
         self.MainVideoStreamType = None
         self.SmallVideoLayoutParams = None
+        self.MainVideoRightAlign = None
 
 
     def _deserialize(self, params):
@@ -831,6 +834,7 @@ class LayoutParams(AbstractModel):
         if params.get("SmallVideoLayoutParams") is not None:
             self.SmallVideoLayoutParams = SmallVideoLayoutParams()
             self.SmallVideoLayoutParams._deserialize(params.get("SmallVideoLayoutParams"))
+        self.MainVideoRightAlign = params.get("MainVideoRightAlign")
 
 
 class OutputParams(AbstractModel):

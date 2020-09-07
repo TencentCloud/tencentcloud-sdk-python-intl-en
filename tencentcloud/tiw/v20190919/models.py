@@ -566,6 +566,59 @@ class PauseOnlineRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecordControl(AbstractModel):
+    """It specifies the global recording parameters and the recording parameters over a specific stream. For example, you can specify the streams you want to record and whether to record low-resolution videos only.
+
+    """
+
+    def __init__(self):
+        """
+        :param Enabled: It specifies whether to enable RecordControl. Valid values: true (yes); false (no).
+        :type Enabled: bool
+        :param DisableRecord: A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable recording. Valid values:
+
+true: no stream is recorded.
+false: all streams are recorded. Default value: false.
+
+The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.
+        :type DisableRecord: bool
+        :param DisableAudio: A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable audio recording over all streams. Valid values:
+
+true: no audio recording of any streams.
+false: audio recording of all streams. Default value: false.
+
+The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.
+        :type DisableAudio: bool
+        :param PullSmallVideo: A global parameter generally used in conjunction with `StreamControls` that specifies whether to record low-resolution videos only. Valid values:
+
+true: only records low-resolution videos for all streams. Please ensure that the up-streaming end pushes the low-resolution videos. Otherwise, the recorded video may be black.
+false: high-resolution video recording of all streams. Default value: false.
+
+The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.
+        :type PullSmallVideo: bool
+        :param StreamControls: Parameters over specific streams, which take priority over global configurations. If it’s empty, all streams are recorded according to the global configurations. 
+        :type StreamControls: list of StreamControl
+        """
+        self.Enabled = None
+        self.DisableRecord = None
+        self.DisableAudio = None
+        self.PullSmallVideo = None
+        self.StreamControls = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        self.DisableRecord = params.get("DisableRecord")
+        self.DisableAudio = params.get("DisableAudio")
+        self.PullSmallVideo = params.get("PullSmallVideo")
+        if params.get("StreamControls") is not None:
+            self.StreamControls = []
+            for item in params.get("StreamControls"):
+                obj = StreamControl()
+                obj._deserialize(item)
+                self.StreamControls.append(obj)
+
+
 class ResumeOnlineRecordRequest(AbstractModel):
     """ResumeOnlineRecord request structure.
 
@@ -613,7 +666,7 @@ class SetOnlineRecordCallbackKeyRequest(AbstractModel):
         """
         :param SdkAppId: SdkAppId of the application
         :type SdkAppId: int
-        :param CallbackKey: Authentication key of the real-time recording callback. It is a string of up to 64 characters. If it is specified as null, the existing callback authentication key is deleted.
+        :param CallbackKey: Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
         :type CallbackKey: str
         """
         self.SdkAppId = None
@@ -651,7 +704,7 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
         """
         :param SdkAppId: SdkAppId of the customer
         :type SdkAppId: int
-        :param Callback: Callback address of the real-time recording task result. If it is specified as null, the set callback address is deleted. The callback address only supports the HTTP or HTTPS protocol, and therefore the callback address must start with http:// or https://.
+        :param Callback: Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).
         :type Callback: str
         """
         self.SdkAppId = None
@@ -689,7 +742,7 @@ class SetTranscodeCallbackKeyRequest(AbstractModel):
         """
         :param SdkAppId: SdkAppId of the application
         :type SdkAppId: int
-        :param CallbackKey: Authentication key of the document transcoding callback. It is a string of up to 64 characters. If it is specified as null, the existing callback authentication key is deleted.
+        :param CallbackKey: Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
         :type CallbackKey: str
         """
         self.SdkAppId = None
@@ -727,7 +780,8 @@ class SetTranscodeCallbackRequest(AbstractModel):
         """
         :param SdkAppId: SdkAppId of the customer
         :type SdkAppId: int
-        :param Callback: Callback address for the document transcoding progress. If it is specified as null, the set callback address is deleted. The callback address only supports the HTTP or HTTPS protocol, and therefore the callback address must start with http:// or https://.
+        :param Callback: Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.
+For more information about the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).
         :type Callback: str
         """
         self.SdkAppId = None
@@ -772,7 +826,7 @@ The ID must be an unused ID in the SDK. The real-time recording service uses the
         :type RecordUserId: str
         :param RecordUserSig: Signature corresponding to RecordUserId
         :type RecordUserSig: str
-        :param GroupId: IM group ID of the whiteboard. By default, it is the same as the room ID.
+        :param GroupId: (Disused) IM group ID of the whiteboard. By default, it is the same as the room ID.
         :type GroupId: str
         :param Concat: Real-time recording video splicing parameter
         :type Concat: :class:`tencentcloud.tiw.v20190919.models.Concat`
@@ -789,6 +843,8 @@ MIX_STREAM - Stream mixing feature
         :type Extras: list of str
         :param AudioFileNeeded: Whether to return the audio-only recording file of different streams in the result callback. The file format is mp3.
         :type AudioFileNeeded: bool
+        :param RecordControl: A group of real-time recording parameters. It specifies the streams to be recorded, whether to disable the audio recording, and whether to record only low-resolution videos, etc.
+        :type RecordControl: :class:`tencentcloud.tiw.v20190919.models.RecordControl`
         """
         self.SdkAppId = None
         self.RoomId = None
@@ -800,6 +856,7 @@ MIX_STREAM - Stream mixing feature
         self.MixStream = None
         self.Extras = None
         self.AudioFileNeeded = None
+        self.RecordControl = None
 
 
     def _deserialize(self, params):
@@ -819,6 +876,9 @@ MIX_STREAM - Stream mixing feature
             self.MixStream._deserialize(params.get("MixStream"))
         self.Extras = params.get("Extras")
         self.AudioFileNeeded = params.get("AudioFileNeeded")
+        if params.get("RecordControl") is not None:
+            self.RecordControl = RecordControl()
+            self.RecordControl._deserialize(params.get("RecordControl"))
 
 
 class StartOnlineRecordResponse(AbstractModel):
@@ -880,28 +940,79 @@ class StopOnlineRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class StreamLayout(AbstractModel):
-    """Stream layout parameter
+class StreamControl(AbstractModel):
+    """A group of parameters for recording over specified streams. It specifies whether to disable the audio recording and whether to record high-resolution or low-resolution videos.
 
     """
 
     def __init__(self):
         """
-        :param LayoutParams: Stream layout configuration
+        :param StreamId: Video stream ID
+Description of the possible video stream ID values:
+1. `tic_record_user`: the whiteboard video stream
+2. `tic_substream`: the auxiliary video stream
+3. Specific user ID: the video stream of the specified user
+
+The actual recording uses the prefix match of the video stream ID. The real stream becomes the specified stream once its ID prefix matches with the stream ID.
+        :type StreamId: str
+        :param DisableRecord: Whether to disable recording over the stream.
+
+true: does not record this stream. This stream will not be included in the final recording file.
+false: records this stream. This stream will be included in the final recording file.
+
+Default value: false
+        :type DisableRecord: bool
+        :param DisableAudio: Whether to disable the audio recording of the stream.
+
+true: does not record the audio of the stream. In the final recording file, this stream will be soundless.
+false: the stream has both video and audio recording.
+
+Default value: false
+        :type DisableAudio: bool
+        :param PullSmallVideo: Whether to only record low-resolution stream videos.
+
+true: records only low-resolution videos. In this case, please make sure that the client pushes low-resolution videos upstream. Otherwise, the recorded video may be black. 
+false: records only high-resolution videos.
+
+Default value: false
+        :type PullSmallVideo: bool
+        """
+        self.StreamId = None
+        self.DisableRecord = None
+        self.DisableAudio = None
+        self.PullSmallVideo = None
+
+
+    def _deserialize(self, params):
+        self.StreamId = params.get("StreamId")
+        self.DisableRecord = params.get("DisableRecord")
+        self.DisableAudio = params.get("DisableAudio")
+        self.PullSmallVideo = params.get("PullSmallVideo")
+
+
+class StreamLayout(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param LayoutParams: 
         :type LayoutParams: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`
-        :param InputStreamId: Video stream ID
-Description of possible stream ID values:
-1. tic_record_user: the current picture is used to display the whiteboard video stream.
-2. tic_substream: the current picture is used to display the auxiliary video stream.
-3. Specific user ID: the current picture is used to display the video stream of a specific user.
-4. Left empty: the current picture is vacant for new video stream.
+        :param InputStreamId: 
         :type InputStreamId: str
-        :param BackgroundColor: Background color, which is black by default. Its format is RGB, for example, "#FF0000" for the red color.
+        :param BackgroundColor: 
         :type BackgroundColor: str
+        :param FillMode: Video filling mode.
+
+0: self-adaption mode. Scales the video proportionally to completely display it in the specified area. In this mode, there may be black bars.
+1: full-screen mode. Scales the video to make it fill the entire specified area. In this mode, no black bars will appear, but the video may not be displayed fully.
+        :type FillMode: int
         """
         self.LayoutParams = None
         self.InputStreamId = None
         self.BackgroundColor = None
+        self.FillMode = None
 
 
     def _deserialize(self, params):
@@ -910,6 +1021,7 @@ Description of possible stream ID values:
             self.LayoutParams._deserialize(params.get("LayoutParams"))
         self.InputStreamId = params.get("InputStreamId")
         self.BackgroundColor = params.get("BackgroundColor")
+        self.FillMode = params.get("FillMode")
 
 
 class VideoInfo(AbstractModel):
@@ -931,15 +1043,14 @@ class VideoInfo(AbstractModel):
         :type VideoUrl: str
         :param VideoId: Video file ID
         :type VideoId: str
-        :param VideoType: Video stream type 
-- 0: camera video 
-- 1: screen-sharing video
-- 2: whiteboard video 
-- 3: mixed stream video
-- 4: audio-only (mp3)
+        :param VideoType: Video stream type - 0: camera video - 1: screen-sharing video - 2: whiteboard video - 3: mixed stream video - 4: audio-only (mp3)
         :type VideoType: int
         :param UserId: ID of the user to which the camera video or screen-sharing video belongs (whiteboard video: null, mixed stream video: tic_mixstream_<Room ID>_<Mixed stream layout type>, auxiliary video: tic_substream_user ID)
         :type UserId: str
+        :param Width: Width of the video resolution.
+        :type Width: int
+        :param Height: Height of the video resolution.
+        :type Height: int
         """
         self.VideoPlayTime = None
         self.VideoSize = None
@@ -949,6 +1060,8 @@ class VideoInfo(AbstractModel):
         self.VideoId = None
         self.VideoType = None
         self.UserId = None
+        self.Width = None
+        self.Height = None
 
 
     def _deserialize(self, params):
@@ -960,6 +1073,8 @@ class VideoInfo(AbstractModel):
         self.VideoId = params.get("VideoId")
         self.VideoType = params.get("VideoType")
         self.UserId = params.get("UserId")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
 
 
 class Whiteboard(AbstractModel):

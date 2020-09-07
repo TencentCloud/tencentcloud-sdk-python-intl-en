@@ -37,6 +37,40 @@ class AlgorithmInfo(AbstractModel):
         self.Algorithm = params.get("Algorithm")
 
 
+class ArchiveKeyRequest(AbstractModel):
+    """ArchiveKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class ArchiveKeyResponse(AbstractModel):
+    """ArchiveKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AsymmetricRsaDecryptRequest(AbstractModel):
     """AsymmetricRsaDecrypt request structure.
 
@@ -160,6 +194,40 @@ class BindCloudResourceRequest(AbstractModel):
 
 class BindCloudResourceResponse(AbstractModel):
     """BindCloudResource response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CancelKeyArchiveRequest(AbstractModel):
+    """CancelKeyArchive request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique CMK ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class CancelKeyArchiveResponse(AbstractModel):
+    """CancelKeyArchive response structure.
 
     """
 
@@ -660,12 +728,29 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
         """
         :param KeyStatus: Filter: key status. 0: disabled, 1: enabled
         :type KeyStatus: int
+        :param Offset: This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0.
+        :type Offset: int
+        :param Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 0, indicating not to paginate.
+        :type Limit: int
+        :param TagFilters: Tag filter condition
+        :type TagFilters: list of TagFilter
         """
         self.KeyStatus = None
+        self.Offset = None
+        self.Limit = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
         self.KeyStatus = params.get("KeyStatus")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
 
 
 class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
@@ -677,10 +762,14 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
         """
         :param KeyInfos: White-box key information list
         :type KeyInfos: list of WhiteboxKeyInfo
+        :param TotalCount: Total number of keys
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.KeyInfos = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -691,6 +780,7 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
                 obj = WhiteboxKeyInfo()
                 obj._deserialize(item)
                 self.KeyInfos.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1461,6 +1551,34 @@ class GetPublicKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetRegionsRequest(AbstractModel):
+    """GetRegions request structure.
+
+    """
+
+
+class GetRegionsResponse(AbstractModel):
+    """GetRegions response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Regions: The list of supported regions
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Regions: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Regions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Regions = params.get("Regions")
+        self.RequestId = params.get("RequestId")
+
+
 class GetServiceStatusRequest(AbstractModel):
     """GetServiceStatus request structure.
 
@@ -1570,7 +1688,7 @@ class KeyMetadata(AbstractModel):
         :type CreateTime: int
         :param Description: 
         :type Description: str
-        :param KeyState: CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport.
+        :param KeyState: CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport, Archived.
         :type KeyState: str
         :param KeyUsage: CMK purpose. Valid values: ENCRYPT_DECRYPT, ASYMMETRIC_DECRYPT_RSA_2048, ASYMMETRIC_DECRYPT_SM2
         :type KeyUsage: str
@@ -1686,7 +1804,7 @@ class ListKeyDetailRequest(AbstractModel):
         :type Role: int
         :param OrderType: 
         :type OrderType: int
-        :param KeyState: Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only.
+        :param KeyState: Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only.
         :type KeyState: int
         :param SearchKeyAlias: 
         :type SearchKeyAlias: str
@@ -1694,6 +1812,8 @@ class ListKeyDetailRequest(AbstractModel):
         :type Origin: str
         :param KeyUsage: Filter by `KeyUsage` of CMKs. Valid values: `ALL` (filter all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`.
         :type KeyUsage: str
+        :param TagFilters: Tag filter condition
+        :type TagFilters: list of TagFilter
         """
         self.Offset = None
         self.Limit = None
@@ -1703,6 +1823,7 @@ class ListKeyDetailRequest(AbstractModel):
         self.SearchKeyAlias = None
         self.Origin = None
         self.KeyUsage = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
@@ -1714,6 +1835,12 @@ class ListKeyDetailRequest(AbstractModel):
         self.SearchKeyAlias = params.get("SearchKeyAlias")
         self.Origin = params.get("Origin")
         self.KeyUsage = params.get("KeyUsage")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
 
 
 class ListKeyDetailResponse(AbstractModel):
@@ -1974,6 +2101,27 @@ class Tag(AbstractModel):
         self.TagValue = params.get("TagValue")
 
 
+class TagFilter(AbstractModel):
+    """Tag filter
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class UnbindCloudResourceRequest(AbstractModel):
     """UnbindCloudResource request structure.
 
@@ -2093,34 +2241,37 @@ class UpdateKeyDescriptionResponse(AbstractModel):
 
 
 class WhiteboxKeyInfo(AbstractModel):
-    """White-box key information
+    """
 
     """
 
     def __init__(self):
         """
-        :param KeyId: Globally unique white-box key ID
+        :param KeyId: 
         :type KeyId: str
-        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter should be 1 to 60 letters, digits, `-`, and `_`; it must begin with a letter or digit and cannot be left empty.
+        :param Alias: 
         :type Alias: str
-        :param CreatorUin: Creator
+        :param CreatorUin: 
         :type CreatorUin: int
-        :param Description: Key description information
+        :param Description: 
         :type Description: str
-        :param CreateTime: Key creation time in Unix timestamp
+        :param CreateTime: 
         :type CreateTime: int
-        :param Status: White-box key status. Valid values: Enabled, Disabled
+        :param Status: 
         :type Status: str
-        :param OwnerUin: Creator
+        :param OwnerUin: 
         :type OwnerUin: int
-        :param Algorithm: Key algorithm type
+        :param Algorithm: 
         :type Algorithm: str
-        :param EncryptKey: Base64-encoded white-box encryption key
+        :param EncryptKey: 
         :type EncryptKey: str
-        :param DecryptKey: Base64-encoded white-box decryption key
+        :param DecryptKey: 
         :type DecryptKey: str
-        :param ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$keyId`.
+        :param ResourceId: 
         :type ResourceId: str
+        :param DeviceFingerprintBind: Whether there is a device fingerprint bound to the current key
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DeviceFingerprintBind: bool
         """
         self.KeyId = None
         self.Alias = None
@@ -2133,6 +2284,7 @@ class WhiteboxKeyInfo(AbstractModel):
         self.EncryptKey = None
         self.DecryptKey = None
         self.ResourceId = None
+        self.DeviceFingerprintBind = None
 
 
     def _deserialize(self, params):
@@ -2147,3 +2299,4 @@ class WhiteboxKeyInfo(AbstractModel):
         self.EncryptKey = params.get("EncryptKey")
         self.DecryptKey = params.get("DecryptKey")
         self.ResourceId = params.get("ResourceId")
+        self.DeviceFingerprintBind = params.get("DeviceFingerprintBind")

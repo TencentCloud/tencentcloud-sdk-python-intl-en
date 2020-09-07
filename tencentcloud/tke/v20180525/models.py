@@ -236,8 +236,14 @@ class ClusterAdvancedSettings(AbstractModel):
         :type IsNonStaticIpMode: bool
         :param DeletionProtection: 
         :type DeletionProtection: bool
-        :param KubeProxyMode: Cluster network proxy model
+        :param KubeProxyMode: 
         :type KubeProxyMode: str
+        :param AuditEnabled: Indicates whether to enable auditing
+        :type AuditEnabled: bool
+        :param AuditLogsetId: Specifies the ID of logset to which the audit logs are uploaded.
+        :type AuditLogsetId: str
+        :param AuditLogTopicId: Specifies the ID of topic to which the audit logs are uploaded.
+        :type AuditLogTopicId: str
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -248,6 +254,9 @@ class ClusterAdvancedSettings(AbstractModel):
         self.IsNonStaticIpMode = None
         self.DeletionProtection = None
         self.KubeProxyMode = None
+        self.AuditEnabled = None
+        self.AuditLogsetId = None
+        self.AuditLogTopicId = None
 
 
     def _deserialize(self, params):
@@ -262,6 +271,9 @@ class ClusterAdvancedSettings(AbstractModel):
         self.IsNonStaticIpMode = params.get("IsNonStaticIpMode")
         self.DeletionProtection = params.get("DeletionProtection")
         self.KubeProxyMode = params.get("KubeProxyMode")
+        self.AuditEnabled = params.get("AuditEnabled")
+        self.AuditLogsetId = params.get("AuditLogsetId")
+        self.AuditLogTopicId = params.get("AuditLogTopicId")
 
 
 class ClusterAsGroup(AbstractModel):
@@ -505,14 +517,14 @@ class ClusterCIDRSettings(AbstractModel):
 
 
 class ClusterExtraArgs(AbstractModel):
-    """Cluster primary custom parameter
+    """Cluster master custom parameter
 
     """
 
     def __init__(self):
         """
-        :param KubeAPIServer: kube-apiserver custom parameter
-Note: this field may return null, indicating that no valid value is obtained.
+        :param KubeAPIServer: kube-apiserver custom parameter, in the format of ["k1=v1", "k1=v2"], for example: ["max-requests-inflight=500","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"].
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type KubeAPIServer: list of str
         :param KubeControllerManager: kube-controller-manager custom parameter
 Note: this field may return null, indicating that no valid value is obtained.
@@ -582,9 +594,9 @@ class CreateClusterAsGroupRequest(AbstractModel):
         """
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param AutoScalingGroupPara: The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry.
+        :param AutoScalingGroupPara: The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20440?from_cn_redirect=1) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry.
         :type AutoScalingGroupPara: str
-        :param LaunchConfigurePara: The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**.
+        :param LaunchConfigurePara: The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://intl.cloud.tencent.com/document/api/377/20447?from_cn_redirect=1) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**.
         :type LaunchConfigurePara: str
         :param InstanceAdvancedSettings: Advanced configuration information of the node
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
@@ -731,7 +743,7 @@ class CreateClusterInstancesRequest(AbstractModel):
         """
         :param ClusterId: Cluster ID. Enter the ClusterId field returned by the DescribeClusters API
         :type ClusterId: str
-        :param RunInstancePara: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the [RunInstances](https://cloud.tencent.com/document/product/213/15730) API.
+        :param RunInstancePara: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.
         :type RunInstancePara: str
         :param InstanceAdvancedSettings: Additional parameter to be set for the instance
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
@@ -781,7 +793,7 @@ class CreateClusterRequest(AbstractModel):
         :type ClusterCIDRSettings: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`
         :param ClusterType: Cluster type. Managed cluster: MANAGED_CLUSTER; self-deployed cluster: INDEPENDENT_CLUSTER.
         :type ClusterType: str
-        :param RunInstancesForNode: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://cloud.tencent.com/document/product/213/15730).
+        :param RunInstancesForNode: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1).
         :type RunInstancesForNode: list of RunInstancesForNode
         :param ClusterBasicSettings: Basic configuration information of the cluster
         :type ClusterBasicSettings: :class:`tencentcloud.tke.v20180525.models.ClusterBasicSettings`
@@ -950,7 +962,7 @@ class DeleteClusterAsGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: The cluster ID, obtained through the [DescribeClusters](https://cloud.tencent.com/document/api/457/31862) API.
+        :param ClusterId: The cluster ID, obtained through the [DescribeClusters](https://intl.cloud.tencent.com/document/api/457/31862?from_cn_redirect=1) API.
         :type ClusterId: str
         :param AutoScalingGroupIds: Cluster scaling group ID list
         :type AutoScalingGroupIds: list of str
@@ -1290,9 +1302,9 @@ class DescribeClusterAsGroupsRequest(AbstractModel):
         :type ClusterId: str
         :param AutoScalingGroupIds: Scaling group ID list. If this value is null, it indicates that all cluster-associated scaling groups are pulled.
         :type AutoScalingGroupIds: list of str
-        :param Offset: Offset. This value defaults to 0. For more information on Offset, see the relevant sections in API [Overview](https://cloud.tencent.com/document/api/213/15688).
+        :param Offset: Offset. This value defaults to 0. For more information on Offset, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
-        :param Limit: Number of returned results. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant sections in API [Overview](https://cloud.tencent.com/document/api/213/15688).
+        :param Limit: Number of returned results. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
         """
         self.ClusterId = None
@@ -1530,12 +1542,21 @@ class DescribeClusterRoutesRequest(AbstractModel):
         """
         :param RouteTableName: Route table name.
         :type RouteTableName: str
+        :param Filters: Filtering conditions, which are optional. Currently, only filtering by GatewayIP is supported.
+        :type Filters: list of Filter
         """
         self.RouteTableName = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.RouteTableName = params.get("RouteTableName")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeClusterRoutesResponse(AbstractModel):
@@ -1717,15 +1738,15 @@ class DescribeExistedInstancesRequest(AbstractModel):
         :type ClusterId: str
         :param InstanceIds: Query by one or more instance ID(s). Instance ID format: ins-xxxxxxxx. (Refer to section ID.N of the API overview for this parameter's specific format.) Up to 100 instances are allowed for each request. You cannot specify InstanceIds and Filters at the same time.
         :type InstanceIds: list of str
-        :param Filters: Filter condition. For fields and other information, see [the DescribeInstances API](https://cloud.tencent.com/document/api/213/15728). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a "vpc-id" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID.
+        :param Filters: Filter condition. For fields and other information, see [the DescribeInstances API](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a "vpc-id" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID.
         :type Filters: list of Filter
         :param VagueIpAddress: Filter by instance IP (Supports both private and public IPs)
         :type VagueIpAddress: str
         :param VagueInstanceName: Filter by instance name
         :type VagueInstanceName: str
-        :param Offset: Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://cloud.tencent.com/document/api/213/15688).
+        :param Offset: Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://cloud.tencent.com/document/api/213/15688).
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
         """
         self.ClusterId = None
@@ -2095,7 +2116,7 @@ class Filter(AbstractModel):
     > * If there are multiple `Filter` parameters, they are evaluated using the logical `AND` operator.
     > * If a `Filter` contains multiple `Values`, they are evaluated using the logical `OR` operator.
     >
-    > Take [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) as an example. You can use the following filters to query the instances in availability zone (`zone`) Guangzhou Zone 1 ***and*** whose billing plan (`instance-charge-type`) is pay-as-you-go:
+    > Take [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) as an example. You can use the following filters to query the instances in availability zone (`zone`) Guangzhou Zone 1 ***and*** whose billing plan (`instance-charge-type`) is pay-as-you-go:
     ```
     Filters.0.Name=zone
     &Filters.0.Values.0=ap-guangzhou-1
@@ -2310,8 +2331,8 @@ class InstanceExtraArgs(AbstractModel):
 
     def __init__(self):
         """
-        :param Kubelet: Kubelet custom parameter
-Note: this field may return null, indicating that no valid value is obtained.
+        :param Kubelet: Kubelet custom parameter, in the format of ["k1=v1", "k1=v2"], for example: ["root-dir=/var/lib/kubelet","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"].
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type Kubelet: list of str
         """
         self.Kubelet = None
@@ -2352,7 +2373,7 @@ class LoginSettings(AbstractModel):
         :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-30 characters long and contain at least two of the following types: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-30 characters long and contain at least three of the following categories: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
 Note: this field may return null, indicating that no valid value is obtained.
         :type Password: str
-        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://cloud.tencent.com/document/api/213/15699) to obtain `KeyId`. A key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
+        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. A key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
 Note: this field may return null, indicating that no valid value is obtained.
         :type KeyIds: list of str
         :param KeepImageLogin: Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.
@@ -2664,7 +2685,7 @@ class RunInstancesForNode(AbstractModel):
         """
         :param NodeRole: Node role. Values: MASTER_ETCD, WORKER. You only need to specify MASTER_ETCD when creating a self-deployed cluster (INDEPENDENT_CLUSTER).
         :type NodeRole: str
-        :param RunInstancesPara: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://cloud.tencent.com/document/product/213/15730). Pass any parameter other than common parameters. ImageId will be replaced with the image corresponding to the TKE cluster operating system.
+        :param RunInstancesPara: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1). Pass any parameter other than common parameters. ImageId will be replaced with the image corresponding to the TKE cluster operating system.
         :type RunInstancesPara: list of str
         :param InstanceAdvancedSettingsOverrides: An advanced node setting. This parameter overrides the InstanceAdvancedSettings item set at the cluster level and corresponds to RunInstancesPara in a one-to-one sequential manner (currently valid for the ExtraArgs node custom parameter only).
         :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
@@ -2692,7 +2713,7 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: Whether to enable [Cloud Monitor](/document/product/248). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.
+        :param Enabled: Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.
         :type Enabled: bool
         """
         self.Enabled = None
@@ -2709,7 +2730,7 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: Whether to enable [Cloud Security](/document/product/296). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
+        :param Enabled: Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
         :type Enabled: bool
         """
         self.Enabled = None
