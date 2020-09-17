@@ -1588,6 +1588,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type SearchKeys: list of str
         :param TypeList: Internal parameter, which can be ignored
         :type TypeList: list of int
+        :param MonitorVersion: Internal parameter, which can be ignored
+        :type MonitorVersion: str
         """
         self.Limit = None
         self.Offset = None
@@ -1610,6 +1612,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.Type = None
         self.SearchKeys = None
         self.TypeList = None
+        self.MonitorVersion = None
 
 
     def _deserialize(self, params):
@@ -1634,6 +1637,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.Type = params.get("Type")
         self.SearchKeys = params.get("SearchKeys")
         self.TypeList = params.get("TypeList")
+        self.MonitorVersion = params.get("MonitorVersion")
 
 
 class DescribeInstancesResponse(AbstractModel):
@@ -2780,6 +2784,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RemainBandwidthDuration: Internal parameter, which can be ignored
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RemainBandwidthDuration: str
+        :param DiskSize: Disk size of the Tendis instance
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: int
+        :param MonitorVersion: Monitoring granularity type. Valid values: 1m (monitoring at 1-minute granularity), 5s (monitoring at 5-second granularity)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MonitorVersion: str
         """
         self.InstanceName = None
         self.InstanceId = None
@@ -2824,6 +2834,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ReadOnly = None
         self.Vip6 = None
         self.RemainBandwidthDuration = None
+        self.DiskSize = None
+        self.MonitorVersion = None
 
 
     def _deserialize(self, params):
@@ -2880,6 +2892,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ReadOnly = params.get("ReadOnly")
         self.Vip6 = params.get("Vip6")
         self.RemainBandwidthDuration = params.get("RemainBandwidthDuration")
+        self.DiskSize = params.get("DiskSize")
+        self.MonitorVersion = params.get("MonitorVersion")
 
 
 class InstanceSlowlogDetail(AbstractModel):

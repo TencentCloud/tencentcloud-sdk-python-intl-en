@@ -94,8 +94,8 @@ class Coord(AbstractModel):
         self.Y = params.get("Y")
 
 
-class GeneralBasicOCRRequest(AbstractModel):
-    """GeneralBasicOCR request structure.
+class GeneralAccurateOCRRequest(AbstractModel):
+    """GeneralAccurateOCR request structure.
 
     """
 
@@ -107,26 +107,92 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are pr
         :type ImageBase64: str
         :param ImageUrl: URL address of image.
 The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class GeneralAccurateOCRResponse(AbstractModel):
+    """GeneralAccurateOCR response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TextDetections: Information of recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
+        :type TextDetections: list of TextDetection
+        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation.
+        :type Angel: float
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TextDetections = None
+        self.Angel = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TextDetections") is not None:
+            self.TextDetections = []
+            for item in params.get("TextDetections"):
+                obj = TextDetection()
+                obj._deserialize(item)
+                self.TextDetections.append(obj)
+        self.Angel = params.get("Angel")
+        self.RequestId = params.get("RequestId")
+
+
+class GeneralBasicOCRRequest(AbstractModel):
+    """GeneralBasicOCR request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: Base64-encoded value of image/PDF.
+The image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
+Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
+        :type ImageBase64: str
+        :param ImageUrl: URL address of image/PDF.
+The image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
         :param Scene: Reserved field.
         :type Scene: str
         :param LanguageType: Language to be recognized.
 The language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.
 Valid values:
-zh\auto\jap\kor\nspa\fre\ger\por\nvie\may\rus\ita\nhol\swe\fin\dan\nnor\hun\tha\lat
+zh\auto\jap\kor\
+spa\fre\ger\por\
+vie\may\rus\ita\
+hol\swe\fin\dan\
+nor\hun\tha\lat\ara
 Value meanings:
 Chinese-English mix, automatic recognition, Japanese, Korean,
 Spanish, French, German, Portuguese,
 Vietnamese, Malay, Russian, Italian,
 Dutch, Swedish, Finnish, Danish,
-Norwegian, Hungarian, Thai, Latin.
+Norwegian, Hungarian, Thai, Latin,
+Arabic.
         :type LanguageType: str
+        :param IsPdf: Whether to enable PDF recognition. Default value: false. After this feature is enabled, both images and PDF files can be recognized at the same time.
+        :type IsPdf: bool
+        :param PdfPageNumber: Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1.
+        :type PdfPageNumber: int
         """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.Scene = None
         self.LanguageType = None
+        self.IsPdf = None
+        self.PdfPageNumber = None
 
 
     def _deserialize(self, params):
@@ -134,6 +200,8 @@ Norwegian, Hungarian, Thai, Latin.
         self.ImageUrl = params.get("ImageUrl")
         self.Scene = params.get("Scene")
         self.LanguageType = params.get("LanguageType")
+        self.IsPdf = params.get("IsPdf")
+        self.PdfPageNumber = params.get("PdfPageNumber")
 
 
 class GeneralBasicOCRResponse(AbstractModel):
@@ -147,14 +215,17 @@ class GeneralBasicOCRResponse(AbstractModel):
         :type TextDetections: list of TextDetection
         :param Language: Detected language. For more information on the supported languages, please see the description of the `LanguageType` input parameter.
         :type Language: str
-        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation. For more information, please see <a href="https://cloud.tencent.com/document/product/866/45139">How to Correct Tilted Text</a>
+        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation. For more information, please see <a href="https://intl.cloud.tencent.com/document/product/866/45139?from_cn_redirect=1">How to Correct Tilted Text</a>
         :type Angel: float
+        :param PdfPageSize: Total number of PDF pages to be returned if the image is a PDF. Default value: 0
+        :type PdfPageSize: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TextDetections = None
         self.Language = None
         self.Angel = None
+        self.PdfPageSize = None
         self.RequestId = None
 
 
@@ -167,6 +238,7 @@ class GeneralBasicOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Language = params.get("Language")
         self.Angel = params.get("Angel")
+        self.PdfPageSize = params.get("PdfPageSize")
         self.RequestId = params.get("RequestId")
 
 
@@ -386,6 +458,8 @@ MyKAS: Malaysian Temporary Resident Identity Card
 POLIS: Royal Malaysia Police Identity Card
 IKAD: Malaysia Temporary Employment Visit Pass
         :type Type: str
+        :param Birthday: Date of birth (currently, this field is only supported for IKAD)
+        :type Birthday: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -397,6 +471,7 @@ IKAD: Malaysia Temporary Employment Visit Pass
         self.Image = None
         self.AdvancedInfo = None
         self.Type = None
+        self.Birthday = None
         self.RequestId = None
 
 
@@ -409,6 +484,7 @@ IKAD: Malaysia Temporary Employment Visit Pass
         self.Image = params.get("Image")
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.Type = params.get("Type")
+        self.Birthday = params.get("Birthday")
         self.RequestId = params.get("RequestId")
 
 
@@ -419,10 +495,9 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageBase64: Base64-encoded value of the image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution of 500x800 or above is recommended. Supported formats include PNG, JPG, JPEG, and BMP. It is recommended that the card part occupies more than 2/3 of the image.
-Either the `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
+        :param ImageBase64: Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.
         :type ImageBase64: str
-        :param RetImage: Whether to return an image
+        :param RetImage: Whether to return an image. Default value: false
         :type RetImage: bool
         """
         self.ImageBase64 = None
@@ -502,6 +577,64 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class TableOCRRequest(AbstractModel):
+    """TableOCR request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: Base64-encoded value of image.
+Supported image formats: PNG, JPG, JPEG. GIF is not supported at present.
+Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
+Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
+        :type ImageBase64: str
+        :param ImageUrl: URL address of image.
+Supported image formats: PNG, JPG, JPEG. GIF is not supported at present.
+Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
+You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
+The download speed and stability of non-Tencent Cloud URLs may be low.
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class TableOCRResponse(AbstractModel):
+    """TableOCR response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TextDetections: Recognized text. For more information, please click the link on the left.
+        :type TextDetections: list of TextTable
+        :param Data: Base64-encoded Excel data.
+        :type Data: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TextDetections = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TextDetections") is not None:
+            self.TextDetections = []
+            for item in params.get("TextDetections"):
+                obj = TextTable()
+                obj._deserialize(item)
+                self.TextDetections.append(obj)
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class TextDetection(AbstractModel):
     """OCR result
 
@@ -542,3 +675,57 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
         if params.get("ItemPolygon") is not None:
             self.ItemPolygon = ItemCoord()
             self.ItemPolygon._deserialize(params.get("ItemPolygon"))
+
+
+class TextTable(AbstractModel):
+    """Form recognition result.
+
+    """
+
+    def __init__(self):
+        """
+        :param ColTl: Column index of the top-left corner of the cell
+        :type ColTl: int
+        :param RowTl: Row index of the top-left corner of the cell
+        :type RowTl: int
+        :param ColBr: Column index of the bottom-right corner of the cell
+        :type ColBr: int
+        :param RowBr: Row index of the bottom-right corner of the cell
+        :type RowBr: int
+        :param Text: Cell text
+        :type Text: str
+        :param Type: Cell type. Valid values: body, header, footer
+        :type Type: str
+        :param Confidence: Confidence. Value range: 0–100
+        :type Confidence: int
+        :param Polygon: Text line coordinates, which are represented as 4 vertex coordinates
+        :type Polygon: list of Coord
+        :param AdvancedInfo: Extended field
+        :type AdvancedInfo: str
+        """
+        self.ColTl = None
+        self.RowTl = None
+        self.ColBr = None
+        self.RowBr = None
+        self.Text = None
+        self.Type = None
+        self.Confidence = None
+        self.Polygon = None
+        self.AdvancedInfo = None
+
+
+    def _deserialize(self, params):
+        self.ColTl = params.get("ColTl")
+        self.RowTl = params.get("RowTl")
+        self.ColBr = params.get("ColBr")
+        self.RowBr = params.get("RowBr")
+        self.Text = params.get("Text")
+        self.Type = params.get("Type")
+        self.Confidence = params.get("Confidence")
+        if params.get("Polygon") is not None:
+            self.Polygon = []
+            for item in params.get("Polygon"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.Polygon.append(obj)
+        self.AdvancedInfo = params.get("AdvancedInfo")

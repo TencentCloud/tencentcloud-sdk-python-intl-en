@@ -298,7 +298,7 @@ class CreateClusterRequest(AbstractModel):
         :type SubnetId: str
         :param Password: Cluster access password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).
         :type Password: str
-        :param ResourceTags: 
+        :param ResourceTags: Cluster tag list
         :type ResourceTags: list of TagInfoUnit
         :param Ipv6Enable: Whether to enable IPv6 address access for clusters
         :type Ipv6Enable: int
@@ -361,7 +361,7 @@ class CreateTableGroupRequest(AbstractModel):
         :type TableGroupName: str
         :param TableGroupId: Table group ID, which can be customized but must be unique in one cluster. If it is not specified, the auto-increment mode will be used.
         :type TableGroupId: str
-        :param ResourceTags: 
+        :param ResourceTags: Table group tag list
         :type ResourceTags: list of TagInfoUnit
         """
         self.ClusterId = None
@@ -416,7 +416,7 @@ class CreateTablesRequest(AbstractModel):
         :type IdlFiles: list of IdlFileInfo
         :param SelectedTables: Information list of tables to be created
         :type SelectedTables: list of SelectedTableInfoNew
-        :param ResourceTags: 
+        :param ResourceTags: Table tag list
         :type ResourceTags: list of TagInfoUnit
         """
         self.ClusterId = None
@@ -2362,7 +2362,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SortRule: Sort order of SORTLIST-type tables
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SortRule: int
-        :param DbClusterInfoStruct: 
+        :param DbClusterInfoStruct: Distributed index information of table
         :type DbClusterInfoStruct: str
         """
         self.TableName = None

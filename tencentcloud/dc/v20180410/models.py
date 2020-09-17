@@ -51,23 +51,23 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
 
 
 class AccessPoint(AbstractModel):
-    """
+    """Access point information.
 
     """
 
     def __init__(self):
         """
-        :param AccessPointName: 
+        :param AccessPointName: Access point name.
         :type AccessPointName: str
-        :param AccessPointId: 
+        :param AccessPointId: Unique ID of access point.
         :type AccessPointId: str
-        :param State: 
+        :param State: Access point status. Valid values: available, unavailable.
         :type State: str
-        :param Location: 
+        :param Location: Access point location.
         :type Location: str
-        :param LineOperator: 
+        :param LineOperator: Supported ISP list of access pint.
         :type LineOperator: list of str
-        :param RegionId: 
+        :param RegionId: Region ID where the access point resides.
         :type RegionId: str
         :param AvailablePortType: Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.
 Note: this field may return `null`, indicating that no valid value is obtained.
@@ -669,7 +669,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ChargeState: Billing status
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ChargeState: str
-        :param StartTime: 
+        :param StartTime: Connection activation time.
         :type StartTime: str
         :param SignLaw: Whether the connection has the service agreement signed.
 Note: this field may return `null`, indicating that no valid value is obtained.
@@ -820,7 +820,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param VpcName: VPC name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VpcName: str
-        :param TencentBackupAddress: 
+        :param TencentBackupAddress: Backup IP address on the Tencent side.
         :type TencentBackupAddress: str
         :param SignLaw: Whether the connection associated with the dedicated tunnel has the service agreement signed.
 Note: this field may return `null`, indicating that no valid value is obtained.

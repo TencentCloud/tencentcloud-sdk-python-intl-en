@@ -473,6 +473,36 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AuditCrossBorderCompliance(self, request):
+        """This API is used by the service provider to perform a compliance audit.
+        * To call this API, the service provider needs to prove identity and provide `APPID` to audit the compliance review forms received.
+        * The review form can be changed between the `APPROVED` and `DENY` status.
+
+        :param request: Request instance for AuditCrossBorderCompliance.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AuditCrossBorderComplianceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AuditCrossBorderComplianceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AuditCrossBorderCompliance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AuditCrossBorderComplianceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckAssistantCidr(self, request):
         """This API (CheckAssistantCidr) is used to check overlapping of a secondary CIDR block with inventory routing, peering connection (opposite VPC CIDR block), and any other resources. If an overlap is present, the overlapped resources are returned. (To use this API that is in Beta, please submit a ticket.)
         * Check whether the secondary CIDR block overlaps with a primary or secondary CIDR block of the current VPC.
@@ -2452,6 +2482,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassicLinkInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCrossBorderCompliance(self, request):
+        """This API is used to query the compliance review form created.
+        The service provider can query all review forms created by any `APPID` under the service. Other users can only query their own review forms.
+
+        :param request: Request instance for DescribeCrossBorderCompliance.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCrossBorderComplianceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCrossBorderComplianceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCrossBorderCompliance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCrossBorderComplianceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

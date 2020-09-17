@@ -1053,17 +1053,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Hsts(AbstractModel):
-    """
+    """HSTS configuration.
 
     """
 
     def __init__(self):
         """
-        :param Switch: 
+        :param Switch: Whether to enable. Valid values: on, off.
         :type Switch: str
-        :param MaxAge: 
+        :param MaxAge: `MaxAge` value.
         :type MaxAge: int
-        :param IncludeSubDomains: 
+        :param IncludeSubDomains: Whether to include subdomain names. Valid values: on, off.
         :type IncludeSubDomains: str
         """
         self.Switch = None
@@ -1147,7 +1147,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SslStatus: HTTPS certificate deployment status. Valid values: closed (disabled), deploying (deploying), deployed (deployment succeeded), failed (deployment failed). This parameter cannot be used as an input parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SslStatus: str
-        :param Hsts: 
+        :param Hsts: Hsts configuration.
         :type Hsts: :class:`tencentcloud.ecdn.v20191012.models.Hsts`
         """
         self.Switch = None

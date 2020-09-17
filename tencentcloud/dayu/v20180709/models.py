@@ -2755,6 +2755,8 @@ class DescribeCCTrendRequest(AbstractModel):
         :type EndTime: str
         :param Id: Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)
         :type Id: str
+        :param Domain: (Optional) Domain name
+        :type Domain: str
         """
         self.Business = None
         self.Ip = None
@@ -2763,6 +2765,7 @@ class DescribeCCTrendRequest(AbstractModel):
         self.StartTime = None
         self.EndTime = None
         self.Id = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -2773,6 +2776,7 @@ class DescribeCCTrendRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Id = params.get("Id")
+        self.Domain = params.get("Domain")
 
 
 class DescribeCCTrendResponse(AbstractModel):
@@ -4139,7 +4143,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type StartTime: str
         :param EndTime: Statistics end time
         :type EndTime: str
-        :param Data: Value array
+        :param Data: Value array. The unit for attack traffic bandwidth is Mbps, and that for the packet rate is pps.
         :type Data: list of int non-negative
         :param Count: Number of values
         :type Count: int
@@ -5822,7 +5826,7 @@ class L7RuleEntry(AbstractModel):
         :type CCThreshold: int
         :param CCLevel: HTTPS CC protection level
         :type CCLevel: str
-        :param HttpsToHttpEnable: 
+        :param HttpsToHttpEnable: Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). The default value is disabled.
         :type HttpsToHttpEnable: int
         :param VirtualPort: Access port number.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -6430,7 +6434,7 @@ Required if `Protocol` is `https`;
         :type BasicIpInstance: str
         :param BasicIspCode: ISP line (only provided for Anti-DDoS Basic), which is optional. (If the device type to be queried is a NAT server, this parameter should be 5)
         :type BasicIspCode: int
-        :param Domain: 
+        :param Domain: This optional field must be specified when HTTPS protocol is used.
         :type Domain: str
         """
         self.Business = None

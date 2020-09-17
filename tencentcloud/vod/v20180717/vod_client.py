@@ -1220,6 +1220,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCdnLogs(self, request):
+        """This API is used to query the download links of CDN access logs of a VOD domain name.
+            1. Only download links of CDN logs for the last 30 days can be queried.
+            2. By default, CDN generates a log file every hour. If there is no CDN access for a certain hour, no log file will be generated for the hour.
+            3. A CDN log download link is valid for 24 hours.
+
+        :param request: Request instance for DescribeCdnLogs.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCdnLogsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCdnLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCdnLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCdnLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeContentReviewTemplates(self, request):
         """This API is used to get the list of video content audit templates based on unique template ID. The return result includes all eligible custom and [preset video content audit templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF).
 
@@ -2620,15 +2651,35 @@ class VodClient(AbstractClient):
 
     def SearchMedia(self, request):
         """This API is used to search for media information and supports filtering and sorting the returned results in many ways. It can:
-        - Fuzzily search by media file name or description.
-        - Retrieve media files by category and tag.
-            - Specify the `ClassIds` category set (please see the input parameters) and return the media files in any category in the set. For example, assuming that there are categories of Movies, TV Series, and Variety Shows, and there are subcategories of History, Action, and Romance in the category of Movies, if Movies and TV Series are specified in `ClassIds`, then all the subcategories under Movies and TV Series will be returned; however, if History and Action are specified in `ClassIds`, only the media files in those two subcategories will be returned.
-            - Specify the `Tags` tag set (please see the input parameters) and return the media files with any tag in the set. For example, assuming that there are tags of ACG, Drama, and YTPMV, if ACG and YTPMV are specified in Tags, then any media files with either tag will be retrieved.
-        - Filter media files from a specified source (`Source`) (please see the input parameters).
-        - Filter LVB recording media files by LVB push code and `Vid` (please see the input parameters).
-        - Filter media files by the creation time range.
-        - Mix and match any filters above to retrieve the media files that meet all the specified criteria. For example, you can filter the media files with the tag of "Drama" in the category of "Movies" created between December 1, 2018 and December 8, 2018.
-        - Sort the results and return them in multiple pages by specifying `Offset` and `Limit` (please see the input parameters).
+        - Fuzzily search by multiple media filenames `Names` or multiple descriptions `Descriptions`.
+        - Search by multiple filename prefixes (`NamePrefixes`).
+        - Specify the category set `ClassIds` (please see the input parameters) and return the media files in any category in the set. For example, assuming that there are categories of Movies, TV Series, and Variety Shows, and there are subcategories of History, Action, and Romance in the category of Movies, if Movies and TV Series are specified in `ClassIds`, then all the subcategories under Movies and TV Series will be returned; however, if History and Action are specified in `ClassIds`, only the media files in those two subcategories will be returned.
+        - Specify the tag set `Tags` (please see the input parameters) and return the media files with any tag in the set. For example, assuming that there are tags of ACG, Drama, and YTPMV, if ACG and YTPMV are specified in `Tags`, then any media files with either tag will be retrieved.
+        - Specify the source set `SourceTypes` (please see the input parameters) and return the media files from any source in the set. For example, assuming that there are `Record` (LVB recording) and `Upload` (upload) sources, if `Record` and `Upload` are specified in `SourceTypes`, then any media files from those sources will be retrieved.
+        - Specify the creation time range to filter media files.
+        - Specify the file type set `Categories` (please see the input parameters) and return the media files in any type in the set. For example, assuming that there are `Video`, `Audio`, and `Image` file types, if `Video` and `Audio` are specified in `Categories`, then any media files in those types will be retrieved.
+        - Specify the file ID set `FileIds` and return the media files with any ID in the set.
+        - Specify the stream ID set `StreamIds` (please see the input parameters) to filter LVB recording media files.
+        - Specify the video ID set `Vids` (please see the input parameters) to filter LVB recording media files.
+        - Specify a single text string `Text` to fuzzily search for media filenames or descriptions (this is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead).
+        - Specify a single stream ID `StreamId` for search (this is not recommended. `StreamIds` should be used instead).
+        - Specify a single video ID `Vid` for search (this is not recommended. `Vids` should be used instead).
+        - Specify a single creation start time `StartTime` for search (this is not recommended. `CreateTime` should be used instead).
+        - Specify a single creation end time `EndTime` for search (this is not recommended. `CreateTime` should be used instead).
+        - Specify a single media file source `SourceType` for search (this is not recommended. `SourceTypes` should be used instead).
+
+        - Mix and match any parameters above for search. For example, you can filter the media files with the tags of "Drama" and "Suspense" in the category of "Movies" or "TV Series" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Please note that for any parameter that supports array input, the search logic between its elements is "OR", while the logical relationship between all parameters is "AND".
+        - Sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit` (please see the input parameters).
+        - Control the returned types of media information through `Filters` (all types will be returned by default). Valid values include:
+            1. Basic information (basicInfo): media name, category, playback address, cover image, etc.
+            2. Metadata (metaData): size, duration, video stream information, audio stream information, etc.
+            3. Information of the transcoding result (transcodeInfo): addresses, video stream parameters, and audio stream parameters of the media files with various specifications generated by transcoding a media file.
+            4. Information of the animated image generating result (animatedGraphicsInfo): information of an animated image (such as .gif) generated from a video.
+            5. Information of a sampled screenshot (sampleSnapshotInfo): information of a sampled screenshot of a video.
+            6. Information of an image sprite (imageSpriteInfo): information of an image sprite generated from a video.
+            7. Information of a point-in-time screenshot (snapshotByTimeOffsetInfo): information of a point-in-time screenshot of a video.
+            8. Information of a timestamp (keyFrameDescInfo): information of a timestamp set for a video.
+            9. Information of adaptive bitrate streaming (adaptiveDynamicStreamingInfo): specification, encryption type, muxing format, etc.
 
         <div id="maxResultsDesc">Upper limit of returned results:</div>
         - The <b><a href="#p_offset">Offset</a> and <a href="#p_limit">Limit</a> parameters determine the number of search results on one single page. Note: if both of them use the default value, this API will return up to 10 results.</b>

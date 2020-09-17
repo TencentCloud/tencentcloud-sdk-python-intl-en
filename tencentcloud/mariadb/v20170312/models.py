@@ -393,7 +393,7 @@ class DBInstance(AbstractModel):
         :type UniqueSubnetId: str
         :param OriginSerialId: Original ID of instance (this field is obsolete and should not be depended on)
         :type OriginSerialId: str
-        :param NodeCount: Number of nodes. 2: one primary and one secondary, 3: one primary and two secondaries
+        :param NodeCount: Number of nodes. 2: one master and one slave, 3: one master and two slaves
         :type NodeCount: int
         :param IsTmp: Whether it is a temp instance. 0: no, non-zero value: yes
         :type IsTmp: int

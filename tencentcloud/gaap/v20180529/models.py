@@ -5947,7 +5947,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Protocol: Protocol type to be matched (TCP/UDP)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Protocol: str
-        :param PolicyId: 
+        :param PolicyId: Security policy ID
         :type PolicyId: str
         """
         self.Action = None

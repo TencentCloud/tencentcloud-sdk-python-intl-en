@@ -805,6 +805,24 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CbsEncrypt = params.get("CbsEncrypt")
 
 
+class HostVolumeContext(AbstractModel):
+    """Pod `HostPath` mounting method description
+
+    """
+
+    def __init__(self):
+        """
+        :param VolumePath: Directory in the pod for mounting the host, which is the mount point of resources for the host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VolumePath: str
+        """
+        self.VolumePath = None
+
+
+    def _deserialize(self, params):
+        self.VolumePath = params.get("VolumePath")
+
+
 class InquiryPriceCreateInstanceRequest(AbstractModel):
     """InquiryPriceCreateInstance request structure.
 
@@ -1329,7 +1347,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param WanIp: Public IP bound to master node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WanIp: str
-        :param Flag: Node type
+        :param Flag: Node type. 0: common node; 1: master node;
+2: core node; 3: task node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Flag: int
         :param Spec: Node specification
@@ -1422,7 +1441,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: Tags bound to node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param AutoFlag: 
+        :param AutoFlag: Wether the node is auto-scaling. 0 means common node. 1 means auto-scaling node.
         :type AutoFlag: int
         :param HardwareResourceType: Resource type. Valid values: host, pod
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -1577,6 +1596,29 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InstanceType = params.get("InstanceType")
 
 
+class PersistentVolumeContext(AbstractModel):
+    """Pod `PVC` storage method description
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskSize: Disk size in GB
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: int
+        :param DiskType: Disk type. Valid values: CLOUD_PREMIUM, CLOUD_SSD
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DiskType: str
+        """
+        self.DiskSize = None
+        self.DiskType = None
+
+
+    def _deserialize(self, params):
+        self.DiskSize = params.get("DiskSize")
+        self.DiskType = params.get("DiskType")
+
+
 class Placement(AbstractModel):
     """Location information of cluster instance
 
@@ -1615,8 +1657,12 @@ class PodSpec(AbstractModel):
         :type Cpu: int
         :param Memory: Memory size in GB.
         :type Memory: int
-        :param DataVolumes: Mount point of resource for host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod.
+        :param DataVolumes: Mount point of resource for host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)
         :type DataVolumes: list of str
+        :param CpuType: EKS cluster - CPU type. Valid values: "intel", "amd"
+        :type CpuType: str
+        :param PodVolumes: Pod node data directory mounting information.
+        :type PodVolumes: list of PodVolume
         """
         self.ResourceProviderIdentifier = None
         self.ResourceProviderType = None
@@ -1624,6 +1670,8 @@ class PodSpec(AbstractModel):
         self.Cpu = None
         self.Memory = None
         self.DataVolumes = None
+        self.CpuType = None
+        self.PodVolumes = None
 
 
     def _deserialize(self, params):
@@ -1633,6 +1681,45 @@ class PodSpec(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.Memory = params.get("Memory")
         self.DataVolumes = params.get("DataVolumes")
+        self.CpuType = params.get("CpuType")
+        if params.get("PodVolumes") is not None:
+            self.PodVolumes = []
+            for item in params.get("PodVolumes"):
+                obj = PodVolume()
+                obj._deserialize(item)
+                self.PodVolumes.append(obj)
+
+
+class PodVolume(AbstractModel):
+    """Pod storage device description.
+
+    """
+
+    def __init__(self):
+        """
+        :param VolumeType: Storage type. Valid values: "pvc", "hostpath".
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type VolumeType: str
+        :param PVCVolume: This field will take effect if `VolumeType` is `pvc`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PVCVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolumeContext`
+        :param HostVolume: This field will take effect if `VolumeType` is `hostpath`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type HostVolume: :class:`tencentcloud.emr.v20190103.models.HostVolumeContext`
+        """
+        self.VolumeType = None
+        self.PVCVolume = None
+        self.HostVolume = None
+
+
+    def _deserialize(self, params):
+        self.VolumeType = params.get("VolumeType")
+        if params.get("PVCVolume") is not None:
+            self.PVCVolume = PersistentVolumeContext()
+            self.PVCVolume._deserialize(params.get("PVCVolume"))
+        if params.get("HostVolume") is not None:
+            self.HostVolume = HostVolumeContext()
+            self.HostVolume._deserialize(params.get("HostVolume"))
 
 
 class PreExecuteFileSettings(AbstractModel):

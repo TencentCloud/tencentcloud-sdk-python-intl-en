@@ -523,13 +523,14 @@ class ClientIpPlaySumInfo(AbstractModel):
 
 
 class CommonMixControlParams(AbstractModel):
-    """
+    """General stream mix control parameter
 
     """
 
     def __init__(self):
         """
-        :param UseMixCropCenter: 
+        :param UseMixCropCenter: Value range: [0,1]. 
+If 1 is entered, when the layer resolution in the parameter is different from the actual video resolution, the video will be automatically cropped according to the resolution set by the layer.
         :type UseMixCropCenter: int
         :param AllowCopy: Value range: [0,1].
 If this parameter is set to 1, when both `InputStreamList` and `OutputParams.OutputStreamType` are set to 1, you can copy a stream instead of canceling it.

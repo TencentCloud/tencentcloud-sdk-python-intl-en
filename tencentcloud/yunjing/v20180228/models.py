@@ -1619,10 +1619,10 @@ class DescribeMachinesRequest(AbstractModel):
         :param Offset: Offset. Default value: 0.
         :type Offset: int
         :param Filters: Filter.
-<li>Keywords - String - Required: No - Query keywords</li>
-<li>Status - String - Required: No - Agent status (OFFLINE: offline, ONLINE: online)</li>
-<li>Version - String  Required: No - Current CWP edition (PRO_VERSION: Pro, BASIC_VERSION: Basic)</li>
-Each filter supports only one value. Query with multiple values in "OR" relationship is not supported for the time being
+<li>Keywords - String - Required: no - Query keywords </li>
+<li>Status - String - Required: no - CWP client status (valid values: OFFLINE, ONLINE, UNINSTALLED)</li>
+<li>Version - String - Required: no - Current CWP version (valid values: PRO_VERSION, BASIC_VERSION)</li>
+Each filter can have only one value but does not support "OR" queries with multiple values
         :type Filters: list of Filter
         """
         self.MachineType = None
@@ -2397,15 +2397,15 @@ class DescribeSecurityTrendsResponse(AbstractModel):
         :type Vuls: list of SecurityTrend
         :param BaseLines: Baseline statistics array.
         :type BaseLines: list of SecurityTrend
-        :param MaliciousRequests: 
+        :param MaliciousRequests: Statistics array of malicious requests.
         :type MaliciousRequests: list of SecurityTrend
-        :param HighRiskBashs: 
+        :param HighRiskBashs: Statistics array of high-risk commands.
         :type HighRiskBashs: list of SecurityTrend
-        :param ReverseShells: 
+        :param ReverseShells: Statistics array of reverse shells.
         :type ReverseShells: list of SecurityTrend
-        :param PrivilegeEscalations: 
+        :param PrivilegeEscalations: Statistics array of local privilege escalations.
         :type PrivilegeEscalations: list of SecurityTrend
-        :param CyberAttacks: 
+        :param CyberAttacks: Statistics array of network attacks.
         :type CyberAttacks: list of SecurityTrend
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2537,9 +2537,11 @@ class DescribeTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MachineType: 
+        :param MachineType: CVM instance type.
+<li>CVM: CVM</li>
+<li>BM: CPM</li>
         :type MachineType: str
-        :param MachineRegion: 
+        :param MachineRegion: Server region, such as `ap-guangzhou` and `ap-shanghai`
         :type MachineRegion: str
         """
         self.MachineType = None
@@ -3297,15 +3299,19 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
         """
         :param DownloadUrl: Download address for exported file.
         :type DownloadUrl: str
+        :param TaskId: Export task ID
+        :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.DownloadUrl = None
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DownloadUrl = params.get("DownloadUrl")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3493,9 +3499,9 @@ class LoginWhiteLists(AbstractModel):
         :type MachineName: str
         :param HostIp: Server IP
         :type HostIp: str
-        :param StartTime: 
+        :param StartTime: Start time
         :type StartTime: str
-        :param EndTime: 
+        :param EndTime: End time
         :type EndTime: str
         """
         self.Id = None
@@ -3551,9 +3557,9 @@ class LoginWhiteListsRule(AbstractModel):
         :type HostIp: str
         :param Id: Rule ID, used for rule updating
         :type Id: int
-        :param StartTime: 
+        :param StartTime: Start time
         :type StartTime: str
-        :param EndTime: 
+        :param EndTime: End time
         :type EndTime: str
         """
         self.Places = None
@@ -3619,14 +3625,19 @@ class Machine(AbstractModel):
         :type MalwareNum: int
         :param Tag: Tag information
         :type Tag: list of MachineTag
-        :param BaselineNum: 
+        :param BaselineNum: Number of baseline risks.
         :type BaselineNum: int
-        :param CyberAttackNum: 
+        :param CyberAttackNum: Number of network risks.
         :type CyberAttackNum: int
-        :param SecurityStatus: 
+        :param SecurityStatus: Risk status.
+<li>SAFE: safe</li>
+<li>RISK: at risk</li>
+<li>UNKNOWN: unknown</li>
         :type SecurityStatus: str
-        :param InvasionNum: 
+        :param InvasionNum: Number of intrusions
         :type InvasionNum: int
+        :param RegionInfo: Region information
+        :type RegionInfo: :class:`tencentcloud.yunjing.v20180228.models.RegionInfo`
         """
         self.MachineName = None
         self.MachineOs = None
@@ -3644,6 +3655,7 @@ class Machine(AbstractModel):
         self.CyberAttackNum = None
         self.SecurityStatus = None
         self.InvasionNum = None
+        self.RegionInfo = None
 
 
     def _deserialize(self, params):
@@ -3668,6 +3680,9 @@ class Machine(AbstractModel):
         self.CyberAttackNum = params.get("CyberAttackNum")
         self.SecurityStatus = params.get("SecurityStatus")
         self.InvasionNum = params.get("InvasionNum")
+        if params.get("RegionInfo") is not None:
+            self.RegionInfo = RegionInfo()
+            self.RegionInfo._deserialize(params.get("RegionInfo"))
 
 
 class MachineTag(AbstractModel):
@@ -3681,7 +3696,7 @@ class MachineTag(AbstractModel):
         :type Rid: int
         :param Name: Tag name
         :type Name: str
-        :param TagId: 
+        :param TagId: Tag ID
         :type TagId: int
         """
         self.Rid = None
@@ -4342,6 +4357,35 @@ class RecoverMalwaresResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RegionInfo(AbstractModel):
+    """Region information
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: Region, such as `ap-guangzhou`, `ap-shanghai` and `ap-beijing`
+        :type Region: str
+        :param RegionName: Region name, such as `South China (Guangzhou)`, `East China (Shanghai)`, and `North China (Beijing)`
+        :type RegionName: str
+        :param RegionId: Region ID
+        :type RegionId: int
+        :param RegionCode: Region code, such as `gz`, `sh`, and `bj`
+        :type RegionCode: str
+        """
+        self.Region = None
+        self.RegionName = None
+        self.RegionId = None
+        self.RegionCode = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.RegionName = params.get("RegionName")
+        self.RegionId = params.get("RegionId")
+        self.RegionCode = params.get("RegionCode")
+
+
 class RescanImpactedHostRequest(AbstractModel):
     """RescanImpactedHost request structure.
 
@@ -4396,7 +4440,11 @@ class SecurityDynamic(AbstractModel):
         :type EventType: str
         :param Message: Security event message.
         :type Message: str
-        :param SecurityLevel: 
+        :param SecurityLevel: Security event level.
+<li>RISK: severe</li>
+<li>HIGH: high</li>
+<li>NORMAL: medium</li>
+<li>LOW: low</li>
         :type SecurityLevel: str
         """
         self.Uuid = None

@@ -3680,6 +3680,32 @@ Default value: 0, which means that the value is the same as the video height of 
         self.Height = params.get("Height")
 
 
+class CdnLogInfo(AbstractModel):
+    """CDN log information
+
+    """
+
+    def __init__(self):
+        """
+        :param Date: Log date in the format of `yyyy-MM-dd`, such as 2018-03-01.
+        :type Date: str
+        :param Name: Log name in the format of date and time-domain name,
+such as 2018120101-test.vod2.mqcloud.com.
+        :type Name: str
+        :param Url: Log download link, which is valid for 24 hours.
+        :type Url: str
+        """
+        self.Date = None
+        self.Name = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.Name = params.get("Name")
+        self.Url = params.get("Url")
+
+
 class ClassificationConfigureInfo(AbstractModel):
     """Control parameter of intelligent categorization task
 
@@ -6667,6 +6693,72 @@ class DescribeCDNUsageDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCdnLogsRequest(AbstractModel):
+    """DescribeCdnLogs request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Domain name.
+        :type DomainName: str
+        :param StartTime: Start time for log acquisition in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :type StartTime: str
+        :param EndTime: End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F), which must be after the start time.
+        :type EndTime: str
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.DomainName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeCdnLogsResponse(AbstractModel):
+    """DescribeCdnLogs response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomesticCdnLogs: Log download list for CDN nodes in Mainland China.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DomesticCdnLogs: list of CdnLogInfo
+        :param OverseaCdnLogs: Log download list for CDN nodes outside Mainland China. If global acceleration is not enabled for the domain name, ignore this parameter.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OverseaCdnLogs: list of CdnLogInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DomesticCdnLogs = None
+        self.OverseaCdnLogs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomesticCdnLogs") is not None:
+            self.DomesticCdnLogs = []
+            for item in params.get("DomesticCdnLogs"):
+                obj = CdnLogInfo()
+                obj._deserialize(item)
+                self.DomesticCdnLogs.append(obj)
+        if params.get("OverseaCdnLogs") is not None:
+            self.OverseaCdnLogs = []
+            for item in params.get("OverseaCdnLogs"):
+                obj = CdnLogInfo()
+                obj._deserialize(item)
+                self.OverseaCdnLogs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeContentReviewTemplatesRequest(AbstractModel):
     """DescribeContentReviewTemplates request structure.
 
@@ -8926,9 +9018,9 @@ class ImageWatermarkInput(AbstractModel):
 Default value: 10%.
         :type Width: str
         :param Height: Watermark height. % and px formats are supported:
-<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
-<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
-Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
+<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px. Valid values: 0 or [8,4096].</li>
+Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
         :type Height: str
         """
         self.ImageContent = None
@@ -8956,9 +9048,8 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 <li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>
         :type Width: str
         :param Height: Watermark height. % and px formats are supported:
-<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
-<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
-Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
+<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px. Valid values: 0 or [8,4096].</li>
         :type Height: str
         """
         self.ImageContent = None
@@ -8987,7 +9078,7 @@ class ImageWatermarkTemplate(AbstractModel):
         :type Width: str
         :param Height: Watermark height. % and px formats are supported:
 <li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
-<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px;</li>
+<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px;</li>
 `0px` means that `Height` will be proportionally scaled according to the video width.
         :type Height: str
         """
@@ -9167,15 +9258,20 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
         """
         :param Tag: Frame-specific tag name.
         :type Tag: str
+        :param CategorySet: Category list of frame-specific tag names. `CategorySet.N` indicates the N+1-level category.
+For example, if the `Tag` is "tower", and `CategorySet` contains two elements (`CategorySet.0` is "scene", and `CategorySet.1` is "architecture"), then the frame-specific tag is "tower", the first-level category is "scene", and the second-level category is "architecture".
+        :type CategorySet: list of str
         :param Confidence: Confidence of intelligently generated frame-specific tag between 0 and 100.
         :type Confidence: float
         """
         self.Tag = None
+        self.CategorySet = None
         self.Confidence = None
 
 
     def _deserialize(self, params):
         self.Tag = params.get("Tag")
+        self.CategorySet = params.get("CategorySet")
         self.Confidence = params.get("Confidence")
 
 
@@ -12148,7 +12244,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type Container: str
         :param Name: Transcoding template name. Length limit: 64 characters.
         :type Name: str
-        :param Comment: Template description. Length limit: 256 bytes.
+        :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
         :param RemoveVideo: Whether to remove video data. Valid values:
 <li>0: retain</li>
@@ -13253,18 +13349,18 @@ Note: this field may return null, indicating that no valid values can be obtaine
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
         :param FileId: Media file ID.
-<li>If the task flow is initiated by [ProcessMedia](https://intl.cloud.tencent.com/document/product/266/33427?from_cn_redirect=1), this field means the `FileId` in [MediaInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInfo);</li>
-<li>If the task flow is initiated by [ProcessMediaByUrl](https://intl.cloud.tencent.com/document/product/266/33426?from_cn_redirect=1), this field means the `Id` in [MediaInputInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInputInfo).</li>
+<li>If the task flow is initiated by [ProcessMedia](https://cloud.tencent.com/document/product/266/33427), this field means the `FileId` in [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo);</li>
+<li>If the task flow is initiated by [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426), this field means the `Id` in [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo).</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FileId: str
         :param FileName: Media filename
-<li>If the task flow is initiated by [ProcessMedia](https://intl.cloud.tencent.com/document/product/266/33427?from_cn_redirect=1), this field means the `BasicInfo.Name` in [MediaInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInfo);</li>
-<li>If the task flow is initiated by [ProcessMediaByUrl](https://intl.cloud.tencent.com/document/product/266/33426?from_cn_redirect=1), this field means the `Name` in [MediaInputInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInputInfo).</li>
+<li>If the task flow is initiated by [ProcessMedia](https://cloud.tencent.com/document/product/266/33427), this field means the `BasicInfo.Name` in [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo);</li>
+<li>If the task flow is initiated by [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426), this field means the `Name` in [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo).</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FileName: str
         :param FileUrl: Media file address
-<li>If the task flow is initiated by [ProcessMedia](https://intl.cloud.tencent.com/document/product/266/33427?from_cn_redirect=1), this field means the `BasicInfo.MediaUrl` in [MediaInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInfo);</li>
-<li>If the task flow is initiated by [ProcessMediaByUrl](https://intl.cloud.tencent.com/document/product/266/33426?from_cn_redirect=1), this field means the `Url` in [MediaInputInfo](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaInputInfo).</li>
+<li>If the task flow is initiated by [ProcessMedia](https://cloud.tencent.com/document/product/266/33427), this field means the `BasicInfo.MediaUrl` in [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo);</li>
+<li>If the task flow is initiated by [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426), this field means the `Url` in [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo).</li>
         :type FileUrl: str
         :param MetaData: Source video metadata.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
@@ -14259,31 +14355,49 @@ class SearchMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: Search text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters.
-        :type Text: str
         :param Tags: Tag set, which matches any element in the set.
 <li>Tag length limit: 8 characters.</li>
 <li>Array length limit: 10.</li>
         :type Tags: list of str
-        :param ClassIds: Category ID set, which matches the categories of the specified IDs and all subcategories. Array length limit: 10.
+        :param ClassIds: Category ID set. The categories of the specified IDs and all subcategories in the set are matched.
+<li>Array length limit: 10.</li>
         :type ClassIds: list of int
-        :param StartTime: Start time in the creation time range.
-<li>After or at the start time.</li>
-<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
-        :type StartTime: str
-        :param EndTime: End time in the creation time range.
-<li>Before the end time.</li>
-<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
-        :type EndTime: str
-        :param SourceType: Media file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
-        :type SourceType: str
-        :param StreamId: [LVB code](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) of a stream.
-        :type StreamId: str
-        :param Vid: Unique ID of LVB recording file.
-        :type Vid: str
+        :param StreamIds: [Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) set. Any element in the set can be matched.
+<li>Array length limit: 10.</li>
+        :type StreamIds: list of str
+        :param Vids: Unique ID of LVB recording file. Any element in the set can be matched.
+<li>Array length limit: 10.</li>
+        :type Vids: list of str
+        :param SourceTypes: Media file source set. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
+<li>Array length limit: 10.</li>
+        :type SourceTypes: list of str
+        :param Categories: File type. Any element in the set can be matched.
+<li>Video: video file</li>
+<li>Audio: audio file</li>
+<li>Image: image file</li>
+        :type Categories: list of str
+        :param CreateTime: Matches files created within the time period.
+<li>Includes specified start and end points in time.</li>
+        :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        :param FileIds: File ID set. Any element in the set can be matched.
+<li>Array length limit: 10.</li>
+<li>ID length limit: 40 characters.</li>
+        :type FileIds: list of str
+        :param Names: Filename set. Filenames of media files are fuzzily matched. The higher the match rate, the higher-ranked the result.
+<li>Filename length limit: 40 characters.</li>
+<li>Array length limit: 10.</li>
+        :type Names: list of str
+        :param NamePrefixes: Filename prefix, which matches the filenames of media files.
+<li>Filename prefix length limit: 20 characters.</li>
+<li>Array length limit: 10.</li>
+        :type NamePrefixes: list of str
+        :param Descriptions: File description set. Any element in the set can be matched.
+<li>Description length limit: 100 characters.</li>
+<li>Array length limit: 10.</li>
+        :type Descriptions: list of str
         :param Sort: Sorting order.
-<li>Valid value of `Sort.Field`: CreateTime</li>
-<li>If `Text` is specified for the search, the results will be sorted by the match rate, and this field will not take effect</li>
+<li>Valid value of `Sort.Field`: CreateTime.</li>
+<li>If `Text`, `Names`, or `Descriptions` is not empty, the `Sort.Field` field will not take effect, and the search results will be sorted by match rate.</li>
         :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
         :param Offset: <div id="p_offset">Start offset of a paged return. Default value: 0. Entries from No. "Offset" to No. "Offset + Limit - 1" will be returned.
 <li>Value range: "Offset + Limit" cannot be more than 5,000. (For more information, please see <a href="#maxResultsDesc">Limit on the Number of Results Returned by API</a>)</li></div>
@@ -14291,45 +14405,96 @@ class SearchMediaRequest(AbstractModel):
         :param Limit: <div id="p_limit">Number of entries returned by a paged query. Default value: 10. Entries from No. "Offset" to No. "Offset + Limit - 1" will be returned.
 <li>Value range: "Offset + Limit" cannot be more than 5,000. (For more information, please see <a href="#maxResultsDesc">Limit on the Number of Results Returned by API</a>)</li></div>
         :type Limit: int
-        :param Categories: File type:
-<li>Video: video file</li>
-<li>Audio: audio file</li>
-<li>Image: image file</li>
-        :type Categories: list of str
+        :param Filters: Specifies information entry that needs to be returned for all media files. Multiple entries can be specified simultaneously. N starts from 0. If this field is left empty, all information entries will be returned by default. Valid values:
+<li>basicInfo (basic video information).</li>
+<li>metaData (video metadata).</li>
+<li>transcodeInfo (result information of video transcoding).</li>
+<li>animatedGraphicsInfo (result information of animated image generating task).</li>
+<li>imageSpriteInfo (image sprite information).</li>
+<li>snapshotByTimeOffsetInfo (point-in-time screenshot information).</li>
+<li>sampleSnapshotInfo (sampled screenshot information).</li>
+<li>keyFrameDescInfo (timestamp information).</li>
+<li>adaptiveDynamicStreamingInfo (information of adaptive bitrate streaming).</li>
+<li>miniProgramReviewInfo (WeChat Mini Program audit information).</li>
+        :type Filters: list of str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
+        :param StreamId: (This is not recommended. `StreamIds` should be used instead)
+[Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1).
+        :type StreamId: str
+        :param Vid: (This is not recommended. `Vids` should be used instead)
+Unique ID of LVB recording file.
+        :type Vid: str
+        :param Text: (This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)
+Search text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters.
+        :type Text: str
+        :param StartTime: (This is not recommended. `CreateTime` should be used instead)
+Start time in the creation time range.
+<li>After or at the start time.</li>
+<li>If `CreateTime.After` also exists, it will be used first.</li>
+<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
+        :type StartTime: str
+        :param EndTime: (This is not recommended. `CreateTime` should be used instead)
+End time in the creation time range.
+<li>Before the end time.</li>
+<li>If `CreateTime.Before` also exists, it will be used first.</li>
+<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
+        :type EndTime: str
+        :param SourceType: (This is not recommended. `SourceTypes` should be used instead)
+Media file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
+        :type SourceType: str
         """
-        self.Text = None
         self.Tags = None
         self.ClassIds = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SourceType = None
-        self.StreamId = None
-        self.Vid = None
+        self.StreamIds = None
+        self.Vids = None
+        self.SourceTypes = None
+        self.Categories = None
+        self.CreateTime = None
+        self.FileIds = None
+        self.Names = None
+        self.NamePrefixes = None
+        self.Descriptions = None
         self.Sort = None
         self.Offset = None
         self.Limit = None
-        self.Categories = None
+        self.Filters = None
         self.SubAppId = None
+        self.StreamId = None
+        self.Vid = None
+        self.Text = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SourceType = None
 
 
     def _deserialize(self, params):
-        self.Text = params.get("Text")
         self.Tags = params.get("Tags")
         self.ClassIds = params.get("ClassIds")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SourceType = params.get("SourceType")
-        self.StreamId = params.get("StreamId")
-        self.Vid = params.get("Vid")
+        self.StreamIds = params.get("StreamIds")
+        self.Vids = params.get("Vids")
+        self.SourceTypes = params.get("SourceTypes")
+        self.Categories = params.get("Categories")
+        if params.get("CreateTime") is not None:
+            self.CreateTime = TimeRange()
+            self.CreateTime._deserialize(params.get("CreateTime"))
+        self.FileIds = params.get("FileIds")
+        self.Names = params.get("Names")
+        self.NamePrefixes = params.get("NamePrefixes")
+        self.Descriptions = params.get("Descriptions")
         if params.get("Sort") is not None:
             self.Sort = SortBy()
             self.Sort._deserialize(params.get("Sort"))
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.Categories = params.get("Categories")
+        self.Filters = params.get("Filters")
         self.SubAppId = params.get("SubAppId")
+        self.StreamId = params.get("StreamId")
+        self.Vid = params.get("Vid")
+        self.Text = params.get("Text")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SourceType = params.get("SourceType")
 
 
 class SearchMediaResponse(AbstractModel):
@@ -14342,7 +14507,7 @@ class SearchMediaResponse(AbstractModel):
         :param TotalCount: Number of eligible entries.
 <li>Maximum value: 5000. If the number of eligible entries is greater than 5,000, this field will return 5,000 instead of the actual number.</li>
         :type TotalCount: int
-        :param MediaInfoSet: List of media file information, only including the basic information (BasicInfo).
+        :param MediaInfoSet: Media file information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MediaInfoSet: list of MediaInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -15411,6 +15576,29 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
         self.FontSize = params.get("FontSize")
         self.FontColor = params.get("FontColor")
         self.FontAlpha = params.get("FontAlpha")
+
+
+class TimeRange(AbstractModel):
+    """General data type used to describe a time period.
+
+    """
+
+    def __init__(self):
+        """
+        :param After: <li>After or at this time (start time).</li>
+<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
+        :type After: str
+        :param Before: <li>Before or at this time (end time).</li>
+<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
+        :type Before: str
+        """
+        self.After = None
+        self.Before = None
+
+
+    def _deserialize(self, params):
+        self.After = params.get("After")
+        self.Before = params.get("Before")
 
 
 class TranscodePlayInfo2017(AbstractModel):

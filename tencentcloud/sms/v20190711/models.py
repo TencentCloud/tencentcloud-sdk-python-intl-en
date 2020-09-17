@@ -811,7 +811,7 @@ class PullSmsReplyStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param ExtendCode: SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://cloud.tencent.com/document/product/382/3773).
+        :param ExtendCode: SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1).
         :type ExtendCode: str
         :param NationCode: Country (or region) code.
         :type NationCode: str
@@ -863,7 +863,7 @@ Note: this parameter is currently fixed at 0.
         :type PhoneNumber: str
         :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
-        :param EndDateTime: 
+        :param EndDateTime: Pull end time in UNIX timestamp accurate to seconds.
         :type EndDateTime: int
         """
         self.SendDateTime = None
@@ -1019,7 +1019,7 @@ Note: this parameter is currently fixed at 0.
         :type PhoneNumber: str
         :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
-        :param EndDateTime: 
+        :param EndDateTime: Pull end time in UNIX timestamp accurate to seconds.
         :type EndDateTime: int
         """
         self.SendDateTime = None
@@ -1130,11 +1130,11 @@ Example: +8613711112222, which has a + sign followed by 86 (country/region code)
         :type Sign: str
         :param TemplateParamSet: Template parameter. If there is no template parameter, leave this parameter blank.
         :type TemplateParamSet: list of str
-        :param ExtendCode: SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://cloud.tencent.com/document/product/382/3773).
+        :param ExtendCode: SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1).
         :type ExtendCode: str
         :param SessionContext: User session content, which can carry context information such as user-side ID and will be returned as-is by the server.
         :type SessionContext: str
-        :param SenderId: `senderid` for Global SMS, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://cloud.tencent.com/document/product/382/3773) for assistance. This parameter should be empty for Mainland China SMS.
+        :param SenderId: `senderid` for Global SMS, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1) for assistance. This parameter should be empty for Mainland China SMS.
         :type SenderId: str
         """
         self.PhoneNumberSet = None
@@ -1195,7 +1195,7 @@ class SendStatus(AbstractModel):
         :type SerialNo: str
         :param PhoneNumber: Mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
         :type PhoneNumber: str
-        :param Fee: Number of billable SMS messages. For billing rules, please see [Billing Policy](https://cloud.tencent.com/document/product/382/36135).
+        :param Fee: Number of billable SMS messages. For billing rules, please see [Billing Policy](https://intl.cloud.tencent.com/document/product/382/36135?from_cn_redirect=1).
         :type Fee: int
         :param SessionContext: User session content.
         :type SessionContext: str

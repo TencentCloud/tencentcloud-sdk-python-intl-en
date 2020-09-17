@@ -304,6 +304,46 @@ class ConsumerGroupTopic(AbstractModel):
         self.TopicName = params.get("TopicName")
 
 
+class ConsumerRecord(AbstractModel):
+    """Message record
+
+    """
+
+    def __init__(self):
+        """
+        :param Topic: Topic name.
+        :type Topic: str
+        :param Partition: Partition ID.
+        :type Partition: int
+        :param Offset: Offset.
+        :type Offset: int
+        :param Key: Message key.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type Key: str
+        :param Value: Message value.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type Value: str
+        :param Timestamp: Message timestamp.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type Timestamp: int
+        """
+        self.Topic = None
+        self.Partition = None
+        self.Offset = None
+        self.Key = None
+        self.Value = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.Timestamp = params.get("Timestamp")
+
+
 class CreateAclRequest(AbstractModel):
     """CreateAcl request structure.
 
@@ -1278,7 +1318,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Status: list of int
         :param Offset: Offset. If this parameter is left empty, 0 will be used by default
         :type Offset: int
-        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20
+        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 100.
         :type Limit: int
         :param TagKey: Tag key match.
         :type TagKey: str
@@ -1561,6 +1601,176 @@ class DescribeUserResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = UserResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class FetchMessageByOffsetRequest(AbstractModel):
+    """FetchMessageByOffset request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Topic: Topic name.
+        :type Topic: str
+        :param Partition: Partition ID.
+        :type Partition: int
+        :param Offset: Offset information.
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.Topic = None
+        self.Partition = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+
+
+class FetchMessageByOffsetResponse(AbstractModel):
+    """FetchMessageByOffset response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Returned results.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConsumerRecord`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ConsumerRecord()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class FetchMessageListByOffsetRequest(AbstractModel):
+    """FetchMessageListByOffset request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Topic: Topic name.
+        :type Topic: str
+        :param Partition: Partition ID.
+        :type Partition: int
+        :param Offset: Offset information.
+        :type Offset: int
+        :param SinglePartitionRecordNumber: Maximum number of records that can be queried. Default value: 20.
+        :type SinglePartitionRecordNumber: int
+        """
+        self.InstanceId = None
+        self.Topic = None
+        self.Partition = None
+        self.Offset = None
+        self.SinglePartitionRecordNumber = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        self.SinglePartitionRecordNumber = params.get("SinglePartitionRecordNumber")
+
+
+class FetchMessageListByOffsetResponse(AbstractModel):
+    """FetchMessageListByOffset response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Returned results.
+        :type Result: list of ConsumerRecord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ConsumerRecord()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class FetchMessageListByTimestampRequest(AbstractModel):
+    """FetchMessageListByTimestamp request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Topic: Topic name.
+        :type Topic: str
+        :param Partition: Partition ID.
+        :type Partition: int
+        :param StartTime: Query start time. It is a 13-digit timestamp.
+        :type StartTime: int
+        :param SinglePartitionRecordNumber: Maximum number of records that can be queried. Default value: 20.
+        :type SinglePartitionRecordNumber: int
+        """
+        self.InstanceId = None
+        self.Topic = None
+        self.Partition = None
+        self.StartTime = None
+        self.SinglePartitionRecordNumber = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.StartTime = params.get("StartTime")
+        self.SinglePartitionRecordNumber = params.get("SinglePartitionRecordNumber")
+
+
+class FetchMessageListByTimestampResponse(AbstractModel):
+    """FetchMessageListByTimestamp response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Returned results.
+        :type Result: list of ConsumerRecord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ConsumerRecord()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1921,6 +2131,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Cvm: Sale type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Cvm: int
+        :param InstanceType: Type.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type InstanceType: str
+        :param Features: 
+        :type Features: list of str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1948,6 +2163,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Version = None
         self.MaxGroupNum = None
         self.Cvm = None
+        self.InstanceType = None
+        self.Features = None
 
 
     def _deserialize(self, params):
@@ -1989,6 +2206,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Version = params.get("Version")
         self.MaxGroupNum = params.get("MaxGroupNum")
         self.Cvm = params.get("Cvm")
+        self.InstanceType = params.get("InstanceType")
+        self.Features = params.get("Features")
 
 
 class InstanceConfigDO(AbstractModel):

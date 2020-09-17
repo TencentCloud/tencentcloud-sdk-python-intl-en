@@ -582,9 +582,9 @@ class DescribeClientConnectionsRequest(AbstractModel):
         """
         :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
         :type InstanceId: str
-        :param Limit: 
+        :param Limit: The number of records that will be returned. Default value: 10,000.
         :type Limit: int
-        :param Offset: 
+        :param Offset: Offset. Default value: 0.
         :type Offset: int
         """
         self.InstanceId = None
@@ -607,7 +607,7 @@ class DescribeClientConnectionsResponse(AbstractModel):
         """
         :param Clients: Client connection information, including client IP and number of connections
         :type Clients: list of ClientConnection
-        :param TotalCount: 
+        :param TotalCount: The total number of records that meet the query condition, which can be used for paginated queries.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

@@ -167,6 +167,14 @@ class Address(AbstractModel):
         :type EipAlgType: :class:`tencentcloud.vpc.v20170312.models.AlgType`
         :param InternetServiceProvider: The ISP of an EIP/Elastic IP, with possible return values currently including "CMCC", "CTCC", "CUCC" and "BGP"
         :type InternetServiceProvider: str
+        :param LocalBgp: Whether the EIP is in a local BGP.
+        :type LocalBgp: bool
+        :param Bandwidth: Bandwidth value of EIP. The EIP for the bill-by-CVM account will return `null`.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type Bandwidth: int
+        :param InternetChargeType: Network billing mode of EIP. The EIP for the bill-by-CVM account will return `null`.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type InternetChargeType: str
         """
         self.AddressId = None
         self.AddressName = None
@@ -183,6 +191,9 @@ class Address(AbstractModel):
         self.CascadeRelease = None
         self.EipAlgType = None
         self.InternetServiceProvider = None
+        self.LocalBgp = None
+        self.Bandwidth = None
+        self.InternetChargeType = None
 
 
     def _deserialize(self, params):
@@ -203,6 +214,9 @@ class Address(AbstractModel):
             self.EipAlgType = AlgType()
             self.EipAlgType._deserialize(params.get("EipAlgType"))
         self.InternetServiceProvider = params.get("InternetServiceProvider")
+        self.LocalBgp = params.get("LocalBgp")
+        self.Bandwidth = params.get("Bandwidth")
+        self.InternetChargeType = params.get("InternetChargeType")
 
 
 class AddressChargePrepaid(AbstractModel):
@@ -1025,6 +1039,48 @@ class AttachNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AuditCrossBorderComplianceRequest(AbstractModel):
+    """AuditCrossBorderCompliance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceProvider: Service provider. Valid values: `UNICOM`.
+        :type ServiceProvider: str
+        :param ComplianceId: Unique ID of compliance review form.
+        :type ComplianceId: int
+        :param AuditBehavior: Audit behavior. Valid values: `APPROVED` and `DENY`.
+        :type AuditBehavior: str
+        """
+        self.ServiceProvider = None
+        self.ComplianceId = None
+        self.AuditBehavior = None
+
+
+    def _deserialize(self, params):
+        self.ServiceProvider = params.get("ServiceProvider")
+        self.ComplianceId = params.get("ComplianceId")
+        self.AuditBehavior = params.get("AuditBehavior")
+
+
+class AuditCrossBorderComplianceResponse(AbstractModel):
+    """AuditCrossBorderCompliance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BandwidthPackage(AbstractModel):
     """The structure of information of the bandwidth package.
 
@@ -1412,7 +1468,7 @@ class CheckAssistantCidrResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ConflictSourceSet: 
+        :param ConflictSourceSet: Array of conflict resources.
         :type ConflictSourceSet: list of ConflictSource
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2152,6 +2208,8 @@ class CreateFlowLogRequest(AbstractModel):
         :type CloudLogId: str
         :param FlowLogDescription: The description of the flow log instance
         :type FlowLogDescription: str
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.FlowLogName = None
@@ -2160,6 +2218,7 @@ class CreateFlowLogRequest(AbstractModel):
         self.TrafficType = None
         self.CloudLogId = None
         self.FlowLogDescription = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2170,6 +2229,12 @@ class CreateFlowLogRequest(AbstractModel):
         self.TrafficType = params.get("TrafficType")
         self.CloudLogId = params.get("CloudLogId")
         self.FlowLogDescription = params.get("FlowLogDescription")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateFlowLogResponse(AbstractModel):
@@ -3269,6 +3334,107 @@ class CreateVpnGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CrossBorderCompliance(AbstractModel):
+    """Compliance review form.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceProvider: Service provider. Valid values: `UNICOM`.
+        :type ServiceProvider: str
+        :param ComplianceId: ID of compliance review form.
+        :type ComplianceId: int
+        :param Company: Full company name.
+        :type Company: str
+        :param UniformSocialCreditCode: Unified Social Credit Code.
+        :type UniformSocialCreditCode: str
+        :param LegalPerson: Legal person.
+        :type LegalPerson: str
+        :param IssuingAuthority: Issuing authority.
+        :type IssuingAuthority: str
+        :param BusinessLicense: Business License.
+        :type BusinessLicense: str
+        :param BusinessAddress: Business address.
+        :type BusinessAddress: str
+        :param PostCode: Zip code.
+        :type PostCode: int
+        :param Manager: Operator.
+        :type Manager: str
+        :param ManagerId: Operator ID card number.
+        :type ManagerId: str
+        :param ManagerIdCard: Operator ID card.
+        :type ManagerIdCard: str
+        :param ManagerAddress: Operator address.
+        :type ManagerAddress: str
+        :param ManagerTelephone: Operator phone number.
+        :type ManagerTelephone: str
+        :param Email: Email.
+        :type Email: str
+        :param ServiceHandlingForm: Service handling form.
+        :type ServiceHandlingForm: str
+        :param AuthorizationLetter: Authorization letter.
+        :type AuthorizationLetter: str
+        :param SafetyCommitment: Information security commitment.
+        :type SafetyCommitment: str
+        :param ServiceStartDate: Service start date.
+        :type ServiceStartDate: str
+        :param ServiceEndDate: Service end date.
+        :type ServiceEndDate: str
+        :param State: Status. Valid values: `PENDING`, `APPROVED`, and `DENY`.
+        :type State: str
+        :param CreatedTime: Creation time of the review form.
+        :type CreatedTime: str
+        """
+        self.ServiceProvider = None
+        self.ComplianceId = None
+        self.Company = None
+        self.UniformSocialCreditCode = None
+        self.LegalPerson = None
+        self.IssuingAuthority = None
+        self.BusinessLicense = None
+        self.BusinessAddress = None
+        self.PostCode = None
+        self.Manager = None
+        self.ManagerId = None
+        self.ManagerIdCard = None
+        self.ManagerAddress = None
+        self.ManagerTelephone = None
+        self.Email = None
+        self.ServiceHandlingForm = None
+        self.AuthorizationLetter = None
+        self.SafetyCommitment = None
+        self.ServiceStartDate = None
+        self.ServiceEndDate = None
+        self.State = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.ServiceProvider = params.get("ServiceProvider")
+        self.ComplianceId = params.get("ComplianceId")
+        self.Company = params.get("Company")
+        self.UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self.LegalPerson = params.get("LegalPerson")
+        self.IssuingAuthority = params.get("IssuingAuthority")
+        self.BusinessLicense = params.get("BusinessLicense")
+        self.BusinessAddress = params.get("BusinessAddress")
+        self.PostCode = params.get("PostCode")
+        self.Manager = params.get("Manager")
+        self.ManagerId = params.get("ManagerId")
+        self.ManagerIdCard = params.get("ManagerIdCard")
+        self.ManagerAddress = params.get("ManagerAddress")
+        self.ManagerTelephone = params.get("ManagerTelephone")
+        self.Email = params.get("Email")
+        self.ServiceHandlingForm = params.get("ServiceHandlingForm")
+        self.AuthorizationLetter = params.get("AuthorizationLetter")
+        self.SafetyCommitment = params.get("SafetyCommitment")
+        self.ServiceStartDate = params.get("ServiceStartDate")
+        self.ServiceEndDate = params.get("ServiceEndDate")
+        self.State = params.get("State")
+        self.CreatedTime = params.get("CreatedTime")
+
+
 class CustomerGateway(AbstractModel):
     """Customer Gateway
 
@@ -3346,7 +3512,7 @@ class CvmInstance(AbstractModel):
         :type Memory: int
         :param CreatedTime: The creation time.
         :type CreatedTime: str
-        :param InstanceType: 
+        :param InstanceType: Instance type.
         :type InstanceType: str
         :param EniLimit: Instance ENI quota (including primary ENIs).
         :type EniLimit: int
@@ -5010,6 +5176,113 @@ class DescribeClassicLinkInstancesResponse(AbstractModel):
                 obj = ClassicLinkInstance()
                 obj._deserialize(item)
                 self.ClassicLinkInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCrossBorderComplianceRequest(AbstractModel):
+    """DescribeCrossBorderCompliance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceProvider: (Exact match) Service provider. Valid values: `UNICOM`.
+        :type ServiceProvider: str
+        :param ComplianceId: (Exact match) ID of compliance review form.
+        :type ComplianceId: int
+        :param Company: (Fuzzy match) Company name.
+        :type Company: str
+        :param UniformSocialCreditCode: (Fuzzy match) Unified Social Credit Code.
+        :type UniformSocialCreditCode: str
+        :param LegalPerson: (Fuzzy match) Legal person.
+        :type LegalPerson: str
+        :param IssuingAuthority: (Fuzzy match) Issuing authority.
+        :type IssuingAuthority: str
+        :param BusinessAddress: (Fuzzy match) Business address.
+        :type BusinessAddress: str
+        :param PostCode: (Exact match) Zip code.
+        :type PostCode: int
+        :param Manager: (Fuzzy match) Operator.
+        :type Manager: str
+        :param ManagerId: (Exact match) Operator ID card number.
+        :type ManagerId: str
+        :param ManagerAddress: (Fuzzy match) Operator address.
+        :type ManagerAddress: str
+        :param ManagerTelephone: (Exact match) Operator phone number.
+        :type ManagerTelephone: str
+        :param Email: (Exact match) Email.
+        :type Email: str
+        :param ServiceStartDate: (Exact match) Service start date, such as `2020-07-28`.
+        :type ServiceStartDate: str
+        :param ServiceEndDate: (Exact match) Service end date, such as `2020-07-28`.
+        :type ServiceEndDate: str
+        :param State: (Exact match) Status. Valid values: `PENDING`, `APPROVED`, and `DENY`.
+        :type State: str
+        """
+        self.ServiceProvider = None
+        self.ComplianceId = None
+        self.Company = None
+        self.UniformSocialCreditCode = None
+        self.LegalPerson = None
+        self.IssuingAuthority = None
+        self.BusinessAddress = None
+        self.PostCode = None
+        self.Manager = None
+        self.ManagerId = None
+        self.ManagerAddress = None
+        self.ManagerTelephone = None
+        self.Email = None
+        self.ServiceStartDate = None
+        self.ServiceEndDate = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.ServiceProvider = params.get("ServiceProvider")
+        self.ComplianceId = params.get("ComplianceId")
+        self.Company = params.get("Company")
+        self.UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self.LegalPerson = params.get("LegalPerson")
+        self.IssuingAuthority = params.get("IssuingAuthority")
+        self.BusinessAddress = params.get("BusinessAddress")
+        self.PostCode = params.get("PostCode")
+        self.Manager = params.get("Manager")
+        self.ManagerId = params.get("ManagerId")
+        self.ManagerAddress = params.get("ManagerAddress")
+        self.ManagerTelephone = params.get("ManagerTelephone")
+        self.Email = params.get("Email")
+        self.ServiceStartDate = params.get("ServiceStartDate")
+        self.ServiceEndDate = params.get("ServiceEndDate")
+        self.State = params.get("State")
+
+
+class DescribeCrossBorderComplianceResponse(AbstractModel):
+    """DescribeCrossBorderCompliance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CrossBorderComplianceSet: List of compliance review forms.
+        :type CrossBorderComplianceSet: list of CrossBorderCompliance
+        :param TotalCount: Total number of compliance review forms.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CrossBorderComplianceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CrossBorderComplianceSet") is not None:
+            self.CrossBorderComplianceSet = []
+            for item in params.get("CrossBorderComplianceSet"):
+                obj = CrossBorderCompliance()
+                obj._deserialize(item)
+                self.CrossBorderComplianceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -7242,7 +7515,7 @@ NAT type supports network address switch configuration. After the type is confir
         :type CcnRouteType: str
         :param EnableBGP: Whether BGP is enabled.
         :type EnableBGP: bool
-        :param EnableBGPCommunity: 
+        :param EnableBGPCommunity: Whether to enable BGP's `community` attribute. Valid values: enable, disable
         :type EnableBGPCommunity: bool
         :param NatGatewayId: ID of the NAT gateway bound.
 Note: this field may return `null`, indicating that no valid value was found.
@@ -9967,9 +10240,9 @@ class NatGateway(AbstractModel):
         :type VpcId: str
         :param Zone: The availability zone in which the NAT gateway is located.
         :type Zone: str
-        :param DirectConnectGatewayIds: 
+        :param DirectConnectGatewayIds: IDs of direct connect gateway associated.
         :type DirectConnectGatewayIds: list of str
-        :param SubnetId: 
+        :param SubnetId: Subnet ID.
         :type SubnetId: str
         :param TagSet: Tag key-value pair.
         :type TagSet: list of Tag
@@ -11239,7 +11512,7 @@ class ResourceDashboard(AbstractModel):
         :type CFS: int
         :param Oracle: Oracle.
         :type Oracle: int
-        :param ElasticSearch: 
+        :param ElasticSearch: ElasticSearch Service.
         :type ElasticSearch: int
         :param TBaaS: Blockchain service.
         :type TBaaS: int

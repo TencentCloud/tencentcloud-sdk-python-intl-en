@@ -3229,7 +3229,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param IsBlockTime: Time blocked or unblocked
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsBlockTime: str
-        :param LocalBgp: 
+        :param LocalBgp: Whether the IP type is the local BGP
         :type LocalBgp: bool
         :param ClusterTag: Dedicated layer-7 tag.
 Note: this field may return null, indicating that no valid values can be obtained.

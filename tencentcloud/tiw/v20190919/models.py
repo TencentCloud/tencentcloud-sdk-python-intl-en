@@ -991,17 +991,22 @@ Default value: false
 
 
 class StreamLayout(AbstractModel):
-    """
+    """Stream layout parameter
 
     """
 
     def __init__(self):
         """
-        :param LayoutParams: 
+        :param LayoutParams: Stream layout configuration
         :type LayoutParams: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`
-        :param InputStreamId: 
+        :param InputStreamId: Video stream ID
+Description of the possible video stream ID values:
+1. tic_record_user: the current picture is used to display the whiteboard video stream.
+2. tic_substream: the current picture is used to display the auxiliary video stream.
+3. Specific user ID: the current picture is used to display the video stream of a specific user.
+4.Left empty: the current picture is vacant for new video stream.
         :type InputStreamId: str
-        :param BackgroundColor: 
+        :param BackgroundColor: Background color in RGB format, such as "#FF0000" for red. The default color is black. 
         :type BackgroundColor: str
         :param FillMode: Video filling mode.
 
