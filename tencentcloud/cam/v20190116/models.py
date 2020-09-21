@@ -260,14 +260,14 @@ Note: This field may return null, indicating that no valid value was found.
         :param PolicyType: Valid values: `user` and `QCS`
 Note: This field may return null, indicating that no valid value was found.
         :type PolicyType: str
-        :param Remark: 
+        :param Remark: Policy remarks
         :type Remark: str
         :param OperateOwnerUin: Root account of the operator associating the policy
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OperateOwnerUin: str
-        :param OperateUin: 
+        :param OperateUin: The ID of the account associating the policy. If `UinType` is 0, this indicates that this is a sub-account `UIN`. If `UinType` is 1, this indicates this is a role ID
         :type OperateUin: str
-        :param OperateUinType: 
+        :param OperateUinType: If `UinType` is 0, `OperateUin` indicates that this is a sub-account `UIN`. If `UinType` is 1, `OperateUin` indicates that this is a role ID
         :type OperateUinType: int
         :param Deactived: Queries if the policy has been deactivated
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -1127,6 +1127,47 @@ Note: This field may return null, indicating that no valid value was found.
                 obj._deserialize(item)
                 self.List.append(obj)
         self.TotalNum = params.get("TotalNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSafeAuthFlagRequest(AbstractModel):
+    """DescribeSafeAuthFlag request structure.
+
+    """
+
+
+class DescribeSafeAuthFlagResponse(AbstractModel):
+    """DescribeSafeAuthFlag response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoginFlag: Login protection settings
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param ActionFlag: Sensitive operation protection settings
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param OffsiteFlag: Unusual login location protection settings
+        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LoginFlag = None
+        self.ActionFlag = None
+        self.OffsiteFlag = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoginFlag") is not None:
+            self.LoginFlag = LoginActionFlag()
+            self.LoginFlag._deserialize(params.get("LoginFlag"))
+        if params.get("ActionFlag") is not None:
+            self.ActionFlag = LoginActionFlag()
+            self.ActionFlag._deserialize(params.get("ActionFlag"))
+        if params.get("OffsiteFlag") is not None:
+            self.OffsiteFlag = OffsiteFlag()
+            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2478,6 +2519,39 @@ class ListUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LoginActionFlag(AbstractModel):
+    """Login and sensitive operation flag
+
+    """
+
+    def __init__(self):
+        """
+        :param Phone: Phone
+        :type Phone: int
+        :param Token: Hard token
+        :type Token: int
+        :param Stoken: Soft token
+        :type Stoken: int
+        :param Wechat: WeChat
+        :type Wechat: int
+        :param Custom: Custom
+        :type Custom: int
+        """
+        self.Phone = None
+        self.Token = None
+        self.Stoken = None
+        self.Wechat = None
+        self.Custom = None
+
+
+    def _deserialize(self, params):
+        self.Phone = params.get("Phone")
+        self.Token = params.get("Token")
+        self.Stoken = params.get("Stoken")
+        self.Wechat = params.get("Wechat")
+        self.Custom = params.get("Custom")
+
+
 class LoginActionMfaFlag(AbstractModel):
     """Login and sensitive operation flag
 
@@ -2501,6 +2575,39 @@ class LoginActionMfaFlag(AbstractModel):
         self.Phone = params.get("Phone")
         self.Stoken = params.get("Stoken")
         self.Wechat = params.get("Wechat")
+
+
+class OffsiteFlag(AbstractModel):
+    """Unusual login location settings
+
+    """
+
+    def __init__(self):
+        """
+        :param VerifyFlag: Verification flag
+        :type VerifyFlag: int
+        :param NotifyPhone: Phone notification
+        :type NotifyPhone: int
+        :param NotifyEmail: Email notification
+        :type NotifyEmail: int
+        :param NotifyWechat: WeChat notification
+        :type NotifyWechat: int
+        :param Tips: Alert
+        :type Tips: int
+        """
+        self.VerifyFlag = None
+        self.NotifyPhone = None
+        self.NotifyEmail = None
+        self.NotifyWechat = None
+        self.Tips = None
+
+
+    def _deserialize(self, params):
+        self.VerifyFlag = params.get("VerifyFlag")
+        self.NotifyPhone = params.get("NotifyPhone")
+        self.NotifyEmail = params.get("NotifyEmail")
+        self.NotifyWechat = params.get("NotifyWechat")
+        self.Tips = params.get("Tips")
 
 
 class PolicyVersionDetail(AbstractModel):
@@ -2878,7 +2985,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param ServiceType: Product associated with the policy
 Note: This field may return null, indicating that no valid value was found.
         :type ServiceType: str
-        :param IsAttached: 
+        :param IsAttached: This value should not be null when querying whether a marked entity has been associated with a policy. 0 indicates that no policy has been associated, while 1 indicates that a policy has been associated
         :type IsAttached: int
         :param Deactived: Queries if the policy has been deactivated
 Note: this field may return null, indicating that no valid values can be obtained.

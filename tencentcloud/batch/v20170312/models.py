@@ -352,11 +352,11 @@ class ComputeEnvView(AbstractModel):
         :type EnvType: str
         :param DesiredComputeNodeCount: Number of desired compute nodes
         :type DesiredComputeNodeCount: int
-        :param ResourceType: 
+        :param ResourceType: Compute environment resource type. Valid values: `CVM`, `CPM` (Bare Metal)
         :type ResourceType: str
-        :param NextAction: 
+        :param NextAction: Next action
         :type NextAction: str
-        :param AttachedComputeNodeCount: 
+        :param AttachedComputeNodeCount: Number of compute nodes added to the compute environment by the user
         :type AttachedComputeNodeCount: int
         """
         self.EnvId = None
@@ -415,9 +415,10 @@ class ComputeNode(AbstractModel):
         :type PrivateIpAddresses: list of str
         :param PublicIpAddresses: Public IP of the instance
         :type PublicIpAddresses: list of str
-        :param ResourceType: 
+        :param ResourceType: Compute environment resource type. Valid values: `CVM`, `CPM` (Bare Metal)
         :type ResourceType: str
-        :param ResourceOrigin: 
+        :param ResourceOrigin: Source of compute environment resources. <br>BATCH_CREATED: instance resources created by BatchCompute.<br>
+USER_ATTACHED: instance resources added by users to the compute environment.
         :type ResourceOrigin: str
         """
         self.ComputeNodeId = None
@@ -595,9 +596,9 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://cloud.tencent.com/document/product/213/4952). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
+        :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
         :type DiskSize: int
-        :param DiskType: The type of the data disk. For more information regarding data disk types and limits, refer to [Storage Overview](https://cloud.tencent.com/document/product/213/4952). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for `ResizeInstanceDisk`.
+        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
         :type DiskType: str
         :param DiskId: Data disk ID. Data disks of the type `LOCAL_BASIC` or `LOCAL_SSD` do not have IDs and do not support this parameter.
         :type DiskId: str
@@ -1082,11 +1083,11 @@ class DescribeComputeEnvResponse(AbstractModel):
         :type DesiredComputeNodeCount: int
         :param EnvType: Compute environment type
         :type EnvType: str
-        :param ResourceType: 
+        :param ResourceType: Compute environment resource type. Valid values: CVM, CPM (Bare Metal)
         :type ResourceType: str
-        :param NextAction: 
+        :param NextAction: Next action
         :type NextAction: str
-        :param AttachedComputeNodeCount: 
+        :param AttachedComputeNodeCount: Number of compute nodes added to the compute environment by the user
         :type AttachedComputeNodeCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2031,7 +2032,7 @@ class Filter(AbstractModel):
     > * If there are multiple `Filter` parameters, they are evaluated using the logical `AND` operator.
     > * If a `Filter` contains multiple `Values`, they are evaluated using the logical `OR` operator.
     >
-    > Take [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) as an example. You can use the following filters to query the instances in availability zone (`zone`) Guangzhou Zone 1 ***and*** whose billing plan (`instance-charge-type`) is pay-as-you-go:
+    > Take [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) as an example. You can use the following filters to query the instances in availability zone (`zone`) Guangzhou Zone 1 ***and*** whose billing plan (`instance-charge-type`) is pay-as-you-go:
     ```
     Filters.0.Name=zone
     &Filters.0.Values.0=ap-guangzhou-1
@@ -2222,7 +2223,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type Zone: str
         :param InstanceType: Instance model.
         :type InstanceType: str
-        :param InstanceChargeType: Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://cloud.tencent.com/document/product/416) billing plan. Applicable to `CDH` only, not the instances on the host.
+        :param InstanceChargeType: Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) billing plan. Applicable to `CDH` only, not the instances on the host.
         :type InstanceChargeType: str
         :param NetworkCard: ENI type. For example, 25 represents an ENI of 25 GB.
         :type NetworkCard: int
@@ -2246,13 +2247,13 @@ Note: This field may return null, indicating that no valid value is found.
         :param SoldOutReason: Details of out-of-stock items
 Note: this field may return null, indicating that no valid value is obtained.
         :type SoldOutReason: str
-        :param InstanceBandwidth: 
+        :param InstanceBandwidth: Private network bandwidth, in Gbps.
         :type InstanceBandwidth: float
-        :param InstancePps: 
+        :param InstancePps: The max packet sending and receiving capability (in 10k PPS).
         :type InstancePps: int
-        :param StorageBlockAmount: 
+        :param StorageBlockAmount: Number of local storage blocks.
         :type StorageBlockAmount: int
-        :param CpuType: 
+        :param CpuType: CPU type.
         :type CpuType: str
         :param Gpu: Number of GPUs of the instance.
         :type Gpu: int
@@ -2324,11 +2325,11 @@ class InternetAccessible(AbstractModel):
         """
         :param InternetChargeType: Network connection billing plan. Valid value: <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour.
         :type InternetChargeType: str
-        :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://cloud.tencent.com/document/product/213/12523).
+        :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
         :type InternetMaxBandwidthOut: int
         :param PublicIpAssigned: Whether to assign a public IP. Valid values: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you can choose whether to assign a public IP; by default a public IP will be assigned. If the public network bandwidth is 0 Mbps, you will not be able to assign a public IP.
         :type PublicIpAssigned: bool
-        :param BandwidthPackageId: Bandwidth package ID. To obatin the IDs, you can call [`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209) and look for the `BandwidthPackageId` fields in the response.
+        :param BandwidthPackageId: Bandwidth package ID. To obatin the IDs, you can call [`DescribeBandwidthPackages`](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) and look for the `BandwidthPackageId` fields in the response.
         :type BandwidthPackageId: str
         """
         self.InternetChargeType = None
@@ -2533,7 +2534,7 @@ class LocalDiskType(AbstractModel):
         :type MinSize: int
         :param MaxSize: Maximum size of a local disk.
         :type MaxSize: int
-        :param Required: 
+        :param Required: Whether a local disk is required during purchase. Valid values:<br><li>REQUIRED: required<br><li>OPTIONAL: optional
         :type Required: str
         """
         self.Type = None
@@ -2858,15 +2859,15 @@ class Placement(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: The ID of [availability zone](https://cloud.tencent.com/document/product/213/15753#ZoneInfo) where the instance locates. It can obtained in the `Zone` field returned by [DescribeZones](https://cloud.tencent.com/document/213/15707) API.
+        :param Zone: The ID of [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) where the instance locates. It can obtained in the `Zone` field returned by [DescribeZones](https://intl.cloud.tencent.com/document/213/15707?from_cn_redirect=1) API.
         :type Zone: str
-        :param ProjectId: ID of the project to which the instance belongs. To obtain the project IDs, you can call [DescribeProject](/document/api/378/4400) and look for the `projectId` fields in the response. If this parameter is not specified, the default project will be used.
+        :param ProjectId: ID of the project to which the instance belongs. To obtain the project IDs, you can call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) and look for the `projectId` fields in the response. If this parameter is not specified, the default project will be used.
         :type ProjectId: int
         :param HostIds: ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.
         :type HostIds: list of str
         :param HostIps: Master host IP used to create the CVM
         :type HostIps: list of str
-        :param HostId: 
+        :param HostId: The ID of the CDH to which the instance belongs, only used as an output parameter.
         :type HostId: str
         """
         self.Zone = None
@@ -2983,7 +2984,7 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: Whether to enable [Cloud Monitor](/document/product/248). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.
+        :param Enabled: Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.
         :type Enabled: bool
         """
         self.Enabled = None
@@ -3000,7 +3001,7 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: Whether to enable [Cloud Security](/document/product/296). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
+        :param Enabled: Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
         :type Enabled: bool
         """
         self.Enabled = None
@@ -3116,7 +3117,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: System disk type. For more information on system disk types and their limits, refer to [Storage Overview](https://cloud.tencent.com/document/product/213/4952). Valid values: <br><li>LOCAL_BASIC: Local disk <br><li>LOCAL_SSD: Local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium cloud disk <br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: LOCAL_BASIC.
+        :param DiskType: System disk type. For more information on system disk types and their limits, refer to [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: Local disk <br><li>LOCAL_SSD: Local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium cloud disk <br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: LOCAL_BASIC.
         :type DiskType: str
         :param DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter currently.
         :type DiskId: str
@@ -3677,15 +3678,15 @@ class VirtualPrivateCloud(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: 
+        :param VpcId: VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.
         :type VpcId: str
-        :param SubnetId: VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](/document/api/215/15784) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.
+        :param SubnetId: VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.
         :type SubnetId: str
         :param AsVpcGateway: Whether to use an instance as a public gateway. An instance can be used as a public gateway only when it has a public IP and resides in a VPC. Valid values: <br><li>TRUE: use the instance as a public gateway <br><li>FALSE: do not use the instance as a public gateway <br><br>Default value: FALSE.
         :type AsVpcGateway: bool
         :param PrivateIpAddresses: Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
         :type PrivateIpAddresses: list of str
-        :param Ipv6AddressCount: 
+        :param Ipv6AddressCount: Number of IPv6 addresses randomly generated for the ENI.
         :type Ipv6AddressCount: int
         """
         self.VpcId = None

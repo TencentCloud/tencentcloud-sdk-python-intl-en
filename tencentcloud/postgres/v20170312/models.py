@@ -128,7 +128,7 @@ class CreateDBInstancesRequest(AbstractModel):
         :type SubnetId: str
         :param AutoRenewFlag: Renewal flag. 0: normal renewal (default), 1: auto-renewal.
         :type AutoRenewFlag: int
-        :param ActivityId: 
+        :param ActivityId: Activity ID
         :type ActivityId: int
         :param Name: Instance name (which will be supported in the future)
         :type Name: str
@@ -190,9 +190,9 @@ class CreateDBInstancesResponse(AbstractModel):
         """
         :param DealNames: Order number list. Each instance corresponds to an order number.
         :type DealNames: list of str
-        :param BillId: 
+        :param BillId: Bill ID of frozen fees
         :type BillId: str
-        :param DBInstanceIdSet: 
+        :param DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the billing mode is postpaid.
         :type DBInstanceIdSet: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -322,11 +322,11 @@ class DBInstance(AbstractModel):
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
         :param Type: Machine type
         :type Type: str
-        :param AppId: 
+        :param AppId: User `AppId`
         :type AppId: int
-        :param Uid: 
+        :param Uid: Instance `Uid`
         :type Uid: int
-        :param SupportIpv6: 
+        :param SupportIpv6: Whether the instance supports IPv6 address access. Valid values: 1 (yes), 0 (no)
         :type SupportIpv6: int
         :param TagList: The information of tags associated with instances.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -690,9 +690,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Limit: int
         :param Offset: Page number, starting from 0.
         :type Offset: int
-        :param OrderBy: 
+        :param OrderBy: Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime
         :type OrderBy: str
-        :param OrderByType: 
+        :param OrderByType: In ascending or descending order
         :type OrderByType: str
         """
         self.Filters = None
@@ -2008,7 +2008,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type AutoVoucher: int
         :param VoucherIds: Voucher ID list (only one voucher can be specified currently)
         :type VoucherIds: list of str
-        :param ActivityId: 
+        :param ActivityId: Activity ID
         :type ActivityId: int
         """
         self.Memory = None
@@ -2037,7 +2037,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
         """
         :param DealName: Transaction name.
         :type DealName: str
-        :param BillId: 
+        :param BillId: Bill ID of frozen fees
         :type BillId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2070,7 +2070,7 @@ class Xlog(AbstractModel):
         :type InternalAddr: str
         :param ExternalAddr: Download address on public network
         :type ExternalAddr: str
-        :param Size: 
+        :param Size: Backup file size
         :type Size: int
         """
         self.Id = None

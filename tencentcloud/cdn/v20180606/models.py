@@ -2778,13 +2778,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param AwsPrivateAccess: S3 bucket origin access authentication configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
-        :param SecurityConfig: 
+        :param SecurityConfig: SCDN configuration
         :type SecurityConfig: :class:`tencentcloud.cdn.v20180606.models.SecurityConfig`
-        :param ImageOptimization: 
+        :param ImageOptimization: Image Optimization configuration
         :type ImageOptimization: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`
-        :param UserAgentFilter: 
+        :param UserAgentFilter: `UA` blocklist/allowlist configuration
         :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
-        :param AccessControl: 
+        :param AccessControl: Access control
         :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
         :param Advance: Whether to support advanced configuration items
 on: supported
@@ -2797,6 +2797,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param AccessPort: Access port configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccessPort: list of int
+        :param Tag: 
+        :type Tag: list of Tag
         """
         self.ResourceId = None
         self.AppId = None
@@ -2845,6 +2847,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Advance = None
         self.UrlRedirect = None
         self.AccessPort = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -2961,6 +2964,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.UrlRedirect = UrlRedirect()
             self.UrlRedirect._deserialize(params.get("UrlRedirect"))
         self.AccessPort = params.get("AccessPort")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
 
 
 class DisableCachesRequest(AbstractModel):
@@ -3601,7 +3610,7 @@ deployed: successfully deployed
 failed: deployment failed
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SslStatus: str
-        :param Hsts: 
+        :param Hsts: HSTS configuration
         :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
         """
         self.Switch = None
@@ -5817,6 +5826,27 @@ avg: average value
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+
+
+class Tag(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 
+        :type TagKey: str
+        :param TagValue: 
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class TimestampData(AbstractModel):

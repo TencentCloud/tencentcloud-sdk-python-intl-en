@@ -6860,23 +6860,27 @@ class MediaAiAnalysisCoverItem(AbstractModel):
 
 
 class MediaAiAnalysisFrameTagItem(AbstractModel):
-    """Result information of intelligent frame-specific tagging
+    """
 
     """
 
     def __init__(self):
         """
-        :param Tag: Frame-specific tag name.
+        :param Tag: 
         :type Tag: str
-        :param Confidence: Confidence of intelligently generated frame-specific tag between 0 and 100.
+        :param CategorySet: 
+        :type CategorySet: list of str
+        :param Confidence: 
         :type Confidence: float
         """
         self.Tag = None
+        self.CategorySet = None
         self.Confidence = None
 
 
     def _deserialize(self, params):
         self.Tag = params.get("Tag")
+        self.CategorySet = params.get("CategorySet")
         self.Confidence = params.get("Confidence")
 
 

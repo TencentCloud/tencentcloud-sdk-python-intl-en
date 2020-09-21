@@ -201,7 +201,7 @@ class ChargePrepaid(AbstractModel):
 
     def __init__(self):
         """
-        :param Period: 
+        :param Period: Purchased usage period, in month. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36
         :type Period: int
         :param RenewFlag: Auto renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_AUTO_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.
         :type RenewFlag: str
@@ -404,7 +404,7 @@ class DataDisk(AbstractModel):
         """
         :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
         :type DiskSize: int
-        :param DiskType: The type of the data disk. For more information regarding data disk types and limits, refer to [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for `ResizeInstanceDisk`.
+        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
         :type DiskType: str
         :param DiskId: Data disk ID. Data disks of the type `LOCAL_BASIC` or `LOCAL_SSD` do not have IDs and do not support this parameter.
         :type DiskId: str
@@ -1343,6 +1343,71 @@ class DescribeRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReservedInstancesConfigInfosRequest(AbstractModel):
+    """DescribeReservedInstancesConfigInfos request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: zone
+Filters by the availability zones in which the reserved instance can be purchased, such as `ap-guangzhou-1`.
+Type: String
+Required: no
+Valid values: list of regions/availability zones
+
+product-description
+Filters by the platform description (operating system) of the reserved instance, such as `linux`.
+Type: String
+Required: no
+Valid value: linux
+
+duration
+Filters by the **validity** of the reserved instance, which is the purchased usage period. For example, `31536000`.
+Type: Integer
+Unit: second
+Required: no
+Valid values: 31536000 (1 year), 94608000 (3 years)
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeReservedInstancesConfigInfosResponse(AbstractModel):
+    """DescribeReservedInstancesConfigInfos response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReservedInstanceConfigInfos: Static configurations of the reserved instance.
+        :type ReservedInstanceConfigInfos: list of ReservedInstanceConfigInfoItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReservedInstanceConfigInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReservedInstanceConfigInfos") is not None:
+            self.ReservedInstanceConfigInfos = []
+            for item in params.get("ReservedInstanceConfigInfos"):
+                obj = ReservedInstanceConfigInfoItem()
+                obj._deserialize(item)
+                self.ReservedInstanceConfigInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeReservedInstancesOfferingsRequest(AbstractModel):
     """DescribeReservedInstancesOfferings request structure.
 
@@ -1445,20 +1510,23 @@ class DescribeReservedInstancesRequest(AbstractModel):
         :param Limit: Number of returned results. The default value is 20. The maximum is 100. For more information on `Limit`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
         :param Filters: <li><strong>zone</strong></li>
-<p style="padding-left: 30px;">Filters by the **<strong>availability zones</strong>** in which reserved instances can be purchased. For example, "ap-guangzhou-1".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">list of availability zones</a></p>
+<p style="padding-left: 30px;">Filters by <strong>availability zone</strong> in which the reserved instances can be purchased, such as ap-guangzhou-1.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: please see <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Availability Zones</a></p>
 <li><strong>duration</strong></li>
-<p style="padding-left: 30px;">Filters by reserved instance **<strong>validity</strong>** (in seconds). For example, 31536000.</p><p style="padding-left: 30px;">Type: Integer</p><p style="padding-left: 30px;">Unit: second</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: 31536000 (1 year) | 94608000 (3 years)</p>
+<p style="padding-left: 30px;">Filters by the <strong>validity</strong> of the reserved instance, in seconds. For example, `31536000`.</p><p style="padding-left: 30px;">Type: Integer</p><p style="padding-left: 30px;">Unit: second</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: 31536000 (1 year) | 94608000 (3 years)</p>
 <li><strong>instance-type</strong></li>
-<p style="padding-left: 30px;">Filters by **<strong>specifications of reserved instances</strong>**. For example, "S3.MEDIUM4".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">list of reserved instance specifiations</a></p>
+<p style="padding-left: 30px;">Filters by <strong>reserved instance specification</strong>, such as `S3.MEDIUM4`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: please see <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">Reserved Instance Specifications</a></p>
+<li><strong>instance-family</strong></li>
+<p style="padding-left: 30px;">Filters by <strong>type of the reserved instance</strong>, such as `S3`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: please see <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">Reserved Instance Types</a></p>
 <li><strong>offering-type</strong></li>
-<p style="padding-left: 30px;">Filters by **<strong>payment method</strong>**. For example, "All Upfront".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid value: All Upfront</p>
+<li><strong>offering-type</strong></li>
+<p style="padding-left: 30px;">Filters by <strong>payment method</strong>, such as `All Upfront`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid value: All Upfront</p>
 <li><strong>product-description</strong></li>
-<p style="padding-left: 30px;">Filters by the **<strong>operating system</strong>** of the reserved instance. For example, "linux".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid value: linux</p>
+<p style="padding-left: 30px;">Filters by the <strong>platform description</strong> (operating system) of the reserved instance, such as `linux`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid value: linux</p>
 <li><strong>reserved-instances-id</strong></li>
-<p style="padding-left: 30px;">Filters by **<strong>reserved instance ID</strong>. Reserved instance IDs take the form "650c138f-ae7e-4750-952a-96841d6e9fc1".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p>
+<p style="padding-left: 30px;">Filters by <strong>reserved instance ID</strong> in the form of 650c138f-ae7e-4750-952a-96841d6e9fc1.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p>
 <li><strong>state</strong></li>
-<p style="padding-left: 30px;">Filters by **<strong>reserved instance status</strong>. For example, "active".</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required</p><p style="padding-left: 30px;">Valid values: "active" (created) | "pending" (waiting to be created) | "retired" (expired)</p>
-Each request can have up to 10 `Filters` and 5 `Filters.Values`.
+<p style="padding-left: 30px;">Filters by <strong>reserved instance status</strong>. For example, “active”.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required</p><p style="padding-left: 30px;">Valid values: active (created) | pending (waiting to be created) | retired (expired)</p>
+Each request can have up to 10 `Filters` and 5 `Filter.Values`.
         :type Filters: list of Filter
         """
         self.DryRun = None
@@ -1506,6 +1574,29 @@ class DescribeReservedInstancesResponse(AbstractModel):
                 obj = ReservedInstances()
                 obj._deserialize(item)
                 self.ReservedInstancesSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSpotTypeConfigRequest(AbstractModel):
+    """DescribeSpotTypeConfig request structure.
+
+    """
+
+
+class DescribeSpotTypeConfigResponse(AbstractModel):
+    """DescribeSpotTypeConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1899,7 +1990,7 @@ class HostResource(AbstractModel):
         :type DiskTotal: int
         :param DiskAvailable: Avilable disk size of the CDH instance; unit: GiB
         :type DiskAvailable: int
-        :param DiskType: 
+        :param DiskType: CDH instance disk type.
         :type DiskType: str
         """
         self.CpuTotal = None
@@ -2132,6 +2223,62 @@ class ImportKeyPairResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.KeyId = params.get("KeyId")
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
+    """InquirePricePurchaseReservedInstancesOffering request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceCount: The number of the reserved instances you are purchasing.
+        :type InstanceCount: int
+        :param ReservedInstancesOfferingId: The ID of the reserved instance offering.
+        :type ReservedInstancesOfferingId: str
+        :param DryRun: Dry run.
+        :type DryRun: bool
+        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
+        :type ClientToken: str
+        :param ReservedInstanceName: Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
+        :type ReservedInstanceName: str
+        """
+        self.InstanceCount = None
+        self.ReservedInstancesOfferingId = None
+        self.DryRun = None
+        self.ClientToken = None
+        self.ReservedInstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceCount = params.get("InstanceCount")
+        self.ReservedInstancesOfferingId = params.get("ReservedInstancesOfferingId")
+        self.DryRun = params.get("DryRun")
+        self.ClientToken = params.get("ClientToken")
+        self.ReservedInstanceName = params.get("ReservedInstanceName")
+
+
+class InquirePricePurchaseReservedInstancesOfferingResponse(AbstractModel):
+    """InquirePricePurchaseReservedInstancesOffering response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: Price of the reserved instance with specified configuration.
+        :type Price: :class:`tencentcloud.cvm.v20170312.models.ReservedInstancePrice`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = ReservedInstancePrice()
+            self.Price._deserialize(params.get("Price"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2544,13 +2691,13 @@ Note: This field may return null, indicating that no valid value is found.
         :param StopChargingMode: Instance billing method after shutdown.
 Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>STOP_CHARGING: billing stops after shutdown <li>NOT_APPLICABLE: the instance is not shut down or stopping billing after shutdown is not applicable to the instance. <br>
         :type StopChargingMode: str
-        :param Uuid: 
+        :param Uuid: Globally unique ID of the instance.
         :type Uuid: str
-        :param LatestOperation: 
+        :param LatestOperation: Last operation of the instance, such as StopInstances or ResetInstance.
         :type LatestOperation: str
-        :param LatestOperationState: 
+        :param LatestOperationState: The latest operation status of the instance. Valid values:<br><li>SUCCESS: operation succeeded<br><li>OPERATING: operation in progress<br><li>FAILED: operation failed
         :type LatestOperationState: str
-        :param LatestOperationRequestId: 
+        :param LatestOperationRequestId: Unique request ID for the last operation of the instance.
         :type LatestOperationRequestId: str
         :param DisasterRecoverGroupId: ID of a spread placement group.
 Note: this field may return null, indicating that no valid value is obtained.
@@ -2822,13 +2969,13 @@ Note: This field may return null, indicating that no valid value is found.
         :param SoldOutReason: Details of out-of-stock items
 Note: this field may return null, indicating that no valid value is obtained.
         :type SoldOutReason: str
-        :param InstanceBandwidth: 
+        :param InstanceBandwidth: Private network bandwidth, in Gbps.
         :type InstanceBandwidth: float
-        :param InstancePps: 
+        :param InstancePps: The max packet sending and receiving capability (in 10k PPS).
         :type InstancePps: int
-        :param StorageBlockAmount: 
+        :param StorageBlockAmount: Number of local storage blocks.
         :type StorageBlockAmount: int
-        :param CpuType: 
+        :param CpuType: CPU type.
         :type CpuType: str
         :param Gpu: Number of GPUs of the instance.
         :type Gpu: int
@@ -3064,7 +3211,7 @@ class LocalDiskType(AbstractModel):
         :type MinSize: int
         :param MaxSize: Maximum size of a local disk.
         :type MaxSize: int
-        :param Required: 
+        :param Required: Whether a local disk is required during purchase. Valid values:<br><li>REQUIRED: required<br><li>OPTIONAL: optional
         :type Required: str
         """
         self.Type = None
@@ -3517,7 +3664,7 @@ class Placement(AbstractModel):
         :type HostIds: list of str
         :param HostIps: Master host IP used to create the CVM
         :type HostIps: list of str
-        :param HostId: 
+        :param HostId: The ID of the CDH to which the instance belongs, only used as an output parameter.
         :type HostId: str
         """
         self.Zone = None
@@ -3575,11 +3722,14 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
         :type DryRun: bool
         :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
         :type ClientToken: str
+        :param ReservedInstanceName: Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
+        :type ReservedInstanceName: str
         """
         self.InstanceCount = None
         self.ReservedInstancesOfferingId = None
         self.DryRun = None
         self.ClientToken = None
+        self.ReservedInstanceName = None
 
 
     def _deserialize(self, params):
@@ -3587,6 +3737,7 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
         self.ReservedInstancesOfferingId = params.get("ReservedInstancesOfferingId")
         self.DryRun = params.get("DryRun")
         self.ClientToken = params.get("ClientToken")
+        self.ReservedInstanceName = params.get("ReservedInstanceName")
 
 
 class PurchaseReservedInstancesOfferingResponse(AbstractModel):
@@ -3677,6 +3828,218 @@ class RegionInfo(AbstractModel):
         self.RegionState = params.get("RegionState")
 
 
+class ReservedInstanceConfigInfoItem(AbstractModel):
+    """Static configurations of the reserved instance. Currently, RIs are only offered to beta users.
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Abbreviation name of the instance type.
+        :type Type: str
+        :param TypeName: Full name of the instance type.
+        :type TypeName: str
+        :param Order: Priority.
+        :type Order: int
+        :param InstanceFamilies: List of instance families.
+        :type InstanceFamilies: list of ReservedInstanceFamilyItem
+        """
+        self.Type = None
+        self.TypeName = None
+        self.Order = None
+        self.InstanceFamilies = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.TypeName = params.get("TypeName")
+        self.Order = params.get("Order")
+        if params.get("InstanceFamilies") is not None:
+            self.InstanceFamilies = []
+            for item in params.get("InstanceFamilies"):
+                obj = ReservedInstanceFamilyItem()
+                obj._deserialize(item)
+                self.InstanceFamilies.append(obj)
+
+
+class ReservedInstanceFamilyItem(AbstractModel):
+    """RI-related instance family. Currently, RIs are only offered to beta users.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceFamily: Instance family.
+        :type InstanceFamily: str
+        :param Order: Priority.
+        :type Order: int
+        :param InstanceTypes: List of instance types.
+        :type InstanceTypes: list of ReservedInstanceTypeItem
+        """
+        self.InstanceFamily = None
+        self.Order = None
+        self.InstanceTypes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceFamily = params.get("InstanceFamily")
+        self.Order = params.get("Order")
+        if params.get("InstanceTypes") is not None:
+            self.InstanceTypes = []
+            for item in params.get("InstanceTypes"):
+                obj = ReservedInstanceTypeItem()
+                obj._deserialize(item)
+                self.InstanceTypes.append(obj)
+
+
+class ReservedInstancePrice(AbstractModel):
+    """Price of the reserved instance. Currently, RIs are only offered to beta users.
+
+    """
+
+    def __init__(self):
+        """
+        :param OriginalFixedPrice: Original upfront price, in USD.
+        :type OriginalFixedPrice: float
+        :param DiscountFixedPrice: Discounted upfront price, in USD.
+        :type DiscountFixedPrice: float
+        :param OriginalUsagePrice: Original usage price, in USD/hr.
+        :type OriginalUsagePrice: float
+        :param DiscountUsagePrice: Discounted usage price, in USD/hr.
+        :type DiscountUsagePrice: float
+        """
+        self.OriginalFixedPrice = None
+        self.DiscountFixedPrice = None
+        self.OriginalUsagePrice = None
+        self.DiscountUsagePrice = None
+
+
+    def _deserialize(self, params):
+        self.OriginalFixedPrice = params.get("OriginalFixedPrice")
+        self.DiscountFixedPrice = params.get("DiscountFixedPrice")
+        self.OriginalUsagePrice = params.get("OriginalUsagePrice")
+        self.DiscountUsagePrice = params.get("DiscountUsagePrice")
+
+
+class ReservedInstancePriceItem(AbstractModel):
+    """Price information of the reserved instance based on the payment method. Currently, RIs are only offered to beta users.
+
+    """
+
+    def __init__(self):
+        """
+        :param OfferingType: Payment method. Valid values: All Upfront, Partial Upfront, and No Upfront.
+        :type OfferingType: str
+        :param FixedPrice: Total upfront price, in USD.
+        :type FixedPrice: float
+        :param UsagePrice: Total usage price, in USD/hr.
+        :type UsagePrice: float
+        :param ReservedInstancesOfferingId: The ID of the reserved instance offering.
+        :type ReservedInstancesOfferingId: str
+        :param Zone: The availability zone in which the reserved instance can be purchased.
+        :type Zone: str
+        :param Duration: The **validity** of the reserved instance in seconds, which is the purchased usage period. For example, `31536000`.
+Unit: second
+        :type Duration: int
+        :param ProductDescription: The operating system of the reserved instance, such as `linux`.
+Valid value: linux.
+        :type ProductDescription: str
+        """
+        self.OfferingType = None
+        self.FixedPrice = None
+        self.UsagePrice = None
+        self.ReservedInstancesOfferingId = None
+        self.Zone = None
+        self.Duration = None
+        self.ProductDescription = None
+
+
+    def _deserialize(self, params):
+        self.OfferingType = params.get("OfferingType")
+        self.FixedPrice = params.get("FixedPrice")
+        self.UsagePrice = params.get("UsagePrice")
+        self.ReservedInstancesOfferingId = params.get("ReservedInstancesOfferingId")
+        self.Zone = params.get("Zone")
+        self.Duration = params.get("Duration")
+        self.ProductDescription = params.get("ProductDescription")
+
+
+class ReservedInstanceTypeItem(AbstractModel):
+    """Reserved instance specification. Currently, RIs are only offered to beta users.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceType: Instance type.
+        :type InstanceType: str
+        :param Cpu: Number of CPU cores.
+        :type Cpu: int
+        :param Memory: Memory size.
+        :type Memory: int
+        :param Gpu: Number of GPU cores.
+        :type Gpu: int
+        :param Fpga: Number of FPGA cores.
+        :type Fpga: int
+        :param StorageBlock: Number of storage blocks.
+        :type StorageBlock: int
+        :param NetworkCard: Number of ENIs.
+        :type NetworkCard: int
+        :param MaxBandwidth: Maximum bandwidth.
+        :type MaxBandwidth: float
+        :param Frequency: CPU frequency.
+        :type Frequency: str
+        :param CpuModelName: CPU type.
+        :type CpuModelName: str
+        :param Pps: Packet forwarding rate.
+        :type Pps: int
+        :param Externals: Other information.
+        :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
+        :param Remark: Remarks.
+        :type Remark: str
+        :param Prices: Price information about the reserved instance.
+        :type Prices: list of ReservedInstancePriceItem
+        """
+        self.InstanceType = None
+        self.Cpu = None
+        self.Memory = None
+        self.Gpu = None
+        self.Fpga = None
+        self.StorageBlock = None
+        self.NetworkCard = None
+        self.MaxBandwidth = None
+        self.Frequency = None
+        self.CpuModelName = None
+        self.Pps = None
+        self.Externals = None
+        self.Remark = None
+        self.Prices = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Gpu = params.get("Gpu")
+        self.Fpga = params.get("Fpga")
+        self.StorageBlock = params.get("StorageBlock")
+        self.NetworkCard = params.get("NetworkCard")
+        self.MaxBandwidth = params.get("MaxBandwidth")
+        self.Frequency = params.get("Frequency")
+        self.CpuModelName = params.get("CpuModelName")
+        self.Pps = params.get("Pps")
+        if params.get("Externals") is not None:
+            self.Externals = Externals()
+            self.Externals._deserialize(params.get("Externals"))
+        self.Remark = params.get("Remark")
+        if params.get("Prices") is not None:
+            self.Prices = []
+            for item in params.get("Prices"):
+                obj = ReservedInstancePriceItem()
+                obj._deserialize(item)
+                self.Prices.append(obj)
+
+
 class ReservedInstances(AbstractModel):
     """Describes the information of the reserved instances the user has purchased
 
@@ -3686,8 +4049,8 @@ class ReservedInstances(AbstractModel):
         """
         :param ReservedInstancesId: The ID of the purchased reserved instance, taking the form 650c138f-ae7e-4750-952a-96841d6e9fc1.
         :type ReservedInstancesId: str
-        :param InstanceType: The type of the reserved instance. For example, S3.MEDIUM4.
-Returned value: <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">list of reserved instance types</a>
+        :param InstanceType: Reserved instance specification, such as `S3.MEDIUM4`.
+Valid values: please see <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">Reserved Instance Specifications</a>
         :type InstanceType: str
         :param Zone: Availability zones in which the reserved instance can be purchased. For example, "ap-guangzhou-1".
 Returned values: <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">list of availability zones</a>
@@ -3713,6 +4076,9 @@ Returned value: USD.
         :param OfferingType: The payment method of the reserved instance. For example, "All Upfront".
 Returned value: All Upfront.
         :type OfferingType: str
+        :param InstanceFamily: Reserved instance type, such as `S3`.
+Valid values: please see <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">Reserved Instance Types</a>
+        :type InstanceFamily: str
         """
         self.ReservedInstancesId = None
         self.InstanceType = None
@@ -3725,6 +4091,7 @@ Returned value: All Upfront.
         self.State = None
         self.CurrencyCode = None
         self.OfferingType = None
+        self.InstanceFamily = None
 
 
     def _deserialize(self, params):
@@ -3739,6 +4106,7 @@ Returned value: All Upfront.
         self.State = params.get("State")
         self.CurrencyCode = params.get("CurrencyCode")
         self.OfferingType = params.get("OfferingType")
+        self.InstanceFamily = params.get("InstanceFamily")
 
 
 class ReservedInstancesOffering(AbstractModel):
@@ -4067,7 +4435,7 @@ class RunInstancesRequest(AbstractModel):
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         :param DataDisks: The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC data disk or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC data disks, CLOUD_PREMIUM data disks, or CLOUD_SSD data disks.
         :type DataDisks: list of DataDisk
-        :param VirtualPrivateCloud: VPC configurations. You can use this parameter to specify the VPC ID, subnet ID, etc. If this parameter is not specified, the basic network will be used by default. If a VPC IP is specified in this parameter, it will represent the primary ENI IP of each instance. The value of `InstanceCount` must be the same as the number of VPC IPs.
+        :param VirtualPrivateCloud: Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.
         :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         :param InternetAccessible: Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
@@ -4568,7 +4936,7 @@ class VirtualPrivateCloud(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: 
+        :param VpcId: VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.
         :type VpcId: str
         :param SubnetId: VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.
         :type SubnetId: str
@@ -4576,7 +4944,7 @@ class VirtualPrivateCloud(AbstractModel):
         :type AsVpcGateway: bool
         :param PrivateIpAddresses: Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
         :type PrivateIpAddresses: list of str
-        :param Ipv6AddressCount: 
+        :param Ipv6AddressCount: Number of IPv6 addresses randomly generated for the ENI.
         :type Ipv6AddressCount: int
         """
         self.VpcId = None

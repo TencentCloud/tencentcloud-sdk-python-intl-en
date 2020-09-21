@@ -1048,7 +1048,7 @@ class AuditCrossBorderComplianceRequest(AbstractModel):
         """
         :param ServiceProvider: Service provider. Valid values: `UNICOM`.
         :type ServiceProvider: str
-        :param ComplianceId: Unique ID of compliance review form.
+        :param ComplianceId: Unique ID of compliance review request.
         :type ComplianceId: int
         :param AuditBehavior: Audit behavior. Valid values: `APPROVED` and `DENY`.
         :type AuditBehavior: str
@@ -3335,7 +3335,7 @@ class CreateVpnGatewayResponse(AbstractModel):
 
 
 class CrossBorderCompliance(AbstractModel):
-    """Compliance review form.
+    """Compliance review request
 
     """
 
@@ -3343,7 +3343,7 @@ class CrossBorderCompliance(AbstractModel):
         """
         :param ServiceProvider: Service provider. Valid values: `UNICOM`.
         :type ServiceProvider: str
-        :param ComplianceId: ID of compliance review form.
+        :param ComplianceId: ID of compliance review request.
         :type ComplianceId: int
         :param Company: Full company name.
         :type Company: str
@@ -3353,7 +3353,7 @@ class CrossBorderCompliance(AbstractModel):
         :type LegalPerson: str
         :param IssuingAuthority: Issuing authority.
         :type IssuingAuthority: str
-        :param BusinessLicense: Business License.
+        :param BusinessLicense: Business license.
         :type BusinessLicense: str
         :param BusinessAddress: Business address.
         :type BusinessAddress: str
@@ -5188,7 +5188,7 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         """
         :param ServiceProvider: (Exact match) Service provider. Valid values: `UNICOM`.
         :type ServiceProvider: str
-        :param ComplianceId: (Exact match) ID of compliance review form.
+        :param ComplianceId: (Exact match) ID of compliance review request.
         :type ComplianceId: int
         :param Company: (Fuzzy match) Company name.
         :type Company: str
@@ -5263,9 +5263,9 @@ class DescribeCrossBorderComplianceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CrossBorderComplianceSet: List of compliance review forms.
+        :param CrossBorderComplianceSet: List of compliance review requests.
         :type CrossBorderComplianceSet: list of CrossBorderCompliance
-        :param TotalCount: Total number of compliance review forms.
+        :param TotalCount: Total number of compliance review requests.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

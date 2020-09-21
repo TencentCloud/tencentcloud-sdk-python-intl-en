@@ -1111,13 +1111,14 @@ class DrmSettingsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param State: 
+        :param State: Whether to enable DRM encryption. Valid value: CLOSE/OPEN. Default value: CLOSE.
+Currently, this is supported only for HLS/DASH/HLS_ARCHIVE/DASH_ARCHIVE.
         :type State: str
-        :param ContentId: When `Scheme` is set to TencentDRM, this parameter should be set to the `ContentId` of DRM encryption, and if this parameter is left empty, a `ContentId` will be automatically created. For more information, please see [here](https://cloud.tencent.com/document/product/1000/40960).
+        :param ContentId: When `Scheme` is set to TencentDRM, this parameter should be set to the `ContentId` of DRM encryption, and if this parameter is left empty, a `ContentId` will be automatically created. For more information, please see [here](https://intl.cloud.tencent.com/document/product/1000/40960?from_cn_redirect=1).
 When `Scheme` is set to CustomDRMKeys, this parameter is required and should be specified by the user.
         :type ContentId: str
         :param Scheme: Valid values: TencentDRM, CustomDRMKeys. If this parameter is left empty, TencentDRM will be used by default.
-TencentDRM refers to Tencent digital rights management (DRM) encryption. For more information, please see [here](https://cloud.tencent.com/solution/drm).
+TencentDRM refers to Tencent digital rights management (DRM) encryption. For more information, please see [here](https://intl.cloud.tencent.com/solution/drm?from_cn_redirect=1).
 CustomDRMKeys refers to an encryption key customized by the user.
         :type Scheme: str
         :param Keys: The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.
@@ -1558,20 +1559,21 @@ class OutputGroupsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 
+        :param Name: Channel output group name, which can contain 1–32 letters, digits, and underscores and must be unique at the channel level.
         :type Name: str
         :param Type: Output protocol type.
 Valid values: HLS, DASH, HLS_ARCHIVE, HLS_MEDIA_PACKAGE, DASH_MEDIA_PACKAGE.
         :type Type: str
-        :param Outputs: 
+        :param Outputs: Output information.
+Quantity limit: [1,1] for RTMP/RTP; [1,10] for HLS/DASH.
         :type Outputs: list of OutputInfo
-        :param Destinations: 
+        :param Destinations: Relay destination address. Quantity limit: [1,2].
         :type Destinations: list of DestinationInfo
-        :param HlsRemuxSettings: 
+        :param HlsRemuxSettings: HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE.
         :type HlsRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`
-        :param DashRemuxSettings: 
+        :param DashRemuxSettings: DASH protocol configuration information, which takes effect only for DASH/DSAH_ARCHIVE.
         :type DashRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.DashRemuxSettingsInfo`
-        :param DrmSettings: 
+        :param DrmSettings: DRM configuration information.
         :type DrmSettings: :class:`tencentcloud.mdl.v20200326.models.DrmSettingsInfo`
         :param MediaPackageSettings: Configuration information of media packaging, which is required when `Type` is set to MediaPackage.
 Note: this field may return null, indicating that no valid values can be obtained.

@@ -107,7 +107,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are pr
         :type ImageBase64: str
         :param ImageUrl: URL address of image.
 The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
-We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
         """
         self.ImageBase64 = None
@@ -126,7 +126,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TextDetections: Information of recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
+        :param TextDetections: Information on recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
         :type TextDetections: list of TextDetection
         :param Angel: Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation.
         :type Angel: float
@@ -162,7 +162,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are pr
         :type ImageBase64: str
         :param ImageUrl: URL address of image/PDF.
 The image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
-We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
         :param Scene: Reserved field.
         :type Scene: str
@@ -215,9 +215,9 @@ class GeneralBasicOCRResponse(AbstractModel):
         :type TextDetections: list of TextDetection
         :param Language: Detected language. For more information on the supported languages, please see the description of the `LanguageType` input parameter.
         :type Language: str
-        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation. For more information, please see <a href="https://intl.cloud.tencent.com/document/product/866/45139?from_cn_redirect=1">How to Correct Tilted Text</a>
+        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation. For more information, please see <a href="https://intl.cloud.tencent.com/document/product/866/45139?from_cn_redirect=1">How to Correct Tilted Text</a>.
         :type Angel: float
-        :param PdfPageSize: Total number of PDF pages to be returned if the image is a PDF. Default value: 0
+        :param PdfPageSize: Total number of PDF pages to be returned if the image is a PDF. Default value: 0.
         :type PdfPageSize: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -359,15 +359,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ItemCoord(AbstractModel):
-    """Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`
+    """Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.
 
     """
 
     def __init__(self):
         """
-        :param X: X-coordinate of top-left point
+        :param X: X-coordinate of top-left point.
         :type X: int
-        :param Y: Y-coordinate of top-left point
+        :param Y: Y-coordinate of top-left point.
         :type Y: int
         :param Width: Width
         :type Width: int
@@ -458,7 +458,7 @@ MyKAS: Malaysian Temporary Resident Identity Card
 POLIS: Royal Malaysia Police Identity Card
 IKAD: Malaysia Temporary Employment Visit Pass
         :type Type: str
-        :param Birthday: Date of birth (currently, this field is only supported for IKAD)
+        :param Birthday: Date of birth (currently, this field is only supported for IKAD).
         :type Birthday: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -497,7 +497,7 @@ class MLIDPassportOCRRequest(AbstractModel):
         """
         :param ImageBase64: Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.
         :type ImageBase64: str
-        :param RetImage: Whether to return an image. Default value: false
+        :param RetImage: Whether to return an image. Default value: false.
         :type RetImage: bool
         """
         self.ImageBase64 = None
@@ -592,7 +592,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are pr
         :param ImageUrl: URL address of image.
 Supported image formats: PNG, JPG, JPEG. GIF is not supported at present.
 Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
         """
@@ -636,23 +636,23 @@ class TableOCRResponse(AbstractModel):
 
 
 class TextDetection(AbstractModel):
-    """OCR result
+    """OCR result.
 
     """
 
     def __init__(self):
         """
-        :param DetectedText: Recognized text line content
+        :param DetectedText: Recognized text line content.
         :type DetectedText: str
-        :param Confidence: Confidence. Value range: 0-100
+        :param Confidence: Confidence. Value range: 0–100.
         :type Confidence: int
-        :param Polygon: Text line coordinates, which are represented as 4 vertex coordinates
+        :param Polygon: Text line coordinates, which are represented as 4 vertex coordinates.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Polygon: list of Coord
         :param AdvancedInfo: Extended field.
 The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains `ParagNo`.
         :type AdvancedInfo: str
-        :param ItemPolygon: Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`
+        :param ItemPolygon: Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.
         :type ItemPolygon: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
         self.DetectedText = None
@@ -684,13 +684,13 @@ class TextTable(AbstractModel):
 
     def __init__(self):
         """
-        :param ColTl: Column index of the top-left corner of the cell
+        :param ColTl: Column index of the top-left corner of the cell.
         :type ColTl: int
-        :param RowTl: Row index of the top-left corner of the cell
+        :param RowTl: Row index of the top-left corner of the cell.
         :type RowTl: int
-        :param ColBr: Column index of the bottom-right corner of the cell
+        :param ColBr: Column index of the bottom-right corner of the cell.
         :type ColBr: int
-        :param RowBr: Row index of the bottom-right corner of the cell
+        :param RowBr: Row index of the bottom-right corner of the cell.
         :type RowBr: int
         :param Text: Cell text
         :type Text: str
@@ -698,7 +698,7 @@ class TextTable(AbstractModel):
         :type Type: str
         :param Confidence: Confidence. Value range: 0–100
         :type Confidence: int
-        :param Polygon: Text line coordinates, which are represented as 4 vertex coordinates
+        :param Polygon: Text line coordinates, which are represented as 4 vertex coordinates.
         :type Polygon: list of Coord
         :param AdvancedInfo: Extended field
         :type AdvancedInfo: str

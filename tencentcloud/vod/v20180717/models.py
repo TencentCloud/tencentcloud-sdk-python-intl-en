@@ -3285,7 +3285,7 @@ class ApplyUploadRequest(AbstractModel):
         :type SourceContext: str
         :param SessionContext: Session context, which is used to pass through the user request information. If the `Procedure` parameter is specified, the [task flow status change callback](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) API will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param ExtInfo: 
+        :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
         :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -3938,9 +3938,9 @@ class ComposeMediaRequest(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
         :param Canvas: Canvas used for composing video file.
         :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
-        :param SessionContext: 
+        :param SessionContext: This parameter is used to pass through user request information. `ComposeMediaComplete` callback will return the value of this field. It contains up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: 
+        :param SessionId: This parameter is used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is null or an empty string, the above operation will not be performed.
         :type SessionId: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -4945,7 +4945,7 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         :type ColumnCount: int
         :param Name: Name of an image sprite generating template. Length limit: 64 characters.
         :type Name: str
-        :param Comment: 
+        :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
 <li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -5106,7 +5106,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         """
         :param Name: Task flow name (up to 20 characters).
         :type Name: str
-        :param Comment: 
+        :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
@@ -8937,7 +8937,7 @@ Default value: open.
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 Default value: black.
         :type FillType: str
-        :param Comment: 
+        :param Comment: Template description.
         :type Comment: str
         """
         self.Definition = None
@@ -9529,7 +9529,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type TagSet: list of str
         :param Vid: Unique ID of an LVB recording file.
         :type Vid: str
-        :param Category: 
+        :param Category: File type:
+<li>Video: video file</li>
+<li>Audio: audio file</li>
+<li>Image: image file</li>
         :type Category: str
         :param Status: File status. Valid values: Normal, Forbidden.
 
@@ -11662,7 +11665,7 @@ Default value: open.
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 Default value: black.
         :type FillType: str
-        :param Comment: 
+        :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
         :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -13464,7 +13467,7 @@ class ProcedureTemplate(AbstractModel):
 <li>Preset: preset task flow template;</li>
 <li>Custom: custom task flow template.</li>
         :type Type: str
-        :param Comment: 
+        :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
         :param MediaProcessTask: Parameter of video processing task.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -14158,7 +14161,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
         """
         :param Name: Task flow name
         :type Name: str
-        :param Comment: 
+        :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
@@ -14696,7 +14699,9 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         """
         :param Definition: Time point screencapturing template ID.
         :type Definition: int
-        :param ExtTimeOffsetSet: 
+        :param ExtTimeOffsetSet: The list of screenshot time points. “s” and “%” formats are supported:
+<li>When a time point string ends with “s”, its unit is second. For example, “3.5 s” means the 3.5th second of the video;</li>
+<li>When a time point string ends with “%”, it is marked with corresponding percentage of the video’s duration. For example, “10%” means that the time point is at the 10% of the video’s entire duration.</li>
         :type ExtTimeOffsetSet: list of str
         :param TimeOffsetSet: List of time points for screencapturing in <font color=red>milliseconds</font>.
 Note: this field may return null, indicating that no valid values can be obtained.

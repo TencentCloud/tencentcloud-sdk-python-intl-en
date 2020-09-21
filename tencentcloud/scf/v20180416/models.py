@@ -121,13 +121,13 @@ class CfsInsInfo(AbstractModel):
         :type LocalMountDir: str
         :param RemoteMountDir: Remote mount target
         :type RemoteMountDir: str
-        :param IpAddress: File system IP
+        :param IpAddress: File system IP, which is not required when you configure CFS.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpAddress: str
-        :param MountVpcId: VPC ID of file system
+        :param MountVpcId: VPC ID of file system, which is not required when you configure CFS.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MountVpcId: str
-        :param MountSubnetId: VPC subnet ID of file system
+        :param MountSubnetId: VPC subnet ID of file system, which is not required when you configure CFS.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MountSubnetId: str
         """
@@ -391,6 +391,8 @@ class CreateFunctionRequest(AbstractModel):
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
+        :param InitTimeout: Timeout period for function initialization
+        :type InitTimeout: int
         """
         self.FunctionName = None
         self.Code = None
@@ -411,6 +413,7 @@ class CreateFunctionRequest(AbstractModel):
         self.DeadLetterConfig = None
         self.PublicNetConfig = None
         self.CfsConfig = None
+        self.InitTimeout = None
 
 
     def _deserialize(self, params):
@@ -450,6 +453,7 @@ class CreateFunctionRequest(AbstractModel):
         if params.get("CfsConfig") is not None:
             self.CfsConfig = CfsConfig()
             self.CfsConfig._deserialize(params.get("CfsConfig"))
+        self.InitTimeout = params.get("InitTimeout")
 
 
 class CreateFunctionResponse(AbstractModel):
@@ -520,7 +524,7 @@ class CreateTriggerRequest(AbstractModel):
         :type TriggerName: str
         :param Type: Trigger type. Currently, COS, CMQ, timer, and ckafka triggers are supported.
         :type Type: str
-        :param TriggerDesc: For parameters of triggers, see [Trigger Description](https://cloud.tencent.com/document/product/583/39901)
+        :param TriggerDesc: For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)
         :type TriggerDesc: str
         :param Namespace: Function namespace
         :type Namespace: str
@@ -1364,7 +1368,7 @@ class GetFunctionResponse(AbstractModel):
         :type Role: str
         :param InstallDependency: Whether to install dependencies automatically
         :type InstallDependency: str
-        :param Status: Function status
+        :param Status: Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)
         :type Status: str
         :param StatusDesc: Status description
         :type StatusDesc: str
@@ -1399,12 +1403,14 @@ Note: This field may return null, indicating that no valid value was found.
         :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param AvailableStatus: Function billing status
+        :param AvailableStatus: Function billing status. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AvailableStatus: str
         :param Qualifier: Function version
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Qualifier: str
+        :param InitTimeout: Timeout period for function initialization
+        :type InitTimeout: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1446,6 +1452,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CfsConfig = None
         self.AvailableStatus = None
         self.Qualifier = None
+        self.InitTimeout = None
         self.RequestId = None
 
 
@@ -1517,6 +1524,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.CfsConfig._deserialize(params.get("CfsConfig"))
         self.AvailableStatus = params.get("AvailableStatus")
         self.Qualifier = params.get("Qualifier")
+        self.InitTimeout = params.get("InitTimeout")
         self.RequestId = params.get("RequestId")
 
 
@@ -1684,11 +1692,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type LayerVersion: int
         :param LayerName: Layer name
         :type LayerName: str
-        :param Status: The status of the layer version. Values can be: 
-`Active`: normal
-`Publishing`: publishing
-`PublishFailed`: failed to publish
-`Deleted`: deleted
+        :param Status: Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :type Status: str
         """
         self.CompatibleRuntimes = None
@@ -2819,6 +2823,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         :param CfsConfig: File system configuration input parameter, which is used for the function to bind the file system
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
+        :param InitTimeout: Timeout period for function initialization. Default value: 15 seconds
+        :type InitTimeout: int
         """
         self.FunctionName = None
         self.Description = None
@@ -2837,6 +2843,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.DeadLetterConfig = None
         self.PublicNetConfig = None
         self.CfsConfig = None
+        self.InitTimeout = None
 
 
     def _deserialize(self, params):
@@ -2872,6 +2879,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("CfsConfig") is not None:
             self.CfsConfig = CfsConfig()
             self.CfsConfig._deserialize(params.get("CfsConfig"))
+        self.InitTimeout = params.get("InitTimeout")
 
 
 class UpdateFunctionConfigurationResponse(AbstractModel):
