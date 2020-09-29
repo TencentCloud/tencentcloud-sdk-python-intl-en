@@ -59,15 +59,15 @@ class AccessPoint(AbstractModel):
         """
         :param AccessPointName: Access point name.
         :type AccessPointName: str
-        :param AccessPointId: Unique ID of access point.
+        :param AccessPointId: Unique access point ID.
         :type AccessPointId: str
         :param State: Access point status. Valid values: available, unavailable.
         :type State: str
         :param Location: Access point location.
         :type Location: str
-        :param LineOperator: Supported ISP list of access pint.
+        :param LineOperator: List of ISPs supported by access point.
         :type LineOperator: list of str
-        :param RegionId: Region ID where the access point resides.
+        :param RegionId: ID of the region that manages the access point.
         :type RegionId: str
         :param AvailablePortType: Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.
 Note: this field may return `null`, indicating that no valid value is obtained.
@@ -129,7 +129,7 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
         :type LineOperator: str
         :param PortType: Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX.
         :type PortType: str
-        :param CircuitCode: Circuit code of connection, which is provided by the ISP or connection provider.
+        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or connection provider.
         :type CircuitCode: str
         :param Location: Local IDC location.
         :type Location: str
@@ -670,6 +670,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ChargeState: str
         :param StartTime: Connection activation time.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type StartTime: str
         :param SignLaw: Whether the connection has the service agreement signed.
 Note: this field may return `null`, indicating that no valid value is obtained.
@@ -933,7 +934,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         :type DirectConnectId: str
         :param DirectConnectName: Connection name.
         :type DirectConnectName: str
-        :param CircuitCode: Circuit code of connection, which is provided by the ISP or connection provider.
+        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or connection provider.
         :type CircuitCode: str
         :param Vlan: VLAN for connection debugging.
         :type Vlan: int

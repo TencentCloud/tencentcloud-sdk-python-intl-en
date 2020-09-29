@@ -54,7 +54,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeAbnormalEvent(self, request):
-        """This API is used to query users’ exceptional experience events according to `SDKAppID` and return the exceptional experience ID and possible causes. It queries data in last 24 hours, and the query period is up to 1 hour which can start and end on different days. For more information about exceptional experience ID mapping, please see here.
+        """This API is used to query exception occurrences under a specified `SDKAppID` and return the exception ID and possible causes. It queries data in last 5 days, and the query period is up to 1 hour which can start and end on different days. For more information about exceptions, please see the exception ID mapping table: https://intl.cloud.tencent.com/document/product/647/37906
 
         :param request: Request instance for DescribeAbnormalEvent.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAbnormalEventRequest`
@@ -82,7 +82,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCallDetail(self, request):
-        """This API is used to query the user list and user call quality data in a specified time period. It queries data of up to 6 users in the last 5 days. The query period is up to 1 hour, which must start and end on the same day.
+        """This API is used to query user list and call quality data within a specified time. It queries data in last 14 days. When `DataType` is not null, real-time data of up to 1 hour and up to 6 users can be queried. The query period can start and end on different days. When `DataType` and all `UserId`s are null, data of 6 users will be queried by default. Data of up to 100 users can be displayed on one page (`PageSize` is up to 100).
 
         :param request: Request instance for DescribeCallDetail.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailRequest`
@@ -110,7 +110,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeDetailEvent(self, request):
-        """This API is used to query detailed events of a user such as room entry/exit and video enablement/disablement during a call. It can query data for the last 5 days.
+        """This API is used to query a user’s activity details such as room entry/exit and video enablement/disablement during a call. It can query data for the last 14 days.
 
         :param request: Request instance for DescribeDetailEvent.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeDetailEventRequest`
@@ -138,7 +138,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeHistoryScale(self, request):
-        """This API is used to query the daily numbers of rooms and users under a specified `sdkqppid`. It can query data once per minute for the last 5 days. If a day has not ended, the numbers of rooms and users on the day cannot be queried.
+        """This API is used to query the daily numbers of rooms and users under a specified `SDKAppID`. It can query data once per minute for the last 14 days. If a day has not ended, the numbers of rooms and users on the day cannot be queried.
 
         :param request: Request instance for DescribeHistoryScale.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeHistoryScaleRequest`
@@ -250,7 +250,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRoomInformation(self, request):
-        """This API is used to query the room list for the last 5 days according to `sdkappid`. It returns 10 calls by default and up to 100 calls at a time.
+        """This API is used to query the room list under a specified `SDKAppID`. It returns 10 calls by default and up to 100 calls at a time. It can query data for the last 14 days.
 
         :param request: Request instance for DescribeRoomInformation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRoomInformationRequest`

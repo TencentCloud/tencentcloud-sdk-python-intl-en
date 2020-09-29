@@ -187,11 +187,15 @@ Note: This field may return null, indicating that no valid value was found.
         :type Uin: int
         :param RelatedType: Type of entity association. 1: Associate by users; 2: Associate by User Groups
         :type RelatedType: int
+        :param AttachmentTime: Policy association time
+Note: this field may return `null`, indicating that no valid value was found.
+        :type AttachmentTime: str
         """
         self.Id = None
         self.Name = None
         self.Uin = None
         self.RelatedType = None
+        self.AttachmentTime = None
 
 
     def _deserialize(self, params):
@@ -199,6 +203,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.Name = params.get("Name")
         self.Uin = params.get("Uin")
         self.RelatedType = params.get("RelatedType")
+        self.AttachmentTime = params.get("AttachmentTime")
 
 
 class AttachGroupPolicyRequest(AbstractModel):
@@ -1130,6 +1135,58 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSafeAuthFlagCollRequest(AbstractModel):
+    """DescribeSafeAuthFlagColl request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubUin: Sub-account
+        :type SubUin: int
+        """
+        self.SubUin = None
+
+
+    def _deserialize(self, params):
+        self.SubUin = params.get("SubUin")
+
+
+class DescribeSafeAuthFlagCollResponse(AbstractModel):
+    """DescribeSafeAuthFlagColl response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoginFlag: Login protection settings
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param ActionFlag: Sensitive operation protection settings
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param OffsiteFlag: Suspicious login location protection settings
+        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LoginFlag = None
+        self.ActionFlag = None
+        self.OffsiteFlag = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoginFlag") is not None:
+            self.LoginFlag = LoginActionFlag()
+            self.LoginFlag._deserialize(params.get("LoginFlag"))
+        if params.get("ActionFlag") is not None:
+            self.ActionFlag = LoginActionFlag()
+            self.ActionFlag._deserialize(params.get("ActionFlag"))
+        if params.get("OffsiteFlag") is not None:
+            self.OffsiteFlag = OffsiteFlag()
+            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSafeAuthFlagRequest(AbstractModel):
     """DescribeSafeAuthFlag request structure.
 
@@ -1147,7 +1204,7 @@ class DescribeSafeAuthFlagResponse(AbstractModel):
         :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
         :param ActionFlag: Sensitive operation protection settings
         :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param OffsiteFlag: Unusual login location protection settings
+        :param OffsiteFlag: Suspicious login location protection settings
         :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2578,7 +2635,7 @@ class LoginActionMfaFlag(AbstractModel):
 
 
 class OffsiteFlag(AbstractModel):
-    """Unusual login location settings
+    """Suspicious login location settings
 
     """
 

@@ -158,6 +158,8 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         :type Area: str
         :param OriginPullTimeout: Origin-pull timeout configuration
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
+        :param Tag: Tag configuration
+        :type Tag: list of Tag
         """
         self.Domain = None
         self.ServiceType = None
@@ -189,6 +191,7 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         self.SpecificConfig = None
         self.Area = None
         self.OriginPullTimeout = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -274,6 +277,12 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         if params.get("OriginPullTimeout") is not None:
             self.OriginPullTimeout = OriginPullTimeout()
             self.OriginPullTimeout._deserialize(params.get("OriginPullTimeout"))
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
 
 
 class AddCdnDomainResponse(AbstractModel):
@@ -756,9 +765,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param AdvancedCache: Advanced cache expiration configuration (This feature is in beta and not generally available yet.)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AdvancedCache: :class:`tencentcloud.cdn.v20180606.models.AdvancedCache`
+        :param RuleCache: Advanced path cache configuration
+Note: this field may return null, indicating that no valid value is obtained.
+        :type RuleCache: list of RuleCache
         """
         self.SimpleCache = None
         self.AdvancedCache = None
+        self.RuleCache = None
 
 
     def _deserialize(self, params):
@@ -768,6 +781,109 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("AdvancedCache") is not None:
             self.AdvancedCache = AdvancedCache()
             self.AdvancedCache._deserialize(params.get("AdvancedCache"))
+        if params.get("RuleCache") is not None:
+            self.RuleCache = []
+            for item in params.get("RuleCache"):
+                obj = RuleCache()
+                obj._deserialize(item)
+                self.RuleCache.append(obj)
+
+
+class CacheConfigCache(AbstractModel):
+    """Path cache configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Cache configuration switch
+on: enable
+off: disable
+Note: this field may return null, indicating that no valid value is obtained.
+        :type Switch: str
+        :param CacheTime: Cache expiration time settings
+Unit: second. The maximum value is 365 days.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type CacheTime: int
+        :param CompareMaxAge: Advanced cache expiration configuration. If this is enabled, the max-age value returned by the origin server will be compared with the cache expiration time set in CacheRules, and the smallest value will be cached on the node.
+on: enable
+off: disable
+This is disabled by default.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type CompareMaxAge: str
+        :param IgnoreCacheControl: Force cache
+on: enable
+off: disable
+This is disabled by default. If enabled, the `no-store` and `no-cache` resources returned from the origin server will be cached according to `CacheRules` rules.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type IgnoreCacheControl: str
+        :param IgnoreSetCookie: Ignore the Set-Cookie header of an origin server.
+on: enable
+off: disable
+This is disabled by default.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type IgnoreSetCookie: str
+        """
+        self.Switch = None
+        self.CacheTime = None
+        self.CompareMaxAge = None
+        self.IgnoreCacheControl = None
+        self.IgnoreSetCookie = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.CacheTime = params.get("CacheTime")
+        self.CompareMaxAge = params.get("CompareMaxAge")
+        self.IgnoreCacheControl = params.get("IgnoreCacheControl")
+        self.IgnoreSetCookie = params.get("IgnoreSetCookie")
+
+
+class CacheConfigFollowOrigin(AbstractModel):
+    """Path cache configuration follows the origin server configuration.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Follow origin server switch configuration
+on: enable
+off: disable
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class CacheConfigNoCache(AbstractModel):
+    """Path cache/no cache configuration.
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: No cache configuration switch
+on: enable
+off: disable
+Note: this field may return null, indicating that no valid value is obtained.
+        :type Switch: str
+        :param Revalidate: Always forwards to the origin server for verification
+on: enable
+off: disable
+This is disabled by default.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type Revalidate: str
+        """
+        self.Switch = None
+        self.Revalidate = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Revalidate = params.get("Revalidate")
 
 
 class CacheKey(AbstractModel):
@@ -799,6 +915,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Scheme: Request protocol contained in `CacheKey`
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Scheme: :class:`tencentcloud.cdn.v20180606.models.SchemeKey`
+        :param KeyRules: Path-based cache key configuration
+Note: this field may return null, indicating that no valid value is obtained.
+        :type KeyRules: list of KeyRule
         """
         self.FullUrlCache = None
         self.IgnoreCase = None
@@ -807,6 +926,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Header = None
         self.CacheTag = None
         self.Scheme = None
+        self.KeyRules = None
 
 
     def _deserialize(self, params):
@@ -827,6 +947,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Scheme") is not None:
             self.Scheme = SchemeKey()
             self.Scheme._deserialize(params.get("Scheme"))
+        if params.get("KeyRules") is not None:
+            self.KeyRules = []
+            for item in params.get("KeyRules"):
+                obj = KeyRule()
+                obj._deserialize(item)
+                self.KeyRules.append(obj)
 
 
 class CacheOptResult(AbstractModel):
@@ -2797,7 +2923,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param AccessPort: Access port configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccessPort: list of int
-        :param Tag: 
+        :param Tag: Tag configuration
+Note: this field may return null, indicating that no valid value is obtained.
         :type Tag: list of Tag
         """
         self.ResourceId = None
@@ -3785,6 +3912,61 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+
+
+class KeyRule(AbstractModel):
+    """Path-based cache key configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param RulePaths: Content for each CacheType:
+For `file`, enter the suffix, such as jpg, txt.
+For `directory`, enter the path, such as /xxx/test/.
+For `path`, enter the corresponding absolute path, such as /xxx/test.html.
+For `index`, enter a backslash (/).
+Note: this field may return null, indicating that no valid value is obtained.
+        :type RulePaths: list of str
+        :param RuleType: Rule types:
+`file`: effective for specified file suffixes
+`directory`: effective for specified paths
+`path`: effective for specified absolute paths
+`index`: home page
+Note: this field may return null, indicating that no valid value is obtained.
+        :type RuleType: str
+        :param FullUrlCache: Whether to enable full-path cache
+on: enable full-path cache (i.e., disable parameter filter)
+off: disable full-path cache (i.e., enable parameter filter)
+Note: this field may return null, indicating that no valid value is obtained.
+        :type FullUrlCache: str
+        :param IgnoreCase: Whether caches are case insensitive
+Note: this field may return null, indicating that no valid value is obtained.
+        :type IgnoreCase: str
+        :param QueryString: Request parameter contained in `CacheKey`
+Note: this field may return null, indicating that no valid value is obtained.
+        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.RuleQueryString`
+        :param RuleTag: Path cache key tag, the value "user" is passed.
+Note: this field may return null, indicating that no valid value is obtained.
+        :type RuleTag: str
+        """
+        self.RulePaths = None
+        self.RuleType = None
+        self.FullUrlCache = None
+        self.IgnoreCase = None
+        self.QueryString = None
+        self.RuleTag = None
+
+
+    def _deserialize(self, params):
+        self.RulePaths = params.get("RulePaths")
+        self.RuleType = params.get("RuleType")
+        self.FullUrlCache = params.get("FullUrlCache")
+        self.IgnoreCase = params.get("IgnoreCase")
+        if params.get("QueryString") is not None:
+            self.QueryString = RuleQueryString()
+            self.QueryString._deserialize(params.get("QueryString"))
+        self.RuleTag = params.get("RuleTag")
 
 
 class ListClsLogTopicsRequest(AbstractModel):
@@ -5345,6 +5527,110 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Path = params.get("Path")
 
 
+class RuleCache(AbstractModel):
+    """Path-based cache rule configuration
+    The cache expiration time for all files is 30 days by default.
+    Static acceleration type domain names .php, .jsp, .asp, and .aspx are not cached by default.
+
+    """
+
+    def __init__(self):
+        """
+        :param RulePaths: Content for each CacheType:
+For `all`, enter an asterisk (*).
+For `file`, enter the suffix, such as jpg, txt.
+For `directory`, enter the path, such as /xxx/test/.
+For `path`, enter the corresponding absolute path, such as /xxx/test.html.
+For `index`, enter a backslash (/).
+Note: this field may return null, indicating that no valid value is obtained.
+        :type RulePaths: list of str
+        :param RuleType: Rule types:
+`all`: effective for all files
+`file`: effective for specified file suffixes
+`directory`: effective for specified paths
+`path`: effective for specified absolute paths
+`index`: home page
+Note: this field may return null, indicating that no valid value is obtained.
+        :type RuleType: str
+        :param CacheConfig: Cache configuration
+Note: this field may return null, indicating that no valid value is obtained.
+        :type CacheConfig: :class:`tencentcloud.cdn.v20180606.models.RuleCacheConfig`
+        """
+        self.RulePaths = None
+        self.RuleType = None
+        self.CacheConfig = None
+
+
+    def _deserialize(self, params):
+        self.RulePaths = params.get("RulePaths")
+        self.RuleType = params.get("RuleType")
+        if params.get("CacheConfig") is not None:
+            self.CacheConfig = RuleCacheConfig()
+            self.CacheConfig._deserialize(params.get("CacheConfig"))
+
+
+class RuleCacheConfig(AbstractModel):
+    """Path cache configuration, choose one from the following three cache modes.
+
+    """
+
+    def __init__(self):
+        """
+        :param Cache: Cache configuration
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Cache: :class:`tencentcloud.cdn.v20180606.models.CacheConfigCache`
+        :param NoCache: No cache configuration
+Note: this field may return null, indicating that no valid value is obtained.
+        :type NoCache: :class:`tencentcloud.cdn.v20180606.models.CacheConfigNoCache`
+        :param FollowOrigin: Follows the origin server configuration
+Note: this field may return null, indicating that no valid value is obtained.
+        :type FollowOrigin: :class:`tencentcloud.cdn.v20180606.models.CacheConfigFollowOrigin`
+        """
+        self.Cache = None
+        self.NoCache = None
+        self.FollowOrigin = None
+
+
+    def _deserialize(self, params):
+        if params.get("Cache") is not None:
+            self.Cache = CacheConfigCache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("NoCache") is not None:
+            self.NoCache = CacheConfigNoCache()
+            self.NoCache._deserialize(params.get("NoCache"))
+        if params.get("FollowOrigin") is not None:
+            self.FollowOrigin = CacheConfigFollowOrigin()
+            self.FollowOrigin._deserialize(params.get("FollowOrigin"))
+
+
+class RuleQueryString(AbstractModel):
+    """Configuration to retain query strings for this path
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Whether to use `QueryString` as part of `CacheKey`. Valid values: on, off
+Note: this field may return null, indicating that no valid value is obtained.
+        :type Switch: str
+        :param Action: `includeCustom` will retain partial query strings
+Note: this field may return null, indicating that no valid value is obtained.
+        :type Action: str
+        :param Value: Array of included/excluded query strings (separated by ';')
+Note: this field may return null, indicating that no valid value is obtained.
+        :type Value: str
+        """
+        self.Switch = None
+        self.Action = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Action = params.get("Action")
+        self.Value = params.get("Value")
+
+
 class SchemeKey(AbstractModel):
     """A part of `CacheKey`
 
@@ -5829,15 +6115,17 @@ avg: average value
 
 
 class Tag(AbstractModel):
-    """
+    """Domain name tag configuration
 
     """
 
     def __init__(self):
         """
-        :param TagKey: 
+        :param TagKey: Tag key
+Note: this field may return null, indicating that no valid value is obtained.
         :type TagKey: str
-        :param TagValue: 
+        :param TagValue: Tag value.
+Note: this field may return null, indicating that no valid value is obtained.
         :type TagValue: str
         """
         self.TagKey = None

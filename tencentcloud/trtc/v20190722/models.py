@@ -237,6 +237,10 @@ bigvLoss: upstream/downstream video packet loss;
 bigvWidth: upstream/downstream resolution in width;
 bigvHeight: upstream/downstream resolution in height.
         :type DataType: list of str
+        :param PageNumber: Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default.
+        :type PageNumber: str
+        :param PageSize: Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default. When `DataType` and all `UserId`s are not null, `PageSize` is up to 6. When `DataType` and all `UserId`s are null, `PageSize` is up to 100.
+        :type PageSize: str
         """
         self.CommId = None
         self.StartTime = None
@@ -244,6 +248,8 @@ bigvHeight: upstream/downstream resolution in height.
         self.SdkAppId = None
         self.UserIds = None
         self.DataType = None
+        self.PageNumber = None
+        self.PageSize = None
 
 
     def _deserialize(self, params):
@@ -253,6 +259,8 @@ bigvHeight: upstream/downstream resolution in height.
         self.SdkAppId = params.get("SdkAppId")
         self.UserIds = params.get("UserIds")
         self.DataType = params.get("DataType")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeCallDetailResponse(AbstractModel):
@@ -693,7 +701,7 @@ class EncodeParams(AbstractModel):
 
     def __init__(self):
         """
-        :param AudioSampleRate: Output stream audio sample rate for stream mix. Valid values: 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000.
+        :param AudioSampleRate: Output stream audio sample rate for stream mix in Hz. Valid values: 48000, 44100, 32000, 24000, 16000, 12000, 8000.
         :type AudioSampleRate: int
         :param AudioBitrate: Output stream audio bitrate in Kbps for On-Cloud MixTranscoding. Value range: [8, 500].
         :type AudioBitrate: int
@@ -803,7 +811,7 @@ class EventMessage(AbstractModel):
 
 
 class LayoutParams(AbstractModel):
-    """
+    """MCU On-Cloud MixTranscoding layout parameters
 
     """
 
@@ -819,12 +827,15 @@ class LayoutParams(AbstractModel):
         :type SmallVideoLayoutParams: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`
         :param MainVideoRightAlign: You can set the layout parameter as 1 or 0 in the screen sharing template. 1: big image on the right and small images on the left, 0: big image on the left and small images on the right. The default value is 0. 
         :type MainVideoRightAlign: int
+        :param MixVideoUids: 
+        :type MixVideoUids: list of str
         """
         self.Template = None
         self.MainVideoUserId = None
         self.MainVideoStreamType = None
         self.SmallVideoLayoutParams = None
         self.MainVideoRightAlign = None
+        self.MixVideoUids = None
 
 
     def _deserialize(self, params):
@@ -835,6 +846,7 @@ class LayoutParams(AbstractModel):
             self.SmallVideoLayoutParams = SmallVideoLayoutParams()
             self.SmallVideoLayoutParams._deserialize(params.get("SmallVideoLayoutParams"))
         self.MainVideoRightAlign = params.get("MainVideoRightAlign")
+        self.MixVideoUids = params.get("MixVideoUids")
 
 
 class OutputParams(AbstractModel):
@@ -1190,27 +1202,27 @@ class TimeValue(AbstractModel):
 
 
 class UserInformation(AbstractModel):
-    """
+    """User information, including when the user enters/exits a room
 
     """
 
     def __init__(self):
         """
-        :param RoomStr: 
+        :param RoomStr: Room ID
         :type RoomStr: str
-        :param UserId: 
+        :param UserId: User ID
         :type UserId: str
-        :param JoinTs: 
+        :param JoinTs: The time when the user enters the room
         :type JoinTs: int
         :param LeaveTs: The time when the user exits the room. If the user is still in the room, the current time will be returned
         :type LeaveTs: int
-        :param DeviceType: 
+        :param DeviceType: Device type
         :type DeviceType: str
-        :param SdkVersion: 
+        :param SdkVersion: SDK version number
         :type SdkVersion: str
-        :param ClientIp: 
+        :param ClientIp: Client IP
         :type ClientIp: str
-        :param Finished: 
+        :param Finished: Determine whether a user has left the room
         :type Finished: bool
         """
         self.RoomStr = None

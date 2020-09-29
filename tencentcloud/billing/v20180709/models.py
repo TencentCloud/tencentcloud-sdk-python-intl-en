@@ -98,21 +98,23 @@ class BillDetail(AbstractModel):
         :type FeeEndTime: str
         :param ComponentSet: Component list
         :type ComponentSet: list of BillDetailComponent
-        :param PayerUin: Payer’s UIN
+        :param PayerUin: Payer's UIN
         :type PayerUin: str
-        :param OwnerUin: User’s UIN
+        :param OwnerUin: User's UIN
         :type OwnerUin: str
         :param OperateUin: Operator's UIN
         :type OperateUin: str
         :param Tags: Tag information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of BillTagInfo
-        :param BusinessCode: 
+        :param BusinessCode: Product name/code (optional)
         :type BusinessCode: str
-        :param ProductCode: 
+        :param ProductCode: Subproduct name/code (optional)
         :type ProductCode: str
-        :param ActionType: 
+        :param ActionType: Transaction type/code (optional)
         :type ActionType: str
+        :param RegionId: 
+        :type RegionId: str
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -136,6 +138,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BusinessCode = None
         self.ProductCode = None
         self.ActionType = None
+        self.RegionId = None
 
 
     def _deserialize(self, params):
@@ -171,6 +174,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BusinessCode = params.get("BusinessCode")
         self.ProductCode = params.get("ProductCode")
         self.ActionType = params.get("ActionType")
+        self.RegionId = params.get("RegionId")
 
 
 class BillDetailComponent(AbstractModel):
@@ -212,11 +216,11 @@ class BillDetailComponent(AbstractModel):
         :type CashPayAmount: str
         :param IncentivePayAmount: Amount paid in trial credit
         :type IncentivePayAmount: str
-        :param ItemCode: 
+        :param ItemCode: Component type/code (optional)
         :type ItemCode: str
-        :param ComponentCode: 
+        :param ComponentCode: Component name/code (optional)
         :type ComponentCode: str
-        :param ContractPrice: 
+        :param ContractPrice: Contract price
         :type ContractPrice: str
         """
         self.ComponentCodeName = None
@@ -271,7 +275,7 @@ class BillResourceSummary(AbstractModel):
         """
         :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL
         :type BusinessCodeName: str
-        :param ProductCodeName: Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1; if no subproduct name is obtained, “-” is returned.
+        :param ProductCodeName: Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1; if no subproduct name is obtained, '-' is returned.
         :type ProductCodeName: str
         :param PayModeName: Billing mode
         :type PayModeName: str
@@ -326,10 +330,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Tags: list of BillTagInfo
         :param PayerUin: Payer UIN
         :type PayerUin: str
-        :param OwnerUin: Resource owner UIN; “-” is returned if no value is obtained
+        :param OwnerUin: Resource owner UIN; '-' is returned if no value is obtained
         :type OwnerUin: str
-        :param OperateUin: Operator UIN; “-” is returned if no value is obtained
+        :param OperateUin: Operator UIN; '-' is returned if no value is obtained
         :type OperateUin: str
+        :param BusinessCode: 
+        :type BusinessCode: str
+        :param ProductCode: 
+        :type ProductCode: str
+        :param RegionId: 
+        :type RegionId: int
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -361,6 +371,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.PayerUin = None
         self.OwnerUin = None
         self.OperateUin = None
+        self.BusinessCode = None
+        self.ProductCode = None
+        self.RegionId = None
 
 
     def _deserialize(self, params):
@@ -399,6 +412,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.PayerUin = params.get("PayerUin")
         self.OwnerUin = params.get("OwnerUin")
         self.OperateUin = params.get("OperateUin")
+        self.BusinessCode = params.get("BusinessCode")
+        self.ProductCode = params.get("ProductCode")
+        self.RegionId = params.get("RegionId")
 
 
 class BillTagInfo(AbstractModel):
@@ -525,6 +541,8 @@ class DescribeBillDetailRequest(AbstractModel):
         :type PayMode: str
         :param ResourceId: Queries information on a specified resource
         :type ResourceId: str
+        :param ActionType: 
+        :type ActionType: str
         """
         self.Offset = None
         self.Limit = None
@@ -536,6 +554,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.ProductCode = None
         self.PayMode = None
         self.ResourceId = None
+        self.ActionType = None
 
 
     def _deserialize(self, params):
@@ -549,6 +568,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.ProductCode = params.get("ProductCode")
         self.PayMode = params.get("PayMode")
         self.ResourceId = params.get("ResourceId")
+        self.ActionType = params.get("ActionType")
 
 
 class DescribeBillDetailResponse(AbstractModel):
@@ -600,12 +620,15 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :param NeedRecordNum: Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
 1 = yes, 0 = no
         :type NeedRecordNum: int
+        :param ActionType: 
+        :type ActionType: str
         """
         self.Offset = None
         self.Limit = None
         self.PeriodType = None
         self.Month = None
         self.NeedRecordNum = None
+        self.ActionType = None
 
 
     def _deserialize(self, params):
@@ -614,6 +637,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.PeriodType = params.get("PeriodType")
         self.Month = params.get("Month")
         self.NeedRecordNum = params.get("NeedRecordNum")
+        self.ActionType = params.get("ActionType")
 
 
 class DescribeBillResourceSummaryResponse(AbstractModel):
@@ -654,7 +678,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PayerUin: Query bill data user’s UIN
+        :param PayerUin: Query bill data user's UIN
         :type PayerUin: str
         :param BeginTime: Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.
         :type BeginTime: str
@@ -710,7 +734,7 @@ class DescribeBillSummaryByProductRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PayerUin: Queries bill data user’s UIN
+        :param PayerUin: Queries bill data user's UIN
         :type PayerUin: str
         :param BeginTime: Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.
         :type BeginTime: str
@@ -773,7 +797,7 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PayerUin: Queries bill data user’s UIN
+        :param PayerUin: Queries bill data user's UIN
         :type PayerUin: str
         :param BeginTime: Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.
         :type BeginTime: str
@@ -829,7 +853,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PayerUin: Queries bill data user’s UIN
+        :param PayerUin: Queries bill data user's UIN
         :type PayerUin: str
         :param BeginTime: Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.
         :type BeginTime: str

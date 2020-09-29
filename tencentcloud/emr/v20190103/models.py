@@ -1609,14 +1609,18 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DiskType: Disk type. Valid values: CLOUD_PREMIUM, CLOUD_SSD
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
+        :param DiskNum: 
+        :type DiskNum: int
         """
         self.DiskSize = None
         self.DiskType = None
+        self.DiskNum = None
 
 
     def _deserialize(self, params):
         self.DiskSize = params.get("DiskSize")
         self.DiskType = params.get("DiskType")
+        self.DiskNum = params.get("DiskNum")
 
 
 class Placement(AbstractModel):
@@ -1657,7 +1661,7 @@ class PodSpec(AbstractModel):
         :type Cpu: int
         :param Memory: Memory size in GB.
         :type Memory: int
-        :param DataVolumes: Mount point of resource for host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)
+        :param DataVolumes: Mount point of resources for the host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)
         :type DataVolumes: list of str
         :param CpuType: EKS cluster - CPU type. Valid values: "intel", "amd"
         :type CpuType: str

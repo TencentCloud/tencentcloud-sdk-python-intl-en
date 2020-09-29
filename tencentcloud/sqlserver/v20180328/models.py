@@ -314,16 +314,20 @@ class CreateBackupRequest(AbstractModel):
         :type DBNames: list of str
         :param InstanceId: Instance ID in the format of mssql-i1z41iwd
         :type InstanceId: str
+        :param BackupName: Backup name. If this parameter is left empty, a backup name in the format of "Instance ID_Backup start timestamp" will be automatically generated.
+        :type BackupName: str
         """
         self.Strategy = None
         self.DBNames = None
         self.InstanceId = None
+        self.BackupName = None
 
 
     def _deserialize(self, params):
         self.Strategy = params.get("Strategy")
         self.DBNames = params.get("DBNames")
         self.InstanceId = params.get("InstanceId")
+        self.BackupName = params.get("BackupName")
 
 
 class CreateBackupResponse(AbstractModel):
@@ -527,6 +531,8 @@ class CreateMigrationRequest(AbstractModel):
         :type Target: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`
         :param MigrateDBSet: Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)
         :type MigrateDBSet: list of MigrateDB
+        :param RenameRestore: Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format. This parameter takes effect only when `SourceType=5`.
+        :type RenameRestore: list of RenameRestoreDatabase
         """
         self.MigrateName = None
         self.MigrateType = None
@@ -534,6 +540,7 @@ class CreateMigrationRequest(AbstractModel):
         self.Source = None
         self.Target = None
         self.MigrateDBSet = None
+        self.RenameRestore = None
 
 
     def _deserialize(self, params):
@@ -552,6 +559,12 @@ class CreateMigrationRequest(AbstractModel):
                 obj = MigrateDB()
                 obj._deserialize(item)
                 self.MigrateDBSet.append(obj)
+        if params.get("RenameRestore") is not None:
+            self.RenameRestore = []
+            for item in params.get("RenameRestore"):
+                obj = RenameRestoreDatabase()
+                obj._deserialize(item)
+                self.RenameRestore.append(obj)
 
 
 class CreateMigrationResponse(AbstractModel):
@@ -1135,12 +1148,24 @@ class DescribeBackupsRequest(AbstractModel):
         :type Limit: int
         :param Offset: Page number. Default value: 0
         :type Offset: int
+        :param BackupName: Filter by backup name. If this parameter is left empty, backup name will not be used in filtering.
+        :type BackupName: str
+        :param Strategy: Filter by backup policy. Valid values: 0 (instance backup), 1 (multi-database backup). If this parameter is left empty, backup policy will not be used in filtering.
+        :type Strategy: int
+        :param BackupWay: Filter by backup mode. Valid values: 0 (automatic backup on a regular basis), 1 (manual backup performed by the user at any time). If this parameter is left empty, backup mode will not be used in filtering.
+        :type BackupWay: int
+        :param BackupId: Filter by backup ID. If this parameter is left empty, backup ID will not be used in filtering.
+        :type BackupId: int
         """
         self.StartTime = None
         self.EndTime = None
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
+        self.BackupName = None
+        self.Strategy = None
+        self.BackupWay = None
+        self.BackupId = None
 
 
     def _deserialize(self, params):
@@ -1149,6 +1174,10 @@ class DescribeBackupsRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.BackupName = params.get("BackupName")
+        self.Strategy = params.get("Strategy")
+        self.BackupWay = params.get("BackupWay")
+        self.BackupId = params.get("BackupId")
 
 
 class DescribeBackupsResponse(AbstractModel):
@@ -2100,7 +2129,7 @@ class MigrateTask(AbstractModel):
         :type StartTime: str
         :param EndTime: Migration task end time
         :type EndTime: str
-        :param Status: Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded)
+        :param Status: Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded, 7: suspended, 8: deleted, 9: suspending, 10: completing, 11: suspension failed, 12: completion failed)
         :type Status: int
         :param Message: Information
         :type Message: str
@@ -2557,6 +2586,28 @@ class RegionInfo(AbstractModel):
         self.RegionState = params.get("RegionState")
 
 
+class RenameRestoreDatabase(AbstractModel):
+    """It is used in the `RestoreInstance`, `RollbackInstance`, and `CreateMigration` APIs, and used to specify the databases to be restored and rename them after restoration.
+
+    """
+
+    def __init__(self):
+        """
+        :param OldName: Database name. If the `OldName` database does not exist, a failure will be returned.
+It can be left empty in offline migration tasks.
+        :type OldName: str
+        :param NewName: New database name. If this parameter is left empty, the restored database will be renamed in the default format. If this parameter is left empty in offline migration tasks, the restored database will be named `OldName`. `OldName` and `NewName` cannot be both empty.
+        :type NewName: str
+        """
+        self.OldName = None
+        self.NewName = None
+
+
+    def _deserialize(self, params):
+        self.OldName = params.get("OldName")
+        self.NewName = params.get("NewName")
+
+
 class ResetAccountPasswordRequest(AbstractModel):
     """ResetAccountPassword request structure.
 
@@ -2653,14 +2704,27 @@ class RestoreInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param BackupId: Backup file ID, which can be obtained through the `Id` field in the returned value of the `DescribeBackups` API
         :type BackupId: int
+        :param TargetInstanceId: ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.
+        :type TargetInstanceId: str
+        :param RenameRestore: Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format.
+        :type RenameRestore: list of RenameRestoreDatabase
         """
         self.InstanceId = None
         self.BackupId = None
+        self.TargetInstanceId = None
+        self.RenameRestore = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.BackupId = params.get("BackupId")
+        self.TargetInstanceId = params.get("TargetInstanceId")
+        if params.get("RenameRestore") is not None:
+            self.RenameRestore = []
+            for item in params.get("RenameRestore"):
+                obj = RenameRestoreDatabase()
+                obj._deserialize(item)
+                self.RenameRestore.append(obj)
 
 
 class RestoreInstanceResponse(AbstractModel):
@@ -2699,11 +2763,17 @@ class RollbackInstanceRequest(AbstractModel):
         :type DBs: list of str
         :param Time: Target time point for rollback
         :type Time: str
+        :param TargetInstanceId: ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.
+        :type TargetInstanceId: str
+        :param RenameRestore: Rename the databases listed in `ReNameRestoreDatabase`. This parameter takes effect only when `Type = 1` which indicates that backup rollback supports renaming databases. If it is left empty, databases will be renamed in the default format and the `DBs` parameter specifies the databases to be restored.
+        :type RenameRestore: list of RenameRestoreDatabase
         """
         self.InstanceId = None
         self.Type = None
         self.DBs = None
         self.Time = None
+        self.TargetInstanceId = None
+        self.RenameRestore = None
 
 
     def _deserialize(self, params):
@@ -2711,6 +2781,13 @@ class RollbackInstanceRequest(AbstractModel):
         self.Type = params.get("Type")
         self.DBs = params.get("DBs")
         self.Time = params.get("Time")
+        self.TargetInstanceId = params.get("TargetInstanceId")
+        if params.get("RenameRestore") is not None:
+            self.RenameRestore = []
+            for item in params.get("RenameRestore"):
+                obj = RenameRestoreDatabase()
+                obj._deserialize(item)
+                self.RenameRestore.append(obj)
 
 
 class RollbackInstanceResponse(AbstractModel):

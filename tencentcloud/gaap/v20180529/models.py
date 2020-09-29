@@ -162,14 +162,18 @@ class BandwidthPriceGradient(AbstractModel):
         :type BandwidthRange: list of int
         :param BandwidthUnitPrice: Bandwidth unit price within the bandwidth range. Unit: CNY/Mbps/day.
         :type BandwidthUnitPrice: float
+        :param DiscountBandwidthUnitPrice: Discounted bandwidth price in CNY/Mbps/day.
+        :type DiscountBandwidthUnitPrice: float
         """
         self.BandwidthRange = None
         self.BandwidthUnitPrice = None
+        self.DiscountBandwidthUnitPrice = None
 
 
     def _deserialize(self, params):
         self.BandwidthRange = params.get("BandwidthRange")
         self.BandwidthUnitPrice = params.get("BandwidthUnitPrice")
+        self.DiscountBandwidthUnitPrice = params.get("DiscountBandwidthUnitPrice")
 
 
 class BindListenerRealServersRequest(AbstractModel):
@@ -3021,22 +3025,34 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
         :type RealServerId: str
         :param ListenerId: Listener ID
         :type ListenerId: str
+        :param RuleId: Layer-7 rule ID
+        :type RuleId: str
         :param WithinTime: Statistics duration. Unit: hours. It only supports querying statistics for the past 1, 3, 6, 12, and 24 hours.
         :type WithinTime: int
-        :param RuleId: Rule ID
-        :type RuleId: str
+        :param StartTime: Statistics start time, such as 2020-08-19 00:00:00
+        :type StartTime: str
+        :param EndTime: Statistics end time, such as 2020-08-19 23:59:59
+        :type EndTime: str
+        :param Granularity: Statistics granularity in seconds. Only 1-minute (60-second) and 5-minute (300-second) granularities are supported
+        :type Granularity: int
         """
         self.RealServerId = None
         self.ListenerId = None
-        self.WithinTime = None
         self.RuleId = None
+        self.WithinTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Granularity = None
 
 
     def _deserialize(self, params):
         self.RealServerId = params.get("RealServerId")
         self.ListenerId = params.get("ListenerId")
-        self.WithinTime = params.get("WithinTime")
         self.RuleId = params.get("RuleId")
+        self.WithinTime = params.get("WithinTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Granularity = params.get("Granularity")
 
 
 class DescribeRealServerStatisticsResponse(AbstractModel):
@@ -3046,12 +3062,15 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param StatisticsData: Origin server status statistics
+        :param StatisticsData: Origin server status statistics of specified listener
         :type StatisticsData: list of StatisticsDataInfo
+        :param RsStatisticsData: Status statistics of multiple origin servers
+        :type RsStatisticsData: list of MetricStatisticsInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.StatisticsData = None
+        self.RsStatisticsData = None
         self.RequestId = None
 
 
@@ -3062,6 +3081,12 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
                 obj = StatisticsDataInfo()
                 obj._deserialize(item)
                 self.StatisticsData.append(obj)
+        if params.get("RsStatisticsData") is not None:
+            self.RsStatisticsData = []
+            for item in params.get("RsStatisticsData"):
+                obj = MetricStatisticsInfo()
+                obj._deserialize(item)
+                self.RsStatisticsData.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5389,6 +5414,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param CreateTime: Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreateTime: int
+        :param ProxyType: Whether the connection group contains a Microsoft connection
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProxyType: int
         """
         self.GroupId = None
         self.Domain = None
@@ -5399,6 +5427,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TagSet = None
         self.Version = None
         self.CreateTime = None
+        self.ProxyType = None
 
 
     def _deserialize(self, params):
@@ -5418,6 +5447,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.TagSet.append(obj)
         self.Version = params.get("Version")
         self.CreateTime = params.get("CreateTime")
+        self.ProxyType = params.get("ProxyType")
 
 
 class ProxyIdDict(AbstractModel):
@@ -5515,6 +5545,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ModifyConfigTime: Configuration change time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifyConfigTime: int
+        :param ProxyType: Connection type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProxyType: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -5541,6 +5574,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.BillingType = None
         self.RelatedGlobalDomains = None
         self.ModifyConfigTime = None
+        self.ProxyType = None
 
 
     def _deserialize(self, params):
@@ -5578,6 +5612,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.BillingType = params.get("BillingType")
         self.RelatedGlobalDomains = params.get("RelatedGlobalDomains")
         self.ModifyConfigTime = params.get("ModifyConfigTime")
+        self.ProxyType = params.get("ProxyType")
 
 
 class ProxySimpleInfo(AbstractModel):

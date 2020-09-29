@@ -1422,35 +1422,46 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: Template name, such as 900 900p. This can be only a combination of letters and digits.
+        :param TemplateName: Template name, such as “900p”. This can be only a combination of letters and digits.
+Length limit:
+  Standard transcoding: 1-10 characters
+  Top speed codec transcoding: 3-10 characters
         :type TemplateName: str
-        :param VideoBitrate: Video bitrate. Value range: 100-8,000.
-Note: The bitrate must be a multiple of 100.
+        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8,000.
+Note: the transcoding template requires that bitrate should be unique, yet the final saved bitrate may be different from the input bitrate.
         :type VideoBitrate: int
-        :param Vcodec: Video encoding format. Valid values: h264, h265. Default value: h264.
-        :type Vcodec: str
-        :param Acodec: Audio encoding in ACC format. Default value: original audio format.
-Note: This parameter will take effect later.
+        :param Acodec: Audio codec: acc by default.
+Note: this parameter is unsupported now.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0-500. Default value: 0.
+        :param AudioBitrate: Audio bitrate. Default value: 0.
+Value range: 0-500.
         :type AudioBitrate: int
+        :param Vcodec: Video codec: `h264/h265/origin`. Default value: `h264`.
+
+origin: original codec as the output codec
+        :type Vcodec: str
         :param Description: Template description.
         :type Description: str
         :param Width: Width. Default value: 0.
-Value range: [0-3000].
+Value range: 0-3,000
+It must be a multiple of 2. The original width is 0
         :type Width: int
         :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
         :type NeedVideo: int
         :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
         :param Height: Height. Default value: 0.
-Value range: [0-3000].
+Value range: 0-3,000
+It must be a multiple of 2. The original height is 0
         :type Height: int
         :param Fps: Frame rate. Default value: 0.
+Value range: 0-60
         :type Fps: int
-        :param Gop: Keyframe interval in seconds. Original interval by default
+        :param Gop: Keyframe interval in seconds. Default value: original interval
+Value range: 2-6
         :type Gop: int
-        :param Rotate: Whether to rotate. 0: no; 1: yes. Default value: 0.
+        :param Rotate: Rotation angle. Default value: 0.
+Valid values: 0, 90, 180, 270
         :type Rotate: int
         :param Profile: Encoding quality:
 baseline/main/high. Default value: baseline.
@@ -1468,12 +1479,14 @@ Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
 
 Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
+        :param ShortEdgeAsHeight: This parameter is used to define whether the short side is the video height. 0: no, 1: yes. The default value is 0.
+        :type ShortEdgeAsHeight: int
         """
         self.TemplateName = None
         self.VideoBitrate = None
-        self.Vcodec = None
         self.Acodec = None
         self.AudioBitrate = None
+        self.Vcodec = None
         self.Description = None
         self.Width = None
         self.NeedVideo = None
@@ -1488,14 +1501,15 @@ Value range: 0.0-0.5.
         self.FpsToOrig = None
         self.AiTransCode = None
         self.AdaptBitratePercent = None
+        self.ShortEdgeAsHeight = None
 
 
     def _deserialize(self, params):
         self.TemplateName = params.get("TemplateName")
         self.VideoBitrate = params.get("VideoBitrate")
-        self.Vcodec = params.get("Vcodec")
         self.Acodec = params.get("Acodec")
         self.AudioBitrate = params.get("AudioBitrate")
+        self.Vcodec = params.get("Vcodec")
         self.Description = params.get("Description")
         self.Width = params.get("Width")
         self.NeedVideo = params.get("NeedVideo")
@@ -1510,6 +1524,7 @@ Value range: 0.0-0.5.
         self.FpsToOrig = params.get("FpsToOrig")
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
+        self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
 
 
 class CreateLiveTranscodeTemplateResponse(AbstractModel):
@@ -1592,9 +1607,9 @@ class CreateRecordTaskRequest(AbstractModel):
         :type DomainName: str
         :param AppName: Push path.
         :type AppName: str
-        :param EndTime: Recording task end time in UNIX timestamp, which must be after `StartTime` and within 24 hours from the current time.
+        :param EndTime: The recording end time in UNIX timestamp format. The “EndTime” should be later than “StartTime”. Normally the duration between “EndTime” and “StartTime” is up to 24 hours.
         :type EndTime: int
-        :param StartTime: Recording task start time in UNIX timestamp. If this parameter is left empty, it indicates to start recording immediately. It must be within 24 hours from the current time.
+        :param StartTime: The recording start time in UNIX timestamp format. If the “StartTime” is not entered, recording will start immediately after the API is successfully called. Normally the “StartTime” should be within 6 days from current time.
         :type StartTime: int
         :param StreamType: Push type. Default value: 0. Valid values:
 0: LVB push.
@@ -1602,7 +1617,7 @@ class CreateRecordTaskRequest(AbstractModel):
         :type StreamType: int
         :param TemplateId: Recording template ID, which is the returned value of `CreateLiveRecordTemplate`. If this parameter is left empty or incorrect, the stream will be recorded in HLS format and retained permanently by default.
         :type TemplateId: int
-        :param Extension: Extended field, which is empty by default.
+        :param Extension: Extension field which is not defined now. It is empty by default.
         :type Extension: str
         """
         self.StreamName = None
@@ -1633,7 +1648,7 @@ class CreateRecordTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Task ID, which uniquely identifies the recording task globally.
+        :param TaskId: `TaskId`, which is a globally unique task ID. If the `TaskId` is returned, that means the recording task has been successfully created.
         :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3917,6 +3932,21 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param TemplateIds: 
+        :type TemplateIds: list of int
+        :param DomainNames: 
+        :type DomainNames: list of str
+        """
+        self.TemplateIds = None
+        self.DomainNames = None
+
+
+    def _deserialize(self, params):
+        self.TemplateIds = params.get("TemplateIds")
+        self.DomainNames = params.get("DomainNames")
+
 
 class DescribeLiveTranscodeRulesResponse(AbstractModel):
     """DescribeLiveTranscodeRules response structure.
@@ -5953,34 +5983,39 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
         """
         :param TemplateId: Template ID.
         :type TemplateId: int
-        :param Vcodec: Video encoding format:
-h264/h265.
+        :param Vcodec: Video codec: `h264/h265/origin`. Default value: `h264`.
+
+origin: original codec as the output codec
         :type Vcodec: str
-        :param Acodec: Audio encoding format:
-aac/mp3.
+        :param Acodec: Audio codec: acc by default.
+Note: this parameter is unsupported now.
         :type Acodec: str
         :param AudioBitrate: Audio bitrate. Default value: 0.
 Value range: 0-500.
         :type AudioBitrate: int
         :param Description: Template description.
         :type Description: str
-        :param VideoBitrate: Video bitrate. Value range: 100-8000 Kbps.
-Note: the bitrate value must be a multiple of 100.
+        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8,000.
+Note: the transcoding template requires that the bitrate should be unique, yet the final saved bitrate may be different from the input bitrate.
         :type VideoBitrate: int
-        :param Width: Width. Value range: 0-3000.
+        :param Width: Width in pixels. Value range: 0-3,000.
+It must be a multiple of 2. The original width is 0
         :type Width: int
         :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
         :type NeedVideo: int
         :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
-        :param Height: Height. Value range: 0-3000.
+        :param Height: Height in pixels. Value range: 0-3,000.
+It must be a multiple of 2. The original height is 0
         :type Height: int
-        :param Fps: Frame rate. Value range: 0-200.
+        :param Fps: Frame rate in fps. Default value: 0.
+Value range: 0-60
         :type Fps: int
-        :param Gop: Keyframe interval in seconds. Value range: 0-50.
+        :param Gop: Keyframe interval in seconds.
+Value range: 2-6
         :type Gop: int
-        :param Rotate: Rotation angle.
-0, 90, 180, 270.
+        :param Rotate: Rotation angle. Default value: 0.
+Valid values: 0, 90, 180, 270
         :type Rotate: int
         :param Profile: Encoding quality:
 baseline/main/high.
@@ -5996,6 +6031,8 @@ Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
 
 Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
+        :param ShortEdgeAsHeight: This parameter is used to define whether the short side is the video height. 0: no, 1: yes. The default value is 0.
+        :type ShortEdgeAsHeight: int
         """
         self.TemplateId = None
         self.Vcodec = None
@@ -6015,6 +6052,7 @@ Value range: 0.0-0.5.
         self.HeightToOrig = None
         self.FpsToOrig = None
         self.AdaptBitratePercent = None
+        self.ShortEdgeAsHeight = None
 
 
     def _deserialize(self, params):
@@ -6036,6 +6074,7 @@ Value range: 0.0-0.5.
         self.HeightToOrig = params.get("HeightToOrig")
         self.FpsToOrig = params.get("FpsToOrig")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
+        self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
 
 
 class ModifyLiveTranscodeTemplateResponse(AbstractModel):
