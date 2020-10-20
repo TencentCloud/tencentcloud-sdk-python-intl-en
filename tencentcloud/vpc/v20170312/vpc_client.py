@@ -2356,6 +2356,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBandwidthPackageResources(self, request):
+        """This API is used to query resources in a bandwidth package based on the unique package ID. You can filter the result by specifying conditions and paginate the query results.
+
+        :param request: Request instance for DescribeBandwidthPackageResources.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageResourcesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBandwidthPackageResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBandwidthPackageResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBandwidthPackages(self, request):
         """This API is used to query bandwidth package information, including the unique ID of the bandwidth package, the type, the billing mode, the name, and the resource information.
 
@@ -4167,7 +4195,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAddressesBandwidth(self, request):
-        """This API (ModifyAddressesBandwidth) is used to adjust [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) bandwidth, including the postpaid EIP, prepaid EIP and bandwidth package EIP.
+        """This API is used to adjust the bandwidth of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), including EIP billed on a pay-as-you-go, monthly subscription, and bandwidth package basis.
 
         :param request: Request instance for ModifyAddressesBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesBandwidthRequest`

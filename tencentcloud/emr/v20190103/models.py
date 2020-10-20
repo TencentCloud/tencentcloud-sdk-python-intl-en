@@ -1609,7 +1609,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DiskType: Disk type. Valid values: CLOUD_PREMIUM, CLOUD_SSD
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
-        :param DiskNum: 
+        :param DiskNum: Number of disks
+Note: this field may return null, indicating that no valid values can be obtained.
         :type DiskNum: int
         """
         self.DiskSize = None
@@ -2002,6 +2003,12 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type HardwareResourceType: str
         :param PodSpec: Specified information such as pod specification and source for expansion with pod resources
         :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
+        :param ClickHouseClusterName: Machine group name selected for ClickHouse cluster scaling-out
+        :type ClickHouseClusterName: str
+        :param ClickHouseClusterType: Machine group type selected for ClickHouse cluster scaling-out. new: creates a group; old: selects an existing group
+        :type ClickHouseClusterType: str
+        :param YarnNodeLabel: YARN node label specified for rule-based scaling-out
+        :type YarnNodeLabel: str
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -2019,6 +2026,9 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.Tags = None
         self.HardwareResourceType = None
         self.PodSpec = None
+        self.ClickHouseClusterName = None
+        self.ClickHouseClusterType = None
+        self.YarnNodeLabel = None
 
 
     def _deserialize(self, params):
@@ -2050,6 +2060,9 @@ class ScaleOutInstanceRequest(AbstractModel):
         if params.get("PodSpec") is not None:
             self.PodSpec = PodSpec()
             self.PodSpec._deserialize(params.get("PodSpec"))
+        self.ClickHouseClusterName = params.get("ClickHouseClusterName")
+        self.ClickHouseClusterType = params.get("ClickHouseClusterType")
+        self.YarnNodeLabel = params.get("YarnNodeLabel")
 
 
 class ScaleOutInstanceResponse(AbstractModel):

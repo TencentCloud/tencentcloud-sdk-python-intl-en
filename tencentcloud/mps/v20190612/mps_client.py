@@ -1303,6 +1303,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExecuteFunction(self, request):
+        """This API is only used in unique custom development scenarios. Unless requested by Media Processing Service customer service, please do not call it.
+
+        :param request: Request instance for ExecuteFunction.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ExecuteFunctionRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExecuteFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExecuteFunction", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExecuteFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ManageTask(self, request):
         """This API is used to manage an initiated task.
         > Note: currently, you can only terminate an ongoing live stream processing task.

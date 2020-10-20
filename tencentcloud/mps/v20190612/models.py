@@ -5708,7 +5708,7 @@ class EditMediaRequest(AbstractModel):
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
-        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
         :type SessionId: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
@@ -5883,6 +5883,48 @@ class EnableWorkflowResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ExecuteFunctionRequest(AbstractModel):
+    """ExecuteFunction request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Name of called backend API.
+        :type FunctionName: str
+        :param FunctionArg: API parameter. Parameter format will depend on the actual function definition.
+        :type FunctionArg: str
+        """
+        self.FunctionName = None
+        self.FunctionArg = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.FunctionArg = params.get("FunctionArg")
+
+
+class ExecuteFunctionResponse(AbstractModel):
+    """ExecuteFunction response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Packed string, which will vary according to the custom API.
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -9809,7 +9851,7 @@ class ProcessMediaRequest(AbstractModel):
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
-        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
         :type SessionId: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
@@ -11429,7 +11471,7 @@ class VideoTemplateInfo(AbstractModel):
 <li>libx265: H.265</li>
 Currently, a resolution within 640*480p must be specified for H.265.
         :type Codec: str
-        :param Fps: Video frame rate in Hz. Value range: [0, 60].
+        :param Fps: Video frame rate in Hz. Value range: [0, 100].
 If the value is 0, the frame rate will be the same as that of the source video.
         :type Fps: int
         :param Bitrate: Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].
@@ -11496,7 +11538,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>libx265: H.265</li>
 Currently, a resolution within 640*480p must be specified for H.265.
         :type Codec: str
-        :param Fps: Video frame rate in Hz. Value range: [0, 60].
+        :param Fps: Video frame rate in Hz. Value range: [0, 100].
 If the value is 0, the frame rate will be the same as that of the source video.
         :type Fps: int
         :param Bitrate: Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].

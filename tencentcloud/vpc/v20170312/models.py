@@ -226,18 +226,18 @@ class AddressChargePrepaid(AbstractModel):
 
     def __init__(self):
         """
-        :param Period: Purchase duration of instance
+        :param Period: Purchased usage period, in month. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36
         :type Period: int
-        :param RenewFlag: Whether auto-renewal is enabled
-        :type RenewFlag: str
+        :param AutoRenewFlag: Setting of renewal. Valid values: 0: manual renewal; 1: auto-renewal; 2: no renewal after expiration. Default value: 0
+        :type AutoRenewFlag: int
         """
         self.Period = None
-        self.RenewFlag = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
         self.Period = params.get("Period")
-        self.RenewFlag = params.get("RenewFlag")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
 
 
 class AddressTemplate(AbstractModel):
@@ -385,17 +385,21 @@ class AllocateAddressesRequest(AbstractModel):
 <li>CUCC: China Unicom</li></ul>Note: Only certain regions support static single-line IP addresses.</li></ul>
         :type InternetServiceProvider: str
         :param InternetChargeType: The EIP billing method.
-<ul style="margin:0"><li>For a user who has activated bandwidth billing by IP allowlist, possible values are:<ul><li>BANDWIDTH_PACKAGE: paid by the [bandwidth package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1) (The bandwidth sharing allowlist must be activated additionally.)</li>
-<li>BANDWIDTH_POSTPAID_BY_HOUR: bandwidth postpaid by hour</li>
-<li>TRAFFIC_POSTPAID_BY_HOUR: traffic postpaid by hour</li></ul>Default: TRAFFIC_POSTPAID_BY_HOUR</li>.
-<li>For users who do not use bill-by-bandwidth billing mode, InternetChargeType is consistent with that of the instance bound to the EIP. Therefore, it is unnecessary to pass in this parameter.</li></ul>
+<ul style="margin:0"><li>For bill-by-IP account beta users, valid values: <ul><li>BANDWIDTH_PACKAGE: paid by the [bandwidth package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1)(who must also be bandwidth package beta users)</li>
+<li>BANDWIDTH_POSTPAID_BY_HOUR: billed by hourly bandwidth on a pay-as-you-go basis</li>
+<li>BANDWIDTH_PREPAID_BY_MONTH: monthly bandwidth subscription</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR: billed by hourly traffic on a pay-as-you-go basis</li></ul>Default value: TRAFFIC_POSTPAID_BY_HOUR</li>
+<li>If you are not a bill-by-IP account beta user, the EIP billing is the same as that for the instance bound to the EIP. Therefore, you do not need to pass in this parameter.</li></ul>
         :type InternetChargeType: str
-        :param InternetMaxBandwidthOut: The maximum EIP outbound bandwidth. Unit: Mbps.
-<ul style="margin:0"><li>For a user who has activated bandwidth billing by IP allowlist, the value range is determined by the EIP billing method:<ul><li>BANDWIDTH_PACKAGE: 1 Mbps to 1,000 Mbps</li>
+        :param InternetMaxBandwidthOut: The EIP outbound bandwidth cap, in Mbps.
+<ul style="margin:0"><li>For bill-by-IP account beta users, valid values:<ul><li>BANDWIDTH_PACKAGE: 1 Mbps to 1000 Mbps</li>
 <li>BANDWIDTH_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps</li>
-<li>TRAFFIC_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps</li></ul>Default: 1 Mbps</li>.
-<li>For a user who has not activated bandwidth billing by IP allowlist, InternetMaxBandwidthOut is consistent with that of the instance bound to the EIP. Therefore, it is unnecessary to pass in this parameter.</li></ul>
+<li>BANDWIDTH_PREPAID_BY_MONTH: 1 Mbps to 200 Mbps</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps</li></ul>Default value: 1 Mbps</li>
+<li>If you are not a bill-by-IP account beta user, the EIP outbound bandwidth cap is subject to that of the instance bound to the EIP. Therefore, you do not need to pass in this parameter.</li></ul>
         :type InternetMaxBandwidthOut: int
+        :param AddressChargePrepaid: A required billing parameter for an EIP billed by monthly bandwidth subscription. For EIPs using other billing modes, it can be ignored.
+        :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
         :param AddressType: The EIP type. Default: EIP.
 <ul style="margin:0"><li>For a user who has activated the AIA allowlist, possible values are:<ul><li>AnycastEIP: an Anycast EIP address. For more information, see [Anycast Internet Acceleration](https://intl.cloud.tencent.com/document/product/644?from_cn_redirect=1).</li></ul>Note: Only certain regions support Anycast EIPs.</li></ul>
         :type AddressType: str
@@ -416,6 +420,7 @@ Whether the Anycast EIP can be bound to CLB instances.
         self.InternetServiceProvider = None
         self.InternetChargeType = None
         self.InternetMaxBandwidthOut = None
+        self.AddressChargePrepaid = None
         self.AddressType = None
         self.AnycastZone = None
         self.ApplicableForCLB = None
@@ -428,6 +433,9 @@ Whether the Anycast EIP can be bound to CLB instances.
         self.InternetServiceProvider = params.get("InternetServiceProvider")
         self.InternetChargeType = params.get("InternetChargeType")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        if params.get("AddressChargePrepaid") is not None:
+            self.AddressChargePrepaid = AddressChargePrepaid()
+            self.AddressChargePrepaid._deserialize(params.get("AddressChargePrepaid"))
         self.AddressType = params.get("AddressType")
         self.AnycastZone = params.get("AnycastZone")
         self.ApplicableForCLB = params.get("ApplicableForCLB")
@@ -1867,7 +1875,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
         :type ChargeType: str
         :param BandwidthPackageName: The name of the bandwidth package.
         :type BandwidthPackageName: str
-        :param BandwidthPackageCount: The number of bandwidth packages (enter 1 for bill-by-CVM accounts).
+        :param BandwidthPackageCount: The number of bandwidth packages (It can only be “1” for bill-by-CVM accounts)
         :type BandwidthPackageCount: int
         :param InternetMaxBandwidth: The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit.
         :type InternetMaxBandwidth: int
@@ -4816,6 +4824,72 @@ class DescribeBandwidthPackageQuotaResponse(AbstractModel):
                 obj = Quota()
                 obj._deserialize(item)
                 self.QuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBandwidthPackageResourcesRequest(AbstractModel):
+    """DescribeBandwidthPackageResources request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: Unique ID of the bandwidth package in the form of `bwp-11112222`.
+        :type BandwidthPackageId: str
+        :param Filters: Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
+<li>resource-id - String - Required: no -  (Filter condition) Filters by the unique ID of resources in a bandwidth package, such as `eip-11112222`.</li>
+<li>resource-type - String - Required: no - (Filter condition) Filters by the type of resources in a bandwidth package. It now supports only EIP (`Address`) and load balancer (`LoadBalance`).</li>
+        :type Filters: list of Filter
+        :param Offset: The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :type Offset: int
+        :param Limit: The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :type Limit: int
+        """
+        self.BandwidthPackageId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeBandwidthPackageResourcesResponse(AbstractModel):
+    """DescribeBandwidthPackageResources response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of eligible resources in the bandwidth package.
+        :type TotalCount: int
+        :param ResourceSet: The list of resources in the bandwidth package.
+        :type ResourceSet: list of Resource
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ResourceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ResourceSet") is not None:
+            self.ResourceSet = []
+            for item in params.get("ResourceSet"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.ResourceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -8977,9 +9051,9 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
         :type AddressIds: list of str
         :param InternetMaxBandwidthOut: Target bandwidth value adjustment
         :type InternetMaxBandwidthOut: int
-        :param StartTime: The monthly bandwidth start time
+        :param StartTime: (Disused) The start time of the monthly bandwidth subscription
         :type StartTime: str
-        :param EndTime: The monthly bandwidth end time
+        :param EndTime: (Disused) The end time of the monthly bandwidth subscription
         :type EndTime: str
         """
         self.AddressIds = None

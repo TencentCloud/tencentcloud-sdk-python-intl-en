@@ -531,11 +531,17 @@ If it contains an asterisk (*), this indicates all files.
         :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
 blacklist: indicates that only the file types in the FileExtensions list are authenticated
         :type FilterType: str
+        :param TimeFormat: Timestamp settings
+dec: decimal
+hex: hexadecimal
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type TimeFormat: str
         """
         self.SecretKey = None
         self.ExpireTime = None
         self.FileExtensions = None
         self.FilterType = None
+        self.TimeFormat = None
 
 
     def _deserialize(self, params):
@@ -543,6 +549,7 @@ blacklist: indicates that only the file types in the FileExtensions list are aut
         self.ExpireTime = params.get("ExpireTime")
         self.FileExtensions = params.get("FileExtensions")
         self.FilterType = params.get("FilterType")
+        self.TimeFormat = params.get("TimeFormat")
 
 
 class AuthenticationTypeD(AbstractModel):
@@ -2037,14 +2044,21 @@ edge: edge server
 last: intermediate server
 If this parameter is left empty, edge server information will be returned by default
         :type Layer: str
+        :param Area: Region to be queried.
+mainland: domestic nodes
+overseas: overseas nodes
+global: global nodes
+        :type Area: str
         """
         self.Domain = None
         self.Layer = None
+        self.Area = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
         self.Layer = params.get("Layer")
+        self.Area = params.get("Area")
 
 
 class DescribeIpStatusResponse(AbstractModel):

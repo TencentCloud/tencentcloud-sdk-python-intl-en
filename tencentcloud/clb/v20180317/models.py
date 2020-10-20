@@ -828,6 +828,8 @@ They represent weighted round robin and least connections, respectively. Default
         :type TargetType: str
         :param SessionType: Session persistence type. Valid values: Normal: the default session persistence type; QUIC_CID: session persistence by QUIC connection ID. The `QUIC_CID` value can only be configured in UDP listeners. If this field is not specified, the default session persistence type will be used.
         :type SessionType: str
+        :param KeepaliveEnable: Whether to enable a persistent connection (This parameter can only be configured in HTTP/HTTPS listeners). Valid values: 0: no; 1: yes. Default value: 0
+        :type KeepaliveEnable: int
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -840,6 +842,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.SniSwitch = None
         self.TargetType = None
         self.SessionType = None
+        self.KeepaliveEnable = None
 
 
     def _deserialize(self, params):
@@ -858,6 +861,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.SniSwitch = params.get("SniSwitch")
         self.TargetType = params.get("TargetType")
         self.SessionType = params.get("SessionType")
+        self.KeepaliveEnable = params.get("KeepaliveEnable")
 
 
 class CreateListenerResponse(AbstractModel):
@@ -3819,6 +3823,8 @@ They represent weighted round robin and least connections, respectively. Default
         :type Scheduler: str
         :param SniSwitch: Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners. Note: The SNI feature can be enabled but cannot be disabled once enabled.
         :type SniSwitch: int
+        :param KeepaliveEnable: Whether to enable a persistent connection (This parameter can only be configured in HTTP/HTTPS listeners). Valid values: 0: no; 1: yes. Default value: 0
+        :type KeepaliveEnable: int
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -3828,6 +3834,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.Certificate = None
         self.Scheduler = None
         self.SniSwitch = None
+        self.KeepaliveEnable = None
 
 
     def _deserialize(self, params):
@@ -3843,6 +3850,7 @@ They represent weighted round robin and least connections, respectively. Default
             self.Certificate._deserialize(params.get("Certificate"))
         self.Scheduler = params.get("Scheduler")
         self.SniSwitch = params.get("SniSwitch")
+        self.KeepaliveEnable = params.get("KeepaliveEnable")
 
 
 class ModifyListenerResponse(AbstractModel):

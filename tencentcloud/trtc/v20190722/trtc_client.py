@@ -82,7 +82,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCallDetail(self, request):
-        """This API is used to query user list and call quality data within a specified time. It queries data in last 14 days. When `DataType` is not null, real-time data of up to 1 hour and up to 6 users can be queried. The query period can start and end on different days. When `DataType` and all `UserId`s are null, data of 6 users will be queried by default. Data of up to 100 users can be displayed on one page (`PageSize` is up to 100).
+        """This API is used to query the user list and call quality data within a specified time. It queries data from the last 14 days. When `DataType` is not null, real-time data of up to 1 hour can be queried. Up to 6 users can be queried each time. The query period can start and end on different days. When `DataType` and all `UserId` are null, data of 6 users will be queried by default. Data of up to 100 users can be displayed on one page (`PageSize` is up to 100). This API is used to query call quality and is not recommended for billing use.
 
         :param request: Request instance for DescribeCallDetail.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailRequest`

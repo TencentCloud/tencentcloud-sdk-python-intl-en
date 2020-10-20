@@ -1411,6 +1411,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Qualifier: str
         :param InitTimeout: Timeout period for function initialization
         :type InitTimeout: int
+        :param StatusReasons: Cause of function failure
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StatusReasons: list of StatusReason
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1453,6 +1456,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AvailableStatus = None
         self.Qualifier = None
         self.InitTimeout = None
+        self.StatusReasons = None
         self.RequestId = None
 
 
@@ -1525,6 +1529,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AvailableStatus = params.get("AvailableStatus")
         self.Qualifier = params.get("Qualifier")
         self.InitTimeout = params.get("InitTimeout")
+        if params.get("StatusReasons") is not None:
+            self.StatusReasons = []
+            for item in params.get("StatusReasons"):
+                obj = StatusReason()
+                obj._deserialize(item)
+                self.StatusReasons.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2532,6 +2542,27 @@ class RoutingConfig(AbstractModel):
                 obj = VersionMatch()
                 obj._deserialize(item)
                 self.AddtionVersionMatchs.append(obj)
+
+
+class StatusReason(AbstractModel):
+    """State reason description
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorCode: Error code
+        :type ErrorCode: str
+        :param ErrorMessage: Error message
+        :type ErrorMessage: str
+        """
+        self.ErrorCode = None
+        self.ErrorMessage = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMessage = params.get("ErrorMessage")
 
 
 class Tag(AbstractModel):

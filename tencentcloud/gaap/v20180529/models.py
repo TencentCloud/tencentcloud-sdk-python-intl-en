@@ -3029,11 +3029,11 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
         :type RuleId: str
         :param WithinTime: Statistics duration. Unit: hours. It only supports querying statistics for the past 1, 3, 6, 12, and 24 hours.
         :type WithinTime: int
-        :param StartTime: Statistics start time, such as 2020-08-19 00:00:00
+        :param StartTime: Statistics start time, such as `2020-08-19 00:00:00`
         :type StartTime: str
-        :param EndTime: Statistics end time, such as 2020-08-19 23:59:59
+        :param EndTime: Statistics end time, such as `2020-08-19 23:59:59`
         :type EndTime: str
-        :param Granularity: Statistics granularity in seconds. Only 1-minute (60-second) and 5-minute (300-second) granularities are supported
+        :param Granularity: Statistics granularity in seconds. Only 1-minute (60-second) and 5-minute (300-second) granularities are supported.
         :type Granularity: int
         """
         self.RealServerId = None

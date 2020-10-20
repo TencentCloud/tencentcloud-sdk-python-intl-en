@@ -291,7 +291,7 @@ class CreateDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: Type of hard disk medium. Value range: <br><li>CLOUD_BASIC: Ordinary cloud disk <br><li>CLOUD_PREMIUM: Premium cloud storage <br><li>CLOUD_SSD: SSD cloud disk.
+        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD
         :type DiskType: str
         :param DiskChargeType: Cloud disk billing method. POSTPAID_BY_HOUR: pay as you go by hour<br><li>CDCPAID: Billed together with the bound dedicated cluster<br>For information about the pricing of each method, see the cloud disk [Pricing Overview](https://intl.cloud.tencent.com/document/product/362/2413?from_cn_redirect=1).
         :type DiskChargeType: str
@@ -386,14 +386,18 @@ class CreateSnapshotRequest(AbstractModel):
         :type DiskId: str
         :param SnapshotName: Snapshot name. If it is left empty, the new snapshot name is "Not named" by default.
         :type SnapshotName: str
+        :param Deadline: Expiration time of the snapshot. The snapshot will be automatically deleted upon expiration.
+        :type Deadline: str
         """
         self.DiskId = None
         self.SnapshotName = None
+        self.Deadline = None
 
 
     def _deserialize(self, params):
         self.DiskId = params.get("DiskId")
         self.SnapshotName = params.get("SnapshotName")
+        self.Deadline = params.get("Deadline")
 
 
 class CreateSnapshotResponse(AbstractModel):
@@ -617,7 +621,7 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
         :type Zones: list of str
         :param DiskChargeType: Billing mode. Value range: <br><li>POSTPAID_BY_HOUR: postpaid.
         :type DiskChargeType: str
-        :param DiskTypes: Type of hard disk medium. Value range: <br><li>CLOUD_BASIC: Ordinary cloud disk <br><li>CLOUD_PREMIUM: Premium cloud storage <br><li>CLOUD_SSD: SSD cloud disk.
+        :param DiskTypes: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD
         :type DiskTypes: list of str
         :param DiskUsage: The system disk or data disk. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.
         :type DiskUsage: str
@@ -1664,18 +1668,22 @@ class ModifySnapshotAttributeRequest(AbstractModel):
         :type SnapshotId: str
         :param SnapshotName: Name of new snapshot. Maximum length is 60 bytes.
         :type SnapshotName: str
-        :param IsPermanent: The retention time of the snapshot. FALSE: non-permanent retention; TRUE: permanent retention. You can only modify non-permanent snapshots to permanent snapshots.
+        :param IsPermanent: Snapshot retention mode. Valid values: `FALSE`: non-permanent retention; `TRUE`: permanent retention.
         :type IsPermanent: bool
+        :param Deadline: Expiration time of the snapshot. Setting this parameter will set the snapshot retention mode to `FALSE` (non-permanent retention) and the snapshot will be automatically deleted upon expiration.
+        :type Deadline: str
         """
         self.SnapshotId = None
         self.SnapshotName = None
         self.IsPermanent = None
+        self.Deadline = None
 
 
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
         self.SnapshotName = params.get("SnapshotName")
         self.IsPermanent = params.get("IsPermanent")
+        self.Deadline = params.get("Deadline")
 
 
 class ModifySnapshotAttributeResponse(AbstractModel):

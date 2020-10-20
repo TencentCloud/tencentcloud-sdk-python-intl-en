@@ -213,6 +213,58 @@ The time accuracy matches with the query granularity.
         self.Bandwidth = params.get("Bandwidth")
 
 
+class BillAreaInfo(AbstractModel):
+    """Region information, `DescribeAreaBillBandwidthAndFluxList` output parameter
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Region name
+        :type Name: str
+        :param Countrys: Detailed country information
+        :type Countrys: list of BillCountryInfo
+        """
+        self.Name = None
+        self.Countrys = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Countrys") is not None:
+            self.Countrys = []
+            for item in params.get("Countrys"):
+                obj = BillCountryInfo()
+                obj._deserialize(item)
+                self.Countrys.append(obj)
+
+
+class BillCountryInfo(AbstractModel):
+    """The bandwidth information of a country, `DescribeAreaBillBandwidthAndFluxList` output parameter
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Country
+        :type Name: str
+        :param BandInfoList: Detailed bandwidth information
+        :type BandInfoList: list of BillDataInfo
+        """
+        self.Name = None
+        self.BandInfoList = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("BandInfoList") is not None:
+            self.BandInfoList = []
+            for item in params.get("BandInfoList"):
+                obj = BillDataInfo()
+                obj._deserialize(item)
+                self.BandInfoList.append(obj)
+
+
 class BillDataInfo(AbstractModel):
     """Bandwidth and traffic information.
 
@@ -1427,8 +1479,9 @@ Length limit:
   Standard transcoding: 1-10 characters
   Top speed codec transcoding: 3-10 characters
         :type TemplateName: str
-        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8,000.
-Note: the transcoding template requires that bitrate should be unique, yet the final saved bitrate may be different from the input bitrate.
+        :param VideoBitrate: Video bitrate. Value range: 0–8,000 Kbps.
+If the value is 0, the original bitrate will be retained.
+Note: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.
         :type VideoBitrate: int
         :param Acodec: Audio codec: acc by default.
 Note: this parameter is unsupported now.
@@ -1455,10 +1508,11 @@ Value range: 0-3,000
 It must be a multiple of 2. The original height is 0
         :type Height: int
         :param Fps: Frame rate. Default value: 0.
-Value range: 0-60
+Range: 0-60 Fps.
         :type Fps: int
-        :param Gop: Keyframe interval in seconds. Default value: original interval
-Value range: 2-6
+        :param Gop: Keyframe interval, unit: second.
+Original interval by default
+Range: 2-6
         :type Gop: int
         :param Rotate: Rotation angle. Default value: 0.
 Valid values: 0, 90, 180, 270
@@ -1466,11 +1520,17 @@ Valid values: 0, 90, 180, 270
         :param Profile: Encoding quality:
 baseline/main/high. Default value: baseline.
         :type Profile: str
-        :param BitrateToOrig: Whether to not exceed the original bitrate. 0: no; 1: yes. Default value: 0.
+        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+0: no, 1: yes
+Default value: 0.
         :type BitrateToOrig: int
-        :param HeightToOrig: Whether to not exceed the original height. 0: no; 1: yes. Default value: 0.
+        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
+0: no, 1: yes
+Default value: 0.
         :type HeightToOrig: int
-        :param FpsToOrig: Whether to not exceed the original frame rate. 0: no; 1: yes. Default value: 0.
+        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+0: no, 1: yes
+Default value: 0.
         :type FpsToOrig: int
         :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
         :type AiTransCode: int
@@ -2325,6 +2385,57 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAreaBillBandwidthAndFluxListRequest(AbstractModel):
+    """DescribeAreaBillBandwidthAndFluxList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
+        :type StartTime: str
+        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 1 days.
+        :type EndTime: str
+        :param PlayDomains: LVB playback domain name. If it is left blank, the full data will be queried.
+        :type PlayDomains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+
+
+class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
+    """DescribeAreaBillBandwidthAndFluxList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: Detailed data information.
+        :type DataInfoList: list of BillAreaInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = BillAreaInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
     """DescribeBillBandwidthAndFluxList request structure.
 
@@ -2334,7 +2445,7 @@ class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
         """
         :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
         :type StartTime: str
-        :param EndTime: End time point in the format of `yyyy-mm-dd HH:MM:SS`. The difference between the start time and end time cannot be greater than 31 days.
+        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.
         :type EndTime: str
         :param PlayDomains: LVB playback domain name. If this parameter is left empty, full data will be queried.
         :type PlayDomains: list of str
@@ -2981,6 +3092,7 @@ class DescribeLiveDomainResponse(AbstractModel):
     def __init__(self):
         """
         :param DomainInfo: Domain name information.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type DomainInfo: :class:`tencentcloud.live.v20180801.models.DomainInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3247,7 +3359,7 @@ class DescribeLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID obtained through the `DescribeRecordTemplates` API.
+        :param TemplateId: Template ID obtained by [DescribeLiveRecordTemplates](https://intl.cloud.tencent.com/document/product/267/32609?from_cn_redirect=1).
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -3934,9 +4046,9 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateIds: 
+        :param TemplateIds: An array of template IDs to be filtered.
         :type TemplateIds: list of int
-        :param DomainNames: 
+        :param DomainNames: An array of domain names to be filtered.
         :type DomainNames: list of str
         """
         self.TemplateIds = None
@@ -4601,8 +4713,8 @@ class DescribeStreamDayPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DayTime: Date in the format of `YYYY-mm-dd`.
-Data is available at 3 AM the next day. You are recommended to query the latest data after this time point.
+        :param DayTime: Date in the format of YYYY-mm-dd
+Data is available at 3am Beijing Time the next day. You are recommended to query the latest data after this time point. Data in the last 3 months can be queried.
         :type DayTime: str
         :param PlayDomain: Playback domain name.
         :type PlayDomain: str
@@ -4673,11 +4785,10 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time (Beijing time) in the format of `yyyy-mm-dd HH:MM:SS`,
-The start time cannot be more than 30 days after the current time.
+        :param StartTime: Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
         :type StartTime: str
-        :param EndTime: End time (Beijing time) in the format of `yyyy-mm-dd HH:MM:SS`.
-The end time and start time must be on the same day.
+        :param EndTime: End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
+The end time and start time must be on the same day. Data in the last 3 days can be queried.
         :type EndTime: str
         :param PlayDomain: Playback domain name,
 If this parameter is left empty, data of live streams of all playback domain names will be queried.
@@ -5995,8 +6106,9 @@ Value range: 0-500.
         :type AudioBitrate: int
         :param Description: Template description.
         :type Description: str
-        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8,000.
-Note: the transcoding template requires that the bitrate should be unique, yet the final saved bitrate may be different from the input bitrate.
+        :param VideoBitrate: Video bitrate. Value range: 0–8,000 Kbps.
+If the value is 0, the original bitrate will be retained.
+Note: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.
         :type VideoBitrate: int
         :param Width: Width in pixels. Value range: 0-3,000.
 It must be a multiple of 2. The original width is 0
@@ -6020,11 +6132,17 @@ Valid values: 0, 90, 180, 270
         :param Profile: Encoding quality:
 baseline/main/high.
         :type Profile: str
-        :param BitrateToOrig: Whether to not exceed the original bitrate. 0: no; 1: yes. Default value: 0.
+        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+0: no, 1: yes
+Default value: 0.
         :type BitrateToOrig: int
-        :param HeightToOrig: Whether to not exceed the original height. 0: no; 1: yes. Default value: 0.
+        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
+0: no, 1: yes
+Default value: 0.
         :type HeightToOrig: int
-        :param FpsToOrig: Whether to not exceed the original frame rate. 0: no; 1: yes. Default value: 0.
+        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+0: no, 1: yes
+Default value: 0.
         :type FpsToOrig: int
         :param AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
 Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
@@ -7082,33 +7200,52 @@ class TemplateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Vcodec: Video encoding format:
-h264/h265.
+        :param Vcodec: Codec: h264/h265/origin. Default value: h264.
+
+origin: keep the original codec.
         :type Vcodec: str
-        :param VideoBitrate: Video bitrate. Value range: 100-8000 Kbps.
+        :param VideoBitrate: Video bitrate. Value range: 0–8,000 Kbps.
+If the value is 0, the original bitrate will be retained.
+Note: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.
         :type VideoBitrate: int
-        :param Acodec: Audio codec. Valid values: aac, mp3.
+        :param Acodec: Audio codec: aac. Default value: aac.
+Note: This parameter will not take effect for now and will be supported soon.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0-500 Kbps.
+        :param AudioBitrate: Audio bitrate. Value range: 0–500 Kbps.
+0 by default.
         :type AudioBitrate: int
-        :param Width: Width. Value range: 0-3000.
+        :param Width: Width. Default value: 0.
+Value range: [0-3,000].
+The value must be a multiple of 2. The original width is 0.
         :type Width: int
-        :param Height: Height. Value range: 0-3000.
+        :param Height: Height. Default value: 0.
+Value range: [0-3,000].
+The value must be a multiple of 2. The original width is 0.
         :type Height: int
-        :param Fps: Frame rate. Value range: 0-200 FPS.
+        :param Fps: Frame rate. Default value: 0.
+Range: 0-60 Fps.
         :type Fps: int
-        :param Gop: Keyframe interval. Value range: 1-50s.
+        :param Gop: Keyframe interval, unit: second.
+Original interval by default
+Range: 2-6
         :type Gop: int
-        :param Rotate: Rotation angle. Valid values: 0, 90, 180, 270.
+        :param Rotate: Rotation angle. Default value: 0.
+Value range: 0, 90, 180, 270
         :type Rotate: int
-        :param Profile: Encoding quality. Valid values:
-baseline, main, high.
+        :param Profile: Encoding quality:
+baseline/main/high. Default value: baseline.
         :type Profile: str
-        :param BitrateToOrig: Whether to not exceed the original bitrate. 0: no; 1: yes.
+        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+0: no, 1: yes
+Default value: 0.
         :type BitrateToOrig: int
-        :param HeightToOrig: Whether to not exceed the original height. 0: no; 1: yes.
+        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
+0: no, 1: yes
+Default value: 0.
         :type HeightToOrig: int
-        :param FpsToOrig: Whether to not exceed the original frame rate. 0: no; 1: yes.
+        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+0: no, 1: yes
+Default value: 0.
         :type FpsToOrig: int
         :param NeedVideo: Whether to keep the video. 0: no; 1: yes.
         :type NeedVideo: int
@@ -7122,8 +7259,14 @@ baseline, main, high.
         :type Description: str
         :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
         :type AiTransCode: int
-        :param AdaptBitratePercent: `VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5.
+        :param AdaptBitratePercent: Bitrate compression ratio of top speed code video.
+Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
+
+Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
+        :param ShortEdgeAsHeight: Whether to take the shorter side as height. 0: no, 1: yes. Default value: 0.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ShortEdgeAsHeight: int
         """
         self.Vcodec = None
         self.VideoBitrate = None
@@ -7145,6 +7288,7 @@ baseline, main, high.
         self.Description = None
         self.AiTransCode = None
         self.AdaptBitratePercent = None
+        self.ShortEdgeAsHeight = None
 
 
     def _deserialize(self, params):
@@ -7168,6 +7312,7 @@ baseline, main, high.
         self.Description = params.get("Description")
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
+        self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
 
 
 class TimeValue(AbstractModel):

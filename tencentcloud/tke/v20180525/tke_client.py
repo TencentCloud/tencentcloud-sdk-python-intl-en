@@ -557,6 +557,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterKubeconfig(self, request):
+        """This API is used to obtain the cluster kubeconfig file. Different sub-accounts have their own kubeconfig files. The kubeconfig file contains the kube-apiserver client certificate of the corresponding sub-account. By default, the client certificate is created when this API is called for the first time, and the certificate is valid for 20 years with no permissions granted. For the cluster owner or primary account, the cluster-admin permission is granted by default.
+
+        :param request: Request instance for DescribeClusterKubeconfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterKubeconfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterKubeconfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterKubeconfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterKubeconfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterRouteTables(self, request):
         """This API is used to query one or more cluster route tables.
 

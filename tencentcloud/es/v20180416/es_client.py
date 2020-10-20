@@ -193,6 +193,34 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RestartNodes(self, request):
+        """This API is used to restart cluster nodes.
+
+        :param request: Request instance for RestartNodes.
+        :type request: :class:`tencentcloud.es.v20180416.models.RestartNodesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.RestartNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RestartNodes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestartNodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateInstance(self, request):
         """This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blocklist/allowlist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:
         - InstanceName: renames an instance (only for instance identification)

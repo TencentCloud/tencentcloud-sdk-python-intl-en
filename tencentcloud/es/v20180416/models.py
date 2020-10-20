@@ -106,6 +106,8 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         :type TagList: list of TagInfo
         :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
         :type BasicSecurityType: int
+        :param SceneType: Scenario template type. 0: not enabled; 1: general; 2: log; 3: search
+        :type SceneType: int
         """
         self.Zone = None
         self.EsVersion = None
@@ -134,6 +136,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         self.NodeInfoList = None
         self.TagList = None
         self.BasicSecurityType = None
+        self.SceneType = None
 
 
     def _deserialize(self, params):
@@ -179,6 +182,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.BasicSecurityType = params.get("BasicSecurityType")
+        self.SceneType = params.get("SceneType")
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -711,6 +715,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SecurityType: int
+        :param SceneType: Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SceneType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -764,6 +771,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.KibanaPublicAccess = None
         self.KibanaPrivateAccess = None
         self.SecurityType = None
+        self.SceneType = None
 
 
     def _deserialize(self, params):
@@ -844,6 +852,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.KibanaPublicAccess = params.get("KibanaPublicAccess")
         self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
         self.SecurityType = params.get("SecurityType")
+        self.SceneType = params.get("SceneType")
 
 
 class InstanceLog(AbstractModel):
@@ -1130,6 +1139,48 @@ class RestartInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RestartNodesRequest(AbstractModel):
+    """RestartNodes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param NodeNames: Node name list
+        :type NodeNames: list of str
+        :param ForceRestart: Whether to force restart
+        :type ForceRestart: bool
+        """
+        self.InstanceId = None
+        self.NodeNames = None
+        self.ForceRestart = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NodeNames = params.get("NodeNames")
+        self.ForceRestart = params.get("ForceRestart")
+
+
+class RestartNodesResponse(AbstractModel):
+    """RestartNodes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SubTaskDetail(AbstractModel):
     """Information of subtask in workflow task in the instance operation history (such as each check item in a upgrade check task)
 
@@ -1244,7 +1295,7 @@ class UpdateInstanceRequest(AbstractModel):
         :param NodeNum: This parameter has been disused. Please use `NodeInfoList`
 Number of nodes (2-50)
         :type NodeNum: int
-        :param EsConfig: Configuration item (JSON string). Only the following items are supported currently: <li>action.destructive_requires_name</li><li>indices.fielddata.cache.size</li><li>indices.query.bool.max_clause_count</li>
+        :param EsConfig: Configuration item (JSON string)
         :type EsConfig: str
         :param Password: Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
         :type Password: str
@@ -1285,6 +1336,10 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         :type KibanaPrivatePort: int
         :param ScaleType: 0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart
         :type ScaleType: int
+        :param MultiZoneInfo: Multi-AZ deployment
+        :type MultiZoneInfo: list of ZoneDetail
+        :param SceneType: Scenario template type. -1: not enabled; 1: general; 2: log; 3: search
+        :type SceneType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1307,6 +1362,8 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         self.BasicSecurityType = None
         self.KibanaPrivatePort = None
         self.ScaleType = None
+        self.MultiZoneInfo = None
+        self.SceneType = None
 
 
     def _deserialize(self, params):
@@ -1342,6 +1399,13 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.KibanaPrivatePort = params.get("KibanaPrivatePort")
         self.ScaleType = params.get("ScaleType")
+        if params.get("MultiZoneInfo") is not None:
+            self.MultiZoneInfo = []
+            for item in params.get("MultiZoneInfo"):
+                obj = ZoneDetail()
+                obj._deserialize(item)
+                self.MultiZoneInfo.append(obj)
+        self.SceneType = params.get("SceneType")
 
 
 class UpdateInstanceResponse(AbstractModel):
@@ -1424,12 +1488,15 @@ class UpgradeInstanceRequest(AbstractModel):
         :type LicenseType: str
         :param BasicSecurityType: Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
         :type BasicSecurityType: int
+        :param UpgradeMode: Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale
+        :type UpgradeMode: str
         """
         self.InstanceId = None
         self.EsVersion = None
         self.CheckOnly = None
         self.LicenseType = None
         self.BasicSecurityType = None
+        self.UpgradeMode = None
 
 
     def _deserialize(self, params):
@@ -1438,6 +1505,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.CheckOnly = params.get("CheckOnly")
         self.LicenseType = params.get("LicenseType")
         self.BasicSecurityType = params.get("BasicSecurityType")
+        self.UpgradeMode = params.get("UpgradeMode")
 
 
 class UpgradeInstanceResponse(AbstractModel):

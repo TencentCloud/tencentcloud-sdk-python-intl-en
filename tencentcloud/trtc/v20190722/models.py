@@ -218,7 +218,7 @@ class DescribeCallDetailRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
         :type EndTime: int
-        :param SdkAppId: User `sdkappid`, such as 1400188366.
+        :param SdkAppId: User `SDKAppID`, such as 1400188366.
         :type SdkAppId: str
         :param UserIds: User array to query, which contains up to 6 users. If it is left empty, 6 users will be returned by default.
         :type UserIds: list of str
@@ -239,7 +239,7 @@ bigvHeight: upstream/downstream resolution in height.
         :type DataType: list of str
         :param PageNumber: Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default.
         :type PageNumber: str
-        :param PageSize: Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default. When `DataType` and all `UserId`s are not null, `PageSize` is up to 6. When `DataType` and all `UserId`s are null, `PageSize` is up to 100.
+        :param PageSize: Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default. When either `DataType` or `UserId` is not null, `PageSize` is up to 6. When `DataType` and `UserId` are null, `PageSize` is up to 100.
         :type PageSize: str
         """
         self.CommId = None
@@ -827,7 +827,7 @@ class LayoutParams(AbstractModel):
         :type SmallVideoLayoutParams: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`
         :param MainVideoRightAlign: You can set the layout parameter as 1 or 0 in the screen sharing template. 1: big image on the right and small images on the left, 0: big image on the left and small images on the right. The default value is 0. 
         :type MainVideoRightAlign: int
-        :param MixVideoUids: 
+        :param MixVideoUids: A user list, which takes effect for floating, grid, or screen sharing templates. When the user list has been set, the stream mix output for users in this user list will include both audio and video; the stream mix output for users not in the list will only include audio. Up to 16 users can be set.
         :type MixVideoUids: list of str
         """
         self.Template = None

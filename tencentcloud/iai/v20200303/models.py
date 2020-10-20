@@ -28,19 +28,19 @@ Default value: 0.
 Specific information of facial feature localization (facial keypoints) of up to 5 faces can be returned.
         :type Mode: int
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.  
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.  
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.  
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.  
 The download speed and stability of non-Tencent Cloud URLs may be low.  
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param FaceModelVersion: Algorithm model version used by the Face Recognition service. You can enter only `3.0` for this API.
         :type FaceModelVersion: str
-        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :type NeedRotateDetection: int
         """
         self.Mode = None
@@ -836,41 +836,41 @@ class DenseFaceShape(AbstractModel):
 
     def __init__(self):
         """
-        :param X: Horizontal coordinate of the top-left corner of face frame.
+        :param X: X-coordinate of the top-left vertex of the face frame.
         :type X: int
-        :param Y: Vertical coordinate of the top-left corner of face frame.
+        :param Y: Y-coordinate of the top-left vertex of the face frame.
         :type Y: int
         :param Width: Face frame width.
         :type Width: int
         :param Height: Face frame height.
         :type Height: int
-        :param LeftEye: XX points that describe the left eye.
+        :param LeftEye: XX points that outline the left eye.
         :type LeftEye: list of Point
-        :param RightEye: XX points that describe the right eye.
+        :param RightEye: XX points that outline the right eye.
         :type RightEye: list of Point
-        :param LeftEyeBrow: XX points that describe the left eyebrow.
+        :param LeftEyeBrow: XX points that outline the left eyebrow.
         :type LeftEyeBrow: list of Point
-        :param RightEyeBrow: XX points that describe the right eyebrow.
+        :param RightEyeBrow: XX points that outline the right eyebrow.
         :type RightEyeBrow: list of Point
-        :param MouthOutside: XX points that describe the outer contour of the mouth, which are returned from left anticlockwise.
+        :param MouthOutside: XX points that outline the outer contour of the mouth, which are returned from left anticlockwise.
         :type MouthOutside: list of Point
-        :param MouthInside: XX points that describe the inner contour of the mouth, which are returned from left anticlockwise.
+        :param MouthInside: XX points that outline the inner contour of the mouth, which are returned from left anticlockwise.
         :type MouthInside: list of Point
-        :param Nose: XX points that describe the nose.
+        :param Nose: XX points that outline the nose.
         :type Nose: list of Point
-        :param LeftPupil: XX points that describe the left pupil.
+        :param LeftPupil: XX points that outline the left pupil.
         :type LeftPupil: list of Point
-        :param RightPupil: XX points that describe the right pupil.
+        :param RightPupil: XX points that outline the right pupil.
         :type RightPupil: list of Point
-        :param CentralAxis: XX points that describe the midline.
+        :param CentralAxis: XX points that outline the midline.
         :type CentralAxis: list of Point
-        :param Chin: XX points that describe the chin.
+        :param Chin: XX points that outline the chin.
         :type Chin: list of Point
-        :param LeftEyeBags: XX points that describe the left eye bag.
+        :param LeftEyeBags: XX points that outline the left eye bag.
         :type LeftEyeBags: list of Point
-        :param RightEyeBags: XX points that describe the right eye bag.
+        :param RightEyeBags: XX points that outline the right eye bag.
         :type RightEyeBags: list of Point
-        :param Forehead: XX points that describe the forehead.
+        :param Forehead: XX points that outline the forehead.
         :type Forehead: list of Point
         """
         self.X = None
@@ -996,26 +996,26 @@ Default value: 1 (i.e., detecting only the face with the largest size in the ima
 This parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.
         :type MaxFaceNum: int
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats. 
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats. 
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. 
 The image cannot exceed 5 MB in size after being Base64-encoded. 
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low. 
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param FaceAttributesType: Whether to return attributes such as age, gender, and emotion. 
 Valid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, 
 Gender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. 
-`None` indicates that no attributes need to be returned, which is the default value. 
+Default value: None, indicating that no attributes need to be returned. 
 You need to combine the attributes into a string and separate them with commas. The sequence of the attributes is not limited. 
 For more information on the attributes, please see the output parameters as described below. 
 The face attribute information of up to 5 largest faces in the image will be returned, and `AttributesInfo` of the 6th and rest faces is meaningless.
         :type FaceAttributesType: str
-        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :type NeedRotateDetection: int
         :param FaceModelVersion: Algorithm model version used by the Face Recognition service. You can enter only `3.0` for this API.
         :type FaceModelVersion: str
@@ -1176,6 +1176,66 @@ class DetectFaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetectLiveFaceAccurateRequest(AbstractModel):
+    """DetectLiveFaceAccurate request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats. 
+The recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).
+The face must be greater than 100*100 px in size.
+Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being base64-encoded.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+Either `Url` or `Image` of the image must be provided; if both are provided, only `Url` will be used. 
+The recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).
+The face must be greater than 100*100 px in size.
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.
+        :type Url: str
+        :param FaceModelVersion: Algorithm model version used for face recognition. Valid value: 3.0
+        :type FaceModelVersion: str
+        """
+        self.Image = None
+        self.Url = None
+        self.FaceModelVersion = None
+
+
+    def _deserialize(self, params):
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+
+
+class DetectLiveFaceAccurateResponse(AbstractModel):
+    """DetectLiveFaceAccurate response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Score: Liveness score. Value range: [0, 100]. You can set several thresholds such as 5, 10, 40, 70 and 90 to determine whether the image is photographed. We recommend using the threshold 40.
+        :type Score: float
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Score = None
+        self.FaceModelVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Score = params.get("Score")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
 class DetectLiveFaceRequest(AbstractModel):
     """DetectLiveFace request structure.
 
@@ -1250,10 +1310,10 @@ class Eye(AbstractModel):
     def __init__(self):
         """
         :param Glass: Whether glasses are worn.
-The `Type` values of the `AttributeItem` include: 0: no glasses; 1: general glasses; 2: sunglasses
+The `Type` values of the `AttributeItem` include: 0: no glasses; 1: general glasses; 2: sunglasses.
         :type Glass: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         :param EyeOpen: Whether the eyes are open.
-The `Type` values of the `AttributeItem` include: 0: open; 1: closed
+The `Type` values of the `AttributeItem` include: 0: open; 1: closed.
         :type EyeOpen: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         :param EyelidType: Whether the person has double eyelids.
 The `Type` values of the `AttributeItem` include: 0: no; 1: yes.
@@ -1389,11 +1449,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class FaceDetailAttributesInfo(AbstractModel):
-    """Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: age (Age), beauty score (Beauty),
-    emotion (Emotion), eye information (Eye), eyebrow information (Eyebrow), gender (Gender),
-    hair information (Hair), hat information (Hat), pose (Headpose), mask information (Mask), mouth information (Mouse), beard information (Moustache),
-    nose information (Nose), face shape (Shape), skin color (Skin), and smile information (Smile).
-    If no types are specified in `FaceAttributesType`, the detailed items returned by `FaceDetailAttributesInfo` will be meaningless.
+    """Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: Age, Beauty,
+    Emotion, Eye, Eyebrow, Gender,
+    Hair, Hat, Headpose, Mask, Mouth, Moustache,
+    Nose, Shape, Skin, Smile, etc.
+    If no types are specified in `FaceAttributesType`, the details returned by `FaceDetaiAttributesInfo` will be meaningless.
 
     """
 
@@ -1406,7 +1466,7 @@ If `FaceAttributesType` does not include `Age` or more than 5 faces are detected
 If `FaceAttributesType` does not include `Beauty` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :type Beauty: int
         :param Emotion: Emotion, including relaxed, happy, surprised, angry, sad, disgusted, and scared. 
-The `Type` values of the `AttributeItem` include: 0: relaxed; 1: happy; 2: surprised; 3: angry; 4: sad; 5: disgusted; 6: scared
+The `Type` values of the `AttributeItem` include: 0: relaxed; 1: happy; 2: surprised; 3: angry; 4: sad; 5: disgusted; 6: scared.
 If `FaceAttributesType` does not include `Emotion` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :type Emotion: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         :param Eye: Eye information, including whether glasses are worn, whether eyes are closed, whether the person has double eyelids, and the eye size. 
@@ -1440,7 +1500,7 @@ The `Type` values of the `AttributeItem` include: 0: no beard; 1: beard detected
 If `FaceAttributesType` does not include `Moustache` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :type Moustache: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         :param Nose: Nose information. 
-The `Type` values of the `AttributeItem` include: 0: upturned nose; 1: aquiline nose; 2: general nose; 3: bulbous nose
+The `Type` values of the `AttributeItem` include: 0: upturned nose; 1: aquiline nose; 2: general nose; 3: bulbous nose.
 If `FaceAttributesType` does not include `Nose` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :type Nose: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         :param Shape: Face shape information. 
@@ -1525,13 +1585,13 @@ class FaceDetailInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param FaceRect: Position of detected face frame.
+        :param FaceRect: Position of the detected face frame.
         :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         :param FaceDetailAttributesInfo: Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: age (Age), beauty score (Beauty), 
 emotion (Emotion), eye information (Eye), eyebrow information (Eyebrow), gender (Gender), 
 hair information (Hair), hat information (Hat), pose (Headpose), mask information (Mask), mouth information (Mouse), beard information (Moustache), 
-nose information (Nose), face shape (Shape), skin color (Skin), and smile information (Smile).  
-If no types are specified in `FaceAttributesType`, the detailed items returned by `FaceDetailAttributesInfo` will be meaningless.
+nose information (Nose), face shape (Shape), skin color (Skin), and smile information (Smile), etc.  
+If no types are specified in `FaceAttributesType`, the detailed items returned by `FaceDetaiAttributesInfo` will be meaningless.
         :type FaceDetailAttributesInfo: :class:`tencentcloud.iai.v20200303.models.FaceDetailAttributesInfo`
         """
         self.FaceRect = None
@@ -2261,7 +2321,7 @@ class Hair(AbstractModel):
     def __init__(self):
         """
         :param Length: Hair length information.
-The `Type` values of the `AttributeItem` include: 0: shaved head, 1: short hair, 2: medium hair, 3: long hair, 4: braid.
+The `Type` values of the `AttributeItem` include: 0: bald, 1: short hair, 2: medium hair, 3: long hair, 4: braid.
         :type Length: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         :param Bang: Bang information.
 The `Type` values of the `AttributeItem` include: 0: no bang; 1: bang detected.
@@ -2487,7 +2547,7 @@ class Mouth(AbstractModel):
     def __init__(self):
         """
         :param MouthOpen: Whether the mouth is open.
-The `Type` values of the `AttributeItem` include: 0: open; 1: closed.
+The `Type` values of the `AttributeItem` include: 0: closed; 1: open.
         :type MouthOpen: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
         self.MouthOpen = None

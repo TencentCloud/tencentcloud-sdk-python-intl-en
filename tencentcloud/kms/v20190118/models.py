@@ -290,13 +290,13 @@ class CreateKeyRequest(AbstractModel):
         """
         :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.
         :type Alias: str
-        :param Description: 
+        :param Description: CMK description of up to 1,024 bytes in length
         :type Description: str
         :param KeyUsage: Key purpose. The default value is `ENCRYPT_DECRYPT` (creating a symmetric key for encryption and decryption). Other valid values include `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption) and `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption).
         :type KeyUsage: str
         :param Type: Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.
         :type Type: int
-        :param Tags: 
+        :param Tags: Tag list
         :type Tags: list of Tag
         """
         self.Alias = None
@@ -381,7 +381,7 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
         :type Algorithm: str
         :param Description: Key description of up to 1024 bytes
         :type Description: str
-        :param Tags: 
+        :param Tags: Tag list
         :type Tags: list of Tag
         """
         self.Alias = None
@@ -415,9 +415,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
         :type DecryptKey: str
         :param KeyId: Globally unique white-box key ID
         :type KeyId: str
-        :param TagCode: 
+        :param TagCode: Tag operation return code. 0: success; 1: internal error; 2: business processing error
         :type TagCode: int
-        :param TagMsg: 
+        :param TagMsg: Tag operation return message
         :type TagMsg: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -448,7 +448,7 @@ class DecryptRequest(AbstractModel):
         """
         :param CiphertextBlob: The ciphertext data to be decrypted.
         :type CiphertextBlob: str
-        :param EncryptionContext: 
+        :param EncryptionContext: JSON string of key-value pair. If this parameter is specified for `Encrypt`, the same parameter needs to be provided when the `Decrypt` API is called. The maximum length is 1,024 bytes.
         :type EncryptionContext: str
         """
         self.CiphertextBlob = None
@@ -1297,7 +1297,7 @@ class EncryptResponse(AbstractModel):
         """
         :param CiphertextBlob: Base64-encoded encrypted ciphertext
         :type CiphertextBlob: str
-        :param KeyId: 
+        :param KeyId: Globally unique ID of the CMK used for encryption
         :type KeyId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1320,13 +1320,13 @@ class GenerateDataKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyId: 
+        :param KeyId: Globally unique CMK ID
         :type KeyId: str
         :param KeySpec: Specifies the encryption algorithm and size of the `DataKey`. Valid values: AES_128, AES_256. Either `KeySpec` or `NumberOfBytes` must be specified.
         :type KeySpec: str
         :param NumberOfBytes: Length of the `DataKey`. If both `NumberOfBytes` and `KeySpec` are specified, `NumberOfBytes` will prevail. Minimum value: 1; maximum value: 1024. Either `KeySpec` or `NumberOfBytes` must be specified.
         :type NumberOfBytes: int
-        :param EncryptionContext: 
+        :param EncryptionContext: JSON string of key-value pair. If this field is used, the same string should be entered when the returned `DataKey` is decrypted.
         :type EncryptionContext: str
         """
         self.KeyId = None
@@ -1349,7 +1349,7 @@ class GenerateDataKeyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyId: 
+        :param KeyId: Globally unique CMK ID
         :type KeyId: str
         :param Plaintext: Plaintext of the generated data key. The plaintext is Base64-encoded and can be used locally after having it Base64-decoded.
         :type Plaintext: str
@@ -1680,13 +1680,13 @@ class KeyMetadata(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyId: 
+        :param KeyId: Globally unique CMK ID
         :type KeyId: str
-        :param Alias: 
+        :param Alias: Alias that makes a key more recognizable and understandable
         :type Alias: str
-        :param CreateTime: 
+        :param CreateTime: Key creation time
         :type CreateTime: int
-        :param Description: 
+        :param Description: CMK description
         :type Description: str
         :param KeyState: CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport, Archived.
         :type KeyState: str
@@ -1694,15 +1694,15 @@ class KeyMetadata(AbstractModel):
         :type KeyUsage: str
         :param Type: CMK type. 2: FIPS-compliant; 4: SM-CRYPTO
         :type Type: int
-        :param CreatorUin: 
+        :param CreatorUin: Creator
         :type CreatorUin: int
-        :param KeyRotationEnabled: 
+        :param KeyRotationEnabled: Whether key rotation is enabled
         :type KeyRotationEnabled: bool
-        :param Owner: 
+        :param Owner: CMK creator. The value of this parameter is `user` if the CMK is created by the user, or the corresponding service name if it is created automatically by an authorized Tencent Cloud service.
         :type Owner: str
-        :param NextRotateTime: 
+        :param NextRotateTime: Time of next rotation if key rotation is enabled
         :type NextRotateTime: int
-        :param DeletionDate: 
+        :param DeletionDate: Scheduled deletion time
         :type DeletionDate: int
         :param Origin: CMK key material type. TENCENT_KMS: created by KMS; EXTERNAL: imported by user.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -1796,17 +1796,17 @@ class ListKeyDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 
+        :param Offset: This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0.
         :type Offset: int
         :param Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200.
         :type Limit: int
-        :param Role: 
+        :param Role: Filters by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service.
         :type Role: int
-        :param OrderType: 
+        :param OrderType: Sorts by CMK creation time. 0: descending; 1: ascending
         :type OrderType: int
         :param KeyState: Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only.
         :type KeyState: int
-        :param SearchKeyAlias: 
+        :param SearchKeyAlias: Performs a fuzzy query by `KeyId` or `Alias`
         :type SearchKeyAlias: str
         :param Origin: Filters by CMK type. "TENCENT_KMS" indicates to filter CMKs whose key materials are created by KMS; "EXTERNAL" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; "ALL" or empty indicates to filter CMKs of both types. This value is case-sensitive.
         :type Origin: str
@@ -1850,7 +1850,7 @@ class ListKeyDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 
+        :param TotalCount: Total number of CMKs
         :type TotalCount: int
         :param KeyMetadatas: List of returned attribute information.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2081,15 +2081,15 @@ class ScheduleKeyDeletionResponse(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """
+    """Tag key and tag value
 
     """
 
     def __init__(self):
         """
-        :param TagKey: 
+        :param TagKey: Tag key
         :type TagKey: str
-        :param TagValue: 
+        :param TagValue: Tag value
         :type TagValue: str
         """
         self.TagKey = None
@@ -2209,7 +2209,7 @@ class UpdateKeyDescriptionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Description: 
+        :param Description: New description of up to 1,024 bytes in length
         :type Description: str
         :param KeyId: ID of the CMK for which to modify the description
         :type KeyId: str
@@ -2241,33 +2241,33 @@ class UpdateKeyDescriptionResponse(AbstractModel):
 
 
 class WhiteboxKeyInfo(AbstractModel):
-    """
+    """White-box key information
 
     """
 
     def __init__(self):
         """
-        :param KeyId: 
+        :param KeyId: Globally unique white-box key ID
         :type KeyId: str
-        :param Alias: 
+        :param Alias: Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1 to 60 letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.
         :type Alias: str
-        :param CreatorUin: 
+        :param CreatorUin: Creator
         :type CreatorUin: int
-        :param Description: 
+        :param Description: Key description information
         :type Description: str
-        :param CreateTime: 
+        :param CreateTime: Key creation time in Unix timestamp
         :type CreateTime: int
-        :param Status: 
+        :param Status: White-box key status. Valid values: Enabled, Disabled
         :type Status: str
-        :param OwnerUin: 
+        :param OwnerUin: Creator
         :type OwnerUin: int
-        :param Algorithm: 
+        :param Algorithm: Key algorithm type
         :type Algorithm: str
-        :param EncryptKey: 
+        :param EncryptKey: Base64-encoded white-box encryption key
         :type EncryptKey: str
-        :param DecryptKey: 
+        :param DecryptKey: Base64-encoded white-box decryption key
         :type DecryptKey: str
-        :param ResourceId: 
+        :param ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$keyId`
         :type ResourceId: str
         :param DeviceFingerprintBind: Whether there is a device fingerprint bound to the current key
 Note: this field may return null, indicating that no valid values can be obtained.

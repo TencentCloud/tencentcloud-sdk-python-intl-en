@@ -35,7 +35,7 @@ class AddExistedInstancesRequest(AbstractModel):
         :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
         :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the `sgId` field returned by DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)
         :type SecurityGroupIds: list of str
-        :param HostName: 
+        :param HostName: When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.
         :type HostName: str
         """
         self.ClusterId = None
@@ -141,11 +141,11 @@ class Cluster(AbstractModel):
         :type ClusterNodeNum: int
         :param ProjectId: ID of the project to which the cluster belongs
         :type ProjectId: int
-        :param TagSpecification: 
+        :param TagSpecification: Tag description list.
         :type TagSpecification: list of TagSpecification
-        :param ClusterStatus: 
+        :param ClusterStatus: Cluster status (Running, Creating, or Abnormal)
         :type ClusterStatus: str
-        :param Property: 
+        :param Property: Cluster attributes (including a map of different cluster attributes, with attribute fields including NodeNameType (lan-ip mode and hostname mode, with lan-ip mode as default))
         :type Property: str
         :param ClusterMaterNodeNum: Number of primary nodes currently in the cluster
         :type ClusterMaterNodeNum: int
@@ -226,7 +226,7 @@ class ClusterAdvancedSettings(AbstractModel):
         :type AsEnabled: bool
         :param ContainerRuntime: Type of runtime component used by the cluster. The types include "docker" and "containerd". Default value: docker
         :type ContainerRuntime: str
-        :param NodeNameType: 
+        :param NodeNameType: NodeName type for a node in a cluster (This includes the two forms of **hostname** and **lan-ip**, with the default as **lan-ip**. If **hostname** is used, you need to set the HostName parameter when creating a node, and the InstanceName needs to be the same as the HostName.)
         :type NodeNameType: str
         :param ExtraArgs: Cluster custom parameter
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
@@ -234,9 +234,9 @@ class ClusterAdvancedSettings(AbstractModel):
         :type NetworkType: str
         :param IsNonStaticIpMode: Whether a cluster in VPC-CNI mode uses dynamic IP addresses. The default value is FALSE, which indicates that static IP addresses are used.
         :type IsNonStaticIpMode: bool
-        :param DeletionProtection: 
+        :param DeletionProtection: Indicates whether to enable cluster deletion protection.
         :type DeletionProtection: bool
-        :param KubeProxyMode: 
+        :param KubeProxyMode: Cluster network proxy model
         :type KubeProxyMode: str
         :param AuditEnabled: Indicates whether to enable auditing
         :type AuditEnabled: bool
@@ -440,11 +440,11 @@ class ClusterBasicSettings(AbstractModel):
         :type VpcId: str
         :param ProjectId: ID of the project to which the new resources in the cluster belong.
         :type ProjectId: int
-        :param TagSpecification: 
+        :param TagSpecification: Tag description list. This parameter is used to bind a tag to a resource instance. Currently, a tag can only be bound to cluster instances.
         :type TagSpecification: list of TagSpecification
-        :param OsCustomizeType: 
+        :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
         :type OsCustomizeType: str
-        :param NeedWorkSecurityGroup: 
+        :param NeedWorkSecurityGroup: Whether to enable the node’s default security group (default: `No`, Aphla feature)
         :type NeedWorkSecurityGroup: bool
         """
         self.ClusterOs = None
@@ -743,7 +743,7 @@ class CreateClusterInstancesRequest(AbstractModel):
         """
         :param ClusterId: Cluster ID. Enter the ClusterId field returned by the DescribeClusters API
         :type ClusterId: str
-        :param RunInstancePara: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.
+        :param RunInstancePara: Pass-through parameter for CVM creation in the format of a JSON string. To ensure the idempotence of requests for adding cluster nodes, you need to add the ClientToken field in this parameter. For more information, see the documentation for [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.
         :type RunInstancePara: str
         :param InstanceAdvancedSettings: Additional parameter to be set for the instance
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
@@ -805,6 +805,8 @@ class CreateClusterRequest(AbstractModel):
         :type ExistedInstancesForNode: list of ExistedInstancesForNode
         :param InstanceDataDiskMountSettings: CVM type and the corresponding data disk mounting configuration information.
         :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting
+        :param ExtensionAddons: Information of the add-on to be installed
+        :type ExtensionAddons: list of ExtensionAddon
         """
         self.ClusterCIDRSettings = None
         self.ClusterType = None
@@ -814,6 +816,7 @@ class CreateClusterRequest(AbstractModel):
         self.InstanceAdvancedSettings = None
         self.ExistedInstancesForNode = None
         self.InstanceDataDiskMountSettings = None
+        self.ExtensionAddons = None
 
 
     def _deserialize(self, params):
@@ -848,6 +851,12 @@ class CreateClusterRequest(AbstractModel):
                 obj = InstanceDataDiskMountSetting()
                 obj._deserialize(item)
                 self.InstanceDataDiskMountSettings.append(obj)
+        if params.get("ExtensionAddons") is not None:
+            self.ExtensionAddons = []
+            for item in params.get("ExtensionAddons"):
+                obj = ExtensionAddon()
+                obj._deserialize(item)
+                self.ExtensionAddons.append(obj)
 
 
 class CreateClusterResponse(AbstractModel):
@@ -1082,7 +1091,7 @@ class DeleteClusterInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InstanceDeleteMode: Policy used to delete an instance in the cluster: `terminate` (terminates the instance. Only available for pay-as-you-go CVMs); `retain` (only removes it from the cluster. The instance will be retained.)
         :type InstanceDeleteMode: str
-        :param ForceDelete: 
+        :param ForceDelete: Whether or not there is forced deletion (when a node is initialized, the parameters can be specified as TRUE)
         :type ForceDelete: bool
         """
         self.ClusterId = None
@@ -1449,7 +1458,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
         :type Limit: int
         :param InstanceIds: List of instance IDs to be obtained. This parameter is empty by default, which indicates that all instances in the cluster will be pulled.
         :type InstanceIds: list of str
-        :param InstanceRole: 
+        :param InstanceRole: Node role. Valid values are MASTER, WORKER, ETCD, MASTER_ETCD, and ALL. Default value: WORKER.
         :type InstanceRole: str
         """
         self.ClusterId = None
@@ -1494,6 +1503,44 @@ class DescribeClusterInstancesResponse(AbstractModel):
                 obj = Instance()
                 obj._deserialize(item)
                 self.InstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterKubeconfigRequest(AbstractModel):
+    """DescribeClusterKubeconfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeClusterKubeconfigResponse(AbstractModel):
+    """DescribeClusterKubeconfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Kubeconfig: Sub-account kubeconfig file, used to access the cluster kube-apiserver directly
+        :type Kubeconfig: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Kubeconfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Kubeconfig = params.get("Kubeconfig")
         self.RequestId = params.get("RequestId")
 
 
@@ -2085,7 +2132,7 @@ class ExistedInstancesPara(AbstractModel):
         :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
         :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the sgId field in the returned values of DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)
         :type SecurityGroupIds: list of str
-        :param HostName: 
+        :param HostName: When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.
         :type HostName: str
         """
         self.InstanceIds = None
@@ -2109,6 +2156,27 @@ class ExistedInstancesPara(AbstractModel):
             self.LoginSettings._deserialize(params.get("LoginSettings"))
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.HostName = params.get("HostName")
+
+
+class ExtensionAddon(AbstractModel):
+    """Information of the add-on selected for installation during cluster creation
+
+    """
+
+    def __init__(self):
+        """
+        :param AddonName: Add-on name
+        :type AddonName: str
+        :param AddonParam: Add-on information (description of the add-on resource object in JSON string format)
+        :type AddonParam: str
+        """
+        self.AddonName = None
+        self.AddonParam = None
+
+
+    def _deserialize(self, params):
+        self.AddonName = params.get("AddonName")
+        self.AddonParam = params.get("AddonParam")
 
 
 class Filter(AbstractModel):
@@ -2243,7 +2311,8 @@ class InstanceAdvancedSettings(AbstractModel):
     def __init__(self):
         """
         :param MountTarget: Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.
-Note: This field may return null, indicating that no valid value was found.
+Note: in multi-disk scenarios, use the DataDisks data structure below to set the corresponding information, such as cloud disk type, cloud disk size, mount path, and whether to perform formatting.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type MountTarget: str
         :param DockerGraphPath: Specified value of dockerd --graph. Default value: /var/lib/docker
 Note: This field may return null, indicating that no valid value was found.
@@ -2256,8 +2325,8 @@ Note: This field may return null, indicating that no valid value was found.
         :param Labels: Node label array
 Note: This field may return null, indicating that no valid value was found.
         :type Labels: list of Label
-        :param DataDisks: Data disk information
-Note: This field may return null, indicating that no valid value was found.
+        :param DataDisks: Mounting information of multiple data disks. Ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks. If the purchase of multiple data disks is also set in DataDisks under RunInstancesPara of the CreateClusterInstances API for adding nodes, you can refer to the example of adding cluster nodes (multiple data disks) for the CreateClusterInstances API.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type DataDisks: list of DataDisk
         :param ExtraArgs: Information about node custom parameters
 Note: This field may return null, indicating that no valid value was found.
@@ -2349,9 +2418,9 @@ class Label(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 
+        :param Name: Name in map list
         :type Name: str
-        :param Value: 
+        :param Value: Value in map list
         :type Value: str
         """
         self.Name = None
@@ -2768,9 +2837,9 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceType: 
+        :param ResourceType: The type of resource that the tag is bound to. The type currently supported is `cluster`.
         :type ResourceType: str
-        :param Tags: 
+        :param Tags: List of tag pairs
         :type Tags: list of Tag
         """
         self.ResourceType = None
