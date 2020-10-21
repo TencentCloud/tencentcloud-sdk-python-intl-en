@@ -2243,6 +2243,8 @@ class ModifyGroupOffsetsRequest(AbstractModel):
         :type ShiftTimestamp: int
         :param Offset: Position of the offset that needs to be reset. When `strategy` is 2, this field is required
         :type Offset: int
+        :param Partitions: List of partitions that need to be reset. If the topics parameter is not specified, reset partitions in the corresponding partition list of all topics. If the topics parameter is specified, reset partitions of the corresponding partition list of the specified topic list.
+        :type Partitions: list of int
         """
         self.InstanceId = None
         self.Group = None
@@ -2251,6 +2253,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
         self.Shift = None
         self.ShiftTimestamp = None
         self.Offset = None
+        self.Partitions = None
 
 
     def _deserialize(self, params):
@@ -2261,6 +2264,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
         self.Shift = params.get("Shift")
         self.ShiftTimestamp = params.get("ShiftTimestamp")
         self.Offset = params.get("Offset")
+        self.Partitions = params.get("Partitions")
 
 
 class ModifyGroupOffsetsResponse(AbstractModel):

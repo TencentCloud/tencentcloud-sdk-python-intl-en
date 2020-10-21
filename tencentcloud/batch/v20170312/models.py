@@ -266,6 +266,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Notifications: list of Notification
         :param DesiredComputeNodeCount: Number of desired compute nodes
         :type DesiredComputeNodeCount: int
+        :param Tags: Tag list of the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
         """
         self.EnvId = None
         self.EnvName = None
@@ -277,6 +280,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Authentications = None
         self.Notifications = None
         self.DesiredComputeNodeCount = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -312,6 +316,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Notifications.append(obj)
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class ComputeEnvData(AbstractModel):
@@ -358,6 +368,9 @@ class ComputeEnvView(AbstractModel):
         :type NextAction: str
         :param AttachedComputeNodeCount: Number of compute nodes added to the compute environment by the user
         :type AttachedComputeNodeCount: int
+        :param Tags: Tag list bound to the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
         """
         self.EnvId = None
         self.EnvName = None
@@ -369,6 +382,7 @@ class ComputeEnvView(AbstractModel):
         self.ResourceType = None
         self.NextAction = None
         self.AttachedComputeNodeCount = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -386,6 +400,12 @@ class ComputeEnvView(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.NextAction = params.get("NextAction")
         self.AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class ComputeNode(AbstractModel):
@@ -554,10 +574,13 @@ class CreateTaskTemplateRequest(AbstractModel):
         :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
         :param TaskTemplateDescription: Task template description
         :type TaskTemplateDescription: str
+        :param Tags: Tag list. By setting this parameter, you can bind tags to a task template. Each task template supports up to 10 tags.
+        :type Tags: list of Tag
         """
         self.TaskTemplateName = None
         self.TaskTemplateInfo = None
         self.TaskTemplateDescription = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -566,6 +589,12 @@ class CreateTaskTemplateRequest(AbstractModel):
             self.TaskTemplateInfo = Task()
             self.TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
         self.TaskTemplateDescription = params.get("TaskTemplateDescription")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateTaskTemplateResponse(AbstractModel):
@@ -924,6 +953,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Notifications: list of Notification
         :param DesiredComputeNodeCount: Number of desired compute nodes
         :type DesiredComputeNodeCount: int
+        :param Tags: Tag list bound to the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -937,6 +969,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Authentications = None
         self.Notifications = None
         self.DesiredComputeNodeCount = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -973,6 +1006,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Notifications.append(obj)
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1089,6 +1128,9 @@ class DescribeComputeEnvResponse(AbstractModel):
         :type NextAction: str
         :param AttachedComputeNodeCount: Number of compute nodes added to the compute environment by the user
         :type AttachedComputeNodeCount: int
+        :param Tags: Tag list bound to the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1103,6 +1145,7 @@ class DescribeComputeEnvResponse(AbstractModel):
         self.ResourceType = None
         self.NextAction = None
         self.AttachedComputeNodeCount = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -1127,6 +1170,12 @@ class DescribeComputeEnvResponse(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.NextAction = params.get("NextAction")
         self.AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1139,10 +1188,15 @@ class DescribeComputeEnvsRequest(AbstractModel):
         """
         :param EnvIds: Compute environment ID
         :type EnvIds: list of str
-        :param Filters: Filter
-<li> zone - String - Required: No - (Filter) Filter by availability zone.</li>
-<li> env-id - String - Required: No - (Filter) Filter by compute environment ID.</li>
-<li> env-name - String - Required: No - (Filter) Filter by compute environment name.</li>
+        :param Filters: Filter.
+<li> `zone` - String - Optional - Filter by availability zone.</li>
+<li> `env-id` - String - Optional - Filter by compute environment ID.</li>
+<li> `env-name` - String - Optional - Filter by compute environment name.</li>
+<li> `resource-type` - String - Optional - Filter by compute resource type, which can be CVM or CPM (BM).</li>
+<li> `tag-key` - String - Optional - Filter by tag key.</li>
+</li>`tag-value` - String - Optional - Filter by tag value.</li>
+<li> `tag:tag-key` - String - Optional - Filter by tag key-value pair. The tag-key should be replaced by a specified tag key.</li>
+It cannot be specified together with the `EnvIds` parameter.
         :type Filters: list of Filter
         :param Offset: Offset
         :type Offset: int
@@ -1326,9 +1380,14 @@ class DescribeJobResponse(AbstractModel):
         :param TaskMetrics: Task statistical metrics
         :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
         :param TaskInstanceMetrics: Task instance statistical metrics
-        :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceView`
+        :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
         :param StateReason: Instance failure reason
         :type StateReason: str
+        :param Tags: Tag list bound to the job.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
+        :param NextAction: 
+        :type NextAction: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1344,6 +1403,8 @@ class DescribeJobResponse(AbstractModel):
         self.TaskMetrics = None
         self.TaskInstanceMetrics = None
         self.StateReason = None
+        self.Tags = None
+        self.NextAction = None
         self.RequestId = None
 
 
@@ -1371,9 +1432,16 @@ class DescribeJobResponse(AbstractModel):
             self.TaskMetrics = TaskMetrics()
             self.TaskMetrics._deserialize(params.get("TaskMetrics"))
         if params.get("TaskInstanceMetrics") is not None:
-            self.TaskInstanceMetrics = TaskInstanceView()
+            self.TaskInstanceMetrics = TaskInstanceMetrics()
             self.TaskInstanceMetrics._deserialize(params.get("TaskInstanceMetrics"))
         self.StateReason = params.get("StateReason")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.NextAction = params.get("NextAction")
         self.RequestId = params.get("RequestId")
 
 
@@ -1413,6 +1481,9 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
         :type Tasks: list of Task
         :param Dependences: Dependency information
         :type Dependences: list of Dependence
+        :param Tags: Tag list bound to the job.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1422,6 +1493,7 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
         self.Priority = None
         self.Tasks = None
         self.Dependences = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -1442,6 +1514,12 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
                 obj = Dependence()
                 obj._deserialize(item)
                 self.Dependences.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1454,11 +1532,15 @@ class DescribeJobsRequest(AbstractModel):
         """
         :param JobIds: Instance ID
         :type JobIds: list of str
-        :param Filters: Filter
-<li> job-id - String - Required: No - (Filter) Filter by job ID.</li>
-<li> job-name - String - Required: No - (Filter) Filter by job name.</li>
-<li> job-state - String - Required: No - (Filter) Filter by job state.</li>
-<li> zone - String - Required: No - (Filter) Filter by availability zone.</li>
+        :param Filters: Filter.
+<li> `job-id` - String - Optional - Filter by job ID.</li>
+<li> `job-name` - String - Optional - Filter by job name.</li>
+<li> `job-state` - String - Optional - Filter by job state.</li>
+<li> `zone` - String - Optional - Filter by availability zone.</li>
+<li> `tag-key` - String - Optional - Filter by tag key.</li>
+<li> `tag-value` - String - Optional - Filter by tag value.</li>
+<li> `tag:tag-key` - String - Optional - Filter by tag key-value pair. The tag-key should be replaced by a specified tag key.</li>
+It cannot be specified together with the `JobIds` parameter.
         :type Filters: list of Filter
         :param Offset: Offset
         :type Offset: int
@@ -1680,8 +1762,12 @@ class DescribeTaskTemplatesRequest(AbstractModel):
         """
         :param TaskTemplateIds: Job template ID
         :type TaskTemplateIds: list of str
-        :param Filters: Filter
-<li> task-template-name - String - Required: No - (Filter) Filter by task template name.</li>
+        :param Filters: Filter.
+<li> `task-template-name` - String - Optional - Filter by task template name.</li>
+<li> `tag-key` - String - Optional - Filter by tag key.</li>
+<li> `tag-value` - String - Optional - Filter by tag value.</li>
+<li> `tag:tag-key` - String - Optional - Filter by tag key-value pair. The tag-key should be replaced by a specified tag key.</li>
+It cannot be specified together with the `TaskTemplateIds` parameter.
         :type Filters: list of Filter
         :param Offset: Offset
         :type Offset: int
@@ -2431,6 +2517,8 @@ class Job(AbstractModel):
         :type TaskExecutionDependOn: str
         :param StateIfCreateCvmFailed: Indicates which policy will be used in case that CVM instance creation fails. Value range: FAILED, RUNNABLE. FAILED indicates that the CVM instance creation failure will be processed as an execution failure, while RUNNABLE indicates that the failure will be processed as "keep waiting". Default value: FAILED. StateIfCreateCvmFailed is not valid for submitted jobs for which a compute environment is specified.
         :type StateIfCreateCvmFailed: str
+        :param Tags: Tag list. By setting this parameter, you can bind tags to a job. Each job supports up to 10 tags.
+        :type Tags: list of Tag
         """
         self.Tasks = None
         self.JobName = None
@@ -2440,6 +2528,7 @@ class Job(AbstractModel):
         self.Notifications = None
         self.TaskExecutionDependOn = None
         self.StateIfCreateCvmFailed = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2466,6 +2555,12 @@ class Job(AbstractModel):
                 self.Notifications.append(obj)
         self.TaskExecutionDependOn = params.get("TaskExecutionDependOn")
         self.StateIfCreateCvmFailed = params.get("StateIfCreateCvmFailed")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class JobView(AbstractModel):
@@ -2493,6 +2588,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type EndTime: str
         :param TaskMetrics: Task statistical metrics
         :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
+        :param Tags: Tag list bound to the job.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
         """
         self.JobId = None
         self.JobName = None
@@ -2502,6 +2600,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CreateTime = None
         self.EndTime = None
         self.TaskMetrics = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2517,6 +2616,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("TaskMetrics") is not None:
             self.TaskMetrics = TaskMetrics()
             self.TaskMetrics._deserialize(params.get("TaskMetrics"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class LocalDiskType(AbstractModel):
@@ -2729,6 +2834,8 @@ class NamedComputeEnv(AbstractModel):
         :type ActionIfComputeNodeInactive: str
         :param ResourceMaxRetryCount: When the instances are failed to be created or returned because of exceptions, the related compute node will retry to create instances periodically. This parameter specifies the maximum retry attempts. The max value is 11 and the default value is 7.
         :type ResourceMaxRetryCount: int
+        :param Tags: Tag list. By setting this parameter, you can bind tags to a compute environment. Each compute environment supports up to 10 tags.
+        :type Tags: list of Tag
         """
         self.EnvName = None
         self.DesiredComputeNodeCount = None
@@ -2742,6 +2849,7 @@ class NamedComputeEnv(AbstractModel):
         self.Notifications = None
         self.ActionIfComputeNodeInactive = None
         self.ResourceMaxRetryCount = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2778,6 +2886,12 @@ class NamedComputeEnv(AbstractModel):
             self.Notifications._deserialize(params.get("Notifications"))
         self.ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
         self.ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class Notification(AbstractModel):
@@ -3117,7 +3231,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: System disk type. For more information on system disk types and their limits, refer to [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: Local disk <br><li>LOCAL_SSD: Local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium cloud disk <br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: LOCAL_BASIC.
+        :param DiskType: System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><br>The disk type currently in stock will be used by default.
         :type DiskType: str
         :param DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter currently.
         :type DiskId: str
@@ -3133,6 +3247,29 @@ class SystemDisk(AbstractModel):
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
         self.DiskSize = params.get("DiskSize")
+
+
+class Tag(AbstractModel):
+    """Information on tags
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: Tag key.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Key: str
+        :param Value: Tag value.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
 
 
 class Task(AbstractModel):
@@ -3471,12 +3608,16 @@ class TaskTemplateView(AbstractModel):
         :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
         :param CreateTime: Creation time
         :type CreateTime: str
+        :param Tags: Tag list bound to the task template.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
         """
         self.TaskTemplateId = None
         self.TaskTemplateName = None
         self.TaskTemplateDescription = None
         self.TaskTemplateInfo = None
         self.CreateTime = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3487,6 +3628,12 @@ class TaskTemplateView(AbstractModel):
             self.TaskTemplateInfo = Task()
             self.TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
         self.CreateTime = params.get("CreateTime")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class TaskView(AbstractModel):
