@@ -26,7 +26,11 @@ class CloudauditClient(AbstractClient):
 
 
     def CreateAudit(self, request):
-        """This API is used to create a tracking set.
+        """Parameter requirements:
+        1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `cosBucketName` are required.
+        2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.
+        3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.
+        4. If the value of `IsEnableKmsEncry` is 1, `KmsRegion` and `KeyId` are required.
 
         :param request: Request instance for CreateAudit.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditRequest`
@@ -110,7 +114,7 @@ class CloudauditClient(AbstractClient):
 
 
     def GetAttributeKey(self, request):
-        """This API is used to query the value range of AttributeKey.
+        """This API is used to query the valid values range of `AttributeKey`.
 
         :param request: Request instance for GetAttributeKey.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.GetAttributeKeyRequest`
@@ -138,7 +142,7 @@ class CloudauditClient(AbstractClient):
 
 
     def InquireAuditCredit(self, request):
-        """This API is used to query the maximum number of tracking sets that can be created.
+        """This API is used to query the number of tracking sets that can be created.
 
         :param request: Request instance for InquireAuditCredit.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.InquireAuditCreditRequest`
@@ -194,7 +198,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListCmqEnableRegion(self, request):
-        """This API is used to query the CloudAudit-enabled CMQ AZs.
+        """This API is used to query CloudAudit-enabled CMQ AZs.
 
         :param request: Request instance for ListCmqEnableRegion.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCmqEnableRegionRequest`
@@ -222,7 +226,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListCosEnableRegion(self, request):
-        """This API is used to query the CloudAudit-enabled COS AZs.
+        """This API is used to query CloudAudit-enabled COS AZs.
 
         :param request: Request instance for ListCosEnableRegion.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCosEnableRegionRequest`
@@ -335,9 +339,10 @@ class CloudauditClient(AbstractClient):
 
     def UpdateAudit(self, request):
         """Parameter requirements:
-        1. If the value of IsCreateNewBucket exists, cosRegion and cosBucketName are required.
-        2. If the value of IsEnableCmqNotify is 1, IsCreateNewQueue, CmqRegion, and CmqQueueName are required.
-        3. If the value of IsEnableCmqNotify is 0, IsCreateNewQueue, CmqRegion, and CmqQueueName cannot be passed in.
+        1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `cosBucketName` are required.
+        2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.
+        3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.
+        4. If the value of `IsEnableKmsEncry` is 1, `KmsRegion` and `KeyId` are required.
 
         :param request: Request instance for UpdateAudit.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.UpdateAuditRequest`

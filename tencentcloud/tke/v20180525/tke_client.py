@@ -25,6 +25,34 @@ class TkeClient(AbstractClient):
     _endpoint = 'tke.tencentcloudapi.com'
 
 
+    def AcquireClusterAdminRole(self, request):
+        """This API can be called to acquire the ClusterRole tke:admin. By setting a CAM policy, you can grant permission of this API to a sub-account that has higher permission in CAM. In this way, this sub-account can call this API directly to acquire the admin role of a Kubernetes cluster.
+
+        :param request: Request instance for AcquireClusterAdminRole.
+        :type request: :class:`tencentcloud.tke.v20180525.models.AcquireClusterAdminRoleRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.AcquireClusterAdminRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AcquireClusterAdminRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AcquireClusterAdminRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddExistedInstances(self, request):
         """This API is used to add one or more existing instances to a cluster.
 

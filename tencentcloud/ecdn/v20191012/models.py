@@ -115,10 +115,10 @@ class Cache(AbstractModel):
         """
         :param CacheRules: Caching configuration rule array.
         :type CacheRules: list of CacheRule
-        :param FollowOrigin: Whether to follow origin server's `Cache-Control: max-age` configuration
-on: enable.
-off: disable.
-After this feature is enabled, resources that do not match the `CacheRules` rule will be cached on nodes according to the `max-age` value returned by the origin server, while resources that match the `CacheRules` rule will be cached on nodes according to the cache expiration time set in `CacheRules`.
+        :param FollowOrigin: Whether to follow the `Cache-Control: max-age` configuration on the origin server (this feature is only available to users on the allowlist).
+on: enable
+off: disable
+If it is enabled, resources that do not match `CacheRules` will be cached on node according to the `max-age` value returned by the origin server, while resources that match `CacheRules` will be cached on node according to the cache expiration time set in `CacheRules`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FollowOrigin: str
         """
@@ -602,6 +602,60 @@ class DescribeEcdnStatisticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIpStatusRequest(AbstractModel):
+    """DescribeIpStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: Acceleration domain name
+        :type Domain: str
+        :param Area: Target region of the query:
+mainland: nodes in Mainland China
+overseas: nodes outside Mainland China
+global: global nodes
+        :type Area: str
+        """
+        self.Domain = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Area = params.get("Area")
+
+
+class DescribeIpStatusResponse(AbstractModel):
+    """DescribeIpStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Ips: Node list
+        :type Ips: list of IpStatus
+        :param TotalCount: Total number of nodes
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Ips = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ips") is not None:
+            self.Ips = []
+            for item in params.get("Ips"):
+                obj = IpStatus()
+                obj._deserialize(item)
+                self.Ips.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePurgeQuotaRequest(AbstractModel):
     """DescribePurgeQuota request structure.
 
@@ -1062,8 +1116,10 @@ class Hsts(AbstractModel):
         :param Switch: Whether to enable. Valid values: on, off.
         :type Switch: str
         :param MaxAge: `MaxAge` value.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxAge: int
         :param IncludeSubDomains: Whether to include subdomain names. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type IncludeSubDomains: str
         """
         self.Switch = None
@@ -1147,7 +1203,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SslStatus: HTTPS certificate deployment status. Valid values: closed (disabled), deploying (deploying), deployed (deployment succeeded), failed (deployment failed). This parameter cannot be used as an input parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SslStatus: str
-        :param Hsts: Hsts configuration.
+        :param Hsts: HSTS configuration
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Hsts: :class:`tencentcloud.ecdn.v20191012.models.Hsts`
         """
         self.Switch = None
@@ -1226,6 +1283,41 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.Qps = params.get("Qps")
+
+
+class IpStatus(AbstractModel):
+    """Node IP information
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip: Node IP
+        :type Ip: str
+        :param District: Node region
+        :type District: str
+        :param Isp: Node ISP
+        :type Isp: str
+        :param City: Node city
+        :type City: str
+        :param Status: Node status
+online: the node is online and scheduling normally
+offline: the node is offline
+        :type Status: str
+        """
+        self.Ip = None
+        self.District = None
+        self.Isp = None
+        self.City = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.District = params.get("District")
+        self.Isp = params.get("Isp")
+        self.City = params.get("City")
+        self.Status = params.get("Status")
 
 
 class Origin(AbstractModel):

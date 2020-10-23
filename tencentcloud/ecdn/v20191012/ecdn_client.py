@@ -230,6 +230,34 @@ class EcdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIpStatus(self, request):
+        """This API is used to query the detailed node information of the acceleration platform to which the domain name is connected.
+
+        :param request: Request instance for DescribeIpStatus.
+        :type request: :class:`tencentcloud.ecdn.v20191012.models.DescribeIpStatusRequest`
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.DescribeIpStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIpStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIpStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePurgeQuota(self, request):
         """This API is used to query the usage quota of the purge API.
 
@@ -287,7 +315,7 @@ class EcdnClient(AbstractClient):
 
 
     def PurgePathCache(self, request):
-        """This API is used to batch purge cache directories. One purge task ID will be returned for each submission.
+        """This API is used to purge cache directories in batches. One purge task ID will be returned for each submission.
 
         :param request: Request instance for PurgePathCache.
         :type request: :class:`tencentcloud.ecdn.v20191012.models.PurgePathCacheRequest`

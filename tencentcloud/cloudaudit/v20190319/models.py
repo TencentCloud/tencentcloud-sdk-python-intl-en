@@ -17,13 +17,13 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AttributeKeyDetail(AbstractModel):
-    """Details of AttributeKey value
+    """`AttributeKey` value details
 
     """
 
     def __init__(self):
         """
-        :param Label: Chinese label
+        :param Label: Tag
         :type Label: str
         :param LabelType: Input box type
         :type LabelType: str
@@ -31,7 +31,7 @@ class AttributeKeyDetail(AbstractModel):
         :type Order: int
         :param Starter: Initial display
         :type Starter: str
-        :param Value: AttributeKey value
+        :param Value: `AttributeKey` value
         :type Value: str
         """
         self.Label = None
@@ -58,7 +58,7 @@ class AuditSummary(AbstractModel):
         """
         :param AuditName: Tracking set name
         :type AuditName: str
-        :param AuditStatus: Tracking set status. Value range: 1 (enabled), 0 (disabled)
+        :param AuditStatus: Tracking set status. Valid values: 1: enabled, 0: disabled
         :type AuditStatus: int
         :param CosBucketName: COS bucket name
         :type CosBucketName: str
@@ -100,7 +100,7 @@ class CmqRegionInfo(AbstractModel):
 
 
 class CosRegionInfo(AbstractModel):
-    """CMQ region information
+    """COS region information
 
     """
 
@@ -121,31 +121,37 @@ class CosRegionInfo(AbstractModel):
 
 
 class CreateAuditRequest(AbstractModel):
-    """Request parameter structure of CreateAudit
+    """`CreateAudit` request parameters structure
 
     """
 
     def __init__(self):
         """
-        :param AuditName: Tracking set name, which can contain 3-128 ASCII letters (a-z; A-Z), digits (0-9), and underscores (_).
+        :param AuditName: Tracking set name, which can contain 3–128 ASCII letters (a–z; A–Z), digits (0–9), and underscores (_).
         :type AuditName: str
-        :param CosBucketName: User-defined COS bucket name, which can only contain 1-40 lowercase letters (a-z), digits (0-9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.
+        :param CosBucketName: User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.
         :type CosBucketName: str
-        :param CosRegion: COS region. Supported regions can be queried using the ListCosEnableRegion API.
+        :param CosRegion: COS region. Supported regions can be queried through the `ListCosEnableRegion` API.
         :type CosRegion: str
-        :param IsCreateNewBucket: Whether to create a COS bucket. 1: yes; 0: no.
+        :param IsCreateNewBucket: Whether to create a COS bucket. Valid values: 1: yes; 0: no.
         :type IsCreateNewBucket: int
-        :param IsEnableCmqNotify: Whether to enable CMQ message notification. 1: yes; 0: no. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.
+        :param IsEnableCmqNotify: Whether to enable CMQ message notification. Valid values: 1: yes; 0: no. Currently, only CMQ is supported for message queue services. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.
         :type IsEnableCmqNotify: int
-        :param ReadWriteAttribute: Manages the read/write attribute of an event. Value range: 1 (read-only), 2 (write-only), 3 (read/write).
+        :param ReadWriteAttribute: Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).
         :type ReadWriteAttribute: int
-        :param CmqQueueName: Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of IsEnableCmqNotify is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.
+        :param CmqQueueName: Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.
         :type CmqQueueName: str
-        :param CmqRegion: Region where the queue is located. Supported CMQ regions can be queried using the ListCmqEnableRegion API. This field is required if the value of IsEnableCmqNotify is 1.
+        :param CmqRegion: Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.
         :type CmqRegion: str
-        :param IsCreateNewQueue: Whether to create a queue. 1: yes; 0: no. This field is required if the value of IsEnableCmqNotify is 1.
+        :param IsCreateNewQueue: Whether to create a queue. Valid values: 1: yes; 0: no. This field is required if the value of `IsEnableCmqNotify` is 1.
         :type IsCreateNewQueue: int
-        :param LogFilePrefix: Prefix of a log file, which can only contain 3-40 ASCII letters (a-z; A-Z) and digits (0-9). It can be left empty and is the account ID by default.
+        :param IsEnableKmsEncry: Whether to enable KMS encryption. Valid values: 1: yes, 0: no. If KMS encryption is enabled, the data will be encrypted when delivered to COS.
+        :type IsEnableKmsEncry: int
+        :param KeyId: Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained via the `ListKeyAliasByRegion` API. CloudAudit will not verify the validity of the `KeyId`. Please enter it with caution to avoid consequent data loss.
+        :type KeyId: str
+        :param KmsRegion: KMS region. Currently supported regions can be obtained via the `ListKmsEnableRegion` API. This must be the same as the COS region.
+        :type KmsRegion: str
+        :param LogFilePrefix: Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9). It can be left empty and is set to the account ID by default.
         :type LogFilePrefix: str
         """
         self.AuditName = None
@@ -157,6 +163,9 @@ class CreateAuditRequest(AbstractModel):
         self.CmqQueueName = None
         self.CmqRegion = None
         self.IsCreateNewQueue = None
+        self.IsEnableKmsEncry = None
+        self.KeyId = None
+        self.KmsRegion = None
         self.LogFilePrefix = None
 
 
@@ -170,19 +179,22 @@ class CreateAuditRequest(AbstractModel):
         self.CmqQueueName = params.get("CmqQueueName")
         self.CmqRegion = params.get("CmqRegion")
         self.IsCreateNewQueue = params.get("IsCreateNewQueue")
+        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.KeyId = params.get("KeyId")
+        self.KmsRegion = params.get("KmsRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
 
 
 class CreateAuditResponse(AbstractModel):
-    """Return parameter structure of CreateAudit
+    """`CreateAudit` response parameters structure
 
     """
 
     def __init__(self):
         """
-        :param IsSuccess: Whether creation is successful.
+        :param IsSuccess: Indicates if the creation was successful
         :type IsSuccess: int
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.IsSuccess = None
@@ -195,7 +207,7 @@ class CreateAuditResponse(AbstractModel):
 
 
 class DeleteAuditRequest(AbstractModel):
-    """Request parameter structure of DeleteAudit
+    """`DeleteAudit` request parameters structure
 
     """
 
@@ -212,15 +224,15 @@ class DeleteAuditRequest(AbstractModel):
 
 
 class DeleteAuditResponse(AbstractModel):
-    """Return parameter structure of DeleteAudit
+    """`DeleteAudit` response parameters structure
 
     """
 
     def __init__(self):
         """
-        :param IsSuccess: Whether deletion is successful
+        :param IsSuccess: Indicates if the deletion was successful
         :type IsSuccess: int
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.IsSuccess = None
@@ -233,7 +245,7 @@ class DeleteAuditResponse(AbstractModel):
 
 
 class DescribeAuditRequest(AbstractModel):
-    """Request parameter structure of DescribeAudit
+    """`DescribeAudit` request parameters structure
 
     """
 
@@ -250,7 +262,7 @@ class DescribeAuditRequest(AbstractModel):
 
 
 class DescribeAuditResponse(AbstractModel):
-    """Return parameter structure of DescribeAudit
+    """`DescribeAudit` response parameters structure
 
     """
 
@@ -258,23 +270,31 @@ class DescribeAuditResponse(AbstractModel):
         """
         :param AuditName: Tracking set name.
         :type AuditName: str
-        :param AuditStatus: Tracking set status. Value range: 1 (enabled), 0 (disabled).
+        :param AuditStatus: Tracking set status. Valid values: 1: enabled, 0: disabled.
         :type AuditStatus: int
         :param CmqQueueName: Queue name.
         :type CmqQueueName: str
-        :param CmqRegion: Region where the queue is located.
+        :param CmqRegion: Queue region.
         :type CmqRegion: str
         :param CosBucketName: COS bucket name.
         :type CosBucketName: str
-        :param CosRegion: Region where the COS bucket is located.
+        :param CosRegion: COS bucket region.
         :type CosRegion: str
-        :param IsEnableCmqNotify: Whether to enable CMQ message notification. 1: yes; 0: no.
+        :param IsEnableCmqNotify: Whether to enable CMQ message notification. Valid values: 1: yes; 0: no.
         :type IsEnableCmqNotify: int
+        :param IsEnableKmsEncry: Whether to enable KMS encryption. Valid values: 1: yes, 0: no. If KMS encryption is enabled, the data will be encrypted when delivered to COS.
+        :type IsEnableKmsEncry: int
+        :param KeyId: Globally unique CMK ID.
+        :type KeyId: str
+        :param KmsAlias: CMK alias.
+        :type KmsAlias: str
+        :param KmsRegion: KMS region.
+        :type KmsRegion: str
         :param LogFilePrefix: Log prefix.
         :type LogFilePrefix: str
-        :param ReadWriteAttribute: Manages the read/write attribute of an event. Value range: 1 (read-only), 2 (write-only), 3 (read/write)
+        :param ReadWriteAttribute: Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write)
         :type ReadWriteAttribute: int
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.AuditName = None
@@ -284,6 +304,10 @@ class DescribeAuditResponse(AbstractModel):
         self.CosBucketName = None
         self.CosRegion = None
         self.IsEnableCmqNotify = None
+        self.IsEnableKmsEncry = None
+        self.KeyId = None
+        self.KmsAlias = None
+        self.KmsRegion = None
         self.LogFilePrefix = None
         self.ReadWriteAttribute = None
         self.RequestId = None
@@ -297,6 +321,10 @@ class DescribeAuditResponse(AbstractModel):
         self.CosBucketName = params.get("CosBucketName")
         self.CosRegion = params.get("CosRegion")
         self.IsEnableCmqNotify = params.get("IsEnableCmqNotify")
+        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.KeyId = params.get("KeyId")
+        self.KmsAlias = params.get("KmsAlias")
+        self.KmsRegion = params.get("KmsRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
         self.ReadWriteAttribute = params.get("ReadWriteAttribute")
         self.RequestId = params.get("RequestId")
@@ -321,7 +349,7 @@ class Event(AbstractModel):
         :type EventId: str
         :param EventName: Event name
         :type EventName: str
-        :param EventNameCn: Description of event name
+        :param EventNameCn: Chinese description of event name (please use this field as required; if you are using other languages, ignore this field)
         :type EventNameCn: str
         :param EventRegion: Event region
         :type EventRegion: str
@@ -331,7 +359,9 @@ class Event(AbstractModel):
         :type EventTime: str
         :param RequestID: Request ID
         :type RequestID: str
-        :param ResourceTypeCn: Description of resource type
+        :param ResourceRegion: Resource region
+        :type ResourceRegion: str
+        :param ResourceTypeCn: Chinese description of resource type (please use this field as required; if you are using other languages, ignore this field)
         :type ResourceTypeCn: str
         :param SecretId: Certificate ID
         :type SecretId: str
@@ -351,6 +381,7 @@ class Event(AbstractModel):
         self.EventSource = None
         self.EventTime = None
         self.RequestID = None
+        self.ResourceRegion = None
         self.ResourceTypeCn = None
         self.SecretId = None
         self.SourceIPAddress = None
@@ -371,6 +402,7 @@ class Event(AbstractModel):
         self.EventSource = params.get("EventSource")
         self.EventTime = params.get("EventTime")
         self.RequestID = params.get("RequestID")
+        self.ResourceRegion = params.get("ResourceRegion")
         self.ResourceTypeCn = params.get("ResourceTypeCn")
         self.SecretId = params.get("SecretId")
         self.SourceIPAddress = params.get("SourceIPAddress")
@@ -378,13 +410,13 @@ class Event(AbstractModel):
 
 
 class GetAttributeKeyRequest(AbstractModel):
-    """Request parameter structure of GetAttributeKey
+    """`GetAttributeKey` request parameters structure
 
     """
 
     def __init__(self):
         """
-        :param WebsiteType: Website type. Value range: zh, en. Default value: zh
+        :param WebsiteType: Website type. Valid values: zh, en. If this parameter is left empty, `zh` will be used by default
         :type WebsiteType: str
         """
         self.WebsiteType = None
@@ -395,15 +427,15 @@ class GetAttributeKeyRequest(AbstractModel):
 
 
 class GetAttributeKeyResponse(AbstractModel):
-    """Return parameter structure of GetAttributeKey
+    """`GetAttributeKey` response parameters structure
 
     """
 
     def __init__(self):
         """
-        :param AttributeKeyDetails: AttributeKey value range
+        :param AttributeKeyDetails: Valid values range of `AttributeKey`
         :type AttributeKeyDetails: list of AttributeKeyDetail
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.AttributeKeyDetails = None
@@ -421,13 +453,13 @@ class GetAttributeKeyResponse(AbstractModel):
 
 
 class InquireAuditCreditRequest(AbstractModel):
-    """Request parameter structure of InquireAuditCredit
+    """`InquireAuditCredit` request parameters structure
 
     """
 
 
 class InquireAuditCreditResponse(AbstractModel):
-    """Return parameter structure of InquireAuditCredit
+    """`InquireAuditCredit` response parameters structure
 
     """
 
@@ -435,7 +467,7 @@ class InquireAuditCreditResponse(AbstractModel):
         """
         :param AuditAmount: Number of tracking sets that can be created
         :type AuditAmount: int
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.AuditAmount = None
@@ -448,21 +480,21 @@ class InquireAuditCreditResponse(AbstractModel):
 
 
 class ListAuditsRequest(AbstractModel):
-    """Request parameter structure of ListAudits
+    """`ListAudits` request parameters structure
 
     """
 
 
 class ListAuditsResponse(AbstractModel):
-    """Return parameter structure of ListAudits
+    """`ListAudits` response parameters structure
 
     """
 
     def __init__(self):
         """
-        :param AuditSummarys: Queries the summary set of tracking sets
+        :param AuditSummarys: Set of queried tracking set summaries
         :type AuditSummarys: list of AuditSummary
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.AuditSummarys = None
@@ -480,13 +512,13 @@ class ListAuditsResponse(AbstractModel):
 
 
 class ListCmqEnableRegionRequest(AbstractModel):
-    """Request parameter structure of ListCmqEnableRegion
+    """`ListCmqEnableRegion` request parameters structure
 
     """
 
     def __init__(self):
         """
-        :param WebsiteType: Website type. zh: Mainland China (default); en: outside Mainland China.
+        :param WebsiteType: Website type. Valid values: zh (Chinese mainland); en (outside Chinese mainland). Default value: zh
         :type WebsiteType: str
         """
         self.WebsiteType = None
@@ -497,7 +529,7 @@ class ListCmqEnableRegionRequest(AbstractModel):
 
 
 class ListCmqEnableRegionResponse(AbstractModel):
-    """Return parameter structure of ListCmqEnableRegion
+    """`ListCmqEnableRegion` response parameters structure
 
     """
 
@@ -505,7 +537,7 @@ class ListCmqEnableRegionResponse(AbstractModel):
         """
         :param EnableRegions: CloudAudit-enabled CMQ AZs
         :type EnableRegions: list of CmqRegionInfo
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.EnableRegions = None
@@ -523,13 +555,13 @@ class ListCmqEnableRegionResponse(AbstractModel):
 
 
 class ListCosEnableRegionRequest(AbstractModel):
-    """Request parameter structure of ListCosEnableRegion
+    """`ListCosEnableRegion` request parameters structure
 
     """
 
     def __init__(self):
         """
-        :param WebsiteType: Website type. zh: Mainland China (default); en: outside Mainland China.
+        :param WebsiteType: Website type. Valid values: zh (Chinese mainland); en (outside Chinese mainland). Default value: zh
         :type WebsiteType: str
         """
         self.WebsiteType = None
@@ -540,7 +572,7 @@ class ListCosEnableRegionRequest(AbstractModel):
 
 
 class ListCosEnableRegionResponse(AbstractModel):
-    """Return parameter structure of ListCosEnableRegion
+    """`ListCosEnableRegion` response parameters structure
 
     """
 
@@ -548,7 +580,7 @@ class ListCosEnableRegionResponse(AbstractModel):
         """
         :param EnableRegions: CloudAudit-enabled COS AZs
         :type EnableRegions: list of CosRegionInfo
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.EnableRegions = None
@@ -566,7 +598,7 @@ class ListCosEnableRegionResponse(AbstractModel):
 
 
 class LookUpEventsRequest(AbstractModel):
-    """Request parameter structure of LookUpEvents
+    """`LookUpEvents` request parameters structure
 
     """
 
@@ -578,8 +610,10 @@ class LookUpEventsRequest(AbstractModel):
         :type StartTime: int
         :param LookupAttributes: Search criteria
         :type LookupAttributes: list of LookupAttribute
-        :param MaxResults: Maximum number of logs that can be returned
+        :param MaxResults: Maximum number of logs to be returned
         :type MaxResults: int
+        :param Mode: CloudAudit mode. Valid values: standard, quick. Default value: standard
+        :type Mode: str
         :param NextToken: Credential for viewing more logs
         :type NextToken: str
         """
@@ -587,6 +621,7 @@ class LookUpEventsRequest(AbstractModel):
         self.StartTime = None
         self.LookupAttributes = None
         self.MaxResults = None
+        self.Mode = None
         self.NextToken = None
 
 
@@ -600,11 +635,12 @@ class LookUpEventsRequest(AbstractModel):
                 obj._deserialize(item)
                 self.LookupAttributes.append(obj)
         self.MaxResults = params.get("MaxResults")
+        self.Mode = params.get("Mode")
         self.NextToken = params.get("NextToken")
 
 
 class LookUpEventsResponse(AbstractModel):
-    """Return parameter structure of LookUpEvents
+    """`LookUpEvents` response parameters structure
 
     """
 
@@ -616,7 +652,7 @@ class LookUpEventsResponse(AbstractModel):
         :type ListOver: bool
         :param NextToken: Credential for viewing more logs
         :type NextToken: str
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.Events = None
@@ -644,7 +680,7 @@ class LookupAttribute(AbstractModel):
 
     def __init__(self):
         """
-        :param AttributeKey: AttributeKey value range: RequestId, EventName, ReadOnly, Username, ResourceType, ResourceName, AccessKeyId, EventId
+        :param AttributeKey: Valid values of `AttributeKey`: RequestId, EventName, ReadOnly, Username, ResourceType, ResourceName, AccessKeyId, EventId
         :type AttributeKey: str
         :param AttributeValue: AttributeValue
         :type AttributeValue: str
@@ -680,7 +716,7 @@ class Resource(AbstractModel):
 
 
 class StartLoggingRequest(AbstractModel):
-    """Request parameter structure of StartLogging
+    """`StartLogging` request parameters structure
 
     """
 
@@ -697,15 +733,15 @@ class StartLoggingRequest(AbstractModel):
 
 
 class StartLoggingResponse(AbstractModel):
-    """Return parameter structure of StartLogging
+    """`StartLogging` response parameters structure
 
     """
 
     def __init__(self):
         """
-        :param IsSuccess: Whether it is successfully enabled
+        :param IsSuccess: Indicates if the tracking set was enabled successfully
         :type IsSuccess: int
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.IsSuccess = None
@@ -718,7 +754,7 @@ class StartLoggingResponse(AbstractModel):
 
 
 class StopLoggingRequest(AbstractModel):
-    """Request parameter structure of StopLogging
+    """`StopLogging` request parameters structure
 
     """
 
@@ -735,15 +771,15 @@ class StopLoggingRequest(AbstractModel):
 
 
 class StopLoggingResponse(AbstractModel):
-    """Return parameter structure of StopLogging
+    """`StopLogging` response parameters structure
 
     """
 
     def __init__(self):
         """
-        :param IsSuccess: Whether it is successfully disabled
+        :param IsSuccess: Indicates if the tracking set was disabled successfully
         :type IsSuccess: int
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.IsSuccess = None
@@ -756,7 +792,7 @@ class StopLoggingResponse(AbstractModel):
 
 
 class UpdateAuditRequest(AbstractModel):
-    """Request parameter structure of UpdateAudit
+    """`UpdateAudit` request parameters structure
 
     """
 
@@ -764,23 +800,29 @@ class UpdateAuditRequest(AbstractModel):
         """
         :param AuditName: Tracking set name
         :type AuditName: str
-        :param CmqQueueName: Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of IsEnableCmqNotify is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.
+        :param CmqQueueName: Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.
         :type CmqQueueName: str
-        :param CmqRegion: Region where the queue is located. Supported CMQ regions can be queried using the ListCmqEnableRegion API. This field is required if the value of IsEnableCmqNotify is 1.
+        :param CmqRegion: Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.
         :type CmqRegion: str
-        :param CosBucketName: User-defined COS bucket name, which can only contain 1-40 lowercase letters (a-z), digits (0-9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.
+        :param CosBucketName: User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.
         :type CosBucketName: str
-        :param CosRegion: COS region. Supported regions can be queried using the ListCosEnableRegion API.
+        :param CosRegion: COS region. Supported regions can be queried through the `ListCosEnableRegion` API.
         :type CosRegion: str
-        :param IsCreateNewBucket: Whether to create a COS bucket. 1: yes; 0: no.
+        :param IsCreateNewBucket: Whether to create a COS bucket. Valid values: 1: yes; 0: no.
         :type IsCreateNewBucket: int
-        :param IsCreateNewQueue: Whether to create a queue. 1: yes; 0: no. This field is required if the value of IsEnableCmqNotify is 1.
+        :param IsCreateNewQueue: Whether to create a queue. Valid values: 1: yes; 0: no. This field is required if the value of `IsEnableCmqNotify` is 1.
         :type IsCreateNewQueue: int
-        :param IsEnableCmqNotify: Whether to enable CMQ message notification. 1: yes; 0: no. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.
+        :param IsEnableCmqNotify: Whether to enable CMQ message notification. Valid values: 1: yes; 0: no. Currently, only CMQ is supported for message queue services. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.
         :type IsEnableCmqNotify: int
-        :param LogFilePrefix: Prefix of a log file, which can only contain 3-40 ASCII letters (a-z; A-Z) and digits (0-9).
+        :param IsEnableKmsEncry: Whether to enable KMS encryption. Valid values: 1: yes, 0: no. If KMS encryption is enabled, the data will be encrypted when delivered to COS.
+        :type IsEnableKmsEncry: int
+        :param KeyId: Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained via the `ListKeyAliasByRegion` API. CloudAudit will not verify the validity of the `KeyId`. Please enter it with caution to avoid consequent data loss.
+        :type KeyId: str
+        :param KmsRegion: KMS region. Currently supported regions can be obtained via the `ListKmsEnableRegion` API. This must be the same as the COS region.
+        :type KmsRegion: str
+        :param LogFilePrefix: Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9).
         :type LogFilePrefix: str
-        :param ReadWriteAttribute: Manages the read/write attribute of an event. Value range: 1 (read-only), 2 (write-only), 3 (read/write).
+        :param ReadWriteAttribute: Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).
         :type ReadWriteAttribute: int
         """
         self.AuditName = None
@@ -791,6 +833,9 @@ class UpdateAuditRequest(AbstractModel):
         self.IsCreateNewBucket = None
         self.IsCreateNewQueue = None
         self.IsEnableCmqNotify = None
+        self.IsEnableKmsEncry = None
+        self.KeyId = None
+        self.KmsRegion = None
         self.LogFilePrefix = None
         self.ReadWriteAttribute = None
 
@@ -804,20 +849,23 @@ class UpdateAuditRequest(AbstractModel):
         self.IsCreateNewBucket = params.get("IsCreateNewBucket")
         self.IsCreateNewQueue = params.get("IsCreateNewQueue")
         self.IsEnableCmqNotify = params.get("IsEnableCmqNotify")
+        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.KeyId = params.get("KeyId")
+        self.KmsRegion = params.get("KmsRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
         self.ReadWriteAttribute = params.get("ReadWriteAttribute")
 
 
 class UpdateAuditResponse(AbstractModel):
-    """Return parameter structure of UpdateAudit
+    """`UpdateAudit` response parameters structure
 
     """
 
     def __init__(self):
         """
-        :param IsSuccess: Whether update is successful
+        :param IsSuccess: Indicates if the update was completed successfully
         :type IsSuccess: int
-        :param RequestId: Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.
+        :param RequestId: Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.
         :type RequestId: str
         """
         self.IsSuccess = None

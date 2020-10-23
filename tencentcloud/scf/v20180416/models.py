@@ -393,6 +393,8 @@ class CreateFunctionRequest(AbstractModel):
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         :param InitTimeout: Timeout period for function initialization
         :type InitTimeout: int
+        :param Tags: Tag parameter of the function. It is an array of key-value pairs.
+        :type Tags: list of Tag
         """
         self.FunctionName = None
         self.Code = None
@@ -414,6 +416,7 @@ class CreateFunctionRequest(AbstractModel):
         self.PublicNetConfig = None
         self.CfsConfig = None
         self.InitTimeout = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -454,6 +457,12 @@ class CreateFunctionRequest(AbstractModel):
             self.CfsConfig = CfsConfig()
             self.CfsConfig._deserialize(params.get("CfsConfig"))
         self.InitTimeout = params.get("InitTimeout")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateFunctionResponse(AbstractModel):
@@ -532,6 +541,8 @@ class CreateTriggerRequest(AbstractModel):
         :type Qualifier: str
         :param Enable: Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.
         :type Enable: str
+        :param CustomArgument: Custom argument, supporting only the timer trigger.
+        :type CustomArgument: str
         """
         self.FunctionName = None
         self.TriggerName = None
@@ -540,6 +551,7 @@ class CreateTriggerRequest(AbstractModel):
         self.Namespace = None
         self.Qualifier = None
         self.Enable = None
+        self.CustomArgument = None
 
 
     def _deserialize(self, params):
@@ -550,6 +562,7 @@ class CreateTriggerRequest(AbstractModel):
         self.Namespace = params.get("Namespace")
         self.Qualifier = params.get("Qualifier")
         self.Enable = params.get("Enable")
+        self.CustomArgument = params.get("CustomArgument")
 
 
 class CreateTriggerResponse(AbstractModel):
@@ -1220,7 +1233,7 @@ class GetFunctionLogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.
         :type EndTime: str
-        :param SearchContext: Service log related parameter. `Offset` on the first page is a null string. Enter other pages based on SearchContext in the response field.
+        :param SearchContext: This field is disused.
         :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         """
         self.FunctionName = None
@@ -1267,7 +1280,7 @@ class GetFunctionLogsResponse(AbstractModel):
         :type TotalCount: int
         :param Data: Function log information
         :type Data: list of FunctionLog
-        :param SearchContext: Parameter on the log service page
+        :param SearchContext: This field is disused.
         :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

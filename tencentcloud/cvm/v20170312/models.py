@@ -3899,13 +3899,13 @@ class ReservedInstancePrice(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalFixedPrice: Original upfront price, in USD.
+        :param OriginalFixedPrice: Original upfront payment, in USD.
         :type OriginalFixedPrice: float
-        :param DiscountFixedPrice: Discounted upfront price, in USD.
+        :param DiscountFixedPrice: Discounted upfront payment, in USD.
         :type DiscountFixedPrice: float
-        :param OriginalUsagePrice: Original usage price, in USD/hr.
+        :param OriginalUsagePrice: Original subsequent unit price, in USD/hr.
         :type OriginalUsagePrice: float
-        :param DiscountUsagePrice: Discounted usage price, in USD/hr.
+        :param DiscountUsagePrice: Discounted subsequent unit price, in USD/hr.
         :type DiscountUsagePrice: float
         """
         self.OriginalFixedPrice = None
@@ -3930,9 +3930,9 @@ class ReservedInstancePriceItem(AbstractModel):
         """
         :param OfferingType: Payment method. Valid values: All Upfront, Partial Upfront, and No Upfront.
         :type OfferingType: str
-        :param FixedPrice: Total upfront price, in USD.
+        :param FixedPrice: Upfront payment, in USD.
         :type FixedPrice: float
-        :param UsagePrice: Total usage price, in USD/hr.
+        :param UsagePrice: Subsequent unit price, in USD/hr.
         :type UsagePrice: float
         :param ReservedInstancesOfferingId: The ID of the reserved instance offering.
         :type ReservedInstancesOfferingId: str
@@ -3983,7 +3983,7 @@ class ReservedInstanceTypeItem(AbstractModel):
         :type Fpga: int
         :param StorageBlock: Number of storage blocks.
         :type StorageBlock: int
-        :param NetworkCard: Number of ENIs.
+        :param NetworkCard: Number of NICs.
         :type NetworkCard: int
         :param MaxBandwidth: Maximum bandwidth.
         :type MaxBandwidth: float
@@ -4834,7 +4834,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><br>The disk type currently in stock will be used by default.
+        :param DiskType: System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><br>The disk type currently in stock will be used by default. 
         :type DiskType: str
         :param DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter currently.
         :type DiskId: str

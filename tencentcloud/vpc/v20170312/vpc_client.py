@@ -237,11 +237,11 @@ class VpcClient(AbstractClient):
 
 
     def AssociateAddress(self, request):
-        """This API (AssociateAddress) is used to bind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short) to the specified private IP of an instance or ENI.
-        * Essentially, binding an EIP to an instance (CVM) means binding an EIP to the primary private IP of the primary ENI on an instance.
-        * When you bind an EIP to the primary private IP of the primary ENI, the previously bound public IP is automatically unbound and released.
-        * To bind the EIP to the private IP of the specified ENI (not the primary private IP of the primary ENI), you must unbind the EIP before you can bind a new one.
-        * To bind the EIP to a NAT gateway, use the API [EipBindNatGateway](https://intl.cloud.tencent.com/document/product/215/4093?from_cn_redirect=1)
+        """This API is used to bind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short) to the specified private IP of an instance or ENI.
+        * The EIP is essentially bound to the primary private IP of the primary ENI on a CVM instance.
+        * The EIP binding will automatically unbind and release the public IP previously bound to the CVM instance.
+        * To bind another EIP to the private IP of the specified ENI (not the primary private IP of the primary ENI), you must first unbind the EIP.
+        * To bind an EIP to a NAT Gateway, use the [`AssociateNatGatewayAddress`](https://intl.cloud.tencent.com/document/product/215/36722?from_cn_redirect=1) API.
         * EIP that is in arrears or blocked cannot be bound.
         * Only EIP in the UNBIND status can be bound.
 
@@ -2328,6 +2328,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBandwidthPackageBillUsage(self, request):
+        """This API is used to query the current billable usage of a pay-as-you-go bandwidth package.
+
+        :param request: Request instance for DescribeBandwidthPackageBillUsage.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageBillUsageRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageBillUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBandwidthPackageBillUsage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBandwidthPackageBillUsageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBandwidthPackageQuota(self, request):
         """This API is used to query the maximum and used number of bandwidth packages under the account in the current region.
 
@@ -3623,10 +3651,10 @@ class VpcClient(AbstractClient):
 
 
     def DisassociateAddress(self, request):
-        """This API (DisassociateAddress) is used to unbind [Elastic IPs](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).
-        * The unbinding of EIPs from CVM instances and ENIs is supported.
-        * The unbinding of EIPs from NATs is not supported. For information about how to unbind an EIP from a NAT, see [EipUnBindNatGateway](https://intl.cloud.tencent.com/document/product/215/4092?from_cn_redirect=1).
-        * You can only unbind EIPs in BIND or BIND_ENI status.
+        """This API is used to unbind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).
+        * This API supports unbinding an EIP from CVM instances and ENIs.
+        * This API does not support unbinding an EIP from a NAT Gateway. To unbind an EIP from a NAT Gateway, use the [`DisassociateNatGatewayAddress`](https://intl.cloud.tencent.com/document/api/215/36716?from_cn_redirect=1) API.
+        * Only EIPs in BIND or BIND_ENI status can be unbound.
         * Blocked EIPs cannot be unbound.
 
         :param request: Request instance for DisassociateAddress.

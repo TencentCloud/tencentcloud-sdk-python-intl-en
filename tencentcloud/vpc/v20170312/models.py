@@ -1139,6 +1139,23 @@ class BandwidthPackage(AbstractModel):
         self.Bandwidth = params.get("Bandwidth")
 
 
+class BandwidthPackageBillBandwidth(AbstractModel):
+    """Current billable usage of a pay-as-you-go bandwidth package
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthUsage: Current billable usage, in Mbps
+        :type BandwidthUsage: int
+        """
+        self.BandwidthUsage = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthUsage = params.get("BandwidthUsage")
+
+
 class CCN(AbstractModel):
     """The CCN object
 
@@ -4792,6 +4809,49 @@ Note: This field may return null, indicating that no valid value was found.
                 obj._deserialize(item)
                 self.AssistantCidrSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBandwidthPackageBillUsageRequest(AbstractModel):
+    """DescribeBandwidthPackageBillUsage request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: Unique ID of the pay-as-you-go bandwidth package.
+        :type BandwidthPackageId: str
+        """
+        self.BandwidthPackageId = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+
+
+class DescribeBandwidthPackageBillUsageResponse(AbstractModel):
+    """DescribeBandwidthPackageBillUsage response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageBillBandwidthSet: Current billable usage.
+        :type BandwidthPackageBillBandwidthSet: list of BandwidthPackageBillBandwidth
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BandwidthPackageBillBandwidthSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BandwidthPackageBillBandwidthSet") is not None:
+            self.BandwidthPackageBillBandwidthSet = []
+            for item in params.get("BandwidthPackageBillBandwidthSet"):
+                obj = BandwidthPackageBillBandwidth()
+                obj._deserialize(item)
+                self.BandwidthPackageBillBandwidthSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9047,7 +9107,7 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AddressIds: The unique ID of the EIP, such as 'eip-xxxx'.
+        :param AddressIds: List of EIP IDs, such as “eip-xxxx”.
         :type AddressIds: list of str
         :param InternetMaxBandwidthOut: Target bandwidth value adjustment
         :type InternetMaxBandwidthOut: int

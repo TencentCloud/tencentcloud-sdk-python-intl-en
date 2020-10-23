@@ -16,6 +16,40 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AcquireClusterAdminRoleRequest(AbstractModel):
+    """AcquireClusterAdminRole request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class AcquireClusterAdminRoleResponse(AbstractModel):
+    """AcquireClusterAdminRole response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AddExistedInstancesRequest(AbstractModel):
     """AddExistedInstances request structure.
 
