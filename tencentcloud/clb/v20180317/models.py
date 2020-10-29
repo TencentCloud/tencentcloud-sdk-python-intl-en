@@ -921,8 +921,14 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         :type VipIsp: str
         :param Tags: Tags a CLB instance when purchasing it
         :type Tags: list of TagInfo
+        :param Vip: 
+        :type Vip: str
+        :param ExclusiveCluster: Exclusive cluster information.
+        :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
+        :param ClusterTag: Tag for the STGW exclusive cluster.
+        :type ClusterTag: str
         """
         self.LoadBalancerType = None
         self.Forward = None
@@ -937,7 +943,10 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         self.InternetAccessible = None
         self.VipIsp = None
         self.Tags = None
+        self.Vip = None
+        self.ExclusiveCluster = None
         self.ClientToken = None
+        self.ClusterTag = None
 
 
     def _deserialize(self, params):
@@ -961,7 +970,12 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Vip = params.get("Vip")
+        if params.get("ExclusiveCluster") is not None:
+            self.ExclusiveCluster = ExclusiveCluster()
+            self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
         self.ClientToken = params.get("ClientToken")
+        self.ClusterTag = params.get("ClusterTag")
 
 
 class CreateLoadBalancerResponse(AbstractModel):
