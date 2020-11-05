@@ -1106,12 +1106,16 @@ mainland: cache node in Mainland China
 overseas: cache node outside Mainland China
 unknown: service region unknown
         :type Area: str
+        :param City: City where the node resides
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type City: str
         """
         self.Ip = None
         self.Platform = None
         self.Location = None
         self.History = None
         self.Area = None
+        self.City = None
 
 
     def _deserialize(self, params):
@@ -1125,6 +1129,7 @@ unknown: service region unknown
                 obj._deserialize(item)
                 self.History.append(obj)
         self.Area = params.get("Area")
+        self.City = params.get("City")
 
 
 class CdnIpHistory(AbstractModel):
@@ -3702,6 +3707,31 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RulePaths = params.get("RulePaths")
 
 
+class HttpHeaderRule(AbstractModel):
+    """HTTP header setting rules.
+
+    """
+
+    def __init__(self):
+        """
+        :param HeaderMode: HTTP header setting method. Valid values: `add` (add header), `set` (set header) or `del` (delete header).
+        :type HeaderMode: str
+        :param HeaderName: HTTP header name
+        :type HeaderName: str
+        :param HeaderValue: HTTP header value
+        :type HeaderValue: str
+        """
+        self.HeaderMode = None
+        self.HeaderName = None
+        self.HeaderValue = None
+
+
+    def _deserialize(self, params):
+        self.HeaderMode = params.get("HeaderMode")
+        self.HeaderName = params.get("HeaderName")
+        self.HeaderValue = params.get("HeaderValue")
+
+
 class Https(AbstractModel):
     """Domain name HTTPS acceleration configuration. This is disabled by default.
 
@@ -3838,16 +3868,71 @@ Supports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges.
 Up to 50 allowlists or blocklists can be entered
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Filters: list of str
+        :param FilterRules: IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type FilterRules: list of IpFilterPathRule
         """
         self.Switch = None
         self.FilterType = None
         self.Filters = None
+        self.FilterRules = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.FilterType = params.get("FilterType")
         self.Filters = params.get("Filters")
+        if params.get("FilterRules") is not None:
+            self.FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = IpFilterPathRule()
+                obj._deserialize(item)
+                self.FilterRules.append(obj)
+
+
+class IpFilterPathRule(AbstractModel):
+    """IP blocklist/allowlist path-based configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param FilterType: IP blocklist/allowlist type
+`whitelist`: allowlist IPs
+`blacklist`: blocklist IPs
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type FilterType: str
+        :param Filters: IP blocklist/allowlist list
+Supports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges.
+Up to 50 allowlists or blocklists can be entered.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Filters: list of str
+        :param RuleType: Rule types:
+`all`: effective for all files
+`file`: effective for specified file suffixes
+`directory`: effective for specified paths
+`path`: effective for specified absolute paths
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type RuleType: str
+        :param RulePaths: Content for each RuleType:
+For `all`, enter an asterisk (*).
+For `file`, enter the suffix, such as jpg, txt.
+For `directory`, enter the path, such as /xxx/test/.
+For `path`, enter the corresponding absolute path, such as /xxx/test.html.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type RulePaths: list of str
+        """
+        self.FilterType = None
+        self.Filters = None
+        self.RuleType = None
+        self.RulePaths = None
+
+
+    def _deserialize(self, params):
+        self.FilterType = params.get("FilterType")
+        self.Filters = params.get("Filters")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
 
 
 class IpFreqLimit(AbstractModel):
@@ -4645,6 +4730,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param BackupServerName: Host header used when accessing the backup origin server. If left empty, the ServerName of master origin server will be used by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BackupServerName: str
+        :param BasePath: 
+        :type BasePath: str
+        :param PathRules: Path-based origin-pull configuration rules
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type PathRules: list of PathRule
         """
         self.Origins = None
         self.OriginType = None
@@ -4654,6 +4744,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.BackupOrigins = None
         self.BackupOriginType = None
         self.BackupServerName = None
+        self.BasePath = None
+        self.PathRules = None
 
 
     def _deserialize(self, params):
@@ -4665,6 +4757,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.BackupOrigins = params.get("BackupOrigins")
         self.BackupOriginType = params.get("BackupOriginType")
         self.BackupServerName = params.get("BackupServerName")
+        self.BasePath = params.get("BasePath")
+        if params.get("PathRules") is not None:
+            self.PathRules = []
+            for item in params.get("PathRules"):
+                obj = PathRule()
+                obj._deserialize(item)
+                self.PathRules.append(obj)
 
 
 class OriginPullOptimization(AbstractModel):
@@ -4899,6 +4998,59 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+
+
+class PathRule(AbstractModel):
+    """Path-based origin-pull configuration rules
+
+    """
+
+    def __init__(self):
+        """
+        :param Regex: Whether regex match is used.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Regex: bool
+        :param Path: URL path
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Path: str
+        :param Origin: Origin-pull server when the path matches.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Origin: str
+        :param ServerName: Origin-pull host when the path matches.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ServerName: str
+        :param OriginArea: The region of origin server. Valid values: `CN` (mainland China), `OV` (outside mainland China)
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type OriginArea: str
+        :param ForwardUri: Origin-pull URI path when the path matches.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ForwardUri: str
+        :param RequestHeaders: Origin-pull header setting when the path matches.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type RequestHeaders: list of HttpHeaderRule
+        """
+        self.Regex = None
+        self.Path = None
+        self.Origin = None
+        self.ServerName = None
+        self.OriginArea = None
+        self.ForwardUri = None
+        self.RequestHeaders = None
+
+
+    def _deserialize(self, params):
+        self.Regex = params.get("Regex")
+        self.Path = params.get("Path")
+        self.Origin = params.get("Origin")
+        self.ServerName = params.get("ServerName")
+        self.OriginArea = params.get("OriginArea")
+        self.ForwardUri = params.get("ForwardUri")
+        if params.get("RequestHeaders") is not None:
+            self.RequestHeaders = []
+            for item in params.get("RequestHeaders"):
+                obj = HttpHeaderRule()
+                obj._deserialize(item)
+                self.RequestHeaders.append(obj)
 
 
 class PurgePathCacheRequest(AbstractModel):

@@ -329,39 +329,39 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ZoneId: AZ ID of instance
+        :param ZoneId: Availability zone ID of the instance. For more information, please see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneId: int
-        :param TypeId: Instance type. Valid values: 2 (Redis 2.8 memory edition in standard architecture), 3 (Redis 3.2 memory edition in standard architecture), 4 (CKV 3.2 memory edition in standard architecture), 6 (Redis 4.0 memory edition in standard architecture), 7 (Redis 4.0 memory edition in cluster architecture), 8 (Redis 5.0 memory edition in standard architecture), 9 (Redis 5.0 memory edition in cluster architecture).
+        :param TypeId: Instance type. Valid values: 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).
         :type TypeId: int
-        :param MemSize: Instance capacity in MB. The actual value is subject to the specifications returned by the purchasable specification querying API |
+        :param MemSize: Instance capacity in MB. The value should be a multiple of 1,024 and is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.
         :type MemSize: int
-        :param GoodsNum: Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the purchasable specification querying API
+        :param GoodsNum: Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.
         :type GoodsNum: int
-        :param Period: Length of purchase in months, which is required when creating a monthly subscribed instances. Value range: [1,2,3,4,5,6,7,8,9,10,11,12,24,36]. For pay-as-you-go instances, enter 1
+        :param Period: Purchased usage period in months. which is required when creating an instance. For pay-as-you-go instances, the valid value is 1; for monthly subscription instances, the value range is [1,2,3,4,5,6,7,8,9,10,11,12,24,36].
         :type Period: int
         :param BillingMode: Billing method. 0: pay as you go
         :type BillingMode: int
         :param Password: Instance password. It can contain 8-30 characters and must contain at least two of the following types of characters: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/). It cannot stat with the symbol (/).
         :type Password: str
-        :param VpcId: VPC ID such as vpc-sad23jfdfk. If this parameter is not passed in, the basic network will be selected by default. Please use the VPC list querying API to query.
+        :param VpcId: VPC ID, such as "vpc-sad23jfdfk". If this parameter is not passed in, the classic network will be selected by default. The parameter value can be queried by the `DescribeVpcs` API.
         :type VpcId: str
-        :param SubnetId: In a basic network, subnetId is invalid. In a VPC subnet, the value is the subnet ID, such as subnet-fdj24n34j2
+        :param SubnetId: In a classic network, `subnetId` is invalid. In a VPC subnet, the value can be queried by the `DescribeSubnets` API, such as "subnet-fdj24n34j2".
         :type SubnetId: str
-        :param ProjectId: Project ID. The value is subject to the projectId returned by user account > user account-related querying APIs > project list
+        :param ProjectId: Project ID. The value is subject to the `projectId` returned by the `DescribeProject` API.
         :type ProjectId: int
-        :param AutoRenew: Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled
+        :param AutoRenew: Auto-renewal flag. Valid values: 0 (default status, indicating manual renewal), 1 (auto-renewal enabled), 2 (auto-renewal disabled)
         :type AutoRenew: int
         :param SecurityGroupIdList: Array of security group IDs
         :type SecurityGroupIdList: list of str
-        :param VPort: User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024,65535]
+        :param VPort: User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024, 65535].
         :type VPort: int
-        :param RedisShardNum: Number of shards in an instance. This parameter is required for cluster edition instances. Valid values: 3, 5, 8, 12, 16, 24, 32, 64, 96, 128.
+        :param RedisShardNum: Number of shards in an instance. This parameter is required for instances in cluster architecture. Value range: [3,5,8,12,16,24,32,64,96,128].
         :type RedisShardNum: int
         :param RedisReplicasNum: Number of replicas in an instance. Redis 2.8 standard edition and CKV standard edition support 1 replica. Standard/cluster edition 4.0 and 5.0 support 1-5 replicas.
         :type RedisReplicasNum: int
-        :param ReplicasReadonly: Whether to support read-only replicas. Neither Redis 2.8 standard edition nor CKV standard edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the primary node and read requests will be distributed on secondary nodes. To enable read-only replicas, we recommend you create 2 or more replicas.
+        :param ReplicasReadonly: Whether to support read-only replicas. Neither Redis 2.8 in standard architecture nor CKV in standard architecture supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed on the replica nodes. To enable read-only replicas, we recommend that you create 2 or more replicas.
         :type ReplicasReadonly: bool
-        :param InstanceName: Instance name. It contains only letters, digits, underscores, and dashes with a length of up to 60 characters.
+        :param InstanceName: Instance name. It contains only letters, digits, and symbols (-_) with a length of up to 60 characters.
         :type InstanceName: str
         :param NoAuth: Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access.
         :type NoAuth: bool
@@ -598,7 +598,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :param Product: Database engine name. For this API, its value is `redis`.
         :type Product: str
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.
         :type InstanceId: str
@@ -900,7 +900,7 @@ class DescribeInstanceDealDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DealIds: Array of order IDs
+        :param DealIds: Array of order IDs. It is the same as the response parameter `DealId` in the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.
         :type DealIds: list of str
         """
         self.DealIds = None
@@ -1313,6 +1313,90 @@ class DescribeInstanceMonitorTopNCmdTookResponse(AbstractModel):
                 obj = CommandTake()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceNodeInfoRequest(AbstractModel):
+    """DescribeInstanceNodeInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Limit: List size
+        :type Limit: int
+        :param Offset: The offset
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeInstanceNodeInfoResponse(AbstractModel):
+    """DescribeInstanceNodeInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ProxyCount: The number of proxy nodes
+        :type ProxyCount: int
+        :param Proxy: Proxy node information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Proxy: list of ProxyNodes
+        :param RedisCount: The number of redis nodes
+        :type RedisCount: int
+        :param Redis: Redis node information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Redis: list of RedisNodes
+        :param TendisCount: The number of tendis nodes
+        :type TendisCount: int
+        :param Tendis: Tendis node information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Tendis: list of TendisNodes
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ProxyCount = None
+        self.Proxy = None
+        self.RedisCount = None
+        self.Redis = None
+        self.TendisCount = None
+        self.Tendis = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProxyCount = params.get("ProxyCount")
+        if params.get("Proxy") is not None:
+            self.Proxy = []
+            for item in params.get("Proxy"):
+                obj = ProxyNodes()
+                obj._deserialize(item)
+                self.Proxy.append(obj)
+        self.RedisCount = params.get("RedisCount")
+        if params.get("Redis") is not None:
+            self.Redis = []
+            for item in params.get("Redis"):
+                obj = RedisNodes()
+                obj._deserialize(item)
+                self.Redis.append(obj)
+        self.TendisCount = params.get("TendisCount")
+        if params.get("Tendis") is not None:
+            self.Tendis = []
+            for item in params.get("Tendis"):
+                obj = TendisNodes()
+                obj._deserialize(item)
+                self.Tendis.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1851,6 +1935,73 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Groups.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeProxySlowLogRequest(AbstractModel):
+    """DescribeProxySlowLog request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param BeginTime: Start time
+        :type BeginTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param MinQueryTime: Slow query threshold in microseconds
+        :type MinQueryTime: int
+        :param Limit: Page size
+        :type Limit: int
+        :param Offset: Offset, which is an integral multiple of `Limit`
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.MinQueryTime = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.MinQueryTime = params.get("MinQueryTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeProxySlowLogResponse(AbstractModel):
+    """DescribeProxySlowLog response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of slow queries
+        :type TotalCount: int
+        :param InstanceProxySlowLogDetail: Slow query details
+        :type InstanceProxySlowLogDetail: list of InstanceProxySlowlogDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceProxySlowLogDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceProxySlowLogDetail") is not None:
+            self.InstanceProxySlowLogDetail = []
+            for item in params.get("InstanceProxySlowLogDetail"):
+                obj = InstanceProxySlowlogDetail()
+                obj._deserialize(item)
+                self.InstanceProxySlowLogDetail.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2655,6 +2806,39 @@ class InstanceParamHistory(AbstractModel):
         self.ModifyTime = params.get("ModifyTime")
 
 
+class InstanceProxySlowlogDetail(AbstractModel):
+    """Proxy slow query details
+
+    """
+
+    def __init__(self):
+        """
+        :param Duration: Slow query duration
+        :type Duration: int
+        :param Client: Client address
+        :type Client: str
+        :param Command: Command
+        :type Command: str
+        :param CommandLine: Command line details
+        :type CommandLine: str
+        :param ExecuteTime: Execution duration
+        :type ExecuteTime: str
+        """
+        self.Duration = None
+        self.Client = None
+        self.Command = None
+        self.CommandLine = None
+        self.ExecuteTime = None
+
+
+    def _deserialize(self, params):
+        self.Duration = params.get("Duration")
+        self.Client = params.get("Client")
+        self.Command = params.get("Command")
+        self.CommandLine = params.get("CommandLine")
+        self.ExecuteTime = params.get("ExecuteTime")
+
+
 class InstanceSecurityGroupDetail(AbstractModel):
     """Security group information of an instance
 
@@ -2716,7 +2900,7 @@ class InstanceSet(AbstractModel):
         :type Size: float
         :param SizeUsed: This field has been disused
         :type SizeUsed: float
-        :param Type: Instance type. 1: Redis 2.8 cluster edition; 2: Redis 2.8 primary-secondary edition; 3: CKV primary-secondary edition (Redis 3.2); 4: CKV cluster edition (Redis 3.2); 5: Redis 2.8 standalone edition; 6: Redis 4.0 primary-secondary edition; 7: Redis 4.0 cluster edition
+        :param Type: Instance type. Valid values: 1 (Redis 2.8 Memory Edition in cluster architecture), 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 5 (Redis 2.8 Memory Edition in standalone architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).
         :type Type: int
         :param AutoRenewFlag: Whether to set the auto-renewal flag for an instance. 1: auto-renewal set; 0: auto-renewal not set
         :type AutoRenewFlag: int
@@ -2724,7 +2908,7 @@ class InstanceSet(AbstractModel):
         :type DeadlineTime: str
         :param Engine: Engine: Redis community edition, Tencent Cloud CKV
         :type Engine: str
-        :param ProductType: Product type: Redis 2.8 cluster edition, Redis 2.8 primary-secondary edition, Redis 3.2 primary-secondary edition (CKV primary-secondary edition), Redis 3.2 cluster edition (CKV cluster edition), Redis 2.8 standalone edition, Redis 4.0 cluster edition
+        :param ProductType: Instance type. Valid values: standalone (standard edition), cluster (cluster edition)
         :type ProductType: str
         :param UniqVpcId: VPC ID, such as vpc-fk33jsf43kgv
         :type UniqVpcId: str
@@ -3580,6 +3764,24 @@ class ProductConf(AbstractModel):
         self.EnableRepicaReadOnly = params.get("EnableRepicaReadOnly")
 
 
+class ProxyNodes(AbstractModel):
+    """Proxy node information
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeId: Node ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NodeId: str
+        """
+        self.NodeId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+
+
 class RedisBackupSet(AbstractModel):
     """Array of instance backups
 
@@ -3615,6 +3817,31 @@ class RedisBackupSet(AbstractModel):
         self.Status = params.get("Status")
         self.Remark = params.get("Remark")
         self.Locked = params.get("Locked")
+
+
+class RedisNodes(AbstractModel):
+    """Redis node information
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param NodeRole: Node role
+        :type NodeRole: str
+        :param ClusterId: Shard ID
+        :type ClusterId: int
+        """
+        self.NodeId = None
+        self.NodeRole = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.NodeRole = params.get("NodeRole")
+        self.ClusterId = params.get("ClusterId")
 
 
 class RegionConf(AbstractModel):
@@ -4116,6 +4343,27 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Result = params.get("Result")
 
 
+class TendisNodes(AbstractModel):
+    """Tendis node information
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param NodeRole: Node role
+        :type NodeRole: str
+        """
+        self.NodeId = None
+        self.NodeRole = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.NodeRole = params.get("NodeRole")
+
+
 class TradeDealDetail(AbstractModel):
     """Order deal information
 
@@ -4234,7 +4482,7 @@ class UpgradeInstanceVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TargetInstanceType: Target instance type. Its value is the same as the `Type` parameter of the `CreateInstances` API.
+        :param TargetInstanceType: The target instance type to which the instance will change. It is the same as the `TypeId` parameter in the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.
         :type TargetInstanceType: str
         :param SwitchOption: Switch mode. Valid values: 1 (switch during the maintenance window), 2 (switch immediately).
         :type SwitchOption: int

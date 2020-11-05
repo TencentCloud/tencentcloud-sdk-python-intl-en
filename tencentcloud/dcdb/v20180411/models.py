@@ -344,7 +344,7 @@ class DCDBInstanceInfo(AbstractModel):
         :type InstanceId: str
         :param InstanceName: Instance name
         :type InstanceName: str
-        :param AppId: AppID
+        :param AppId: Application ID
         :type AppId: int
         :param ProjectId: Project ID
         :type ProjectId: int
@@ -378,11 +378,11 @@ class DCDBInstanceInfo(AbstractModel):
         :type PeriodEndTime: str
         :param IsolatedTimestamp: Isolation time
         :type IsolatedTimestamp: str
-        :param Uin: UIN
+        :param Uin: Account ID
         :type Uin: str
         :param ShardDetail: Shard details
         :type ShardDetail: list of ShardInfo
-        :param NodeCount: Number of nodes. 2: one primary and one secondary; 3: one primary and two secondaries
+        :param NodeCount: Number of nodes. 2: one master and one slave; 3: one master and two slaves
         :type NodeCount: int
         :param IsTmp: Temporary instance flag. 0: non-temporary instance
         :type IsTmp: int
@@ -419,6 +419,30 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type IsAuditSupported: int
         :param Cpu: Number of CPU cores
         :type Cpu: int
+        :param Ipv6Flag: IPv6 flag for an instance
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Ipv6Flag: int
+        :param Vipv6: Private network IPv6 address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Vipv6: str
+        :param WanVipv6: Public network IPv6 address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanVipv6: str
+        :param WanPortIpv6: Public network IPv6 port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanPortIpv6: int
+        :param WanStatusIpv6: Public network IPv6 status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanStatusIpv6: int
+        :param DcnFlag: DCN flag. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DcnFlag: int
+        :param DcnStatus: DCN status. Valid values: 0 (null), 1 (creating), 2 (syncing), 3 (disconnected)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DcnStatus: int
+        :param DcnDstNum: The number of DCN disaster recovery instances
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DcnDstNum: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -459,6 +483,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.WanStatus = None
         self.IsAuditSupported = None
         self.Cpu = None
+        self.Ipv6Flag = None
+        self.Vipv6 = None
+        self.WanVipv6 = None
+        self.WanPortIpv6 = None
+        self.WanStatusIpv6 = None
+        self.DcnFlag = None
+        self.DcnStatus = None
+        self.DcnDstNum = None
 
 
     def _deserialize(self, params):
@@ -506,6 +538,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.WanStatus = params.get("WanStatus")
         self.IsAuditSupported = params.get("IsAuditSupported")
         self.Cpu = params.get("Cpu")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        self.Vipv6 = params.get("Vipv6")
+        self.WanVipv6 = params.get("WanVipv6")
+        self.WanPortIpv6 = params.get("WanPortIpv6")
+        self.WanStatusIpv6 = params.get("WanStatusIpv6")
+        self.DcnFlag = params.get("DcnFlag")
+        self.DcnStatus = params.get("DcnStatus")
+        self.DcnDstNum = params.get("DcnDstNum")
 
 
 class DCDBShardInfo(AbstractModel):
@@ -1068,6 +1108,10 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         :type IsFilterExcluster: bool
         :param ExclusterIds: Dedicated cluster ID
         :type ExclusterIds: list of str
+        :param TagKeys: Tag key used in queries
+        :type TagKeys: list of str
+        :param FilterInstanceType: Instance types used in filtering. Valid values: 1 (dedicated instance), 2 (primary instance), 3 (disaster recovery instance). Multiple values should be separated by commas.
+        :type FilterInstanceType: str
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -1083,6 +1127,8 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self.ExclusterType = None
         self.IsFilterExcluster = None
         self.ExclusterIds = None
+        self.TagKeys = None
+        self.FilterInstanceType = None
 
 
     def _deserialize(self, params):
@@ -1100,6 +1146,8 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self.ExclusterType = params.get("ExclusterType")
         self.IsFilterExcluster = params.get("IsFilterExcluster")
         self.ExclusterIds = params.get("ExclusterIds")
+        self.TagKeys = params.get("TagKeys")
+        self.FilterInstanceType = params.get("FilterInstanceType")
 
 
 class DescribeDCDBInstancesResponse(AbstractModel):
@@ -1180,11 +1228,15 @@ class DescribeDCDBShardsResponse(AbstractModel):
         :type TotalCount: int
         :param Shards: Shard information list
         :type Shards: list of DCDBShardInfo
+        :param DcnFlag: Disaster recovery flag. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DcnFlag: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TotalCount = None
         self.Shards = None
+        self.DcnFlag = None
         self.RequestId = None
 
 
@@ -1196,6 +1248,7 @@ class DescribeDCDBShardsResponse(AbstractModel):
                 obj = DCDBShardInfo()
                 obj._deserialize(item)
                 self.Shards.append(obj)
+        self.DcnFlag = params.get("DcnFlag")
         self.RequestId = params.get("RequestId")
 
 

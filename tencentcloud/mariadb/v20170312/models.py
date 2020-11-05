@@ -424,6 +424,36 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type IsEncryptSupported: int
         :param Cpu: Number of CPU cores of instance
         :type Cpu: int
+        :param Ipv6Flag: IPv6 flag for an instance
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Ipv6Flag: int
+        :param Vipv6: Private network IPv6 address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Vipv6: str
+        :param WanVipv6: Public network IPv6 address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanVipv6: str
+        :param WanPortIpv6: Public network IPv6 port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanPortIpv6: int
+        :param WanStatusIpv6: Public network IPv6 status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WanStatusIpv6: int
+        :param DbEngine: Database engine
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DbEngine: str
+        :param DbVersion: Database version
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DbVersion: str
+        :param DcnFlag: DCN flag. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DcnFlag: int
+        :param DcnStatus: DCN status. Valid values: 0 (null), 1 (creating), 2 (syncing), 3 (disconnected)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DcnStatus: int
+        :param DcnDstNum: The number of DCN disaster recovery instances
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DcnDstNum: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -464,6 +494,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Machine = None
         self.IsEncryptSupported = None
         self.Cpu = None
+        self.Ipv6Flag = None
+        self.Vipv6 = None
+        self.WanVipv6 = None
+        self.WanPortIpv6 = None
+        self.WanStatusIpv6 = None
+        self.DbEngine = None
+        self.DbVersion = None
+        self.DcnFlag = None
+        self.DcnStatus = None
+        self.DcnDstNum = None
 
 
     def _deserialize(self, params):
@@ -506,6 +546,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Machine = params.get("Machine")
         self.IsEncryptSupported = params.get("IsEncryptSupported")
         self.Cpu = params.get("Cpu")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        self.Vipv6 = params.get("Vipv6")
+        self.WanVipv6 = params.get("WanVipv6")
+        self.WanPortIpv6 = params.get("WanPortIpv6")
+        self.WanStatusIpv6 = params.get("WanStatusIpv6")
+        self.DbEngine = params.get("DbEngine")
+        self.DbVersion = params.get("DbVersion")
+        self.DcnFlag = params.get("DcnFlag")
+        self.DcnStatus = params.get("DcnStatus")
+        self.DcnDstNum = params.get("DcnDstNum")
 
 
 class DBParamValue(AbstractModel):
@@ -794,6 +844,10 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ExclusterType: int
         :param ExclusterIds: Filters instances by dedicated cluster ID in the format of `dbdc-4ih6uct9`
         :type ExclusterIds: list of str
+        :param TagKeys: Tag key used in queries
+        :type TagKeys: list of str
+        :param FilterInstanceType: Instance types used in filtering. Valid values: 1 (dedicated instance), 2 (primary instance), 3 (disaster recovery instance). Multiple values should be separated by commas.
+        :type FilterInstanceType: str
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -810,6 +864,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.IsFilterExcluster = None
         self.ExclusterType = None
         self.ExclusterIds = None
+        self.TagKeys = None
+        self.FilterInstanceType = None
 
 
     def _deserialize(self, params):
@@ -828,6 +884,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.IsFilterExcluster = params.get("IsFilterExcluster")
         self.ExclusterType = params.get("ExclusterType")
         self.ExclusterIds = params.get("ExclusterIds")
+        self.TagKeys = params.get("TagKeys")
+        self.FilterInstanceType = params.get("FilterInstanceType")
 
 
 class DescribeDBInstancesResponse(AbstractModel):

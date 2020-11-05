@@ -26,7 +26,7 @@ class RedisClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """This API is used to associate security groups with specified instances.
+        """This API is used to associate a security group with instances in batches.
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.AssociateSecurityGroupsRequest`
@@ -138,7 +138,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateInstances(self, request):
-        """This API is used to create a Redis instance.
+        """This API is used to create Redis instances.
 
         :param request: Request instance for CreateInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateInstancesRequest`
@@ -613,6 +613,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceNodeInfo(self, request):
+        """This API is used to query instance node information.
+
+        :param request: Request instance for DescribeInstanceNodeInfo.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceNodeInfoRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceNodeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceNodeInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceNodeInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceParamRecords(self, request):
         """This API is used to query the list of parameter modifications.
 
@@ -851,6 +879,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProxySlowLog(self, request):
+        """This API is used to query proxy slow logs.
+
+        :param request: Request instance for DescribeProxySlowLog.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeProxySlowLogRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeProxySlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProxySlowLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProxySlowLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
