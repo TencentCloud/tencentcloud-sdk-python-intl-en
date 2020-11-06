@@ -749,6 +749,10 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ClientToken: str
         :param DeviceType: Instance type. Valid values: HA (High-Availability Edition), BASIC (Basic Edition). If this parameter is not specified, High-Availability Edition will be used by default.
         :type DeviceType: str
+        :param ParamTemplateId: Parameter template ID.
+        :type ParamTemplateId: int
+        :param AlarmPolicyList: The array of alarm policy IDs.
+        :type AlarmPolicyList: list of int
         """
         self.GoodsNum = None
         self.Memory = None
@@ -776,6 +780,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.DeployGroupId = None
         self.ClientToken = None
         self.DeviceType = None
+        self.ParamTemplateId = None
+        self.AlarmPolicyList = None
 
 
     def _deserialize(self, params):
@@ -817,6 +823,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.DeployGroupId = params.get("DeployGroupId")
         self.ClientToken = params.get("ClientToken")
         self.DeviceType = params.get("DeviceType")
+        self.ParamTemplateId = params.get("ParamTemplateId")
+        self.AlarmPolicyList = params.get("AlarmPolicyList")
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
@@ -2173,6 +2181,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param KeyRegion: Key region.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type KeyRegion: str
+        :param DefaultKmsRegion: The default region of the KMS service currently used by the TencentDB backend service.
+Note: this field may return `null`, indicating that no valid value can be found.
+        :type DefaultKmsRegion: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2181,6 +2192,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Encryption = None
         self.KeyId = None
         self.KeyRegion = None
+        self.DefaultKmsRegion = None
         self.RequestId = None
 
 
@@ -2190,6 +2202,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Encryption = params.get("Encryption")
         self.KeyId = params.get("KeyId")
         self.KeyRegion = params.get("KeyRegion")
+        self.DefaultKmsRegion = params.get("DefaultKmsRegion")
         self.RequestId = params.get("RequestId")
 
 
@@ -3886,11 +3899,14 @@ class DeviceDiskInfo(AbstractModel):
         :type Read: list of int
         :param Write: Average number of write operations completed by the disk per second * 100. For example, if the value is 30,001, the average number of write operations completed by the disk per second is 30,001/100=300.01.
         :type Write: list of int
+        :param CapacityRatio: Disk capacity. Each value is comprised of two data, with the first data representing the used capacity and the second one representing the total disk capacity.
+        :type CapacityRatio: list of int
         """
         self.IoRatioPerSec = None
         self.IoWaitTime = None
         self.Read = None
         self.Write = None
+        self.CapacityRatio = None
 
 
     def _deserialize(self, params):
@@ -3898,6 +3914,7 @@ class DeviceDiskInfo(AbstractModel):
         self.IoWaitTime = params.get("IoWaitTime")
         self.Read = params.get("Read")
         self.Write = params.get("Write")
+        self.CapacityRatio = params.get("CapacityRatio")
 
 
 class DeviceMemInfo(AbstractModel):
@@ -6857,6 +6874,7 @@ class TaskDetail(AbstractModel):
 "KILLED" - terminated;
 "REMOVED" - deleted;
 "PAUSED" - paused.
+"WAITING" - waiting (which can be canceled)
         :type TaskStatus: str
         :param TaskType: Instance task type. Valid values:
 "ROLLBACK" - rolling back a database;
