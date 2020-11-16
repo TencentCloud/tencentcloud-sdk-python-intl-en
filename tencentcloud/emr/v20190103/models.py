@@ -406,6 +406,8 @@ class CreateInstanceRequest(AbstractModel):
         :type UnifyMetaInstanceId: str
         :param MetaDBInfo: Custom MetaDB instance information
         :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
+        :param ApplicationRole: Custom application role.
+        :type ApplicationRole: str
         """
         self.ProductId = None
         self.VPCSettings = None
@@ -433,6 +435,7 @@ class CreateInstanceRequest(AbstractModel):
         self.MetaType = None
         self.UnifyMetaInstanceId = None
         self.MetaDBInfo = None
+        self.ApplicationRole = None
 
 
     def _deserialize(self, params):
@@ -484,6 +487,7 @@ class CreateInstanceRequest(AbstractModel):
         if params.get("MetaDBInfo") is not None:
             self.MetaDBInfo = CustomMetaInfo()
             self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
+        self.ApplicationRole = params.get("ApplicationRole")
 
 
 class CreateInstanceResponse(AbstractModel):

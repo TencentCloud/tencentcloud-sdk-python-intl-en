@@ -113,12 +113,16 @@ Note: This field may return null, indicating that no valid value was found.
         :param TimeoutInstanceIds: IDs of (successful or failed) nodes that timed out
 Note: This field may return null, indicating that no valid value was found.
         :type TimeoutInstanceIds: list of str
+        :param FailedReasons: Causes of the failure to add a node to a cluster
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type FailedReasons: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.FailedInstanceIds = None
         self.SuccInstanceIds = None
         self.TimeoutInstanceIds = None
+        self.FailedReasons = None
         self.RequestId = None
 
 
@@ -126,6 +130,49 @@ Note: This field may return null, indicating that no valid value was found.
         self.FailedInstanceIds = params.get("FailedInstanceIds")
         self.SuccInstanceIds = params.get("SuccInstanceIds")
         self.TimeoutInstanceIds = params.get("TimeoutInstanceIds")
+        self.FailedReasons = params.get("FailedReasons")
+        self.RequestId = params.get("RequestId")
+
+
+class AddNodeToNodePoolRequest(AbstractModel):
+    """AddNodeToNodePool request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param InstanceIds: Node ID
+        :type InstanceIds: list of str
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class AddNodeToNodePoolResponse(AbstractModel):
+    """AddNodeToNodePool response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -148,6 +195,35 @@ class AutoScalingGroupRange(AbstractModel):
     def _deserialize(self, params):
         self.MinSize = params.get("MinSize")
         self.MaxSize = params.get("MaxSize")
+
+
+class AutoscalingAdded(AbstractModel):
+    """Nodes that are added in scale-out
+
+    """
+
+    def __init__(self):
+        """
+        :param Joining: Number of nodes that are being added
+        :type Joining: int
+        :param Initializing: Number of nodes that are being initialized
+        :type Initializing: int
+        :param Normal: Number of normal nodes
+        :type Normal: int
+        :param Total: Total number of nodes
+        :type Total: int
+        """
+        self.Joining = None
+        self.Initializing = None
+        self.Normal = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        self.Joining = params.get("Joining")
+        self.Initializing = params.get("Initializing")
+        self.Normal = params.get("Normal")
+        self.Total = params.get("Total")
 
 
 class Cluster(AbstractModel):
@@ -278,6 +354,8 @@ class ClusterAdvancedSettings(AbstractModel):
         :type AuditLogsetId: str
         :param AuditLogTopicId: Specifies the ID of topic to which the audit logs are uploaded.
         :type AuditLogTopicId: str
+        :param VpcCniType: Specifies whether the VPC CNI type is multi-IP ENI or or independent ENI.
+        :type VpcCniType: str
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -291,6 +369,7 @@ class ClusterAdvancedSettings(AbstractModel):
         self.AuditEnabled = None
         self.AuditLogsetId = None
         self.AuditLogTopicId = None
+        self.VpcCniType = None
 
 
     def _deserialize(self, params):
@@ -308,6 +387,7 @@ class ClusterAdvancedSettings(AbstractModel):
         self.AuditEnabled = params.get("AuditEnabled")
         self.AuditLogsetId = params.get("AuditLogsetId")
         self.AuditLogTopicId = params.get("AuditLogTopicId")
+        self.VpcCniType = params.get("VpcCniType")
 
 
 class ClusterAsGroup(AbstractModel):
@@ -816,6 +896,126 @@ class CreateClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateClusterNodePoolFromExistingAsgRequest(AbstractModel):
+    """CreateClusterNodePoolFromExistingAsg request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param AutoscalingGroupId: Scaling group ID
+        :type AutoscalingGroupId: str
+        """
+        self.ClusterId = None
+        self.AutoscalingGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AutoscalingGroupId = params.get("AutoscalingGroupId")
+
+
+class CreateClusterNodePoolFromExistingAsgResponse(AbstractModel):
+    """CreateClusterNodePoolFromExistingAsg response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NodePoolId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodePoolId = params.get("NodePoolId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateClusterNodePoolRequest(AbstractModel):
+    """CreateClusterNodePool request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param AutoScalingGroupPara: AS group parameters
+        :type AutoScalingGroupPara: str
+        :param LaunchConfigurePara: Running parameters
+        :type LaunchConfigurePara: str
+        :param InstanceAdvancedSettings: Sample parameters
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param EnableAutoscale: Indicates whether to enable auto scaling
+        :type EnableAutoscale: bool
+        :param Name: Node pool name
+        :type Name: str
+        :param Labels: Labels
+        :type Labels: list of Label
+        :param Taints: Taints
+        :type Taints: list of Taint
+        """
+        self.ClusterId = None
+        self.AutoScalingGroupPara = None
+        self.LaunchConfigurePara = None
+        self.InstanceAdvancedSettings = None
+        self.EnableAutoscale = None
+        self.Name = None
+        self.Labels = None
+        self.Taints = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AutoScalingGroupPara = params.get("AutoScalingGroupPara")
+        self.LaunchConfigurePara = params.get("LaunchConfigurePara")
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        self.EnableAutoscale = params.get("EnableAutoscale")
+        self.Name = params.get("Name")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+
+
+class CreateClusterNodePoolResponse(AbstractModel):
+    """CreateClusterNodePool response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NodePoolId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodePoolId = params.get("NodePoolId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClusterRequest(AbstractModel):
     """CreateCluster request structure.
 
@@ -1167,6 +1367,48 @@ class DeleteClusterInstancesResponse(AbstractModel):
         self.SuccInstanceIds = params.get("SuccInstanceIds")
         self.FailedInstanceIds = params.get("FailedInstanceIds")
         self.NotFoundInstanceIds = params.get("NotFoundInstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteClusterNodePoolRequest(AbstractModel):
+    """DeleteClusterNodePool request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: ClusterId of a node pool
+        :type ClusterId: str
+        :param NodePoolIds: IDs of node pools to delete
+        :type NodePoolIds: list of str
+        :param KeepInstance: Indicates whether nodes in a node pool are retained when the node pool is deleted. (The nodes are removed from the cluster. However, the corresponding instances will not be terminated.)
+        :type KeepInstance: bool
+        """
+        self.ClusterId = None
+        self.NodePoolIds = None
+        self.KeepInstance = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolIds = params.get("NodePoolIds")
+        self.KeepInstance = params.get("KeepInstance")
+
+
+class DeleteClusterNodePoolResponse(AbstractModel):
+    """DeleteClusterNodePool response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1575,6 +1817,98 @@ class DescribeClusterKubeconfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Kubeconfig = params.get("Kubeconfig")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterNodePoolDetailRequest(AbstractModel):
+    """DescribeClusterNodePoolDetail request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+
+
+class DescribeClusterNodePoolDetailResponse(AbstractModel):
+    """DescribeClusterNodePoolDetail response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NodePool: Node pool details
+        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePool`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NodePool = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NodePool") is not None:
+            self.NodePool = NodePool()
+            self.NodePool._deserialize(params.get("NodePool"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterNodePoolsRequest(AbstractModel):
+    """DescribeClusterNodePools request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: ClusterId (cluster ID)
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeClusterNodePoolsResponse(AbstractModel):
+    """DescribeClusterNodePools response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NodePoolSet: NodePools (node pool list)
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type NodePoolSet: list of NodePool
+        :param TotalCount: Total resources
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NodePoolSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NodePoolSet") is not None:
+            self.NodePoolSet = []
+            for item in params.get("NodePoolSet"):
+                obj = NodePool()
+                obj._deserialize(item)
+                self.NodePoolSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2494,6 +2828,35 @@ Note: This field may return null, indicating that no valid value is found.
         self.KeepImageLogin = params.get("KeepImageLogin")
 
 
+class ManuallyAdded(AbstractModel):
+    """Nodes that are manually added
+
+    """
+
+    def __init__(self):
+        """
+        :param Joining: Number of nodes that are being added
+        :type Joining: int
+        :param Initializing: Number of nodes that are being initialized
+        :type Initializing: int
+        :param Normal: Number of normal nodes
+        :type Normal: int
+        :param Total: Total number of nodes
+        :type Total: int
+        """
+        self.Joining = None
+        self.Initializing = None
+        self.Normal = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        self.Joining = params.get("Joining")
+        self.Initializing = params.get("Initializing")
+        self.Normal = params.get("Normal")
+        self.Total = params.get("Total")
+
+
 class ModifyClusterAsGroupAttributeRequest(AbstractModel):
     """ModifyClusterAsGroupAttribute request structure.
 
@@ -2633,6 +2996,185 @@ class ModifyClusterEndpointSPResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterNodePoolRequest(AbstractModel):
+    """ModifyClusterNodePool request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param Name: Name
+        :type Name: str
+        :param MaxNodesNum: Maximum number of nodes
+        :type MaxNodesNum: int
+        :param MinNodesNum: Minimum number of nodes
+        :type MinNodesNum: int
+        :param Labels: Labels
+        :type Labels: list of Label
+        :param Taints: Taints
+        :type Taints: list of Taint
+        :param EnableAutoscale: Indicates whether auto scaling is enabled.
+        :type EnableAutoscale: bool
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.Name = None
+        self.MaxNodesNum = None
+        self.MinNodesNum = None
+        self.Labels = None
+        self.Taints = None
+        self.EnableAutoscale = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.Name = params.get("Name")
+        self.MaxNodesNum = params.get("MaxNodesNum")
+        self.MinNodesNum = params.get("MinNodesNum")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+        self.EnableAutoscale = params.get("EnableAutoscale")
+
+
+class ModifyClusterNodePoolResponse(AbstractModel):
+    """ModifyClusterNodePool response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class NodeCountSummary(AbstractModel):
+    """Node statistics list
+
+    """
+
+    def __init__(self):
+        """
+        :param ManuallyAdded: Nodes that are manually managed
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ManuallyAdded: :class:`tencentcloud.tke.v20180525.models.ManuallyAdded`
+        :param AutoscalingAdded: Nodes that are automatically managed
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type AutoscalingAdded: :class:`tencentcloud.tke.v20180525.models.AutoscalingAdded`
+        """
+        self.ManuallyAdded = None
+        self.AutoscalingAdded = None
+
+
+    def _deserialize(self, params):
+        if params.get("ManuallyAdded") is not None:
+            self.ManuallyAdded = ManuallyAdded()
+            self.ManuallyAdded._deserialize(params.get("ManuallyAdded"))
+        if params.get("AutoscalingAdded") is not None:
+            self.AutoscalingAdded = AutoscalingAdded()
+            self.AutoscalingAdded._deserialize(params.get("AutoscalingAdded"))
+
+
+class NodePool(AbstractModel):
+    """Node pool description
+
+    """
+
+    def __init__(self):
+        """
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param Name: Node pool name
+        :type Name: str
+        :param ClusterInstanceId: Cluster instance ID
+        :type ClusterInstanceId: str
+        :param LifeState: Status
+        :type LifeState: str
+        :param LaunchConfigurationId: Launch configuration ID
+        :type LaunchConfigurationId: str
+        :param AutoscalingGroupId: Auto-scaling group ID
+        :type AutoscalingGroupId: str
+        :param Labels: Labels
+        :type Labels: list of Label
+        :param Taints: Array of taint
+        :type Taints: list of Taint
+        :param NodeCountSummary: Node list
+        :type NodeCountSummary: :class:`tencentcloud.tke.v20180525.models.NodeCountSummary`
+        :param AutoscalingGroupStatus: 
+        :type AutoscalingGroupStatus: str
+        :param MaxNodesNum: Maximum number of nodes
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MaxNodesNum: int
+        :param MinNodesNum: Minimum number of nodes
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type MinNodesNum: int
+        :param DesiredNodesNum: Desired number of nodes
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type DesiredNodesNum: int
+        """
+        self.NodePoolId = None
+        self.Name = None
+        self.ClusterInstanceId = None
+        self.LifeState = None
+        self.LaunchConfigurationId = None
+        self.AutoscalingGroupId = None
+        self.Labels = None
+        self.Taints = None
+        self.NodeCountSummary = None
+        self.AutoscalingGroupStatus = None
+        self.MaxNodesNum = None
+        self.MinNodesNum = None
+        self.DesiredNodesNum = None
+
+
+    def _deserialize(self, params):
+        self.NodePoolId = params.get("NodePoolId")
+        self.Name = params.get("Name")
+        self.ClusterInstanceId = params.get("ClusterInstanceId")
+        self.LifeState = params.get("LifeState")
+        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        self.AutoscalingGroupId = params.get("AutoscalingGroupId")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+        if params.get("NodeCountSummary") is not None:
+            self.NodeCountSummary = NodeCountSummary()
+            self.NodeCountSummary._deserialize(params.get("NodeCountSummary"))
+        self.AutoscalingGroupStatus = params.get("AutoscalingGroupStatus")
+        self.MaxNodesNum = params.get("MaxNodesNum")
+        self.MinNodesNum = params.get("MinNodesNum")
+        self.DesiredNodesNum = params.get("DesiredNodesNum")
+
+
 class RegionInstance(AbstractModel):
     """Region information
 
@@ -2674,6 +3216,48 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.FeatureGates = params.get("FeatureGates")
         self.Alias = params.get("Alias")
         self.Remark = params.get("Remark")
+
+
+class RemoveNodeFromNodePoolRequest(AbstractModel):
+    """RemoveNodeFromNodePool request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param InstanceIds: Node ID list
+        :type InstanceIds: list of str
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class RemoveNodeFromNodePoolResponse(AbstractModel):
+    """RemoveNodeFromNodePool response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ResourceDeleteOption(AbstractModel):
@@ -2888,3 +3472,28 @@ class TagSpecification(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+
+
+class Taint(AbstractModel):
+    """Kubernetes Taint
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: Key of the taint
+        :type Key: str
+        :param Value: Value of the taint
+        :type Value: str
+        :param Effect: Effect of the taint
+        :type Effect: str
+        """
+        self.Key = None
+        self.Value = None
+        self.Effect = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.Effect = params.get("Effect")
