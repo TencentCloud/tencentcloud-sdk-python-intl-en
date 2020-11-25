@@ -45,6 +45,10 @@ class AddEcdnDomainRequest(AbstractModel):
         :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`
         :param ForceRedirect: Forced access protocol redirection configuration.
         :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        :param Tag: Tag bound to a domain name.
+        :type Tag: list of Tag
+        :param WebSocket: 
+        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
         self.Domain = None
         self.Origin = None
@@ -57,6 +61,8 @@ class AddEcdnDomainRequest(AbstractModel):
         self.Cache = None
         self.Https = None
         self.ForceRedirect = None
+        self.Tag = None
+        self.WebSocket = None
 
 
     def _deserialize(self, params):
@@ -87,6 +93,15 @@ class AddEcdnDomainRequest(AbstractModel):
         if params.get("ForceRedirect") is not None:
             self.ForceRedirect = ForceRedirect()
             self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        if params.get("WebSocket") is not None:
+            self.WebSocket = WebSocket()
+            self.WebSocket._deserialize(params.get("WebSocket"))
 
 
 class AddEcdnDomainResponse(AbstractModel):
@@ -932,6 +947,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Readonly: Domain name lock status. normal: not locked; global: globally locked.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Readonly: str
+        :param Tag: Domain name tag.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Tag: list of Tag
+        :param WebSocket: 
+        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
         self.ResourceId = None
         self.AppId = None
@@ -952,6 +972,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ForceRedirect = None
         self.Area = None
         self.Readonly = None
+        self.Tag = None
+        self.WebSocket = None
 
 
     def _deserialize(self, params):
@@ -990,6 +1012,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.ForceRedirect._deserialize(params.get("ForceRedirect"))
         self.Area = params.get("Area")
         self.Readonly = params.get("Readonly")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        if params.get("WebSocket") is not None:
+            self.WebSocket = WebSocket()
+            self.WebSocket._deserialize(params.get("WebSocket"))
 
 
 class DomainFilter(AbstractModel):
@@ -1699,6 +1730,29 @@ class StopEcdnDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Tag(AbstractModel):
+    """Tag key and tag value.
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type TagKey: str
+        :param TagValue: Tag value.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class TimestampData(AbstractModel):
     """Timestamp and its corresponding value
 
@@ -1809,3 +1863,24 @@ class UpdateDomainConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class WebSocket(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 
+        :type Switch: str
+        :param Timeout: 
+        :type Timeout: int
+        """
+        self.Switch = None
+        self.Timeout = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Timeout = params.get("Timeout")

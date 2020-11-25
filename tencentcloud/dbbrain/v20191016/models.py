@@ -110,18 +110,22 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
         :type InstanceId: str
         :param StartTime: Start time, such as "2019-09-10 12:13:14".
         :type StartTime: str
-        :param EndTime: End time, such as "2019-09-11 12:13:14".
+        :param EndTime: End time, such as "2019-09-11 12:13:14". The interval between the end time and the start time can be up to 2 days.
         :type EndTime: str
+        :param Product: 
+        :type Product: str
         """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Product = params.get("Product")
 
 
 class DescribeDBDiagHistoryResponse(AbstractModel):
@@ -213,20 +217,24 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
         """
         :param InstanceId: Instance ID.
         :type InstanceId: str
-        :param StartTime: Start time.
+        :param StartTime: Start time, such as "2019-09-10 12:13:14".
         :type StartTime: str
-        :param EndTime: End time.
+        :param EndTime: End time, such as "2019-09-10 12:13:14". The interval between the end time and the start time can be up to 7 days.
         :type EndTime: str
+        :param Product: 
+        :type Product: str
         """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Product = params.get("Product")
 
 
 class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
@@ -274,9 +282,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         """
         :param InstanceId: Instance ID.
         :type InstanceId: str
-        :param StartTime: Start time.
+        :param StartTime: Start time, such as "2019-09-10 12:13:14".
         :type StartTime: str
-        :param EndTime: End time.
+        :param EndTime: End time, such as "2019-09-10 12:13:14". The interval between the end time and the start time can be up to 7 days.
         :type EndTime: str
         :param SortBy: Sorting key. Valid values: QueryTime, ExecTimes, RowsSent, LockTime, RowsExamined.
         :type SortBy: str
@@ -286,6 +294,10 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
+        :param SchemaList: Database name array.
+        :type SchemaList: list of SchemaItem
+        :param Product: 
+        :type Product: str
         """
         self.InstanceId = None
         self.StartTime = None
@@ -294,6 +306,8 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         self.OrderBy = None
         self.Limit = None
         self.Offset = None
+        self.SchemaList = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -304,6 +318,13 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         self.OrderBy = params.get("OrderBy")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        if params.get("SchemaList") is not None:
+            self.SchemaList = []
+            for item in params.get("SchemaList"):
+                obj = SchemaItem()
+                obj._deserialize(item)
+                self.SchemaList.append(obj)
+        self.Product = params.get("Product")
 
 
 class DescribeSlowLogTopSqlsResponse(AbstractModel):
@@ -349,16 +370,19 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
         :type Limit: int
         :param SortBy: Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.
         :type SortBy: str
-        :param StartDate: Start date. It can be as early as 6 days before the current date, and defaults to 6 days before the end date.
+        :param StartDate: Start date. It can be as early as 29 days before the current date, and defaults to 6 days before the end date.
         :type StartDate: str
-        :param EndDate: End date. It can be as early as 6 days before the current date, and defaults to the current date.
+        :param EndDate: End date. It can be as early as 29 days before the current date, and defaults to the current date.
         :type EndDate: str
+        :param Product: 
+        :type Product: str
         """
         self.InstanceId = None
         self.Limit = None
         self.SortBy = None
         self.StartDate = None
         self.EndDate = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -367,6 +391,7 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
         self.SortBy = params.get("SortBy")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        self.Product = params.get("Product")
 
 
 class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
@@ -429,10 +454,13 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
         """
         :param TopSpaceTables: List of the returned space statistics of top tables.
         :type TopSpaceTables: list of TableSpaceData
+        :param Timestamp: Timestamp (in seconds) identifying when the tablespace data is collected.
+        :type Timestamp: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TopSpaceTables = None
+        self.Timestamp = None
         self.RequestId = None
 
 
@@ -443,6 +471,7 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
                 obj = TableSpaceData()
                 obj._deserialize(item)
                 self.TopSpaceTables.append(obj)
+        self.Timestamp = params.get("Timestamp")
         self.RequestId = params.get("RequestId")
 
 
@@ -606,6 +635,23 @@ class MonitorMetricSeriesData(AbstractModel):
         self.Timestamp = params.get("Timestamp")
 
 
+class SchemaItem(AbstractModel):
+    """`SchemaItem` array
+
+    """
+
+    def __init__(self):
+        """
+        :param Schema: Database name
+        :type Schema: str
+        """
+        self.Schema = None
+
+
+    def _deserialize(self, params):
+        self.Schema = params.get("Schema")
+
+
 class SlowLogTopSqlItem(AbstractModel):
     """Top slow SQL statements
 
@@ -643,7 +689,7 @@ class SlowLogTopSqlItem(AbstractModel):
         :type SqlTemplate: str
         :param SqlText: SQL with parameter (random)
         :type SqlText: str
-        :param Schema: Schema
+        :param Schema: Database name
         :type Schema: str
         :param QueryTimeRatio: Ratio of total duration
         :type QueryTimeRatio: float

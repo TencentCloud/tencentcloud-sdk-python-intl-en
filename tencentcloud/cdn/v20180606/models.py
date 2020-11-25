@@ -5010,10 +5010,10 @@ class PathRule(AbstractModel):
         :param Regex: Whether regex match is used.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Regex: bool
-        :param Path: URL path
+        :param Path: The matched URL path
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Path: str
-        :param Origin: Origin-pull server when the path matches.
+        :param Origin: Origin-pull server when the path matches. COS source with private read/write is not supported.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Origin: str
         :param ServerName: Origin-pull host when the path matches.

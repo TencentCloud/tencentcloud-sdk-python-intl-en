@@ -1432,10 +1432,12 @@ class VodClient(AbstractClient):
 
 
     def DescribeReviewDetails(self, request):
-        """This API is used to query the length of audited video content in seconds per day within the specified time range.
+        """<b>This API is disused and replaced by [DescribeMediaProcessUsageData](https://intl.cloud.tencent.com/document/product/266/41464?from_cn_redirect=1).</b>
 
-        1. Statistics on the length of audited video content for the last 365 days can be queried.
-        2. The query time range cannot be more than 90 days.
+        This API will return the duration of audited video content in seconds per day within the queried period.
+
+        1. The API is used to query statistics on the duration of audited video content for the last 365 days.
+        2. The queried period is up to 90 days.
 
         :param request: Request instance for DescribeReviewDetails.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeReviewDetailsRequest`
@@ -2499,13 +2501,7 @@ class VodClient(AbstractClient):
 
 
     def ProcessMediaByUrl(self, request):
-        """This API is used to initiate a processing task for an audio/video media file from a URL, including:
-
-        1. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);
-        2. Intelligent content analysis (tag, category, cover, and frame-specific tag);
-        3. Intelligent content recognition (opening and closing credits, face, full text, text keyword, full speech, speech keyword, and object).
-
-        If the event notification is used, its type is [Task Flow Status Change](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).
+        """This API is <font color='red'>disused</font>, please use [ProcessMedia](https://intl.cloud.tencent.com/document/product/862/37578?from_cn_redirect=1) API of MPS, and enter a video URL in the input parameter `InputInfo.UrlInputInfo.Url`.
 
         :param request: Request instance for ProcessMediaByUrl.
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByUrlRequest`

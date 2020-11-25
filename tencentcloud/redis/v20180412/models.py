@@ -331,9 +331,10 @@ class CreateInstancesRequest(AbstractModel):
         """
         :param ZoneId: Availability zone ID of the instance. For more information, please see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneId: int
-        :param TypeId: Instance type. Valid values: 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).
+        :param TypeId: Instance type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture).
         :type TypeId: int
-        :param MemSize: Instance capacity in MB. The value should be a multiple of 1,024 and is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.
+        :param MemSize: Memory capacity in MB, which must be a multiple of 1,024. It is subject to the purchasable specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).
+If `TypeId` indicates the standard architecture, `MemSize` indicates the total memory capacity of an instance; if `TypeId` indicates the cluster architecture, `MemSize` indicates the memory capacity per shard.
         :type MemSize: int
         :param GoodsNum: Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.
         :type GoodsNum: int
@@ -341,7 +342,9 @@ class CreateInstancesRequest(AbstractModel):
         :type Period: int
         :param BillingMode: Billing method. 0: pay as you go
         :type BillingMode: int
-        :param Password: Instance password. It can contain 8-30 characters and must contain at least two of the following types of characters: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/). It cannot stat with the symbol (/).
+        :param Password: Instance password. If the input parameter `NoAuth` is `true` and a VPC is used, the `Password` is optional; otherwise, it is required.
+If the instance type parameter `TypeId` indicates Redis 2.8, 4.0, or 5.0, the password cannot start with "/" and must contain 8-30 characters which are comprised of at least two of the following: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/).
+If the instance type parameter `TypeId` indicates CKV 3.2, the password contains 8-30 characters which must be comprised of only letters and digits.
         :type Password: str
         :param VpcId: VPC ID, such as "vpc-sad23jfdfk". If this parameter is not passed in, the classic network will be selected by default. The parameter value can be queried by the `DescribeVpcs` API.
         :type VpcId: str
@@ -365,6 +368,8 @@ class CreateInstancesRequest(AbstractModel):
         :type InstanceName: str
         :param NoAuth: Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access.
         :type NoAuth: bool
+        :param NodeSet: 
+        :type NodeSet: list of RedisNodeInfo
         """
         self.ZoneId = None
         self.TypeId = None
@@ -384,6 +389,7 @@ class CreateInstancesRequest(AbstractModel):
         self.ReplicasReadonly = None
         self.InstanceName = None
         self.NoAuth = None
+        self.NodeSet = None
 
 
     def _deserialize(self, params):
@@ -405,6 +411,12 @@ class CreateInstancesRequest(AbstractModel):
         self.ReplicasReadonly = params.get("ReplicasReadonly")
         self.InstanceName = params.get("InstanceName")
         self.NoAuth = params.get("NoAuth")
+        if params.get("NodeSet") is not None:
+            self.NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = RedisNodeInfo()
+                obj._deserialize(item)
+                self.NodeSet.append(obj)
 
 
 class CreateInstancesResponse(AbstractModel):
@@ -588,6 +600,101 @@ class DescribeBackupUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self.DownloadUrl = params.get("DownloadUrl")
         self.InnerDownloadUrl = params.get("InnerDownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCommonDBInstancesRequest(AbstractModel):
+    """DescribeCommonDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcIds: List of instance VIPs
+        :type VpcIds: list of int
+        :param SubnetIds: List of subnet IDs
+        :type SubnetIds: list of int
+        :param PayMode: List of billing modes. Valid values: `0` (monthly subscription), `1` (pay-as-you-go)
+        :type PayMode: int
+        :param InstanceIds: List of instance IDs
+        :type InstanceIds: list of str
+        :param InstanceNames: List of instance names
+        :type InstanceNames: list of str
+        :param Status: List of instance status
+        :type Status: list of str
+        :param OrderBy: Sort field
+        :type OrderBy: str
+        :param OrderByType: Sort order
+        :type OrderByType: str
+        :param Vips: List of instance VIPs
+        :type Vips: list of str
+        :param UniqVpcIds: List of unique VPC IDs
+        :type UniqVpcIds: list of str
+        :param UniqSubnetIds: List of unique subnet IDs
+        :type UniqSubnetIds: list of str
+        :param Limit: Quantity limit. The default value `100` is recommended.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0
+        :type Offset: int
+        """
+        self.VpcIds = None
+        self.SubnetIds = None
+        self.PayMode = None
+        self.InstanceIds = None
+        self.InstanceNames = None
+        self.Status = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Vips = None
+        self.UniqVpcIds = None
+        self.UniqSubnetIds = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.VpcIds = params.get("VpcIds")
+        self.SubnetIds = params.get("SubnetIds")
+        self.PayMode = params.get("PayMode")
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceNames = params.get("InstanceNames")
+        self.Status = params.get("Status")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Vips = params.get("Vips")
+        self.UniqVpcIds = params.get("UniqVpcIds")
+        self.UniqSubnetIds = params.get("UniqSubnetIds")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeCommonDBInstancesResponse(AbstractModel):
+    """DescribeCommonDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Instance quantity
+        :type TotalCount: int
+        :param InstanceDetails: Instance information
+        :type InstanceDetails: list of RedisCommonInstanceList
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceDetails") is not None:
+            self.InstanceDetails = []
+            for item in params.get("InstanceDetails"):
+                obj = RedisCommonInstanceList()
+                obj._deserialize(item)
+                self.InstanceDetails.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3817,6 +3924,100 @@ class RedisBackupSet(AbstractModel):
         self.Status = params.get("Status")
         self.Remark = params.get("Remark")
         self.Locked = params.get("Locked")
+
+
+class RedisCommonInstanceList(AbstractModel):
+    """Information of an instance
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AppId: User ID
+        :type AppId: int
+        :param ProjectId: Project ID of the instance
+        :type ProjectId: int
+        :param Region: Instance region
+        :type Region: str
+        :param Zone: Instance availability zone
+        :type Zone: str
+        :param VpcId: Instance network ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param Status: Instance status. Valid values: `0` (creating), `1` (running)
+        :type Status: str
+        :param Vips: Instance network IP
+        :type Vips: list of str
+        :param Vport: Instance network port
+        :type Vport: int
+        :param Createtime: Instance creation time
+        :type Createtime: str
+        :param PayMode: Billing mode. Valid values: `0` (pay-as-you-go), `1` (monthly subscription)
+        :type PayMode: int
+        :param NetType: Network type. Valid values: `0` (classic network), `1` (VPC)
+        :type NetType: int
+        """
+        self.InstanceName = None
+        self.InstanceId = None
+        self.AppId = None
+        self.ProjectId = None
+        self.Region = None
+        self.Zone = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Status = None
+        self.Vips = None
+        self.Vport = None
+        self.Createtime = None
+        self.PayMode = None
+        self.NetType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceId = params.get("InstanceId")
+        self.AppId = params.get("AppId")
+        self.ProjectId = params.get("ProjectId")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Status = params.get("Status")
+        self.Vips = params.get("Vips")
+        self.Vport = params.get("Vport")
+        self.Createtime = params.get("Createtime")
+        self.PayMode = params.get("PayMode")
+        self.NetType = params.get("NetType")
+
+
+class RedisNodeInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeType: 
+        :type NodeType: int
+        :param ZoneId: 
+        :type ZoneId: int
+        :param NodeId: 
+        :type NodeId: int
+        """
+        self.NodeType = None
+        self.ZoneId = None
+        self.NodeId = None
+
+
+    def _deserialize(self, params):
+        self.NodeType = params.get("NodeType")
+        self.ZoneId = params.get("ZoneId")
+        self.NodeId = params.get("NodeId")
 
 
 class RedisNodes(AbstractModel):

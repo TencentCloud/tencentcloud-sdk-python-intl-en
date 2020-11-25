@@ -1366,6 +1366,8 @@ class CreateServiceRequest(AbstractModel):
         :type SetServerName: str
         :param AppIdType: User type, which is reserved and can be used by `serverless` users.
         :type AppIdType: str
+        :param Tags: Tag information.
+        :type Tags: list of Tag
         """
         self.ServiceName = None
         self.Protocol = None
@@ -1375,6 +1377,7 @@ class CreateServiceRequest(AbstractModel):
         self.IpVersion = None
         self.SetServerName = None
         self.AppIdType = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1386,6 +1389,12 @@ class CreateServiceRequest(AbstractModel):
         self.IpVersion = params.get("IpVersion")
         self.SetServerName = params.get("SetServerName")
         self.AppIdType = params.get("AppIdType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateServiceResponse(AbstractModel):
@@ -1405,7 +1414,7 @@ class CreateServiceResponse(AbstractModel):
         :type OuterSubDomain: str
         :param InnerSubDomain: Default private network domain name of VPC
         :type InnerSubDomain: str
-        :param CreatedTime: Service creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param CreatedTime: Service creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.
         :type CreatedTime: str
         :param NetTypes: Network type list. INNER: private network access; OUTER: public network access.
         :type NetTypes: list of str
@@ -2774,7 +2783,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SetId: Reserved field.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SetId: int
-        :param Tags: 
+        :param Tags: Tags bound to a service.
+Note: this field may return null, indicating that no valid values found.
         :type Tags: list of Tag
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4569,7 +4579,7 @@ class ReqParameter(AbstractModel):
         """
         :param Name: API frontend parameter name.
         :type Name: str
-        :param Position: API frontend parameter position, such as `head`. Valid values: head, query, path.
+        :param Position: Position of the API frontend parameter, such as the header. Supported values: `header`, `query`, and `path`.
         :type Position: str
         :param Type: API frontend parameter type, such as `String` and `int`.
         :type Type: str
@@ -4740,7 +4750,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TradeIsolateStatus: Billing status of service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TradeIsolateStatus: int
-        :param Tags: 
+        :param Tags: Tags bound to a service.
+Note: this field may return null, indicating that no valid values found.
         :type Tags: list of Tag
         """
         self.InnerHttpsPort = None

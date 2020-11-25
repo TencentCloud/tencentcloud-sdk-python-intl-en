@@ -77,6 +77,8 @@ class AccountDetail(AbstractModel):
         :type InternalStatus: str
         :param Dbs: Information of read and write permissions of this account on relevant databases
         :type Dbs: list of DBPrivilege
+        :param IsAdmin: Whether it is an admin account
+        :type IsAdmin: bool
         """
         self.Name = None
         self.Remark = None
@@ -86,6 +88,7 @@ class AccountDetail(AbstractModel):
         self.PassTime = None
         self.InternalStatus = None
         self.Dbs = None
+        self.IsAdmin = None
 
 
     def _deserialize(self, params):
@@ -102,6 +105,7 @@ class AccountDetail(AbstractModel):
                 obj = DBPrivilege()
                 obj._deserialize(item)
                 self.Dbs.append(obj)
+        self.IsAdmin = params.get("IsAdmin")
 
 
 class AccountPassword(AbstractModel):
@@ -715,7 +719,7 @@ class DBInstance(AbstractModel):
         :type VersionName: str
         :param RenewFlag: Instance renewal flag
         :type RenewFlag: int
-        :param Model: Instance high availability status. 1: dual-server high-availability, 2: single-server
+        :param Model: High-availability instance type. Valid values: 1 (dual-server high-availability), 2 (standalone), 3 (multi-AZ), 4 (multi-AZ cluster), 5 (cluster), 9 (used for Tencent’s business)
         :type Model: int
         :param Region: Instance region name, such as ap-guangzhou
         :type Region: str
@@ -2554,6 +2558,44 @@ class ModifyMigrationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.MigrateId = params.get("MigrateId")
+        self.RequestId = params.get("RequestId")
+
+
+class RecycleDBInstanceRequest(AbstractModel):
+    """RecycleDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class RecycleDBInstanceResponse(AbstractModel):
+    """RecycleDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 

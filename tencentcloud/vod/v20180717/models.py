@@ -320,10 +320,15 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>0: no,</li>
 <li>1: yes.</li>
         :type RemoveAudio: int
+        :param RemoveVideo: Whether to remove a video stream. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :type RemoveVideo: int
         """
         self.Video = None
         self.Audio = None
         self.RemoveAudio = None
+        self.RemoveVideo = None
 
 
     def _deserialize(self, params):
@@ -334,6 +339,7 @@ class AdaptiveStreamTemplate(AbstractModel):
             self.Audio = AudioTemplateInfo()
             self.Audio._deserialize(params.get("Audio"))
         self.RemoveAudio = params.get("RemoveAudio")
+        self.RemoveVideo = params.get("RemoveVideo")
 
 
 class AiAnalysisResult(AbstractModel):
@@ -3492,9 +3498,10 @@ If the value is 0, the bitrate of the audio stream will be the same as that of t
 In Hz.
         :type SampleRate: int
         :param AudioChannel: Audio channel system. Valid values:
-<li>1: mono</li>
-<li>2: dual</li>
-<li>6: stereo</li>
+<li>1: Mono-channel</li>
+<li>2: Dual-channel</li>
+<li>6: Stereo</li>
+You cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).
 Default value: 2.
         :type AudioChannel: int
         """
@@ -3544,9 +3551,10 @@ When the outer `Container` parameter is `hls`, the valid values include:
 In Hz.
         :type SampleRate: int
         :param AudioChannel: Audio channel system. Valid values:
-<li>1: mono</li>
-<li>2: dual</li>
-<li>6: stereo</li>
+<li>1: Mono-channel</li>
+<li>2: Dual-channel</li>
+<li>6: Stereo</li>
+You cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).
         :type AudioChannel: int
         """
         self.Codec = None
@@ -3569,7 +3577,10 @@ class AudioTrackItem(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceMedia: Source of media file for audio material, which can be an ID of a VOD file or URL of another file.
+        :param SourceMedia: Source of media material for audio segment, which can be:
+<li>VOD media file ID;</li>
+<li>Download URL of other media files.</li>
+Note: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).
         :type SourceMedia: str
         :param SourceMediaStartTime: Start time of audio segment in material file in seconds. Default value: 0, which means to start capturing from the beginning position of the material.
         :type SourceMediaStartTime: float
@@ -3932,7 +3943,7 @@ class ComposeMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Tracks: List of input media tracks, i.e., information of multiple tracks composed of video, audio, image, and other materials. Multiple input tracks are aligned with the output media file on the time axis. The materials of each track at the same time point on the time axis will be superimposed. Specifically, videos or images will be superimposed for video image by track order, where a material with a higher track order will be more on top, while audio materials will be mixed.
+        :param Tracks: List of input media tracks, i.e., information of multiple tracks composed of video, audio, image, and other materials. <li>Multiple input tracks are aligned with the output media file on the time axis. </li><li>The materials of each track at the same time point on the time axis will be superimposed. Specifically, videos or images will be superimposed for video image by track order, where a material with a higher track order will be more on top, while audio materials will be mixed. </li><li>Up to 10 tracks are supported for each type (video, audio, or image).</li>
         :type Tracks: list of MediaTrack
         :param Output: Information of output media file.
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
@@ -3940,7 +3951,7 @@ class ComposeMediaRequest(AbstractModel):
         :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
         :param SessionContext: This parameter is used to pass through user request information. `ComposeMediaComplete` callback will return the value of this field. It contains up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: This parameter is used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is null or an empty string, the above operation will not be performed.
+        :param SessionId: ID used for task deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -6959,8 +6970,13 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.
         :type EndTime: str
-        :param Type: Type of video processing task to be queried. Valid value: Transcode. Default value: Transcode.
-<li>Transcode: transcoding</li>
+        :param Type: This API is used to query video processing task types. The following types are supported now:
+<li> Transcoding: Basic transcoding</li>
+<li> Transcoding-TESHD: TESHD transcoding</li>
+<li> Editing: Video editing</li>
+<li> AdaptiveBitrateStreaming: adaptive bitrate streaming</li>
+<li> ContentAudit: content audit</li>
+<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing (not recommended)</li>
         :type Type: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -7456,6 +7472,22 @@ class DescribeSubAppIdsRequest(AbstractModel):
     """DescribeSubAppIds request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param Tags: Tag information. You can query the list of subapplications with specified tags.
+        :type Tags: list of ResourceTag
+        """
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class DescribeSubAppIdsResponse(AbstractModel):
@@ -8100,8 +8132,10 @@ class EditMediaRequest(AbstractModel):
         :type SessionContext: str
         :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
-        :param SessionId: ID used for task deduplication. If there was a request with the same ID in the last day, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: ID used for task deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
+        :param ExtInfo: Reserved field for special purposes.
+        :type ExtInfo: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
@@ -8114,6 +8148,7 @@ class EditMediaRequest(AbstractModel):
         self.SessionContext = None
         self.TasksPriority = None
         self.SessionId = None
+        self.ExtInfo = None
         self.SubAppId = None
 
 
@@ -8139,6 +8174,7 @@ class EditMediaRequest(AbstractModel):
         self.SessionContext = params.get("SessionContext")
         self.TasksPriority = params.get("TasksPriority")
         self.SessionId = params.get("SessionId")
+        self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -12121,9 +12157,11 @@ class ModifySubAppIdStatusRequest(AbstractModel):
         """
         :param SubAppId: Subapplication ID.
         :type SubAppId: int
-        :param Status: Subapplication status. Valid values:
-<li>On: enabled</li>
-<li>Off: disabled</li>
+        :param Status: Subapplication status. Valid strings include:
+<li>On: to enable the subapplication.</li>
+<li>Off: to disable the subapplication.</li>
+<li>Destroyed: to terminate the subapplication. </li>
+You cannot enable a subapplication when its status is “Destroying”. You can enable it after it was terminated.
         :type Status: str
         """
         self.SubAppId = None
@@ -13541,7 +13579,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type TasksNotifyMode: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: ID used for deduplication. If there was a request with the same ID on the last day, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
@@ -13597,7 +13635,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InputInfo: Information of input video, including video's URL, name, and custom ID.
+        :param InputInfo: This API is<font color='red'>disused</font>. We recommend using an alternative API. For more information, see API overview.
         :type InputInfo: :class:`tencentcloud.vod.v20180717.models.MediaInputInfo`
         :param OutputInfo: Information of COS path to output file.
         :type OutputInfo: :class:`tencentcloud.vod.v20180717.models.MediaOutputInfo`
@@ -13613,7 +13651,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
         :type TasksNotifyMode: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -13697,7 +13735,7 @@ class ProcessMediaRequest(AbstractModel):
         :type TasksNotifyMode: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
@@ -13994,7 +14032,7 @@ For more information about supported extensions, please see [Media Types](https:
         :type ClassId: int
         :param SessionContext: The source context which is used to pass through the user request information. After `Procedure` is specified, the task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
@@ -14237,6 +14275,27 @@ class ResolutionNameInfo(AbstractModel):
     def _deserialize(self, params):
         self.MinEdgeLength = params.get("MinEdgeLength")
         self.Name = params.get("Name")
+
+
+class ResourceTag(AbstractModel):
+    """Tag key value. For details, see [Tags](https://intl.cloud.tencent.com/document/product/651?from_cn_redirect=1).
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key.
+        :type TagKey: str
+        :param TagValue: Tag value.
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class SampleSnapshotTaskInput(AbstractModel):
@@ -14886,7 +14945,10 @@ class StickerTrackItem(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceMedia: Source of media file for sticker material, which can be an ID of a VOD file or URL of another file.
+        :param SourceMedia: Source of media material for sticker segment, which can be:
+<li>VOD media file ID;</li>
+<li>Download URL of other media files.</li>
+Note: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).
         :type SourceMedia: str
         :param Duration: Sticker duration in seconds.
         :type Duration: float
@@ -14966,9 +15028,11 @@ class SubAppIdInfo(AbstractModel):
         :type Description: str
         :param CreateTime: Subapplication creation time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param Status: Subapplication status. Valid values:
+        :param Status: Subapplication status. Valid strings include:
 <li>On: enabled;</li>
 <li>Off: disabled.</li>
+<li>Destroying: terminating. </li>
+<li>Destroyed: terminated. </li>
         :type Status: str
         """
         self.SubAppId = None
@@ -15213,12 +15277,15 @@ class TaskStatData(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskType: Task type
-<li>Transcode: transcoding</li>
-<li>Snapshot: screencapturing</li>
+        :param TaskType: Task type.
+<li> Transcoding: basic transcoding</li>
+<li> Transcoding-TESHD: TESHD transcoding</li>
+<li> Editing: Video editing</li>
+<li> AdaptiveBitrateStreaming: adaptive bitrate streaming</li>
+<li> ContentAudit: content audit</li>
+<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing (not recommended)</li>
         :type TaskType: str
-        :param Summary: Task statistics overview.
-<li>Transcode: usage in seconds</li>
+        :param Summary: Task statistics overview (usage unit: second).
         :type Summary: list of TaskStatDataItem
         :param Details: Detailed statistics of tasks with different specifications.
 Transcoding specification:
@@ -15712,10 +15779,22 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type WatermarkSet: list of WatermarkInput
         :param MosaicSet: List of blurs. Up to 10 ones can be supported.
         :type MosaicSet: list of MosaicInput
+        :param StartTimeOffset: Start time offset of a transcoded video, in seconds.
+<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>
+<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a transcoded video, in seconds.
+<li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>
+<li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>
+        :type EndTimeOffset: float
         """
         self.Definition = None
         self.WatermarkSet = None
         self.MosaicSet = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
 
 
     def _deserialize(self, params):
@@ -15732,6 +15811,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = MosaicInput()
                 obj._deserialize(item)
                 self.MosaicSet.append(obj)
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
 
 
 class TranscodeTemplate(AbstractModel):
@@ -16151,7 +16232,7 @@ class VideoTemplateInfo(AbstractModel):
 <li>av1: AOMedia Video 1</li>
 Currently, a resolution within 640x480 must be specified for H.265. and the `av1` container only supports mp4.
         :type Codec: str
-        :param Fps: Video frame rate in Hz. Value range: [0, 60].
+        :param Fps: Video frame rate in Hz. Value range: [0,100].
 If the value is 0, the frame rate will be the same as that of the source video.
         :type Fps: int
         :param Bitrate: Bitrate of video stream in Kbps. Value range: 0 and [128, 35,000].
@@ -16179,12 +16260,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
 Default value: 0.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Height: int
-        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
-<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+        :param FillType: Fill type, the way of processing a screenshot when the configured aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: stretch video image frame by frame to fill the screen. The video image may become "squashed" or "stretched" after transcoding;</li>
+<li>black: keep the image's aspect ratio unchanged and fill the uncovered area with black color.</li>
+<li>white: keep the image's aspect ratio unchanged and fill the uncovered area with white color.</li>
+<li>gauss: keep the image's aspect ratio unchanged and apply Gaussian blur to the uncovered area.</li>
 Default value: black.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type FillType: str
+        :param Vcrf: Video Constant Rate Factor (CRF). Value range: 1-51.
+If this parameter is specified, CRF will be used to control video bitrate for transcoding and the original video bitrate will not be used.
+We don’t recommend specifying this parameter if you have no special requirements.
+        :type Vcrf: int
         """
         self.Codec = None
         self.Fps = None
@@ -16193,6 +16279,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Width = None
         self.Height = None
         self.FillType = None
+        self.Vcrf = None
 
 
     def _deserialize(self, params):
@@ -16203,6 +16290,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.FillType = params.get("FillType")
+        self.Vcrf = params.get("Vcrf")
 
 
 class VideoTemplateInfoForUpdate(AbstractModel):
@@ -16218,7 +16306,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>av1: AOMedia Video 1</li>
 Currently, a resolution within 640x480 must be specified for H.265. and the `av1` container only supports mp4.
         :type Codec: str
-        :param Fps: Video frame rate in Hz. Value range: [0, 60].
+        :param Fps: Video frame rate in Hz. Value range: [0,100].
 If the value is 0, the frame rate will be the same as that of the source video.
         :type Fps: int
         :param Bitrate: Bitrate of video stream in Kbps. Value range: 0 and [128, 35,000].
@@ -16237,10 +16325,14 @@ If the value is 0, the bitrate of the video will be the same as that of the sour
         :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
         :type Height: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
-<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-Default value: black.
+<li> stretch: stretch video image frame by frame to fill the screen. The video image may become "squashed" or "stretched" after transcoding;</li>
+<li>black: keep the image's aspect ratio unchanged and fill the uncovered area with black color.</li>
+<li>white: keep the image's aspect ratio unchanged and fill the uncovered area with white color.</li>
+<li>gauss: keep the image's aspect ratio unchanged and apply Gaussian blur to the uncovered area.</li>
         :type FillType: str
+        :param Vcrf: Video Constant Rate Factor (CRF). Value range: 1-51. This parameter will be disabled if you enter 0.
+We don’t recommend specifying this parameter if you have no special requirements.
+        :type Vcrf: int
         """
         self.Codec = None
         self.Fps = None
@@ -16249,6 +16341,7 @@ Default value: black.
         self.Width = None
         self.Height = None
         self.FillType = None
+        self.Vcrf = None
 
 
     def _deserialize(self, params):
@@ -16259,6 +16352,7 @@ Default value: black.
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.FillType = params.get("FillType")
+        self.Vcrf = params.get("Vcrf")
 
 
 class VideoTrackItem(AbstractModel):
@@ -16268,7 +16362,10 @@ class VideoTrackItem(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceMedia: Source of media material for video segment, which can be an ID of a VOD file or URL of another file.
+        :param SourceMedia: Source of media material for video segment, which can be:
+<li>VOD media file ID;</li>
+<li>Download URL of other media files.</li>
+Note: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).
         :type SourceMedia: str
         :param SourceMediaStartTime: Start time of video segment in material file in seconds. Default value: 0.
         :type SourceMediaStartTime: float
@@ -16379,11 +16476,11 @@ class WatermarkInput(AbstractModel):
         """
         :param Definition: Watermarking template ID.
         :type Definition: int
-        :param TextContent: Text content of up to 100 characters. This needs to be entered only when the watermark type is text.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TextContent: Text content, which contains up to 100 characters. This field is required only when the watermark type is text.
+VOD does not support adding text watermarks on screenshots.
         :type TextContent: str
-        :param SvgContent: SVG content of up to 2,000,000 characters. This needs to be entered only when the watermark type is `SVG`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SvgContent: SVG content, which contains up to 2,000,000 characters. This field is required only when the watermark type is SVG.
+VOD does not support adding SVG watermarks on screenshots.
         :type SvgContent: str
         :param StartTimeOffset: Start time offset of a watermark in seconds. If this parameter is left blank or 0 is entered, the watermark will appear upon the first video frame.
 <li>If this parameter is left blank or 0 is entered, the watermark will appear upon the first video frame;</li>

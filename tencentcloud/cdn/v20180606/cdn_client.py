@@ -54,7 +54,7 @@ class CdnClient(AbstractClient):
 
 
     def CreateClsLogTopic(self, request):
-        """This API is used to create a log topic. Note: up to 10 log topics can be created under one logset.
+        """This API is used to create a log topic. Up to 10 log topics can be created under one logset.
 
         :param request: Request instance for CreateClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.CreateClsLogTopicRequest`

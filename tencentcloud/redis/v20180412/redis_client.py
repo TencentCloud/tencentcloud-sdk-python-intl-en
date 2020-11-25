@@ -249,6 +249,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCommonDBInstances(self, request):
+        """This API is used to query information of the Redis instance list.
+
+        :param request: Request instance for DescribeCommonDBInstances.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeCommonDBInstancesRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeCommonDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCommonDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCommonDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBSecurityGroups(self, request):
         """This API is used to query the security group details of an instance.
 
