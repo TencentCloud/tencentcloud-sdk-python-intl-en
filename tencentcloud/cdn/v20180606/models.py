@@ -3663,11 +3663,10 @@ class HttpHeaderPathRule(AbstractModel):
 
     def __init__(self):
         """
-        :param HeaderMode: HTTP header setting method
-add: add header. If a header exists, then there will be a duplicated header.
-set: only supports origin-pull header configuration. If a header exists, it will be overwritten. If one does not exist, then the header will be added.
-del: delete header
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param HeaderMode: HTTP header setting methods
+`add`: add header. If a header already exists, then there will be a duplicated header.
+`del`: delete header.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type HeaderMode: str
         :param HeaderName: HTTP header name. Up to 100 characters can be set.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -5066,14 +5065,18 @@ class PurgePathCacheRequest(AbstractModel):
 `flush`: purges updated resources
 `delete`: purges all resources
         :type FlushType: str
+        :param UrlEncode: Whether to encode Chinese characters before purge.
+        :type UrlEncode: bool
         """
         self.Paths = None
         self.FlushType = None
+        self.UrlEncode = None
 
 
     def _deserialize(self, params):
         self.Paths = params.get("Paths")
         self.FlushType = params.get("FlushType")
+        self.UrlEncode = params.get("UrlEncode")
 
 
 class PurgePathCacheResponse(AbstractModel):
@@ -5156,14 +5159,18 @@ If `mainland` is passed in, only the content cached on nodes in the Chinese main
 If `overseas` is passed in, only the content cached on nodes outside the Chinese mainland will be purged
 The specified purging region should match the domain name acceleration region
         :type Area: str
+        :param UrlEncode: Whether to encode Chinese characters before purge.
+        :type UrlEncode: bool
         """
         self.Urls = None
         self.Area = None
+        self.UrlEncode = None
 
 
     def _deserialize(self, params):
         self.Urls = params.get("Urls")
         self.Area = params.get("Area")
+        self.UrlEncode = params.get("UrlEncode")
 
 
 class PurgeUrlsCacheResponse(AbstractModel):
