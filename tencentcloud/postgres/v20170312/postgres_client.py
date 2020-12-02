@@ -82,6 +82,62 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateServerlessDBInstance(self, request):
+        """This API is used to create a PostgreSQL for Serverless instance. If the creation succeeds, the instance ID will be returned.
+
+        :param request: Request instance for CreateServerlessDBInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateServerlessDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateServerlessDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteServerlessDBInstance(self, request):
+        """This API is used to delete a PostgreSQL for Serverless instance.
+
+        :param request: Request instance for DeleteServerlessDBInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteServerlessDBInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DeleteServerlessDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteServerlessDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteServerlessDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAccounts(self, request):
         """This API is used to get the instance user list.
 
@@ -376,6 +432,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeServerlessDBInstances(self, request):
+        """This API is used to query the details of one or more PostgreSQL for Serverless instances.
+
+        :param request: Request instance for DescribeServerlessDBInstances.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeServerlessDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeServerlessDBInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -210,6 +210,77 @@ class CreateDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateServerlessDBInstanceRequest(AbstractModel):
+    """CreateServerlessDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: Availability zone ID. Only ap-shanghai-2, ap-beijing-1, and ap-guangzhou-2 are supported during the beta test.
+        :type Zone: str
+        :param DBInstanceName: Instance name. The value must be unique for the same account.
+        :type DBInstanceName: str
+        :param DBVersion: Kernel version of a PostgreSQL instance. Currently, only 10.4 is supported.
+        :type DBVersion: str
+        :param DBCharset: Database character set of a PostgreSQL instance. Currently, only UTF-8 is supported.
+        :type DBCharset: str
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param VpcId: VPC ID.
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID.
+        :type SubnetId: str
+        :param TagList: Array of tags to be bound with the instance
+        :type TagList: list of Tag
+        """
+        self.Zone = None
+        self.DBInstanceName = None
+        self.DBVersion = None
+        self.DBCharset = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.TagList = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.DBInstanceName = params.get("DBInstanceName")
+        self.DBVersion = params.get("DBVersion")
+        self.DBCharset = params.get("DBCharset")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+
+
+class CreateServerlessDBInstanceResponse(AbstractModel):
+    """CreateServerlessDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: Instance ID, such as "postgres-xxxxx". The value must be globally unique.
+        :type DBInstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DBInstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class DBBackup(AbstractModel):
     """Database backup information
 
@@ -331,6 +402,15 @@ class DBInstance(AbstractModel):
         :param TagList: The information of tags associated with instances.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TagList: list of Tag
+        :param MasterDBInstanceId: Primary instance information, which is returned only when the instance is read-only
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MasterDBInstanceId: str
+        :param ReadOnlyInstanceNum: Number of read-only instances
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ReadOnlyInstanceNum: int
+        :param StatusInReadonlyGroup: The status of a instance in a read-only group
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StatusInReadonlyGroup: str
         """
         self.Region = None
         self.Zone = None
@@ -360,6 +440,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Uid = None
         self.SupportIpv6 = None
         self.TagList = None
+        self.MasterDBInstanceId = None
+        self.ReadOnlyInstanceNum = None
+        self.StatusInReadonlyGroup = None
 
 
     def _deserialize(self, params):
@@ -401,6 +484,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagList.append(obj)
+        self.MasterDBInstanceId = params.get("MasterDBInstanceId")
+        self.ReadOnlyInstanceNum = params.get("ReadOnlyInstanceNum")
+        self.StatusInReadonlyGroup = params.get("StatusInReadonlyGroup")
 
 
 class DBInstanceNetInfo(AbstractModel):
@@ -434,6 +520,44 @@ class DBInstanceNetInfo(AbstractModel):
         self.Port = params.get("Port")
         self.NetType = params.get("NetType")
         self.Status = params.get("Status")
+
+
+class DeleteServerlessDBInstanceRequest(AbstractModel):
+    """DeleteServerlessDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceName: Instance name. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.
+        :type DBInstanceName: str
+        :param DBInstanceId: Instance ID. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.
+        :type DBInstanceId: str
+        """
+        self.DBInstanceName = None
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceName = params.get("DBInstanceName")
+        self.DBInstanceId = params.get("DBInstanceId")
+
+
+class DeleteServerlessDBInstanceResponse(AbstractModel):
+    """DeleteServerlessDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeAccountsRequest(AbstractModel):
@@ -1041,6 +1165,75 @@ class DescribeRegionsResponse(AbstractModel):
                 obj = RegionInfo()
                 obj._deserialize(item)
                 self.RegionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeServerlessDBInstancesRequest(AbstractModel):
+    """DescribeServerlessDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Filter: Query conditions
+        :type Filter: list of Filter
+        :param Limit: The number of queries
+        :type Limit: int
+        :param Offset: The offset value
+        :type Offset: int
+        :param OrderBy: Sorting metric. Currently, only "CreateTime" (instance creation time) is supported.
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Ascending and descending are supported.
+        :type OrderByType: str
+        """
+        self.Filter = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+
+
+class DescribeServerlessDBInstancesResponse(AbstractModel):
+    """DescribeServerlessDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of query results
+        :type TotalCount: int
+        :param DBInstanceSet: Query results
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBInstanceSet: list of ServerlessDBInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DBInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DBInstanceSet") is not None:
+            self.DBInstanceSet = []
+            for item in params.get("DBInstanceSet"):
+                obj = ServerlessDBInstance()
+                obj._deserialize(item)
+                self.DBInstanceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1813,6 +2006,175 @@ class RestartDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class ServerlessDBAccount(AbstractModel):
+    """PostgreSQL for Serverless instance account description
+
+    """
+
+    def __init__(self):
+        """
+        :param DBUser: Username
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBUser: str
+        :param DBPassword: Password
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBPassword: str
+        :param DBConnLimit: The maximum number of connections
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBConnLimit: int
+        """
+        self.DBUser = None
+        self.DBPassword = None
+        self.DBConnLimit = None
+
+
+    def _deserialize(self, params):
+        self.DBUser = params.get("DBUser")
+        self.DBPassword = params.get("DBPassword")
+        self.DBConnLimit = params.get("DBConnLimit")
+
+
+class ServerlessDBInstance(AbstractModel):
+    """PostgreSQL for Serverless instance description
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: Instance ID, which is the unique identifier
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBInstanceId: str
+        :param DBInstanceName: Instance name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBInstanceName: str
+        :param DBInstanceStatus: Instance status
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBInstanceStatus: str
+        :param Region: Region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Region: str
+        :param Zone: Availability zone
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Zone: str
+        :param ProjectId: Project ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProjectId: int
+        :param VpcId: VPC ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param DBCharset: Character set
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBCharset: str
+        :param DBVersion: Database version
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBVersion: str
+        :param CreateTime: Creation time
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param DBInstanceNetInfo: Instance network information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBInstanceNetInfo: list of ServerlessDBInstanceNetInfo
+        :param DBAccountSet: Instance account information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBAccountSet: list of ServerlessDBAccount
+        :param DBDatabaseList: Information of the databases in an instance
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DBDatabaseList: list of str
+        :param TagList: The array of tags bound to an instance
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TagList: list of Tag
+        """
+        self.DBInstanceId = None
+        self.DBInstanceName = None
+        self.DBInstanceStatus = None
+        self.Region = None
+        self.Zone = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DBCharset = None
+        self.DBVersion = None
+        self.CreateTime = None
+        self.DBInstanceNetInfo = None
+        self.DBAccountSet = None
+        self.DBDatabaseList = None
+        self.TagList = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.DBInstanceName = params.get("DBInstanceName")
+        self.DBInstanceStatus = params.get("DBInstanceStatus")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DBCharset = params.get("DBCharset")
+        self.DBVersion = params.get("DBVersion")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("DBInstanceNetInfo") is not None:
+            self.DBInstanceNetInfo = []
+            for item in params.get("DBInstanceNetInfo"):
+                obj = ServerlessDBInstanceNetInfo()
+                obj._deserialize(item)
+                self.DBInstanceNetInfo.append(obj)
+        if params.get("DBAccountSet") is not None:
+            self.DBAccountSet = []
+            for item in params.get("DBAccountSet"):
+                obj = ServerlessDBAccount()
+                obj._deserialize(item)
+                self.DBAccountSet.append(obj)
+        self.DBDatabaseList = params.get("DBDatabaseList")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+
+
+class ServerlessDBInstanceNetInfo(AbstractModel):
+    """PostgreSQL for Serverless instance network description
+
+    """
+
+    def __init__(self):
+        """
+        :param Address: Address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Address: str
+        :param Ip: IP address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Ip: str
+        :param Port: Port number
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Port: int
+        :param Status: Status
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Status: str
+        :param NetType: Network type
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NetType: str
+        """
+        self.Address = None
+        self.Ip = None
+        self.Port = None
+        self.Status = None
+        self.NetType = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        self.Status = params.get("Status")
+        self.NetType = params.get("NetType")
 
 
 class SetAutoRenewFlagRequest(AbstractModel):

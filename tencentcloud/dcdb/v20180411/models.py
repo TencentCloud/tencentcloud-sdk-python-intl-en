@@ -419,7 +419,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type IsAuditSupported: int
         :param Cpu: Number of CPU cores
         :type Cpu: int
-        :param Ipv6Flag: IPv6 flag for an instance
+        :param Ipv6Flag: Indicates whether the instance uses IPv6
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Ipv6Flag: int
         :param Vipv6: Private network IPv6 address
@@ -434,7 +434,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param WanStatusIpv6: Public network IPv6 status
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WanStatusIpv6: int
-        :param DcnFlag: DCN flag. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
+        :param DcnFlag: DCN type. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DcnFlag: int
         :param DcnStatus: DCN status. Valid values: 0 (null), 1 (creating), 2 (syncing), 3 (disconnected)
@@ -1228,7 +1228,7 @@ class DescribeDCDBShardsResponse(AbstractModel):
         :type TotalCount: int
         :param Shards: Shard information list
         :type Shards: list of DCDBShardInfo
-        :param DcnFlag: Disaster recovery flag. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
+        :param DcnFlag: DCN type. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DcnFlag: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.

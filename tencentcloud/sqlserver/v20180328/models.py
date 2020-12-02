@@ -719,7 +719,7 @@ class DBInstance(AbstractModel):
         :type VersionName: str
         :param RenewFlag: Instance renewal flag
         :type RenewFlag: int
-        :param Model: High-availability instance type. Valid values: 1 (dual-server high-availability), 2 (standalone), 3 (multi-AZ), 4 (multi-AZ cluster), 5 (cluster), 9 (used for Tencent’s business)
+        :param Model: High-availability instance type. Valid values: 1 (dual-server high-availability), 2 (standalone), 3 (multi-AZ), 4 (multi-AZ cluster), 5 (cluster), 9 (private consumption)
         :type Model: int
         :param Region: Instance region name, such as ap-guangzhou
         :type Region: str
