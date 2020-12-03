@@ -170,6 +170,8 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type FsName: str
         :param ResourceTags: File system tag
         :type ResourceTags: list of TagInfo
+        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. This string is valid for 2 hours.
+        :type ClientToken: str
         """
         self.Zone = None
         self.NetInterface = None
@@ -181,6 +183,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self.MountIP = None
         self.FsName = None
         self.ResourceTags = None
+        self.ClientToken = None
 
 
     def _deserialize(self, params):
@@ -199,6 +202,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.ClientToken = params.get("ClientToken")
 
 
 class CreateCfsFileSystemResponse(AbstractModel):

@@ -1410,9 +1410,9 @@ class CreateServiceResponse(AbstractModel):
         :type ServiceName: str
         :param ServiceDesc: Custom service description.
         :type ServiceDesc: str
-        :param OuterSubDomain: Default public network domain name.
+        :param OuterSubDomain: Default public domain name.
         :type OuterSubDomain: str
-        :param InnerSubDomain: Default private network domain name of VPC
+        :param InnerSubDomain: Default VPC domain name.
         :type InnerSubDomain: str
         :param CreatedTime: Service creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.
         :type CreatedTime: str

@@ -424,7 +424,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type IsEncryptSupported: int
         :param Cpu: Number of CPU cores of instance
         :type Cpu: int
-        :param Ipv6Flag: IPv6 flag for an instance
+        :param Ipv6Flag: Indicates whether the instance uses IPv6
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Ipv6Flag: int
         :param Vipv6: Private network IPv6 address
@@ -445,7 +445,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DbVersion: Database version
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DbVersion: str
-        :param DcnFlag: DCN flag. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
+        :param DcnFlag: DCN type. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DcnFlag: int
         :param DcnStatus: DCN status. Valid values: 0 (null), 1 (creating), 2 (syncing), 3 (disconnected)

@@ -23,9 +23,9 @@ class CreateInput(AbstractModel):
 
     def __init__(self):
         """
-        :param InputName: Input name, which can contain 1–32 letters, digits, and underscores.
+        :param InputName: Input name, which can contain 1 to 32 letters, digits, and underscores.
         :type InputName: str
-        :param Protocol: Input protocol. Valid values: [SRT|RTP].
+        :param Protocol: Input protocol. Valid values: SRT, RTP.
         :type Protocol: str
         :param Description: Input description. Length: [0, 255].
         :type Description: str
@@ -85,11 +85,11 @@ class CreateInputSRTSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamId: Stream ID, which can contain 0–512 letters, digits, and special symbols (.#!:&,=_-).
+        :param StreamId: Stream ID, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).
         :type StreamId: str
         :param Latency: Latency in ms. Default value: 0. Value range: [0, 3000].
         :type Latency: int
-        :param RecvLatency: Receipt latency in ms. Default value: 120. Value range: [0, 3000].
+        :param RecvLatency: Receive latency in ms. Default value: 120. Value range: [0, 3000].
         :type RecvLatency: int
         :param PeerLatency: Peer latency in ms. Default value: 0. Value range: [0, 3000].
         :type PeerLatency: int
@@ -97,7 +97,7 @@ class CreateInputSRTSettings(AbstractModel):
         :type PeerIdleTimeout: int
         :param Passphrase: Decryption key, which is empty by default, indicating not to encrypt. Only ASCII codes can be filled. Length: [10, 79].
         :type Passphrase: str
-        :param PbKeyLen: Key length. Default value: 0. Valid values: [0|16|24|32].
+        :param PbKeyLen: Key length. Default value: 0. Valid values: 0, 16, 24, 32.
         :type PbKeyLen: int
         """
         self.StreamId = None
@@ -128,7 +128,7 @@ class CreateMediaConnectFlowRequest(AbstractModel):
         """
         :param FlowName: Flow name.
         :type FlowName: str
-        :param MaxBandwidth: Maximum bandwidth in bps. Valid values: [10000000, 20000000, 50000000].
+        :param MaxBandwidth: Maximum bandwidth in bps. Valid values: 10000000, 20000000, 50000000.
         :type MaxBandwidth: int
         :param InputGroup: Flow input group.
         :type InputGroup: list of CreateInput
@@ -181,7 +181,7 @@ class CreateMediaConnectOutputRequest(AbstractModel):
         """
         :param FlowId: Flow ID.
         :type FlowId: str
-        :param Output: Output configuration of flow.
+        :param Output: Output configuration of a flow.
         :type Output: :class:`tencentcloud.mdc.v20200828.models.CreateOutput`
         """
         self.FlowId = None
@@ -272,7 +272,7 @@ class CreateOutputRTMPSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Destinations: Push destination address. 1–2 addresses can be entered.
+        :param Destinations: Push destination address. You can enter one or two addresses.
         :type Destinations: list of CreateOutputRtmpSettingsDestinations
         :param ChunkSize: RTMP chunk size. Value range: [4096, 40960].
         :type ChunkSize: int
@@ -298,7 +298,7 @@ class CreateOutputRTPSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Destinations: Push destination address. 1–2 addresses can be entered.
+        :param Destinations: Push destination address. You can enter one or two addresses.
         :type Destinations: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTPSettingsDestinations`
         :param FEC: Only `none` can be entered.
         :type FEC: str
@@ -367,13 +367,13 @@ class CreateOutputSrtSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Destinations: Push destination address. Please configure 1–2 addresses.
+        :param Destinations: Push destination address. Please configure one or two addresses.
         :type Destinations: list of CreateOutputSrtSettingsDestinations
         :param StreamId: Stream ID of SRT push.
         :type StreamId: str
         :param Latency: Total latency of SRT push.
         :type Latency: int
-        :param RecvLatency: Receipt latency of SRT push.
+        :param RecvLatency: Receive latency of SRT push.
         :type RecvLatency: int
         :param PeerLatency: Peer latency of SRT push.
         :type PeerLatency: int
@@ -644,7 +644,7 @@ class DescribeInputSRTSettings(AbstractModel):
         :type StreamId: str
         :param Latency: Latency.
         :type Latency: int
-        :param RecvLatency: Receipt latency.
+        :param RecvLatency: Receive latency.
         :type RecvLatency: int
         :param PeerLatency: Peer latency.
         :type PeerLatency: int
@@ -698,7 +698,7 @@ class DescribeMediaConnectFlowResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Info: Configuration information of flow.
+        :param Info: Configuration information of a flow.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -742,7 +742,7 @@ class DescribeMediaConnectFlowsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Infos: Configuration information list of flow.
+        :param Infos: Configuration information list of a flow.
         :type Infos: list of DescribeFlow
         :param PageNum: Number of current pages.
         :type PageNum: int
@@ -928,7 +928,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Latency: Latency.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Latency: int
-        :param RecvLatency: Receipt latency.
+        :param RecvLatency: Receive latency.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RecvLatency: int
         :param PeerLatency: Peer latency.
@@ -1175,7 +1175,7 @@ class ModifyOutput(AbstractModel):
         :type OutputName: str
         :param Description: Output description.
         :type Description: str
-        :param Protocol: Output push protocol. Valid values: SRT|RTMP.
+        :param Protocol: Output push protocol. Valid values: SRT, RTMP.
         :type Protocol: str
         :param SRTSettings: Configuration of SRT push.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`

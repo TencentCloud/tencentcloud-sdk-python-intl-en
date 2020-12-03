@@ -27,14 +27,18 @@ class DescribeDBDiagEventRequest(AbstractModel):
         :type InstanceId: str
         :param EventId: Event ID, which can be obtained through the `DescribeDBDiagHistory` API.
         :type EventId: int
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :type Product: str
         """
         self.InstanceId = None
         self.EventId = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.EventId = params.get("EventId")
+        self.Product = params.get("Product")
 
 
 class DescribeDBDiagEventResponse(AbstractModel):
@@ -112,7 +116,7 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End time, such as "2019-09-11 12:13:14". The interval between the end time and the start time can be up to 2 days.
         :type EndTime: str
-        :param Product: 
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
         :type Product: str
         """
         self.InstanceId = None
@@ -165,14 +169,18 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
         :type InstanceId: str
         :param RangeDays: Query period in days. The end date is the current date and the query period is 7 days by default.
         :type RangeDays: int
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :type Product: str
         """
         self.InstanceId = None
         self.RangeDays = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.RangeDays = params.get("RangeDays")
+        self.Product = params.get("Product")
 
 
 class DescribeDBSpaceStatusResponse(AbstractModel):
@@ -221,7 +229,7 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End time, such as "2019-09-10 12:13:14". The interval between the end time and the start time can be up to 7 days.
         :type EndTime: str
-        :param Product: 
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
         :type Product: str
         """
         self.InstanceId = None
@@ -296,7 +304,7 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         :type Offset: int
         :param SchemaList: Database name array.
         :type SchemaList: list of SchemaItem
-        :param Product: 
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
         :type Product: str
         """
         self.InstanceId = None
@@ -374,7 +382,7 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
         :type StartDate: str
         :param EndDate: End date. It can be as early as 29 days before the current date, and defaults to the current date.
         :type EndDate: str
-        :param Product: 
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
         :type Product: str
         """
         self.InstanceId = None
@@ -433,16 +441,20 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
         :type Limit: int
         :param SortBy: Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.
         :type SortBy: str
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :type Product: str
         """
         self.InstanceId = None
         self.Limit = None
         self.SortBy = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Limit = params.get("Limit")
         self.SortBy = params.get("SortBy")
+        self.Product = params.get("Product")
 
 
 class DescribeTopSpaceTablesResponse(AbstractModel):
@@ -454,7 +466,7 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
         """
         :param TopSpaceTables: List of the returned space statistics of top tables.
         :type TopSpaceTables: list of TableSpaceData
-        :param Timestamp: Timestamp (in seconds) identifying when the tablespace data is collected.
+        :param Timestamp: Timestamp (in seconds) of tablespace data collect points
         :type Timestamp: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

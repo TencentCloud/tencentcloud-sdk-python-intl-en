@@ -47,7 +47,7 @@ class AddEcdnDomainRequest(AbstractModel):
         :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
         :param Tag: Tag bound to a domain name.
         :type Tag: list of Tag
-        :param WebSocket: 
+        :param WebSocket: WebSocket configuration.
         :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
         self.Domain = None
@@ -947,10 +947,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Readonly: Domain name lock status. normal: not locked; global: globally locked.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Readonly: str
-        :param Tag: Domain name tag.
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param Tag: Domain name tag
+Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Tag: list of Tag
-        :param WebSocket: 
+        :param WebSocket: WebSocket configuration.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
         self.ResourceId = None
@@ -1804,6 +1805,8 @@ class UpdateDomainConfigRequest(AbstractModel):
         :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
         :param Area: Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).
         :type Area: str
+        :param WebSocket: WebSocket configuration.
+        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
         self.Domain = None
         self.Origin = None
@@ -1816,6 +1819,7 @@ class UpdateDomainConfigRequest(AbstractModel):
         self.Https = None
         self.ForceRedirect = None
         self.Area = None
+        self.WebSocket = None
 
 
     def _deserialize(self, params):
@@ -1846,6 +1850,9 @@ class UpdateDomainConfigRequest(AbstractModel):
             self.ForceRedirect = ForceRedirect()
             self.ForceRedirect._deserialize(params.get("ForceRedirect"))
         self.Area = params.get("Area")
+        if params.get("WebSocket") is not None:
+            self.WebSocket = WebSocket()
+            self.WebSocket._deserialize(params.get("WebSocket"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):
@@ -1866,15 +1873,16 @@ class UpdateDomainConfigResponse(AbstractModel):
 
 
 class WebSocket(AbstractModel):
-    """
+    """WebSocket configuration.
 
     """
 
     def __init__(self):
         """
-        :param Switch: 
+        :param Switch: WebSocket configuration switch, which can be `on` or `off`.
         :type Switch: str
-        :param Timeout: 
+        :param Timeout: Sets timeout period in seconds. Maximum value: 65
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Timeout: int
         """
         self.Switch = None

@@ -1596,17 +1596,36 @@ class GetServiceStatusResponse(AbstractModel):
         :type ServiceEnabled: bool
         :param InvalidType: Service unavailability type. 0: not purchased; 1: normal; 2: suspended due to arrears; 3: resource released
         :type InvalidType: int
+        :param UserLevel: 0: Basic Edition, 1: Ultimate Edition
+        :type UserLevel: int
+        :param ProExpireTime: Ultimate Edition expiration time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProExpireTime: int
+        :param ProRenewFlag: Whether to automatically renew Ultimate Edition. 0: no, 1: yes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProRenewFlag: int
+        :param ProResourceId: Unique ID of the Ultimate Edition purchase record. If the Ultimate Edition is not activated, the returned value will be null.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProResourceId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.ServiceEnabled = None
         self.InvalidType = None
+        self.UserLevel = None
+        self.ProExpireTime = None
+        self.ProRenewFlag = None
+        self.ProResourceId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ServiceEnabled = params.get("ServiceEnabled")
         self.InvalidType = params.get("InvalidType")
+        self.UserLevel = params.get("UserLevel")
+        self.ProExpireTime = params.get("ProExpireTime")
+        self.ProRenewFlag = params.get("ProRenewFlag")
+        self.ProResourceId = params.get("ProResourceId")
         self.RequestId = params.get("RequestId")
 
 

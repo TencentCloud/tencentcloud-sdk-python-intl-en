@@ -346,7 +346,13 @@ class ClusterAdvancedSettings(AbstractModel):
         :type IsNonStaticIpMode: bool
         :param DeletionProtection: Indicates whether to enable cluster deletion protection.
         :type DeletionProtection: bool
-        :param KubeProxyMode: Cluster network proxy model
+        :param KubeProxyMode: Cluster network proxy model, which is only used when ipvs-bpf mode is used. At present, TKE cluster supports three network proxy modes including `iptables`, `ipvs` and `ipvs-bpf` and their parameter setting relationships are as follows:
+`iptables`: do not set IPVS and KubeProxyMode.
+`ipvs` mode: set IPVS to `true` and do not set KubeProxyMode.
+`ipvs-bpf`: set KubeProxyMode to `kube-proxy-bpf`.
+The following conditions are required to use ipvs-bpf network mode:
+1. The cluster version must be v1.14 or later.
+2. The system image must be a TKE custom image such as Ubuntu TKE Optimized or Centos TKE Optimized.
         :type KubeProxyMode: str
         :param AuditEnabled: Indicates whether to enable auditing
         :type AuditEnabled: bool
@@ -356,6 +362,8 @@ class ClusterAdvancedSettings(AbstractModel):
         :type AuditLogTopicId: str
         :param VpcCniType: Specifies whether the VPC CNI type is multi-IP ENI or or independent ENI.
         :type VpcCniType: str
+        :param RuntimeVersion: Runtime version
+        :type RuntimeVersion: str
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -370,6 +378,7 @@ class ClusterAdvancedSettings(AbstractModel):
         self.AuditLogsetId = None
         self.AuditLogTopicId = None
         self.VpcCniType = None
+        self.RuntimeVersion = None
 
 
     def _deserialize(self, params):
@@ -388,6 +397,7 @@ class ClusterAdvancedSettings(AbstractModel):
         self.AuditLogsetId = params.get("AuditLogsetId")
         self.AuditLogTopicId = params.get("AuditLogTopicId")
         self.VpcCniType = params.get("VpcCniType")
+        self.RuntimeVersion = params.get("RuntimeVersion")
 
 
 class ClusterAsGroup(AbstractModel):
