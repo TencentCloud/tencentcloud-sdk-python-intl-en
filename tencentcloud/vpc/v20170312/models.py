@@ -1762,7 +1762,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceName: str
         :param SubnetId: The subnet instance ID of the ENI, such as 'subnet-0ap8nwca'.
         :type SubnetId: str
-        :param InstanceId: The CVM instance ID.
+        :param InstanceId: CVM instance ID.
         :type InstanceId: str
         :param PrivateIpAddresses: The information of the specified private IPs. You can specify a maximum of 10 IPs each time.
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
@@ -1965,7 +1965,7 @@ class CreateCcnRequest(AbstractModel):
         :type QosLevel: str
         :param InstanceChargeType: The billing method. POSTPAID: postpaid by traffic. Default: POSTPAID.
         :type InstanceChargeType: str
-        :param BandwidthLimitType: The bandwidth limit type. OUTER_REGION_LIMIT: regional outbound limit. INTER_REGION_LIMIT: inter-regional limit. Default: OUTER_REGION_LIMIT.
+        :param BandwidthLimitType: The bandwidth limit type. Valid values: OUTER_REGION_LIMIT: region outbound bandwidth limit; INTER_REGION_LIMIT: inter-region bandwidth limit. Default value: OUTER_REGION_LIMIT. Monthly-subscribed CCN instances only support inter-region bandwidth limit, while pay-as-you-go CCN instances support the both bandwidth limit types.
         :type BandwidthLimitType: str
         :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
@@ -3533,7 +3533,7 @@ class CvmInstance(AbstractModel):
         :type InstanceState: str
         :param CPU: Number of CPU cores in an instance (in core).
         :type CPU: int
-        :param Memory: Instance's memory capacity. Unit: GB.
+        :param Memory: Instance’s memory capacity. Unit: GB.
         :type Memory: int
         :param CreatedTime: The creation time.
         :type CreatedTime: str
@@ -6008,6 +6008,48 @@ class DescribeHaVipsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIpGeolocationDatabaseUrlRequest(AbstractModel):
+    """DescribeIpGeolocationDatabaseUrl request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Protocol type of the IP location database. Valid values: `ipv4` and `ipv6`.
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+
+
+class DescribeIpGeolocationDatabaseUrlResponse(AbstractModel):
+    """DescribeIpGeolocationDatabaseUrl response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DownLoadUrl: Download link of the IP location database.
+        :type DownLoadUrl: str
+        :param ExpiredAt: Link expiration time in UTC format following the ISO8601 standard.
+        :type ExpiredAt: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DownLoadUrl = None
+        self.ExpiredAt = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownLoadUrl = params.get("DownLoadUrl")
+        self.ExpiredAt = params.get("ExpiredAt")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractModel):
     """DescribeNatGatewayDestinationIpPortTranslationNatRules request structure.
 
@@ -6407,15 +6449,14 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
 <li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>
 <li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>
-<li>attachment.instance-id - String - (Filter condition) ID of the bound CVM instance, such as `ins-3nqpdn3i`.</li>
-<li>groups.security-group-id - String - (Filter condition) ID of the bound security group, such as `sg-f9ekbxeq`.</li>
+<li>attachment.instance-id - String - (Filter condition) CVM instance ID, such as `ins-3nqpdn3i`.</li>
+<li>groups.security-group-id - String - (Filter condition) Instance ID of the security group, such as `sg-f9ekbxeq`.</li>
 <li>network-interface-name - String - (Filter condition) ENI instance name.</li>
 <li>network-interface-description - String - (Filter condition) ENI instance description.</li>
-<li>address-ip - String - (Filter condition) Private IPv4 address. A single IP will be fuzzily matched with the suffix, while multiple IPs will be exactly matched. It can be used with `ip-exact-match` to query and exactly match a single IP.</li>
-<li>ip-exact-match - Boolean - (Filter condition) Exact match by private IPv4 address. The first value will be returned if multiple values are found.</li>
-<li>tag-key - String - Required: no - (Filter condition) Filter by tag key. See Example 2 for the detailed usage.</li>
-<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>
-<li>is-primary - Boolean - Required: no - (Filter condition) Filter based on whether it is a primary ENI. If the value is `true`, filter only the primary ENI. If the value is `false`, filter only the secondary ENI. If this parameter is not specified, filter the both.</li>
+<li>address-ip - String - (Filter condition) Private IPv4 address.</li>
+<li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>
+<li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>
+<li>is-primary - Boolean - Required: no - (Filter condition) Filters based on whether it is a primary ENI. If the value is ‘true’, filter only the primary ENI. If the value is ‘false’, filter only the secondary ENI. If the secondary filter parameter is provided, filter the both.</li>
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -8219,9 +8260,9 @@ class GatewayFlowMonitorDetail(AbstractModel):
         :type InPkg: int
         :param OutPkg: Outbound packets.
         :type OutPkg: int
-        :param InTraffic: Inbound bandwidth, unit: `Byte`.
+        :param InTraffic: Inbound traffic, in Byte.
         :type InTraffic: int
-        :param OutTraffic: Outbound bandwidth, unit: `Byte`.
+        :param OutTraffic: Outbound traffic, in Byte.
         :type OutTraffic: int
         """
         self.PrivateIpAddress = None
@@ -9462,7 +9503,7 @@ ID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;
 ID of NAT gateway instance, e.g. `nat-ltjahce6`;
 ID of VPN gateway instance, e.g. `vpn-ltjahce6`.
         :type GatewayId: str
-        :param Bandwidth: Bandwidth limit value in Mbps. Valid values: >0: set the limit to the specified value. 0: block all traffic. -1: no bandwidth limit.
+        :param Bandwidth: Bandwidth limit value.
         :type Bandwidth: int
         :param IpAddresses: CVM private IP addresses with limited bandwidth.
         :type IpAddresses: list of str
@@ -11315,9 +11356,12 @@ class ReplaceSecurityGroupPolicyRequest(AbstractModel):
         :type SecurityGroupId: str
         :param SecurityGroupPolicySet: Security group policy set object.
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        :param OriginalSecurityGroupPolicySet: (Optional) The old policy set of the security group, which is used for log records.
+        :type OriginalSecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
         """
         self.SecurityGroupId = None
         self.SecurityGroupPolicySet = None
+        self.OriginalSecurityGroupPolicySet = None
 
 
     def _deserialize(self, params):
@@ -11325,6 +11369,9 @@ class ReplaceSecurityGroupPolicyRequest(AbstractModel):
         if params.get("SecurityGroupPolicySet") is not None:
             self.SecurityGroupPolicySet = SecurityGroupPolicySet()
             self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        if params.get("OriginalSecurityGroupPolicySet") is not None:
+            self.OriginalSecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.OriginalSecurityGroupPolicySet._deserialize(params.get("OriginalSecurityGroupPolicySet"))
 
 
 class ReplaceSecurityGroupPolicyResponse(AbstractModel):

@@ -895,7 +895,7 @@ class SqlserverClient(AbstractClient):
 
 
     def RecycleDBInstance(self, request):
-        """This API is used to manually repossess a deactivated SQL Server instance.
+        """This API is used to return a deactivated SQL Server instance.
 
         :param request: Request instance for RecycleDBInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RecycleDBInstanceRequest`
@@ -1063,7 +1063,7 @@ class SqlserverClient(AbstractClient):
 
 
     def TerminateDBInstance(self, request):
-        """This API is used to manually terminate a pay-as-you-go instance.
+        """This API is used to isolate an instance to move it into a recycle bin.
 
         :param request: Request instance for TerminateDBInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.TerminateDBInstanceRequest`

@@ -318,7 +318,7 @@ class CreateBackupRequest(AbstractModel):
         :type DBNames: list of str
         :param InstanceId: Instance ID in the format of mssql-i1z41iwd
         :type InstanceId: str
-        :param BackupName: Backup name. If this parameter is left empty, a backup name in the format of "Instance ID_Backup start timestamp" will be automatically generated.
+        :param BackupName: Backup name. If this parameter is left empty, a backup name in the format of "[Instance ID]_[Backup start timestamp]" will be automatically generated.
         :type BackupName: str
         """
         self.Strategy = None
@@ -535,7 +535,7 @@ class CreateMigrationRequest(AbstractModel):
         :type Target: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`
         :param MigrateDBSet: Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)
         :type MigrateDBSet: list of MigrateDB
-        :param RenameRestore: Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format. This parameter takes effect only when `SourceType=5`.
+        :param RenameRestore: Restore and rename the databases listed in `ReNameRestoreDatabase`. If this parameter is left empty, all restored databases will be renamed in the default format. This parameter takes effect only when `SourceType=5`.
         :type RenameRestore: list of RenameRestoreDatabase
         """
         self.MigrateName = None
@@ -1616,12 +1616,16 @@ class DescribeProductConfigRequest(AbstractModel):
         """
         :param Zone: AZ ID in the format of ap-guangzhou-1
         :type Zone: str
+        :param InstanceType: The type of instances to be purchased. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)
+        :type InstanceType: str
         """
         self.Zone = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
+        self.InstanceType = params.get("InstanceType")
 
 
 class DescribeProductConfigResponse(AbstractModel):
@@ -2973,6 +2977,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type PostPid: list of int
         :param PayModeStatus: Billing mode under this specification. POST: pay-as-you-go
         :type PayModeStatus: str
+        :param InstanceType: Instance type. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)
+        :type InstanceType: str
+        :param MultiZonesStatus: Whether multi-AZ deployment is supported. Valid values: MultiZones (only multi-AZ deployment is supported), SameZones (only single-AZ deployment is supported), ALL (both deployments are supported)
+        :type MultiZonesStatus: str
         """
         self.SpecId = None
         self.MachineType = None
@@ -2988,6 +2996,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Pid = None
         self.PostPid = None
         self.PayModeStatus = None
+        self.InstanceType = None
+        self.MultiZonesStatus = None
 
 
     def _deserialize(self, params):
@@ -3005,6 +3015,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Pid = params.get("Pid")
         self.PostPid = params.get("PostPid")
         self.PayModeStatus = params.get("PayModeStatus")
+        self.InstanceType = params.get("InstanceType")
+        self.MultiZonesStatus = params.get("MultiZonesStatus")
 
 
 class TerminateDBInstanceRequest(AbstractModel):

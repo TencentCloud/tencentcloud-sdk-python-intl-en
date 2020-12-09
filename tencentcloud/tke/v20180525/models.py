@@ -226,6 +226,88 @@ class AutoscalingAdded(AbstractModel):
         self.Total = params.get("Total")
 
 
+class CheckInstancesUpgradeAbleRequest(AbstractModel):
+    """CheckInstancesUpgradeAble request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param InstanceIds: Specify the node list to check. If it’s not passed in, all nodes of the cluster will be checked.
+        :type InstanceIds: list of str
+        :param UpgradeType: Upgrade type
+        :type UpgradeType: str
+        :param Offset: Pagination offset
+        :type Offset: int
+        :param Limit: Pagination limit
+        :type Limit: int
+        :param Filter: Filtering
+        :type Filter: list of Filter
+        """
+        self.ClusterId = None
+        self.InstanceIds = None
+        self.UpgradeType = None
+        self.Offset = None
+        self.Limit = None
+        self.Filter = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.UpgradeType = params.get("UpgradeType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+
+
+class CheckInstancesUpgradeAbleResponse(AbstractModel):
+    """CheckInstancesUpgradeAble response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterVersion: The current minor version of cluster Master
+        :type ClusterVersion: str
+        :param LatestVersion: The latest minor version of cluster Master corresponding major version
+        :type LatestVersion: str
+        :param UpgradeAbleInstances: List of nodes that can be upgraded
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type UpgradeAbleInstances: list of UpgradeAbleInstancesItem
+        :param Total: Total number
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClusterVersion = None
+        self.LatestVersion = None
+        self.UpgradeAbleInstances = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterVersion = params.get("ClusterVersion")
+        self.LatestVersion = params.get("LatestVersion")
+        if params.get("UpgradeAbleInstances") is not None:
+            self.UpgradeAbleInstances = []
+            for item in params.get("UpgradeAbleInstances"):
+                obj = UpgradeAbleInstancesItem()
+                obj._deserialize(item)
+                self.UpgradeAbleInstances.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class Cluster(AbstractModel):
     """Cluster information struct
 
@@ -3507,3 +3589,130 @@ class Taint(AbstractModel):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
         self.Effect = params.get("Effect")
+
+
+class UpgradeAbleInstancesItem(AbstractModel):
+    """Upgradeable node information
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Node ID
+        :type InstanceId: str
+        :param Version: The current version of the node
+        :type Version: str
+        :param LatestVersion: The latest minor version of the current version
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type LatestVersion: str
+        """
+        self.InstanceId = None
+        self.Version = None
+        self.LatestVersion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Version = params.get("Version")
+        self.LatestVersion = params.get("LatestVersion")
+
+
+class UpgradeClusterInstancesRequest(AbstractModel):
+    """UpgradeClusterInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Operation: create: starting an upgrade task
+pause: pausing the task
+resume: continuing the task
+abort: stopping the task
+        :type Operation: str
+        :param UpgradeType: Upgrade type. It’s only required when `Operation` is set as `create`.
+reset: the reinstallation and upgrade of major version
+hot: the hot upgrade of minor version
+major: in-place upgrade of major version
+        :type UpgradeType: str
+        :param InstanceIds: List of nodes that need to upgrade
+        :type InstanceIds: list of str
+        :param ResetParam: This parameter is used when the node joins the cluster again. Refer to the API of creating one or more cluster nodes.
+        :type ResetParam: :class:`tencentcloud.tke.v20180525.models.UpgradeNodeResetParam`
+        :param SkipPreCheck: Whether to skip the pre-upgrade check of the node
+        :type SkipPreCheck: bool
+        :param MaxNotReadyPercent: The maximum tolerable proportion of unavailable pods
+        :type MaxNotReadyPercent: float
+        """
+        self.ClusterId = None
+        self.Operation = None
+        self.UpgradeType = None
+        self.InstanceIds = None
+        self.ResetParam = None
+        self.SkipPreCheck = None
+        self.MaxNotReadyPercent = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Operation = params.get("Operation")
+        self.UpgradeType = params.get("UpgradeType")
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("ResetParam") is not None:
+            self.ResetParam = UpgradeNodeResetParam()
+            self.ResetParam._deserialize(params.get("ResetParam"))
+        self.SkipPreCheck = params.get("SkipPreCheck")
+        self.MaxNotReadyPercent = params.get("MaxNotReadyPercent")
+
+
+class UpgradeClusterInstancesResponse(AbstractModel):
+    """UpgradeClusterInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeNodeResetParam(AbstractModel):
+    """Node upgrade and reinstallation parameters
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceAdvancedSettings: Additional parameters set for the instance
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param EnhancedService: Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
+        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
+        :param LoginSettings: Node login information. For now, it only supports Password or a single KeyIds
+        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
+        :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the `sgId` field in the response of `DescribeSecurityGroups`. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId.)
+        :type SecurityGroupIds: list of str
+        """
+        self.InstanceAdvancedSettings = None
+        self.EnhancedService = None
+        self.LoginSettings = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
