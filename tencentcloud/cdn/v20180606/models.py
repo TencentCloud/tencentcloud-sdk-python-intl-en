@@ -341,6 +341,314 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CacheTime = params.get("CacheTime")
 
 
+class AdvancedAuthentication(AbstractModel):
+    """Timestamp hotlink protection advanced configuration (allowlist feature)
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Hotlink protection configuration switch (which can be on or off). If it is enabled, only one mode can and must be configured, while other modes are null.
+        :type Switch: str
+        :param TypeA: Timestamp hotlink protection advanced configuration mode A
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeA`
+        :param TypeB: Timestamp hotlink protection advanced configuration mode B
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TypeB: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeB`
+        :param TypeC: Timestamp hotlink protection advanced configuration mode C
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TypeC: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeC`
+        :param TypeD: Timestamp hotlink protection advanced configuration mode D
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TypeD: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeD`
+        :param TypeE: Timestamp hotlink protection advanced configuration mode E
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TypeE: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeE`
+        :param TypeF: Timestamp hotlink protection advanced configuration mode F
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TypeF: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeF`
+        """
+        self.Switch = None
+        self.TypeA = None
+        self.TypeB = None
+        self.TypeC = None
+        self.TypeD = None
+        self.TypeE = None
+        self.TypeF = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("TypeA") is not None:
+            self.TypeA = AdvancedAuthenticationTypeA()
+            self.TypeA._deserialize(params.get("TypeA"))
+        if params.get("TypeB") is not None:
+            self.TypeB = AdvancedAuthenticationTypeB()
+            self.TypeB._deserialize(params.get("TypeB"))
+        if params.get("TypeC") is not None:
+            self.TypeC = AdvancedAuthenticationTypeC()
+            self.TypeC._deserialize(params.get("TypeC"))
+        if params.get("TypeD") is not None:
+            self.TypeD = AdvancedAuthenticationTypeD()
+            self.TypeD._deserialize(params.get("TypeD"))
+        if params.get("TypeE") is not None:
+            self.TypeE = AdvancedAuthenticationTypeE()
+            self.TypeE._deserialize(params.get("TypeE"))
+        if params.get("TypeF") is not None:
+            self.TypeF = AdvancedAuthenticationTypeF()
+            self.TypeF._deserialize(params.get("TypeF"))
+
+
+class AdvancedAuthenticationTypeA(AbstractModel):
+    """Timestamp hotlink protection advanced configuration mode A
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.
+        :type SecretKey: str
+        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+        :type SignParam: str
+        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+        :type TimeParam: str
+        :param ExpireTime: Expiration time in seconds
+        :type ExpireTime: int
+        :param ExpireTimeRequired: Whether the expiration time parameter is required
+        :type ExpireTimeRequired: bool
+        :param Format: URL composition, e.g., `${private_key}${schema}${host}${full_uri}`.
+        :type Format: str
+        :param TimeFormat: Time format. Valid values: dec (decimal), hex (hexadecimal).
+        :type TimeFormat: str
+        :param FailCode: Status code returned when the authentication failed
+        :type FailCode: int
+        :param ExpireCode: Status code returned when the URL expired
+        :type ExpireCode: int
+        :param RulePaths: List of URLs to be authenticated
+        :type RulePaths: list of str
+        :param Transformation: Reserved field
+        :type Transformation: int
+        """
+        self.SecretKey = None
+        self.SignParam = None
+        self.TimeParam = None
+        self.ExpireTime = None
+        self.ExpireTimeRequired = None
+        self.Format = None
+        self.TimeFormat = None
+        self.FailCode = None
+        self.ExpireCode = None
+        self.RulePaths = None
+        self.Transformation = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.SignParam = params.get("SignParam")
+        self.TimeParam = params.get("TimeParam")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ExpireTimeRequired = params.get("ExpireTimeRequired")
+        self.Format = params.get("Format")
+        self.TimeFormat = params.get("TimeFormat")
+        self.FailCode = params.get("FailCode")
+        self.ExpireCode = params.get("ExpireCode")
+        self.RulePaths = params.get("RulePaths")
+        self.Transformation = params.get("Transformation")
+
+
+class AdvancedAuthenticationTypeB(AbstractModel):
+    """Timestamp hotlink protection advanced configuration mode B
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyAlpha: Alpha key name
+        :type KeyAlpha: str
+        :param KeyBeta: Beta key name
+        :type KeyBeta: str
+        :param KeyGamma: Gamma key name
+        :type KeyGamma: str
+        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+        :type SignParam: str
+        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+        :type TimeParam: str
+        :param ExpireTime: Expiration time in seconds
+        :type ExpireTime: int
+        :param TimeFormat: Time format. Valid values: dec (decimal), hex (hexadecimal).
+        :type TimeFormat: str
+        :param FailCode: Status code returned when the authentication failed
+        :type FailCode: int
+        :param ExpireCode: Status code returned when the URL expired
+        :type ExpireCode: int
+        :param RulePaths: List of URLs to be authenticated
+        :type RulePaths: list of str
+        """
+        self.KeyAlpha = None
+        self.KeyBeta = None
+        self.KeyGamma = None
+        self.SignParam = None
+        self.TimeParam = None
+        self.ExpireTime = None
+        self.TimeFormat = None
+        self.FailCode = None
+        self.ExpireCode = None
+        self.RulePaths = None
+
+
+    def _deserialize(self, params):
+        self.KeyAlpha = params.get("KeyAlpha")
+        self.KeyBeta = params.get("KeyBeta")
+        self.KeyGamma = params.get("KeyGamma")
+        self.SignParam = params.get("SignParam")
+        self.TimeParam = params.get("TimeParam")
+        self.ExpireTime = params.get("ExpireTime")
+        self.TimeFormat = params.get("TimeFormat")
+        self.FailCode = params.get("FailCode")
+        self.ExpireCode = params.get("ExpireCode")
+        self.RulePaths = params.get("RulePaths")
+
+
+class AdvancedAuthenticationTypeC(AbstractModel):
+    """Timestamp hotlink protection advanced configuration mode C
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessKey: Access key
+        :type AccessKey: str
+        :param SecretKey: Authentication key
+        :type SecretKey: str
+        """
+        self.AccessKey = None
+        self.SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+
+
+class AdvancedAuthenticationTypeD(AbstractModel):
+    """Timestamp hotlink protection advanced configuration mode D
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.
+        :type SecretKey: str
+        :param BackupSecretKey: Alternative key used for authentication after the authentication key (`SecretKey`) failed
+        :type BackupSecretKey: str
+        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+        :type SignParam: str
+        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+        :type TimeParam: str
+        :param ExpireTime: Expiration time in seconds
+        :type ExpireTime: int
+        :param TimeFormat: Time format. Valid values: dec (decimal), hex (hexadecimal).
+        :type TimeFormat: str
+        """
+        self.SecretKey = None
+        self.BackupSecretKey = None
+        self.SignParam = None
+        self.TimeParam = None
+        self.ExpireTime = None
+        self.TimeFormat = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.BackupSecretKey = params.get("BackupSecretKey")
+        self.SignParam = params.get("SignParam")
+        self.TimeParam = params.get("TimeParam")
+        self.ExpireTime = params.get("ExpireTime")
+        self.TimeFormat = params.get("TimeFormat")
+
+
+class AdvancedAuthenticationTypeE(AbstractModel):
+    """Timestamp hotlink protection advanced configuration mode E
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SecretKey: str
+        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SignParam: str
+        :param AclSignParam: ACL signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AclSignParam: str
+        :param StartTimeParam: Start time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type StartTimeParam: str
+        :param ExpireTimeParam: Expiration time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ExpireTimeParam: str
+        :param TimeFormat: Time format (dec)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TimeFormat: str
+        """
+        self.SecretKey = None
+        self.SignParam = None
+        self.AclSignParam = None
+        self.StartTimeParam = None
+        self.ExpireTimeParam = None
+        self.TimeFormat = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.SignParam = params.get("SignParam")
+        self.AclSignParam = params.get("AclSignParam")
+        self.StartTimeParam = params.get("StartTimeParam")
+        self.ExpireTimeParam = params.get("ExpireTimeParam")
+        self.TimeFormat = params.get("TimeFormat")
+
+
+class AdvancedAuthenticationTypeF(AbstractModel):
+    """Timestamp hotlink protection advanced authentication configuration mode F (TypeF)
+
+    """
+
+    def __init__(self):
+        """
+        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SignParam: str
+        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TimeParam: str
+        :param TransactionParam: Transaction field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TransactionParam: str
+        :param SecretKey: CMK used for signature calculation, allowing 6 to 32 bytes of letters and digits.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SecretKey: str
+        :param BackupSecretKey: Alternative key used for signature calculation, which is used after the CMK fails in authentication. It allows 6 to 32 bytes of letters and digits.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BackupSecretKey: str
+        """
+        self.SignParam = None
+        self.TimeParam = None
+        self.TransactionParam = None
+        self.SecretKey = None
+        self.BackupSecretKey = None
+
+
+    def _deserialize(self, params):
+        self.SignParam = params.get("SignParam")
+        self.TimeParam = params.get("TimeParam")
+        self.TransactionParam = params.get("TransactionParam")
+        self.SecretKey = params.get("SecretKey")
+        self.BackupSecretKey = params.get("BackupSecretKey")
+
+
 class AdvancedCache(AbstractModel):
     """Advanced cache expiration configuration (This feature is in beta and not generally available yet.)
     Note: this version does not support setting homepage cache rules.
@@ -1863,6 +2171,42 @@ class DescribeCdnIpResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCdnOriginIpRequest(AbstractModel):
+    """DescribeCdnOriginIp request structure.
+
+    """
+
+
+class DescribeCdnOriginIpResponse(AbstractModel):
+    """DescribeCdnOriginIp response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Ips: Intermediate node IP details
+        :type Ips: list of OriginIp
+        :param TotalCount: Number of intermediate node IPs
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Ips = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ips") is not None:
+            self.Ips = []
+            for item in params.get("Ips"):
+                obj = OriginIp()
+                obj._deserialize(item)
+                self.Ips.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCertDomainsRequest(AbstractModel):
     """DescribeCertDomains request structure.
 
@@ -2895,8 +3239,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MaxAge: Browser cache expiration rule configuration (in beta)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param Ipv6: IPv6 configuration (in beta)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Ipv6: IPv6 origin-pull configuration (in beta)
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
         :param Compatibility: Backwards compatibility configuration (compatibility field for internal use)
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2945,6 +3289,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tag: Tag configuration
 Note: this field may return null, indicating that no valid value is obtained.
         :type Tag: list of Tag
+        :param AdvancedAuthentication: Timestamp hotlink protection advanced configuration (allowlist feature)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
+        :param OriginAuthentication: Origin-pull authentication advanced configuration (allowlist feature)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
         """
         self.ResourceId = None
         self.AppId = None
@@ -2994,6 +3344,8 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.UrlRedirect = None
         self.AccessPort = None
         self.Tag = None
+        self.AdvancedAuthentication = None
+        self.OriginAuthentication = None
 
 
     def _deserialize(self, params):
@@ -3116,6 +3468,12 @@ Note: this field may return null, indicating that no valid value is obtained.
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tag.append(obj)
+        if params.get("AdvancedAuthentication") is not None:
+            self.AdvancedAuthentication = AdvancedAuthentication()
+            self.AdvancedAuthentication._deserialize(params.get("AdvancedAuthentication"))
+        if params.get("OriginAuthentication") is not None:
+            self.OriginAuthentication = OriginAuthentication()
+            self.OriginAuthentication._deserialize(params.get("OriginAuthentication"))
 
 
 class DisableCachesRequest(AbstractModel):
@@ -4645,29 +5003,35 @@ class MaxAgeRule(AbstractModel):
     def __init__(self):
         """
         :param MaxAgeType: Rule types:
-`all`: effective for all files
-`file`: effective for specified file suffixes
-`directory`: effective for specified paths
-`path`: effective for specified absolute paths
+`all`: effective for all files.
+`file`: effective for specified file suffixes.
+`directory`: effective for specified paths.
+`path`: effective for specified absolute paths.
+`index`: effective for specified homepages.
         :type MaxAgeType: str
-        :param MaxAgeContents: Content for each MaxAgeType:
-For `all`, enter an asterisk (*).
-For `file`, enter the suffix, such as jpg, txt.
-For `directory`, enter the path, such as /xxx/test/.
-For `path`, enter the corresponding absolute path, such as /xxx/test.html.
+        :param MaxAgeContents: Content for each `MaxAgeType`:
+For `all`, enter a wildcard `*`.
+For `file`, enter the suffix, e.g., `jpg` or `txt`.
+For `directory`, enter the path, e.g., `/xxx/test/`.
+For `path`, enter the absolute path, e.g., `/xxx/test.html`.
+For `index`, enter a forward slash `/`.
         :type MaxAgeContents: list of str
         :param MaxAgeTime: MaxAge time (in seconds)
         :type MaxAgeTime: int
+        :param FollowOrigin: 
+        :type FollowOrigin: str
         """
         self.MaxAgeType = None
         self.MaxAgeContents = None
         self.MaxAgeTime = None
+        self.FollowOrigin = None
 
 
     def _deserialize(self, params):
         self.MaxAgeType = params.get("MaxAgeType")
         self.MaxAgeContents = params.get("MaxAgeContents")
         self.MaxAgeTime = params.get("MaxAgeTime")
+        self.FollowOrigin = params.get("FollowOrigin")
 
 
 class Origin(AbstractModel):
@@ -4763,6 +5127,66 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 obj = PathRule()
                 obj._deserialize(item)
                 self.PathRules.append(obj)
+
+
+class OriginAuthentication(AbstractModel):
+    """Origin-pull authentication advanced configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Authentication switch, which can be on or off.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Switch: str
+        :param TypeA: Authentication type configuration A
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.OriginAuthenticationTypeA`
+        """
+        self.Switch = None
+        self.TypeA = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("TypeA") is not None:
+            self.TypeA = OriginAuthenticationTypeA()
+            self.TypeA._deserialize(params.get("TypeA"))
+
+
+class OriginAuthenticationTypeA(AbstractModel):
+    """Origin-pull authentication advanced configuration TypeA
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SecretKey: str
+        """
+        self.SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+
+
+class OriginIp(AbstractModel):
+    """IP information of CDN intermediate nodes
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip: Intermediate IP range/intermediate IP. The IP range information is returned by default.
+        :type Ip: str
+        """
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
 
 
 class OriginPullOptimization(AbstractModel):
@@ -5009,20 +5433,20 @@ class PathRule(AbstractModel):
         :param Regex: Whether regex match is used.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Regex: bool
-        :param Path: The matched URL path
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param Path: Matched URL. Only URLs are supported, while parameters are not. The exact match is used by default. In regex match, up to 5 wildcards `*` are supported. The URL can contain up to 1,024 characters.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Path: str
-        :param Origin: Origin-pull server when the path matches. COS source with private read/write is not supported.
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param Origin: Origin server when the path matches. COS origin with private read/write is not supported. The default origin server will be used by default when this field is left empty.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Origin: str
-        :param ServerName: Origin-pull host when the path matches.
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param ServerName: Origin server host header when the path matches. The default `ServerName` will be used by default when this field is left empty.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ServerName: str
-        :param OriginArea: The region of origin server. Valid values: `CN` (mainland China), `OV` (outside mainland China)
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param OriginArea: Origin server region. Valid values: CN (the Chinese mainland), OV (outside the Chinese mainland).
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OriginArea: str
-        :param ForwardUri: Origin-pull URI path when the path matches.
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param ForwardUri: Origin server URI path when the path matches, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ForwardUri: str
         :param RequestHeaders: Origin-pull header setting when the path matches.
 Note: this field may return `null`, indicating that no valid value is obtained.
@@ -5709,21 +6133,23 @@ class RuleCache(AbstractModel):
 
     def __init__(self):
         """
-        :param RulePaths: Content for each CacheType:
-For `all`, enter an asterisk (*).
-For `file`, enter the suffix, such as jpg, txt.
-For `directory`, enter the path, such as /xxx/test/.
-For `path`, enter the corresponding absolute path, such as /xxx/test.html.
-For `index`, enter a backslash (/).
-Note: this field may return null, indicating that no valid value is obtained.
+        :param RulePaths: Content for each `CacheType`:
+For `all`, enter a wildcard `*`.
+For `file`, enter the suffix, e.g., `jpg` or `txt`.
+For `directory`, enter the path, e.g., `/xxx/test/`.
+For `path`, enter the absolute path, e.g., `/xxx/test.html`.
+For `index`, enter a forward slash `/`.
+For `default`, enter `no max-age`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RulePaths: list of str
         :param RuleType: Rule types:
-`all`: effective for all files
-`file`: effective for specified file suffixes
-`directory`: effective for specified paths
-`path`: effective for specified absolute paths
-`index`: home page
-Note: this field may return null, indicating that no valid value is obtained.
+`all`: effective for all files.
+`file`: effective for specified file suffixes.
+`directory`: effective for specified paths.
+`path`: effective for specified absolute paths.
+`index`: homepage.
+`default`: effective when the origin server does not have the `max-age` value.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RuleType: str
         :param CacheConfig: Cache configuration
 Note: this field may return null, indicating that no valid value is obtained.
@@ -6513,6 +6939,10 @@ global: global acceleration
         :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
         :param AccessPort: Access port configuration
         :type AccessPort: list of int
+        :param AdvancedAuthentication: Timestamp hotlink protection advanced configuration (allowlist feature)
+        :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
+        :param OriginAuthentication: Origin-pull authentication advanced configuration (allowlist feature)
+        :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
         """
         self.Domain = None
         self.ProjectId = None
@@ -6548,6 +6978,8 @@ global: global acceleration
         self.AccessControl = None
         self.UrlRedirect = None
         self.AccessPort = None
+        self.AdvancedAuthentication = None
+        self.OriginAuthentication = None
 
 
     def _deserialize(self, params):
@@ -6643,6 +7075,12 @@ global: global acceleration
             self.UrlRedirect = UrlRedirect()
             self.UrlRedirect._deserialize(params.get("UrlRedirect"))
         self.AccessPort = params.get("AccessPort")
+        if params.get("AdvancedAuthentication") is not None:
+            self.AdvancedAuthentication = AdvancedAuthentication()
+            self.AdvancedAuthentication._deserialize(params.get("AdvancedAuthentication"))
+        if params.get("OriginAuthentication") is not None:
+            self.OriginAuthentication = OriginAuthentication()
+            self.OriginAuthentication._deserialize(params.get("OriginAuthentication"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):
@@ -6771,20 +7209,24 @@ class UrlRedirectRule(AbstractModel):
         """
         :param RedirectStatusCode: Redirect status code. Valid values: 301, 302
         :type RedirectStatusCode: int
-        :param Pattern: Pattern of the URL to be matched, which can contain up to 1,024 characters. Full-path match and regex match are supported.
+        :param Pattern: URL to be matched. Only URLs are supported, while parameters are not. The exact match is used by default. In regex match, up to 5 wildcards `*` are supported. The URL can contain up to 1,024 characters.
         :type Pattern: str
-        :param RedirectUrl: Target URL, which must begin with `/` and can contain up to 1,024 characters.
+        :param RedirectUrl: Target URL, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.
         :type RedirectUrl: str
+        :param RedirectHost: 
+        :type RedirectHost: str
         """
         self.RedirectStatusCode = None
         self.Pattern = None
         self.RedirectUrl = None
+        self.RedirectHost = None
 
 
     def _deserialize(self, params):
         self.RedirectStatusCode = params.get("RedirectStatusCode")
         self.Pattern = params.get("Pattern")
         self.RedirectUrl = params.get("RedirectUrl")
+        self.RedirectHost = params.get("RedirectHost")
 
 
 class UserAgentFilter(AbstractModel):

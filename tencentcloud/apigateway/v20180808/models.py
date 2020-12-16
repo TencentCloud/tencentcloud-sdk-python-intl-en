@@ -328,6 +328,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: Information of tags bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
+        :param Environments: Environment information published for API.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Environments: list of str
         """
         self.ServiceId = None
         self.ServiceName = None
@@ -376,6 +379,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ServiceTsfHealthCheckConf = None
         self.EnableCORS = None
         self.Tags = None
+        self.Environments = None
 
 
     def _deserialize(self, params):
@@ -466,6 +470,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Environments = params.get("Environments")
 
 
 class ApiKey(AbstractModel):
@@ -1007,11 +1012,11 @@ class CreateApiRequest(AbstractModel):
         """
         :param ServiceId: Unique service ID of API.
         :type ServiceId: str
-        :param ServiceType: API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
+        :param ServiceType: API backend service type. Valid values: HTTP, MOCK, TSF, SCF, WEBSOCKET, TARGET (in beta test).
         :type ServiceType: str
         :param ServiceTimeout: API backend service timeout period in seconds.
         :type ServiceTimeout: int
-        :param Protocol: API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.
+        :param Protocol: API frontend request protocol. Valid values: HTTPS, WEBSOCKET.
         :type Protocol: str
         :param RequestConfig: Request frontend configuration.
         :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.ApiRequestConfig`
@@ -1350,7 +1355,7 @@ class CreateServiceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceName: Custom service name. If this parameter is left empty, the system will automatically generate a unique name.
+        :param ServiceName: Custom service name.
         :type ServiceName: str
         :param Protocol: Service frontend request type, such as `http`, `https`, and `http&https`.
         :type Protocol: str

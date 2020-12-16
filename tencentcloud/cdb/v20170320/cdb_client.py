@@ -194,6 +194,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCloneInstance(self, request):
+        """This API is used to create a clone of a specific instance, and roll back the clone by using a physical backup file of the instance or roll back the clone to a point in time.
+
+        :param request: Request instance for CreateCloneInstance.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCloneInstanceRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateCloneInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCloneInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCloneInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDBImportJob(self, request):
         """This API (CreateDBImportJob) is used to create a data import task for a TencentDB instance.
 
@@ -782,6 +810,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBinlogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloneList(self, request):
+        """This API is used to query the clone task list of an instance.
+
+        :param request: Request instance for DescribeCloneList.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCloneListRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCloneListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloneList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloneListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2419,6 +2475,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopDBImportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopRollback(self, request):
+        """This API is used to cancel a rollback task in progress, and returns an async task ID. You can use the `DescribeAsyncRequestInfo` API to query the result of cancellation.
+
+        :param request: Request instance for StopRollback.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StopRollbackRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StopRollbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopRollback", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopRollbackResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

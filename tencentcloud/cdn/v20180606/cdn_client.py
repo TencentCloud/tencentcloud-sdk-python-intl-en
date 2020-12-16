@@ -260,6 +260,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCdnOriginIp(self, request):
+        """This API is used to query the IP information of CDN intermediate nodes. Note: the relevant allowlist needs to be enabled for this API.
+
+        :param request: Request instance for DescribeCdnOriginIp.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnOriginIpRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnOriginIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCdnOriginIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCdnOriginIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCertDomains(self, request):
         """This API is used to verify an SSL certificate and extract the domain names. It will then return the list of domain names connected to CDN and the list of domain names with the certificate configured.
 

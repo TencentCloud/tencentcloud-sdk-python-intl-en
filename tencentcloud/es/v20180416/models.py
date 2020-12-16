@@ -1139,6 +1139,40 @@ class RestartInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RestartKibanaRequest(AbstractModel):
+    """RestartKibana request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ES instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class RestartKibanaResponse(AbstractModel):
+    """RestartKibana response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RestartNodesRequest(AbstractModel):
     """RestartNodes request structure.
 
@@ -1295,7 +1329,7 @@ class UpdateInstanceRequest(AbstractModel):
         :param NodeNum: This parameter has been disused. Please use `NodeInfoList`
 Number of nodes (2-50)
         :type NodeNum: int
-        :param EsConfig: Configuration item (JSON string)
+        :param EsConfig: ES configuration item (JSON string)
         :type EsConfig: str
         :param Password: Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
         :type Password: str
@@ -1340,6 +1374,8 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         :type MultiZoneInfo: list of ZoneDetail
         :param SceneType: Scenario template type. -1: not enabled; 1: general; 2: log; 3: search
         :type SceneType: int
+        :param KibanaConfig: Kibana configuration item (JSON string)
+        :type KibanaConfig: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1364,6 +1400,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         self.ScaleType = None
         self.MultiZoneInfo = None
         self.SceneType = None
+        self.KibanaConfig = None
 
 
     def _deserialize(self, params):
@@ -1406,6 +1443,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
                 obj._deserialize(item)
                 self.MultiZoneInfo.append(obj)
         self.SceneType = params.get("SceneType")
+        self.KibanaConfig = params.get("KibanaConfig")
 
 
 class UpdateInstanceResponse(AbstractModel):

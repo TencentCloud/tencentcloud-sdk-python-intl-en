@@ -83,19 +83,19 @@ class AddTimeWindowRequest(AbstractModel):
         """
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param Monday: Time period available for maintenance on Monday in the format of 10:00-12:00. Each period lasts from half an hour to three hours, with the start time and end time aligned by half-hour. Up to two time periods can be set. The same rule applies below.
+        :param Monday: Maintenance window on Monday. The format should be 10:00-12:00. You can set multiple time windows on a day. Each time window lasts from half an hour to three hours, and must start and end on the hour or half hour. At least one time window is required in a week. The same rule applies to the following parameters.
         :type Monday: list of str
-        :param Tuesday: Maintenance time window on Tuesday
+        :param Tuesday: Maintenance window on Tuesday. At least one time window is required in a week.
         :type Tuesday: list of str
-        :param Wednesday: Maintenance time window on Wednesday
+        :param Wednesday: Maintenance window on Wednesday. At least one time window is required in a week.
         :type Wednesday: list of str
-        :param Thursday: Maintenance time window on Thursday
+        :param Thursday: Maintenance window on Thursday. At least one time window is required in a week.
         :type Thursday: list of str
-        :param Friday: Maintenance time window on Friday
+        :param Friday: Maintenance window on Friday. At least one time window is required in a week.
         :type Friday: list of str
-        :param Saturday: Maintenance time window on Saturday
+        :param Saturday: Maintenance window on Saturday. At least one time window is required in a week.
         :type Saturday: list of str
-        :param Sunday: Maintenance time window on Sunday
+        :param Sunday: Maintenance window on Sunday. At least one time window is required in a week.
         :type Sunday: list of str
         """
         self.InstanceId = None
@@ -421,6 +421,51 @@ class BinlogInfo(AbstractModel):
         self.BinlogFinishTime = params.get("BinlogFinishTime")
 
 
+class CloneItem(AbstractModel):
+    """Clone task information.
+
+    """
+
+    def __init__(self):
+        """
+        :param SrcInstanceId: ID of the original instance in a clone task
+        :type SrcInstanceId: str
+        :param DstInstanceId: ID of the cloned instance in a clone task
+        :type DstInstanceId: str
+        :param CloneJobId: Clone task ID
+        :type CloneJobId: int
+        :param RollbackStrategy: The policy used in a clone task. Valid values: `timepoint` (roll back to a specific point in time), `backupset` (roll back by using a specific backup file).
+        :type RollbackStrategy: str
+        :param RollbackTargetTime: The point in time to which the cloned instance will be rolled back
+        :type RollbackTargetTime: str
+        :param StartTime: Task start time
+        :type StartTime: str
+        :param EndTime: Task end time
+        :type EndTime: str
+        :param TaskStatus: Task status. Valid values: `initial`, `running`, `wait_complete`, `success`, `failed`.
+        :type TaskStatus: str
+        """
+        self.SrcInstanceId = None
+        self.DstInstanceId = None
+        self.CloneJobId = None
+        self.RollbackStrategy = None
+        self.RollbackTargetTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.TaskStatus = None
+
+
+    def _deserialize(self, params):
+        self.SrcInstanceId = params.get("SrcInstanceId")
+        self.DstInstanceId = params.get("DstInstanceId")
+        self.CloneJobId = params.get("CloneJobId")
+        self.RollbackStrategy = params.get("RollbackStrategy")
+        self.RollbackTargetTime = params.get("RollbackTargetTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TaskStatus = params.get("TaskStatus")
+
+
 class CloseWanServiceRequest(AbstractModel):
     """CloseWanService request structure.
 
@@ -633,6 +678,110 @@ class CreateBackupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.BackupId = params.get("BackupId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCloneInstanceRequest(AbstractModel):
+    """CreateCloneInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of the instance to be cloned from
+        :type InstanceId: str
+        :param SpecifiedRollbackTime: To roll back the cloned instance to a specific point in time, set this parameter to a value in the format of "yyyy-mm-dd hh:mm:ss".
+        :type SpecifiedRollbackTime: str
+        :param SpecifiedBackupId: To roll back the cloned instance to a specific physical backup file, set this parameter to the ID of the physical backup file. The ID can be obtained by the [DescribeBackups](https://intl.cloud.tencent.com/document/api/236/15842?from_cn_redirect=1) API.
+        :type SpecifiedBackupId: int
+        :param UniqVpcId: VPC ID, which can be obtained by the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API. If this parameter is left empty, the classic network will be used by default.
+        :type UniqVpcId: str
+        :param UniqSubnetId: VPC subnet ID, which can be obtained by the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API. If `UniqVpcId` is set, `UniqSubnetId` will be required.
+        :type UniqSubnetId: str
+        :param Memory: Memory of the cloned instance in MB, which should be equal to (by default) or larger than that of the original instance
+        :type Memory: int
+        :param Volume: Disk capacity of the cloned instance in GB, which should be equal to (by default) or larger than that of the original instance
+        :type Volume: int
+        :param InstanceName: Name of the cloned instance
+        :type InstanceName: str
+        :param SecurityGroup: Security group parameter, which can be obtained by the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API
+        :type SecurityGroup: list of str
+        :param ResourceTags: Information of the cloned instance tag
+        :type ResourceTags: list of TagInfo
+        :param Cpu: CPU core quantity of the cloned instance, which is equal to or larger than that of the original instance
+        :type Cpu: int
+        :param ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0.
+        :type ProtectMode: int
+        :param DeployMode: Multi-AZ or single-AZ. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0.
+        :type DeployMode: int
+        :param SlaveZone: Availability zone information of replica 1 of the cloned instance, which is the same as the value of `Zone` of the original instance by default
+        :type SlaveZone: str
+        :param BackupZone: Availability zone information of replica 2 of the cloned instance, 
+which is left empty by default. Specify this parameter when cloning a strong sync source instance.
+        :type BackupZone: str
+        :param DeviceType: Type of the cloned instance. Valid values: `HA` (High-Availability Edition), `EXCLUSIVE` (dedicated). Default value: `HA`.
+        :type DeviceType: str
+        """
+        self.InstanceId = None
+        self.SpecifiedRollbackTime = None
+        self.SpecifiedBackupId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.Memory = None
+        self.Volume = None
+        self.InstanceName = None
+        self.SecurityGroup = None
+        self.ResourceTags = None
+        self.Cpu = None
+        self.ProtectMode = None
+        self.DeployMode = None
+        self.SlaveZone = None
+        self.BackupZone = None
+        self.DeviceType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SpecifiedRollbackTime = params.get("SpecifiedRollbackTime")
+        self.SpecifiedBackupId = params.get("SpecifiedBackupId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.InstanceName = params.get("InstanceName")
+        self.SecurityGroup = params.get("SecurityGroup")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.Cpu = params.get("Cpu")
+        self.ProtectMode = params.get("ProtectMode")
+        self.DeployMode = params.get("DeployMode")
+        self.SlaveZone = params.get("SlaveZone")
+        self.BackupZone = params.get("BackupZone")
+        self.DeviceType = params.get("DeviceType")
+
+
+class CreateCloneInstanceResponse(AbstractModel):
+    """CreateCloneInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: LimitAsync task request ID, which can be used to query the execution result of an async task
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1948,6 +2097,61 @@ class DescribeBinlogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCloneListRequest(AbstractModel):
+    """DescribeCloneList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of the original instance. This parameter is used to query the clone task list of a specific original instance.
+        :type InstanceId: str
+        :param Offset: Paginated query offset
+        :type Offset: int
+        :param Limit: The number of results per page in paginated queries
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeCloneListResponse(AbstractModel):
+    """DescribeCloneList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of results which meet the conditions
+        :type TotalCount: int
+        :param Items: Clone task list
+        :type Items: list of CloneItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = CloneItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBImportRecordsRequest(AbstractModel):
     """DescribeDBImportRecords request structure.
 
@@ -2830,7 +3034,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
         :type EndTime: int
         :param KeyWords: List of keywords to match. Up to 15 keywords are supported.
         :type KeyWords: list of str
-        :param Limit: Number of results to be returned per page. Maximum value: 400.
+        :param Limit: The number of results per page in paginated queries. Default value: 100. Maximum value: 400.
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -3344,7 +3548,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         :type OrderBy: str
         :param Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of results to be returned at a time. Maximum value: 400.
+        :param Limit: The number of results per page in paginated queries. Default value: 100. Maximum value: 400.
         :type Limit: int
         """
         self.InstanceId = None
@@ -6703,6 +6907,44 @@ class StopDBImportJobResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopRollbackRequest(AbstractModel):
+    """StopRollback request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of the instance whose rollback task is canceled
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class StopRollbackResponse(AbstractModel):
+    """StopRollback response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Async task request ID
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 

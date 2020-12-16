@@ -23,11 +23,13 @@ class LivenessCompareRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageBase64: Base64 value of a photo for face comparison;
-Base64-encoded image data is up to 3 MB. Only JPG and PNG formats are supported.
+        :param ImageBase64: Base64 string of the image for face comparison.
+The size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.
+Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
         :type ImageBase64: str
-        :param VideoBase64: Base64 value of a video for liveness detection;
-The size after Base64-encoding cannot exceed 5 MB. MP4, AVI, and FLV formats are supported.
+        :param VideoBase64: Base64 string of the video for liveness detection.
+The size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.
+Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
         :type VideoBase64: str
         :param LivenessType: Liveness detection type. Valid values: LIP/ACTION/SILENT.
 LIP: numeric mode; ACTION: motion mode; SILENT: silent mode. You need to select a mode to input.
@@ -69,6 +71,8 @@ class LivenessCompareResponse(AbstractModel):
         :type Result: str
         :param Description: Service result description.
         :type Description: str
+        :param BestFrameList: 
+        :type BestFrameList: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -76,6 +80,7 @@ class LivenessCompareResponse(AbstractModel):
         self.Sim = None
         self.Result = None
         self.Description = None
+        self.BestFrameList = None
         self.RequestId = None
 
 
@@ -84,4 +89,5 @@ class LivenessCompareResponse(AbstractModel):
         self.Sim = params.get("Sim")
         self.Result = params.get("Result")
         self.Description = params.get("Description")
+        self.BestFrameList = params.get("BestFrameList")
         self.RequestId = params.get("RequestId")
