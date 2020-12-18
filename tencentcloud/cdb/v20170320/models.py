@@ -5519,6 +5519,90 @@ class ModifyRoGroupInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRoReplicationDelayRequest(AbstractModel):
+    """ModifyRoReplicationDelay request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ReplicationDelay: Replication delay in seconds. Value range: 1 to 259200.
+        :type ReplicationDelay: int
+        """
+        self.InstanceId = None
+        self.ReplicationDelay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ReplicationDelay = params.get("ReplicationDelay")
+
+
+class ModifyRoReplicationDelayResponse(AbstractModel):
+    """ModifyRoReplicationDelay response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRoTypeRequest(AbstractModel):
+    """ModifyRoType request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SrcRoInstType: The original type of an RO replica. Valid values: `NORMAL` (do not support delayed replication), `DELAY_REPLICATION` (support delayed replication).
+        :type SrcRoInstType: str
+        :param DstRoInstType: The target type of an RO replica. Valid values: `NORMAL` (do not support delayed replication), `DELAY_REPLICATION` (support delayed replication).
+        :type DstRoInstType: str
+        :param ReplicationDelay: Replication delay in seconds. This parameter is required when a regular RO replica is switched to a delayed one. Value range: 1 to 259200.
+        :type ReplicationDelay: int
+        """
+        self.InstanceId = None
+        self.SrcRoInstType = None
+        self.DstRoInstType = None
+        self.ReplicationDelay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SrcRoInstType = params.get("SrcRoInstType")
+        self.DstRoInstType = params.get("DstRoInstType")
+        self.ReplicationDelay = params.get("ReplicationDelay")
+
+
+class ModifyRoTypeResponse(AbstractModel):
+    """ModifyRoType response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTimeWindowRequest(AbstractModel):
     """ModifyTimeWindow request structure.
 
@@ -6876,6 +6960,57 @@ class StartBatchRollbackResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StartDelayReplicationRequest(AbstractModel):
+    """StartDelayReplication request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param DelayReplicationType: Delayed replication mode. Valid values: `DEFAULT` (replicate according to the specified replication delay), `GTID` (replicate according to the specified GTID), `DUE_TIME` (replicate according to the specified point in time).
+        :type DelayReplicationType: str
+        :param DueTime: Specified point in time. Default value: 0. The maximum value cannot be later than the current time.
+        :type DueTime: int
+        :param Gtid: Specified GITD. This parameter is required when the delayed replication mode is `GTID`.
+        :type Gtid: str
+        """
+        self.InstanceId = None
+        self.DelayReplicationType = None
+        self.DueTime = None
+        self.Gtid = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DelayReplicationType = params.get("DelayReplicationType")
+        self.DueTime = params.get("DueTime")
+        self.Gtid = params.get("Gtid")
+
+
+class StartDelayReplicationResponse(AbstractModel):
+    """StartDelayReplication response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Delayed replication task ID. This parameter will be returned if `DelayReplicationType` is not `DEFAULT`. It can be used to view the status of the delayed replication task.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class StopDBImportJobRequest(AbstractModel):
     """StopDBImportJob request structure.
 
@@ -6895,6 +7030,40 @@ class StopDBImportJobRequest(AbstractModel):
 
 class StopDBImportJobResponse(AbstractModel):
     """StopDBImportJob response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopDelayReplicationRequest(AbstractModel):
+    """StopDelayReplication request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class StopDelayReplicationResponse(AbstractModel):
+    """StopDelayReplication response structure.
 
     """
 

@@ -2255,6 +2255,62 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyRoReplicationDelay(self, request):
+        """This API is used to modify the replication delay of a delayed RO replica.
+
+        :param request: Request instance for ModifyRoReplicationDelay.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoReplicationDelayRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRoReplicationDelayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRoReplicationDelay", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRoReplicationDelayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRoType(self, request):
+        """This API is used to change a general RO replica to delayed RO replica.
+
+        :param request: Request instance for ModifyRoType.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoTypeRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRoTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRoType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRoTypeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyTimeWindow(self, request):
         """This API (ModifyTimeWindow) is used to update the maintenance time window of a TencentDB instance.
 
@@ -2461,6 +2517,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StartDelayReplication(self, request):
+        """This API is used to start delayed replication on a delayed RO replica.
+
+        :param request: Request instance for StartDelayReplication.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StartDelayReplicationRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StartDelayReplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartDelayReplication", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartDelayReplicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StopDBImportJob(self, request):
         """This API (StopDBImportJob) is used to stop a data import task.
 
@@ -2475,6 +2559,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopDBImportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopDelayReplication(self, request):
+        """This API is used to stop delayed replication on a delayed RO replica.
+
+        :param request: Request instance for StopDelayReplication.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StopDelayReplicationRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StopDelayReplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopDelayReplication", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopDelayReplicationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

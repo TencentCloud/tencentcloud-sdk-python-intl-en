@@ -26,24 +26,20 @@ class CloudauditClient(AbstractClient):
     _service = 'cloudaudit'
 
 
-    def CreateAudit(self, request):
-        """Parameter requirements:
-        1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `cosBucketName` are required.
-        2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.
-        3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.
-        4. If the value of `IsEnableKmsEncry` is 1, `KmsRegion` and `KeyId` are required.
+    def CreateRecorder(self, request):
+        """This API is used to create resource recorders to detect and record resource configuration changes.
 
-        :param request: Request instance for CreateAudit.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditResponse`
+        :param request: Request instance for CreateRecorder.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateRecorderRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.CreateRecorderResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAudit", params)
+            body = self.call("CreateRecorder", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateAuditResponse()
+                model = models.CreateRecorderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -58,20 +54,20 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteAudit(self, request):
-        """This API is used to delete a tracking set.
+    def DeleteRecorder(self, request):
+        """This API is used to delete resource recorders. After deletion, resource configuration changes will not be recorded.
 
-        :param request: Request instance for DeleteAudit.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditResponse`
+        :param request: Request instance for DeleteRecorder.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteRecorderRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteRecorderResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAudit", params)
+            body = self.call("DeleteRecorder", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteAuditResponse()
+                model = models.DeleteRecorderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -86,20 +82,20 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAudit(self, request):
-        """This API is used to query the details of a tracking set.
+    def DescribeDiscoveredResource(self, request):
+        """This API is used to view the basic information of discovered resources.
 
-        :param request: Request instance for DescribeAudit.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditResponse`
+        :param request: Request instance for DescribeDiscoveredResource.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeDiscoveredResourceRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeDiscoveredResourceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAudit", params)
+            body = self.call("DescribeDiscoveredResource", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAuditResponse()
+                model = models.DescribeDiscoveredResourceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -114,20 +110,20 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetAttributeKey(self, request):
-        """This API is used to query the valid values range of `AttributeKey`.
+    def DescribeRecorder(self, request):
+        """This API is used to display current configurations and status of a recorder.
 
-        :param request: Request instance for GetAttributeKey.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.GetAttributeKeyRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.GetAttributeKeyResponse`
+        :param request: Request instance for DescribeRecorder.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeRecorderRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeRecorderResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetAttributeKey", params)
+            body = self.call("DescribeRecorder", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetAttributeKeyResponse()
+                model = models.DescribeRecorderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -142,20 +138,20 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquireAuditCredit(self, request):
-        """This API is used to query the number of tracking sets that can be created.
+    def GetConfigurationItems(self, request):
+        """This API is used to get the list of resource configuration items and display resource configuration changes in chronological order.
 
-        :param request: Request instance for InquireAuditCredit.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.InquireAuditCreditRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.InquireAuditCreditResponse`
+        :param request: Request instance for GetConfigurationItems.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.GetConfigurationItemsRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.GetConfigurationItemsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("InquireAuditCredit", params)
+            body = self.call("GetConfigurationItems", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquireAuditCreditResponse()
+                model = models.GetConfigurationItemsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -170,20 +166,20 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ListAudits(self, request):
-        """This API is used to query the summary of tracking sets.
+    def ListDiscoveredResources(self, request):
+        """This API is used to view the list of discovered resources.
 
-        :param request: Request instance for ListAudits.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListAuditsRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ListAuditsResponse`
+        :param request: Request instance for ListDiscoveredResources.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListDiscoveredResourcesRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ListDiscoveredResourcesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ListAudits", params)
+            body = self.call("ListDiscoveredResources", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ListAuditsResponse()
+                model = models.ListDiscoveredResourcesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -198,20 +194,20 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ListCmqEnableRegion(self, request):
-        """This API is used to query CloudAudit-enabled CMQ AZs.
+    def ListSupportResourceTypes(self, request):
+        """This API is used to query the list of all CFA supported resource types.
 
-        :param request: Request instance for ListCmqEnableRegion.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCmqEnableRegionRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ListCmqEnableRegionResponse`
+        :param request: Request instance for ListSupportResourceTypes.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListSupportResourceTypesRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ListSupportResourceTypesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ListCmqEnableRegion", params)
+            body = self.call("ListSupportResourceTypes", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ListCmqEnableRegionResponse()
+                model = models.ListSupportResourceTypesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -226,136 +222,20 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ListCosEnableRegion(self, request):
-        """This API is used to query CloudAudit-enabled COS AZs.
+    def UpdateRecorder(self, request):
+        """This API is used to modify the resources to monitor, recorder name, and other recorder configurations.
 
-        :param request: Request instance for ListCosEnableRegion.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCosEnableRegionRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ListCosEnableRegionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ListCosEnableRegion", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ListCosEnableRegionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def LookUpEvents(self, request):
-        """This API is used to search for operation logs to help query relevant operation information.
-
-        :param request: Request instance for LookUpEvents.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.LookUpEventsRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.LookUpEventsResponse`
+        :param request: Request instance for UpdateRecorder.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.UpdateRecorderRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.UpdateRecorderResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("LookUpEvents", params)
+            body = self.call("UpdateRecorder", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LookUpEventsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def StartLogging(self, request):
-        """This API is used to enable a tracking set.
-
-        :param request: Request instance for StartLogging.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.StartLoggingRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.StartLoggingResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("StartLogging", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.StartLoggingResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def StopLogging(self, request):
-        """This API is used to disable a tracking set.
-
-        :param request: Request instance for StopLogging.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.StopLoggingRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.StopLoggingResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("StopLogging", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.StopLoggingResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def UpdateAudit(self, request):
-        """Parameter requirements:
-        1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `cosBucketName` are required.
-        2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.
-        3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.
-        4. If the value of `IsEnableKmsEncry` is 1, `KmsRegion` and `KeyId` are required.
-
-        :param request: Request instance for UpdateAudit.
-        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.UpdateAuditRequest`
-        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.UpdateAuditResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("UpdateAudit", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UpdateAuditResponse()
+                model = models.UpdateRecorderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

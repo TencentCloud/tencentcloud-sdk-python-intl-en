@@ -678,22 +678,22 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
         :param PayerUin: Query bill data user's UIN
         :type PayerUin: str
-        :param BeginTime: Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.
-        :type BeginTime: str
-        :param EndTime: Only ending in the current month is supported, and it must be the same month as the BeginTime. For example, 2018-09-30 23:59:59.
-        :type EndTime: str
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        self.PayerUin = params.get("PayerUin")
 
 
 class DescribeBillSummaryByPayModeResponse(AbstractModel):
@@ -734,22 +734,22 @@ class DescribeBillSummaryByProductRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
         :param PayerUin: Queries bill data user's UIN
         :type PayerUin: str
-        :param BeginTime: Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.
-        :type BeginTime: str
-        :param EndTime: Only ending in the current month is supported, and it must be the same month as the BeginTime. For example, 2018-09-30 23:59:59.
-        :type EndTime: str
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        self.PayerUin = params.get("PayerUin")
 
 
 class DescribeBillSummaryByProductResponse(AbstractModel):
@@ -797,22 +797,22 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
         :param PayerUin: Queries bill data user's UIN
         :type PayerUin: str
-        :param BeginTime: Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.
-        :type BeginTime: str
-        :param EndTime: Only ending in the current month is supported, and it must be the same month as the BeginTime. For example, 2018-09-30 23:59:59.
-        :type EndTime: str
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        self.PayerUin = params.get("PayerUin")
 
 
 class DescribeBillSummaryByProjectResponse(AbstractModel):
@@ -853,22 +853,22 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
         :param PayerUin: Queries bill data user's UIN
         :type PayerUin: str
-        :param BeginTime: Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.
-        :type BeginTime: str
-        :param EndTime: Only ending in the current month is supported, and it must be the same month as the BeginTime. For example, 2018-09-30 23:59:59.
-        :type EndTime: str
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        self.PayerUin = params.get("PayerUin")
 
 
 class DescribeBillSummaryByRegionResponse(AbstractModel):
@@ -909,26 +909,26 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PayerUin: Payer UIN
-        :type PayerUin: str
-        :param BeginTime: Currently the period to be queried must start from a time point in the current month, and the starting time and the end time must be in the same month. Example: 2018-09-01 00:00:00.
+        :param BeginTime: The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :type BeginTime: str
-        :param EndTime: Currently the period to be queried must end at a time point in the current month, and the starting time and the end time must be in the same month. Example: 2018-09-30 23:59:59.
+        :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :type EndTime: str
         :param TagKey: Cost allocation tag key
         :type TagKey: str
+        :param PayerUin: Payer UIN
+        :type PayerUin: str
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
         self.TagKey = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.TagKey = params.get("TagKey")
+        self.PayerUin = params.get("PayerUin")
 
 
 class DescribeBillSummaryByTagResponse(AbstractModel):

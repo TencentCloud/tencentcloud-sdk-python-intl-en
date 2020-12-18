@@ -976,6 +976,84 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.LastTriggerTime = params.get("LastTriggerTime")
 
 
+class BotCookie(AbstractModel):
+    """Bot cookie policy
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Valid values: `on` and `off`.
+        :type Switch: str
+        :param RuleType: Rule type, which can only be `all` currently.
+        :type RuleType: str
+        :param RuleValue: Rule value. Valid value: `*`.
+        :type RuleValue: list of str
+        :param Action: Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.
+        :type Action: str
+        :param RedirectUrl: Redirection target page
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RedirectUrl: str
+        :param UpdateTime: Update time
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        """
+        self.Switch = None
+        self.RuleType = None
+        self.RuleValue = None
+        self.Action = None
+        self.RedirectUrl = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.RuleType = params.get("RuleType")
+        self.RuleValue = params.get("RuleValue")
+        self.Action = params.get("Action")
+        self.RedirectUrl = params.get("RedirectUrl")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class BotJavaScript(AbstractModel):
+    """Bot JS policy
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Valid values: `on` and `off`.
+        :type Switch: str
+        :param RuleType: Rule type, which can only be `file` currently.
+        :type RuleType: str
+        :param RuleValue: Rule value. Valid values: `html` and `htm`.
+        :type RuleValue: list of str
+        :param Action: Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.
+        :type Action: str
+        :param RedirectUrl: Redirection target page
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RedirectUrl: str
+        :param UpdateTime: Update time
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        """
+        self.Switch = None
+        self.RuleType = None
+        self.RuleValue = None
+        self.Action = None
+        self.RedirectUrl = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.RuleType = params.get("RuleType")
+        self.RuleValue = params.get("RuleValue")
+        self.Action = params.get("Action")
+        self.RedirectUrl = params.get("RedirectUrl")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class BriefDomain(AbstractModel):
     """Basic domain configuration information, including CNAME, status, service type, acceleration region, creation time, last modified time, and origin server configuration.
 
@@ -4140,6 +4218,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type SslStatus: str
         :param Hsts: HSTS configuration
         :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
+        :param TlsVersion: TLS version settings, which only support certain advanced domain names. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TlsVersion: list of str
         """
         self.Switch = None
         self.Http2 = None
@@ -4150,6 +4231,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Spdy = None
         self.SslStatus = None
         self.Hsts = None
+        self.TlsVersion = None
 
 
     def _deserialize(self, params):
@@ -4168,6 +4250,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Hsts") is not None:
             self.Hsts = Hsts()
             self.Hsts._deserialize(params.get("Hsts"))
+        self.TlsVersion = params.get("TlsVersion")
 
 
 class ImageOptimization(AbstractModel):
@@ -5011,14 +5094,17 @@ class MaxAgeRule(AbstractModel):
         :type MaxAgeType: str
         :param MaxAgeContents: Content for each `MaxAgeType`:
 For `all`, enter a wildcard `*`.
-For `file`, enter the suffix, e.g., `jpg` or `txt`.
-For `directory`, enter the path, e.g., `/xxx/test/`.
-For `path`, enter the absolute path, e.g., `/xxx/test.html`.
+For `file`, enter a suffix, e.g., `jpg` or `txt`.
+For `directory`, enter a path, e.g., `/xxx/test/`.
+For `path`, enter an absolute path, e.g., `/xxx/test.html`.
 For `index`, enter a forward slash `/`.
+Note: the rule `all` cannot be deleted. It follows origin by default and can be modified.
         :type MaxAgeContents: list of str
         :param MaxAgeTime: MaxAge time (in seconds)
+Note: the value `0` means not to cache.
         :type MaxAgeTime: int
-        :param FollowOrigin: 
+        :param FollowOrigin: Whether to follow the origin server. Valid values: `on` and `off`. If it's on, `MaxAgeTime` is ignored.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FollowOrigin: str
         """
         self.MaxAgeType = None
@@ -5430,10 +5516,12 @@ class PathRule(AbstractModel):
 
     def __init__(self):
         """
-        :param Regex: Whether regex match is used.
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param Regex: Whether to enable wildcard match (`*`).
+false: disable
+true: enable
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Regex: bool
-        :param Path: Matched URL. Only URLs are supported, while parameters are not. The exact match is used by default. In regex match, up to 5 wildcards `*` are supported. The URL can contain up to 1,024 characters.
+        :param Path: Matched URL. Only URLs are supported, while parameters are not. The exact match is used by default. If wildcard match is enabled, up to 5 wildcards are supported. The URL can contain up to 1,024 characters.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Path: str
         :param Origin: Origin server when the path matches. COS origin with private read/write is not supported. The default origin server will be used by default when this field is left empty.
@@ -5442,10 +5530,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ServerName: Origin server host header when the path matches. The default `ServerName` will be used by default when this field is left empty.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ServerName: str
-        :param OriginArea: Origin server region. Valid values: CN (the Chinese mainland), OV (outside the Chinese mainland).
+        :param OriginArea: Origin server region. Valid values: `CN` and `OV`.
+CN: the Chinese mainland
+OV: outside the Chinese mainland
+Default value: `CN`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OriginArea: str
-        :param ForwardUri: Origin server URI path when the path matches, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.
+        :param ForwardUri: Origin server URI path when the path matches, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the match path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ForwardUri: str
         :param RequestHeaders: Origin-pull header setting when the path matches.
@@ -6228,6 +6319,326 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.Switch = params.get("Switch")
         self.Action = params.get("Action")
         self.Value = params.get("Value")
+
+
+class ScdnAclConfig(AbstractModel):
+    """SCDN access control
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Whether to enable. Valid values: `on` and `off`.
+        :type Switch: str
+        :param ScriptData: ACL rule group, which is required when the access control is on.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ScriptData: list of ScdnAclGroup
+        :param ErrorPage: Error page configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
+        """
+        self.Switch = None
+        self.ScriptData = None
+        self.ErrorPage = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("ScriptData") is not None:
+            self.ScriptData = []
+            for item in params.get("ScriptData"):
+                obj = ScdnAclGroup()
+                obj._deserialize(item)
+                self.ScriptData.append(obj)
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ScdnErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+
+
+class ScdnAclGroup(AbstractModel):
+    """SCDN precise access control configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: Rule name
+        :type RuleName: str
+        :param Configure: Specific configurations
+        :type Configure: list of ScdnAclRule
+        :param Result: Rule action, which is generally `refuse`.
+        :type Result: str
+        :param Status: Whether the rule is effective. Valid values: `active` and `inactive`.
+        :type Status: str
+        """
+        self.RuleName = None
+        self.Configure = None
+        self.Result = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        if params.get("Configure") is not None:
+            self.Configure = []
+            for item in params.get("Configure"):
+                obj = ScdnAclRule()
+                obj._deserialize(item)
+                self.Configure.append(obj)
+        self.Result = params.get("Result")
+        self.Status = params.get("Status")
+
+
+class ScdnAclRule(AbstractModel):
+    """Precise access control match rule
+
+    """
+
+    def __init__(self):
+        """
+        :param MatchKey: Match keywords. Valid values: `params`, `url`, `ip`, `referer`, and `user-agent`.
+        :type MatchKey: str
+        :param LogiOperator: Logical operator. Valid values: `exclude`, `include`, `notequal`, `equal`, `len-less`, `len-equal`, and `len-more`.
+        :type LogiOperator: str
+        :param MatchValue: Match value
+        :type MatchValue: str
+        """
+        self.MatchKey = None
+        self.LogiOperator = None
+        self.MatchValue = None
+
+
+    def _deserialize(self, params):
+        self.MatchKey = params.get("MatchKey")
+        self.LogiOperator = params.get("LogiOperator")
+        self.MatchValue = params.get("MatchValue")
+
+
+class ScdnBotConfig(AbstractModel):
+    """Bot configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Valid values: `on` and `off`.
+        :type Switch: str
+        :param BotCookie: Bot cookie policy
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BotCookie: list of BotCookie
+        :param BotJavaScript: Bot JS policy
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BotJavaScript: list of BotJavaScript
+        """
+        self.Switch = None
+        self.BotCookie = None
+        self.BotJavaScript = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("BotCookie") is not None:
+            self.BotCookie = []
+            for item in params.get("BotCookie"):
+                obj = BotCookie()
+                obj._deserialize(item)
+                self.BotCookie.append(obj)
+        if params.get("BotJavaScript") is not None:
+            self.BotJavaScript = []
+            for item in params.get("BotJavaScript"):
+                obj = BotJavaScript()
+                obj._deserialize(item)
+                self.BotJavaScript.append(obj)
+
+
+class ScdnCCRules(AbstractModel):
+    """SCDN custom CC rules
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: Rule types:
+`all`: effective for all files.
+`file`: effective for specified file suffixes.
+`directory`: effective for specified paths.
+`path`: effective for specified absolute paths.
+`index`: effective for web homepages and root directories.
+        :type RuleType: str
+        :param RuleValue: Rule value (blocking condition)
+        :type RuleValue: list of str
+        :param Qps: IP access limit rule
+        :type Qps: int
+        :param DetectionTime: Detection granularity
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DetectionTime: int
+        :param FrequencyLimit: Frequency threshold
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FrequencyLimit: int
+        :param PunishmentSwitch: Whether to block or redirect requests from suspicious IPs. Valid values: `on` and `off`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PunishmentSwitch: str
+        :param PunishmentTime: Suspicious IP restriction duration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PunishmentTime: int
+        :param Action: Action. Valid values: `intercept` and `redirect`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Action: str
+        :param RedirectUrl: The redirection target URL used when the `Action` is `redirect`
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RedirectUrl: str
+        """
+        self.RuleType = None
+        self.RuleValue = None
+        self.Qps = None
+        self.DetectionTime = None
+        self.FrequencyLimit = None
+        self.PunishmentSwitch = None
+        self.PunishmentTime = None
+        self.Action = None
+        self.RedirectUrl = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RuleValue = params.get("RuleValue")
+        self.Qps = params.get("Qps")
+        self.DetectionTime = params.get("DetectionTime")
+        self.FrequencyLimit = params.get("FrequencyLimit")
+        self.PunishmentSwitch = params.get("PunishmentSwitch")
+        self.PunishmentTime = params.get("PunishmentTime")
+        self.Action = params.get("Action")
+        self.RedirectUrl = params.get("RedirectUrl")
+
+
+class ScdnConfig(AbstractModel):
+    """CC attack defense configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Valid values: `on` and `off`.
+        :type Switch: str
+        :param Rules: Custom CC attack defense rule
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Rules: list of ScdnCCRules
+        """
+        self.Switch = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = ScdnCCRules()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class ScdnDdosConfig(AbstractModel):
+    """DDoS configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Whether to enable DDoS defense. Valid values: `on` and `off`.
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class ScdnErrorPage(AbstractModel):
+    """ACL error page
+
+    """
+
+    def __init__(self):
+        """
+        :param RedirectCode: Status code
+        :type RedirectCode: int
+        :param RedirectUrl: Redirection URL
+        :type RedirectUrl: str
+        """
+        self.RedirectCode = None
+        self.RedirectUrl = None
+
+
+    def _deserialize(self, params):
+        self.RedirectCode = params.get("RedirectCode")
+        self.RedirectUrl = params.get("RedirectUrl")
+
+
+class ScdnWafConfig(AbstractModel):
+    """WAF configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Whether to enable WAF. Valid values: `on` and `off`.
+        :type Switch: str
+        :param Mode: WAF protection mode. Valid values: `intercept` and `observe`. Default value: `intercept`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Mode: str
+        :param ErrorPage: Redirection error page
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
+        :param WebShellSwitch: Whether to enable Web shell blocking. Valid values: `on` and `off`. Default value: `off`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type WebShellSwitch: str
+        :param Rules: Attack blocking rules
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Rules: list of ScdnWafRule
+        """
+        self.Switch = None
+        self.Mode = None
+        self.ErrorPage = None
+        self.WebShellSwitch = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Mode = params.get("Mode")
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ScdnErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+        self.WebShellSwitch = params.get("WebShellSwitch")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = ScdnWafRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class ScdnWafRule(AbstractModel):
+    """WAF rule information
+
+    """
+
+    def __init__(self):
+        """
+        :param AttackType: Attack type
+        :type AttackType: str
+        :param Operate: Defense action. Valid value: `observe`.
+        :type Operate: str
+        """
+        self.AttackType = None
+        self.Operate = None
+
+
+    def _deserialize(self, params):
+        self.AttackType = params.get("AttackType")
+        self.Operate = params.get("Operate")
 
 
 class SchemeKey(AbstractModel):
@@ -7138,6 +7549,74 @@ class UpdatePayTypeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateScdnDomainRequest(AbstractModel):
+    """UpdateScdnDomain request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: Domain name
+        :type Domain: str
+        :param Waf: WAF configuration
+        :type Waf: :class:`tencentcloud.cdn.v20180606.models.ScdnWafConfig`
+        :param Acl: Custom defense policy configuration
+        :type Acl: :class:`tencentcloud.cdn.v20180606.models.ScdnAclConfig`
+        :param CC: CC attack defense configurations. CC attack defense is enabled by default.
+        :type CC: :class:`tencentcloud.cdn.v20180606.models.ScdnConfig`
+        :param Ddos: DDoS defense configuration. DDoS defense is enabled by default.
+        :type Ddos: :class:`tencentcloud.cdn.v20180606.models.ScdnDdosConfig`
+        :param Bot: Bot defense configuration
+        :type Bot: :class:`tencentcloud.cdn.v20180606.models.ScdnBotConfig`
+        """
+        self.Domain = None
+        self.Waf = None
+        self.Acl = None
+        self.CC = None
+        self.Ddos = None
+        self.Bot = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("Waf") is not None:
+            self.Waf = ScdnWafConfig()
+            self.Waf._deserialize(params.get("Waf"))
+        if params.get("Acl") is not None:
+            self.Acl = ScdnAclConfig()
+            self.Acl._deserialize(params.get("Acl"))
+        if params.get("CC") is not None:
+            self.CC = ScdnConfig()
+            self.CC._deserialize(params.get("CC"))
+        if params.get("Ddos") is not None:
+            self.Ddos = ScdnDdosConfig()
+            self.Ddos._deserialize(params.get("Ddos"))
+        if params.get("Bot") is not None:
+            self.Bot = ScdnBotConfig()
+            self.Bot._deserialize(params.get("Bot"))
+
+
+class UpdateScdnDomainResponse(AbstractModel):
+    """UpdateScdnDomain response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Result of the request. `Success` indicates that the configurations are updated.
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class UrlRecord(AbstractModel):
     """Details of the blocked URLs
 
@@ -7213,7 +7692,8 @@ class UrlRedirectRule(AbstractModel):
         :type Pattern: str
         :param RedirectUrl: Target URL, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.
         :type RedirectUrl: str
-        :param RedirectHost: 
+        :param RedirectHost: Target host. It should be a standard domain name starting with `http://` or `https://`. If it is left empty, “http://[current domain name]” will be used by default.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RedirectHost: str
         """
         self.RedirectStatusCode = None

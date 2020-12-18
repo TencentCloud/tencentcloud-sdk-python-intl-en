@@ -156,7 +156,7 @@ class Backend(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Real server type. Value range: CVM, ENI (coming soon)
+        :param Type: Real server type. Valid values: CVM, ENI.
         :type Type: str
         :param InstanceId: Unique ID of a real server, which can be obtained from the unInstanceId field in the return of the DescribeInstances API
         :type InstanceId: str
@@ -921,12 +921,18 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         :type VipIsp: str
         :param Tags: Tags a CLB instance when purchasing it
         :type Tags: list of TagInfo
-        :param Vip: 
+        :param Vip: Applies for CLB instances for a specified VIP
         :type Vip: str
+        :param BandwidthPackageId: 
+        :type BandwidthPackageId: str
         :param ExclusiveCluster: Exclusive cluster information.
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
+        :param SnatPro: Whether Binding IPs of other VPCs feature switch
+        :type SnatPro: bool
+        :param SnatIps: Creates `SnatIp` when the binding IPs of other VPCs feature is enabled
+        :type SnatIps: list of SnatIp
         :param ClusterTag: Tag for the STGW exclusive cluster.
         :type ClusterTag: str
         """
@@ -944,8 +950,11 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         self.VipIsp = None
         self.Tags = None
         self.Vip = None
+        self.BandwidthPackageId = None
         self.ExclusiveCluster = None
         self.ClientToken = None
+        self.SnatPro = None
+        self.SnatIps = None
         self.ClusterTag = None
 
 
@@ -971,10 +980,18 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Vip = params.get("Vip")
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
         if params.get("ExclusiveCluster") is not None:
             self.ExclusiveCluster = ExclusiveCluster()
             self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
         self.ClientToken = params.get("ClientToken")
+        self.SnatPro = params.get("SnatPro")
+        if params.get("SnatIps") is not None:
+            self.SnatIps = []
+            for item in params.get("SnatIps"):
+                obj = SnatIp()
+                obj._deserialize(item)
+                self.SnatIps.append(obj)
         self.ClusterTag = params.get("ClusterTag")
 
 
@@ -3196,8 +3213,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ExpireTime: CLB instance expiration time, which takes effect only for prepaid instances
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
-        :param ChargeType: CLB instance billing mode
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ChargeType: Billing mode of CLB instance. Valid values: PREPAID (monthly subscription), POSTPAID_BY_HOUR (pay as you go).
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ChargeType: str
         :param NetworkAttributes: CLB instance network attributes
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -3255,6 +3272,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MixIpTarget: If the layer-7 listener of an IPv6FullChain CLB instance is enabled, the CLB instance can be bound with an IPv4 and an IPv6 CVM instance simultaneously.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MixIpTarget: bool
+        :param Zones: Availability zone of a VPC-based private network CLB instance
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Zones: list of str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3303,6 +3323,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.LocalBgp = None
         self.ClusterTag = None
         self.MixIpTarget = None
+        self.Zones = None
 
 
     def _deserialize(self, params):
@@ -3380,6 +3401,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.LocalBgp = params.get("LocalBgp")
         self.ClusterTag = params.get("ClusterTag")
         self.MixIpTarget = params.get("MixIpTarget")
+        self.Zones = params.get("Zones")
 
 
 class LoadBalancerDetail(AbstractModel):
@@ -5008,19 +5030,21 @@ class Target(AbstractModel):
     def __init__(self):
         """
         :param Port: Listening port of a real server
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: this parameter is required when binding a CVM or ENI.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Port: int
         :param Type: Real server type. Value range: CVM (Cloud Virtual Machine), ENI (Elastic Network Interface). This parameter does not take effect currently as an input parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
-        :param InstanceId: Unique ID of a CVM instance, which needs to be passed in when binding a CVM instance and can be obtained from the InstanceId field in the return of the DescribeInstances API.
-Note: Either InstanceId or EniIp must be passed in.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param InstanceId: Unique ID of a CVM instance, which is required when binding a CVM instance. It can be obtained from the `InstanceId` field in the response of the `DescribeInstances` API.
+Note: either `InstanceId` or `EniIp` must be passed in.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InstanceId: str
         :param Weight: Forwarding weight of a real server. Value range: [0, 100]. Default value: 10.
         :type Weight: int
-        :param EniIp: This parameter must be passed in when you bind an ENI, which represents the IP address of the ENI. The ENI has to be bound to a CVM instance first before it can be bound to a CLB instance. Note: Either InstanceId or EniIp must be passed in. To bind an ENI, you need to submit a ticket for application first.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param EniIp: IP of an ENI, which is required when binding an ENI. To bind an ENI with a CLB, you must bind it with a CVM first.
+Note: either `InstanceId` or `EniIp` must be passed in. Binding ENI is now only available to beta users. Please submit a ticket to apply for it if necessary. 
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type EniIp: str
         """
         self.Port = None
