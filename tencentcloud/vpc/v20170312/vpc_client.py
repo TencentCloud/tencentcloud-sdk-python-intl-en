@@ -2864,6 +2864,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIpGeolocationInfos(self, request):
+        """This API is used to query the IP addresses, including their geographical locations and networks.
+
+        :param request: Request instance for DescribeIpGeolocationInfos.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIpGeolocationInfosRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeIpGeolocationInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIpGeolocationInfos", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIpGeolocationInfosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNatGatewayDestinationIpPortTranslationNatRules(self, request):
         """This API (DescribeNatGatewayDestinationIpPortTranslationNatRules) is used to query the array of objects of the port forwarding rules for a NAT gateway.
 
@@ -3980,6 +4008,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.HaVipDisassociateAddressIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceCreateDirectConnectGateway(self, request):
+        """This API is used to query the price of creating a direct connect gateway.
+
+        :param request: Request instance for InquirePriceCreateDirectConnectGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.InquirePriceCreateDirectConnectGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InquirePriceCreateDirectConnectGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceCreateDirectConnectGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceCreateDirectConnectGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

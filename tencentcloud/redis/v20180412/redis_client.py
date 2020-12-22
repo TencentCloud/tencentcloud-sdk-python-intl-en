@@ -782,6 +782,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceZoneInfo(self, request):
+        """This API is used to query Redis node information.
+
+        :param request: Request instance for DescribeInstanceZoneInfo.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceZoneInfoRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceZoneInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceZoneInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceZoneInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstances(self, request):
         """This API is used to query the list of Redis instances.
 

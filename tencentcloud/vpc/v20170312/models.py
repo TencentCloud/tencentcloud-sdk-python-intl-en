@@ -2175,11 +2175,14 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 <li>NORMAL - (Default) Standard type. Note: CCN only supports the standard type</li>
 <li>NAT - NAT type</li>NAT gateway supports network address translation. The specified type cannot be modified. A VPC can create one NAT direct connect gateway and one non-NAT direct connect gateway
         :type GatewayType: str
+        :param ModeType: CCN route publishing method. Valid values: `standard` and `exquisite`. This parameter is only valid for the CCN direct connect gateway.
+        :type ModeType: str
         """
         self.DirectConnectGatewayName = None
         self.NetworkType = None
         self.NetworkInstanceId = None
         self.GatewayType = None
+        self.ModeType = None
 
 
     def _deserialize(self, params):
@@ -2187,6 +2190,7 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         self.NetworkType = params.get("NetworkType")
         self.NetworkInstanceId = params.get("NetworkInstanceId")
         self.GatewayType = params.get("GatewayType")
+        self.ModeType = params.get("ModeType")
 
 
 class CreateDirectConnectGatewayResponse(AbstractModel):
@@ -6050,6 +6054,59 @@ class DescribeIpGeolocationDatabaseUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIpGeolocationInfosRequest(AbstractModel):
+    """DescribeIpGeolocationInfos request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressIps: IP addresses to be queried. Both IPv4 and IPv6 addresses are supported.
+        :type AddressIps: list of str
+        :param Fields: Fields of the IP addresses to be queried, including `Country`, `Province`, `City`, `Region`, `Isp`, `AsName` and `AsId`
+        :type Fields: :class:`tencentcloud.vpc.v20170312.models.IpField`
+        """
+        self.AddressIps = None
+        self.Fields = None
+
+
+    def _deserialize(self, params):
+        self.AddressIps = params.get("AddressIps")
+        if params.get("Fields") is not None:
+            self.Fields = IpField()
+            self.Fields._deserialize(params.get("Fields"))
+
+
+class DescribeIpGeolocationInfosResponse(AbstractModel):
+    """DescribeIpGeolocationInfos response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressInfo: IP address details
+        :type AddressInfo: list of IpGeolocationInfo
+        :param Total: Number of IP addresses
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AddressInfo = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AddressInfo") is not None:
+            self.AddressInfo = []
+            for item in params.get("AddressInfo"):
+                obj = IpGeolocationInfo()
+                obj._deserialize(item)
+                self.AddressInfo.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractModel):
     """DescribeNatGatewayDestinationIpPortTranslationNatRules request structure.
 
@@ -7695,6 +7752,12 @@ NAT type supports network address switch configuration. After the type is confir
         :param NatGatewayId: ID of the NAT gateway bound.
 Note: this field may return `null`, indicating that no valid value was found.
         :type NatGatewayId: str
+        :param VXLANSupport: Whether the direct connect gateway supports the VXLAN architecture.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VXLANSupport: list of bool
+        :param ModeType: CCN route publishing mode. Valid values: `standard` and `exquisite`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ModeType: str
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
@@ -7709,6 +7772,8 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.EnableBGP = None
         self.EnableBGPCommunity = None
         self.NatGatewayId = None
+        self.VXLANSupport = None
+        self.ModeType = None
 
 
     def _deserialize(self, params):
@@ -7725,6 +7790,8 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.EnableBGP = params.get("EnableBGP")
         self.EnableBGPCommunity = params.get("EnableBGPCommunity")
         self.NatGatewayId = params.get("NatGatewayId")
+        self.VXLANSupport = params.get("VXLANSupport")
+        self.ModeType = params.get("ModeType")
 
 
 class DirectConnectGatewayCcnRoute(AbstractModel):
@@ -8610,6 +8677,39 @@ class IPSECOptionsSpecification(AbstractModel):
         self.IPSECSaLifetimeTraffic = params.get("IPSECSaLifetimeTraffic")
 
 
+class InquirePriceCreateDirectConnectGatewayRequest(AbstractModel):
+    """InquirePriceCreateDirectConnectGateway request structure.
+
+    """
+
+
+class InquirePriceCreateDirectConnectGatewayResponse(AbstractModel):
+    """InquirePriceCreateDirectConnectGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCost: Standard access fee for a direct connect gateway
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TotalCost: int
+        :param RealTotalCost: Actual access fee for a direct connect gateway
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RealTotalCost: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCost = None
+        self.RealTotalCost = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCost = params.get("TotalCost")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.RequestId = params.get("RequestId")
+
+
 class InquiryPriceCreateVpnGatewayRequest(AbstractModel):
     """InquiryPriceCreateVpnGateway request structure.
 
@@ -8790,6 +8890,109 @@ class InstanceStatistic(AbstractModel):
     def _deserialize(self, params):
         self.InstanceType = params.get("InstanceType")
         self.InstanceCount = params.get("InstanceCount")
+
+
+class IpField(AbstractModel):
+    """IP fields to be queried online
+
+    """
+
+    def __init__(self):
+        """
+        :param Country: Country/region field
+        :type Country: bool
+        :param Province: Province/municipality field
+        :type Province: bool
+        :param City: City field
+        :type City: bool
+        :param Region: Urban area field
+        :type Region: bool
+        :param Isp: Access ISP field
+        :type Isp: bool
+        :param AsName: ISP backbone network’s AS field
+        :type AsName: bool
+        :param AsId: AS ID
+        :type AsId: bool
+        :param Comment: Comment
+        :type Comment: bool
+        """
+        self.Country = None
+        self.Province = None
+        self.City = None
+        self.Region = None
+        self.Isp = None
+        self.AsName = None
+        self.AsId = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Country = params.get("Country")
+        self.Province = params.get("Province")
+        self.City = params.get("City")
+        self.Region = params.get("Region")
+        self.Isp = params.get("Isp")
+        self.AsName = params.get("AsName")
+        self.AsId = params.get("AsId")
+        self.Comment = params.get("Comment")
+
+
+class IpGeolocationInfo(AbstractModel):
+    """IP location
+
+    """
+
+    def __init__(self):
+        """
+        :param Country: Country/region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Country: str
+        :param Province: Province- or municipality-level administrative region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Province: str
+        :param City: Municipal administrative region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type City: str
+        :param Region: Urban area
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Region: str
+        :param Isp: Access ISP
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Isp: str
+        :param AsName: ISP backbone network’s AS name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AsName: str
+        :param AsId: ISP backbone network’s AS ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AsId: str
+        :param Comment: Comment. The APN value of mobile users is entered currently. If there is no APN attribute, this is `null`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Comment: str
+        :param AddressIp: IP address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AddressIp: str
+        """
+        self.Country = None
+        self.Province = None
+        self.City = None
+        self.Region = None
+        self.Isp = None
+        self.AsName = None
+        self.AsId = None
+        self.Comment = None
+        self.AddressIp = None
+
+
+    def _deserialize(self, params):
+        self.Country = params.get("Country")
+        self.Province = params.get("Province")
+        self.City = params.get("City")
+        self.Region = params.get("Region")
+        self.Isp = params.get("Isp")
+        self.AsName = params.get("AsName")
+        self.AsId = params.get("AsId")
+        self.Comment = params.get("Comment")
+        self.AddressIp = params.get("AddressIp")
 
 
 class Ipv6Address(AbstractModel):
@@ -9416,16 +9619,20 @@ class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
         :type DirectConnectGatewayName: str
         :param CcnRouteType: The CCN route-learning type. Valid values: `BGP` (Automatic learning), `STATIC` (Static, that is, user-configured). You can only modify `CcnRouteType` for a CCN direct connect gateway with BGP enabled.
         :type CcnRouteType: str
+        :param ModeType: CCN route publishing method. Valid values: `standard` and `exquisite`. You can only modify `ModeType` for a CCN direct connect gateway.
+        :type ModeType: str
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
         self.CcnRouteType = None
+        self.ModeType = None
 
 
     def _deserialize(self, params):
         self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
         self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
         self.CcnRouteType = params.get("CcnRouteType")
+        self.ModeType = params.get("ModeType")
 
 
 class ModifyDirectConnectGatewayAttributeResponse(AbstractModel):

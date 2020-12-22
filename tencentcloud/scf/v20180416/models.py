@@ -355,9 +355,9 @@ class CreateFunctionRequest(AbstractModel):
         """
         :param FunctionName: Name of the new function. The name can contain 2 to 60 characters, including English letters, digits, hyphens (-), and underscores (_). The name must start with a letter and cannot end with a hyphen or underscore.
         :type FunctionName: str
-        :param Code: Function code. Note: You cannot specify `Cos` and `ZipFile` at the same time.
+        :param Code: Function code. Note: `COS`, `ZipFile`, and `DemoId` cannot be specified at the same time.
         :type Code: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param Handler: Name of the handler, which is in the 'file name.handler name' form. Use periods (.) to separate a file name and function name. The file name and function name must start and end with a letter and can contain 2 to 60 characters, including letters, digits, hyphens (-), and underscores (_).
+        :param Handler: Function handler name. It supports the format of "file name.handler name" where the file name and handler name are separated with a "." (for Java, it is in the format of "package name.class name::handler name"). File and handler names can contain 2–60 letters, digits, underscores, and dashes and must start and end with letters
         :type Handler: str
         :param Description: Function description. It can contain up to 1,000 characters including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
         :type Description: str
@@ -367,7 +367,7 @@ class CreateFunctionRequest(AbstractModel):
         :type Timeout: int
         :param Environment: Function environment variable
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Golang1 and Java8. Default value: Python2.7
+        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime. Default value: Python2.7
         :type Runtime: str
         :param VpcConfig: Function VPC configuration
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
@@ -381,7 +381,7 @@ class CreateFunctionRequest(AbstractModel):
         :type ClsTopicId: str
         :param Type: Function type. The default value is `Event`. Enter `Event` if you need to create a trigger function. Enter `HTTP` if you need to create an HTTP function service.
         :type Type: str
-        :param CodeSource: Code source, including ZipFile, Cos, Demo, TempCos, and Git. This field is required if the source is Git.
+        :param CodeSource: Code source. Valid values: ZipFile, Cos, Demo
         :type CodeSource: str
         :param Layers: List of layer versions to be associate with the function. Layers will be overwritten sequentially in the order in the list.
         :type Layers: list of LayerVersionSimple
@@ -943,7 +943,7 @@ class Function(AbstractModel):
         :type FunctionId: str
         :param Namespace: Namespace
         :type Namespace: str
-        :param Status: Function status
+        :param Status: Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)
         :type Status: str
         :param StatusDesc: Function status details
         :type StatusDesc: str
@@ -953,6 +953,14 @@ class Function(AbstractModel):
         :type Tags: list of Tag
         :param Type: Function type. The value is `HTTP` or `Event`.
         :type Type: str
+        :param StatusReasons: Cause of function failure
+        :type StatusReasons: list of StatusReason
+        :param TotalProvisionedConcurrencyMem: Sum of provisioned concurrence memory for all function versions
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TotalProvisionedConcurrencyMem: int
+        :param ReservedConcurrencyMem: Reserved memory for function concurrence
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ReservedConcurrencyMem: int
         """
         self.ModTime = None
         self.AddTime = None
@@ -965,6 +973,9 @@ class Function(AbstractModel):
         self.Description = None
         self.Tags = None
         self.Type = None
+        self.StatusReasons = None
+        self.TotalProvisionedConcurrencyMem = None
+        self.ReservedConcurrencyMem = None
 
 
     def _deserialize(self, params):
@@ -984,6 +995,14 @@ class Function(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Type = params.get("Type")
+        if params.get("StatusReasons") is not None:
+            self.StatusReasons = []
+            for item in params.get("StatusReasons"):
+                obj = StatusReason()
+                obj._deserialize(item)
+                self.StatusReasons.append(obj)
+        self.TotalProvisionedConcurrencyMem = params.get("TotalProvisionedConcurrencyMem")
+        self.ReservedConcurrencyMem = params.get("ReservedConcurrencyMem")
 
 
 class FunctionLog(AbstractModel):
@@ -2622,6 +2641,12 @@ class Trigger(AbstractModel):
         :type CustomArgument: str
         :param AvailableStatus: Trigger status
         :type AvailableStatus: str
+        :param ResourceId: Minimum resource ID of trigger
+        :type ResourceId: str
+        :param BindStatus: Trigger-Function binding status
+        :type BindStatus: str
+        :param TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
+        :type TriggerAttribute: str
         """
         self.ModTime = None
         self.Type = None
@@ -2631,6 +2656,9 @@ class Trigger(AbstractModel):
         self.Enable = None
         self.CustomArgument = None
         self.AvailableStatus = None
+        self.ResourceId = None
+        self.BindStatus = None
+        self.TriggerAttribute = None
 
 
     def _deserialize(self, params):
@@ -2642,6 +2670,9 @@ class Trigger(AbstractModel):
         self.Enable = params.get("Enable")
         self.CustomArgument = params.get("CustomArgument")
         self.AvailableStatus = params.get("AvailableStatus")
+        self.ResourceId = params.get("ResourceId")
+        self.BindStatus = params.get("BindStatus")
+        self.TriggerAttribute = params.get("TriggerAttribute")
 
 
 class TriggerInfo(AbstractModel):
@@ -2670,6 +2701,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type AddTime: str
         :param ModTime: Trigger last modified time
         :type ModTime: str
+        :param ResourceId: Minimum resource ID of trigger
+        :type ResourceId: str
+        :param BindStatus: Trigger-Function binding status
+        :type BindStatus: str
+        :param TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
+        :type TriggerAttribute: str
         """
         self.Enable = None
         self.Qualifier = None
@@ -2680,6 +2717,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CustomArgument = None
         self.AddTime = None
         self.ModTime = None
+        self.ResourceId = None
+        self.BindStatus = None
+        self.TriggerAttribute = None
 
 
     def _deserialize(self, params):
@@ -2692,6 +2732,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CustomArgument = params.get("CustomArgument")
         self.AddTime = params.get("AddTime")
         self.ModTime = params.get("ModTime")
+        self.ResourceId = params.get("ResourceId")
+        self.BindStatus = params.get("BindStatus")
+        self.TriggerAttribute = params.get("TriggerAttribute")
 
 
 class UpdateAliasRequest(AbstractModel):
@@ -2777,7 +2820,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
         :type Publish: str
         :param Code: Function code
         :type Code: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param CodeSource: Source mode of code. Valid values: `ZipFile`, `Cos`, `Inline`, `TempCos` and `Git`. This field must be specified if the source is Git
+        :param CodeSource: Code source. Valid values: ZipFile, Cos, Inline
         :type CodeSource: str
         """
         self.Handler = None
@@ -2841,7 +2884,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type MemorySize: int
         :param Timeout: Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds
         :type Timeout: int
-        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Golang1 and Java8
+        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime
         :type Runtime: str
         :param Environment: Function environment variable
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
@@ -2855,7 +2898,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type ClsLogsetId: str
         :param ClsTopicId: CLS Topic ID to which logs are shipped
         :type ClsTopicId: str
-        :param Publish: It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.
+        :param Publish: It specifies whether to synchronously publish a new version during the update. The default value is `FALSE`, indicating not to publish a new version
         :type Publish: str
         :param L5Enable: Whether to enable L5 access. TRUE: enable; FALSE: not enable
         :type L5Enable: str
@@ -2865,7 +2908,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
         :param PublicNetConfig: Public network access configuration
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
-        :param CfsConfig: File system configuration input parameter, which is used for the function to bind the file system
+        :param CfsConfig: File system configuration input parameter, which is used for the function to bind the CFS file system
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         :param InitTimeout: Timeout period for function initialization. Default value: 15 seconds
         :type InitTimeout: int

@@ -367,8 +367,10 @@ If the instance type parameter `TypeId` indicates CKV 3.2, the password contains
         :type InstanceName: str
         :param NoAuth: Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access.
         :type NoAuth: bool
-        :param NodeSet: 
+        :param NodeSet: Node information of an instance. Currently, information about the node type (master or replica) and node availability zone can be passed in. This parameter is not required for instances deployed in a single availability zone.
         :type NodeSet: list of RedisNodeInfo
+        :param ResourceTags: The tag bound with the instance to be purchased
+        :type ResourceTags: list of ResourceTag
         """
         self.ZoneId = None
         self.TypeId = None
@@ -389,6 +391,7 @@ If the instance type parameter `TypeId` indicates CKV 3.2, the password contains
         self.InstanceName = None
         self.NoAuth = None
         self.NodeSet = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -416,6 +419,12 @@ If the instance type parameter `TypeId` indicates CKV 3.2, the password contains
                 obj = RedisNodeInfo()
                 obj._deserialize(item)
                 self.NodeSet.append(obj)
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateInstancesResponse(AbstractModel):
@@ -450,9 +459,15 @@ class DelayDistribution(AbstractModel):
 
     def __init__(self):
         """
-        :param Ladder: Distribution ladder
+        :param Ladder: Delay distribution. The mapping between delay range and `Ladder` value is as follows:
+[0ms,1ms]: 1;
+[1ms,5ms]: 5;
+[5ms,10ms]: 10;
+[10ms,50ms]: 50;
+[50ms,200ms]: 200;
+[200ms,∞]: -1.
         :type Ladder: int
-        :param Size: Size
+        :param Size: The number of commands whose delay falls within the current delay range
         :type Size: int
         :param Updatetime: Modification time
         :type Updatetime: int
@@ -1726,6 +1741,53 @@ class DescribeInstanceShardsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.InstanceShards.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceZoneInfoRequest(AbstractModel):
+    """DescribeInstanceZoneInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID, such as crs-6ubhgouj
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeInstanceZoneInfoResponse(AbstractModel):
+    """DescribeInstanceZoneInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of instance node groups
+        :type TotalCount: int
+        :param ReplicaGroups: The list of instance node groups
+        :type ReplicaGroups: list of ReplicaGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ReplicaGroups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ReplicaGroups") is not None:
+            self.ReplicaGroups = []
+            for item in params.get("ReplicaGroups"):
+                obj = ReplicaGroup()
+                obj._deserialize(item)
+                self.ReplicaGroups.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3812,9 +3874,9 @@ class ProductConf(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Product type. 2: Redis primary-secondary edition; 3: CKV primary-secondary edition; 4: CKV cluster edition; 5: Redis standalone edition; 7: Redis cluster edition
+        :param Type: Product type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture), `10` (Redis 4.0 Hybrid Storage Edition (Tendis)).
         :type Type: int
-        :param TypeName: Product name: Redis primary-secondary edition, CKV primary-secondary edition, CKV cluster edition, Redis standalone edition, or Redis cluster edition
+        :param TypeName: Product name: Redis Master-Replica Edition, CKV Master-Replica Edition, CKV Cluster Edition, Redis Standalone Edition, Redis Cluster Edition, Tendis Hybrid Storage Edition
         :type TypeName: str
         :param MinBuyNum: Minimum purchasable quantity
         :type MinBuyNum: int
@@ -3994,18 +4056,47 @@ class RedisCommonInstanceList(AbstractModel):
         self.NetType = params.get("NetType")
 
 
-class RedisNodeInfo(AbstractModel):
-    """
+class RedisNode(AbstractModel):
+    """The operation information of Redis nodes
 
     """
 
     def __init__(self):
         """
-        :param NodeType: 
+        :param Keys: The number of keys on a node
+        :type Keys: int
+        :param Slot: Distribution of node slots
+        :type Slot: str
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param Status: Node status
+        :type Status: str
+        """
+        self.Keys = None
+        self.Slot = None
+        self.NodeId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Keys = params.get("Keys")
+        self.Slot = params.get("Slot")
+        self.NodeId = params.get("NodeId")
+        self.Status = params.get("Status")
+
+
+class RedisNodeInfo(AbstractModel):
+    """Redis master or replica node information
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeType: Node type. Valid values: `0` (master node), `1` (replica node)
         :type NodeType: int
-        :param ZoneId: 
+        :param ZoneId: ID of the availability zone of the master or replica node
         :type ZoneId: int
-        :param NodeId: 
+        :param NodeId: ID of the master or replica node, which is not required when creating an instance
         :type NodeId: int
         """
         self.NodeType = None
@@ -4124,6 +4215,44 @@ class RenewInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReplicaGroup(AbstractModel):
+    """Instance node information
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: Node group ID
+        :type GroupId: int
+        :param GroupName: Node group name
+        :type GroupName: str
+        :param ZoneId: Node availability zone ID, such as ap-guangzhou-1
+        :type ZoneId: str
+        :param Role: Node group type. Valid values: `master` (master node group), `replica` (replica node group)
+        :type Role: str
+        :param RedisNodes: The list of nodes in a node group
+        :type RedisNodes: list of RedisNode
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.ZoneId = None
+        self.Role = None
+        self.RedisNodes = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.ZoneId = params.get("ZoneId")
+        self.Role = params.get("Role")
+        if params.get("RedisNodes") is not None:
+            self.RedisNodes = []
+            for item in params.get("RedisNodes"):
+                obj = RedisNode()
+                obj._deserialize(item)
+                self.RedisNodes.append(obj)
+
+
 class ResetPasswordRequest(AbstractModel):
     """ResetPassword request structure.
 
@@ -4168,6 +4297,27 @@ class ResetPasswordResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+
+
+class ResourceTag(AbstractModel):
+    """The tag bound with the instance purchased via APIs
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class RestoreInstanceRequest(AbstractModel):

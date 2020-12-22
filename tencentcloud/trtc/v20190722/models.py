@@ -214,7 +214,7 @@ class DescribeCallDetailRequest(AbstractModel):
         """
         :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
         :type CommId: str
-        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 5 days.
+        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.
         :type StartTime: int
         :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
         :type EndTime: int
@@ -311,7 +311,7 @@ class DescribeDetailEventRequest(AbstractModel):
         """
         :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
         :type CommId: str
-        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 5 days.
+        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.
         :type StartTime: int
         :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
         :type EndTime: int
@@ -598,7 +598,7 @@ class DescribeRoomInformationRequest(AbstractModel):
         """
         :param SdkAppId: User `sdkappid`
         :type SdkAppId: str
-        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 5 days.
+        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.
         :type StartTime: int
         :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
         :type EndTime: int
@@ -656,6 +656,78 @@ class DescribeRoomInformationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUserInformationRequest(AbstractModel):
+    """DescribeUserInformation request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
+        :type CommId: str
+        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.
+        :type StartTime: int
+        :param EndTime: Query end time in the format of UNIX timestamp (e.g. 1588031999s).
+        :type EndTime: int
+        :param SdkAppId: User `SDKAppID` (e.g. 1400188366).
+        :type SdkAppId: str
+        :param UserIds: The array of user IDs for query. You can enter up to 6 user IDs. If it is left empty, data of 6 users will be returned.
+        :type UserIds: list of str
+        :param PageNumber: Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned.
+        :type PageNumber: str
+        :param PageSize: Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned. `PageSize` is up to 100.
+        :type PageSize: str
+        """
+        self.CommId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SdkAppId = None
+        self.UserIds = None
+        self.PageNumber = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.CommId = params.get("CommId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SdkAppId = params.get("SdkAppId")
+        self.UserIds = params.get("UserIds")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+
+
+class DescribeUserInformationResponse(AbstractModel):
+    """DescribeUserInformation response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: Total number of users whose information will be returned
+        :type Total: int
+        :param UserList: User information list
+Note: this field may return `null`, indicating that no valid value was found.
+        :type UserList: list of UserInformation
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.UserList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("UserList") is not None:
+            self.UserList = []
+            for item in params.get("UserList"):
+                obj = UserInformation()
+                obj._deserialize(item)
+                self.UserList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DismissRoomRequest(AbstractModel):
     """DismissRoom request structure.
 
@@ -701,11 +773,11 @@ class EncodeParams(AbstractModel):
 
     def __init__(self):
         """
-        :param AudioSampleRate: Output stream audio sample rate for stream mix in Hz. Valid values: 48000, 44100, 32000, 24000, 16000, 12000, 8000.
+        :param AudioSampleRate: Output stream audio sample rate for On-Cloud MixTranscoding in Hz. Valid values: 48000, 44100, 32000, 24000, 16000, 12000, 8000.
         :type AudioSampleRate: int
         :param AudioBitrate: Output stream audio bitrate in Kbps for On-Cloud MixTranscoding. Value range: [8, 500].
         :type AudioBitrate: int
-        :param AudioChannels: Number of output stream audio sound channels for On-Cloud MixTranscoding. Value range: [1, 2].
+        :param AudioChannels: Number of sound channels of output stream for On-Cloud MixTranscoding. Valid values: 1, 2. 1 represents mono-channel, and 2 represents dual-channel.
         :type AudioChannels: int
         :param VideoWidth: Output stream width in pixels for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [0, 1920].
         :type VideoWidth: int
@@ -713,7 +785,7 @@ class EncodeParams(AbstractModel):
         :type VideoHeight: int
         :param VideoBitrate: Output stream bitrate in Kbps for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [1, 10000].
         :type VideoBitrate: int
-        :param VideoFramerate: Output stream frame rate for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [6, 12, 15, 24, 30, 48, 60]. If the frame rate lies outside the valid value range, it will be automatically modified to a value within the range.
+        :param VideoFramerate: Output stream frame rate for On-Cloud MixTranscoding in FPS. This parameter is required for audio/video outputs. Value range: [1, 60].
         :type VideoFramerate: int
         :param VideoGop: Output stream GOP in seconds for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [1, 5].
         :type VideoGop: int
@@ -817,7 +889,7 @@ class LayoutParams(AbstractModel):
 
     def __init__(self):
         """
-        :param Template: On-cloud stream mix layout template ID. 0: floating template (default value); 1: grid template; 2: screen sharing template; 3: picture-in-picture template.
+        :param Template: On-cloud stream mix layout template ID. 0: floating template (default value); 1: grid template; 2: screen sharing template; 3: picture-in-picture template; 4: custom template.
         :type Template: int
         :param MainVideoUserId: ID of the user in the big image, which takes effect in a screen sharing, floating, or picture-in-picture template.
         :type MainVideoUserId: str
@@ -829,6 +901,8 @@ class LayoutParams(AbstractModel):
         :type MainVideoRightAlign: int
         :param MixVideoUids: A user list, which takes effect for floating, grid, or screen sharing templates. When the user list has been set, the stream mix output for users in this user list will include both audio and video; the stream mix output for users not in the list will only include audio. Up to 16 users can be set.
         :type MixVideoUids: list of str
+        :param PresetLayoutConfig: Valid in custom template, used to specify the video image position of a user in mixed streams.
+        :type PresetLayoutConfig: list of PresetLayoutConfig
         """
         self.Template = None
         self.MainVideoUserId = None
@@ -836,6 +910,7 @@ class LayoutParams(AbstractModel):
         self.SmallVideoLayoutParams = None
         self.MainVideoRightAlign = None
         self.MixVideoUids = None
+        self.PresetLayoutConfig = None
 
 
     def _deserialize(self, params):
@@ -847,6 +922,12 @@ class LayoutParams(AbstractModel):
             self.SmallVideoLayoutParams._deserialize(params.get("SmallVideoLayoutParams"))
         self.MainVideoRightAlign = params.get("MainVideoRightAlign")
         self.MixVideoUids = params.get("MixVideoUids")
+        if params.get("PresetLayoutConfig") is not None:
+            self.PresetLayoutConfig = []
+            for item in params.get("PresetLayoutConfig"):
+                obj = PresetLayoutConfig()
+                obj._deserialize(item)
+                self.PresetLayoutConfig.append(obj)
 
 
 class OutputParams(AbstractModel):
@@ -876,6 +957,51 @@ class OutputParams(AbstractModel):
         self.PureAudioStream = params.get("PureAudioStream")
         self.RecordId = params.get("RecordId")
         self.RecordAudioOnly = params.get("RecordAudioOnly")
+
+
+class PresetLayoutConfig(AbstractModel):
+    """Valid in custom template, used to specify the video image position of a user in mixed streams.
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: Used to assign users to preset positions; if not assigned, users will occupy the positions set in `PresetLayoutConfig` in room entry sequence.
+        :type UserId: str
+        :param StreamType: Stream type of the user when a specified user is assigned to the image. 0: camera; 1: screen sharing. Set this parameter to 0 when the small image is occupied by a web user.
+        :type StreamType: int
+        :param ImageWidth: Width of the output image in pixels. If this parameter is not set, 0 is used by default.
+        :type ImageWidth: int
+        :param ImageHeight: Height of the output image in pixels. If this parameter is not set, 0 is used by default.
+        :type ImageHeight: int
+        :param LocationX: X offset of the output image in pixels. The sum of `LocationX` and `ImageWidth` cannot exceed the total width of the mixed stream. If this parameter is not set, 0 is used by default.
+        :type LocationX: int
+        :param LocationY: Y offset of the output image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the mixed stream. If this parameter is not set, 0 is used by default.
+        :type LocationY: int
+        :param ZOrder: Z-order of the image in pixels. If this parameter is not set, 0 is used by default.
+        :type ZOrder: int
+        :param RenderMode: Render mode of the output image. 0: cropping; 1: scaling. If this parameter is not set, 0 is used by default.
+        :type RenderMode: int
+        """
+        self.UserId = None
+        self.StreamType = None
+        self.ImageWidth = None
+        self.ImageHeight = None
+        self.LocationX = None
+        self.LocationY = None
+        self.ZOrder = None
+        self.RenderMode = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.StreamType = params.get("StreamType")
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.ZOrder = params.get("ZOrder")
+        self.RenderMode = params.get("RenderMode")
 
 
 class QualityData(AbstractModel):
