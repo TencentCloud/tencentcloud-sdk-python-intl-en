@@ -907,6 +907,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLoadBalancerTraffic(self, request):
+        """This API is used to query CLB instances with high traffic and return the top 10 results. For queries using a sub-account, only the result CLB instances authorized to the sub-account will be returned.
+
+        :param request: Request instance for DescribeLoadBalancerTraffic.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerTrafficRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerTrafficResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLoadBalancerTraffic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLoadBalancerTrafficResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLoadBalancers(self, request):
         """This API is used to query the list of CLB instances in a region.
 

@@ -16,6 +16,254 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ContactItem(AbstractModel):
+    """Contact description.
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: Contact ID.
+        :type Id: int
+        :param Name: Contact name.
+        :type Name: str
+        :param Mail: The mailbox bound to the contact.
+        :type Mail: str
+        """
+        self.Id = None
+        self.Name = None
+        self.Mail = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Mail = params.get("Mail")
+
+
+class CreateDBDiagReportTaskRequest(AbstractModel):
+    """CreateDBDiagReportTask request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param StartTime: Start time, such as `2020-11-08T14:00:00+08:00`.
+        :type StartTime: str
+        :param EndTime: End time, such as `2020-11-09T14:00:00+08:00`.
+        :type EndTime: str
+        :param SendMailFlag: Whether to send an email. Valid values: 0 - Yes, 1 - No.
+        :type SendMailFlag: int
+        :param ContactPerson: An array of contact IDs to receive the email.
+        :type ContactPerson: list of int
+        :param ContactGroup: An array of contact group IDs to receive the email.
+        :type ContactGroup: list of int
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SendMailFlag = None
+        self.ContactPerson = None
+        self.ContactGroup = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SendMailFlag = params.get("SendMailFlag")
+        self.ContactPerson = params.get("ContactPerson")
+        self.ContactGroup = params.get("ContactGroup")
+        self.Product = params.get("Product")
+
+
+class CreateDBDiagReportTaskResponse(AbstractModel):
+    """CreateDBDiagReportTask response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: ID of an async task request, which can be used to query the execution result of an async task.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type AsyncRequestId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateMailProfileRequest(AbstractModel):
+    """CreateMailProfile request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ProfileInfo: The content of email configuration.
+        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
+        :param ProfileLevel: Configuration level. Valid values: "User" (user-level), "Instance" (instance-level). The email of database inspection report is configured as the user level, and the email of scheduled task report is configured as the instance level.
+        :type ProfileLevel: str
+        :param ProfileName: Name configuration, which needs to be unique. The email configuration name of database inspection report can be customize; the email configuration name of scheduled task report should in the format of "scheduler_" + {instanceId}, such as "schduler_cdb-test".
+        :type ProfileName: str
+        :param ProfileType: Configuration type. Valid values: "dbScan_mail_configuration" (email configuration of database inspection report), "scheduler_mail_configuration" (email configuration of scheduled task report).
+        :type ProfileType: str
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
+        :type Product: str
+        :param BindInstanceIds: Instance ID bound to the configuration, which is set when the configuration level is "Instance".
+        :type BindInstanceIds: list of str
+        """
+        self.ProfileInfo = None
+        self.ProfileLevel = None
+        self.ProfileName = None
+        self.ProfileType = None
+        self.Product = None
+        self.BindInstanceIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProfileInfo") is not None:
+            self.ProfileInfo = ProfileInfo()
+            self.ProfileInfo._deserialize(params.get("ProfileInfo"))
+        self.ProfileLevel = params.get("ProfileLevel")
+        self.ProfileName = params.get("ProfileName")
+        self.ProfileType = params.get("ProfileType")
+        self.Product = params.get("Product")
+        self.BindInstanceIds = params.get("BindInstanceIds")
+
+
+class CreateMailProfileResponse(AbstractModel):
+    """CreateMailProfile response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAllUserContactRequest(AbstractModel):
+    """DescribeAllUserContact request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
+        :type Product: str
+        :param Names: An array of contact name. Fuzzy search is supported.
+        :type Names: list of str
+        """
+        self.Product = None
+        self.Names = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.Names = params.get("Names")
+
+
+class DescribeAllUserContactResponse(AbstractModel):
+    """DescribeAllUserContact response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of contacts.
+        :type TotalCount: int
+        :param Contacts: Contact information.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Contacts: list of ContactItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Contacts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Contacts") is not None:
+            self.Contacts = []
+            for item in params.get("Contacts"):
+                obj = ContactItem()
+                obj._deserialize(item)
+                self.Contacts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAllUserGroupRequest(AbstractModel):
+    """DescribeAllUserGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
+        :type Product: str
+        :param Names: An array of contact group name. Fuzzy search is supported.
+        :type Names: list of str
+        """
+        self.Product = None
+        self.Names = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.Names = params.get("Names")
+
+
+class DescribeAllUserGroupResponse(AbstractModel):
+    """DescribeAllUserGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of contact groups.
+        :type TotalCount: int
+        :param Groups: Contact group information.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Groups: list of GroupItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = GroupItem()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBDiagEventRequest(AbstractModel):
     """DescribeDBDiagEvent request structure.
 
@@ -543,6 +791,129 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Region = params.get("Region")
 
 
+class GroupItem(AbstractModel):
+    """Describe the group information.
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: Group ID.
+        :type Id: int
+        :param Name: Group name.
+        :type Name: str
+        :param MemberCount: Number of group members.
+        :type MemberCount: int
+        """
+        self.Id = None
+        self.Name = None
+        self.MemberCount = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.MemberCount = params.get("MemberCount")
+
+
+class InstanceConfs(AbstractModel):
+    """Instance configuration.
+
+    """
+
+    def __init__(self):
+        """
+        :param DailyInspection: The switch of database inspection. Valid values: Yes/No.
+        :type DailyInspection: str
+        """
+        self.DailyInspection = None
+
+
+    def _deserialize(self, params):
+        self.DailyInspection = params.get("DailyInspection")
+
+
+class MailConfiguration(AbstractModel):
+    """Email sending configuration.
+
+    """
+
+    def __init__(self):
+        """
+        :param SendMail: Whether to enable email sending. Valid values: 0 (No), 1 (Yes).
+        :type SendMail: int
+        :param Region: Region configuration, such as "ap-guangzhou", "ap-shanghai".
+        :type Region: list of str
+        :param HealthStatus: Sending a report with the specified health level, such as "HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK".
+        :type HealthStatus: list of str
+        :param ContactPerson: Contact ID. The contact/contact group cannot be empty.
+        :type ContactPerson: list of int
+        :param ContactGroup: Contact group ID. The contact/contact group cannot be empty.
+        :type ContactGroup: list of int
+        """
+        self.SendMail = None
+        self.Region = None
+        self.HealthStatus = None
+        self.ContactPerson = None
+        self.ContactGroup = None
+
+
+    def _deserialize(self, params):
+        self.SendMail = params.get("SendMail")
+        self.Region = params.get("Region")
+        self.HealthStatus = params.get("HealthStatus")
+        self.ContactPerson = params.get("ContactPerson")
+        self.ContactGroup = params.get("ContactGroup")
+
+
+class ModifyDiagDBInstanceConfRequest(AbstractModel):
+    """ModifyDiagDBInstanceConf request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceConfs: Inspection switch.
+        :type InstanceConfs: :class:`tencentcloud.dbbrain.v20191016.models.InstanceConfs`
+        :param Regions: The effective instance region. If the value is "All", it means it is effective for the whole region.
+        :type Regions: str
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
+        :type Product: str
+        :param InstanceIds: Specify the instance ID that needs to modify the inspection status.
+        :type InstanceIds: list of str
+        """
+        self.InstanceConfs = None
+        self.Regions = None
+        self.Product = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceConfs") is not None:
+            self.InstanceConfs = InstanceConfs()
+            self.InstanceConfs._deserialize(params.get("InstanceConfs"))
+        self.Regions = params.get("Regions")
+        self.Product = params.get("Product")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class ModifyDiagDBInstanceConfResponse(AbstractModel):
+    """ModifyDiagDBInstanceConf response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MonitorFloatMetric(AbstractModel):
     """Monitoring data in float type
 
@@ -645,6 +1016,29 @@ class MonitorMetricSeriesData(AbstractModel):
                 obj._deserialize(item)
                 self.Series.append(obj)
         self.Timestamp = params.get("Timestamp")
+
+
+class ProfileInfo(AbstractModel):
+    """Information configured by user.
+
+    """
+
+    def __init__(self):
+        """
+        :param Language: Language, such as “zh”.
+        :type Language: str
+        :param MailConfiguration: The content of email template.
+        :type MailConfiguration: :class:`tencentcloud.dbbrain.v20191016.models.MailConfiguration`
+        """
+        self.Language = None
+        self.MailConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.Language = params.get("Language")
+        if params.get("MailConfiguration") is not None:
+            self.MailConfiguration = MailConfiguration()
+            self.MailConfiguration._deserialize(params.get("MailConfiguration"))
 
 
 class SchemaItem(AbstractModel):

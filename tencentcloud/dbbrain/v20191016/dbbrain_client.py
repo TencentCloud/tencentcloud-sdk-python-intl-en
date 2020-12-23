@@ -26,6 +26,118 @@ class DbbrainClient(AbstractClient):
     _service = 'dbbrain'
 
 
+    def CreateDBDiagReportTask(self, request):
+        """This API is used to create a health report and select whether to send an email.
+
+        :param request: Request instance for CreateDBDiagReportTask.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateDBDiagReportTaskRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.CreateDBDiagReportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDBDiagReportTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDBDiagReportTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateMailProfile(self, request):
+        """This API is used to create the email configuration. The input parameter “ProfileType” represents the type of the email configuration. Valid values: “dbScan_mail_configuration” (email configuration of database inspection report) and “scheduler_mail_configuration” (email configuration of scheduled task report).
+
+        :param request: Request instance for CreateMailProfile.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateMailProfileRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.CreateMailProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMailProfile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMailProfileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAllUserContact(self, request):
+        """This API is used to obtain the information of the contact in the email.
+
+        :param request: Request instance for DescribeAllUserContact.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserContactRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserContactResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllUserContact", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllUserContactResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAllUserGroup(self, request):
+        """This API is used to obtain the information of the contact group in the email.
+
+        :param request: Request instance for DescribeAllUserGroup.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserGroupRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllUserGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllUserGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBDiagEvent(self, request):
         """This API is used to get the details of an instance exception diagnosis event.
 
@@ -208,6 +320,34 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopSpaceTablesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDiagDBInstanceConf(self, request):
+        """This API is used to modify instance inspection switch.
+
+        :param request: Request instance for ModifyDiagDBInstanceConf.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.ModifyDiagDBInstanceConfRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.ModifyDiagDBInstanceConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDiagDBInstanceConf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDiagDBInstanceConfResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

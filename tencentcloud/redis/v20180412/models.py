@@ -4096,7 +4096,7 @@ class RedisNodeInfo(AbstractModel):
         :type NodeType: int
         :param ZoneId: ID of the availability zone of the master or replica node
         :type ZoneId: int
-        :param NodeId: ID of the master or replica node, which is not required when creating an instance
+        :param NodeId: ID of the master or replica node, which is not required upon creation of the instance
         :type NodeId: int
         """
         self.NodeType = None

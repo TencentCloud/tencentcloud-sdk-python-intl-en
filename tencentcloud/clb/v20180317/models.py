@@ -897,8 +897,8 @@ OPEN: public network; INTERNAL: private network.
         :type LoadBalancerType: str
         :param Forward: CLB instance type. 1: generic CLB instance. Currently, only 1 can be passed in
         :type Forward: int
-        :param LoadBalancerName: CLB instance name, which takes effect only when an instance is created. Rule: 1-50 letters, digits, dashes (-), or underscores (_).
-Note: If this name is the same as the name of an existing CLB instance in the system, the system will automatically generate a name for this newly created instance.
+        :param LoadBalancerName: CLB instance name, which takes effect only when an instance is created. It consists of 1 to 60 letters, digits, hyphens (-), or underscores (_).
+Note: If the name of the new CLB instance already exists in the system, the system will automatically generate a name for the new CLB instance.
         :type LoadBalancerName: str
         :param VpcId: Network ID of the backend target server of CLB, which can be obtained through the DescribeVpcEx API. If this parameter is not passed in, it will default to a basic network ("0").
         :type VpcId: str
@@ -923,7 +923,7 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         :type Tags: list of TagInfo
         :param Vip: Applies for CLB instances for a specified VIP
         :type Vip: str
-        :param BandwidthPackageId: 
+        :param BandwidthPackageId: Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).
         :type BandwidthPackageId: str
         :param ExclusiveCluster: Exclusive cluster information.
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
@@ -2053,6 +2053,50 @@ class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
                 obj = CertIdRelatedWithLoadBalancers()
                 obj._deserialize(item)
                 self.CertSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLoadBalancerTrafficRequest(AbstractModel):
+    """DescribeLoadBalancerTraffic request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerRegion: CLB instance region. If this parameter is not passed in, CLB instances in all regions will be returned.
+        :type LoadBalancerRegion: str
+        """
+        self.LoadBalancerRegion = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerRegion = params.get("LoadBalancerRegion")
+
+
+class DescribeLoadBalancerTrafficResponse(AbstractModel):
+    """DescribeLoadBalancerTraffic response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerTraffic: Information of CLB instances descendingly sorted by outbound bandwidth
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LoadBalancerTraffic: list of LoadBalancerTraffic
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LoadBalancerTraffic = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancerTraffic") is not None:
+            self.LoadBalancerTraffic = []
+            for item in params.get("LoadBalancerTraffic"):
+                obj = LoadBalancerTraffic()
+                obj._deserialize(item)
+                self.LoadBalancerTraffic.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3610,6 +3654,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self.Listeners.append(obj)
 
 
+class LoadBalancerTraffic(AbstractModel):
+    """CLB instance traffic data
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: CLB instance ID
+        :type LoadBalancerId: str
+        :param LoadBalancerName: CLB instance name
+        :type LoadBalancerName: str
+        :param Region: CLB instance region
+        :type Region: str
+        :param Vip: CLB instance VIP
+        :type Vip: str
+        :param OutBandwidth: Maximum outbound bandwidth in Mbps
+        :type OutBandwidth: float
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.Region = None
+        self.Vip = None
+        self.OutBandwidth = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.Region = params.get("Region")
+        self.Vip = params.get("Vip")
+        self.OutBandwidth = params.get("OutBandwidth")
+
+
 class ManualRewriteRequest(AbstractModel):
     """ManualRewrite request structure.
 
@@ -4615,8 +4692,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Url: Forwarding rule Url
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Url: str
-        :param Targets: Health check status of the real server bound to this rule
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Targets: Health status of the real server bound to this rule
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Targets: list of TargetHealth
         """
         self.LocationId = None
