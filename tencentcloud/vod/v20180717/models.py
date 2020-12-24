@@ -321,8 +321,8 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>1: yes.</li>
         :type RemoveAudio: int
         :param RemoveVideo: Whether to remove a video stream. Valid values:
-<li>0: no,</li>
-<li>1: yes.</li>
+<li>0: no</li>
+<li>1: yes</li>
         :type RemoveVideo: int
         """
         self.Video = None
@@ -3498,11 +3498,11 @@ If the value is 0, the bitrate of the audio stream will be the same as that of t
 In Hz.
         :type SampleRate: int
         :param AudioChannel: Audio channel system. Valid values:
-<li>1: Mono-channel</li>
-<li>2: Dual-channel</li>
-<li>6: Stereo</li>
+<li>1: mono-channel</li>
+<li>2: dual-channel</li>
+<li>6: stereo</li>
 You cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).
-Default value: 2.
+Default value: 2
         :type AudioChannel: int
         """
         self.Codec = None
@@ -3551,9 +3551,9 @@ When the outer `Container` parameter is `hls`, the valid values include:
 In Hz.
         :type SampleRate: int
         :param AudioChannel: Audio channel system. Valid values:
-<li>1: Mono-channel</li>
-<li>2: Dual-channel</li>
-<li>6: Stereo</li>
+<li>1: mono-channel</li>
+<li>2: dual-channel</li>
+<li>6: stereo</li>
 You cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).
         :type AudioChannel: int
         """
@@ -6970,13 +6970,13 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.
         :type EndTime: str
-        :param Type: This API is used to query video processing task types. The following types are supported now:
-<li> Transcoding: Basic transcoding</li>
-<li> Transcoding-TESHD: TESHD transcoding</li>
-<li> Editing: Video editing</li>
-<li> AdaptiveBitrateStreaming: adaptive bitrate streaming</li>
-<li> ContentAudit: content audit</li>
-<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing (not recommended)</li>
+        :param Type: This API is used to query video processing task types. Valid values:
+<li>Transcoding: basic transcoding</li>
+<li>Transcoding-TESHD: TESHD transcoding</li>
+<li>Editing: video editing</li>
+<li>AdaptiveBitrateStreaming: adaptive bitrate streaming</li>
+<li>ContentAudit: content moderation</li>
+<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing. This value is not recommended.</li>
         :type Type: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -7475,13 +7475,21 @@ class DescribeSubAppIdsRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param Limit: 
+        :type Limit: int
+        :param Offset: 
+        :type Offset: int
         :param Tags: Tag information. You can query the list of subapplications with specified tags.
         :type Tags: list of ResourceTag
         """
+        self.Limit = None
+        self.Offset = None
         self.Tags = None
 
 
     def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
@@ -12157,11 +12165,11 @@ class ModifySubAppIdStatusRequest(AbstractModel):
         """
         :param SubAppId: Subapplication ID.
         :type SubAppId: int
-        :param Status: Subapplication status. Valid strings include:
-<li>On: to enable the subapplication.</li>
-<li>Off: to disable the subapplication.</li>
-<li>Destroyed: to terminate the subapplication. </li>
-You cannot enable a subapplication when its status is “Destroying”. You can enable it after it was terminated.
+        :param Status: Subapplication status. Valid values:
+<li>On: enabled</li>
+<li>Off: disabled</li>
+<li>Destroyed: terminated</li>
+You cannot enable a subapplication whose status is “Destroying”. You can enable it after it was terminated.
         :type Status: str
         """
         self.SubAppId = None
@@ -13635,7 +13643,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InputInfo: This API is<font color='red'>disused</font>. We recommend using an alternative API. For more information, see API overview.
+        :param InputInfo: This API is<font color='red'>disused</font>. You are advised to use an alternative API. For more information, see API overview.
         :type InputInfo: :class:`tencentcloud.vod.v20180717.models.MediaInputInfo`
         :param OutputInfo: Information of COS path to output file.
         :type OutputInfo: :class:`tencentcloud.vod.v20180717.models.MediaOutputInfo`
@@ -15028,11 +15036,11 @@ class SubAppIdInfo(AbstractModel):
         :type Description: str
         :param CreateTime: Subapplication creation time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
-        :param Status: Subapplication status. Valid strings include:
-<li>On: enabled;</li>
-<li>Off: disabled.</li>
-<li>Destroying: terminating. </li>
-<li>Destroyed: terminated. </li>
+        :param Status: Subapplication status. Valid values:
+<li>On: enabled</li>
+<li>Off: disabled</li>
+<li>Destroying: terminating</li>
+<li>Destroyed: terminated</li>
         :type Status: str
         """
         self.SubAppId = None
@@ -15278,12 +15286,12 @@ class TaskStatData(AbstractModel):
     def __init__(self):
         """
         :param TaskType: Task type.
-<li> Transcoding: basic transcoding</li>
-<li> Transcoding-TESHD: TESHD transcoding</li>
-<li> Editing: Video editing</li>
-<li> AdaptiveBitrateStreaming: adaptive bitrate streaming</li>
-<li> ContentAudit: content audit</li>
-<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing (not recommended)</li>
+<li>Transcoding: basic transcoding</li>
+<li>Transcoding-TESHD: TESHD transcoding</li>
+<li>Editing: video editing</li>
+<li>AdaptiveBitrateStreaming: adaptive bitrate streaming</li>
+<li>ContentAudit: content moderation</li>
+<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing. This value is not recommended.</li>
         :type TaskType: str
         :param Summary: Task statistics overview (usage unit: second).
         :type Summary: list of TaskStatDataItem
@@ -16260,17 +16268,19 @@ Note: this field may return null, indicating that no valid values can be obtaine
 Default value: 0.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Height: int
-        :param FillType: Fill type, the way of processing a screenshot when the configured aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: stretch video image frame by frame to fill the screen. The video image may become "squashed" or "stretched" after transcoding;</li>
-<li>black: keep the image's aspect ratio unchanged and fill the uncovered area with black color.</li>
-<li>white: keep the image's aspect ratio unchanged and fill the uncovered area with white color.</li>
-<li>gauss: keep the image's aspect ratio unchanged and apply Gaussian blur to the uncovered area.</li>
-Default value: black.
+        :param FillType: Fill type, the way of processing a screenshot when the configured aspect ratio is different from that of the source video. Valid values:
+<li>stretch: stretches the video image frame by frame to fill the screen. The video image may become "squashed" or "stretched" after transcoding.</li>
+<li>black: fills the uncovered area with black color, without changing the image's aspect ratio.</li>
+<li>white: fills the uncovered area with white color, without changing the image's aspect ratio.</li>
+<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
+Default value: black
         :type FillType: str
         :param Vcrf: Video Constant Rate Factor (CRF). Value range: 1-51.
 If this parameter is specified, CRF will be used to control video bitrate for transcoding and the original video bitrate will not be used.
-We don’t recommend specifying this parameter if you have no special requirements.
+We don’t recommend specifying this parameter unless you have special requirements.
         :type Vcrf: int
+        :param Gop: 
+        :type Gop: int
         """
         self.Codec = None
         self.Fps = None
@@ -16280,6 +16290,7 @@ We don’t recommend specifying this parameter if you have no special requiremen
         self.Height = None
         self.FillType = None
         self.Vcrf = None
+        self.Gop = None
 
 
     def _deserialize(self, params):
@@ -16291,6 +16302,7 @@ We don’t recommend specifying this parameter if you have no special requiremen
         self.Height = params.get("Height")
         self.FillType = params.get("FillType")
         self.Vcrf = params.get("Vcrf")
+        self.Gop = params.get("Gop")
 
 
 class VideoTemplateInfoForUpdate(AbstractModel):
@@ -16324,15 +16336,17 @@ If the value is 0, the bitrate of the video will be the same as that of the sour
         :type Width: int
         :param Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
         :type Height: int
-        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: stretch video image frame by frame to fill the screen. The video image may become "squashed" or "stretched" after transcoding;</li>
-<li>black: keep the image's aspect ratio unchanged and fill the uncovered area with black color.</li>
-<li>white: keep the image's aspect ratio unchanged and fill the uncovered area with white color.</li>
-<li>gauss: keep the image's aspect ratio unchanged and apply Gaussian blur to the uncovered area.</li>
+        :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. Valid values:
+<li>stretch: stretches video image frame by frame to fill the screen. The video image may become "squashed" or "stretched" after transcoding.</li>
+<li>black: fills the uncovered area with black color, without changing the image's aspect ratio.</li>
+<li>white: fills the uncovered area with white color, without changing the image's aspect ratio.</li>
+<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
         :type FillType: str
         :param Vcrf: Video Constant Rate Factor (CRF). Value range: 1-51. This parameter will be disabled if you enter 0.
-We don’t recommend specifying this parameter if you have no special requirements.
+We don’t recommend specifying this parameter unless you have special requirements.
         :type Vcrf: int
+        :param Gop: 
+        :type Gop: int
         """
         self.Codec = None
         self.Fps = None
@@ -16342,6 +16356,7 @@ We don’t recommend specifying this parameter if you have no special requiremen
         self.Height = None
         self.FillType = None
         self.Vcrf = None
+        self.Gop = None
 
 
     def _deserialize(self, params):
@@ -16353,6 +16368,7 @@ We don’t recommend specifying this parameter if you have no special requiremen
         self.Height = params.get("Height")
         self.FillType = params.get("FillType")
         self.Vcrf = params.get("Vcrf")
+        self.Gop = params.get("Gop")
 
 
 class VideoTrackItem(AbstractModel):
@@ -16476,10 +16492,10 @@ class WatermarkInput(AbstractModel):
         """
         :param Definition: Watermarking template ID.
         :type Definition: int
-        :param TextContent: Text content, which contains up to 100 characters. This field is required only when the watermark type is text.
+        :param TextContent: Text content, which contains up to 100 characters. Set this parameter only when the watermark type is text.
 VOD does not support adding text watermarks on screenshots.
         :type TextContent: str
-        :param SvgContent: SVG content, which contains up to 2,000,000 characters. This field is required only when the watermark type is SVG.
+        :param SvgContent: SVG content, which contains up to 2,000,000 characters. Set this parameter only when the watermark type is SVG.
 VOD does not support adding SVG watermarks on screenshots.
         :type SvgContent: str
         :param StartTimeOffset: Start time offset of a watermark in seconds. If this parameter is left blank or 0 is entered, the watermark will appear upon the first video frame.

@@ -186,7 +186,7 @@ class GmeClient(AbstractClient):
         <p>ad: advertising</p>
         <p>terrorism: terrorism</p>
         <p>contraband: prohibited</p>
-        <p>customized: custom keyword library. This feature is only available to allowlisted users. To try it out, please <a href="https://cloud.tencent.com/apply/p/8809fjcik56">contact us</a>.</p>
+        <p>customized: custom keyword library. This feature is only available to allowlisted users. To try it out, please <a href="https://intl.cloud.tencent.com/apply/p/8809fjcik56?from_cn_redirect=1">contact us</a>.</p>
         </td>
         </tr>
         </tbody>
@@ -224,7 +224,7 @@ class GmeClient(AbstractClient):
         </ul>
 
         <li>Below is a sample callback <font color="red">(for more information on the fields, please see the structure:
-        <a href="https://cloud.tencent.com/document/api/607/35375#DescribeScanResult" target="_blank">DescribeScanResult</a>)</font>:</li>
+        <a href="https://intl.cloud.tencent.com/document/api/607/35375?from_cn_redirect=1#DescribeScanResult" target="_blank">DescribeScanResult</a>)</font>:</li>
         <pre><code>{
         	"Code": 0,
         	"DataId": "1400000000_test_data_id",

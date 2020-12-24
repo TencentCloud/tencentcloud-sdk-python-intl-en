@@ -442,7 +442,7 @@ class ScanDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param Label: Violation scenario. For more information, please see the definition of <a href="https://cloud.tencent.com/document/product/607/37622#Label_Value">Label</a>
+        :param Label: Violation scenario. For more information, please see the definition of <a href="https://intl.cloud.tencent.com/document/product/607/37622?from_cn_redirect=1#Label_Value">Label</a>
         :type Label: str
         :param Rate: Confidence score in scenario. Value range: [0.00,100.00]. The higher the score, the more likely the content is non-compliant
         :type Rate: str

@@ -897,8 +897,8 @@ OPEN: public network; INTERNAL: private network.
         :type LoadBalancerType: str
         :param Forward: CLB instance type. 1: generic CLB instance. Currently, only 1 can be passed in
         :type Forward: int
-        :param LoadBalancerName: CLB instance name, which takes effect only when an instance is created. It consists of 1 to 60 letters, digits, hyphens (-), or underscores (_).
-Note: If the name of the new CLB instance already exists in the system, the system will automatically generate a name for the new CLB instance.
+        :param LoadBalancerName: CLB instance name, which takes effect only when only one instance is to be created in the request. It can consist 1 to 60 letters, digits, hyphens (-), or underscores (_).
+Note: if the name of the new CLB instance already exists, a default name will be generated automatically.
         :type LoadBalancerName: str
         :param VpcId: Network ID of the backend target server of CLB, which can be obtained through the DescribeVpcEx API. If this parameter is not passed in, it will default to a basic network ("0").
         :type VpcId: str
@@ -2080,7 +2080,7 @@ class DescribeLoadBalancerTrafficResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerTraffic: Information of CLB instances descendingly sorted by outbound bandwidth
+        :param LoadBalancerTraffic: Information of CLB instances sorted by outbound bandwidth from highest to lowest
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LoadBalancerTraffic: list of LoadBalancerTraffic
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
