@@ -414,7 +414,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code, 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -424,6 +426,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -432,6 +435,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -496,7 +500,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -506,6 +512,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -514,6 +521,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -572,7 +580,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -582,6 +592,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -590,6 +601,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -665,7 +677,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -675,6 +689,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -683,6 +698,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -883,7 +899,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -894,6 +912,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -902,6 +921,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -999,7 +1019,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1010,6 +1032,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1018,6 +1041,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1127,7 +1151,9 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1138,6 +1164,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1146,6 +1173,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1286,7 +1314,9 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1297,6 +1327,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1305,6 +1336,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1418,7 +1450,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1429,6 +1463,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1437,6 +1472,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1966,7 +2002,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see the list of [Error Codes](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1977,6 +2015,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1985,6 +2024,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2004,8 +2044,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -2017,6 +2058,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2025,6 +2067,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2044,7 +2087,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2055,6 +2100,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2063,6 +2109,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2082,7 +2129,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2093,6 +2142,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2101,6 +2151,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2120,7 +2171,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2131,6 +2184,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2139,6 +2193,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2158,8 +2213,9 @@ class AiReviewTaskPornResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -2171,6 +2227,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2179,6 +2236,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2198,10 +2256,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2211,6 +2268,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2219,6 +2277,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2238,10 +2297,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2251,6 +2309,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2259,6 +2318,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2278,10 +2338,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2291,6 +2350,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2299,6 +2359,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2318,7 +2379,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2329,6 +2392,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2337,6 +2401,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2906,7 +2971,8 @@ In Hz.
 <li>1: Mono</li>
 <li>2: Dual</li>
 <li>6: Stereo</li>
-Default value: 2.
+When the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.
+Default value: 2
         :type AudioChannel: int
         """
         self.Codec = None
@@ -2958,6 +3024,7 @@ In Hz.
 <li>1: Mono</li>
 <li>2: Dual</li>
 <li>6: Stereo</li>
+When the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.
         :type AudioChannel: int
         """
         self.Codec = None
@@ -7378,13 +7445,17 @@ class MediaInputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Video processing object type. Only COS is supported currently.
+        :param Type: The type of video processing input object. COS and URL objects are supported.
         :type Type: str
         :param CosInputInfo: This parameter is required and valid when `Type` is `COS`, indicating the information of a COS object for video processing.
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
+        :param UrlInputInfo: This parameter is required and valid when `Type` is `URL`, indicating the information of a URL object for video processing.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
         """
         self.Type = None
         self.CosInputInfo = None
+        self.UrlInputInfo = None
 
 
     def _deserialize(self, params):
@@ -7392,6 +7463,9 @@ class MediaInputInfo(AbstractModel):
         if params.get("CosInputInfo") is not None:
             self.CosInputInfo = CosInputInfo()
             self.CosInputInfo._deserialize(params.get("CosInputInfo"))
+        if params.get("UrlInputInfo") is not None:
+            self.UrlInputInfo = UrlInputInfo()
+            self.UrlInputInfo._deserialize(params.get("UrlInputInfo"))
 
 
 class MediaMetaData(AbstractModel):
@@ -7481,7 +7555,9 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -7492,6 +7568,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingInfoItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7500,6 +7577,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7519,10 +7597,9 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: Invalid input parameter. Please check it;</li>
-<li>60000: Invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: Internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -7533,6 +7610,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaAnimatedGraphicsItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7541,6 +7619,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7560,10 +7639,9 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: Invalid input parameter. Please check it;</li>
-<li>60000: Invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: Internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -7574,6 +7652,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7582,6 +7661,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7734,11 +7814,9 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: Invalid input parameter. Please check it;</li>
-<li>60000: Invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: Internal service error. Please try again.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -7750,6 +7828,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7758,6 +7837,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7777,10 +7857,9 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: Invalid input parameter. Please check it;</li>
-<li>60000: Invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: Internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -7791,6 +7870,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7799,6 +7879,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7818,10 +7899,9 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: Invalid input parameter. Please check it;</li>
-<li>60000: Invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: Internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -7832,6 +7912,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7840,6 +7921,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -9124,6 +9206,53 @@ There can be up to 10 tags, each with a length limit of 16 characters.
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.LabelSet = params.get("LabelSet")
+
+
+class OverrideTranscodeParameter(AbstractModel):
+    """Custom specification parameters for video processing, which are used to override corresponding parameters in templates.
+
+    """
+
+    def __init__(self):
+        """
+        :param Container: Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, and m4a; mp3, flac, ogg, and m4a are formats of audio files.
+        :type Container: str
+        :param RemoveVideo: Whether to remove video data. Valid values:
+<li>0: retain</li>
+<li>1: remove</li>
+        :type RemoveVideo: int
+        :param RemoveAudio: Whether to remove audio data. Valid values:
+<li>0: retain</li>
+<li>1: remove</li>
+        :type RemoveAudio: int
+        :param VideoTemplate: Video stream configuration parameter.
+        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
+        :param AudioTemplate: Audio stream configuration parameter.
+        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
+        :param TEHDConfig: TESHD transcoding parameter.
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
+        """
+        self.Container = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.VideoTemplate = None
+        self.AudioTemplate = None
+        self.TEHDConfig = None
+
+
+    def _deserialize(self, params):
+        self.Container = params.get("Container")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoTemplate") is not None:
+            self.VideoTemplate = VideoTemplateInfoForUpdate()
+            self.VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self.AudioTemplate = AudioTemplateInfoForUpdate()
+            self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfigForUpdate()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
 
 
 class ParseLiveStreamProcessNotificationRequest(AbstractModel):
@@ -11065,6 +11194,11 @@ class TranscodeTaskInput(AbstractModel):
         :param RawParameter: Custom video transcoding parameter, which is valid if `Definition` is 0.
 This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the transcoding parameter preferably.
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
+        :param OverrideParameter: Video transcoding custom parameter, which is valid when `Definition` is not 0.
+When any parameters in this structure are entered, they will be used to override corresponding parameters in templates.
+This parameter is used in highly customized scenarios. We recommend you only use `Definition` to specify the transcoding parameter.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
         :param WatermarkSet: List of up to 10 image or text watermarks.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WatermarkSet: list of WatermarkInput
@@ -11083,6 +11217,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """
         self.Definition = None
         self.RawParameter = None
+        self.OverrideParameter = None
         self.WatermarkSet = None
         self.MosaicSet = None
         self.OutputStorage = None
@@ -11096,6 +11231,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("RawParameter") is not None:
             self.RawParameter = RawTranscodeParameter()
             self.RawParameter._deserialize(params.get("RawParameter"))
+        if params.get("OverrideParameter") is not None:
+            self.OverrideParameter = OverrideTranscodeParameter()
+            self.OverrideParameter._deserialize(params.get("OverrideParameter"))
         if params.get("WatermarkSet") is not None:
             self.WatermarkSet = []
             for item in params.get("WatermarkSet"):
@@ -11200,6 +11338,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ContainerType = params.get("ContainerType")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class UrlInputInfo(AbstractModel):
+    """Information of a video processing URL object.
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: URL of a video.
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
 
 
 class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
@@ -11500,10 +11655,16 @@ Default value: 0.
 If this parameter is 0 or left empty, the system will automatically set the GOP length.
         :type Gop: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
-<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
+<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
 Default value: black.
         :type FillType: str
+        :param Vcrf: The control factor of video constant bitrate. Value range: [1, 51]
+If this parameter is specified, CRF (a bitrate control method) will be used for transcoding. (Video bitrate will no longer take effect.)
+It is not recommended to specify this parameter if there are no special requirements.
+        :type Vcrf: int
         """
         self.Codec = None
         self.Fps = None
@@ -11513,6 +11674,7 @@ Default value: black.
         self.Height = None
         self.Gop = None
         self.FillType = None
+        self.Vcrf = None
 
 
     def _deserialize(self, params):
@@ -11524,6 +11686,7 @@ Default value: black.
         self.Height = params.get("Height")
         self.Gop = params.get("Gop")
         self.FillType = params.get("FillType")
+        self.Vcrf = params.get("Vcrf")
 
 
 class VideoTemplateInfoForUpdate(AbstractModel):
@@ -11559,10 +11722,14 @@ If the value is 0, the bitrate of the video will be the same as that of the sour
         :param Gop: Frame interval between I keyframes. Value range: 0 and [1,100000]. If this parameter is 0, the system will automatically set the GOP length.
         :type Gop: int
         :param FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
-<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-Default value: black.
+<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
+<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
         :type FillType: str
+        :param Vcrf: The control factor of video constant bitrate. Value range: [0, 51]. This parameter will be disabled if you enter `0`.
+It is not recommended to specify this parameter if there are no special requirements.
+        :type Vcrf: int
         """
         self.Codec = None
         self.Fps = None
@@ -11572,6 +11739,7 @@ Default value: black.
         self.Height = None
         self.Gop = None
         self.FillType = None
+        self.Vcrf = None
 
 
     def _deserialize(self, params):
@@ -11583,6 +11751,7 @@ Default value: black.
         self.Height = params.get("Height")
         self.Gop = params.get("Gop")
         self.FillType = params.get("FillType")
+        self.Vcrf = params.get("Vcrf")
 
 
 class WatermarkInput(AbstractModel):
@@ -11596,10 +11765,13 @@ class WatermarkInput(AbstractModel):
         :type Definition: int
         :param RawParameter: Custom watermark parameter, which is valid if `Definition` is 0.
 This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the watermark parameter preferably.
+Custom watermark parameter is not available for screenshot.
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawWatermarkParameter`
         :param TextContent: Text content of up to 100 characters. This field is required only when the watermark type is text.
+Text watermark is not available for screenshot.
         :type TextContent: str
         :param SvgContent: SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.
+SVG watermark is not available for screenshot.
         :type SvgContent: str
         :param StartTimeOffset: Start time offset of a watermark in seconds. If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame.
 <li>If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame;</li>

@@ -8893,25 +8893,25 @@ class InstanceStatistic(AbstractModel):
 
 
 class IpField(AbstractModel):
-    """IP fields to be queried online
+    """IP information to be queried
 
     """
 
     def __init__(self):
         """
-        :param Country: Country/region field
+        :param Country: Country/region of the IP
         :type Country: bool
-        :param Province: Province/municipality field
+        :param Province: Province/municipality/state of the IP
         :type Province: bool
-        :param City: City field
+        :param City: City of the IP
         :type City: bool
-        :param Region: Urban area field
+        :param Region: City district of the IP
         :type Region: bool
         :param Isp: Access ISP field
         :type Isp: bool
         :param AsName: ISP backbone network’s AS field
         :type AsName: bool
-        :param AsId: AS ID
+        :param AsId: Backbone AS ID
         :type AsId: bool
         :param Comment: Comment
         :type Comment: bool

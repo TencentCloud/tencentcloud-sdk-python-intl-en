@@ -23,23 +23,23 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MaximumPlayerSessionCount: Maximum number of players
+        :param MaximumPlayerSessionCount: The maximum number of players, which cannot be less than 0.
         :type MaximumPlayerSessionCount: int
-        :param AliasId: Alias ID
+        :param AliasId: Alias ID. You need to specify an alias ID or fleet ID for each request. If both of them are specified, the fleet ID shall prevail.
         :type AliasId: str
-        :param CreatorId: Creator ID
+        :param CreatorId: Creator ID. Up to 1024 ASCII characters are allowed.
         :type CreatorId: str
-        :param FleetId: Fleet ID
+        :param FleetId: Fleet ID. You need to specify an alias ID or fleet ID for each request. If both of them are specified, the fleet ID shall prevail.
         :type FleetId: str
-        :param GameProperties: Game attributes
+        :param GameProperties: Game attributes. Up to 16 groups of attributes are allowed.
         :type GameProperties: list of GameProperty
-        :param GameServerSessionData: Game server session attribute details
+        :param GameServerSessionData: The attribute details of game server session. Up to 4096 ASCII characters are allowed.
         :type GameServerSessionData: str
-        :param GameServerSessionId: Custom ID of game server session
+        :param GameServerSessionId: The custom ID of game server session. Up to 4096 ASCII characters are allowed.
         :type GameServerSessionId: str
-        :param IdempotencyToken: Idempotency token
+        :param IdempotencyToken: Idempotency token. Up to 48 ASCII characters are allowed.
         :type IdempotencyToken: str
-        :param Name: Game server session name
+        :param Name: The name of game server session. Up to 1024 ASCII characters are allowed.
         :type Name: str
         """
         self.MaximumPlayerSessionCount = None
@@ -126,11 +126,11 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
         :type AliasId: str
         :param FleetId: Fleet ID
         :type FleetId: str
-        :param GameServerSessionId: Game server session ID
+        :param GameServerSessionId: Game server session ID. It should contain 1 to 48 ASCII characters.
         :type GameServerSessionId: str
         :param Limit: Maximum number of entries in a single query
         :type Limit: int
-        :param NextToken: Pagination offset, which is used for querying the next page
+        :param NextToken: Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
         :type NextToken: str
         :param StatusFilter: Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR
         :type StatusFilter: str
@@ -162,8 +162,8 @@ class DescribeGameServerSessionDetailsResponse(AbstractModel):
         :param GameServerSessionDetails: List of game server session details
 Note: this field may return null, indicating that no valid values can be obtained.
         :type GameServerSessionDetails: list of GameServerSessionDetail
-        :param NextToken: Pagination offset, which is used for querying the next page
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param NextToken: Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type NextToken: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -235,11 +235,11 @@ class DescribeGameServerSessionsRequest(AbstractModel):
         :type AliasId: str
         :param FleetId: Fleet ID
         :type FleetId: str
-        :param GameServerSessionId: Game server session ID
+        :param GameServerSessionId: Game server session ID. It should contain 1 to 48 ASCII characters.
         :type GameServerSessionId: str
         :param Limit: Maximum number of entries in a single query
         :type Limit: int
-        :param NextToken: Pagination offset, which is used for querying the next page
+        :param NextToken: Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
         :type NextToken: str
         :param StatusFilter: Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR
         :type StatusFilter: str
@@ -271,8 +271,8 @@ class DescribeGameServerSessionsResponse(AbstractModel):
         :param GameServerSessions: Game server session list
 Note: this field may return null, indicating that no valid values can be obtained.
         :type GameServerSessions: list of GameServerSession
-        :param NextToken: Pagination offset, which is used for querying the next page
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param NextToken: Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type NextToken: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -300,15 +300,15 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GameServerSessionId: Game server session ID
+        :param GameServerSessionId: Game server session ID. It should contain 1 to 48 ASCII characters.
         :type GameServerSessionId: str
         :param Limit: Maximum number of entries in a single query
         :type Limit: int
-        :param NextToken: Pagination offset, which is used for querying the next page
+        :param NextToken: Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
         :type NextToken: str
-        :param PlayerId: Player ID
+        :param PlayerId: Player ID. It should contain 1 to 1024 ASCII characters.
         :type PlayerId: str
-        :param PlayerSessionId: Player session ID
+        :param PlayerSessionId: Player session ID. It should contain 1 to 1024 ASCII characters.
         :type PlayerSessionId: str
         :param PlayerSessionStatusFilter: Player session status. Valid values: RESERVED, ACTIVE, COMPLETED, TIMEDOUT
         :type PlayerSessionStatusFilter: str
@@ -340,8 +340,8 @@ class DescribePlayerSessionsResponse(AbstractModel):
         :param PlayerSessions: Player session list
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PlayerSessions: list of PlayerSession
-        :param NextToken: Pagination offset
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param NextToken: Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type NextToken: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -390,9 +390,9 @@ class GameProperty(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: Attribute name
+        :param Key: Attribute name. Up to 32 ASCII characters are allowed.
         :type Key: str
-        :param Value: Attribute value
+        :param Value: Attribute value. Up to 96 ASCII characters are allowed.
         :type Value: str
         """
         self.Key = None
@@ -413,40 +413,40 @@ class GameServerSession(AbstractModel):
         """
         :param CreationTime: Game server session creation time
         :type CreationTime: str
-        :param CreatorId: Creator ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param CreatorId: Creator ID. Up to 1024 ASCII characters are allowed.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type CreatorId: str
-        :param CurrentPlayerSessionCount: Current number of players
+        :param CurrentPlayerSessionCount: The current number of players, which cannot be less than 0.
         :type CurrentPlayerSessionCount: int
         :param DnsName: CVM DNS ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DnsName: str
         :param FleetId: Fleet ID
         :type FleetId: str
-        :param GameProperties: Game attributes
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param GameProperties: Game attributes. Up to 16 groups of attributes are allowed.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type GameProperties: list of GameProperty
-        :param GameServerSessionData: Game server session attribute details
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param GameServerSessionData: The attribute details of game server session. Up to 4096 ASCII characters are allowed.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type GameServerSessionData: str
-        :param GameServerSessionId: Game server session ID
+        :param GameServerSessionId: Game server session ID. It should contain 1 to 48 ASCII characters.
         :type GameServerSessionId: str
         :param IpAddress: CVM IP address
         :type IpAddress: str
-        :param MatchmakerData: Battle progress details
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MatchmakerData: Battle progress details. Up to 400,000 ASCII characters are allowed.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type MatchmakerData: str
-        :param MaximumPlayerSessionCount: Maximum number of players
+        :param MaximumPlayerSessionCount: The maximum number of players, which cannot be less than 0.
         :type MaximumPlayerSessionCount: int
-        :param Name: Game server session name
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Name: The name of game server session. Up to 1024 ASCII characters are allowed.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type Name: str
-        :param PlayerSessionCreationPolicy: Player session creation policy
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PlayerSessionCreationPolicy: Player session creation policy. Valid values: ACCEPT_ALL, DENY_ALL
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type PlayerSessionCreationPolicy: str
-        :param Port: Port number
+        :param Port: Port number. It should be a value between 1 to 60000.
         :type Port: int
-        :param Status: Game server session status
+        :param Status: Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR
         :type Status: str
         :param StatusReason: Additional information of game server session status
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -454,8 +454,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TerminationTime: Termination time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TerminationTime: str
-        :param InstanceType: Instance type
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param InstanceType: Instance type. Up to 128 ASCII characters are allowed.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type InstanceType: str
         :param CurrentCustomCount: Current custom count
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -466,8 +466,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Weight: Weight
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Weight: int
-        :param AvailabilityStatus: Session availability status, i.e., whether it is blocked
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param AvailabilityStatus: Session availability status, i.e., whether it is blocked. Valid value: Enable, Disable
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type AvailabilityStatus: str
         """
         self.CreationTime = None
@@ -579,7 +579,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param GameProperties: Game attributes
 Note: this field may return null, indicating that no valid values can be obtained.
         :type GameProperties: list of GameProperty
-        :param MaximumPlayerSessionCount: Maximum number of players
+        :param MaximumPlayerSessionCount: The maximum number of players that can be connected simultaneously to the game session. It should a value between 1 to the maximum number of player sessions.
         :type MaximumPlayerSessionCount: int
         :param GameServerSessionData: Game session data
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -663,7 +663,7 @@ class GetGameServerSessionLogUrlRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GameServerSessionId: Game server session ID
+        :param GameServerSessionId: Game server session ID. It should contain 1 to 48 ASCII characters.
         :type GameServerSessionId: str
         """
         self.GameServerSessionId = None
@@ -680,8 +680,8 @@ class GetGameServerSessionLogUrlResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PreSignedUrl: Log download URL
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PreSignedUrl: Log download URL. It should contain 1 to 1024 ASCII characters.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type PreSignedUrl: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -702,7 +702,7 @@ class GetInstanceAccessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: Service deployment ID
+        :param FleetId: Server fleet ID
         :type FleetId: str
         :param InstanceId: Instance ID
         :type InstanceId: str
@@ -774,6 +774,60 @@ class InstanceAccess(AbstractModel):
         self.OperatingSystem = params.get("OperatingSystem")
 
 
+class JoinGameServerSessionBatchRequest(AbstractModel):
+    """JoinGameServerSessionBatch request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param GameServerSessionId: Game server session ID. It should contain 1 to 256 ASCII characters.
+        :type GameServerSessionId: str
+        :param PlayerIds: Player ID list. At least 1 ID and up to 25 IDs.
+        :type PlayerIds: list of str
+        :param PlayerDataMap: Player custom data
+        :type PlayerDataMap: :class:`tencentcloud.gse.v20191112.models.PlayerDataMap`
+        """
+        self.GameServerSessionId = None
+        self.PlayerIds = None
+        self.PlayerDataMap = None
+
+
+    def _deserialize(self, params):
+        self.GameServerSessionId = params.get("GameServerSessionId")
+        self.PlayerIds = params.get("PlayerIds")
+        if params.get("PlayerDataMap") is not None:
+            self.PlayerDataMap = PlayerDataMap()
+            self.PlayerDataMap._deserialize(params.get("PlayerDataMap"))
+
+
+class JoinGameServerSessionBatchResponse(AbstractModel):
+    """JoinGameServerSessionBatch response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PlayerSessions: Player session list. Up to 25 sessions.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type PlayerSessions: list of PlayerSession
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PlayerSessions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PlayerSessions") is not None:
+            self.PlayerSessions = []
+            for item in params.get("PlayerSessions"):
+                obj = PlayerSession()
+                obj._deserialize(item)
+                self.PlayerSessions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class JoinGameServerSessionRequest(AbstractModel):
     """JoinGameServerSession request structure.
 
@@ -781,11 +835,11 @@ class JoinGameServerSessionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GameServerSessionId: Game server session ID
+        :param GameServerSessionId: Game server session ID. It should contain 1 to 256 ASCII characters.
         :type GameServerSessionId: str
-        :param PlayerId: Player ID
+        :param PlayerId: Player ID. Up to 1024 ASCII characters are allowed.
         :type PlayerId: str
-        :param PlayerData: Custom player information
+        :param PlayerData: Player custom data. Up to 2048 ASCII characters are allowed.
         :type PlayerData: str
         """
         self.GameServerSessionId = None
@@ -844,6 +898,27 @@ class PlacedPlayerSession(AbstractModel):
         self.PlayerSessionId = params.get("PlayerSessionId")
 
 
+class PlayerDataMap(AbstractModel):
+    """Player custom data
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: The key of player custom data. It should contain 1 to 1024 ASCII characters.
+        :type Key: str
+        :param Value: The value of player custom data. It should contain 1 to 2048 ASCII characters.
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
 class PlayerLatency(AbstractModel):
     """Player latency information
 
@@ -885,21 +960,21 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type DnsName: str
         :param FleetId: Fleet ID
         :type FleetId: str
-        :param GameServerSessionId: Game server session ID
+        :param GameServerSessionId: Game server session ID. It should contain 1 to 256 ASCII characters.
         :type GameServerSessionId: str
         :param IpAddress: Address of the CVM instance where the game server session is running
         :type IpAddress: str
-        :param PlayerData: Player information
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PlayerData: Player custom data. Up to 2048 ASCII characters are allowed.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type PlayerData: str
-        :param PlayerId: Player ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PlayerId: Player ID. Up to 1024 ASCII characters are allowed.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type PlayerId: str
         :param PlayerSessionId: Player session ID
         :type PlayerSessionId: str
-        :param Port: Port number
+        :param Port: Port number. It should be a value between 1 to 60000.
         :type Port: int
-        :param Status: Player session status
+        :param Status: Player session status. Valid values: RESERVED = 1, ACTIVE = 2, COMPLETED =3, TIMEDOUT = 4
         :type Status: str
         :param TerminationTime: Player session termination time
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -945,7 +1020,7 @@ class SearchGameServerSessionsRequest(AbstractModel):
         :type FleetId: str
         :param Limit: Maximum number of entries in a single query
         :type Limit: int
-        :param NextToken: Pagination offset, which is used for querying the next page
+        :param NextToken: Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
         :type NextToken: str
         :param FilterExpression: Search filter expression. Valid values:
 gameServerSessionName: game session name in `String` type
@@ -958,6 +1033,32 @@ gameServerSessionProperties: game session attributes in `String` type
 
 Expressions in `String` type support = and <> for judgment
 Expressions in `Number` type support =, <>, >, >=, <, and <= for judgment
+
+Example:
+If FilterExpression takes the value:
+playerSessionCount>=2 AND hasAvailablePlayerSessions=true"
+It means searching for game sessions that have at least two players and have player sessions available.
+If FilterExpression takes the value:
+gameServerSessionProperties.K1 = 'V1' AND gameServerSessionProperties.K2 = 'V2' OR gameServerSessionProperties.K3 = 'V3'
+
+it means
+searching for game sessions that meets the following game server session attributes
+{
+    "GameProperties":[
+        {
+            "Key":"K1",
+            "Value":"V1"
+        },
+        {
+            "Key":"K2",
+            "Value":"V2"
+        },
+        {
+            "Key":"K3",
+            "Value":"V3"
+        }
+    ]
+}
         :type FilterExpression: str
         :param SortExpression: Sorting keyword
 Valid values:
@@ -995,8 +1096,8 @@ class SearchGameServerSessionsResponse(AbstractModel):
         :param GameServerSessions: Game server session list
 Note: this field may return null, indicating that no valid values can be obtained.
         :type GameServerSessions: list of GameServerSession
-        :param NextToken: Pagination offset, which is used for querying the next page
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param NextToken: Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type NextToken: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1024,19 +1125,19 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PlacementId: Unique ID of starting game server session placement
+        :param PlacementId: The unique ID of the game server session placement. It should contain up to 48 ASCII characters, supporting [a-zA-Z0-9-]+.
         :type PlacementId: str
         :param GameServerSessionQueueName: Game server session queue name
         :type GameServerSessionQueueName: str
-        :param MaximumPlayerSessionCount: Maximum number of concurrent players allowed by the game server to connect to the game session
+        :param MaximumPlayerSessionCount: The maximum number of players that can be connected simultaneously to the game session. It should a value between 1 to the maximum number of player sessions.
         :type MaximumPlayerSessionCount: int
         :param DesiredPlayerSessions: Player game session information
         :type DesiredPlayerSessions: list of DesiredPlayerSession
         :param GameProperties: Player game session attributes
         :type GameProperties: list of GameProperty
-        :param GameServerSessionData: Game server session data
+        :param GameServerSessionData: Data of game server sessions. Up to 4096 ASCII characters are allowed.
         :type GameServerSessionData: str
-        :param GameServerSessionName: Game server session name
+        :param GameServerSessionName: Name of game server sessions. Up to 4096 ASCII characters are allowed.
         :type GameServerSessionName: str
         :param PlayerLatencies: Player latency
         :type PlayerLatencies: list of PlayerLatency
@@ -1147,15 +1248,15 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GameServerSessionId: Game server session ID
+        :param GameServerSessionId: Game server session ID. It should contain 1 to 256 ASCII characters.
         :type GameServerSessionId: str
-        :param MaximumPlayerSessionCount: Maximum number of players
+        :param MaximumPlayerSessionCount: The maximum number of players, which cannot be less than 0.
         :type MaximumPlayerSessionCount: int
-        :param Name: Game server session name
+        :param Name: Name of the game server session. It should contain 1 to 1024 ASCII characters.
         :type Name: str
-        :param PlayerSessionCreationPolicy: Player session creation policy. Valid values: ACCEPT_ALL, DENY_ALL
+        :param PlayerSessionCreationPolicy: Player session creation policy, which includes `ACCEPT_ALL` (allow all players) and `DENY_ALL` (reject all players).
         :type PlayerSessionCreationPolicy: str
-        :param ProtectionPolicy: Protection policy. Valid values: NoProtection, TimeLimitProtection, FullProtection
+        :param ProtectionPolicy: Protection policy, which includes `NoProtection`·(no protection), `TimeLimitProtection` (time-limited protection) and `FullProtection` (full protection)
         :type ProtectionPolicy: str
         """
         self.GameServerSessionId = None

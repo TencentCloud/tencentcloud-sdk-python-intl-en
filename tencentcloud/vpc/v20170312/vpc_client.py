@@ -2865,7 +2865,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeIpGeolocationInfos(self, request):
-        """This API is used to query the IP addresses, including their geographical locations and networks.
+        """This API is used to query the information of IP addresses, including their geographical locations and networks.
 
         :param request: Request instance for DescribeIpGeolocationInfos.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIpGeolocationInfosRequest`
