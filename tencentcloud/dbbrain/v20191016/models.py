@@ -27,7 +27,7 @@ class ContactItem(AbstractModel):
         :type Id: int
         :param Name: Contact name.
         :type Name: str
-        :param Mail: The mailbox bound to the contact.
+        :param Mail: The email address of the contact.
         :type Mail: str
         """
         self.Id = None
@@ -111,17 +111,17 @@ class CreateMailProfileRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProfileInfo: The content of email configuration.
+        :param ProfileInfo: Email configurations
         :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
-        :param ProfileLevel: Configuration level. Valid values: "User" (user-level), "Instance" (instance-level). The email of database inspection report is configured as the user level, and the email of scheduled task report is configured as the instance level.
+        :param ProfileLevel: Configuration level. Valid values: "User" (user-level), "Instance" (instance-level). For database inspection report, it should be `User`; and for scheduled task reports, it should be `Instance`.
         :type ProfileLevel: str
-        :param ProfileName: Name configuration, which needs to be unique. The email configuration name of database inspection report can be customize; the email configuration name of scheduled task report should in the format of "scheduler_" + {instanceId}, such as "schduler_cdb-test".
+        :param ProfileName: Configuration name, which needs to be unique. For database inspection reports, this name can be customize as needed. For scheduled task reports, the name should be in the format of "scheduler_" + {instanceId}, such as "schduler_cdb-test".
         :type ProfileName: str
         :param ProfileType: Configuration type. Valid values: "dbScan_mail_configuration" (email configuration of database inspection report), "scheduler_mail_configuration" (email configuration of scheduled task report).
         :type ProfileType: str
         :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
         :type Product: str
-        :param BindInstanceIds: Instance ID bound to the configuration, which is set when the configuration level is "Instance".
+        :param BindInstanceIds: Instance ID bound to the configuration, which is required when the configuration level is `Instance`.
         :type BindInstanceIds: list of str
         """
         self.ProfileInfo = None
@@ -823,7 +823,7 @@ class InstanceConfs(AbstractModel):
 
     def __init__(self):
         """
-        :param DailyInspection: The switch of database inspection. Valid values: Yes/No.
+        :param DailyInspection: Whether to enable database inspection. Valid values: Yes/No.
         :type DailyInspection: str
         """
         self.DailyInspection = None
@@ -846,9 +846,9 @@ class MailConfiguration(AbstractModel):
         :type Region: list of str
         :param HealthStatus: Sending a report with the specified health level, such as "HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK".
         :type HealthStatus: list of str
-        :param ContactPerson: Contact ID. The contact/contact group cannot be empty.
+        :param ContactPerson: Contact ID. Either `ContactGroup` or `ContactID` should be passed in.
         :type ContactPerson: list of int
-        :param ContactGroup: Contact group ID. The contact/contact group cannot be empty.
+        :param ContactGroup: Contact group ID. Either `ContactGroup` or `ContactID` should be passed in.
         :type ContactGroup: list of int
         """
         self.SendMail = None
@@ -873,13 +873,13 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceConfs: Inspection switch.
+        :param InstanceConfs: Whether to enable inspection
         :type InstanceConfs: :class:`tencentcloud.dbbrain.v20191016.models.InstanceConfs`
-        :param Regions: The effective instance region. If the value is "All", it means it is effective for the whole region.
+        :param Regions: Target regions of the request. If the value is `All`, it is applied to all regions.
         :type Regions: str
         :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
         :type Product: str
-        :param InstanceIds: Specify the instance ID that needs to modify the inspection status.
+        :param InstanceIds: ID of the instance to modify.
         :type InstanceIds: list of str
         """
         self.InstanceConfs = None
@@ -1025,7 +1025,7 @@ class ProfileInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Language: Language, such as “zh”.
+        :param Language: Language of the email, such as `en`.
         :type Language: str
         :param MailConfiguration: The content of email template.
         :type MailConfiguration: :class:`tencentcloud.dbbrain.v20191016.models.MailConfiguration`

@@ -59,7 +59,7 @@ class AddExistedInstancesRequest(AbstractModel):
         """
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param InstanceIds: Instance list
+        :param InstanceIds: Instance list. Spot instance is not supported.
         :type InstanceIds: list of str
         :param InstanceAdvancedSettings: Additional parameter to be set for the instance
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
@@ -71,6 +71,8 @@ class AddExistedInstancesRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param HostName: When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.
         :type HostName: str
+        :param NodePool: Node pool options
+        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`
         """
         self.ClusterId = None
         self.InstanceIds = None
@@ -79,6 +81,7 @@ class AddExistedInstancesRequest(AbstractModel):
         self.LoginSettings = None
         self.SecurityGroupIds = None
         self.HostName = None
+        self.NodePool = None
 
 
     def _deserialize(self, params):
@@ -95,6 +98,9 @@ class AddExistedInstancesRequest(AbstractModel):
             self.LoginSettings._deserialize(params.get("LoginSettings"))
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.HostName = params.get("HostName")
+        if params.get("NodePool") is not None:
+            self.NodePool = NodePoolOption()
+            self.NodePool._deserialize(params.get("NodePool"))
 
 
 class AddExistedInstancesResponse(AbstractModel):
@@ -2989,6 +2995,46 @@ class ModifyClusterAsGroupAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterAsGroupOptionAttributeRequest(AbstractModel):
+    """ModifyClusterAsGroupOptionAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterAsGroupOption: Cluster auto scaling attributes
+        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`
+        """
+        self.ClusterId = None
+        self.ClusterAsGroupOption = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ClusterAsGroupOption") is not None:
+            self.ClusterAsGroupOption = ClusterAsGroupOption()
+            self.ClusterAsGroupOption._deserialize(params.get("ClusterAsGroupOption"))
+
+
+class ModifyClusterAsGroupOptionAttributeResponse(AbstractModel):
+    """ModifyClusterAsGroupOptionAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterAttributeRequest(AbstractModel):
     """ModifyClusterAttribute request structure.
 
@@ -3111,6 +3157,10 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type Taints: list of Taint
         :param EnableAutoscale: Indicates whether auto scaling is enabled.
         :type EnableAutoscale: bool
+        :param OsName: Operating system name
+        :type OsName: str
+        :param OsCustomizeType: Image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
+        :type OsCustomizeType: str
         """
         self.ClusterId = None
         self.NodePoolId = None
@@ -3120,6 +3170,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.Labels = None
         self.Taints = None
         self.EnableAutoscale = None
+        self.OsName = None
+        self.OsCustomizeType = None
 
 
     def _deserialize(self, params):
@@ -3141,6 +3193,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Taints.append(obj)
         self.EnableAutoscale = params.get("EnableAutoscale")
+        self.OsName = params.get("OsName")
+        self.OsCustomizeType = params.get("OsCustomizeType")
 
 
 class ModifyClusterNodePoolResponse(AbstractModel):
@@ -3265,6 +3319,31 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.MaxNodesNum = params.get("MaxNodesNum")
         self.MinNodesNum = params.get("MinNodesNum")
         self.DesiredNodesNum = params.get("DesiredNodesNum")
+
+
+class NodePoolOption(AbstractModel):
+    """The options for adding the existing node to the node pool
+
+    """
+
+    def __init__(self):
+        """
+        :param AddToNodePool: Whether to add to the node pool.
+        :type AddToNodePool: bool
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param InheritConfigurationFromNodePool: Whether to inherit the node pool configuration.
+        :type InheritConfigurationFromNodePool: bool
+        """
+        self.AddToNodePool = None
+        self.NodePoolId = None
+        self.InheritConfigurationFromNodePool = None
+
+
+    def _deserialize(self, params):
+        self.AddToNodePool = params.get("AddToNodePool")
+        self.NodePoolId = params.get("NodePoolId")
+        self.InheritConfigurationFromNodePool = params.get("InheritConfigurationFromNodePool")
 
 
 class RegionInstance(AbstractModel):

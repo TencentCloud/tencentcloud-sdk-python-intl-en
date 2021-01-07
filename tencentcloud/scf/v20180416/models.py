@@ -367,7 +367,7 @@ class CreateFunctionRequest(AbstractModel):
         :type Timeout: int
         :param Environment: Function environment variable
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime. Default value: Python2.7
+        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, Php5, Php7, Go1, Java8, CustomRuntime. Default value: Python2.7
         :type Runtime: str
         :param VpcConfig: Function VPC configuration
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
@@ -750,6 +750,86 @@ class DeleteNamespaceRequest(AbstractModel):
 
 class DeleteNamespaceResponse(AbstractModel):
     """DeleteNamespace response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
+    """DeleteProvisionedConcurrencyConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Name of the function for which to delete the provisioned concurrency
+        :type FunctionName: str
+        :param Qualifier: Function version number
+        :type Qualifier: str
+        :param Namespace: Function namespace. Default value: default
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Qualifier = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Qualifier = params.get("Qualifier")
+        self.Namespace = params.get("Namespace")
+
+
+class DeleteProvisionedConcurrencyConfigResponse(AbstractModel):
+    """DeleteProvisionedConcurrencyConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteReservedConcurrencyConfigRequest(AbstractModel):
+    """DeleteReservedConcurrencyConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Name of the function for which to delete the provisioned concurrency
+        :type FunctionName: str
+        :param Namespace: Function namespace. Default value: default
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+
+
+class DeleteReservedConcurrencyConfigResponse(AbstractModel):
+    """DeleteReservedConcurrencyConfig response structure.
 
     """
 
@@ -1648,6 +1728,104 @@ Deleted: deleted
         self.RequestId = params.get("RequestId")
 
 
+class GetProvisionedConcurrencyConfigRequest(AbstractModel):
+    """GetProvisionedConcurrencyConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Name of the function for which to get the provisioned concurrency details.
+        :type FunctionName: str
+        :param Namespace: Function namespace. Default value: default.
+        :type Namespace: str
+        :param Qualifier: Function version number. If this parameter is left empty, the provisioned concurrency information of all function versions will be returned.
+        :type Qualifier: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.Qualifier = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.Qualifier = params.get("Qualifier")
+
+
+class GetProvisionedConcurrencyConfigResponse(AbstractModel):
+    """GetProvisionedConcurrencyConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param UnallocatedConcurrencyNum: Unallocated provisioned concurrency amount of function.
+        :type UnallocatedConcurrencyNum: int
+        :param Allocated: Allocated provisioned concurrency amount of function.
+        :type Allocated: list of VersionProvisionedConcurrencyInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.UnallocatedConcurrencyNum = None
+        self.Allocated = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UnallocatedConcurrencyNum = params.get("UnallocatedConcurrencyNum")
+        if params.get("Allocated") is not None:
+            self.Allocated = []
+            for item in params.get("Allocated"):
+                obj = VersionProvisionedConcurrencyInfo()
+                obj._deserialize(item)
+                self.Allocated.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetReservedConcurrencyConfigRequest(AbstractModel):
+    """GetReservedConcurrencyConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Name of the function for which to get the provisioned concurrency details.
+        :type FunctionName: str
+        :param Namespace: Function namespace. Default value: default.
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+
+
+class GetReservedConcurrencyConfigResponse(AbstractModel):
+    """GetReservedConcurrencyConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReservedMem: Reserved concurrency memory of function.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ReservedMem: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReservedMem = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReservedMem = params.get("ReservedMem")
+        self.RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke request structure.
 
@@ -2500,6 +2678,132 @@ class PublishVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PutProvisionedConcurrencyConfigRequest(AbstractModel):
+    """PutProvisionedConcurrencyConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Name of the function for which to set the provisioned concurrency
+        :type FunctionName: str
+        :param Qualifier: Function version number. Note: the `$LATEST` version does not support provisioned concurrency
+        :type Qualifier: str
+        :param VersionProvisionedConcurrencyNum: Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100
+        :type VersionProvisionedConcurrencyNum: int
+        :param Namespace: Function namespace. Default value: default
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Qualifier = None
+        self.VersionProvisionedConcurrencyNum = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Qualifier = params.get("Qualifier")
+        self.VersionProvisionedConcurrencyNum = params.get("VersionProvisionedConcurrencyNum")
+        self.Namespace = params.get("Namespace")
+
+
+class PutProvisionedConcurrencyConfigResponse(AbstractModel):
+    """PutProvisionedConcurrencyConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PutReservedConcurrencyConfigRequest(AbstractModel):
+    """PutReservedConcurrencyConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Name of the function for which to set the provisioned concurrency
+        :type FunctionName: str
+        :param ReservedConcurrencyMem: Reserved concurrency memory of function. Note: the upper limit for the total reserved concurrency memory of the function is the user's total concurrency memory minus 12800
+        :type ReservedConcurrencyMem: int
+        :param Namespace: Function namespace. Default value: default
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.ReservedConcurrencyMem = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.ReservedConcurrencyMem = params.get("ReservedConcurrencyMem")
+        self.Namespace = params.get("Namespace")
+
+
+class PutReservedConcurrencyConfigResponse(AbstractModel):
+    """PutReservedConcurrencyConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PutTotalConcurrencyConfigRequest(AbstractModel):
+    """PutTotalConcurrencyConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalConcurrencyMem: Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800
+        :type TotalConcurrencyMem: int
+        :param Namespace: Namespace. Default value: default
+        :type Namespace: str
+        """
+        self.TotalConcurrencyMem = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
+        self.Namespace = params.get("Namespace")
+
+
+class PutTotalConcurrencyConfigResponse(AbstractModel):
+    """PutTotalConcurrencyConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Result(AbstractModel):
     """Response of the executed function
 
@@ -2647,6 +2951,8 @@ class Trigger(AbstractModel):
         :type BindStatus: str
         :param TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
         :type TriggerAttribute: str
+        :param Qualifier: The alias or version bound with the trigger
+        :type Qualifier: str
         """
         self.ModTime = None
         self.Type = None
@@ -2659,6 +2965,7 @@ class Trigger(AbstractModel):
         self.ResourceId = None
         self.BindStatus = None
         self.TriggerAttribute = None
+        self.Qualifier = None
 
 
     def _deserialize(self, params):
@@ -2673,6 +2980,7 @@ class Trigger(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.BindStatus = params.get("BindStatus")
         self.TriggerAttribute = params.get("TriggerAttribute")
+        self.Qualifier = params.get("Qualifier")
 
 
 class TriggerInfo(AbstractModel):
@@ -3079,6 +3387,39 @@ Exact string match
         self.Key = params.get("Key")
         self.Method = params.get("Method")
         self.Expression = params.get("Expression")
+
+
+class VersionProvisionedConcurrencyInfo(AbstractModel):
+    """Provisioned concurrency information of function version, including the set provisioned concurrency amount, available provisioned concurrency amount, and provisioned concurrency setting task status.
+
+    """
+
+    def __init__(self):
+        """
+        :param AllocatedProvisionedConcurrencyNum: Set provisioned concurrency amount.
+        :type AllocatedProvisionedConcurrencyNum: int
+        :param AvailableProvisionedConcurrencyNum: Currently available provisioned concurrency amount.
+        :type AvailableProvisionedConcurrencyNum: int
+        :param Status: Provisioned concurrency setting task status. Done: completed; InProgress: in progress; Failed: partially or completely failed.
+        :type Status: str
+        :param StatusReason: Status description of provisioned concurrency setting task.
+        :type StatusReason: str
+        :param Qualifier: Function version number
+        :type Qualifier: str
+        """
+        self.AllocatedProvisionedConcurrencyNum = None
+        self.AvailableProvisionedConcurrencyNum = None
+        self.Status = None
+        self.StatusReason = None
+        self.Qualifier = None
+
+
+    def _deserialize(self, params):
+        self.AllocatedProvisionedConcurrencyNum = params.get("AllocatedProvisionedConcurrencyNum")
+        self.AvailableProvisionedConcurrencyNum = params.get("AvailableProvisionedConcurrencyNum")
+        self.Status = params.get("Status")
+        self.StatusReason = params.get("StatusReason")
+        self.Qualifier = params.get("Qualifier")
 
 
 class VersionWeight(AbstractModel):

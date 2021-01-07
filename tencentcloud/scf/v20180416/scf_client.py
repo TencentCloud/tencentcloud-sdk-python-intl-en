@@ -285,6 +285,62 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteProvisionedConcurrencyConfig(self, request):
+        """This API is used to delete the provisioned concurrency configuration of a function version.
+
+        :param request: Request instance for DeleteProvisionedConcurrencyConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.DeleteProvisionedConcurrencyConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeleteProvisionedConcurrencyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteProvisionedConcurrencyConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteProvisionedConcurrencyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteReservedConcurrencyConfig(self, request):
+        """This API is used to delete the reserved concurrency configuration of a function.
+
+        :param request: Request instance for DeleteReservedConcurrencyConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.DeleteReservedConcurrencyConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeleteReservedConcurrencyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteReservedConcurrencyConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteReservedConcurrencyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteTrigger(self, request):
         """This API is used to delete an existing trigger based on the input parameters.
 
@@ -439,6 +495,62 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetLayerVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetProvisionedConcurrencyConfig(self, request):
+        """This API is used to get the provisioned concurrency details of a function or its specified version.
+
+        :param request: Request instance for GetProvisionedConcurrencyConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetProvisionedConcurrencyConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetProvisionedConcurrencyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetProvisionedConcurrencyConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetProvisionedConcurrencyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetReservedConcurrencyConfig(self, request):
+        """This API is used to get the reserved concurrency details of a function.
+
+        :param request: Request instance for GetReservedConcurrencyConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetReservedConcurrencyConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetReservedConcurrencyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetReservedConcurrencyConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetReservedConcurrencyConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -719,6 +831,90 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PutProvisionedConcurrencyConfig(self, request):
+        """This API is used to set the provisioned concurrency of a non-$LATEST version of a function.
+
+        :param request: Request instance for PutProvisionedConcurrencyConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.PutProvisionedConcurrencyConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.PutProvisionedConcurrencyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutProvisionedConcurrencyConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutProvisionedConcurrencyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PutReservedConcurrencyConfig(self, request):
+        """This API is used to set the reserved concurrency of a function.
+
+        :param request: Request instance for PutReservedConcurrencyConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.PutReservedConcurrencyConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.PutReservedConcurrencyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutReservedConcurrencyConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutReservedConcurrencyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PutTotalConcurrencyConfig(self, request):
+        """This API is used to modify the account concurrency limit quota.
+
+        :param request: Request instance for PutTotalConcurrencyConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.PutTotalConcurrencyConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.PutTotalConcurrencyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutTotalConcurrencyConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutTotalConcurrencyConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
