@@ -278,6 +278,34 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteTableIndex(self, request):
+        """This API is used to delete the global index from a table.
+
+        :param request: Request instance for DeleteTableIndex.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTableIndexRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTableIndexResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTableIndex", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTableIndexResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteTables(self, request):
         """This API is used to drop a specified table. Calling this API for the first time means to move the table to the recycle bin, while calling it again means to drop the table completely from the recycle bin.
 
@@ -376,6 +404,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIdlFileInfosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMachine(self, request):
+        """This API is used to query the available machines in a dedicated cluster.
+
+        :param request: Request instance for DescribeMachine.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeMachineRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeMachineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMachine", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMachineResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -600,6 +656,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUinInWhitelistResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterMachine(self, request):
+        """This API is used to modify the machines of a dedicated cluster.
+
+        :param request: Request instance for ModifyClusterMachine.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterMachineRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterMachineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterMachine", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterMachineResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -908,6 +992,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RollbackTablesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetTableIndex(self, request):
+        """This API is used to create a global index for a table.
+
+        :param request: Request instance for SetTableIndex.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.SetTableIndexRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.SetTableIndexResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetTableIndex", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetTableIndexResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

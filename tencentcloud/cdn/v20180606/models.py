@@ -160,6 +160,10 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         :param Tag: Tag configuration
         :type Tag: list of Tag
+        :param Ipv6Access: IPv6 access configuration
+        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
+        :param OfflineCache: 
+        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         """
         self.Domain = None
         self.ServiceType = None
@@ -192,6 +196,8 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         self.Area = None
         self.OriginPullTimeout = None
         self.Tag = None
+        self.Ipv6Access = None
+        self.OfflineCache = None
 
 
     def _deserialize(self, params):
@@ -283,6 +289,12 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tag.append(obj)
+        if params.get("Ipv6Access") is not None:
+            self.Ipv6Access = Ipv6Access()
+            self.Ipv6Access._deserialize(params.get("Ipv6Access"))
+        if params.get("OfflineCache") is not None:
+            self.OfflineCache = OfflineCache()
+            self.OfflineCache._deserialize(params.get("OfflineCache"))
 
 
 class AddCdnDomainResponse(AbstractModel):
@@ -339,6 +351,31 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CacheType = params.get("CacheType")
         self.CacheContents = params.get("CacheContents")
         self.CacheTime = params.get("CacheTime")
+
+
+class AdvanceConfig(AbstractModel):
+    """Advanced configuration set
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Advanced configuration name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Name: str
+        :param Value: Whether advanced configuration is supported:
+`on`: support
+`off`: do not support
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
 
 
 class AdvancedAuthentication(AbstractModel):
@@ -3373,6 +3410,16 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param OriginAuthentication: Origin-pull authentication advanced configuration (allowlist feature)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
+        :param Ipv6Access: IPv6 access configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
+        :param AdvanceSet: Advanced configuration set
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AdvanceSet: list of AdvanceConfig
+        :param OfflineCache: 
+        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
+        :param OriginCombine: 
+        :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         """
         self.ResourceId = None
         self.AppId = None
@@ -3424,6 +3471,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Tag = None
         self.AdvancedAuthentication = None
         self.OriginAuthentication = None
+        self.Ipv6Access = None
+        self.AdvanceSet = None
+        self.OfflineCache = None
+        self.OriginCombine = None
 
 
     def _deserialize(self, params):
@@ -3552,6 +3603,21 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("OriginAuthentication") is not None:
             self.OriginAuthentication = OriginAuthentication()
             self.OriginAuthentication._deserialize(params.get("OriginAuthentication"))
+        if params.get("Ipv6Access") is not None:
+            self.Ipv6Access = Ipv6Access()
+            self.Ipv6Access._deserialize(params.get("Ipv6Access"))
+        if params.get("AdvanceSet") is not None:
+            self.AdvanceSet = []
+            for item in params.get("AdvanceSet"):
+                obj = AdvanceConfig()
+                obj._deserialize(item)
+                self.AdvanceSet.append(obj)
+        if params.get("OfflineCache") is not None:
+            self.OfflineCache = OfflineCache()
+            self.OfflineCache._deserialize(params.get("OfflineCache"))
+        if params.get("OriginCombine") is not None:
+            self.OriginCombine = OriginCombine()
+            self.OriginCombine._deserialize(params.get("OriginCombine"))
 
 
 class DisableCachesRequest(AbstractModel):
@@ -3941,16 +4007,21 @@ Note: this field may return null, indicating that no valid values can be obtaine
 Supports 301, 302.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RedirectStatusCode: int
+        :param CarryHeaders: Whether to return the added header in forced redirection.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CarryHeaders: str
         """
         self.Switch = None
         self.RedirectType = None
         self.RedirectStatusCode = None
+        self.CarryHeaders = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.RedirectType = params.get("RedirectType")
         self.RedirectStatusCode = params.get("RedirectStatusCode")
+        self.CarryHeaders = params.get("CarryHeaders")
 
 
 class GetDisableRecordsRequest(AbstractModel):
@@ -4444,6 +4515,24 @@ class Ipv6(AbstractModel):
         """
         :param Switch: Whether to enable the IPv6 feature for a domain name. Values include `on` or `off`.
 Note: this field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class Ipv6Access(AbstractModel):
+    """IPv6 access configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Whether to enable the IPv6 access feature for a domain name. Valid values: `on` and `off`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self.Switch = None
@@ -5120,6 +5209,23 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.FollowOrigin = params.get("FollowOrigin")
 
 
+class OfflineCache(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class Origin(AbstractModel):
     """Complex origin server configurations. The following configurations are supported:
     + Origin server specified as a single domain name
@@ -5181,9 +5287,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type BackupServerName: str
         :param BasePath: 
         :type BasePath: str
-        :param PathRules: Path-based origin-pull configuration rules
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param PathRules: Origin URL rewrite rule configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PathRules: list of PathRule
+        :param PathBasedOrigin: 
+        :type PathBasedOrigin: list of PathBasedOriginRule
         """
         self.Origins = None
         self.OriginType = None
@@ -5195,6 +5303,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.BackupServerName = None
         self.BasePath = None
         self.PathRules = None
+        self.PathBasedOrigin = None
 
 
     def _deserialize(self, params):
@@ -5213,6 +5322,12 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 obj = PathRule()
                 obj._deserialize(item)
                 self.PathRules.append(obj)
+        if params.get("PathBasedOrigin") is not None:
+            self.PathBasedOrigin = []
+            for item in params.get("PathBasedOrigin"):
+                obj = PathBasedOriginRule()
+                obj._deserialize(item)
+                self.PathBasedOrigin.append(obj)
 
 
 class OriginAuthentication(AbstractModel):
@@ -5256,6 +5371,23 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     def _deserialize(self, params):
         self.SecretKey = params.get("SecretKey")
+
+
+class OriginCombine(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
 
 
 class OriginIp(AbstractModel):
@@ -5507,6 +5639,31 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+
+
+class PathBasedOriginRule(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: 
+        :type RuleType: str
+        :param RulePaths: 
+        :type RulePaths: list of str
+        :param Origin: 
+        :type Origin: list of str
+        """
+        self.RuleType = None
+        self.RulePaths = None
+        self.Origin = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        self.Origin = params.get("Origin")
 
 
 class PathRule(AbstractModel):
@@ -5777,11 +5934,18 @@ Default value: `mainland`. You can prefetch a URL to nodes in a region provided 
         :type Area: str
         :param Layer: If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node
         :type Layer: str
+        :param ParseM3U8: Whether to recursively resolve the M3U8 index file and prefetch the TS shards in it.
+Notes:
+1. This feature requires that the M3U8 index file can be directly requested and obtained.
+2. In the M3U8 index file, currently only the TS shards at the first to the third level can be recursively resolved.
+3. Prefetching the TS shards obtained through recursive resolution consumes the daily prefetch quota. If the usage exceeds the quota, the feature will be disabled and TS shards will not be prefetched.
+        :type ParseM3U8: bool
         """
         self.Urls = None
         self.UserAgent = None
         self.Area = None
         self.Layer = None
+        self.ParseM3U8 = None
 
 
     def _deserialize(self, params):
@@ -5789,6 +5953,7 @@ Default value: `mainland`. You can prefetch a URL to nodes in a region provided 
         self.UserAgent = params.get("UserAgent")
         self.Area = params.get("Area")
         self.Layer = params.get("Layer")
+        self.ParseM3U8 = params.get("ParseM3U8")
 
 
 class PushUrlsCacheResponse(AbstractModel):
@@ -7354,6 +7519,12 @@ global: global acceleration
         :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
         :param OriginAuthentication: Origin-pull authentication advanced configuration (allowlist feature)
         :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
+        :param Ipv6Access: IPv6 access configuration
+        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
+        :param OfflineCache: 
+        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
+        :param OriginCombine: 
+        :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         """
         self.Domain = None
         self.ProjectId = None
@@ -7391,6 +7562,9 @@ global: global acceleration
         self.AccessPort = None
         self.AdvancedAuthentication = None
         self.OriginAuthentication = None
+        self.Ipv6Access = None
+        self.OfflineCache = None
+        self.OriginCombine = None
 
 
     def _deserialize(self, params):
@@ -7492,6 +7666,15 @@ global: global acceleration
         if params.get("OriginAuthentication") is not None:
             self.OriginAuthentication = OriginAuthentication()
             self.OriginAuthentication._deserialize(params.get("OriginAuthentication"))
+        if params.get("Ipv6Access") is not None:
+            self.Ipv6Access = Ipv6Access()
+            self.Ipv6Access._deserialize(params.get("Ipv6Access"))
+        if params.get("OfflineCache") is not None:
+            self.OfflineCache = OfflineCache()
+            self.OfflineCache._deserialize(params.get("OfflineCache"))
+        if params.get("OriginCombine") is not None:
+            self.OriginCombine = OriginCombine()
+            self.OriginCombine._deserialize(params.get("OriginCombine"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):

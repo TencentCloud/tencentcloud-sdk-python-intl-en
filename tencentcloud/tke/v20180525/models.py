@@ -436,11 +436,11 @@ class ClusterAdvancedSettings(AbstractModel):
         :type DeletionProtection: bool
         :param KubeProxyMode: Cluster network proxy model, which is only used when ipvs-bpf mode is used. At present, TKE cluster supports three network proxy modes including `iptables`, `ipvs` and `ipvs-bpf` and their parameter setting relationships are as follows:
 `iptables`: do not set IPVS and KubeProxyMode.
-`ipvs` mode: set IPVS to `true` and do not set KubeProxyMode.
+`ipvs`: set IPVS to `true` and do not set KubeProxyMode.
 `ipvs-bpf`: set KubeProxyMode to `kube-proxy-bpf`.
 The following conditions are required to use ipvs-bpf network mode:
 1. The cluster version must be v1.14 or later.
-2. The system image must be a TKE custom image such as Ubuntu TKE Optimized or Centos TKE Optimized.
+2. The system image must be Tencent Linux 2.4.
         :type KubeProxyMode: str
         :param AuditEnabled: Indicates whether to enable auditing
         :type AuditEnabled: bool
@@ -3277,6 +3277,15 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param DesiredNodesNum: Desired number of nodes
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type DesiredNodesNum: int
+        :param NodePoolOs: The operating system of the node pool
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type NodePoolOs: str
+        :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type OsCustomizeType: str
+        :param ImageId: Image ID
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ImageId: str
         """
         self.NodePoolId = None
         self.Name = None
@@ -3291,6 +3300,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.MaxNodesNum = None
         self.MinNodesNum = None
         self.DesiredNodesNum = None
+        self.NodePoolOs = None
+        self.OsCustomizeType = None
+        self.ImageId = None
 
 
     def _deserialize(self, params):
@@ -3319,6 +3331,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.MaxNodesNum = params.get("MaxNodesNum")
         self.MinNodesNum = params.get("MinNodesNum")
         self.DesiredNodesNum = params.get("DesiredNodesNum")
+        self.NodePoolOs = params.get("NodePoolOs")
+        self.OsCustomizeType = params.get("OsCustomizeType")
+        self.ImageId = params.get("ImageId")
 
 
 class NodePoolOption(AbstractModel):

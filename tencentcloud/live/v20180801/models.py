@@ -139,6 +139,8 @@ class AddLiveWatermarkRequest(AbstractModel):
     def __init__(self):
         """
         :param PictureUrl: Watermark image URL.
+Unallowed characters in the URL:
+ ;(){}$>`#"\'|
         :type PictureUrl: str
         :param WatermarkName: Watermark name.
 Up to 16 bytes.
@@ -149,7 +151,7 @@ Up to 16 bytes.
         :type YPosition: int
         :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
         :type Width: int
-        :param Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default.
+        :param Height: Watermark height, which is set by entering a percentage of the live stream image’s original height. You are advised to set either the height or width as the other will be scaled proportionally to avoid distortions. Default value: original height.
         :type Height: int
         """
         self.PictureUrl = None
@@ -1479,40 +1481,38 @@ Length limit:
   Standard transcoding: 1-10 characters
   Top speed codec transcoding: 3-10 characters
         :type TemplateName: str
-        :param VideoBitrate: Video bitrate. Value range: 0–8,000 Kbps.
-If the value is 0, the original bitrate will be retained.
-Note: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.
+        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8000.
+Note: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.
         :type VideoBitrate: int
-        :param Acodec: Audio codec: acc by default.
+        :param Acodec: Audio codec. Default value: aac.
 Note: this parameter is unsupported now.
         :type Acodec: str
         :param AudioBitrate: Audio bitrate. Default value: 0.
 Value range: 0-500.
         :type AudioBitrate: int
-        :param Vcodec: Video codec: `h264/h265/origin`. Default value: `h264`.
+        :param Vcodec: Video codec. Valid values: h264 (default), h265, origin
 
 origin: original codec as the output codec
         :type Vcodec: str
         :param Description: Template description.
         :type Description: str
         :param Width: Width. Default value: 0.
-Value range: 0-3,000
-It must be a multiple of 2. The original width is 0
+Value range: 0-3000
+It must be a multiple of 2. The original width is 0.
         :type Width: int
         :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
         :type NeedVideo: int
         :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
         :param Height: Height. Default value: 0.
-Value range: 0-3,000
-It must be a multiple of 2. The original height is 0
+Value range: 0-3000
+It must be a multiple of 2. The original height is 0.
         :type Height: int
         :param Fps: Frame rate. Default value: 0.
-Range: 0-60 Fps.
+Value range: 0-60
         :type Fps: int
-        :param Gop: Keyframe interval, unit: second.
-Original interval by default
-Range: 2-6
+        :param Gop: Keyframe interval in seconds. Default value: original interval
+Value range: 2-6
         :type Gop: int
         :param Rotate: Rotation angle. Default value: 0.
 Valid values: 0, 90, 180, 270
@@ -1539,7 +1539,7 @@ Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
 
 Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
-        :param ShortEdgeAsHeight: This parameter is used to define whether the short side is the video height. 0: no, 1: yes. The default value is 0.
+        :param ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
         :type ShortEdgeAsHeight: int
         """
         self.TemplateName = None
@@ -1667,9 +1667,9 @@ class CreateRecordTaskRequest(AbstractModel):
         :type DomainName: str
         :param AppName: Push path.
         :type AppName: str
-        :param EndTime: The recording end time in UNIX timestamp format. The “EndTime” should be later than “StartTime”. Normally the duration between “EndTime” and “StartTime” is up to 24 hours.
+        :param EndTime: Recording end time in UNIX timestamp format. “EndTime” should be later than “StartTime”, and the duration between “EndTime” and “StartTime” is up to 24 hours.
         :type EndTime: int
-        :param StartTime: The recording start time in UNIX timestamp format. If the “StartTime” is not entered, recording will start immediately after the API is successfully called. Normally the “StartTime” should be within 6 days from current time.
+        :param StartTime: Recording start time in UNIX timestamp format. If “StartTime” is not entered, recording will start immediately after the API is successfully called. “StartTime” should be within 6 days from the current time.
         :type StartTime: int
         :param StreamType: Push type. Default value: 0. Valid values:
 0: LVB push.
@@ -1708,7 +1708,7 @@ class CreateRecordTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: `TaskId`, which is a globally unique task ID. If the `TaskId` is returned, that means the recording task has been successfully created.
+        :param TaskId: A globally unique task ID. If `TaskId` is returned, the recording task has been successfully created.
         :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2461,7 +2461,7 @@ Note: LEB only supports querying data for all regions.
 1440: 1-day granularity (the query time span should be within one month).
 Default value: 5.
         :type Granularity: int
-        :param ServiceName: Service name. Valid values: LVB, LEB. Default value: LVB.
+        :param ServiceName: Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.
         :type ServiceName: str
         """
         self.StartTime = None
@@ -5118,6 +5118,13 @@ class DomainCertInfo(AbstractModel):
         :type DomainName: str
         :param Status: Certificate status.
         :type Status: int
+        :param CertDomains: List of domain names in the certificate.
+["*.x.com"] for example.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CertDomains: list of str
+        :param CloudCertId: Tencent Cloud SSL certificate ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CloudCertId: str
         """
         self.CertId = None
         self.CertName = None
@@ -5128,6 +5135,8 @@ class DomainCertInfo(AbstractModel):
         self.CertExpireTime = None
         self.DomainName = None
         self.Status = None
+        self.CertDomains = None
+        self.CloudCertId = None
 
 
     def _deserialize(self, params):
@@ -5140,6 +5149,8 @@ class DomainCertInfo(AbstractModel):
         self.CertExpireTime = params.get("CertExpireTime")
         self.DomainName = params.get("DomainName")
         self.Status = params.get("Status")
+        self.CertDomains = params.get("CertDomains")
+        self.CloudCertId = params.get("CloudCertId")
 
 
 class DomainDetailInfo(AbstractModel):
@@ -6094,11 +6105,11 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
         """
         :param TemplateId: Template ID.
         :type TemplateId: int
-        :param Vcodec: Video codec: `h264/h265/origin`. Default value: `h264`.
+        :param Vcodec: Video codec. Valid values: h264 (default), h265, origin
 
 origin: original codec as the output codec
         :type Vcodec: str
-        :param Acodec: Audio codec: acc by default.
+        :param Acodec: Audio codec. Defaut value: aac.
 Note: this parameter is unsupported now.
         :type Acodec: str
         :param AudioBitrate: Audio bitrate. Default value: 0.
@@ -6106,19 +6117,18 @@ Value range: 0-500.
         :type AudioBitrate: int
         :param Description: Template description.
         :type Description: str
-        :param VideoBitrate: Video bitrate. Value range: 0–8,000 Kbps.
-If the value is 0, the original bitrate will be retained.
-Note: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.
+        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8000.
+Note: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.
         :type VideoBitrate: int
-        :param Width: Width in pixels. Value range: 0-3,000.
-It must be a multiple of 2. The original width is 0
+        :param Width: Width in pixels. Value range: 0-3000.
+It must be a multiple of 2. The original width is 0.
         :type Width: int
         :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
         :type NeedVideo: int
         :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
-        :param Height: Height in pixels. Value range: 0-3,000.
-It must be a multiple of 2. The original height is 0
+        :param Height: Height in pixels. Value range: 0-3000.
+It must be a multiple of 2. The original height is 0.
         :type Height: int
         :param Fps: Frame rate in fps. Default value: 0.
 Value range: 0-60
@@ -6149,7 +6159,7 @@ Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
 
 Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
-        :param ShortEdgeAsHeight: This parameter is used to define whether the short side is the video height. 0: no, 1: yes. The default value is 0.
+        :param ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
         :type ShortEdgeAsHeight: int
         """
         self.TemplateId = None
@@ -7436,6 +7446,8 @@ class UpdateLiveWatermarkRequest(AbstractModel):
 Get the watermark ID in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.
         :type WatermarkId: int
         :param PictureUrl: Watermark image URL.
+Unallowed characters in the URL:
+ ;(){}$>`#"\'|
         :type PictureUrl: str
         :param XPosition: Display position: X-axis offset in %. Default value: 0.
         :type XPosition: int

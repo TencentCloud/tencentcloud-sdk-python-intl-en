@@ -111,6 +111,27 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ApiAccessIpv6: TcaplusDB SDK connection parameter for accessing IPv6 addresses
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiAccessIpv6: str
+        :param ClusterType: Cluster type
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterType: int
+        :param ClusterStatus: Cluster status
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterStatus: int
+        :param ReadCapacityUnit: Read CU
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ReadCapacityUnit: int
+        :param WriteCapacityUnit: Write CU
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type WriteCapacityUnit: int
+        :param DiskVolume: Disk capacity
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DiskVolume: int
+        :param ServerList: Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ServerList: list of ServerDetailInfo
+        :param ProxyList: Information of the machine at the access layer (tcaproxy) in a dedicated cluster
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProxyList: list of ProxyDetailInfo
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -127,6 +148,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ApiAccessPort = None
         self.OldPasswordExpireTime = None
         self.ApiAccessIpv6 = None
+        self.ClusterType = None
+        self.ClusterStatus = None
+        self.ReadCapacityUnit = None
+        self.WriteCapacityUnit = None
+        self.DiskVolume = None
+        self.ServerList = None
+        self.ProxyList = None
 
 
     def _deserialize(self, params):
@@ -145,6 +173,23 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ApiAccessPort = params.get("ApiAccessPort")
         self.OldPasswordExpireTime = params.get("OldPasswordExpireTime")
         self.ApiAccessIpv6 = params.get("ApiAccessIpv6")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterStatus = params.get("ClusterStatus")
+        self.ReadCapacityUnit = params.get("ReadCapacityUnit")
+        self.WriteCapacityUnit = params.get("WriteCapacityUnit")
+        self.DiskVolume = params.get("DiskVolume")
+        if params.get("ServerList") is not None:
+            self.ServerList = []
+            for item in params.get("ServerList"):
+                obj = ServerDetailInfo()
+                obj._deserialize(item)
+                self.ServerList.append(obj)
+        if params.get("ProxyList") is not None:
+            self.ProxyList = []
+            for item in params.get("ProxyList"):
+                obj = ProxyDetailInfo()
+                obj._deserialize(item)
+                self.ProxyList.append(obj)
 
 
 class CompareIdlFilesRequest(AbstractModel):
@@ -302,6 +347,12 @@ class CreateClusterRequest(AbstractModel):
         :type ResourceTags: list of TagInfoUnit
         :param Ipv6Enable: Whether to enable IPv6 address access for clusters
         :type Ipv6Enable: int
+        :param ServerList: Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
+        :type ServerList: list of MachineInfo
+        :param ProxyList: Information of the machine at the access layer (tcaproxy) in a dedicated cluster
+        :type ProxyList: list of MachineInfo
+        :param ClusterType: Cluster type. Valid values: `1` (standard), `2` (dedicated)
+        :type ClusterType: int
         """
         self.IdlType = None
         self.ClusterName = None
@@ -310,6 +361,9 @@ class CreateClusterRequest(AbstractModel):
         self.Password = None
         self.ResourceTags = None
         self.Ipv6Enable = None
+        self.ServerList = None
+        self.ProxyList = None
+        self.ClusterType = None
 
 
     def _deserialize(self, params):
@@ -325,6 +379,19 @@ class CreateClusterRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.Ipv6Enable = params.get("Ipv6Enable")
+        if params.get("ServerList") is not None:
+            self.ServerList = []
+            for item in params.get("ServerList"):
+                obj = MachineInfo()
+                obj._deserialize(item)
+                self.ServerList.append(obj)
+        if params.get("ProxyList") is not None:
+            self.ProxyList = []
+            for item in params.get("ProxyList"):
+                obj = MachineInfo()
+                obj._deserialize(item)
+                self.ProxyList.append(obj)
+        self.ClusterType = params.get("ClusterType")
 
 
 class CreateClusterResponse(AbstractModel):
@@ -613,6 +680,62 @@ class DeleteTableGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteTableIndexRequest(AbstractModel):
+    """DeleteTableIndex request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: ID of the cluster where the table resides
+        :type ClusterId: str
+        :param SelectedTables: The list of tables whose global indexes need to be deleted
+        :type SelectedTables: list of SelectedTableInfoNew
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class DeleteTableIndexResponse(AbstractModel):
+    """DeleteTableIndex response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of tables whose global indexes are deleted
+        :type TotalCount: int
+        :param TableResults: The list of global index deletion results
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = TableResultNew()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteTablesRequest(AbstractModel):
     """DeleteTables request structure.
 
@@ -844,6 +967,49 @@ class DescribeIdlFileInfosResponse(AbstractModel):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
                 self.IdlFileInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMachineRequest(AbstractModel):
+    """DescribeMachine request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Ipv6Enable: Whether to filter the resources supporting IPv6 access
+        :type Ipv6Enable: int
+        """
+        self.Ipv6Enable = None
+
+
+    def _deserialize(self, params):
+        self.Ipv6Enable = params.get("Ipv6Enable")
+
+
+class DescribeMachineResponse(AbstractModel):
+    """DescribeMachine response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PoolList: The list of dedicated machine resources
+        :type PoolList: list of PoolInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PoolList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PoolList") is not None:
+            self.PoolList = []
+            for item in params.get("PoolList"):
+                obj = PoolInfo()
+                obj._deserialize(item)
+                self.PoolList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1319,6 +1485,35 @@ class ErrorInfo(AbstractModel):
         self.Message = params.get("Message")
 
 
+class FieldInfo(AbstractModel):
+    """The list of table field information
+
+    """
+
+    def __init__(self):
+        """
+        :param FieldName: Table field name
+        :type FieldName: str
+        :param IsPrimaryKey: Whether it is a primary key field
+        :type IsPrimaryKey: str
+        :param FieldType: Field type
+        :type FieldType: str
+        :param FieldSize: Field length
+        :type FieldSize: int
+        """
+        self.FieldName = None
+        self.IsPrimaryKey = None
+        self.FieldType = None
+        self.FieldSize = None
+
+
+    def _deserialize(self, params):
+        self.FieldName = params.get("FieldName")
+        self.IsPrimaryKey = params.get("IsPrimaryKey")
+        self.FieldType = params.get("FieldType")
+        self.FieldSize = params.get("FieldSize")
+
+
 class Filter(AbstractModel):
     """Filter
 
@@ -1422,6 +1617,87 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Error") is not None:
             self.Error = ErrorInfo()
             self.Error._deserialize(params.get("Error"))
+
+
+class MachineInfo(AbstractModel):
+    """Machine type and quantity
+
+    """
+
+    def __init__(self):
+        """
+        :param MachineType: Machine type
+        :type MachineType: str
+        :param MachineNum: Machine quantity
+        :type MachineNum: int
+        """
+        self.MachineType = None
+        self.MachineNum = None
+
+
+    def _deserialize(self, params):
+        self.MachineType = params.get("MachineType")
+        self.MachineNum = params.get("MachineNum")
+
+
+class ModifyClusterMachineRequest(AbstractModel):
+    """ModifyClusterMachine request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ServerList: Information of the machines at the storage layer (tcapsvr)
+        :type ServerList: list of MachineInfo
+        :param ProxyList: Information of the machines at the access layer (tcaproxy)
+        :type ProxyList: list of MachineInfo
+        :param ClusterType: Cluster type. Valid values: `1` (standard), `2` (dedicated)
+        :type ClusterType: int
+        """
+        self.ClusterId = None
+        self.ServerList = None
+        self.ProxyList = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ServerList") is not None:
+            self.ServerList = []
+            for item in params.get("ServerList"):
+                obj = MachineInfo()
+                obj._deserialize(item)
+                self.ServerList.append(obj)
+        if params.get("ProxyList") is not None:
+            self.ProxyList = []
+            for item in params.get("ProxyList"):
+                obj = MachineInfo()
+                obj._deserialize(item)
+                self.ProxyList.append(obj)
+        self.ClusterType = params.get("ClusterType")
+
+
+class ModifyClusterMachineResponse(AbstractModel):
+    """ModifyClusterMachine response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyClusterNameRequest(AbstractModel):
@@ -2026,6 +2302,103 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SortRule = params.get("SortRule")
 
 
+class PoolInfo(AbstractModel):
+    """Information of the machines in the resource pool
+
+    """
+
+    def __init__(self):
+        """
+        :param PoolUid: Unique ID
+        :type PoolUid: int
+        :param Ipv6Enable: Whether IPv6 is supported
+        :type Ipv6Enable: int
+        :param AvailableAppCount: Remaining available cluster resources
+        :type AvailableAppCount: int
+        :param ServerList: The list of machines at the storage layer (tcapsvr)
+        :type ServerList: list of ServerMachineInfo
+        :param ProxyList: The list of machines at the access layer (tcaproxy)
+        :type ProxyList: list of ProxyMachineInfo
+        """
+        self.PoolUid = None
+        self.Ipv6Enable = None
+        self.AvailableAppCount = None
+        self.ServerList = None
+        self.ProxyList = None
+
+
+    def _deserialize(self, params):
+        self.PoolUid = params.get("PoolUid")
+        self.Ipv6Enable = params.get("Ipv6Enable")
+        self.AvailableAppCount = params.get("AvailableAppCount")
+        if params.get("ServerList") is not None:
+            self.ServerList = []
+            for item in params.get("ServerList"):
+                obj = ServerMachineInfo()
+                obj._deserialize(item)
+                self.ServerList.append(obj)
+        if params.get("ProxyList") is not None:
+            self.ProxyList = []
+            for item in params.get("ProxyList"):
+                obj = ProxyMachineInfo()
+                obj._deserialize(item)
+                self.ProxyList.append(obj)
+
+
+class ProxyDetailInfo(AbstractModel):
+    """Information of the machine at the access layer (tcaproxy) in a dedicated cluster
+
+    """
+
+    def __init__(self):
+        """
+        :param ProxyUid: The unique ID of the access layer (tcaproxy)
+        :type ProxyUid: str
+        :param MachineType: Machine type
+        :type MachineType: str
+        :param ProcessSpeed: The speed of processing request packets
+        :type ProcessSpeed: int
+        :param AverageProcessDelay: Request packet delay
+        :type AverageProcessDelay: int
+        :param SlowProcessSpeed: The speed of processing delayed request packets
+        :type SlowProcessSpeed: int
+        """
+        self.ProxyUid = None
+        self.MachineType = None
+        self.ProcessSpeed = None
+        self.AverageProcessDelay = None
+        self.SlowProcessSpeed = None
+
+
+    def _deserialize(self, params):
+        self.ProxyUid = params.get("ProxyUid")
+        self.MachineType = params.get("MachineType")
+        self.ProcessSpeed = params.get("ProcessSpeed")
+        self.AverageProcessDelay = params.get("AverageProcessDelay")
+        self.SlowProcessSpeed = params.get("SlowProcessSpeed")
+
+
+class ProxyMachineInfo(AbstractModel):
+    """Information of the machine at the access layer (tcaproxy)
+
+    """
+
+    def __init__(self):
+        """
+        :param ProxyUid: Unique ID
+        :type ProxyUid: str
+        :param MachineType: Machine type
+        :type MachineType: str
+        """
+        self.ProxyUid = None
+        self.MachineType = None
+
+
+    def _deserialize(self, params):
+        self.ProxyUid = params.get("ProxyUid")
+        self.MachineType = params.get("MachineType")
+
+
 class RecoverRecycleTablesRequest(AbstractModel):
     """RecoverRecycleTables request structure.
 
@@ -2242,6 +2615,166 @@ class SelectedTableInfoNew(AbstractModel):
         self.FileExtType = params.get("FileExtType")
         self.FileSize = params.get("FileSize")
         self.FileContent = params.get("FileContent")
+
+
+class SelectedTableWithField(AbstractModel):
+    """The list of tables to which the specified fields belong
+
+    """
+
+    def __init__(self):
+        """
+        :param TableGroupId: ID of the table group where the table resides
+        :type TableGroupId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param TableInstanceId: Table ID
+        :type TableInstanceId: str
+        :param TableIdlType: Table description language. Valid values: `PROTO`, `TDR`
+        :type TableIdlType: str
+        :param TableType: Table data structure. Valid values: `GENERIC`, `LIST`
+        :type TableType: str
+        :param SelectedFields: The list of fields on which indexes need to be created
+        :type SelectedFields: list of FieldInfo
+        :param ShardNum: The number of index shards
+        :type ShardNum: int
+        """
+        self.TableGroupId = None
+        self.TableName = None
+        self.TableInstanceId = None
+        self.TableIdlType = None
+        self.TableType = None
+        self.SelectedFields = None
+        self.ShardNum = None
+
+
+    def _deserialize(self, params):
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.TableInstanceId = params.get("TableInstanceId")
+        self.TableIdlType = params.get("TableIdlType")
+        self.TableType = params.get("TableType")
+        if params.get("SelectedFields") is not None:
+            self.SelectedFields = []
+            for item in params.get("SelectedFields"):
+                obj = FieldInfo()
+                obj._deserialize(item)
+                self.SelectedFields.append(obj)
+        self.ShardNum = params.get("ShardNum")
+
+
+class ServerDetailInfo(AbstractModel):
+    """Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
+
+    """
+
+    def __init__(self):
+        """
+        :param ServerUid: The unique ID of the storage layer (tcapsvr)
+        :type ServerUid: str
+        :param MachineType: Machine type
+        :type MachineType: str
+        :param MemoryRate: Memory utilization
+        :type MemoryRate: int
+        :param DiskRate: Disk utilization
+        :type DiskRate: int
+        :param ReadNum: The number of reads
+        :type ReadNum: int
+        :param WriteNum: The number of writes
+        :type WriteNum: int
+        """
+        self.ServerUid = None
+        self.MachineType = None
+        self.MemoryRate = None
+        self.DiskRate = None
+        self.ReadNum = None
+        self.WriteNum = None
+
+
+    def _deserialize(self, params):
+        self.ServerUid = params.get("ServerUid")
+        self.MachineType = params.get("MachineType")
+        self.MemoryRate = params.get("MemoryRate")
+        self.DiskRate = params.get("DiskRate")
+        self.ReadNum = params.get("ReadNum")
+        self.WriteNum = params.get("WriteNum")
+
+
+class ServerMachineInfo(AbstractModel):
+    """`ServerList`, the list of machines at the storage layer (tcapsvr)
+
+    """
+
+    def __init__(self):
+        """
+        :param ServerUid: The unique ID of the machine
+        :type ServerUid: str
+        :param MachineType: Machine type
+        :type MachineType: str
+        """
+        self.ServerUid = None
+        self.MachineType = None
+
+
+    def _deserialize(self, params):
+        self.ServerUid = params.get("ServerUid")
+        self.MachineType = params.get("MachineType")
+
+
+class SetTableIndexRequest(AbstractModel):
+    """SetTableIndex request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: ID of the cluster where the table resides
+        :type ClusterId: str
+        :param SelectedTables: The list of tables that need to create global indexes
+        :type SelectedTables: list of SelectedTableWithField
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableWithField()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class SetTableIndexResponse(AbstractModel):
+    """SetTableIndex response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of tables whose global indexes are created
+        :type TotalCount: int
+        :param TableResults: The list of global index creation results
+        :type TableResults: list of TableResultNew
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = TableResultNew()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class TableGroupInfo(AbstractModel):
