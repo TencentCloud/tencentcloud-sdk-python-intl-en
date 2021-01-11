@@ -449,34 +449,6 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeProjects(self, request):
-        """This API is used to query the project list.
-
-        :param request: Request instance for DescribeProjects.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeProjectsRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeProjectsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeProjects", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeProjectsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def GrantAccountPrivileges(self, request):
         """This API is used to grant permissions to a TencentDB account.
         Note: accounts with the same username but different hosts are different accounts.

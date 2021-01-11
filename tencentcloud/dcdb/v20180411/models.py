@@ -443,6 +443,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DcnDstNum: The number of DCN disaster recovery instances
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DcnDstNum: int
+        :param InstanceType: Instance type. Valid values: `1` (primary instance (dedicated)), `2` (primary instance), `3` (disaster recovery instance), `4` (disaster recovery instance (dedicated))
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -491,6 +494,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DcnFlag = None
         self.DcnStatus = None
         self.DcnDstNum = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -546,6 +550,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DcnFlag = params.get("DcnFlag")
         self.DcnStatus = params.get("DcnStatus")
         self.DcnDstNum = params.get("DcnDstNum")
+        self.InstanceType = params.get("InstanceType")
 
 
 class DCDBShardInfo(AbstractModel):
@@ -1444,38 +1449,6 @@ class DescribeDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeProjectsRequest(AbstractModel):
-    """DescribeProjects request structure.
-
-    """
-
-
-class DescribeProjectsResponse(AbstractModel):
-    """DescribeProjects response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param Projects: Project list
-        :type Projects: list of Project
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Projects = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Projects") is not None:
-            self.Projects = []
-            for item in params.get("Projects"):
-                obj = Project()
-                obj._deserialize(item)
-                self.Projects.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class GrantAccountPrivilegesRequest(AbstractModel):
     """GrantAccountPrivileges request structure.
 
@@ -1937,63 +1910,6 @@ class ParamModifyResult(AbstractModel):
     def _deserialize(self, params):
         self.Param = params.get("Param")
         self.Code = params.get("Code")
-
-
-class Project(AbstractModel):
-    """Project description
-
-    """
-
-    def __init__(self):
-        """
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param OwnerUin: The `uin` of the resource owner (root account)
-        :type OwnerUin: int
-        :param AppId: Application ID
-        :type AppId: int
-        :param Name: Project name
-        :type Name: str
-        :param CreatorUin: Creator `uin`
-        :type CreatorUin: int
-        :param SrcPlat: Source platform
-        :type SrcPlat: str
-        :param SrcAppId: Source `AppId`
-        :type SrcAppId: int
-        :param Status: Project status. 0: normal; -1: disabled; 3: default project.
-        :type Status: int
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param IsDefault: Whether it is the default project. 1: yes; 0: no.
-        :type IsDefault: int
-        :param Info: Description
-        :type Info: str
-        """
-        self.ProjectId = None
-        self.OwnerUin = None
-        self.AppId = None
-        self.Name = None
-        self.CreatorUin = None
-        self.SrcPlat = None
-        self.SrcAppId = None
-        self.Status = None
-        self.CreateTime = None
-        self.IsDefault = None
-        self.Info = None
-
-
-    def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.OwnerUin = params.get("OwnerUin")
-        self.AppId = params.get("AppId")
-        self.Name = params.get("Name")
-        self.CreatorUin = params.get("CreatorUin")
-        self.SrcPlat = params.get("SrcPlat")
-        self.SrcAppId = params.get("SrcAppId")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
-        self.IsDefault = params.get("IsDefault")
-        self.Info = params.get("Info")
 
 
 class ResetAccountPasswordRequest(AbstractModel):
