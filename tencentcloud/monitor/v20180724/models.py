@@ -16,6 +16,566 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AlarmEvent(AbstractModel):
+    """Alarm event
+
+    """
+
+    def __init__(self):
+        """
+        :param EventName: Event name
+        :type EventName: str
+        :param Description: Event display name
+        :type Description: str
+        :param Namespace: Alarm policy type
+        :type Namespace: str
+        """
+        self.EventName = None
+        self.Description = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.EventName = params.get("EventName")
+        self.Description = params.get("Description")
+        self.Namespace = params.get("Namespace")
+
+
+class AlarmHistory(AbstractModel):
+    """Alarm record data
+
+    """
+
+    def __init__(self):
+        """
+        :param AlarmId: Alarm record ID
+        :type AlarmId: str
+        :param MonitorType: Monitor type
+        :type MonitorType: str
+        :param Namespace: Policy type
+        :type Namespace: str
+        :param AlarmObject: Alarm object
+        :type AlarmObject: str
+        :param Content: Alarm content
+        :type Content: str
+        :param FirstOccurTime: Timestamp of the first occurrence
+        :type FirstOccurTime: int
+        :param LastOccurTime: Timestamp of the last occurrence
+        :type LastOccurTime: int
+        :param AlarmStatus: Alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data)
+        :type AlarmStatus: str
+        :param PolicyId: Alarm policy ID
+        :type PolicyId: str
+        :param PolicyName: Policy name
+        :type PolicyName: str
+        :param VPC: VPC of alarm object for basic product alarm
+        :type VPC: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param ProjectName: Project name
+        :type ProjectName: str
+        :param InstanceGroup: Instance group of alarm object
+        :type InstanceGroup: list of InstanceGroups
+        :param ReceiverUids: Recipient list
+        :type ReceiverUids: list of int
+        :param ReceiverGroups: Recipient group list
+        :type ReceiverGroups: list of int
+        :param NoticeWays: Alarm channel list. Valid values: SMS (SMS), EMAIL (email), CALL (phone), WECHAT (WeChat)
+        :type NoticeWays: list of str
+        :param OriginId: Compatible Alarm 1.0 policy group ID
+        :type OriginId: str
+        :param AlarmType: Alarm type
+        :type AlarmType: str
+        :param EventId: Event ID
+        :type EventId: int
+        :param Region: Region
+        :type Region: str
+        :param PolicyExists: Whether the policy exists. Valid values: 0 (no), 1 (yes)
+        :type PolicyExists: int
+        """
+        self.AlarmId = None
+        self.MonitorType = None
+        self.Namespace = None
+        self.AlarmObject = None
+        self.Content = None
+        self.FirstOccurTime = None
+        self.LastOccurTime = None
+        self.AlarmStatus = None
+        self.PolicyId = None
+        self.PolicyName = None
+        self.VPC = None
+        self.ProjectId = None
+        self.ProjectName = None
+        self.InstanceGroup = None
+        self.ReceiverUids = None
+        self.ReceiverGroups = None
+        self.NoticeWays = None
+        self.OriginId = None
+        self.AlarmType = None
+        self.EventId = None
+        self.Region = None
+        self.PolicyExists = None
+
+
+    def _deserialize(self, params):
+        self.AlarmId = params.get("AlarmId")
+        self.MonitorType = params.get("MonitorType")
+        self.Namespace = params.get("Namespace")
+        self.AlarmObject = params.get("AlarmObject")
+        self.Content = params.get("Content")
+        self.FirstOccurTime = params.get("FirstOccurTime")
+        self.LastOccurTime = params.get("LastOccurTime")
+        self.AlarmStatus = params.get("AlarmStatus")
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.VPC = params.get("VPC")
+        self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
+        if params.get("InstanceGroup") is not None:
+            self.InstanceGroup = []
+            for item in params.get("InstanceGroup"):
+                obj = InstanceGroups()
+                obj._deserialize(item)
+                self.InstanceGroup.append(obj)
+        self.ReceiverUids = params.get("ReceiverUids")
+        self.ReceiverGroups = params.get("ReceiverGroups")
+        self.NoticeWays = params.get("NoticeWays")
+        self.OriginId = params.get("OriginId")
+        self.AlarmType = params.get("AlarmType")
+        self.EventId = params.get("EventId")
+        self.Region = params.get("Region")
+        self.PolicyExists = params.get("PolicyExists")
+
+
+class AlarmNotice(AbstractModel):
+    """Alarm notification template details
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: Alarm notification template ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Id: str
+        :param Name: Alarm notification template name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param UpdatedAt: Last modified time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UpdatedAt: str
+        :param UpdatedBy: Last modified by
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UpdatedBy: str
+        :param NoticeType: Alarm notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NoticeType: str
+        :param UserNotices: User notification list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UserNotices: list of UserNotice
+        :param URLNotices: Callback notification list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type URLNotices: list of URLNotice
+        :param IsPreset: Whether it is the system default notification template. Valid values: 0 (no), 1 (yes)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsPreset: int
+        :param NoticeLanguage: Notification language. Valid values: zh-CN (Chinese), en-US (English)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NoticeLanguage: str
+        :param PolicyIds: List of IDs of the alarm policies bound to alarm notification template
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PolicyIds: list of str
+        """
+        self.Id = None
+        self.Name = None
+        self.UpdatedAt = None
+        self.UpdatedBy = None
+        self.NoticeType = None
+        self.UserNotices = None
+        self.URLNotices = None
+        self.IsPreset = None
+        self.NoticeLanguage = None
+        self.PolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.UpdatedAt = params.get("UpdatedAt")
+        self.UpdatedBy = params.get("UpdatedBy")
+        self.NoticeType = params.get("NoticeType")
+        if params.get("UserNotices") is not None:
+            self.UserNotices = []
+            for item in params.get("UserNotices"):
+                obj = UserNotice()
+                obj._deserialize(item)
+                self.UserNotices.append(obj)
+        if params.get("URLNotices") is not None:
+            self.URLNotices = []
+            for item in params.get("URLNotices"):
+                obj = URLNotice()
+                obj._deserialize(item)
+                self.URLNotices.append(obj)
+        self.IsPreset = params.get("IsPreset")
+        self.NoticeLanguage = params.get("NoticeLanguage")
+        self.PolicyIds = params.get("PolicyIds")
+
+
+class AlarmPolicy(AbstractModel):
+    """Alarm policy details
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: Alarm policy ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PolicyId: str
+        :param PolicyName: Alarm policy name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PolicyName: str
+        :param Remark: Remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        :param MonitorType: Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MonitorType: str
+        :param Enable: Status. Valid values: 0 (disabled), 1 (enabled)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Enable: int
+        :param UseSum: Number of instances bound to policy group
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UseSum: int
+        :param ProjectId: Project ID. Valid values: -1 (no project), 0 (default project)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: int
+        :param ProjectName: Project name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProjectName: str
+        :param Namespace: Alarm policy type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Namespace: str
+        :param ConditionTemplateId: Trigger condition template ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConditionTemplateId: str
+        :param Condition: Metric trigger condition
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: Event trigger condition
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        :param NoticeIds: Notification rule ID list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NoticeIds: list of str
+        :param Notices: Notification rule list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Notices: list of AlarmNotice
+        :param TriggerTasks: Triggered task list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
+        :param ConditionsTemp: Template policy group
+Note: this field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.ConditionsTemp`
+        :param LastEditUin: `Uin` of the last modifying user
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LastEditUin: str
+        :param UpdateTime: Update time
+Note: this field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: int
+        :param InsertTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InsertTime: int
+        :param Region: Region
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Region: list of str
+        :param NamespaceShowName: Namespace display name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NamespaceShowName: str
+        :param IsDefault: Whether it is the default policy. Valid values: 1 (yes), 0 (no)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsDefault: int
+        :param CanSetDefault: Whether the default policy can be set. Valid values: 1 (yes), 0 (no)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CanSetDefault: int
+        :param InstanceGroupId: Instance group ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceGroupId: int
+        :param InstanceSum: Total number of instances in instance group
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceSum: int
+        :param InstanceGroupName: Instance group name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceGroupName: str
+        :param RuleType: Trigger condition type. Valid values: STATIC (static threshold), DYNAMIC (dynamic)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RuleType: str
+        :param OriginId: Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type OriginId: str
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+        self.Remark = None
+        self.MonitorType = None
+        self.Enable = None
+        self.UseSum = None
+        self.ProjectId = None
+        self.ProjectName = None
+        self.Namespace = None
+        self.ConditionTemplateId = None
+        self.Condition = None
+        self.EventCondition = None
+        self.NoticeIds = None
+        self.Notices = None
+        self.TriggerTasks = None
+        self.ConditionsTemp = None
+        self.LastEditUin = None
+        self.UpdateTime = None
+        self.InsertTime = None
+        self.Region = None
+        self.NamespaceShowName = None
+        self.IsDefault = None
+        self.CanSetDefault = None
+        self.InstanceGroupId = None
+        self.InstanceSum = None
+        self.InstanceGroupName = None
+        self.RuleType = None
+        self.OriginId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.Remark = params.get("Remark")
+        self.MonitorType = params.get("MonitorType")
+        self.Enable = params.get("Enable")
+        self.UseSum = params.get("UseSum")
+        self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
+        self.Namespace = params.get("Namespace")
+        self.ConditionTemplateId = params.get("ConditionTemplateId")
+        if params.get("Condition") is not None:
+            self.Condition = AlarmPolicyCondition()
+            self.Condition._deserialize(params.get("Condition"))
+        if params.get("EventCondition") is not None:
+            self.EventCondition = AlarmPolicyEventCondition()
+            self.EventCondition._deserialize(params.get("EventCondition"))
+        self.NoticeIds = params.get("NoticeIds")
+        if params.get("Notices") is not None:
+            self.Notices = []
+            for item in params.get("Notices"):
+                obj = AlarmNotice()
+                obj._deserialize(item)
+                self.Notices.append(obj)
+        if params.get("TriggerTasks") is not None:
+            self.TriggerTasks = []
+            for item in params.get("TriggerTasks"):
+                obj = AlarmPolicyTriggerTask()
+                obj._deserialize(item)
+                self.TriggerTasks.append(obj)
+        if params.get("ConditionsTemp") is not None:
+            self.ConditionsTemp = ConditionsTemp()
+            self.ConditionsTemp._deserialize(params.get("ConditionsTemp"))
+        self.LastEditUin = params.get("LastEditUin")
+        self.UpdateTime = params.get("UpdateTime")
+        self.InsertTime = params.get("InsertTime")
+        self.Region = params.get("Region")
+        self.NamespaceShowName = params.get("NamespaceShowName")
+        self.IsDefault = params.get("IsDefault")
+        self.CanSetDefault = params.get("CanSetDefault")
+        self.InstanceGroupId = params.get("InstanceGroupId")
+        self.InstanceSum = params.get("InstanceSum")
+        self.InstanceGroupName = params.get("InstanceGroupName")
+        self.RuleType = params.get("RuleType")
+        self.OriginId = params.get("OriginId")
+
+
+class AlarmPolicyCondition(AbstractModel):
+    """Metric trigger condition of alarm policy
+
+    """
+
+    def __init__(self):
+        """
+        :param IsUnionRule: Metric trigger condition operator. Valid values: 0 (OR), 1 (AND)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsUnionRule: int
+        :param Rules: Alarm trigger condition list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Rules: list of AlarmPolicyRule
+        """
+        self.IsUnionRule = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.IsUnionRule = params.get("IsUnionRule")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = AlarmPolicyRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class AlarmPolicyEventCondition(AbstractModel):
+    """Event trigger condition of alarm policy
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: Alarm trigger condition list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Rules: list of AlarmPolicyRule
+        """
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = AlarmPolicyRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class AlarmPolicyFilter(AbstractModel):
+    """Filter condition of alarm policy
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Filter condition type. Valid values: DIMENSION (uses dimensions for filtering)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param Dimensions: JSON string generated by serializing the `AlarmPolicyDimension` two-dimensional array. The one-dimensional arrays are in OR relationship, and the elements in a one-dimensional array are in AND relationship
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Dimensions: str
+        """
+        self.Type = None
+        self.Dimensions = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Dimensions = params.get("Dimensions")
+
+
+class AlarmPolicyRule(AbstractModel):
+    """Trigger condition of alarm policy
+
+    """
+
+    def __init__(self):
+        """
+        :param MetricName: Metric name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MetricName: str
+        :param Period: Statistical period in seconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Period: int
+        :param Operator: Operator
+intelligent = intelligent detection without threshold
+eq = equal to
+ge = greater than or equal to
+gt = greater than
+le = less than or equal to
+lt = less than
+ne = not equal to
+day_increase = daily increase
+day_decrease = daily decrease
+day_wave = daily fluctuation
+week_increase = weekly increase
+week_decrease = weekly decrease
+week_wave = weekly fluctuation
+cycle_increase = periodical increase
+cycle_decrease = periodical decrease
+cycle_wave = periodical fluctuation
+re = regex match
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Operator: str
+        :param Value: Threshold
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Value: str
+        :param ContinuePeriod: Number of cycles for continuous notification. Valid values: 1 (1 cycle), 2 (2 cycles), and so on.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ContinuePeriod: int
+        :param NoticeFrequency: Alarm interval in seconds. Valid values: 0 (do not repeat), 300 (alarm once every 5 minutes), 600 (alarm once every 10 minutes), 900 (alarm once every 15 minutes), 1800 (alarm once every 30 minutes), 3600 (alarm once every hour), 7200 (alarm once every 2 hours), 10800 (alarm once every 3 hours), 21600 (alarm once every 6 hours),  43200 (alarm once every 12 hours), 86400 (alarm once every day)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NoticeFrequency: int
+        :param IsPowerNotice: Whether the alarm frequency increases exponentially. Valid values: 0 (no), 1 (yes)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsPowerNotice: int
+        :param Filter: Filter condition for one single trigger rule
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        :param Description: Metric display name, which is used in the output parameter
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param Unit: Unit, which is used in the output parameter
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Unit: str
+        :param RuleType: Trigger condition type. Valid values: STATIC (static threshold), DYNAMIC (dynamic threshold)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RuleType: str
+        """
+        self.MetricName = None
+        self.Period = None
+        self.Operator = None
+        self.Value = None
+        self.ContinuePeriod = None
+        self.NoticeFrequency = None
+        self.IsPowerNotice = None
+        self.Filter = None
+        self.Description = None
+        self.Unit = None
+        self.RuleType = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        self.Period = params.get("Period")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
+        self.ContinuePeriod = params.get("ContinuePeriod")
+        self.NoticeFrequency = params.get("NoticeFrequency")
+        self.IsPowerNotice = params.get("IsPowerNotice")
+        if params.get("Filter") is not None:
+            self.Filter = AlarmPolicyFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        self.Description = params.get("Description")
+        self.Unit = params.get("Unit")
+        self.RuleType = params.get("RuleType")
+
+
+class AlarmPolicyTriggerTask(AbstractModel):
+    """Task triggered by alarm policy
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Triggered task type. Valid value: AS (auto scaling)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param TaskConfig: Configuration information in JSON format, such as {"Key1":"Value1","Key2":"Value2"}
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TaskConfig: str
+        """
+        self.Type = None
+        self.TaskConfig = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.TaskConfig = params.get("TaskConfig")
+
+
 class BindingPolicyObjectDimension(AbstractModel):
     """Dimensions of instances bound to a policy
 
@@ -93,6 +653,242 @@ class BindingPolicyObjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CommonNamespace(AbstractModel):
+    """Unified namespace information
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: Namespace ID
+        :type Id: str
+        :param Name: Namespace name
+        :type Name: str
+        :param Value: Namespace value
+        :type Value: str
+        :param ProductName: Product name
+        :type ProductName: str
+        :param Config: Configuration information
+        :type Config: str
+        :param AvailableRegions: List of supported regions
+        :type AvailableRegions: list of str
+        :param SortId: Sort ID
+        :type SortId: int
+        :param DashboardId: Unique ID in Dashboard
+        :type DashboardId: str
+        """
+        self.Id = None
+        self.Name = None
+        self.Value = None
+        self.ProductName = None
+        self.Config = None
+        self.AvailableRegions = None
+        self.SortId = None
+        self.DashboardId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        self.ProductName = params.get("ProductName")
+        self.Config = params.get("Config")
+        self.AvailableRegions = params.get("AvailableRegions")
+        self.SortId = params.get("SortId")
+        self.DashboardId = params.get("DashboardId")
+
+
+class ConditionsTemp(AbstractModel):
+    """Alarm condition template
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateName: Template name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TemplateName: str
+        :param Condition: Metric trigger condition
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: Event trigger condition
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        """
+        self.TemplateName = None
+        self.Condition = None
+        self.EventCondition = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        if params.get("Condition") is not None:
+            self.Condition = AlarmPolicyCondition()
+            self.Condition._deserialize(params.get("Condition"))
+        if params.get("EventCondition") is not None:
+            self.EventCondition = AlarmPolicyEventCondition()
+            self.EventCondition._deserialize(params.get("EventCondition"))
+
+
+class CreateAlarmNoticeRequest(AbstractModel):
+    """CreateAlarmNotice request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name. Enter "monitor" here
+        :type Module: str
+        :param Name: Notification template name, which can contain up to 60 characters
+        :type Name: str
+        :param NoticeType: Notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)
+        :type NoticeType: str
+        :param NoticeLanguage: Notification language. Valid values: zh-CN (Chinese), en-US (English)
+        :type NoticeLanguage: str
+        :param UserNotices: User notifications (up to 5)
+        :type UserNotices: list of UserNotice
+        :param URLNotices: Callback notifications (up to 3)
+        :type URLNotices: list of URLNotice
+        """
+        self.Module = None
+        self.Name = None
+        self.NoticeType = None
+        self.NoticeLanguage = None
+        self.UserNotices = None
+        self.URLNotices = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Name = params.get("Name")
+        self.NoticeType = params.get("NoticeType")
+        self.NoticeLanguage = params.get("NoticeLanguage")
+        if params.get("UserNotices") is not None:
+            self.UserNotices = []
+            for item in params.get("UserNotices"):
+                obj = UserNotice()
+                obj._deserialize(item)
+                self.UserNotices.append(obj)
+        if params.get("URLNotices") is not None:
+            self.URLNotices = []
+            for item in params.get("URLNotices"):
+                obj = URLNotice()
+                obj._deserialize(item)
+                self.URLNotices.append(obj)
+
+
+class CreateAlarmNoticeResponse(AbstractModel):
+    """CreateAlarmNotice response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NoticeId: Alarm notification template ID
+        :type NoticeId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NoticeId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NoticeId = params.get("NoticeId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAlarmPolicyRequest(AbstractModel):
+    """CreateAlarmPolicy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Value fixed at "monitor"
+        :type Module: str
+        :param PolicyName: Policy name, which can contain up to 20 characters
+        :type PolicyName: str
+        :param MonitorType: Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
+        :type MonitorType: str
+        :param Namespace: Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API
+        :type Namespace: str
+        :param Remark: Remarks with up to 100 letters, digits, underscores, and hyphens
+        :type Remark: str
+        :param Enable: Whether to enable. Valid values: 0 (no), 1 (yes). Default value: 1. This parameter can be left empty
+        :type Enable: int
+        :param ProjectId: Project ID. Valid values: -1 (no project), 0 (default project). Default value: -1. This parameter can be left empty
+        :type ProjectId: int
+        :param Condition: Metric trigger condition
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: Event trigger condition
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        :param NoticeIds: List of notification rule IDs, which is obtained through the `DescribeAlarmNotices` API
+        :type NoticeIds: list of str
+        :param TriggerTasks: Triggered task list
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
+        """
+        self.Module = None
+        self.PolicyName = None
+        self.MonitorType = None
+        self.Namespace = None
+        self.Remark = None
+        self.Enable = None
+        self.ProjectId = None
+        self.Condition = None
+        self.EventCondition = None
+        self.NoticeIds = None
+        self.TriggerTasks = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyName = params.get("PolicyName")
+        self.MonitorType = params.get("MonitorType")
+        self.Namespace = params.get("Namespace")
+        self.Remark = params.get("Remark")
+        self.Enable = params.get("Enable")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Condition") is not None:
+            self.Condition = AlarmPolicyCondition()
+            self.Condition._deserialize(params.get("Condition"))
+        if params.get("EventCondition") is not None:
+            self.EventCondition = AlarmPolicyEventCondition()
+            self.EventCondition._deserialize(params.get("EventCondition"))
+        self.NoticeIds = params.get("NoticeIds")
+        if params.get("TriggerTasks") is not None:
+            self.TriggerTasks = []
+            for item in params.get("TriggerTasks"):
+                obj = AlarmPolicyTriggerTask()
+                obj._deserialize(item)
+                self.TriggerTasks.append(obj)
+
+
+class CreateAlarmPolicyResponse(AbstractModel):
+    """CreateAlarmPolicy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: Alarm policy ID
+        :type PolicyId: str
+        :param OriginId: Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)
+        :type OriginId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PolicyId = None
+        self.OriginId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.OriginId = params.get("OriginId")
         self.RequestId = params.get("RequestId")
 
 
@@ -292,6 +1088,82 @@ class DataPoint(AbstractModel):
         self.Values = params.get("Values")
 
 
+class DeleteAlarmNoticesRequest(AbstractModel):
+    """DeleteAlarmNotices request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name. Enter "monitor" here
+        :type Module: str
+        :param NoticeIds: Alarm notification template ID list
+        :type NoticeIds: list of str
+        """
+        self.Module = None
+        self.NoticeIds = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.NoticeIds = params.get("NoticeIds")
+
+
+class DeleteAlarmNoticesResponse(AbstractModel):
+    """DeleteAlarmNotices response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAlarmPolicyRequest(AbstractModel):
+    """DeleteAlarmPolicy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name, which is fixed at "monitor"
+        :type Module: str
+        :param PolicyIds: Alarm policy ID list
+        :type PolicyIds: list of str
+        """
+        self.Module = None
+        self.PolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyIds = params.get("PolicyIds")
+
+
+class DeleteAlarmPolicyResponse(AbstractModel):
+    """DeleteAlarmPolicy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePolicyGroupRequest(AbstractModel):
     """DeletePolicyGroup request structure.
 
@@ -476,6 +1348,618 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAlarmEventsRequest(AbstractModel):
+    """DescribeAlarmEvents request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name, which is fixed at "monitor"
+        :type Module: str
+        :param Namespace: Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API
+        :type Namespace: str
+        """
+        self.Module = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Namespace = params.get("Namespace")
+
+
+class DescribeAlarmEventsResponse(AbstractModel):
+    """DescribeAlarmEvents response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Events: Alarm event list
+        :type Events: list of AlarmEvent
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Events = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = AlarmEvent()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmHistoriesRequest(AbstractModel):
+    """DescribeAlarmHistories request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Value fixed at "monitor"
+        :type Module: str
+        :param PageNumber: Page number starting from 1. Default value: 1
+        :type PageNumber: int
+        :param PageSize: Number of entries per page. Value range: 1–100. Default value: 20
+        :type PageSize: int
+        :param Order: Sort by the first occurrence time in descending order by default. Valid values: ASC (ascending), DESC (descending)
+        :type Order: str
+        :param StartTime: Start time, which is the timestamp exactly one day ago
+        :type StartTime: int
+        :param EndTime: End time, which is the current timestamp by default
+        :type EndTime: int
+        :param MonitorTypes: Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default
+        :type MonitorTypes: list of str
+        :param AlarmObject: Filter by alarm object. Fuzzy search with string is supported
+        :type AlarmObject: str
+        :param AlarmStatus: Filter by alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data). If this parameter is left empty, all will be queried by default
+        :type AlarmStatus: list of str
+        :param ProjectIds: Filter by project ID. Valid values: -1 (no project), 0 (default project)
+        :type ProjectIds: list of int
+        :param InstanceGroupIds: Filter by instance group ID
+        :type InstanceGroupIds: list of int
+        :param Namespaces: Filter by policy type
+        :type Namespaces: list of MonitorTypeNamespace
+        :param MetricNames: Filter by metric name
+        :type MetricNames: list of str
+        :param PolicyName: Fuzzy search by policy name
+        :type PolicyName: str
+        :param Content: Fuzzy search by alarm content
+        :type Content: str
+        :param ReceiverUids: Search by recipient
+        :type ReceiverUids: list of int
+        :param ReceiverGroups: Search by recipient group
+        :type ReceiverGroups: list of int
+        :param PolicyIds: Search by alarm policy ID list
+        :type PolicyIds: list of str
+        """
+        self.Module = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.Order = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MonitorTypes = None
+        self.AlarmObject = None
+        self.AlarmStatus = None
+        self.ProjectIds = None
+        self.InstanceGroupIds = None
+        self.Namespaces = None
+        self.MetricNames = None
+        self.PolicyName = None
+        self.Content = None
+        self.ReceiverUids = None
+        self.ReceiverGroups = None
+        self.PolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.Order = params.get("Order")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MonitorTypes = params.get("MonitorTypes")
+        self.AlarmObject = params.get("AlarmObject")
+        self.AlarmStatus = params.get("AlarmStatus")
+        self.ProjectIds = params.get("ProjectIds")
+        self.InstanceGroupIds = params.get("InstanceGroupIds")
+        if params.get("Namespaces") is not None:
+            self.Namespaces = []
+            for item in params.get("Namespaces"):
+                obj = MonitorTypeNamespace()
+                obj._deserialize(item)
+                self.Namespaces.append(obj)
+        self.MetricNames = params.get("MetricNames")
+        self.PolicyName = params.get("PolicyName")
+        self.Content = params.get("Content")
+        self.ReceiverUids = params.get("ReceiverUids")
+        self.ReceiverGroups = params.get("ReceiverGroups")
+        self.PolicyIds = params.get("PolicyIds")
+
+
+class DescribeAlarmHistoriesResponse(AbstractModel):
+    """DescribeAlarmHistories response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param Histories: Alarm record list
+        :type Histories: list of AlarmHistory
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Histories = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Histories") is not None:
+            self.Histories = []
+            for item in params.get("Histories"):
+                obj = AlarmHistory()
+                obj._deserialize(item)
+                self.Histories.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmMetricsRequest(AbstractModel):
+    """DescribeAlarmMetrics request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Value fixed at "monitor"
+        :type Module: str
+        :param MonitorType: Monitor type filter. Valid values: MT_QCE (Tencent Cloud service monitoring)
+        :type MonitorType: str
+        :param Namespace: Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API
+        :type Namespace: str
+        """
+        self.Module = None
+        self.MonitorType = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.MonitorType = params.get("MonitorType")
+        self.Namespace = params.get("Namespace")
+
+
+class DescribeAlarmMetricsResponse(AbstractModel):
+    """DescribeAlarmMetrics response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Metrics: Alarm metric list
+        :type Metrics: list of Metric
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Metrics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = Metric()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmNoticeCallbacksRequest(AbstractModel):
+    """DescribeAlarmNoticeCallbacks request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name. Enter "monitor" here
+        :type Module: str
+        """
+        self.Module = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+
+
+class DescribeAlarmNoticeCallbacksResponse(AbstractModel):
+    """DescribeAlarmNoticeCallbacks response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param URLNotices: Alarm callback notification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type URLNotices: list of URLNotice
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.URLNotices = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("URLNotices") is not None:
+            self.URLNotices = []
+            for item in params.get("URLNotices"):
+                obj = URLNotice()
+                obj._deserialize(item)
+                self.URLNotices.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmNoticeRequest(AbstractModel):
+    """DescribeAlarmNotice request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name. Enter "monitor" here
+        :type Module: str
+        :param NoticeId: Alarm notification template ID
+        :type NoticeId: str
+        """
+        self.Module = None
+        self.NoticeId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.NoticeId = params.get("NoticeId")
+
+
+class DescribeAlarmNoticeResponse(AbstractModel):
+    """DescribeAlarmNotice response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Notice: Alarm notification template details
+        :type Notice: :class:`tencentcloud.monitor.v20180724.models.AlarmNotice`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Notice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Notice") is not None:
+            self.Notice = AlarmNotice()
+            self.Notice._deserialize(params.get("Notice"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmNoticesRequest(AbstractModel):
+    """DescribeAlarmNotices request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name. Enter "monitor" here
+        :type Module: str
+        :param PageNumber: Page number. Minimum value: 1
+        :type PageNumber: int
+        :param PageSize: Number of entries per page. Value range: 1–200
+        :type PageSize: int
+        :param Order: Sort by update time. Valid values: ASC (ascending), DESC (descending)
+        :type Order: str
+        :param OwnerUid: Root account `uid`, which is used to create preset notifications
+        :type OwnerUid: int
+        :param Name: Alarm notification template name, which is used for fuzzy search
+        :type Name: str
+        :param ReceiverType: Filter by recipient. The type of notified users should be selected for the alarm notification template. Valid values: USER (user), GROUP (user group). If this parameter is left empty, no filter by recipient will be performed
+        :type ReceiverType: str
+        :param UserIds: Recipient object list
+        :type UserIds: list of int
+        :param GroupIds: Recipient group list
+        :type GroupIds: list of int
+        """
+        self.Module = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.Order = None
+        self.OwnerUid = None
+        self.Name = None
+        self.ReceiverType = None
+        self.UserIds = None
+        self.GroupIds = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.Order = params.get("Order")
+        self.OwnerUid = params.get("OwnerUid")
+        self.Name = params.get("Name")
+        self.ReceiverType = params.get("ReceiverType")
+        self.UserIds = params.get("UserIds")
+        self.GroupIds = params.get("GroupIds")
+
+
+class DescribeAlarmNoticesResponse(AbstractModel):
+    """DescribeAlarmNotices response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of alarm notification templates
+        :type TotalCount: int
+        :param Notices: Alarm notification template list
+        :type Notices: list of AlarmNotice
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Notices = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Notices") is not None:
+            self.Notices = []
+            for item in params.get("Notices"):
+                obj = AlarmNotice()
+                obj._deserialize(item)
+                self.Notices.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmPoliciesRequest(AbstractModel):
+    """DescribeAlarmPolicies request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Value fixed at "monitor"
+        :type Module: str
+        :param PageNumber: Page number starting from 1. Default value: 1
+        :type PageNumber: int
+        :param PageSize: Number of entries per page. Value range: 1–100. Default value: 20
+        :type PageSize: int
+        :param PolicyName: Fuzzy search by policy name
+        :type PolicyName: str
+        :param MonitorTypes: Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default
+        :type MonitorTypes: list of str
+        :param Namespaces: Filter by namespace
+        :type Namespaces: list of str
+        :param Dimensions: Alarm object list
+        :type Dimensions: str
+        :param ReceiverUids: Search by recipient
+        :type ReceiverUids: list of int
+        :param ReceiverGroups: Search by recipient group
+        :type ReceiverGroups: list of int
+        :param PolicyType: Filter by default policy. Valid values: DEFAULT (display default policy), NOT_DEFAULT (display non-default policies). If this parameter is left empty, all policies will be displayed
+        :type PolicyType: list of str
+        :param Field: Sort by field
+        :type Field: str
+        :param Order: Sort order. Valid values: ASC (ascending), DESC (descending)
+        :type Order: str
+        :param ProjectIds: Project ID array
+        :type ProjectIds: list of int
+        :param NoticeIds: Alarm notification ID list
+        :type NoticeIds: list of str
+        :param RuleTypes: Filter by trigger condition. Valid values: STATIC (display policies with static threshold), DYNAMIC (display policies with dynamic threshold). If this parameter is left empty, all policies will be displayed
+        :type RuleTypes: list of str
+        :param Enable: Status. Valid values: 1 (enabled), 0 (disabled)
+        :type Enable: list of int
+        """
+        self.Module = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.PolicyName = None
+        self.MonitorTypes = None
+        self.Namespaces = None
+        self.Dimensions = None
+        self.ReceiverUids = None
+        self.ReceiverGroups = None
+        self.PolicyType = None
+        self.Field = None
+        self.Order = None
+        self.ProjectIds = None
+        self.NoticeIds = None
+        self.RuleTypes = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.PolicyName = params.get("PolicyName")
+        self.MonitorTypes = params.get("MonitorTypes")
+        self.Namespaces = params.get("Namespaces")
+        self.Dimensions = params.get("Dimensions")
+        self.ReceiverUids = params.get("ReceiverUids")
+        self.ReceiverGroups = params.get("ReceiverGroups")
+        self.PolicyType = params.get("PolicyType")
+        self.Field = params.get("Field")
+        self.Order = params.get("Order")
+        self.ProjectIds = params.get("ProjectIds")
+        self.NoticeIds = params.get("NoticeIds")
+        self.RuleTypes = params.get("RuleTypes")
+        self.Enable = params.get("Enable")
+
+
+class DescribeAlarmPoliciesResponse(AbstractModel):
+    """DescribeAlarmPolicies response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of policies
+        :type TotalCount: int
+        :param Policies: Policy array
+        :type Policies: list of AlarmPolicy
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Policies = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Policies") is not None:
+            self.Policies = []
+            for item in params.get("Policies"):
+                obj = AlarmPolicy()
+                obj._deserialize(item)
+                self.Policies.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmPolicyRequest(AbstractModel):
+    """DescribeAlarmPolicy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Value fixed at "monitor"
+        :type Module: str
+        :param PolicyId: Alarm policy ID
+        :type PolicyId: str
+        """
+        self.Module = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+
+
+class DescribeAlarmPolicyResponse(AbstractModel):
+    """DescribeAlarmPolicy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Policy: Policy details
+        :type Policy: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicy`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Policy = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Policy") is not None:
+            self.Policy = AlarmPolicy()
+            self.Policy._deserialize(params.get("Policy"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAllNamespacesRequest(AbstractModel):
+    """DescribeAllNamespaces request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SceneType: Filter by use case. Valid values: ST_DASHBOARD (Dashboard type), ST_ALARM (alarm type)
+        :type SceneType: str
+        :param Module: Value fixed at "monitor"
+        :type Module: str
+        :param MonitorTypes: Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default
+        :type MonitorTypes: list of str
+        :param Ids: Filter by namespace ID. If this parameter is left empty, all will be queried
+        :type Ids: list of str
+        """
+        self.SceneType = None
+        self.Module = None
+        self.MonitorTypes = None
+        self.Ids = None
+
+
+    def _deserialize(self, params):
+        self.SceneType = params.get("SceneType")
+        self.Module = params.get("Module")
+        self.MonitorTypes = params.get("MonitorTypes")
+        self.Ids = params.get("Ids")
+
+
+class DescribeAllNamespacesResponse(AbstractModel):
+    """DescribeAllNamespaces response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param QceNamespaces: Alarm policy type of Tencent Cloud service (disused)
+        :type QceNamespaces: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`
+        :param CustomNamespaces: Other alarm policy type (disused)
+        :type CustomNamespaces: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`
+        :param QceNamespacesNew: Alarm policy type of Tencent Cloud service
+        :type QceNamespacesNew: list of CommonNamespace
+        :param CustomNamespacesNew: Other alarm policy type (not supported currently)
+        :type CustomNamespacesNew: list of CommonNamespace
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.QceNamespaces = None
+        self.CustomNamespaces = None
+        self.QceNamespacesNew = None
+        self.CustomNamespacesNew = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QceNamespaces") is not None:
+            self.QceNamespaces = CommonNamespace()
+            self.QceNamespaces._deserialize(params.get("QceNamespaces"))
+        if params.get("CustomNamespaces") is not None:
+            self.CustomNamespaces = CommonNamespace()
+            self.CustomNamespaces._deserialize(params.get("CustomNamespaces"))
+        if params.get("QceNamespacesNew") is not None:
+            self.QceNamespacesNew = []
+            for item in params.get("QceNamespacesNew"):
+                obj = CommonNamespace()
+                obj._deserialize(item)
+                self.QceNamespacesNew.append(obj)
+        if params.get("CustomNamespacesNew") is not None:
+            self.CustomNamespacesNew = []
+            for item in params.get("CustomNamespacesNew"):
+                obj = CommonNamespace()
+                obj._deserialize(item)
+                self.CustomNamespacesNew.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBaseMetricsRequest(AbstractModel):
     """DescribeBaseMetrics request structure.
 
@@ -538,11 +2022,11 @@ Note: This field may return null, indicating that no valid value was found.
         :param ProjectName: Project name.
 Note: This field may return null, indicating that no valid value was found.
         :type ProjectName: str
-        :param Status: Alarm status ID.
-Note: This field may return null, indicating that no valid value was found.
+        :param Status: Alarm status ID. Valid values: 0 (not resolved), 1 (resolved), 2/3/5 (insufficient data), 4 (expired)
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param AlarmStatus: Alarm status.
-Note: This field may return null, indicating that no valid value was found.
+        :param AlarmStatus: Alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_DATA (insufficient data), NO_CONF (expired)
+Note: this field may return null, indicating that no valid values can be obtained.
         :type AlarmStatus: str
         :param GroupId: Policy group ID.
 Note: This field may return null, indicating that no valid value was found.
@@ -924,6 +2408,44 @@ Note: This field may return null, indicating that no valid value was found.
         if params.get("InstanceGroup") is not None:
             self.InstanceGroup = DescribeBindingPolicyObjectListInstanceGroup()
             self.InstanceGroup._deserialize(params.get("InstanceGroup"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMonitorTypesRequest(AbstractModel):
+    """DescribeMonitorTypes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name, which is fixed at "monitor"
+        :type Module: str
+        """
+        self.Module = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+
+
+class DescribeMonitorTypesResponse(AbstractModel):
+    """DescribeMonitorTypes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param MonitorTypes: Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
+        :type MonitorTypes: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.MonitorTypes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MonitorTypes = params.get("MonitorTypes")
         self.RequestId = params.get("RequestId")
 
 
@@ -2359,17 +3881,17 @@ class GetMonitorDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Namespace: Namespace. For detailed namespace descriptions of each Tencent Cloud service, see the corresponding [Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1) documentation
+        :param Namespace: Namespace, such as QCE/CVM. For more information on the namespaces of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1)
         :type Namespace: str
-        :param MetricName: Metric name. For detailed metric descriptions of each Tencent Cloud service, see the corresponding [Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1) documentation
+        :param MetricName: Metric name, such as `CPUUsage`. For more information on the metrics of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The corresponding metric name is the `MetricName`
         :type MetricName: str
-        :param Instances: Combination of instance object dimensions
+        :param Instances: Dimension combination of instance object in the format of `key-value` pair, such as [{"Name":"InstanceId","Value":"ins-j0hk02zo"}]. For more information on the dimensions of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The value in the dimension column is the `key` in the dimension combination, and the value corresponding to the `key` is the `value` in the combination
         :type Instances: list of Instance
-        :param Period: Monitoring statistical period. The default value is 300, and the unit is s
+        :param Period: Monitoring statistical period in seconds, such as 60. Default value: 300. The statistical period varies by metric. For more information on the statistical periods supported by each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The values in the statistical period column are the supported statistical periods
         :type Period: int
         :param StartTime: Start time such as 2018-09-22T19:51:23+08:00
         :type StartTime: str
-        :param EndTime: End time. Uses the current time by default and cannot be earlier than StartTime
+        :param EndTime: End time, which is the current time by default, such as 2018-09-22T20:51:23+08:00. `EndTime` cannot be earlier than `StartTime`
         :type EndTime: str
         """
         self.Namespace = None
@@ -2481,6 +4003,100 @@ Note: This field may return null, indicating that no valid value was found.
         self.InstanceGroupName = params.get("InstanceGroupName")
 
 
+class InstanceGroups(AbstractModel):
+    """Instance group of alarm object
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: Instance group ID
+        :type Id: int
+        :param Name: Instance group name
+        :type Name: str
+        """
+        self.Id = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+
+
+class Metric(AbstractModel):
+    """Metric, which can be used to set alarms and query data
+
+    """
+
+    def __init__(self):
+        """
+        :param Namespace: Alarm policy type
+        :type Namespace: str
+        :param MetricName: Metric name
+        :type MetricName: str
+        :param Description: Metric display name
+        :type Description: str
+        :param Min: Minimum value
+        :type Min: float
+        :param Max: Maximum value
+        :type Max: float
+        :param Dimensions: Dimension list
+        :type Dimensions: list of str
+        :param Unit: Unit
+        :type Unit: str
+        :param MetricConfig: Metric configuration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MetricConfig: :class:`tencentcloud.monitor.v20180724.models.MetricConfig`
+        """
+        self.Namespace = None
+        self.MetricName = None
+        self.Description = None
+        self.Min = None
+        self.Max = None
+        self.Dimensions = None
+        self.Unit = None
+        self.MetricConfig = None
+
+
+    def _deserialize(self, params):
+        self.Namespace = params.get("Namespace")
+        self.MetricName = params.get("MetricName")
+        self.Description = params.get("Description")
+        self.Min = params.get("Min")
+        self.Max = params.get("Max")
+        self.Dimensions = params.get("Dimensions")
+        self.Unit = params.get("Unit")
+        if params.get("MetricConfig") is not None:
+            self.MetricConfig = MetricConfig()
+            self.MetricConfig._deserialize(params.get("MetricConfig"))
+
+
+class MetricConfig(AbstractModel):
+    """Metric configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Operator: Allowed operator
+        :type Operator: list of str
+        :param Period: Allowed data cycle in seconds
+        :type Period: list of int
+        :param ContinuePeriod: Allowed number of continuous cycles
+        :type ContinuePeriod: list of int
+        """
+        self.Operator = None
+        self.Period = None
+        self.ContinuePeriod = None
+
+
+    def _deserialize(self, params):
+        self.Operator = params.get("Operator")
+        self.Period = params.get("Period")
+        self.ContinuePeriod = params.get("ContinuePeriod")
+
+
 class MetricDatum(AbstractModel):
     """Metric names and values
 
@@ -2578,6 +4194,301 @@ class MetricSet(AbstractModel):
                 obj = DimensionsDesc()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
+
+
+class ModifyAlarmNoticeRequest(AbstractModel):
+    """ModifyAlarmNotice request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name. Enter "monitor" here
+        :type Module: str
+        :param Name: Alarm notification rule name, which can contain up to 60 characters
+        :type Name: str
+        :param NoticeType: Notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)
+        :type NoticeType: str
+        :param NoticeLanguage: Notification language. Valid values: zh-CN (Chinese), en-US (English)
+        :type NoticeLanguage: str
+        :param NoticeId: Alarm notification template ID
+        :type NoticeId: str
+        :param UserNotices: User notifications (up to 5)
+        :type UserNotices: list of UserNotice
+        :param URLNotices: Callback notifications (up to 3)
+        :type URLNotices: list of URLNotice
+        """
+        self.Module = None
+        self.Name = None
+        self.NoticeType = None
+        self.NoticeLanguage = None
+        self.NoticeId = None
+        self.UserNotices = None
+        self.URLNotices = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Name = params.get("Name")
+        self.NoticeType = params.get("NoticeType")
+        self.NoticeLanguage = params.get("NoticeLanguage")
+        self.NoticeId = params.get("NoticeId")
+        if params.get("UserNotices") is not None:
+            self.UserNotices = []
+            for item in params.get("UserNotices"):
+                obj = UserNotice()
+                obj._deserialize(item)
+                self.UserNotices.append(obj)
+        if params.get("URLNotices") is not None:
+            self.URLNotices = []
+            for item in params.get("URLNotices"):
+                obj = URLNotice()
+                obj._deserialize(item)
+                self.URLNotices.append(obj)
+
+
+class ModifyAlarmNoticeResponse(AbstractModel):
+    """ModifyAlarmNotice response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmPolicyConditionRequest(AbstractModel):
+    """ModifyAlarmPolicyCondition request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name, which is fixed at "monitor"
+        :type Module: str
+        :param PolicyId: Alarm policy ID
+        :type PolicyId: str
+        :param Condition: Metric trigger condition
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: Event trigger condition
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.Condition = None
+        self.EventCondition = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        if params.get("Condition") is not None:
+            self.Condition = AlarmPolicyCondition()
+            self.Condition._deserialize(params.get("Condition"))
+        if params.get("EventCondition") is not None:
+            self.EventCondition = AlarmPolicyEventCondition()
+            self.EventCondition._deserialize(params.get("EventCondition"))
+
+
+class ModifyAlarmPolicyConditionResponse(AbstractModel):
+    """ModifyAlarmPolicyCondition response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmPolicyInfoRequest(AbstractModel):
+    """ModifyAlarmPolicyInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name. Enter "monitor" here
+        :type Module: str
+        :param PolicyId: Alarm policy ID
+        :type PolicyId: str
+        :param Key: Field to be modified. Valid values: NAME (policy name), REMARK (policy remarks)
+        :type Key: str
+        :param Value: Value after modification
+        :type Value: str
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
+class ModifyAlarmPolicyInfoResponse(AbstractModel):
+    """ModifyAlarmPolicyInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmPolicyNoticeRequest(AbstractModel):
+    """ModifyAlarmPolicyNotice request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name. Enter "monitor" here
+        :type Module: str
+        :param PolicyId: Alarm policy ID
+        :type PolicyId: str
+        :param NoticeIds: Alarm notification template ID list
+        :type NoticeIds: list of str
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.NoticeIds = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        self.NoticeIds = params.get("NoticeIds")
+
+
+class ModifyAlarmPolicyNoticeResponse(AbstractModel):
+    """ModifyAlarmPolicyNotice response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmPolicyStatusRequest(AbstractModel):
+    """ModifyAlarmPolicyStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name, which is fixed at "monitor"
+        :type Module: str
+        :param PolicyId: Alarm policy ID
+        :type PolicyId: str
+        :param Enable: Status. Valid values: 0 (disabled), 1 (enabled)
+        :type Enable: int
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        self.Enable = params.get("Enable")
+
+
+class ModifyAlarmPolicyStatusResponse(AbstractModel):
+    """ModifyAlarmPolicyStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmPolicyTasksRequest(AbstractModel):
+    """ModifyAlarmPolicyTasks request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name. Enter "monitor" here
+        :type Module: str
+        :param PolicyId: Alarm policy ID
+        :type PolicyId: str
+        :param TriggerTasks: List of tasks triggered by alarm policy. If this parameter is left empty, it indicates to unbind all tasks
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.TriggerTasks = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        if params.get("TriggerTasks") is not None:
+            self.TriggerTasks = []
+            for item in params.get("TriggerTasks"):
+                obj = AlarmPolicyTriggerTask()
+                obj._deserialize(item)
+                self.TriggerTasks.append(obj)
+
+
+class ModifyAlarmPolicyTasksResponse(AbstractModel):
+    """ModifyAlarmPolicyTasks response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyAlarmReceiversRequest(AbstractModel):
@@ -2777,6 +4688,27 @@ class ModifyPolicyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MonitorTypeNamespace(AbstractModel):
+    """Policy type
+
+    """
+
+    def __init__(self):
+        """
+        :param MonitorType: Monitor type
+        :type MonitorType: str
+        :param Namespace: Policy type value
+        :type Namespace: str
+        """
+        self.MonitorType = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.MonitorType = params.get("MonitorType")
+        self.Namespace = params.get("Namespace")
+
+
 class PeriodsSt(AbstractModel):
     """Statistical method during the period
 
@@ -2964,6 +4896,72 @@ class SendCustomAlarmMsgResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SetDefaultAlarmPolicyRequest(AbstractModel):
+    """SetDefaultAlarmPolicy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module name, which is fixed at "monitor"
+        :type Module: str
+        :param PolicyId: Alarm policy ID
+        :type PolicyId: str
+        """
+        self.Module = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+
+
+class SetDefaultAlarmPolicyResponse(AbstractModel):
+    """SetDefaultAlarmPolicy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class URLNotice(AbstractModel):
+    """Cloud Monitor alarm notification template - callback notification details
+
+    """
+
+    def __init__(self):
+        """
+        :param URL: Callback URL, which can contain up to 256 characters
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type URL: str
+        :param IsValid: Whether verification is passed. Valid values: 0 (no), 1 (yes)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type IsValid: int
+        :param ValidationCode: Verification code
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ValidationCode: str
+        """
+        self.URL = None
+        self.IsValid = None
+        self.ValidationCode = None
+
+
+    def _deserialize(self, params):
+        self.URL = params.get("URL")
+        self.IsValid = params.get("IsValid")
+        self.ValidationCode = params.get("ValidationCode")
+
+
 class UnBindingAllPolicyObjectRequest(AbstractModel):
     """UnBindingAllPolicyObject request structure.
 
@@ -3013,7 +5011,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         :type Module: str
         :param GroupId: Policy group ID.
         :type GroupId: int
-        :param UniqueId: List of unique IDs of object instances to be deleted.
+        :param UniqueId: List of unique IDs of the object instances to be deleted. `UniqueId` can be obtained from the output parameter `List` of the [DescribeBindingPolicyObjectList](https://intl.cloud.tencent.com/document/api/248/40570?from_cn_redirect=1) API
         :type UniqueId: list of str
         :param InstanceGroupId: Instance group ID. The UniqueId parameter is invalid if object instances are deleted by instance group.
         :type InstanceGroupId: int
@@ -3046,3 +5044,71 @@ class UnBindingPolicyObjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class UserNotice(AbstractModel):
+    """Cloud Monitor alarm notification template - user notification details
+
+    """
+
+    def __init__(self):
+        """
+        :param ReceiverType: Recipient type. Valid values: USER (user), GROUP (user group)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ReceiverType: str
+        :param StartTime: Notification start time, which is expressed by the number of seconds since 00:00:00. Value range: 0–86399
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type StartTime: int
+        :param EndTime: Notification end time, which is expressed by the number of seconds since 00:00:00. Value range: 0–86399
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type EndTime: int
+        :param NoticeWay: Notification channel list. Valid values: EMAIL (email), SMS (SMS), CALL (phone), WECHAT (WeChat)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NoticeWay: list of str
+        :param UserIds: User `uid` list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type UserIds: list of int
+        :param GroupIds: User group ID list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type GroupIds: list of int
+        :param PhoneOrder: Phone polling list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PhoneOrder: list of int
+        :param PhoneCircleTimes: Number of phone pollings. Value range: 1–5
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PhoneCircleTimes: int
+        :param PhoneInnerInterval: Call interval in seconds within one polling. Value range: 60–900
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PhoneInnerInterval: int
+        :param PhoneCircleInterval: Polling interval in seconds. Value range: 60–900
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type PhoneCircleInterval: int
+        :param NeedPhoneArriveNotice: Whether receipt notification is required. Valid values: 0 (no), 1 (yes)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NeedPhoneArriveNotice: int
+        """
+        self.ReceiverType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.NoticeWay = None
+        self.UserIds = None
+        self.GroupIds = None
+        self.PhoneOrder = None
+        self.PhoneCircleTimes = None
+        self.PhoneInnerInterval = None
+        self.PhoneCircleInterval = None
+        self.NeedPhoneArriveNotice = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverType = params.get("ReceiverType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.NoticeWay = params.get("NoticeWay")
+        self.UserIds = params.get("UserIds")
+        self.GroupIds = params.get("GroupIds")
+        self.PhoneOrder = params.get("PhoneOrder")
+        self.PhoneCircleTimes = params.get("PhoneCircleTimes")
+        self.PhoneInnerInterval = params.get("PhoneInnerInterval")
+        self.PhoneCircleInterval = params.get("PhoneCircleInterval")
+        self.NeedPhoneArriveNotice = params.get("NeedPhoneArriveNotice")
