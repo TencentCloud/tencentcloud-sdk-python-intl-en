@@ -162,7 +162,7 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         :type Tag: list of Tag
         :param Ipv6Access: IPv6 access configuration
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
-        :param OfflineCache: 
+        :param OfflineCache: Offline cache
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         """
         self.Domain = None
@@ -3416,7 +3416,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param AdvanceSet: Advanced configuration set
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AdvanceSet: list of AdvanceConfig
-        :param OfflineCache: 
+        :param OfflineCache: Offline cache
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         :param OriginCombine: 
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
@@ -5210,13 +5211,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class OfflineCache(AbstractModel):
-    """
+    """Whether to enable offline cache
 
     """
 
     def __init__(self):
         """
-        :param Switch: 
+        :param Switch: Whether to enable offline cache. Valid values: `on` and `off`.
         :type Switch: str
         """
         self.Switch = None
@@ -5290,7 +5291,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param PathRules: Origin URL rewrite rule configuration
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PathRules: list of PathRule
-        :param PathBasedOrigin: 
+        :param PathBasedOrigin: Path-based origin-pull configurations
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PathBasedOrigin: list of PathBasedOriginRule
         """
         self.Origins = None
@@ -5642,17 +5644,25 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PathBasedOriginRule(AbstractModel):
-    """
+    """Path-based origin-pull rules
 
     """
 
     def __init__(self):
         """
-        :param RuleType: 
+        :param RuleType: Rule types:
+`file`: effective for files with specified suffixes.
+`directory`: effective for specified paths.
+`path`: effective for specified absolute paths.
+`index`: effective for specified homepages.
         :type RuleType: str
-        :param RulePaths: 
+        :param RulePaths: Content for each `RuleType`:
+For `file`, enter a suffix, e.g., `jpg` or `txt`.
+For `directory`, enter a path, e.g., `/xxx/test/`.
+For `path`, enter an absolute path, e.g., `/xxx/test.html`.
+For `index`, enter a forward slash `/`.
         :type RulePaths: list of str
-        :param Origin: 
+        :param Origin: Origin server list. Domain names and IPv4 addresses are supported.
         :type Origin: list of str
         """
         self.RuleType = None
@@ -7521,7 +7531,7 @@ global: global acceleration
         :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
         :param Ipv6Access: IPv6 access configuration
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
-        :param OfflineCache: 
+        :param OfflineCache: Offline cache
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         :param OriginCombine: 
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`

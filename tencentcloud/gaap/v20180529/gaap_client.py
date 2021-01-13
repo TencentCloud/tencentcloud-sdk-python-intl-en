@@ -1457,7 +1457,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRealServers(self, request):
-        """This API (DescribeRealServers) is used to query origin server information. It can query all origin server information by project names, and supports fuzzy query by specified IPs or domain names.
+        """This API is used to query origin server information. It can query all origin servers under the specified project name, and supports fuzzy query by specified IPs or domain names.
 
         :param request: Request instance for DescribeRealServers.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRealServersRequest`
@@ -1849,7 +1849,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyCertificateAttributes(self, request):
-        """This API (ModifyCertificateAttributes) is used to modify certificates, including identification name and certificate content.
+        """This API is used to modify certificate name and content.
 
         :param request: Request instance for ModifyCertificateAttributes.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyCertificateAttributesRequest`

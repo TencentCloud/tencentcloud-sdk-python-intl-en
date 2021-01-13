@@ -1386,6 +1386,8 @@ class CreateTCPListenersRequest(AbstractModel):
         :type ConnectTimeout: int
         :param RealServerPorts: List of origin server ports, which only supports the listeners of version 1.0 and connection group.
         :type RealServerPorts: list of int non-negative
+        :param ClientIPMethod: Listener methods of getting client IPs. 0: TOA; 1: Proxy Protocol.
+        :type ClientIPMethod: int
         """
         self.ListenerName = None
         self.Ports = None
@@ -1397,6 +1399,7 @@ class CreateTCPListenersRequest(AbstractModel):
         self.DelayLoop = None
         self.ConnectTimeout = None
         self.RealServerPorts = None
+        self.ClientIPMethod = None
 
 
     def _deserialize(self, params):
@@ -1410,6 +1413,7 @@ class CreateTCPListenersRequest(AbstractModel):
         self.DelayLoop = params.get("DelayLoop")
         self.ConnectTimeout = params.get("ConnectTimeout")
         self.RealServerPorts = params.get("RealServerPorts")
+        self.ClientIPMethod = params.get("ClientIPMethod")
 
 
 class CreateTCPListenersResponse(AbstractModel):
@@ -2965,7 +2969,7 @@ class DescribeProxyStatisticsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End time (2019-03-25 12:00:00)
         :type EndTime: str
-        :param MetricNames: Statistical metric name list. Values: InBandwidth (inbound bandwidth); OutBandwidth (outbound bandwidth); Concurrent (concurrence); InPackets (inbound packets); OutPackets (outbound packets); PacketLoss (packet loss rate); Latency (latency).
+        :param MetricNames: Statistical metric name list. Valid values: `InBandwidth` (inbound bandwidth); `OutBandwidth` (outbound bandwidth); Concurrent (concurrence); `InPackets` (inbound packets); `OutPackets` (outbound packets); `PacketLoss` (packet loss rate); `Latency` (latency); `HttpQPS` (the number of HTTP requests); `HttpsQPS` (the number of HTTPS requests).
         :type MetricNames: list of str
         :param Granularity: Monitoring granularity. It currently supports: 60, 300, 3,600, and 86,400. Unit: seconds.
 Time range: <= 1 day, supported minimum granularity: 60 seconds;
@@ -3334,12 +3338,20 @@ class DescribeRuleRealServersRequest(AbstractModel):
         """
         :param RuleId: Forwarding rule ID
         :type RuleId: str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of values to be returned. The default value is 20. Maximum is 1000.
+        :type Limit: int
         """
         self.RuleId = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
         self.RuleId = params.get("RuleId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
 
 
 class DescribeRuleRealServersResponse(AbstractModel):
@@ -3969,6 +3981,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param PolyRealServerCertificateAliasInfo: Returns IDs and aliases of multiple certificates when there are multiple origin certificates.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PolyRealServerCertificateAliasInfo: list of CertificateAliasInfo
+        :param DomainStatus: Domain name status.
+0: running;
+1: changing;
+2: deleting.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DomainStatus: int
         """
         self.Domain = None
         self.RuleSet = None
@@ -3988,6 +4006,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RealServerCertificateDomain = None
         self.PolyClientCertificateAliasInfo = None
         self.PolyRealServerCertificateAliasInfo = None
+        self.DomainStatus = None
 
 
     def _deserialize(self, params):
@@ -4024,6 +4043,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = CertificateAliasInfo()
                 obj._deserialize(item)
                 self.PolyRealServerCertificateAliasInfo.append(obj)
+        self.DomainStatus = params.get("DomainStatus")
 
 
 class Filter(AbstractModel):
@@ -5341,6 +5361,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param TagSet: Tag list
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TagSet: list of TagPair
+        :param PolicyId: Security policy ID. This field exists if security policies are set.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PolicyId: str
+        :param Version: Connection group version
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Version: str
+        :param ClientIPMethod: Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientIPMethod: list of int
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -5355,6 +5384,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.IsOldGroup = None
         self.GroupId = None
         self.TagSet = None
+        self.PolicyId = None
+        self.Version = None
+        self.ClientIPMethod = None
 
 
     def _deserialize(self, params):
@@ -5378,6 +5410,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = TagPair()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.PolicyId = params.get("PolicyId")
+        self.Version = params.get("Version")
+        self.ClientIPMethod = params.get("ClientIPMethod")
 
 
 class ProxyGroupInfo(AbstractModel):
@@ -5545,9 +5580,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ModifyConfigTime: Configuration change time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifyConfigTime: int
-        :param ProxyType: Connection type
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ProxyType: Connection type. 104: SILVER connection.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ProxyType: int
+        :param ClientIPMethod: Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientIPMethod: list of int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -5575,6 +5613,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RelatedGlobalDomains = None
         self.ModifyConfigTime = None
         self.ProxyType = None
+        self.ClientIPMethod = None
 
 
     def _deserialize(self, params):
@@ -5613,6 +5652,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RelatedGlobalDomains = params.get("RelatedGlobalDomains")
         self.ModifyConfigTime = params.get("ModifyConfigTime")
         self.ProxyType = params.get("ProxyType")
+        self.ClientIPMethod = params.get("ClientIPMethod")
 
 
 class ProxySimpleInfo(AbstractModel):
@@ -5835,6 +5875,15 @@ class RuleCheckParams(AbstractModel):
         :param Domain: Domain name to be performed health check
 You cannot modify this parameter when calling ModifyRuleAttribute API.
         :type Domain: str
+        :param FailedCountInter: Origin server failure check frequency
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FailedCountInter: int
+        :param FailedThreshold: Origin server health check threshold. The service will be blocked once the threshold is exceeded.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FailedThreshold: int
+        :param BlockInter: Time of a request is blocked after the origin server health check threshold is exceeded.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BlockInter: int
         """
         self.DelayLoop = None
         self.ConnectTimeout = None
@@ -5842,6 +5891,9 @@ You cannot modify this parameter when calling ModifyRuleAttribute API.
         self.Method = None
         self.StatusCode = None
         self.Domain = None
+        self.FailedCountInter = None
+        self.FailedThreshold = None
+        self.BlockInter = None
 
 
     def _deserialize(self, params):
@@ -5851,6 +5903,9 @@ You cannot modify this parameter when calling ModifyRuleAttribute API.
         self.Method = params.get("Method")
         self.StatusCode = params.get("StatusCode")
         self.Domain = params.get("Domain")
+        self.FailedCountInter = params.get("FailedCountInter")
+        self.FailedThreshold = params.get("FailedThreshold")
+        self.BlockInter = params.get("BlockInter")
 
 
 class RuleInfo(AbstractModel):
@@ -6154,6 +6209,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RealServerSet: list of BindRealServer
         :param CreateTime: Listener creation time; using UNIX timestamp.
         :type CreateTime: int
+        :param ClientIPMethod: Describes how the listener obtains client IPs. 0: TOA; 1: Proxy Protocol.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientIPMethod: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -6169,6 +6227,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BindStatus = None
         self.RealServerSet = None
         self.CreateTime = None
+        self.ClientIPMethod = None
 
 
     def _deserialize(self, params):
@@ -6191,6 +6250,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.RealServerSet.append(obj)
         self.CreateTime = params.get("CreateTime")
+        self.ClientIPMethod = params.get("ClientIPMethod")
 
 
 class TagPair(AbstractModel):
