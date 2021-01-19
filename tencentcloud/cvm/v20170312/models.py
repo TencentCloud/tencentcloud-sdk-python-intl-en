@@ -296,7 +296,7 @@ class CreateImageRequest(AbstractModel):
         :type ImageDescription: str
         :param ForcePoweroff: Whether to force shut down an instance to create an image when a soft shutdown fails
         :type ForcePoweroff: str
-        :param Sysprep: Whether to enable Sysprep when creating a Windows image
+        :param Sysprep: Whether to enable Sysprep when creating a Windows image. Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_redirect=1) to learn more about Sysprep.
         :type Sysprep: str
         :param DataDiskIds: Specified data disk ID included in the full image created from the instance.
         :type DataDiskIds: list of str
@@ -333,7 +333,7 @@ class CreateImageResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageId: Image ID
+        :param ImageId: Image ID.
 Note: This field may return null, indicating that no valid value was found.
         :type ImageId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -404,7 +404,7 @@ class DataDisk(AbstractModel):
         """
         :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
         :type DiskSize: int
-        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
+        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
         :type DiskType: str
         :param DiskId: Data disk ID. Data disks of the type `LOCAL_BASIC` or `LOCAL_SSD` do not have IDs and do not support this parameter.
         :type DiskId: str
@@ -430,6 +430,8 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 Currently, this parameter is only used in the `RunInstances` API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type KmsKeyId: str
+        :param ThroughputPerformance: 
+        :type ThroughputPerformance: int
         """
         self.DiskSize = None
         self.DiskType = None
@@ -438,6 +440,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SnapshotId = None
         self.Encrypt = None
         self.KmsKeyId = None
+        self.ThroughputPerformance = None
 
 
     def _deserialize(self, params):
@@ -448,6 +451,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SnapshotId = params.get("SnapshotId")
         self.Encrypt = params.get("Encrypt")
         self.KmsKeyId = params.get("KmsKeyId")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
 
 
 class DeleteDisasterRecoverGroupsRequest(AbstractModel):
@@ -1367,7 +1371,7 @@ Filters by the **validity** of the reserved instance, which is the purchased usa
 Type: Integer
 Unit: second
 Required: no
-Valid values: 31536000 (1 year), 94608000 (3 years)
+Valid value: 31536000 (1 year)
         :type Filters: list of Filter
         """
         self.Filters = None
@@ -1574,29 +1578,6 @@ class DescribeReservedInstancesResponse(AbstractModel):
                 obj = ReservedInstances()
                 obj._deserialize(item)
                 self.ReservedInstancesSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeSpotTypeConfigRequest(AbstractModel):
-    """DescribeSpotTypeConfig request structure.
-
-    """
-
-
-class DescribeSpotTypeConfigResponse(AbstractModel):
-    """DescribeSpotTypeConfig response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3107,8 +3088,8 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param DiscountPrice: Discount price of a prepaid instance, in USD.
 Note: this field may return null, indicating that no valid value is obtained.
         :type DiscountPrice: float
-        :param Discount: Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Discount: Discount. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.
         :type Discount: float
         :param UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
 Note: this field may return null, indicating that no valid value is obtained.
@@ -3125,6 +3106,42 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param UnitPriceDiscountThirdStep: Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPriceDiscountThirdStep: float
+        :param OriginalPriceThreeYear: Original 3-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type OriginalPriceThreeYear: float
+        :param DiscountPriceThreeYear: Discounted 3-year upfront payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountPriceThreeYear: float
+        :param DiscountThreeYear: Discount for 3-year upfront payment. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountThreeYear: float
+        :param OriginalPriceFiveYear: Original 5-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type OriginalPriceFiveYear: float
+        :param DiscountPriceFiveYear: Discounted 5-year upfront payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountPriceFiveYear: float
+        :param DiscountFiveYear: Discount for 5-year upfront payment. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountFiveYear: float
+        :param OriginalPriceOneYear: Original 1-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type OriginalPriceOneYear: float
+        :param DiscountPriceOneYear: Discounted 1-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountPriceOneYear: float
+        :param DiscountOneYear: Discount for 1-year upfront payment. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountOneYear: float
         """
         self.UnitPrice = None
         self.ChargeUnit = None
@@ -3136,6 +3153,15 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.UnitPriceDiscountSecondStep = None
         self.UnitPriceThirdStep = None
         self.UnitPriceDiscountThirdStep = None
+        self.OriginalPriceThreeYear = None
+        self.DiscountPriceThreeYear = None
+        self.DiscountThreeYear = None
+        self.OriginalPriceFiveYear = None
+        self.DiscountPriceFiveYear = None
+        self.DiscountFiveYear = None
+        self.OriginalPriceOneYear = None
+        self.DiscountPriceOneYear = None
+        self.DiscountOneYear = None
 
 
     def _deserialize(self, params):
@@ -3149,6 +3175,15 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.UnitPriceDiscountSecondStep = params.get("UnitPriceDiscountSecondStep")
         self.UnitPriceThirdStep = params.get("UnitPriceThirdStep")
         self.UnitPriceDiscountThirdStep = params.get("UnitPriceDiscountThirdStep")
+        self.OriginalPriceThreeYear = params.get("OriginalPriceThreeYear")
+        self.DiscountPriceThreeYear = params.get("DiscountPriceThreeYear")
+        self.DiscountThreeYear = params.get("DiscountThreeYear")
+        self.OriginalPriceFiveYear = params.get("OriginalPriceFiveYear")
+        self.DiscountPriceFiveYear = params.get("DiscountPriceFiveYear")
+        self.DiscountFiveYear = params.get("DiscountFiveYear")
+        self.OriginalPriceOneYear = params.get("OriginalPriceOneYear")
+        self.DiscountPriceOneYear = params.get("DiscountPriceOneYear")
+        self.DiscountOneYear = params.get("DiscountOneYear")
 
 
 class KeyPair(AbstractModel):
@@ -3656,7 +3691,7 @@ class Placement(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: The ID of [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) where the instance locates. It can obtained in the `Zone` field returned by [DescribeZones](https://intl.cloud.tencent.com/document/213/15707?from_cn_redirect=1) API.
+        :param Zone: ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain the ID in the returned `Zone` field.
         :type Zone: str
         :param ProjectId: ID of the project to which the instance belongs. To obtain the project IDs, you can call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) and look for the `projectId` fields in the response. If this parameter is not specified, the default project will be used.
         :type ProjectId: int
@@ -3977,11 +4012,11 @@ class ReservedInstanceTypeItem(AbstractModel):
         :type Cpu: int
         :param Memory: Memory size.
         :type Memory: int
-        :param Gpu: Number of GPU cores.
+        :param Gpu: Number of GPUs.
         :type Gpu: int
-        :param Fpga: Number of FPGA cores.
+        :param Fpga: Number of FPGAs.
         :type Fpga: int
-        :param StorageBlock: Number of storage blocks.
+        :param StorageBlock: Number of local storage blocks.
         :type StorageBlock: int
         :param NetworkCard: Number of NICs.
         :type NetworkCard: int
@@ -4331,7 +4366,7 @@ class ResetInstancesTypeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: Instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API. The maximum number of instances for each request is 1.
+        :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call the [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API and find the value `InstanceId` in the response. The maximum number of instances in each request is 1.
         :type InstanceIds: list of str
         :param InstanceType: Instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to get the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :type InstanceType: str
@@ -4420,17 +4455,17 @@ class RunInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Placement: Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH. You can specify a CDH for a CVM by creating the CVM on the CDH.
-        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
-        :param ImageId: The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images</li><br/>You can retrieve available image IDs in the following ways:<br/><li>For the IDs of `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information. For the IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>
-        :type ImageId: str
         :param InstanceChargeType: The instance [billing method](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). Valid values: <br><li>`POSTPAID_BY_HOUR`: hourly, pay-as-you-go<br><li>`CDHPAID`: you are only billed for CDH instances, not the CVMs running on the CDH instances.<br>Default value: POSTPAID_BY_HOUR.
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        :param Placement: Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH. You can specify a CDH for a CVM by creating the CVM on the CDH.
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param InstanceType: The instance model. Different resource specifications are specified for different instance models.
 <br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, `S1.SMALL1` will be used by default.<br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
         :type InstanceType: str
+        :param ImageId: The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images</li><br/>You can retrieve available image IDs in the following ways:<br/><li>For the IDs of `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information. For the IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>
+        :type ImageId: str
         :param SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be used.
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         :param DataDisks: The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC data disk or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC data disks, CLOUD_PREMIUM data disks, or CLOUD_SSD data disks.
@@ -4474,11 +4509,11 @@ false (default value): send a normal request and create instance(s) if all the r
         :param HpcClusterId: HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.
         :type HpcClusterId: str
         """
-        self.Placement = None
-        self.ImageId = None
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
+        self.Placement = None
         self.InstanceType = None
+        self.ImageId = None
         self.SystemDisk = None
         self.DataDisks = None
         self.VirtualPrivateCloud = None
@@ -4501,15 +4536,15 @@ false (default value): send a normal request and create instance(s) if all the r
 
 
     def _deserialize(self, params):
-        if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.ImageId = params.get("ImageId")
         self.InstanceChargeType = params.get("InstanceChargeType")
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
         self.InstanceType = params.get("InstanceType")
+        self.ImageId = params.get("ImageId")
         if params.get("SystemDisk") is not None:
             self.SystemDisk = SystemDisk()
             self.SystemDisk._deserialize(params.get("SystemDisk"))
@@ -4880,7 +4915,7 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceType: Type of the resources associated with the tags. Currently only "instance" and "host" are supported.
+        :param ResourceType: The type of resource that bound with the tag. Valid values: `instance` (for CVM) and `host` (for CDH).
         :type ResourceType: str
         :param Tags: List of tags
         :type Tags: list of Tag
@@ -4977,6 +5012,7 @@ class ZoneInfo(AbstractModel):
 The following is a list of all availability zones:
 <li> ap-chongqing-1 </li>
 <li> ap-seoul-1 </li>
+<li> ap-seoul-2 </li>
 <li> ap-chengdu-1 </li>
 <li> ap-chengdu-2 </li>
 <li> ap-hongkong-1 </li>
@@ -4988,8 +5024,10 @@ The following is a list of all availability zones:
 <li> ap-guangzhou-2 (sold out)</li>
 <li> ap-guangzhou-3 </li>
 <li> ap-guangzhou-4 </li>
+<li> ap-guangzhou-6 </li>
 <li> ap-tokyo-1 </li>
 <li> ap-singapore-1 </li>
+<li> ap-singapore-2 </li>
 <li> ap-shanghai-fsi-1 </li>
 <li> ap-shanghai-fsi-2 </li>
 <li> ap-shanghai-fsi-3 </li>
@@ -4998,6 +5036,7 @@ The following is a list of all availability zones:
 <li> ap-shanghai-2 </li>
 <li> ap-shanghai-3 </li>
 <li> ap-shanghai-4 </li>
+<li> ap-shanghai-5 </li>
 <li> ap-mumbai-1 </li>
 <li> ap-mumbai-2 </li>
 <li> eu-moscow-1 </li>
@@ -5017,7 +5056,7 @@ The following is a list of all availability zones:
         :type Zone: str
         :param ZoneName: Availability zone description, such as Guangzhou Zone 3.
         :type ZoneName: str
-        :param ZoneId: Availability zone ID
+        :param ZoneId: Availability zone ID.
         :type ZoneId: str
         :param ZoneState: Availability zone status. Valid values: `AVAILABLE`: available; `UNAVAILABLE`: unavailable.
         :type ZoneState: str

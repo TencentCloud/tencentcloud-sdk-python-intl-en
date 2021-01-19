@@ -28,20 +28,40 @@ Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
 Supported image size: the downloaded image cannot exceed 7 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 Either the `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
         :type ImageBase64: str
-        :param ImageUrl: URL address of the image.
+        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
-Supported image size: the downloaded image cannot exceed 7 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-It is recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
+Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
+        :param RetBorderCutImage: 
+        :type RetBorderCutImage: bool
+        :param RetCardNoImage: 
+        :type RetCardNoImage: bool
+        :param EnableCopyCheck: 
+        :type EnableCopyCheck: bool
+        :param EnableReshootCheck: 
+        :type EnableReshootCheck: bool
+        :param EnableBorderCheck: 
+        :type EnableBorderCheck: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.RetBorderCutImage = None
+        self.RetCardNoImage = None
+        self.EnableCopyCheck = None
+        self.EnableReshootCheck = None
+        self.EnableBorderCheck = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.RetBorderCutImage = params.get("RetBorderCutImage")
+        self.RetCardNoImage = params.get("RetCardNoImage")
+        self.EnableCopyCheck = params.get("EnableCopyCheck")
+        self.EnableReshootCheck = params.get("EnableReshootCheck")
+        self.EnableBorderCheck = params.get("EnableBorderCheck")
 
 
 class BankCardOCRResponse(AbstractModel):
@@ -105,9 +125,9 @@ class GeneralAccurateOCRRequest(AbstractModel):
 The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
 Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
         :type ImageBase64: str
-        :param ImageUrl: URL address of image.
-The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
+The image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
         """
         self.ImageBase64 = None
@@ -157,12 +177,11 @@ class GeneralBasicOCRRequest(AbstractModel):
     def __init__(self):
         """
         :param ImageBase64: Base64-encoded value of image/PDF.
-The image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
-Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
+The image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
         :type ImageBase64: str
-        :param ImageUrl: URL address of image/PDF.
-The image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+        :param ImageUrl: URL address of image/PDF. (This field is not supported outside Chinese mainland)
+The image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
         :param Scene: Reserved field.
         :type Scene: str
@@ -257,10 +276,10 @@ class HKIDCardOCRRequest(AbstractModel):
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
 Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
         :type ImageBase64: str
-        :param ImageUrl: URL of the image.
+        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
-Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
+Supported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
         """
@@ -589,10 +608,10 @@ Supported image formats: PNG, JPG, JPEG. GIF is not supported at present.
 Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
         :type ImageBase64: str
-        :param ImageUrl: URL address of image.
-Supported image formats: PNG, JPG, JPEG. GIF is not supported at present.
-Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
+        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
+Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
+Supported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
         """
@@ -612,7 +631,7 @@ class TableOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TextDetections: Recognized text. For more information, please click the link on the left.
+        :param TextDetections: Recognized text. For more information, please click the link on the left
         :type TextDetections: list of TextTable
         :param Data: Base64-encoded Excel data.
         :type Data: str

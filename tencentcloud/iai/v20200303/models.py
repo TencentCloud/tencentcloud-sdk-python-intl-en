@@ -16,86 +16,6 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class AnalyzeDenseLandmarksRequest(AbstractModel):
-    """AnalyzeDenseLandmarks request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param Mode: Detect mode. 0: detects all faces that appear; 1: detects the largest face. 
-Default value: 0. 
-Specific information of facial feature localization (facial keypoints) of up to 5 faces can be returned.
-        :type Mode: int
-        :param Image: Base64-encoded image data, which cannot exceed 5 MB.  
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
-        :type Image: str
-        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.  
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.  
-The download speed and stability of non-Tencent Cloud URLs may be low.  
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
-        :type Url: str
-        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. You can enter only `3.0` for this API.
-        :type FaceModelVersion: str
-        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
-        :type NeedRotateDetection: int
-        """
-        self.Mode = None
-        self.Image = None
-        self.Url = None
-        self.FaceModelVersion = None
-        self.NeedRotateDetection = None
-
-
-    def _deserialize(self, params):
-        self.Mode = params.get("Mode")
-        self.Image = params.get("Image")
-        self.Url = params.get("Url")
-        self.FaceModelVersion = params.get("FaceModelVersion")
-        self.NeedRotateDetection = params.get("NeedRotateDetection")
-
-
-class AnalyzeDenseLandmarksResponse(AbstractModel):
-    """AnalyzeDenseLandmarks response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param ImageWidth: Width of requested image.
-        :type ImageWidth: int
-        :param ImageHeight: Height of requested image.
-        :type ImageHeight: int
-        :param DenseFaceShapeSet: Specific information of dense facial keypoints.
-        :type DenseFaceShapeSet: list of DenseFaceShape
-        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. You can enter only `3.0` for this API.
-        :type FaceModelVersion: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.ImageWidth = None
-        self.ImageHeight = None
-        self.DenseFaceShapeSet = None
-        self.FaceModelVersion = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ImageWidth = params.get("ImageWidth")
-        self.ImageHeight = params.get("ImageHeight")
-        if params.get("DenseFaceShapeSet") is not None:
-            self.DenseFaceShapeSet = []
-            for item in params.get("DenseFaceShapeSet"):
-                obj = DenseFaceShape()
-                obj._deserialize(item)
-                self.DenseFaceShapeSet.append(obj)
-        self.FaceModelVersion = params.get("FaceModelVersion")
-        self.RequestId = params.get("RequestId")
-
-
 class AnalyzeFaceRequest(AbstractModel):
     """AnalyzeFace request structure.
 
@@ -106,15 +26,15 @@ class AnalyzeFaceRequest(AbstractModel):
         :param Mode: Detection mode. 0: detect all faces that appear; 1: detect the largest face. Default value: 0. The facial feature localization information (facial keypoints) of up to 10 faces can be returned.
         :type Mode: int
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
 This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default.  
@@ -176,27 +96,6 @@ class AnalyzeFaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class AttributeItem(AbstractModel):
-    """Face attribute information
-
-    """
-
-    def __init__(self):
-        """
-        :param Type: Attribute value
-        :type Type: int
-        :param Probability: Probability of recognizing `Type`, which indicates the probability of correct recognition. Value range: [0,1].
-        :type Probability: float
-        """
-        self.Type = None
-        self.Probability = None
-
-
-    def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Probability = params.get("Probability")
-
-
 class Candidate(AbstractModel):
     """Most matching candidate recognized
 
@@ -210,11 +109,11 @@ class Candidate(AbstractModel):
         :type FaceId: str
         :param Score: Match score of candidate. 
 
-In a face base library containing 10,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 70, 80, and 90 points, respectively;
-In a face base library containing 100,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 80, 90, and 100 points, respectively;
+In a face base library containing 10,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 70, 80, and 90, respectively;
+In a face base library containing 100,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 80, 90, and 100, respectively;
 In a face base library containing 300,000 faces, the 1% and 0.1% FARs correspond to scores of 85 and 95, respectively.
 
-Generally, the score of 80 is suitable for most scenarios. You are recommended to choose an appropriate score based on the actual situation, preferably no more than 90.
+Generally, the score of 80 is suitable for most scenarios. We recommend choosing an appropriate score based on the actual situation, preferably no more than 90.
         :type Score: float
         :param PersonName: Person name
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -255,31 +154,31 @@ class CompareFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageA: Base64-encoded image A data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+        :param ImageA: Base64-encoded data of image A, which cannot exceed 5 MB.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type ImageA: str
-        :param ImageB: Base64-encoded image B data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+        :param ImageB: Base64-encoded data of image B, which cannot exceed 5 MB.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type ImageB: str
-        :param UrlA: Image A URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+        :param UrlA: URL of image A. The image cannot exceed 5 MB in size after being Base64-encoded.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` of image A must be provided; if both are provided, only `Url` will be used. 
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type UrlA: str
-        :param UrlB: Image B URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+        :param UrlB: URL of image B. The image cannot exceed 5 MB in size after being Base64-encoded.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` of image B must be provided; if both are provided, only `Url` will be used. 
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type UrlB: str
         :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0. 
 This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
@@ -288,9 +187,9 @@ Different algorithm model versions correspond to different face recognition algo
         :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of following problems: extreme brightness, extreme dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high quality requirement. The image has one to two of following problems: extreme brightness, extreme dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
+2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
 If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
         :type QualityControl: int
@@ -327,7 +226,7 @@ class CompareFaceResponse(AbstractModel):
 The returned similarity score varies by algorithm version. 
 If you need to verify whether the faces in the two images are the same person, then the 0.1%, 0.01%, and 0.001% FARs on v3.0 correspond to scores of 40, 50, and 60, respectively. Generally, if the score is above 50, it can be judged that they are the same person. 
 The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90, respectively. Generally, if the score is above 80, it can be judged that they are the same person. 
-If you need to verify whether the faces in the two images are the same person, you are recommended to use the `VerifyFace` API.
+If you need to verify whether the faces in the two images are the same person, we recommend using the `VerifyFace` API.
         :type Score: float
         :param FaceModelVersion: Algorithm model version used for face recognition.
         :type FaceModelVersion: str
@@ -352,7 +251,7 @@ class CopyPersonRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
         :type PersonId: str
         :param GroupIds: List of groups to join. The array element value is the `GroupId` in the `CreateGroup` API.
         :type GroupIds: list of str
@@ -398,21 +297,21 @@ class CreateFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
         :type PersonId: str
         :param Images: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-There can be up to 5 faces in one image.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+A person can have up to 5 face images.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Images: list of str
         :param Urls: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
-There can be up to 5 faces in one image.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+A person can have up to 5 face images.
 If there are multiple faces in the image, only the face with the largest size will be selected.
         :type Urls: list of str
         :param FaceMatchThreshold: Only faces whose similarity to an existing face of the person is above the value of `FaceMatchThreshold` can be added successfully. 
@@ -421,9 +320,9 @@ Default value: 60. Value range: [0,100].
         :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of following problems: extreme brightness, extreme dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high quality requirement. The image has one to two of following problems: extreme brightness, extreme dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
+2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
 If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
         :type QualityControl: int
@@ -504,19 +403,19 @@ class CreateGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupName: Group name, which is modifiable, must be unique, and can contain 1-60 characters.
+        :param GroupName: Group name, which is modifiable, must be unique, and can contain 1 to 60 characters.
         :type GroupName: str
-        :param GroupId: Group ID, which is unmodifiable, must be unique, and can contain letters, digits, and special symbols (-%@#&_) of up to 64B.
+        :param GroupId: Group ID, which is unmodifiable, must be unique, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.
         :type GroupId: str
         :param GroupExDescriptions: Custom group description field that describes the person attributes in the group, which will be applied to all persons in the group. 
 Up to 5 ones can be created. 
-Each custom description field can contain 1-30 characters. 
+Each custom description field can contain 1 to 30 characters. 
 The custom description field must be unique in the group. 
 Example: if you set the "custom description field" of a group to ["student ID","employee ID","mobile number"], 
 then all the persons in the group will have description fields named "student ID", "employee ID", and "mobile number". 
 You can enter content in the corresponding field to register a person's student ID, employee ID, and mobile number.
         :type GroupExDescriptions: list of str
-        :param Tag: Group remarks, which can contain 0-40 characters.
+        :param Tag: Group remarks, which can contain 0 to 40 characters.
         :type Tag: str
         :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.
 This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
@@ -566,26 +465,26 @@ class CreatePersonRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: ID of the group to join, which is the `GroupId` in the `CreateGroup` API
+        :param GroupId: ID of the group to join, which is the `GroupId` in the `CreateGroup` API.
         :type GroupId: str
-        :param PersonName: Person name, which can contain 1-60 characters and is modifiable and repeatable.
+        :param PersonName: Person name, which can contain 1 to 60 characters and is modifiable and repeatable.
         :type PersonName: str
-        :param PersonId: Person ID, which is unmodifiable, must be unique under a Tencent Cloud account, and can contain letters, digits, and special symbols (-%@#&_) of up to 64B.
+        :param PersonId: Person ID, which is unmodifiable, must be unique under a Tencent Cloud account, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.
         :type PersonId: str
         :param Gender: 0: empty; 1: male; 2: female.
         :type Gender: int
-        :param PersonExDescriptionInfos: Content of person description field, which is a `key-value` pair, can contain 0-60 characters, and is modifiable and repeatable.
+        :param PersonExDescriptionInfos: Content of person description field, which is a `key-value` pair, can contain 0 to 60 characters, and is modifiable and repeatable.
         :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param UniquePersonControl: This parameter is used to control the judgment whether the face contained in the image in `Image` or `Url` corresponds to an existing person in the group. 
 If it is judged that a duplicate person exists in the group, no new person will be created, and information of the suspected duplicate person will be returned. 
@@ -601,9 +500,9 @@ Note: the higher the requirement, the lower the probability of duplicate person.
         :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of following problems: extreme brightness, extreme dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high quality requirement. The image has one to two of following problems: extreme brightness, extreme dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
+2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
 If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
         :type QualityControl: int
@@ -684,9 +583,9 @@ class DeleteFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
         :type PersonId: str
-        :param FaceIds: List of IDs of the faces to be deleted. The array element value is the `FaceId` returned by the `CreateFace` API
+        :param FaceIds: List of IDs of the faces to be deleted. The array element value is the `FaceId` returned by the `CreateFace` API.
         :type FaceIds: list of str
         """
         self.PersonId = None
@@ -730,7 +629,7 @@ class DeleteGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
         :type GroupId: str
         """
         self.GroupId = None
@@ -764,9 +663,9 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
         :type PersonId: str
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
         :type GroupId: str
         """
         self.PersonId = None
@@ -802,7 +701,7 @@ class DeletePersonRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
         :type PersonId: str
         """
         self.PersonId = None
@@ -829,252 +728,6 @@ class DeletePersonResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DenseFaceShape(AbstractModel):
-    """Dense keypoint details
-
-    """
-
-    def __init__(self):
-        """
-        :param X: X-coordinate of the top-left vertex of the face frame.
-        :type X: int
-        :param Y: Y-coordinate of the top-left vertex of the face frame.
-        :type Y: int
-        :param Width: Face frame width.
-        :type Width: int
-        :param Height: Face frame height.
-        :type Height: int
-        :param LeftEye: XX points that outline the left eye.
-        :type LeftEye: list of Point
-        :param RightEye: XX points that outline the right eye.
-        :type RightEye: list of Point
-        :param LeftEyeBrow: XX points that outline the left eyebrow.
-        :type LeftEyeBrow: list of Point
-        :param RightEyeBrow: XX points that outline the right eyebrow.
-        :type RightEyeBrow: list of Point
-        :param MouthOutside: XX points that outline the outer contour of the mouth, which are returned from left anticlockwise.
-        :type MouthOutside: list of Point
-        :param MouthInside: XX points that outline the inner contour of the mouth, which are returned from left anticlockwise.
-        :type MouthInside: list of Point
-        :param Nose: XX points that outline the nose.
-        :type Nose: list of Point
-        :param LeftPupil: XX points that outline the left pupil.
-        :type LeftPupil: list of Point
-        :param RightPupil: XX points that outline the right pupil.
-        :type RightPupil: list of Point
-        :param CentralAxis: XX points that outline the midline.
-        :type CentralAxis: list of Point
-        :param Chin: XX points that outline the chin.
-        :type Chin: list of Point
-        :param LeftEyeBags: XX points that outline the left eye bag.
-        :type LeftEyeBags: list of Point
-        :param RightEyeBags: XX points that outline the right eye bag.
-        :type RightEyeBags: list of Point
-        :param Forehead: XX points that outline the forehead.
-        :type Forehead: list of Point
-        """
-        self.X = None
-        self.Y = None
-        self.Width = None
-        self.Height = None
-        self.LeftEye = None
-        self.RightEye = None
-        self.LeftEyeBrow = None
-        self.RightEyeBrow = None
-        self.MouthOutside = None
-        self.MouthInside = None
-        self.Nose = None
-        self.LeftPupil = None
-        self.RightPupil = None
-        self.CentralAxis = None
-        self.Chin = None
-        self.LeftEyeBags = None
-        self.RightEyeBags = None
-        self.Forehead = None
-
-
-    def _deserialize(self, params):
-        self.X = params.get("X")
-        self.Y = params.get("Y")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        if params.get("LeftEye") is not None:
-            self.LeftEye = []
-            for item in params.get("LeftEye"):
-                obj = Point()
-                obj._deserialize(item)
-                self.LeftEye.append(obj)
-        if params.get("RightEye") is not None:
-            self.RightEye = []
-            for item in params.get("RightEye"):
-                obj = Point()
-                obj._deserialize(item)
-                self.RightEye.append(obj)
-        if params.get("LeftEyeBrow") is not None:
-            self.LeftEyeBrow = []
-            for item in params.get("LeftEyeBrow"):
-                obj = Point()
-                obj._deserialize(item)
-                self.LeftEyeBrow.append(obj)
-        if params.get("RightEyeBrow") is not None:
-            self.RightEyeBrow = []
-            for item in params.get("RightEyeBrow"):
-                obj = Point()
-                obj._deserialize(item)
-                self.RightEyeBrow.append(obj)
-        if params.get("MouthOutside") is not None:
-            self.MouthOutside = []
-            for item in params.get("MouthOutside"):
-                obj = Point()
-                obj._deserialize(item)
-                self.MouthOutside.append(obj)
-        if params.get("MouthInside") is not None:
-            self.MouthInside = []
-            for item in params.get("MouthInside"):
-                obj = Point()
-                obj._deserialize(item)
-                self.MouthInside.append(obj)
-        if params.get("Nose") is not None:
-            self.Nose = []
-            for item in params.get("Nose"):
-                obj = Point()
-                obj._deserialize(item)
-                self.Nose.append(obj)
-        if params.get("LeftPupil") is not None:
-            self.LeftPupil = []
-            for item in params.get("LeftPupil"):
-                obj = Point()
-                obj._deserialize(item)
-                self.LeftPupil.append(obj)
-        if params.get("RightPupil") is not None:
-            self.RightPupil = []
-            for item in params.get("RightPupil"):
-                obj = Point()
-                obj._deserialize(item)
-                self.RightPupil.append(obj)
-        if params.get("CentralAxis") is not None:
-            self.CentralAxis = []
-            for item in params.get("CentralAxis"):
-                obj = Point()
-                obj._deserialize(item)
-                self.CentralAxis.append(obj)
-        if params.get("Chin") is not None:
-            self.Chin = []
-            for item in params.get("Chin"):
-                obj = Point()
-                obj._deserialize(item)
-                self.Chin.append(obj)
-        if params.get("LeftEyeBags") is not None:
-            self.LeftEyeBags = []
-            for item in params.get("LeftEyeBags"):
-                obj = Point()
-                obj._deserialize(item)
-                self.LeftEyeBags.append(obj)
-        if params.get("RightEyeBags") is not None:
-            self.RightEyeBags = []
-            for item in params.get("RightEyeBags"):
-                obj = Point()
-                obj._deserialize(item)
-                self.RightEyeBags.append(obj)
-        if params.get("Forehead") is not None:
-            self.Forehead = []
-            for item in params.get("Forehead"):
-                obj = Point()
-                obj._deserialize(item)
-                self.Forehead.append(obj)
-
-
-class DetectFaceAttributesRequest(AbstractModel):
-    """DetectFaceAttributes request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param MaxFaceNum: Maximum number of processable faces. 
-Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 120. 
-This parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.
-        :type MaxFaceNum: int
-        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats. 
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
-        :type Image: str
-        :param Url: Image URL. 
-The image cannot exceed 5 MB in size after being Base64-encoded. 
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
-The download speed and stability of non-Tencent Cloud URLs may be low. 
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
-        :type Url: str
-        :param FaceAttributesType: Whether to return attributes such as age, gender, and emotion. 
-Valid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, 
-Gender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. 
-Default value: None, indicating that no attributes need to be returned. 
-You need to combine the attributes into a string and separate them with commas. The sequence of the attributes is not limited. 
-For more information on the attributes, please see the output parameters as described below. 
-The face attribute information of up to 5 largest faces in the image will be returned, and `AttributesInfo` of the 6th and rest faces is meaningless.
-        :type FaceAttributesType: str
-        :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
-        :type NeedRotateDetection: int
-        :param FaceModelVersion: Algorithm model version used by the Face Recognition service. You can enter only `3.0` for this API.
-        :type FaceModelVersion: str
-        """
-        self.MaxFaceNum = None
-        self.Image = None
-        self.Url = None
-        self.FaceAttributesType = None
-        self.NeedRotateDetection = None
-        self.FaceModelVersion = None
-
-
-    def _deserialize(self, params):
-        self.MaxFaceNum = params.get("MaxFaceNum")
-        self.Image = params.get("Image")
-        self.Url = params.get("Url")
-        self.FaceAttributesType = params.get("FaceAttributesType")
-        self.NeedRotateDetection = params.get("NeedRotateDetection")
-        self.FaceModelVersion = params.get("FaceModelVersion")
-
-
-class DetectFaceAttributesResponse(AbstractModel):
-    """DetectFaceAttributes response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param ImageWidth: Width of requested image.
-        :type ImageWidth: int
-        :param ImageHeight: Height of requested image.
-        :type ImageHeight: int
-        :param FaceDetailInfos: Face information list.
-        :type FaceDetailInfos: list of FaceDetailInfo
-        :param FaceModelVersion: Algorithm model version used for face recognition.
-        :type FaceModelVersion: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.ImageWidth = None
-        self.ImageHeight = None
-        self.FaceDetailInfos = None
-        self.FaceModelVersion = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ImageWidth = params.get("ImageWidth")
-        self.ImageHeight = params.get("ImageHeight")
-        if params.get("FaceDetailInfos") is not None:
-            self.FaceDetailInfos = []
-            for item in params.get("FaceDetailInfos"):
-                obj = FaceDetailInfo()
-                obj._deserialize(item)
-                self.FaceDetailInfos.append(obj)
-        self.FaceModelVersion = params.get("FaceModelVersion")
-        self.RequestId = params.get("RequestId")
-
-
 class DetectFaceRequest(AbstractModel):
     """DetectFace request structure.
 
@@ -1086,29 +739,29 @@ class DetectFaceRequest(AbstractModel):
 This parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.
         :type MaxFaceNum: int
         :param MinFaceSize: Minimum height and width of face in px.
-Default value: 34. You are recommended to keep it at or above 34.
+Default value: 34. We recommend keeping it at or above 34.
 Faces below the `MinFaceSize` value will not be detected.
         :type MinFaceSize: int
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param NeedFaceAttributes: Whether the face attribute information (FaceAttributesInfo) needs to be returned. 0: no; 1: yes. Default value: 0. 
 If the value is not 1, it will be deemed as no need to return, and `FaceAttributesInfo` is meaningless in this case.  
 The face attribute information of up to 5 largest faces in the image will be returned, and `FaceAttributesInfo` of the 6th and rest faces is meaningless.  
-Extracting face attribute information is quite time-consuming. If face attribute information is not required, you are recommended to disable this feature to speed up face detection.
+Extracting face attribute information is quite time-consuming. If face attribute information is not required, we recommend disabling this feature to speed up face detection.
         :type NeedFaceAttributes: int
         :param NeedQualityDetection: Whether to enable quality detection. 0: no; 1: yes. Default value: 0. 
 If the value is not 1, it will be deemed not to perform quality detection.
 The face quality score information of up to 30 largest faces in the image will be returned, and `FaceQualityInfo` of the 31st and rest faces is meaningless.  
-You are recommended to enable this feature for the face adding operation.
+We recommend enabling this feature for the face adding operation.
         :type NeedQualityDetection: int
         :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
 This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
@@ -1176,66 +829,6 @@ class DetectFaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DetectLiveFaceAccurateRequest(AbstractModel):
-    """DetectLiveFaceAccurate request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats. 
-The recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).
-The face must be greater than 100*100 px in size.
-Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.
-        :type Image: str
-        :param Url: Image URL. The image cannot exceed 5 MB in size after being base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` of the image must be provided; if both are provided, only `Url` will be used. 
-The recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).
-The face must be greater than 100*100 px in size.
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
-Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.
-        :type Url: str
-        :param FaceModelVersion: Algorithm model version used for face recognition. Valid value: 3.0
-        :type FaceModelVersion: str
-        """
-        self.Image = None
-        self.Url = None
-        self.FaceModelVersion = None
-
-
-    def _deserialize(self, params):
-        self.Image = params.get("Image")
-        self.Url = params.get("Url")
-        self.FaceModelVersion = params.get("FaceModelVersion")
-
-
-class DetectLiveFaceAccurateResponse(AbstractModel):
-    """DetectLiveFaceAccurate response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param Score: Liveness score. Value range: [0, 100]. You can set several thresholds such as 5, 10, 40, 70 and 90 to determine whether the image is photographed. We recommend using the threshold 40.
-        :type Score: float
-        :param FaceModelVersion: Algorithm model version used for face recognition.
-        :type FaceModelVersion: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Score = None
-        self.FaceModelVersion = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Score = params.get("Score")
-        self.FaceModelVersion = params.get("FaceModelVersion")
-        self.RequestId = params.get("RequestId")
-
-
 class DetectLiveFaceRequest(AbstractModel):
     """DetectLiveFace request structure.
 
@@ -1244,16 +837,16 @@ class DetectLiveFaceRequest(AbstractModel):
     def __init__(self):
         """
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats. (The aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless.)
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats (the aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless).
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
 (The aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless.) 
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param FaceModelVersion: Algorithm model version used by the Face Recognition service. Valid values: 2.0, 3.0.  
 This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API previously, `2.0` will be used by default. 
@@ -1302,81 +895,6 @@ This field is meaningful only if `FaceModelVersion` is 3.0.
         self.RequestId = params.get("RequestId")
 
 
-class Eye(AbstractModel):
-    """Eye information
-
-    """
-
-    def __init__(self):
-        """
-        :param Glass: Whether glasses are worn.
-The `Type` values of the `AttributeItem` include: 0: no glasses; 1: general glasses; 2: sunglasses.
-        :type Glass: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param EyeOpen: Whether the eyes are open.
-The `Type` values of the `AttributeItem` include: 0: open; 1: closed.
-        :type EyeOpen: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param EyelidType: Whether the person has double eyelids.
-The `Type` values of the `AttributeItem` include: 0: no; 1: yes.
-        :type EyelidType: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param EyeSize: Eye size.
-The `Type` values of the `AttributeItem` include: 0: small eyes; 1: general eyes; 2: big eyes.
-        :type EyeSize: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        """
-        self.Glass = None
-        self.EyeOpen = None
-        self.EyelidType = None
-        self.EyeSize = None
-
-
-    def _deserialize(self, params):
-        if params.get("Glass") is not None:
-            self.Glass = AttributeItem()
-            self.Glass._deserialize(params.get("Glass"))
-        if params.get("EyeOpen") is not None:
-            self.EyeOpen = AttributeItem()
-            self.EyeOpen._deserialize(params.get("EyeOpen"))
-        if params.get("EyelidType") is not None:
-            self.EyelidType = AttributeItem()
-            self.EyelidType._deserialize(params.get("EyelidType"))
-        if params.get("EyeSize") is not None:
-            self.EyeSize = AttributeItem()
-            self.EyeSize._deserialize(params.get("EyeSize"))
-
-
-class Eyebrow(AbstractModel):
-    """Eyebrow information
-
-    """
-
-    def __init__(self):
-        """
-        :param EyebrowDensity: Eyebrow thickness.
-The `Type` values of the `AttributeItem` include: 0: light; 1: thick.
-        :type EyebrowDensity: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param EyebrowCurve: Eyebrow curve.
-The `Type` values of the `AttributeItem` include: 0: flat; 1: curved.
-        :type EyebrowCurve: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param EyebrowLength: Eyebrow length.
-The `Type` values of the `AttributeItem` include: 0: short; 1: long.
-        :type EyebrowLength: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        """
-        self.EyebrowDensity = None
-        self.EyebrowCurve = None
-        self.EyebrowLength = None
-
-
-    def _deserialize(self, params):
-        if params.get("EyebrowDensity") is not None:
-            self.EyebrowDensity = AttributeItem()
-            self.EyebrowDensity._deserialize(params.get("EyebrowDensity"))
-        if params.get("EyebrowCurve") is not None:
-            self.EyebrowCurve = AttributeItem()
-            self.EyebrowCurve._deserialize(params.get("EyebrowCurve"))
-        if params.get("EyebrowLength") is not None:
-            self.EyebrowLength = AttributeItem()
-            self.EyebrowLength._deserialize(params.get("EyebrowLength"))
-
-
 class FaceAttributesInfo(AbstractModel):
     """Face attributes, including gender, age, expression,
     beauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1. The face attribute information of up to 5 largest faces in the image will be returned, and `FaceAttributesInfo` of the 6th and rest faces is meaningless.
@@ -1389,31 +907,31 @@ class FaceAttributesInfo(AbstractModel):
         :type Gender: int
         :param Age: Age. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :type Age: int
-        :param Expression: Expression. Value range: [0 (normal)-50 (smile)-100 (laugh)]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :param Expression: Expression. Value range: [0 (normal)–50 (smile)–100 (laugh)]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :type Expression: int
-        :param Glass: Whether glasses are present. Valid values: [true,false]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :param Glass: Whether glasses are present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :type Glass: bool
         :param Pitch: Vertical offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. 
-You are recommended to select images in the [-10,10] range for adding faces.
+We recommend selecting images in the [-10,10] range for adding faces.
         :type Pitch: int
         :param Yaw: Horizontal offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. 
-You are recommended to select images in the [-10,10] range for adding faces.
+We recommend selecting images in the [-10,10] range for adding faces.
         :type Yaw: int
         :param Roll: Horizontal rotation in degrees. Value range: [-180,180]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.  
-You are recommended to select images in the [-20,20] range for adding faces.
+We recommend selecting images in the [-20,20] range for adding faces.
         :type Roll: int
-        :param Beauty: Beauty. Value range: [0-100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :param Beauty: Beauty. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :type Beauty: int
-        :param Hat: Whether hat is present. Valid values: [true,false]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :param Hat: Whether hat is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Hat: bool
-        :param Mask: Whether mask is present. Valid values: [true,false]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :param Mask: Whether mask is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Mask: bool
         :param Hair: Hair information, including length, bang, and color. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Hair: :class:`tencentcloud.iai.v20200303.models.FaceHairAttributesInfo`
-        :param EyeOpen: Whether the eyes are open. Valid values: [true,false]. As long as there is more than one eye closed, `false` will be returned. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        :param EyeOpen: Whether the eyes are open. Valid values: true, false. As long as there is more than one eye closed, `false` will be returned. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EyeOpen: bool
         """
@@ -1446,165 +964,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.Hair = FaceHairAttributesInfo()
             self.Hair._deserialize(params.get("Hair"))
         self.EyeOpen = params.get("EyeOpen")
-
-
-class FaceDetailAttributesInfo(AbstractModel):
-    """Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: Age, Beauty,
-    Emotion, Eye, Eyebrow, Gender,
-    Hair, Hat, Headpose, Mask, Mouth, Moustache,
-    Nose, Shape, Skin, Smile, etc.
-    If no types are specified in `FaceAttributesType`, the details returned by `FaceDetaiAttributesInfo` will be meaningless.
-
-    """
-
-    def __init__(self):
-        """
-        :param Age: Age. Value range: [0,65], where 65 indicates 65 years old or above. 
-If `FaceAttributesType` does not include `Age` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Age: int
-        :param Beauty: Beauty score. Value range: [0,100]. 
-If `FaceAttributesType` does not include `Beauty` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Beauty: int
-        :param Emotion: Emotion, including relaxed, happy, surprised, angry, sad, disgusted, and scared. 
-The `Type` values of the `AttributeItem` include: 0: relaxed; 1: happy; 2: surprised; 3: angry; 4: sad; 5: disgusted; 6: scared.
-If `FaceAttributesType` does not include `Emotion` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Emotion: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param Eye: Eye information, including whether glasses are worn, whether eyes are closed, whether the person has double eyelids, and the eye size. 
-If `FaceAttributesType` does not include `Eye` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Eye: :class:`tencentcloud.iai.v20200303.models.Eye`
-        :param Eyebrow: Eyebrow information, including whether the eyebrows are thick, curved, or long. 
-If `FaceAttributesType` does not include `Eyebrow` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Eyebrow: :class:`tencentcloud.iai.v20200303.models.Eyebrow`
-        :param Gender: Gender information. 
-The `Type` values of the `AttributeItem` include: 0: male; 1: female.	
-If `FaceAttributesType` does not include `Gender` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Gender: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param Hair: Hair information, including length, bang, and color. 
-If `FaceAttributesType` does not include `Hair` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Hair: :class:`tencentcloud.iai.v20200303.models.Hair`
-        :param Hat: Hat information, including whether a hat is worn, hat style, and hat color. 
-If `FaceAttributesType` does not include `Hat` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Hat: :class:`tencentcloud.iai.v20200303.models.Hat`
-        :param HeadPose: Pose information, including the face pitch, yaw, and roll. 
-If `FaceAttributesType` does not include `Headpose` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type HeadPose: :class:`tencentcloud.iai.v20200303.models.HeadPose`
-        :param Mask: Mask information. 
-The `Type` values of the `AttributeItem` include: 0: no mask; 1: the mask is worn and does not cover the face; 2: the mask is worn and covers the chin; 3: the mask is worn and covers the mouth; 4: the mask is worn properly.
-If `FaceAttributesType` does not include `Mask` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Mask: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param Mouth: Mouth information, including whether the mouth is open and the lip thickness. 
-If `FaceAttributesType` does not include `Mouth` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Mouth: :class:`tencentcloud.iai.v20200303.models.Mouth`
-        :param Moustache: Beard information.
-The `Type` values of the `AttributeItem` include: 0: no beard; 1: beard detected. 
-If `FaceAttributesType` does not include `Moustache` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Moustache: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param Nose: Nose information. 
-The `Type` values of the `AttributeItem` include: 0: upturned nose; 1: aquiline nose; 2: general nose; 3: bulbous nose.
-If `FaceAttributesType` does not include `Nose` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Nose: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param Shape: Face shape information. 
-The `Type` values of the `AttributeItem` include: 0: square; 1: triangular; 2: oval; 3: heart-shaped; 4: round.
-If `FaceAttributesType` does not include `Shape` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Shape: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param Skin: Skin color information. 
-The `Type` values of the `AttributeItem` include: 0: yellow; 1: brown; 2: black; 3: white.
-If `FaceAttributesType` does not include `Skin` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Skin: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param Smile: Smile level. Value range: [0,100]. 
-If `FaceAttributesType` does not include `Smile` or more than 5 faces are detected, this parameter will still be returned but meaningless.
-        :type Smile: int
-        """
-        self.Age = None
-        self.Beauty = None
-        self.Emotion = None
-        self.Eye = None
-        self.Eyebrow = None
-        self.Gender = None
-        self.Hair = None
-        self.Hat = None
-        self.HeadPose = None
-        self.Mask = None
-        self.Mouth = None
-        self.Moustache = None
-        self.Nose = None
-        self.Shape = None
-        self.Skin = None
-        self.Smile = None
-
-
-    def _deserialize(self, params):
-        self.Age = params.get("Age")
-        self.Beauty = params.get("Beauty")
-        if params.get("Emotion") is not None:
-            self.Emotion = AttributeItem()
-            self.Emotion._deserialize(params.get("Emotion"))
-        if params.get("Eye") is not None:
-            self.Eye = Eye()
-            self.Eye._deserialize(params.get("Eye"))
-        if params.get("Eyebrow") is not None:
-            self.Eyebrow = Eyebrow()
-            self.Eyebrow._deserialize(params.get("Eyebrow"))
-        if params.get("Gender") is not None:
-            self.Gender = AttributeItem()
-            self.Gender._deserialize(params.get("Gender"))
-        if params.get("Hair") is not None:
-            self.Hair = Hair()
-            self.Hair._deserialize(params.get("Hair"))
-        if params.get("Hat") is not None:
-            self.Hat = Hat()
-            self.Hat._deserialize(params.get("Hat"))
-        if params.get("HeadPose") is not None:
-            self.HeadPose = HeadPose()
-            self.HeadPose._deserialize(params.get("HeadPose"))
-        if params.get("Mask") is not None:
-            self.Mask = AttributeItem()
-            self.Mask._deserialize(params.get("Mask"))
-        if params.get("Mouth") is not None:
-            self.Mouth = Mouth()
-            self.Mouth._deserialize(params.get("Mouth"))
-        if params.get("Moustache") is not None:
-            self.Moustache = AttributeItem()
-            self.Moustache._deserialize(params.get("Moustache"))
-        if params.get("Nose") is not None:
-            self.Nose = AttributeItem()
-            self.Nose._deserialize(params.get("Nose"))
-        if params.get("Shape") is not None:
-            self.Shape = AttributeItem()
-            self.Shape._deserialize(params.get("Shape"))
-        if params.get("Skin") is not None:
-            self.Skin = AttributeItem()
-            self.Skin._deserialize(params.get("Skin"))
-        self.Smile = params.get("Smile")
-
-
-class FaceDetailInfo(AbstractModel):
-    """Face information list.
-
-    """
-
-    def __init__(self):
-        """
-        :param FaceRect: Position of the detected face frame.
-        :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
-        :param FaceDetailAttributesInfo: Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: age (Age), beauty score (Beauty), 
-emotion (Emotion), eye information (Eye), eyebrow information (Eyebrow), gender (Gender), 
-hair information (Hair), hat information (Hat), pose (Headpose), mask information (Mask), mouth information (Mouse), beard information (Moustache), 
-nose information (Nose), face shape (Shape), skin color (Skin), and smile information (Smile), etc.  
-If no types are specified in `FaceAttributesType`, the detailed items returned by `FaceDetaiAttributesInfo` will be meaningless.
-        :type FaceDetailAttributesInfo: :class:`tencentcloud.iai.v20200303.models.FaceDetailAttributesInfo`
-        """
-        self.FaceRect = None
-        self.FaceDetailAttributesInfo = None
-
-
-    def _deserialize(self, params):
-        if params.get("FaceRect") is not None:
-            self.FaceRect = FaceRect()
-            self.FaceRect._deserialize(params.get("FaceRect"))
-        if params.get("FaceDetailAttributesInfo") is not None:
-            self.FaceDetailAttributesInfo = FaceDetailAttributesInfo()
-            self.FaceDetailAttributesInfo._deserialize(params.get("FaceDetailAttributesInfo"))
 
 
 class FaceHairAttributesInfo(AbstractModel):
@@ -1642,21 +1001,23 @@ class FaceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param X: Horizontal coordinate of the top-left corner of face frame.
+        :param X: Horizontal coordinate of the top-left vertex of the face frame.
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
 If you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.
         :type X: int
-        :param Y: Vertical coordinate of the top-left corner of face frame. 
+        :param Y: Vertical coordinate of the top-left vertex of the face frame. 
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
 If you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.
         :type Y: int
-        :param Width: Face frame width. 
+        :param Width: Face frame width.
         :type Width: int
         :param Height: Face frame height.
         :type Height: int
-        :param FaceAttributesInfo: Face attributes, including gender, age, expression, beauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1. 
+        :param FaceAttributesInfo: Face attributes, including gender, age, expression, 
+beauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1.
         :type FaceAttributesInfo: :class:`tencentcloud.iai.v20200303.models.FaceAttributesInfo`
-        :param FaceQualityInfo: Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1. Note: this field may return null, indicating that no valid values can be obtained. 
+        :param FaceQualityInfo: Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type FaceQualityInfo: :class:`tencentcloud.iai.v20200303.models.FaceQualityInfo`
         """
         self.X = None
@@ -1739,17 +1100,17 @@ class FaceQualityInfo(AbstractModel):
         :param Score: Quality score. Value range: [0,100]. It comprehensively evaluates whether the image quality is suitable for face recognition; the higher the score, the higher the quality. 
 In normal cases, you only need to use `Score` as the overall quality standard score. Specific item scores such as `Sharpness`, `Brightness`, `Completeness` are for reference only.
 Reference range: [0,40]: poor; [40,60]: fine; [60,80]: good; [80,100]: excellent. 
-You are recommended to select images with a score above 70 for adding faces.
+We recommend selecting images with a score above 70 for adding faces.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Score: int
         :param Sharpness: Sharpness. Value range: [0,100]. It evaluates the sharpness of the image. The higher the score, the sharper the image. 
 Reference range: [0,40]: very blurry; [40,60]: blurry; [60,80]: fine; [80,100]: sharp. 
-You are recommended to select images with a score above 80 for adding faces.
+We recommend selecting images with a score above 80 for adding faces.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Sharpness: int
         :param Brightness: Brightness. Value range: [0,100]. The brighter the image, the higher the score. 
 Reference range: [0,30]: dark; [30,70]: normal; [70,100]: bright. 
-You are recommended to select images in the [30,70] range for adding faces.
+We recommend selecting images in the [30,70] range for adding faces.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Brightness: int
         :param Completeness: Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.
@@ -1778,13 +1139,13 @@ class FaceRect(AbstractModel):
 
     def __init__(self):
         """
-        :param X: Horizontal coordinate of the top-left corner of face frame. 
+        :param X: Horizontal coordinate of the top-left vertex of face frame. 
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
-If you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.
+If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.
         :type X: int
-        :param Y: Vertical coordinate of the top-left corner of face frame. 
+        :param Y: Vertical coordinate of the top-left vertex of face frame. 
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
-If you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.
+If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.
         :type Y: int
         :param Width: Face width
         :type Width: int
@@ -1905,7 +1266,7 @@ class GetGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
         :type GroupId: str
         """
         self.GroupId = None
@@ -1963,9 +1324,9 @@ class GetGroupListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Starting number. Default value: 0
+        :param Offset: Starting number. Default value: 0.
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 10. Maximum value: 1000
+        :param Limit: Number of returned results. Default value: 10. Maximum value: 1000.
         :type Limit: int
         """
         self.Offset = None
@@ -2015,7 +1376,7 @@ class GetPersonBaseInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
         :type PersonId: str
         """
         self.PersonId = None
@@ -2034,7 +1395,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
         """
         :param PersonName: Person name
         :type PersonName: str
-        :param Gender: Person gender. 0: empty; 1: male; 2: female
+        :param Gender: Person gender. 0: empty; 1: male; 2: female.
         :type Gender: int
         :param FaceIds: List of the IDs of included faces
         :type FaceIds: list of str
@@ -2061,11 +1422,11 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
         :type PersonId: str
-        :param Offset: Starting number. Default value: 0
+        :param Offset: Starting number. Default value: 0.
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 10. Maximum value: 100
+        :param Limit: Number of returned results. Default value: 10. Maximum value: 100.
         :type Limit: int
         """
         self.PersonId = None
@@ -2122,7 +1483,7 @@ class GetPersonListNumRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
         :type GroupId: str
         """
         self.GroupId = None
@@ -2164,11 +1525,11 @@ class GetPersonListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
         :type GroupId: str
-        :param Offset: Starting number. Default value: 0
+        :param Offset: Starting number. Default value: 0.
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 10. Maximum value: 1000
+        :param Limit: Number of returned results. Default value: 10. Maximum value: 1000.
         :type Limit: int
         """
         self.GroupId = None
@@ -2232,7 +1593,7 @@ class GroupCandidate(AbstractModel):
         """
         :param GroupId: Group ID.
         :type GroupId: str
-        :param Candidates: Most matching candidates recognized.
+        :param Candidates: Most matching candidate recognized
         :type Candidates: list of Candidate
         """
         self.GroupId = None
@@ -2250,13 +1611,13 @@ class GroupCandidate(AbstractModel):
 
 
 class GroupExDescriptionInfo(AbstractModel):
-    """Custom description field of the group to be modified, which is a `key-value`
+    """Custom description field of the group to be modified, which is a `key-value` pair.
 
     """
 
     def __init__(self):
         """
-        :param GroupExDescriptionIndex: Custom group description field index, whose value starts from 0
+        :param GroupExDescriptionIndex: Custom group description field index, whose value starts from 0.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type GroupExDescriptionIndex: int
         :param GroupExDescription: Content of the custom group description field to be updated
@@ -2313,92 +1674,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.CreationTimestamp = params.get("CreationTimestamp")
 
 
-class Hair(AbstractModel):
-    """Hair information
-
-    """
-
-    def __init__(self):
-        """
-        :param Length: Hair length information.
-The `Type` values of the `AttributeItem` include: 0: bald, 1: short hair, 2: medium hair, 3: long hair, 4: braid.
-        :type Length: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param Bang: Bang information.
-The `Type` values of the `AttributeItem` include: 0: no bang; 1: bang detected.
-        :type Bang: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param Color: Hair color information.
-The `Type` values of the `AttributeItem` include: 0: black; 1: golden; 2: brown; 3: gray.
-        :type Color: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        """
-        self.Length = None
-        self.Bang = None
-        self.Color = None
-
-
-    def _deserialize(self, params):
-        if params.get("Length") is not None:
-            self.Length = AttributeItem()
-            self.Length._deserialize(params.get("Length"))
-        if params.get("Bang") is not None:
-            self.Bang = AttributeItem()
-            self.Bang._deserialize(params.get("Bang"))
-        if params.get("Color") is not None:
-            self.Color = AttributeItem()
-            self.Color._deserialize(params.get("Color"))
-
-
-class Hat(AbstractModel):
-    """Hat information
-
-    """
-
-    def __init__(self):
-        """
-        :param Style: Hat wearing status information.
-The `Type` values of the `AttributeItem` include: 0: no hat; 1: general hat; 2: helmet; 3: security guard hat.
-        :type Style: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        :param Color: Hat color.
-The `Type` values of the `AttributeItem` include: 0: no hat; 1: red; 2: yellow; 3: blue; 4: black; 5: gray; 6: mixed colors.
-        :type Color: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        """
-        self.Style = None
-        self.Color = None
-
-
-    def _deserialize(self, params):
-        if params.get("Style") is not None:
-            self.Style = AttributeItem()
-            self.Style._deserialize(params.get("Style"))
-        if params.get("Color") is not None:
-            self.Color = AttributeItem()
-            self.Color._deserialize(params.get("Color"))
-
-
-class HeadPose(AbstractModel):
-    """Pose information.
-
-    """
-
-    def __init__(self):
-        """
-        :param Pitch: Pitch. Value range: [-30,30].
-        :type Pitch: int
-        :param Yaw: Yaw. Value range: [-30,30].
-        :type Yaw: int
-        :param Roll: Roll. Value range: [-180,180].
-        :type Roll: int
-        """
-        self.Pitch = None
-        self.Yaw = None
-        self.Roll = None
-
-
-    def _deserialize(self, params):
-        self.Pitch = params.get("Pitch")
-        self.Yaw = params.get("Yaw")
-        self.Roll = params.get("Roll")
-
-
 class ModifyGroupRequest(AbstractModel):
     """ModifyGroup request structure.
 
@@ -2406,11 +1681,11 @@ class ModifyGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
         :type GroupId: str
         :param GroupName: Group name
         :type GroupName: str
-        :param GroupExDescriptionInfos: Custom description field of the group to be modified, which is a `key-value`
+        :param GroupExDescriptionInfos: Custom description field of the group to be modified, which is a `key-value` pair.
         :type GroupExDescriptionInfos: list of GroupExDescriptionInfo
         :param Tag: Group remarks
         :type Tag: str
@@ -2457,11 +1732,11 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
         :type PersonId: str
         :param PersonName: Name of the person to be modified
         :type PersonName: str
-        :param Gender: Gender of the person to be modified. 1: male; 2: female
+        :param Gender: Gender of the person to be modified. 1: male; 2: female.
         :type Gender: int
         """
         self.PersonId = None
@@ -2499,11 +1774,11 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API
+        :param GroupId: Group ID, which is the `GroupId` in the `CreateGroup` API.
         :type GroupId: str
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API
+        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
         :type PersonId: str
-        :param PersonExDescriptionInfos: Custom description field of the person to be modified, which is a `key-value`
+        :param PersonExDescriptionInfos: Custom description field of the person to be modified, which is a `key-value` pair.
         :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
         """
         self.GroupId = None
@@ -2539,34 +1814,14 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class Mouth(AbstractModel):
-    """Mouth information
-
-    """
-
-    def __init__(self):
-        """
-        :param MouthOpen: Whether the mouth is open.
-The `Type` values of the `AttributeItem` include: 0: closed; 1: open.
-        :type MouthOpen: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
-        """
-        self.MouthOpen = None
-
-
-    def _deserialize(self, params):
-        if params.get("MouthOpen") is not None:
-            self.MouthOpen = AttributeItem()
-            self.MouthOpen._deserialize(params.get("MouthOpen"))
-
-
 class PersonExDescriptionInfo(AbstractModel):
-    """Custom description field of the person to be modified, which is a `key-value`
+    """Custom description field of the person to be modified, which is a `key-value` pair.
 
     """
 
     def __init__(self):
         """
-        :param PersonExDescriptionIndex: Person description field index, whose value starts from 0
+        :param PersonExDescriptionIndex: Person description field index, whose value starts from 0.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PersonExDescriptionIndex: int
         :param PersonExDescription: Content of the person description field to be updated
@@ -2701,7 +1956,7 @@ class ResultsReturnsByGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param FaceRect: Position of detected face frame.
+        :param FaceRect: Position of detected face frame
         :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         :param GroupCandidates: Recognition result.
         :type GroupCandidates: list of GroupCandidate
@@ -2734,37 +1989,37 @@ class SearchFacesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: List of groups to be searched for (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
+        :param GroupIds: List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
         :type GroupIds: list of str
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10. 
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized. 
 For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
         :type MaxFaceNum: int
-        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. Face images whose value is below 34 cannot be recognized. You are recommended to set this parameter to 80.
+        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. Face images whose value is below 34 cannot be recognized. We recommend setting this parameter to 80.
         :type MinFaceSize: int
-        :param MaxPersonNum: Number of the most similar persons returned for faces recognized in one single image. Default value: 5. Maximum value: 100. 
+        :param MaxPersonNum: Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100. 
 For example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.
-The greater the value, the longer the processing time. You are recommended to set a value below 10.
+The greater the value, the longer the processing time. We recommend setting a value below 10.
         :type MaxPersonNum: int
-        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default
+        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
         :type NeedPersonInfo: int
         :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of following problems: extreme brightness, extreme dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high quality requirement. The image has one to two of following problems: extreme brightness, extreme dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
+2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
 If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
         :type QualityControl: int
@@ -2839,36 +2094,36 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: List of groups to be searched for (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
+        :param GroupIds: List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
         :type GroupIds: list of str
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
 For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
         :type MaxFaceNum: int
-        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. You are recommended to set this parameter to 80.
+        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
         :type MinFaceSize: int
         :param MaxPersonNumPerGroup: Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
 For example, if `MaxFaceNum` is 3 and `MaxPersonNum` is 5, up to 15 (3 * 5) persons will be returned.
         :type MaxPersonNumPerGroup: int
-        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default
+        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
         :type NeedPersonInfo: int
         :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of following problems: extreme brightness, extreme dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high quality requirement. The image has one to two of following problems: extreme brightness, extreme dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
+2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
 If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
         :type QualityControl: int
@@ -2945,42 +2200,42 @@ class SearchPersonsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: List of groups to be searched for (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
+        :param GroupIds: List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
         :type GroupIds: list of str
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
 For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
         :type MaxFaceNum: int
-        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. You are recommended to set this parameter to 80.
+        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
         :type MinFaceSize: int
-        :param MaxPersonNum: Number of the most similar persons returned for faces recognized in one single image. Default value: 5. Maximum value: 100.
+        :param MaxPersonNum: Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100.
 For example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.
-The greater the value, the longer the processing time. You are recommended to set a value below 10.
+The greater the value, the longer the processing time. We recommend setting a value below 10.
         :type MaxPersonNum: int
         :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of following problems: extreme brightness, extreme dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high quality requirement. The image has one to two of following problems: extreme brightness, extreme dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
+2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
 If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
         :type QualityControl: int
         :param FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value. Default value: 0. Value range: [0.0,100.0).
         :type FaceMatchThreshold: float
-        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default
+        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
         :type NeedPersonInfo: int
         :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :type NeedRotateDetection: int
@@ -3052,40 +2307,40 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: List of groups to be searched for (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
+        :param GroupIds: List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
         :type GroupIds: list of str
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param MaxFaceNum: Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
 For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
         :type MaxFaceNum: int
-        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. You are recommended to set this parameter to 80.
+        :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
         :type MinFaceSize: int
         :param MaxPersonNumPerGroup: Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
-For example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 3, and the `GroupIds` length is 3, up to 45 (3 * 5 * 3) persons will be returned.
+For example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupIds` length is 3, up to 45 (3 * 5 * 3) persons will be returned.
         :type MaxPersonNumPerGroup: int
         :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of following problems: extreme brightness, extreme dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high quality requirement. The image has one to two of following problems: extreme brightness, extreme dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
+2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
 If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
         :type QualityControl: int
         :param FaceMatchThreshold: In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.
         :type FaceMatchThreshold: float
-        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default
+        :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
         :type NeedPersonInfo: int
         :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :type NeedRotateDetection: int
@@ -3159,24 +2414,24 @@ class VerifyFaceRequest(AbstractModel):
         :param PersonId: ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.
         :type PersonId: str
         :param Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Image: str
         :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
 The download speed and stability of non-Tencent Cloud URLs may be low.
 If there are multiple faces in the image, only the face with the largest size will be selected.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of following problems: extreme brightness, extreme dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high quality requirement. The image has one to two of following problems: extreme brightness, extreme dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
+2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
 If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
         :type QualityControl: int
@@ -3238,44 +2493,44 @@ class VerifyPersonRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Image: Base64-encoded data of image.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-If there are multiple faces in the image, only the face with the largest size will be selected.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
-        :type Image: str
-        :param Url: Image URL 
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
- Either `Url` or `Image` of the image must be provided; if both are provided, only `Url` will be used. 
-You are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
-The download speed and stability of non-Tencent Cloud URLs may be low.
-If there are multiple faces in the image, only the face with the largest size will be selected.
-.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.
-        :type Url: str
         :param PersonId: ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.
         :type PersonId: str
+        :param Image: Base64-encoded data of the image.
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+If there are multiple faces in the image, only the face with the largest size will be selected.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Image: str
+        :param Url: Image URL 
+The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
+ Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
+The download speed and stability of non-Tencent Cloud URLs may be low.
+If there are multiple faces in the image, only the face with the largest size will be selected.
+PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
+        :type Url: str
         :param QualityControl: Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
-2: average quality requirement. The image has at least three of following problems: extreme brightness, extreme dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-3: high quality requirement. The image has one to two of following problems: extreme brightness, extreme dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
-4: very high quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
+2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. 
+4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. 
 Default value: 0. 
 If the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.
         :type QualityControl: int
         :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :type NeedRotateDetection: int
         """
+        self.PersonId = None
         self.Image = None
         self.Url = None
-        self.PersonId = None
         self.QualityControl = None
         self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
         self.Image = params.get("Image")
         self.Url = params.get("Url")
-        self.PersonId = params.get("PersonId")
         self.QualityControl = params.get("QualityControl")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
 

@@ -262,6 +262,8 @@ Default value: Non-zero.
         :type CustomerAddress: str
         :param TencentBackupAddress: TencentBackupAddress, i.e., Tencent-side standby IP address
         :type TencentBackupAddress: str
+        :param CloudAttachId: Cloud Attached Connection Service ID
+        :type CloudAttachId: str
         """
         self.DirectConnectId = None
         self.DirectConnectTunnelName = None
@@ -278,6 +280,7 @@ Default value: Non-zero.
         self.TencentAddress = None
         self.CustomerAddress = None
         self.TencentBackupAddress = None
+        self.CloudAttachId = None
 
 
     def _deserialize(self, params):
@@ -303,6 +306,7 @@ Default value: Non-zero.
         self.TencentAddress = params.get("TencentAddress")
         self.CustomerAddress = params.get("CustomerAddress")
         self.TencentBackupAddress = params.get("TencentBackupAddress")
+        self.CloudAttachId = params.get("CloudAttachId")
 
 
 class CreateDirectConnectTunnelResponse(AbstractModel):
@@ -826,6 +830,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SignLaw: Whether the connection associated with the dedicated tunnel has the service agreement signed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type SignLaw: bool
+        :param CloudAttachId: Cloud Attached Connection Service ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CloudAttachId: str
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -856,6 +863,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.VpcName = None
         self.TencentBackupAddress = None
         self.SignLaw = None
+        self.CloudAttachId = None
 
 
     def _deserialize(self, params):
@@ -900,6 +908,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.VpcName = params.get("VpcName")
         self.TencentBackupAddress = params.get("TencentBackupAddress")
         self.SignLaw = params.get("SignLaw")
+        self.CloudAttachId = params.get("CloudAttachId")
 
 
 class Filter(AbstractModel):

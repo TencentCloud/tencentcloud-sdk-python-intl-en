@@ -166,6 +166,34 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetRequestTargetNodeTypes(self, request):
+        """This API is used to get the node types used to receive client requests.
+
+        :param request: Request instance for GetRequestTargetNodeTypes.
+        :type request: :class:`tencentcloud.es.v20180416.models.GetRequestTargetNodeTypesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.GetRequestTargetNodeTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRequestTargetNodeTypes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRequestTargetNodeTypesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RestartInstance(self, request):
         """This API is used to restart an ES cluster instance (for operations such as system update).
 
@@ -299,6 +327,34 @@ class EsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdatePluginsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRequestTargetNodeTypes(self, request):
+        """This API is used to update the node types used to receive client requests.
+
+        :param request: Request instance for UpdateRequestTargetNodeTypes.
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdateRequestTargetNodeTypesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdateRequestTargetNodeTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateRequestTargetNodeTypes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRequestTargetNodeTypesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

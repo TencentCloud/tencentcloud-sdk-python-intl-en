@@ -3419,7 +3419,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param OfflineCache: Offline cache
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param OriginCombine: 
+        :param OriginCombine: Merging pull requests
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         """
         self.ResourceId = None
@@ -5376,13 +5377,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class OriginCombine(AbstractModel):
-    """
+    """Merging pull requests configurations
 
     """
 
     def __init__(self):
         """
-        :param Switch: 
+        :param Switch: Whether to enable the merging pull requests feature. Valid values: `on` and `off`.
         :type Switch: str
         """
         self.Switch = None
@@ -7533,7 +7534,7 @@ global: global acceleration
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         :param OfflineCache: Offline cache
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param OriginCombine: 
+        :param OriginCombine: Merging pull requests
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         """
         self.Domain = None

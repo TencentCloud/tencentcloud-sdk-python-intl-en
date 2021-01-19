@@ -588,6 +588,44 @@ class EsPublicAcl(AbstractModel):
         self.WhiteIpList = params.get("WhiteIpList")
 
 
+class GetRequestTargetNodeTypesRequest(AbstractModel):
+    """GetRequestTargetNodeTypes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class GetRequestTargetNodeTypesResponse(AbstractModel):
+    """GetRequestTargetNodeTypes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetNodeTypes: A list of node types used to receive requests.
+        :type TargetNodeTypes: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TargetNodeTypes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TargetNodeTypes = params.get("TargetNodeTypes")
+        self.RequestId = params.get("RequestId")
+
+
 class InstanceInfo(AbstractModel):
     """Instance details
 
@@ -718,6 +756,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SceneType: Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SceneType: int
+        :param KibanaConfig: Kibana configuration item.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type KibanaConfig: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -772,6 +813,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.KibanaPrivateAccess = None
         self.SecurityType = None
         self.SceneType = None
+        self.KibanaConfig = None
 
 
     def _deserialize(self, params):
@@ -853,6 +895,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
         self.SecurityType = params.get("SecurityType")
         self.SceneType = params.get("SceneType")
+        self.KibanaConfig = params.get("KibanaConfig")
 
 
 class InstanceLog(AbstractModel):
@@ -1494,6 +1537,44 @@ class UpdatePluginsRequest(AbstractModel):
 
 class UpdatePluginsResponse(AbstractModel):
     """UpdatePlugins response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateRequestTargetNodeTypesRequest(AbstractModel):
+    """UpdateRequestTargetNodeTypes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param TargetNodeTypes: A list of node types used to receive requests.
+        :type TargetNodeTypes: list of str
+        """
+        self.InstanceId = None
+        self.TargetNodeTypes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TargetNodeTypes = params.get("TargetNodeTypes")
+
+
+class UpdateRequestTargetNodeTypesResponse(AbstractModel):
+    """UpdateRequestTargetNodeTypes response structure.
 
     """
 

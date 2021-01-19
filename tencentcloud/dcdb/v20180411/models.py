@@ -443,7 +443,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DcnDstNum: The number of DCN disaster recovery instances
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DcnDstNum: int
-        :param InstanceType: Instance type. Valid values: `1` (primary instance (dedicated)), `2` (primary instance), `3` (disaster recovery instance), `4` (disaster recovery instance (dedicated))
+        :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (standard primary instance), `3` (standard disaster recovery instance), `4` (dedicated disaster recovery instance)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InstanceType: int
         """
