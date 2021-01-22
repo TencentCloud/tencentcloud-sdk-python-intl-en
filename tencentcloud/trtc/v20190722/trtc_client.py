@@ -83,7 +83,8 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCallDetail(self, request):
-        """This API is used to query the user list and call quality data within a specified time. It queries data from the last 14 days. When `DataType` is not null, real-time data of up to 1 hour can be queried. Up to 6 users can be queried each time. The query period can start and end on different days. When `DataType` and all `UserId` are null, data of 6 users will be queried by default. Data of up to 100 users can be displayed on one page (`PageSize` is up to 100). This API is used to query call quality and is not recommended for billing use.
+        """This API is used to query the user list and call quality data of a specified time range in the last 14 days. When `DataType` is not null, data of up to 6 users during a period of up to 1 hour can be queried each time, and the period can start on one day and end on the next. When `DataType` and `UserIds` are null, 6 users are queried by default, and data of up to 100 users can be displayed on each page (`PageSize` set to 100 or lower). This API is used to query call quality and is not recommended for billing.
+        Note: you are not advised to use the API for the processing of real-time business logic.
 
         :param request: Request instance for DescribeCallDetail.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailRequest`
@@ -167,7 +168,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRealtimeNetwork(self, request):
-        """This API is used to query real-time network status for the last 24 hours according to `sdkappid`, including upstream and downstream packet losses. The query time range cannot exceed 1 hour.
+        """This API is used to query the network conditions of an `SDKAppID`, including upstream and downstream packet loss, in the last 24 hours on a per-minute basis. The query period must be 1-60 minutes.
 
         :param request: Request instance for DescribeRealtimeNetwork.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeNetworkRequest`
@@ -195,7 +196,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRealtimeQuality(self, request):
-        """This API is used to query real-time quality data for the last 24 hours according to `sdkappid`, including the room entry success rate, instant playback rate of the first frame, audio lag rate, and video lag rate. The query time range cannot exceed 1 hour.
+        """This API is used to query the quality metrics of an `SDKAppID` in the last 24 hours on a per-minute basis, including room entry success rate, instant playback rate of the first frame, and audio/video lag rate. The query period must be 1-60 minutes.
 
         :param request: Request instance for DescribeRealtimeQuality.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeQualityRequest`
@@ -223,7 +224,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRealtimeScale(self, request):
-        """This API is used to query the real-time scale for the last 24 hours according to `sdkappid`. The query time range cannot exceed 1 hour.
+        """This API is used to query the scale of an `SDKAppID` in the last 24 hours on a per-minute basis. The query period must be 1-60 minutes.
 
         :param request: Request instance for DescribeRealtimeScale.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeScaleRequest`
@@ -251,7 +252,8 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRoomInformation(self, request):
-        """This API is used to query the room list under a specified `SDKAppID`. It returns 10 calls by default and up to 100 calls at a time. It can query data for the last 14 days.
+        """This API is used to query the room list of an `SDKAppID` in the last 14 days. It returns 10 calls by default and can return up to 100 calls per query.
+        Note: you are not advised to use the API for the processing of real-time business logic.
 
         :param request: Request instance for DescribeRoomInformation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRoomInformationRequest`
@@ -279,7 +281,8 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeUserInformation(self, request):
-        """This API is used to query the user list within a specified time. It queries data in last 14 days. Data of 6 users will be queried on one page by default. And data of up to 100 users can be displayed on one page (`PageSize` is up to 100).
+        """This API is used to query the user list of a specified time range (up to 4 hours) in the last 14 days. Data of 6 users is displayed on each page by default, and data of up to 100 users can be displayed on each page (`PageSize` set to 100 or lower).
+        Note: you are not advised to use the API for the processing of real-time business logic.
 
         :param request: Request instance for DescribeUserInformation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeUserInformationRequest`
@@ -363,24 +366,24 @@ class TrtcClient(AbstractClient):
 
 
     def StartMCUMixTranscode(self, request):
-        """This API is used to enable On-Cloud MixTranscoding and specify the layout position of each channel of video image in the mixed video image.
+        """This API is used to enable On-Cloud MixTranscoding and specify the position of each channel of image in stream mixing.
 
-        There may be multiple channels of audio/video streams in a TRTC room. You can call this API to request the Tencent Cloud server to combine multiple channels of video images into one channel, specify the position of each channel, and mix the multiple channels of audio so as to output one channel of audio/video stream for easier recording and live streaming.
+        There may be multiple channels of audio/video streams in a TRTC room. You can call this API to request the Tencent Cloud server to combine multiple channels of video images and audio into one channel and specify the position of each image so as to produce just one channel of audio/video stream for recording and live streaming. The mixing stops automatically after a room is destroyed.
 
         You can use this API to perform the following operations:
         - Set image and audio quality parameters of the final live stream, including video resolution, video bitrate, video frame rate, and audio quality.
-        - Set the image layout, i.e., positions of all channels of images. You only need to set the layout once when enabling On-Cloud MixTranscoding, and the layout engine will automatically arrange the video images in the configured layout in subsequent operations.
-        - Set the recording file name for future playback.
-        - Set the CDN live stream ID for live streaming over CDN.
+        - Set the layout, i.e., the position of each channel of image. You only need to set it once when enabling On-Cloud MixTranscoding, and the layout engine will automatically arrange images as configured.
+        - Set the names of recording files for future playback.
+        - Set the stream ID for CDN live streaming.
 
         Currently, On-Cloud MixTranscoding supports the following layout templates:
-        - Floating template: the entire screen is covered by the video image of the first user who enters the room, and the video images of other users are displayed as small images in horizontal rows in the bottom-left corner in room entry sequence. The screen can accommodate up to 4 rows of 4 small images, which float over the big image. Up to 1 big image and 15 small images are supported. If a user sends audio only, the user will still occupy an image spot.
-        - Grid template: the screen is divided into user video images with the same dimensions. The more the users, the smaller the image dimensions. Up to 16 images are supported. If a user sends audio only, the user will still occupy an image spot.
-        - Screen sharing template: this is designed for video conferencing and online classes. The shared screen (or camera of the lecturer) is shown as the big image and always takes up the left half of the screen, and the video images of other users are displayed in the right half in up to 2 columns with up to 8 small images in each column. Up to 1 big image and 15 small images are supported. If the aspect ratio of the upstream image doesn’t match that of the output image, the big image on the left will be scaled so as to be displayed in whole, and the small images on the right will be cropped.
-        - Picture-in-picture template: this is designed for mixing a pair of big/small images or a big image with the audio of other users. The small image floats over the big image, and the users in the big/small images and the display position of the small image can be specified. Up to 2 images are supported.
-        - Custom template: this is designed for specifying the image positions of users in the mixed stream or presetting image positions. If users are assigned to preset image positions, the layout engine will reserve the positions for the users; if not, users will occupy the positions in room entry sequence. If a user sends audio only, the user will still occupy an image spot, which shows the background. When all preset positions are occupied, the audio and video of other users will no longer be mixed.
+        - Floating: the entire screen is covered by the video image of the first user who enters the room, and the images of other users are displayed as small images in horizontal rows in the bottom-left corner in room entry sequence. The screen can accommodate up to 4 rows of 4 small images, which float over the big image. Up to 1 big image and 15 small images can be displayed. A user sending audio only will still occupy an image spot.
+        - Grid: the images of the users split the entire screen evenly. The more the users, the smaller the image dimensions. Up to 16 images can be displayed. A user sending audio only will still occupy an image spot.
+        - Screen sharing: this is designed for video conferencing and online education. The shared screen (image of the anchor) is always displayed as the big image, which occupies the left half of the screen, and the images of other users occupy the right half in up to 2 columns of up to 8 small images each. Up to 1 big image and 15 small images can be displayed. If the aspect ratio of upstream images do not match that of output images, the big image on the left will be scaled and displayed in whole, while the small images on the right will be cropped.
+        - Picture-in-picture: this is designed for mixing the dual-channel (small and big) image or big image with the audio of other users. The small images float over the big image. You can specify which users to be displayed as the big/small images as well as the positions of the small images. Up to 2 images are supported.
+        - Custom: this is designed for cases where you want to specify the image positions of users in the mixed stream or preset image positions. If users are assigned to preset positions, the layout engine will reserve the positions for the users; if not, users will occupy the positions in room entry sequence. Once all preset positions are occupied, TRTC will stop mixing the audio and images of other users. If the placeholding feature is enabled for a custom template (`PlaceHolderMode` in `LayoutParams` set to 1), but a user for whom a place is reserved is not sending video data, the position will show the corresponding placeholder image (`PlaceImageId`).
 
-        Note: only applications created on or after January 9, 2020 can call this API. Those created before use the LVB stream mix by default. If you want to switch to MCU On-Cloud MixTranscoding, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        Note: only applications created on and after January 9, 2020 can call this API directly. Applications created before use the stream mixing service of LVB by default. If you want to switch to MCU On-Cloud MixTranscoding, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).
 
         :param request: Request instance for StartMCUMixTranscode.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartMCUMixTranscodeRequest`

@@ -447,7 +447,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -458,6 +460,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -466,6 +469,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -524,7 +528,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -535,6 +541,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -543,6 +550,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -601,7 +609,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -612,6 +622,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -620,6 +631,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -678,7 +690,9 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -689,6 +703,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -697,6 +712,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -772,7 +788,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -783,6 +801,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -791,6 +810,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1012,7 +1032,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1023,6 +1045,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1031,6 +1054,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1122,7 +1146,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1133,6 +1159,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1141,6 +1168,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1250,7 +1278,9 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1261,6 +1291,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1269,6 +1300,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1392,7 +1424,9 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1403,6 +1437,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1411,6 +1446,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1493,7 +1529,9 @@ class AiRecognitionTaskObjectResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1504,6 +1542,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1512,6 +1551,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1625,7 +1665,9 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1636,6 +1678,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1644,6 +1687,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1757,7 +1801,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1768,6 +1814,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1776,6 +1823,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1889,7 +1937,9 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1901,6 +1951,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1909,6 +1960,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2431,11 +2483,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2446,6 +2496,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2454,6 +2505,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2473,11 +2525,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2489,6 +2539,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2497,6 +2548,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2516,11 +2568,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2532,6 +2582,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2540,6 +2591,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2559,11 +2611,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2575,6 +2625,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2583,6 +2634,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2602,11 +2654,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2618,6 +2668,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2626,6 +2677,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2645,11 +2697,9 @@ class AiReviewTaskPornResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2661,6 +2711,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2669,6 +2720,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2688,10 +2740,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2702,6 +2753,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2710,6 +2762,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2729,10 +2782,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2743,6 +2795,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2751,6 +2804,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2770,10 +2824,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2784,6 +2837,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2792,6 +2846,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2811,11 +2866,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2827,6 +2880,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2835,6 +2889,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -4800,25 +4855,25 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ReviewWallSwitch: Switch controlling whether to add audit result to review list (for human review).
-<li>ON: yes;</li>
-<li>OFF: no.</li>
+        :param ReviewWallSwitch: Whether to allow the recognition result to enter the intelligent recognition platform (for human recognition).
+<li>ON: yes</li>
+<li>OFF: no</li>
         :type ReviewWallSwitch: str
-        :param Name: Content audit template name. Length limit: 64 characters.
+        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters.
         :type Name: str
-        :param Comment: Description of content audit template. Length limit: 256 characters.
+        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters.
         :type Comment: str
-        :param PornConfigure: Control parameter of porn detection.
+        :param PornConfigure: Control parameter for porn information.
         :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
-        :param TerrorismConfigure: Control parameter of terrorism information detection.
+        :param TerrorismConfigure: Control parameter for terrorism information.
         :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
-        :param PoliticalConfigure: Control parameter of politically sensitive information detection.
+        :param PoliticalConfigure: Control parameter for politically sensitive information.
         :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
         :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
-        :param UserDefineConfigure: Control parameter of custom content audit.
+        :param UserDefineConfigure: Control parameter for custom intelligent content recognition.
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
         :param ScreenshotInterval: Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.
         :type ScreenshotInterval: float
@@ -4867,7 +4922,7 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Unique ID of content audit template.
+        :param Definition: Unique ID of an intelligent recognition template.
         :type Definition: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5040,21 +5095,21 @@ class CreatePersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Figure name. Length limit: 20 characters.
+        :param Name: Name of a sample. Length limit: 20 characters.
         :type Name: str
-        :param Usages: Figure use case. Valid values:
-1. Recognition: it is used for content recognition and equivalent to `Recognition.Face`.
-2. Review: it is used for content audit and equivalent to `Review.Face`.
-3. All: it is used for content recognition and content audit and equivalent to 1+2 above.
+        :param Usages: Usage of a sample. Valid values:
+1. Recognition: used for content recognition; equivalent to `Recognition.Face`
+2. Review: used for inappropriate information recognition; equivalent to `Review.Face`
+3. All: equivalent to 1+2.
         :type Usages: list of str
-        :param Description: Figure description. Length limit: 1,024 characters.
+        :param Description: Description of a sample. Length limit: 1024 characters.
         :type Description: str
-        :param FaceContents: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) face image. Only JPEG and PNG images are supported. Array length limit: 5 images.
-Note: the image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.
+        :param FaceContents: String generated after the sample image is encoded by [Base64](https://tools.ietf.org/html/rfc4648). Only JPEG and PNG images are supported. Array length limit: 5 images.
+Note: the image must be a relatively clear full-face photo of a person and has a resolution of no less than 200 x 200.
         :type FaceContents: list of str
-        :param Tags: Figure tag
-<li>Array length limit: 20 tags;</li>
-<li>Tag length limit: 128 characters.</li>
+        :param Tags: Tags of a sample
+<li>Array length limit: 20 tags</li>
+<li>Length limit of a tag: 128 characters</li>
         :type Tags: list of str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -5083,9 +5138,9 @@ class CreatePersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Person: Figure information.
+        :param Person: Information of a sample.
         :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
-        :param FailFaceInfoSet: Face information failed to be processed.
+        :param FailFaceInfoSet: Information of samples that failed the verification by facial feature positioning.
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5672,15 +5727,15 @@ class CreateWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Usages: <b>Keyword use case. Valid values:</b>
-1. Recognition.Ocr: OCR-based content recognition;
-2. Recognition.Asr: ASR-based content recognition;
-3. Review.Ocr: OCR-based content audit;
-4. Review.Asr: ASR-based content audit;
-<b>These values can be merged as follows:</b>
-5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;
-6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;
-7. All: ASR-based and OCR-based content recognition and audit, which is equivalent to 1+2+3+4 above;
+        :param Usages: <b>Keyword usage. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition
+2. Recognition.Asr: ASR-based content recognition
+3. Review.Ocr: OCR-based inappropriate information recognition
+4. Review.Asr: ASR-based inappropriate information recognition
+<b>Valid values can also be:</b>
+5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
+6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
+7. All: ASR- and OCR-based content recognition and inappropriate information recognition; equivalent to 1+2+3+4
         :type Usages: list of str
         :param Words: Keyword. Array length limit: 100.
         :type Words: list of AiSampleWordInfo
@@ -5917,7 +5972,7 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Unique ID of content audit template.
+        :param Definition: Unique ID of an intelligent content recognition template.
         :type Definition: int
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -6040,7 +6095,7 @@ class DeletePersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Figure ID.
+        :param PersonId: ID of a sample.
         :type PersonId: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -6629,6 +6684,142 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCDNStatDetailsRequest(AbstractModel):
+    """DescribeCDNStatDetails request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Metric: Metrics to query. Valid values:
+<li>Traffic: traffic in bytes.</li>
+<li>Bandwidth: bandwidth in bps.</li>
+        :type Metric: str
+        :param StartTime: Start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type StartTime: str
+        :param EndTime: End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type EndTime: str
+        :param DomainNames: List of domain names. The usage data of up to 20 domain names can be queried at a time. The usage data of all domain names is returned by default.
+        :type DomainNames: list of str
+        :param Area: Service region. Valid values:
+<li>Chinese Mainland</li>
+<li>Asia Pacific Region 1: Hong Kong (China), Macao (China), Singapore, Vietnam, and Thailand</li>
+<li>Asia Pacific Region 2: Taiwan (China), Japan, Malaysia, Indonesia, and South Korea</li>
+<li>Asia Pacific Region 3: Philippines, India, Australia, and other Asia Pacific countries and regions</li>
+<li>Middle East</li>
+<li>Europe</li>
+<li>North America</li>
+<li>South America</li>
+<li>Africa</li>
+Default value: Chinese Mainland
+        :type Area: str
+        :param Districts: District where users are located. When `Area` is `Chinese Mainland`, valid values for `Districts` are as follows. Otherwise, `Districts` can be ignored.
+<li>Beijing</li>
+<li>Inner Mongolia</li>
+<li>Shanxi</li>
+<li>Hebei</li>
+<li>Tianjin</li>
+<li>Ningxia</li>
+<li>Shaanxi</li>
+<li>Gansu</li>
+<li>Qinghai</li>
+<li>Xinjiang</li>
+<li>Heilongjiang</li>
+<li>Jilin</li>
+<li>Liaoning</li>
+<li>Fujian</li>
+<li>Jiangsu</li>
+<li>Anhui</li>
+<li>Shandong</li>
+<li>Shanghai</li>
+<li>Zhejiang</li>
+<li>Henan</li>
+<li>Hubei</li>
+<li>Jiangxi</li>
+<li>Hunan</li>
+<li>Guizhou</li>
+<li>Yunnan</li>
+<li>Chongqing</li>
+<li>Sichuan</li>
+<li>Tibet</li>
+<li>Guangdong</li>
+<li>Guangxi</li>
+<li>Hainan</li>
+<li>Hong Kong, Macao and Taiwan</li>
+<li>Outside Chinese Mainland</li>
+<li>Other</li>
+        :type Districts: list of str
+        :param Isps: ISP of users. When `Area` is `Chinese Mainland`, valid values for `Isps` are as follows. Otherwise, `Isps` can be ignored.
+<li>China Telecom</li>
+<li>China Unicom</li>
+<li>CERNET</li>
+<li>Great Wall Broadband Network</li>
+<li>China Mobile</li>
+<li>China Mobile Tietong</li>
+<li>ISPs outside Chinese Mainland</li>
+<li>Other ISPs</li>
+        :type Isps: list of str
+        :param DataInterval: Time granularity of every piece of data in minutes. Valid values:
+<li>5: 5-minute granularity. The data at 5-minute granularity in the query period will be returned.</li>
+<li>1440: 1-day granularity. The data at 1-day granularity in the query period will be returned. If the query period is larger than 24 hours, only data at 1-day granularity can be queried.</li>
+If the difference between `StartTime` and `EndTime` is larger than 24 hours, the default value of `DataInterval` is 1440.
+        :type DataInterval: int
+        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Metric = None
+        self.StartTime = None
+        self.EndTime = None
+        self.DomainNames = None
+        self.Area = None
+        self.Districts = None
+        self.Isps = None
+        self.DataInterval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Metric = params.get("Metric")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.DomainNames = params.get("DomainNames")
+        self.Area = params.get("Area")
+        self.Districts = params.get("Districts")
+        self.Isps = params.get("Isps")
+        self.DataInterval = params.get("DataInterval")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeCDNStatDetailsResponse(AbstractModel):
+    """DescribeCDNStatDetails response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInterval: Time granularity of every piece of data in minutes.
+        :type DataInterval: int
+        :param Data: CDN usage statistics.
+        :type Data: list of StatDataItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInterval = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataInterval = params.get("DataInterval")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StatDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCDNUsageDataRequest(AbstractModel):
     """DescribeCDNUsageData request structure.
 
@@ -6645,11 +6836,10 @@ class DescribeCDNUsageDataRequest(AbstractModel):
 <li>Bandwidth: bandwidth in bps.</li>
         :type DataType: str
         :param DataInterval: Time granularity of usage data in minutes. Valid values:
-<li>5: 5-minute granularity, which returns the details at the 5-minute granularity within the specified time range.</li>
-<li>60: 1-hour granularity, which returns the details at the 1-hour granularity within the specified time range.</li>
-<li>1440: 1-day granularity, which returns the details at the 1-day granularity within the specified time range.</li>
-Default value: 1440. Data at the 1-day granularity will be returned.
-When the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin.
+<li>5: 5-minute granularity. The data at 5-minute granularity in the query period will be returned.</li>
+<li>60: 1-hour granularity. The data at 1-hour granularity in the query period will be returned.</li>
+<li>1440: 1-day granularity. The data at 1-day granularity in the query period will be returned.</li>
+Default value: 1440. Data at 1-day granularity will be returned.
         :type DataInterval: int
         :param DomainNames: List of domain names. The usage data of up to 20 domain names can be queried at a time. You can specify multiple domain names and query their combined usage data. The usage data of all domain names will be returned by default.
         :type DomainNames: list of str
@@ -6777,7 +6967,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: Unique ID filter of content audit templates. Array length limit: 100.
+        :param Definitions: Unique IDs for filters of an intelligent content recognition template. Array length limit: 100.
         :type Definitions: list of int
         :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
@@ -6808,7 +6998,7 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         """
         :param TotalCount: Number of eligible entries.
         :type TotalCount: int
-        :param ContentReviewTemplateSet: List of content audit template details.
+        :param ContentReviewTemplateSet: List of intelligent content recognition template details.
         :type ContentReviewTemplateSet: list of ContentReviewTemplateItem
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -6826,6 +7016,57 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
                 obj = ContentReviewTemplateItem()
                 obj._deserialize(item)
                 self.ContentReviewTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDailyPlayStatFileListRequest(AbstractModel):
+    """DescribeDailyPlayStatFileList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type StartTime: str
+        :param EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type EndTime: str
+        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeDailyPlayStatFileListResponse(AbstractModel):
+    """DescribeDailyPlayStatFileList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PlayStatFileSet: List of playback statistics files.
+        :type PlayStatFileSet: list of PlayStatFileInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PlayStatFileSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PlayStatFileSet") is not None:
+            self.PlayStatFileSet = []
+            for item in params.get("PlayStatFileSet"):
+                obj = PlayStatFileInfo()
+                obj._deserialize(item)
+                self.PlayStatFileSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7027,18 +7268,18 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Pulled figure type. Valid values:
-<li>UserDefine: custom figure library;</li>
-<li>Default: default figure library.</li>
+        :param Type: Type of samples to pull. Valid values:
+<li>UserDefine: custom sample library</li>
+<li>Default: default sample library</li>
 
-Default value: UserDefine (the custom figure library will be pulled.)
-Note: the default figure library can be pulled only through "figure name" or "figure ID + figure name", and only one face image will be returned.
+Default value: UserDefine. Samples in the custom sample library will be pulled.
+Note: samples from the default library can only be pulled by providing the name or both the ID and name of a sample. Only one face image will be returned.
         :type Type: str
-        :param PersonIds: Figure ID. Array length limit: 100.
+        :param PersonIds: IDs of samples. Array length limit: 100.
         :type PersonIds: list of str
-        :param Names: Figure name. Array length limit: 20.
+        :param Names: Names of samples. Array length limit: 20.
         :type Names: list of str
-        :param Tags: Figure tag. Array length limit: 20.
+        :param Tags: Tags of a sample. Array length limit: 20.
         :type Tags: list of str
         :param Offset: Pagination offset. Default value: 0.
         :type Offset: int
@@ -7193,11 +7434,11 @@ class DescribeReviewDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of initiated content audits.
+        :param TotalCount: Times of initiating intelligent content recognition tasks.
         :type TotalCount: int
-        :param TotalDuration: Total content audit duration.
+        :param TotalDuration: Duration of intelligent recognition content.
         :type TotalDuration: int
-        :param Data: Data of content audit duration, which is collected once per day.
+        :param Data: Data of intelligent recognition content duration. One piece of data is collected every day.
         :type Data: list of StatDataItem
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -7382,6 +7623,8 @@ class DescribeStorageDataResponse(AbstractModel):
         :type InfrequentStorage: int
         :param StandardStorage: Current Standard storage capacity in bytes.
         :type StandardStorage: int
+        :param StorageStat: Storage usage by billing region.
+        :type StorageStat: list of StorageStatData
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -7389,6 +7632,7 @@ class DescribeStorageDataResponse(AbstractModel):
         self.TotalStorage = None
         self.InfrequentStorage = None
         self.StandardStorage = None
+        self.StorageStat = None
         self.RequestId = None
 
 
@@ -7397,6 +7641,12 @@ class DescribeStorageDataResponse(AbstractModel):
         self.TotalStorage = params.get("TotalStorage")
         self.InfrequentStorage = params.get("InfrequentStorage")
         self.StandardStorage = params.get("StandardStorage")
+        if params.get("StorageStat") is not None:
+            self.StorageStat = []
+            for item in params.get("StorageStat"):
+                obj = StorageStatData()
+                obj._deserialize(item)
+                self.StorageStat.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7407,15 +7657,14 @@ class DescribeStorageDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param StartTime: Start time in ISO 8601 format. For more information, please see [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type StartTime: str
-        :param EndTime: End time in ISO 8601 format, which must be after the start time. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :param EndTime: End time in ISO 8601 format, which should be larger than the start time. For more information, please see [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type EndTime: str
-        :param Interval: Query time interval. Valid values:
-<li>Minute: once per minute.</li>
-<li>Hour: once per hour.</li>
-<li>Day: once per day.</li>
-The default value is determined by the time span. `Minute` will be used if the time span is less than 1 hour, `Hour` if less than or equal to 7 days, and `Day` if more than 7 days.
+        :param Interval: Time granularity. Valid values:
+<li>Minute: 5-minute granularity</li>
+<li>Day: 1-day granularity</li>
+The value is set according to query period length by default. 5-minute granularity is set for periods no longer than 1 day, and 1-day granularity is set for periods longer than 1 day.
         :type Interval: str
         :param StorageType: Storage class to be queried. Valid values:
 <li>TotalStorage: total storage capacity.</li>
@@ -7426,12 +7675,18 @@ Default value: TotalStorage.
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
 When the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin.
         :type SubAppId: int
+        :param Area: Storage region to query. Valid values:
+<li>Chinese Mainland</li>
+<li>Outside Chinese Mainland</li>
+Default value: Chinese Mainland
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
         self.Interval = None
         self.StorageType = None
         self.SubAppId = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -7440,6 +7695,7 @@ When the value of this field is 1, the total usage of all subapplications (inclu
         self.Interval = params.get("Interval")
         self.StorageType = params.get("StorageType")
         self.SubAppId = params.get("SubAppId")
+        self.Area = params.get("Area")
 
 
 class DescribeStorageDetailsResponse(AbstractModel):
@@ -7449,7 +7705,7 @@ class DescribeStorageDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: Storage statistics. One data entry per minute/hour/day.
+        :param Data: Storage statistics with one piece of data for every 5 minutes or 1 day.
         :type Data: list of StatDataItem
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -7475,27 +7731,31 @@ class DescribeSubAppIdsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 
-        :type Limit: int
-        :param Offset: 
-        :type Offset: int
+        :param Name: Subapplication name.
+        :type Name: str
         :param Tags: Tag information. You can query the list of subapplications with specified tags.
         :type Tags: list of ResourceTag
+        :param Offset: Page number offset from the beginning of paginated queries. Default value: 0.
+        :type Offset: int
+        :param Limit: Maximum return results of pulling paginated queries. Default: 200; maximum: 200.
+        :type Limit: int
         """
-        self.Limit = None
-        self.Offset = None
+        self.Name = None
         self.Tags = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Name = params.get("Name")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
 
 
 class DescribeSubAppIdsResponse(AbstractModel):
@@ -7507,10 +7767,13 @@ class DescribeSubAppIdsResponse(AbstractModel):
         """
         :param SubAppIdInfoSet: Subapplication information set.
         :type SubAppIdInfoSet: list of SubAppIdInfo
+        :param TotalCount: Total number of subapplications.
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.SubAppIdInfoSet = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -7521,6 +7784,7 @@ class DescribeSubAppIdsResponse(AbstractModel):
                 obj = SubAppIdInfo()
                 obj._deserialize(item)
                 self.SubAppIdInfoSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -7618,19 +7882,20 @@ class DescribeTaskDetailResponse(AbstractModel):
     def __init__(self):
         """
         :param TaskType: Task type. Valid values:
-<li>Procedure: video processing task;</li>
-<li>EditMedia: video editing task;</li>
-<li>WechatPublish: release on WeChat task;</li>
-<li>WechatMiniProgramPublish: release on WeChat Mini Program task;</li>
-<li>ComposeMedia: media file composing task;</li>
-<li>PullUpload: media file pulling for upload task.</li>
+<li>Procedure: video processing task</li>
+<li>EditMedia: video editing task</li>
+<li>SplitMedia: video splitting task</li>
+<li>ComposeMedia: media file producing task</li>
+<li>WechatPublish: WeChat publishing task</li>
+<li>WechatMiniProgramPublish: video publishing on WeChat Mini Program</li>
+<li>PullUpload: pulling media files for upload</li>
 
-Task types compatible with v2017:
-<li>Transcode: transcoding task;</li>
+Support v2017 task types:
+<li>Transcode: transcoding task</li>
 <li>SnapshotByTimeOffset: screencapturing task</li>
-<li>Concat: video splicing task;</li>
-<li>Clip: video clipping task;</li>
-<li>ImageSprites: image sprite generating task.</li>
+<li>Concat: video splicing task</li>
+<li>Clip: video clipping task</li>
+<li>ImageSprites: image sprite generating task</li>
         :type TaskType: str
         :param Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -7655,15 +7920,18 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ComposeMediaTask: Media file composing task information. This field has a value only when `TaskType` is `ComposeMedia`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ComposeMediaTask: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
+        :param SplitMediaTask: Video splitting task information. This field has a value only when `TaskType` is `EditMedia`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SplitMediaTask: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
+        :param WechatMiniProgramPublishTask: Release on WeChat Mini Program task information. This field has a value only when `TaskType` is `WechatMiniProgramPublish`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WechatMiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
         :param PullUploadTask: Media file pulling for upload task information. This field has a value only when `TaskType` is `PullUpload`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PullUploadTask: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`
         :param TranscodeTask: Video transcoding task information. This field has a value only when `TaskType` is `Transcode`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
-        :param SnapshotByTimeOffsetTask: Time point screencapturing task information. This field has a value only when `TaskType` is `SnapshotByTimeOffset`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
         :param ConcatTask: Video splicing task information. This field has a value only when `TaskType` is `Concat`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ConcatTask: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
@@ -7673,9 +7941,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param CreateImageSpriteTask: Image sprite creating task information. This field has a value only when `TaskType` is `ImageSprite`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreateImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
-        :param WechatMiniProgramPublishTask: Release on WeChat Mini Program task information. This field has a value only when `TaskType` is `WechatMiniProgramPublish`.
+        :param SnapshotByTimeOffsetTask: Time point screencapturing task information. This field has a value only when `TaskType` is `SnapshotByTimeOffset`.
 Note: this field may return null, indicating that no valid values can be obtained.
-        :type WechatMiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
+        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -7688,13 +7956,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.EditMediaTask = None
         self.WechatPublishTask = None
         self.ComposeMediaTask = None
+        self.SplitMediaTask = None
+        self.WechatMiniProgramPublishTask = None
         self.PullUploadTask = None
         self.TranscodeTask = None
-        self.SnapshotByTimeOffsetTask = None
         self.ConcatTask = None
         self.ClipTask = None
         self.CreateImageSpriteTask = None
-        self.WechatMiniProgramPublishTask = None
+        self.SnapshotByTimeOffsetTask = None
         self.RequestId = None
 
 
@@ -7716,15 +7985,18 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("ComposeMediaTask") is not None:
             self.ComposeMediaTask = ComposeMediaTask()
             self.ComposeMediaTask._deserialize(params.get("ComposeMediaTask"))
+        if params.get("SplitMediaTask") is not None:
+            self.SplitMediaTask = SplitMediaTask()
+            self.SplitMediaTask._deserialize(params.get("SplitMediaTask"))
+        if params.get("WechatMiniProgramPublishTask") is not None:
+            self.WechatMiniProgramPublishTask = WechatMiniProgramPublishTask()
+            self.WechatMiniProgramPublishTask._deserialize(params.get("WechatMiniProgramPublishTask"))
         if params.get("PullUploadTask") is not None:
             self.PullUploadTask = PullUploadTask()
             self.PullUploadTask._deserialize(params.get("PullUploadTask"))
         if params.get("TranscodeTask") is not None:
             self.TranscodeTask = TranscodeTask2017()
             self.TranscodeTask._deserialize(params.get("TranscodeTask"))
-        if params.get("SnapshotByTimeOffsetTask") is not None:
-            self.SnapshotByTimeOffsetTask = SnapshotByTimeOffsetTask2017()
-            self.SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
         if params.get("ConcatTask") is not None:
             self.ConcatTask = ConcatTask2017()
             self.ConcatTask._deserialize(params.get("ConcatTask"))
@@ -7734,9 +8006,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("CreateImageSpriteTask") is not None:
             self.CreateImageSpriteTask = CreateImageSpriteTask2017()
             self.CreateImageSpriteTask._deserialize(params.get("CreateImageSpriteTask"))
-        if params.get("WechatMiniProgramPublishTask") is not None:
-            self.WechatMiniProgramPublishTask = WechatMiniProgramPublishTask()
-            self.WechatMiniProgramPublishTask._deserialize(params.get("WechatMiniProgramPublishTask"))
+        if params.get("SnapshotByTimeOffsetTask") is not None:
+            self.SnapshotByTimeOffsetTask = SnapshotByTimeOffsetTask2017()
+            self.SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -7956,15 +8228,15 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Usages: <b>Keyword use case filter. Valid values:</b>
-1. Recognition.Ocr: OCR-based content recognition;
-2. Recognition.Asr: ASR-based content recognition;
-3. Review.Ocr: OCR-based content audit;
-4. Review.Asr: ASR-based content audit;
-<b>These values can be merged as follows:</b>
-5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;
-6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;
-Multiple elements can be selected, and the relationship between them is "OR", i.e., any keyword use case that contains any element in this field set will be deemed eligible.
+        :param Usages: <b>Keyword usage. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition
+2. Recognition.Asr: ASR-based content recognition
+3. Review.Ocr: OCR-based inappropriate information recognition
+4. Review.Asr: ASR-based inappropriate information recognition
+<b>Valid values can also be:</b>
+5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
+6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
+You can select multiple elements, which are connected by OR logic. If a use case contains any element in this parameter, the keyword sample will be used.
         :type Usages: list of str
         :param Keywords: Keyword filter. Array length limit: 100 words.
         :type Keywords: list of str
@@ -8407,21 +8679,22 @@ class EventContent(AbstractModel):
         """
         :param EventHandle: Event handler. The caller must call `ConfirmEvents` to confirm that the message has been received, and the confirmation is valid for 30 seconds. After the confirmation expires, the event can be obtained again.
         :type EventHandle: str
-        :param EventType: <b>Supported event type:</b>
-<li>NewFileUpload: video upload completion;</li>
-<li>ProcedureStateChanged: task flow status change;</li>
-<li>FileDeleted: video deletion completion;</li>
-<li>PullComplete: video pull for upload completion;</li>
-<li>EditMediaComplete: video editing completion;</li>
-<li>WechatPublishComplete: release on WeChat completion;</li>
-<li>ComposeMediaComplete: media file composing completion;</li>
-<li>WechatMiniProgramPublishComplete: release on WeChat Mini Program completion.</li>
-<b>Event types compatible with v2017:</b>
-<li>TranscodeComplete: video transcoding completion;</li>
-<li>ConcatComplete: video splicing completion;</li>
-<li>ClipComplete: video clipping completion;</li>
-<li>CreateImageSpriteComplete: image sprite generating completion;</li>
-<li>CreateSnapshotByTimeOffsetComplete: time point screencapturing completion.</li>
+        :param EventType: <b>Supported event types:</b>
+<li>NewFileUpload: finished video upload</li>
+<li>ProcedureStateChanged: task flow status changed</li>
+<li>FileDeleted: finished video deletion</li>
+<li>PullComplete: finished pulling for upload</li>
+<li>EditMediaComplete: finished video editing</li>
+<li>SplitMediaComplete: finished video splitting</li>
+<li>WechatPublishComplete: finished publishing on WeChat</li>
+<li>ComposeMediaComplete: finished producing the media file</li>
+<li>WechatMiniProgramPublishComplete: finished publishing on WeChat Mini Program</li>
+<b>Support v2017 task types:</b>
+<li>TranscodeComplete: finished video transcoding</li>
+<li>ConcatComplete: finished video splicing</li>
+<li>ClipComplete: finished video clipping</li>
+<li>CreateImageSpriteComplete: finished image sprite generation</li>
+<li>CreateSnapshotByTimeOffsetComplete: finished point-in-time screencapturing</li>
         :type EventType: str
         :param FileUploadEvent: Video upload completion event, which is valid if the event type is `NewFileUpload`.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -8438,27 +8711,30 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param EditMediaCompleteEvent: Video editing completion event, which is valid if the event type is `EditMediaComplete`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
-        :param WechatPublishCompleteEvent: Release on WeChat completion event, which is valid if the event type is `WechatPublishComplete`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type WechatPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
-        :param TranscodeCompleteEvent: Video transcoding completion event, which is valid if the event type is `TranscodeComplete`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TranscodeCompleteEvent: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
-        :param ConcatCompleteEvent: Video splicing completion event, which is valid if the event type is `ConcatComplete`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ConcatCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
-        :param ClipCompleteEvent: Video clipping completion event, which is valid if the event type is `ClipComplete`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ClipCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
-        :param CreateImageSpriteCompleteEvent: Image sprite generating completion event, which is valid if the event type is `CreateImageSpriteComplete`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CreateImageSpriteCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
-        :param SnapshotByTimeOffsetCompleteEvent: Time point screencapturing completion event, which is valid when the event type is `CreateSnapshotByTimeOffsetComplete`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SnapshotByTimeOffsetCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
+        :param SplitMediaCompleteEvent: Video splitting completion event, which is valid if the event type is `EditMediaComplete`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SplitMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
         :param ComposeMediaCompleteEvent: Media file composing task completion event, which is valid when the event type is `ComposeMediaComplete`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ComposeMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
+        :param ClipCompleteEvent: Video clipping completion event, which is valid if the event type is `ClipComplete`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ClipCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
+        :param TranscodeCompleteEvent: Video transcoding completion event, which is valid if the event type is `TranscodeComplete`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TranscodeCompleteEvent: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
+        :param CreateImageSpriteCompleteEvent: Image sprite generating completion event, which is valid if the event type is `CreateImageSpriteComplete`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateImageSpriteCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
+        :param ConcatCompleteEvent: Video splicing completion event, which is valid if the event type is `ConcatComplete`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ConcatCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
+        :param SnapshotByTimeOffsetCompleteEvent: Time point screencapturing completion event, which is valid when the event type is `CreateSnapshotByTimeOffsetComplete`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SnapshotByTimeOffsetCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
+        :param WechatPublishCompleteEvent: Release on WeChat completion event, which is valid if the event type is `WechatPublishComplete`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type WechatPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
         :param WechatMiniProgramPublishCompleteEvent: Release on WeChat Mini Program task completion event, which is valid if the event type is `WechatMiniProgramPublishComplete`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
@@ -8470,13 +8746,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.FileDeleteEvent = None
         self.PullCompleteEvent = None
         self.EditMediaCompleteEvent = None
-        self.WechatPublishCompleteEvent = None
-        self.TranscodeCompleteEvent = None
-        self.ConcatCompleteEvent = None
-        self.ClipCompleteEvent = None
-        self.CreateImageSpriteCompleteEvent = None
-        self.SnapshotByTimeOffsetCompleteEvent = None
+        self.SplitMediaCompleteEvent = None
         self.ComposeMediaCompleteEvent = None
+        self.ClipCompleteEvent = None
+        self.TranscodeCompleteEvent = None
+        self.CreateImageSpriteCompleteEvent = None
+        self.ConcatCompleteEvent = None
+        self.SnapshotByTimeOffsetCompleteEvent = None
+        self.WechatPublishCompleteEvent = None
         self.WechatMiniProgramPublishCompleteEvent = None
 
 
@@ -8498,27 +8775,30 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("EditMediaCompleteEvent") is not None:
             self.EditMediaCompleteEvent = EditMediaTask()
             self.EditMediaCompleteEvent._deserialize(params.get("EditMediaCompleteEvent"))
-        if params.get("WechatPublishCompleteEvent") is not None:
-            self.WechatPublishCompleteEvent = WechatPublishTask()
-            self.WechatPublishCompleteEvent._deserialize(params.get("WechatPublishCompleteEvent"))
-        if params.get("TranscodeCompleteEvent") is not None:
-            self.TranscodeCompleteEvent = TranscodeTask2017()
-            self.TranscodeCompleteEvent._deserialize(params.get("TranscodeCompleteEvent"))
-        if params.get("ConcatCompleteEvent") is not None:
-            self.ConcatCompleteEvent = ConcatTask2017()
-            self.ConcatCompleteEvent._deserialize(params.get("ConcatCompleteEvent"))
-        if params.get("ClipCompleteEvent") is not None:
-            self.ClipCompleteEvent = ClipTask2017()
-            self.ClipCompleteEvent._deserialize(params.get("ClipCompleteEvent"))
-        if params.get("CreateImageSpriteCompleteEvent") is not None:
-            self.CreateImageSpriteCompleteEvent = CreateImageSpriteTask2017()
-            self.CreateImageSpriteCompleteEvent._deserialize(params.get("CreateImageSpriteCompleteEvent"))
-        if params.get("SnapshotByTimeOffsetCompleteEvent") is not None:
-            self.SnapshotByTimeOffsetCompleteEvent = SnapshotByTimeOffsetTask2017()
-            self.SnapshotByTimeOffsetCompleteEvent._deserialize(params.get("SnapshotByTimeOffsetCompleteEvent"))
+        if params.get("SplitMediaCompleteEvent") is not None:
+            self.SplitMediaCompleteEvent = SplitMediaTask()
+            self.SplitMediaCompleteEvent._deserialize(params.get("SplitMediaCompleteEvent"))
         if params.get("ComposeMediaCompleteEvent") is not None:
             self.ComposeMediaCompleteEvent = ComposeMediaTask()
             self.ComposeMediaCompleteEvent._deserialize(params.get("ComposeMediaCompleteEvent"))
+        if params.get("ClipCompleteEvent") is not None:
+            self.ClipCompleteEvent = ClipTask2017()
+            self.ClipCompleteEvent._deserialize(params.get("ClipCompleteEvent"))
+        if params.get("TranscodeCompleteEvent") is not None:
+            self.TranscodeCompleteEvent = TranscodeTask2017()
+            self.TranscodeCompleteEvent._deserialize(params.get("TranscodeCompleteEvent"))
+        if params.get("CreateImageSpriteCompleteEvent") is not None:
+            self.CreateImageSpriteCompleteEvent = CreateImageSpriteTask2017()
+            self.CreateImageSpriteCompleteEvent._deserialize(params.get("CreateImageSpriteCompleteEvent"))
+        if params.get("ConcatCompleteEvent") is not None:
+            self.ConcatCompleteEvent = ConcatTask2017()
+            self.ConcatCompleteEvent._deserialize(params.get("ConcatCompleteEvent"))
+        if params.get("SnapshotByTimeOffsetCompleteEvent") is not None:
+            self.SnapshotByTimeOffsetCompleteEvent = SnapshotByTimeOffsetTask2017()
+            self.SnapshotByTimeOffsetCompleteEvent._deserialize(params.get("SnapshotByTimeOffsetCompleteEvent"))
+        if params.get("WechatPublishCompleteEvent") is not None:
+            self.WechatPublishCompleteEvent = WechatPublishTask()
+            self.WechatPublishCompleteEvent._deserialize(params.get("WechatPublishCompleteEvent"))
         if params.get("WechatMiniProgramPublishCompleteEvent") is not None:
             self.WechatMiniProgramPublishCompleteEvent = WechatMiniProgramPublishTask()
             self.WechatMiniProgramPublishCompleteEvent._deserialize(params.get("WechatMiniProgramPublishCompleteEvent"))
@@ -9066,16 +9346,20 @@ Default value: 10%.
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px. Valid values: 0 or [8,4096].</li>
 Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
         :type Height: str
+        :param RepeatType: 
+        :type RepeatType: str
         """
         self.ImageContent = None
         self.Width = None
         self.Height = None
+        self.RepeatType = None
 
 
     def _deserialize(self, params):
         self.ImageContent = params.get("ImageContent")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.RepeatType = params.get("RepeatType")
 
 
 class ImageWatermarkInputForUpdate(AbstractModel):
@@ -9095,16 +9379,20 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 <li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px. Valid values: 0 or [8,4096].</li>
         :type Height: str
+        :param RepeatType: 
+        :type RepeatType: str
         """
         self.ImageContent = None
         self.Width = None
         self.Height = None
+        self.RepeatType = None
 
 
     def _deserialize(self, params):
         self.ImageContent = params.get("ImageContent")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.RepeatType = params.get("RepeatType")
 
 
 class ImageWatermarkTemplate(AbstractModel):
@@ -9125,16 +9413,20 @@ class ImageWatermarkTemplate(AbstractModel):
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px;</li>
 `0px` means that `Height` will be proportionally scaled according to the video width.
         :type Height: str
+        :param RepeatType: 
+        :type RepeatType: str
         """
         self.ImageUrl = None
         self.Width = None
         self.Height = None
+        self.RepeatType = None
 
 
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.RepeatType = params.get("RepeatType")
 
 
 class LiveRealTimeClipRequest(AbstractModel):
@@ -9225,6 +9517,49 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
+        self.RequestId = params.get("RequestId")
+
+
+class ManageTaskRequest(AbstractModel):
+    """ManageTask request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: Video processing task ID.
+        :type TaskId: str
+        :param OperationType: Operation type. Valid value:
+<li>Abort: terminate a task. You can only terminate initiated tasks in `WAITING` status.</li>
+        :type OperationType: str
+        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.TaskId = None
+        self.OperationType = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.OperationType = params.get("OperationType")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ManageTaskResponse(AbstractModel):
+    """ManageTask response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -10341,10 +10676,9 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -10354,6 +10688,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingInfoItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -10362,6 +10697,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -10381,11 +10717,9 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -10397,6 +10731,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -10405,6 +10740,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -10424,11 +10760,9 @@ class MediaProcessTaskCoverBySnapshotResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -10439,6 +10773,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -10447,6 +10782,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -10466,11 +10802,9 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -10482,6 +10816,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -10490,6 +10825,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -10665,11 +11001,9 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -10681,6 +11015,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -10689,6 +11024,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -10708,11 +11044,9 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -10724,6 +11058,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -10732,6 +11067,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -10751,11 +11087,9 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCode: Error code. 0: success; other values: failure.
-<li>40000: invalid input parameter. Please check it;</li>
-<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
-<li>70000: internal service error. Please try again.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
         :type ErrCode: int
         :param Message: Error message.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -10765,16 +11099,21 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output of transcoding task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`
+        :param Progress: Transcoding progress. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -10783,6 +11122,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = MediaTranscodeItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
 
 
 class MediaSampleSnapshotInfo(AbstractModel):
@@ -11591,29 +11931,29 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Unique ID of content audit template.
+        :param Definition: Unique ID of an intelligent content recognition template.
         :type Definition: int
-        :param Name: Content audit template name. Length limit: 64 characters.
+        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters.
         :type Name: str
-        :param Comment: Description of content audit template. Length limit: 256 characters.
+        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters.
         :type Comment: str
-        :param PornConfigure: Control parameter of porn detection.
-        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfoForUpdate`
-        :param TerrorismConfigure: Control parameter of terrorism information detection.
+        :param TerrorismConfigure: Control parameter for terrorism information.
         :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfoForUpdate`
-        :param PoliticalConfigure: Control parameter of politically sensitive information detection.
+        :param PornConfigure: Control parameter for porn information.
+        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfoForUpdate`
+        :param PoliticalConfigure: Control parameter for politically sensitive information.
         :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfoForUpdate`
         :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfoForUpdate`
-        :param UserDefineConfigure: Control parameter of custom content audit.
+        :param UserDefineConfigure: Control parameter for custom intelligent content recognition tasks.
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfoForUpdate`
         :param ScreenshotInterval: Frame capturing interval in seconds. Minimum value: 0.5 seconds.
         :type ScreenshotInterval: float
-        :param ReviewWallSwitch: Switch controlling whether to add audit result to review list (for human review).
-<li>ON: yes;</li>
-<li>OFF: no.</li>
+        :param ReviewWallSwitch: Whether to allow the recognition result to enter the intelligent recognition platform (for human recognition).
+<li>ON: yes</li>
+<li>OFF: no</li>
         :type ReviewWallSwitch: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -11621,8 +11961,8 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         self.Definition = None
         self.Name = None
         self.Comment = None
-        self.PornConfigure = None
         self.TerrorismConfigure = None
+        self.PornConfigure = None
         self.PoliticalConfigure = None
         self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
@@ -11635,12 +11975,12 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         self.Definition = params.get("Definition")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
-        if params.get("PornConfigure") is not None:
-            self.PornConfigure = PornConfigureInfoForUpdate()
-            self.PornConfigure._deserialize(params.get("PornConfigure"))
         if params.get("TerrorismConfigure") is not None:
             self.TerrorismConfigure = TerrorismConfigureInfoForUpdate()
             self.TerrorismConfigure._deserialize(params.get("TerrorismConfigure"))
+        if params.get("PornConfigure") is not None:
+            self.PornConfigure = PornConfigureInfoForUpdate()
+            self.PornConfigure._deserialize(params.get("PornConfigure"))
         if params.get("PoliticalConfigure") is not None:
             self.PoliticalConfigure = PoliticalConfigureInfoForUpdate()
             self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
@@ -11861,18 +12201,18 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Figure ID.
+        :param PersonId: ID of a sample.
         :type PersonId: str
         :param Name: Name. Length limit: 128 characters.
         :type Name: str
         :param Description: Description. Length limit: 1,024 characters.
         :type Description: str
-        :param Usages: Figure use case. Valid values:
-1. Recognition: it is used for content recognition and equivalent to `Recognition.Face`.
-2. Review: it is used for content audit and equivalent to `Review.Face`.
-3. All: it is used for content recognition and content audit and equivalent to 1+2 above.
+        :param Usages: Sample usage. Valid values:
+1. Recognition: used for content recognition; equivalent to `Recognition.Face`
+2. Review: used for inappropriate information recognition; equivalent to `Review.Face`
+3. All: used for content recognition and inappropriate information recognition; equivalent to 1+2
         :type Usages: list of str
-        :param FaceOperationInfo: Face operation information.
+        :param FaceOperationInfo: Information of operations on facial features.
         :type FaceOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleFaceOperation`
         :param TagOperationInfo: Tag operation information.
         :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
@@ -11909,9 +12249,10 @@ class ModifyPersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Person: Figure information.
+        :param Person: Information of a sample.
         :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
-        :param FailFaceInfoSet: Face information failed to be processed.
+        :param FailFaceInfoSet: Information of samples that failed the verification by facial feature positioning.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -12458,15 +12799,15 @@ class ModifyWordSampleRequest(AbstractModel):
         """
         :param Keyword: Keyword. Length limit: 128 characters.
         :type Keyword: str
-        :param Usages: <b>Keyword use case. Valid values:</b>
-1. Recognition.Ocr: OCR-based content recognition;
-2. Recognition.Asr: ASR-based content recognition;
-3. Review.Ocr: OCR-based content audit;
-4. Review.Asr: ASR-based content audit;
-<b>These values can be merged as follows:</b>
-5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;
-6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;
-7. All: ASR-based and OCR-based content recognition and audit, which is equivalent to 1+2+3+4 above;
+        :param Usages: <b>Keyword usage. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition
+2. Recognition.Asr: ASR-based content recognition
+3. Review.Ocr: OCR-based inappropriate information recognition
+4. Review.Asr: ASR-based inappropriate information recognition
+<b>Valid values can also be:</b>
+5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
+6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
+7. All: equivalent to 1+2+3+4
         :type Usages: list of str
         :param TagOperationInfo: Tag operation information.
         :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
@@ -12807,6 +13148,37 @@ class ParseStreamingManifestResponse(AbstractModel):
     def _deserialize(self, params):
         self.MediaSegmentSet = params.get("MediaSegmentSet")
         self.RequestId = params.get("RequestId")
+
+
+class PlayStatFileInfo(AbstractModel):
+    """Information of a playback statistics file
+
+    """
+
+    def __init__(self):
+        """
+        :param Date: Date of playback statistics in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type Date: str
+        :param Url: URL of a playback statistics file, including the following contents:
+<li> date: playback date</li>
+<li> file_id: video file ID</li>
+<li> ip_count: number of client IPs after deduplication</li>
+<li> flux: playback traffic in bytes</li>
+<li> play_times: total playback times</li>
+<li> pc_play_times: playback times on PC clients</li>
+<li> mobile_play_times: playback times on mobile clients</li>
+<li> iphone_play_times: playback times on iPhone</li>
+<li> android_play_times: playback times on Android</li>
+<li> host_name: domain name</li>
+        :type Url: str
+        """
+        self.Date = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.Url = params.get("Url")
 
 
 class PlayerConfig(AbstractModel):
@@ -14650,12 +15022,15 @@ class SimpleHlsClipRequest(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: End offset time of clipping in seconds. Default value: 0, which means to clip till the end of the video. A negative number indicates how many seconds from the end of the video clipping will end. For example, -10 means that clipping will end at the 10th second from the end.
         :type EndTimeOffset: float
+        :param IsPersistence: Whether to store the video clip persistently. 0: no (default), 1: yes.
+        :type IsPersistence: int
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.Url = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
+        self.IsPersistence = None
         self.SubAppId = None
 
 
@@ -14663,6 +15038,7 @@ class SimpleHlsClipRequest(AbstractModel):
         self.Url = params.get("Url")
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
+        self.IsPersistence = params.get("IsPersistence")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -14677,11 +15053,14 @@ class SimpleHlsClipResponse(AbstractModel):
         :type Url: str
         :param MetaData: Metadata of clipped video. Currently, `Size`, `Rotate`, `VideoDuration`, and `AudioDuration` fields use default value with no actual data.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param FileId: Unique ID of a video clip for persistent storage.
+        :type FileId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Url = None
         self.MetaData = None
+        self.FileId = None
         self.RequestId = None
 
 
@@ -14690,6 +15069,7 @@ class SimpleHlsClipResponse(AbstractModel):
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
+        self.FileId = params.get("FileId")
         self.RequestId = params.get("RequestId")
 
 
@@ -14919,6 +15299,159 @@ class SpecificationDataItem(AbstractModel):
                 self.Data.append(obj)
 
 
+class SplitMediaOutputConfig(AbstractModel):
+    """Information of video splitting output files.
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaName: Name of an output file. This parameter can contain up to 64 characters, and will be generated by the system if it is left empty.
+        :type MediaName: str
+        :param Type: Output file format. Valid values: mp4 (default), hls.
+        :type Type: str
+        :param ClassId: Category ID, which is used to categorize the media file for management. You can use [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.
+<li>Default value: 0, which means other categories.</li>
+        :type ClassId: int
+        :param ExpireTime: Expiration time of an output file. After passing the expiration time, the file will be deleted. There is no expiration time set for a file by default. The time is in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type ExpireTime: str
+        """
+        self.MediaName = None
+        self.Type = None
+        self.ClassId = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.MediaName = params.get("MediaName")
+        self.Type = params.get("Type")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
+
+
+class SplitMediaTask(AbstractModel):
+    """Video splitting task information. This field has a value only when `TaskType` is `SplitMedia`.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: Task ID.
+        :type TaskId: str
+        :param Status: Task flow status. Valid values:
+<li>PROCESSING: processing</li>
+<li>FINISH: finished</li>
+        :type Status: str
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. You're not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
+        :type ErrCode: int
+        :param Message: Error information.
+        :type Message: str
+        :param FileInfoSet: List of video splitting task details.
+        :type FileInfoSet: list of SplitMediaTaskSegmentInfo
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1000 characters.
+        :type SessionContext: str
+        :param SessionId: ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or set to an empty string, no deduplication will be performed.
+        :type SessionId: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.FileInfoSet = None
+        self.SessionContext = None
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("FileInfoSet") is not None:
+            self.FileInfoSet = []
+            for item in params.get("FileInfoSet"):
+                obj = SplitMediaTaskSegmentInfo()
+                obj._deserialize(item)
+                self.FileInfoSet.append(obj)
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+
+
+class SplitMediaTaskInput(AbstractModel):
+    """Input information of a video splitting task.
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: Video ID.
+        :type FileId: str
+        :param StartTimeOffset: Offset of the video splitting start time in seconds.
+<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>
+<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: Offset of the video splitting end time in seconds.
+<li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>
+<li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>
+        :type EndTimeOffset: float
+        :param ProcedureName: [Task flow template](https://intl.cloud.tencent.com/document/product/266/33931?lang=en&pg=) name, which should be entered if you want to perform a task flow on the generated new video.
+        :type ProcedureName: str
+        :param OutputConfig: Output information of a video splitting task.
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.SplitMediaOutputConfig`
+        """
+        self.FileId = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.ProcedureName = None
+        self.OutputConfig = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.ProcedureName = params.get("ProcedureName")
+        if params.get("OutputConfig") is not None:
+            self.OutputConfig = SplitMediaOutputConfig()
+            self.OutputConfig._deserialize(params.get("OutputConfig"))
+
+
+class SplitMediaTaskSegmentInfo(AbstractModel):
+    """Information of a video splitting task.
+
+    """
+
+    def __init__(self):
+        """
+        :param Input: Input information of a video splitting task.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.SplitMediaTaskInput`
+        :param Output: Output information of a video splitting task.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.TaskOutputMediaInfo`
+        :param ProcedureTaskId: If a video processing flow is specified when a video splitting task is initiated, this field will be the task flow ID.
+        :type ProcedureTaskId: str
+        """
+        self.Input = None
+        self.Output = None
+        self.ProcedureTaskId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self.Input = SplitMediaTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = TaskOutputMediaInfo()
+            self.Output._deserialize(params.get("Output"))
+        self.ProcedureTaskId = params.get("ProcedureTaskId")
+
+
 class StatDataItem(AbstractModel):
     """Statistics
 
@@ -15019,6 +15552,37 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = ImageTransform()
                 obj._deserialize(item)
                 self.ImageOperations.append(obj)
+
+
+class StorageStatData(AbstractModel):
+    """VOD storage usage by region.
+
+    """
+
+    def __init__(self):
+        """
+        :param Area: VOD storage billing region. Valid values:
+<li>Chinese Mainland</li>
+<li>Outside Chinese Mainland</li>
+        :type Area: str
+        :param TotalStorage: Current total storage capacity in bytes.
+        :type TotalStorage: int
+        :param InfrequentStorage: Current STANDARD_IA storage capacity in bytes.
+        :type InfrequentStorage: int
+        :param StandardStorage: Current STANDARD storage capacity in bytes.
+        :type StandardStorage: int
+        """
+        self.Area = None
+        self.TotalStorage = None
+        self.InfrequentStorage = None
+        self.StandardStorage = None
+
+
+    def _deserialize(self, params):
+        self.Area = params.get("Area")
+        self.TotalStorage = params.get("TotalStorage")
+        self.InfrequentStorage = params.get("InfrequentStorage")
+        self.StandardStorage = params.get("StandardStorage")
 
 
 class SubAppIdInfo(AbstractModel):
@@ -15226,6 +15790,29 @@ class TagConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+
+
+class TaskOutputMediaInfo(AbstractModel):
+    """Output media file information of a video processing task.
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: Media file ID.
+        :type FileId: str
+        :param MediaBasicInfo: 
+        :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
+        """
+        self.FileId = None
+        self.MediaBasicInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        if params.get("MediaBasicInfo") is not None:
+            self.MediaBasicInfo = MediaBasicInfo()
+            self.MediaBasicInfo._deserialize(params.get("MediaBasicInfo"))
 
 
 class TaskSimpleInfo(AbstractModel):
@@ -16279,7 +16866,8 @@ Default value: black
 If this parameter is specified, CRF will be used to control video bitrate for transcoding and the original video bitrate will not be used.
 We don’t recommend specifying this parameter unless you have special requirements.
         :type Vcrf: int
-        :param Gop: 
+        :param Gop: I-frame interval in frames. Valid values: 0 and 1-100000.
+When this parameter is set to 0 or left empty, `Gop` will be automatically set.
         :type Gop: int
         """
         self.Codec = None
@@ -16342,10 +16930,11 @@ If the value is 0, the bitrate of the video will be the same as that of the sour
 <li>white: fills the uncovered area with white color, without changing the image's aspect ratio.</li>
 <li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
         :type FillType: str
-        :param Vcrf: Video Constant Rate Factor (CRF). Value range: 1-51. This parameter will be disabled if you enter 0.
+        :param Vcrf: Video Constant Rate Factor (CRF). Value range: 0-51. This parameter will be disabled if you enter 0.
 We don’t recommend specifying this parameter unless you have special requirements.
         :type Vcrf: int
-        :param Gop: 
+        :param Gop: I-frame interval in frames. Valid values: 0 and 1-100000.
+When this parameter is set to 0 or left empty, `Gop` will be automatically set.
         :type Gop: int
         """
         self.Codec = None

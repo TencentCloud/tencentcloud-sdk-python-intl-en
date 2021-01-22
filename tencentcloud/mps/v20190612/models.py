@@ -414,9 +414,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code, 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -500,9 +500,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -580,9 +580,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -677,9 +677,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -899,9 +899,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1019,9 +1019,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1151,9 +1151,9 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1314,9 +1314,9 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -1450,9 +1450,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2004,7 +2004,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         :type Status: str
         :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see the list of [Error Codes](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2044,9 +2044,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -2087,9 +2087,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2129,9 +2129,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2171,9 +2171,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2213,9 +2213,9 @@ class AiReviewTaskPornResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -2256,9 +2256,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2297,9 +2297,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2338,9 +2338,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2379,9 +2379,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -3557,22 +3557,22 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Name of a content audit template. Length limit: 64 characters.
+        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters.
         :type Name: str
-        :param Comment: Description of a content audit template. Length limit: 256 characters.
+        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters.
         :type Comment: str
-        :param PornConfigure: Porn information detection control parameter.
+        :param PornConfigure: Control parameter for offensive content
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
-        :param TerrorismConfigure: Terrorism information detection control parameter.
+        :param TerrorismConfigure: Control parameter for insecure content
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
-        :param PoliticalConfigure: Politically sensitive information detection control parameter.
+        :param PoliticalConfigure: Control parameter for inappropriate content
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
         :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
 Note: this parameter is not supported yet.
         :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
-        :param UserDefineConfigure: Custom content audit control parameter.
+        :param UserDefineConfigure: Control parameter for custom intelligent content recognition
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
         """
         self.Name = None
@@ -3611,7 +3611,7 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Unique ID of a content audit template.
+        :param Definition: Unique ID of an intelligent content recognition template
         :type Definition: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3716,19 +3716,19 @@ class CreatePersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Name of a figure. Length limit: 20 characters.
+        :param Name: Name of a material. Length limit: 20 characters.
         :type Name: str
-        :param Usages: Figure sample use case. Valid values:
-1. Recognition: It is used for content recognition, equivalent to `Recognition.Face`.
-2. Review: It is used for content audit, equivalent to `Review.Face`.
-3. All: It is used for content recognition and content audit, equivalent to 1+2 above.
+        :param Usages: Material use case. Valid values:
+1. Recognition: used for content recognition, equivalent to `Recognition.Face`
+2. Review: used for detection of inappropriate content, equivalent to `Review.Face`
+3. All: all of the above, equivalent to 1 and 2 combined
         :type Usages: list of str
-        :param Description: Figure description. Length limit: 1,024 characters.
+        :param Description: Material description. Length limit: 1,024 characters.
         :type Description: str
-        :param FaceContents: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a face image. Only JPEG and PNG images are supported. Array length limit: 5 images.
-Note: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.
+        :param FaceContents: [Base64](https://tools.ietf.org/html/rfc4648) string converted from an image. Only JPEG and PNG images are supported. Array length limit: 5 images.
+Note: the image must be a relatively clear facial feature photo of one person with a size of at least 200 x 200 pixels.
         :type FaceContents: list of str
-        :param Tags: Figure tag
+        :param Tags: Material tag
 <li>Array length limit: 20 tags;</li>
 <li>Tag length limit: 128 characters.</li>
         :type Tags: list of str
@@ -3755,9 +3755,9 @@ class CreatePersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Person: Figure information.
+        :param Person: Material information
         :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
-        :param FailFaceInfoSet: Face information failing to be processed.
+        :param FailFaceInfoSet: Positioning information of facial features processed unsuccessfully
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4114,12 +4114,12 @@ class CreateWordSamplesRequest(AbstractModel):
         :param Usages: <b>Keyword use case. Valid values:</b>
 1. Recognition.Ocr: OCR-based content recognition;
 2. Recognition.Asr: ASR-based content recognition;
-3. Review.Ocr: OCR-based content audit;
-4. Review.Asr: ASR-based content audit;
+3. Review.Ocr: OCR-based detection of inappropriate content;
+4. Review.Asr：ASR-based detection of inappropriate content;
 <b>These values can be merged as follows:</b>
-5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;
-6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;
-7. All: ASR-based and OCR-based content recognition and audit, which is equivalent to 1+2+3+4 above;
+5. Recognition: ASR- and OCR-based content recognition, equivalent to 1+2 above;
+6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3+4 above;
+7. All: ASR- and OCR-based content recognition and detection of inappropriate content, equivalent to 1+2+3+4 above;
         :type Usages: list of str
         :param Words: Keyword. Array length limit: 100.
         :type Words: list of AiSampleWordInfo
@@ -4386,7 +4386,7 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Unique ID of a content audit template.
+        :param Definition: Unique ID of an intelligent content recognition template
         :type Definition: int
         """
         self.Definition = None
@@ -4454,7 +4454,7 @@ class DeletePersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Figure ID.
+        :param PersonId: Material ID
         :type PersonId: str
         """
         self.PersonId = None
@@ -4924,7 +4924,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: Unique ID filter of content audit templates. Array length limit: 50.
+        :param Definitions: Unique ID of intelligent content recognition templates as the filter. Array length limit: 50.
         :type Definitions: list of int
         :param Offset: Paging offset. Default value: 0.
         :type Offset: int
@@ -5082,18 +5082,18 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Pulled figure type. Valid values:
-<li>UserDefine: Custom figure library;</li>
-<li>Default: Default figure library.</li>
+        :param Type: Type of the material pulled. Valid values:
+<li>UserDefine: custom material library;</li>
+<li>Default: default material library.</li>
 
-Default value: UserDefine (the custom figure library will be pulled.)
-Note: The default figure library can be pulled only through "figure name" or "figure ID + figure name", and only one face image will be returned.
+Default value: UserDefine (the materials of the custom material library are pulled.)
+Note: you can pull the default material library only using the material name or a combination of the material name and ID, and only one face image is returned.
         :type Type: str
-        :param PersonIds: Figure ID. Array length limit: 100.
+        :param PersonIds: Material ID. Array length limit: 100.
         :type PersonIds: list of str
-        :param Names: Figure name. Array length limit: 20.
+        :param Names: Material name. Array length limit: 20.
         :type Names: list of str
-        :param Tags: Figure tag. Array length limit: 20.
+        :param Tags: Material tag. Array length limit: 20.
         :type Tags: list of str
         :param Offset: Paging offset. Default value: 0.
         :type Offset: int
@@ -5126,7 +5126,7 @@ class DescribePersonSamplesResponse(AbstractModel):
         """
         :param TotalCount: Number of eligible entries.
         :type TotalCount: int
-        :param PersonSet: Figure information.
+        :param PersonSet: Material information
         :type PersonSet: list of AiSamplePerson
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5569,18 +5569,18 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param Keywords: Keyword filter. Array length limit: 100 words.
+        :type Keywords: list of str
         :param Usages: <b>Keyword use case filter. Valid values:</b>
 1. Recognition.Ocr: OCR-based content recognition;
 2. Recognition.Asr: ASR-based content recognition;
-3. Review.Ocr: OCR-based content audit;
-4. Review.Asr: ASR-based content audit;
+3. Review.Ocr: OCR-based detection of inappropriate content;
+4. Review.Asr：ASR-based detection of inappropriate content;
 <b>These values can be merged as follows:</b>
-5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;
-6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;
+5. Recognition: ASR- and OCR-based content recognition, equivalent to 1 and 2 combined;
+6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3+4 above;
 Multiple elements can be selected, and the relationship between them is "or", i.e., any keyword use case that contains any element in this field set will be deemed eligible.
         :type Usages: list of str
-        :param Keywords: Keyword filter. Array length limit: 100 words.
-        :type Keywords: list of str
         :param Tags: Tag filter. Array length limit: 20 words.
         :type Tags: list of str
         :param Offset: Paging offset. Default value: 0.
@@ -5588,16 +5588,16 @@ Multiple elements can be selected, and the relationship between them is "or", i.
         :param Limit: Number of returned entries. Default value: 100. Maximum value: 100.
         :type Limit: int
         """
-        self.Usages = None
         self.Keywords = None
+        self.Usages = None
         self.Tags = None
         self.Offset = None
         self.Limit = None
 
 
     def _deserialize(self, params):
-        self.Usages = params.get("Usages")
         self.Keywords = params.get("Keywords")
+        self.Usages = params.get("Usages")
         self.Tags = params.get("Tags")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
@@ -6253,16 +6253,23 @@ Default value: 10%.
 <li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
 Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
         :type Height: str
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
+<li>once: no longer appears after watermark playback ends.</li>
+<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
+<li>repeat (default): repeats the playback until the video ends.</li>
+        :type RepeatType: str
         """
         self.ImageContent = None
         self.Width = None
         self.Height = None
+        self.RepeatType = None
 
 
     def _deserialize(self, params):
         self.ImageContent = params.get("ImageContent")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.RepeatType = params.get("RepeatType")
 
 
 class ImageWatermarkInputForUpdate(AbstractModel):
@@ -6283,16 +6290,23 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 <li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
 Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
         :type Height: str
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
+<li>once: no longer appears after watermark playback ends.</li>
+<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
+<li>repeat (default): repeats the playback until the video ends.</li>
+        :type RepeatType: str
         """
         self.ImageContent = None
         self.Width = None
         self.Height = None
+        self.RepeatType = None
 
 
     def _deserialize(self, params):
         self.ImageContent = params.get("ImageContent")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.RepeatType = params.get("RepeatType")
 
 
 class ImageWatermarkTemplate(AbstractModel):
@@ -6313,16 +6327,23 @@ class ImageWatermarkTemplate(AbstractModel):
 <li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels.</li>
 `0px` means that `Height` will be proportionally scaled according to the video width.
         :type Height: str
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
+<li>once: no longer appears after watermark playback ends.</li>
+<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
+<li>repeat (default): repeats the playback until the video ends.</li>
+        :type RepeatType: str
         """
         self.ImageUrl = None
         self.Width = None
         self.Height = None
+        self.RepeatType = None
 
 
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.RepeatType = params.get("RepeatType")
 
 
 class LiveStreamAiRecognitionResultInfo(AbstractModel):
@@ -6953,7 +6974,11 @@ class ManageTaskRequest(AbstractModel):
     def __init__(self):
         """
         :param OperationType: Operation type. Valid values:
-<li>Abort: terminates task.</li>
+<ul>
+<li>Abort: task termination. Description:
+<ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is waiting (`WAITING`) or processing (`PROCESSING`) can be terminated;</li>
+<li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is waiting can be terminated.</li></ul>
+</li></ul>
         :type OperationType: str
         :param TaskId: Video processing task ID.
         :type TaskId: str
@@ -7445,7 +7470,7 @@ class MediaInputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: The type of video processing input object. COS and URL objects are supported.
+        :param Type: The type of video processing input object, which supports COS and URL.
         :type Type: str
         :param CosInputInfo: This parameter is required and valid when `Type` is `COS`, indicating the information of a COS object for video processing.
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
@@ -7555,9 +7580,9 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -7597,9 +7622,9 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -7639,9 +7664,9 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -7814,9 +7839,9 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -7857,9 +7882,9 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -7899,9 +7924,9 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         """
         :param Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
         :type Status: str
-        :param ErrCodeExt: Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.
+        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -8439,24 +8464,24 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: Unique ID of a content audit template.
+        :param Definition: Unique ID of an intelligent content recognition template
         :type Definition: int
-        :param Name: Name of a content audit template. Length limit: 64 characters.
+        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters.
         :type Name: str
-        :param Comment: Description of a content audit template. Length limit: 256 characters.
+        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters.
         :type Comment: str
-        :param PornConfigure: Porn information detection control parameter.
+        :param PornConfigure: Control parameter for offensive content
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfoForUpdate`
-        :param TerrorismConfigure: Terrorism information detection control parameter.
+        :param TerrorismConfigure: Control parameter for insecure content
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfoForUpdate`
-        :param PoliticalConfigure: Politically sensitive information detection control parameter.
+        :param PoliticalConfigure: Control parameter for inappropriate content
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfoForUpdate`
         :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
 Note: this parameter is not supported yet.
         :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfoForUpdate`
-        :param UserDefineConfigure: Custom content audit control parameter.
+        :param UserDefineConfigure: Control parameter for custom intelligent content recognition
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfoForUpdate`
         """
         self.Definition = None
@@ -8598,18 +8623,18 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Figure ID.
+        :param PersonId: Material ID
         :type PersonId: str
         :param Name: Name. Length limit: 128 characters.
         :type Name: str
         :param Description: Description. Length limit: 1,024 characters.
         :type Description: str
-        :param Usages: Figure sample use case. Valid values:
-1. Recognition: It is used for content recognition, equivalent to `Recognition.Face`.
-2. Review: It is used for content audit, equivalent to `Review.Face`.
-3. All: It is used for content recognition and content audit, equivalent to 1+2 above.
+        :param Usages: Material use case. Valid values:
+1. Recognition: used for content recognition, equivalent to `Recognition.Face`.
+2. Review: used for detection of inappropriate content, equivalent to `Review.Face`.
+3. All: used for content recognition and detection of inappropriate content, equivalent to 1 and 2 combined.
         :type Usages: list of str
-        :param FaceOperationInfo: Face operation information.
+        :param FaceOperationInfo: Facial feature operation information
         :type FaceOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleFaceOperation`
         :param TagOperationInfo: Tag operation information.
         :type TagOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`
@@ -8642,10 +8667,10 @@ class ModifyPersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Person: Figure information.
+        :param Person: Material information
         :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
-        :param FailFaceInfoSet: Face information failing to be processed.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param FailFaceInfoSet: Information of facial features processed unsuccessfully
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -8992,12 +9017,12 @@ class ModifyWordSampleRequest(AbstractModel):
         :param Usages: <b>Keyword use case. Valid values:</b>
 1. Recognition.Ocr: OCR-based content recognition;
 2. Recognition.Asr: ASR-based content recognition;
-3. Review.Ocr: OCR-based content audit;
-4. Review.Asr: ASR-based content audit;
+3. Review.Ocr: OCR-based detection of inappropriate content;
+4. Review.Asr：ASR-based detection of inappropriate content;
 <b>These values can be merged as follows:</b>
-5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;
-6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;
-7. All: ASR-based and OCR-based content recognition and audit, which is equivalent to 1+2+3+4 above;
+5. Recognition: ASR- and OCR-based content recognition, equivalent to 1 and 2 combined;
+6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3 and 4 combined.
+7. All: all of the above, equivalent to 1, 2, 3, and 4 combined.
         :type Usages: list of str
         :param TagOperationInfo: Tag operation information.
         :type TagOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`
@@ -11204,6 +11229,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type WatermarkSet: list of WatermarkInput
         :param MosaicSet: List of blurs. Up to 10 ones can be supported.
         :type MosaicSet: list of MosaicInput
+        :param StartTimeOffset: Start time offset of a transcoded video, in seconds.
+<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>
+<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: End time offset of a transcoded video, in seconds.
+<li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>
+<li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>
+        :type EndTimeOffset: float
         :param OutputStorage: Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -11220,6 +11255,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.OverrideParameter = None
         self.WatermarkSet = None
         self.MosaicSet = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
         self.OutputStorage = None
         self.OutputObjectPath = None
         self.SegmentObjectName = None
@@ -11246,6 +11283,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = MosaicInput()
                 obj._deserialize(item)
                 self.MosaicSet.append(obj)
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
         if params.get("OutputStorage") is not None:
             self.OutputStorage = TaskOutputStorage()
             self.OutputStorage._deserialize(params.get("OutputStorage"))

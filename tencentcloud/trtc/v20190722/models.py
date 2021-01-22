@@ -602,7 +602,7 @@ class DescribeRoomInformationRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
         :type EndTime: int
-        :param RoomId: Room ID of uint type
+        :param RoomId: Room ID in string type
         :type RoomId: str
         :param PageNumber: Page index starting from 0 (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default)
         :type PageNumber: str
@@ -633,7 +633,7 @@ class DescribeRoomInformationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total number of returned data entries.
+        :param Total: Total number of data entries displayed on the current page
         :type Total: int
         :param RoomList: Room information list
         :type RoomList: list of RoomState
@@ -665,7 +665,7 @@ class DescribeUserInformationRequest(AbstractModel):
         """
         :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
         :type CommId: str
-        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.
+        :param StartTime: Query start time in the format of UNIX timestamp (e.g. 1588031999s) in the last 5 days.
         :type StartTime: int
         :param EndTime: Query end time in the format of UNIX timestamp (e.g. 1588031999s).
         :type EndTime: int
@@ -903,6 +903,8 @@ class LayoutParams(AbstractModel):
         :type MixVideoUids: list of str
         :param PresetLayoutConfig: Valid in custom template, used to specify the video image position of a user in mixed streams.
         :type PresetLayoutConfig: list of PresetLayoutConfig
+        :param PlaceHolderMode: Valid in custom templates. 1: the placeholding feature is enabled; 0 (default): the feature is disabled. When the feature is enabled, but a user for whom a position is reserved is not sending video data, the position will show the corresponding placeholder image.
+        :type PlaceHolderMode: int
         """
         self.Template = None
         self.MainVideoUserId = None
@@ -911,6 +913,7 @@ class LayoutParams(AbstractModel):
         self.MainVideoRightAlign = None
         self.MixVideoUids = None
         self.PresetLayoutConfig = None
+        self.PlaceHolderMode = None
 
 
     def _deserialize(self, params):
@@ -928,6 +931,7 @@ class LayoutParams(AbstractModel):
                 obj = PresetLayoutConfig()
                 obj._deserialize(item)
                 self.PresetLayoutConfig.append(obj)
+        self.PlaceHolderMode = params.get("PlaceHolderMode")
 
 
 class OutputParams(AbstractModel):
@@ -941,7 +945,7 @@ class OutputParams(AbstractModel):
         :type StreamId: str
         :param PureAudioStream: Value range: [0, 1]. If it is 0, live streams are audio and video; if it is 1, live streams are only audio. Default value: 0.
         :type PureAudioStream: int
-        :param RecordId: Custom recording file name
+        :param RecordId: Custom recording file name. Please enable the recording feature in the TRTC console first. https://intl.cloud.tencent.com/document/product/647/50768?from_cn_redirect=1
         :type RecordId: str
         :param RecordAudioOnly: Value range: [0, 1]. If it is 0, the recording template configured in the console will be used; if it is 1, streams are recorded as .mp3 files.
         :type RecordAudioOnly: int
@@ -980,8 +984,12 @@ class PresetLayoutConfig(AbstractModel):
         :type LocationY: int
         :param ZOrder: Z-order of the image in pixels. If this parameter is not set, 0 is used by default.
         :type ZOrder: int
-        :param RenderMode: Render mode of the output image. 0: cropping; 1: scaling. If this parameter is not set, 0 is used by default.
+        :param RenderMode: Render mode of the output image. 0: cropping; 1: scaling; 2: scaling on a black background. If this parameter is not set, 0 is used by default.
         :type RenderMode: int
+        :param MixInputType: Media type of the mixed stream of the user occupying the current position. 0 (default): audio and video; 1: audio; 2: video. You are advised to specify a user ID when using this parameter.
+        :type MixInputType: int
+        :param PlaceImageId: Reservation image ID. If the reservation feature is enabled, and a user for whom a image position is reserved is not generating upstream video data, the position will show the reservation image. Reservation images are uploaded and generated in the TRTC console. https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1
+        :type PlaceImageId: int
         """
         self.UserId = None
         self.StreamType = None
@@ -991,6 +999,8 @@ class PresetLayoutConfig(AbstractModel):
         self.LocationY = None
         self.ZOrder = None
         self.RenderMode = None
+        self.MixInputType = None
+        self.PlaceImageId = None
 
 
     def _deserialize(self, params):
@@ -1002,6 +1012,29 @@ class PresetLayoutConfig(AbstractModel):
         self.LocationY = params.get("LocationY")
         self.ZOrder = params.get("ZOrder")
         self.RenderMode = params.get("RenderMode")
+        self.MixInputType = params.get("MixInputType")
+        self.PlaceImageId = params.get("PlaceImageId")
+
+
+class PublishCdnParams(AbstractModel):
+    """Relayed push parameters of a non-Tencent Cloud CDN
+
+    """
+
+    def __init__(self):
+        """
+        :param BizId: Tencent Cloud LVB BizId
+        :type BizId: int
+        :param PublishCdnUrls: Destination of non-Tencent Cloud CDN relayed push. It is possible to push to only one non-Tencent Cloud CDN address at a time.
+        :type PublishCdnUrls: list of str
+        """
+        self.BizId = None
+        self.PublishCdnUrls = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.PublishCdnUrls = params.get("PublishCdnUrls")
 
 
 class QualityData(AbstractModel):
@@ -1229,12 +1262,15 @@ class StartMCUMixTranscodeRequest(AbstractModel):
         :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
         :param LayoutParams: On-Cloud MixTranscoding output layout parameters.
         :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
+        :param PublishCdnParams: Relayed push parameters of a non-Tencent Cloud CDN
+        :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
         """
         self.SdkAppId = None
         self.RoomId = None
         self.OutputParams = None
         self.EncodeParams = None
         self.LayoutParams = None
+        self.PublishCdnParams = None
 
 
     def _deserialize(self, params):
@@ -1249,6 +1285,9 @@ class StartMCUMixTranscodeRequest(AbstractModel):
         if params.get("LayoutParams") is not None:
             self.LayoutParams = LayoutParams()
             self.LayoutParams._deserialize(params.get("LayoutParams"))
+        if params.get("PublishCdnParams") is not None:
+            self.PublishCdnParams = PublishCdnParams()
+            self.PublishCdnParams._deserialize(params.get("PublishCdnParams"))
 
 
 class StartMCUMixTranscodeResponse(AbstractModel):
