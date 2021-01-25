@@ -1610,6 +1610,63 @@ class ClassicLinkInstance(AbstractModel):
         self.InstanceId = params.get("InstanceId")
 
 
+class CloneSecurityGroupRequest(AbstractModel):
+    """CloneSecurityGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: ID of the security group to be cloned, such as `sg-33ocnj9n`. This can be obtained through the `DescribeSecurityGroups` API.
+        :type SecurityGroupId: str
+        :param GroupName: The name of security group clone. You can enter any name within 60 characters. If this parameter is left empty, the security group clone will use the name of the source security group.
+        :type GroupName: str
+        :param GroupDescription: Description of the security group clone. You can enter up to 100 characters. If this parameter is left empty, the security group clone will use the description of the source security group.
+        :type GroupDescription: str
+        :param ProjectId: Project ID of the security group clone. The default is 0. You can query it on the project management page of the Tencent Cloud console.
+        :type ProjectId: str
+        :param RemoteRegion: The region of the source security group for a cross-region clone. For example, to clone the security group in Guangzhou to Shanghai, set it to `ap-guangzhou`.
+        :type RemoteRegion: str
+        """
+        self.SecurityGroupId = None
+        self.GroupName = None
+        self.GroupDescription = None
+        self.ProjectId = None
+        self.RemoteRegion = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.GroupName = params.get("GroupName")
+        self.GroupDescription = params.get("GroupDescription")
+        self.ProjectId = params.get("ProjectId")
+        self.RemoteRegion = params.get("RemoteRegion")
+
+
+class CloneSecurityGroupResponse(AbstractModel):
+    """CloneSecurityGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroup: Security group object
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SecurityGroup: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SecurityGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroup") is not None:
+            self.SecurityGroup = SecurityGroup()
+            self.SecurityGroup._deserialize(params.get("SecurityGroup"))
+        self.RequestId = params.get("RequestId")
+
+
 class ConflictItem(AbstractModel):
     """Conflict resource items.
 
@@ -2075,7 +2132,7 @@ class CreateDefaultVpcRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: The ID of the availability zone in which the subnet resides. The availability zone will be randomly selected if not specified.
+        :param Zone: The ID of the availability zone in which the subnet resides. This parameter can be obtained through the [`DescribeZones`](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API, such as `ap-guangzhou-1`. If it’s not specified, a random availability zone will be used.
         :type Zone: str
         :param Force: Whether to forcibly return a default VPC
         :type Force: bool
@@ -3146,15 +3203,15 @@ class CreateVpcRequest(AbstractModel):
         """
         :param VpcName: The VPC name. The maximum length is 60 bytes.
         :type VpcName: str
-        :param CidrBlock: VPC CIDR, which must fall within the following private network IP ranges: 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.
+        :param CidrBlock: VPC CIDR blocks, which must fall within the following three private network IP ranges: 10.0.0.0/16, 172.16.0.0/16 and 192.168.0.0/16.
         :type CidrBlock: str
         :param EnableMulticast: Whether multicast is enabled. `true`: Enabled. `false`: Not enabled.
         :type EnableMulticast: str
-        :param DnsServers: The DNS address. A maximum of 4 addresses is supported.
+        :param DnsServers: DNS address. A maximum of 4 addresses is supported.
         :type DnsServers: list of str
-        :param DomainName: Domain name
+        :param DomainName: Domain name of DHCP
         :type DomainName: str
-        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
         """
         self.VpcName = None
@@ -3295,7 +3352,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.
+        :param VpcId: VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.
         :type VpcId: str
         :param VpnGatewayName: The VPN gateway name. The maximum length is 60 bytes.
         :type VpnGatewayName: str
@@ -6036,7 +6093,7 @@ class DescribeIpGeolocationDatabaseUrlResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DownLoadUrl: Download link of the IP location database.
+        :param DownLoadUrl: Download link of an IP location database
         :type DownLoadUrl: str
         :param ExpiredAt: Link expiration time in UTC format following the ISO8601 standard.
         :type ExpiredAt: str
@@ -9403,9 +9460,9 @@ class ModifyAssistantCidrRequest(AbstractModel):
         """
         :param VpcId: `VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
         :type VpcId: str
-        :param NewCidrBlocks: Load CIDR blocks to add. CIDR block set; format: e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :param NewCidrBlocks: Array of the secondary CIDR blocks to be added, such as ["10.0.0.0/16", "172.16.0.0/16"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.
         :type NewCidrBlocks: list of str
-        :param OldCidrBlocks: Load CIDR blocks to delete. CIDR block set; Format: e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :param OldCidrBlocks: Array of the secondary CIDR blocks to be deleted, such as ["10.0.0.0/16", "172.16.0.0/16"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.
         :type OldCidrBlocks: list of str
         """
         self.VpcId = None
@@ -9837,16 +9894,24 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
         :type NatGatewayName: str
         :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the NAT gateway. Unit: Mbps.
         :type InternetMaxBandwidthOut: int
+        :param ModifySecurityGroup: Whether to modify the security group bound to the NAT Gateway
+        :type ModifySecurityGroup: bool
+        :param SecurityGroupIds: The final security groups bound to the NAT Gateway, such as `['sg-1n232323', 'sg-o4242424']`. An empty list indicates that all the security groups have been deleted.
+        :type SecurityGroupIds: list of str
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
         self.InternetMaxBandwidthOut = None
+        self.ModifySecurityGroup = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
         self.NatGatewayId = params.get("NatGatewayId")
         self.NatGatewayName = params.get("NatGatewayName")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.ModifySecurityGroup = params.get("ModifySecurityGroup")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
 
 
 class ModifyNatGatewayAttributeResponse(AbstractModel):
@@ -10628,6 +10693,9 @@ class NatGateway(AbstractModel):
         :type SubnetId: str
         :param TagSet: Tag key-value pair.
         :type TagSet: list of Tag
+        :param SecurityGroupSet: The list of the security groups bound to the NAT Gateway
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SecurityGroupSet: list of str
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -10643,6 +10711,7 @@ class NatGateway(AbstractModel):
         self.DirectConnectGatewayIds = None
         self.SubnetId = None
         self.TagSet = None
+        self.SecurityGroupSet = None
 
 
     def _deserialize(self, params):
@@ -10675,6 +10744,7 @@ class NatGateway(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.SecurityGroupSet = params.get("SecurityGroupSet")
 
 
 class NatGatewayAddress(AbstractModel):
@@ -12217,7 +12287,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         :type SecurityGroupId: str
         :param CVM: Number of CVM instances.
         :type CVM: int
-        :param CDB: Number of database instances.
+        :param CDB: Number of TencentDB for MySQL instances
         :type CDB: int
         :param ENI: Number of ENI instances.
         :type ENI: int

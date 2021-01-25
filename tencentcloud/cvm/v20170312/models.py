@@ -430,7 +430,8 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 Currently, this parameter is only used in the `RunInstances` API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type KmsKeyId: str
-        :param ThroughputPerformance: 
+        :param ThroughputPerformance: Cloud disk performance, in MB/s
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ThroughputPerformance: int
         """
         self.DiskSize = None
@@ -3088,8 +3089,8 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param DiscountPrice: Discount price of a prepaid instance, in USD.
 Note: this field may return null, indicating that no valid value is obtained.
         :type DiscountPrice: float
-        :param Discount: Discount. For example, 20.0 indicates 80% off.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param Discount: Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Discount: float
         :param UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
 Note: this field may return null, indicating that no valid value is obtained.

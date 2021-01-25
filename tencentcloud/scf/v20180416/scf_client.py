@@ -902,7 +902,7 @@ class ScfClient(AbstractClient):
 
 
     def PutTotalConcurrencyConfig(self, request):
-        """This API is used to modify the account concurrency limit quota.
+        """This API is used to modify the account concurrency quota.
 
         :param request: Request instance for PutTotalConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.PutTotalConcurrencyConfigRequest`

@@ -331,6 +331,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Environments: Environment information published for API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Environments: list of str
+        :param IsBase64Encoded: 
+        :type IsBase64Encoded: bool
+        :param IsBase64Trigger: 
+        :type IsBase64Trigger: bool
+        :param Base64EncodedTriggerRules: 
+        :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
         """
         self.ServiceId = None
         self.ServiceName = None
@@ -380,6 +386,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.EnableCORS = None
         self.Tags = None
         self.Environments = None
+        self.IsBase64Encoded = None
+        self.IsBase64Trigger = None
+        self.Base64EncodedTriggerRules = None
 
 
     def _deserialize(self, params):
@@ -471,6 +480,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Environments = params.get("Environments")
+        self.IsBase64Encoded = params.get("IsBase64Encoded")
+        self.IsBase64Trigger = params.get("IsBase64Trigger")
+        if params.get("Base64EncodedTriggerRules") is not None:
+            self.Base64EncodedTriggerRules = []
+            for item in params.get("Base64EncodedTriggerRules"):
+                obj = Base64EncodedTriggerRule()
+                obj._deserialize(item)
+                self.Base64EncodedTriggerRules.append(obj)
 
 
 class ApiKey(AbstractModel):
@@ -705,6 +722,27 @@ class ApisStatus(AbstractModel):
                 self.ApiIdStatusSet.append(obj)
 
 
+class Base64EncodedTriggerRule(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 
+        :type Name: str
+        :param Value: 
+        :type Value: list of str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
 class BindEnvironmentRequest(AbstractModel):
     """BindEnvironment request structure.
 
@@ -877,6 +915,8 @@ class BindSubDomainRequest(AbstractModel):
         :type CertificateId: str
         :param PathMappingSet: Custom domain name path mapping. It can contain up to 3 `Environment` values which can be set to only `test`, `prepub`, and `release`, respectively.
         :type PathMappingSet: list of PathMapping
+        :param IsForcedHttps: Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
+        :type IsForcedHttps: bool
         """
         self.ServiceId = None
         self.SubDomain = None
@@ -886,6 +926,7 @@ class BindSubDomainRequest(AbstractModel):
         self.NetSubDomain = None
         self.CertificateId = None
         self.PathMappingSet = None
+        self.IsForcedHttps = None
 
 
     def _deserialize(self, params):
@@ -902,6 +943,7 @@ class BindSubDomainRequest(AbstractModel):
                 obj = PathMapping()
                 obj._deserialize(item)
                 self.PathMappingSet.append(obj)
+        self.IsForcedHttps = params.get("IsForcedHttps")
 
 
 class BindSubDomainResponse(AbstractModel):
@@ -911,13 +953,18 @@ class BindSubDomainResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Result: Whether binding succeeded.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Result: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -1100,6 +1147,8 @@ class CreateApiRequest(AbstractModel):
         :type TargetNamespaceId: str
         :param UserType: User type.
         :type UserType: str
+        :param IsBase64Encoded: 
+        :type IsBase64Encoded: bool
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -1146,6 +1195,7 @@ class CreateApiRequest(AbstractModel):
         self.ResponseErrorCodes = None
         self.TargetNamespaceId = None
         self.UserType = None
+        self.IsBase64Encoded = None
 
 
     def _deserialize(self, params):
@@ -1236,6 +1286,7 @@ class CreateApiRequest(AbstractModel):
                 self.ResponseErrorCodes.append(obj)
         self.TargetNamespaceId = params.get("TargetNamespaceId")
         self.UserType = params.get("UserType")
+        self.IsBase64Encoded = params.get("IsBase64Encoded")
 
 
 class CreateApiResponse(AbstractModel):
@@ -4351,6 +4402,8 @@ class ModifySubDomainRequest(AbstractModel):
         :type PathMappingSet: list of PathMapping
         :param NetType: Network type. Valid values: INNER, OUTER.
         :type NetType: str
+        :param IsForcedHttps: Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
+        :type IsForcedHttps: bool
         """
         self.ServiceId = None
         self.SubDomain = None
@@ -4359,6 +4412,7 @@ class ModifySubDomainRequest(AbstractModel):
         self.Protocol = None
         self.PathMappingSet = None
         self.NetType = None
+        self.IsForcedHttps = None
 
 
     def _deserialize(self, params):
@@ -4374,6 +4428,7 @@ class ModifySubDomainRequest(AbstractModel):
                 obj._deserialize(item)
                 self.PathMappingSet.append(obj)
         self.NetType = params.get("NetType")
+        self.IsForcedHttps = params.get("IsForcedHttps")
 
 
 class ModifySubDomainResponse(AbstractModel):

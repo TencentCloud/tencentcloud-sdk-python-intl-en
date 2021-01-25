@@ -107,14 +107,18 @@ class BillDetail(AbstractModel):
         :param Tags: Tag information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of BillTagInfo
-        :param BusinessCode: Product name/code (optional)
+        :param BusinessCode: Product code
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type BusinessCode: str
-        :param ProductCode: Subproduct name/code (optional)
+        :param ProductCode: Subproduct code
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ProductCode: str
         :param ActionType: Transaction type/code (optional)
         :type ActionType: str
         :param RegionId: 
         :type RegionId: str
+        :param ProjectId: Project ID: ID of the project to which the resource belongs
+        :type ProjectId: int
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -139,6 +143,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ProductCode = None
         self.ActionType = None
         self.RegionId = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -175,6 +180,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ProductCode = params.get("ProductCode")
         self.ActionType = params.get("ActionType")
         self.RegionId = params.get("RegionId")
+        self.ProjectId = params.get("ProjectId")
 
 
 class BillDetailComponent(AbstractModel):
@@ -216,9 +222,11 @@ class BillDetailComponent(AbstractModel):
         :type CashPayAmount: str
         :param IncentivePayAmount: Amount paid in trial credit
         :type IncentivePayAmount: str
-        :param ItemCode: Component type/code (optional)
+        :param ItemCode: Component type code
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ItemCode: str
-        :param ComponentCode: Component name/code (optional)
+        :param ComponentCode: Component code
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ComponentCode: str
         :param ContractPrice: Contract price
         :type ContractPrice: str
@@ -543,6 +551,8 @@ class DescribeBillDetailRequest(AbstractModel):
         :type ResourceId: str
         :param ActionType: 
         :type ActionType: str
+        :param ProjectId: Project ID: ID of the project to which the resource belongs
+        :type ProjectId: int
         """
         self.Offset = None
         self.Limit = None
@@ -555,6 +565,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.PayMode = None
         self.ResourceId = None
         self.ActionType = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -569,6 +580,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.ResourceId = params.get("ResourceId")
         self.ActionType = params.get("ActionType")
+        self.ProjectId = params.get("ProjectId")
 
 
 class DescribeBillDetailResponse(AbstractModel):

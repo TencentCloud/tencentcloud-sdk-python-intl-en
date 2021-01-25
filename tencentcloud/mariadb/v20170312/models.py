@@ -16,6 +16,48 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AssociateSecurityGroupsRequest(AbstractModel):
+    """AssociateSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Database engine name. Valid value: `mariadb`.
+        :type Product: str
+        :param SecurityGroupId: ID of the security group to be associated in the format of sg-efil73jd.
+        :type SecurityGroupId: str
+        :param InstanceIds: ID(s) of the instance(s) to be associated in the format of tdsql-lesecurk. You can specify multiple instances.
+        :type InstanceIds: list of str
+        """
+        self.Product = None
+        self.SecurityGroupId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class AssociateSecurityGroupsResponse(AbstractModel):
+    """AssociateSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CloneAccountRequest(AbstractModel):
     """CloneAccount request structure.
 
@@ -454,6 +496,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param DcnDstNum: The number of DCN disaster recovery instances
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DcnDstNum: int
+        :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (primary instance), `3` (disaster recovery instance), and `4` (dedicated disaster recovery instance).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -504,6 +549,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DcnFlag = None
         self.DcnStatus = None
         self.DcnDstNum = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -556,6 +602,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DcnFlag = params.get("DcnFlag")
         self.DcnStatus = params.get("DcnStatus")
         self.DcnDstNum = params.get("DcnDstNum")
+        self.InstanceType = params.get("InstanceType")
 
 
 class DBParamValue(AbstractModel):
@@ -1340,6 +1387,53 @@ class DescribeDBResourceUsageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBSecurityGroupsRequest(AbstractModel):
+    """DescribeDBSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Database engine name. Valid value: `mariadb`.
+        :type Product: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.Product = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBSecurityGroupsResponse(AbstractModel):
+    """DescribeDBSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: Security group details
+        :type Groups: list of SecurityGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBSlowLogsRequest(AbstractModel):
     """DescribeDBSlowLogs request structure.
 
@@ -1555,6 +1649,95 @@ class DescribeLogFileRetentionPeriodResponse(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Days = params.get("Days")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeProjectSecurityGroupsRequest(AbstractModel):
+    """DescribeProjectSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Database engine name. Valid value: `mariadb`.
+        :type Product: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        """
+        self.Product = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.ProjectId = params.get("ProjectId")
+
+
+class DescribeProjectSecurityGroupsResponse(AbstractModel):
+    """DescribeProjectSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: Security group details
+        :type Groups: list of SecurityGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateSecurityGroupsRequest(AbstractModel):
+    """DisassociateSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Database engine name. Valid value: `mariadb`.
+        :type Product: str
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param InstanceIds: Instance ID list, which is an array of one or more instance IDs.
+        :type InstanceIds: list of str
+        """
+        self.Product = None
+        self.SecurityGroupId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DisassociateSecurityGroupsResponse(AbstractModel):
+    """DisassociateSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1835,6 +2018,48 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
+    """ModifyDBInstanceSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: Database engine name. Valid value: `mariadb`.
+        :type Product: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SecurityGroupIds: List of IDs of security groups to be modified, which is an array of one or more security group IDs.
+        :type SecurityGroupIds: list of str
+        """
+        self.Product = None
+        self.InstanceId = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
+    """ModifyDBInstanceSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2288,6 +2513,86 @@ class ResourceUsageMonitorSet(AbstractModel):
         if params.get("DataDiskAvailable") is not None:
             self.DataDiskAvailable = MonitorData()
             self.DataDiskAvailable._deserialize(params.get("DataDiskAvailable"))
+
+
+class SecurityGroup(AbstractModel):
+    """Security group details
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param CreateTime: Creation time in the format of yyyy-mm-dd hh:mm:ss
+        :type CreateTime: str
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param SecurityGroupName: Security group name
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: Security group remarks
+        :type SecurityGroupRemark: str
+        :param Inbound: Inbound rule
+        :type Inbound: list of SecurityGroupBound
+        :param Outbound: Outbound rule
+        :type Outbound: list of SecurityGroupBound
+        """
+        self.ProjectId = None
+        self.CreateTime = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupRemark = None
+        self.Inbound = None
+        self.Outbound = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.CreateTime = params.get("CreateTime")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupRemark = params.get("SecurityGroupRemark")
+        if params.get("Inbound") is not None:
+            self.Inbound = []
+            for item in params.get("Inbound"):
+                obj = SecurityGroupBound()
+                obj._deserialize(item)
+                self.Inbound.append(obj)
+        if params.get("Outbound") is not None:
+            self.Outbound = []
+            for item in params.get("Outbound"):
+                obj = SecurityGroupBound()
+                obj._deserialize(item)
+                self.Outbound.append(obj)
+
+
+class SecurityGroupBound(AbstractModel):
+    """Security group inbound/outbound rule
+
+    """
+
+    def __init__(self):
+        """
+        :param Action: Policy, which can be `ACCEPT` or `DROP`
+        :type Action: str
+        :param CidrIp: Source IP or source IP range, such as 192.168.0.0/16
+        :type CidrIp: str
+        :param PortRange: Port
+        :type PortRange: str
+        :param IpProtocol: Network protocol. UDP and TCP are supported.
+        :type IpProtocol: str
+        """
+        self.Action = None
+        self.CidrIp = None
+        self.PortRange = None
+        self.IpProtocol = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.CidrIp = params.get("CidrIp")
+        self.PortRange = params.get("PortRange")
+        self.IpProtocol = params.get("IpProtocol")
 
 
 class SlowLogData(AbstractModel):

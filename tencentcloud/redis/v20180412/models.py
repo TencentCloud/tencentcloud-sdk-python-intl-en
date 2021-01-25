@@ -4790,11 +4790,14 @@ class UpgradeInstanceRequest(AbstractModel):
         :type RedisShardNum: int
         :param RedisReplicasNum: Number of replicas. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition
         :type RedisReplicasNum: int
+        :param NodeSet: The information of the replica to be added to a multi-AZ instance, such as replica availability zone and replica type (`NodeType` should be `1`). This parameter is required only when multi-AZ instances add replicas.
+        :type NodeSet: list of RedisNodeInfo
         """
         self.InstanceId = None
         self.MemSize = None
         self.RedisShardNum = None
         self.RedisReplicasNum = None
+        self.NodeSet = None
 
 
     def _deserialize(self, params):
@@ -4802,6 +4805,12 @@ class UpgradeInstanceRequest(AbstractModel):
         self.MemSize = params.get("MemSize")
         self.RedisShardNum = params.get("RedisShardNum")
         self.RedisReplicasNum = params.get("RedisReplicasNum")
+        if params.get("NodeSet") is not None:
+            self.NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = RedisNodeInfo()
+                obj._deserialize(item)
+                self.NodeSet.append(obj)
 
 
 class UpgradeInstanceResponse(AbstractModel):

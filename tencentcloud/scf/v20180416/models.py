@@ -776,7 +776,7 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
         :type FunctionName: str
         :param Qualifier: Function version number
         :type Qualifier: str
-        :param Namespace: Function namespace. Default value: default
+        :param Namespace: Function namespace. Default value: `default`
         :type Namespace: str
         """
         self.FunctionName = None
@@ -816,7 +816,7 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
         """
         :param FunctionName: Name of the function for which to delete the provisioned concurrency
         :type FunctionName: str
-        :param Namespace: Function namespace. Default value: default
+        :param Namespace: Function namespace. Default value: `default`
         :type Namespace: str
         """
         self.FunctionName = None
@@ -2691,7 +2691,7 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
         :type Qualifier: str
         :param VersionProvisionedConcurrencyNum: Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100
         :type VersionProvisionedConcurrencyNum: int
-        :param Namespace: Function namespace. Default value: default
+        :param Namespace: Function namespace. Default value: `default`
         :type Namespace: str
         """
         self.FunctionName = None
@@ -2735,7 +2735,7 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
         :type FunctionName: str
         :param ReservedConcurrencyMem: Reserved concurrency memory of function. Note: the upper limit for the total reserved concurrency memory of the function is the user's total concurrency memory minus 12800
         :type ReservedConcurrencyMem: int
-        :param Namespace: Function namespace. Default value: default
+        :param Namespace: Function namespace. Default value: `default`
         :type Namespace: str
         """
         self.FunctionName = None
@@ -2775,7 +2775,7 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
         """
         :param TotalConcurrencyMem: Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800
         :type TotalConcurrencyMem: int
-        :param Namespace: Namespace. Default value: default
+        :param Namespace: Namespace. Default value: `default`
         :type Namespace: str
         """
         self.TotalConcurrencyMem = None
@@ -3400,7 +3400,7 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
         :type AllocatedProvisionedConcurrencyNum: int
         :param AvailableProvisionedConcurrencyNum: Currently available provisioned concurrency amount.
         :type AvailableProvisionedConcurrencyNum: int
-        :param Status: Provisioned concurrency setting task status. Done: completed; InProgress: in progress; Failed: partially or completely failed.
+        :param Status: Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.
         :type Status: str
         :param StatusReason: Status description of provisioned concurrency setting task.
         :type StatusReason: str

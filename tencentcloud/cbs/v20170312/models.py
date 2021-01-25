@@ -291,7 +291,7 @@ class CreateDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD
+        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD
         :type DiskType: str
         :param DiskChargeType: Cloud disk billing method. POSTPAID_BY_HOUR: pay as you go by hour<br><li>CDCPAID: Billed together with the bound dedicated cluster<br>For information about the pricing of each method, see the cloud disk [Pricing Overview](https://intl.cloud.tencent.com/document/product/362/2413?from_cn_redirect=1).
         :type DiskChargeType: str
@@ -315,6 +315,8 @@ class CreateDisksRequest(AbstractModel):
         :type Tags: list of Tag
         :param Shareable: The default of optional parameter is False. When True is selected, the cloud disk will be created as a shareable cloud disk.
         :type Shareable: bool
+        :param ThroughputPerformance: Extra performance purchased for a cloud disk.<br>This optional parameter is only valid for Tremendous SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD).
+        :type ThroughputPerformance: int
         """
         self.DiskType = None
         self.DiskChargeType = None
@@ -328,6 +330,7 @@ class CreateDisksRequest(AbstractModel):
         self.Encrypt = None
         self.Tags = None
         self.Shareable = None
+        self.ThroughputPerformance = None
 
 
     def _deserialize(self, params):
@@ -352,6 +355,7 @@ class CreateDisksRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Shareable = params.get("Shareable")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
 
 
 class CreateDisksResponse(AbstractModel):
@@ -1441,7 +1445,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: Type of cloud hard disk. Value range: <br><li>Ordinary cloud disk: CLOUD_BASIC <br><li>Premium cloud storage: CLOUD_PREMIUM <br><li>SSD cloud disk: CLOUD_SSD.
+        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD.
         :type DiskType: str
         :param DiskSize: Cloud disk size (in GB). For the value range of the cloud disk sizes, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
         :type DiskSize: int
@@ -1453,6 +1457,8 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
         :type DiskCount: int
         :param ProjectId: ID of project the cloud disk belongs to.
         :type ProjectId: int
+        :param ThroughputPerformance: Extra performance (in MB/sec) purchased for a cloud disk.<br>This parameter is only valid for Enhanced SSD (CLOUD_HSSD) and Tremendous SSD (CLOUD_TSSD).
+        :type ThroughputPerformance: int
         """
         self.DiskType = None
         self.DiskSize = None
@@ -1460,6 +1466,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
         self.DiskChargePrepaid = None
         self.DiskCount = None
         self.ProjectId = None
+        self.ThroughputPerformance = None
 
 
     def _deserialize(self, params):
@@ -1471,6 +1478,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
             self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
         self.DiskCount = params.get("DiskCount")
         self.ProjectId = params.get("ProjectId")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
 
 
 class InquiryPriceCreateDisksResponse(AbstractModel):
@@ -1813,14 +1821,47 @@ class PrepayPrice(AbstractModel):
         :type OriginalPrice: float
         :param DiscountPrice: Discount price of the advanced payment for a prepaid cloud disk or snapshot (in CNY).
         :type DiscountPrice: float
+        :param OriginalPriceHigh: Highly-precise published unit price of a monthly-subscribed cloud disk or a snapshot, in USD.
+        :type OriginalPriceHigh: str
+        :param DiscountPriceHigh: Highly-precise discounted unit price of a monthly-subscribed cloud disk or a snapshot, in USD.
+        :type DiscountPriceHigh: str
+        :param UnitPrice: Published unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UnitPrice: str
+        :param ChargeUnit: Billing unit for pay-as-you-go cloud disks. Valid value: <br><li>HOUR: billed hourly.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ChargeUnit: str
+        :param UnitPriceDiscount: Discount unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UnitPriceDiscount: str
+        :param UnitPriceHigh: Highly-precise published unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UnitPriceHigh: str
+        :param UnitPriceDiscountHigh: Highly-precise discounted unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UnitPriceDiscountHigh: str
         """
         self.OriginalPrice = None
         self.DiscountPrice = None
+        self.OriginalPriceHigh = None
+        self.DiscountPriceHigh = None
+        self.UnitPrice = None
+        self.ChargeUnit = None
+        self.UnitPriceDiscount = None
+        self.UnitPriceHigh = None
+        self.UnitPriceDiscountHigh = None
 
 
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.DiscountPrice = params.get("DiscountPrice")
+        self.OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self.DiscountPriceHigh = params.get("DiscountPriceHigh")
+        self.UnitPrice = params.get("UnitPrice")
+        self.ChargeUnit = params.get("ChargeUnit")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.UnitPriceHigh = params.get("UnitPriceHigh")
+        self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
 
 
 class Price(AbstractModel):
@@ -1845,12 +1886,28 @@ Note: This field may return null, indicating that no valid value was found.
         :param UnitPriceDiscount: Postpaid cloud disk discount price. Unit: CNY.
 Note: This field may return null, indicating that no valid value was found.
         :type UnitPriceDiscount: float
+        :param OriginalPriceHigh: Highly-precise published unit price of a monthly-subscribed cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type OriginalPriceHigh: str
+        :param DiscountPriceHigh: Highly-precise discounted unit price of a monthly-subscribed cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DiscountPriceHigh: str
+        :param UnitPriceHigh: Highly-precise published unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UnitPriceHigh: str
+        :param UnitPriceDiscountHigh: Highly-precise discounted unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UnitPriceDiscountHigh: str
         """
         self.OriginalPrice = None
         self.DiscountPrice = None
         self.UnitPrice = None
         self.ChargeUnit = None
         self.UnitPriceDiscount = None
+        self.OriginalPriceHigh = None
+        self.DiscountPriceHigh = None
+        self.UnitPriceHigh = None
+        self.UnitPriceDiscountHigh = None
 
 
     def _deserialize(self, params):
@@ -1859,6 +1916,10 @@ Note: This field may return null, indicating that no valid value was found.
         self.UnitPrice = params.get("UnitPrice")
         self.ChargeUnit = params.get("ChargeUnit")
         self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self.DiscountPriceHigh = params.get("DiscountPriceHigh")
+        self.UnitPriceHigh = params.get("UnitPriceHigh")
+        self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
 
 
 class ResizeDiskRequest(AbstractModel):
@@ -1937,7 +1998,7 @@ class Snapshot(AbstractModel):
         :type DiskId: str
         :param DiskSize: Size of the cloud disk used to create this snapshot (in GB).
         :type DiskSize: int
-        :param SnapshotState: Status of the snapshot. Value range: <br><li>NORMAL: Normal <br><li>CREATING: Creating <br><li>ROLLBACKING: Rolling backing <br><li>COPYING_FROM_REMOTE: Copying snapshot across regions.
+        :param SnapshotState: Snapshot status. Valid values: <br><li>NORMAL: normal <br><li>CREATING: creating<br><li>ROLLBACKING: rolling back<br><li>COPYING_FROM_REMOTE: cross-region replicating<li>CHECKING_COPIED: verifying the cross-region replicated data<br><li>TORECYCLE: to be repossessed.
         :type SnapshotState: str
         :param SnapshotName: Snapshot name, the user-defined snapshot alias. Call [ModifySnapshotAttribute](https://intl.cloud.tencent.com/document/product/362/15650?from_cn_redirect=1) to modify this field.
         :type SnapshotName: str
@@ -1963,6 +2024,8 @@ class Snapshot(AbstractModel):
         :type SnapshotType: str
         :param ShareReference: Number of snapshots currently shared
         :type ShareReference: int
+        :param TimeStartShare: 
+        :type TimeStartShare: str
         """
         self.SnapshotId = None
         self.Placement = None
@@ -1982,6 +2045,7 @@ class Snapshot(AbstractModel):
         self.ImageCount = None
         self.SnapshotType = None
         self.ShareReference = None
+        self.TimeStartShare = None
 
 
     def _deserialize(self, params):
@@ -2010,6 +2074,7 @@ class Snapshot(AbstractModel):
         self.ImageCount = params.get("ImageCount")
         self.SnapshotType = params.get("SnapshotType")
         self.ShareReference = params.get("ShareReference")
+        self.TimeStartShare = params.get("TimeStartShare")
 
 
 class SnapshotOperationLog(AbstractModel):
