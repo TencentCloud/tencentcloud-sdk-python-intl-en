@@ -612,7 +612,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: Policy group ID.
+        :param GroupId: Policy group ID. If `PolicyId` is specified, you can pass any value to this field.
         :type GroupId: int
         :param Module: Required. The value is fixed to monitor.
         :type Module: str
@@ -620,11 +620,14 @@ class BindingPolicyObjectRequest(AbstractModel):
         :type InstanceGroupId: int
         :param Dimensions: Dimensions of an object to be bound.
         :type Dimensions: list of BindingPolicyObjectDimension
+        :param PolicyId: Alarm policy ID. If this field is used, you can pass any value to `GroupId`.
+        :type PolicyId: str
         """
         self.GroupId = None
         self.Module = None
         self.InstanceGroupId = None
         self.Dimensions = None
+        self.PolicyId = None
 
 
     def _deserialize(self, params):
@@ -637,6 +640,7 @@ class BindingPolicyObjectRequest(AbstractModel):
                 obj = BindingPolicyObjectDimension()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
+        self.PolicyId = params.get("PolicyId")
 
 
 class BindingPolicyObjectResponse(AbstractModel):
@@ -3836,6 +3840,94 @@ Note: This field may return null, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStatisticDataRequest(AbstractModel):
+    """DescribeStatisticData request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: Module, whose value is fixed at `monitor`
+        :type Module: str
+        :param Namespace: Namespace. Valid values: QCE/TKE
+        :type Namespace: str
+        :param MetricNames: Metric name list
+        :type MetricNames: list of str
+        :param Conditions: Dimension condition. The `=` and `in` operators are supported
+        :type Conditions: list of MidQueryCondition
+        :param Period: Statistical granularity in s. Default value: 300
+        :type Period: int
+        :param StartTime: Start time, which is the current time by default, such as 2020-12-08T19:51:23+08:00
+        :type StartTime: str
+        :param EndTime: End time, which is the current time by default, such as 2020-12-08T19:51:23+08:00
+        :type EndTime: str
+        :param GroupBys: `groupBy` by the specified dimension
+        :type GroupBys: list of str
+        """
+        self.Module = None
+        self.Namespace = None
+        self.MetricNames = None
+        self.Conditions = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.GroupBys = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Namespace = params.get("Namespace")
+        self.MetricNames = params.get("MetricNames")
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = MidQueryCondition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.GroupBys = params.get("GroupBys")
+
+
+class DescribeStatisticDataResponse(AbstractModel):
+    """DescribeStatisticData response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: Statistical period
+        :type Period: int
+        :param StartTime: Start time
+        :type StartTime: str
+        :param EndTime: End time
+        :type EndTime: str
+        :param Data: Monitoring data
+        :type Data: list of MetricData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = MetricData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Dimension(AbstractModel):
     """Combination of instance object dimensions
 
@@ -4097,6 +4189,63 @@ class MetricConfig(AbstractModel):
         self.ContinuePeriod = params.get("ContinuePeriod")
 
 
+class MetricData(AbstractModel):
+    """`DescribeMetricData` output parameters
+
+    """
+
+    def __init__(self):
+        """
+        :param MetricName: Metric name
+        :type MetricName: str
+        :param Points: Monitoring data point
+        :type Points: list of MetricDataPoint
+        """
+        self.MetricName = None
+        self.Points = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        if params.get("Points") is not None:
+            self.Points = []
+            for item in params.get("Points"):
+                obj = MetricDataPoint()
+                obj._deserialize(item)
+                self.Points.append(obj)
+
+
+class MetricDataPoint(AbstractModel):
+    """`DescribeMetricData` output parameters
+
+    """
+
+    def __init__(self):
+        """
+        :param Dimensions: Combination of instance object dimensions
+        :type Dimensions: list of Dimension
+        :param Values: Data point list
+        :type Values: list of Point
+        """
+        self.Dimensions = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        if params.get("Dimensions") is not None:
+            self.Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = Dimension()
+                obj._deserialize(item)
+                self.Dimensions.append(obj)
+        if params.get("Values") is not None:
+            self.Values = []
+            for item in params.get("Values"):
+                obj = Point()
+                obj._deserialize(item)
+                self.Values.append(obj)
+
+
 class MetricDatum(AbstractModel):
     """Metric names and values
 
@@ -4194,6 +4343,31 @@ class MetricSet(AbstractModel):
                 obj = DimensionsDesc()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
+
+
+class MidQueryCondition(AbstractModel):
+    """`DescribeMidDimensionValueList` query conditions
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: Dimension
+        :type Key: str
+        :param Operator: Operator. Valid values: eq (equal to), ne (not equal to), in
+        :type Operator: str
+        :param Value: Dimension value. If `Operator` is `eq` or `ne`, only the first element will be used
+        :type Value: list of str
+        """
+        self.Key = None
+        self.Operator = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
 
 
 class ModifyAlarmNoticeRequest(AbstractModel):
@@ -4730,6 +4904,28 @@ class PeriodsSt(AbstractModel):
         self.StatType = params.get("StatType")
 
 
+class Point(AbstractModel):
+    """Monitoring data point
+
+    """
+
+    def __init__(self):
+        """
+        :param Timestamp: Time point when this monitoring data point is generated
+        :type Timestamp: int
+        :param Value: Monitoring data point value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Value: float
+        """
+        self.Timestamp = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.Value = params.get("Value")
+
+
 class PutMonitorDataRequest(AbstractModel):
     """PutMonitorData request structure.
 
@@ -4971,16 +5167,20 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
         """
         :param Module: The value is fixed to monitor.
         :type Module: str
-        :param GroupId: Policy group ID.
+        :param GroupId: Policy group ID. If `PolicyId` is specified, you can pass any value to this field.
         :type GroupId: int
+        :param PolicyId: Alarm policy ID. If this field is used, you can pass any value to `GroupId`.
+        :type PolicyId: str
         """
         self.Module = None
         self.GroupId = None
+        self.PolicyId = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.GroupId = params.get("GroupId")
+        self.PolicyId = params.get("PolicyId")
 
 
 class UnBindingAllPolicyObjectResponse(AbstractModel):
@@ -5009,17 +5209,20 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         """
         :param Module: The value is fixed to monitor.
         :type Module: str
-        :param GroupId: Policy group ID.
+        :param GroupId: Policy group ID. If `PolicyId` is specified, you can pass any value to this field.
         :type GroupId: int
         :param UniqueId: List of unique IDs of the object instances to be deleted. `UniqueId` can be obtained from the output parameter `List` of the [DescribeBindingPolicyObjectList](https://intl.cloud.tencent.com/document/api/248/40570?from_cn_redirect=1) API
         :type UniqueId: list of str
         :param InstanceGroupId: Instance group ID. The UniqueId parameter is invalid if object instances are deleted by instance group.
         :type InstanceGroupId: int
+        :param PolicyId: Alarm policy ID. If this field is used, you can pass any value to `GroupId`.
+        :type PolicyId: str
         """
         self.Module = None
         self.GroupId = None
         self.UniqueId = None
         self.InstanceGroupId = None
+        self.PolicyId = None
 
 
     def _deserialize(self, params):
@@ -5027,6 +5230,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.UniqueId = params.get("UniqueId")
         self.InstanceGroupId = params.get("InstanceGroupId")
+        self.PolicyId = params.get("PolicyId")
 
 
 class UnBindingPolicyObjectResponse(AbstractModel):

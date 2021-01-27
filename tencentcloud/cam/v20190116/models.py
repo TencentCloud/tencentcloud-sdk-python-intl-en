@@ -3106,6 +3106,9 @@ class SubAccountInfo(AbstractModel):
         :type CountryCode: str
         :param Email: Email
         :type Email: str
+        :param CreateTime: Creation time
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CreateTime: str
         """
         self.Uin = None
         self.Name = None
@@ -3115,6 +3118,7 @@ class SubAccountInfo(AbstractModel):
         self.PhoneNum = None
         self.CountryCode = None
         self.Email = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -3126,6 +3130,7 @@ class SubAccountInfo(AbstractModel):
         self.PhoneNum = params.get("PhoneNum")
         self.CountryCode = params.get("CountryCode")
         self.Email = params.get("Email")
+        self.CreateTime = params.get("CreateTime")
 
 
 class UpdateAssumeRolePolicyRequest(AbstractModel):

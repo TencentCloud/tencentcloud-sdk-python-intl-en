@@ -726,6 +726,34 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStatisticData(self, request):
+        """This API is used to query monitoring data by dimension conditions.
+
+        :param request: Request instance for DescribeStatisticData.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeStatisticDataRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeStatisticDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStatisticData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStatisticDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetMonitorData(self, request):
         """This API is used to get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.
         API call rate limit: 20 calls/second (1,200 calls/minute). A single request can obtain the data of up to 10 instances and up to 1,440 data points.
