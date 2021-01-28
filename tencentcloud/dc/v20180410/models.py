@@ -92,6 +92,57 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.AvailablePortType = params.get("AvailablePortType")
 
 
+class ApplyInternetAddressRequest(AbstractModel):
+    """ApplyInternetAddress request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param MaskLen: Mask length of a CIDR block
+        :type MaskLen: int
+        :param AddrType: Address type. Valid values: 0: BGP
+1: China Telecom
+2: China Mobile
+3: China Unicom
+        :type AddrType: int
+        :param AddrProto: Address protocol. Valid values: 0: IPv4
+1: IPv6
+        :type AddrProto: int
+        """
+        self.MaskLen = None
+        self.AddrType = None
+        self.AddrProto = None
+
+
+    def _deserialize(self, params):
+        self.MaskLen = params.get("MaskLen")
+        self.AddrType = params.get("AddrType")
+        self.AddrProto = params.get("AddrProto")
+
+
+class ApplyInternetAddressResponse(AbstractModel):
+    """ApplyInternetAddress response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of the internet tunnel’s public IP address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class BgpPeer(AbstractModel):
     """BGP parameter, including Asn and AuthKey.
 
@@ -592,6 +643,157 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInternetAddressQuotaRequest(AbstractModel):
+    """DescribeInternetAddressQuota request structure.
+
+    """
+
+
+class DescribeInternetAddressQuotaResponse(AbstractModel):
+    """DescribeInternetAddressQuota response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Ipv6PrefixLen: Minimum prefix length allowed for a public IPv6 address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Ipv6PrefixLen: int
+        :param Ipv4BgpQuota: Quota of BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Ipv4BgpQuota: int
+        :param Ipv4OtherQuota: Quota of non-BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Ipv4OtherQuota: int
+        :param Ipv4BgpNum: Used number of BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Ipv4BgpNum: int
+        :param Ipv4OtherNum: Used number of non-BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Ipv4OtherNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Ipv6PrefixLen = None
+        self.Ipv4BgpQuota = None
+        self.Ipv4OtherQuota = None
+        self.Ipv4BgpNum = None
+        self.Ipv4OtherNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ipv6PrefixLen = params.get("Ipv6PrefixLen")
+        self.Ipv4BgpQuota = params.get("Ipv4BgpQuota")
+        self.Ipv4OtherQuota = params.get("Ipv4OtherQuota")
+        self.Ipv4BgpNum = params.get("Ipv4BgpNum")
+        self.Ipv4OtherNum = params.get("Ipv4OtherNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInternetAddressRequest(AbstractModel):
+    """DescribeInternetAddress request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Filters: Filter conditions:
+<li>AddrType, address type. Valid values: 0: BGP; 1: China Telecom; 2: China Mobile; 3: China Unicom</li>
+<li>AddrProto, address protocol. Valid values: 0: IPv4; 1: IPv6</li>
+<li>Status, address status. Valid values: 0: in use; 1: disabled; 2: returned</li>
+<li>Subnet, public IP address array</li>
+<InstanceIds>Public IP address ID array</li>
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeInternetAddressResponse(AbstractModel):
+    """DescribeInternetAddress response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of public IP addresses for internet tunnels
+        :type TotalCount: int
+        :param Subnets: List of the public IP addresses for internet tunnels
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Subnets: list of InternetAddressDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Subnets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Subnets") is not None:
+            self.Subnets = []
+            for item in params.get("Subnets"):
+                obj = InternetAddressDetail()
+                obj._deserialize(item)
+                self.Subnets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInternetAddressStatisticsRequest(AbstractModel):
+    """DescribeInternetAddressStatistics request structure.
+
+    """
+
+
+class DescribeInternetAddressStatisticsResponse(AbstractModel):
+    """DescribeInternetAddressStatistics response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of public IP address statistics for internet tunnels
+        :type TotalCount: int
+        :param InternetAddressStatistics: List of the public IP address statistics for internet tunnels
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type InternetAddressStatistics: list of InternetAddressStatistics
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InternetAddressStatistics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InternetAddressStatistics") is not None:
+            self.InternetAddressStatistics = []
+            for item in params.get("InternetAddressStatistics"):
+                obj = InternetAddressStatistics()
+                obj._deserialize(item)
+                self.InternetAddressStatistics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DirectConnect(AbstractModel):
     """Connection information list.
 
@@ -911,6 +1113,74 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.CloudAttachId = params.get("CloudAttachId")
 
 
+class DisableInternetAddressRequest(AbstractModel):
+    """DisableInternetAddress request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of the internet tunnel’s public IP address
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DisableInternetAddressResponse(AbstractModel):
+    """DisableInternetAddress response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableInternetAddressRequest(AbstractModel):
+    """EnableInternetAddress request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of the internet tunnel’s public IP address
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class EnableInternetAddressResponse(AbstractModel):
+    """EnableInternetAddress response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """Used for conditional filtering queries.
 
@@ -930,6 +1200,106 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+
+
+class InternetAddressDetail(AbstractModel):
+    """Internet tunnel’s IP address details
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Internet tunnel’s IP address ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param Subnet: Internet tunnel’s network address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Subnet: str
+        :param MaskLen: Mask length of a network address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MaskLen: int
+        :param AddrType: Address type. Valid values: 0: BGP
+1: China Telecom
+2: China Mobile
+3: China Unicom
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AddrType: int
+        :param Status: Address status. Valid values: 0: in use
+1: disabled
+2: returned
+        :type Status: int
+        :param ApplyTime: Applied at
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ApplyTime: str
+        :param StopTime: Disabled at
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type StopTime: str
+        :param ReleaseTime: Returned at
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ReleaseTime: str
+        :param Region: Region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Region: str
+        :param AppId: User ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AppId: int
+        :param AddrProto: Address protocol. Valid values: 0: IPv4; 1: IPv6
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AddrProto: int
+        :param ReserveTime: Retention period of a released IP address, in days
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ReserveTime: int
+        """
+        self.InstanceId = None
+        self.Subnet = None
+        self.MaskLen = None
+        self.AddrType = None
+        self.Status = None
+        self.ApplyTime = None
+        self.StopTime = None
+        self.ReleaseTime = None
+        self.Region = None
+        self.AppId = None
+        self.AddrProto = None
+        self.ReserveTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Subnet = params.get("Subnet")
+        self.MaskLen = params.get("MaskLen")
+        self.AddrType = params.get("AddrType")
+        self.Status = params.get("Status")
+        self.ApplyTime = params.get("ApplyTime")
+        self.StopTime = params.get("StopTime")
+        self.ReleaseTime = params.get("ReleaseTime")
+        self.Region = params.get("Region")
+        self.AppId = params.get("AppId")
+        self.AddrProto = params.get("AddrProto")
+        self.ReserveTime = params.get("ReserveTime")
+
+
+class InternetAddressStatistics(AbstractModel):
+    """Public IP address statistics of internet tunnels
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: Region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Region: str
+        :param SubnetNum: Number of public IP addresses for internet tunnels
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SubnetNum: int
+        """
+        self.Region = None
+        self.SubnetNum = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.SubnetNum = params.get("SubnetNum")
 
 
 class ModifyDirectConnectAttributeRequest(AbstractModel):
@@ -1098,6 +1468,40 @@ class RejectDirectConnectTunnelRequest(AbstractModel):
 
 class RejectDirectConnectTunnelResponse(AbstractModel):
     """RejectDirectConnectTunnel response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ReleaseInternetAddressRequest(AbstractModel):
+    """ReleaseInternetAddress request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of the internet tunnel’s public IP address
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class ReleaseInternetAddressResponse(AbstractModel):
+    """ReleaseInternetAddress response structure.
 
     """
 

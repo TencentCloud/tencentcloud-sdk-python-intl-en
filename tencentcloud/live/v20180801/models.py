@@ -509,9 +509,9 @@ class CertInfo(AbstractModel):
         :type CreateTime: str
         :param HttpsCrt: Certificate content.
         :type HttpsCrt: str
-        :param CertType: Certificate type:
-0: Tencent Cloud-hosted certificate.
-1: user-added certificate.
+        :param CertType: Certificate type.
+0: User-added certificate.
+1: Tencent Cloud-hosted certificate.
         :type CertType: int
         :param CertExpireTime: Certificate expiration time in UTC format.
         :type CertExpireTime: str
@@ -1490,9 +1490,9 @@ Note: this parameter is unsupported now.
         :param AudioBitrate: Audio bitrate. Default value: 0.
 Value range: 0-500.
         :type AudioBitrate: int
-        :param Vcodec: Video codec. Valid values: h264 (default), h265, origin
+        :param Vcodec: Video codec. Valid values: h264, h265, origin (default).
 
-origin: original codec as the output codec
+origin: original codec as the output codec.
         :type Vcodec: str
         :param Description: Template description.
         :type Description: str
@@ -2345,7 +2345,7 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param QueryTime: Query time accurate down to the minute in the format of `yyyy-mm-dd HH:MM:SS`. Data for the last month can be queried. The data has a delay of about 5 minutes; therefore, if you want to query real-time data, we recommend you pass in a point in time 5 minutes ago.
+        :param QueryTime: Query time point accurate to the minute. You can query data within the last month. As there is a 5-minute delay in the data, you're advised to pass in a time point 5 minutes earlier than needed. Format: yyyy-mm-dd HH:MM:00. As the accuracy is to the minute, please set the value of second to `00`.
         :type QueryTime: str
         """
         self.QueryTime = None
@@ -3757,7 +3757,7 @@ Default value: 1.
         :type PageNum: int
         :param PageSize: Number of entries per page.
 Maximum value: 100.
-Value range: any integer between 1 and 100.
+Valid values: integers between 10 and 100.
 Default value: 10.
         :type PageSize: int
         :param StreamName: Stream name, which supports fuzzy match.
@@ -4393,7 +4393,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProIspInfoList: Information of 4xx or 5xx error codes by district and ISP.
+        :param ProIspInfoList: Information of error codes starting with 2, 3, 4, or 5 by district and ISP.
         :type ProIspInfoList: list of ProIspPlayCodeDataInfo
         :param TotalCodeAll: Total occurrences of all status codes.
         :type TotalCodeAll: int
@@ -4595,6 +4595,10 @@ Note: `EndTime` and `StartTime` only support querying data for the last day.
         :type IspNames: list of str
         :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
         :type MainlandOrOversea: str
+        :param IpType: IP type:
+"Ipv6": IPv6 data
+Data of all IPs will be returned if this parameter is left empty.
+        :type IpType: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -4604,6 +4608,7 @@ Note: `EndTime` and `StartTime` only support querying data for the last day.
         self.ProvinceNames = None
         self.IspNames = None
         self.MainlandOrOversea = None
+        self.IpType = None
 
 
     def _deserialize(self, params):
@@ -4615,6 +4620,7 @@ Note: `EndTime` and `StartTime` only support querying data for the last day.
         self.ProvinceNames = params.get("ProvinceNames")
         self.IspNames = params.get("IspNames")
         self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.IpType = params.get("IpType")
 
 
 class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
@@ -4787,8 +4793,8 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         """
         :param StartTime: Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
         :type StartTime: str
-        :param EndTime: End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
-The end time and start time must be on the same day. Data in the last 3 days can be queried.
+        :param EndTime: End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.
+The difference between the start time and end time cannot be greater than 24 hours. Data in the last 30 days can be queried.
         :type EndTime: str
         :param PlayDomain: Playback domain name,
 If this parameter is left empty, data of live streams of all playback domain names will be queried.
@@ -4988,6 +4994,64 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
             self.DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = ClientIpPlaySumInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUploadStreamNumsRequest(AbstractModel):
+    """DescribeUploadStreamNums request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
+        :type StartTime: str
+        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 31 days can be queried.
+        :type EndTime: str
+        :param Domains: LVB domain names. If this parameter is left empty, data of all domain names will be queried.
+        :type Domains: list of str
+        :param Granularity: Time granularity of the data. Valid values:
+5: 5-minute granularity (the query period is up to 1 day).
+1440: 1-day granularity (the query period is up to 1 month).
+Default value: 5.
+        :type Granularity: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Domains = None
+        self.Granularity = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Domains = params.get("Domains")
+        self.Granularity = params.get("Granularity")
+
+
+class DescribeUploadStreamNumsResponse(AbstractModel):
+    """DescribeUploadStreamNums response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: Detailed data.
+        :type DataInfoList: list of ConcurrentRecordStreamNum
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = ConcurrentRecordStreamNum()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")
@@ -6105,9 +6169,9 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
         """
         :param TemplateId: Template ID.
         :type TemplateId: int
-        :param Vcodec: Video codec. Valid values: h264 (default), h265, origin
+        :param Vcodec: Video codec. Valid values: h264, h265, origin (default).
 
-origin: original codec as the output codec
+origin: original codec as the output codec.
         :type Vcodec: str
         :param Acodec: Audio codec. Defaut value: aac.
 Note: this parameter is unsupported now.

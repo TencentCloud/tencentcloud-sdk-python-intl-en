@@ -2286,6 +2286,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUploadStreamNums(self, request):
+        """This API is used to query the number of LVB upstream channels.
+
+        :param request: Request instance for DescribeUploadStreamNums.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeUploadStreamNumsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeUploadStreamNumsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUploadStreamNums", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUploadStreamNumsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVisitTopSumInfoList(self, request):
         """This API is used to query the information of the top n domain names or stream IDs in a certain period of time (top 1,000 is supported currently).
 

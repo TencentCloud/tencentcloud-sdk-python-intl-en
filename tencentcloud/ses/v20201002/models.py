@@ -499,6 +499,65 @@ class GetEmailTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetSendEmailStatusRequest(AbstractModel):
+    """GetSendEmailStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestDate: Sent date. This parameter is required. You can only query the sending status for a single date at a time.
+        :type RequestDate: str
+        :param Offset: Offset. Default value: `0`
+        :type Offset: int
+        :param Limit: Maximum number of pulled entries. The maximum value is `100`.
+        :type Limit: int
+        :param MessageId: `MessageId` field returned by the `SendMail` API
+        :type MessageId: str
+        :param ToEmailAddress: Recipient email address
+        :type ToEmailAddress: str
+        """
+        self.RequestDate = None
+        self.Offset = None
+        self.Limit = None
+        self.MessageId = None
+        self.ToEmailAddress = None
+
+
+    def _deserialize(self, params):
+        self.RequestDate = params.get("RequestDate")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.MessageId = params.get("MessageId")
+        self.ToEmailAddress = params.get("ToEmailAddress")
+
+
+class GetSendEmailStatusResponse(AbstractModel):
+    """GetSendEmailStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EmailStatusList: Email sending status list
+        :type EmailStatusList: list of SendEmailStatus
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EmailStatusList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EmailStatusList") is not None:
+            self.EmailStatusList = []
+            for item in params.get("EmailStatusList"):
+                obj = SendEmailStatus()
+                obj._deserialize(item)
+                self.EmailStatusList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetStatisticsReportRequest(AbstractModel):
     """GetStatisticsReport request structure.
 
@@ -754,7 +813,7 @@ class SendEmailRequest(AbstractModel):
 sender &lt;email address&gt;. For example: 
 Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
         :type FromEmailAddress: str
-        :param Destination: Recipient address.
+        :param Destination: Recipient email addresses. You can send an email to up to 50 recipients at a time.
         :type Destination: list of str
         :param Subject: Email subject.
         :type Subject: str
@@ -814,6 +873,94 @@ class SendEmailResponse(AbstractModel):
     def _deserialize(self, params):
         self.MessageId = params.get("MessageId")
         self.RequestId = params.get("RequestId")
+
+
+class SendEmailStatus(AbstractModel):
+    """Describes the email sending status.
+
+    """
+
+    def __init__(self):
+        """
+        :param MessageId: `MessageId` field returned by the `SendEmail` API
+        :type MessageId: str
+        :param ToEmailAddress: Recipient email address
+        :type ToEmailAddress: str
+        :param FromEmailAddress: Sender email address
+        :type FromEmailAddress: str
+        :param SendStatus: Tencent Cloud processing status:
+0: successful.
+1001: internal system exception.
+1002: internal system exception.
+1003: internal system exception.
+1003: internal system exception.
+1004: email sending timeout.
+1005: internal system exception.
+1006: you have sent too many emails to the same address in a short period.
+1007: the email address is in the blocklist.
+1009: internal system exception.
+1010: daily email sending limit exceeded.
+1011: no permission to send custom content. Use a template.
+2001: no results found.
+3007: invalid template ID or unavailable template.
+3008: template status exception.
+3009: no permission to use this template.
+3010: the format of the `TemplateData` field is incorrect. 
+3014: unable to send the email because the sender domain is not verified.
+3020: the recipient email address is in the blocklist.
+3024: failed to pre-check the email address format.
+3030: email sending is restricted temporarily due to high bounce rate.
+3033: the account has insufficient balance or overdue payment.
+        :type SendStatus: int
+        :param DeliverStatus: Recipient processing status:
+0: Tencent Cloud has accepted the request and added it to the send queue.
+1: the email is delivered successfully, `DeliverTime` indicates the time when the email is delivered successfully.
+2: the email is discarded. `DeliverMessage` indicates the reason for discarding.
+3: the recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.
+8: the email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.
+        :type DeliverStatus: int
+        :param DeliverMessage: Description of the recipient processing status
+        :type DeliverMessage: str
+        :param RequestTime: Timestamp when the request arrives at Tencent Cloud
+        :type RequestTime: int
+        :param DeliverTime: Timestamp when Tencent Cloud delivers the email
+        :type DeliverTime: int
+        :param UserOpened: Whether the recipient has opened the email
+        :type UserOpened: bool
+        :param UserClicked: Whether the recipient has clicked the links in the email
+        :type UserClicked: bool
+        :param UserUnsubscribed: Whether the recipient has unsubscribed from emails sent by the sender
+        :type UserUnsubscribed: bool
+        :param UserComplainted: Whether the recipient has reported the sender
+        :type UserComplainted: bool
+        """
+        self.MessageId = None
+        self.ToEmailAddress = None
+        self.FromEmailAddress = None
+        self.SendStatus = None
+        self.DeliverStatus = None
+        self.DeliverMessage = None
+        self.RequestTime = None
+        self.DeliverTime = None
+        self.UserOpened = None
+        self.UserClicked = None
+        self.UserUnsubscribed = None
+        self.UserComplainted = None
+
+
+    def _deserialize(self, params):
+        self.MessageId = params.get("MessageId")
+        self.ToEmailAddress = params.get("ToEmailAddress")
+        self.FromEmailAddress = params.get("FromEmailAddress")
+        self.SendStatus = params.get("SendStatus")
+        self.DeliverStatus = params.get("DeliverStatus")
+        self.DeliverMessage = params.get("DeliverMessage")
+        self.RequestTime = params.get("RequestTime")
+        self.DeliverTime = params.get("DeliverTime")
+        self.UserOpened = params.get("UserOpened")
+        self.UserClicked = params.get("UserClicked")
+        self.UserUnsubscribed = params.get("UserUnsubscribed")
+        self.UserComplainted = params.get("UserComplainted")
 
 
 class Simple(AbstractModel):

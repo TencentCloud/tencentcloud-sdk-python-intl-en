@@ -23,10 +23,8 @@ class BankCardOCRRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageBase64: Base64-encoded value of image.
-Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
-Supported image size: the downloaded image cannot exceed 7 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-Either the `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
+        :param ImageBase64: Base64-encoded value of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
         :type ImageBase64: str
         :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
@@ -34,15 +32,15 @@ Supported image size: the downloaded image cannot exceed 7 MB after being Base64
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
-        :param RetBorderCutImage: 
+        :param RetBorderCutImage: Whether to return the bank card image data after preprocessing (precise cropping and alignment). Default value: `false`
         :type RetBorderCutImage: bool
-        :param RetCardNoImage: 
+        :param RetCardNoImage: Whether to return the card number image data after slicing. Default value: `false`
         :type RetCardNoImage: bool
-        :param EnableCopyCheck: 
+        :param EnableCopyCheck: Whether to enable photocopy check. If the input image is a bank card photocopy, an alarm will be returned. Default value: `false`
         :type EnableCopyCheck: bool
-        :param EnableReshootCheck: 
+        :param EnableReshootCheck: Whether to enable photograph check. If the input image is a bank card photograph, an alarm will be returned. Default value: `false`
         :type EnableReshootCheck: bool
-        :param EnableBorderCheck: 
+        :param EnableBorderCheck: Whether to enable obscured border check. If the input image is a bank card with obscured border, an alarm will be returned. Default value: `false`
         :type EnableBorderCheck: bool
         """
         self.ImageBase64 = None
@@ -75,14 +73,38 @@ class BankCardOCRResponse(AbstractModel):
         :type CardNo: str
         :param BankInfo: Bank information
         :type BankInfo: str
-        :param ValidDate: Expiration date
+        :param ValidDate: Expiration date. Format: 07/2023
         :type ValidDate: str
+        :param CardType: Card type
+        :type CardType: str
+        :param CardName: Card name
+        :type CardName: str
+        :param BorderCutImage: Sliced image data
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BorderCutImage: str
+        :param CardNoImage: Card number image data
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CardNoImage: str
+        :param WarningCode: Warning code:
+-9110: the bank card date is invalid. 
+-9111: the bank card border is incomplete. 
+-9112: the bank card image is reflective.
+-9113: the bank card image is a photocopy.
+-9114: the bank card image is a photograph.
+Multiple warning codes may be returned at a time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type WarningCode: list of int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.CardNo = None
         self.BankInfo = None
         self.ValidDate = None
+        self.CardType = None
+        self.CardName = None
+        self.BorderCutImage = None
+        self.CardNoImage = None
+        self.WarningCode = None
         self.RequestId = None
 
 
@@ -90,6 +112,11 @@ class BankCardOCRResponse(AbstractModel):
         self.CardNo = params.get("CardNo")
         self.BankInfo = params.get("BankInfo")
         self.ValidDate = params.get("ValidDate")
+        self.CardType = params.get("CardType")
+        self.CardName = params.get("CardName")
+        self.BorderCutImage = params.get("BorderCutImage")
+        self.CardNoImage = params.get("CardNoImage")
+        self.WarningCode = params.get("WarningCode")
         self.RequestId = params.get("RequestId")
 
 
