@@ -1259,6 +1259,35 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SignByAsymmetricKey(self, request):
+        """This API is used to generate a signature with an asymmetric key.
+        Note: only the keys with `KeyUsage= ASYMMETRIC_SIGN_VERIFY_SM2` can be used for signature generation.
+
+        :param request: Request instance for SignByAsymmetricKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.SignByAsymmetricKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.SignByAsymmetricKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SignByAsymmetricKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SignByAsymmetricKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnbindCloudResource(self, request):
         """This API is used to unbind a key with a Tencent Cloud resource, indicating that the Tencent Cloud resource will not use the key any longer.
 
@@ -1329,6 +1358,34 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateKeyDescriptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def VerifyByAsymmetricKey(self, request):
+        """This API is used to verify a signature with an asymmetric key.
+
+        :param request: Request instance for VerifyByAsymmetricKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.VerifyByAsymmetricKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.VerifyByAsymmetricKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("VerifyByAsymmetricKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.VerifyByAsymmetricKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

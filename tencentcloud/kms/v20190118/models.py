@@ -292,7 +292,7 @@ class CreateKeyRequest(AbstractModel):
         :type Alias: str
         :param Description: CMK description of up to 1,024 bytes in length
         :type Description: str
-        :param KeyUsage: Key purpose. The default value is `ENCRYPT_DECRYPT` (creating a symmetric key for encryption and decryption). Other valid values include `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption) and `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption).
+        :param KeyUsage: Key purpose. Valid values: `ENCRYPT_DECRYPT` (default value; creating a symmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption), and `ASYMMETRIC_SIGN_VERIFY_SM2` (creating an SM2 asymmetric key for signature verification).
         :type KeyUsage: str
         :param Type: Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.
         :type Type: int
@@ -1709,7 +1709,7 @@ class KeyMetadata(AbstractModel):
         :type Description: str
         :param KeyState: CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport, Archived.
         :type KeyState: str
-        :param KeyUsage: CMK purpose. Valid values: ENCRYPT_DECRYPT, ASYMMETRIC_DECRYPT_RSA_2048, ASYMMETRIC_DECRYPT_SM2
+        :param KeyUsage: CMK purpose. Valid values: `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.
         :type KeyUsage: str
         :param Type: CMK type. 2: FIPS-compliant; 4: SM-CRYPTO
         :type Type: int
@@ -1784,11 +1784,14 @@ class ListAlgorithmsResponse(AbstractModel):
         :type SymmetricAlgorithms: list of AlgorithmInfo
         :param AsymmetricAlgorithms: Asymmetric encryption algorithms supported in this region
         :type AsymmetricAlgorithms: list of AlgorithmInfo
+        :param AsymmetricSignVerifyAlgorithms: Asymmetric signature verification algorithms supported in the current region
+        :type AsymmetricSignVerifyAlgorithms: list of AlgorithmInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.SymmetricAlgorithms = None
         self.AsymmetricAlgorithms = None
+        self.AsymmetricSignVerifyAlgorithms = None
         self.RequestId = None
 
 
@@ -1805,6 +1808,12 @@ class ListAlgorithmsResponse(AbstractModel):
                 obj = AlgorithmInfo()
                 obj._deserialize(item)
                 self.AsymmetricAlgorithms.append(obj)
+        if params.get("AsymmetricSignVerifyAlgorithms") is not None:
+            self.AsymmetricSignVerifyAlgorithms = []
+            for item in params.get("AsymmetricSignVerifyAlgorithms"):
+                obj = AlgorithmInfo()
+                obj._deserialize(item)
+                self.AsymmetricSignVerifyAlgorithms.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1829,7 +1838,7 @@ class ListKeyDetailRequest(AbstractModel):
         :type SearchKeyAlias: str
         :param Origin: Filters by CMK type. "TENCENT_KMS" indicates to filter CMKs whose key materials are created by KMS; "EXTERNAL" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; "ALL" or empty indicates to filter CMKs of both types. This value is case-sensitive.
         :type Origin: str
-        :param KeyUsage: Filter by `KeyUsage` of CMKs. Valid values: `ALL` (filter all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`.
+        :param KeyUsage: Filter by the `KeyUsage` field of CMKs. Valid values: `ALL` (filtering all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.
         :type KeyUsage: str
         :param TagFilters: Tag filter condition
         :type TagFilters: list of TagFilter
@@ -2099,6 +2108,56 @@ class ScheduleKeyDeletionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SignByAsymmetricKeyRequest(AbstractModel):
+    """SignByAsymmetricKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Algorithm: Signature algorithm. Supported algorithm: SM2DSA.
+        :type Algorithm: str
+        :param Message: The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.
+        :type Message: str
+        :param KeyId: Unique ID of a key
+        :type KeyId: str
+        :param MessageType: Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
+        :type MessageType: str
+        """
+        self.Algorithm = None
+        self.Message = None
+        self.KeyId = None
+        self.MessageType = None
+
+
+    def _deserialize(self, params):
+        self.Algorithm = params.get("Algorithm")
+        self.Message = params.get("Message")
+        self.KeyId = params.get("KeyId")
+        self.MessageType = params.get("MessageType")
+
+
+class SignByAsymmetricKeyResponse(AbstractModel):
+    """SignByAsymmetricKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Signature: Base64-encoded signature
+        :type Signature: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Signature = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Signature = params.get("Signature")
+        self.RequestId = params.get("RequestId")
+
+
 class Tag(AbstractModel):
     """Tag key and tag value
 
@@ -2256,6 +2315,60 @@ class UpdateKeyDescriptionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class VerifyByAsymmetricKeyRequest(AbstractModel):
+    """VerifyByAsymmetricKey request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: Unique ID of a key
+        :type KeyId: str
+        :param SignatureValue: Signature value, which is generated by calling the KMS signature API.
+        :type SignatureValue: str
+        :param Message: The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.
+        :type Message: str
+        :param Algorithm: Signature algorithm. Supported algorithm: SM2DSA.
+        :type Algorithm: str
+        :param MessageType: Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
+        :type MessageType: str
+        """
+        self.KeyId = None
+        self.SignatureValue = None
+        self.Message = None
+        self.Algorithm = None
+        self.MessageType = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.SignatureValue = params.get("SignatureValue")
+        self.Message = params.get("Message")
+        self.Algorithm = params.get("Algorithm")
+        self.MessageType = params.get("MessageType")
+
+
+class VerifyByAsymmetricKeyResponse(AbstractModel):
+    """VerifyByAsymmetricKey response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SignatureValid: Whether the signature is valid.
+        :type SignatureValid: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SignatureValid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SignatureValid = params.get("SignatureValid")
         self.RequestId = params.get("RequestId")
 
 

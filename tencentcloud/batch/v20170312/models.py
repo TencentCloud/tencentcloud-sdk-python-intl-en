@@ -627,7 +627,7 @@ class DataDisk(AbstractModel):
         """
         :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
         :type DiskSize: int
-        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
+        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
         :type DiskType: str
         :param DiskId: Data disk ID. Data disks of the type `LOCAL_BASIC` or `LOCAL_SSD` do not have IDs and do not support this parameter.
         :type DiskId: str
@@ -653,6 +653,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 Currently, this parameter is only used in the `RunInstances` API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type KmsKeyId: str
+        :param ThroughputPerformance: Cloud disk performance, in MB/s
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ThroughputPerformance: int
         """
         self.DiskSize = None
         self.DiskType = None
@@ -661,6 +664,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SnapshotId = None
         self.Encrypt = None
         self.KmsKeyId = None
+        self.ThroughputPerformance = None
 
 
     def _deserialize(self, params):
@@ -671,6 +675,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SnapshotId = params.get("SnapshotId")
         self.Encrypt = params.get("Encrypt")
         self.KmsKeyId = params.get("KmsKeyId")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
 
 
 class DeleteComputeEnvRequest(AbstractModel):
@@ -2469,6 +2474,42 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param UnitPriceDiscountThirdStep: Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPriceDiscountThirdStep: float
+        :param OriginalPriceThreeYear: Original 3-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type OriginalPriceThreeYear: float
+        :param DiscountPriceThreeYear: Discounted 3-year upfront payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountPriceThreeYear: float
+        :param DiscountThreeYear: Discount for 3-year upfront payment. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountThreeYear: float
+        :param OriginalPriceFiveYear: Original 5-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type OriginalPriceFiveYear: float
+        :param DiscountPriceFiveYear: Discounted 5-year upfront payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountPriceFiveYear: float
+        :param DiscountFiveYear: Discount for 5-year upfront payment. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountFiveYear: float
+        :param OriginalPriceOneYear: Original 1-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type OriginalPriceOneYear: float
+        :param DiscountPriceOneYear: Discounted 1-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountPriceOneYear: float
+        :param DiscountOneYear: Discount for 1-year upfront payment. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :type DiscountOneYear: float
         """
         self.UnitPrice = None
         self.ChargeUnit = None
@@ -2480,6 +2521,15 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.UnitPriceDiscountSecondStep = None
         self.UnitPriceThirdStep = None
         self.UnitPriceDiscountThirdStep = None
+        self.OriginalPriceThreeYear = None
+        self.DiscountPriceThreeYear = None
+        self.DiscountThreeYear = None
+        self.OriginalPriceFiveYear = None
+        self.DiscountPriceFiveYear = None
+        self.DiscountFiveYear = None
+        self.OriginalPriceOneYear = None
+        self.DiscountPriceOneYear = None
+        self.DiscountOneYear = None
 
 
     def _deserialize(self, params):
@@ -2493,6 +2543,15 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.UnitPriceDiscountSecondStep = params.get("UnitPriceDiscountSecondStep")
         self.UnitPriceThirdStep = params.get("UnitPriceThirdStep")
         self.UnitPriceDiscountThirdStep = params.get("UnitPriceDiscountThirdStep")
+        self.OriginalPriceThreeYear = params.get("OriginalPriceThreeYear")
+        self.DiscountPriceThreeYear = params.get("DiscountPriceThreeYear")
+        self.DiscountThreeYear = params.get("DiscountThreeYear")
+        self.OriginalPriceFiveYear = params.get("OriginalPriceFiveYear")
+        self.DiscountPriceFiveYear = params.get("DiscountPriceFiveYear")
+        self.DiscountFiveYear = params.get("DiscountFiveYear")
+        self.OriginalPriceOneYear = params.get("OriginalPriceOneYear")
+        self.DiscountPriceOneYear = params.get("DiscountPriceOneYear")
+        self.DiscountOneYear = params.get("DiscountOneYear")
 
 
 class Job(AbstractModel):
@@ -2974,7 +3033,7 @@ class Placement(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: The ID of [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) where the instance locates. It can obtained in the `Zone` field returned by [DescribeZones](https://intl.cloud.tencent.com/document/213/15707?from_cn_redirect=1) API.
+        :param Zone: ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain the ID in the returned `Zone` field.
         :type Zone: str
         :param ProjectId: ID of the project to which the instance belongs. To obtain the project IDs, you can call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) and look for the `projectId` fields in the response. If this parameter is not specified, the default project will be used.
         :type ProjectId: int
