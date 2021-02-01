@@ -1336,12 +1336,15 @@ class IpStatus(AbstractModel):
 online: the node is online and scheduling normally
 offline: the node is offline
         :type Status: str
+        :param CreateTime: Node IP creation time
+        :type CreateTime: str
         """
         self.Ip = None
         self.District = None
         self.Isp = None
         self.City = None
         self.Status = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -1350,6 +1353,7 @@ offline: the node is offline
         self.Isp = params.get("Isp")
         self.City = params.get("City")
         self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
 
 
 class Origin(AbstractModel):
