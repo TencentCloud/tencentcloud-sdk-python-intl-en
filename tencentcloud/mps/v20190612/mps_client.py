@@ -195,7 +195,7 @@ class MpsClient(AbstractClient):
 
 
     def CreatePersonSample(self, request):
-        """This API is used to create material samples for video processing operations such as content recognition and detection of inappropriate information with the help of technologies such as facial feature positioning.
+        """This API is used to create image samples for video processing operations such as content recognition and inappropriate information detection with the help of technologies such as facial feature positioning.
 
         :param request: Request instance for CreatePersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreatePersonSampleRequest`
@@ -335,7 +335,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateWordSamples(self, request):
-        """This API is used to create keyword samples in batches for video processing operations such as content recognition and detection of inappropriate information with the help of the OCR and ASR technologies.
+        """This API is used to create keyword samples in batches for video processing operations such as content recognition and inappropriate information detection with the help of the OCR and ASR technologies.
 
         :param request: Request instance for CreateWordSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateWordSamplesRequest`
@@ -571,7 +571,7 @@ class MpsClient(AbstractClient):
 
 
     def DeletePersonSample(self, request):
-        """This API is used to delete the material samples that belong to a material ID.
+        """This API is used to delete image samples by image ID.
 
         :param request: Request instance for DeletePersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeletePersonSampleRequest`
@@ -879,7 +879,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeContentReviewTemplates(self, request):
-        """This API is used to get the list of content recognition templates using their unique ID. The returned result includes all custom templates that meet the conditions as well as preset content recognition templates.
+        """This API is used to get the list of intelligent content recognition templates using their unique ID. The returned result includes all custom templates that meet the conditions as well as preset intelligent content recognition templates.
 
         :param request: Request instance for DescribeContentReviewTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeContentReviewTemplatesRequest`
@@ -963,7 +963,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribePersonSamples(self, request):
-        """This API is used to query the information of material samples. It supports paginated queries by material ID, name, and tag.
+        """This API is used to query the information of image samples. It supports paginated queries by image ID, name, and tag.
 
         :param request: Request instance for DescribePersonSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribePersonSamplesRequest`
@@ -1531,7 +1531,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyPersonSample(self, request):
-        """This API is used to modify material samples by material ID. You can use it to modify the name and description of a material sample and add/delete/reset facial features or tags. There must be at least one image left after the deletion of facial features; otherwise, please reset instead of delete the facial features.
+        """This API is used to modify image samples by image ID. You can use it to modify the name and description of an image sample and add/delete/reset facial features or tags. There must be at least one image left after the deletion of facial features; otherwise, please reset instead of delete the facial features.
 
         :param request: Request instance for ModifyPersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyPersonSampleRequest`

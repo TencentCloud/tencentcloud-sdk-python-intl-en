@@ -2258,7 +2258,10 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         :type Status: str
         :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :param ErrCode: Error code. 0: success; other values: failure.
+<li>40000: invalid input parameter. Please check it;</li>
+<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
+<li>70000: internal service error. Please try again.</li>
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2299,7 +2302,10 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         :type Status: str
         :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :param ErrCode: Error code. 0: success; other values: failure.
+<li>40000: invalid input parameter. Please check it;</li>
+<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
+<li>70000: internal service error. Please try again.</li>
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -2340,7 +2346,10 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :type Status: str
         :param ErrCodeExt: Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
         :type ErrCodeExt: str
-        :param ErrCode: Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :param ErrCode: Error code. 0: success; other values: failure.
+<li>40000: invalid input parameter. Please check it;</li>
+<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
+<li>70000: internal service error. Please try again.</li>
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
@@ -3557,22 +3566,22 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters.
+        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters
         :type Name: str
-        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters.
+        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters
         :type Comment: str
-        :param PornConfigure: Control parameter for offensive content
+        :param PornConfigure: Control parameter for porn information
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
-        :param TerrorismConfigure: Control parameter for insecure content
+        :param TerrorismConfigure: Control parameter for terrorism information
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
-        :param PoliticalConfigure: Control parameter for inappropriate content
+        :param PoliticalConfigure: Control parameter for politically sensitive information
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
         :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
 Note: this parameter is not supported yet.
         :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
-        :param UserDefineConfigure: Control parameter for custom intelligent content recognition
+        :param UserDefineConfigure: Control parameter for custom intelligent content recognition tasks
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
         """
         self.Name = None
@@ -3716,21 +3725,21 @@ class CreatePersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Name of a material. Length limit: 20 characters.
+        :param Name: Name of an image. Length limit: 20 characters
         :type Name: str
-        :param Usages: Material use case. Valid values:
-1. Recognition: used for content recognition, equivalent to `Recognition.Face`
-2. Review: used for detection of inappropriate content, equivalent to `Review.Face`
-3. All: all of the above, equivalent to 1 and 2 combined
+        :param Usages: Image usage. Valid values:
+1. Recognition: used for content recognition; equivalent to `Recognition.Face`
+2. Review: used for inappropriate information recognition; equivalent to `Review.Face`
+3. All: equivalent to 1+2
         :type Usages: list of str
-        :param Description: Material description. Length limit: 1,024 characters.
+        :param Description: Image description. Length limit: 1,024 characters
         :type Description: str
-        :param FaceContents: [Base64](https://tools.ietf.org/html/rfc4648) string converted from an image. Only JPEG and PNG images are supported. Array length limit: 5 images.
+        :param FaceContents: [Base64](https://tools.ietf.org/html/rfc4648) string converted from an image. Only JPEG and PNG images are supported. Array length limit: 5 images
 Note: the image must be a relatively clear facial feature photo of one person with a size of at least 200 x 200 pixels.
         :type FaceContents: list of str
-        :param Tags: Material tag
-<li>Array length limit: 20 tags;</li>
-<li>Tag length limit: 128 characters.</li>
+        :param Tags: Image tag
+<li>Array length limit: 20 tags</li>
+<li>Tag length limit: 128 characters</li>
         :type Tags: list of str
         """
         self.Name = None
@@ -3755,9 +3764,9 @@ class CreatePersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Person: Material information
+        :param Person: Image information
         :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
-        :param FailFaceInfoSet: Positioning information of facial features processed unsuccessfully
+        :param FailFaceInfoSet: Information of images that failed the verification by facial feature positioning
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4111,15 +4120,15 @@ class CreateWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Usages: <b>Keyword use case. Valid values:</b>
-1. Recognition.Ocr: OCR-based content recognition;
-2. Recognition.Asr: ASR-based content recognition;
-3. Review.Ocr: OCR-based detection of inappropriate content;
-4. Review.Asr：ASR-based detection of inappropriate content;
-<b>These values can be merged as follows:</b>
-5. Recognition: ASR- and OCR-based content recognition, equivalent to 1+2 above;
-6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3+4 above;
-7. All: ASR- and OCR-based content recognition and detection of inappropriate content, equivalent to 1+2+3+4 above;
+        :param Usages: <b>Keyword usage. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition
+2. Recognition.Asr: ASR-based content recognition
+3. Review.Ocr: OCR-based inappropriate information recognition
+4. Review.Asr: ASR-based inappropriate information recognition
+<b>Valid values can also be:</b>
+5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
+6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
+7. All: ASR- and OCR-based content recognition and inappropriate information detection; equivalent to 1+2+3+4
         :type Usages: list of str
         :param Words: Keyword. Array length limit: 100.
         :type Words: list of AiSampleWordInfo
@@ -4454,7 +4463,7 @@ class DeletePersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Material ID
+        :param PersonId: Image ID
         :type PersonId: str
         """
         self.PersonId = None
@@ -4924,7 +4933,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: Unique ID of intelligent content recognition templates as the filter. Array length limit: 50.
+        :param Definitions: Unique ID of intelligent content recognition templates as the filter. Array length limit: 50
         :type Definitions: list of int
         :param Offset: Paging offset. Default value: 0.
         :type Offset: int
@@ -5082,18 +5091,18 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Type of the material pulled. Valid values:
-<li>UserDefine: custom material library;</li>
-<li>Default: default material library.</li>
+        :param Type: Type of images to pull. Valid values:
+<li>UserDefine: custom image library</li>
+<li>Default: default image library</li>
 
-Default value: UserDefine (the materials of the custom material library are pulled.)
-Note: you can pull the default material library only using the material name or a combination of the material name and ID, and only one face image is returned.
+Default value: UserDefine. Samples in the custom image library will be pulled.
+Note: you can pull the default image library only using the image name or a combination of the image name and ID, and only one face image is returned.
         :type Type: str
-        :param PersonIds: Material ID. Array length limit: 100.
+        :param PersonIds: Image ID. Array length limit: 100
         :type PersonIds: list of str
-        :param Names: Material name. Array length limit: 20.
+        :param Names: Image name. Array length limit: 20
         :type Names: list of str
-        :param Tags: Material tag. Array length limit: 20.
+        :param Tags: Image tag. Array length limit: 20
         :type Tags: list of str
         :param Offset: Paging offset. Default value: 0.
         :type Offset: int
@@ -5126,7 +5135,7 @@ class DescribePersonSamplesResponse(AbstractModel):
         """
         :param TotalCount: Number of eligible entries.
         :type TotalCount: int
-        :param PersonSet: Material information
+        :param PersonSet: Image information
         :type PersonSet: list of AiSamplePerson
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5571,15 +5580,15 @@ class DescribeWordSamplesRequest(AbstractModel):
         """
         :param Keywords: Keyword filter. Array length limit: 100 words.
         :type Keywords: list of str
-        :param Usages: <b>Keyword use case filter. Valid values:</b>
-1. Recognition.Ocr: OCR-based content recognition;
-2. Recognition.Asr: ASR-based content recognition;
-3. Review.Ocr: OCR-based detection of inappropriate content;
-4. Review.Asr：ASR-based detection of inappropriate content;
-<b>These values can be merged as follows:</b>
-5. Recognition: ASR- and OCR-based content recognition, equivalent to 1 and 2 combined;
-6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3+4 above;
-Multiple elements can be selected, and the relationship between them is "or", i.e., any keyword use case that contains any element in this field set will be deemed eligible.
+        :param Usages: <b>Keyword usage. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition
+2. Recognition.Asr: ASR-based content recognition
+3. Review.Ocr: OCR-based inappropriate information recognition
+4. Review.Asr: ASR-based inappropriate information recognition
+<b>Valid values can also be:</b>
+5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
+6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
+You can select multiple elements, which are connected by OR logic. If a usage contains any element in this parameter, the keyword sample will be used.
         :type Usages: list of str
         :param Tags: Tag filter. Array length limit: 20 words.
         :type Tags: list of str
@@ -6976,8 +6985,8 @@ class ManageTaskRequest(AbstractModel):
         :param OperationType: Operation type. Valid values:
 <ul>
 <li>Abort: task termination. Description:
-<ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is waiting (`WAITING`) or processing (`PROCESSING`) can be terminated;</li>
-<li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is waiting can be terminated.</li></ul>
+<ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` or `PROCESSING` can be terminated.</li>
+<li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` can be terminated.</li></ul>
 </li></ul>
         :type OperationType: str
         :param TaskId: Video processing task ID.
@@ -8466,22 +8475,22 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         """
         :param Definition: Unique ID of an intelligent content recognition template
         :type Definition: int
-        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters.
+        :param Name: Name of an intelligent content recognition template. Length limit: 64 characters
         :type Name: str
-        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters.
+        :param Comment: Description of an intelligent content recognition template. Length limit: 256 characters
         :type Comment: str
-        :param PornConfigure: Control parameter for offensive content
+        :param PornConfigure: Control parameter for porn information
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfoForUpdate`
-        :param TerrorismConfigure: Control parameter for insecure content
+        :param TerrorismConfigure: Control parameter for terrorism information
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfoForUpdate`
-        :param PoliticalConfigure: Control parameter for inappropriate content
+        :param PoliticalConfigure: Control parameter for politically sensitive information
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfoForUpdate`
         :param ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
 <li>Drug-related.</li>
 Note: this parameter is not supported yet.
         :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfoForUpdate`
-        :param UserDefineConfigure: Control parameter for custom intelligent content recognition
+        :param UserDefineConfigure: Control parameter for custom intelligent content recognition tasks
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfoForUpdate`
         """
         self.Definition = None
@@ -8623,18 +8632,18 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: Material ID
+        :param PersonId: Image ID
         :type PersonId: str
         :param Name: Name. Length limit: 128 characters.
         :type Name: str
         :param Description: Description. Length limit: 1,024 characters.
         :type Description: str
-        :param Usages: Material use case. Valid values:
-1. Recognition: used for content recognition, equivalent to `Recognition.Face`.
-2. Review: used for detection of inappropriate content, equivalent to `Review.Face`.
-3. All: used for content recognition and detection of inappropriate content, equivalent to 1 and 2 combined.
+        :param Usages: Image usage. Valid values:
+1. Recognition: used for content recognition; equivalent to `Recognition.Face`
+2. Review: used for inappropriate information recognition; equivalent to `Review.Face`
+3. All: used for content recognition and inappropriate information recognition; equivalent to 1+2
         :type Usages: list of str
-        :param FaceOperationInfo: Facial feature operation information
+        :param FaceOperationInfo: Information of operations on facial features
         :type FaceOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleFaceOperation`
         :param TagOperationInfo: Tag operation information.
         :type TagOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`
@@ -8667,9 +8676,9 @@ class ModifyPersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Person: Material information
+        :param Person: Image information
         :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
-        :param FailFaceInfoSet: Information of facial features processed unsuccessfully
+        :param FailFaceInfoSet: Information of images that failed the verification by facial feature positioning.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -9014,15 +9023,15 @@ class ModifyWordSampleRequest(AbstractModel):
         """
         :param Keyword: Keyword. Length limit: 128 characters.
         :type Keyword: str
-        :param Usages: <b>Keyword use case. Valid values:</b>
-1. Recognition.Ocr: OCR-based content recognition;
-2. Recognition.Asr: ASR-based content recognition;
-3. Review.Ocr: OCR-based detection of inappropriate content;
-4. Review.Asr：ASR-based detection of inappropriate content;
-<b>These values can be merged as follows:</b>
-5. Recognition: ASR- and OCR-based content recognition, equivalent to 1 and 2 combined;
-6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3 and 4 combined.
-7. All: all of the above, equivalent to 1, 2, 3, and 4 combined.
+        :param Usages: <b>Keyword usage. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition
+2. Recognition.Asr: ASR-based content recognition
+3. Review.Ocr: OCR-based inappropriate information recognition
+4. Review.Asr: ASR-based inappropriate information recognition
+<b>Valid values can also be:</b>
+5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
+6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
+7. All: equivalent to 1+2+3+4
         :type Usages: list of str
         :param TagOperationInfo: Tag operation information.
         :type TagOperationInfo: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`
