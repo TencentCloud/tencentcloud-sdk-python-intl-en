@@ -17,15 +17,15 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Attachment(AbstractModel):
-    """
+    """Attachment structure, including attachment name and content after base64 encoding.
 
     """
 
     def __init__(self):
         """
-        :param FileName: 
+        :param FileName: Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).
         :type FileName: str
-        :param Content: 
+        :param Content: Attachment content after base64 encoding. A single attachment cannot exceed 5 MB. Note: Tencent Cloud APIs require that a request packet should not exceed 10 MB. If you are sending multiple attachments, the total size of these attachments cannot exceed 10 MB.
         :type Content: str
         """
         self.FileName = None
@@ -65,7 +65,7 @@ class CreateEmailAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailAddress: Your sender address. You can create up to 10 sender addresses for each domain.
+        :param EmailAddress: Your sender address. (You can create up to 10 sender addresses for each domain.)
         :type EmailAddress: str
         :param EmailSenderName: Sender name.
         :type EmailSenderName: str
@@ -329,7 +329,7 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateID: Email template to be deleted.
+        :param TemplateID: Template ID
         :type TemplateID: int
         """
         self.TemplateID = None
@@ -626,13 +626,13 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartDate: Start date.
+        :param StartDate: Start date in the format of `YYYY-MM-DD`
         :type StartDate: str
-        :param EndDate: End date.
+        :param EndDate: End date in the format of `YYYY-MM-DD`
         :type EndDate: str
         :param Limit: Common parameter. It must be used with `Offset`.
         :type Limit: int
-        :param Offset: Common parameter. It must be used with `Limit`.
+        :param Offset: Common parameter. It must be used with `Limit`. Maximum value of `Limit`: `100`.
         :type Offset: int
         :param EmailAddress: You can specify an email address to query.
         :type EmailAddress: str
@@ -813,17 +813,17 @@ class SendEmailRequest(AbstractModel):
 sender &lt;email address&gt;. For example: 
 Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
         :type FromEmailAddress: str
-        :param Destination: Recipient email addresses. You can send an email to up to 50 recipients at a time.
+        :param Destination: Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.
         :type Destination: list of str
         :param Subject: Email subject.
         :type Subject: str
-        :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this field is left empty, reply emails will be sent to Tencent Cloud. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.
+        :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this field is left empty, reply emails will be sent to Tencent Cloud.
         :type ReplyToAddresses: str
         :param Template: Template when sending emails using a template.
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
         :param Simple: Email content when sending emails by calling the API.
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param Attachments: 
+        :param Attachments: Email attachments
         :type Attachments: list of Attachment
         """
         self.FromEmailAddress = None
@@ -861,7 +861,7 @@ class SendEmailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MessageId: Unique ID generated when receiving the message.
+        :param MessageId: Unique ID generated when receiving the message
         :type MessageId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
