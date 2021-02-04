@@ -331,11 +331,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Environments: Environment information published for API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Environments: list of str
-        :param IsBase64Encoded: 
+        :param IsBase64Encoded: Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IsBase64Encoded: bool
-        :param IsBase64Trigger: 
+        :param IsBase64Trigger: Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IsBase64Trigger: bool
-        :param Base64EncodedTriggerRules: 
+        :param Base64EncodedTriggerRules: Header trigger rules. The number of rules cannot exceed 10.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
         """
         self.ServiceId = None
@@ -723,15 +726,22 @@ class ApisStatus(AbstractModel):
 
 
 class Base64EncodedTriggerRule(AbstractModel):
-    """
+    """Header trigger rule for Base64 encoding.
 
     """
 
     def __init__(self):
         """
-        :param Name: 
+        :param Name: Header for triggering encoding. Valid values are `Accept` and `Content_Type`, corresponding to the `Accept` and `Content-Type` headers in the data stream request, respectively.
         :type Name: str
-        :param Value: 
+        :param Value: Array of header values that can trigger the encoding. Each element in the array can be up to 40 characters, including digits, letters, and special characters (`.`, `+`, `*`, `-`, `/`, and `_`). 
+
+For example, [
+    "application/x-vpeg005",
+    "application/xhtml+xml",
+    "application/vnd.ms-project",
+    "application/vnd.rn-rn_music_package"
+] are valid.
         :type Value: list of str
         """
         self.Name = None
@@ -1147,7 +1157,7 @@ class CreateApiRequest(AbstractModel):
         :type TargetNamespaceId: str
         :param UserType: User type.
         :type UserType: str
-        :param IsBase64Encoded: 
+        :param IsBase64Encoded: Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
         :type IsBase64Encoded: bool
         """
         self.ServiceId = None
@@ -4085,6 +4095,12 @@ class ModifyApiRequest(AbstractModel):
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         :param ResponseErrorCodes: Custom error code configuration.
         :type ResponseErrorCodes: list of ResponseErrorCodeReq
+        :param IsBase64Encoded: Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
+        :type IsBase64Encoded: bool
+        :param IsBase64Trigger: Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.
+        :type IsBase64Trigger: bool
+        :param Base64EncodedTriggerRules: Header trigger rules. The number of rules cannot exceed 10.
+        :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -4131,6 +4147,9 @@ class ModifyApiRequest(AbstractModel):
         self.ServiceParameters = None
         self.OauthConfig = None
         self.ResponseErrorCodes = None
+        self.IsBase64Encoded = None
+        self.IsBase64Trigger = None
+        self.Base64EncodedTriggerRules = None
 
 
     def _deserialize(self, params):
@@ -4218,6 +4237,14 @@ class ModifyApiRequest(AbstractModel):
                 obj = ResponseErrorCodeReq()
                 obj._deserialize(item)
                 self.ResponseErrorCodes.append(obj)
+        self.IsBase64Encoded = params.get("IsBase64Encoded")
+        self.IsBase64Trigger = params.get("IsBase64Trigger")
+        if params.get("Base64EncodedTriggerRules") is not None:
+            self.Base64EncodedTriggerRules = []
+            for item in params.get("Base64EncodedTriggerRules"):
+                obj = Base64EncodedTriggerRule()
+                obj._deserialize(item)
+                self.Base64EncodedTriggerRules.append(obj)
 
 
 class ModifyApiResponse(AbstractModel):

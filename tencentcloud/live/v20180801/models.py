@@ -510,8 +510,8 @@ class CertInfo(AbstractModel):
         :param HttpsCrt: Certificate content.
         :type HttpsCrt: str
         :param CertType: Certificate type.
-0: User-added certificate.
-1: Tencent Cloud-hosted certificate.
+0: user-added certificate
+1: Tencent Cloud-hosted certificate
         :type CertType: int
         :param CertExpireTime: Certificate expiration time in UTC format.
         :type CertExpireTime: str
@@ -1490,9 +1490,9 @@ Note: this parameter is unsupported now.
         :param AudioBitrate: Audio bitrate. Default value: 0.
 Value range: 0-500.
         :type AudioBitrate: int
-        :param Vcodec: Video codec. Valid values: h264, h265, origin (default).
+        :param Vcodec: Video codec. Valid values: h264, h265, origin (default)
 
-origin: original codec as the output codec.
+origin: original codec as the output codec
         :type Vcodec: str
         :param Description: Template description.
         :type Description: str
@@ -3756,9 +3756,9 @@ This supports querying data in the past 60 days.
 Default value: 1.
         :type PageNum: int
         :param PageSize: Number of entries per page.
-Maximum value: 100.
-Valid values: integers between 10 and 100.
-Default value: 10.
+Maximum value: 100
+Valid values: integers between 10 and 100
+Default value: 10
         :type PageSize: int
         :param StreamName: Stream name, which supports fuzzy match.
         :type StreamName: str
@@ -4806,12 +4806,15 @@ If this parameter is left empty, full playback data will be queried.
 If it is left empty, the full playback data will be queried.
 Note: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.
         :type AppName: str
+        :param ServiceName: 
+        :type ServiceName: str
         """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomain = None
         self.StreamName = None
         self.AppName = None
+        self.ServiceName = None
 
 
     def _deserialize(self, params):
@@ -4820,6 +4823,7 @@ Note: to query by `AppName`, you need to submit a ticket first. After your appli
         self.PlayDomain = params.get("PlayDomain")
         self.StreamName = params.get("StreamName")
         self.AppName = params.get("AppName")
+        self.ServiceName = params.get("ServiceName")
 
 
 class DescribeStreamPlayInfoListResponse(AbstractModel):
@@ -5013,9 +5017,9 @@ class DescribeUploadStreamNumsRequest(AbstractModel):
         :param Domains: LVB domain names. If this parameter is left empty, data of all domain names will be queried.
         :type Domains: list of str
         :param Granularity: Time granularity of the data. Valid values:
-5: 5-minute granularity (the query period is up to 1 day).
-1440: 1-day granularity (the query period is up to 1 month).
-Default value: 5.
+5: 5-minute granularity (the query period is up to 1 day)
+1440: 1-day granularity (the query period is up to 1 month)
+Default value: 5
         :type Granularity: int
         """
         self.StartTime = None
@@ -6169,9 +6173,9 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
         """
         :param TemplateId: Template ID.
         :type TemplateId: int
-        :param Vcodec: Video codec. Valid values: h264, h265, origin (default).
+        :param Vcodec: Video codec. Valid values: h264, h265, origin (default)
 
-origin: original codec as the output codec.
+origin: original codec as the output codec
         :type Vcodec: str
         :param Acodec: Audio codec. Defaut value: aac.
 Note: this parameter is unsupported now.
