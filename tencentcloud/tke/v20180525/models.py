@@ -67,21 +67,24 @@ class AddExistedInstancesRequest(AbstractModel):
         :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
         :param LoginSettings: Node login information (currently only supports using Password or single KeyIds)
         :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
-        :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the `sgId` field returned by DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)
-        :type SecurityGroupIds: list of str
         :param HostName: When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.
         :type HostName: str
+        :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the `sgId` field returned by DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)
+        :type SecurityGroupIds: list of str
         :param NodePool: Node pool options
         :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`
+        :param SkipValidateOptions: Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck
+        :type SkipValidateOptions: list of str
         """
         self.ClusterId = None
         self.InstanceIds = None
         self.InstanceAdvancedSettings = None
         self.EnhancedService = None
         self.LoginSettings = None
-        self.SecurityGroupIds = None
         self.HostName = None
+        self.SecurityGroupIds = None
         self.NodePool = None
+        self.SkipValidateOptions = None
 
 
     def _deserialize(self, params):
@@ -96,11 +99,12 @@ class AddExistedInstancesRequest(AbstractModel):
         if params.get("LoginSettings") is not None:
             self.LoginSettings = LoginSettings()
             self.LoginSettings._deserialize(params.get("LoginSettings"))
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.HostName = params.get("HostName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("NodePool") is not None:
             self.NodePool = NodePoolOption()
             self.NodePool._deserialize(params.get("NodePool"))
+        self.SkipValidateOptions = params.get("SkipValidateOptions")
 
 
 class AddExistedInstancesResponse(AbstractModel):
@@ -797,6 +801,27 @@ class ClusterNetworkSettings(AbstractModel):
         self.Cni = params.get("Cni")
 
 
+class ClusterVersion(AbstractModel):
+    """Cluster version information
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Versions: The list of cluster major version, such as 1.18.4
+        :type Versions: list of str
+        """
+        self.ClusterId = None
+        self.Versions = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Versions = params.get("Versions")
+
+
 class CreateClusterAsGroupRequest(AbstractModel):
     """CreateClusterAsGroup request structure.
 
@@ -959,10 +984,13 @@ class CreateClusterInstancesRequest(AbstractModel):
         :type RunInstancePara: str
         :param InstanceAdvancedSettings: Additional parameter to be set for the instance
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param SkipValidateOptions: Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck
+        :type SkipValidateOptions: list of str
         """
         self.ClusterId = None
         self.RunInstancePara = None
         self.InstanceAdvancedSettings = None
+        self.SkipValidateOptions = None
 
 
     def _deserialize(self, params):
@@ -971,6 +999,7 @@ class CreateClusterInstancesRequest(AbstractModel):
         if params.get("InstanceAdvancedSettings") is not None:
             self.InstanceAdvancedSettings = InstanceAdvancedSettings()
             self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        self.SkipValidateOptions = params.get("SkipValidateOptions")
 
 
 class CreateClusterInstancesResponse(AbstractModel):
@@ -1059,6 +1088,10 @@ class CreateClusterNodePoolRequest(AbstractModel):
         :type Labels: list of Label
         :param Taints: Taints
         :type Taints: list of Taint
+        :param NodePoolOs: Operating system of the node pool
+        :type NodePoolOs: str
+        :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
+        :type OsCustomizeType: str
         """
         self.ClusterId = None
         self.AutoScalingGroupPara = None
@@ -1068,6 +1101,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
         self.Name = None
         self.Labels = None
         self.Taints = None
+        self.NodePoolOs = None
+        self.OsCustomizeType = None
 
 
     def _deserialize(self, params):
@@ -1091,6 +1126,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
                 obj = Taint()
                 obj._deserialize(item)
                 self.Taints.append(obj)
+        self.NodePoolOs = params.get("NodePoolOs")
+        self.OsCustomizeType = params.get("OsCustomizeType")
 
 
 class CreateClusterNodePoolResponse(AbstractModel):
@@ -1630,6 +1667,59 @@ class DeleteClusterRouteTableResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAvailableClusterVersionRequest(AbstractModel):
+    """DescribeAvailableClusterVersion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterIds: List of cluster IDs
+        :type ClusterIds: list of str
+        """
+        self.ClusterId = None
+        self.ClusterIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterIds = params.get("ClusterIds")
+
+
+class DescribeAvailableClusterVersionResponse(AbstractModel):
+    """DescribeAvailableClusterVersion response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Versions: Upgradable cluster version
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Versions: list of str
+        :param Clusters: Cluster information
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Clusters: list of ClusterVersion
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Versions = None
+        self.Clusters = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Versions = params.get("Versions")
+        if params.get("Clusters") is not None:
+            self.Clusters = []
+            for item in params.get("Clusters"):
+                obj = ClusterVersion()
+                obj._deserialize(item)
+                self.Clusters.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2676,6 +2766,81 @@ class Filter(AbstractModel):
         self.Values = params.get("Values")
 
 
+class GetUpgradeInstanceProgressRequest(AbstractModel):
+    """GetUpgradeInstanceProgress request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Limit: Maximum number of nodes to be queried
+        :type Limit: int
+        :param Offset: The starting node for the query
+        :type Offset: int
+        """
+        self.ClusterId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class GetUpgradeInstanceProgressResponse(AbstractModel):
+    """GetUpgradeInstanceProgress response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: Total nodes to upgrade
+        :type Total: int
+        :param Done: Total upgraded nodes
+        :type Done: int
+        :param LifeState: The lifecycle of the upgrade task
+process: running
+paused: stopped
+pausing: stopping
+done: completed
+timeout: timed out
+aborted: canceled
+        :type LifeState: str
+        :param Instances: Details of upgrade progress of each node
+        :type Instances: list of InstanceUpgradeProgressItem
+        :param ClusterStatus: Current cluster status
+        :type ClusterStatus: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradeClusterStatus`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Done = None
+        self.LifeState = None
+        self.Instances = None
+        self.ClusterStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Done = params.get("Done")
+        self.LifeState = params.get("LifeState")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = InstanceUpgradeProgressItem()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        if params.get("ClusterStatus") is not None:
+            self.ClusterStatus = InstanceUpgradeClusterStatus()
+            self.ClusterStatus._deserialize(params.get("ClusterStatus"))
+        self.RequestId = params.get("RequestId")
+
+
 class ImageInstance(AbstractModel):
     """Image details
 
@@ -2875,6 +3040,147 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     def _deserialize(self, params):
         self.Kubelet = params.get("Kubelet")
+
+
+class InstanceUpgradeClusterStatus(AbstractModel):
+    """Current status of the cluster during node upgrade
+
+    """
+
+    def __init__(self):
+        """
+        :param PodTotal: Total Pods
+        :type PodTotal: int
+        :param NotReadyPod: Total number of NotReady Pods
+        :type NotReadyPod: int
+        """
+        self.PodTotal = None
+        self.NotReadyPod = None
+
+
+    def _deserialize(self, params):
+        self.PodTotal = params.get("PodTotal")
+        self.NotReadyPod = params.get("NotReadyPod")
+
+
+class InstanceUpgradePreCheckResult(AbstractModel):
+    """Pre-upgrade check result of a node
+
+    """
+
+    def __init__(self):
+        """
+        :param CheckPass: Whether the check is passed
+        :type CheckPass: bool
+        :param Items: Array of check items
+        :type Items: list of InstanceUpgradePreCheckResultItem
+        :param SinglePods: List of independent pods on this node
+        :type SinglePods: list of str
+        """
+        self.CheckPass = None
+        self.Items = None
+        self.SinglePods = None
+
+
+    def _deserialize(self, params):
+        self.CheckPass = params.get("CheckPass")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = InstanceUpgradePreCheckResultItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.SinglePods = params.get("SinglePods")
+
+
+class InstanceUpgradePreCheckResultItem(AbstractModel):
+    """Check result for node upgrade
+
+    """
+
+    def __init__(self):
+        """
+        :param Namespace: The namespace of the workload
+        :type Namespace: str
+        :param WorkLoadKind: Workload type
+        :type WorkLoadKind: str
+        :param WorkLoadName: Workload name
+        :type WorkLoadName: str
+        :param Before: The number of running pods in the workload before draining the node
+        :type Before: int
+        :param After: The number of running pods in the workload after draining the node
+        :type After: int
+        :param Pods: The pod list of the workload on this node
+        :type Pods: list of str
+        """
+        self.Namespace = None
+        self.WorkLoadKind = None
+        self.WorkLoadName = None
+        self.Before = None
+        self.After = None
+        self.Pods = None
+
+
+    def _deserialize(self, params):
+        self.Namespace = params.get("Namespace")
+        self.WorkLoadKind = params.get("WorkLoadKind")
+        self.WorkLoadName = params.get("WorkLoadName")
+        self.Before = params.get("Before")
+        self.After = params.get("After")
+        self.Pods = params.get("Pods")
+
+
+class InstanceUpgradeProgressItem(AbstractModel):
+    """Upgrade progress of a node
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceID: Node instance ID
+        :type InstanceID: str
+        :param LifeState: Task lifecycle
+process: running
+paused: stopped
+pausing: stopping
+done: completed
+timeout: timed out
+aborted: canceled
+pending: not started
+        :type LifeState: str
+        :param StartAt: Upgrade start time
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type StartAt: str
+        :param EndAt: Upgrade end time
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type EndAt: str
+        :param CheckResult: Check result before upgrading
+        :type CheckResult: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradePreCheckResult`
+        :param Detail: Upgrade steps details
+        :type Detail: list of TaskStepInfo
+        """
+        self.InstanceID = None
+        self.LifeState = None
+        self.StartAt = None
+        self.EndAt = None
+        self.CheckResult = None
+        self.Detail = None
+
+
+    def _deserialize(self, params):
+        self.InstanceID = params.get("InstanceID")
+        self.LifeState = params.get("LifeState")
+        self.StartAt = params.get("StartAt")
+        self.EndAt = params.get("EndAt")
+        if params.get("CheckResult") is not None:
+            self.CheckResult = InstanceUpgradePreCheckResult()
+            self.CheckResult._deserialize(params.get("CheckResult"))
+        if params.get("Detail") is not None:
+            self.Detail = []
+            for item in params.get("Detail"):
+                obj = TaskStepInfo()
+                obj._deserialize(item)
+                self.Detail.append(obj)
 
 
 class Label(AbstractModel):
@@ -3683,6 +3989,92 @@ class Taint(AbstractModel):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
         self.Effect = params.get("Effect")
+
+
+class TaskStepInfo(AbstractModel):
+    """Task step information
+
+    """
+
+    def __init__(self):
+        """
+        :param Step: Step name
+        :type Step: str
+        :param LifeState: Lifecycle
+pending: the step is not started
+running: the step is in progress
+success: the step is completed
+failed: the step failed
+        :type LifeState: str
+        :param StartAt: Step start time
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type StartAt: str
+        :param EndAt: Step end time
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type EndAt: str
+        :param FailedMsg: If the lifecycle of the step is failed, this field will display the error information.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type FailedMsg: str
+        """
+        self.Step = None
+        self.LifeState = None
+        self.StartAt = None
+        self.EndAt = None
+        self.FailedMsg = None
+
+
+    def _deserialize(self, params):
+        self.Step = params.get("Step")
+        self.LifeState = params.get("LifeState")
+        self.StartAt = params.get("StartAt")
+        self.EndAt = params.get("EndAt")
+        self.FailedMsg = params.get("FailedMsg")
+
+
+class UpdateClusterVersionRequest(AbstractModel):
+    """UpdateClusterVersion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param DstVersion: The version that needs to upgrade to
+        :type DstVersion: str
+        :param MaxNotReadyPercent: The maximum tolerable number of unavailable pods
+        :type MaxNotReadyPercent: float
+        :param SkipPreCheck: Whether to skip the precheck
+        :type SkipPreCheck: bool
+        """
+        self.ClusterId = None
+        self.DstVersion = None
+        self.MaxNotReadyPercent = None
+        self.SkipPreCheck = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.DstVersion = params.get("DstVersion")
+        self.MaxNotReadyPercent = params.get("MaxNotReadyPercent")
+        self.SkipPreCheck = params.get("SkipPreCheck")
+
+
+class UpdateClusterVersionResponse(AbstractModel):
+    """UpdateClusterVersion response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpgradeAbleInstancesItem(AbstractModel):
