@@ -314,6 +314,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param OriginId: Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginId: str
+        :param TagInstances: Tag
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TagInstances: list of TagInstance
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -343,6 +346,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InstanceGroupName = None
         self.RuleType = None
         self.OriginId = None
+        self.TagInstances = None
 
 
     def _deserialize(self, params):
@@ -390,6 +394,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InstanceGroupName = params.get("InstanceGroupName")
         self.RuleType = params.get("RuleType")
         self.OriginId = params.get("OriginId")
+        if params.get("TagInstances") is not None:
+            self.TagInstances = []
+            for item in params.get("TagInstances"):
+                obj = TagInstance()
+                obj._deserialize(item)
+                self.TagInstances.append(obj)
 
 
 class AlarmPolicyCondition(AbstractModel):
@@ -1776,6 +1786,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type RuleTypes: list of str
         :param Enable: Status. Valid values: 1 (enabled), 0 (disabled)
         :type Enable: list of int
+        :param NotBindingNoticeRule: Indicates whether the notification rule is configured. 1: not configured; 0: configured
+        :type NotBindingNoticeRule: int
         """
         self.Module = None
         self.PageNumber = None
@@ -1793,6 +1805,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.NoticeIds = None
         self.RuleTypes = None
         self.Enable = None
+        self.NotBindingNoticeRule = None
 
 
     def _deserialize(self, params):
@@ -1812,6 +1825,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.NoticeIds = params.get("NoticeIds")
         self.RuleTypes = params.get("RuleTypes")
         self.Enable = params.get("Enable")
+        self.NotBindingNoticeRule = params.get("NotBindingNoticeRule")
 
 
 class DescribeAlarmPoliciesResponse(AbstractModel):
@@ -3579,6 +3593,9 @@ Note: This field may return null, indicating that no valid value was found.
         :param GroupInfo: Policy information.
 Note: This field may return null, indicating that no valid value was found.
         :type GroupInfo: list of DescribeProductEventListEventsGroupInfo
+        :param ViewName: Display name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ViewName: str
         """
         self.EventId = None
         self.EventCName = None
@@ -3600,6 +3617,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.AdditionMsg = None
         self.IsAlarmConfig = None
         self.GroupInfo = None
+        self.ViewName = None
 
 
     def _deserialize(self, params):
@@ -3638,6 +3656,7 @@ Note: This field may return null, indicating that no valid value was found.
                 obj = DescribeProductEventListEventsGroupInfo()
                 obj._deserialize(item)
                 self.GroupInfo.append(obj)
+        self.ViewName = params.get("ViewName")
 
 
 class DescribeProductEventListEventsDimensions(AbstractModel):
@@ -5128,6 +5147,54 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class TagInstance(AbstractModel):
+    """Instance tag information of the alarm policy
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: Tag key
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Key: str
+        :param Value: Tag value
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Value: str
+        :param InstanceSum: Number of instances
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceSum: int
+        :param ServiceType: Service type, for example, CVM
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ServiceType: str
+        :param RegionId: Region ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RegionId: str
+        :param BindingStatus: Binding status. 2: bound; 1: binding
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BindingStatus: int
+        :param TagStatus: Tag status. 2: existent; 1: nonexistent
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TagStatus: int
+        """
+        self.Key = None
+        self.Value = None
+        self.InstanceSum = None
+        self.ServiceType = None
+        self.RegionId = None
+        self.BindingStatus = None
+        self.TagStatus = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.InstanceSum = params.get("InstanceSum")
+        self.ServiceType = params.get("ServiceType")
+        self.RegionId = params.get("RegionId")
+        self.BindingStatus = params.get("BindingStatus")
+        self.TagStatus = params.get("TagStatus")
 
 
 class URLNotice(AbstractModel):

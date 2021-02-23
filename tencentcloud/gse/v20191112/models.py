@@ -16,6 +16,143 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CopyFleetRequest(AbstractModel):
+    """CopyFleet request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: Server fleet ID
+        :type FleetId: str
+        :param CopyNumber: Replica number. It should a value between 1 to the number of the remaining quota. It can be obtained through [Obtaining User Quota](https://intl.cloud.tencent.com/document/product/1165/48732?from_cn_redirect=1).
+        :type CopyNumber: int
+        :param AssetId: Asset package ID
+        :type AssetId: str
+        :param Description: Description. The length is 0-100 characters.
+        :type Description: str
+        :param InboundPermissions: Network configuration
+        :type InboundPermissions: list of InboundPermission
+        :param InstanceType: Server type. It can be obtained through [Obtaining Server Instance Type List](https://intl.cloud.tencent.com/document/product/1165/48732?from_cn_redirect=1).
+        :type InstanceType: str
+        :param FleetType: Server fleet type, which only supports “ON_DEMAND” type now.
+        :type FleetType: str
+        :param Name: Server fleet name. The length is 1-50 characters.
+        :type Name: str
+        :param NewGameServerSessionProtectionPolicy: Protection policy. Valid values: NoProtection·(no protection), FullProtection (full protection), TimeLimitProtection (time-limited protection)
+        :type NewGameServerSessionProtectionPolicy: str
+        :param ResourceCreationLimitPolicy: Limit policy of resource creation
+        :type ResourceCreationLimitPolicy: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
+        :param RuntimeConfiguration: Progress configuration
+        :type RuntimeConfiguration: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
+        :param GameServerSessionProtectionTimeLimit: Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes. This parameter is valid only when NewGameSessionProtectionPolicy is set as TimeLimitProtection.
+        :type GameServerSessionProtectionTimeLimit: int
+        :param SelectedScalingType: Whether to select scaling. Valid values: SCALING_SELECTED, SCALING_UNSELECTED. Default value: SCALING_UNSELECTED.
+        :type SelectedScalingType: str
+        :param SelectedCcnType: Whether to select CCN. Valid values: CCN_SELECTED, CCN_UNSELECTED. Default value: CCN_UNSELECTED.
+        :type SelectedCcnType: str
+        :param Tags: Tag list. Up to 50 tags.
+        :type Tags: list of Tag
+        :param SystemDiskInfo: System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.
+        :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
+        :param DataDiskInfo: Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. 
+        :type DataDiskInfo: list of DiskInfo
+        :param SelectedTimerType: Whether to select to replicate the timer policy: TIMER_SELECTED or TIMER_UNSELECTED. The default value is TIMER_UNSELECTED.
+        :type SelectedTimerType: str
+        """
+        self.FleetId = None
+        self.CopyNumber = None
+        self.AssetId = None
+        self.Description = None
+        self.InboundPermissions = None
+        self.InstanceType = None
+        self.FleetType = None
+        self.Name = None
+        self.NewGameServerSessionProtectionPolicy = None
+        self.ResourceCreationLimitPolicy = None
+        self.RuntimeConfiguration = None
+        self.GameServerSessionProtectionTimeLimit = None
+        self.SelectedScalingType = None
+        self.SelectedCcnType = None
+        self.Tags = None
+        self.SystemDiskInfo = None
+        self.DataDiskInfo = None
+        self.SelectedTimerType = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.CopyNumber = params.get("CopyNumber")
+        self.AssetId = params.get("AssetId")
+        self.Description = params.get("Description")
+        if params.get("InboundPermissions") is not None:
+            self.InboundPermissions = []
+            for item in params.get("InboundPermissions"):
+                obj = InboundPermission()
+                obj._deserialize(item)
+                self.InboundPermissions.append(obj)
+        self.InstanceType = params.get("InstanceType")
+        self.FleetType = params.get("FleetType")
+        self.Name = params.get("Name")
+        self.NewGameServerSessionProtectionPolicy = params.get("NewGameServerSessionProtectionPolicy")
+        if params.get("ResourceCreationLimitPolicy") is not None:
+            self.ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
+            self.ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
+        if params.get("RuntimeConfiguration") is not None:
+            self.RuntimeConfiguration = RuntimeConfiguration()
+            self.RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
+        self.GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
+        self.SelectedScalingType = params.get("SelectedScalingType")
+        self.SelectedCcnType = params.get("SelectedCcnType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("SystemDiskInfo") is not None:
+            self.SystemDiskInfo = DiskInfo()
+            self.SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
+        if params.get("DataDiskInfo") is not None:
+            self.DataDiskInfo = []
+            for item in params.get("DataDiskInfo"):
+                obj = DiskInfo()
+                obj._deserialize(item)
+                self.DataDiskInfo.append(obj)
+        self.SelectedTimerType = params.get("SelectedTimerType")
+
+
+class CopyFleetResponse(AbstractModel):
+    """CopyFleet response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetAttributes: Server fleet attributes
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type FleetAttributes: list of FleetAttributes
+        :param TotalCount: The number of server fleets
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FleetAttributes = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FleetAttributes") is not None:
+            self.FleetAttributes = []
+            for item in params.get("FleetAttributes"):
+                obj = FleetAttributes()
+                obj._deserialize(item)
+                self.FleetAttributes.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateGameServerSessionRequest(AbstractModel):
     """CreateGameServerSession request structure.
 
@@ -383,6 +520,146 @@ class DesiredPlayerSession(AbstractModel):
         self.PlayerData = params.get("PlayerData")
 
 
+class DiskInfo(AbstractModel):
+    """Disk storage information
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskType: Disk type: Premium Cloud Storage (CLOUD_PREMIUM) or SSD (CLOUD_SSD)
+        :type DiskType: str
+        :param DiskSize: System disk: the available disk capacity is 50-500 GB. Data disk: the available disk capacity is 100-32000 GB, and the value is a multiple of 10. When the disk type is SSD (CLOUD_SSD), the minimum capacity is 100 GB.
+        :type DiskSize: int
+        """
+        self.DiskType = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+
+
+class FleetAttributes(AbstractModel):
+    """Service deployment attributes
+
+    """
+
+    def __init__(self):
+        """
+        :param AssetId: Asset package ID
+        :type AssetId: str
+        :param CreationTime: Server fleet creation time
+        :type CreationTime: str
+        :param Description: Description
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Description: str
+        :param FleetArn: Description of server fleet resource
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type FleetArn: str
+        :param FleetId: Server fleet ID
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type FleetId: str
+        :param FleetType: Server fleet type, which only supports ON_DEMAND now.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type FleetType: str
+        :param InstanceType: Server type, such as S5.LARGE8
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type InstanceType: str
+        :param Name: Server fleet name
+        :type Name: str
+        :param NewGameServerSessionProtectionPolicy: Game session protection policy
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type NewGameServerSessionProtectionPolicy: str
+        :param OperatingSystem: Operating system type
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type OperatingSystem: str
+        :param ResourceCreationLimitPolicy: Limit policy of resource creation
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ResourceCreationLimitPolicy: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
+        :param Status: Statuses: “Create”, “Downloading”, “Verifying”, “Generating”, “Activating”, “Active”, “Exception”, “Deleting”, and “End”.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Status: str
+        :param StoppedActions: The status of server fleet when it stopped. If this field is left empty, it means automatic scaling.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type StoppedActions: list of str
+        :param TerminationTime: Server fleet termination time
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type TerminationTime: str
+        :param GameServerSessionProtectionTimeLimit: Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type GameServerSessionProtectionTimeLimit: int
+        :param BillingStatus: Billing status: Unactivated, Activated, Exception, Isolated due to arrears, Terminated, and Unfrozen.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type BillingStatus: str
+        :param Tags: Tag list. Up to 50 tags.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Tags: list of Tag
+        :param DataDiskInfo: Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. 
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type DataDiskInfo: list of DiskInfo
+        :param SystemDiskInfo: System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
+        """
+        self.AssetId = None
+        self.CreationTime = None
+        self.Description = None
+        self.FleetArn = None
+        self.FleetId = None
+        self.FleetType = None
+        self.InstanceType = None
+        self.Name = None
+        self.NewGameServerSessionProtectionPolicy = None
+        self.OperatingSystem = None
+        self.ResourceCreationLimitPolicy = None
+        self.Status = None
+        self.StoppedActions = None
+        self.TerminationTime = None
+        self.GameServerSessionProtectionTimeLimit = None
+        self.BillingStatus = None
+        self.Tags = None
+        self.DataDiskInfo = None
+        self.SystemDiskInfo = None
+
+
+    def _deserialize(self, params):
+        self.AssetId = params.get("AssetId")
+        self.CreationTime = params.get("CreationTime")
+        self.Description = params.get("Description")
+        self.FleetArn = params.get("FleetArn")
+        self.FleetId = params.get("FleetId")
+        self.FleetType = params.get("FleetType")
+        self.InstanceType = params.get("InstanceType")
+        self.Name = params.get("Name")
+        self.NewGameServerSessionProtectionPolicy = params.get("NewGameServerSessionProtectionPolicy")
+        self.OperatingSystem = params.get("OperatingSystem")
+        if params.get("ResourceCreationLimitPolicy") is not None:
+            self.ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
+            self.ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
+        self.Status = params.get("Status")
+        self.StoppedActions = params.get("StoppedActions")
+        self.TerminationTime = params.get("TerminationTime")
+        self.GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
+        self.BillingStatus = params.get("BillingStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("DataDiskInfo") is not None:
+            self.DataDiskInfo = []
+            for item in params.get("DataDiskInfo"):
+                obj = DiskInfo()
+                obj._deserialize(item)
+                self.DataDiskInfo.append(obj)
+        if params.get("SystemDiskInfo") is not None:
+            self.SystemDiskInfo = DiskInfo()
+            self.SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
+
+
 class GameProperty(AbstractModel):
     """Game attribute details
 
@@ -739,6 +1016,35 @@ class GetInstanceAccessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InboundPermission(AbstractModel):
+    """Allowed network range.
+
+    """
+
+    def __init__(self):
+        """
+        :param FromPort: Start port number. Minimum value: 1025.
+        :type FromPort: int
+        :param IpRange: IP range. Valid range of the input IPv4 addresses in CIDR format; for example, 0.0.0.0.0/0.
+        :type IpRange: str
+        :param Protocol: Protocol type: TCP or UDP.
+        :type Protocol: str
+        :param ToPort: End port number. Maximum value: 60000.
+        :type ToPort: int
+        """
+        self.FromPort = None
+        self.IpRange = None
+        self.Protocol = None
+        self.ToPort = None
+
+
+    def _deserialize(self, params):
+        self.FromPort = params.get("FromPort")
+        self.IpRange = params.get("IpRange")
+        self.Protocol = params.get("Protocol")
+        self.ToPort = params.get("ToPort")
+
+
 class InstanceAccess(AbstractModel):
     """Identity credentials for instance access
 
@@ -1007,6 +1313,57 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TerminationTime = params.get("TerminationTime")
 
 
+class ResourceCreationLimitPolicy(AbstractModel):
+    """Resource creation policy
+
+    """
+
+    def __init__(self):
+        """
+        :param NewGameServerSessionsPerCreator: Creation quantity. Minimum value: 1. Default value: 2.
+        :type NewGameServerSessionsPerCreator: int
+        :param PolicyPeriodInMinutes: Unit time. Minimum value: 1. Default value: 3. Unit: minute.
+        :type PolicyPeriodInMinutes: int
+        """
+        self.NewGameServerSessionsPerCreator = None
+        self.PolicyPeriodInMinutes = None
+
+
+    def _deserialize(self, params):
+        self.NewGameServerSessionsPerCreator = params.get("NewGameServerSessionsPerCreator")
+        self.PolicyPeriodInMinutes = params.get("PolicyPeriodInMinutes")
+
+
+class RuntimeConfiguration(AbstractModel):
+    """Runtime configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param GameServerSessionActivationTimeoutSeconds: Game session timeout. Value range: 1-600. Unit: second.
+        :type GameServerSessionActivationTimeoutSeconds: int
+        :param MaxConcurrentGameServerSessionActivations: Maximum number of game sessions. Value range: 1-2,147,483,647.
+        :type MaxConcurrentGameServerSessionActivations: int
+        :param ServerProcesses: Service process configuration. There must be at least one service configuration.
+        :type ServerProcesses: list of ServerProcesse
+        """
+        self.GameServerSessionActivationTimeoutSeconds = None
+        self.MaxConcurrentGameServerSessionActivations = None
+        self.ServerProcesses = None
+
+
+    def _deserialize(self, params):
+        self.GameServerSessionActivationTimeoutSeconds = params.get("GameServerSessionActivationTimeoutSeconds")
+        self.MaxConcurrentGameServerSessionActivations = params.get("MaxConcurrentGameServerSessionActivations")
+        if params.get("ServerProcesses") is not None:
+            self.ServerProcesses = []
+            for item in params.get("ServerProcesses"):
+                obj = ServerProcesse()
+                obj._deserialize(item)
+                self.ServerProcesses.append(obj)
+
+
 class SearchGameServerSessionsRequest(AbstractModel):
     """SearchGameServerSessions request structure.
 
@@ -1116,6 +1473,31 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 self.GameServerSessions.append(obj)
         self.NextToken = params.get("NextToken")
         self.RequestId = params.get("RequestId")
+
+
+class ServerProcesse(AbstractModel):
+    """Game service process
+
+    """
+
+    def __init__(self):
+        """
+        :param ConcurrentExecutions: Number of concurrent processes. Value range of total concurrent processes: 1-50.
+        :type ConcurrentExecutions: int
+        :param LaunchPath: Launch Path. Linux: /local/game/ or Windows: C:\game\. The path length is 1-1024.
+        :type LaunchPath: str
+        :param Parameters: Launch parameter. The length is 0-1024.
+        :type Parameters: str
+        """
+        self.ConcurrentExecutions = None
+        self.LaunchPath = None
+        self.Parameters = None
+
+
+    def _deserialize(self, params):
+        self.ConcurrentExecutions = params.get("ConcurrentExecutions")
+        self.LaunchPath = params.get("LaunchPath")
+        self.Parameters = params.get("Parameters")
 
 
 class StartGameServerSessionPlacementRequest(AbstractModel):
@@ -1238,6 +1620,111 @@ class StopGameServerSessionPlacementResponse(AbstractModel):
         if params.get("GameServerSessionPlacement") is not None:
             self.GameServerSessionPlacement = GameServerSessionPlacement()
             self.GameServerSessionPlacement._deserialize(params.get("GameServerSessionPlacement"))
+        self.RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """Tag structure
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: Tag key. Up to 127 bytes are allowed.
+        :type Key: str
+        :param Value: Tag value. Up to 255 bytes are allowed.
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
+class UpdateBucketAccelerateOptRequest(AbstractModel):
+    """UpdateBucketAccelerateOpt request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Allowed: `true`: enable global acceleration; `false`: disable global acceleration
+        :type Allowed: bool
+        """
+        self.Allowed = None
+
+
+    def _deserialize(self, params):
+        self.Allowed = params.get("Allowed")
+
+
+class UpdateBucketAccelerateOptResponse(AbstractModel):
+    """UpdateBucketAccelerateOpt response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateBucketCORSOptRequest(AbstractModel):
+    """UpdateBucketCORSOpt request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AllowedOrigins: Allowed access source. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
+        :type AllowedOrigins: list of str
+        :param AllowedMethods: Allowed HTTP method(s). Multiple methods are allowed, including PUT, GET, POST, and HEAD. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
+        :type AllowedMethods: list of str
+        :param AllowedHeaders: Specifies the custom HTTP request headers that the browser is allowed to include in a CORS request. Wildcard (*) is supported, indicating allowing all headers (recommended). For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
+        :type AllowedHeaders: list of str
+        :param MaxAgeSeconds: Sets the validity duration for the CORS configuration (in second). For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
+        :type MaxAgeSeconds: int
+        :param ExposeHeaders: CORS response header(s) that can be exposed to the browser, case-insensitive. If this parameter is not specified, the browser can access only simple response headers Cache-Control, Content-Type, Expires, and Last-Modified by default. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
+        :type ExposeHeaders: list of str
+        """
+        self.AllowedOrigins = None
+        self.AllowedMethods = None
+        self.AllowedHeaders = None
+        self.MaxAgeSeconds = None
+        self.ExposeHeaders = None
+
+
+    def _deserialize(self, params):
+        self.AllowedOrigins = params.get("AllowedOrigins")
+        self.AllowedMethods = params.get("AllowedMethods")
+        self.AllowedHeaders = params.get("AllowedHeaders")
+        self.MaxAgeSeconds = params.get("MaxAgeSeconds")
+        self.ExposeHeaders = params.get("ExposeHeaders")
+
+
+class UpdateBucketCORSOptResponse(AbstractModel):
+    """UpdateBucketCORSOpt response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

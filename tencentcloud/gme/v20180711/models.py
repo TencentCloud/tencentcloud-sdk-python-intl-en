@@ -54,6 +54,116 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Date = params.get("Date")
 
 
+class ApplicationDataStatistics(AbstractModel):
+    """Application statistics
+
+    """
+
+    def __init__(self):
+        """
+        :param BizId: Application ID
+        :type BizId: int
+        :param DauDataNum: DAU data
+        :type DauDataNum: int
+        :param DauDataMainland: DAU in Chinese mainland
+        :type DauDataMainland: list of StatisticsItem
+        :param DauDataOversea: DAU outside Chinese mainland
+        :type DauDataOversea: list of StatisticsItem
+        :param DauDataSum: Total DAU
+        :type DauDataSum: list of StatisticsItem
+        :param DurationDataNum: Number of voice chat metrics
+        :type DurationDataNum: int
+        :param DurationDataMainland: Duration of voice chat in Chinese mainland in minutes
+        :type DurationDataMainland: list of StatisticsItem
+        :param DurationDataOversea: Duration of voice chat outside Chinese mainland in minutes
+        :type DurationDataOversea: list of StatisticsItem
+        :param DurationDataSum: Total duration of voice chat in minutes
+        :type DurationDataSum: list of StatisticsItem
+        :param PcuDataNum: PCU data
+        :type PcuDataNum: int
+        :param PcuDataMainland: PCU in Chinese mainland
+        :type PcuDataMainland: list of StatisticsItem
+        :param PcuDataOversea: PCU outside Chinese mainland
+        :type PcuDataOversea: list of StatisticsItem
+        :param PcuDataSum: Total PCU
+        :type PcuDataSum: list of StatisticsItem
+        """
+        self.BizId = None
+        self.DauDataNum = None
+        self.DauDataMainland = None
+        self.DauDataOversea = None
+        self.DauDataSum = None
+        self.DurationDataNum = None
+        self.DurationDataMainland = None
+        self.DurationDataOversea = None
+        self.DurationDataSum = None
+        self.PcuDataNum = None
+        self.PcuDataMainland = None
+        self.PcuDataOversea = None
+        self.PcuDataSum = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.DauDataNum = params.get("DauDataNum")
+        if params.get("DauDataMainland") is not None:
+            self.DauDataMainland = []
+            for item in params.get("DauDataMainland"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DauDataMainland.append(obj)
+        if params.get("DauDataOversea") is not None:
+            self.DauDataOversea = []
+            for item in params.get("DauDataOversea"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DauDataOversea.append(obj)
+        if params.get("DauDataSum") is not None:
+            self.DauDataSum = []
+            for item in params.get("DauDataSum"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DauDataSum.append(obj)
+        self.DurationDataNum = params.get("DurationDataNum")
+        if params.get("DurationDataMainland") is not None:
+            self.DurationDataMainland = []
+            for item in params.get("DurationDataMainland"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DurationDataMainland.append(obj)
+        if params.get("DurationDataOversea") is not None:
+            self.DurationDataOversea = []
+            for item in params.get("DurationDataOversea"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DurationDataOversea.append(obj)
+        if params.get("DurationDataSum") is not None:
+            self.DurationDataSum = []
+            for item in params.get("DurationDataSum"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DurationDataSum.append(obj)
+        self.PcuDataNum = params.get("PcuDataNum")
+        if params.get("PcuDataMainland") is not None:
+            self.PcuDataMainland = []
+            for item in params.get("PcuDataMainland"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.PcuDataMainland.append(obj)
+        if params.get("PcuDataOversea") is not None:
+            self.PcuDataOversea = []
+            for item in params.get("PcuDataOversea"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.PcuDataOversea.append(obj)
+        if params.get("PcuDataSum") is not None:
+            self.PcuDataSum = []
+            for item in params.get("PcuDataSum"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.PcuDataSum.append(obj)
+
+
 class CreateAppRequest(AbstractModel):
     """CreateApp request structure.
 
@@ -210,6 +320,54 @@ class DescribeAppStatisticsResponse(AbstractModel):
                 obj = AppStatisticsItem()
                 obj._deserialize(item)
                 self.AppStatistics.append(obj)
+
+
+class DescribeApplicationDataRequest(AbstractModel):
+    """DescribeApplicationData request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BizId: Application ID
+        :type BizId: int
+        :param StartDate: Data start date in the format of yyyy-mm-dd, such as 2018-07-13
+        :type StartDate: str
+        :param EndDate: Data end date in the format of yyyy-mm-dd, such as 2018-07-13
+        :type EndDate: str
+        """
+        self.BizId = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
+
+class DescribeApplicationDataResponse(AbstractModel):
+    """DescribeApplicationData response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: Application statistics
+        :type Data: :class:`tencentcloud.gme.v20180711.models.ApplicationDataStatistics`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = ApplicationDataStatistics()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeScanResult(AbstractModel):
@@ -620,6 +778,27 @@ class ScanVoiceResult(AbstractModel):
     def _deserialize(self, params):
         self.DataId = params.get("DataId")
         self.TaskId = params.get("TaskId")
+
+
+class StatisticsItem(AbstractModel):
+    """Usage data
+
+    """
+
+    def __init__(self):
+        """
+        :param StatDate: Date in the format of yyyy-mm-dd, such as 2018-07-13
+        :type StatDate: str
+        :param Data: Statistics
+        :type Data: int
+        """
+        self.StatDate = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.StatDate = params.get("StatDate")
+        self.Data = params.get("Data")
 
 
 class Tag(AbstractModel):

@@ -72,6 +72,12 @@ class AccessPoint(AbstractModel):
         :param AvailablePortType: Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type AvailablePortType: list of str
+        :param Coordinate: Latitude and longitude of the access point
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Coordinate: :class:`tencentcloud.dc.v20180410.models.Coordinate`
+        :param City: City where the access point is located
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type City: str
         """
         self.AccessPointName = None
         self.AccessPointId = None
@@ -80,6 +86,8 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.LineOperator = None
         self.RegionId = None
         self.AvailablePortType = None
+        self.Coordinate = None
+        self.City = None
 
 
     def _deserialize(self, params):
@@ -90,6 +98,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.LineOperator = params.get("LineOperator")
         self.RegionId = params.get("RegionId")
         self.AvailablePortType = params.get("AvailablePortType")
+        if params.get("Coordinate") is not None:
+            self.Coordinate = Coordinate()
+            self.Coordinate._deserialize(params.get("Coordinate"))
+        self.City = params.get("City")
 
 
 class ApplyInternetAddressRequest(AbstractModel):
@@ -162,6 +174,27 @@ class BgpPeer(AbstractModel):
     def _deserialize(self, params):
         self.Asn = params.get("Asn")
         self.AuthKey = params.get("AuthKey")
+
+
+class Coordinate(AbstractModel):
+    """Coordinate describing the longitude and latitude.
+
+    """
+
+    def __init__(self):
+        """
+        :param Lat: Latitude
+        :type Lat: float
+        :param Lng: Longitude
+        :type Lng: float
+        """
+        self.Lat = None
+        self.Lng = None
+
+
+    def _deserialize(self, params):
+        self.Lat = params.get("Lat")
+        self.Lng = params.get("Lng")
 
 
 class CreateDirectConnectRequest(AbstractModel):

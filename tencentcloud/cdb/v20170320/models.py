@@ -880,7 +880,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DeployMode: int
         :param SlaveZone: AZ information of secondary database 1, which is the `Zone` value by default. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
         :type SlaveZone: str
-        :param BackupZone: AZ information of secondary database 2, which is empty by default. This parameter can be specified when purchasing strong sync primary instances and is meaningless for other types of instances.
+        :param BackupZone: Availability zone information of replica 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.
         :type BackupZone: str
         :param SecurityGroup: Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.
         :type SecurityGroup: list of str
@@ -3038,6 +3038,8 @@ class DescribeErrorLogDataRequest(AbstractModel):
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
+        :param InstType: This parameter is valid only for source or disaster recovery instances. Valid value: `slave`, which indicates pulling logs from the replica.
+        :type InstType: str
         """
         self.InstanceId = None
         self.StartTime = None
@@ -3045,6 +3047,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
         self.KeyWords = None
         self.Limit = None
         self.Offset = None
+        self.InstType = None
 
 
     def _deserialize(self, params):
@@ -3054,6 +3057,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
         self.KeyWords = params.get("KeyWords")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.InstType = params.get("InstType")
 
 
 class DescribeErrorLogDataResponse(AbstractModel):
@@ -3550,6 +3554,8 @@ class DescribeSlowLogDataRequest(AbstractModel):
         :type Offset: int
         :param Limit: The number of results per page in paginated queries. Default value: 100. Maximum value: 400.
         :type Limit: int
+        :param InstType: This parameter is valid only for source or disaster recovery instances. Valid value: `slave`, which indicates pulling logs from the replica.
+        :type InstType: str
         """
         self.InstanceId = None
         self.StartTime = None
@@ -3561,6 +3567,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         self.OrderBy = None
         self.Offset = None
         self.Limit = None
+        self.InstType = None
 
 
     def _deserialize(self, params):
@@ -3574,6 +3581,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         self.OrderBy = params.get("OrderBy")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.InstType = params.get("InstType")
 
 
 class DescribeSlowLogDataResponse(AbstractModel):
@@ -4488,7 +4496,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param MasterInfo: Details of a primary instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
-        :param DeviceType: Instance type. Value range: HA (High-Availability Edition), FE (Finance Edition), BASIC (Basic Edition)
+        :param DeviceType: Instance type
         :type DeviceType: str
         :param EngineVersion: Kernel version
         :type EngineVersion: str
@@ -7104,6 +7112,94 @@ class StopRollbackResponse(AbstractModel):
     def __init__(self):
         """
         :param AsyncRequestId: Async task request ID
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
+    """SwitchDBInstanceMasterSlave request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param DstSlave: Specifies the replica server to switched to. Valid values: `first` (the first replica server), `second` (the second replica server). Default value: `first`. `second` is valid only for a multi-AZ instance.
+        :type DstSlave: str
+        :param ForceSwitch: Whether to force the switch. Valid values: `True`, `False` (default). If this parameter is set to `True`, instance data may be lost during the switch.
+        :type ForceSwitch: bool
+        :param WaitSwitch: Whether to perform the switch during a time window. Valid values: `True`, `False` (default). If `ForceSwitch` is set to `True`, this parameter is invalid.
+        :type WaitSwitch: bool
+        """
+        self.InstanceId = None
+        self.DstSlave = None
+        self.ForceSwitch = None
+        self.WaitSwitch = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DstSlave = params.get("DstSlave")
+        self.ForceSwitch = params.get("ForceSwitch")
+        self.WaitSwitch = params.get("WaitSwitch")
+
+
+class SwitchDBInstanceMasterSlaveResponse(AbstractModel):
+    """SwitchDBInstanceMasterSlave response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Async task ID
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class SwitchDrInstanceToMasterRequest(AbstractModel):
+    """SwitchDrInstanceToMaster request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Disaster recovery instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class SwitchDrInstanceToMasterResponse(AbstractModel):
+    """SwitchDrInstanceToMaster response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task
         :type AsyncRequestId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

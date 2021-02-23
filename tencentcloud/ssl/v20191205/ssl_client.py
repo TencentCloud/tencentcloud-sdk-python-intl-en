@@ -363,7 +363,7 @@ class SslClient(AbstractClient):
 
 
     def SubmitCertificateInformation(self, request):
-        """This API is used to submit certificate information.
+        """This API is used to submit certificate information. You can call this API to submit the information of a certificate for several times. However, please make sure the submitted information is complete.
 
         :param request: Request instance for SubmitCertificateInformation.
         :type request: :class:`tencentcloud.ssl.v20191205.models.SubmitCertificateInformationRequest`

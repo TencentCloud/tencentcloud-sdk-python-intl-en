@@ -26,6 +26,34 @@ class SqlserverClient(AbstractClient):
     _service = 'sqlserver'
 
 
+    def CloneDB(self, request):
+        """This API is used to clone and rename databases of an instance. The clones are still in the instance from which they are cloned.
+
+        :param request: Request instance for CloneDB.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CloneDBRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CloneDBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloneDB", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloneDBResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAccount(self, request):
         """This API is used to create an instance account.
 
@@ -768,6 +796,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDBInstanceNetwork(self, request):
+        """This API is used to switch a running instance from a VPC to another.
+
+        :param request: Request instance for ModifyDBInstanceNetwork.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceNetworkRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceNetworkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBInstanceNetwork", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBInstanceNetworkResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

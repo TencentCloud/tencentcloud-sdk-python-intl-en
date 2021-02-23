@@ -2941,9 +2941,9 @@ class InstanceAdvancedSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param MountTarget: Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.
+        :param MountTarget: Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 (xfs for tlinux system) and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.
 Note: in multi-disk scenarios, use the DataDisks data structure below to set the corresponding information, such as cloud disk type, cloud disk size, mount path, and whether to perform formatting.
-Note: this field may return `null`, indicating that no valid value is obtained.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type MountTarget: str
         :param DockerGraphPath: Specified value of dockerd --graph. Default value: /var/lib/docker
 Note: This field may return null, indicating that no valid value was found.
@@ -2956,8 +2956,8 @@ Note: This field may return null, indicating that no valid value was found.
         :param Labels: Node label array
 Note: This field may return null, indicating that no valid value was found.
         :type Labels: list of Label
-        :param DataDisks: Mounting information of multiple data disks. Ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks. If the purchase of multiple data disks is also set in DataDisks under RunInstancesPara of the CreateClusterInstances API for adding nodes, you can refer to the example of adding cluster nodes (multiple data disks) for the CreateClusterInstances API.
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param DataDisks: Mounting information of multiple data disks. Ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks, for example `DataDisks` under `RunInstancesPara` of the `CreateClusterInstances` API. You can refer to the example of adding a cluster node with multiple data disks in the CreateClusterInstances API. This parameter does not take effect when the AddExistedInstances API is called.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DataDisks: list of DataDisk
         :param ExtraArgs: Information about node custom parameters
 Note: This field may return null, indicating that no valid value was found.

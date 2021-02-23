@@ -3228,9 +3228,15 @@ class AnimatedGraphicTaskInput(AbstractModel):
         """
         :param Definition: Animated image generating template ID
         :type Definition: int
-        :param StartTimeOffset: Start time of animated image in video in seconds.
+        :param StartTimeOffset: Start time offset of an animated image in the video, in seconds.
+<li>If this parameter is left empty or set to 0, the animated image will start at the same time as the video.</li>
+<li>If this parameter is set to a positive number (n for example), the animated image will start at the nth second of the video.</li>
+<li>If this parameter is set to a negative number (-n for example), the animated image will start at the nth second before the end of the video.</li>
         :type StartTimeOffset: float
-        :param EndTimeOffset: End time of animated image in video in seconds.
+        :param EndTimeOffset: End time offset of an animated image in the video, in seconds.
+<li>If this parameter is left empty or set to 0, the animated image will end at the same time as the video.</li>
+<li>If this parameter is set to a positive number (n for example), the animated image will end at the nth second of the video.</li>
+<li>If this parameter is set to a negative number (-n for example), the animated image will end at the nth second before the end of the video.</li>
         :type EndTimeOffset: float
         """
         self.Definition = None
@@ -9346,7 +9352,10 @@ Default value: 10%.
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px. Valid values: 0 or [8,4096].</li>
 Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
         :type Height: str
-        :param RepeatType: 
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
+<li>once: no longer appears after watermark playback ends.</li>
+<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
+<li>repeat (default): repeats the playback until the video ends.</li>
         :type RepeatType: str
         """
         self.ImageContent = None
@@ -9379,7 +9388,10 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 <li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px. Valid values: 0 or [8,4096].</li>
         :type Height: str
-        :param RepeatType: 
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
+<li>once: no longer appears after watermark playback ends.</li>
+<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
+<li>repeat (default): repeats the playback until the video ends.</li>
         :type RepeatType: str
         """
         self.ImageContent = None
@@ -9413,7 +9425,10 @@ class ImageWatermarkTemplate(AbstractModel):
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px;</li>
 `0px` means that `Height` will be proportionally scaled according to the video width.
         :type Height: str
-        :param RepeatType: 
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
+<li>once: no longer appears after watermark playback ends.</li>
+<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
+<li>repeat (default): repeats the playback until the video ends.</li>
         :type RepeatType: str
         """
         self.ImageUrl = None

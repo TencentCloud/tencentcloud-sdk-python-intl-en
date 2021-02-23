@@ -1589,6 +1589,29 @@ class CheckNetDetectStateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CidrForCcn(AbstractModel):
+    """Publishes the routing policy of the VPC subnet to CCN
+
+    """
+
+    def __init__(self):
+        """
+        :param Cidr: Local CIDR block, including subnet CIDR block and secondary CIDR block
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Cidr: str
+        :param PublishedToVbc: Whether the routing policy of the VPC subnet is published to CCN.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PublishedToVbc: bool
+        """
+        self.Cidr = None
+        self.PublishedToVbc = None
+
+
+    def _deserialize(self, params):
+        self.Cidr = params.get("Cidr")
+        self.PublishedToVbc = params.get("PublishedToVbc")
+
+
 class ClassicLinkInstance(AbstractModel):
     """Classiclink instance
 
@@ -1943,7 +1966,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NetworkType: The bandwidth package type. Valid values: 'BGP', 'SINGLEISP', and 'ANYCAST'.
+        :param NetworkType: The type of the bandwidth package. Valid values: `HIGH_QUALITY_BGP`, `BGP`, `SINGLEISP`, and `ANYCAST`.
         :type NetworkType: str
         :param ChargeType: The bandwidth package billing mode. Valid values: 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'.
         :type ChargeType: str
@@ -1951,7 +1974,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
         :type BandwidthPackageName: str
         :param BandwidthPackageCount: The number of bandwidth packages (It can only be “1” for bill-by-CVM accounts)
         :type BandwidthPackageCount: int
-        :param InternetMaxBandwidth: The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit.
+        :param InternetMaxBandwidth: The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit. This feature is currently in beta.
         :type InternetMaxBandwidth: int
         :param Tags: The list of tags to be bound.
         :type Tags: list of Tag
@@ -2525,6 +2548,49 @@ class CreateNatGatewayResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NatGatewaySet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
+    """CreateNatGatewaySourceIpTranslationNatRule request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: The ID of the NAT Gateway, such as `nat-df45454`
+        :type NatGatewayId: str
+        :param SourceIpTranslationNatRules: The SNAT forwarding rule of the NAT Gateway
+        :type SourceIpTranslationNatRules: list of SourceIpTranslationNatRule
+        """
+        self.NatGatewayId = None
+        self.SourceIpTranslationNatRules = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("SourceIpTranslationNatRules") is not None:
+            self.SourceIpTranslationNatRules = []
+            for item in params.get("SourceIpTranslationNatRules"):
+                obj = SourceIpTranslationNatRule()
+                obj._deserialize(item)
+                self.SourceIpTranslationNatRules.append(obj)
+
+
+class CreateNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
+    """CreateNatGatewaySourceIpTranslationNatRule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3266,7 +3332,7 @@ class CreateVpnConnectionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.
+        :param VpcId: VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.
         :type VpcId: str
         :param VpnGatewayId: The ID of the VPN gateway instance.
         :type VpnGatewayId: str
@@ -3284,6 +3350,12 @@ class CreateVpnConnectionRequest(AbstractModel):
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
         :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
+        :param EnableHealthCheck: Whether the tunnel health check is supported.
+        :type EnableHealthCheck: bool
+        :param HealthCheckLocalIp: Local IP address for the health check
+        :type HealthCheckLocalIp: str
+        :param HealthCheckRemoteIp: Peer IP address for the health check
+        :type HealthCheckRemoteIp: str
         """
         self.VpcId = None
         self.VpnGatewayId = None
@@ -3294,6 +3366,9 @@ class CreateVpnConnectionRequest(AbstractModel):
         self.IKEOptionsSpecification = None
         self.IPSECOptionsSpecification = None
         self.Tags = None
+        self.EnableHealthCheck = None
+        self.HealthCheckLocalIp = None
+        self.HealthCheckRemoteIp = None
 
 
     def _deserialize(self, params):
@@ -3320,6 +3395,9 @@ class CreateVpnConnectionRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.EnableHealthCheck = params.get("EnableHealthCheck")
+        self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
+        self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
 
 
 class CreateVpnConnectionResponse(AbstractModel):
@@ -4086,6 +4164,44 @@ class DeleteNatGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
+    """DeleteNatGatewaySourceIpTranslationNatRule request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: The ID of the NAT Gateway, such as `nat-df45454`
+        :type NatGatewayId: str
+        :param NatGatewaySnatIds: The list of SNAT rule IDs of a NAT Gateway, such as `snat-df43254`
+        :type NatGatewaySnatIds: list of str
+        """
+        self.NatGatewayId = None
+        self.NatGatewaySnatIds = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.NatGatewaySnatIds = params.get("NatGatewaySnatIds")
+
+
+class DeleteNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
+    """DeleteNatGatewaySourceIpTranslationNatRule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteNetDetectRequest(AbstractModel):
     """DeleteNetDetect request structure.
 
@@ -4231,7 +4347,7 @@ class DeleteRoutesRequest(AbstractModel):
         """
         :param RouteTableId: Route table instance ID.
         :type RouteTableId: str
-        :param Routes: Routing policy object.
+        :param Routes: Routing policy object. Only the `RouteId` field is required when deleting a routing policy.
         :type Routes: list of Route
         """
         self.RouteTableId = None
@@ -4255,13 +4371,22 @@ class DeleteRoutesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param RouteSet: Details of the routing policy that has been deleted.
+        :type RouteSet: list of Route
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.RouteSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("RouteSet") is not None:
+            self.RouteSet = []
+            for item in params.get("RouteSet"):
+                obj = Route()
+                obj._deserialize(item)
+                self.RouteSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6076,7 +6201,7 @@ class DescribeIpGeolocationDatabaseUrlRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Protocol type of the IP location database. Valid values: `ipv4` and `ipv6`.
+        :param Type: Protocol type for an IP location database. Valid value: `ipv4`.
         :type Type: str
         """
         self.Type = None
@@ -6232,6 +6357,74 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractMod
                 obj = NatGatewayDestinationIpPortTranslationNatRule()
                 obj._deserialize(item)
                 self.NatGatewayDestinationIpPortTranslationNatRuleSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
+    """DescribeNatGatewaySourceIpTranslationNatRules request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: The unique ID of the NAT Gateway, such as `nat-123xx454`.
+        :type NatGatewayId: str
+        :param Filters: Filter conditions:
+<li> resource-id, the subnet ID (such as `subnet-0yi4hekt`) or CVM ID</li>
+<li> public-ip-address, the EIP, such as `139.199.232.238`</li>
+<li>description, the rule description</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. Default is 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        """
+        self.NatGatewayId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeNatGatewaySourceIpTranslationNatRulesResponse(AbstractModel):
+    """DescribeNatGatewaySourceIpTranslationNatRules response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceIpTranslationNatRuleSet: Object array of the SNAT rule for a NAT Gateway.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SourceIpTranslationNatRuleSet: list of SourceIpTranslationNatRule
+        :param TotalCount: The number of object arrays of eligible forwarding rules for a NAT Gateway
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SourceIpTranslationNatRuleSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceIpTranslationNatRuleSet") is not None:
+            self.SourceIpTranslationNatRuleSet = []
+            for item in params.get("SourceIpTranslationNatRuleSet"):
+                obj = SourceIpTranslationNatRule()
+                obj._deserialize(item)
+                self.SourceIpTranslationNatRuleSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -8345,6 +8538,8 @@ class FlowLog(AbstractModel):
         :type FlowLogDescription: str
         :param CreatedTime: The creation time of the flow log.
         :type CreatedTime: str
+        :param TagSet: Tag list, such as [{"Key": "city", "Value": "shanghai"}]
+        :type TagSet: list of Tag
         """
         self.VpcId = None
         self.FlowLogId = None
@@ -8356,6 +8551,7 @@ class FlowLog(AbstractModel):
         self.CloudLogState = None
         self.FlowLogDescription = None
         self.CreatedTime = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -8369,6 +8565,12 @@ class FlowLog(AbstractModel):
         self.CloudLogState = params.get("CloudLogState")
         self.FlowLogDescription = params.get("FlowLogDescription")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class GatewayFlowMonitorDetail(AbstractModel):
@@ -9977,6 +10179,46 @@ class ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel)
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
+    """ModifyNatGatewaySourceIpTranslationNatRule request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: The ID of the NAT Gateway, such as `nat-df453454`
+        :type NatGatewayId: str
+        :param SourceIpTranslationNatRule: The SNAT forwarding rule of the NAT Gateway
+        :type SourceIpTranslationNatRule: :class:`tencentcloud.vpc.v20170312.models.SourceIpTranslationNatRule`
+        """
+        self.NatGatewayId = None
+        self.SourceIpTranslationNatRule = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("SourceIpTranslationNatRule") is not None:
+            self.SourceIpTranslationNatRule = SourceIpTranslationNatRule()
+            self.SourceIpTranslationNatRule._deserialize(params.get("SourceIpTranslationNatRule"))
+
+
+class ModifyNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
+    """ModifyNatGatewaySourceIpTranslationNatRule response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNetDetectRequest(AbstractModel):
     """ModifyNetDetect request structure.
 
@@ -10299,7 +10541,7 @@ class ModifySecurityGroupPoliciesRequest(AbstractModel):
         :type SecurityGroupId: str
         :param SecurityGroupPolicySet: The security group policy set. SecurityGroupPolicySet object must specify new egress and ingress policies at the same time. SecurityGroupPolicy object does not support custom index (PolicyIndex).
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
-        :param SortPolicys: Whether security group sorting is supported. True indicates that security group sorting is supported. If SortPolicys does not exist or is set to False, the security group policy can be modified.
+        :param SortPolicys: Whether the security group rule is sorted. Default value: False. If it is set to `True`, security group rules will be strictly sorted according to the sequence specified in the `SecurityGroupPolicySet` parameter. Manual entry may cause omission, so we recommend sorting security group rules in the console.
         :type SortPolicys: bool
         """
         self.SecurityGroupId = None
@@ -10527,6 +10769,12 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         :param IPSECOptionsSpecification: IPSec configuration. The IPSec secure session configuration is provided by Tencent Cloud.
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        :param EnableHealthCheck: Whether to enable the tunnel health check.
+        :type EnableHealthCheck: bool
+        :param HealthCheckLocalIp: Local IP address for the tunnel health check
+        :type HealthCheckLocalIp: str
+        :param HealthCheckRemoteIp: Peer IP address for the tunnel health check
+        :type HealthCheckRemoteIp: str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -10534,6 +10782,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self.SecurityPolicyDatabases = None
         self.IKEOptionsSpecification = None
         self.IPSECOptionsSpecification = None
+        self.EnableHealthCheck = None
+        self.HealthCheckLocalIp = None
+        self.HealthCheckRemoteIp = None
 
 
     def _deserialize(self, params):
@@ -10552,6 +10803,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         if params.get("IPSECOptionsSpecification") is not None:
             self.IPSECOptionsSpecification = IPSECOptionsSpecification()
             self.IPSECOptionsSpecification._deserialize(params.get("IPSECOptionsSpecification"))
+        self.EnableHealthCheck = params.get("EnableHealthCheck")
+        self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
+        self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
 
 
 class ModifyVpnConnectionAttributeResponse(AbstractModel):
@@ -11135,6 +11389,9 @@ Note: This field may return null, indicating no valid value.
         :type TagSet: list of Tag
         :param EniType: The ENI type. 0: ENI. 1: EVM ENI.
         :type EniType: int
+        :param Business: Type of the resource bound with an ENI. Valid values: cvm, eks.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Business: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -11152,6 +11409,7 @@ Note: This field may return null, indicating no valid value.
         self.Ipv6AddressSet = None
         self.TagSet = None
         self.EniType = None
+        self.Business = None
 
 
     def _deserialize(self, params):
@@ -11188,6 +11446,7 @@ Note: This field may return null, indicating no valid value.
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.EniType = params.get("EniType")
+        self.Business = params.get("Business")
 
 
 class NetworkInterfaceAttachment(AbstractModel):
@@ -11217,6 +11476,44 @@ class NetworkInterfaceAttachment(AbstractModel):
         self.DeviceIndex = params.get("DeviceIndex")
         self.InstanceAccountId = params.get("InstanceAccountId")
         self.AttachTime = params.get("AttachTime")
+
+
+class NotifyRoutesRequest(AbstractModel):
+    """NotifyRoutes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: The unique ID of the route table
+        :type RouteTableId: str
+        :param RouteItemIds: The unique ID of the routing policy
+        :type RouteItemIds: list of str
+        """
+        self.RouteTableId = None
+        self.RouteItemIds = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteItemIds = params.get("RouteItemIds")
+
+
+class NotifyRoutesResponse(AbstractModel):
+    """NotifyRoutes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Price(AbstractModel):
@@ -12123,6 +12420,9 @@ Users can only add and operate USER-type routes.
         :type DestinationIpv6CidrBlock: str
         :param RouteItemId: Unique routing policy ID.
         :type RouteItemId: str
+        :param PublishedToVbc: Whether the routing policy is published to CCN.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PublishedToVbc: bool
         """
         self.DestinationCidrBlock = None
         self.GatewayType = None
@@ -12134,6 +12434,7 @@ Users can only add and operate USER-type routes.
         self.RouteTableId = None
         self.DestinationIpv6CidrBlock = None
         self.RouteItemId = None
+        self.PublishedToVbc = None
 
 
     def _deserialize(self, params):
@@ -12147,6 +12448,7 @@ Users can only add and operate USER-type routes.
         self.RouteTableId = params.get("RouteTableId")
         self.DestinationIpv6CidrBlock = params.get("DestinationIpv6CidrBlock")
         self.RouteItemId = params.get("RouteItemId")
+        self.PublishedToVbc = params.get("PublishedToVbc")
 
 
 class RouteTable(AbstractModel):
@@ -12172,6 +12474,9 @@ class RouteTable(AbstractModel):
         :type CreatedTime: str
         :param TagSet: Tag key-value pairs.
         :type TagSet: list of Tag
+        :param LocalCidrForCcn: Whether the local route is published to CCN.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LocalCidrForCcn: list of CidrForCcn
         """
         self.VpcId = None
         self.RouteTableId = None
@@ -12181,6 +12486,7 @@ class RouteTable(AbstractModel):
         self.Main = None
         self.CreatedTime = None
         self.TagSet = None
+        self.LocalCidrForCcn = None
 
 
     def _deserialize(self, params):
@@ -12207,6 +12513,12 @@ class RouteTable(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        if params.get("LocalCidrForCcn") is not None:
+            self.LocalCidrForCcn = []
+            for item in params.get("LocalCidrForCcn"):
+                obj = CidrForCcn()
+                obj._deserialize(item)
+                self.LocalCidrForCcn.append(obj)
 
 
 class RouteTableAssociation(AbstractModel):
@@ -12572,6 +12884,59 @@ class SetCcnRegionBandwidthLimitsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SourceIpTranslationNatRule(AbstractModel):
+    """SNAT rule of a NAT Gateway
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: Resource ID
+        :type ResourceId: str
+        :param ResourceType: Resource type. Valid values: SUBNET, NETWORKINTERFACE
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceType: str
+        :param PrivateIpAddress: Source IP/IP range
+        :type PrivateIpAddress: str
+        :param PublicIpAddresses: Elastic IP address pool
+        :type PublicIpAddresses: list of str
+        :param Description: Description
+        :type Description: str
+        :param NatGatewaySnatId: SNAT rule ID
+        :type NatGatewaySnatId: str
+        :param NatGatewayId: NAT Gateway ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NatGatewayId: str
+        :param VpcId: VPC ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param CreatedTime: Creation time of a SNAT rule for a NAT Gateway
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CreatedTime: str
+        """
+        self.ResourceId = None
+        self.ResourceType = None
+        self.PrivateIpAddress = None
+        self.PublicIpAddresses = None
+        self.Description = None
+        self.NatGatewaySnatId = None
+        self.NatGatewayId = None
+        self.VpcId = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.Description = params.get("Description")
+        self.NatGatewaySnatId = params.get("NatGatewaySnatId")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.VpcId = params.get("VpcId")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class Subnet(AbstractModel):
@@ -13076,6 +13441,14 @@ class VpnConnection(AbstractModel):
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         :param IPSECOptionsSpecification: IPSEC options.
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        :param EnableHealthCheck: Whether the health check is supported.
+        :type EnableHealthCheck: bool
+        :param HealthCheckLocalIp: Local IP address for the health check
+        :type HealthCheckLocalIp: str
+        :param HealthCheckRemoteIp: Peer IP address for the health check
+        :type HealthCheckRemoteIp: str
+        :param HealthCheckStatus: Tunnel health check status. Valid values: AVAILABLE: healthy; UNAVAILABLE: unhealthy. This parameter will be returned only after health check is enabled.
+        :type HealthCheckStatus: str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -13092,6 +13465,10 @@ class VpnConnection(AbstractModel):
         self.SecurityPolicyDatabaseSet = None
         self.IKEOptionsSpecification = None
         self.IPSECOptionsSpecification = None
+        self.EnableHealthCheck = None
+        self.HealthCheckLocalIp = None
+        self.HealthCheckRemoteIp = None
+        self.HealthCheckStatus = None
 
 
     def _deserialize(self, params):
@@ -13119,6 +13496,10 @@ class VpnConnection(AbstractModel):
         if params.get("IPSECOptionsSpecification") is not None:
             self.IPSECOptionsSpecification = IPSECOptionsSpecification()
             self.IPSECOptionsSpecification._deserialize(params.get("IPSECOptionsSpecification"))
+        self.EnableHealthCheck = params.get("EnableHealthCheck")
+        self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
+        self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
+        self.HealthCheckStatus = params.get("HealthCheckStatus")
 
 
 class VpnGateway(AbstractModel):
@@ -13257,3 +13638,41 @@ DISABLE: do not enable the route
     def _deserialize(self, params):
         self.RouteId = params.get("RouteId")
         self.Status = params.get("Status")
+
+
+class WithdrawNotifyRoutesRequest(AbstractModel):
+    """WithdrawNotifyRoutes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: The unique ID of the route table
+        :type RouteTableId: str
+        :param RouteItemIds: The unique ID of the routing policy
+        :type RouteItemIds: list of str
+        """
+        self.RouteTableId = None
+        self.RouteItemIds = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteItemIds = params.get("RouteItemIds")
+
+
+class WithdrawNotifyRoutesResponse(AbstractModel):
+    """WithdrawNotifyRoutes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

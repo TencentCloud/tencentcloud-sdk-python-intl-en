@@ -1161,7 +1161,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """This API (DescribeDatabases) is used to query the information of databases of a TencentDB instance.
+        """This API is used to query the information of databases in a TencentDB instance which must be a source or disaster recovery instance.
 
         :param request: Request instance for DescribeDatabases.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDatabasesRequest`
@@ -1637,7 +1637,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeTables(self, request):
-        """This API (DescribeTables) is used to query the database tables of a TencentDB instance.
+        """This API is used to query the information of database tables in a TencentDB instance. It only supports source or disaster recovery instances.
 
         :param request: Request instance for DescribeTables.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTablesRequest`
@@ -2615,6 +2615,62 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopRollbackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchDBInstanceMasterSlave(self, request):
+        """This API is used for source-to-replica switch.
+
+        :param request: Request instance for SwitchDBInstanceMasterSlave.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchDBInstanceMasterSlaveRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.SwitchDBInstanceMasterSlaveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchDBInstanceMasterSlave", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchDBInstanceMasterSlaveResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchDrInstanceToMaster(self, request):
+        """This API is used to promote a disaster recovery instance to source instance. The request parameter `Region` must be the region of the disaster recovery instance.
+
+        :param request: Request instance for SwitchDrInstanceToMaster.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchDrInstanceToMasterRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.SwitchDrInstanceToMasterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchDrInstanceToMaster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchDrInstanceToMasterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

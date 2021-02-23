@@ -26,6 +26,34 @@ class GseClient(AbstractClient):
     _service = 'gse'
 
 
+    def CopyFleet(self, request):
+        """This API is used to replicate server fleet.
+
+        :param request: Request instance for CopyFleet.
+        :type request: :class:`tencentcloud.gse.v20191112.models.CopyFleetRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.CopyFleetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CopyFleet", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CopyFleetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateGameServerSession(self, request):
         """This API is used to create a game server session.
 
@@ -348,6 +376,62 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopGameServerSessionPlacementResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateBucketAccelerateOpt(self, request):
+        """This API (UpdateBucketAccelerateOpt) is used to enable COS global acceleration.
+
+        :param request: Request instance for UpdateBucketAccelerateOpt.
+        :type request: :class:`tencentcloud.gse.v20191112.models.UpdateBucketAccelerateOptRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.UpdateBucketAccelerateOptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateBucketAccelerateOpt", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateBucketAccelerateOptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateBucketCORSOpt(self, request):
+        """This API (UpdateBucketCORSOpt) is used to configure CORS for COS.
+
+        :param request: Request instance for UpdateBucketCORSOpt.
+        :type request: :class:`tencentcloud.gse.v20191112.models.UpdateBucketCORSOptRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.UpdateBucketCORSOptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateBucketCORSOpt", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateBucketCORSOptResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

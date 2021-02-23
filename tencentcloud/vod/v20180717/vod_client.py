@@ -2623,10 +2623,11 @@ class VodClient(AbstractClient):
 
 
     def PullEvents(self, request):
-        """* This API is used to get event notifications from the business server through [reliable callback](https://intl.cloud.tencent.com/document/product/266/33779?from_cn_redirect=1#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83);
-        * The API is in long polling mode, i.e., if there is an unconsumed event on the server, it will be immediately returned to the requester; otherwise, the backend will suspend the request until a new event is generated;
-        * The request can be suspended for 5 seconds at most. It is recommended that the requester set the timeout period to 10 seconds.
-        * If the API returns an event, the caller must call the [ConfirmEvents](https://intl.cloud.tencent.com/document/product/266/33434?from_cn_redirect=1) API within <font color="red">30 seconds</font> to confirm that the event notification has been processed; otherwise, the event notification will be pulled again after <font color="red">30 seconds</font>.
+        """* This API is used to get event notifications from the business server through [reliable callback](https://intl.cloud.tencent.com/document/product/266/33948?lang=en&pg=).
+        * The API gets event data through long polling. That is, if there is any unconsumed event on the server, the event notification will be returned to the requester immediately. If there is no unconsumed event on the server, the request will be suspended in the backend until a new event is generated.
+        * The request can be suspended for up to 5 seconds. It’s recommended to set the request timeout period to 10 seconds.
+        * Event notifications not being pulled will be retained for up to 4 days and may be cleared after this period.
+        * After the API returns an event, the caller must call the [ConfirmEvents](https://intl.cloud.tencent.com/document/product/266/34184) API within <font color="red">30 seconds</font> to confirm that the event notification has been processed. Otherwise, the event notification will be pulled again after <font color="red">30 seconds</font>.
 
         :param request: Request instance for PullEvents.
         :type request: :class:`tencentcloud.vod.v20180717.models.PullEventsRequest`

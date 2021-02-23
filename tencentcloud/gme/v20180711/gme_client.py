@@ -82,6 +82,34 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApplicationData(self, request):
+        """This API (DescribeApplicationData) is used to query usage data details within 90 days.
+
+        :param request: Request instance for DescribeApplicationData.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeApplicationDataRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeApplicationDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApplicationData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScanResultList(self, request):
         """This API is used to query the speech detection result. Up to 100 tasks can be added in the task query list.
         <p style="color:red">If the `Callback` field is not set when a speech detection task is submitted, this API will be needed to get the detection result.</p>

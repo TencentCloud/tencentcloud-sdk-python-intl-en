@@ -1464,6 +1464,90 @@ class DescribeUinInWhitelistResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableRestProxyRequest(AbstractModel):
+    """DisableRestProxy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The value is the same as `appid`.
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DisableRestProxyResponse(AbstractModel):
+    """DisableRestProxy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RestProxyStatus: RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).
+        :type RestProxyStatus: int
+        :param TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RestProxyStatus = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RestProxyStatus = params.get("RestProxyStatus")
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class EnableRestProxyRequest(AbstractModel):
+    """EnableRestProxy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The value is the same as `appid`.
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class EnableRestProxyResponse(AbstractModel):
+    """EnableRestProxy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RestProxyStatus: RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).
+        :type RestProxyStatus: int
+        :param TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RestProxyStatus = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RestProxyStatus = params.get("RestProxyStatus")
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ErrorInfo(AbstractModel):
     """Describes the details of errors that may occur during the processing of each instance (application, region, or table).
 

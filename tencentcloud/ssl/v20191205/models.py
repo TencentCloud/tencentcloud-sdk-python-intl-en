@@ -268,6 +268,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Deployable: Whether the certificate can be deployed.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Deployable: bool
+        :param Tags: List of tags
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Tags: list of Tags
         """
         self.OwnerUin = None
         self.ProjectId = None
@@ -298,6 +301,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ProjectInfo = None
         self.BoundResource = None
         self.Deployable = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -334,6 +338,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.ProjectInfo._deserialize(params.get("ProjectInfo"))
         self.BoundResource = params.get("BoundResource")
         self.Deployable = params.get("Deployable")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CommitCertificateInformationRequest(AbstractModel):
@@ -360,9 +370,9 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderId: TrustAsia order ID
+        :param OrderId: Order number at the certificate authority
         :type OrderId: str
-        :param Status: Certificate status. 0: being reviewed; 1: approved; 2: not approved; 3: expired; 4: DNS record added; 5: OV certificate, to be submitted; 6: order being canceled; 7: cancelled; 8: information submitted, confirmation letter to be uploaded; 9: certificate being revoked; 10: revoked; 11: reissuing; 12: revocation confirmation letter to be uploaded.
+        :param Status: Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload; `13`: pending information submission for the free certificate.
         :type Status: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -402,7 +412,7 @@ class DeleteCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DeleteResult: Deletion result.
+        :param DeleteResult: Deletion result (`true`: deleted successfully; `false`: failed to delete)
         :type DeleteResult: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -452,8 +462,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param CertificateType: Certificate type. CA: client certificate; SVR: server certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateType: str
-        :param PackageType: Certificate package type. 1: GeoTrust DV SSL CA - G3; 2: TrustAsia TLS RSA CA; 3: Secure Site EV Pro; 4: Secure Site EV; 5: Secure Site OV Pro; 6: Secure Site OV; 7: Secure Site OV wildcard SSL certificate; 8: GeoTrust EV; 9: GeoTrust OV; 10: GeoTrust OV wildcard SSL certificate; 11: TrustAsia DV multi-domain SSL certificate; 12: TrustAsia DV wildcard SSL certificate; 13: TrustAsia OV wildcard SSL certificate (D3); 14: TrustAsia OV SSL certificate (D3); 15: TrustAsia OV multi-domain SSL certificate (D3); 16: TrustAsia EV SSL certificate (D3); 17: TrustAsia EV multi-domain SSL certificate (D3); 18: GlobalSign OV SSL certificate; 19: GlobalSign OV wildcard SSL certificate; 20: GlobalSign EV SSL certificate; 21: TrustAsia OV multi-domain wildcard SSL certificate (D3); 22: GlobalSign OV multi-domain SSL certificate; 23: GlobalSign OV multi-domain wildcard SSL certificate; 24: GlobalSign EV multi-domain SSL certificate.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PackageType: Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod Chinese Cryptographic DV; `34`: DNSPod Chinese Cryptographic DV multi-domain; `35`: DNSPod Chinese Cryptographic DV wildcard; `37`: DNSPod Chinese Cryptographic OV; `38`: DNSPod Chinese Cryptographic OV multi-domain; `39`: DNSPod Chinese Cryptographic OV wildcard: `40`: DNSPod Chinese Cryptographic EV; `41`: DNSPod Chinese Cryptographic EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PackageType: str
         :param ProductZhName: Issuer.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -464,8 +474,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Alias: Alias.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Alias: str
-        :param Status: Certificate status. 0: being reviewed; 1: approved; 2: not approved; 3: expired; 4: DNS record added; 5: OV certificate, to be submitted; 6: order being canceled; 7: cancelled; 8: information submitted, confirmation letter to be uploaded; 9: certificate being revoked; 10: revoked; 11: reissuing; 12: revocation confirmation letter to be uploaded.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Status: Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload; `13`: pending information submission for the free certificate.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Status: int
         :param StatusMsg: Status information.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -497,8 +507,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param CertificatePrivateKey: Private key of the certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificatePrivateKey: str
-        :param CertificatePublicKey: Public key of the certificate.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param CertificatePublicKey: Certificate public key (i.e., certificate content)
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CertificatePublicKey: str
         :param DvAuthDetail: DV authentication information.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -539,6 +549,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Deployable: Whether the certificate can be deployed.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Deployable: bool
+        :param Tags: List of associated tags
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Tags: list of Tags
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -575,6 +588,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SubmittedData = None
         self.RenewAble = None
         self.Deployable = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -618,6 +632,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.SubmittedData._deserialize(params.get("SubmittedData"))
         self.RenewAble = params.get("RenewAble")
         self.Deployable = params.get("Deployable")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -724,8 +744,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param PackageType: Certificate package type. 1: GeoTrust DV SSL CA - G3; 2: TrustAsia TLS RSA CA; 3: Secure Site EV Pro; 4: Secure Site EV; 5: Secure Site OV Pro; 6: Secure Site OV; 7: Secure Site OV wildcard SSL certificate; 8: GeoTrust EV; 9: GeoTrust OV; 10: GeoTrust OV wildcard SSL certificate; 11: TrustAsia DV multi-domain SSL certificate; 12: TrustAsia DV wildcard SSL certificate; 13: TrustAsia OV wildcard SSL certificate (D3); 14: TrustAsia OV SSL certificate (D3); 15: TrustAsia OV multi-domain SSL certificate (D3); 16: TrustAsia EV SSL certificate (D3); 17: TrustAsia EV multi-domain SSL certificate (D3); 18: GlobalSign OV SSL certificate; 19: GlobalSign OV wildcard SSL certificate; 20: GlobalSign EV SSL certificate; 21: TrustAsia OV multi-domain wildcard SSL certificate (D3); 22: GlobalSign OV multi-domain SSL certificate; 23: GlobalSign OV multi-domain wildcard SSL certificate; 24: GlobalSign EV multi-domain SSL certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PackageType: str
-        :param ProductZhName: Name of the certificate issuer.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ProductZhName: Name of the certificate issuer
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ProductZhName: str
         :param Domain: Domain name.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -802,6 +822,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Deployable: Whether the certificate can be deployed.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Deployable: bool
+        :param Tags: List of tags
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Tags: list of Tags
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -836,6 +859,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RenewAble = None
         self.SubmittedData = None
         self.Deployable = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -877,6 +901,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.SubmittedData = SubmittedData()
             self.SubmittedData._deserialize(params.get("SubmittedData"))
         self.Deployable = params.get("Deployable")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1050,7 +1080,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DvAuths(AbstractModel):
-    """Content of the DvAuths parameter.
+    """Returns the content of the `DvAuths` parameter key.
 
     """
 
@@ -1255,7 +1285,7 @@ class ReplaceCertificateRequest(AbstractModel):
         """
         :param CertificateId: Certificate ID.
         :type CertificateId: str
-        :param ValidType: Verification type. DNS_AUTO: automatic DNS verification; DNS: manual DNS verification; FILE: verification by file.
+        :param ValidType: Validation type. `DNS_AUTO`: automatic DNS validation (only available for domains hosted in Tencent Cloud and when the DNS status is OK); `DNS`: manual DNS validation; `FILE`: file validation.
         :type ValidType: str
         :param CsrType: Type. Original: original certificate CSR; upload: uploaded manually; online: generated online. The default value is original.
         :type CsrType: str
@@ -1263,12 +1293,15 @@ class ReplaceCertificateRequest(AbstractModel):
         :type CsrContent: str
         :param CsrkeyPassword: Password of the key.
         :type CsrkeyPassword: str
+        :param Reason: Reissue reason
+        :type Reason: str
         """
         self.CertificateId = None
         self.ValidType = None
         self.CsrType = None
         self.CsrContent = None
         self.CsrkeyPassword = None
+        self.Reason = None
 
 
     def _deserialize(self, params):
@@ -1277,6 +1310,7 @@ class ReplaceCertificateRequest(AbstractModel):
         self.CsrType = params.get("CsrType")
         self.CsrContent = params.get("CsrContent")
         self.CsrkeyPassword = params.get("CsrkeyPassword")
+        self.Reason = params.get("Reason")
 
 
 class ReplaceCertificateResponse(AbstractModel):
@@ -1317,7 +1351,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
         :type CertificateDomain: str
         :param DomainList: Uploaded domain name array (can be uploaded for a multi-domain certificate).
         :type DomainList: list of str
-        :param KeyPassword: Password of the private key.
+        :param KeyPassword: Private key password (optional)
         :type KeyPassword: str
         :param OrganizationName: Organization name.
         :type OrganizationName: str
@@ -1337,11 +1371,11 @@ class SubmitCertificateInformationRequest(AbstractModel):
         :type PhoneAreaCode: str
         :param PhoneNumber: Fixed-line phone number of the organization.
         :type PhoneNumber: str
-        :param VerifyType: Certificate verification method.
+        :param VerifyType: Validation type. `DNS_AUTO`: automatic DNS validation (only available for domains hosted in Tencent Cloud and when the DNS status is OK); `DNS`: manual DNS validation; `FILE`: file validation.
         :type VerifyType: str
-        :param AdminFirstName: Last name of the admin.
+        :param AdminFirstName: First name of the administrator
         :type AdminFirstName: str
-        :param AdminLastName: First name of the admin.
+        :param AdminLastName: Last name of the administrator
         :type AdminLastName: str
         :param AdminPhoneNum: Mobile number of the admin.
         :type AdminPhoneNum: str
@@ -1349,9 +1383,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
         :type AdminEmail: str
         :param AdminPosition: Position of the admin.
         :type AdminPosition: str
-        :param ContactFirstName: Last name of the contact.
+        :param ContactFirstName: First name of the contact
         :type ContactFirstName: str
-        :param ContactLastName: First name of the contact.
+        :param ContactLastName: Last name of the contact
         :type ContactLastName: str
         :param ContactEmail: Email of the contact.
         :type ContactEmail: str
@@ -1576,6 +1610,27 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.VerifyType = params.get("VerifyType")
 
 
+class Tags(AbstractModel):
+    """Tag
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class UploadCertificateRequest(AbstractModel):
     """UploadCertificate request structure.
 
@@ -1583,7 +1638,7 @@ class UploadCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificatePublicKey: Public key of the certificate.
+        :param CertificatePublicKey: Certificate content
         :type CertificatePublicKey: str
         :param CertificatePrivateKey: Private key content. This parameter is required when the certificate type is SVR, and not required when the certificate type is CA.
         :type CertificatePrivateKey: str
@@ -1593,12 +1648,15 @@ class UploadCertificateRequest(AbstractModel):
         :type Alias: str
         :param ProjectId: Project ID.
         :type ProjectId: int
+        :param CertificateUse: 
+        :type CertificateUse: str
         """
         self.CertificatePublicKey = None
         self.CertificatePrivateKey = None
         self.CertificateType = None
         self.Alias = None
         self.ProjectId = None
+        self.CertificateUse = None
 
 
     def _deserialize(self, params):
@@ -1607,6 +1665,7 @@ class UploadCertificateRequest(AbstractModel):
         self.CertificateType = params.get("CertificateType")
         self.Alias = params.get("Alias")
         self.ProjectId = params.get("ProjectId")
+        self.CertificateUse = params.get("CertificateUse")
 
 
 class UploadCertificateResponse(AbstractModel):

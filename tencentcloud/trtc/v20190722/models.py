@@ -728,6 +728,44 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class DismissRoomByStrRoomIdRequest(AbstractModel):
+    """DismissRoomByStrRoomId request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: `SDKAppId` of TRTC
+        :type SdkAppId: int
+        :param RoomId: Room ID
+        :type RoomId: str
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+
+
+class DismissRoomByStrRoomIdResponse(AbstractModel):
+    """DismissRoomByStrRoomId response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DismissRoomRequest(AbstractModel):
     """DismissRoom request structure.
 
@@ -905,6 +943,8 @@ class LayoutParams(AbstractModel):
         :type PresetLayoutConfig: list of PresetLayoutConfig
         :param PlaceHolderMode: Valid in custom templates. 1: the placeholding feature is enabled; 0 (default): the feature is disabled. When the feature is enabled, but a user for whom a position is reserved is not sending video data, the position will show the corresponding placeholder image.
         :type PlaceHolderMode: int
+        :param PureAudioHoldPlaceMode: Whether an audio-only stream occupies an image spot, which takes effect in a floating, grid, or screen sharing template. Valid values: 0 (default): when a floating or grid template is used, users sending audio only occupy image spots; when a screen sharing template is used, users (except the user whose screen is shared) sending audio only do not occupy image spots; 1: users sending audio only occupy image spots; 2: users sending audio only do not occupy image spots.
+        :type PureAudioHoldPlaceMode: int
         """
         self.Template = None
         self.MainVideoUserId = None
@@ -914,6 +954,7 @@ class LayoutParams(AbstractModel):
         self.MixVideoUids = None
         self.PresetLayoutConfig = None
         self.PlaceHolderMode = None
+        self.PureAudioHoldPlaceMode = None
 
 
     def _deserialize(self, params):
@@ -932,6 +973,7 @@ class LayoutParams(AbstractModel):
                 obj._deserialize(item)
                 self.PresetLayoutConfig.append(obj)
         self.PlaceHolderMode = params.get("PlaceHolderMode")
+        self.PureAudioHoldPlaceMode = params.get("PureAudioHoldPlaceMode")
 
 
 class OutputParams(AbstractModel):
@@ -1097,6 +1139,48 @@ class RealtimeData(AbstractModel):
         self.DataType = params.get("DataType")
 
 
+class RemoveUserByStrRoomIdRequest(AbstractModel):
+    """RemoveUserByStrRoomId request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: `SDKAppId` of TRTC
+        :type SdkAppId: int
+        :param RoomId: Room ID
+        :type RoomId: str
+        :param UserIds: List of up to 10 users to be removed
+        :type UserIds: list of str
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.UserIds = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.UserIds = params.get("UserIds")
+
+
+class RemoveUserByStrRoomIdResponse(AbstractModel):
+    """RemoveUserByStrRoomId response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RemoveUserRequest(AbstractModel):
     """RemoveUser request structure.
 
@@ -1245,6 +1329,68 @@ class SmallVideoLayoutParams(AbstractModel):
         self.LocationY = params.get("LocationY")
 
 
+class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
+    """StartMCUMixTranscodeByStrRoomId request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: `SDKAppId` of TRTC
+        :type SdkAppId: int
+        :param StrRoomId: Room ID in string type
+        :type StrRoomId: str
+        :param OutputParams: On-Cloud MixTranscoding output parameters
+        :type OutputParams: :class:`tencentcloud.trtc.v20190722.models.OutputParams`
+        :param EncodeParams: On-Cloud MixTranscoding output encoding parameters
+        :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
+        :param LayoutParams: On-Cloud MixTranscoding output layout parameters
+        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
+        :param PublishCdnParams: Relayed push parameters of a non-Tencent Cloud CDN
+        :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
+        """
+        self.SdkAppId = None
+        self.StrRoomId = None
+        self.OutputParams = None
+        self.EncodeParams = None
+        self.LayoutParams = None
+        self.PublishCdnParams = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StrRoomId = params.get("StrRoomId")
+        if params.get("OutputParams") is not None:
+            self.OutputParams = OutputParams()
+            self.OutputParams._deserialize(params.get("OutputParams"))
+        if params.get("EncodeParams") is not None:
+            self.EncodeParams = EncodeParams()
+            self.EncodeParams._deserialize(params.get("EncodeParams"))
+        if params.get("LayoutParams") is not None:
+            self.LayoutParams = LayoutParams()
+            self.LayoutParams._deserialize(params.get("LayoutParams"))
+        if params.get("PublishCdnParams") is not None:
+            self.PublishCdnParams = PublishCdnParams()
+            self.PublishCdnParams._deserialize(params.get("PublishCdnParams"))
+
+
+class StartMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
+    """StartMCUMixTranscodeByStrRoomId response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StartMCUMixTranscodeRequest(AbstractModel):
     """StartMCUMixTranscode request structure.
 
@@ -1292,6 +1438,44 @@ class StartMCUMixTranscodeRequest(AbstractModel):
 
 class StartMCUMixTranscodeResponse(AbstractModel):
     """StartMCUMixTranscode response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
+    """StopMCUMixTranscodeByStrRoomId request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: `SDKAppId` of TRTC
+        :type SdkAppId: int
+        :param StrRoomId: Room ID in string type
+        :type StrRoomId: str
+        """
+        self.SdkAppId = None
+        self.StrRoomId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StrRoomId = params.get("StrRoomId")
+
+
+class StopMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
+    """StopMCUMixTranscodeByStrRoomId response structure.
 
     """
 

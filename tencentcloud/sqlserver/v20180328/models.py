@@ -258,6 +258,53 @@ class Backup(AbstractModel):
         self.BackupName = params.get("BackupName")
 
 
+class CloneDBRequest(AbstractModel):
+    """CloneDB request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of mssql-j8kv137v
+        :type InstanceId: str
+        :param RenameRestore: Clone and rename the databases specified in `ReNameRestoreDatabase`. Please note that the clones must be renamed.
+        :type RenameRestore: list of RenameRestoreDatabase
+        """
+        self.InstanceId = None
+        self.RenameRestore = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("RenameRestore") is not None:
+            self.RenameRestore = []
+            for item in params.get("RenameRestore"):
+                obj = RenameRestoreDatabase()
+                obj._deserialize(item)
+                self.RenameRestore.append(obj)
+
+
+class CloneDBResponse(AbstractModel):
+    """CloneDB response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Async task request ID, which can be used in the `DescribeFlowStatus` API to query the execution result of an async task
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAccountRequest(AbstractModel):
     """CreateAccount request structure.
 
@@ -400,6 +447,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type HAType: str
         :param MultiZones: Whether to deploy across availability zones. Default value: false.
         :type MultiZones: bool
+        :param ResourceTags: Tags associated with the instances to be created
+        :type ResourceTags: list of ResourceTag
         """
         self.Zone = None
         self.Memory = None
@@ -420,6 +469,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.Span = None
         self.HAType = None
         self.MultiZones = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -442,6 +492,12 @@ class CreateDBInstancesRequest(AbstractModel):
         self.Span = params.get("Span")
         self.HAType = params.get("HAType")
         self.MultiZones = params.get("MultiZones")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -755,6 +811,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param HAFlag: Disaster recovery type. Valid values: MIRROR (image), ALWAYSON (AlwaysOn), SINGLE (singleton).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HAFlag: str
+        :param ResourceTags: The list of tags associated with the instance
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceTags: list of ResourceTag
         """
         self.InstanceId = None
         self.Name = None
@@ -792,6 +851,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SubFlag = None
         self.ROFlag = None
         self.HAFlag = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -831,6 +891,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SubFlag = params.get("SubFlag")
         self.ROFlag = params.get("ROFlag")
         self.HAFlag = params.get("HAFlag")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class DBPrivilege(AbstractModel):
@@ -1160,6 +1226,8 @@ class DescribeBackupsRequest(AbstractModel):
         :type BackupWay: int
         :param BackupId: Filter by backup ID. If this parameter is left empty, backup ID will not be used in filtering.
         :type BackupId: int
+        :param DatabaseName: Filter backups by the database name. If the parameter is left empty, this filter criteria will not take effect.
+        :type DatabaseName: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -1170,6 +1238,7 @@ class DescribeBackupsRequest(AbstractModel):
         self.Strategy = None
         self.BackupWay = None
         self.BackupId = None
+        self.DatabaseName = None
 
 
     def _deserialize(self, params):
@@ -1182,6 +1251,7 @@ class DescribeBackupsRequest(AbstractModel):
         self.Strategy = params.get("Strategy")
         self.BackupWay = params.get("BackupWay")
         self.BackupId = params.get("BackupId")
+        self.DatabaseName = params.get("DatabaseName")
 
 
 class DescribeBackupsResponse(AbstractModel):
@@ -1249,6 +1319,18 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: Unique string-type ID of instance subnet in the format of `subnet-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.
         :type SubnetId: str
+        :param VipSet: The list of instance private IPs, such as 172.1.0.12
+        :type VipSet: list of str
+        :param InstanceNameSet: The list of instance names used for fuzzy match
+        :type InstanceNameSet: list of str
+        :param VersionSet: The list of instance version numbers, such as 2008R2, 2012SP3
+        :type VersionSet: list of str
+        :param Zone: Instance availability zone, such as ap-guangzhou-2
+        :type Zone: str
+        :param TagKeys: The list of instance tags
+        :type TagKeys: list of str
+        :param SearchKey: Keyword used for fuzzy match, including instance ID, instance name, and instance private IP
+        :type SearchKey: str
         """
         self.ProjectId = None
         self.Status = None
@@ -1258,6 +1340,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.PayMode = None
         self.VpcId = None
         self.SubnetId = None
+        self.VipSet = None
+        self.InstanceNameSet = None
+        self.VersionSet = None
+        self.Zone = None
+        self.TagKeys = None
+        self.SearchKey = None
 
 
     def _deserialize(self, params):
@@ -1269,6 +1357,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.VipSet = params.get("VipSet")
+        self.InstanceNameSet = params.get("InstanceNameSet")
+        self.VersionSet = params.get("VersionSet")
+        self.Zone = params.get("Zone")
+        self.TagKeys = params.get("TagKeys")
+        self.SearchKey = params.get("SearchKey")
 
 
 class DescribeDBInstancesResponse(AbstractModel):
@@ -2363,6 +2457,56 @@ class ModifyDBInstanceNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceNetworkRequest(AbstractModel):
+    """ModifyDBInstanceNetwork request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param NewVpcId: ID of the new VPC
+        :type NewVpcId: str
+        :param NewSubnetId: ID of the new subnet
+        :type NewSubnetId: str
+        :param OldIpRetainTime: Retention period (in hours) of the original VIP. Value range: `0-168`. Default value: `0`, indicating the original VIP is released immediately.
+        :type OldIpRetainTime: int
+        """
+        self.InstanceId = None
+        self.NewVpcId = None
+        self.NewSubnetId = None
+        self.OldIpRetainTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NewVpcId = params.get("NewVpcId")
+        self.NewSubnetId = params.get("NewSubnetId")
+        self.OldIpRetainTime = params.get("OldIpRetainTime")
+
+
+class ModifyDBInstanceNetworkResponse(AbstractModel):
+    """ModifyDBInstanceNetwork response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: ID of the instance network changing task. You can use the [DescribeFlowStatus](https://intl.cloud.tencent.com/document/product/238/19967?from_cn_redirect=1) API to query the task status.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceProjectRequest(AbstractModel):
     """ModifyDBInstanceProject request structure.
 
@@ -2633,7 +2777,7 @@ class RegionInfo(AbstractModel):
 
 
 class RenameRestoreDatabase(AbstractModel):
-    """It is used in the `RestoreInstance`, `RollbackInstance`, and `CreateMigration` APIs, and used to specify the databases to be restored and rename them after restoration.
+    """Used in the `RestoreInstance`, `RollbackInstance`, `CreateMigration`, and `CloneDB` APIs to specify and rename the database to be restored, rolled back, migrated, or cloned.
 
     """
 
@@ -2642,7 +2786,7 @@ class RenameRestoreDatabase(AbstractModel):
         :param OldName: Database name. If the `OldName` database does not exist, a failure will be returned.
 It can be left empty in offline migration tasks.
         :type OldName: str
-        :param NewName: New database name. If this parameter is left empty, the restored database will be renamed in the default format. If this parameter is left empty in offline migration tasks, the restored database will be named `OldName`. `OldName` and `NewName` cannot be both empty.
+        :param NewName: New database name. In offline migration, `OldName` will be used if `NewName` is left empty (`OldName` and `NewName` cannot be both empty). In database cloning, `OldName` and `NewName` must be both specified and cannot have the same value.
         :type NewName: str
         """
         self.OldName = None
@@ -2699,6 +2843,27 @@ class ResetAccountPasswordResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class ResourceTag(AbstractModel):
+    """The information of tags associated with instances
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class RestartDBInstanceRequest(AbstractModel):
@@ -3072,6 +3237,12 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type VoucherIds: list of str
         :param Cpu: The number of CUP cores after the instance is upgraded.
         :type Cpu: int
+        :param DBVersion: Upgrade the SQL Server version. Supported versions include SQL Server 2008 Enterprise (`2008R2`), SQL Server 2012 Enterprise (`2012SP3`), etc. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region. Downgrading is unsupported. If this parameter is left empty, the SQL Server version will not be changed.
+        :type DBVersion: str
+        :param HAType: Upgrade the high availability architecture from image-based disaster recovery to Always On cluster disaster recovery. This parameter is valid only for instances which support Always On high availability and run SQL Server 2017 or later. Neither downgrading to image-based disaster recovery nor upgrading from cluster disaster recovery to Always On disaster recovery is supported. If this parameter is left empty, the high availability architecture will not be changed.
+        :type HAType: str
+        :param MultiZones: Change the instance deployment scheme. Valid values: `SameZones` (change to single-AZ deployment, which does not support cross-AZ disaster recovery), `MultiZones` (change to multi-AZ deployment, which supports cross-AZ disaster recovery).
+        :type MultiZones: str
         """
         self.InstanceId = None
         self.Memory = None
@@ -3079,6 +3250,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.AutoVoucher = None
         self.VoucherIds = None
         self.Cpu = None
+        self.DBVersion = None
+        self.HAType = None
+        self.MultiZones = None
 
 
     def _deserialize(self, params):
@@ -3088,6 +3262,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
         self.Cpu = params.get("Cpu")
+        self.DBVersion = params.get("DBVersion")
+        self.HAType = params.get("HAType")
+        self.MultiZones = params.get("MultiZones")
 
 
 class UpgradeDBInstanceResponse(AbstractModel):
