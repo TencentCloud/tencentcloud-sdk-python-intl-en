@@ -23,17 +23,17 @@ class ApplyCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DvAuthMethod: Verification type. DNS_AUTO: automatic DNS verification; DNS: manual DNS verification; FILE: verification by file.
+        :param DvAuthMethod: Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation
         :type DvAuthMethod: str
-        :param DomainName: Domain name.
+        :param DomainName: Domain name
         :type DomainName: str
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID
         :type ProjectId: int
         :param PackageType: Certificate type. Currently, the only supported value is 2, which indicates TrustAsia TLS RSA CA.
         :type PackageType: str
-        :param ContactEmail: Email address.
+        :param ContactEmail: Email address
         :type ContactEmail: str
-        :param ContactPhone: Mobile number.
+        :param ContactPhone: Mobile number
         :type ContactPhone: str
         :param ValidityPeriod: Validity period. The default value is 12 months, which is the only supported value currently.
         :type ValidityPeriod: str
@@ -41,9 +41,9 @@ class ApplyCertificateRequest(AbstractModel):
         :type CsrEncryptAlgo: str
         :param CsrKeyParameter: Key pair parameter. Only the 2048-bit key pair is supported.
         :type CsrKeyParameter: str
-        :param CsrKeyPassword: CSR encryption password.
+        :param CsrKeyPassword: CSR encryption password
         :type CsrKeyPassword: str
-        :param Alias: Alias.
+        :param Alias: Alias
         :type Alias: str
         :param OldCertificateId: Original certificate ID, which is used to apply for a new certificate.
         :type OldCertificateId: str
@@ -84,7 +84,7 @@ class ApplyCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -105,7 +105,7 @@ class CancelCertificateOrderRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -122,7 +122,7 @@ class CancelCertificateOrderResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: ID of the certificate whose order has been successfully cancelled.
+        :param CertificateId: ID of the certificate whose order has been successfully cancelled
         :type CertificateId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -137,25 +137,25 @@ class CancelCertificateOrderResponse(AbstractModel):
 
 
 class CertificateExtra(AbstractModel):
-    """Content of the CertificateExtra parameter. CertificateExtra is an element of Certificates array which is returned by DescribeCertificates.
+    """Content of the `CertificateExtra` parameter. `CertificateExtra` is an element of `Certificates` array which is returned by `DescribeCertificates`.
 
     """
 
     def __init__(self):
         """
-        :param DomainNumber: Number of domain names which can be associated with the certificate.
+        :param DomainNumber: Number of domain names which can be associated with the certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DomainNumber: str
-        :param OriginCertificateId: Original certificate ID.
+        :param OriginCertificateId: Original certificate ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginCertificateId: str
-        :param ReplacedBy: Original ID of the new certificate.
+        :param ReplacedBy: Original ID of the new certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReplacedBy: str
-        :param ReplacedFor: New ID of the new certificate.
+        :param ReplacedFor: New ID of the new certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReplacedFor: str
-        :param RenewOrder: Certificate ID of the new order.
+        :param RenewOrder: Certificate ID of the new order
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RenewOrder: str
         """
@@ -175,97 +175,97 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Certificates(AbstractModel):
-    """Content of the Certificates parameter returned by DescribeCertificates.
+    """Content of the `Certificates` parameter returned by `DescribeCertificates`
 
     """
 
     def __init__(self):
         """
-        :param OwnerUin: User UIN.
+        :param OwnerUin: User UIN
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OwnerUin: str
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectId: str
-        :param From: Certificate source.
+        :param From: Certificate source
 Note: this field may return null, indicating that no valid values can be obtained.
         :type From: str
-        :param PackageType: Certificate package type. 1: GeoTrust DV SSL CA - G3; 2: TrustAsia TLS RSA CA; 3: Secure Site EV Pro; 4: Secure Site EV; 5: Secure Site OV Pro; 6: Secure Site OV; 7: Secure Site OV wildcard SSL certificate; 8: GeoTrust EV; 9: GeoTrust OV; 10: GeoTrust OV wildcard SSL certificate; 11: TrustAsia DV multi-domain SSL certificate; 12: TrustAsia DV wildcard SSL certificate; 13: TrustAsia OV wildcard SSL certificate (D3); 14: TrustAsia OV SSL certificate (D3); 15: TrustAsia OV multi-domain SSL certificate (D3); 16: TrustAsia EV SSL certificate (D3); 17: TrustAsia EV multi-domain SSL certificate (D3); 18: GlobalSign OV SSL certificate; 19: GlobalSign OV wildcard SSL certificate; 20: GlobalSign EV SSL certificate; 21: TrustAsia OV multi-domain wildcard SSL certificate (D3); 22: GlobalSign OV multi-domain SSL certificate; 23: GlobalSign OV multi-domain wildcard SSL certificate; 24: GlobalSign EV multi-domain SSL certificate.
+        :param PackageType: Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PackageType: str
-        :param CertificateType: Certificate type. CA: client certificate; SVR: server certificate.
+        :param CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateType: str
-        :param ProductZhName: Issuer.
+        :param ProductZhName: Issuer
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProductZhName: str
-        :param Domain: Primary domain name.
+        :param Domain: Primary domain name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Domain: str
-        :param Alias: Alias.
+        :param Alias: Alias
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Alias: str
-        :param Status: Status value. 0: being reviewed; 1: approved; 2: not approved; 3: expired; 4: DNS resolution record added; 5: OV/EV certificate, information to be submitted; 6: order being canceled; 7: cancelled; 8: information submitted, confirmation letter to be uploaded.
+        :param Status: Status value. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: OV/EV certificate, information to be submitted; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param CertificateExtra: Extended information of the certificate.
+        :param CertificateExtra: Extended information of the certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateExtra: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
-        :param VulnerabilityStatus: Vulnerability scanning status. INACTIVE: not activated; ACTIVE: activated.
+        :param VulnerabilityStatus: Vulnerability scanning status. `INACTIVE`: not activated; `ACTIVE`: activated
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VulnerabilityStatus: str
-        :param StatusMsg: Status information.
+        :param StatusMsg: Status information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusMsg: str
-        :param VerifyType: Verification type. DNS_AUTO: automatic DNS verification; DNS: manual DNS verification; FILE: verification by file; EMAIL: verification by email.
+        :param VerifyType: Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VerifyType: str
-        :param CertBeginTime: Time when the certificate takes effect.
+        :param CertBeginTime: Time when the certificate takes effect
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertBeginTime: str
-        :param CertEndTime: Time when the certificate expires.
+        :param CertEndTime: Time when the certificate expires
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertEndTime: str
-        :param ValidityPeriod: Validity period of the certificate (unit: month).
+        :param ValidityPeriod: Validity period of the certificate, in months
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ValidityPeriod: str
-        :param InsertTime: Creation time.
+        :param InsertTime: Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InsertTime: str
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateId: str
-        :param SubjectAltName: Domain names associated with the certificate (including the primary domain name).
+        :param SubjectAltName: Domain names associated with the certificate (including the primary domain name)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubjectAltName: list of str
-        :param PackageTypeName: Certificate type name.
+        :param PackageTypeName: Certificate type name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PackageTypeName: str
-        :param StatusName: Status description.
+        :param StatusName: Status description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusName: str
-        :param IsVip: Whether the customer is a VIP customer.
+        :param IsVip: Whether the customer is a VIP customer
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsVip: bool
-        :param IsDv: Whether the certificate is a DV certificate.
+        :param IsDv: Whether the certificate is a DV certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsDv: bool
-        :param IsWildcard: Whether the certificate is a wildcard certificate.
+        :param IsWildcard: Whether the certificate is a wildcard certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsWildcard: bool
-        :param IsVulnerability: Whether the vulnerability scanning feature is enabled.
+        :param IsVulnerability: Whether the vulnerability scanning feature is enabled
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsVulnerability: bool
-        :param RenewAble: Whether the certificate can be reissued.
+        :param RenewAble: Whether the certificate can be reissued
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RenewAble: bool
-        :param ProjectInfo: Project information.
+        :param ProjectInfo: Project information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectInfo: :class:`tencentcloud.ssl.v20191205.models.ProjectInfo`
         :param BoundResource: Associated Tencent Cloud services. Currently, this parameter is unavailable.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BoundResource: list of str
-        :param Deployable: Whether the certificate can be deployed.
+        :param Deployable: Whether the certificate can be deployed
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Deployable: bool
         :param Tags: List of tags
@@ -353,7 +353,7 @@ class CommitCertificateInformationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -370,9 +370,9 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderId: Order number at the certificate authority
+        :param OrderId: TrustAsia order ID
         :type OrderId: str
-        :param Status: Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload; `13`: pending information submission for the free certificate.
+        :param Status: Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload
         :type Status: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -395,7 +395,7 @@ class DeleteCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -412,7 +412,7 @@ class DeleteCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DeleteResult: Deletion result (`true`: deleted successfully; `false`: failed to delete)
+        :param DeleteResult: Deletion result
         :type DeleteResult: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -433,7 +433,7 @@ class DescribeCertificateDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -450,103 +450,103 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OwnerUin: User UIN.
+        :param OwnerUin: User UIN
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OwnerUin: str
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectId: str
-        :param From: Certificate source. trustasia: TrustAsia; upload: certificate uploaded by users.
+        :param From: Certificate source. `trustasia`: TrustAsia; `upload`: certificate uploaded by users
 Note: this field may return null, indicating that no valid values can be obtained.
         :type From: str
-        :param CertificateType: Certificate type. CA: client certificate; SVR: server certificate.
+        :param CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateType: str
-        :param PackageType: Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod Chinese Cryptographic DV; `34`: DNSPod Chinese Cryptographic DV multi-domain; `35`: DNSPod Chinese Cryptographic DV wildcard; `37`: DNSPod Chinese Cryptographic OV; `38`: DNSPod Chinese Cryptographic OV multi-domain; `39`: DNSPod Chinese Cryptographic OV wildcard: `40`: DNSPod Chinese Cryptographic EV; `41`: DNSPod Chinese Cryptographic EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param PackageType: Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
+Note: this field may return null, indicating that no valid values can be obtained.
         :type PackageType: str
-        :param ProductZhName: Issuer.
+        :param ProductZhName: Issuer
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProductZhName: str
-        :param Domain: Domain name.
+        :param Domain: Domain name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Domain: str
-        :param Alias: Alias.
+        :param Alias: Alias
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Alias: str
-        :param Status: Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload; `13`: pending information submission for the free certificate.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param Status: Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param StatusMsg: Status information.
+        :param StatusMsg: Status information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusMsg: str
-        :param VerifyType: Verification type. DNS_AUTO: automatic DNS verification; DNS: manual DNS verification; FILE: verification by file; EMAIL: verification by email.
+        :param VerifyType: Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VerifyType: str
-        :param VulnerabilityStatus: Vulnerability scanning status.
+        :param VulnerabilityStatus: Vulnerability scanning status
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VulnerabilityStatus: str
-        :param CertBeginTime: Time when the certificate takes effect.
+        :param CertBeginTime: Time when the certificate takes effect
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertBeginTime: str
-        :param CertEndTime: Time when the certificate expires.
+        :param CertEndTime: Time when the certificate expires
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertEndTime: str
-        :param ValidityPeriod: Validity period of the certificate (unit: month).
+        :param ValidityPeriod: Validity period of the certificate, in months
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ValidityPeriod: str
-        :param InsertTime: Application time.
+        :param InsertTime: Application time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InsertTime: str
-        :param OrderId: Order ID.
+        :param OrderId: Order ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrderId: str
-        :param CertificateExtra: Extended information of the certificate.
+        :param CertificateExtra: Extended information of the certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateExtra: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
-        :param CertificatePrivateKey: Private key of the certificate.
+        :param CertificatePrivateKey: Private key of the certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificatePrivateKey: str
-        :param CertificatePublicKey: Certificate public key (i.e., certificate content)
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param CertificatePublicKey: Public key of the certificate
+Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificatePublicKey: str
-        :param DvAuthDetail: DV authentication information.
+        :param DvAuthDetail: DV authentication information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthDetail: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
-        :param VulnerabilityReport: Vulnerability scanning assessment report.
+        :param VulnerabilityReport: Vulnerability scanning assessment report
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VulnerabilityReport: str
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateId: str
-        :param TypeName: Certificate type name.
+        :param TypeName: Certificate type name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TypeName: str
-        :param StatusName: Status description.
+        :param StatusName: Status description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusName: str
-        :param SubjectAltName: Domain names associated with the certificate (including the primary domain name).
+        :param SubjectAltName: Domain names associated with the certificate (including the primary domain name)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubjectAltName: list of str
-        :param IsVip: Whether the customer is a VIP customer.
+        :param IsVip: Whether the customer is a VIP customer
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsVip: bool
-        :param IsWildcard: Whether the certificate is a wildcard certificate.
+        :param IsWildcard: Whether the certificate is a wildcard certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsWildcard: bool
-        :param IsDv: Whether the certificate is a DV certificate.
+        :param IsDv: Whether the certificate is a DV certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsDv: bool
-        :param IsVulnerability: Whether the vulnerability scanning feature is enabled.
+        :param IsVulnerability: Whether the vulnerability scanning feature is enabled
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsVulnerability: bool
-        :param SubmittedData: Submitted data.
+        :param SubmittedData: Submitted data
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubmittedData: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
-        :param RenewAble: Whether the certificate can be reissued.
+        :param RenewAble: Whether the certificate can be reissued
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RenewAble: bool
-        :param Deployable: Whether the certificate can be deployed.
+        :param Deployable: Whether the certificate can be deployed
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Deployable: bool
         :param Tags: List of associated tags
@@ -677,11 +677,11 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AllTotal: Total number of logs that meet query conditions.
+        :param AllTotal: Total number of logs that meet query conditions
         :type AllTotal: int
-        :param TotalCount: Number of logs returned for this request.
+        :param TotalCount: Number of logs returned for this request
         :type TotalCount: int
-        :param OperateLogs: Certificate operation log list.
+        :param OperateLogs: Certificate operation log list
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OperateLogs: list of OperationLog
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -712,7 +712,7 @@ class DescribeCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -729,97 +729,97 @@ class DescribeCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OwnerUin: User UIN.
+        :param OwnerUin: User UIN
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OwnerUin: str
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectId: str
-        :param From: Certificate source. trustasia: TrustAsia; upload: certificate uploaded by users.
+        :param From: Certificate source. `trustasia`: TrustAsia; `upload`: certificate uploaded by users
 Note: this field may return null, indicating that no valid values can be obtained.
         :type From: str
-        :param CertificateType: Certificate type. CA: client certificate; SVR: server certificate.
+        :param CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateType: str
-        :param PackageType: Certificate package type. 1: GeoTrust DV SSL CA - G3; 2: TrustAsia TLS RSA CA; 3: Secure Site EV Pro; 4: Secure Site EV; 5: Secure Site OV Pro; 6: Secure Site OV; 7: Secure Site OV wildcard SSL certificate; 8: GeoTrust EV; 9: GeoTrust OV; 10: GeoTrust OV wildcard SSL certificate; 11: TrustAsia DV multi-domain SSL certificate; 12: TrustAsia DV wildcard SSL certificate; 13: TrustAsia OV wildcard SSL certificate (D3); 14: TrustAsia OV SSL certificate (D3); 15: TrustAsia OV multi-domain SSL certificate (D3); 16: TrustAsia EV SSL certificate (D3); 17: TrustAsia EV multi-domain SSL certificate (D3); 18: GlobalSign OV SSL certificate; 19: GlobalSign OV wildcard SSL certificate; 20: GlobalSign EV SSL certificate; 21: TrustAsia OV multi-domain wildcard SSL certificate (D3); 22: GlobalSign OV multi-domain SSL certificate; 23: GlobalSign OV multi-domain wildcard SSL certificate; 24: GlobalSign EV multi-domain SSL certificate.
+        :param PackageType: Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PackageType: str
         :param ProductZhName: Name of the certificate issuer
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type ProductZhName: str
-        :param Domain: Domain name.
+        :param Domain: Domain name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Domain: str
-        :param Alias: Alias.
+        :param Alias: Alias
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Alias: str
-        :param Status: Certificate status. 0: being reviewed; 1: approved; 2: not approved; 3: expired; 4: DNS record added; 5: OV certificate, to be submitted; 6: order being canceled; 7: cancelled; 8: information submitted, confirmation letter to be uploaded; 9: certificate being revoked; 10: revoked; 11: reissuing; 12: revocation confirmation letter to be uploaded.
+        :param Status: Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param StatusMsg: Status information.
+        :param StatusMsg: Status information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusMsg: str
-        :param VerifyType: Verification type. DNS_AUTO: automatic DNS verification; DNS: manual DNS verification; FILE: verification by file; EMAIL: verification by email.
+        :param VerifyType: Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VerifyType: str
-        :param VulnerabilityStatus: Vulnerability scanning status.
+        :param VulnerabilityStatus: Vulnerability scanning status
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VulnerabilityStatus: str
-        :param CertBeginTime: Time when the certificate takes effect.
+        :param CertBeginTime: Time when the certificate takes effect
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertBeginTime: str
-        :param CertEndTime: Time when the certificate expires.
+        :param CertEndTime: Time when the certificate expires
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertEndTime: str
-        :param ValidityPeriod: Validity period of the certificate (unit: month).
+        :param ValidityPeriod: Validity period of the certificate, in months
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ValidityPeriod: str
-        :param InsertTime: Application time.
+        :param InsertTime: Application time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InsertTime: str
-        :param OrderId: Order ID.
+        :param OrderId: Order ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrderId: str
-        :param CertificateExtra: Extended information of the certificate.
+        :param CertificateExtra: Extended information of the certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateExtra: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
-        :param DvAuthDetail: DV authentication information.
+        :param DvAuthDetail: DV authentication information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthDetail: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
-        :param VulnerabilityReport: Vulnerability scanning assessment report.
+        :param VulnerabilityReport: Vulnerability scanning assessment report
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VulnerabilityReport: str
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateId: str
-        :param PackageTypeName: Certificate type name.
+        :param PackageTypeName: Certificate type name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PackageTypeName: str
-        :param StatusName: Status description.
+        :param StatusName: Status description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusName: str
-        :param SubjectAltName: Domain names associated with the certificate (including the primary domain name).
+        :param SubjectAltName: Domain names associated with the certificate (including the primary domain name)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubjectAltName: list of str
-        :param IsVip: Whether the customer is a VIP customer.
+        :param IsVip: Whether the customer is a VIP customer
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsVip: bool
-        :param IsWildcard: Whether the certificate is a wildcard certificate.
+        :param IsWildcard: Whether the certificate is a wildcard certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsWildcard: bool
-        :param IsDv: Whether the certificate is a DV certificate.
+        :param IsDv: Whether the certificate is a DV certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsDv: bool
-        :param IsVulnerability: Whether the vulnerability scanning feature is enabled.
+        :param IsVulnerability: Whether the vulnerability scanning feature is enabled
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsVulnerability: bool
-        :param RenewAble: Whether the certificate can be reissued.
+        :param RenewAble: Whether the certificate can be reissued
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RenewAble: bool
-        :param SubmittedData: Submitted data.
+        :param SubmittedData: Submitted data
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubmittedData: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
-        :param Deployable: Whether the certificate can be deployed.
+        :param Deployable: Whether the certificate can be deployed
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Deployable: bool
         :param Tags: List of tags
@@ -917,21 +917,21 @@ class DescribeCertificatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Pagination offset, starting from 0.
+        :param Offset: Pagination offset, starting from 0
         :type Offset: int
         :param Limit: Number of certificates on each page. The default value is 20.
         :type Limit: int
-        :param SearchKey: Keyword for search, which can be a certificate ID, alias, or domain name. For example, a8xHcaIs.
+        :param SearchKey: Keyword for search, which can be a certificate ID, alias, or domain name, for example, a8xHcaIs
         :type SearchKey: str
-        :param CertificateType: Certificate type. CA: client certificate; SVR: server certificate.
+        :param CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate
         :type CertificateType: str
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID
         :type ProjectId: int
-        :param ExpirationSort: Sorting by expiration time. DESC: descending; ASC: ascending.
+        :param ExpirationSort: Sorting by expiration time. `DESC`: descending; `ASC`: ascending
         :type ExpirationSort: str
-        :param CertificateStatus: Certificate status.
+        :param CertificateStatus: Certificate status
         :type CertificateStatus: list of int non-negative
-        :param Deployable: Whether the certificate can be deployed. 1: yes; 0: no.
+        :param Deployable: Whether the certificate can be deployed. `1`: yes; `0`: no
         :type Deployable: int
         """
         self.Offset = None
@@ -962,10 +962,10 @@ class DescribeCertificatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number.
+        :param TotalCount: Total number
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param Certificates: List.
+        :param Certificates: List
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Certificates: list of Certificates
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -994,7 +994,7 @@ class DownloadCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -1014,7 +1014,7 @@ class DownloadCertificateResponse(AbstractModel):
         :param Content: ZIP content encoded by using Base64. After the content is decoded by using Base64, it can be saved as a ZIP file.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Content: str
-        :param ContentType: MIME type. application/zip: ZIP file.
+        :param ContentType: MIME type. `application/zip`: ZIP file
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ContentType: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -1032,28 +1032,28 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DvAuthDetail(AbstractModel):
-    """Content of the DvAuthDetail parameter returned by DescribeCertificates.
+    """Content of the `DvAuthDetail` parameter returned by `DescribeCertificates`
 
     """
 
     def __init__(self):
         """
-        :param DvAuthKey: DV authentication key.
+        :param DvAuthKey: DV authentication key
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthKey: str
-        :param DvAuthValue: DV authentication value.
+        :param DvAuthValue: DV authentication value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthValue: str
-        :param DvAuthDomain: Domain name of the DV authentication value.
+        :param DvAuthDomain: Domain name of the DV authentication value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthDomain: str
-        :param DvAuthPath: Path of the DV authentication value.
+        :param DvAuthPath: Path of the DV authentication value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthPath: str
-        :param DvAuthKeySubDomain: DV authentication sub-domain name.
+        :param DvAuthKeySubDomain: DV authentication sub-domain name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthKeySubDomain: str
-        :param DvAuths: DV authentication information.
+        :param DvAuths: DV authentication information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuths: list of DvAuths
         """
@@ -1080,28 +1080,28 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DvAuths(AbstractModel):
-    """Returns the content of the `DvAuths` parameter key.
+    """Content of the `DvAuths` parameter
 
     """
 
     def __init__(self):
         """
-        :param DvAuthKey: DV authentication key.
+        :param DvAuthKey: DV authentication key
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthKey: str
-        :param DvAuthValue: DV authentication value.
+        :param DvAuthValue: DV authentication value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthValue: str
-        :param DvAuthDomain: Domain name of the DV authentication value.
+        :param DvAuthDomain: Domain name of the DV authentication value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthDomain: str
-        :param DvAuthPath: Path of the DV authentication value.
+        :param DvAuthPath: Path of the DV authentication value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthPath: str
-        :param DvAuthSubDomain: DV authentication sub-domain name.
+        :param DvAuthSubDomain: DV authentication sub-domain name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthSubDomain: str
-        :param DvAuthVerifyType: DV authentication type.
+        :param DvAuthVerifyType: DV authentication type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthVerifyType: str
         """
@@ -1129,9 +1129,9 @@ class ModifyCertificateAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
-        :param Alias: Alias.
+        :param Alias: Alias
         :type Alias: str
         """
         self.CertificateId = None
@@ -1150,7 +1150,7 @@ class ModifyCertificateAliasResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: ID of the successfully modified certificate.
+        :param CertificateId: ID of the successfully modified certificate
         :type CertificateId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1171,9 +1171,9 @@ class ModifyCertificateProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateIdList: ID list of certificates whose projects need to be modified. A maximum 100 certificate IDs are supported.
+        :param CertificateIdList: ID list of certificates whose projects need to be modified. A maximum of 100 certificate IDs are supported.
         :type CertificateIdList: list of str
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID
         :type ProjectId: int
         """
         self.CertificateIdList = None
@@ -1192,10 +1192,10 @@ class ModifyCertificateProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SuccessCertificates: List of certificates whose projects were modified successfully.
+        :param SuccessCertificates: List of certificates whose projects were modified successfully
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SuccessCertificates: list of str
-        :param FailCertificates: List of certificates whose projects failed to be modified.
+        :param FailCertificates: List of certificates whose projects failed to be modified
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FailCertificates: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -1213,15 +1213,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class OperationLog(AbstractModel):
-    """Certificate operation logs.
+    """Certificate operation logs
 
     """
 
     def __init__(self):
         """
-        :param Action: Action performed on logs.
+        :param Action: Action performed on logs
         :type Action: str
-        :param CreatedOn: Time when the action is performed.
+        :param CreatedOn: Time when the action is performed
         :type CreatedOn: str
         """
         self.Action = None
@@ -1234,28 +1234,28 @@ class OperationLog(AbstractModel):
 
 
 class ProjectInfo(AbstractModel):
-    """Content of the ProjectInfo parameter. ProjectInfo is an element of Certificates array which is returned by DescribeCertificates.
+    """Content of the `ProjectInfo` parameter. `ProjectInfo` is an element of `Certificates` array which is returned by `DescribeCertificates`.
 
     """
 
     def __init__(self):
         """
-        :param ProjectName: Project name.
+        :param ProjectName: Project name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectName: str
-        :param ProjectCreatorUin: UIN of the project creator.
+        :param ProjectCreatorUin: UIN of the project creator
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectCreatorUin: int
-        :param ProjectCreateTime: Project creation time.
+        :param ProjectCreateTime: Project creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectCreateTime: str
-        :param ProjectResume: Brief project information.
+        :param ProjectResume: Brief project information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectResume: str
-        :param OwnerUin: User UIN.
+        :param OwnerUin: User UIN
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OwnerUin: int
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectId: str
         """
@@ -1283,15 +1283,15 @@ class ReplaceCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
-        :param ValidType: Validation type. `DNS_AUTO`: automatic DNS validation (only available for domains hosted in Tencent Cloud and when the DNS status is OK); `DNS`: manual DNS validation; `FILE`: file validation.
+        :param ValidType: Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation
         :type ValidType: str
-        :param CsrType: Type. Original: original certificate CSR; upload: uploaded manually; online: generated online. The default value is original.
+        :param CsrType: Type. `original`: original certificate CSR; `upload`: uploaded manually; `online`: generated online. The default value is original.
         :type CsrType: str
-        :param CsrContent: CSR content.
+        :param CsrContent: CSR content
         :type CsrContent: str
-        :param CsrkeyPassword: Password of the key.
+        :param CsrkeyPassword: Password of the key
         :type CsrkeyPassword: str
         :param Reason: Reissue reason
         :type Reason: str
@@ -1320,7 +1320,7 @@ class ReplaceCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1341,57 +1341,57 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
-        :param CsrType: CSR generation mode. Online: generated online; parse: uploaded manually.
+        :param CsrType: CSR generation mode. `online`: generated online; `parse`: uploaded manually
         :type CsrType: str
-        :param CsrContent: Uploaded CSR content.
+        :param CsrContent: Uploaded CSR content
         :type CsrContent: str
-        :param CertificateDomain: Domain name bound with the certificate.
+        :param CertificateDomain: Domain name bound with the certificate
         :type CertificateDomain: str
-        :param DomainList: Uploaded domain name array (can be uploaded for a multi-domain certificate).
+        :param DomainList: Uploaded domain name array (can be uploaded for a multi-domain certificate)
         :type DomainList: list of str
-        :param KeyPassword: Private key password (optional)
+        :param KeyPassword: Password of the private key
         :type KeyPassword: str
-        :param OrganizationName: Organization name.
+        :param OrganizationName: Organization name
         :type OrganizationName: str
-        :param OrganizationDivision: Division name.
+        :param OrganizationDivision: Division name
         :type OrganizationDivision: str
-        :param OrganizationAddress: Detailed address of the organization.
+        :param OrganizationAddress: Detailed address of the organization
         :type OrganizationAddress: str
-        :param OrganizationCountry: Country where the organization is located. For example, CN (China).
+        :param OrganizationCountry: Country where the organization is located, for example, CN (China)
         :type OrganizationCountry: str
-        :param OrganizationCity: City where the organization is located.
+        :param OrganizationCity: City where the organization is located
         :type OrganizationCity: str
-        :param OrganizationRegion: Province where the organization is located.
+        :param OrganizationRegion: Province where the organization is located
         :type OrganizationRegion: str
-        :param PostalCode: Postal code of the organization.
+        :param PostalCode: Postal code of the organization
         :type PostalCode: str
-        :param PhoneAreaCode: Area code of the fixed-line phone number of the organization.
+        :param PhoneAreaCode: Area code of the fixed-line phone number of the organization
         :type PhoneAreaCode: str
-        :param PhoneNumber: Fixed-line phone number of the organization.
+        :param PhoneNumber: Fixed-line phone number of the organization
         :type PhoneNumber: str
-        :param VerifyType: Validation type. `DNS_AUTO`: automatic DNS validation (only available for domains hosted in Tencent Cloud and when the DNS status is OK); `DNS`: manual DNS validation; `FILE`: file validation.
+        :param VerifyType: Certificate validation method
         :type VerifyType: str
-        :param AdminFirstName: First name of the administrator
+        :param AdminFirstName: Last name of the administrator
         :type AdminFirstName: str
-        :param AdminLastName: Last name of the administrator
+        :param AdminLastName: First name of the administrator
         :type AdminLastName: str
-        :param AdminPhoneNum: Mobile number of the admin.
+        :param AdminPhoneNum: Mobile number of the administrator
         :type AdminPhoneNum: str
-        :param AdminEmail: Email of the admin.
+        :param AdminEmail: Email of the administrator
         :type AdminEmail: str
-        :param AdminPosition: Position of the admin.
+        :param AdminPosition: Position of the administrator
         :type AdminPosition: str
-        :param ContactFirstName: First name of the contact
+        :param ContactFirstName: Last name of the contact
         :type ContactFirstName: str
-        :param ContactLastName: Last name of the contact
+        :param ContactLastName: First name of the contact
         :type ContactLastName: str
-        :param ContactEmail: Email of the contact.
+        :param ContactEmail: Email of the contact
         :type ContactEmail: str
-        :param ContactNumber: Mobile number of the contact.
+        :param ContactNumber: Mobile number of the contact
         :type ContactNumber: str
-        :param ContactPosition: Position of the contact.
+        :param ContactPosition: Position of the contact
         :type ContactPosition: str
         """
         self.CertificateId = None
@@ -1458,7 +1458,7 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1473,85 +1473,85 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
 
 class SubmittedData(AbstractModel):
-    """Content of the SubmittedData parameter returned by DescribeCertificates.
+    """Content of the `SubmittedData` parameter returned by `DescribeCertificates`
 
     """
 
     def __init__(self):
         """
-        :param CsrType: CSR type. Online: CSR generated online; parse: CSR pasted.
+        :param CsrType: CSR type. `online`: CSR generated online; `parse`: CSR pasted
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CsrType: str
-        :param CsrContent: CSR content.
+        :param CsrContent: CSR content
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CsrContent: str
-        :param CertificateDomain: Domain name information.
+        :param CertificateDomain: Domain name information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateDomain: str
-        :param DomainList: DNS information.
+        :param DomainList: DNS information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DomainList: list of str
-        :param KeyPassword: Password of the private key.
+        :param KeyPassword: Password of the private key
 Note: this field may return null, indicating that no valid values can be obtained.
         :type KeyPassword: str
-        :param OrganizationName: Enterprise or unit name.
+        :param OrganizationName: Enterprise or unit name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrganizationName: str
-        :param OrganizationDivision: Division.
+        :param OrganizationDivision: Division
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrganizationDivision: str
-        :param OrganizationAddress: Address.
+        :param OrganizationAddress: Address
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrganizationAddress: str
-        :param OrganizationCountry: Country.
+        :param OrganizationCountry: Country
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrganizationCountry: str
-        :param OrganizationCity: City.
+        :param OrganizationCity: City
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrganizationCity: str
-        :param OrganizationRegion: Province.
+        :param OrganizationRegion: Province
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrganizationRegion: str
-        :param PostalCode: Postal code.
+        :param PostalCode: Postal code
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PostalCode: str
-        :param PhoneAreaCode: Area code of the fixed-line phone number.
+        :param PhoneAreaCode: Area code of the fixed-line phone number
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PhoneAreaCode: str
-        :param PhoneNumber: Fixed-line phone number.
+        :param PhoneNumber: Fixed-line phone number
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PhoneNumber: str
-        :param AdminFirstName: First name of the admin.
+        :param AdminFirstName: First name of the administrator
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AdminFirstName: str
-        :param AdminLastName: Last name of the admin.
+        :param AdminLastName: Last name of the administrator
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AdminLastName: str
-        :param AdminPhoneNum: Phone number of the admin.
+        :param AdminPhoneNum: Phone number of the administrator
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AdminPhoneNum: str
-        :param AdminEmail: Email of the admin.
+        :param AdminEmail: Email of the administrator
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AdminEmail: str
-        :param AdminPosition: Position of the admin.
+        :param AdminPosition: Position of the administrator
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AdminPosition: str
-        :param ContactFirstName: First name of the contact.
+        :param ContactFirstName: First name of the contact
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ContactFirstName: str
-        :param ContactLastName: Last name of the contact.
+        :param ContactLastName: Last name of the contact
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ContactLastName: str
-        :param ContactNumber: Phone number of the contact.
+        :param ContactNumber: Phone number of the contact
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ContactNumber: str
-        :param ContactEmail: Email of the contact.
+        :param ContactEmail: Email of the contact
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ContactEmail: str
-        :param ContactPosition: Position of the contact.
+        :param ContactPosition: Position of the contact
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ContactPosition: str
-        :param VerifyType: Verification type.
+        :param VerifyType: Validation type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VerifyType: str
         """
@@ -1638,15 +1638,15 @@ class UploadCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificatePublicKey: Certificate content
+        :param CertificatePublicKey: Public key of the certificate
         :type CertificatePublicKey: str
         :param CertificatePrivateKey: Private key content. This parameter is required when the certificate type is SVR, and not required when the certificate type is CA.
         :type CertificatePrivateKey: str
-        :param CertificateType: Certificate type. CA: client certificate; SVR: server certificate. The default value is SVR.
+        :param CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate. The default value is SVR.
         :type CertificateType: str
-        :param Alias: Alias.
+        :param Alias: Alias
         :type Alias: str
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID
         :type ProjectId: int
         :param CertificateUse: 
         :type CertificateUse: str
@@ -1675,7 +1675,7 @@ class UploadCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: Certificate ID.
+        :param CertificateId: Certificate ID
         :type CertificateId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

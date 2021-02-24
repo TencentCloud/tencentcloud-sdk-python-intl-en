@@ -120,16 +120,24 @@ class AutoRewriteRequest(AbstractModel):
         :type ListenerId: str
         :param Domains: The domain name to be redirected under the listener `HTTPS:443`. If it is left empty, all domain names under the listener `HTTPS:443` will be configured with redirects.
         :type Domains: list of str
+        :param RewriteCodes: Redirection status code. Valid values: 301, 302, and 307.
+        :type RewriteCodes: list of int
+        :param TakeUrls: Whether the matched URL is carried in redirection.
+        :type TakeUrls: list of bool
         """
         self.LoadBalancerId = None
         self.ListenerId = None
         self.Domains = None
+        self.RewriteCodes = None
+        self.TakeUrls = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerId = params.get("LoadBalancerId")
         self.ListenerId = params.get("ListenerId")
         self.Domains = params.get("Domains")
+        self.RewriteCodes = params.get("RewriteCodes")
+        self.TakeUrls = params.get("TakeUrls")
 
 
 class AutoRewriteResponse(AbstractModel):
@@ -373,11 +381,11 @@ class BatchTarget(AbstractModel):
         :type ListenerId: str
         :param Port: Binding port
         :type Port: int
-        :param InstanceId: CVM instance ID
+        :param InstanceId: CVM instance ID. Indicating binding the primary IP of the primary ENI.
         :type InstanceId: str
-        :param EniIp: ENI IP
+        :param EniIp: ENI IP or other private IP. This parameter is required for binding a dual-stack IPv6 CVM instance.
         :type EniIp: str
-        :param Weight: Weight of a CVM instance. Value range: [0, 100]. If it is not specified when binding the instance, 10 will be used by default.
+        :param Weight: CVM instance weight. Value range: [0, 100]. If it is not specified when binding the instance, 10 will be used by default.
         :type Weight: int
         :param LocationId: Layer-7 rule ID
         :type LocationId: str
@@ -3034,9 +3042,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SessionType: Session persistence type. Valid values: Normal: the default session persistence type; QUIC_CID: session persistence by QUIC connection ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SessionType: str
-        :param KeepaliveEnable: Whether a persistent connection is enabled (This parameter can only be configured in HTTP/HTTPS listeners)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param KeepaliveEnable: Whether a persistent connection is enabled (1: enabled; 0: disabled). This parameter can only be configured in HTTP/HTTPS listeners.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type KeepaliveEnable: int
+        :param Toa: Only the NAT64 CLB TCP listeners are supported.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Toa: bool
         """
         self.ListenerId = None
         self.Protocol = None
@@ -3054,6 +3065,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TargetGroup = None
         self.SessionType = None
         self.KeepaliveEnable = None
+        self.Toa = None
 
 
     def _deserialize(self, params):
@@ -3084,6 +3096,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.TargetGroup._deserialize(params.get("TargetGroup"))
         self.SessionType = params.get("SessionType")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
+        self.Toa = params.get("Toa")
 
 
 class ListenerBackend(AbstractModel):
@@ -3323,6 +3336,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Zones: Availability zone of a VPC-based private network CLB instance
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Zones: list of str
+        :param NfvInfo: Whether it is an NFV CLB instance. No returned information: no; l7nfv: yes.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NfvInfo: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3372,6 +3388,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ClusterTag = None
         self.MixIpTarget = None
         self.Zones = None
+        self.NfvInfo = None
 
 
     def _deserialize(self, params):
@@ -3450,6 +3467,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ClusterTag = params.get("ClusterTag")
         self.MixIpTarget = params.get("MixIpTarget")
         self.Zones = params.get("Zones")
+        self.NfvInfo = params.get("NfvInfo")
 
 
 class LoadBalancerDetail(AbstractModel):
@@ -3549,6 +3567,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Isolation: 0: not isolated; 1: isolated.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Isolation: int
+        :param SecurityGroup: List of the security groups bound to the CLB instance.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SecurityGroup: list of str
+        :param LoadBalancerPassToTarget: Whether the CLB instance is billed by IP.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LoadBalancerPassToTarget: int
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3580,6 +3604,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TargetPort = None
         self.TargetWeight = None
         self.Isolation = None
+        self.SecurityGroup = None
+        self.LoadBalancerPassToTarget = None
 
 
     def _deserialize(self, params):
@@ -3624,6 +3650,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TargetPort = params.get("TargetPort")
         self.TargetWeight = params.get("TargetWeight")
         self.Isolation = params.get("Isolation")
+        self.SecurityGroup = params.get("SecurityGroup")
+        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -4604,14 +4632,26 @@ class RewriteLocationMap(AbstractModel):
         :type SourceLocationId: str
         :param TargetLocationId: Forwarding rule ID of a redirect target
         :type TargetLocationId: str
+        :param RewriteCode: Redirection status code. Valid values: 301, 302, and 307.
+        :type RewriteCode: int
+        :param TakeUrl: Whether the matched URL is carried in redirection. It is required when configuring `RewriteCode`.
+        :type TakeUrl: bool
+        :param SourceDomain: Original domain name of redirection, which must be the corresponding domain name of `SourceLocationId`. It is required when configuring `RewriteCode`.
+        :type SourceDomain: str
         """
         self.SourceLocationId = None
         self.TargetLocationId = None
+        self.RewriteCode = None
+        self.TakeUrl = None
+        self.SourceDomain = None
 
 
     def _deserialize(self, params):
         self.SourceLocationId = params.get("SourceLocationId")
         self.TargetLocationId = params.get("TargetLocationId")
+        self.RewriteCode = params.get("RewriteCode")
+        self.TakeUrl = params.get("TakeUrl")
+        self.SourceDomain = params.get("SourceDomain")
 
 
 class RewriteTarget(AbstractModel):
@@ -4629,14 +4669,29 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that there is no redirection.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TargetLocationId: str
+        :param RewriteCode: Redirection status code
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RewriteCode: int
+        :param TakeUrl: Whether the matched URL is carried in redirection.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TakeUrl: bool
+        :param RewriteType: Redirection type. Manual: manual redirection; Auto: automatic redirection.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RewriteType: str
         """
         self.TargetListenerId = None
         self.TargetLocationId = None
+        self.RewriteCode = None
+        self.TakeUrl = None
+        self.RewriteType = None
 
 
     def _deserialize(self, params):
         self.TargetListenerId = params.get("TargetListenerId")
         self.TargetLocationId = params.get("TargetLocationId")
+        self.RewriteCode = params.get("RewriteCode")
+        self.TakeUrl = params.get("TakeUrl")
+        self.RewriteType = params.get("RewriteType")
 
 
 class RsWeightRule(AbstractModel):

@@ -3352,7 +3352,7 @@ class ApplyUploadRequest(AbstractModel):
         :type SourceContext: str
         :param SessionContext: Session context, which is used to pass through the user request information. If the `Procedure` parameter is specified, the [task flow status change callback](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) API will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param ExtInfo: Reserved field for special purposes.
+        :param ExtInfo: Reserved parameter for special purposes.
         :type ExtInfo: str
         :param SubAppId: ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -3639,8 +3639,8 @@ class AudioTrackItem(AbstractModel):
     def __init__(self):
         """
         :param SourceMedia: Source of media material for audio segment, which can be:
-<li>VOD media file ID;</li>
-<li>Download URL of other media files.</li>
+<li>ID of VOD media files</li>
+<li>Download URL of other media files</li>
 Note: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).
         :type SourceMedia: str
         :param SourceMediaStartTime: Start time of audio segment in material file in seconds. Default value: 0, which means to start capturing from the beginning position of the material.
@@ -4010,9 +4010,9 @@ class ComposeMediaRequest(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
         :param Canvas: Canvas used for composing video file.
         :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
-        :param SessionContext: This parameter is used to pass through user request information. `ComposeMediaComplete` callback will return the value of this field. It contains up to 1,000 characters.
+        :param SessionContext: Used to pass through user request information. `ComposeMediaComplete` callback will return the value of this parameter. It contains up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: ID used for task deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
         :type SessionId: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -8418,7 +8418,7 @@ class EditMediaRequest(AbstractModel):
         :type SessionContext: str
         :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
-        :param SessionId: ID used for task deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
@@ -13974,7 +13974,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type TasksNotifyMode: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
@@ -14046,7 +14046,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
         :type TasksNotifyMode: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
         :type SessionId: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
@@ -14130,7 +14130,7 @@ class ProcessMediaRequest(AbstractModel):
         :type TasksNotifyMode: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
@@ -14427,7 +14427,7 @@ For more information about supported extensions, please see [Media Types](https:
         :type ClassId: int
         :param SessionContext: The source context which is used to pass through the user request information. After `Procedure` is specified, the task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
+        :param SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
         :type SessionId: str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
@@ -15162,8 +15162,8 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         :param Definition: Time point screencapturing template ID.
         :type Definition: int
         :param ExtTimeOffsetSet: The list of screenshot time points. “s” and “%” formats are supported:
-<li>When a time point string ends with “s”, its unit is second. For example, “3.5 s” means the 3.5th second of the video;</li>
-<li>When a time point string ends with “%”, it is marked with corresponding percentage of the video’s duration. For example, “10%” means that the time point is at the 10% of the video’s entire duration.</li>
+<li>When a time point string ends with “s”, its unit is second. For example, “3.5s” means the 3.5th second of the video.</li>
+<li>When a time point string ends with “%”, it represents the percentage of the video’s duration. For example, “10%” means that the time point is at the 10% of the video’s entire duration.</li>
         :type ExtTimeOffsetSet: list of str
         :param TimeOffsetSet: List of time points for screencapturing in <font color=red>milliseconds</font>.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -15502,8 +15502,8 @@ class StickerTrackItem(AbstractModel):
     def __init__(self):
         """
         :param SourceMedia: Source of media material for sticker segment, which can be:
-<li>VOD media file ID;</li>
-<li>Download URL of other media files.</li>
+<li>ID of VOD media files</li>
+<li>Download URL of other media files</li>
 Note: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).
         :type SourceMedia: str
         :param Duration: Sticker duration in seconds.
@@ -16983,7 +16983,7 @@ class VideoTrackItem(AbstractModel):
     def __init__(self):
         """
         :param SourceMedia: Source of media material for video segment, which can be:
-<li>VOD media file ID;</li>
+<li>ID of VOD media files</li>
 <li>Download URL of other media files.</li>
 Note: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).
         :type SourceMedia: str

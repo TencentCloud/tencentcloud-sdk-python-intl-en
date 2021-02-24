@@ -139,7 +139,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificate(self, request):
-        """This API is used to obtain certificate information.
+        """This API is used to get certificate information.
 
         :param request: Request instance for DescribeCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateRequest`
@@ -167,7 +167,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateDetail(self, request):
-        """This API is used to obtain certificate details.
+        """This API is used to get certificate details.
 
         :param request: Request instance for DescribeCertificateDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateDetailRequest`
@@ -195,7 +195,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateOperateLogs(self, request):
-        """This API is used to obtain certificate operation logs in the current account.
+        """This API is used to get certificate operation logs in the current account.
 
         :param request: Request instance for DescribeCertificateOperateLogs.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateOperateLogsRequest`
@@ -223,7 +223,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificates(self, request):
-        """This API is used to obtain the certificate list.
+        """This API is used to get the certificate list.
 
         :param request: Request instance for DescribeCertificates.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificatesRequest`
@@ -279,7 +279,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCertificateAlias(self, request):
-        """This API is used to modify certificate alias by inputting the certificate ID and new alias.
+        """This API is used to modify a certificate alias by passing in the certificate ID and new alias.
 
         :param request: Request instance for ModifyCertificateAlias.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateAliasRequest`
@@ -363,7 +363,7 @@ class SslClient(AbstractClient):
 
 
     def SubmitCertificateInformation(self, request):
-        """This API is used to submit certificate information. You can call this API to submit the information of a certificate for several times. However, please make sure the submitted information is complete.
+        """This API is used to submit certificate information.
 
         :param request: Request instance for SubmitCertificateInformation.
         :type request: :class:`tencentcloud.ssl.v20191205.models.SubmitCertificateInformationRequest`
