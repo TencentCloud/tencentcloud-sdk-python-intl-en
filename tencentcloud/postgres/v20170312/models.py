@@ -95,6 +95,44 @@ class CloseDBExtranetAccessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloseServerlessDBExtranetAccessRequest(AbstractModel):
+    """CloseServerlessDBExtranetAccess request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: Unique ID of an instance
+        :type DBInstanceId: str
+        :param DBInstanceName: Instance name
+        :type DBInstanceName: str
+        """
+        self.DBInstanceId = None
+        self.DBInstanceName = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.DBInstanceName = params.get("DBInstanceName")
+
+
+class CloseServerlessDBExtranetAccessResponse(AbstractModel):
+    """CloseServerlessDBExtranetAccess response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDBInstancesRequest(AbstractModel):
     """CreateDBInstances request structure.
 
@@ -1809,6 +1847,44 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class OpenServerlessDBExtranetAccessRequest(AbstractModel):
+    """OpenServerlessDBExtranetAccess request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: Unique ID of an instance
+        :type DBInstanceId: str
+        :param DBInstanceName: Instance name
+        :type DBInstanceName: str
+        """
+        self.DBInstanceId = None
+        self.DBInstanceName = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.DBInstanceName = params.get("DBInstanceName")
+
+
+class OpenServerlessDBExtranetAccessResponse(AbstractModel):
+    """OpenServerlessDBExtranetAccess response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

@@ -54,6 +54,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloseServerlessDBExtranetAccess(self, request):
+        """This API is used to disable public network access for a PostgreSQL for Serverless instance.
+
+        :param request: Request instance for CloseServerlessDBExtranetAccess.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CloseServerlessDBExtranetAccessRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloseServerlessDBExtranetAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloseServerlessDBExtranetAccess", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseServerlessDBExtranetAccessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDBInstances(self, request):
         """This API is used to create one or more TencentDB for PostgreSQL instances.
 
@@ -740,6 +768,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenDBExtranetAccessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenServerlessDBExtranetAccess(self, request):
+        """This API is used to enable public network access for a PostgreSQL for Serverless instance.
+
+        :param request: Request instance for OpenServerlessDBExtranetAccess.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.OpenServerlessDBExtranetAccessRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.OpenServerlessDBExtranetAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OpenServerlessDBExtranetAccess", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenServerlessDBExtranetAccessResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
