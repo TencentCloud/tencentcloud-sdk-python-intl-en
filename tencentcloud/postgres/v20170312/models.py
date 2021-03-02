@@ -53,6 +53,48 @@ class AccountInfo(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class AddDBInstanceToReadOnlyGroupRequest(AbstractModel):
+    """AddDBInstanceToReadOnlyGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: RO group ID
+        :type ReadOnlyGroupId: str
+        """
+        self.DBInstanceId = None
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+
+
+class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
+    """AddDBInstanceToReadOnlyGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     """CloseDBExtranetAccess request structure.
 
@@ -245,6 +287,205 @@ class CreateDBInstancesResponse(AbstractModel):
         self.DealNames = params.get("DealNames")
         self.BillId = params.get("BillId")
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReadOnlyDBInstanceRequest(AbstractModel):
+    """CreateReadOnlyDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
+        :type SpecCode: str
+        :param DBVersion: PostgreSQL kernel version, which must be the same as that of the primary instance
+        :type DBVersion: str
+        :param Storage: Instance storage capacity in GB
+        :type Storage: int
+        :param InstanceCount: Number of instances purchased at a time. Value range: 1–100.
+        :type InstanceCount: int
+        :param Period: Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.
+        :type Period: int
+        :param MasterDBInstanceId: ID of the primary instance to which the read-only replica belongs
+        :type MasterDBInstanceId: str
+        :param Zone: Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
+        :type Zone: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
+        :type InstanceChargeType: str
+        :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
+        :type AutoVoucher: int
+        :param VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
+        :type VoucherIds: list of str
+        :param AutoRenewFlag: Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.
+        :type AutoRenewFlag: int
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID
+        :type SubnetId: str
+        :param ActivityId: Special offer ID
+        :type ActivityId: int
+        :param Name: Instance name (which will be supported in the future)
+        :type Name: str
+        :param NeedSupportIpv6: Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no).
+        :type NeedSupportIpv6: int
+        :param ReadOnlyGroupId: RO group ID
+        :type ReadOnlyGroupId: str
+        :param TagList: The information of tags to be associated with instances. This parameter is left empty by default.
+        :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`
+        """
+        self.SpecCode = None
+        self.DBVersion = None
+        self.Storage = None
+        self.InstanceCount = None
+        self.Period = None
+        self.MasterDBInstanceId = None
+        self.Zone = None
+        self.ProjectId = None
+        self.InstanceChargeType = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.AutoRenewFlag = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.ActivityId = None
+        self.Name = None
+        self.NeedSupportIpv6 = None
+        self.ReadOnlyGroupId = None
+        self.TagList = None
+
+
+    def _deserialize(self, params):
+        self.SpecCode = params.get("SpecCode")
+        self.DBVersion = params.get("DBVersion")
+        self.Storage = params.get("Storage")
+        self.InstanceCount = params.get("InstanceCount")
+        self.Period = params.get("Period")
+        self.MasterDBInstanceId = params.get("MasterDBInstanceId")
+        self.Zone = params.get("Zone")
+        self.ProjectId = params.get("ProjectId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.ActivityId = params.get("ActivityId")
+        self.Name = params.get("Name")
+        self.NeedSupportIpv6 = params.get("NeedSupportIpv6")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        if params.get("TagList") is not None:
+            self.TagList = Tag()
+            self.TagList._deserialize(params.get("TagList"))
+
+
+class CreateReadOnlyDBInstanceResponse(AbstractModel):
+    """CreateReadOnlyDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DealNames: Order number list. Each instance corresponds to an order number.
+        :type DealNames: list of str
+        :param BillId: Bill ID of frozen fees
+        :type BillId: str
+        :param DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.
+        :type DBInstanceIdSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealNames = None
+        self.BillId = None
+        self.DBInstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
+        self.BillId = params.get("BillId")
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReadOnlyGroupRequest(AbstractModel):
+    """CreateReadOnlyGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param MasterDBInstanceId: Primary instance ID
+        :type MasterDBInstanceId: str
+        :param Name: RO group name
+        :type Name: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param ReplayLagEliminate: Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
+        :type ReplayLagEliminate: int
+        :param ReplayLatencyEliminate: Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
+        :type ReplayLatencyEliminate: int
+        :param MaxReplayLag: Delay threshold in ms
+        :type MaxReplayLag: int
+        :param MaxReplayLatency: Delayed log size threshold in MB
+        :type MaxReplayLatency: int
+        :param MinDelayEliminateReserve: The minimum number of read-only replicas that must be retained in an RO group
+        :type MinDelayEliminateReserve: int
+        """
+        self.MasterDBInstanceId = None
+        self.Name = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.ReplayLagEliminate = None
+        self.ReplayLatencyEliminate = None
+        self.MaxReplayLag = None
+        self.MaxReplayLatency = None
+        self.MinDelayEliminateReserve = None
+
+
+    def _deserialize(self, params):
+        self.MasterDBInstanceId = params.get("MasterDBInstanceId")
+        self.Name = params.get("Name")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.ReplayLagEliminate = params.get("ReplayLagEliminate")
+        self.ReplayLatencyEliminate = params.get("ReplayLatencyEliminate")
+        self.MaxReplayLag = params.get("MaxReplayLag")
+        self.MaxReplayLatency = params.get("MaxReplayLatency")
+        self.MinDelayEliminateReserve = params.get("MinDelayEliminateReserve")
+
+
+class CreateReadOnlyGroupResponse(AbstractModel):
+    """CreateReadOnlyGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: RO group ID
+        :type ReadOnlyGroupId: str
+        :param FlowId: Task ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReadOnlyGroupId = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -560,6 +801,45 @@ class DBInstanceNetInfo(AbstractModel):
         self.Status = params.get("Status")
 
 
+class DeleteReadOnlyGroupRequest(AbstractModel):
+    """DeleteReadOnlyGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: ID of the RO group to be deleted
+        :type ReadOnlyGroupId: str
+        """
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+
+
+class DeleteReadOnlyGroupResponse(AbstractModel):
+    """DeleteReadOnlyGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteServerlessDBInstanceRequest(AbstractModel):
     """DeleteServerlessDBInstance request structure.
 
@@ -850,7 +1130,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Filters: list of Filter
         :param Limit: Number of entries returned per page. Default value: 10.
         :type Limit: int
-        :param Offset: Page number, starting from 0.
+        :param Offset: Data offset which starts from 0
         :type Offset: int
         :param OrderBy: Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime
         :type OrderBy: str
@@ -1167,6 +1447,70 @@ class DescribeProductConfigResponse(AbstractModel):
                 obj = SpecInfo()
                 obj._deserialize(item)
                 self.SpecInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReadOnlyGroupsRequest(AbstractModel):
+    """DescribeReadOnlyGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: Filter condition. The primary ID must be specified in the format of `db-master-instance-id` to filter results, or else `null` will be returned.
+        :type Filters: list of Filter
+        :param PageSize: The number of results per page. Default value: 10.
+        :type PageSize: int
+        :param PageNumber: Specify which page is displayed. Default value: 1 (the first page).
+        :type PageNumber: int
+        :param OrderBy: Sorting criterion. Valid values: `ROGroupId`, `CreateTime`, `Name`.
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: `desc`, `asc`.
+        :type OrderByType: str
+        """
+        self.Filters = None
+        self.PageSize = None
+        self.PageNumber = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+
+
+class DescribeReadOnlyGroupsResponse(AbstractModel):
+    """DescribeReadOnlyGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupList: RO group list
+        :type ReadOnlyGroupList: list of ReadOnlyGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReadOnlyGroupList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReadOnlyGroupList") is not None:
+            self.ReadOnlyGroupList = []
+            for item in params.get("ReadOnlyGroupList"):
+                obj = ReadOnlyGroup()
+                obj._deserialize(item)
+                self.ReadOnlyGroupList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1693,6 +2037,52 @@ class ModifyDBInstanceNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
+    """ModifyDBInstanceReadOnlyGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: ID of the RO group to which the read-only replica belongs
+        :type ReadOnlyGroupId: str
+        :param NewReadOnlyGroupId: ID of the new RO group into which the read-only replica will move
+        :type NewReadOnlyGroupId: str
+        """
+        self.DBInstanceId = None
+        self.ReadOnlyGroupId = None
+        self.NewReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.NewReadOnlyGroupId = params.get("NewReadOnlyGroupId")
+
+
+class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
+    """ModifyDBInstanceReadOnlyGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstancesProjectRequest(AbstractModel):
     """ModifyDBInstancesProject request structure.
 
@@ -1732,6 +2122,68 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Count = params.get("Count")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyReadOnlyGroupConfigRequest(AbstractModel):
+    """ModifyReadOnlyGroupConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: RO group ID
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: RO group name
+        :type ReadOnlyGroupName: str
+        :param ReplayLagEliminate: Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
+        :type ReplayLagEliminate: int
+        :param ReplayLatencyEliminate: Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
+        :type ReplayLatencyEliminate: int
+        :param MaxReplayLatency: Delayed log size threshold in MB
+        :type MaxReplayLatency: int
+        :param MaxReplayLag: Delay threshold in ms
+        :type MaxReplayLag: int
+        :param Rebalance: Whether to enable automatic load balancing. Valid values: `0` (disable), `1` (enable).
+        :type Rebalance: int
+        :param MinDelayEliminateReserve: The minimum number of read-only replicas that must be retained in an RO group
+        :type MinDelayEliminateReserve: int
+        """
+        self.ReadOnlyGroupId = None
+        self.ReadOnlyGroupName = None
+        self.ReplayLagEliminate = None
+        self.ReplayLatencyEliminate = None
+        self.MaxReplayLatency = None
+        self.MaxReplayLag = None
+        self.Rebalance = None
+        self.MinDelayEliminateReserve = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.ReadOnlyGroupName = params.get("ReadOnlyGroupName")
+        self.ReplayLagEliminate = params.get("ReplayLagEliminate")
+        self.ReplayLatencyEliminate = params.get("ReplayLatencyEliminate")
+        self.MaxReplayLatency = params.get("MaxReplayLatency")
+        self.MaxReplayLag = params.get("MaxReplayLag")
+        self.Rebalance = params.get("Rebalance")
+        self.MinDelayEliminateReserve = params.get("MinDelayEliminateReserve")
+
+
+class ModifyReadOnlyGroupConfigResponse(AbstractModel):
+    """ModifyReadOnlyGroupConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1925,6 +2377,137 @@ class PgDeal(AbstractModel):
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
 
 
+class ReadOnlyGroup(AbstractModel):
+    """RO group information
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: RO group identifier
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: RO group name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ReadOnlyGroupName: str
+        :param ProjectId: Project ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProjectId: int
+        :param MasterDBInstanceId: Primary instance ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MasterDBInstanceId: str
+        :param MinDelayEliminateReserve: The minimum number of read-only replicas that must be retained in an RO group
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MinDelayEliminateReserve: int
+        :param MaxReplayLatency: Delayed log size threshold
+        :type MaxReplayLatency: int
+        :param ReplayLatencyEliminate: Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
+        :type ReplayLatencyEliminate: int
+        :param MaxReplayLag: Delay threshold
+        :type MaxReplayLag: float
+        :param ReplayLagEliminate: Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
+        :type ReplayLagEliminate: int
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param Region: Region ID
+        :type Region: str
+        :param Zone: Availability zone ID
+        :type Zone: str
+        :param Status: Status
+        :type Status: str
+        :param ReadOnlyDBInstanceList: Instance details
+        :type ReadOnlyDBInstanceList: list of DBInstance
+        :param Rebalance: Whether to enable automatic load balancing
+        :type Rebalance: int
+        :param DBInstanceNetInfo: Network information
+        :type DBInstanceNetInfo: list of DBInstanceNetInfo
+        """
+        self.ReadOnlyGroupId = None
+        self.ReadOnlyGroupName = None
+        self.ProjectId = None
+        self.MasterDBInstanceId = None
+        self.MinDelayEliminateReserve = None
+        self.MaxReplayLatency = None
+        self.ReplayLatencyEliminate = None
+        self.MaxReplayLag = None
+        self.ReplayLagEliminate = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Region = None
+        self.Zone = None
+        self.Status = None
+        self.ReadOnlyDBInstanceList = None
+        self.Rebalance = None
+        self.DBInstanceNetInfo = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.ReadOnlyGroupName = params.get("ReadOnlyGroupName")
+        self.ProjectId = params.get("ProjectId")
+        self.MasterDBInstanceId = params.get("MasterDBInstanceId")
+        self.MinDelayEliminateReserve = params.get("MinDelayEliminateReserve")
+        self.MaxReplayLatency = params.get("MaxReplayLatency")
+        self.ReplayLatencyEliminate = params.get("ReplayLatencyEliminate")
+        self.MaxReplayLag = params.get("MaxReplayLag")
+        self.ReplayLagEliminate = params.get("ReplayLagEliminate")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.Status = params.get("Status")
+        if params.get("ReadOnlyDBInstanceList") is not None:
+            self.ReadOnlyDBInstanceList = []
+            for item in params.get("ReadOnlyDBInstanceList"):
+                obj = DBInstance()
+                obj._deserialize(item)
+                self.ReadOnlyDBInstanceList.append(obj)
+        self.Rebalance = params.get("Rebalance")
+        if params.get("DBInstanceNetInfo") is not None:
+            self.DBInstanceNetInfo = []
+            for item in params.get("DBInstanceNetInfo"):
+                obj = DBInstanceNetInfo()
+                obj._deserialize(item)
+                self.DBInstanceNetInfo.append(obj)
+
+
+class RebalanceReadOnlyGroupRequest(AbstractModel):
+    """RebalanceReadOnlyGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: RO group ID
+        :type ReadOnlyGroupId: str
+        """
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+
+
+class RebalanceReadOnlyGroupResponse(AbstractModel):
+    """RebalanceReadOnlyGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RegionInfo(AbstractModel):
     """Region information such as number and status
 
@@ -1940,11 +2523,15 @@ class RegionInfo(AbstractModel):
         :type RegionId: int
         :param RegionState: Availability status. UNAVAILABLE: unavailable, AVAILABLE: available
         :type RegionState: str
+        :param SupportInternational: Whether the resource can be purchased in this region. Valid values: `0` (no), `1` (yes).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SupportInternational: int
         """
         self.Region = None
         self.RegionName = None
         self.RegionId = None
         self.RegionState = None
+        self.SupportInternational = None
 
 
     def _deserialize(self, params):
@@ -1952,6 +2539,49 @@ class RegionInfo(AbstractModel):
         self.RegionName = params.get("RegionName")
         self.RegionId = params.get("RegionId")
         self.RegionState = params.get("RegionState")
+        self.SupportInternational = params.get("SupportInternational")
+
+
+class RemoveDBInstanceFromReadOnlyGroupRequest(AbstractModel):
+    """RemoveDBInstanceFromReadOnlyGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: RO group ID
+        :type ReadOnlyGroupId: str
+        """
+        self.DBInstanceId = None
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+
+
+class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
+    """RemoveDBInstanceFromReadOnlyGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class RenewInstanceRequest(AbstractModel):

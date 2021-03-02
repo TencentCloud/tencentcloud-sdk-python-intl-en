@@ -436,7 +436,7 @@ class CreateInstancesResponse(AbstractModel):
         """
         :param DealId: Transaction ID
         :type DealId: str
-        :param InstanceIds: Instance ID (this field is during beta test and is not displayed in some regions)
+        :param InstanceIds: Instance ID
         :type InstanceIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3142,6 +3142,18 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MonitorVersion: Monitoring granularity type. Valid values: 1m (monitoring at 1-minute granularity), 5s (monitoring at 5-second granularity)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MonitorVersion: str
+        :param ClientLimitMin: The minimum value of the range of maximum connections to the client
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientLimitMin: int
+        :param ClientLimitMax: The maximum value of the range of maximum connections to the client
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ClientLimitMax: int
+        :param NodeSet: Instance node details
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type NodeSet: list of RedisNodeInfo
+        :param Region: Region where the instance is deployed
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Region: str
         """
         self.InstanceName = None
         self.InstanceId = None
@@ -3188,6 +3200,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RemainBandwidthDuration = None
         self.DiskSize = None
         self.MonitorVersion = None
+        self.ClientLimitMin = None
+        self.ClientLimitMax = None
+        self.NodeSet = None
+        self.Region = None
 
 
     def _deserialize(self, params):
@@ -3246,6 +3262,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RemainBandwidthDuration = params.get("RemainBandwidthDuration")
         self.DiskSize = params.get("DiskSize")
         self.MonitorVersion = params.get("MonitorVersion")
+        self.ClientLimitMin = params.get("ClientLimitMin")
+        self.ClientLimitMax = params.get("ClientLimitMax")
+        if params.get("NodeSet") is not None:
+            self.NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = RedisNodeInfo()
+                obj._deserialize(item)
+                self.NodeSet.append(obj)
+        self.Region = params.get("Region")
 
 
 class InstanceSlowlogDetail(AbstractModel):
