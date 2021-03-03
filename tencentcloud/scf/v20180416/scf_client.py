@@ -621,6 +621,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListAsyncEvents(self, request):
+        """This API is used to pull the list of async function events.
+
+        :param request: Request instance for ListAsyncEvents.
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListAsyncEventsRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListAsyncEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAsyncEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAsyncEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListFunctions(self, request):
         """This API is used to return relevant function information based on the input query parameters.
 
@@ -915,6 +943,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutTotalConcurrencyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateAsyncEvent(self, request):
+        """This API is used to terminate a running async function event.
+
+        :param request: Request instance for TerminateAsyncEvent.
+        :type request: :class:`tencentcloud.scf.v20180416.models.TerminateAsyncEventRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.TerminateAsyncEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TerminateAsyncEvent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateAsyncEventResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

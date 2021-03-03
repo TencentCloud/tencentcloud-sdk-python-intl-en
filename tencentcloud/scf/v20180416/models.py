@@ -80,6 +80,43 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ModTime = params.get("ModTime")
 
 
+class AsyncEvent(AbstractModel):
+    """Async event
+
+    """
+
+    def __init__(self):
+        """
+        :param InvokeRequestId: Invocation request ID
+        :type InvokeRequestId: str
+        :param InvokeType: Invocation type
+        :type InvokeType: str
+        :param Qualifier: Function version
+        :type Qualifier: str
+        :param Status: Event status
+        :type Status: str
+        :param StartTime: Invocation start time in the format of "%Y-%m-%d %H:%M:%S.%f"
+        :type StartTime: str
+        :param EndTime: Invocation end time in the format of "%Y-%m-%d %H:%M:%S.%f"
+        :type EndTime: str
+        """
+        self.InvokeRequestId = None
+        self.InvokeType = None
+        self.Qualifier = None
+        self.Status = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.InvokeRequestId = params.get("InvokeRequestId")
+        self.InvokeType = params.get("InvokeType")
+        self.Qualifier = params.get("Qualifier")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
 class CfsConfig(AbstractModel):
     """File system (CFS) configuration description
 
@@ -161,7 +198,7 @@ class Code(AbstractModel):
 
     def __init__(self):
         """
-        :param CosBucketName: COS bucket name
+        :param CosBucketName: Object bucket name (enter the custom part of the bucket name without `-appid`)
         :type CosBucketName: str
         :param CosObjectName: COS object path
         :type CosObjectName: str
@@ -1310,7 +1347,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
+        :param FunctionName: Function name.
+- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583?from_cn_redirect=1) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
+- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.
         :type FunctionName: str
         :param Offset: Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.
         :type Offset: int
@@ -2019,6 +2058,101 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class ListAsyncEventsRequest(AbstractModel):
+    """ListAsyncEvents request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Namespace: Namespace
+        :type Namespace: str
+        :param Qualifier: Filter (function version)
+        :type Qualifier: str
+        :param InvokeType: Filter (invocation type list)
+        :type InvokeType: list of str
+        :param Status: Filter (event status list)
+        :type Status: list of str
+        :param StartTimeInterval: Filter (left-closed-right-open range of execution start time)
+        :type StartTimeInterval: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
+        :param EndTimeInterval: Filter (left-closed-right-open range of execution end time)
+        :type EndTimeInterval: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
+        :param Order: Valid values: ASC, DESC. Default value: DESC
+        :type Order: str
+        :param Orderby: Valid values: StartTime, EndTime. Default value: StartTime
+        :type Orderby: str
+        :param Offset: Data offset. Default value: 0
+        :type Offset: int
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100
+        :type Limit: int
+        :param InvokeRequestId: Filter (event invocation request ID)
+        :type InvokeRequestId: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.Qualifier = None
+        self.InvokeType = None
+        self.Status = None
+        self.StartTimeInterval = None
+        self.EndTimeInterval = None
+        self.Order = None
+        self.Orderby = None
+        self.Offset = None
+        self.Limit = None
+        self.InvokeRequestId = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.Qualifier = params.get("Qualifier")
+        self.InvokeType = params.get("InvokeType")
+        self.Status = params.get("Status")
+        if params.get("StartTimeInterval") is not None:
+            self.StartTimeInterval = TimeInterval()
+            self.StartTimeInterval._deserialize(params.get("StartTimeInterval"))
+        if params.get("EndTimeInterval") is not None:
+            self.EndTimeInterval = TimeInterval()
+            self.EndTimeInterval._deserialize(params.get("EndTimeInterval"))
+        self.Order = params.get("Order")
+        self.Orderby = params.get("Orderby")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InvokeRequestId = params.get("InvokeRequestId")
+
+
+class ListAsyncEventsResponse(AbstractModel):
+    """ListAsyncEvents response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of events that meet the filter
+        :type TotalCount: int
+        :param EventList: Async event list
+        :type EventList: list of AsyncEvent
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.EventList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("EventList") is not None:
+            self.EventList = []
+            for item in params.get("EventList"):
+                obj = AsyncEvent()
+                obj._deserialize(item)
+                self.EventList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListFunctionsRequest(AbstractModel):
     """ListFunctions request structure.
 
@@ -2282,7 +2416,7 @@ class ListTriggersRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of results to be returned. Default value: 20
         :type Limit: int
-        :param OrderBy: Indicates by which field to sort the returned results. Valid values: AddTime, ModTime. Default value: ModTime
+        :param OrderBy: Indicates by which field to sort the returned results. Valid values: add_time, mod_time. Default value: mod_time
         :type OrderBy: str
         :param Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC
         :type Order: str
@@ -2920,6 +3054,69 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+
+
+class TerminateAsyncEventRequest(AbstractModel):
+    """TerminateAsyncEvent request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param InvokeRequestId: Terminated invocation request ID
+        :type InvokeRequestId: str
+        :param Namespace: Namespace
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.InvokeRequestId = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.InvokeRequestId = params.get("InvokeRequestId")
+        self.Namespace = params.get("Namespace")
+
+
+class TerminateAsyncEventResponse(AbstractModel):
+    """TerminateAsyncEvent response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class TimeInterval(AbstractModel):
+    """Left-closed-right-open time range between the start time and end time in the format of "%Y-%m-%d %H:%M:%S"
+
+    """
+
+    def __init__(self):
+        """
+        :param Start: Start time (inclusive) in the format of "%Y-%m-%d %H:%M:%S"
+        :type Start: str
+        :param End: End time (exclusive) in the format of "%Y-%m-%d %H:%M:%S"
+        :type End: str
+        """
+        self.Start = None
+        self.End = None
+
+
+    def _deserialize(self, params):
+        self.Start = params.get("Start")
+        self.End = params.get("End")
 
 
 class Trigger(AbstractModel):

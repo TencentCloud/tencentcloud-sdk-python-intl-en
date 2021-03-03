@@ -270,12 +270,15 @@ class CreateSubscribeRequest(AbstractModel):
         :type Count: int
         :param AutoRenew: Whether to auto-renew. Default value: 0. This flag does not take effect for hourly billed instances (this field should be hidden from global site users)
         :type AutoRenew: int
+        :param Tags: Instance resource tags
+        :type Tags: list of TagItem
         """
         self.Product = None
         self.PayType = None
         self.Duration = None
         self.Count = None
         self.AutoRenew = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -284,6 +287,12 @@ class CreateSubscribeRequest(AbstractModel):
         self.Duration = params.get("Duration")
         self.Count = params.get("Count")
         self.AutoRenew = params.get("AutoRenew")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateSubscribeResponse(AbstractModel):
@@ -759,6 +768,12 @@ class DescribeSubscribeConfResponse(AbstractModel):
         :type ModifyTime: str
         :param Region: Region
         :type Region: str
+        :param Tags: Tags of the subscription
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Tags: list of TagItem
+        :param AutoRenewFlag: Whether auto-renewal is enabled. 0: do not enable, 1: enable
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AutoRenewFlag: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -786,6 +801,8 @@ class DescribeSubscribeConfResponse(AbstractModel):
         self.SubscribeObjects = None
         self.ModifyTime = None
         self.Region = None
+        self.Tags = None
+        self.AutoRenewFlag = None
         self.RequestId = None
 
 
@@ -819,6 +836,13 @@ class DescribeSubscribeConfResponse(AbstractModel):
                 self.SubscribeObjects.append(obj)
         self.ModifyTime = params.get("ModifyTime")
         self.Region = params.get("Region")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.RequestId = params.get("RequestId")
 
 
@@ -851,6 +875,10 @@ class DescribeSubscribesRequest(AbstractModel):
         :type Limit: int
         :param OrderDirection: Sorting order. Valid values: DESC, ASC. Default value: DESC, indicating descending by creation time
         :type OrderDirection: str
+        :param TagFilters: Tag filtering condition
+        :type TagFilters: list of TagFilter
+        :param SubscribeVersion: Subscription instance edition. `txdts`: legacy data subscription; `kafka`: data subscription in Kafka edition
+        :type SubscribeVersion: str
         """
         self.SubscribeId = None
         self.SubscribeName = None
@@ -863,6 +891,8 @@ class DescribeSubscribesRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.OrderDirection = None
+        self.TagFilters = None
+        self.SubscribeVersion = None
 
 
     def _deserialize(self, params):
@@ -877,6 +907,13 @@ class DescribeSubscribesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.OrderDirection = params.get("OrderDirection")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        self.SubscribeVersion = params.get("SubscribeVersion")
 
 
 class DescribeSubscribesResponse(AbstractModel):
@@ -1958,6 +1995,15 @@ class SubscribeInfo(AbstractModel):
         :type Status: str
         :param SdkConsumedTime: Timestamp of the last message confirmed by the SDK. If the SDK keeps consuming, this field can also be used as the current consumption time point of the SDK
         :type SdkConsumedTime: str
+        :param Tags: Tag
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Tags: list of TagItem
+        :param AutoRenewFlag: Whether auto-renewal is enabled. 0: do not enable; 1: enable
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AutoRenewFlag: int
+        :param SubscribeVersion: Subscription instance edition. ·`txdts`: legacy data subscription; `kafka`: data subscription in Kafka edition
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SubscribeVersion: str
         """
         self.SubscribeId = None
         self.SubscribeName = None
@@ -1980,6 +2026,9 @@ class SubscribeInfo(AbstractModel):
         self.UniqSubnetId = None
         self.Status = None
         self.SdkConsumedTime = None
+        self.Tags = None
+        self.AutoRenewFlag = None
+        self.SubscribeVersion = None
 
 
     def _deserialize(self, params):
@@ -2004,6 +2053,14 @@ class SubscribeInfo(AbstractModel):
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.Status = params.get("Status")
         self.SdkConsumedTime = params.get("SdkConsumedTime")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SubscribeVersion = params.get("SubscribeVersion")
 
 
 class SubscribeObject(AbstractModel):
@@ -2349,3 +2406,46 @@ class SyncStepDetailInfo(AbstractModel):
         self.StepName = params.get("StepName")
         self.CanStop = params.get("CanStop")
         self.StepId = params.get("StepId")
+
+
+class TagFilter(AbstractModel):
+    """Tag filtering
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key value
+        :type TagKey: str
+        :param TagValue: Tag value
+        :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
+class TagItem(AbstractModel):
+    """Tag
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key value
+        :type TagKey: str
+        :param TagValue: Tag value
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
