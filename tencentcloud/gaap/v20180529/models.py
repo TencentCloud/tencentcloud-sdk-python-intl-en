@@ -5004,16 +5004,36 @@ class ModifySecurityRuleRequest(AbstractModel):
         :type AliasName: str
         :param PolicyId: Security policy ID
         :type PolicyId: str
+        :param RuleAction: Security rule action
+        :type RuleAction: str
+        :param SourceCidr: A CIDR IP address associated with the rule
+        :type SourceCidr: str
+        :param Protocol: Protocol type
+        :type Protocol: str
+        :param DestPortRange: Port range. Valid values:
+A single port: 80
+Multiple ports: 80 and 443
+Consecutive ports: 3306-20000
+All ports: ALL
+        :type DestPortRange: str
         """
         self.RuleId = None
         self.AliasName = None
         self.PolicyId = None
+        self.RuleAction = None
+        self.SourceCidr = None
+        self.Protocol = None
+        self.DestPortRange = None
 
 
     def _deserialize(self, params):
         self.RuleId = params.get("RuleId")
         self.AliasName = params.get("AliasName")
         self.PolicyId = params.get("PolicyId")
+        self.RuleAction = params.get("RuleAction")
+        self.SourceCidr = params.get("SourceCidr")
+        self.Protocol = params.get("Protocol")
+        self.DestPortRange = params.get("DestPortRange")
 
 
 class ModifySecurityRuleResponse(AbstractModel):
@@ -5878,10 +5898,10 @@ You cannot modify this parameter when calling ModifyRuleAttribute API.
         :param FailedCountInter: Origin server failure check frequency
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FailedCountInter: int
-        :param FailedThreshold: Origin server health check threshold. The service will be blocked once the threshold is exceeded.
+        :param FailedThreshold: Origin server health check threshold. All requests to the origin server will be blocked once the threshold is exceeded.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FailedThreshold: int
-        :param BlockInter: Time of a request is blocked after the origin server health check threshold is exceeded.
+        :param BlockInter: Duration to block requests targeting the origin server after a failed health check
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type BlockInter: int
         """

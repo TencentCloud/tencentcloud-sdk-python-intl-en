@@ -78,6 +78,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param City: City where the access point is located
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type City: str
+        :param Area: Access point region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Area: str
         """
         self.AccessPointName = None
         self.AccessPointId = None
@@ -88,6 +91,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.AvailablePortType = None
         self.Coordinate = None
         self.City = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -102,6 +106,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.Coordinate = Coordinate()
             self.Coordinate._deserialize(params.get("Coordinate"))
         self.City = params.get("City")
+        self.Area = params.get("Area")
 
 
 class ApplyInternetAddressRequest(AbstractModel):
