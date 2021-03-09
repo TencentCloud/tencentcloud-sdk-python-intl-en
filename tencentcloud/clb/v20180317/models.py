@@ -838,6 +838,8 @@ They represent weighted round robin and least connections, respectively. Default
         :type SessionType: str
         :param KeepaliveEnable: Whether to enable a persistent connection (This parameter can only be configured in HTTP/HTTPS listeners). Valid values: 0: no; 1: yes. Default value: 0
         :type KeepaliveEnable: int
+        :param EndPort: This parameter is used to specify the end port and is required when creating a port range listener. Only one member can be passed in when inputting the `Ports` parameter, which is used to specify the start port. If you want to try the port range feature, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :type EndPort: int
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -851,6 +853,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.TargetType = None
         self.SessionType = None
         self.KeepaliveEnable = None
+        self.EndPort = None
 
 
     def _deserialize(self, params):
@@ -870,6 +873,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.TargetType = params.get("TargetType")
         self.SessionType = params.get("SessionType")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
+        self.EndPort = params.get("EndPort")
 
 
 class CreateListenerResponse(AbstractModel):

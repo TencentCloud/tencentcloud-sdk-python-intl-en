@@ -26,6 +26,34 @@ class DbbrainClient(AbstractClient):
     _service = 'dbbrain'
 
 
+    def AddUserContact(self, request):
+        """This API is used to add the contact name and email.. The return value is the successfully added contact ID. Select Guangzhou for Region.
+
+        :param request: Request instance for AddUserContact.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.AddUserContactRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.AddUserContactResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddUserContact", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddUserContactResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDBDiagReportTask(self, request):
         """This API is used to create a health report and send it via email as configured.
 
@@ -55,7 +83,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateMailProfile(self, request):
-        """This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email configuration of scheduled task report).
+        """This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email sending configuration of regularly generated health report). Select Guangzhou for Region, regardless of the region where the instance belongs.
 
         :param request: Request instance for CreateMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateMailProfileRequest`
@@ -68,6 +96,34 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMailProfileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSchedulerMailProfile(self, request):
+        """This API is used to create the regular generation time of the health reports and the regular email sending configuration. Pass in the regular generation time of the health reports as a parameter (Monday to Sunday) to set the regular generation time of the health reports, and save the corresponding regular email sending configuration.
+
+        :param request: Request instance for CreateSchedulerMailProfile.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateSchedulerMailProfileRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.CreateSchedulerMailProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSchedulerMailProfile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSchedulerMailProfileResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -208,6 +264,90 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSpaceStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiagDBInstances(self, request):
+        """This API is used to obtain the instance information list. Select Guangzhou for Region.
+
+        :param request: Request instance for DescribeDiagDBInstances.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDiagDBInstancesRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDiagDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDiagDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiagDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHealthScore(self, request):
+        """This API is used to obtain the health score and deduction for exceptions in the specified time period (30 minutes) based on the instance ID.
+
+        :param request: Request instance for DescribeHealthScore.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeHealthScoreRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeHealthScoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHealthScore", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHealthScoreResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMailProfile(self, request):
+        """This API is used to obtain the email sending configurations, including the email configuration for database inspection and the email sending configuration for regularly generated health reports. Select Guangzhou for Region.
+
+        :param request: Request instance for DescribeMailProfile.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeMailProfileRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeMailProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMailProfile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMailProfileResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
