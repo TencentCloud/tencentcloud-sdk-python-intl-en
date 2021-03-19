@@ -252,6 +252,48 @@ class Credentials(AbstractModel):
         self.UserName = params.get("UserName")
 
 
+class DeleteTimerScalingPolicyRequest(AbstractModel):
+    """DeleteTimerScalingPolicy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerId: Unique ID of the policy
+        :type TimerId: str
+        :param FleetId: ID of the fleet to be bound with the policy
+        :type FleetId: str
+        :param TimerName: Scheduled scaling policy name
+        :type TimerName: str
+        """
+        self.TimerId = None
+        self.FleetId = None
+        self.TimerName = None
+
+
+    def _deserialize(self, params):
+        self.TimerId = params.get("TimerId")
+        self.FleetId = params.get("FleetId")
+        self.TimerName = params.get("TimerName")
+
+
+class DeleteTimerScalingPolicyResponse(AbstractModel):
+    """DeleteTimerScalingPolicy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeGameServerSessionDetailsRequest(AbstractModel):
     """DescribeGameServerSessionDetails request structure.
 
@@ -496,6 +538,75 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 obj._deserialize(item)
                 self.PlayerSessions.append(obj)
         self.NextToken = params.get("NextToken")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTimerScalingPoliciesRequest(AbstractModel):
+    """DescribeTimerScalingPolicies request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: ID of the fleet to be bound with the policy
+        :type FleetId: str
+        :param TimerName: Scheduled scaling policy name
+        :type TimerName: str
+        :param BeginTime: Start time of the scheduled scaling policy
+        :type BeginTime: str
+        :param EndTime: End time of the scheduled scaling policy
+        :type EndTime: str
+        :param Offset: Pagination offset
+        :type Offset: int
+        :param Limit: Number of entries per page
+        :type Limit: int
+        """
+        self.FleetId = None
+        self.TimerName = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.TimerName = params.get("TimerName")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeTimerScalingPoliciesResponse(AbstractModel):
+    """DescribeTimerScalingPolicies response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerScalingPolicies: Configuration of the scheduled scaling policy
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type TimerScalingPolicies: list of TimerScalingPolicy
+        :param TotalCount: Total number of scheduled scaling policies
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TimerScalingPolicies = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TimerScalingPolicies") is not None:
+            self.TimerScalingPolicies = []
+            for item in params.get("TimerScalingPolicies"):
+                obj = TimerScalingPolicy()
+                obj._deserialize(item)
+                self.TimerScalingPolicies.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1313,6 +1424,42 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TerminationTime = params.get("TerminationTime")
 
 
+class PutTimerScalingPolicyRequest(AbstractModel):
+    """PutTimerScalingPolicy request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerScalingPolicy: Configuration of the scheduled scaling policy
+        :type TimerScalingPolicy: :class:`tencentcloud.gse.v20191112.models.TimerScalingPolicy`
+        """
+        self.TimerScalingPolicy = None
+
+
+    def _deserialize(self, params):
+        if params.get("TimerScalingPolicy") is not None:
+            self.TimerScalingPolicy = TimerScalingPolicy()
+            self.TimerScalingPolicy._deserialize(params.get("TimerScalingPolicy"))
+
+
+class PutTimerScalingPolicyResponse(AbstractModel):
+    """PutTimerScalingPolicy response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResourceCreationLimitPolicy(AbstractModel):
     """Resource creation policy
 
@@ -1500,6 +1647,48 @@ class ServerProcesse(AbstractModel):
         self.Parameters = params.get("Parameters")
 
 
+class SetServerReservedRequest(AbstractModel):
+    """SetServerReserved request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: ID of the fleet to be bound with the policy
+        :type FleetId: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ReserveValue: Whether the instance is retained. Valid values: 1 (retained), 0 (not retained). Default value: 0.
+        :type ReserveValue: int
+        """
+        self.FleetId = None
+        self.InstanceId = None
+        self.ReserveValue = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.InstanceId = params.get("InstanceId")
+        self.ReserveValue = params.get("ReserveValue")
+
+
+class SetServerReservedResponse(AbstractModel):
+    """SetServerReserved response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StartGameServerSessionPlacementRequest(AbstractModel):
     """StartGameServerSessionPlacement request structure.
 
@@ -1642,6 +1831,184 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+
+
+class TargetConfiguration(AbstractModel):
+    """Configuration of target tracking scaling
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetValue: Ratio of reserved server session resource 
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TargetValue: int
+        """
+        self.TargetValue = None
+
+
+    def _deserialize(self, params):
+        self.TargetValue = params.get("TargetValue")
+
+
+class TimerConfiguration(AbstractModel):
+    """The recurrence pattern of auto-scaling
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerType: The recurrence pattern of auto-scaling. `0`: undefined, `1`: once, `2`: daily, `3`: monthly, `4`: weekly
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TimerType: int
+        :param TimerValue: Details of the recurrence pattern of auto-scaling
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TimerValue: :class:`tencentcloud.gse.v20191112.models.TimerValue`
+        :param BeginTime: Start time of the scheduled scaling policy
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type BeginTime: str
+        :param EndTime: End time of the scheduled scaling policy
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EndTime: str
+        """
+        self.TimerType = None
+        self.TimerValue = None
+        self.BeginTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.TimerType = params.get("TimerType")
+        if params.get("TimerValue") is not None:
+            self.TimerValue = TimerValue()
+            self.TimerValue._deserialize(params.get("TimerValue"))
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+
+
+class TimerFleetCapacity(AbstractModel):
+    """The capacity configurations of the scheduled scaling policy
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: ID of the fleet to be bound with the policy
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FleetId: str
+        :param DesiredInstances: Desired number of instances
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DesiredInstances: int
+        :param MinSize: Minimum number of instances
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MinSize: int
+        :param MaxSize: Maximum number of instances
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MaxSize: int
+        :param ScalingInterval: Scaling cooldown period, in minutes
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ScalingInterval: int
+        :param ScalingType: Scaling type. `1`: manual, `2`: automatic, `0`: undefined
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ScalingType: int
+        :param TargetConfiguration: Configuration of target tracking scaling
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TargetConfiguration: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
+        """
+        self.FleetId = None
+        self.DesiredInstances = None
+        self.MinSize = None
+        self.MaxSize = None
+        self.ScalingInterval = None
+        self.ScalingType = None
+        self.TargetConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.DesiredInstances = params.get("DesiredInstances")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
+        self.ScalingInterval = params.get("ScalingInterval")
+        self.ScalingType = params.get("ScalingType")
+        if params.get("TargetConfiguration") is not None:
+            self.TargetConfiguration = TargetConfiguration()
+            self.TargetConfiguration._deserialize(params.get("TargetConfiguration"))
+
+
+class TimerScalingPolicy(AbstractModel):
+    """Configurations of a scheduled scaling policy
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerId: Unique ID of the policy. When it’s filled in, the policy will be updated.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TimerId: str
+        :param TimerName: Scheduled scaling policy name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TimerName: str
+        :param TimerStatus: Scheduled scaling policy status. `0`: Undefined, `1`: Not started, 2: Activated, `3`: Stopped, `4`: Expired
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TimerStatus: int
+        :param TimerFleetCapacity: The capacity configurations of the scheduled scaling policy
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TimerFleetCapacity: :class:`tencentcloud.gse.v20191112.models.TimerFleetCapacity`
+        :param TimerConfiguration: The recurrence pattern of auto-scaling
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TimerConfiguration: :class:`tencentcloud.gse.v20191112.models.TimerConfiguration`
+        """
+        self.TimerId = None
+        self.TimerName = None
+        self.TimerStatus = None
+        self.TimerFleetCapacity = None
+        self.TimerConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.TimerId = params.get("TimerId")
+        self.TimerName = params.get("TimerName")
+        self.TimerStatus = params.get("TimerStatus")
+        if params.get("TimerFleetCapacity") is not None:
+            self.TimerFleetCapacity = TimerFleetCapacity()
+            self.TimerFleetCapacity._deserialize(params.get("TimerFleetCapacity"))
+        if params.get("TimerConfiguration") is not None:
+            self.TimerConfiguration = TimerConfiguration()
+            self.TimerConfiguration._deserialize(params.get("TimerConfiguration"))
+
+
+class TimerValue(AbstractModel):
+    """Details of the recurrence pattern of the scheduled scaling policy
+
+    """
+
+    def __init__(self):
+        """
+        :param Day: Execute once every X day(s)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Day: int
+        :param FromDay: Specify the first day to execute the scaling action in a month (execute once per day)
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FromDay: int
+        :param ToDay: Specify the last day to execute the scaling action in a month
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ToDay: int
+        :param WeekDays: Specify the week days to repeat the scaling action. Multiple values are supported. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday). 
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type WeekDays: list of int
+        """
+        self.Day = None
+        self.FromDay = None
+        self.ToDay = None
+        self.WeekDays = None
+
+
+    def _deserialize(self, params):
+        self.Day = params.get("Day")
+        self.FromDay = params.get("FromDay")
+        self.ToDay = params.get("ToDay")
+        self.WeekDays = params.get("WeekDays")
 
 
 class UpdateBucketAccelerateOptRequest(AbstractModel):

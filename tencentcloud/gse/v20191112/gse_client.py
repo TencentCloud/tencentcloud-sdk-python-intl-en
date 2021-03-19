@@ -82,6 +82,34 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteTimerScalingPolicy(self, request):
+        """This API (DeleteTimerScalingPolicy) is used to delete a scheduled scaling policy of a fleet.
+
+        :param request: Request instance for DeleteTimerScalingPolicy.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DeleteTimerScalingPolicyRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DeleteTimerScalingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTimerScalingPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTimerScalingPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGameServerSessionDetails(self, request):
         """This API is used to query the list of game server session details.
 
@@ -180,6 +208,34 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePlayerSessionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTimerScalingPolicies(self, request):
+        """This API (DescribeTimerScalingPolicies) is used to query the scheduled scaling policies of a fleet. You can query the policies by `fleetID` or the fleet name. The returned results are paged.
+
+        :param request: Request instance for DescribeTimerScalingPolicies.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeTimerScalingPoliciesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeTimerScalingPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTimerScalingPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTimerScalingPoliciesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -306,6 +362,36 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PutTimerScalingPolicy(self, request):
+        """This API (PutTimerScalingPolicy) is used to create or update a scheduled scaling policy for a fleet.
+
+        If the field `timerID` is filled in, the specified policy will be updated, and if `timerID` is left empty, a new policy will be created.
+
+        :param request: Request instance for PutTimerScalingPolicy.
+        :type request: :class:`tencentcloud.gse.v20191112.models.PutTimerScalingPolicyRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.PutTimerScalingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutTimerScalingPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutTimerScalingPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SearchGameServerSessions(self, request):
         """This API is used to search in the list of game server sessions.
 
@@ -320,6 +406,36 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchGameServerSessionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetServerReserved(self, request):
+        """This API (SetServerReserved) is used to mark the exceptional instances as retained for troubleshooting.
+
+        `ReserveValue`: specifies whether to retain the instance. Valid values: `0` (do not retain), `1` (retain). Default value: `0`.
+
+        :param request: Request instance for SetServerReserved.
+        :type request: :class:`tencentcloud.gse.v20191112.models.SetServerReservedRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.SetServerReservedResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetServerReserved", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetServerReservedResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

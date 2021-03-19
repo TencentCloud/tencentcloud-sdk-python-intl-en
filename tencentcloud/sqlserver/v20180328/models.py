@@ -305,6 +305,27 @@ class CloneDBResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CosUploadBackupFile(AbstractModel):
+    """Querying the size of uploaded backup files.
+
+    """
+
+    def __init__(self):
+        """
+        :param FileName: Backup name
+        :type FileName: str
+        :param Size: Backup size
+        :type Size: int
+        """
+        self.FileName = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.Size = params.get("Size")
+
+
 class CreateAccountRequest(AbstractModel):
     """CreateAccount request structure.
 
@@ -349,6 +370,60 @@ class CreateAccountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBackupMigrationRequest(AbstractModel):
+    """CreateBackupMigration request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of imported target instance
+        :type InstanceId: str
+        :param RecoveryType: Migration task restoration type. FULL: full backup restoration, FULL_LOG: full backup and transaction log restoration, FULL_DIFF: full backup and differential backup restoration
+        :type RecoveryType: str
+        :param UploadType: Backup upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
+        :type UploadType: str
+        :param MigrationName: Task name
+        :type MigrationName: str
+        :param BackupFiles: If the UploadType is COS_URL, fill in the URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
+        :type BackupFiles: list of str
+        """
+        self.InstanceId = None
+        self.RecoveryType = None
+        self.UploadType = None
+        self.MigrationName = None
+        self.BackupFiles = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RecoveryType = params.get("RecoveryType")
+        self.UploadType = params.get("UploadType")
+        self.MigrationName = params.get("MigrationName")
+        self.BackupFiles = params.get("BackupFiles")
+
+
+class CreateBackupMigrationResponse(AbstractModel):
+    """CreateBackupMigration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BackupMigrationId: Backup import task ID
+        :type BackupMigrationId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BackupMigrationId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BackupMigrationId = params.get("BackupMigrationId")
         self.RequestId = params.get("RequestId")
 
 
@@ -569,6 +644,56 @@ class CreateDBResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateIncrementalMigrationRequest(AbstractModel):
+    """CreateIncrementalMigration request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of imported target instance
+        :type InstanceId: str
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration.
+        :type BackupMigrationId: str
+        :param BackupFiles: Incremental backup file. If the UploadType of a full backup file is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
+        :type BackupFiles: list of str
+        :param IsRecovery: Whether restoration is required. No: not required. Yes: required. Not required by default.
+        :type IsRecovery: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.BackupFiles = None
+        self.IsRecovery = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.BackupFiles = params.get("BackupFiles")
+        self.IsRecovery = params.get("IsRecovery")
+
+
+class CreateIncrementalMigrationResponse(AbstractModel):
+    """CreateIncrementalMigration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param IncrementalMigrationId: ID of an incremental backup import task
+        :type IncrementalMigrationId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IncrementalMigrationId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1066,6 +1191,44 @@ class DeleteAccountResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteBackupMigrationRequest(AbstractModel):
+    """DeleteBackupMigration request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Target instance ID, which is returned through the API DescribeBackupMigration.
+        :type InstanceId: str
+        :param BackupMigrationId: Backup import task ID, which is returned through the API DescribeBackupMigration.
+        :type BackupMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+
+
+class DeleteBackupMigrationResponse(AbstractModel):
+    """DeleteBackupMigration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDBRequest(AbstractModel):
     """DeleteDB request structure.
 
@@ -1105,6 +1268,48 @@ class DeleteDBResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteIncrementalMigrationRequest(AbstractModel):
+    """DeleteIncrementalMigration request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Target instance ID.
+        :type InstanceId: str
+        :param BackupMigrationId: Backup import task ID
+        :type BackupMigrationId: str
+        :param IncrementalMigrationId: ID of an incremental backup import task
+        :type IncrementalMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.IncrementalMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+
+
+class DeleteIncrementalMigrationResponse(AbstractModel):
+    """DeleteIncrementalMigration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1201,6 +1406,194 @@ class DescribeAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupCommandRequest(AbstractModel):
+    """DescribeBackupCommand request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BackupFileType: Backup file type. Full: full backup. FULL_LOG: full backup which needs log increments. FULL_DIFF: full backup which needs differential increments. LOG: log backup. DIFF: differential backup.
+        :type BackupFileType: str
+        :param DataBaseName: Database name
+        :type DataBaseName: str
+        :param IsRecovery: Whether restoration is required. No: not required. Yes: required.
+        :type IsRecovery: str
+        :param LocalPath: Storage path of backup files. If this parameter is left empty, the default storage path will be D:\\.
+        :type LocalPath: str
+        """
+        self.BackupFileType = None
+        self.DataBaseName = None
+        self.IsRecovery = None
+        self.LocalPath = None
+
+
+    def _deserialize(self, params):
+        self.BackupFileType = params.get("BackupFileType")
+        self.DataBaseName = params.get("DataBaseName")
+        self.IsRecovery = params.get("IsRecovery")
+        self.LocalPath = params.get("LocalPath")
+
+
+class DescribeBackupCommandResponse(AbstractModel):
+    """DescribeBackupCommand response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Command: Create a backup command
+        :type Command: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Command = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Command = params.get("Command")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupMigrationRequest(AbstractModel):
+    """DescribeBackupMigration request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of imported target instance
+        :type InstanceId: str
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration.
+        :type BackupMigrationId: str
+        :param MigrationName: Import task name
+        :type MigrationName: str
+        :param BackupFileName: Backup file name
+        :type BackupFileName: str
+        :param StatusSet: Status set of import tasks
+        :type StatusSet: list of int
+        :param RecoveryType: Import task restoration type: FULL,FULL_LOG,FULL_DIFF
+        :type RecoveryType: str
+        :param UploadType: COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
+        :type UploadType: str
+        :param Limit: Paging. Page size
+        :type Limit: int
+        :param Offset: Paging. Number of pages
+        :type Offset: int
+        :param OrderBy: Field for order: name,createTime,startTime,endTime
+        :type OrderBy: str
+        :param OrderByType: Type of order: desc,asc
+        :type OrderByType: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.MigrationName = None
+        self.BackupFileName = None
+        self.StatusSet = None
+        self.RecoveryType = None
+        self.UploadType = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.MigrationName = params.get("MigrationName")
+        self.BackupFileName = params.get("BackupFileName")
+        self.StatusSet = params.get("StatusSet")
+        self.RecoveryType = params.get("RecoveryType")
+        self.UploadType = params.get("UploadType")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+
+
+class DescribeBackupMigrationResponse(AbstractModel):
+    """DescribeBackupMigration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of tasks
+        :type TotalCount: int
+        :param BackupMigrationSet: Migration task set
+        :type BackupMigrationSet: list of Migration
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BackupMigrationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BackupMigrationSet") is not None:
+            self.BackupMigrationSet = []
+            for item in params.get("BackupMigrationSet"):
+                obj = Migration()
+                obj._deserialize(item)
+                self.BackupMigrationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupUploadSizeRequest(AbstractModel):
+    """DescribeBackupUploadSize request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of imported target instance
+        :type InstanceId: str
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
+        :type BackupMigrationId: str
+        :param IncrementalMigrationId: Incremental import task ID
+        :type IncrementalMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.IncrementalMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+
+
+class DescribeBackupUploadSizeResponse(AbstractModel):
+    """DescribeBackupUploadSize response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CosUploadBackupFileSet: Information of uploaded backups
+        :type CosUploadBackupFileSet: list of CosUploadBackupFile
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CosUploadBackupFileSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CosUploadBackupFileSet") is not None:
+            self.CosUploadBackupFileSet = []
+            for item in params.get("CosUploadBackupFileSet"):
+                obj = CosUploadBackupFile()
+                obj._deserialize(item)
+                self.CosUploadBackupFileSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupsRequest(AbstractModel):
     """DescribeBackups request structure.
 
@@ -1281,6 +1674,44 @@ class DescribeBackupsResponse(AbstractModel):
                 obj = Backup()
                 obj._deserialize(item)
                 self.Backups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBCharsetsRequest(AbstractModel):
+    """DescribeDBCharsets request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of mssql-j8kv137v
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBCharsetsResponse(AbstractModel):
+    """DescribeDBCharsets response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DatabaseCharsets: Database character set list
+        :type DatabaseCharsets: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DatabaseCharsets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseCharsets = params.get("DatabaseCharsets")
         self.RequestId = params.get("RequestId")
 
 
@@ -1485,6 +1916,85 @@ class DescribeFlowStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIncrementalMigrationRequest(AbstractModel):
+    """DescribeIncrementalMigration request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
+        :type BackupMigrationId: str
+        :param InstanceId: ID of imported target instance
+        :type InstanceId: str
+        :param BackupFileName: Backup file name
+        :type BackupFileName: str
+        :param StatusSet: Status set of import tasks
+        :type StatusSet: list of int
+        :param Limit: Paging. Page size
+        :type Limit: int
+        :param Offset: Paging. Number of pages
+        :type Offset: int
+        :param OrderBy: Field for order: name,createTime,startTime,endTime
+        :type OrderBy: str
+        :param OrderByType: Type of order: desc,asc
+        :type OrderByType: str
+        :param IncrementalMigrationId: ID of an incremental backup import task
+        :type IncrementalMigrationId: str
+        """
+        self.BackupMigrationId = None
+        self.InstanceId = None
+        self.BackupFileName = None
+        self.StatusSet = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.IncrementalMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.InstanceId = params.get("InstanceId")
+        self.BackupFileName = params.get("BackupFileName")
+        self.StatusSet = params.get("StatusSet")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+
+
+class DescribeIncrementalMigrationResponse(AbstractModel):
+    """DescribeIncrementalMigration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of import tasks
+        :type TotalCount: int
+        :param IncrementalMigrationSet: Incremental import task set
+        :type IncrementalMigrationSet: list of Migration
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.IncrementalMigrationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("IncrementalMigrationSet") is not None:
+            self.IncrementalMigrationSet = []
+            for item in params.get("IncrementalMigrationSet"):
+                obj = Migration()
+                obj._deserialize(item)
+                self.IncrementalMigrationSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1898,6 +2408,76 @@ class DescribeSlowlogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUploadBackupInfoRequest(AbstractModel):
+    """DescribeUploadBackupInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of imported target instance
+        :type InstanceId: str
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
+        :type BackupMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+
+
+class DescribeUploadBackupInfoResponse(AbstractModel):
+    """DescribeUploadBackupInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BucketName: Bucket name
+        :type BucketName: str
+        :param Region: Bucket location information
+        :type Region: str
+        :param Path: Storage path
+        :type Path: str
+        :param TmpSecretId: Temporary key ID
+        :type TmpSecretId: str
+        :param TmpSecretKey: Temporary key (Key)
+        :type TmpSecretKey: str
+        :param XCosSecurityToken: Temporary key (Token)
+        :type XCosSecurityToken: str
+        :param StartTime: Temporary key start time
+        :type StartTime: str
+        :param ExpiredTime: Temporary key expiration time
+        :type ExpiredTime: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BucketName = None
+        self.Region = None
+        self.Path = None
+        self.TmpSecretId = None
+        self.TmpSecretKey = None
+        self.XCosSecurityToken = None
+        self.StartTime = None
+        self.ExpiredTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BucketName = params.get("BucketName")
+        self.Region = params.get("Region")
+        self.Path = params.get("Path")
+        self.TmpSecretId = params.get("TmpSecretId")
+        self.TmpSecretKey = params.get("TmpSecretKey")
+        self.XCosSecurityToken = params.get("XCosSecurityToken")
+        self.StartTime = params.get("StartTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones request structure.
 
@@ -2275,6 +2855,174 @@ class MigrateTask(AbstractModel):
             self.MigrateDetail._deserialize(params.get("MigrateDetail"))
 
 
+class Migration(AbstractModel):
+    """Cold backup migration import
+
+    """
+
+    def __init__(self):
+        """
+        :param MigrationId: Backup import task ID or incremental import task ID
+        :type MigrationId: str
+        :param MigrationName: Backup import task name. For an incremental import task, this field will be left empty.
+Note: this field may return ‘null’, indicating that no valid values can be obtained.
+        :type MigrationName: str
+        :param AppId: Application ID
+        :type AppId: int
+        :param Region: Region
+        :type Region: str
+        :param InstanceId: ID of migrated target instance
+        :type InstanceId: str
+        :param RecoveryType: Migration task restoration type
+        :type RecoveryType: str
+        :param UploadType: Backup user upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
+        :type UploadType: str
+        :param BackupFiles: Backup file list, which is determined by UploadType. If the upload type is COS_URL, URL will be saved. If the upload type is COS_UPLOAD, the backup name will be saved.
+        :type BackupFiles: list of str
+        :param Status: Migration task status,
+        :type Status: int
+        :param CreateTime: Migration task creation time
+        :type CreateTime: str
+        :param StartTime: Migration task start time
+        :type StartTime: str
+        :param EndTime: Migration task end time
+        :type EndTime: str
+        :param Message: More information
+        :type Message: str
+        :param Detail: Migration detail
+        :type Detail: :class:`tencentcloud.sqlserver.v20180328.models.MigrationDetail`
+        :param Action: Operation allowed in the current status
+        :type Action: :class:`tencentcloud.sqlserver.v20180328.models.MigrationAction`
+        :param IsRecovery: Whether this is the final restoration. For a full import task, this field will be left empty.
+Note: this field may return ‘null’, indicating that no valid values can be obtained.
+        :type IsRecovery: str
+        """
+        self.MigrationId = None
+        self.MigrationName = None
+        self.AppId = None
+        self.Region = None
+        self.InstanceId = None
+        self.RecoveryType = None
+        self.UploadType = None
+        self.BackupFiles = None
+        self.Status = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Message = None
+        self.Detail = None
+        self.Action = None
+        self.IsRecovery = None
+
+
+    def _deserialize(self, params):
+        self.MigrationId = params.get("MigrationId")
+        self.MigrationName = params.get("MigrationName")
+        self.AppId = params.get("AppId")
+        self.Region = params.get("Region")
+        self.InstanceId = params.get("InstanceId")
+        self.RecoveryType = params.get("RecoveryType")
+        self.UploadType = params.get("UploadType")
+        self.BackupFiles = params.get("BackupFiles")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Message = params.get("Message")
+        if params.get("Detail") is not None:
+            self.Detail = MigrationDetail()
+            self.Detail._deserialize(params.get("Detail"))
+        if params.get("Action") is not None:
+            self.Action = MigrationAction()
+            self.Action._deserialize(params.get("Action"))
+        self.IsRecovery = params.get("IsRecovery")
+
+
+class MigrationAction(AbstractModel):
+    """Operation allowed by a cold backup import task
+
+    """
+
+    def __init__(self):
+        """
+        :param AllAction: All the allowed operations. Values include: view (viewing a task), modify (modifying a task), start (starting a task), incremental (creating an incremental task), delete (deleting a task), and upload (obtaining the upload permission).
+        :type AllAction: list of str
+        :param AllowedAction: Operation allowed in the current status. If the subset of AllAction is left empty, no operations will be allowed.
+        :type AllowedAction: list of str
+        """
+        self.AllAction = None
+        self.AllowedAction = None
+
+
+    def _deserialize(self, params):
+        self.AllAction = params.get("AllAction")
+        self.AllowedAction = params.get("AllowedAction")
+
+
+class MigrationDetail(AbstractModel):
+    """Details of a cold backup import task
+
+    """
+
+    def __init__(self):
+        """
+        :param StepAll: Total number of steps
+        :type StepAll: int
+        :param StepNow: Current step
+        :type StepNow: int
+        :param Progress: Overall progress. For example, “30” means 30%.
+        :type Progress: int
+        :param StepInfo: Step information. ‘null’ means the migration has not started
+Note: this field may return ‘null’, indicating that no valid values can be obtained.
+        :type StepInfo: list of MigrationStep
+        """
+        self.StepAll = None
+        self.StepNow = None
+        self.Progress = None
+        self.StepInfo = None
+
+
+    def _deserialize(self, params):
+        self.StepAll = params.get("StepAll")
+        self.StepNow = params.get("StepNow")
+        self.Progress = params.get("Progress")
+        if params.get("StepInfo") is not None:
+            self.StepInfo = []
+            for item in params.get("StepInfo"):
+                obj = MigrationStep()
+                obj._deserialize(item)
+                self.StepInfo.append(obj)
+
+
+class MigrationStep(AbstractModel):
+    """Migration steps of a cold backup import task
+
+    """
+
+    def __init__(self):
+        """
+        :param StepNo: Step sequence
+        :type StepNo: int
+        :param StepName: Step name
+        :type StepName: str
+        :param StepId: Step ID in English
+        :type StepId: str
+        :param Status: Step status: 0 (default value), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)
+        :type Status: int
+        """
+        self.StepNo = None
+        self.StepName = None
+        self.StepId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.StepNo = params.get("StepNo")
+        self.StepName = params.get("StepName")
+        self.StepId = params.get("StepId")
+        self.Status = params.get("Status")
+
+
 class ModifyAccountPrivilegeRequest(AbstractModel):
     """ModifyAccountPrivilege request structure.
 
@@ -2362,6 +3110,64 @@ class ModifyAccountRemarkResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupMigrationRequest(AbstractModel):
+    """ModifyBackupMigration request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of imported target instance
+        :type InstanceId: str
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
+        :type BackupMigrationId: str
+        :param MigrationName: Task name
+        :type MigrationName: str
+        :param RecoveryType: Migration task restoration type: FULL,FULL_LOG,FULL_DIFF
+        :type RecoveryType: str
+        :param UploadType: COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
+        :type UploadType: str
+        :param BackupFiles: If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
+        :type BackupFiles: list of str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.MigrationName = None
+        self.RecoveryType = None
+        self.UploadType = None
+        self.BackupFiles = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.MigrationName = params.get("MigrationName")
+        self.RecoveryType = params.get("RecoveryType")
+        self.UploadType = params.get("UploadType")
+        self.BackupFiles = params.get("BackupFiles")
+
+
+class ModifyBackupMigrationResponse(AbstractModel):
+    """ModifyBackupMigration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param BackupMigrationId: Backup import task ID
+        :type BackupMigrationId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BackupMigrationId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BackupMigrationId = params.get("BackupMigrationId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2635,6 +3441,60 @@ class ModifyDBRemarkResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyIncrementalMigrationRequest(AbstractModel):
+    """ModifyIncrementalMigration request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of imported target instance
+        :type InstanceId: str
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
+        :type BackupMigrationId: str
+        :param IncrementalMigrationId: Incremental import task ID
+        :type IncrementalMigrationId: str
+        :param IsRecovery: Whether restoration is required. No: not required. Yes: required.
+        :type IsRecovery: str
+        :param BackupFiles: If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
+        :type BackupFiles: list of str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.IncrementalMigrationId = None
+        self.IsRecovery = None
+        self.BackupFiles = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+        self.IsRecovery = params.get("IsRecovery")
+        self.BackupFiles = params.get("BackupFiles")
+
+
+class ModifyIncrementalMigrationResponse(AbstractModel):
+    """ModifyIncrementalMigration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param IncrementalMigrationId: ID of an incremental backup import task
+        :type IncrementalMigrationId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IncrementalMigrationId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3182,6 +4042,94 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.PayModeStatus = params.get("PayModeStatus")
         self.InstanceType = params.get("InstanceType")
         self.MultiZonesStatus = params.get("MultiZonesStatus")
+
+
+class StartBackupMigrationRequest(AbstractModel):
+    """StartBackupMigration request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of imported target instance
+        :type InstanceId: str
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
+        :type BackupMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+
+
+class StartBackupMigrationResponse(AbstractModel):
+    """StartBackupMigration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class StartIncrementalMigrationRequest(AbstractModel):
+    """StartIncrementalMigration request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ID of imported target instance
+        :type InstanceId: str
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
+        :type BackupMigrationId: str
+        :param IncrementalMigrationId: ID of an incremental backup import task
+        :type IncrementalMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.IncrementalMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+
+
+class StartIncrementalMigrationResponse(AbstractModel):
+    """StartIncrementalMigration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class TerminateDBInstanceRequest(AbstractModel):
