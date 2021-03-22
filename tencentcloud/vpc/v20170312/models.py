@@ -4867,17 +4867,19 @@ class DescribeAddressesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AddressIds: The list of unique IDs of EIPs, such as `eip-11112222`. `AddressIds` and `Filters` cannot be specified at the same time.
+        :param AddressIds: The list of unique IDs of EIPs in the format of `eip-11112222`. `AddressIds` and `Filters.address-id` cannot be specified at the same time.
         :type AddressIds: list of str
-        :param Filters: The upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. Detailed filter conditions are as follows:
-<li> address-id - String - Required: no - (Filter condition) The unique EIP ID, such as `eip-11112222`.</li>
-<li> address-name - String - Required: no - (Filter condition) The EIP name. Fuzzy filtering is not supported.</li>
-<li> address-ip - String - Required: no - (Filter condition) Filters by EIP.</li>
-<li> address-status - String - Required: no - (Filter condition) The EIP state. Possible EIP states are: 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', and 'BIND_ENI'.</li>
-<li> instance-id - String - Required: no - (Filter condition) The ID of the instance bound to the EIP, such as `ins-11112222`.</li>
-<li> private-ip-address - String - Required: no - (Filter condition) The private IP address bound to the EIP.</li>
-<li> network-interface-id - String - Required: no - (Filter condition) The ID of the ENI bound to the EIP, such as `eni-11112222`.</li>
-<li> is-arrears - String - Required: no - (Filter condition) Whether the EIP is in arrears. (TRUE: the EIP is in arrears | FALSE: the billing status of the EIP is normal)</li>
+        :param Filters: Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
+<li> `address-id` - String - Required: No - (Filter condition) Filter by the unique EIP ID in the format of `eip-11112222`.</li>
+<li> `address-name` - String - Required: No - (Filter condition) Filter by EIP name. Fuzzy filtering is not supported. </li>
+<li> `address-ip` - String - Required: No - (Filter condition) Filter by the IP address of EIP.</li>
+<li> address-status - String - Required: no - (Filter condition) Filter by the EIP state. Possible EIP states are: 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', and 'BIND_ENI'.</li>
+<li> `instance-id` - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP in the format of `ins-11112222`.</li>
+<li> `private-ip-address` - String - Required: No - (Filter condition) Filter by the private IP bound to the EIP.</li>
+<li> `network-interface-id` - String - Required: No - (Filter condition) Filter by the ID of the ENI bound to the EIP in the format of `eni-11112222`.</li>
+<li> `is-arrears` - String - Required: No - (Filter condition) Filter by whether the EIP is overdue. (TRUE: The EIP is overdue | FALSE: The EIP billing status is normal)</li>
+<li> `address-type` - String - Required: No - (Filter condition) Filter by the IP type. Optional values: 'EIP'，'AnycastEIP'，'HighQualityEIP'</li>
+<li> `address-isp` - String - Required: No - (Filter condition) Filter by the ISP type. Optional values: 'BGP'，'CMCC'，'CUCC', 'CTCC'</li>
         :type Filters: list of Filter
         :param Offset: The Offset. The default value is 0. For more information on `Offset`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/product/11646).
         :type Offset: int
@@ -5283,6 +5285,49 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
                 obj = CcnAttachedInstance()
                 obj._deserialize(item)
                 self.InstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcnRegionBandwidthLimitsRequest(AbstractModel):
+    """DescribeCcnRegionBandwidthLimits request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: The CCN instance ID in the format of `ccn-f49l6u0z`.
+        :type CcnId: str
+        """
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+
+
+class DescribeCcnRegionBandwidthLimitsResponse(AbstractModel):
+    """DescribeCcnRegionBandwidthLimits response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnRegionBandwidthLimitSet: The outbound bandwidth caps of all regions connected with the specified CCN instance
+        :type CcnRegionBandwidthLimitSet: list of CcnRegionBandwidthLimit
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CcnRegionBandwidthLimitSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CcnRegionBandwidthLimitSet") is not None:
+            self.CcnRegionBandwidthLimitSet = []
+            for item in params.get("CcnRegionBandwidthLimitSet"):
+                obj = CcnRegionBandwidthLimit()
+                obj._deserialize(item)
+                self.CcnRegionBandwidthLimitSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7061,6 +7106,7 @@ class DescribeSecurityGroupsResponse(AbstractModel):
     def __init__(self):
         """
         :param SecurityGroupSet: Security group object.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SecurityGroupSet: list of SecurityGroup
         :param TotalCount: The number of instances meeting the filter condition.
         :type TotalCount: int

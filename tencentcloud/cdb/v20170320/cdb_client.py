@@ -253,15 +253,15 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBInstanceHour(self, request):
-        """This API is used to create a pay-as-you-go TencentDB instance (which can be a primary, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.
+        """This API is used to create pay-as-you-go TencentDB instances (which can be source instances, disaster recovery instances, or read-only replicas) by passing in information such as instance specifications, MySQL version number, and instance quantity.
 
-        This is an async API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.
+        This is an asynchronous API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query instance details. If the output parameter `Status` is `1` and the output parameter `TaskStatus` is `0`, the instances have been successfully delivered.
 
-        1. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance specifications first and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the supported instances;
+        1. Use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances;
         2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;
-        3. MySQL v5.5, v5.6, and v5.7 are supported;
-        4. primary instances, read-only instances, and disaster recovery instances can be created;
-        5. If `Port`, `ParamList`, or `Password` is set in the input parameters, the instance will be initialized.
+        3. MySQL v5.5, v5.6, v5.7, and v8.0 are supported;
+        4. Source instances, disaster recovery instances, and read-only replicas can be created;
+        5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance will be initialized.
 
         :param request: Request instance for CreateDBInstanceHour.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceHourRequest`

@@ -2825,6 +2825,9 @@ class InstanceIntegerParam(AbstractModel):
         :type Max: str
         :param Status: Parameter status. 1: modifying; 2: modified
         :type Status: int
+        :param Unit: Parameter unit
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Unit: str
         """
         self.ParamName = None
         self.ValueType = None
@@ -2835,6 +2838,7 @@ class InstanceIntegerParam(AbstractModel):
         self.Min = None
         self.Max = None
         self.Status = None
+        self.Unit = None
 
 
     def _deserialize(self, params):
@@ -2847,6 +2851,7 @@ class InstanceIntegerParam(AbstractModel):
         self.Min = params.get("Min")
         self.Max = params.get("Max")
         self.Status = params.get("Status")
+        self.Unit = params.get("Unit")
 
 
 class InstanceMultiParam(AbstractModel):
@@ -3290,12 +3295,15 @@ class InstanceSlowlogDetail(AbstractModel):
         :type CommandLine: str
         :param ExecuteTime: Execution duration
         :type ExecuteTime: str
+        :param Node: Node ID
+        :type Node: str
         """
         self.Duration = None
         self.Client = None
         self.Command = None
         self.CommandLine = None
         self.ExecuteTime = None
+        self.Node = None
 
 
     def _deserialize(self, params):
@@ -3304,6 +3312,7 @@ class InstanceSlowlogDetail(AbstractModel):
         self.Command = params.get("Command")
         self.CommandLine = params.get("CommandLine")
         self.ExecuteTime = params.get("ExecuteTime")
+        self.Node = params.get("Node")
 
 
 class InstanceTagInfo(AbstractModel):

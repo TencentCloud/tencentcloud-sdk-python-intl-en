@@ -456,6 +456,10 @@ The following conditions are required to use ipvs-bpf network mode:
         :type VpcCniType: str
         :param RuntimeVersion: Runtime version
         :type RuntimeVersion: str
+        :param EnableCustomizedPodCIDR: Indicates whether to enable the custom mode for the node’s pod CIDR range
+        :type EnableCustomizedPodCIDR: bool
+        :param BasePodNumber: The basic number of Pods in custom mode
+        :type BasePodNumber: int
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -471,6 +475,8 @@ The following conditions are required to use ipvs-bpf network mode:
         self.AuditLogTopicId = None
         self.VpcCniType = None
         self.RuntimeVersion = None
+        self.EnableCustomizedPodCIDR = None
+        self.BasePodNumber = None
 
 
     def _deserialize(self, params):
@@ -490,6 +496,8 @@ The following conditions are required to use ipvs-bpf network mode:
         self.AuditLogTopicId = params.get("AuditLogTopicId")
         self.VpcCniType = params.get("VpcCniType")
         self.RuntimeVersion = params.get("RuntimeVersion")
+        self.EnableCustomizedPodCIDR = params.get("EnableCustomizedPodCIDR")
+        self.BasePodNumber = params.get("BasePodNumber")
 
 
 class ClusterAsGroup(AbstractModel):
@@ -748,16 +756,21 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param KubeScheduler: kube-scheduler custom parameter
 Note: this field may return null, indicating that no valid value is obtained.
         :type KubeScheduler: list of str
+        :param Etcd: etcd custom parameter, which is only effective for self-deployed cluster.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Etcd: list of str
         """
         self.KubeAPIServer = None
         self.KubeControllerManager = None
         self.KubeScheduler = None
+        self.Etcd = None
 
 
     def _deserialize(self, params):
         self.KubeAPIServer = params.get("KubeAPIServer")
         self.KubeControllerManager = params.get("KubeControllerManager")
         self.KubeScheduler = params.get("KubeScheduler")
+        self.Etcd = params.get("Etcd")
 
 
 class ClusterNetworkSettings(AbstractModel):

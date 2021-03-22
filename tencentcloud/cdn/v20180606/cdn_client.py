@@ -82,6 +82,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateScdnFailedLogTask(self, request):
+        """This API is used to recreate a failed event log task.
+
+        :param request: Request instance for CreateScdnFailedLogTask.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateScdnFailedLogTaskRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateScdnFailedLogTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateScdnFailedLogTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateScdnFailedLogTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCdnDomain(self, request):
         """This API is used to delete a specified acceleration domain name.
 
@@ -261,7 +289,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCdnOriginIp(self, request):
-        """This API is used to query the IP information of CDN intermediate nodes. Note: the relevant allowlist needs to be enabled for this API.
+        """This API is used to query the IP information of CDN intermediate nodes. Note: this API will be deactivated soon. Please call `DescribeIpStatus` instead.
 
         :param request: Request instance for DescribeCdnOriginIp.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnOriginIpRequest`
@@ -696,7 +724,7 @@ class CdnClient(AbstractClient):
 
 
     def DisableCaches(self, request):
-        """This API (DisableCaches) is used to block access to a specific URL on CDN. After a URL is blocked, error 403 will be returned for all access requests to it. (This API is during beta test and not fully available now.)
+        """This API is used to block access to a specific URL on CDN. After a URL is blocked, a 403 error will be returned for the arrived access requests initiated from the Chinese mainland. This API is in beta and not fully available now.
 
         :param request: Request instance for DisableCaches.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DisableCachesRequest`

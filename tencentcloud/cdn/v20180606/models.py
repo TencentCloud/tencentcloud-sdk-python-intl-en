@@ -164,6 +164,8 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         :param OfflineCache: Offline cache
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
+        :param Quic: QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.
+        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         """
         self.Domain = None
         self.ServiceType = None
@@ -198,6 +200,7 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         self.Tag = None
         self.Ipv6Access = None
         self.OfflineCache = None
+        self.Quic = None
 
 
     def _deserialize(self, params):
@@ -295,6 +298,9 @@ Overseas acceleration service must be enabled to use overseas acceleration and g
         if params.get("OfflineCache") is not None:
             self.OfflineCache = OfflineCache()
             self.OfflineCache._deserialize(params.get("OfflineCache"))
+        if params.get("Quic") is not None:
+            self.Quic = Quic()
+            self.Quic._deserialize(params.get("Quic"))
 
 
 class AddCdnDomainResponse(AbstractModel):
@@ -704,11 +710,11 @@ When this is enabled, if the origin server returns no-cache, no-store headers, n
 This is disabled by default
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IgnoreCacheControl: str
-        :param IgnoreSetCookie: Ignore the Set-Cookie header of an origin server
-on: enabled
-off: disabled
-This is disabled by default
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param IgnoreSetCookie: Whether to cache the header and body on cache nodes if the origin server returns the header `Set-Cookie`.
+on: Enable; do not cache the header and body.
+off: Disable; follow the custom cache rules of cache nodes.
+It is disabled by default.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type IgnoreSetCookie: str
         """
         self.CacheRules = None
@@ -1848,6 +1854,49 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.TopicId = params.get("TopicId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateScdnFailedLogTaskRequest(AbstractModel):
+    """CreateScdnFailedLogTask request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: ID of the failed task to retry
+        :type TaskId: str
+        :param Area: Region. Valid values: `mainland` and `overseas`.
+        :type Area: str
+        """
+        self.TaskId = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Area = params.get("Area")
+
+
+class CreateScdnFailedLogTaskResponse(AbstractModel):
+    """CreateScdnFailedLogTask response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Creation result. 
+0: Creation succeeded
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -3112,9 +3161,15 @@ class DescribeReportDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Query start time in the format of `yyyy-MM-dd`
+        :param StartTime: Query the start time in the format of `yyyy-MM-dd`
+If the report type is `daily`, the start time and end time must be the same day.
+If the report type is `weekly`, the start time must be Monday and the end time must be the Sunday of the same week.
+If the report type is `monthly`, the start time must be the first day of the calendar month and the end time must be the last day of the same calendar month.
         :type StartTime: str
-        :param EndTime: Query end time in the format of `yyyy-MM-dd`
+        :param EndTime: Query the end time in the format of `yyyy-MM-dd`
+If the report type is `daily`, the start time and end time must be of the same day.
+If the report type is `weekly`, the start time must be Monday and the end time must be the Sunday of the same week.
+If the report type is `monthly`, the start time must be the first day of the calendar month and the end time must be the last day of the same calendar month.
         :type EndTime: str
         :param ReportType: Report type
 daily: daily report
@@ -3422,6 +3477,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param OriginCombine: Merging pull requests
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
+        :param PostMaxSize: POST request configuration item
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PostMaxSize: :class:`tencentcloud.cdn.v20180606.models.PostSize`
+        :param Quic: QUIC configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         """
         self.ResourceId = None
         self.AppId = None
@@ -3477,6 +3538,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.AdvanceSet = None
         self.OfflineCache = None
         self.OriginCombine = None
+        self.PostMaxSize = None
+        self.Quic = None
 
 
     def _deserialize(self, params):
@@ -3620,6 +3683,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("OriginCombine") is not None:
             self.OriginCombine = OriginCombine()
             self.OriginCombine._deserialize(params.get("OriginCombine"))
+        if params.get("PostMaxSize") is not None:
+            self.PostMaxSize = PostSize()
+            self.PostMaxSize._deserialize(params.get("PostMaxSize"))
+        if params.get("Quic") is not None:
+            self.Quic = Quic()
+            self.Quic._deserialize(params.get("Quic"))
 
 
 class DisableCachesRequest(AbstractModel):
@@ -3629,7 +3698,7 @@ class DisableCachesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Urls: List of URLs to be blocked
+        :param Urls: List of URLs to be blocked (URLs must contain `http://` or `https://`).
 Up to 100 entries can be submitted at a time and 3,000 entries per day.
         :type Urls: list of str
         """
@@ -4743,12 +4812,11 @@ Data generated before or at 23:59:59 on the end date will be returned
 `EndTime` must be later than or equal to `StartTime`
         :type EndTime: str
         :param Metric: Object representing the sort criteria. The following objects are supported:
-url: sorts by access URL (including the query string). Supported filters are `flux` and `request`
-path: sorts by access URL (excluding the query string). Supported filters are `flux` and `request` (allowlist-based feature)
-district: sorts by district. Supported filters are `flux` and `request`
-isp: sorts by ISP. Supported filters are `flux` and `request`
-host: sorts by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, 2XX, 3XX, 4XX, 5XX, and `statusCode`
-originHost: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, `origin_2XX`, `origin_3XX`, `origin_4XX`, `origin_5XX`, and `OriginStatusCode`
+`url`: sorts by access URL (URLs carrying no parameters). Supported filters are `flux` and `request`.
+`district`: sorts by province, country, or region. Supported filters are `flux` and `request`.
+`isp`: sorts by ISP. Supported filters are `flux` and `request`.
+`host`: sorts by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, and `statusCode` (2XX, 3XX, 4XX, 5XX).
+`originHost`: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, and `OriginStatusCode` (origin_2XX, origin_3XX, origin_4XX, origin_5XX).
         :type Metric: str
         :param Filter: Metric name used for sorting:
 flux: If Metric is `host`, it indicates the access traffic; if Metric is `originHost`, it indicates the origin-pull traffic.
@@ -5735,6 +5803,29 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 self.RequestHeaders.append(obj)
 
 
+class PostSize(AbstractModel):
+    """Maximum size of the file uploaded for streaming via a POST request
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Limit the size of a POST request. The default value is 32 MB.
+off: Disable
+on: Enable
+        :type Switch: str
+        :param MaxSize: Maximum size. Value range: 1 MB to 200 MB.
+        :type MaxSize: int
+        """
+        self.Switch = None
+        self.MaxSize = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.MaxSize = params.get("MaxSize")
+
+
 class PurgePathCacheRequest(AbstractModel):
     """PurgePathCache request structure.
 
@@ -6019,6 +6110,23 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Reorder = params.get("Reorder")
         self.Action = params.get("Action")
         self.Value = params.get("Value")
+
+
+class Quic(AbstractModel):
+    """QUIC configuration item
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Whether to enable QUIC
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
 
 
 class Quota(AbstractModel):
@@ -6773,12 +6881,20 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Rules: Attack blocking rules
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Rules: list of ScdnWafRule
+        :param Level: WAF rule level. Valid values: 100, 200, and 300.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Level: int
+        :param SubRuleSwitch: WAF sub-rule switch
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SubRuleSwitch: list of WafSubRuleStatus
         """
         self.Switch = None
         self.Mode = None
         self.ErrorPage = None
         self.WebShellSwitch = None
         self.Rules = None
+        self.Level = None
+        self.SubRuleSwitch = None
 
 
     def _deserialize(self, params):
@@ -6794,6 +6910,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = ScdnWafRule()
                 obj._deserialize(item)
                 self.Rules.append(obj)
+        self.Level = params.get("Level")
+        if params.get("SubRuleSwitch") is not None:
+            self.SubRuleSwitch = []
+            for item in params.get("SubRuleSwitch"):
+                obj = WafSubRuleStatus()
+                obj._deserialize(item)
+                self.SubRuleSwitch.append(obj)
 
 
 class ScdnWafRule(AbstractModel):
@@ -7536,6 +7659,8 @@ global: global acceleration
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         :param OriginCombine: Merging pull requests
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
+        :param Quic: QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.
+        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         """
         self.Domain = None
         self.ProjectId = None
@@ -7576,6 +7701,7 @@ global: global acceleration
         self.Ipv6Access = None
         self.OfflineCache = None
         self.OriginCombine = None
+        self.Quic = None
 
 
     def _deserialize(self, params):
@@ -7686,6 +7812,9 @@ global: global acceleration
         if params.get("OriginCombine") is not None:
             self.OriginCombine = OriginCombine()
             self.OriginCombine._deserialize(params.get("OriginCombine"))
+        if params.get("Quic") is not None:
+            self.Quic = Quic()
+            self.Quic._deserialize(params.get("Quic"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):
@@ -8027,6 +8156,27 @@ complain: appeal in process
         self.UrlStatus = params.get("UrlStatus")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class WafSubRuleStatus(AbstractModel):
+    """WAF sub-rule status
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: Sub-rule status. Valid values: `on` and `off`.
+        :type Switch: str
+        :param SubIds: List of rule IDs
+        :type SubIds: list of int
+        """
+        self.Switch = None
+        self.SubIds = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.SubIds = params.get("SubIds")
 
 
 class WebpAdapter(AbstractModel):
