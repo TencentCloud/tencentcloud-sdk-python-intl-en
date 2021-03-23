@@ -968,7 +968,9 @@ class DescribeSnapshotsRequest(AbstractModel):
         """
         :param SnapshotIds: List of snapshot IDs to be queried. The parameter does not support specifying both `SnapshotIds` and `Filters`.
         :type SnapshotIds: list of str
-        :param Filters: Filter conditions. The specification of both the `SnapshotIds` and `Filters` parameters is not supported. <br><li>snapshot-id - Array of String - Required or not: No - (Filter condition) Filter by the snapshot ID. The format of the snapshot ID is as follows: `snap-11112222`. <br><li>snapshot-name - Array of String - Required or not: No - (Filter condition) Filter by the snapshot name. <br><li>snapshot-state - Array of String - Required or not: No - (Filter condition) Filter by the snapshot status (NORMAL: normal | CREATING: creating | ROLLBACKING: rolling back). <br><li>disk-usage - Array of String - Required or not: No - (Filter condition) Filter by the type of the cloud disk for which the snapshot is created (SYSTEM_DISK: system disk | DATA_DISK: data disk). <br><li>project-id - Array of String - Required or not: No - (Filter condition) Filter by ID of the project to which the cloud disk belongs. <br><li>disk-id - Array of String - Required or not: No - (Filter condition) Filter by the ID of the cloud disk for which the snapshot is created. <br><li>zone - Array of String - Required or not: No - (Filter condition) Filter by [Availability Zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo). <br><li>encrypt - Array of String - Required or not: No - (Filter condition) According to whether it is an encrypted disk snapshot. (TRUE: indicates an encrypted disk snapshot | FALSE: indicates that it is not an encrypted disk snapshot.)
+        :param Filters: Filters. It cannot be specified together with `SnapshotIds`.<br><li>snapshot-id - Array of String - Optional - Filters by snapshot ID, such as `snap-11112222`.<br><li>snapshot-name - Array of String - Optional - Filters by snapshot name. <br><li>snapshot-state - Array of String - Optional - Filters by snapshot state (NORMAL: normal | CREATING: creating | ROLLBACKING: rolling back). <br><li>disk-usage - Array of String - Optional - Filters by the type of the cloud disk from which a snapshot is created (SYSTEM_DISK: system disk | DATA_DISK: data disk).<br><li>project-id - Array of String - Optional - Filters by the ID of the project to which a cloud disk belongs. <br><li>disk-id - Array of String - Optional - Filters by the ID of the cloud disk from which a snapshot is created.<br><li>zone - Array of String - Optional - Filters by [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo).<br><li>encrypt - Array of String - Optional - Filters by whether a snapshot is created from an encrypted cloud disk. (TRUE: a snapshot of an encrypted cloud disk | FALSE: not a snapshot of an encrypted cloud disk.)
+<li>snapshot-type- Array of String - Optional - Filters by the snapshot type specified in `snapshot-type`.
+(SHARED_SNAPSHOT: a shared snapshot | PRIVATE_SNAPSHOT: a private snapshot.)
         :type Filters: list of Filter
         :param Offset: Offset. Default is 0. For more information on `Offset`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
         :type Offset: int
@@ -1094,7 +1096,7 @@ class Disk(AbstractModel):
         :type DiskSize: int
         :param DiskState: The state of the cloud disk. Value range: <br><li>UNATTACHED: Not mounted <br><li>ATTACHING: Mounting <br><li>ATTACHED: Mounted <br><li>DETACHING: Un-mounting <br><li>EXPANDING: Expanding <br><li>ROLLBACKING: Rolling back <br><li>TORECYCE: Pending recycling. <br><li>DUMPING: Copying the hard drive.
         :type DiskState: str
-        :param DiskType: Type of cloud disk medium. Value range: <br><li>CLOUD_BASIC: Ordinary cloud disk <br><li>CLOUD_PREMIUM: Premium cloud storage <br><li>CLOUD_SSD: SSD cloud disk.
+        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD
         :type DiskType: str
         :param Attached: Whether the cloud disk is mounted to the CVM. Value range: <br><li>false: Unmounted <br><li>true: Mounted.
         :type Attached: bool
@@ -1153,6 +1155,9 @@ Note: This field may return null, indicating that no valid value was found.
         :type SnapshotSize: int
         :param BackupDisk: Indicates whether a snapshot should be created for backup when the cloud disk is terminated due to arrears or expiration. `True`: create a snapshot to backup the disk upon termination. `False`: terminate the disk without backup
         :type BackupDisk: bool
+        :param ThroughputPerformance: Extra performance for a cloud disk, in MB/sec.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ThroughputPerformance: int
         """
         self.DiskId = None
         self.DiskUsage = None
@@ -1187,6 +1192,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.SnapshotCount = None
         self.SnapshotSize = None
         self.BackupDisk = None
+        self.ThroughputPerformance = None
 
 
     def _deserialize(self, params):
@@ -1230,6 +1236,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.SnapshotCount = params.get("SnapshotCount")
         self.SnapshotSize = params.get("SnapshotSize")
         self.BackupDisk = params.get("BackupDisk")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
 
 
 class DiskChargePrepaid(AbstractModel):
@@ -1817,27 +1824,27 @@ class PrepayPrice(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: Original price of the advanced payment for a prepaid cloud disk or snapshot (in CNY).
+        :param OriginalPrice: Original payment of a monthly-subscribed cloud disk or a snapshot, in USD.
         :type OriginalPrice: float
-        :param DiscountPrice: Discount price of the advanced payment for a prepaid cloud disk or snapshot (in CNY).
+        :param DiscountPrice: Discounted price of a monthly-subscribed cloud disk or a snapshot, in USD.
         :type DiscountPrice: float
-        :param OriginalPriceHigh: Highly-precise published unit price of a monthly-subscribed cloud disk or a snapshot, in USD.
+        :param OriginalPriceHigh: Original payment of a monthly-subscribed cloud disk or a snapshot, in USD, with six decimal places.
         :type OriginalPriceHigh: str
-        :param DiscountPriceHigh: Highly-precise discounted unit price of a monthly-subscribed cloud disk or a snapshot, in USD.
+        :param DiscountPriceHigh: Discounted price of a monthly-subscribed cloud disk or a snapshot, in USD, with six decimal places.
         :type DiscountPriceHigh: str
-        :param UnitPrice: Published unit price of a pay-as-you-go cloud disk, in USD.
+        :param UnitPrice: Original unit price of a pay-as-you-go cloud disk, in USD.
 Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type UnitPrice: str
+        :type UnitPrice: float
         :param ChargeUnit: Billing unit for pay-as-you-go cloud disks. Valid value: <br><li>HOUR: billed hourly.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ChargeUnit: str
         :param UnitPriceDiscount: Discount unit price of a pay-as-you-go cloud disk, in USD.
 Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type UnitPriceDiscount: str
-        :param UnitPriceHigh: Highly-precise published unit price of a pay-as-you-go cloud disk, in USD.
+        :type UnitPriceDiscount: float
+        :param UnitPriceHigh: Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type UnitPriceHigh: str
-        :param UnitPriceDiscountHigh: Highly-precise discounted unit price of a pay-as-you-go cloud disk, in USD.
+        :param UnitPriceDiscountHigh: Discounted unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type UnitPriceDiscountHigh: str
         """
@@ -1871,31 +1878,31 @@ class Price(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: Original price of the advanced payment for a prepaid cloud disk (in CNY).
-Note: This field may return null, indicating that no valid value was found.
+        :param OriginalPrice: Original price of a monthly-subscribed cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OriginalPrice: float
-        :param DiscountPrice: Discount price of the advanced payment for a prepaid cloud disk (in CNY).
-Note: This field may return null, indicating that no valid value was found.
+        :param DiscountPrice: Discounted price of a monthly-subscribed cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DiscountPrice: float
-        :param UnitPrice: Original unit price of a postpaid cloud disk (in CNY).
-Note: This field may return null, indicating that no valid value was found.
+        :param UnitPrice: Original unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type UnitPrice: float
         :param ChargeUnit: Billing unit of a postpaid cloud disk. Value range: <br><li>HOUR: Billed by hour.
 Note: This field may return null, indicating that no valid value was found.
         :type ChargeUnit: str
-        :param UnitPriceDiscount: Postpaid cloud disk discount price. Unit: CNY.
-Note: This field may return null, indicating that no valid value was found.
+        :param UnitPriceDiscount: Discount unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type UnitPriceDiscount: float
-        :param OriginalPriceHigh: Highly-precise published unit price of a monthly-subscribed cloud disk, in USD.
+        :param OriginalPriceHigh: Original payment of a monthly-subscribed cloud disk, in USD, with six decimal places.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OriginalPriceHigh: str
-        :param DiscountPriceHigh: Highly-precise discounted unit price of a monthly-subscribed cloud disk, in USD.
+        :param DiscountPriceHigh: Discounted payment price of a monthly-subscribed cloud disk, in USD, with six decimal places.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DiscountPriceHigh: str
-        :param UnitPriceHigh: Highly-precise published unit price of a pay-as-you-go cloud disk, in USD.
+        :param UnitPriceHigh: Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type UnitPriceHigh: str
-        :param UnitPriceDiscountHigh: Highly-precise discounted unit price of a pay-as-you-go cloud disk, in USD.
+        :param UnitPriceDiscountHigh: Discounted unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type UnitPriceDiscountHigh: str
         """
@@ -2024,7 +2031,7 @@ class Snapshot(AbstractModel):
         :type SnapshotType: str
         :param ShareReference: Number of snapshots currently shared
         :type ShareReference: int
-        :param TimeStartShare: 
+        :param TimeStartShare: The time when the snapshot sharing starts
         :type TimeStartShare: str
         """
         self.SnapshotId = None

@@ -782,7 +782,7 @@ class DBCreateInfo(AbstractModel):
         """
         :param DBName: Database name
         :type DBName: str
-        :param Charset: Character set. Valid values: Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, Chinese_PRC_BIN, Chinese_Taiwan_Stroke_CI_AS, SQL_Latin1_General_CP1_CI_AS, and SQL_Latin1_General_CP1_CS_AS. If this parameter is left empty, `Chinese_PRC_CI_AS` will be used by default
+        :param Charset: Character set, which can be queried by the `DescribeDBCharsets` API. Default value: `Chinese_PRC_CI_AS`.
         :type Charset: str
         :param Accounts: Database account permission information
         :type Accounts: list of AccountPrivilege
@@ -2879,7 +2879,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
         :type UploadType: str
         :param BackupFiles: Backup file list, which is determined by UploadType. If the upload type is COS_URL, URL will be saved. If the upload type is COS_UPLOAD, the backup name will be saved.
         :type BackupFiles: list of str
-        :param Status: Migration task status,
+        :param Status: Migration task status. Valid values: `2` (Creation completed), `7` (Importing full backups), `8` (Waiting for incremental backups), `9` (Import success), `10` (Import failure), `12` (Importing incremental backups).
         :type Status: int
         :param CreateTime: Migration task creation time
         :type CreateTime: str

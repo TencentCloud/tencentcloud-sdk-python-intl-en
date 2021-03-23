@@ -223,7 +223,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeDBBackups(self, request):
-        """This API is used to query the list of instance backups. Currently, only backups in the last 7 days can be queried.
+        """This API is used to query the list of instance backups. Currently, only backups created in the last seven days can be queried.
 
         :param request: Request instance for DescribeDBBackups.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBBackupsRequest`

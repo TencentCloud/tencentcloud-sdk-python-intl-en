@@ -487,7 +487,7 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: Async request ID
+        :param AsyncRequestId: Async task ID, which is returned by APIs related to async tasks, such as `CreateBackupDBInstance`.
         :type AsyncRequestId: str
         """
         self.AsyncRequestId = None
@@ -637,12 +637,24 @@ class DescribeDBBackupsRequest(AbstractModel):
         """
         :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
         :type InstanceId: str
+        :param BackupMethod: Backup mode. Valid values: `0` (logical backup), `1` (physical backup), `2` (both modes). Default value: `0`.
+        :type BackupMethod: int
+        :param Limit: Number of entries per page. Maximum value: `100`. If this parameter is left empty, all entries will be returned.
+        :type Limit: int
+        :param Offset: Pagination offset, starting from `0`. Default value: `0`.
+        :type Offset: int
         """
         self.InstanceId = None
+        self.BackupMethod = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.BackupMethod = params.get("BackupMethod")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
 
 
 class DescribeDBBackupsResponse(AbstractModel):
@@ -738,7 +750,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceType: int
         :param ClusterType: Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance), -1 (all instances)
         :type ClusterType: int
-        :param Status: Instance status. Valid values: 0 (to be initialized), 1 (in process), 2 (valid), -2 (expired)
+        :param Status: Instance status. Valid values: `0` (to be initialized), `1` (executing task), `2` (running), `-2` (isolated monthly-subscribed instance), `-3` (isolated pay-as-you-go instance)
         :type Status: list of int
         :param VpcId: VPC ID. This parameter can be left empty for the basic network
         :type VpcId: str
@@ -758,6 +770,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ProjectIds: list of int non-negative
         :param SearchKey: Search keyword, which can be instance ID, instance name, or complete IP
         :type SearchKey: str
+        :param Tags: Tag information
+        :type Tags: :class:`tencentcloud.mongodb.v20190725.models.TagInfo`
         """
         self.InstanceIds = None
         self.InstanceType = None
@@ -772,6 +786,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.OrderByType = None
         self.ProjectIds = None
         self.SearchKey = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -788,6 +803,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.OrderByType = params.get("OrderByType")
         self.ProjectIds = params.get("ProjectIds")
         self.SearchKey = params.get("SearchKey")
+        if params.get("Tags") is not None:
+            self.Tags = TagInfo()
+            self.Tags._deserialize(params.get("Tags"))
 
 
 class DescribeDBInstancesResponse(AbstractModel):
@@ -839,6 +857,8 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.
         :type Limit: int
+        :param Format: Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.
+        :type Format: str
         """
         self.InstanceId = None
         self.StartTime = None
@@ -846,6 +866,7 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
         self.SlowMS = None
         self.Offset = None
         self.Limit = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -855,6 +876,7 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
         self.SlowMS = params.get("SlowMS")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Format = params.get("Format")
 
 
 class DescribeSlowLogPatternsResponse(AbstractModel):
@@ -906,6 +928,8 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.
         :type Limit: int
+        :param Format: Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.
+        :type Format: str
         """
         self.InstanceId = None
         self.StartTime = None
@@ -913,6 +937,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         self.SlowMS = None
         self.Offset = None
         self.Limit = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -922,6 +947,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         self.SlowMS = params.get("SlowMS")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Format = params.get("Format")
 
 
 class DescribeSlowLogsResponse(AbstractModel):
@@ -1203,14 +1229,16 @@ class InstanceChargePrepaid(AbstractModel):
 
     def __init__(self):
         """
-        :param Period: Purchased usage period (in month). Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36. Default value: 1.
+        :param Period: Purchased usage period (in month). Valid values: `1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36`. Default value: `1`.
+(This parameter is required in `InquirePriceRenewDBInstances` and `RenewDBInstances` APIs.)
         :type Period: int
         :param RenewFlag: Auto-renewal flag. Valid values:
-NOTIFY_AND_AUTO_RENEW: notify expiration and renew automatically
-NOTIFY_AND_MANUAL_RENEW: notify expiration but not renew automatically
-DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify expiration nor renew automatically
+`NOTIFY_AND_AUTO_RENEW`: notify expiration and renew automatically
+`NOTIFY_AND_MANUAL_RENEW`: notify expiration but not renew automatically
+`DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify expiration nor renew automatically
 
-Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis when the account balance is sufficient.
+Default value: `NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed on a monthly basis when the account balance is sufficient.
+(This parameter is required in `InquirePriceRenewDBInstances` and `RenewDBInstances` APIs.)
         :type RenewFlag: str
         """
         self.Period = None

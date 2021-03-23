@@ -888,7 +888,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DeployMode: int
         :param SlaveZone: AZ information of secondary database 1, which is the `Zone` value by default. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
         :type SlaveZone: str
-        :param BackupZone: Availability zone information of replica 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.
+        :param BackupZone: The availability zone information of Replica 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.
         :type BackupZone: str
         :param SecurityGroup: Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.
         :type SecurityGroup: list of str
