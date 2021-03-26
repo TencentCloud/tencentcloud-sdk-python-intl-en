@@ -1219,6 +1219,41 @@ Note: This field may return null, indicating that no valid value was found.
         self.ModTime = params.get("ModTime")
 
 
+class GetAccountRequest(AbstractModel):
+    """GetAccount request structure.
+
+    """
+
+
+class GetAccountResponse(AbstractModel):
+    """GetAccount response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountUsage: Namespace usage information
+        :type AccountUsage: :class:`tencentcloud.scf.v20180416.models.UsageInfo`
+        :param AccountLimit: Namespace limit information
+        :type AccountLimit: :class:`tencentcloud.scf.v20180416.models.LimitsInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AccountUsage = None
+        self.AccountLimit = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccountUsage") is not None:
+            self.AccountUsage = UsageInfo()
+            self.AccountUsage._deserialize(params.get("AccountUsage"))
+        if params.get("AccountLimit") is not None:
+            self.AccountLimit = LimitsInfo()
+            self.AccountLimit._deserialize(params.get("AccountLimit"))
+        self.RequestId = params.get("RequestId")
+
+
 class GetAliasRequest(AbstractModel):
     """GetAlias request structure.
 
@@ -1994,6 +2029,32 @@ class LayerVersionSimple(AbstractModel):
         self.LayerVersion = params.get("LayerVersion")
 
 
+class LimitsInfo(AbstractModel):
+    """Limit information
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespacesCount: Limit of namespace quantity
+        :type NamespacesCount: int
+        :param Namespace: Namespace limit information
+        :type Namespace: list of NamespaceLimit
+        """
+        self.NamespacesCount = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.NamespacesCount = params.get("NamespacesCount")
+        if params.get("Namespace") is not None:
+            self.Namespace = []
+            for item in params.get("Namespace"):
+                obj = NamespaceLimit()
+                obj._deserialize(item)
+                self.Namespace.append(obj)
+
+
 class ListAliasesRequest(AbstractModel):
     """ListAliases request structure.
 
@@ -2636,6 +2697,87 @@ class Namespace(AbstractModel):
         self.Type = params.get("Type")
 
 
+class NamespaceLimit(AbstractModel):
+    """Namespace limit
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionsCount: Total number of functions
+        :type FunctionsCount: int
+        :param Trigger: Trigger information
+        :type Trigger: :class:`tencentcloud.scf.v20180416.models.TriggerCount`
+        :param Namespace: Namespace name
+        :type Namespace: str
+        :param ConcurrentExecutions: Concurrency
+        :type ConcurrentExecutions: int
+        :param TimeoutLimit: Timeout limit
+        :type TimeoutLimit: int
+        :param TestModelLimit: Test event limit
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TestModelLimit: int
+        :param InitTimeoutLimit: Initialization timeout limit
+        :type InitTimeoutLimit: int
+        :param RetryNumLimit: Limit of async retry attempt quantity
+        :type RetryNumLimit: int
+        :param MinMsgTTL: Lower limit of message retention time for async retry
+        :type MinMsgTTL: int
+        :param MaxMsgTTL: Upper limit of message retention time for async retry
+        :type MaxMsgTTL: int
+        """
+        self.FunctionsCount = None
+        self.Trigger = None
+        self.Namespace = None
+        self.ConcurrentExecutions = None
+        self.TimeoutLimit = None
+        self.TestModelLimit = None
+        self.InitTimeoutLimit = None
+        self.RetryNumLimit = None
+        self.MinMsgTTL = None
+        self.MaxMsgTTL = None
+
+
+    def _deserialize(self, params):
+        self.FunctionsCount = params.get("FunctionsCount")
+        if params.get("Trigger") is not None:
+            self.Trigger = TriggerCount()
+            self.Trigger._deserialize(params.get("Trigger"))
+        self.Namespace = params.get("Namespace")
+        self.ConcurrentExecutions = params.get("ConcurrentExecutions")
+        self.TimeoutLimit = params.get("TimeoutLimit")
+        self.TestModelLimit = params.get("TestModelLimit")
+        self.InitTimeoutLimit = params.get("InitTimeoutLimit")
+        self.RetryNumLimit = params.get("RetryNumLimit")
+        self.MinMsgTTL = params.get("MinMsgTTL")
+        self.MaxMsgTTL = params.get("MaxMsgTTL")
+
+
+class NamespaceUsage(AbstractModel):
+    """Namespace usage information
+
+    """
+
+    def __init__(self):
+        """
+        :param Functions: Function array
+        :type Functions: list of str
+        :param Namespace: Namespace name
+        :type Namespace: str
+        :param FunctionsCount: Number of functions in namespace
+        :type FunctionsCount: int
+        """
+        self.Functions = None
+        self.Namespace = None
+        self.FunctionsCount = None
+
+
+    def _deserialize(self, params):
+        self.Functions = params.get("Functions")
+        self.Namespace = params.get("Namespace")
+        self.FunctionsCount = params.get("FunctionsCount")
+
+
 class PublicNetConfigIn(AbstractModel):
     """Public network access configuration
 
@@ -3180,6 +3322,63 @@ class Trigger(AbstractModel):
         self.Qualifier = params.get("Qualifier")
 
 
+class TriggerCount(AbstractModel):
+    """`TriggerCount` describes the numbers of triggers in different types
+
+    """
+
+    def __init__(self):
+        """
+        :param Cos: Number of COS triggers
+        :type Cos: int
+        :param Timer: Number of timer triggers
+        :type Timer: int
+        :param Cmq: Number of CMQ triggers
+        :type Cmq: int
+        :param Total: Total number of triggers
+        :type Total: int
+        :param Ckafka: Number of CKafka triggers
+        :type Ckafka: int
+        :param Apigw: Number of API Gateway triggers
+        :type Apigw: int
+        :param Cls: Number of CLS triggers
+        :type Cls: int
+        :param Clb: Number of CLB triggers
+        :type Clb: int
+        :param Mps: Number of MPS triggers
+        :type Mps: int
+        :param Cm: Number of CM triggers
+        :type Cm: int
+        :param Vod: Number of VOD triggers
+        :type Vod: int
+        """
+        self.Cos = None
+        self.Timer = None
+        self.Cmq = None
+        self.Total = None
+        self.Ckafka = None
+        self.Apigw = None
+        self.Cls = None
+        self.Clb = None
+        self.Mps = None
+        self.Cm = None
+        self.Vod = None
+
+
+    def _deserialize(self, params):
+        self.Cos = params.get("Cos")
+        self.Timer = params.get("Timer")
+        self.Cmq = params.get("Cmq")
+        self.Total = params.get("Total")
+        self.Ckafka = params.get("Ckafka")
+        self.Apigw = params.get("Apigw")
+        self.Cls = params.get("Cls")
+        self.Clb = params.get("Clb")
+        self.Mps = params.get("Mps")
+        self.Cm = params.get("Cm")
+        self.Vod = params.get("Vod")
+
+
 class TriggerInfo(AbstractModel):
     """Trigger information
 
@@ -3527,6 +3726,44 @@ class UpdateNamespaceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class UsageInfo(AbstractModel):
+    """Usage information
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespacesCount: Number of namespaces
+        :type NamespacesCount: int
+        :param Namespace: Namespace details
+        :type Namespace: list of NamespaceUsage
+        :param TotalConcurrencyMem: Upper limit of user concurrency memory in the current region
+        :type TotalConcurrencyMem: int
+        :param TotalAllocatedConcurrencyMem: Quota of configured user concurrency memory in the current region
+        :type TotalAllocatedConcurrencyMem: int
+        :param UserConcurrencyMemLimit: Quota of account concurrency actually configured by user
+        :type UserConcurrencyMemLimit: int
+        """
+        self.NamespacesCount = None
+        self.Namespace = None
+        self.TotalConcurrencyMem = None
+        self.TotalAllocatedConcurrencyMem = None
+        self.UserConcurrencyMemLimit = None
+
+
+    def _deserialize(self, params):
+        self.NamespacesCount = params.get("NamespacesCount")
+        if params.get("Namespace") is not None:
+            self.Namespace = []
+            for item in params.get("Namespace"):
+                obj = NamespaceUsage()
+                obj._deserialize(item)
+                self.Namespace.append(obj)
+        self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
+        self.TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
+        self.UserConcurrencyMemLimit = params.get("UserConcurrencyMemLimit")
 
 
 class Variable(AbstractModel):

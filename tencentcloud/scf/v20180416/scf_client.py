@@ -369,6 +369,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetAccount(self, request):
+        """This API is used to get the account information.
+
+        :param request: Request instance for GetAccount.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetAccountRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetAlias(self, request):
         """This API is used to get the alias details such as the name, description, version, and routing information.
 

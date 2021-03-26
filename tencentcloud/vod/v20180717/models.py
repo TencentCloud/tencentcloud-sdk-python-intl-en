@@ -2983,16 +2983,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>block.</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Suggestion: str
-        :param Label: Tag of detected terrorism information in a video. Valid values:
-<li>guns: weapons and guns.</li>
-<li>crowd: crowd.</li>
-<li>police: police force.</li>
-<li>bloody: bloody scenes.</li>
-<li>banners: terrorism flags.</li>
-<li>militant: militants.</li>
-<li>explosion: explosions and fires.</li>
-<li>terrorists: terrorists.</li>
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Label: Tag of the detected terrorism information in a video. Valid values:
+<li>`guns`: weapons and guns</li>
+<li>`crowd`: crowds</li>
+<li>`police`: police forces</li>
+<li>`bloody`: bloody images</li>
+<li>`banners`: terrorism flags</li>
+<li>`militant`: militants</li>
+<li>`explosion`: explosions and fires</li>
+<li>`terrorists`: terrorists</li>
+<li>`scenario`: terrorism images</li>
         :type Label: str
         :param SegmentSet: List of video segments that contain the detected terrorism information.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -4092,6 +4092,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output of media file composing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskOutput`
+        :param MetaData: Metadata of a source video.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param SessionContext: 
+        :type SessionContext: str
+        :param SessionId: 
+        :type SessionId: str
         """
         self.TaskId = None
         self.Status = None
@@ -4099,6 +4106,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.MetaData = None
+        self.SessionContext = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
@@ -4112,6 +4122,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = ComposeMediaTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
 
 
 class ComposeMediaTaskInput(AbstractModel):
@@ -8550,6 +8565,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SessionId: str
+        :param MetaData: Metadata of a source video
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         self.TaskId = None
         self.Status = None
@@ -8560,6 +8577,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ProcedureTaskId = None
         self.SessionContext = None
         self.SessionId = None
+        self.MetaData = None
 
 
     def _deserialize(self, params):
@@ -8576,6 +8594,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ProcedureTaskId = params.get("ProcedureTaskId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
 
 
 class EditMediaTaskInput(AbstractModel):
@@ -14511,6 +14532,8 @@ class PullUploadTask(AbstractModel):
         :param MediaBasicInfo: Basic information of media file generated after pull for upload is completed.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
+        :param MetaData: Metadata of a source video
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param FileUrl: Playback address generated after pull for upload is completed.
         :type FileUrl: str
         :param ProcedureTaskId: If a video processing flow is specified when a video is pulled for upload, this parameter will be the ID of the task flow.
@@ -14526,6 +14549,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.FileId = None
         self.MediaBasicInfo = None
+        self.MetaData = None
         self.FileUrl = None
         self.ProcedureTaskId = None
         self.SessionContext = None
@@ -14541,6 +14565,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("MediaBasicInfo") is not None:
             self.MediaBasicInfo = MediaBasicInfo()
             self.MediaBasicInfo._deserialize(params.get("MediaBasicInfo"))
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
         self.FileUrl = params.get("FileUrl")
         self.ProcedureTaskId = params.get("ProcedureTaskId")
         self.SessionContext = params.get("SessionContext")
@@ -14812,30 +14839,6 @@ class SearchMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Tags: Tag set, which matches any element in the set.
-<li>Tag length limit: 8 characters.</li>
-<li>Array length limit: 10.</li>
-        :type Tags: list of str
-        :param ClassIds: Category ID set. The categories of the specified IDs and all subcategories in the set are matched.
-<li>Array length limit: 10.</li>
-        :type ClassIds: list of int
-        :param StreamIds: [Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) set. Any element in the set can be matched.
-<li>Array length limit: 10.</li>
-        :type StreamIds: list of str
-        :param Vids: Unique ID of LVB recording file. Any element in the set can be matched.
-<li>Array length limit: 10.</li>
-        :type Vids: list of str
-        :param SourceTypes: Media file source set. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
-<li>Array length limit: 10.</li>
-        :type SourceTypes: list of str
-        :param Categories: File type. Any element in the set can be matched.
-<li>Video: video file</li>
-<li>Audio: audio file</li>
-<li>Image: image file</li>
-        :type Categories: list of str
-        :param CreateTime: Matches files created within the time period.
-<li>Includes specified start and end points in time.</li>
-        :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         :param FileIds: File ID set. Any element in the set can be matched.
 <li>Array length limit: 10.</li>
 <li>ID length limit: 40 characters.</li>
@@ -14848,10 +14851,34 @@ class SearchMediaRequest(AbstractModel):
 <li>Filename prefix length limit: 20 characters.</li>
 <li>Array length limit: 10.</li>
         :type NamePrefixes: list of str
-        :param Descriptions: File description set. Any element in the set can be matched.
-<li>Description length limit: 100 characters.</li>
-<li>Array length limit: 10.</li>
+        :param Descriptions: File description set. Media file descriptions are fuzzily matched. The higher the match rate, the higher-ranked the result.
+<li>Length limit for a single description: 100 characters</li>
+<li>Array length limit: 10</li>
         :type Descriptions: list of str
+        :param ClassIds: Category ID set. The categories of the specified IDs and all subcategories in the set are matched.
+<li>Array length limit: 10.</li>
+        :type ClassIds: list of int
+        :param Tags: Tag set, which matches any element in the set.
+<li>Tag length limit: 8 characters.</li>
+<li>Array length limit: 10.</li>
+        :type Tags: list of str
+        :param Categories: File type. Any element in the set can be matched.
+<li>Video: video file</li>
+<li>Audio: audio file</li>
+<li>Image: image file</li>
+        :type Categories: list of str
+        :param SourceTypes: Media file source set. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
+<li>Array length limit: 10.</li>
+        :type SourceTypes: list of str
+        :param StreamIds: [Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) set. Any element in the set can be matched.
+<li>Array length limit: 10.</li>
+        :type StreamIds: list of str
+        :param Vids: Unique ID of LVB recording file. Any element in the set can be matched.
+<li>Array length limit: 10.</li>
+        :type Vids: list of str
+        :param CreateTime: Matches files created within the time period.
+<li>Includes specified start and end points in time.</li>
+        :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         :param Sort: Sorting order.
 <li>Valid value of `Sort.Field`: CreateTime.</li>
 <li>If `Text`, `Names`, or `Descriptions` is not empty, the `Sort.Field` field will not take effect, and the search results will be sorted by match rate.</li>
@@ -14876,15 +14903,18 @@ class SearchMediaRequest(AbstractModel):
         :type Filters: list of str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
+        :param Text: (This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)
+Search text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters.
+        :type Text: str
+        :param SourceType: (This is not recommended. `SourceTypes` should be used instead)
+Media file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
+        :type SourceType: str
         :param StreamId: (This is not recommended. `StreamIds` should be used instead)
 [Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1).
         :type StreamId: str
         :param Vid: (This is not recommended. `Vids` should be used instead)
 Unique ID of LVB recording file.
         :type Vid: str
-        :param Text: (This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)
-Search text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters.
-        :type Text: str
         :param StartTime: (This is not recommended. `CreateTime` should be used instead)
 Start time in the creation time range.
 <li>After or at the start time.</li>
@@ -14897,48 +14927,45 @@ End time in the creation time range.
 <li>If `CreateTime.Before` also exists, it will be used first.</li>
 <li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :type EndTime: str
-        :param SourceType: (This is not recommended. `SourceTypes` should be used instead)
-Media file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).
-        :type SourceType: str
         """
-        self.Tags = None
-        self.ClassIds = None
-        self.StreamIds = None
-        self.Vids = None
-        self.SourceTypes = None
-        self.Categories = None
-        self.CreateTime = None
         self.FileIds = None
         self.Names = None
         self.NamePrefixes = None
         self.Descriptions = None
+        self.ClassIds = None
+        self.Tags = None
+        self.Categories = None
+        self.SourceTypes = None
+        self.StreamIds = None
+        self.Vids = None
+        self.CreateTime = None
         self.Sort = None
         self.Offset = None
         self.Limit = None
         self.Filters = None
         self.SubAppId = None
+        self.Text = None
+        self.SourceType = None
         self.StreamId = None
         self.Vid = None
-        self.Text = None
         self.StartTime = None
         self.EndTime = None
-        self.SourceType = None
 
 
     def _deserialize(self, params):
-        self.Tags = params.get("Tags")
-        self.ClassIds = params.get("ClassIds")
-        self.StreamIds = params.get("StreamIds")
-        self.Vids = params.get("Vids")
-        self.SourceTypes = params.get("SourceTypes")
-        self.Categories = params.get("Categories")
-        if params.get("CreateTime") is not None:
-            self.CreateTime = TimeRange()
-            self.CreateTime._deserialize(params.get("CreateTime"))
         self.FileIds = params.get("FileIds")
         self.Names = params.get("Names")
         self.NamePrefixes = params.get("NamePrefixes")
         self.Descriptions = params.get("Descriptions")
+        self.ClassIds = params.get("ClassIds")
+        self.Tags = params.get("Tags")
+        self.Categories = params.get("Categories")
+        self.SourceTypes = params.get("SourceTypes")
+        self.StreamIds = params.get("StreamIds")
+        self.Vids = params.get("Vids")
+        if params.get("CreateTime") is not None:
+            self.CreateTime = TimeRange()
+            self.CreateTime._deserialize(params.get("CreateTime"))
         if params.get("Sort") is not None:
             self.Sort = SortBy()
             self.Sort._deserialize(params.get("Sort"))
@@ -14946,12 +14973,12 @@ Media file source. For valid values, please see [SourceType](https://intl.cloud.
         self.Limit = params.get("Limit")
         self.Filters = params.get("Filters")
         self.SubAppId = params.get("SubAppId")
+        self.Text = params.get("Text")
+        self.SourceType = params.get("SourceType")
         self.StreamId = params.get("StreamId")
         self.Vid = params.get("Vid")
-        self.Text = params.get("Text")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
-        self.SourceType = params.get("SourceType")
 
 
 class SearchMediaResponse(AbstractModel):
@@ -14964,8 +14991,7 @@ class SearchMediaResponse(AbstractModel):
         :param TotalCount: Number of eligible entries.
 <li>Maximum value: 5000. If the number of eligible entries is greater than 5,000, this field will return 5,000 instead of the actual number.</li>
         :type TotalCount: int
-        :param MediaInfoSet: Media file information list.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MediaInfoSet: Media file information list
         :type MediaInfoSet: list of MediaInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -16072,15 +16098,16 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>ON: enables terrorism information detection in video image task;</li>
 <li>OFF: disables terrorism information detection in video image task.</li>
         :type Switch: str
-        :param LabelSet: Filter tag for terrorism information detection in video image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>guns: weapons and guns;</li>
-<li>crowd: crowd;</li>
-<li>bloody: bloody scenes;</li>
-<li>police: police force;</li>
-<li>banners: terrorism flags;</li>
-<li>militant: militants;</li>
-<li>explosion: explosions and fires;</li>
-<li>terrorists: terrorists.</li>
+        :param LabelSet: Filter tags for terrorism information detection in images. If a moderation result contains a selected tag, it will be returned. If no filter tag is specified, all moderation results will be returned. Valid values:
+<li>`guns`: weapons and guns</li>
+<li>`crowd`: crowds</li>
+<li>`bloody`: bloody images</li>
+<li>`police`: police forces</li>
+<li>`banners`: terrorism flags</li>
+<li>`militant`: militants</li>
+<li>`explosion`: explosions and fires</li>
+<li>`terrorists`: terrorists</li>
+<li>`scenario`: terrorism images</li>
         :type LabelSet: list of str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
@@ -16111,15 +16138,16 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON: enables terrorism information detection in video image task;</li>
 <li>OFF: disables terrorism information detection in video image task.</li>
         :type Switch: str
-        :param LabelSet: Filter tag for terrorism information detection in video image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>guns: weapons and guns;</li>
-<li>crowd: crowd;</li>
-<li>bloody: bloody scenes;</li>
-<li>police: police force;</li>
-<li>banners: terrorism flags;</li>
-<li>militant: militants;</li>
-<li>explosion: explosions and fires;</li>
-<li>terrorists: terrorists.</li>
+        :param LabelSet: Filter tags for terrorism information detection in images. If a moderation result contains a selected tag, it will be returned. If no filter tag is specified, all moderation results will be returned. Valid values:
+<li>`guns`: weapons and guns</li>
+<li>`crowd`: crowds</li>
+<li>`bloody`: bloody images</li>
+<li>`police`: police forces</li>
+<li>`banners`: terrorism flags</li>
+<li>`militant`: militants</li>
+<li>`explosion`: explosions and fires</li>
+<li>`terrorists`: terrorists</li>
+<li>`scenario`: terrorism images</li>
         :type LabelSet: list of str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.
         :type BlockConfidence: int
@@ -16270,8 +16298,8 @@ class TimeRange(AbstractModel):
         :param After: <li>After or at this time (start time).</li>
 <li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :type After: str
-        :param Before: <li>Before or at this time (end time).</li>
-<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
+        :param Before: <li>Earlier than this time (end time).</li>
+<li>In ISO 8601 format. For more information, please see [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :type Before: str
         """
         self.After = None
