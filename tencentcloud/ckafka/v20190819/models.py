@@ -1564,6 +1564,39 @@ class DescribeUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DynamicRetentionTime(AbstractModel):
+    """Dynamic message retention time configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Enable: Whether the dynamic message retention time configuration is enabled. 0: disabled; 1: enabled
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Enable: int
+        :param DiskQuotaPercentage: Disk quota threshold (in percentage) for triggering the message retention time change event
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type DiskQuotaPercentage: int
+        :param StepForwardPercentage: Percentage by which the message retention time is shortened each time
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type StepForwardPercentage: int
+        :param BottomRetention: Minimum retention time, in minutes
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type BottomRetention: int
+        """
+        self.Enable = None
+        self.DiskQuotaPercentage = None
+        self.StepForwardPercentage = None
+        self.BottomRetention = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.DiskQuotaPercentage = params.get("DiskQuotaPercentage")
+        self.StepForwardPercentage = params.get("StepForwardPercentage")
+        self.BottomRetention = params.get("BottomRetention")
+
+
 class Filter(AbstractModel):
     """Query filter
     >Key-value pair filters for conditional filtering queries, such as filter ID, name, and status
@@ -1918,8 +1951,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MaxGroupNum: Maximum number of groups
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxGroupNum: int
-        :param Cvm: Sale type
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Cvm: Offering type. `0`: Standard Edition; `1`: Professional Edition
+Note: this field may return `null`, indicating that no valid value was found.
         :type Cvm: int
         :param InstanceType: Type.
 Note: this field may return `null`, indicating that no valid value was found.
@@ -1927,6 +1960,9 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param Features: Features supported by the instance. `FEATURE_SUBNET_ACL` indicates that the ACL policy supports setting subnets. 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Features: list of str
+        :param RetentionTimeConfig: Dynamic message retention policy
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1956,6 +1992,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Cvm = None
         self.InstanceType = None
         self.Features = None
+        self.RetentionTimeConfig = None
 
 
     def _deserialize(self, params):
@@ -1999,6 +2036,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Cvm = params.get("Cvm")
         self.InstanceType = params.get("InstanceType")
         self.Features = params.get("Features")
+        if params.get("RetentionTimeConfig") is not None:
+            self.RetentionTimeConfig = DynamicRetentionTime()
+            self.RetentionTimeConfig._deserialize(params.get("RetentionTimeConfig"))
 
 
 class InstanceConfigDO(AbstractModel):
@@ -2080,6 +2120,21 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Cvm: CKafka sale type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Cvm: int
+        :param InstanceType: CKafka instance type
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param DiskType: Disk type
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type DiskType: str
+        :param MaxTopicNumber: Maximum number of topics for the current instance
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type MaxTopicNumber: int
+        :param MaxPartitionNumber: Maximum number of partitions for the current instance
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type MaxPartitionNumber: int
+        :param RebalanceTime: Time of scheduled upgrade
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type RebalanceTime: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2103,6 +2158,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Version = None
         self.ZoneIds = None
         self.Cvm = None
+        self.InstanceType = None
+        self.DiskType = None
+        self.MaxTopicNumber = None
+        self.MaxPartitionNumber = None
+        self.RebalanceTime = None
 
 
     def _deserialize(self, params):
@@ -2138,6 +2198,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Version = params.get("Version")
         self.ZoneIds = params.get("ZoneIds")
         self.Cvm = params.get("Cvm")
+        self.InstanceType = params.get("InstanceType")
+        self.DiskType = params.get("DiskType")
+        self.MaxTopicNumber = params.get("MaxTopicNumber")
+        self.MaxPartitionNumber = params.get("MaxPartitionNumber")
+        self.RebalanceTime = params.get("RebalanceTime")
 
 
 class InstanceDetailResponse(AbstractModel):
@@ -2330,11 +2395,17 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type InstanceName: str
         :param Config: Instance configuration
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstanceAttributesConfig`
+        :param DynamicRetentionConfig: Dynamic message retention policy configuration
+        :type DynamicRetentionConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
+        :param RebalanceTime: Modification of the rebalancing time after upgrade
+        :type RebalanceTime: int
         """
         self.InstanceId = None
         self.MsgRetentionTime = None
         self.InstanceName = None
         self.Config = None
+        self.DynamicRetentionConfig = None
+        self.RebalanceTime = None
 
 
     def _deserialize(self, params):
@@ -2344,6 +2415,10 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         if params.get("Config") is not None:
             self.Config = ModifyInstanceAttributesConfig()
             self.Config._deserialize(params.get("Config"))
+        if params.get("DynamicRetentionConfig") is not None:
+            self.DynamicRetentionConfig = DynamicRetentionTime()
+            self.DynamicRetentionConfig._deserialize(params.get("DynamicRetentionConfig"))
+        self.RebalanceTime = params.get("RebalanceTime")
 
 
 class ModifyInstanceAttributesResponse(AbstractModel):
@@ -2797,6 +2872,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Config: Advanced configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.Config`
+        :param RetentionTimeConfig: Message retention time configuration (for recording the latest retention time)
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.TopicRetentionTimeConfigRsp`
         """
         self.TopicName = None
         self.TopicId = None
@@ -2810,6 +2888,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ForwardStatus = None
         self.ForwardInterval = None
         self.Config = None
+        self.RetentionTimeConfig = None
 
 
     def _deserialize(self, params):
@@ -2827,6 +2906,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Config") is not None:
             self.Config = Config()
             self.Config._deserialize(params.get("Config"))
+        if params.get("RetentionTimeConfig") is not None:
+            self.RetentionTimeConfig = TopicRetentionTimeConfigRsp()
+            self.RetentionTimeConfig._deserialize(params.get("RetentionTimeConfig"))
 
 
 class TopicDetailResponse(AbstractModel):
@@ -2911,6 +2993,34 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.TopicList.append(obj)
         self.TotalCount = params.get("TotalCount")
+
+
+class TopicRetentionTimeConfigRsp(AbstractModel):
+    """Information returned for topic message retention time configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Expect: Expected value, i.e., the topic message retention time (min) configured
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Expect: int
+        :param Current: Current value (min), i.e., the retention time currently in effect, which may be dynamically adjusted
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Current: int
+        :param ModTimeStamp: Last modified time
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ModTimeStamp: int
+        """
+        self.Expect = None
+        self.Current = None
+        self.ModTimeStamp = None
+
+
+    def _deserialize(self, params):
+        self.Expect = params.get("Expect")
+        self.Current = params.get("Current")
+        self.ModTimeStamp = params.get("ModTimeStamp")
 
 
 class User(AbstractModel):
