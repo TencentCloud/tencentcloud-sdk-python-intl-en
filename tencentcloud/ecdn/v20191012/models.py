@@ -463,16 +463,10 @@ The time span cannot exceed 90 days.
         :param EndTime: Query end time, such as 2019-12-13 23:59:59.
 The time span cannot exceed 90 days.
         :type EndTime: str
-        :param Metrics: Statistical metric name. flux: traffic in bytes
-bandwidth: bandwidth in bps
+        :param Metrics: Statistical metric names:
+flux: traffic (in bytes)
+bandwidth: bandwidth (in bps)
 request: number of requests
-delay: response time in ms
-static_request: number of static requests
-static_flux: static traffic in bytes
-static_bandwidth: static bandwidth in bps
-dynamic_request: number of dynamic requests
-dynamic_flux: dynamic traffic in bytes
-dynamic_bandwidth: dynamic bandwidth in bps
         :type Metrics: list of str
         :param Domains: Specifies the list of domain names to be queried
         :type Domains: list of str
@@ -483,6 +477,12 @@ If no domain name is entered, the specified project will be queried; otherwise, 
         :type Offset: int
         :param Limit: Number of entries per page. Default value: 1000. Maximum value: 3,000.
         :type Limit: int
+        :param Area: Statistical areas:
+mainland: Chinese mainland
+oversea: outside the Chinese mainland
+global: global
+Default value: global
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -491,6 +491,7 @@ If no domain name is entered, the specified project will be queried; otherwise, 
         self.Projects = None
         self.Offset = None
         self.Limit = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -501,6 +502,7 @@ If no domain name is entered, the specified project will be queried; otherwise, 
         self.Projects = params.get("Projects")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Area = params.get("Area")
 
 
 class DescribeEcdnDomainStatisticsResponse(AbstractModel):
@@ -545,20 +547,13 @@ class DescribeEcdnStatisticsRequest(AbstractModel):
         :param EndTime: Query end time, such as 2019-12-13 23:59:59
         :type EndTime: str
         :param Metrics: Specifies the query metric, which can be:
-flux: traffic in bytes
-bandwidth: bandwidth in bps
+flux: traffic (in bytes)
+bandwidth: bandwidth (in bps)
 request: number of requests
-delay: response time in ms
 2xx: returns the number of 2xx status codes or details of status codes starting with 2
 3xx: returns the number of 3xx status codes or details of status codes starting with 3
 4xx: returns the number of 4xx status codes or details of status codes starting with 4
 5xx: returns the number of 5xx status codes or details of status codes starting with 5
-static_request: number of static requests
-static_flux: static traffic in bytes
-static_bandwidth: static bandwidth in bps
-dynamic_request: number of dynamic requests
-dynamic_flux: dynamic traffic in bytes
-dynamic_bandwidth: dynamic bandwidth in bps
         :type Metrics: list of str
         :param Interval: Time granularity, which can be:
 1 day	 1, 5, 15, 30, 60, 120, 240, 1440 
@@ -573,6 +568,12 @@ Up to 30 acceleration domain names can be queried at a time.
         :param Projects: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
 If no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail
         :type Projects: list of int
+        :param Area: Statistical areas:
+mainland: Chinese mainland
+oversea: outside the Chinese mainland
+global: global
+Default value: global
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -580,6 +581,7 @@ If no domain name is entered, the specified project will be queried; otherwise, 
         self.Interval = None
         self.Domains = None
         self.Projects = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -589,6 +591,7 @@ If no domain name is entered, the specified project will be queried; otherwise, 
         self.Interval = params.get("Interval")
         self.Domains = params.get("Domains")
         self.Projects = params.get("Projects")
+        self.Area = params.get("Area")
 
 
 class DescribeEcdnStatisticsResponse(AbstractModel):
@@ -1363,8 +1366,7 @@ class Origin(AbstractModel):
 
     def __init__(self):
         """
-        :param Origins: Primary origin server list. The default format is ["ip1:port1", "ip2:port2"].
-Weights can be configured in the origin server list. The weight format of IP origin servers is ["ip1:port1:weight1", "ip2:port2:weight2"].
+        :param Origins: Primary origin server list. IP and the domain name of the origin server cannot be entered at the same time. Configure origin server port in the format of ["origin1:port1", "origin2:port2"]. Configure origin-pull weight in the format of ["origin1::weight1", "origin2::weight2"]. Configure both port and weight in the format of ["origin1:port1:weight1", "origin2:port2:weight2"]. Valid range of weight value: 0 - 100.
         :type Origins: list of str
         :param OriginType: Primary origin server type. Valid values: domain (domain name origin server), ip (IP origin server).
 This is required when setting `Origins`.
@@ -1374,7 +1376,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServerName: str
         :param OriginPullProtocol: Origin-pull protocol type. Valid values: http (forced HTTP origin-pull), follow (protocol follow), https (HTTPS origin-pull).
-Note: this field may return null, indicating that no valid values can be obtained.
+If this parameter is left empty, HTTP origin-pull will be used by default.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type OriginPullProtocol: str
         :param BackupOrigins: Secondary origin server list.
         :type BackupOrigins: list of str

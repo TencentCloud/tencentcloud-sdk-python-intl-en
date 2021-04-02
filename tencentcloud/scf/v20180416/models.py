@@ -117,6 +117,32 @@ class AsyncEvent(AbstractModel):
         self.EndTime = params.get("EndTime")
 
 
+class AsyncTriggerConfig(AbstractModel):
+    """Async retry configuration details of function
+
+    """
+
+    def __init__(self):
+        """
+        :param RetryConfig: Async retry configuration of function upon user error
+        :type RetryConfig: list of RetryConfig
+        :param MsgTTL: Message retention period
+        :type MsgTTL: int
+        """
+        self.RetryConfig = None
+        self.MsgTTL = None
+
+
+    def _deserialize(self, params):
+        if params.get("RetryConfig") is not None:
+            self.RetryConfig = []
+            for item in params.get("RetryConfig"):
+                obj = RetryConfig()
+                obj._deserialize(item)
+                self.RetryConfig.append(obj)
+        self.MsgTTL = params.get("MsgTTL")
+
+
 class CfsConfig(AbstractModel):
     """File system (CFS) configuration description
 
@@ -1372,6 +1398,54 @@ class GetFunctionAddressResponse(AbstractModel):
     def _deserialize(self, params):
         self.Url = params.get("Url")
         self.CodeSha256 = params.get("CodeSha256")
+        self.RequestId = params.get("RequestId")
+
+
+class GetFunctionEventInvokeConfigRequest(AbstractModel):
+    """GetFunctionEventInvokeConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Namespace: Function namespace. Default value: default
+        :type Namespace: str
+        :param Qualifier: Function version. Default value: $LATEST
+        :type Qualifier: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.Qualifier = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.Qualifier = params.get("Qualifier")
+
+
+class GetFunctionEventInvokeConfigResponse(AbstractModel):
+    """GetFunctionEventInvokeConfig response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncTriggerConfig: Async retry configuration information
+        :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncTriggerConfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsyncTriggerConfig") is not None:
+            self.AsyncTriggerConfig = AsyncTriggerConfig()
+            self.AsyncTriggerConfig._deserialize(params.get("AsyncTriggerConfig"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3125,6 +3199,23 @@ class Result(AbstractModel):
         self.InvokeResult = params.get("InvokeResult")
 
 
+class RetryConfig(AbstractModel):
+    """Async retry configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param RetryNum: Number of retry attempts
+        :type RetryNum: int
+        """
+        self.RetryNum = None
+
+
+    def _deserialize(self, params):
+        self.RetryNum = params.get("RetryNum")
+
+
 class RoutingConfig(AbstractModel):
     """Version routing configuration of alias
 
@@ -3675,6 +3766,50 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
 class UpdateFunctionConfigurationResponse(AbstractModel):
     """UpdateFunctionConfiguration response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
+    """UpdateFunctionEventInvokeConfig request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncTriggerConfig: Async retry configuration information
+        :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Namespace: Function namespace. Default value: default
+        :type Namespace: str
+        """
+        self.AsyncTriggerConfig = None
+        self.FunctionName = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsyncTriggerConfig") is not None:
+            self.AsyncTriggerConfig = AsyncTriggerConfig()
+            self.AsyncTriggerConfig._deserialize(params.get("AsyncTriggerConfig"))
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+
+
+class UpdateFunctionEventInvokeConfigResponse(AbstractModel):
+    """UpdateFunctionEventInvokeConfig response structure.
 
     """
 

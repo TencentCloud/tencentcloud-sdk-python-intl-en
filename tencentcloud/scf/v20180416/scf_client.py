@@ -481,6 +481,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetFunctionEventInvokeConfig(self, request):
+        """This API is used to get the async retry configuration of a function, including the number of retry attempts and message retention period.
+
+        :param request: Request instance for GetFunctionEventInvokeConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionEventInvokeConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetFunctionEventInvokeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetFunctionEventInvokeConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetFunctionEventInvokeConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetFunctionLogs(self, request):
         """This API is used to return function running logs according to the specified log query criteria.
 
@@ -1083,6 +1111,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFunctionConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateFunctionEventInvokeConfig(self, request):
+        """This API is used to update the async retry configuration of a function, including the number of retry attempts and message retention period.
+
+        :param request: Request instance for UpdateFunctionEventInvokeConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionEventInvokeConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionEventInvokeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateFunctionEventInvokeConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateFunctionEventInvokeConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
