@@ -54,6 +54,230 @@ class GpmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateMatch(self, request):
+        """This API is used to create a match.
+
+        :param request: Request instance for CreateMatch.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.CreateMatchRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.CreateMatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRule(self, request):
+        """This API is used to create a rule.
+
+        :param request: Request instance for CreateRule.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.CreateRuleRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.CreateRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteMatch(self, request):
+        """This API is used to delete a match.
+
+        :param request: Request instance for DeleteMatch.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.DeleteMatchRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.DeleteMatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteMatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRule(self, request):
+        """This API is used to delete a rule.
+
+        :param request: Request instance for DeleteRule.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.DeleteRuleRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.DeleteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeData(self, request):
+        """This API is used to view statistics.
+
+        :param request: Request instance for DescribeData.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeDataRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.DescribeDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMatch(self, request):
+        """This API is used to query the matchmaking details.
+
+        :param request: Request instance for DescribeMatch.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMatchCodes(self, request):
+        """This API is used to query the created MatchCodes and paginate the query result.
+
+        :param request: Request instance for DescribeMatchCodes.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchCodesRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchCodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMatchCodes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMatchCodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMatches(self, request):
+        """This API is used to query the matchmaking list and paginate the query result.
+
+        :param request: Request instance for DescribeMatches.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchesRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMatches", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMatchesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMatchingProgress(self, request):
         """This API is used to query the matching progress.
 
@@ -82,6 +306,62 @@ class GpmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRule(self, request):
+        """This API is used to query the rule details.
+
+        :param request: Request instance for DescribeRule.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeRuleRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.DescribeRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRules(self, request):
+        """This API is used to query the rule set list and paginate the query result.
+
+        :param request: Request instance for DescribeRules.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeRulesRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.DescribeRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeToken(self, request):
         """This API is used to query the token of a Matchcode, which is used for verified the pushed message.
 
@@ -96,6 +376,62 @@ class GpmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMatch(self, request):
+        """This API is used to modify a match.
+
+        :param request: Request instance for ModifyMatch.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.ModifyMatchRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.ModifyMatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRule(self, request):
+        """This API is used to modify a rule (including description and tag).
+
+        :param request: Request instance for ModifyRule.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.ModifyRuleRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.ModifyRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -6870,35 +6870,36 @@ class DescribeRouteTablesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableIds: The route table instance ID, such as `rtb-azd4dt1c`.
-        :type RouteTableIds: list of str
-        :param Filters: Filter condition. `RouteTableIds` and `Filters` cannot be speified at the same time.
+        :param Filters: Filter condition. `RouteTableIds` and `Filters` cannot be specified at the same time.
 <li>route-table-id - String - (Filter condition) Route table instance ID.</li>
 <li>route-table-name - String - (Filter condition) Route table name.</li>
 <li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
 <li>association.main - String - (Filter condition) Whether it is the main route table.</li>
-<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
-<li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key is replaced with the specific tag key. For usage, refer to case 2.</li>
+<li>tag-key - String - Required: no - (Filter condition) Filter by tag key.</li>
+<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 2 for the detailed usage.</li>
+<li>is-need-router-info - String - (Filter condition) Whether to obtain routing policies. It defaults to `false`. To obtain routing policies, change the parameter value to `true`.</li>
         :type Filters: list of Filter
+        :param RouteTableIds: The route table instance ID, such as `rtb-azd4dt1c`.
+        :type RouteTableIds: list of str
         :param Offset: Offset.
         :type Offset: str
         :param Limit: The number of request objects.
         :type Limit: str
         """
-        self.RouteTableIds = None
         self.Filters = None
+        self.RouteTableIds = None
         self.Offset = None
         self.Limit = None
 
 
     def _deserialize(self, params):
-        self.RouteTableIds = params.get("RouteTableIds")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.RouteTableIds = params.get("RouteTableIds")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
 
@@ -12469,6 +12470,8 @@ Users can only add and operate USER-type routes.
         :param PublishedToVbc: Whether the routing policy is published to CCN.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PublishedToVbc: bool
+        :param CreatedTime: Creation time of the routing policy
+        :type CreatedTime: str
         """
         self.DestinationCidrBlock = None
         self.GatewayType = None
@@ -12481,6 +12484,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DestinationIpv6CidrBlock = None
         self.RouteItemId = None
         self.PublishedToVbc = None
+        self.CreatedTime = None
 
 
     def _deserialize(self, params):
@@ -12495,6 +12499,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DestinationIpv6CidrBlock = params.get("DestinationIpv6CidrBlock")
         self.RouteItemId = params.get("RouteItemId")
         self.PublishedToVbc = params.get("PublishedToVbc")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class RouteTable(AbstractModel):
