@@ -256,7 +256,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateLoadBalancerSnatIps(self, request):
-        """This API is used to add a SNAT IP for a SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.
+        """This API is used to add an SNAT IP for an SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.
 
         :param request: Request instance for CreateLoadBalancerSnatIps.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateLoadBalancerSnatIpsRequest`
@@ -456,7 +456,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteLoadBalancerSnatIps(self, request):
-        """This API is used to delete a SNAT IP for a SnatPro CLB instance.
+        """This API is used to delete the SNAT IP for an SnatPro CLB instance.
 
         :param request: Request instance for DeleteLoadBalancerSnatIps.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerSnatIpsRequest`
@@ -570,7 +570,7 @@ class ClbClient(AbstractClient):
 
     def DeregisterTargetGroupInstances(self, request):
         """This API is used to unbind a server from a target group.
-        This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
+        This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeregisterTargetGroupInstances.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetGroupInstancesRequest`
@@ -627,8 +627,7 @@ class ClbClient(AbstractClient):
 
 
     def DeregisterTargetsFromClassicalLB(self, request):
-        """This API (DeregisterTargetsFromClassicalLB) is used to unbind real servers from a classic load balancer.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
+        """This API is used to unbind a CLB real server. This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeregisterTargetsFromClassicalLB.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetsFromClassicalLBRequest`
@@ -712,7 +711,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClassicalLBByInstanceId(self, request):
-        """This API (DescribeClassicalLBByInstanceId) is used to get the list of classic CLB IDs through the real server instance ID.
+        """This API is used to get the list of classic CLB instance IDs through a real server ID.
 
         :param request: Request instance for DescribeClassicalLBByInstanceId.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBByInstanceIdRequest`
@@ -796,7 +795,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClassicalLBTargets(self, request):
-        """This API (DescribeClassicalLBTargets) is used to get the real servers bound to a classic CLB.
+        """This API is used to get the real servers bound to a classic CLB instance.
 
         :param request: Request instance for DescribeClassicalLBTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBTargetsRequest`
@@ -824,7 +823,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClsLogSet(self, request):
-        """This API is used to get the CLB dedicated logset.
+        """This API is used to get the CLB exclusive logset.
 
         :param request: Request instance for DescribeClsLogSet.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClsLogSetRequest`
@@ -1648,8 +1647,7 @@ class ClbClient(AbstractClient):
 
 
     def RegisterTargetsWithClassicalLB(self, request):
-        """This API (RegisterTargetsWithClassicalLB) is used to bind real servers to a classic CLB.
-        This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
+        """This API is used to bind a real server with a classic CLB instance. This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for RegisterTargetsWithClassicalLB.
         :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsWithClassicalLBRequest`

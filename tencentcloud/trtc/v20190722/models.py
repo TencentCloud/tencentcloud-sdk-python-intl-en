@@ -811,9 +811,9 @@ class EncodeParams(AbstractModel):
 
     def __init__(self):
         """
-        :param AudioSampleRate: Output stream audio sample rate for On-Cloud MixTranscoding in Hz. Valid values: 48000, 44100, 32000, 24000, 16000, 12000, 8000.
+        :param AudioSampleRate: Output audio sample rate (Hz) for On-Cloud MixTranscoding. Valid values: 48000, 44100, 32000, 24000, 16000, 8000
         :type AudioSampleRate: int
-        :param AudioBitrate: Output stream audio bitrate in Kbps for On-Cloud MixTranscoding. Value range: [8, 500].
+        :param AudioBitrate: Output audio bitrate (Kbps) for On-Cloud MixTranscoding. Value range: 8-500
         :type AudioBitrate: int
         :param AudioChannels: Number of sound channels of output stream for On-Cloud MixTranscoding. Valid values: 1, 2. 1 represents mono-channel, and 2 represents dual-channel.
         :type AudioChannels: int
@@ -821,16 +821,25 @@ class EncodeParams(AbstractModel):
         :type VideoWidth: int
         :param VideoHeight: Output stream height in pixels for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [0, 1080].
         :type VideoHeight: int
-        :param VideoBitrate: Output stream bitrate in Kbps for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [1, 10000].
+        :param VideoBitrate: Output bitrate (Kbps) for On-Cloud MixTranscoding, which is required for audio-video output. Value range: 1-10000
         :type VideoBitrate: int
         :param VideoFramerate: Output stream frame rate for On-Cloud MixTranscoding in FPS. This parameter is required for audio/video outputs. Value range: [1, 60].
         :type VideoFramerate: int
         :param VideoGop: Output stream GOP in seconds for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [1, 5].
         :type VideoGop: int
-        :param BackgroundColor: Output stream background color for On-Cloud MixTranscoding.
+        :param BackgroundColor: Output background color for On-Cloud MixTranscoding. Valid values: decimal integers. Commonly used colors include:
+Red: 0xff0000, whose decimal number is 16724736
+Yellow: 0xffff00, whose decimal number is 16776960
+Green: 0x33cc00, whose decimal number is 3394560
+Blue: 0x0066ff, whose decimal number is 26367
+Black: 0x000000, whose decimal number is 0
+White: 0xFFFFFF, whose decimal number is 16777215
+Grey: 0x999999, whose decimal number is 10066329
         :type BackgroundColor: int
         :param BackgroundImageId: Output stream background image for stream mix. Its value is the ID of image uploaded through the TRTC Console.
         :type BackgroundImageId: int
+        :param AudioCodec: Output audio codec for On-Cloud MixTranscoding. Valid values: 0, 1, 2. 0 (default): LC-AAC; 1: HE-AAC; 2: HE-AACv2. If this parameter is set to 2 (HE-AACv2), On-Cloud MixTranscoding can produce only dual-channel streams. If it is set to 1 (HE-AAC) or 2 (HE-AACv2), the valid values for the audio sample rate of output streams are 48000, 44100, 32000, 24000, and 16000.
+        :type AudioCodec: int
         """
         self.AudioSampleRate = None
         self.AudioBitrate = None
@@ -842,6 +851,7 @@ class EncodeParams(AbstractModel):
         self.VideoGop = None
         self.BackgroundColor = None
         self.BackgroundImageId = None
+        self.AudioCodec = None
 
 
     def _deserialize(self, params):
@@ -855,6 +865,7 @@ class EncodeParams(AbstractModel):
         self.VideoGop = params.get("VideoGop")
         self.BackgroundColor = params.get("BackgroundColor")
         self.BackgroundImageId = params.get("BackgroundImageId")
+        self.AudioCodec = params.get("AudioCodec")
 
 
 class EventList(AbstractModel):
@@ -987,7 +998,7 @@ class OutputParams(AbstractModel):
         :type StreamId: str
         :param PureAudioStream: Value range: [0, 1]. If it is 0, live streams are audio and video; if it is 1, live streams are only audio. Default value: 0.
         :type PureAudioStream: int
-        :param RecordId: Custom recording file name. Please enable the recording feature in the TRTC console first. https://intl.cloud.tencent.com/document/product/647/50768?from_cn_redirect=1
+        :param RecordId: Prefix of custom recording file names. Please enable the recording feature in the TRTC console first. https://intl.cloud.tencent.com/document/product/647/50768?from_cn_redirect=1
         :type RecordId: str
         :param RecordAudioOnly: Value range: [0, 1]. If it is 0, the recording template configured in the console will be used; if it is 1, streams are recorded as .mp3 files.
         :type RecordAudioOnly: int

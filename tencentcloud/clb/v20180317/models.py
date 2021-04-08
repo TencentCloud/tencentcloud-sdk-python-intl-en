@@ -241,7 +241,7 @@ class BatchDeregisterTargetsRequest(AbstractModel):
         """
         :param LoadBalancerId: CLB instance ID
         :type LoadBalancerId: str
-        :param Targets: Unbound targets
+        :param Targets: Unbinding targets
         :type Targets: list of BatchTarget
         """
         self.LoadBalancerId = None
@@ -815,13 +815,13 @@ class CreateListenerRequest(AbstractModel):
         """
         :param LoadBalancerId: CLB instance ID
         :type LoadBalancerId: str
-        :param Ports: Specifies for which ports to create listeners. Each port corresponds to a new listener
+        :param Ports: Specifies for which ports to create listeners. Each port corresponds to a new listener.
         :type Ports: list of int
-        :param Protocol: Listener protocol: TCP, UDP, HTTP, HTTPS, or TCP_SSL (which is currently in beta test. If you want to use it, please submit a ticket for application)
+        :param Protocol: Listener protocol: TCP, UDP, HTTP, HTTPS, or TCP_SSL (which is currently in beta test. If you want to use it, please submit a ticket for application).
         :type Protocol: str
         :param ListenerNames: List of names of the listeners to be created. The array of names and array of ports are in one-to-one correspondence. If you do not want to name them now, you do not need to provide this parameter.
         :type ListenerNames: list of str
-        :param HealthCheck: Health check parameter, which is applicable only to TCP/UDP/TCP_SSL listeners
+        :param HealthCheck: Health check parameter, which is applicable only to TCP, UDP, and TCP_SSL listeners.
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         :param Certificate: Certificate information. This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled.
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
@@ -836,7 +836,7 @@ They represent weighted round robin and least connections, respectively. Default
         :type TargetType: str
         :param SessionType: Session persistence type. Valid values: Normal: the default session persistence type; QUIC_CID: session persistence by QUIC connection ID. The `QUIC_CID` value can only be configured in UDP listeners. If this field is not specified, the default session persistence type will be used.
         :type SessionType: str
-        :param KeepaliveEnable: Whether to enable a persistent connection (This parameter can only be configured in HTTP/HTTPS listeners). Valid values: 0: no; 1: yes. Default value: 0
+        :param KeepaliveEnable: Whether to enable a persistent connection. This parameter is applicable only to HTTP and HTTPS listeners. Valid values: 0 (disable; default value) and 1 (enable).
         :type KeepaliveEnable: int
         :param EndPort: This parameter is used to specify the end port and is required when creating a port range listener. Only one member can be passed in when inputting the `Ports` parameter, which is used to specify the start port. If you want to try the port range feature, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type EndPort: int
@@ -907,7 +907,7 @@ class CreateLoadBalancerRequest(AbstractModel):
         :param LoadBalancerType: CLB instance network type:
 OPEN: public network; INTERNAL: private network.
         :type LoadBalancerType: str
-        :param Forward: CLB instance type. 1: generic CLB instance. Currently, only 1 can be passed in
+        :param Forward: CLB instance type. Valid value: 1 (generic CLB instance).
         :type Forward: int
         :param LoadBalancerName: CLB instance name, which takes effect only when only one instance is to be created in the request. It can consist 1 to 60 letters, digits, hyphens (-), or underscores (_).
 Note: if the name of the new CLB instance already exists, a default name will be generated automatically.
@@ -925,7 +925,7 @@ Note: if the name of the new CLB instance already exists, a default name will be
         :param MasterZoneId: Sets the primary AZ ID for cross-AZ disaster recovery, such as 100001 or ap-guangzhou-1, which is applicable only to public network CLB.
 Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic by default and will be used only if the primary AZ becomes unavailable. The platform will automatically select the optimal secondary AZ. The list of primary AZs in a specific region can be queried through the DescribeMasterZones API.
         :type MasterZoneId: str
-        :param ZoneId: Specifies an AZ ID for creating a CLB instance, such as ap-guangzhou-1, which is applicable only to public network CLB.
+        :param ZoneId: Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.
         :type ZoneId: str
         :param InternetAccessible: CLB network billing mode. This parameter is applicable only to public network CLB instances.
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
@@ -937,7 +937,7 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         :type Vip: str
         :param BandwidthPackageId: Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).
         :type BandwidthPackageId: str
-        :param ExclusiveCluster: Exclusive cluster information.
+        :param ExclusiveCluster: Dedicated cluster information
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
@@ -947,6 +947,9 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         :type SnatIps: list of SnatIp
         :param ClusterTag: Tag for the STGW exclusive cluster.
         :type ClusterTag: str
+        :param SlaveZoneId: Sets the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB instances.
+Note: A secondary AZ will load traffic if the primary AZ has failures. The API `DescribeMasterZones` is used to query the primary and secondary AZ list of a region.
+        :type SlaveZoneId: str
         :param EipAddressId: Unique ID of an EIP, which can only be used when binding the EIP of a private network CLB instance. E.g., `eip-11112222`.
         :type EipAddressId: str
         """
@@ -970,6 +973,7 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
         self.SnatPro = None
         self.SnatIps = None
         self.ClusterTag = None
+        self.SlaveZoneId = None
         self.EipAddressId = None
 
 
@@ -1008,6 +1012,7 @@ Note: A primary AZ carries traffic, while a secondary AZ does not carry traffic 
                 obj._deserialize(item)
                 self.SnatIps.append(obj)
         self.ClusterTag = params.get("ClusterTag")
+        self.SlaveZoneId = params.get("SlaveZoneId")
         self.EipAddressId = params.get("EipAddressId")
 
 
@@ -1039,7 +1044,7 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerId: Unique CLB instance ID, such as lb-12345678
+        :param LoadBalancerId: Unique ID of a CLB instance, e.g., lb-12345678.
         :type LoadBalancerId: str
         :param SnatIps: Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet.
         :type SnatIps: list of SnatIp
@@ -1306,7 +1311,7 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerIds: Array of IDs of the CLB instances to be deleted. Array length limit: 20
+        :param LoadBalancerIds: Array of IDs of the CLB instances to be deleted. Array length limit: 20.
         :type LoadBalancerIds: list of str
         """
         self.LoadBalancerIds = None
@@ -1340,7 +1345,7 @@ class DeleteLoadBalancerSnatIpsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerId: Unique CLB instance ID, such as lb-12345678
+        :param LoadBalancerId: Unique ID of a CLB instance, e.g., lb-12345678.
         :type LoadBalancerId: str
         :param Ips: Array of the SNAT IP addresses to be deleted
         :type Ips: list of str
@@ -1435,9 +1440,9 @@ class DeleteRuleRequest(AbstractModel):
         :type ListenerId: str
         :param LocationIds: Array of IDs of the forwarding rules to be deleted
         :type LocationIds: list of str
-        :param Domain: Domain name of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified
+        :param Domain: Domain name of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified.
         :type Domain: str
-        :param Url: Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified
+        :param Url: Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified.
         :type Url: str
         :param NewDefaultServerDomain: A listener must be configured with a default domain name. If you need to delete the default domain name, you can specify another one as the new default domain name.
         :type NewDefaultServerDomain: str
@@ -1562,7 +1567,7 @@ class DeregisterTargetsFromClassicalLBRequest(AbstractModel):
         """
         :param LoadBalancerId: CLB instance ID
         :type LoadBalancerId: str
-        :param InstanceIds: List of real server instance IDs
+        :param InstanceIds: List of real server IDs
         :type InstanceIds: list of str
         """
         self.LoadBalancerId = None
@@ -1598,17 +1603,17 @@ class DeregisterTargetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerId: CLB instance ID in the format of lb-12345678
+        :param LoadBalancerId: CLB instance ID in the format of "lb-12345678"
         :type LoadBalancerId: str
-        :param ListenerId: Listener ID in the format of lbl-12345678
+        :param ListenerId: Listener ID in the format of "lbl-12345678"
         :type ListenerId: str
-        :param Targets: List of real servers to be unbound. Array length limit: 20
+        :param Targets: List of real servers to be unbound. Array length limit: 20.
         :type Targets: list of Target
-        :param LocationId: Forwarding rule ID in the format of loc-12345678. When unbinding a server from a layer-7 forwarding rule, you must provide either this parameter or Domain+Url
+        :param LocationId: Forwarding rule ID in the format of "loc-12345678". When unbinding a server from a layer-7 forwarding rule, you must provide either this parameter or Domain+Url.
         :type LocationId: str
-        :param Domain: Target rule domain name. This parameter does not take effect if LocationId is specified
+        :param Domain: Target rule domain name. This parameter does not take effect if LocationId is specified.
         :type Domain: str
-        :param Url: Target rule URL. This parameter does not take effect if LocationId is specified
+        :param Url: Target rule URL. This parameter does not take effect if LocationId is specified.
         :type Url: str
         """
         self.LoadBalancerId = None
@@ -1754,7 +1759,7 @@ class DescribeClassicalLBByInstanceIdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: List of real server IDs.
+        :param InstanceIds: List of real server IDs
         :type InstanceIds: list of str
         """
         self.InstanceIds = None
@@ -1819,7 +1824,7 @@ class DescribeClassicalLBHealthStatusResponse(AbstractModel):
     def __init__(self):
         """
         :param HealthList: List of real server health statuses
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type HealthList: list of ClassicalHealth
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1849,11 +1854,11 @@ class DescribeClassicalLBListenersRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerIds: List of CLB listener IDs
         :type ListenerIds: list of str
-        :param Protocol: CLB listening protocol. Value range: TCP, UDP, HTTP, HTTPS
+        :param Protocol: CLB listening protocol. Valid values: TCP, UDP, HTTP, and HTTPS.
         :type Protocol: str
-        :param ListenerPort: CLB listening port. Value range: [1-65535]
+        :param ListenerPort: CLB listening port. Value range: 1 - 65535.
         :type ListenerPort: int
-        :param Status: Listener status. Value range: 0 (creating), 1 (running)
+        :param Status: Listener status. Valid values: 0 (creating) and 1 (running).
         :type Status: int
         """
         self.LoadBalancerId = None
@@ -1878,8 +1883,8 @@ class DescribeClassicalLBListenersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Listeners: List of listeners
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Listeners: Listener list
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Listeners: list of ClassicalListener
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1922,8 +1927,8 @@ class DescribeClassicalLBTargetsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Targets: List of real servers
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Targets: Real server list
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Targets: list of ClassicalTarget
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1980,9 +1985,9 @@ class DescribeListenersRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerIds: Array of IDs of the CLB listeners to be queried
         :type ListenerIds: list of str
-        :param Protocol: Type of the listener protocol to be queried. Value range: TCP, UDP, HTTP, HTTPS, TCP_SSL
+        :param Protocol: Type of the listener protocols to be queried. Valid values: TCP, UDP, HTTP, HTTPS, and TCP_SSL.
         :type Protocol: str
-        :param Port: Port of the listener to be queried
+        :param Port: Port of the listeners to be queried
         :type Port: int
         """
         self.LoadBalancerId = None
@@ -2005,10 +2010,10 @@ class DescribeListenersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Listeners: List of listeners
+        :param Listeners: Listener list
         :type Listeners: list of Listener
-        :param TotalCount: Total number of listeners
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TotalCount: Total number of listeners (with filters of port, protocol, and listener ID applied).
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2097,7 +2102,7 @@ class DescribeLoadBalancerTrafficResponse(AbstractModel):
     def __init__(self):
         """
         :param LoadBalancerTraffic: Information of CLB instances sorted by outbound bandwidth from highest to lowest
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type LoadBalancerTraffic: list of LoadBalancerTraffic
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2125,7 +2130,7 @@ class DescribeLoadBalancersDetailRequest(AbstractModel):
         """
         :param Limit: Number of CLB instance lists returned. Default value: 20; maximum value: 100.
         :type Limit: int
-        :param Offset: Starting offset of the CLB instance list returned. Default value: 0
+        :param Offset: Starting offset of the CLB instance list returned. Default value: 0.
         :type Offset: int
         :param Fields: List of fields to be returned. The `LoadBalancerId` and `LoadBalancerName` are returned by default.
         :type Fields: list of str
@@ -2365,7 +2370,7 @@ class DescribeRewriteRequest(AbstractModel):
         :type LoadBalancerId: str
         :param SourceListenerIds: Array of CLB listener IDs
         :type SourceListenerIds: list of str
-        :param SourceLocationIds: Array of CLB forwarding rules
+        :param SourceLocationIds: Array of CLB forwarding rule IDs
         :type SourceLocationIds: list of str
         """
         self.LoadBalancerId = None
@@ -2386,7 +2391,7 @@ class DescribeRewriteResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RewriteSet: Array of redirection forwarding rules. If there are no redirection rules, an empty array will be returned
+        :param RewriteSet: Array of redirection forwarding rules. If there are no redirection rules, an empty array will be returned.
         :type RewriteSet: list of RuleOutput
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2478,11 +2483,11 @@ class DescribeTargetGroupListRequest(AbstractModel):
         """
         :param TargetGroupIds: Target group ID array
         :type TargetGroupIds: list of str
-        :param Filters: Filter array, which is exclusive of `TargetGroupIds`. Valid values: TargetGroupVpcId, TargetGroupName. Target group ID will be used first.
+        :param Filters: Filter array, which is exclusive of `TargetGroupIds`. Valid values: `TargetGroupVpcId` and `TargetGroupName`. Target group ID will be used first.
         :type Filters: list of Filter
         :param Offset: Starting display offset
         :type Offset: int
-        :param Limit: Limit of the number of displayed results. Default value: 20
+        :param Limit: Limit of the number of displayed results. Default value: 20.
         :type Limit: int
         """
         self.TargetGroupIds = None
@@ -2542,11 +2547,11 @@ class DescribeTargetGroupsRequest(AbstractModel):
         """
         :param TargetGroupIds: Target group ID, which is exclusive of `Filters`.
         :type TargetGroupIds: list of str
-        :param Limit: Limit of the number of displayed results. Default value: 20
+        :param Limit: Limit of the number of displayed results. Default value: 20.
         :type Limit: int
         :param Offset: Starting display offset
         :type Offset: int
-        :param Filters: Filter array, which is exclusive of `TargetGroupIds`. Valid values: TargetGroupVpcId, TargetGroupName
+        :param Filters: Filter array, which is exclusive of `TargetGroupIds`. Valid values: `TargetGroupVpcId` and `TargetGroupName`.
         :type Filters: list of Filter
         """
         self.TargetGroupIds = None
@@ -2621,8 +2626,8 @@ class DescribeTargetHealthResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancers: List of CLB instances
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param LoadBalancers: CLB instance list
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type LoadBalancers: list of LoadBalancerHealth
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2650,7 +2655,7 @@ class DescribeTargetsRequest(AbstractModel):
         """
         :param LoadBalancerId: CLB instance ID
         :type LoadBalancerId: str
-        :param ListenerIds: List of listener IDs
+        :param ListenerIds: Listener ID list
         :type ListenerIds: list of str
         :param Protocol: Listener protocol type
         :type Protocol: str
@@ -2678,7 +2683,7 @@ class DescribeTargetsResponse(AbstractModel):
     def __init__(self):
         """
         :param Listeners: Information of real servers bound to the listener
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Listeners: list of ListenerBackend
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2704,7 +2709,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Request ID, i.e., the RequestId parameter returned by the API
+        :param TaskId: Request ID, i.e., the RequestId parameter returned by the API.
         :type TaskId: str
         """
         self.TaskId = None
@@ -3963,16 +3968,16 @@ class ModifyListenerRequest(AbstractModel):
         :type ListenerName: str
         :param SessionExpireTime: Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners.
         :type SessionExpireTime: int
-        :param HealthCheck: Health check parameter, which is applicable only to TCP/UDP/TCP_SSL listeners.
+        :param HealthCheck: Health check parameter, which is applicable only to TCP, UDP, and TCP_SSL listeners.
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param Certificate: Certificate information. This parameter is applicable only to HTTPS/TCP_SSL listeners.
+        :param Certificate: Certificate information. This parameter is applicable only to HTTPS and TCP_SSL listeners.
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param Scheduler: Forwarding method of a listener. Value range: WRR, LEAST_CONN.
 They represent weighted round robin and least connections, respectively. Default value: WRR.
         :type Scheduler: str
         :param SniSwitch: Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners. Note: The SNI feature can be enabled but cannot be disabled once enabled.
         :type SniSwitch: int
-        :param KeepaliveEnable: Whether to enable a persistent connection (This parameter can only be configured in HTTP/HTTPS listeners). Valid values: 0: no; 1: yes. Default value: 0
+        :param KeepaliveEnable: Whether to enable a persistent connection. This parameter is applicable only to HTTP and HTTPS listeners.
         :type KeepaliveEnable: int
         """
         self.LoadBalancerId = None
@@ -4095,7 +4100,7 @@ class ModifyRuleRequest(AbstractModel):
         :type ListenerId: str
         :param LocationId: ID of the forwarding rule to be modified.
         :type LocationId: str
-        :param Url: New forwarding path of the forwarding rule. This parameter is not required if the URL does not need to be modified
+        :param Url: New forwarding path of the forwarding rule. This parameter is not required if the URL does not need to be modified.
         :type Url: str
         :param HealthCheck: Health check information
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
@@ -4104,11 +4109,11 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         :type Scheduler: str
         :param SessionExpireTime: Session persistence time
         :type SessionExpireTime: int
-        :param ForwardType: Forwarding protocol between CLB instance and real server. Default value: HTTP. Valid values: HTTP, HTTPS, TRPC.
+        :param ForwardType: Forwarding protocol between CLB instance and real server. Default value: HTTP. Valid values: HTTP, HTTPS, and TRPC.
         :type ForwardType: str
-        :param TrpcCallee: TRPC callee server route, which is required when `ForwardType` is `TRPC`.
+        :param TrpcCallee: TRPC callee server route, which is required when `ForwardType` is "TRPC".
         :type TrpcCallee: str
-        :param TrpcFunc: TRPC calling service API, which is required when `ForwardType` is `TRPC`.
+        :param TrpcFunc: TRPC calling service API, which is required when `ForwardType` is "TRPC".
         :type TrpcFunc: str
         """
         self.LoadBalancerId = None
@@ -4206,7 +4211,7 @@ class ModifyTargetGroupInstancesPortRequest(AbstractModel):
         """
         :param TargetGroupId: Target group ID
         :type TargetGroupId: str
-        :param TargetGroupInstances: Array of servers for which to modify port
+        :param TargetGroupInstances: Array of servers for which to modify ports
         :type TargetGroupInstances: list of TargetGroupInstance
         """
         self.TargetGroupId = None
@@ -4249,7 +4254,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
         """
         :param TargetGroupId: Target group ID
         :type TargetGroupId: str
-        :param TargetGroupInstances: Array of servers for which to modify weight
+        :param TargetGroupInstances: Array of servers for which to modify weights
         :type TargetGroupInstances: list of TargetGroupInstance
         """
         self.TargetGroupId = None
@@ -4298,11 +4303,11 @@ class ModifyTargetPortRequest(AbstractModel):
         :type Targets: list of Target
         :param NewPort: New port of the real server bound to a listener or forwarding rule
         :type NewPort: int
-        :param LocationId: Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url
+        :param LocationId: Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url.
         :type LocationId: str
-        :param Domain: Target rule domain name. This parameter does not take effect if LocationId is specified
+        :param Domain: Target rule domain name. This parameter does not take effect if LocationId is specified.
         :type Domain: str
-        :param Url: Target rule URL. This parameter does not take effect if LocationId is specified
+        :param Url: Target rule URL. This parameter does not take effect if LocationId is specified.
         :type Url: str
         """
         self.LoadBalancerId = None
@@ -4357,13 +4362,13 @@ class ModifyTargetWeightRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerId: CLB listener ID
         :type ListenerId: str
-        :param LocationId: Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url
+        :param LocationId: Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url.
         :type LocationId: str
-        :param Domain: Target rule domain name. This parameter does not take effect if LocationId is specified
+        :param Domain: Target rule domain name. This parameter does not take effect if LocationId is specified.
         :type Domain: str
-        :param Url: Target rule URL. This parameter does not take effect if LocationId is specified
+        :param Url: Target rule URL. This parameter does not take effect if LocationId is specified.
         :type Url: str
-        :param Targets: List of real servers for which to modify the weight
+        :param Targets: List of real servers for which to modify the weights
         :type Targets: list of Target
         :param Weight: New forwarding weight of a real server. Value range: 0-100. Default value: 10. If the Targets.Weight parameter is set, this parameter will not take effect.
         :type Weight: int
@@ -4494,13 +4499,13 @@ class RegisterTargetsRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerId: CLB listener ID
         :type ListenerId: str
-        :param Targets: List of real servers to be bound. Array length limit: 20
+        :param Targets: List of real servers to be bound. Array length limit: 20.
         :type Targets: list of Target
-        :param LocationId: Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url
+        :param LocationId: Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url.
         :type LocationId: str
-        :param Domain: Target forwarding rule domain name. This parameter does not take effect if LocationId is specified
+        :param Domain: Target forwarding rule domain name. This parameter does not take effect if LocationId is specified.
         :type Domain: str
-        :param Url: Target forwarding rule URL. This parameter does not take effect if LocationId is specified
+        :param Url: Target forwarding rule URL. This parameter does not take effect if LocationId is specified.
         :type Url: str
         """
         self.LoadBalancerId = None
@@ -5263,6 +5268,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param EniId: Unique ENI ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EniId: str
+        :param ZoneId: AZ ID of the real server
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ZoneId: int
         """
         self.TargetGroupId = None
         self.Type = None
@@ -5274,6 +5282,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InstanceName = None
         self.RegisteredTime = None
         self.EniId = None
+        self.ZoneId = None
 
 
     def _deserialize(self, params):
@@ -5287,6 +5296,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InstanceName = params.get("InstanceName")
         self.RegisteredTime = params.get("RegisteredTime")
         self.EniId = params.get("EniId")
+        self.ZoneId = params.get("ZoneId")
 
 
 class TargetGroupInfo(AbstractModel):
@@ -5436,13 +5446,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ZoneName: AZ name, such as Guangzhou Zone 1
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ZoneName: str
+        :param ZoneRegion: AZ region, e.g., ap-guangzhou.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ZoneRegion: str
+        :param LocalZone: Whether the AZ is the `LocalZone`, e.g., false.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LocalZone: bool
         """
         self.ZoneId = None
         self.Zone = None
         self.ZoneName = None
+        self.ZoneRegion = None
+        self.LocalZone = None
 
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.Zone = params.get("Zone")
         self.ZoneName = params.get("ZoneName")
+        self.ZoneRegion = params.get("ZoneRegion")
+        self.LocalZone = params.get("LocalZone")

@@ -3766,16 +3766,24 @@ such as 2018120101-test.vod2.mqcloud.com.
         :type Name: str
         :param Url: Log download link, which is valid for 24 hours.
         :type Url: str
+        :param StartTime: Log start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=)
+        :type StartTime: str
+        :param EndTime: Log end time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=)
+        :type EndTime: str
         """
         self.Date = None
         self.Name = None
         self.Url = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.Date = params.get("Date")
         self.Name = params.get("Name")
         self.Url = params.get("Url")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class ClassificationConfigureInfo(AbstractModel):
@@ -6928,12 +6936,18 @@ class DescribeCdnLogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F), which must be after the start time.
         :type EndTime: str
+        :param Limit: Maximum return results of pulling paginated queries. Default value: 100; maximum value: 1000
+        :type Limit: int
+        :param Offset: Page number offset from the beginning of paginated queries. Default value: 0
+        :type Offset: int
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
         self.DomainName = None
         self.StartTime = None
         self.EndTime = None
+        self.Limit = None
+        self.Offset = None
         self.SubAppId = None
 
 
@@ -6941,6 +6955,8 @@ class DescribeCdnLogsRequest(AbstractModel):
         self.DomainName = params.get("DomainName")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -6951,33 +6967,38 @@ class DescribeCdnLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DomesticCdnLogs: Log download list for CDN nodes in Mainland China.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DomesticCdnLogs: list of CdnLogInfo
+        :param TotalCount: Total number of log download links
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type TotalCount: int
         :param OverseaCdnLogs: Log download list for CDN nodes outside Mainland China. If global acceleration is not enabled for the domain name, ignore this parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OverseaCdnLogs: list of CdnLogInfo
+        :param DomesticCdnLogs: Log download list for CDN nodes in Mainland China.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type DomesticCdnLogs: list of CdnLogInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DomesticCdnLogs = None
+        self.TotalCount = None
         self.OverseaCdnLogs = None
+        self.DomesticCdnLogs = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("DomesticCdnLogs") is not None:
-            self.DomesticCdnLogs = []
-            for item in params.get("DomesticCdnLogs"):
-                obj = CdnLogInfo()
-                obj._deserialize(item)
-                self.DomesticCdnLogs.append(obj)
+        self.TotalCount = params.get("TotalCount")
         if params.get("OverseaCdnLogs") is not None:
             self.OverseaCdnLogs = []
             for item in params.get("OverseaCdnLogs"):
                 obj = CdnLogInfo()
                 obj._deserialize(item)
                 self.OverseaCdnLogs.append(obj)
+        if params.get("DomesticCdnLogs") is not None:
+            self.DomesticCdnLogs = []
+            for item in params.get("DomesticCdnLogs"):
+                obj = CdnLogInfo()
+                obj._deserialize(item)
+                self.DomesticCdnLogs.append(obj)
         self.RequestId = params.get("RequestId")
 
 
