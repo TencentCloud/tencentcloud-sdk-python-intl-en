@@ -16,6 +16,27 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CcnInfo(AbstractModel):
+    """CCN information
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountId: CCN account
+        :type AccountId: str
+        :param CcnId: CCN ID
+        :type CcnId: str
+        """
+        self.AccountId = None
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.AccountId = params.get("AccountId")
+        self.CcnId = params.get("CcnId")
+
+
 class CopyFleetRequest(AbstractModel):
     """CopyFleet request structure.
 
@@ -49,7 +70,7 @@ class CopyFleetRequest(AbstractModel):
         :type GameServerSessionProtectionTimeLimit: int
         :param SelectedScalingType: Whether to select scaling. Valid values: SCALING_SELECTED, SCALING_UNSELECTED. Default value: SCALING_UNSELECTED.
         :type SelectedScalingType: str
-        :param SelectedCcnType: Whether to select CCN. Valid values: CCN_SELECTED, CCN_UNSELECTED. Default value: CCN_UNSELECTED.
+        :param SelectedCcnType: Whether to select CCN: CCN_SELECTED_BEFORE_CREATE (associated before creation), CCN_SELECTED_AFTER_CREATE (associated after creation), or CCN_UNSELECTED (not associated); CCN_UNSELECTED by default
         :type SelectedCcnType: str
         :param Tags: Tag list. Up to 50 tags.
         :type Tags: list of Tag
@@ -59,6 +80,8 @@ class CopyFleetRequest(AbstractModel):
         :type DataDiskInfo: list of DiskInfo
         :param SelectedTimerType: Whether to select to replicate the timer policy: TIMER_SELECTED or TIMER_UNSELECTED. The default value is TIMER_UNSELECTED.
         :type SelectedTimerType: str
+        :param CcnInfos: CCN information, including the corresponding CCN account and ID.
+        :type CcnInfos: list of CcnInfo
         """
         self.FleetId = None
         self.CopyNumber = None
@@ -78,6 +101,7 @@ class CopyFleetRequest(AbstractModel):
         self.SystemDiskInfo = None
         self.DataDiskInfo = None
         self.SelectedTimerType = None
+        self.CcnInfos = None
 
 
     def _deserialize(self, params):
@@ -120,6 +144,12 @@ class CopyFleetRequest(AbstractModel):
                 obj._deserialize(item)
                 self.DataDiskInfo.append(obj)
         self.SelectedTimerType = params.get("SelectedTimerType")
+        if params.get("CcnInfos") is not None:
+            self.CcnInfos = []
+            for item in params.get("CcnInfos"):
+                obj = CcnInfo()
+                obj._deserialize(item)
+                self.CcnInfos.append(obj)
 
 
 class CopyFleetResponse(AbstractModel):
@@ -713,6 +743,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param SystemDiskInfo: System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
+        :param RelatedCcnInfos: CCN information
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type RelatedCcnInfos: list of RelatedCcnInfo
         """
         self.AssetId = None
         self.CreationTime = None
@@ -733,6 +766,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.Tags = None
         self.DataDiskInfo = None
         self.SystemDiskInfo = None
+        self.RelatedCcnInfos = None
 
 
     def _deserialize(self, params):
@@ -769,6 +803,12 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         if params.get("SystemDiskInfo") is not None:
             self.SystemDiskInfo = DiskInfo()
             self.SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
+        if params.get("RelatedCcnInfos") is not None:
+            self.RelatedCcnInfos = []
+            for item in params.get("RelatedCcnInfos"):
+                obj = RelatedCcnInfo()
+                obj._deserialize(item)
+                self.RelatedCcnInfos.append(obj)
 
 
 class GameProperty(AbstractModel):
@@ -1458,6 +1498,31 @@ class PutTimerScalingPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RelatedCcnInfo(AbstractModel):
+    """CCN information description
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountId: CCN account
+        :type AccountId: str
+        :param CcnId: CCN ID
+        :type CcnId: str
+        :param AttachType: Status of associated CCN
+        :type AttachType: str
+        """
+        self.AccountId = None
+        self.CcnId = None
+        self.AttachType = None
+
+
+    def _deserialize(self, params):
+        self.AccountId = params.get("AccountId")
+        self.CcnId = params.get("CcnId")
+        self.AttachType = params.get("AttachType")
 
 
 class ResourceCreationLimitPolicy(AbstractModel):

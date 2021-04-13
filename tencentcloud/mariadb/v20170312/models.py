@@ -1417,10 +1417,18 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         """
         :param Groups: Security group details
         :type Groups: list of SecurityGroup
+        :param VIP: Instance VIP
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VIP: str
+        :param VPort: Instance port
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VPort: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Groups = None
+        self.VIP = None
+        self.VPort = None
         self.RequestId = None
 
 
@@ -1431,6 +1439,8 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.VIP = params.get("VIP")
+        self.VPort = params.get("VPort")
         self.RequestId = params.get("RequestId")
 
 

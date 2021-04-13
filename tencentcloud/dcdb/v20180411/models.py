@@ -1112,10 +1112,18 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         """
         :param Groups: Security group details
         :type Groups: list of SecurityGroup
+        :param VIP: Instance VIP
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VIP: str
+        :param VPort: Instance port
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VPort: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Groups = None
+        self.VIP = None
+        self.VPort = None
         self.RequestId = None
 
 
@@ -1126,6 +1134,8 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.VIP = params.get("VIP")
+        self.VPort = params.get("VPort")
         self.RequestId = params.get("RequestId")
 
 
@@ -1157,17 +1167,21 @@ class DescribeDBSyncModeResponse(AbstractModel):
         :type SyncMode: int
         :param IsModifying: Whether a modification is in progress. 1: yes; 0: no.
         :type IsModifying: int
+        :param CurrentSyncMode: Current sync mode. Valid values: `0` (async), `1` (sync).
+        :type CurrentSyncMode: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.SyncMode = None
         self.IsModifying = None
+        self.CurrentSyncMode = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.SyncMode = params.get("SyncMode")
         self.IsModifying = params.get("IsModifying")
+        self.CurrentSyncMode = params.get("CurrentSyncMode")
         self.RequestId = params.get("RequestId")
 
 
@@ -2177,23 +2191,23 @@ class Project(AbstractModel):
         """
         :param ProjectId: Project ID
         :type ProjectId: int
-        :param OwnerUin: The `uin` of the resource owner (root account)
+        :param OwnerUin: The UIN of the resource owner (root account)
         :type OwnerUin: int
         :param AppId: Application ID
         :type AppId: int
         :param Name: Project name
         :type Name: str
-        :param CreatorUin: Creator `uin`
+        :param CreatorUin: Creator UIN
         :type CreatorUin: int
         :param SrcPlat: Source platform
         :type SrcPlat: str
-        :param SrcAppId: Source `AppId`
+        :param SrcAppId: Source APPID
         :type SrcAppId: int
-        :param Status: Project status. 0: normal; -1: disabled; 3: default project.
+        :param Status: Project status. Valid values: `0` (normal), `-1` (disabled), `3` (default project).
         :type Status: int
         :param CreateTime: Creation time
         :type CreateTime: str
-        :param IsDefault: Whether it is the default project. 1: yes; 0: no.
+        :param IsDefault: Whether it is the default project. Valid values: `1` (yes), `0` (no).
         :type IsDefault: int
         :param Info: Description
         :type Info: str

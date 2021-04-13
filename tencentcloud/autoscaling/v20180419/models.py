@@ -648,6 +648,10 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param InstanceChargePrepaid: Sets prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        :param DiskTypePolicy: Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
+<br><li>ORIGINAL: uses the configured cloud disk type
+<br><li>AUTOMATIC: automatically chooses an available cloud disk type
+        :type DiskTypePolicy: str
         """
         self.LaunchConfigurationName = None
         self.ImageId = None
@@ -669,6 +673,7 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
         self.HostNameSettings = None
         self.InstanceNameSettings = None
         self.InstanceChargePrepaid = None
+        self.DiskTypePolicy = None
 
 
     def _deserialize(self, params):
@@ -718,6 +723,7 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.DiskTypePolicy = params.get("DiskTypePolicy")
 
 
 class CreateLaunchConfigurationResponse(AbstractModel):
@@ -3007,6 +3013,14 @@ To modify it or even its subfield, you should specify all the subfields again.
 This parameter is required when changing the instance billing mode to spot instance. It will be automatically discarded after the spot instance is changed to another instance billing mode.
 To modify it or even its subfield, you should specify all the subfields again.
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        :param DiskTypePolicy: Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
+<br><li>ORIGINAL: uses the configured cloud disk type
+<br><li>AUTOMATIC: automatically chooses an available cloud disk type
+        :type DiskTypePolicy: str
+        :param SystemDisk: 
+        :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        :param DataDisks: 
+        :type DataDisks: list of DataDisk
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3019,6 +3033,9 @@ To modify it or even its subfield, you should specify all the subfields again.
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
         self.InstanceMarketOptions = None
+        self.DiskTypePolicy = None
+        self.SystemDisk = None
+        self.DataDisks = None
 
 
     def _deserialize(self, params):
@@ -3039,6 +3056,16 @@ To modify it or even its subfield, you should specify all the subfields again.
         if params.get("InstanceMarketOptions") is not None:
             self.InstanceMarketOptions = InstanceMarketOptionsRequest()
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.DiskTypePolicy = params.get("DiskTypePolicy")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
 
 
 class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
@@ -3857,6 +3884,10 @@ If a model in InstanceTypes does not exist or has been deactivated, a verificati
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param InstanceChargePrepaid: Advance payment mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        :param DiskTypePolicy: Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
+<br><li>ORIGINAL: uses the configured cloud disk type
+<br><li>AUTOMATIC: automatically chooses an available cloud disk type
+        :type DiskTypePolicy: str
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3878,6 +3909,7 @@ If a model in InstanceTypes does not exist or has been deactivated, a verificati
         self.HostNameSettings = None
         self.InstanceNameSettings = None
         self.InstanceChargePrepaid = None
+        self.DiskTypePolicy = None
 
 
     def _deserialize(self, params):
@@ -3927,6 +3959,7 @@ If a model in InstanceTypes does not exist or has been deactivated, a verificati
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.DiskTypePolicy = params.get("DiskTypePolicy")
 
 
 class UpgradeLaunchConfigurationResponse(AbstractModel):
