@@ -261,7 +261,7 @@ class CdbClient(AbstractClient):
         2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;
         3. MySQL v5.5, v5.6, v5.7, and v8.0 are supported;
         4. Source instances, disaster recovery instances, and read-only replicas can be created;
-        5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance will be initialized.
+        5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance (excluding basic instances) will be initialized.
 
         :param request: Request instance for CreateDBInstanceHour.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceHourRequest`

@@ -708,6 +708,35 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DynamicPodSpec(AbstractModel):
+    """Pod floating specification
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestCpu: Minimum number of CPU cores
+        :type RequestCpu: float
+        :param LimitCpu: Maximum number of CPU cores
+        :type LimitCpu: float
+        :param RequestMemory: Minimum memory in MB
+        :type RequestMemory: float
+        :param LimitMemory: Maximum memory in MB
+        :type LimitMemory: float
+        """
+        self.RequestCpu = None
+        self.LimitCpu = None
+        self.RequestMemory = None
+        self.LimitMemory = None
+
+
+    def _deserialize(self, params):
+        self.RequestCpu = params.get("RequestCpu")
+        self.LimitCpu = params.get("LimitCpu")
+        self.RequestMemory = params.get("RequestMemory")
+        self.LimitMemory = params.get("LimitMemory")
+
+
 class EmrProductConfigOutter(AbstractModel):
     """EMR product configuration
 
@@ -1450,6 +1479,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param HardwareResourceType: Resource type. Valid values: host, pod
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HardwareResourceType: str
+        :param IsDynamicSpec: Whether floating specification is used. `1`: yes; `0`: no
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type IsDynamicSpec: int
+        :param DynamicPodSpec: Floating specification in JSON string
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DynamicPodSpec: str
         """
         self.AppId = None
         self.SerialNo = None
@@ -1488,6 +1523,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Tags = None
         self.AutoFlag = None
         self.HardwareResourceType = None
+        self.IsDynamicSpec = None
+        self.DynamicPodSpec = None
 
 
     def _deserialize(self, params):
@@ -1540,6 +1577,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.Tags.append(obj)
         self.AutoFlag = params.get("AutoFlag")
         self.HardwareResourceType = params.get("HardwareResourceType")
+        self.IsDynamicSpec = params.get("IsDynamicSpec")
+        self.DynamicPodSpec = params.get("DynamicPodSpec")
 
 
 class OutterResource(AbstractModel):
@@ -1649,6 +1688,31 @@ class Placement(AbstractModel):
         self.Zone = params.get("Zone")
 
 
+class PodParameter(AbstractModel):
+    """Custom pod permission and parameter
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: TKE or EKS cluster ID
+        :type ClusterId: str
+        :param Config: Custom permission
+        :type Config: str
+        :param Parameter: Custom parameter
+        :type Parameter: str
+        """
+        self.ClusterId = None
+        self.Config = None
+        self.Parameter = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Config = params.get("Config")
+        self.Parameter = params.get("Parameter")
+
+
 class PodSpec(AbstractModel):
     """Resource description for container resource expansion
 
@@ -1672,6 +1736,11 @@ class PodSpec(AbstractModel):
         :type CpuType: str
         :param PodVolumes: Pod node data directory mounting information.
         :type PodVolumes: list of PodVolume
+        :param IsDynamicSpec: Whether floating specification is used. `1`: yes; `0`: no
+        :type IsDynamicSpec: int
+        :param DynamicPodSpec: Floating specification
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
         """
         self.ResourceProviderIdentifier = None
         self.ResourceProviderType = None
@@ -1681,6 +1750,8 @@ class PodSpec(AbstractModel):
         self.DataVolumes = None
         self.CpuType = None
         self.PodVolumes = None
+        self.IsDynamicSpec = None
+        self.DynamicPodSpec = None
 
 
     def _deserialize(self, params):
@@ -1697,6 +1768,10 @@ class PodSpec(AbstractModel):
                 obj = PodVolume()
                 obj._deserialize(item)
                 self.PodVolumes.append(obj)
+        self.IsDynamicSpec = params.get("IsDynamicSpec")
+        if params.get("DynamicPodSpec") is not None:
+            self.DynamicPodSpec = DynamicPodSpec()
+            self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
 
 
 class PodVolume(AbstractModel):
@@ -2013,6 +2088,10 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type ClickHouseClusterType: str
         :param YarnNodeLabel: YARN node label specified for rule-based scaling-out
         :type YarnNodeLabel: str
+        :param PodParameter: Custom pod permission and parameter
+        :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodParameter`
+        :param MasterCount: Number of master nodes to be added
+        :type MasterCount: int
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -2033,6 +2112,8 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.ClickHouseClusterName = None
         self.ClickHouseClusterType = None
         self.YarnNodeLabel = None
+        self.PodParameter = None
+        self.MasterCount = None
 
 
     def _deserialize(self, params):
@@ -2067,6 +2148,10 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.ClickHouseClusterName = params.get("ClickHouseClusterName")
         self.ClickHouseClusterType = params.get("ClickHouseClusterType")
         self.YarnNodeLabel = params.get("YarnNodeLabel")
+        if params.get("PodParameter") is not None:
+            self.PodParameter = PodParameter()
+            self.PodParameter._deserialize(params.get("PodParameter"))
+        self.MasterCount = params.get("MasterCount")
 
 
 class ScaleOutInstanceResponse(AbstractModel):

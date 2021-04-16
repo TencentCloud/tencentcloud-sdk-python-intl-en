@@ -712,7 +712,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type SecurityGroup: list of str
         :param ResourceTags: Information of the cloned instance tag
         :type ResourceTags: list of TagInfo
-        :param Cpu: CPU core quantity of the cloned instance, which is equal to or larger than that of the original instance
+        :param Cpu: The number of CPU cores of the cloned instance. It should be equal to (by default) or larger than that of the original instance.
         :type Cpu: int
         :param ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0.
         :type ProtectMode: int
@@ -1145,7 +1145,7 @@ class CreateRoInstanceIpRequest(AbstractModel):
         :type InstanceId: str
         :param UniqSubnetId: Subnet descriptor, such as "subnet-1typ0s7d".
         :type UniqSubnetId: str
-        :param UniqVpcId: VPC descriptor, such as "vpc-xxx". If this field is passed in, `UniqSubnetId` will be required.
+        :param UniqVpcId: VPC descriptor, such as "vpc-a23yt67j". If this field is passed in, `UniqSubnetId` will be required.
         :type UniqVpcId: str
         """
         self.InstanceId = None
@@ -1249,6 +1249,27 @@ class DatabasePrivilege(AbstractModel):
     def _deserialize(self, params):
         self.Privileges = params.get("Privileges")
         self.Database = params.get("Database")
+
+
+class DatabasesWithCharacterLists(AbstractModel):
+    """Database name and character set
+
+    """
+
+    def __init__(self):
+        """
+        :param DatabaseName: Database name
+        :type DatabaseName: str
+        :param CharacterSet: Character set
+        :type CharacterSet: str
+        """
+        self.DatabaseName = None
+        self.CharacterSet = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        self.CharacterSet = params.get("CharacterSet")
 
 
 class DeleteAccountsRequest(AbstractModel):
@@ -2126,9 +2147,9 @@ class DescribeCloneListRequest(AbstractModel):
         """
         :param InstanceId: ID of the original instance. This parameter is used to query the clone task list of a specific original instance.
         :type InstanceId: str
-        :param Offset: Paginated query offset
+        :param Offset: Paginated query offset. Default value: `0`.
         :type Offset: int
-        :param Limit: The number of results per page in paginated queries
+        :param Limit: Number of results per page. Default value: `20`.
         :type Limit: int
         """
         self.InstanceId = None
@@ -2303,10 +2324,14 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         :type DeployMode: int
         :param Zone: Instance AZ information in the format of "ap-shanghai-1".
         :type Zone: str
-        :param SlaveConfig: Configuration information of the secondary database.
+        :param SlaveConfig: Configurations of the replica node
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type SlaveConfig: :class:`tencentcloud.cdb.v20170320.models.SlaveConfig`
-        :param BackupConfig: Configuration information of secondary database 2 of a strong sync instance.
+        :param BackupConfig: Configurations of the second replica node of a strong-sync instance
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type BackupConfig: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
+        :param Switched: This parameter is only available for multi-AZ instances. It indicates whether the source AZ is the same as the one specified upon purchase. `true`: not the same, `false`: the same.
+        :type Switched: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2315,6 +2340,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         self.Zone = None
         self.SlaveConfig = None
         self.BackupConfig = None
+        self.Switched = None
         self.RequestId = None
 
 
@@ -2328,6 +2354,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         if params.get("BackupConfig") is not None:
             self.BackupConfig = BackupConfig()
             self.BackupConfig._deserialize(params.get("BackupConfig"))
+        self.Switched = params.get("Switched")
         self.RequestId = params.get("RequestId")
 
 
@@ -2860,17 +2887,26 @@ class DescribeDatabasesResponse(AbstractModel):
         :type TotalCount: int
         :param Items: Information of an instance.
         :type Items: list of str
+        :param DatabaseList: Database name and character set
+        :type DatabaseList: list of DatabasesWithCharacterLists
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TotalCount = None
         self.Items = None
+        self.DatabaseList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
         self.Items = params.get("Items")
+        if params.get("DatabaseList") is not None:
+            self.DatabaseList = []
+            for item in params.get("DatabaseList"):
+                obj = DatabasesWithCharacterLists()
+                obj._deserialize(item)
+                self.DatabaseList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3245,12 +3281,14 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type TemplateId: int
         :param Name: Parameter template name.
         :type Name: str
-        :param EngineVersion: Parameter template description
+        :param EngineVersion: Database engine version specified in the parameter template
         :type EngineVersion: str
         :param TotalCount: Number of parameters in the parameter template
         :type TotalCount: int
         :param Items: Parameter details
         :type Items: list of ParameterDetail
+        :param Description: Parameter template description
+        :type Description: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3259,6 +3297,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         self.EngineVersion = None
         self.TotalCount = None
         self.Items = None
+        self.Description = None
         self.RequestId = None
 
 
@@ -3273,6 +3312,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
                 obj = ParameterDetail()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
 
 
@@ -3338,10 +3378,13 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         """
         :param Groups: Security group details.
         :type Groups: list of SecurityGroup
+        :param TotalCount: Number of security group rules
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Groups = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -3352,6 +3395,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4572,8 +4616,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ZoneId: AZ ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ZoneId: int
-        :param InstanceNodes: The number of nodes
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param InstanceNodes: Number of nodes
         :type InstanceNodes: int
         """
         self.WanStatus = None
@@ -5528,7 +5571,7 @@ class ModifyRoGroupInfoRequest(AbstractModel):
         :type RoGroupInfo: :class:`tencentcloud.cdb.v20170320.models.RoGroupAttr`
         :param RoWeightValues: Weights of instances in RO group. If the weighting mode of an RO group is changed to custom mode, this parameter must be set, and a weight value needs to be set for each RO instance.
         :type RoWeightValues: list of RoWeightValue
-        :param IsBalanceRoLoad: Whether to rebalance the loads of RO instances in the RO group. Supported values include `1` (yes) and `0` (no). The default value is `0`. Please note that if this value is set to `1`, connections to the RO instances in the RO group will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases.
+        :param IsBalanceRoLoad: Whether to rebalance the loads of read-only replicas in the RO group. Valid values: `1` (yes), `0` (no). Default value: `0`. If this parameter is set to `1`, connections to the read-only replicas in the RO group will be interrupted transiently. Please ensure that your application has a reconnection mechanism.
         :type IsBalanceRoLoad: int
         """
         self.RoGroupId = None
@@ -6658,11 +6701,11 @@ class SellConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Device: Device type
+        :param Device: (Disused) Device type
         :type Device: str
-        :param Type: Purchasable specification description
+        :param Type: (Disused) Purchasable specification description 
         :type Type: str
-        :param CdbType: Instance type
+        :param CdbType: (Disused) Instance type 
         :type CdbType: str
         :param Memory: Memory size in MB
         :type Memory: int
@@ -6682,10 +6725,16 @@ class SellConfig(AbstractModel):
         :type Iops: int
         :param Info: Application scenario description
         :type Info: str
-        :param Status: Status value
+        :param Status: Status. Value `0` indicates that this specification is purchasable.
         :type Status: int
-        :param Tag: Tag value
+        :param Tag: (Disused) Tag value
         :type Tag: int
+        :param DeviceType: Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type DeviceType: str
+        :param DeviceTypeName: Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type DeviceTypeName: str
         """
         self.Device = None
         self.Type = None
@@ -6701,6 +6750,8 @@ class SellConfig(AbstractModel):
         self.Info = None
         self.Status = None
         self.Tag = None
+        self.DeviceType = None
+        self.DeviceTypeName = None
 
 
     def _deserialize(self, params):
@@ -6718,6 +6769,8 @@ class SellConfig(AbstractModel):
         self.Info = params.get("Info")
         self.Status = params.get("Status")
         self.Tag = params.get("Tag")
+        self.DeviceType = params.get("DeviceType")
+        self.DeviceTypeName = params.get("DeviceTypeName")
 
 
 class SellType(AbstractModel):

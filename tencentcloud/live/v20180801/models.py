@@ -6711,6 +6711,8 @@ class PushQualityData(AbstractModel):
         :type MetaAudioRate: int
         :param MateFps: Frame rate in `metadata`.
         :type MateFps: int
+        :param StreamParam: Push parameter
+        :type StreamParam: str
         """
         self.Time = None
         self.PushDomain = None
@@ -6731,6 +6733,7 @@ class PushQualityData(AbstractModel):
         self.MetaVideoRate = None
         self.MetaAudioRate = None
         self.MateFps = None
+        self.StreamParam = None
 
 
     def _deserialize(self, params):
@@ -6753,6 +6756,7 @@ class PushQualityData(AbstractModel):
         self.MetaVideoRate = params.get("MetaVideoRate")
         self.MetaAudioRate = params.get("MetaAudioRate")
         self.MateFps = params.get("MateFps")
+        self.StreamParam = params.get("StreamParam")
 
 
 class RecordParam(AbstractModel):
