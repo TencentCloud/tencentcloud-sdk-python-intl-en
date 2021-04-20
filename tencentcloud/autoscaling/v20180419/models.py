@@ -348,6 +348,45 @@ class AutoScalingNotification(AbstractModel):
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
 
 
+class ClearLaunchConfigurationAttributesRequest(AbstractModel):
+    """ClearLaunchConfigurationAttributes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LaunchConfigurationId: Launch configuration ID
+        :type LaunchConfigurationId: str
+        :param ClearDataDisks: Whether to clear data disk information. This parameter is optional and the default value is `false`.
+Setting it to `true` will clear data disks, which means that CVM newly created on this launch configuration will have no data disk.
+        :type ClearDataDisks: bool
+        """
+        self.LaunchConfigurationId = None
+        self.ClearDataDisks = None
+
+
+    def _deserialize(self, params):
+        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        self.ClearDataDisks = params.get("ClearDataDisks")
+
+
+class ClearLaunchConfigurationAttributesResponse(AbstractModel):
+    """ClearLaunchConfigurationAttributes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CompleteLifecycleActionRequest(AbstractModel):
     """CompleteLifecycleAction request structure.
 
@@ -3017,9 +3056,9 @@ To modify it or even its subfield, you should specify all the subfields again.
 <br><li>ORIGINAL: uses the configured cloud disk type
 <br><li>AUTOMATIC: automatically chooses an available cloud disk type
         :type DiskTypePolicy: str
-        :param SystemDisk: 
+        :param SystemDisk: Instance system disk configurations
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param DataDisks: 
+        :param DataDisks: Instance data disk configurations. Up to 11 data disks can be specified and will be collectively modified. Please provide all the new values for the modification.
         :type DataDisks: list of DataDisk
         """
         self.LaunchConfigurationId = None

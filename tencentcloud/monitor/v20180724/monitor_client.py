@@ -503,7 +503,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeBaseMetrics(self, request):
-        """This API is used to get the details of basic metrics.
+        """This API is used to get the attributes of basic metrics.
 
         :param request: Request instance for DescribeBaseMetrics.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBaseMetricsRequest`
@@ -813,7 +813,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyCondition(self, request):
-        """This API is used to edit the trigger condition of an alarm policy.
+        """This API is used to modify the trigger condition of an alarm policy.
 
         :param request: Request instance for ModifyAlarmPolicyCondition.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyConditionRequest`

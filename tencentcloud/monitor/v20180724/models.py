@@ -82,7 +82,7 @@ class AlarmHistory(AbstractModel):
         :type ReceiverGroups: list of int
         :param NoticeWays: Alarm channel list. Valid values: SMS (SMS), EMAIL (email), CALL (phone), WECHAT (WeChat)
         :type NoticeWays: list of str
-        :param OriginId: Compatible Alarm 1.0 policy group ID
+        :param OriginId: Alarm policy ID, which can be used when you call APIs ([BindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40421?from_cn_redirect=1), [UnBindingAllPolicyObject](https://intl.cloud.tencent.com/document/product/248/40568?from_cn_redirect=1), [UnBindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40567?from_cn_redirect=1)) to bind/unbind instances or instance groups to/from an alarm policy
         :type OriginId: str
         :param AlarmType: Alarm type
         :type AlarmType: str
@@ -92,6 +92,9 @@ class AlarmHistory(AbstractModel):
         :type Region: str
         :param PolicyExists: Whether the policy exists. Valid values: 0 (no), 1 (yes)
         :type PolicyExists: int
+        :param MetricsInfo: Metric information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MetricsInfo: list of AlarmHistoryMetric
         """
         self.AlarmId = None
         self.MonitorType = None
@@ -115,6 +118,7 @@ class AlarmHistory(AbstractModel):
         self.EventId = None
         self.Region = None
         self.PolicyExists = None
+        self.MetricsInfo = None
 
 
     def _deserialize(self, params):
@@ -145,6 +149,45 @@ class AlarmHistory(AbstractModel):
         self.EventId = params.get("EventId")
         self.Region = params.get("Region")
         self.PolicyExists = params.get("PolicyExists")
+        if params.get("MetricsInfo") is not None:
+            self.MetricsInfo = []
+            for item in params.get("MetricsInfo"):
+                obj = AlarmHistoryMetric()
+                obj._deserialize(item)
+                self.MetricsInfo.append(obj)
+
+
+class AlarmHistoryMetric(AbstractModel):
+    """Metric information of alarm records
+
+    """
+
+    def __init__(self):
+        """
+        :param QceNamespace: Namespace used to query data by Tencent Cloud service monitoring type
+        :type QceNamespace: str
+        :param MetricName: Metric name
+        :type MetricName: str
+        :param Period: Statistical period
+        :type Period: int
+        :param Value: Value triggering alarm
+        :type Value: str
+        :param Description: Metric display name
+        :type Description: str
+        """
+        self.QceNamespace = None
+        self.MetricName = None
+        self.Period = None
+        self.Value = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.QceNamespace = params.get("QceNamespace")
+        self.MetricName = params.get("MetricName")
+        self.Period = params.get("Period")
+        self.Value = params.get("Value")
+        self.Description = params.get("Description")
 
 
 class AlarmNotice(AbstractModel):
@@ -483,11 +526,11 @@ class AlarmPolicyRule(AbstractModel):
 
     def __init__(self):
         """
-        :param MetricName: Metric name
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MetricName: Metric name or event name. The supported metrics can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1) and the supported events via [DescribeAlarmEvents](https://intl.cloud.tencent.com/document/product/248/51284?from_cn_redirect=1).
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type MetricName: str
-        :param Period: Statistical period in seconds
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Period: Statistical period in seconds. The valid values can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type Period: int
         :param Operator: Operator
 intelligent = intelligent detection without threshold
@@ -497,23 +540,24 @@ gt = greater than
 le = less than or equal to
 lt = less than
 ne = not equal to
-day_increase = daily increase
-day_decrease = daily decrease
-day_wave = daily fluctuation
-week_increase = weekly increase
-week_decrease = weekly decrease
-week_wave = weekly fluctuation
-cycle_increase = periodical increase
-cycle_decrease = periodical decrease
-cycle_wave = periodical fluctuation
+day_increase = day-on-day increase
+day_decrease = day-on-day decrease
+day_wave = day-on-day fluctuation
+week_increase = week-on-week increase
+week_decrease = week-on-week decrease
+week_wave = week-on-week fluctuation
+cycle_increase = cyclical increase
+cycle_decrease = cyclical decrease
+cycle_wave = cyclical fluctuation
 re = regex match
-Note: this field may return null, indicating that no valid values can be obtained.
+The valid values can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type Operator: str
-        :param Value: Threshold
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Value: Threshold. The valid value range can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type Value: str
-        :param ContinuePeriod: Number of cycles for continuous notification. Valid values: 1 (1 cycle), 2 (2 cycles), and so on.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ContinuePeriod: Number of periods. `1`: continue for one period; `2`: continue for two periods; and so on. The valid values can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type ContinuePeriod: int
         :param NoticeFrequency: Alarm interval in seconds. Valid values: 0 (do not repeat), 300 (alarm once every 5 minutes), 600 (alarm once every 10 minutes), 900 (alarm once every 15 minutes), 1800 (alarm once every 30 minutes), 3600 (alarm once every hour), 7200 (alarm once every 2 hours), 10800 (alarm once every 3 hours), 21600 (alarm once every 6 hours),  43200 (alarm once every 12 hours), 86400 (alarm once every day)
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -530,8 +574,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Unit: Unit, which is used in the output parameter
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Unit: str
-        :param RuleType: Trigger condition type. Valid values: STATIC (static threshold), DYNAMIC (dynamic threshold)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param RuleType: Trigger condition type. `STATIC`: static threshold; `dynamic`: dynamic threshold. If you do not specify this parameter when creating or editing a policy, `STATIC` is used by default.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type RuleType: str
         """
         self.MetricName = None
@@ -597,7 +641,9 @@ class BindingPolicyObjectDimension(AbstractModel):
         :type Region: str
         :param RegionId: Region ID.
         :type RegionId: int
-        :param Dimensions: Dimensions.
+        :param Dimensions: Instance dimension information in the following format:
+{"unInstanceId":"ins-00jvv9mo"}. The dimension information varies by Tencent Cloud services. For more information, please see:
+[Dimension List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)
         :type Dimensions: str
         :param EventDimensions: Event dimensions.
         :type EventDimensions: str
@@ -622,7 +668,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: Policy group ID. If `PolicyId` is specified, you can pass any value to this field.
+        :param GroupId: Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., 0, can be passed in.
         :type GroupId: int
         :param Module: Required. The value is fixed to monitor.
         :type Module: str
@@ -630,7 +676,7 @@ class BindingPolicyObjectRequest(AbstractModel):
         :type InstanceGroupId: int
         :param Dimensions: Dimensions of an object to be bound.
         :type Dimensions: list of BindingPolicyObjectDimension
-        :param PolicyId: Alarm policy ID. If this field is used, you can pass any value to `GroupId`.
+        :param PolicyId: Alarm policy ID. If this parameter is used, `GroupId` will be ignored.
         :type PolicyId: str
         """
         self.GroupId = None
@@ -828,19 +874,21 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type PolicyName: str
         :param MonitorType: Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
         :type MonitorType: str
-        :param Namespace: Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API
+        :param Namespace: Type of alarm policy, which can be obtained via [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1). An example value is `cvm_device`.
         :type Namespace: str
         :param Remark: Remarks with up to 100 letters, digits, underscores, and hyphens
         :type Remark: str
         :param Enable: Whether to enable. Valid values: 0 (no), 1 (yes). Default value: 1. This parameter can be left empty
         :type Enable: int
-        :param ProjectId: Project ID. Valid values: -1 (no project), 0 (default project). Default value: -1. This parameter can be left empty
+        :param ProjectId: Project ID. For products with different projects, a value other than `-1` must be passed in. `-1`: no project; `0`: default project. If no value is passed in, `-1` will be used. The supported project IDs can be viewed on the [**Account Center** > **Project Management**](https://console.cloud.tencent.com/project) page of the console.
         :type ProjectId: int
-        :param Condition: Metric trigger condition
+        :param ConditionTemplateId: ID of trigger condition template. This parameter can be left empty.
+        :type ConditionTemplateId: int
+        :param Condition: Metric trigger condition. The supported metrics can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
         :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
-        :param EventCondition: Event trigger condition
+        :param EventCondition: Event trigger condition. The supported events can be queried via [DescribeAlarmEvents](https://intl.cloud.tencent.com/document/product/248/51284?from_cn_redirect=1).
         :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
-        :param NoticeIds: List of notification rule IDs, which is obtained through the `DescribeAlarmNotices` API
+        :param NoticeIds: List of notification rule IDs, which can be obtained via [DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1)
         :type NoticeIds: list of str
         :param TriggerTasks: Triggered task list
         :type TriggerTasks: list of AlarmPolicyTriggerTask
@@ -852,6 +900,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self.Remark = None
         self.Enable = None
         self.ProjectId = None
+        self.ConditionTemplateId = None
         self.Condition = None
         self.EventCondition = None
         self.NoticeIds = None
@@ -866,6 +915,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self.Remark = params.get("Remark")
         self.Enable = params.get("Enable")
         self.ProjectId = params.get("ProjectId")
+        self.ConditionTemplateId = params.get("ConditionTemplateId")
         if params.get("Condition") is not None:
             self.Condition = AlarmPolicyCondition()
             self.Condition._deserialize(params.get("Condition"))
@@ -890,7 +940,7 @@ class CreateAlarmPolicyResponse(AbstractModel):
         """
         :param PolicyId: Alarm policy ID
         :type PolicyId: str
-        :param OriginId: Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)
+        :param OriginId: Alarm policy ID, which can be used when you call APIs ([BindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40421?from_cn_redirect=1), [UnBindingAllPolicyObject](https://intl.cloud.tencent.com/document/product/248/40568?from_cn_redirect=1), [UnBindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40567?from_cn_redirect=1)) to bind/unbind instances or instance groups to/from an alarm policy
         :type OriginId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1424,9 +1474,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type PageSize: int
         :param Order: Sort by the first occurrence time in descending order by default. Valid values: ASC (ascending), DESC (descending)
         :type Order: str
-        :param StartTime: Start time, which is the timestamp exactly one day ago
+        :param StartTime: Start time, which corresponds to `FirstOccurTime` (time when an alarm first occurred). The default value is the timestamp of a day earlier.
         :type StartTime: int
-        :param EndTime: End time, which is the current timestamp by default
+        :param EndTime: End time, which corresponds to `FirstOccurTime` (time when an alarm first occurred). The default value is the current timestamp.
         :type EndTime: int
         :param MonitorTypes: Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default
         :type MonitorTypes: list of str
@@ -1764,29 +1814,42 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type PolicyName: str
         :param MonitorTypes: Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default
         :type MonitorTypes: list of str
-        :param Namespaces: Filter by namespace
+        :param Namespaces: Filter by namespace. For the values of different policy types, please see:
+[Policy Type List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)
         :type Namespaces: list of str
-        :param Dimensions: Alarm object list
+        :param Dimensions: Alarm object list. The outer array corresponds to multiple instances.
+Each inner array corresponds to one instance, where `object` corresponds to the dimension information of the instance. The format is as follows:
+[
+	[{"name":"unInstanceId","value":"ins-qr888845g"}],
+	[{"name":"unInstanceId","value":"ins-qr8d555g"}]
+	...
+]
+For the samples for different Tencent Cloud services, please see:
+[Dimension List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)
         :type Dimensions: str
-        :param ReceiverUids: Search by recipient
+        :param ReceiverUids: Search by recipient `uid`, which should be queried by calling the CAM API. For more information, please see:
+[ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1)
         :type ReceiverUids: list of int
-        :param ReceiverGroups: Search by recipient group
+        :param ReceiverGroups: Search by recipient group `uid`, which should be queried by calling the CAM API. For more information, please see:
+[ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1)
         :type ReceiverGroups: list of int
         :param PolicyType: Filter by default policy. Valid values: DEFAULT (display default policy), NOT_DEFAULT (display non-default policies). If this parameter is left empty, all policies will be displayed
         :type PolicyType: list of str
-        :param Field: Sort by field
+        :param Field: Sort by field. For example, to sort by the last modification time, use Field: "UpdateTime".
         :type Field: str
         :param Order: Sort order. Valid values: ASC (ascending), DESC (descending)
         :type Order: str
-        :param ProjectIds: Project ID array
+        :param ProjectIds: ID array of the policy project, which can be viewed on the following page:
+[Project Management](https://console.cloud.tencent.com/project)
         :type ProjectIds: list of int
-        :param NoticeIds: Alarm notification ID list
+        :param NoticeIds: ID list of the notification template, which can be obtained by querying the notification template list.
+[DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1)
         :type NoticeIds: list of str
         :param RuleTypes: Filter by trigger condition. Valid values: STATIC (display policies with static threshold), DYNAMIC (display policies with dynamic threshold). If this parameter is left empty, all policies will be displayed
         :type RuleTypes: list of str
-        :param Enable: Status. Valid values: 1 (enabled), 0 (disabled)
+        :param Enable: Filter by alarm status. Valid values: [1]: enabled; [0]: disabled; [0, 1]: all
         :type Enable: list of int
-        :param NotBindingNoticeRule: Indicates whether the notification rule is configured. 1: not configured; 0: configured
+        :param NotBindingNoticeRule: If `1` is passed in, alarm policies with no notification rules configured are queried. If it is left empty or other values are passed in, all alarm policies are queried.
         :type NotBindingNoticeRule: int
         """
         self.Module = None
@@ -3756,11 +3819,11 @@ class DescribeProductEventListRequest(AbstractModel):
         :type ProductName: list of str
         :param EventName: Filter by product name. For example, "guest_reboot" indicates server restart.
         :type EventName: list of str
-        :param InstanceId: Affected object, such as ins-19708ino.
+        :param InstanceId: Affected object, such as "ins-19708ino"
         :type InstanceId: list of str
         :param Dimensions: Filter by dimension, such as by public IP: 10.0.0.1.
         :type Dimensions: list of DescribeProductEventListDimensions
-        :param RegionList: Filter by region, such as by gz.
+        :param RegionList: Region filter parameter for service events, such as `gz`. For region abbreviations, please see [Region List](https://intl.cloud.tencent.com/document/product/248/50863?from_cn_redirect=1)
         :type RegionList: list of str
         :param Type: Filter by event type. Valid values: ["status_change","abnormal"], which indicate events whose statuses have changed and events with exceptions respectively.
         :type Type: list of str
@@ -4468,6 +4531,8 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         :type Module: str
         :param PolicyId: Alarm policy ID
         :type PolicyId: str
+        :param ConditionTemplateId: ID of trigger condition template. This parameter can be left empty.
+        :type ConditionTemplateId: int
         :param Condition: Metric trigger condition
         :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
         :param EventCondition: Event trigger condition
@@ -4475,6 +4540,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         """
         self.Module = None
         self.PolicyId = None
+        self.ConditionTemplateId = None
         self.Condition = None
         self.EventCondition = None
 
@@ -4482,6 +4548,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.PolicyId = params.get("PolicyId")
+        self.ConditionTemplateId = params.get("ConditionTemplateId")
         if params.get("Condition") is not None:
             self.Condition = AlarmPolicyCondition()
             self.Condition._deserialize(params.get("Condition"))
@@ -5234,9 +5301,9 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
         """
         :param Module: The value is fixed to monitor.
         :type Module: str
-        :param GroupId: Policy group ID. If `PolicyId` is specified, you can pass any value to this field.
+        :param GroupId: Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., `0`, can be passed in.
         :type GroupId: int
-        :param PolicyId: Alarm policy ID. If this field is used, you can pass any value to `GroupId`.
+        :param PolicyId: Alarm policy ID. If this parameter is used, `GroupId` will be ignored.
         :type PolicyId: str
         """
         self.Module = None
@@ -5276,13 +5343,13 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         """
         :param Module: The value is fixed to monitor.
         :type Module: str
-        :param GroupId: Policy group ID. If `PolicyId` is specified, you can pass any value to this field.
+        :param GroupId: Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., `0`, can be passed in.
         :type GroupId: int
         :param UniqueId: List of unique IDs of the object instances to be deleted. `UniqueId` can be obtained from the output parameter `List` of the [DescribeBindingPolicyObjectList](https://intl.cloud.tencent.com/document/api/248/40570?from_cn_redirect=1) API
         :type UniqueId: list of str
-        :param InstanceGroupId: Instance group ID. The UniqueId parameter is invalid if object instances are deleted by instance group.
+        :param InstanceGroupId: Instance group ID. The `UniqueId` parameter is invalid if object instances are deleted by instance group.
         :type InstanceGroupId: int
-        :param PolicyId: Alarm policy ID. If this field is used, you can pass any value to `GroupId`.
+        :param PolicyId: Alarm policy ID. If this parameter is used, `GroupId` will be ignored.
         :type PolicyId: str
         """
         self.Module = None

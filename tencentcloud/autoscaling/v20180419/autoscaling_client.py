@@ -54,6 +54,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ClearLaunchConfigurationAttributes(self, request):
+        """This API is used to clear specific attributes of the launch configuration.
+
+        :param request: Request instance for ClearLaunchConfigurationAttributes.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ClearLaunchConfigurationAttributesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ClearLaunchConfigurationAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ClearLaunchConfigurationAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ClearLaunchConfigurationAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CompleteLifecycleAction(self, request):
         """This API (CompleteLifecycleAction) is used to complete a lifecycle action.
 

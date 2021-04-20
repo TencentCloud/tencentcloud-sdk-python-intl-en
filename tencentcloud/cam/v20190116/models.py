@@ -1228,6 +1228,49 @@ class DescribeSafeAuthFlagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSubAccountsRequest(AbstractModel):
+    """DescribeSubAccounts request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FilterSubAccountUin: List of sub-user UINs. Up to 50 UINs are supported.
+        :type FilterSubAccountUin: list of int non-negative
+        """
+        self.FilterSubAccountUin = None
+
+
+    def _deserialize(self, params):
+        self.FilterSubAccountUin = params.get("FilterSubAccountUin")
+
+
+class DescribeSubAccountsResponse(AbstractModel):
+    """DescribeSubAccounts response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAccounts: Sub-user list
+        :type SubAccounts: list of SubAccountUser
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SubAccounts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SubAccounts") is not None:
+            self.SubAccounts = []
+            for item in params.get("SubAccounts"):
+                obj = SubAccountUser()
+                obj._deserialize(item)
+                self.SubAccounts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DetachGroupPolicyRequest(AbstractModel):
     """DetachGroupPolicy request structure.
 
@@ -3131,6 +3174,52 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.CountryCode = params.get("CountryCode")
         self.Email = params.get("Email")
         self.CreateTime = params.get("CreateTime")
+
+
+class SubAccountUser(AbstractModel):
+    """Sub-user information
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: Sub-user ID
+        :type Uin: int
+        :param Name: Sub-user name
+        :type Name: str
+        :param Uid: Sub-user UID
+        :type Uid: int
+        :param Remark: Sub-user remarks
+        :type Remark: str
+        :param CreateTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param UserType: User type (1: root account; 2: sub-user; 3: WeCom sub-user; 4: collaborator; 5: message recipient)
+        :type UserType: int
+        :param LastLoginIp: 
+        :type LastLoginIp: str
+        :param LastLoginTime: 
+        :type LastLoginTime: str
+        """
+        self.Uin = None
+        self.Name = None
+        self.Uid = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UserType = None
+        self.LastLoginIp = None
+        self.LastLoginTime = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.Name = params.get("Name")
+        self.Uid = params.get("Uid")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.UserType = params.get("UserType")
+        self.LastLoginIp = params.get("LastLoginIp")
+        self.LastLoginTime = params.get("LastLoginTime")
 
 
 class UpdateAssumeRolePolicyRequest(AbstractModel):
