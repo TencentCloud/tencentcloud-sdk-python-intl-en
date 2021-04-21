@@ -55,6 +55,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachMediaSubtitles(self, request):
+        """This API is used to associate/disassociate subtitles with/from a media file of a specific adaptive bitrate streaming template ID.
+
+        :param request: Request instance for AttachMediaSubtitles.
+        :type request: :class:`tencentcloud.vod.v20180717.models.AttachMediaSubtitlesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AttachMediaSubtitlesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachMediaSubtitles", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachMediaSubtitlesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CommitUpload(self, request):
         """This API is used to confirm the result of uploading a media file (and cover file) to VOD, store the media information, and return the playback address and ID of the file.
 
@@ -2218,7 +2246,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyMediaInfo(self, request):
-        """This API is used to modify the attributes of a media file, including category, name, description, tag, expiration time, timestamp information, and video cover.
+        """This API is used to modify the attributes of a media file, including category, name, description, tag, expiration time, timestamp information, video thumbnail, and subtitle information.
 
         :param request: Request instance for ModifyMediaInfo.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyMediaInfoRequest`

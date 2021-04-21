@@ -3525,6 +3525,54 @@ There can be up to 10 tags, each with a length limit of 16 characters.
         self.LabelSet = params.get("LabelSet")
 
 
+class AttachMediaSubtitlesRequest(AbstractModel):
+    """AttachMediaSubtitles request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: Unique ID of the media file
+        :type FileId: str
+        :param Operation: Operation. Valid values:
+<li>`Attach`: associates subtitles.</li>
+<li>`Detach`: disassociates subtitles.</li>
+        :type Operation: str
+        :param AdaptiveDynamicStreamingDefinition: [Adaptive bitrate streaming template ID](https://intl.cloud.tencent.com/document/product/266/34071?from_cn_redirect=1#zsy)
+        :type AdaptiveDynamicStreamingDefinition: int
+        :param SubtitleIds: Unique IDs of the subtitles
+        :type SubtitleIds: list of str
+        """
+        self.FileId = None
+        self.Operation = None
+        self.AdaptiveDynamicStreamingDefinition = None
+        self.SubtitleIds = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Operation = params.get("Operation")
+        self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
+        self.SubtitleIds = params.get("SubtitleIds")
+
+
+class AttachMediaSubtitlesResponse(AbstractModel):
+    """AttachMediaSubtitles response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AudioTemplateInfo(AbstractModel):
     """Audio stream configuration parameter
 
@@ -11353,6 +11401,77 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SourceContext = params.get("SourceContext")
 
 
+class MediaSubtitleInput(AbstractModel):
+    """Input parameters of subtile information
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Subtitle name. Length limit: 64 characters
+        :type Name: str
+        :param Language: Subtitle language. Common values:
+<li>`cn`: Chinese</li>
+<li>`ja`: Japanese</li>
+<li>`en-US`: English</li>
+For other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
+        :type Language: str
+        :param Format: Subtitle format. Valid value:
+<li>vtt</li>
+        :type Format: str
+        :param Content: Subtitle content, which is [Base64-encoded](https://tools.ietf.org/html/rfc4648) strings
+        :type Content: str
+        :param Id: Subtitle ID. Its length cannot exceed 16 characters. Uppercase and lowercase letters, numbers, underscores (_), and hyphens (-) are supported. It cannot be the same as the IDs of the existing subtitles in the media file.
+        :type Id: str
+        """
+        self.Name = None
+        self.Language = None
+        self.Format = None
+        self.Content = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Language = params.get("Language")
+        self.Format = params.get("Format")
+        self.Content = params.get("Content")
+        self.Id = params.get("Id")
+
+
+class MediaSubtitleItem(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 
+        :type Id: str
+        :param Name: 
+        :type Name: str
+        :param Language: 
+        :type Language: str
+        :param Format: 
+        :type Format: str
+        :param Url: 
+        :type Url: str
+        """
+        self.Id = None
+        self.Name = None
+        self.Language = None
+        self.Format = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Language = params.get("Language")
+        self.Format = params.get("Format")
+        self.Url = params.get("Url")
+
+
 class MediaTrack(AbstractModel):
     """Track information
 
@@ -12190,6 +12309,13 @@ In the same request, `ClearKeyFrameDescs` and `AddKeyFrameDescs` cannot be prese
         :param ClearTags: The value `1` indicates to delete all tags of the media file. Other values are meaningless.
 In the same request, `ClearTags` and `AddTags` cannot be present at the same time.
         :type ClearTags: int
+        :param AddSubtitles: Information of multiple subtitles to be added. A single media file can have up to 16 subtitles. In the same request, the subtitle IDs specified in `AddSubtitles` must be different from those in `DeleteSubtitleIds`.
+        :type AddSubtitles: list of MediaSubtitleInput
+        :param DeleteSubtitleIds: Unique IDs of the subtitles to be deleted. In the same request, the subtitle IDs specified in `AddSubtitles` must be different from those in `DeleteSubtitleIds`.
+        :type DeleteSubtitleIds: list of str
+        :param ClearSubtitles: The value `1` indicates to delete all subtitle information of the media file. Other values are meaningless.
+`ClearSubtitles` and `AddSubtitles` cannot co-exist in the same request.
+        :type ClearSubtitles: int
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         """
@@ -12205,6 +12331,9 @@ In the same request, `ClearTags` and `AddTags` cannot be present at the same tim
         self.AddTags = None
         self.DeleteTags = None
         self.ClearTags = None
+        self.AddSubtitles = None
+        self.DeleteSubtitleIds = None
+        self.ClearSubtitles = None
         self.SubAppId = None
 
 
@@ -12226,6 +12355,14 @@ In the same request, `ClearTags` and `AddTags` cannot be present at the same tim
         self.AddTags = params.get("AddTags")
         self.DeleteTags = params.get("DeleteTags")
         self.ClearTags = params.get("ClearTags")
+        if params.get("AddSubtitles") is not None:
+            self.AddSubtitles = []
+            for item in params.get("AddSubtitles"):
+                obj = MediaSubtitleInput()
+                obj._deserialize(item)
+                self.AddSubtitles.append(obj)
+        self.DeleteSubtitleIds = params.get("DeleteSubtitleIds")
+        self.ClearSubtitles = params.get("ClearSubtitles")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -12239,15 +12376,24 @@ class ModifyMediaInfoResponse(AbstractModel):
         :param CoverUrl: URL of new video cover.
 * Note: this returned value is valid only if the request carries `CoverData`.*
         :type CoverUrl: str
+        :param AddedSubtitleSet: Added subtitle information
+        :type AddedSubtitleSet: list of MediaSubtitleItem
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.CoverUrl = None
+        self.AddedSubtitleSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.CoverUrl = params.get("CoverUrl")
+        if params.get("AddedSubtitleSet") is not None:
+            self.AddedSubtitleSet = []
+            for item in params.get("AddedSubtitleSet"):
+                obj = MediaSubtitleItem()
+                obj._deserialize(item)
+                self.AddedSubtitleSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -14922,6 +15068,10 @@ class SearchMediaRequest(AbstractModel):
 <li>adaptiveDynamicStreamingInfo (information of adaptive bitrate streaming).</li>
 <li>miniProgramReviewInfo (WeChat Mini Program audit information).</li>
         :type Filters: list of str
+        :param StorageRegions: Regions where media files are stored, such as `ap-chongqing`. For more regions, see [Storage Regions](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).
+<li>Length limit for a single region: 20 characters</li>
+<li>Array length limit: 20</li>
+        :type StorageRegions: list of str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         :param Text: (This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)
@@ -14964,6 +15114,7 @@ End time in the creation time range.
         self.Offset = None
         self.Limit = None
         self.Filters = None
+        self.StorageRegions = None
         self.SubAppId = None
         self.Text = None
         self.SourceType = None
@@ -14993,6 +15144,7 @@ End time in the creation time range.
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Filters = params.get("Filters")
+        self.StorageRegions = params.get("StorageRegions")
         self.SubAppId = params.get("SubAppId")
         self.Text = params.get("Text")
         self.SourceType = params.get("SourceType")

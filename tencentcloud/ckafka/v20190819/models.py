@@ -315,22 +315,22 @@ class CreateAclRequest(AbstractModel):
         :type InstanceId: str
         :param ResourceType: ACL resource type. 0: UNKNOWN, 1: ANY, 2: TOPIC, 3: GROUP, 4: CLUSTER, 5: TRANSACTIONAL_ID. Currently, only `TOPIC` is available, and other fields will be used for future ACLs compatible with open-source Kafka
         :type ResourceType: int
-        :param ResourceName: Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name
-        :type ResourceName: str
         :param Operation: ACL operation mode. 0: UNKNOWN, 1: ANY, 2: ALL, 3: READ, 4: WRITE, 5: CREATE, 6: DELETE, 7: ALTER, 8: DESCRIBE, 9: CLUSTER_ACTION, 10: DESCRIBE_CONFIGS, 11: ALTER_CONFIGS
         :type Operation: int
         :param PermissionType: Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to allowlist), and other fields will be used for future ACLs compatible with open-source Kafka
         :type PermissionType: int
+        :param ResourceName: Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name
+        :type ResourceName: str
         :param Host: The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
         :type Host: str
-        :param Principal: User list. The default value is `*`, which means that any user can access. The current user can only be one included in the user list
+        :param Principal: The list of users allowed to access the topic. Default: User:*, meaning all users. The current user must be in the user list. Add `User:` before the user name (`User:A` for example).
         :type Principal: str
         """
         self.InstanceId = None
         self.ResourceType = None
-        self.ResourceName = None
         self.Operation = None
         self.PermissionType = None
+        self.ResourceName = None
         self.Host = None
         self.Principal = None
 
@@ -338,9 +338,9 @@ class CreateAclRequest(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.ResourceType = params.get("ResourceType")
-        self.ResourceName = params.get("ResourceName")
         self.Operation = params.get("Operation")
         self.PermissionType = params.get("PermissionType")
+        self.ResourceName = params.get("ResourceName")
         self.Host = params.get("Host")
         self.Principal = params.get("Principal")
 
