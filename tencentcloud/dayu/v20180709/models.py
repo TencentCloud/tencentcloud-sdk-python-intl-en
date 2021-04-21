@@ -55,9 +55,9 @@ class BoundIpInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP
+        :param Ip: IP address
         :type Ip: str
-        :param BizType: Bound product type. Valid values: [public (CVM), bm (BM), eni (ENI), vpngw (VPN Gateway), natgw (NAT Gateway), waf (WAF), fpc (finance product), gaap (GAAP), other (hosted IP)]
+        :param BizType: Category of product that can be bound. Valid values: public (CVM and CLB), bm (BM), eni (ENI), vpngw (VPN gateway), natgw (NAT gateway), waf (WAF), fpc (financial products), gaap (GAAP), and other (Hosted IP).
         :type BizType: str
         :param DeviceType: Subtype under product type. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]
         :type DeviceType: str
@@ -721,7 +721,7 @@ class CreateDDoSPolicyRequest(AbstractModel):
         :type Name: str
         :param PortLimits: Ports to be closed. If no ports are to be closed, enter an empty array
         :type PortLimits: list of DDoSPolicyPortLimit
-        :param IpAllowDenys: IP blocklist/allowlist. Enter an empty array if there is no IP blocklist/allowlist
+        :param IpAllowDenys: Request source IP blocklist/allowlist, which should be an empty array if there are no blocked or allowed IPs.
         :type IpAllowDenys: list of IpBlackWhite
         :param PacketFilters: Packet filter. Enter an empty array if there are no packets to filter
         :type PacketFilters: list of DDoSPolicyPacketFilter
@@ -2400,6 +2400,79 @@ class DescribeBasicDeviceThresholdResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Threshold = params.get("Threshold")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBizHttpStatusRequest(AbstractModel):
+    """DescribeBizHttpStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
+        :type Business: str
+        :param Id: Resource ID
+        :type Id: str
+        :param Period: Statistical period in seconds. Valid values: 300, 1800, 3600, 21600, and 86400.
+        :type Period: int
+        :param StartTime: Statistics start time
+        :type StartTime: str
+        :param EndTime: Statistics end time
+        :type EndTime: str
+        :param Statistics: Statistical mode, which only supports sum.
+        :type Statistics: str
+        :param ProtoInfo: Protocol and port list, which is valid when the statistical dimension is the number of connections. Valid protocols: TCP, UDP, HTTP, and HTTPS.
+        :type ProtoInfo: list of ProtocolPort
+        :param Domain: Specific domain name query
+        :type Domain: str
+        """
+        self.Business = None
+        self.Id = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Statistics = None
+        self.ProtoInfo = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Statistics = params.get("Statistics")
+        if params.get("ProtoInfo") is not None:
+            self.ProtoInfo = []
+            for item in params.get("ProtoInfo"):
+                obj = ProtocolPort()
+                obj._deserialize(item)
+                self.ProtoInfo.append(obj)
+        self.Domain = params.get("Domain")
+
+
+class DescribeBizHttpStatusResponse(AbstractModel):
+    """DescribeBizHttpStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param HttpStatusMap: Statistics on the HTTP status codes of business traffic
+        :type HttpStatusMap: :class:`tencentcloud.dayu.v20180709.models.HttpStatusMap`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.HttpStatusMap = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HttpStatusMap") is not None:
+            self.HttpStatusMap = HttpStatusMap()
+            self.HttpStatusMap._deserialize(params.get("HttpStatusMap"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4805,7 +4878,7 @@ class DescribeResourceListRequest(AbstractModel):
         :type IdList: list of str
         :param Name: Resource name search, which is optional. If this field is not an empty string, it means to search for resources by name;
         :type Name: str
-        :param IpList: IP search list, which is optional. If this field is not empty, it means to search for resources by IP;
+        :param IpList: IP query list, which is optional. Resources will be queried by IP if the list is not empty.
         :type IpList: list of str
         :param Status: Resource status search list, which is optional. Valid values: [0 (running), 1 (cleansing), 2 (blocking)]. No status search will be performed if an empty array is entered;
         :type Status: list of int non-negative
@@ -4867,34 +4940,37 @@ class DescribeResourceListResponse(AbstractModel):
         """
         :param Total: Total number of records
         :type Total: int
-        :param ServicePacks: Resource record list. Valid values of `key`:
-"Key": "CreateTime" - resource instance purchase time
-"Key": "Region" - resource instance region
-"Key": "BoundIP" - IP bound to single IP instance
-"Key": "Id" - resource instance ID
-"Key": "CCEnabled" - CC protection status of resource instance
-"Key": "DDoSThreshold" - DDoS cleansing threshold of resource instance	
-"Key": "BoundStatus" - IP binding status of single IP instance or multi-IP instance (binding or bound)
-"Key": "Type" - this field has been disused
-"Key": "ElasticLimit" - elastic protection value of resource instance
-"Key": "DDoSAI" - DDoS AI protection status of resource instance
-"Key": "Bandwidth" - base protection value of resource instance
-"Key": "OverloadCount" - number of attacks to the resource instance that exceed the elastic protection value
-"Key": "Status" - resource instance status (idle: running, attacking: attacking, blocking: blocking, isolate: isolating)
-"Key": "Lbid" - this field has been disused
-"Key": "ShowFlag" - this field has been disused
-"Key": "Expire" - resource instance expiration time
-"Key": "CCThreshold" - CC protection triggering threshold of resource instance
-"Key": "AutoRenewFlag" - auto-renewal flag of resource instance
-"Key": "IspCode" - line of single IP instance or multi-IP instance (0: China Telecom, 1: China Unicom, 2: China Mobile, 5: BGP)
-"Key": "PackType" - package type
-"Key": "PackId" - package ID
-"Key": "Name" - resource instance name
-"Key": "Locked" - this field has been disused
-"Key": "IpDDoSLevel" - protection level of resource instance (low: loose, middle: normal, high: strict)
-"Key": "DefendStatus" - DDoS protection status of resource (enabled or temporarily disabled)
-"Key": "UndefendExpire" - end time of temporary disablement of DDoS protection for resource instance
-"Key": "Tgw" - whether the resource instance is a new resource
+        :param ServicePacks: Resource record list. The description of key values is as follows:
+"Key": "CreateTime" (Instance purchase time)
+"Key": "Region" (Instance region)
+"Key": "BoundIP" (IP bound to the single-IP instance)
+"Key": "Id" (Instance ID)
+"Key": "CCEnabled" (CC protection switch status of the instance)
+"Key": "DDoSThreshold" (Anti-DDoS cleansing threshold of the instance)	
+"Key": "BoundStatus" (IP binding status of the single-IP/multi-IP instance; binding or bound)
+"Key": "Type" (Disused field)
+"Key": "ElasticLimit" (Elastic protection value of the instance)
+"Key": "DDoSAI" (Anti-DDoS AI protection switch of the instance)
+"Key": "OverloadCount" (The number of attacks exceeding the elastic protection value to the instance)
+"Key": "Status" (Instance status; idle: running; attacking: under attacks; blocking: being blocked; isolate: being isolated)
+"Key": "Lbid" (Disused field)
+"Key": "ShowFlag" (Disused field)
+"Key": "Expire" (Instance expiry time)
+"Key": "CCThreshold" (CC protection trigger value of the instance)
+"Key": "AutoRenewFlag" (Whether the instance is on auto-renewal)
+"Key": "IspCode" (Line of the single-IP/multi-IP instance; 0: China Telecom; 1: China Unicom; 2: China Mobile; 5: BGP)
+"Key": "PackType" (Package type)
+"Key": "PackId" (Package ID)
+"Key": "Name" (Instance name)
+"Key": "Locked" (Disused field)
+"Key": "IpDDoSLevel" (Protection level of the instance; low: loose; middle: normal; high: strict)
+"Key": "DefendStatus" (DDoS protection status of the instance; enabled or temporarily disabled)
+"Key": "UndefendExpire" (End time of the temporary disabling on DDoS protection for the instance)
+"Key": "Tgw" (Whether it is a new instance)
+"Key": "Bandwidth" (Base protection value of the Anti-DDoS Pro/Advanced instance)
+"Key": "DdosMax" (Base protection value of the Anti-DDoS Ultimate instance)
+"Key": "GFBandwidth" (Base business application bandwidth of the Anti-DDoS Advanced instance)
+"Key": "ServiceBandwidth" (Base business application bandwidth of the Anti-DDoS Ultimate instance)
         :type ServicePacks: list of KeyValueRecord
         :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate)
         :type Business: str
@@ -5441,6 +5517,59 @@ class DescribleRegionCountResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RegionList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class HttpStatusMap(AbstractModel):
+    """Aggregated data on the HTTP status codes of business traffic
+
+    """
+
+    def __init__(self):
+        """
+        :param Http2xx: HTTP 2xx Status code
+        :type Http2xx: list of float
+        :param Http3xx: HTTP 3xx Status code
+        :type Http3xx: list of float
+        :param Http404: HTTP 404 Status code
+        :type Http404: list of float
+        :param Http4xx: HTTP 4xx Status code
+        :type Http4xx: list of float
+        :param Http5xx: HTTP 5xx Status code
+        :type Http5xx: list of float
+        :param SourceHttp2xx: HTTP 2xx Forwarding status code
+        :type SourceHttp2xx: list of float
+        :param SourceHttp3xx: HTTP 3xx Forwarding status code
+        :type SourceHttp3xx: list of float
+        :param SourceHttp404: HTTP 404 Forwarding status code
+        :type SourceHttp404: list of float
+        :param SourceHttp4xx: HTTP 4xx Forwarding status code
+        :type SourceHttp4xx: list of float
+        :param SourceHttp5xx: HTTP 5xx Forwarding status code
+        :type SourceHttp5xx: list of float
+        """
+        self.Http2xx = None
+        self.Http3xx = None
+        self.Http404 = None
+        self.Http4xx = None
+        self.Http5xx = None
+        self.SourceHttp2xx = None
+        self.SourceHttp3xx = None
+        self.SourceHttp404 = None
+        self.SourceHttp4xx = None
+        self.SourceHttp5xx = None
+
+
+    def _deserialize(self, params):
+        self.Http2xx = params.get("Http2xx")
+        self.Http3xx = params.get("Http3xx")
+        self.Http404 = params.get("Http404")
+        self.Http4xx = params.get("Http4xx")
+        self.Http5xx = params.get("Http5xx")
+        self.SourceHttp2xx = params.get("SourceHttp2xx")
+        self.SourceHttp3xx = params.get("SourceHttp3xx")
+        self.SourceHttp404 = params.get("SourceHttp404")
+        self.SourceHttp4xx = params.get("SourceHttp4xx")
+        self.SourceHttp5xx = params.get("SourceHttp5xx")
 
 
 class IpBlackWhite(AbstractModel):
