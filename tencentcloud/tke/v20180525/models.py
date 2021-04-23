@@ -3605,6 +3605,12 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param ImageId: Image ID
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type ImageId: str
+        :param DesiredPodNum: This parameter is required when the custom PodCIDR mode is enabled for the cluster.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type DesiredPodNum: int
+        :param UserScript: Custom script
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type UserScript: str
         """
         self.NodePoolId = None
         self.Name = None
@@ -3622,6 +3628,8 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.NodePoolOs = None
         self.OsCustomizeType = None
         self.ImageId = None
+        self.DesiredPodNum = None
+        self.UserScript = None
 
 
     def _deserialize(self, params):
@@ -3653,6 +3661,8 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.NodePoolOs = params.get("NodePoolOs")
         self.OsCustomizeType = params.get("OsCustomizeType")
         self.ImageId = params.get("ImageId")
+        self.DesiredPodNum = params.get("DesiredPodNum")
+        self.UserScript = params.get("UserScript")
 
 
 class NodePoolOption(AbstractModel):
@@ -4055,6 +4065,8 @@ class UpdateClusterVersionRequest(AbstractModel):
         :type ClusterId: str
         :param DstVersion: The version that needs to upgrade to
         :type DstVersion: str
+        :param ExtraArgs: Cluster custom parameter
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
         :param MaxNotReadyPercent: The maximum tolerable number of unavailable pods
         :type MaxNotReadyPercent: float
         :param SkipPreCheck: Whether to skip the precheck
@@ -4062,6 +4074,7 @@ class UpdateClusterVersionRequest(AbstractModel):
         """
         self.ClusterId = None
         self.DstVersion = None
+        self.ExtraArgs = None
         self.MaxNotReadyPercent = None
         self.SkipPreCheck = None
 
@@ -4069,6 +4082,9 @@ class UpdateClusterVersionRequest(AbstractModel):
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.DstVersion = params.get("DstVersion")
+        if params.get("ExtraArgs") is not None:
+            self.ExtraArgs = ClusterExtraArgs()
+            self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.MaxNotReadyPercent = params.get("MaxNotReadyPercent")
         self.SkipPreCheck = params.get("SkipPreCheck")
 

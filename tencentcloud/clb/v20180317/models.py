@@ -775,14 +775,18 @@ class CreateClsLogSetRequest(AbstractModel):
         :type Period: int
         :param LogsetName: Logset name, which must be unique among all CLS logsets; default value: clb_logset
         :type LogsetName: str
+        :param LogsetType: Logset type. Valid values: ACCESS (access logs; default value) and HEALTH (health check logs).
+        :type LogsetType: str
         """
         self.Period = None
         self.LogsetName = None
+        self.LogsetType = None
 
 
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.LogsetName = params.get("LogsetName")
+        self.LogsetType = params.get("LogsetType")
 
 
 class CreateClsLogSetResponse(AbstractModel):
@@ -1197,14 +1201,18 @@ class CreateTopicRequest(AbstractModel):
         :type TopicName: str
         :param PartitionCount: The number of topic partitions, which changes as partitions are split or merged. Each log topic can have up to 50 partitions. If this parameter is not passed in, 1 partition will be created by default and up to 10 partitions are allowed to be created.
         :type PartitionCount: int
+        :param TopicType: Log type. Valid values: ACCESS (access logs; default value) and HEALTH (health check logs).
+        :type TopicType: str
         """
         self.TopicName = None
         self.PartitionCount = None
+        self.TopicType = None
 
 
     def _deserialize(self, params):
         self.TopicName = params.get("TopicName")
         self.PartitionCount = params.get("PartitionCount")
+        self.TopicType = params.get("TopicType")
 
 
 class CreateTopicResponse(AbstractModel):
@@ -1962,15 +1970,19 @@ class DescribeClsLogSetResponse(AbstractModel):
         """
         :param LogsetId: Logset ID
         :type LogsetId: str
+        :param HealthLogsetId: Health check logset ID
+        :type HealthLogsetId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.LogsetId = None
+        self.HealthLogsetId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.LogsetId = params.get("LogsetId")
+        self.HealthLogsetId = params.get("HealthLogsetId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3348,6 +3360,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param NfvInfo: Whether it is an NFV CLB instance. No returned information: no; l7nfv: yes.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type NfvInfo: str
+        :param HealthLogSetId: Health check logset ID of CLB CLS
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type HealthLogSetId: str
+        :param HealthLogTopicId: Health check log topic ID of CLB CLS
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type HealthLogTopicId: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3398,6 +3416,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.MixIpTarget = None
         self.Zones = None
         self.NfvInfo = None
+        self.HealthLogSetId = None
+        self.HealthLogTopicId = None
 
 
     def _deserialize(self, params):
@@ -3477,6 +3497,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.MixIpTarget = params.get("MixIpTarget")
         self.Zones = params.get("Zones")
         self.NfvInfo = params.get("NfvInfo")
+        self.HealthLogSetId = params.get("HealthLogSetId")
+        self.HealthLogTopicId = params.get("HealthLogTopicId")
 
 
 class LoadBalancerDetail(AbstractModel):
@@ -5015,16 +5037,20 @@ class SetLoadBalancerClsLogRequest(AbstractModel):
         :type LogSetId: str
         :param LogTopicId: CLS log topic ID
         :type LogTopicId: str
+        :param LogType: Log type. Valid values: ACCESS (access logs; default value) and HEALTH (health check logs).
+        :type LogType: str
         """
         self.LoadBalancerId = None
         self.LogSetId = None
         self.LogTopicId = None
+        self.LogType = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerId = params.get("LoadBalancerId")
         self.LogSetId = params.get("LogSetId")
         self.LogTopicId = params.get("LogTopicId")
+        self.LogType = params.get("LogType")
 
 
 class SetLoadBalancerClsLogResponse(AbstractModel):
