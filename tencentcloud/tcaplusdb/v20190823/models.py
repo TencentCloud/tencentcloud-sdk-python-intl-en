@@ -415,6 +415,62 @@ class CreateClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSnapshotsRequest(AbstractModel):
+    """CreateSnapshots request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The ID of the cluster where the table resides
+        :type ClusterId: str
+        :param SelectedTables: Snapshot list
+        :type SelectedTables: list of SnapshotInfo
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SnapshotInfo()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class CreateSnapshotsResponse(AbstractModel):
+    """CreateSnapshots response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of snapshots created in batches
+        :type TotalCount: int
+        :param TableResults: The result list of snapshots created in batches
+        :type TableResults: list of SnapshotResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = SnapshotResult()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTableGroupRequest(AbstractModel):
     """CreateTableGroup request structure.
 
@@ -635,6 +691,62 @@ class DeleteIdlFilesResponse(AbstractModel):
                 obj = IdlFileInfoWithoutContent()
                 obj._deserialize(item)
                 self.IdlFileInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSnapshotsRequest(AbstractModel):
+    """DeleteSnapshots request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The ID of the cluster where the table resides
+        :type ClusterId: str
+        :param SelectedTables: The list of snapshots to delete
+        :type SelectedTables: list of SnapshotInfoNew
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SnapshotInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class DeleteSnapshotsResponse(AbstractModel):
+    """DeleteSnapshots response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of snapshots deleted in batches
+        :type TotalCount: int
+        :param TableResults: The result list of snapshots deleted in batches
+        :type TableResults: list of SnapshotResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = SnapshotResult()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -977,7 +1089,7 @@ class DescribeMachineRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ipv6Enable: Whether to filter the resources supporting IPv6 access
+        :param Ipv6Enable: If this parameter is not `0`, machines supporting IPv6 will be queried.
         :type Ipv6Enable: int
         """
         self.Ipv6Enable = None
@@ -1046,6 +1158,65 @@ class DescribeRegionsResponse(AbstractModel):
                 obj = RegionInfo()
                 obj._deserialize(item)
                 self.RegionInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotsRequest(AbstractModel):
+    """DescribeSnapshots request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The ID of the cluster where the table resides
+        :type ClusterId: str
+        :param TableGroupId: The ID of the table group where the table resides
+        :type TableGroupId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param SnapshotName: Snapshot name
+        :type SnapshotName: str
+        """
+        self.ClusterId = None
+        self.TableGroupId = None
+        self.TableName = None
+        self.SnapshotName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.SnapshotName = params.get("SnapshotName")
+
+
+class DescribeSnapshotsResponse(AbstractModel):
+    """DescribeSnapshots response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of snapshots
+        :type TotalCount: int
+        :param TableResults: The result list of snapshots
+        :type TableResults: list of SnapshotResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = SnapshotResult()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1703,6 +1874,102 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.Error._deserialize(params.get("Error"))
 
 
+class ImportSnapshotsRequest(AbstractModel):
+    """ImportSnapshots request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The ID of the cluster where the original table (from which the snapshot was created) resides
+        :type ClusterId: str
+        :param Snapshots: The information of the snapshot to import
+        :type Snapshots: :class:`tencentcloud.tcaplusdb.v20190823.models.SnapshotInfo`
+        :param ImportSpecialKey: Whether to import partial data of the snapshot. Valid values: `TRUE` (import partial data), `FALSE` (import all data).
+        :type ImportSpecialKey: str
+        :param ImportOriginTable: Whether to import to the original table. Valid values: `TRUE` (import to the original table), `FALSE` (import to a new table).
+        :type ImportOriginTable: str
+        :param KeyFile: The file of the keys of the partial data
+        :type KeyFile: :class:`tencentcloud.tcaplusdb.v20190823.models.KeyFile`
+        :param NewTableGroupId: The ID of the table group where the new table resides, which is valid only when `ImportOriginTable` is set to `FALSE`
+        :type NewTableGroupId: str
+        :param NewTableName: The name of the new table, which is valid only when `ImportOriginTable` is set to `FALSE`. TcaplusDB will automatically create a table named `NewTableName` of the same structure as that of the original table.
+        :type NewTableName: str
+        """
+        self.ClusterId = None
+        self.Snapshots = None
+        self.ImportSpecialKey = None
+        self.ImportOriginTable = None
+        self.KeyFile = None
+        self.NewTableGroupId = None
+        self.NewTableName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Snapshots") is not None:
+            self.Snapshots = SnapshotInfo()
+            self.Snapshots._deserialize(params.get("Snapshots"))
+        self.ImportSpecialKey = params.get("ImportSpecialKey")
+        self.ImportOriginTable = params.get("ImportOriginTable")
+        if params.get("KeyFile") is not None:
+            self.KeyFile = KeyFile()
+            self.KeyFile._deserialize(params.get("KeyFile"))
+        self.NewTableGroupId = params.get("NewTableGroupId")
+        self.NewTableName = params.get("NewTableName")
+
+
+class ImportSnapshotsResponse(AbstractModel):
+    """ImportSnapshots response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class KeyFile(AbstractModel):
+    """The file of keys used to import partial snapshot data
+
+    """
+
+    def __init__(self):
+        """
+        :param FileName: Key file name
+        :type FileName: str
+        :param FileExtType: Key file extension
+        :type FileExtType: str
+        :param FileContent: Key file content
+        :type FileContent: str
+        :param FileSize: Key file size
+        :type FileSize: int
+        """
+        self.FileName = None
+        self.FileExtType = None
+        self.FileContent = None
+        self.FileSize = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.FileExtType = params.get("FileExtType")
+        self.FileContent = params.get("FileContent")
+        self.FileSize = params.get("FileSize")
+
+
 class MachineInfo(AbstractModel):
     """Machine type and quantity
 
@@ -1925,6 +2192,62 @@ class ModifyClusterTagsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySnapshotsRequest(AbstractModel):
+    """ModifySnapshots request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: The ID of the cluster where the table resides
+        :type ClusterId: str
+        :param SelectedTables: Snapshot list
+        :type SelectedTables: list of SnapshotInfoNew
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SnapshotInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class ModifySnapshotsResponse(AbstractModel):
+    """ModifySnapshots response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: The number of snapshots modified in batches
+        :type TotalCount: int
+        :param TableResults: The result list of snapshots modified in batches
+        :type TableResults: list of SnapshotResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = SnapshotResult()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2859,6 +3182,133 @@ class SetTableIndexResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TableResults.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class SnapshotInfo(AbstractModel):
+    """Snapshot list
+
+    """
+
+    def __init__(self):
+        """
+        :param TableGroupId: The ID of the table group where the table resides
+        :type TableGroupId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param SnapshotName: Snapshot name
+        :type SnapshotName: str
+        :param SnapshotTime: The time of the data from which the snapshot was created
+        :type SnapshotTime: str
+        :param SnapshotDeadTime: Snapshot expiration time
+        :type SnapshotDeadTime: str
+        """
+        self.TableGroupId = None
+        self.TableName = None
+        self.SnapshotName = None
+        self.SnapshotTime = None
+        self.SnapshotDeadTime = None
+
+
+    def _deserialize(self, params):
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.SnapshotName = params.get("SnapshotName")
+        self.SnapshotTime = params.get("SnapshotTime")
+        self.SnapshotDeadTime = params.get("SnapshotDeadTime")
+
+
+class SnapshotInfoNew(AbstractModel):
+    """New expiration time of a snapshot
+
+    """
+
+    def __init__(self):
+        """
+        :param TableGroupId: The ID of the table group where the table resides
+        :type TableGroupId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param SnapshotName: Snapshot name
+        :type SnapshotName: str
+        :param SnapshotDeadTime: Snapshot expiration time
+        :type SnapshotDeadTime: str
+        """
+        self.TableGroupId = None
+        self.TableName = None
+        self.SnapshotName = None
+        self.SnapshotDeadTime = None
+
+
+    def _deserialize(self, params):
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.SnapshotName = params.get("SnapshotName")
+        self.SnapshotDeadTime = params.get("SnapshotDeadTime")
+
+
+class SnapshotResult(AbstractModel):
+    """The result of snapshot creation
+
+    """
+
+    def __init__(self):
+        """
+        :param TableGroupId: The ID of the table group where the table resides
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TableGroupId: str
+        :param TableName: Table name
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TableName: str
+        :param TaskId: Task ID, which is valid for the API that creates one task at a time
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param Error: Error information
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        :param SnapshotName: Snapshot name
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotName: str
+        :param SnapshotTime: The time of the data from which the snapshot was created
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotTime: str
+        :param SnapshotDeadTime: When the snapshot expires
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotDeadTime: str
+        :param SnapshotCreateTime: When the snapshot was created
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotCreateTime: str
+        :param SnapshotSize: Snapshot size
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotSize: int
+        :param SnapshotStatus: Snapshot status. Valid values: `0` (creating), `1` (normal), `2` (deleting), `3` (expired), `4` (rolling back).
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type SnapshotStatus: int
+        """
+        self.TableGroupId = None
+        self.TableName = None
+        self.TaskId = None
+        self.Error = None
+        self.SnapshotName = None
+        self.SnapshotTime = None
+        self.SnapshotDeadTime = None
+        self.SnapshotCreateTime = None
+        self.SnapshotSize = None
+        self.SnapshotStatus = None
+
+
+    def _deserialize(self, params):
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.TaskId = params.get("TaskId")
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
+        self.SnapshotName = params.get("SnapshotName")
+        self.SnapshotTime = params.get("SnapshotTime")
+        self.SnapshotDeadTime = params.get("SnapshotDeadTime")
+        self.SnapshotCreateTime = params.get("SnapshotCreateTime")
+        self.SnapshotSize = params.get("SnapshotSize")
+        self.SnapshotStatus = params.get("SnapshotStatus")
 
 
 class TableGroupInfo(AbstractModel):
