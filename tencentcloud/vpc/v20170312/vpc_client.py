@@ -4531,6 +4531,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyCcnAttachedInstancesAttribute(self, request):
+        """This API is used to modify CCN-associated instance attributes. Currently, only the `description` can be modified.
+
+        :param request: Request instance for ModifyCcnAttachedInstancesAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnAttachedInstancesAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnAttachedInstancesAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCcnAttachedInstancesAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCcnAttachedInstancesAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCcnAttribute(self, request):
         """This API (ModifyCcnAttribute) is used to modify CCN attributes.
 

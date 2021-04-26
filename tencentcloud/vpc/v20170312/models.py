@@ -1261,6 +1261,8 @@ class CcnAttachedInstance(AbstractModel):
         :type CcnUin: str
         :param InstanceArea: General location of the associated instance, such as CHINA_MAINLAND.
         :type InstanceArea: str
+        :param Description: Description
+        :type Description: str
         """
         self.CcnId = None
         self.InstanceType = None
@@ -1273,6 +1275,7 @@ class CcnAttachedInstance(AbstractModel):
         self.AttachedTime = None
         self.CcnUin = None
         self.InstanceArea = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -1287,6 +1290,7 @@ class CcnAttachedInstance(AbstractModel):
         self.AttachedTime = params.get("AttachedTime")
         self.CcnUin = params.get("CcnUin")
         self.InstanceArea = params.get("InstanceArea")
+        self.Description = params.get("Description")
 
 
 class CcnBandwidthInfo(AbstractModel):
@@ -1350,16 +1354,20 @@ class CcnInstance(AbstractModel):
 <li>`DIRECTCONNECT`: Direct Connect</li>
 <li>`BMVPC`: BM VPC</li>
         :type InstanceType: str
+        :param Description: Description
+        :type Description: str
         """
         self.InstanceId = None
         self.InstanceRegion = None
         self.InstanceType = None
+        self.Description = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.InstanceRegion = params.get("InstanceRegion")
         self.InstanceType = params.get("InstanceType")
+        self.Description = params.get("Description")
 
 
 class CcnRegionBandwidthLimit(AbstractModel):
@@ -3155,12 +3163,15 @@ class CreateSubnetRequest(AbstractModel):
         :type Zone: str
         :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
+        :param CdcId: CDC instance ID
+        :type CdcId: str
         """
         self.VpcId = None
         self.SubnetName = None
         self.CidrBlock = None
         self.Zone = None
         self.Tags = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
@@ -3174,6 +3185,7 @@ class CreateSubnetRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.CdcId = params.get("CdcId")
 
 
 class CreateSubnetResponse(AbstractModel):
@@ -3212,10 +3224,13 @@ class CreateSubnetsRequest(AbstractModel):
         :type Subnets: list of SubnetInput
         :param Tags: Bound tags. Note that the collection of tags here is shared by all subnet objects in the list. You cannot specify tags for each subnet. Example: [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
+        :param CdcId: ID of the CDC instance to which the subnets will be created
+        :type CdcId: str
         """
         self.VpcId = None
         self.Subnets = None
         self.Tags = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
@@ -3232,6 +3247,7 @@ class CreateSubnetsRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.CdcId = params.get("CdcId")
 
 
 class CreateSubnetsResponse(AbstractModel):
@@ -9794,6 +9810,49 @@ class ModifyBandwidthPackageAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCcnAttachedInstancesAttributeRequest(AbstractModel):
+    """ModifyCcnAttachedInstancesAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN instance ID in the format of `ccn-f49l6u0z`
+        :type CcnId: str
+        :param Instances: List of associated network instances
+        :type Instances: list of CcnInstance
+        """
+        self.CcnId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = CcnInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+
+
+class ModifyCcnAttachedInstancesAttributeResponse(AbstractModel):
+    """ModifyCcnAttachedInstancesAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyCcnAttributeRequest(AbstractModel):
     """ModifyCcnAttribute request structure.
 
@@ -11439,6 +11498,9 @@ Note: This field may return null, indicating no valid value.
         :param Business: Type of the resource bound with an ENI. Valid values: cvm, eks.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Business: str
+        :param CdcId: ID of the CDC instance associated with the ENI
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CdcId: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -11457,6 +11519,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.TagSet = None
         self.EniType = None
         self.Business = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
@@ -11494,6 +11557,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 self.TagSet.append(obj)
         self.EniType = params.get("EniType")
         self.Business = params.get("Business")
+        self.CdcId = params.get("CdcId")
 
 
 class NetworkInterfaceAttachment(AbstractModel):
@@ -11956,13 +12020,31 @@ class ReplaceRoutesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param OldRouteSet: Old routing policy
+        :type OldRouteSet: list of Route
+        :param NewRouteSet: New routing policy
+        :type NewRouteSet: list of Route
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.OldRouteSet = None
+        self.NewRouteSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("OldRouteSet") is not None:
+            self.OldRouteSet = []
+            for item in params.get("OldRouteSet"):
+                obj = Route()
+                obj._deserialize(item)
+                self.OldRouteSet.append(obj)
+        if params.get("NewRouteSet") is not None:
+            self.NewRouteSet = []
+            for item in params.get("NewRouteSet"):
+                obj = Route()
+                obj._deserialize(item)
+                self.NewRouteSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -12435,16 +12517,17 @@ class Route(AbstractModel):
         """
         :param DestinationCidrBlock: Destination IP range, such as 112.20.51.0/24. Values cannot be in the VPC IP range.
         :type DestinationCidrBlock: str
-        :param GatewayType: Type of the next hop. Currently supported types are:
-CVM: CVM of the public gateway type;
+        :param GatewayType: Type of the next hop. Valid values:
+CVM: public gateway CVM;
 VPN: VPN gateway;
 DIRECTCONNECT: direct connect gateway;
 PEERCONNECTION: peering connection;
-SSLVPN: sslvpn gateway;
-NAT: NAT gateway; 
+SSLVPN: SSL VPN gateway;
+NAT: NAT Gateway; 
 NORMAL_CVM: normal CVM;
 EIP: public IP address of the CVM;
-CCN: Cloud Connect Network.
+CCN: Cloud Connect Network;
+LOCAL_GATEWAY: local gateway.
         :type GatewayType: str
         :param GatewayId: Next hop address. You simply need to specify the gateway ID of a different next hop type, and the system will automatically match the next hop address.
 Important note: When the GatewayType is EIP, the GatewayId has a fixed value `0`
@@ -13027,6 +13110,12 @@ class Subnet(AbstractModel):
         :type TotalIpAddressCount: int
         :param TagSet: Tag key-value pairs
         :type TagSet: list of Tag
+        :param CdcId: CDC instance ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type CdcId: str
+        :param IsCdcSubnet: Whether it is a CDC subnet. Valid values: 0: no; 1: yes
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type IsCdcSubnet: int
         """
         self.VpcId = None
         self.SubnetId = None
@@ -13043,6 +13132,8 @@ class Subnet(AbstractModel):
         self.IsRemoteVpcSnat = None
         self.TotalIpAddressCount = None
         self.TagSet = None
+        self.CdcId = None
+        self.IsCdcSubnet = None
 
 
     def _deserialize(self, params):
@@ -13066,6 +13157,8 @@ class Subnet(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.CdcId = params.get("CdcId")
+        self.IsCdcSubnet = params.get("IsCdcSubnet")
 
 
 class SubnetInput(AbstractModel):
