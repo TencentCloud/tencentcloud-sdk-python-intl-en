@@ -1679,7 +1679,7 @@ class DestroyDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: ID of the instance to be deleted
+        :param DBInstanceId: The ID of the instance to be eliminated
         :type DBInstanceId: str
         """
         self.DBInstanceId = None
@@ -1691,6 +1691,52 @@ class DestroyDBInstanceRequest(AbstractModel):
 
 class DestroyDBInstanceResponse(AbstractModel):
     """DestroyDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisIsolateDBInstancesRequest(AbstractModel):
+    """DisIsolateDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceIdSet: Resource ID list
+        :type DBInstanceIdSet: list of str
+        :param Period: Specify the valid period (in months) of the monthly-subscribed instance when removing it from isolation
+        :type Period: int
+        :param AutoVoucher: Whether to use vouchers
+        :type AutoVoucher: bool
+        :param VoucherIds: Voucher ID list
+        :type VoucherIds: list of str
+        """
+        self.DBInstanceIdSet = None
+        self.Period = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.Period = params.get("Period")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+
+
+class DisIsolateDBInstancesResponse(AbstractModel):
+    """DisIsolateDBInstances response structure.
 
     """
 
@@ -1971,6 +2017,40 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Price = params.get("Price")
+        self.RequestId = params.get("RequestId")
+
+
+class IsolateDBInstancesRequest(AbstractModel):
+    """IsolateDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceIdSet: Instance ID set
+        :type DBInstanceIdSet: list of str
+        """
+        self.DBInstanceIdSet = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+
+
+class IsolateDBInstancesResponse(AbstractModel):
+    """IsolateDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

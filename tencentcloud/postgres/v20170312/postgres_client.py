@@ -671,7 +671,7 @@ class PostgresClient(AbstractClient):
 
 
     def DestroyDBInstance(self, request):
-        """This API is used to terminate a pay-as-you-go instance by specifying the `DBInstanceId` parameter.
+        """This API is used to eliminate an isolated instance by specifying the `DBInstanceId` parameter. The data of an eliminated instance will be deleted and cannot be recovered.
 
         :param request: Request instance for DestroyDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DestroyDBInstanceRequest`
@@ -684,6 +684,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisIsolateDBInstances(self, request):
+        """This API is used to remove one or more instances from isolation.
+
+        :param request: Request instance for DisIsolateDBInstances.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DisIsolateDBInstancesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DisIsolateDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisIsolateDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisIsolateDBInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -796,6 +824,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceUpgradeDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def IsolateDBInstances(self, request):
+        """This API is used to isolate one or more instances.
+
+        :param request: Request instance for IsolateDBInstances.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.IsolateDBInstancesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.IsolateDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("IsolateDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateDBInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
