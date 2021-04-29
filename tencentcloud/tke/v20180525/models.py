@@ -3573,7 +3573,7 @@ class NodePool(AbstractModel):
         :type Name: str
         :param ClusterInstanceId: Cluster instance ID
         :type ClusterInstanceId: str
-        :param LifeState: Status
+        :param LifeState: The lifecycle state of the current node pool. Valid values: `creating`, `normal`, `updating`, `deleting`, and `deleted`.
         :type LifeState: str
         :param LaunchConfigurationId: Launch configuration ID
         :type LaunchConfigurationId: str

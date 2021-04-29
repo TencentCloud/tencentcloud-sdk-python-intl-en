@@ -76,6 +76,68 @@ class AbnormalExperience(AbstractModel):
         self.EventTime = params.get("EventTime")
 
 
+class CreatePictureRequest(AbstractModel):
+    """CreatePicture request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: Application ID
+        :type SdkAppId: int
+        :param Content: Base64-encoded image content
+        :type Content: str
+        :param Suffix: Image file extension
+        :type Suffix: str
+        :param Height: Image height
+        :type Height: int
+        :param Width: Image width
+        :type Width: int
+        :param XPosition: X-axis value of the image’s position
+        :type XPosition: int
+        :param YPosition: Y-axis value of the image’s position
+        :type YPosition: int
+        """
+        self.SdkAppId = None
+        self.Content = None
+        self.Suffix = None
+        self.Height = None
+        self.Width = None
+        self.XPosition = None
+        self.YPosition = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Content = params.get("Content")
+        self.Suffix = params.get("Suffix")
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+
+
+class CreatePictureResponse(AbstractModel):
+    """CreatePicture response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PictureId: Image ID
+        :type PictureId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PictureId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PictureId = params.get("PictureId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTroubleInfoRequest(AbstractModel):
     """CreateTroubleInfo request structure.
 
@@ -131,6 +193,44 @@ class CreateTroubleInfoRequest(AbstractModel):
 
 class CreateTroubleInfoResponse(AbstractModel):
     """CreateTroubleInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePictureRequest(AbstractModel):
+    """DeletePicture request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PictureId: Image ID
+        :type PictureId: int
+        :param SdkAppId: Application ID
+        :type SdkAppId: int
+        """
+        self.PictureId = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.PictureId = params.get("PictureId")
+        self.SdkAppId = params.get("SdkAppId")
+
+
+class DeletePictureResponse(AbstractModel):
+    """DeletePicture response structure.
 
     """
 
@@ -413,6 +513,65 @@ class DescribeHistoryScaleResponse(AbstractModel):
                 obj = ScaleInfomation()
                 obj._deserialize(item)
                 self.ScaleList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePictureRequest(AbstractModel):
+    """DescribePicture request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: Application ID
+        :type SdkAppId: int
+        :param PictureId: Image ID. If it is not passed in, the IDs of all images under the application are returned.
+        :type PictureId: int
+        :param PageSize: Number of records per page
+        :type PageSize: int
+        :param PageNo: Page number
+        :type PageNo: int
+        """
+        self.SdkAppId = None
+        self.PictureId = None
+        self.PageSize = None
+        self.PageNo = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.PictureId = params.get("PictureId")
+        self.PageSize = params.get("PageSize")
+        self.PageNo = params.get("PageNo")
+
+
+class DescribePictureResponse(AbstractModel):
+    """DescribePicture response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: Number of records returned
+        :type Total: int
+        :param PictureInfo: Image information list
+        :type PictureInfo: list of PictureInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.PictureInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("PictureInfo") is not None:
+            self.PictureInfo = []
+            for item in params.get("PictureInfo"):
+                obj = PictureInfo()
+                obj._deserialize(item)
+                self.PictureInfo.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -987,6 +1146,60 @@ class LayoutParams(AbstractModel):
         self.PureAudioHoldPlaceMode = params.get("PureAudioHoldPlaceMode")
 
 
+class ModifyPictureRequest(AbstractModel):
+    """ModifyPicture request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param PictureId: Image ID
+        :type PictureId: int
+        :param SdkAppId: Application ID
+        :type SdkAppId: int
+        :param Height: Image height
+        :type Height: int
+        :param Width: Image width
+        :type Width: int
+        :param XPosition: X-axis value of the image’s position
+        :type XPosition: int
+        :param YPosition: Y-axis value of the image’s position
+        :type YPosition: int
+        """
+        self.PictureId = None
+        self.SdkAppId = None
+        self.Height = None
+        self.Width = None
+        self.XPosition = None
+        self.YPosition = None
+
+
+    def _deserialize(self, params):
+        self.PictureId = params.get("PictureId")
+        self.SdkAppId = params.get("SdkAppId")
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+
+
+class ModifyPictureResponse(AbstractModel):
+    """ModifyPicture response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class OutputParams(AbstractModel):
     """MCU On-Cloud MixTranscoding output parameters
 
@@ -1000,7 +1213,7 @@ class OutputParams(AbstractModel):
         :type PureAudioStream: int
         :param RecordId: Prefix of custom recording file names. Please enable the recording feature in the TRTC console first. https://intl.cloud.tencent.com/document/product/647/50768?from_cn_redirect=1
         :type RecordId: str
-        :param RecordAudioOnly: Value range: [0, 1]. If it is 0, the recording template configured in the console will be used; if it is 1, streams are recorded as .mp3 files.
+        :param RecordAudioOnly: Whether to record audio only. Valid values: 0, 1. `0`: no meaning; `1`: records into MP3 files. This parameter is not recommended. Instead, you are advised to create an audio-only recording template in the TRTC console.
         :type RecordAudioOnly: int
         """
         self.StreamId = None
@@ -1014,6 +1227,43 @@ class OutputParams(AbstractModel):
         self.PureAudioStream = params.get("PureAudioStream")
         self.RecordId = params.get("RecordId")
         self.RecordAudioOnly = params.get("RecordAudioOnly")
+
+
+class PictureInfo(AbstractModel):
+    """Image information list
+
+    """
+
+    def __init__(self):
+        """
+        :param Height: Image height
+        :type Height: int
+        :param Width: Image width
+        :type Width: int
+        :param XPosition: X-axis value of the image’s position
+        :type XPosition: int
+        :param YPosition: Y-axis value of the image’s position
+        :type YPosition: int
+        :param SdkAppId: Application ID
+        :type SdkAppId: int
+        :param PictureId: Image ID
+        :type PictureId: int
+        """
+        self.Height = None
+        self.Width = None
+        self.XPosition = None
+        self.YPosition = None
+        self.SdkAppId = None
+        self.PictureId = None
+
+
+    def _deserialize(self, params):
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+        self.SdkAppId = params.get("SdkAppId")
+        self.PictureId = params.get("PictureId")
 
 
 class PresetLayoutConfig(AbstractModel):

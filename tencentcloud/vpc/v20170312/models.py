@@ -2432,6 +2432,54 @@ class CreateHaVipResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLocalGatewayRequest(AbstractModel):
+    """CreateLocalGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalGatewayName: Local gateway name
+        :type LocalGatewayName: str
+        :param VpcId: VPC instance ID
+        :type VpcId: str
+        :param CdcId: CDC instance ID
+        :type CdcId: str
+        """
+        self.LocalGatewayName = None
+        self.VpcId = None
+        self.CdcId = None
+
+
+    def _deserialize(self, params):
+        self.LocalGatewayName = params.get("LocalGatewayName")
+        self.VpcId = params.get("VpcId")
+        self.CdcId = params.get("CdcId")
+
+
+class CreateLocalGatewayResponse(AbstractModel):
+    """CreateLocalGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalGateway: Local gateway information
+        :type LocalGateway: :class:`tencentcloud.vpc.v20170312.models.LocalGateway`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LocalGateway = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LocalGateway") is not None:
+            self.LocalGateway = LocalGateway()
+            self.LocalGateway._deserialize(params.get("LocalGateway"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
     """CreateNatGatewayDestinationIpPortTranslationNatRule request structure.
 
@@ -3276,6 +3324,164 @@ class CreateSubnetsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateVpcEndPointRequest(AbstractModel):
+    """CreateVpcEndPoint request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC instance ID
+        :type VpcId: str
+        :param SubnetId: Subnet instance ID
+        :type SubnetId: str
+        :param EndPointName: Endpoint name
+        :type EndPointName: str
+        :param EndPointServiceId: Endpoint service ID
+        :type EndPointServiceId: str
+        :param EndPointVip: Endpoint VIP. You can apply for a specified IP.
+        :type EndPointVip: str
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.EndPointName = None
+        self.EndPointServiceId = None
+        self.EndPointVip = None
+        self.SecurityGroupId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.EndPointName = params.get("EndPointName")
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.EndPointVip = params.get("EndPointVip")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+
+
+class CreateVpcEndPointResponse(AbstractModel):
+    """CreateVpcEndPoint response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPoint: Endpoint details
+        :type EndPoint: :class:`tencentcloud.vpc.v20170312.models.EndPoint`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EndPoint = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EndPoint") is not None:
+            self.EndPoint = EndPoint()
+            self.EndPoint._deserialize(params.get("EndPoint"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVpcEndPointServiceRequest(AbstractModel):
+    """CreateVpcEndPointService request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC instance ID
+        :type VpcId: str
+        :param EndPointServiceName: Endpoint service name
+        :type EndPointServiceName: str
+        :param AutoAcceptFlag: Whether to automatically accept
+        :type AutoAcceptFlag: bool
+        :param ServiceInstanceId: Real server ID, such as `lb-xxx`.
+        :type ServiceInstanceId: str
+        :param IsPassService: Whether it is of the type `PassService`. Valid values: true: yes; false: no. Default value: false
+        :type IsPassService: bool
+        """
+        self.VpcId = None
+        self.EndPointServiceName = None
+        self.AutoAcceptFlag = None
+        self.ServiceInstanceId = None
+        self.IsPassService = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.EndPointServiceName = params.get("EndPointServiceName")
+        self.AutoAcceptFlag = params.get("AutoAcceptFlag")
+        self.ServiceInstanceId = params.get("ServiceInstanceId")
+        self.IsPassService = params.get("IsPassService")
+
+
+class CreateVpcEndPointServiceResponse(AbstractModel):
+    """CreateVpcEndPointService response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointService: Endpoint service details
+        :type EndPointService: :class:`tencentcloud.vpc.v20170312.models.EndPointService`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EndPointService = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EndPointService") is not None:
+            self.EndPointService = EndPointService()
+            self.EndPointService._deserialize(params.get("EndPointService"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVpcEndPointServiceWhiteListRequest(AbstractModel):
+    """CreateVpcEndPointServiceWhiteList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param UserUin: UIN
+        :type UserUin: str
+        :param EndPointServiceId: Endpoint service ID
+        :type EndPointServiceId: str
+        :param Description: Allowlist description
+        :type Description: str
+        """
+        self.UserUin = None
+        self.EndPointServiceId = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.UserUin = params.get("UserUin")
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.Description = params.get("Description")
+
+
+class CreateVpcEndPointServiceWhiteListResponse(AbstractModel):
+    """CreateVpcEndPointServiceWhiteList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateVpcRequest(AbstractModel):
     """CreateVpc request structure.
 
@@ -4103,6 +4309,48 @@ class DeleteHaVipResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLocalGatewayRequest(AbstractModel):
+    """DeleteLocalGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalGatewayId: Local gateway instance ID
+        :type LocalGatewayId: str
+        :param CdcId: CDC instance ID
+        :type CdcId: str
+        :param VpcId: VPC instance ID
+        :type VpcId: str
+        """
+        self.LocalGatewayId = None
+        self.CdcId = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.LocalGatewayId = params.get("LocalGatewayId")
+        self.CdcId = params.get("CdcId")
+        self.VpcId = params.get("VpcId")
+
+
+class DeleteLocalGatewayResponse(AbstractModel):
+    """DeleteLocalGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
     """DeleteNatGatewayDestinationIpPortTranslationNatRule request structure.
 
@@ -4582,6 +4830,112 @@ class DeleteSubnetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteVpcEndPointRequest(AbstractModel):
+    """DeleteVpcEndPoint request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointId: Endpoint ID
+        :type EndPointId: str
+        """
+        self.EndPointId = None
+
+
+    def _deserialize(self, params):
+        self.EndPointId = params.get("EndPointId")
+
+
+class DeleteVpcEndPointResponse(AbstractModel):
+    """DeleteVpcEndPoint response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVpcEndPointServiceRequest(AbstractModel):
+    """DeleteVpcEndPointService request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointServiceId: Endpoint ID
+        :type EndPointServiceId: str
+        """
+        self.EndPointServiceId = None
+
+
+    def _deserialize(self, params):
+        self.EndPointServiceId = params.get("EndPointServiceId")
+
+
+class DeleteVpcEndPointServiceResponse(AbstractModel):
+    """DeleteVpcEndPointService response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVpcEndPointServiceWhiteListRequest(AbstractModel):
+    """DeleteVpcEndPointServiceWhiteList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param UserUin: Array of user UINs
+        :type UserUin: list of str
+        :param EndPointServiceId: Endpoint service ID
+        :type EndPointServiceId: str
+        """
+        self.UserUin = None
+        self.EndPointServiceId = None
+
+
+    def _deserialize(self, params):
+        self.UserUin = params.get("UserUin")
+        self.EndPointServiceId = params.get("EndPointServiceId")
+
+
+class DeleteVpcEndPointServiceWhiteListResponse(AbstractModel):
+    """DeleteVpcEndPointServiceWhiteList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteVpcRequest(AbstractModel):
     """DeleteVpc request structure.
 
@@ -4886,16 +5240,17 @@ class DescribeAddressesRequest(AbstractModel):
         :param AddressIds: The list of unique IDs of EIPs in the format of `eip-11112222`. `AddressIds` and `Filters.address-id` cannot be specified at the same time.
         :type AddressIds: list of str
         :param Filters: Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
-<li> `address-id` - String - Required: No - (Filter condition) Filter by the unique EIP ID in the format of `eip-11112222`.</li>
-<li> `address-name` - String - Required: No - (Filter condition) Filter by EIP name. Fuzzy filtering is not supported. </li>
-<li> `address-ip` - String - Required: No - (Filter condition) Filter by the IP address of EIP.</li>
-<li> address-status - String - Required: no - (Filter condition) Filter by the EIP state. Possible EIP states are: 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', and 'BIND_ENI'.</li>
-<li> `instance-id` - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP in the format of `ins-11112222`.</li>
-<li> `private-ip-address` - String - Required: No - (Filter condition) Filter by the private IP bound to the EIP.</li>
-<li> `network-interface-id` - String - Required: No - (Filter condition) Filter by the ID of the ENI bound to the EIP in the format of `eni-11112222`.</li>
-<li> `is-arrears` - String - Required: No - (Filter condition) Filter by whether the EIP is overdue. (TRUE: The EIP is overdue | FALSE: The EIP billing status is normal)</li>
-<li> `address-type` - String - Required: No - (Filter condition) Filter by the IP type. Optional values: 'EIP'，'AnycastEIP'，'HighQualityEIP'</li>
-<li> `address-isp` - String - Required: No - (Filter condition) Filter by the ISP type. Optional values: 'BGP'，'CMCC'，'CUCC', 'CTCC'</li>
+<li> address-id - String - Required: No - (Filter condition) Filter by the unique EIP ID in the format of `eip-11112222`.</li>
+<li> address-name - String - Required: No - (Filter condition) Filter by the EIP name. Fuzzy filtering is not supported.</li>
+<li> address-ip - String - Required: No - (Filter condition) Filter by EIP.</li>
+<li> address-status - String - Required: No - (Filter condition) Filter by the EIP state. Valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>
+<li> instance-id - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP in the format of `ins-11112222`.</li>
+<li> private-ip-address - String - Required: No - (Filter condition) Filter by the private IP address bound to the EIP.</li>
+<li> network-interface-id - String - Required: No - (Filter condition) Filter by the ID of the ENI bound to the EIP in the format of `eni-11112222`.</li>
+<li> is-arrears - String - Required: No - (Filter condition) Whether the EIP is overdue (TRUE: the EIP is overdue | FALSE: the billing status of the EIP is normal).</li>
+<li> address-type - String - Required: No - (Filter condition) Filter by the IP type. Valid values: `EIP`, `AnycastEIP`, and `HighQualityEIP`.</li>
+<li> address-isp - String - Required: No - (Filter condition) Filter by the ISP type. Valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>
+<li> dedicated-cluster-id - String - Required: No - (Filter condition) Filter by the unique CDC ID in the format of `cluster-11112222`.</li>
         :type Filters: list of Filter
         :param Offset: The Offset. The default value is 0. For more information on `Offset`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/product/11646).
         :type Offset: int
@@ -6350,6 +6705,67 @@ class DescribeIpGeolocationInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLocalGatewayRequest(AbstractModel):
+    """DescribeLocalGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: Query criteria:
+vpc-id: filter by VPC ID; local-gateway-name: filter by local gateway name (fuzzy search is supported); local-gateway-id: filter by local gateway instance ID; cdc-id: filter by CDC instance ID.
+        :type Filters: list of Filter
+        :param Offset: The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :type Offset: int
+        :param Limit: The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeLocalGatewayResponse(AbstractModel):
+    """DescribeLocalGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalGatewaySet: Information set of local gateways
+        :type LocalGatewaySet: list of LocalGateway
+        :param TotalCount: Total number of local gateways
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LocalGatewaySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LocalGatewaySet") is not None:
+            self.LocalGatewaySet = []
+            for item in params.get("LocalGatewaySet"):
+                obj = LocalGateway()
+                obj._deserialize(item)
+                self.LocalGatewaySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractModel):
     """DescribeNatGatewayDestinationIpPortTranslationNatRules request structure.
 
@@ -7389,6 +7805,203 @@ class DescribeTaskResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpcEndPointRequest(AbstractModel):
+    """DescribeVpcEndPoint request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: Filter condition
+<li> end-point-service-id - String - (Filter condition) Endpoint service ID.</li>
+<li>end-point-name - String - (Filter condition) Endpoint instance name.</li>
+<li> end-point-id - String - (Filter condition) Endpoint instance ID.</li>
+<li> vpc-id - String - (Filter condition) VPC instance ID.</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of results per page; default value: 20; maximum value: 100.
+        :type Limit: int
+        :param EndPointId: Endpoint ID list
+        :type EndPointId: list of str
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.EndPointId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.EndPointId = params.get("EndPointId")
+
+
+class DescribeVpcEndPointResponse(AbstractModel):
+    """DescribeVpcEndPoint response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointSet: Endpoint
+        :type EndPointSet: list of EndPoint
+        :param TotalCount: Number of matched endpoints
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EndPointSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EndPointSet") is not None:
+            self.EndPointSet = []
+            for item in params.get("EndPointSet"):
+                obj = EndPoint()
+                obj._deserialize(item)
+                self.EndPointSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpcEndPointServiceRequest(AbstractModel):
+    """DescribeVpcEndPointService request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: Filter condition
+<li> service-id - String - (Filter condition) Unique endpoint service ID.</li>
+<li>service-name - String - (Filter condition) Endpoint service instance name.</li>
+<li>service-instance-id - String - (Filter condition) Unique real server ID in the format of `lb-xxx`.</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of results per page; default value: 20; maximum value: 100.
+        :type Limit: int
+        :param EndPointServiceIds: Endpoint service ID
+        :type EndPointServiceIds: list of str
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.EndPointServiceIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.EndPointServiceIds = params.get("EndPointServiceIds")
+
+
+class DescribeVpcEndPointServiceResponse(AbstractModel):
+    """DescribeVpcEndPointService response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointServiceSet: Array of endpoint services
+        :type EndPointServiceSet: list of EndPointService
+        :param TotalCount: Number of matched results
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EndPointServiceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EndPointServiceSet") is not None:
+            self.EndPointServiceSet = []
+            for item in params.get("EndPointServiceSet"):
+                obj = EndPointService()
+                obj._deserialize(item)
+                self.EndPointServiceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpcEndPointServiceWhiteListRequest(AbstractModel):
+    """DescribeVpcEndPointServiceWhiteList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of results per page; default value: 20; maximum value: 100.
+        :type Limit: int
+        :param Filters: Filter condition
+<li> user-uin - String - (Filter condition) UIN.</li>
+<li> end-point-service-id - String - (Filter condition) Endpoint service ID.</li>
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeVpcEndPointServiceWhiteListResponse(AbstractModel):
+    """DescribeVpcEndPointServiceWhiteList response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcEndpointServiceUserSet: Array of allowed endpoint services
+        :type VpcEndpointServiceUserSet: list of VpcEndPointServiceUser
+        :param TotalCount: Number of matched allowlists
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.VpcEndpointServiceUserSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VpcEndpointServiceUserSet") is not None:
+            self.VpcEndpointServiceUserSet = []
+            for item in params.get("VpcEndpointServiceUserSet"):
+                obj = VpcEndPointServiceUser()
+                obj._deserialize(item)
+                self.VpcEndpointServiceUserSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpcInstancesRequest(AbstractModel):
     """DescribeVpcInstances request structure.
 
@@ -8405,6 +9018,44 @@ class DisassociateNetworkInterfaceSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisassociateVpcEndPointSecurityGroupsRequest(AbstractModel):
+    """DisassociateVpcEndPointSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: Array of security group IDs
+        :type SecurityGroupIds: list of str
+        :param EndPointId: Endpoint ID
+        :type EndPointId: str
+        """
+        self.SecurityGroupIds = None
+        self.EndPointId = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.EndPointId = params.get("EndPointId")
+
+
+class DisassociateVpcEndPointSecurityGroupsResponse(AbstractModel):
+    """DisassociateVpcEndPointSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
     """DownloadCustomerGatewayConfiguration request structure.
 
@@ -8530,6 +9181,174 @@ class EnableGatewayFlowMonitorResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class EnableVpcEndPointConnectRequest(AbstractModel):
+    """EnableVpcEndPointConnect request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointServiceId: Endpoint service ID
+        :type EndPointServiceId: str
+        :param EndPointId: Endpoint ID
+        :type EndPointId: list of str
+        :param AcceptFlag: Whether to accept the request of connecting with an endpoint
+        :type AcceptFlag: bool
+        """
+        self.EndPointServiceId = None
+        self.EndPointId = None
+        self.AcceptFlag = None
+
+
+    def _deserialize(self, params):
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.EndPointId = params.get("EndPointId")
+        self.AcceptFlag = params.get("AcceptFlag")
+
+
+class EnableVpcEndPointConnectResponse(AbstractModel):
+    """EnableVpcEndPointConnect response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EndPoint(AbstractModel):
+    """Endpoint details
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointId: Endpoint ID
+        :type EndPointId: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        :param EndPointOwner: APP ID
+        :type EndPointOwner: str
+        :param EndPointName: Endpoint name
+        :type EndPointName: str
+        :param ServiceVpcId: Endpoint service VPC ID
+        :type ServiceVpcId: str
+        :param ServiceVip: Endpoint service VIP
+        :type ServiceVip: str
+        :param EndPointServiceId: Endpoint service ID
+        :type EndPointServiceId: str
+        :param EndPointVip: Endpoint VIP
+        :type EndPointVip: str
+        :param State: Endpoint status. Valid values: `ACTIVE` (available), `PENDING` (to be accepted), `ACCEPTING` (being accepted), `REJECTED` (rejected), and `FAILED` (failed).
+        :type State: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param GroupSet: ID list of security group instances bound with endpoints
+        :type GroupSet: list of str
+        :param ServiceName: Endpoint service name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ServiceName: str
+        """
+        self.EndPointId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.EndPointOwner = None
+        self.EndPointName = None
+        self.ServiceVpcId = None
+        self.ServiceVip = None
+        self.EndPointServiceId = None
+        self.EndPointVip = None
+        self.State = None
+        self.CreateTime = None
+        self.GroupSet = None
+        self.ServiceName = None
+
+
+    def _deserialize(self, params):
+        self.EndPointId = params.get("EndPointId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.EndPointOwner = params.get("EndPointOwner")
+        self.EndPointName = params.get("EndPointName")
+        self.ServiceVpcId = params.get("ServiceVpcId")
+        self.ServiceVip = params.get("ServiceVip")
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.EndPointVip = params.get("EndPointVip")
+        self.State = params.get("State")
+        self.CreateTime = params.get("CreateTime")
+        self.GroupSet = params.get("GroupSet")
+        self.ServiceName = params.get("ServiceName")
+
+
+class EndPointService(AbstractModel):
+    """Endpoint service
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointServiceId: Endpoint service ID
+        :type EndPointServiceId: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param ServiceOwner: APP ID
+        :type ServiceOwner: str
+        :param ServiceName: Endpoint service name
+        :type ServiceName: str
+        :param ServiceVip: Real server VIP
+        :type ServiceVip: str
+        :param ServiceInstanceId: Real server ID in the format of `lb-xxx`.
+        :type ServiceInstanceId: str
+        :param AutoAcceptFlag: Whether to automatically accept
+        :type AutoAcceptFlag: bool
+        :param EndPointCount: Number of associated endpoints
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EndPointCount: int
+        :param EndPointSet: Array of endpoints
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EndPointSet: list of EndPoint
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        """
+        self.EndPointServiceId = None
+        self.VpcId = None
+        self.ServiceOwner = None
+        self.ServiceName = None
+        self.ServiceVip = None
+        self.ServiceInstanceId = None
+        self.AutoAcceptFlag = None
+        self.EndPointCount = None
+        self.EndPointSet = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.VpcId = params.get("VpcId")
+        self.ServiceOwner = params.get("ServiceOwner")
+        self.ServiceName = params.get("ServiceName")
+        self.ServiceVip = params.get("ServiceVip")
+        self.ServiceInstanceId = params.get("ServiceInstanceId")
+        self.AutoAcceptFlag = params.get("AutoAcceptFlag")
+        self.EndPointCount = params.get("EndPointCount")
+        if params.get("EndPointSet") is not None:
+            self.EndPointSet = []
+            for item in params.get("EndPointSet"):
+                obj = EndPoint()
+                obj._deserialize(item)
+                self.EndPointSet.append(obj)
+        self.CreateTime = params.get("CreateTime")
 
 
 class Filter(AbstractModel):
@@ -9408,6 +10227,43 @@ class ItemPrice(AbstractModel):
         self.DiscountPrice = params.get("DiscountPrice")
 
 
+class LocalGateway(AbstractModel):
+    """Local gateway information
+
+    """
+
+    def __init__(self):
+        """
+        :param CdcId: CDC instance ID
+        :type CdcId: str
+        :param VpcId: VPC instance ID
+        :type VpcId: str
+        :param UniqLocalGwId: Local gateway instance ID
+        :type UniqLocalGwId: str
+        :param LocalGatewayName: Local gateway name
+        :type LocalGatewayName: str
+        :param LocalGwIp: Local gateway IP
+        :type LocalGwIp: str
+        :param CreateTime: Creation time of the local gateway
+        :type CreateTime: str
+        """
+        self.CdcId = None
+        self.VpcId = None
+        self.UniqLocalGwId = None
+        self.LocalGatewayName = None
+        self.LocalGwIp = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.CdcId = params.get("CdcId")
+        self.VpcId = params.get("VpcId")
+        self.UniqLocalGwId = params.get("UniqLocalGwId")
+        self.LocalGatewayName = params.get("LocalGatewayName")
+        self.LocalGwIp = params.get("LocalGwIp")
+        self.CreateTime = params.get("CreateTime")
+
+
 class MigrateNetworkInterfaceRequest(AbstractModel):
     """MigrateNetworkInterface request structure.
 
@@ -10189,6 +11045,52 @@ class ModifyIpv6AddressesAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLocalGatewayRequest(AbstractModel):
+    """ModifyLocalGateway request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalGatewayName: Local gateway name
+        :type LocalGatewayName: str
+        :param CdcId: CDC instance ID
+        :type CdcId: str
+        :param LocalGatewayId: Local gateway instance ID
+        :type LocalGatewayId: str
+        :param VpcId: VPC instance ID
+        :type VpcId: str
+        """
+        self.LocalGatewayName = None
+        self.CdcId = None
+        self.LocalGatewayId = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.LocalGatewayName = params.get("LocalGatewayName")
+        self.CdcId = params.get("CdcId")
+        self.LocalGatewayId = params.get("LocalGatewayId")
+        self.VpcId = params.get("VpcId")
+
+
+class ModifyLocalGatewayResponse(AbstractModel):
+    """ModifyLocalGateway response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNatGatewayAttributeRequest(AbstractModel):
     """ModifyNatGatewayAttribute request structure.
 
@@ -10841,6 +11743,140 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
 class ModifyVpcAttributeResponse(AbstractModel):
     """ModifyVpcAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVpcEndPointAttributeRequest(AbstractModel):
+    """ModifyVpcEndPointAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointId: Endpoint ID
+        :type EndPointId: str
+        :param EndPointName: Endpoint name
+        :type EndPointName: str
+        :param SecurityGroupIds: List of security group IDs
+        :type SecurityGroupIds: list of str
+        """
+        self.EndPointId = None
+        self.EndPointName = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.EndPointId = params.get("EndPointId")
+        self.EndPointName = params.get("EndPointName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class ModifyVpcEndPointAttributeResponse(AbstractModel):
+    """ModifyVpcEndPointAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
+    """ModifyVpcEndPointServiceAttribute request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointServiceId: Endpoint service ID
+        :type EndPointServiceId: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param EndPointServiceName: Endpoint service name
+        :type EndPointServiceName: str
+        :param AutoAcceptFlag: Whether to automatically accept
+        :type AutoAcceptFlag: bool
+        :param ServiceInstanceId: Real server ID in the format of `lb-xxx`.
+        :type ServiceInstanceId: str
+        """
+        self.EndPointServiceId = None
+        self.VpcId = None
+        self.EndPointServiceName = None
+        self.AutoAcceptFlag = None
+        self.ServiceInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.VpcId = params.get("VpcId")
+        self.EndPointServiceName = params.get("EndPointServiceName")
+        self.AutoAcceptFlag = params.get("AutoAcceptFlag")
+        self.ServiceInstanceId = params.get("ServiceInstanceId")
+
+
+class ModifyVpcEndPointServiceAttributeResponse(AbstractModel):
+    """ModifyVpcEndPointServiceAttribute response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVpcEndPointServiceWhiteListRequest(AbstractModel):
+    """ModifyVpcEndPointServiceWhiteList request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param UserUin: User UIN
+        :type UserUin: str
+        :param EndPointServiceId: Endpoint service ID
+        :type EndPointServiceId: str
+        :param Description: Allowlist description
+        :type Description: str
+        """
+        self.UserUin = None
+        self.EndPointServiceId = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.UserUin = params.get("UserUin")
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.Description = params.get("Description")
+
+
+class ModifyVpcEndPointServiceWhiteListResponse(AbstractModel):
+    """ModifyVpcEndPointServiceWhiteList response structure.
 
     """
 
@@ -13488,6 +14524,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = AssistantCidr()
                 obj._deserialize(item)
                 self.AssistantCidrSet.append(obj)
+
+
+class VpcEndPointServiceUser(AbstractModel):
+    """Details of allowed endpoint services
+
+    """
+
+    def __init__(self):
+        """
+        :param Owner: APP ID
+        :type Owner: int
+        :param UserUin: User UIN
+        :type UserUin: str
+        :param Description: Description
+        :type Description: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param EndPointServiceId: Endpoint service ID
+        :type EndPointServiceId: str
+        """
+        self.Owner = None
+        self.UserUin = None
+        self.Description = None
+        self.CreateTime = None
+        self.EndPointServiceId = None
+
+
+    def _deserialize(self, params):
+        self.Owner = params.get("Owner")
+        self.UserUin = params.get("UserUin")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.EndPointServiceId = params.get("EndPointServiceId")
 
 
 class VpcIpv6Address(AbstractModel):

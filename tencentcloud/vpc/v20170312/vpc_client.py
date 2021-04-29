@@ -942,6 +942,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLocalGateway(self, request):
+        """This API is used to create a local gateway for a CDC instance.
+
+        :param request: Request instance for CreateLocalGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateLocalGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateLocalGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLocalGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLocalGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNatGateway(self, request):
         """This API (CreateNatGateway) is used to create a NAT gateway.
 
@@ -1444,6 +1472,90 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateVpcEndPoint(self, request):
+        """This API is used to create an endpoint.
+
+        :param request: Request instance for CreateVpcEndPoint.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVpcEndPoint", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVpcEndPointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVpcEndPointService(self, request):
+        """This API is used to create an endpoint service.
+
+        :param request: Request instance for CreateVpcEndPointService.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointServiceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVpcEndPointService", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVpcEndPointServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVpcEndPointServiceWhiteList(self, request):
+        """This API is used to create the endpoint service allowlist.
+
+        :param request: Request instance for CreateVpcEndPointServiceWhiteList.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointServiceWhiteListRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointServiceWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVpcEndPointServiceWhiteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVpcEndPointServiceWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateVpnConnection(self, request):
         """This API (CreateVpnConnection) is used to create VPN tunnel.
 
@@ -1772,6 +1884,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteHaVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLocalGateway(self, request):
+        """This API is used to delete the local gateway of a CDC instance.
+
+        :param request: Request instance for DeleteLocalGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteLocalGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteLocalGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLocalGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLocalGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2174,6 +2314,91 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpcResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteVpcEndPoint(self, request):
+        """This API is used to delete an endpoint.
+
+        :param request: Request instance for DeleteVpcEndPoint.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcEndPointRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcEndPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteVpcEndPoint", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteVpcEndPointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteVpcEndPointService(self, request):
+        """This API is used to delete an endpoint service.
+
+
+        :param request: Request instance for DeleteVpcEndPointService.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcEndPointServiceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcEndPointServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteVpcEndPointService", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteVpcEndPointServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteVpcEndPointServiceWhiteList(self, request):
+        """This API is used to delete the endpoint service allowlist.
+
+        :param request: Request instance for DeleteVpcEndPointServiceWhiteList.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcEndPointServiceWhiteListRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcEndPointServiceWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteVpcEndPointServiceWhiteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteVpcEndPointServiceWhiteListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3004,6 +3229,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLocalGateway(self, request):
+        """This API is used to query local gateways of a CDC instance.
+
+        :param request: Request instance for DescribeLocalGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeLocalGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeLocalGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLocalGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLocalGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNatGatewayDestinationIpPortTranslationNatRules(self, request):
         """This API (DescribeNatGatewayDestinationIpPortTranslationNatRules) is used to query the array of objects of the port forwarding rules for a NAT gateway.
 
@@ -3466,6 +3719,90 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpcEndPoint(self, request):
+        """This API is used to query the endpoint list.
+
+        :param request: Request instance for DescribeVpcEndPoint.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcEndPointRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcEndPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpcEndPoint", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpcEndPointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpcEndPointService(self, request):
+        """This API is used to query the endpoint service list.
+
+        :param request: Request instance for DescribeVpcEndPointService.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcEndPointServiceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcEndPointServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpcEndPointService", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpcEndPointServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpcEndPointServiceWhiteList(self, request):
+        """This API is used to query the endpoint service allowlist.
+
+        :param request: Request instance for DescribeVpcEndPointServiceWhiteList.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcEndPointServiceWhiteListRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcEndPointServiceWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpcEndPointServiceWhiteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpcEndPointServiceWhiteListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3991,6 +4328,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisassociateVpcEndPointSecurityGroups(self, request):
+        """This API is used to unbind an endpoint from a security group.
+
+        :param request: Request instance for DisassociateVpcEndPointSecurityGroups.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateVpcEndPointSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateVpcEndPointSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateVpcEndPointSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateVpcEndPointSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DownloadCustomerGatewayConfiguration(self, request):
         """This API (DownloadCustomerGatewayConfiguration) is used to download a VPN tunnel configuration.
 
@@ -4062,6 +4427,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableGatewayFlowMonitorResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableVpcEndPointConnect(self, request):
+        """This API is used to determine whether to accept the request of connecting with an endpoint.
+
+        :param request: Request instance for EnableVpcEndPointConnect.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableVpcEndPointConnectRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableVpcEndPointConnectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableVpcEndPointConnect", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableVpcEndPointConnectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4783,6 +5176,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyLocalGateway(self, request):
+        """This API is used to modify the local gateway of a CDC instance.
+
+        :param request: Request instance for ModifyLocalGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyLocalGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyLocalGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLocalGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLocalGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyNatGatewayAttribute(self, request):
         """This API (ModifyNatGatewayAttribute) is used to modify the attributes of a NAT gateway.
 
@@ -5204,6 +5625,91 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpcAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyVpcEndPointAttribute(self, request):
+        """This API is used to modify endpoint attributes.
+
+        :param request: Request instance for ModifyVpcEndPointAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcEndPointAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcEndPointAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyVpcEndPointAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVpcEndPointAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyVpcEndPointServiceAttribute(self, request):
+        """This API is used to modify endpoint service attributes.
+
+
+        :param request: Request instance for ModifyVpcEndPointServiceAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcEndPointServiceAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcEndPointServiceAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyVpcEndPointServiceAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVpcEndPointServiceAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyVpcEndPointServiceWhiteList(self, request):
+        """This API is used to modify the attributes of the endpoint service allowlist.
+
+        :param request: Request instance for ModifyVpcEndPointServiceWhiteList.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcEndPointServiceWhiteListRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcEndPointServiceWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyVpcEndPointServiceWhiteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVpcEndPointServiceWhiteListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
