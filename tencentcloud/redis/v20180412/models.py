@@ -4914,6 +4914,44 @@ class UpgradeInstanceVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
+    """UpgradeVersionToMultiAvailabilityZones request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class UpgradeVersionToMultiAvailabilityZonesResponse(AbstractModel):
+    """UpgradeVersionToMultiAvailabilityZones response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ZoneCapacityConf(AbstractModel):
     """Product information in the availability zone
 
