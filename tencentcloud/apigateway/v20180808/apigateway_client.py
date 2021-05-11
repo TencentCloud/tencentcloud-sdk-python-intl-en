@@ -142,6 +142,62 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BuildAPIDoc(self, request):
+        """This API is used to build an API document.
+
+        :param request: Request instance for BuildAPIDoc.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.BuildAPIDocRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.BuildAPIDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BuildAPIDoc", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BuildAPIDocResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAPIDoc(self, request):
+        """This API is used to create an API document.
+
+        :param request: Request instance for CreateAPIDoc.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateAPIDocRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.CreateAPIDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAPIDoc", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAPIDocResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateApi(self, request):
         """This API is used to create an API. Before creating an API, you need to create a service, as each API belongs to a certain service.
 
@@ -270,6 +326,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUsagePlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAPIDoc(self, request):
+        """This API is used to delete an API document.
+
+        :param request: Request instance for DeleteAPIDoc.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteAPIDocRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DeleteAPIDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAPIDoc", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAPIDocResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -469,6 +553,62 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DemoteServiceUsagePlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAPIDocDetail(self, request):
+        """This API is used to query the details of an API document.
+
+        :param request: Request instance for DescribeAPIDocDetail.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeAPIDocDetailRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeAPIDocDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAPIDocDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAPIDocDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAPIDocs(self, request):
+        """This API is used to query the list of API documents.
+
+        :param request: Request instance for DescribeAPIDocs.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeAPIDocsRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeAPIDocsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAPIDocs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAPIDocsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1221,6 +1361,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAPIDoc(self, request):
+        """This API is used to modify an API document.
+
+        :param request: Request instance for ModifyAPIDoc.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyAPIDocRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.ModifyAPIDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAPIDoc", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAPIDocResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyApi(self, request):
         """This API is used to modify an API. You can call this API to edit/modify a configured API. The modified API takes effect only after its service is published to the corresponding environment again.
 
@@ -1460,6 +1628,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetAPIDocPassword(self, request):
+        """This API is used to reset the password of an API document.
+
+        :param request: Request instance for ResetAPIDocPassword.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.ResetAPIDocPasswordRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.ResetAPIDocPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetAPIDocPassword", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetAPIDocPasswordResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

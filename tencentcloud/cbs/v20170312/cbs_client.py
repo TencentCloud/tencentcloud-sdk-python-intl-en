@@ -59,10 +59,10 @@ class CbsClient(AbstractClient):
 
 
     def AttachDisks(self, request):
-        """This API (AttachDisks) is used to mount cloud disks.
+        """This API is used to mount one or more cloud disks.
 
-        * Batch operations are supported. Multiple cloud disks can be mounted to a CVM. If there is a cloud disk that does not allow this operation, the operation is not performed and a specific error code is returned.
-        * This API is an asynchronous API. If the request for mounting the cloud disk successfully returns results, the operation of mounting cloud disk has been initiated at the background. You can use the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) to query the cloud disk status. If the status changes from "ATTACHING" to "ATTACHED", the cloud disk is mounted.
+        * Batch operation is supported. You can mount multiple cloud disks to one CVM in a single request. If any of these cloud disks cannot be mounted, the operation fails and a specific error code returns.
+        * This is an async API. A successful request indicates that the mounting is initiated. You can call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API to query the status of cloud disks. If the status changes from `ATTACHING` to `ATTACHED`, the mounting is successful.
 
         :param request: Request instance for AttachDisks.
         :type request: :class:`tencentcloud.cbs.v20170312.models.AttachDisksRequest`
@@ -542,10 +542,10 @@ class CbsClient(AbstractClient):
 
 
     def DetachDisks(self, request):
-        """This API (DetachDisks) is used to unmount cloud disks.
+        """This API is used to unmount one or more cloud disks.
 
-        * Batch operations are supported. Multiple cloud disks mounted to the same CVM can be unmounted in batch. If there is a cloud disk that does not allow this operation, the operation is not performed and a specific error code is returned.
-        * This API is an asynchronous API. When the request successfully returns results, the cloud disk is not unmounted from the CVM immediately. You can use the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) to query the cloud disk status. If the status changes from "ATTACHED" to "UNATTACHED", the cloud disk is unmounted.
+        * Batch operation is supported. You can unmount multiple cloud disks from the same CVM in a single request. If any of these cloud disks cannot be unmounted, the operation fails and a specific error code returns.
+        * This is an async API. A successful request does not mean that the cloud disks have been unmounted successfully. You can call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API to query the status of cloud disks. When the status changes from `ATTACHED` to `UNATTACHED`, the unmounting is successful.
 
         :param request: Request instance for DetachDisks.
         :type request: :class:`tencentcloud.cbs.v20170312.models.DetachDisksRequest`
@@ -586,6 +586,34 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetSnapOverviewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceModifyDiskExtraPerformance(self, request):
+        """This API is used to query the price for adjusting the cloud disk’s extra performance.
+
+        :param request: Request instance for InquirePriceModifyDiskExtraPerformance.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.InquirePriceModifyDiskExtraPerformanceRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.InquirePriceModifyDiskExtraPerformanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceModifyDiskExtraPerformance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceModifyDiskExtraPerformanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -705,6 +733,36 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDiskAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDiskExtraPerformance(self, request):
+        """This API is used to adjust the cloud disk’s extra performance.
+
+        * Currently, only Tremendous SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD) support extra performance adjustment.
+
+        :param request: Request instance for ModifyDiskExtraPerformance.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyDiskExtraPerformanceRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ModifyDiskExtraPerformanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDiskExtraPerformance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDiskExtraPerformanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

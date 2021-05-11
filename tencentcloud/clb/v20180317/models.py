@@ -2219,7 +2219,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerIds: CLB instance ID.
+        :param LoadBalancerIds: CLB instance ID
         :type LoadBalancerIds: list of str
         :param LoadBalancerType: CLB instance network type:
 OPEN: public network; INTERNAL: private network.
@@ -2253,9 +2253,9 @@ OPEN: public network; INTERNAL: private network.
         :param VpcId: VPC where a CLB instance resides, such as vpc-bhqkbhdx.
 Basic network does not support queries by VpcId.
         :type VpcId: str
-        :param SecurityGroup: Security group ID, such as sg-m1cc9123
+        :param SecurityGroup: Security group ID, e.g., `sg-m1cc****`.
         :type SecurityGroup: str
-        :param MasterZone: Master AZ, such as "100001" (Guangzhou Zone 1)
+        :param MasterZone: Primary AZ ID, e.g., `100001` (Guangzhou Zone 1).
         :type MasterZone: str
         :param Filters: Each request can have up to 10 `Filters` and 100 `Filter.Values`. Detailed filter conditions:
 <li> internet-charge-type - Type: String - Required: No - Filter by CLB network billing mode, including `TRAFFIC_POSTPAID_BY_HOUR`</li>

@@ -919,6 +919,18 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SignLaw: Whether the connection has the service agreement signed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type SignLaw: bool
+        :param LocalZone: Whether the connection is an edge zone.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type LocalZone: bool
+        :param VlanZeroDirectConnectTunnelCount: Number of dedicated tunnels with disabled VLAN in the connection
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VlanZeroDirectConnectTunnelCount: int
+        :param OtherVlanDirectConnectTunnelCount: Number of dedicated tunnels with enabled VLAN in the connection
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type OtherVlanDirectConnectTunnelCount: int
+        :param MinBandwidth: Minimum bandwidth of the connection
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type MinBandwidth: int
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -948,6 +960,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.ChargeState = None
         self.StartTime = None
         self.SignLaw = None
+        self.LocalZone = None
+        self.VlanZeroDirectConnectTunnelCount = None
+        self.OtherVlanDirectConnectTunnelCount = None
+        self.MinBandwidth = None
 
 
     def _deserialize(self, params):
@@ -984,6 +1000,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.ChargeState = params.get("ChargeState")
         self.StartTime = params.get("StartTime")
         self.SignLaw = params.get("SignLaw")
+        self.LocalZone = params.get("LocalZone")
+        self.VlanZeroDirectConnectTunnelCount = params.get("VlanZeroDirectConnectTunnelCount")
+        self.OtherVlanDirectConnectTunnelCount = params.get("OtherVlanDirectConnectTunnelCount")
+        self.MinBandwidth = params.get("MinBandwidth")
 
 
 class DirectConnectTunnel(AbstractModel):

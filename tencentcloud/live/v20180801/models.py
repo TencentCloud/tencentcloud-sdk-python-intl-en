@@ -589,14 +589,19 @@ If 1 is entered, when the layer resolution in the parameter is different from th
         :param AllowCopy: Value range: [0,1].
 If this parameter is set to 1, when both `InputStreamList` and `OutputParams.OutputStreamType` are set to 1, you can copy a stream instead of canceling it.
         :type AllowCopy: int
+        :param PassInputSei: Valid values: 0, 1
+If you set this parameter to 1, SEI (Supplemental Enhanced Information) of the input streams will be passed through.
+        :type PassInputSei: int
         """
         self.UseMixCropCenter = None
         self.AllowCopy = None
+        self.PassInputSei = None
 
 
     def _deserialize(self, params):
         self.UseMixCropCenter = params.get("UseMixCropCenter")
         self.AllowCopy = params.get("AllowCopy")
+        self.PassInputSei = params.get("PassInputSei")
 
 
 class CommonMixCropParams(AbstractModel):
@@ -3188,14 +3193,18 @@ class DescribeLiveForbidStreamListRequest(AbstractModel):
 Value: any integer between 1 and 100.
 Default value: 10.
         :type PageSize: int
+        :param StreamName: The stream name to search for
+        :type StreamName: str
         """
         self.PageNum = None
         self.PageSize = None
+        self.StreamName = None
 
 
     def _deserialize(self, params):
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        self.StreamName = params.get("StreamName")
 
 
 class DescribeLiveForbidStreamListResponse(AbstractModel):

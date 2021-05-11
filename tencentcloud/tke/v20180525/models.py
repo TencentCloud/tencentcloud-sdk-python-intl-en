@@ -1866,15 +1866,20 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
         """
         :param Status: Queries cluster access port status (Created = successfully enabled; Creating = in the process of being enabled; NotFound = not enabled).
         :type Status: str
+        :param ErrorMsg: Details of the error occurred while opening the access port
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ErrorMsg: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Status = None
+        self.ErrorMsg = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrorMsg = params.get("ErrorMsg")
         self.RequestId = params.get("RequestId")
 
 

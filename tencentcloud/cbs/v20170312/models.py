@@ -1040,9 +1040,9 @@ class DetachDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskIds: ID of the cloud disk to be unmounted, which can be queried through the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1). A maximum of 10 elastic cloud disks can be unmounted in a single request.
+        :param DiskIds: IDs of the cloud disks to be unmounted, which can be queried via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API. Up to 10 elastic cloud disks can be unmounted in a single request.
         :type DiskIds: list of str
-        :param InstanceId: For a cloud disk that is not shared, this parameter is ignored. For a shared cloud disk, this parameter indicates which CVM instance the cloud disk is to be unmounted from.
+        :param InstanceId: Indicates the CVM from which you want to unmount the disks. This parameter is only available for shared cloud disks.
         :type InstanceId: str
         """
         self.DiskIds = None
@@ -1153,7 +1153,7 @@ Note: This field may return null, indicating that no valid value was found.
         :type SnapshotCount: int
         :param SnapshotSize: The total capacity of the snapshots of the cloud disk. Unit: MB.
         :type SnapshotSize: int
-        :param BackupDisk: Indicates whether a snapshot should be created for backup when the cloud disk is terminated due to arrears or expiration. `True`: create a snapshot to backup the disk upon termination. `False`: terminate the disk without backup
+        :param BackupDisk: Specifies whether to create a snapshot when the cloud disk is terminated due to overdue payment or expiration. `true`: create snapshot; `false`: do not create snapshot.
         :type BackupDisk: bool
         :param ThroughputPerformance: Extra performance for a cloud disk, in MB/sec.
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -1445,6 +1445,50 @@ class Image(AbstractModel):
         self.ImageName = params.get("ImageName")
 
 
+class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
+    """InquirePriceModifyDiskExtraPerformance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskId: Cloud disk ID, which can be queried via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.
+        :type DiskId: str
+        :param ThroughputPerformance: The extra throughput to purchase, in MB/s
+        :type ThroughputPerformance: int
+        """
+        self.DiskId = None
+        self.ThroughputPerformance = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
+
+
+class InquirePriceModifyDiskExtraPerformanceResponse(AbstractModel):
+    """InquirePriceModifyDiskExtraPerformance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskPrice: Price for purchasing the extra performance
+        :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DiskPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskPrice") is not None:
+            self.DiskPrice = Price()
+            self.DiskPrice._deserialize(params.get("DiskPrice"))
+        self.RequestId = params.get("RequestId")
+
+
 class InquiryPriceCreateDisksRequest(AbstractModel):
     """InquiryPriceCreateDisks request structure.
 
@@ -1657,6 +1701,44 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
 class ModifyDiskAttributesResponse(AbstractModel):
     """ModifyDiskAttributes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDiskExtraPerformanceRequest(AbstractModel):
+    """ModifyDiskExtraPerformance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskId: ID of the cloud disk to create a snapshot, which can be obtained via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.
+        :type DiskId: str
+        :param ThroughputPerformance: The extra throughput to purchase, in MB/s
+        :type ThroughputPerformance: int
+        """
+        self.DiskId = None
+        self.ThroughputPerformance = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
+
+
+class ModifyDiskExtraPerformanceResponse(AbstractModel):
+    """ModifyDiskExtraPerformance response structure.
 
     """
 

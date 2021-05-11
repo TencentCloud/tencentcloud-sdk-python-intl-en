@@ -1817,6 +1817,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVodDomains(self, request):
+        """This API is used to query the list of VOD domain names.
+
+        :param request: Request instance for DescribeVodDomains.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeVodDomainsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeVodDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVodDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVodDomainsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeWatermarkTemplates(self, request):
         """This API is used to query custom watermarking templates and supports paged queries by filters.
 

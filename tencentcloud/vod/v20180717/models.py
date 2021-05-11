@@ -176,6 +176,35 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.UpdateTime = params.get("UpdateTime")
 
 
+class AccelerateAreaInfo(AbstractModel):
+    """Acceleration region information of the domain name
+
+    """
+
+    def __init__(self):
+        """
+        :param Area: Acceleration region. Valid values:
+<li>Chinese Mainland</li>
+<li>Outside Chinese Mainland</li>
+        :type Area: str
+        :param TencentDisableReason: Reason why acceleration is disabled by Tencent Cloud. Valid values:
+<li>ForLegalReasons: legal reasons</li>
+<li>ForOverdueBills: overdue payment</li>
+        :type TencentDisableReason: str
+        :param TencentEdgeDomain: CNAME of the acceleration domain name
+        :type TencentEdgeDomain: str
+        """
+        self.Area = None
+        self.TencentDisableReason = None
+        self.TencentEdgeDomain = None
+
+
+    def _deserialize(self, params):
+        self.Area = params.get("Area")
+        self.TencentDisableReason = params.get("TencentDisableReason")
+        self.TencentEdgeDomain = params.get("TencentEdgeDomain")
+
+
 class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     """Adaptive bitrate streaming information
 
@@ -217,9 +246,12 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :param WatermarkSet: List of up to 10 image or text watermarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WatermarkSet: list of WatermarkInput
+        :param SubtitleSet: List of subtitle IDs (maximum: 10)
+        :type SubtitleSet: list of str
         """
         self.Definition = None
         self.WatermarkSet = None
+        self.SubtitleSet = None
 
 
     def _deserialize(self, params):
@@ -230,6 +262,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self.WatermarkSet.append(obj)
+        self.SubtitleSet = params.get("SubtitleSet")
 
 
 class AdaptiveDynamicStreamingTemplate(AbstractModel):
@@ -4151,9 +4184,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MetaData: Metadata of a source video.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param SessionContext: 
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this parameter. It can contain up to 1000 characters.
         :type SessionContext: str
-        :param SessionId: 
+        :param SessionId: ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is not carried or is left empty, no deduplication will be performed.
         :type SessionId: str
         """
         self.TaskId = None
@@ -8243,6 +8276,66 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVodDomainsRequest(AbstractModel):
+    """DescribeVodDomains request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: List of domain names. If this parameter is left empty, all domain names will be listed.
+<li>Maximum number of domain names listed: 20</li>
+        :type Domains: list of str
+        :param Limit: Maximum results to return for pulling paginated queries. Default value: 20
+        :type Limit: int
+        :param Offset: Page number offset from the beginning of paginated queries. Default value: 0
+        :type Offset: int
+        :param SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :type SubAppId: int
+        """
+        self.Domains = None
+        self.Limit = None
+        self.Offset = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeVodDomainsResponse(AbstractModel):
+    """DescribeVodDomains response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of domain names
+        :type TotalCount: int
+        :param DomainSet: Domain name information list
+        :type DomainSet: list of DomainDetailInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DomainSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DomainSet") is not None:
+            self.DomainSet = []
+            for item in params.get("DomainSet"):
+                obj = DomainDetailInfo()
+                obj._deserialize(item)
+                self.DomainSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWatermarkTemplatesRequest(AbstractModel):
     """DescribeWatermarkTemplates request structure.
 
@@ -8384,6 +8477,84 @@ class DescribeWordSamplesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.WordSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DomainDetailInfo(AbstractModel):
+    """Domain name information
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: Domain name
+        :type Domain: str
+        :param AccelerateAreaInfos: Acceleration region information
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type AccelerateAreaInfos: list of AccelerateAreaInfo
+        :param DeployStatus: Deployment status. Valid values:
+<li>Online</li>
+<li>Deploying</li>
+<li>Locked: you cannot change the deployment status of locked domain names</li>
+        :type DeployStatus: str
+        :param HTTPSConfig: HTTPS configuration information
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type HTTPSConfig: :class:`tencentcloud.vod.v20180717.models.DomainHTTPSConfig`
+        :param UrlSignatureAuthPolicy: [Key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986) configuration
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
+        :param RefererAuthPolicy: [Referer hotlink protection](https://intl.cloud.tencent.com/document/product/266/33985) configuration
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
+        :param CreateTime: The time when the domain name was added in the VOD system
+<li>The time is in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732).</li>
+        :type CreateTime: str
+        """
+        self.Domain = None
+        self.AccelerateAreaInfos = None
+        self.DeployStatus = None
+        self.HTTPSConfig = None
+        self.UrlSignatureAuthPolicy = None
+        self.RefererAuthPolicy = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("AccelerateAreaInfos") is not None:
+            self.AccelerateAreaInfos = []
+            for item in params.get("AccelerateAreaInfos"):
+                obj = AccelerateAreaInfo()
+                obj._deserialize(item)
+                self.AccelerateAreaInfos.append(obj)
+        self.DeployStatus = params.get("DeployStatus")
+        if params.get("HTTPSConfig") is not None:
+            self.HTTPSConfig = DomainHTTPSConfig()
+            self.HTTPSConfig._deserialize(params.get("HTTPSConfig"))
+        if params.get("UrlSignatureAuthPolicy") is not None:
+            self.UrlSignatureAuthPolicy = UrlSignatureAuthPolicy()
+            self.UrlSignatureAuthPolicy._deserialize(params.get("UrlSignatureAuthPolicy"))
+        if params.get("RefererAuthPolicy") is not None:
+            self.RefererAuthPolicy = RefererAuthPolicy()
+            self.RefererAuthPolicy._deserialize(params.get("RefererAuthPolicy"))
+        self.CreateTime = params.get("CreateTime")
+
+
+class DomainHTTPSConfig(AbstractModel):
+    """HTTPS configuration information of the domain name
+
+    """
+
+    def __init__(self):
+        """
+        :param CertExpireTime: Time when the certificate expires
+<li>The time is in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732).</li>
+        :type CertExpireTime: str
+        """
+        self.CertExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.CertExpireTime = params.get("CertExpireTime")
 
 
 class DrmStreamingsInfo(AbstractModel):
@@ -10005,8 +10176,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SourceInfo: Source information of media file.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SourceInfo: :class:`tencentcloud.vod.v20180717.models.MediaSourceData`
-        :param StorageRegion: Storage region of media file, such as ap-guangzhou. For more information, please see [Region List](https://intl.cloud.tencent.com/document/api/213/15692?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param StorageRegion: Regions where media files are stored, such as `ap-chongqing`. For more regions, see [Storage Region](https://intl.cloud.tencent.com/document/product/266/9760).
         :type StorageRegion: str
         :param TagSet: Tag information of media file.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -10022,6 +10192,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 *Note: this field is not supported yet.
         :type Status: str
+        :param StorageClass: 
+        :type StorageClass: str
         """
         self.Name = None
         self.Description = None
@@ -10040,6 +10212,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Vid = None
         self.Category = None
         self.Status = None
+        self.StorageClass = None
 
 
     def _deserialize(self, params):
@@ -10062,6 +10235,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Vid = params.get("Vid")
         self.Category = params.get("Category")
         self.Status = params.get("Status")
+        self.StorageClass = params.get("StorageClass")
 
 
 class MediaClassInfo(AbstractModel):
@@ -10449,6 +10623,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MiniProgramReviewInfo: WeChat Mini Program audit information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MiniProgramReviewInfo: :class:`tencentcloud.vod.v20180717.models.MediaMiniProgramReviewInfo`
+        :param SubtitleInfo: Subtitle information
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type SubtitleInfo: :class:`tencentcloud.vod.v20180717.models.MediaSubtitleInfo`
         :param FileId: Unique ID of media file.
         :type FileId: str
         """
@@ -10462,6 +10639,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.KeyFrameDescInfo = None
         self.AdaptiveDynamicStreamingInfo = None
         self.MiniProgramReviewInfo = None
+        self.SubtitleInfo = None
         self.FileId = None
 
 
@@ -10496,6 +10674,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("MiniProgramReviewInfo") is not None:
             self.MiniProgramReviewInfo = MediaMiniProgramReviewInfo()
             self.MiniProgramReviewInfo._deserialize(params.get("MiniProgramReviewInfo"))
+        if params.get("SubtitleInfo") is not None:
+            self.SubtitleInfo = MediaSubtitleInfo()
+            self.SubtitleInfo._deserialize(params.get("SubtitleInfo"))
         self.FileId = params.get("FileId")
 
 
@@ -11401,6 +11582,28 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SourceContext = params.get("SourceContext")
 
 
+class MediaSubtitleInfo(AbstractModel):
+    """Subtitle information
+
+    """
+
+    def __init__(self):
+        """
+        :param SubtitleSet: Subtitle information list
+        :type SubtitleSet: list of MediaSubtitleItem
+        """
+        self.SubtitleSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("SubtitleSet") is not None:
+            self.SubtitleSet = []
+            for item in params.get("SubtitleSet"):
+                obj = MediaSubtitleItem()
+                obj._deserialize(item)
+                self.SubtitleSet.append(obj)
+
+
 class MediaSubtitleInput(AbstractModel):
     """Input parameters of subtile information
 
@@ -11440,21 +11643,26 @@ For other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
 
 
 class MediaSubtitleItem(AbstractModel):
-    """
+    """Subtitle information
 
     """
 
     def __init__(self):
         """
-        :param Id: 
+        :param Id: Unique subtitle ID
         :type Id: str
-        :param Name: 
+        :param Name: Subtitle name
         :type Name: str
-        :param Language: 
+        :param Language: Subtitle language. Common values:
+<li>`cn`: Chinese</li>
+<li>`ja`: Japanese</li>
+<li>`en-US`: English</li>
+For other values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
         :type Language: str
-        :param Format: 
+        :param Format: Subtitle format. Valid value:
+<li>vtt</li>
         :type Format: str
-        :param Url: 
+        :param Url: Subtitle URL
         :type Url: str
         """
         self.Id = None
@@ -14779,6 +14987,41 @@ class PushUrlCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RefererAuthPolicy(AbstractModel):
+    """Referer hotlink protection configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: [Referer hotlink protection](https://intl.cloud.tencent.com/document/product/266/33985) status. Valid values:
+<li>Enabled</li>
+<li>Disabled</li>
+        :type Status: str
+        :param AuthType: Referer authentication method. Valid values:
+<li>`Black`: blocklist</li>
+<li>`White`: allowlist</li>
+        :type AuthType: str
+        :param Referers: List for referer authentication
+        :type Referers: list of str
+        :param BlankRefererAllowed: Whether to allow requests with empty referer to access this domain name. Valid values:
+<li>Yes</li>
+<li>No</li>
+        :type BlankRefererAllowed: str
+        """
+        self.Status = None
+        self.AuthType = None
+        self.Referers = None
+        self.BlankRefererAllowed = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.AuthType = params.get("AuthType")
+        self.Referers = params.get("Referers")
+        self.BlankRefererAllowed = params.get("BlankRefererAllowed")
+
+
 class ResetProcedureTemplateRequest(AbstractModel):
     """ResetProcedureTemplate request structure.
 
@@ -16771,6 +17014,29 @@ class TransitionOpertion(AbstractModel):
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
+
+
+class UrlSignatureAuthPolicy(AbstractModel):
+    """Key hotlink protection information for generating the signature
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: [Key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986) status. Valid values:
+<li>Enabled</li>
+<li>Disabled</li>
+        :type Status: str
+        :param EncryptedKey: The key for generating the signature of [key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986)
+        :type EncryptedKey: str
+        """
+        self.Status = None
+        self.EncryptedKey = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.EncryptedKey = params.get("EncryptedKey")
 
 
 class UserDefineAsrTextReviewTemplateInfo(AbstractModel):

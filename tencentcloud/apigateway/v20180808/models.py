@@ -16,6 +16,126 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class APIDoc(AbstractModel):
+    """Basic information of API document
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API document ID
+        :type ApiDocId: str
+        :param ApiDocName: API document name
+        :type ApiDocName: str
+        :param ApiDocStatus: API document build status
+        :type ApiDocStatus: str
+        """
+        self.ApiDocId = None
+        self.ApiDocName = None
+        self.ApiDocStatus = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+        self.ApiDocName = params.get("ApiDocName")
+        self.ApiDocStatus = params.get("ApiDocStatus")
+
+
+class APIDocInfo(AbstractModel):
+    """API document details
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API document ID
+        :type ApiDocId: str
+        :param ApiDocName: API document name
+        :type ApiDocName: str
+        :param ApiDocStatus: API document build status
+        :type ApiDocStatus: str
+        :param ApiCount: Number of API documents
+        :type ApiCount: int
+        :param ViewCount: Number of views of API document
+        :type ViewCount: int
+        :param ReleaseCount: Number of releases of API document
+        :type ReleaseCount: int
+        :param ApiDocUri: API document access URI
+        :type ApiDocUri: str
+        :param SharePassword: API document password for sharing
+        :type SharePassword: str
+        :param UpdatedTime: API document update time
+        :type UpdatedTime: str
+        :param ServiceId: Service ID
+        :type ServiceId: str
+        :param Environment: Environment information
+        :type Environment: str
+        :param ApiIds: ID of the API for which to generate the API document
+        :type ApiIds: list of str
+        :param ServiceName: Service name
+        :type ServiceName: str
+        :param ApiNames: Name of the API for which to generate the API document
+        :type ApiNames: list of str
+        """
+        self.ApiDocId = None
+        self.ApiDocName = None
+        self.ApiDocStatus = None
+        self.ApiCount = None
+        self.ViewCount = None
+        self.ReleaseCount = None
+        self.ApiDocUri = None
+        self.SharePassword = None
+        self.UpdatedTime = None
+        self.ServiceId = None
+        self.Environment = None
+        self.ApiIds = None
+        self.ServiceName = None
+        self.ApiNames = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+        self.ApiDocName = params.get("ApiDocName")
+        self.ApiDocStatus = params.get("ApiDocStatus")
+        self.ApiCount = params.get("ApiCount")
+        self.ViewCount = params.get("ViewCount")
+        self.ReleaseCount = params.get("ReleaseCount")
+        self.ApiDocUri = params.get("ApiDocUri")
+        self.SharePassword = params.get("SharePassword")
+        self.UpdatedTime = params.get("UpdatedTime")
+        self.ServiceId = params.get("ServiceId")
+        self.Environment = params.get("Environment")
+        self.ApiIds = params.get("ApiIds")
+        self.ServiceName = params.get("ServiceName")
+        self.ApiNames = params.get("ApiNames")
+
+
+class APIDocs(AbstractModel):
+    """API document list
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of API documents
+        :type TotalCount: int
+        :param APIDocSet: Basic information of API document
+        :type APIDocSet: list of APIDoc
+        """
+        self.TotalCount = None
+        self.APIDocSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("APIDocSet") is not None:
+            self.APIDocSet = []
+            for item in params.get("APIDocSet"):
+                obj = APIDoc()
+                obj._deserialize(item)
+                self.APIDocSet.append(obj)
+
+
 class ApiEnvironmentStrategy(AbstractModel):
     """API environment binding policy
 
@@ -978,6 +1098,44 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class BuildAPIDocRequest(AbstractModel):
+    """BuildAPIDoc request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API document ID
+        :type ApiDocId: str
+        """
+        self.ApiDocId = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+
+
+class BuildAPIDocResponse(AbstractModel):
+    """BuildAPIDoc response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Whether the operation succeeded
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ConstantParameter(AbstractModel):
     """Constant parameter
 
@@ -1005,6 +1163,58 @@ class ConstantParameter(AbstractModel):
         self.Desc = params.get("Desc")
         self.Position = params.get("Position")
         self.DefaultValue = params.get("DefaultValue")
+
+
+class CreateAPIDocRequest(AbstractModel):
+    """CreateAPIDoc request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocName: API document name
+        :type ApiDocName: str
+        :param ServiceId: Service name
+        :type ServiceId: str
+        :param Environment: Environment name
+        :type Environment: str
+        :param ApiIds: List of APIs for which to generate documents
+        :type ApiIds: list of str
+        """
+        self.ApiDocName = None
+        self.ServiceId = None
+        self.Environment = None
+        self.ApiIds = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocName = params.get("ApiDocName")
+        self.ServiceId = params.get("ServiceId")
+        self.Environment = params.get("Environment")
+        self.ApiIds = params.get("ApiIds")
+
+
+class CreateAPIDocResponse(AbstractModel):
+    """CreateAPIDoc response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Basic information of API document
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = APIDoc()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class CreateApiKeyRequest(AbstractModel):
@@ -1083,7 +1293,7 @@ class CreateApiRequest(AbstractModel):
         :type ApiDesc: str
         :param ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API). Default value: NORMAL.
         :type ApiType: str
-        :param AuthType: API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH. Default value: NONE.
+        :param AuthType: API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH, APP (application authentication). Default value: NONE.
         :type AuthType: str
         :param EnableCORS: Whether to enable CORS.
         :type EnableCORS: bool
@@ -1369,7 +1579,7 @@ class CreateIPStrategyRequest(AbstractModel):
         :type StrategyName: str
         :param StrategyType: Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
         :type StrategyType: str
-        :param StrategyData: Policy details.
+        :param StrategyData: Policy details. Multiple IPs are separated with \n.
         :type StrategyData: str
         """
         self.ServiceId = None
@@ -1434,6 +1644,8 @@ class CreateServiceRequest(AbstractModel):
         :type AppIdType: str
         :param Tags: Tag information.
         :type Tags: list of Tag
+        :param InstanceId: Dedicated instance ID
+        :type InstanceId: str
         """
         self.ServiceName = None
         self.Protocol = None
@@ -1444,6 +1656,7 @@ class CreateServiceRequest(AbstractModel):
         self.SetServerName = None
         self.AppIdType = None
         self.Tags = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -1461,6 +1674,7 @@ class CreateServiceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.InstanceId = params.get("InstanceId")
 
 
 class CreateServiceResponse(AbstractModel):
@@ -1563,6 +1777,44 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Result") is not None:
             self.Result = UsagePlanInfo()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAPIDocRequest(AbstractModel):
+    """DeleteAPIDoc request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API document ID
+        :type ApiDocId: str
+        """
+        self.ApiDocId = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+
+
+class DeleteAPIDocResponse(AbstractModel):
+    """DeleteAPIDoc response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Whether the operation succeeded
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -1968,6 +2220,90 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Tags = params.get("Tags")
         self.Path = params.get("Path")
         self.Method = params.get("Method")
+
+
+class DescribeAPIDocDetailRequest(AbstractModel):
+    """DescribeAPIDocDetail request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API document ID
+        :type ApiDocId: str
+        """
+        self.ApiDocId = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+
+
+class DescribeAPIDocDetailResponse(AbstractModel):
+    """DescribeAPIDocDetail response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API document details
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDocInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = APIDocInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAPIDocsRequest(AbstractModel):
+    """DescribeAPIDocs request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        """
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeAPIDocsResponse(AbstractModel):
+    """DescribeAPIDocs response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API document list information
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDocs`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = APIDocs()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeApiEnvironmentStrategyRequest(AbstractModel):
@@ -2852,6 +3188,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: Tags bound to a service.
 Note: this field may return null, indicating that no valid values found.
         :type Tags: list of Tag
+        :param InstanceId: Dedicated instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param InstanceName: Dedicated instance name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param SetType: Cluster type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SetType: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2876,6 +3221,9 @@ Note: this field may return null, indicating that no valid values found.
         self.UserType = None
         self.SetId = None
         self.Tags = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.SetType = None
         self.RequestId = None
 
 
@@ -2916,6 +3264,9 @@ Note: this field may return null, indicating that no valid values found.
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.SetType = params.get("SetType")
         self.RequestId = params.get("RequestId")
 
 
@@ -3071,7 +3422,7 @@ class DescribeServicesStatusRequest(AbstractModel):
         :type Limit: int
         :param Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Filters: Filter. Valid values: ServiceId, ServiceName, NotUsagePlanId, Environment, IpVersion.
+        :param Filters: Filter. Valid values: ServiceId, ServiceName, NotUsagePlanId, Environment, IpVersion, InstanceId
         :type Filters: list of Filter
         """
         self.Limit = None
@@ -3513,14 +3864,19 @@ class EnvironmentStrategy(AbstractModel):
         :type EnvironmentName: str
         :param Quota: Throttling value
         :type Quota: int
+        :param MaxQuota: Maximum quota value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxQuota: int
         """
         self.EnvironmentName = None
         self.Quota = None
+        self.MaxQuota = None
 
 
     def _deserialize(self, params):
         self.EnvironmentName = params.get("EnvironmentName")
         self.Quota = params.get("Quota")
+        self.MaxQuota = params.get("MaxQuota")
 
 
 class ErrorCodes(AbstractModel):
@@ -3897,6 +4253,62 @@ class MicroServiceReq(AbstractModel):
         self.MicroServiceName = params.get("MicroServiceName")
 
 
+class ModifyAPIDocRequest(AbstractModel):
+    """ModifyAPIDoc request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API document ID
+        :type ApiDocId: str
+        :param ApiDocName: API document name
+        :type ApiDocName: str
+        :param ServiceId: Service name
+        :type ServiceId: str
+        :param Environment: Environment name
+        :type Environment: str
+        :param ApiIds: List of APIs for which to generate documents
+        :type ApiIds: list of str
+        """
+        self.ApiDocId = None
+        self.ApiDocName = None
+        self.ServiceId = None
+        self.Environment = None
+        self.ApiIds = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+        self.ApiDocName = params.get("ApiDocName")
+        self.ServiceId = params.get("ServiceId")
+        self.Environment = params.get("Environment")
+        self.ApiIds = params.get("ApiIds")
+
+
+class ModifyAPIDocResponse(AbstractModel):
+    """ModifyAPIDoc response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Basic information of API document
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = APIDoc()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyApiEnvironmentStrategyRequest(AbstractModel):
     """ModifyApiEnvironmentStrategy request structure.
 
@@ -4019,7 +4431,7 @@ class ModifyApiRequest(AbstractModel):
         :type ApiDesc: str
         :param ApiType: API type. Valid values: NORMAL, TSF. Default value: NORMAL.
         :type ApiType: str
-        :param AuthType: API authentication type. Valid values: SECRET, NONE, OAUTH. Default value: NONE.
+        :param AuthType: API authentication type. Valid values: SECRET, NONE, OAUTH, APP. Default value: NONE.
         :type AuthType: str
         :param AuthRequired: Whether signature authentication is required. True: yes; False: no. This parameter is to be disused.
         :type AuthRequired: bool
@@ -4752,6 +5164,46 @@ class RequestParameter(AbstractModel):
         self.Required = params.get("Required")
 
 
+class ResetAPIDocPasswordRequest(AbstractModel):
+    """ResetAPIDocPassword request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API document ID
+        :type ApiDocId: str
+        """
+        self.ApiDocId = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+
+
+class ResetAPIDocPasswordResponse(AbstractModel):
+    """ResetAPIDocPassword response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Basic information of API document
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = APIDoc()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class ResponseErrorCodeReq(AbstractModel):
     """Error code input parameter
 
@@ -4840,6 +5292,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: Tags bound to a service.
 Note: this field may return null, indicating that no valid values found.
         :type Tags: list of Tag
+        :param InstanceId: Dedicated instance
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param SetType: Cluster type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SetType: str
         """
         self.InnerHttpsPort = None
         self.ServiceDesc = None
@@ -4857,6 +5315,8 @@ Note: this field may return null, indicating that no valid values found.
         self.InnerSubDomain = None
         self.TradeIsolateStatus = None
         self.Tags = None
+        self.InstanceId = None
+        self.SetType = None
 
 
     def _deserialize(self, params):
@@ -4881,6 +5341,8 @@ Note: this field may return null, indicating that no valid values found.
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        self.SetType = params.get("SetType")
 
 
 class ServiceConfig(AbstractModel):
@@ -4962,12 +5424,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type VersionName: str
         :param Strategy: Throttling value.
         :type Strategy: int
+        :param MaxStrategy: Maximum quota value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MaxStrategy: int
         """
         self.EnvironmentName = None
         self.Url = None
         self.Status = None
         self.VersionName = None
         self.Strategy = None
+        self.MaxStrategy = None
 
 
     def _deserialize(self, params):
@@ -4976,6 +5442,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Status = params.get("Status")
         self.VersionName = params.get("VersionName")
         self.Strategy = params.get("Strategy")
+        self.MaxStrategy = params.get("MaxStrategy")
 
 
 class ServiceEnvironmentStrategyStatus(AbstractModel):
