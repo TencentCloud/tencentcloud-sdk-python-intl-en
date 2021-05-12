@@ -23,7 +23,7 @@ class CcnInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AccountId: CCN account
+        :param AccountId: Account of the CCN instance owner
         :type AccountId: str
         :param CcnId: CCN ID
         :type CcnId: str
@@ -70,7 +70,7 @@ class CopyFleetRequest(AbstractModel):
         :type GameServerSessionProtectionTimeLimit: int
         :param SelectedScalingType: Whether to select scaling. Valid values: SCALING_SELECTED, SCALING_UNSELECTED. Default value: SCALING_UNSELECTED.
         :type SelectedScalingType: str
-        :param SelectedCcnType: Whether to select CCN: CCN_SELECTED_BEFORE_CREATE (associated before creation), CCN_SELECTED_AFTER_CREATE (associated after creation), or CCN_UNSELECTED (not associated); CCN_UNSELECTED by default
+        :param SelectedCcnType: Whether to associate the fleet with a CCN instance: CCN_SELECTED_BEFORE_CREATE (associate before creation), CCN_SELECTED_AFTER_CREATE (associated after creation), or CCN_UNSELECTED (do not associate); CCN_UNSELECTED by default
         :type SelectedCcnType: str
         :param Tags: Tag list. Up to 50 tags.
         :type Tags: list of Tag
@@ -80,8 +80,10 @@ class CopyFleetRequest(AbstractModel):
         :type DataDiskInfo: list of DiskInfo
         :param SelectedTimerType: Whether to select to replicate the timer policy: TIMER_SELECTED or TIMER_UNSELECTED. The default value is TIMER_UNSELECTED.
         :type SelectedTimerType: str
-        :param CcnInfos: CCN information, including the corresponding CCN account and ID.
+        :param CcnInfos: Information of the CCN instance, including the owner account and the instance ID.
         :type CcnInfos: list of CcnInfo
+        :param InternetMaxBandwidthOut: 
+        :type InternetMaxBandwidthOut: int
         """
         self.FleetId = None
         self.CopyNumber = None
@@ -102,6 +104,7 @@ class CopyFleetRequest(AbstractModel):
         self.DataDiskInfo = None
         self.SelectedTimerType = None
         self.CcnInfos = None
+        self.InternetMaxBandwidthOut = None
 
 
     def _deserialize(self, params):
@@ -150,6 +153,7 @@ class CopyFleetRequest(AbstractModel):
                 obj = CcnInfo()
                 obj._deserialize(item)
                 self.CcnInfos.append(obj)
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
 
 
 class CopyFleetResponse(AbstractModel):
@@ -743,9 +747,11 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param SystemDiskInfo: System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
-        :param RelatedCcnInfos: CCN information
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param RelatedCcnInfos: CCN instance information
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type RelatedCcnInfos: list of RelatedCcnInfo
+        :param InternetMaxBandwidthOut: 
+        :type InternetMaxBandwidthOut: int
         """
         self.AssetId = None
         self.CreationTime = None
@@ -767,6 +773,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.DataDiskInfo = None
         self.SystemDiskInfo = None
         self.RelatedCcnInfos = None
+        self.InternetMaxBandwidthOut = None
 
 
     def _deserialize(self, params):
@@ -809,6 +816,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
                 obj = RelatedCcnInfo()
                 obj._deserialize(item)
                 self.RelatedCcnInfos.append(obj)
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
 
 
 class GameProperty(AbstractModel):
@@ -1501,17 +1509,17 @@ class PutTimerScalingPolicyResponse(AbstractModel):
 
 
 class RelatedCcnInfo(AbstractModel):
-    """CCN information description
+    """Information of the associated CCN instance
 
     """
 
     def __init__(self):
         """
-        :param AccountId: CCN account
+        :param AccountId: Account of the CCN instance owner
         :type AccountId: str
-        :param CcnId: CCN ID
+        :param CcnId: CCN instance ID
         :type CcnId: str
-        :param AttachType: Status of associated CCN
+        :param AttachType: Status of associated CCN instance
         :type AttachType: str
         """
         self.AccountId = None
