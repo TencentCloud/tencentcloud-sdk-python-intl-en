@@ -150,6 +150,56 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.RequestId = params.get("RequestId")
 
 
+class CreateDBDiagReportUrlRequest(AbstractModel):
+    """CreateDBDiagReportUrl request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param AsyncRequestId: The health report task ID, which can be queried through `DescribeDBDiagReportTasks`.
+        :type AsyncRequestId: int
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.AsyncRequestId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.Product = params.get("Product")
+
+
+class CreateDBDiagReportUrlResponse(AbstractModel):
+    """CreateDBDiagReportUrl response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ReportUrl: The URL of the health report.
+        :type ReportUrl: str
+        :param ExpireTime: The expiration timestamp of the health report URL (in seconds).
+        :type ExpireTime: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReportUrl = None
+        self.ExpireTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReportUrl = params.get("ReportUrl")
+        self.ExpireTime = params.get("ExpireTime")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMailProfileRequest(AbstractModel):
     """CreateMailProfile request structure.
 
@@ -167,7 +217,7 @@ class CreateMailProfileRequest(AbstractModel):
         :type ProfileType: str
         :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
         :type Product: str
-        :param BindInstanceIds: Instance ID bound to the configuration, which is set when the configuration level is "Instance". Only one instance can be bound at a time.
+        :param BindInstanceIds: Instance ID bound with the configuration, which is set when the configuration level is "Instance". Only one instance can be bound at a time. When the configuration level is “User”, leave this parameter empty.
         :type BindInstanceIds: list of str
         """
         self.ProfileInfo = None
@@ -501,6 +551,85 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
                 obj = DiagHistoryEventItem()
                 obj._deserialize(item)
                 self.Events.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBDiagReportTasksRequest(AbstractModel):
+    """DescribeDBDiagReportTasks request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: Start time of the first task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.
+        :type StartTime: str
+        :param EndTime: End time of the last task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.
+        :type EndTime: str
+        :param InstanceIds: Instance ID array, which is used to filter the task list of a specified instance.
+        :type InstanceIds: list of str
+        :param Sources: Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (timed generation), and `MANUAL` (manual trigger).
+        :type Sources: list of str
+        :param HealthLevels: Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).
+        :type HealthLevels: str
+        :param TaskStatuses: The task status. Valid values: `created` (create), `chosen` (to be executed), `running` (being executed), `failed` (failed), and `finished` (completed).
+        :type TaskStatuses: str
+        :param Offset: Offset. Default value: 0.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20.
+        :type Limit: int
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :type Product: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.InstanceIds = None
+        self.Sources = None
+        self.HealthLevels = None
+        self.TaskStatuses = None
+        self.Offset = None
+        self.Limit = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.InstanceIds = params.get("InstanceIds")
+        self.Sources = params.get("Sources")
+        self.HealthLevels = params.get("HealthLevels")
+        self.TaskStatuses = params.get("TaskStatuses")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Product = params.get("Product")
+
+
+class DescribeDBDiagReportTasksResponse(AbstractModel):
+    """DescribeDBDiagReportTasks response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of tasks.
+        :type TotalCount: int
+        :param Tasks: Task list.
+        :type Tasks: list of HealthReportTask
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = HealthReportTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -899,6 +1028,187 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSlowLogUserHostStatsRequest(AbstractModel):
+    """DescribeSlowLogUserHostStats request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param StartTime: Start time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.
+        :type StartTime: str
+        :param EndTime: End time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.
+        :type EndTime: str
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Product = params.get("Product")
+
+
+class DescribeSlowLogUserHostStatsResponse(AbstractModel):
+    """DescribeSlowLogUserHostStats response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of source addresses.
+        :type TotalCount: int
+        :param Items: Detailed list of the proportion of slow logs from each source address.
+        :type Items: list of SlowLogHost
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SlowLogHost()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
+    """DescribeTopSpaceSchemaTimeSeries request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Limit: Number of returned top databases. Maximum value: 100. Default value: 20.
+        :type Limit: int
+        :param SortBy: Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`; for other database instances, the default value is `TotalLength`.
+        :type SortBy: str
+        :param StartDate: Start date. It can be as early as 29 days before the current date, and defaults to 6 days before the end date.
+        :type StartDate: str
+        :param EndDate: End date. It can be as early as 29 days before the current date, and defaults to the current date.
+        :type EndDate: str
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.SortBy = None
+        self.StartDate = None
+        self.EndDate = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.Product = params.get("Product")
+
+
+class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
+    """DescribeTopSpaceSchemaTimeSeries response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TopSpaceSchemaTimeSeries: Time series list of the returned space statistics of top databases.
+        :type TopSpaceSchemaTimeSeries: list of SchemaSpaceTimeSeries
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TopSpaceSchemaTimeSeries = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopSpaceSchemaTimeSeries") is not None:
+            self.TopSpaceSchemaTimeSeries = []
+            for item in params.get("TopSpaceSchemaTimeSeries"):
+                obj = SchemaSpaceTimeSeries()
+                obj._deserialize(item)
+                self.TopSpaceSchemaTimeSeries.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopSpaceSchemasRequest(AbstractModel):
+    """DescribeTopSpaceSchemas request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param Limit: Number of returned top databases. Maximum value: 100. Default value: 20.
+        :type Limit: int
+        :param SortBy: Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`; for other database instances, the default value is `TotalLength`.
+        :type SortBy: str
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.SortBy = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+        self.Product = params.get("Product")
+
+
+class DescribeTopSpaceSchemasResponse(AbstractModel):
+    """DescribeTopSpaceSchemas response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TopSpaceSchemas: List of the returned space statistics of top databases.
+        :type TopSpaceSchemas: list of SchemaSpaceData
+        :param Timestamp: Timestamp (in seconds) of database space data collect points
+        :type Timestamp: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TopSpaceSchemas = None
+        self.Timestamp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopSpaceSchemas") is not None:
+            self.TopSpaceSchemas = []
+            for item in params.get("TopSpaceSchemas"):
+                obj = SchemaSpaceData()
+                obj._deserialize(item)
+                self.TopSpaceSchemas.append(obj)
+        self.Timestamp = params.get("Timestamp")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
     """DescribeTopSpaceTableTimeSeries request structure.
 
@@ -908,7 +1218,7 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
         """
         :param InstanceId: Instance ID.
         :type InstanceId: str
-        :param Limit: Number of returned top tables. Default value: 20. Maximum value: 20.
+        :param Limit: Number of returned top tables. Maximum value: 100. Default value: 20.
         :type Limit: int
         :param SortBy: Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.
         :type SortBy: str
@@ -971,9 +1281,9 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
         """
         :param InstanceId: Instance ID.
         :type InstanceId: str
-        :param Limit: Number of returned top tables. Default value: 20. Maximum value: 20.
+        :param Limit: Number of returned top tables. Maximum value: 100. Default value: 20.
         :type Limit: int
-        :param SortBy: Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.
+        :param SortBy: Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (only supported by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is PhysicalFileSize; for other database instances, the default value is `TotalLength`.
         :type SortBy: str
         :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
         :type Product: str
@@ -1018,6 +1328,76 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TopSpaceTables.append(obj)
         self.Timestamp = params.get("Timestamp")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserSqlAdviceRequest(AbstractModel):
+    """DescribeUserSqlAdvice request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param SqlText: SQL statement.
+        :type SqlText: str
+        :param Schema: Database name.
+        :type Schema: str
+        """
+        self.InstanceId = None
+        self.SqlText = None
+        self.Schema = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SqlText = params.get("SqlText")
+        self.Schema = params.get("Schema")
+
+
+class DescribeUserSqlAdviceResponse(AbstractModel):
+    """DescribeUserSqlAdvice response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Advices: SQL statement optimization suggestions, which can be parsed into JSON arrays.
+        :type Advices: str
+        :param Comments: Notes of SQL statement optimization suggestions, which can be parsed into String arrays.
+        :type Comments: str
+        :param SqlText: SQL statement.
+        :type SqlText: str
+        :param Schema: Database name.
+        :type Schema: str
+        :param Tables: DDL information of related tables, which can be parsed into JSON arrays.
+        :type Tables: str
+        :param SqlPlan: SQL execution plan, which can be parsed into JSON.
+        :type SqlPlan: str
+        :param Cost: Cost saving details after SQL statement optimization, which can be parsed into JSON.
+        :type Cost: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Advices = None
+        self.Comments = None
+        self.SqlText = None
+        self.Schema = None
+        self.Tables = None
+        self.SqlPlan = None
+        self.Cost = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Advices = params.get("Advices")
+        self.Comments = params.get("Comments")
+        self.SqlText = params.get("SqlText")
+        self.Schema = params.get("Schema")
+        self.Tables = params.get("Tables")
+        self.SqlPlan = params.get("SqlPlan")
+        self.Cost = params.get("Cost")
         self.RequestId = params.get("RequestId")
 
 
@@ -1151,6 +1531,55 @@ class GroupItem(AbstractModel):
         self.MemberCount = params.get("MemberCount")
 
 
+class HealthReportTask(AbstractModel):
+    """Details of health report tasks.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Async task request ID.
+        :type AsyncRequestId: int
+        :param Source: Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (timed generation), and `MANUAL` (manual trigger).
+        :type Source: str
+        :param Progress: Task progress in %.
+        :type Progress: int
+        :param CreateTime: Task creation time.
+        :type CreateTime: str
+        :param StartTime: Task start time.
+        :type StartTime: str
+        :param EndTime: Task end time.
+        :type EndTime: str
+        :param InstanceInfo: Basic information about the instance to which the task belongs.
+        :type InstanceInfo: :class:`tencentcloud.dbbrain.v20191016.models.InstanceBasicInfo`
+        :param HealthStatus: Health information in a health report.
+        :type HealthStatus: :class:`tencentcloud.dbbrain.v20191016.models.HealthStatus`
+        """
+        self.AsyncRequestId = None
+        self.Source = None
+        self.Progress = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.InstanceInfo = None
+        self.HealthStatus = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.Source = params.get("Source")
+        self.Progress = params.get("Progress")
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("InstanceInfo") is not None:
+            self.InstanceInfo = InstanceBasicInfo()
+            self.InstanceInfo._deserialize(params.get("InstanceInfo"))
+        if params.get("HealthStatus") is not None:
+            self.HealthStatus = HealthStatus()
+            self.HealthStatus._deserialize(params.get("HealthStatus"))
+
+
 class HealthScoreInfo(AbstractModel):
     """Obtain the details of the health score and deduction.
 
@@ -1183,6 +1612,78 @@ class HealthScoreInfo(AbstractModel):
         self.EventsTotalCount = params.get("EventsTotalCount")
         self.HealthScore = params.get("HealthScore")
         self.HealthLevel = params.get("HealthLevel")
+
+
+class HealthStatus(AbstractModel):
+    """Instance health status.
+
+    """
+
+    def __init__(self):
+        """
+        :param HealthScore: Health score out of 100 points.
+        :type HealthScore: int
+        :param HealthLevel: Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).
+        :type HealthLevel: str
+        :param ScoreLost: Total scores deducted.
+        :type ScoreLost: int
+        :param ScoreDetails: Deduction details.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ScoreDetails: list of ScoreDetail
+        """
+        self.HealthScore = None
+        self.HealthLevel = None
+        self.ScoreLost = None
+        self.ScoreDetails = None
+
+
+    def _deserialize(self, params):
+        self.HealthScore = params.get("HealthScore")
+        self.HealthLevel = params.get("HealthLevel")
+        self.ScoreLost = params.get("ScoreLost")
+        if params.get("ScoreDetails") is not None:
+            self.ScoreDetails = []
+            for item in params.get("ScoreDetails"):
+                obj = ScoreDetail()
+                obj._deserialize(item)
+                self.ScoreDetails.append(obj)
+
+
+class InstanceBasicInfo(AbstractModel):
+    """Basic information of instance.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param InstanceName: Instance name.
+        :type InstanceName: str
+        :param Vip: Private IP of the instance.
+        :type Vip: str
+        :param Vport: Private network port of the instance.
+        :type Vport: int
+        :param Product: Instance product.
+        :type Product: str
+        :param EngineVersion: Instance engine version.
+        :type EngineVersion: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Vip = None
+        self.Vport = None
+        self.Product = None
+        self.EngineVersion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.Product = params.get("Product")
+        self.EngineVersion = params.get("EngineVersion")
 
 
 class InstanceConfs(AbstractModel):
@@ -1588,6 +2089,168 @@ class SchemaItem(AbstractModel):
         self.Schema = params.get("Schema")
 
 
+class SchemaSpaceData(AbstractModel):
+    """Database space statistics.
+
+    """
+
+    def __init__(self):
+        """
+        :param TableSchema: Database name.
+        :type TableSchema: str
+        :param DataLength: Data space in MB.
+        :type DataLength: float
+        :param IndexLength: Index space in MB.
+        :type IndexLength: float
+        :param DataFree: Fragmented space in MB.
+        :type DataFree: float
+        :param TotalLength: Total space usage in MB.
+        :type TotalLength: float
+        :param FragRatio: Fragmented rate (%).
+        :type FragRatio: float
+        :param TableRows: Number of rows.
+        :type TableRows: int
+        :param PhysicalFileSize: The total size of the independent physical files corresponding to all the database tables (MB).
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type PhysicalFileSize: float
+        """
+        self.TableSchema = None
+        self.DataLength = None
+        self.IndexLength = None
+        self.DataFree = None
+        self.TotalLength = None
+        self.FragRatio = None
+        self.TableRows = None
+        self.PhysicalFileSize = None
+
+
+    def _deserialize(self, params):
+        self.TableSchema = params.get("TableSchema")
+        self.DataLength = params.get("DataLength")
+        self.IndexLength = params.get("IndexLength")
+        self.DataFree = params.get("DataFree")
+        self.TotalLength = params.get("TotalLength")
+        self.FragRatio = params.get("FragRatio")
+        self.TableRows = params.get("TableRows")
+        self.PhysicalFileSize = params.get("PhysicalFileSize")
+
+
+class SchemaSpaceTimeSeries(AbstractModel):
+    """Time series of database space data
+
+    """
+
+    def __init__(self):
+        """
+        :param TableSchema: Database name
+        :type TableSchema: str
+        :param SeriesData: Monitoring metric data in a unit of time interval.
+        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorMetricSeriesData`
+        """
+        self.TableSchema = None
+        self.SeriesData = None
+
+
+    def _deserialize(self, params):
+        self.TableSchema = params.get("TableSchema")
+        if params.get("SeriesData") is not None:
+            self.SeriesData = MonitorMetricSeriesData()
+            self.SeriesData._deserialize(params.get("SeriesData"))
+
+
+class ScoreDetail(AbstractModel):
+    """Deduction details.
+
+    """
+
+    def __init__(self):
+        """
+        :param IssueType: Deduction item types. Valid values: availability, maintainability, performance, and reliability.
+        :type IssueType: str
+        :param ScoreLost: Total scores deducted.
+        :type ScoreLost: int
+        :param ScoreLostMax: Upper limit of the deducted scores.
+        :type ScoreLostMax: int
+        :param Items: Deduction item list.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Items: list of ScoreItem
+        """
+        self.IssueType = None
+        self.ScoreLost = None
+        self.ScoreLostMax = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.IssueType = params.get("IssueType")
+        self.ScoreLost = params.get("ScoreLost")
+        self.ScoreLostMax = params.get("ScoreLostMax")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ScoreItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+
+
+class ScoreItem(AbstractModel):
+    """Diagnosis deduction item.
+
+    """
+
+    def __init__(self):
+        """
+        :param DiagItem: Exception diagnosis item name.
+        :type DiagItem: str
+        :param IssueType: Diagnosis item types. Valid values: availability, maintainability, performance, and reliability.
+        :type IssueType: str
+        :param TopSeverity: Health level. Valid values: information, reminder, alarm, serious, fatal.
+        :type TopSeverity: str
+        :param Count: Number of occurrences of this exception diagnosis item.
+        :type Count: int
+        :param ScoreLost: Scores deducted.
+        :type ScoreLost: int
+        """
+        self.DiagItem = None
+        self.IssueType = None
+        self.TopSeverity = None
+        self.Count = None
+        self.ScoreLost = None
+
+
+    def _deserialize(self, params):
+        self.DiagItem = params.get("DiagItem")
+        self.IssueType = params.get("IssueType")
+        self.TopSeverity = params.get("TopSeverity")
+        self.Count = params.get("Count")
+        self.ScoreLost = params.get("ScoreLost")
+
+
+class SlowLogHost(AbstractModel):
+    """Details of slow log source addresses.
+
+    """
+
+    def __init__(self):
+        """
+        :param UserHost: Source addresses.
+        :type UserHost: str
+        :param Ratio: The proportion (in %) of slow logs from this source address to the total number of slow logs
+        :type Ratio: float
+        :param Count: Number of slow logs from this source address.
+        :type Count: int
+        """
+        self.UserHost = None
+        self.Ratio = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.UserHost = params.get("UserHost")
+        self.Ratio = params.get("Ratio")
+        self.Count = params.get("Count")
+
+
 class SlowLogTopSqlItem(AbstractModel):
     """Top slow SQL statements
 
@@ -1635,6 +2298,14 @@ class SlowLogTopSqlItem(AbstractModel):
         :type RowsExaminedRatio: float
         :param RowsSentRatio: Ratio of total number of returned rows
         :type RowsSentRatio: float
+        :param QueryTimeAvg: Average execution time
+        :type QueryTimeAvg: float
+        :param RowsSentAvg: Average number of rows returned
+        :type RowsSentAvg: float
+        :param LockTimeAvg: Average lock wait time
+        :type LockTimeAvg: float
+        :param RowsExaminedAvg: Average number of rows scanned
+        :type RowsExaminedAvg: float
         """
         self.LockTime = None
         self.LockTimeMax = None
@@ -1656,6 +2327,10 @@ class SlowLogTopSqlItem(AbstractModel):
         self.LockTimeRatio = None
         self.RowsExaminedRatio = None
         self.RowsSentRatio = None
+        self.QueryTimeAvg = None
+        self.RowsSentAvg = None
+        self.LockTimeAvg = None
+        self.RowsExaminedAvg = None
 
 
     def _deserialize(self, params):
@@ -1679,6 +2354,10 @@ class SlowLogTopSqlItem(AbstractModel):
         self.LockTimeRatio = params.get("LockTimeRatio")
         self.RowsExaminedRatio = params.get("RowsExaminedRatio")
         self.RowsSentRatio = params.get("RowsSentRatio")
+        self.QueryTimeAvg = params.get("QueryTimeAvg")
+        self.RowsSentAvg = params.get("RowsSentAvg")
+        self.LockTimeAvg = params.get("LockTimeAvg")
+        self.RowsExaminedAvg = params.get("RowsExaminedAvg")
 
 
 class TableSpaceData(AbstractModel):

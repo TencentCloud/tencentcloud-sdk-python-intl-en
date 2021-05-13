@@ -1258,6 +1258,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetNodePoolNodeProtection(self, request):
+        """This API is used to enable removal protection for the nodes automatically created by the scaling group in a node pool.
+
+        :param request: Request instance for SetNodePoolNodeProtection.
+        :type request: :class:`tencentcloud.tke.v20180525.models.SetNodePoolNodeProtectionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SetNodePoolNodeProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetNodePoolNodeProtection", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetNodePoolNodeProtectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateClusterVersion(self, request):
         """This API is used to upgrade the master component of the cluster to the specified version.
 

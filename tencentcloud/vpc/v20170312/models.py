@@ -400,8 +400,9 @@ class AllocateAddressesRequest(AbstractModel):
         :type InternetMaxBandwidthOut: int
         :param AddressChargePrepaid: A required billing parameter for an EIP billed by monthly bandwidth subscription. For EIPs using other billing modes, it can be ignored.
         :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
-        :param AddressType: The EIP type. Default: EIP.
-<ul style="margin:0"><li>For a user who has activated the AIA allowlist, possible values are:<ul><li>AnycastEIP: an Anycast EIP address. For more information, see [Anycast Internet Acceleration](https://intl.cloud.tencent.com/document/product/644?from_cn_redirect=1).</li></ul>Note: Only certain regions support Anycast EIPs.</li></ul>
+        :param AddressType: The EIP type. Default: `EIP`.
+<ul style="margin:0"><li>For AIA beta users, the value should be:<ul><li>`AnycastEIP`: an AIA IP address. For more information, see [Anycast Internet Acceleration](https://intl.cloud.tencent.com/document/product/644?from_cn_redirect=1).</li></ul>Note: Anycast EIPs are only supported in some of the regions.</li></ul>
+<ul style="margin:0"><li>For high-quality IP beta users, the value should be: <ul><li>`HighQualityEIP`: high-quality IP</li></ul>Note: High-quality IPs are only supported in some of the regions.</li></ul>
         :type AddressType: str
         :param AnycastZone: Anycast publishing region
 <ul style="margin:0"><li>Valid for users who have activated AIA. Values:<ul><li>ANYCAST_ZONE_GLOBAL: global publishing region </li><li>ANYCAST_ZONE_OVERSEAS: overseas publishing region</li><li><b>**[Disused]**</b> ANYCAST_ZONE_A: publishing region A (updated to ANYCAST_ZONE_GLOBAL)</li><li><b>**[Disused]**</b> ANYCAST_ZONE_B: publishing region B (updated to ANYCAST_ZONE_GLOBAL)</li></ul>Default: ANYCAST_ZONE_OVERSEAS.</li></ul>
@@ -415,6 +416,8 @@ Whether the Anycast EIP can be bound to CLB instances.
         :type Tags: list of Tag
         :param BandwidthPackageId: The unique ID of a BGP bandwidth package. If you configure this parameter and set InternetChargeType as BANDWIDTH_PACKAGE, the new EIP is added to this package and billed by the bandwidth package mode.
         :type BandwidthPackageId: str
+        :param AddressName: EIP name, which is the custom EIP name given by the user when applying for the EIP. Default: not named
+        :type AddressName: str
         """
         self.AddressCount = None
         self.InternetServiceProvider = None
@@ -426,6 +429,7 @@ Whether the Anycast EIP can be bound to CLB instances.
         self.ApplicableForCLB = None
         self.Tags = None
         self.BandwidthPackageId = None
+        self.AddressName = None
 
 
     def _deserialize(self, params):
@@ -446,6 +450,7 @@ Whether the Anycast EIP can be bound to CLB instances.
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.AddressName = params.get("AddressName")
 
 
 class AllocateAddressesResponse(AbstractModel):

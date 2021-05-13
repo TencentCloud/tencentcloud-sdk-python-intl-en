@@ -82,6 +82,34 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDBDiagReportUrl(self, request):
+        """This API is used to create a URL for a health report.
+
+        :param request: Request instance for CreateDBDiagReportUrl.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateDBDiagReportUrlRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.CreateDBDiagReportUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDBDiagReportUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDBDiagReportUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMailProfile(self, request):
         """This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email sending configuration of regularly generated health report). Select Guangzhou for Region, regardless of the region where the instance belongs.
 
@@ -236,6 +264,34 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBDiagHistoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBDiagReportTasks(self, request):
+        """This API is used to query the list of health report generation tasks.
+
+        :param request: Request instance for DescribeDBDiagReportTasks.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagReportTasksRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagReportTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBDiagReportTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBDiagReportTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -418,6 +474,90 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSlowLogUserHostStats(self, request):
+        """This API is used to obtain the statistical distribution chart of slow log source addresses.
+
+        :param request: Request instance for DescribeSlowLogUserHostStats.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogUserHostStatsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogUserHostStatsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSlowLogUserHostStats", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSlowLogUserHostStatsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTopSpaceSchemaTimeSeries(self, request):
+        """This API is used to query the daily space data of top databases consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The return results are sorted by size by default.
+
+        :param request: Request instance for DescribeTopSpaceSchemaTimeSeries.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceSchemaTimeSeriesRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceSchemaTimeSeriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTopSpaceSchemaTimeSeries", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTopSpaceSchemaTimeSeriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTopSpaceSchemas(self, request):
+        """This API is used to query real-time space statistics of top databases. The return results are sorted by size by default.
+
+        :param request: Request instance for DescribeTopSpaceSchemas.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceSchemasRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceSchemasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTopSpaceSchemas", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTopSpaceSchemasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTopSpaceTableTimeSeries(self, request):
         """This API is used to query the daily space data of top tables consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The return results are sorted by size by default.
 
@@ -460,6 +600,34 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopSpaceTablesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserSqlAdvice(self, request):
+        """This API is used to obtain SQL statement optimization suggestions.
+
+        :param request: Request instance for DescribeUserSqlAdvice.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeUserSqlAdviceRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeUserSqlAdviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserSqlAdvice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserSqlAdviceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

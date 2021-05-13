@@ -86,7 +86,8 @@ class LiveClient(AbstractClient):
 
 
     def AddLiveWatermark(self, request):
-        """After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](https://intl.cloud.tencent.com/document/product/267/32629?from_cn_redirect=1) API and bind the watermark ID to the stream.
+        """After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](https://intl.cloud.tencent.com/document/product/267/32629?from_cn_redirect=1) API to bind the watermark ID to a stream.
+        After the number of watermarks exceeds the upper limit of 100, to add a new watermark, you must delete an old one first.
 
         :param request: Request instance for AddLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.AddLiveWatermarkRequest`

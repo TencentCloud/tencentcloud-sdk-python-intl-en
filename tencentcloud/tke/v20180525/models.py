@@ -61,7 +61,7 @@ class AddExistedInstancesRequest(AbstractModel):
         :type ClusterId: str
         :param InstanceIds: Instance list. Spot instance is not supported.
         :type InstanceIds: list of str
-        :param InstanceAdvancedSettings: Additional parameter to be set for the instance
+        :param InstanceAdvancedSettings: Detailed information of the instance
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param EnhancedService: Enhanced services. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled by default.
         :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
@@ -2369,6 +2369,8 @@ class DescribeExistedInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
+        :param IpAddresses: Filter by multiple instance IPs
+        :type IpAddresses: list of str
         """
         self.ClusterId = None
         self.InstanceIds = None
@@ -2377,6 +2379,7 @@ class DescribeExistedInstancesRequest(AbstractModel):
         self.VagueInstanceName = None
         self.Offset = None
         self.Limit = None
+        self.IpAddresses = None
 
 
     def _deserialize(self, params):
@@ -2392,6 +2395,7 @@ class DescribeExistedInstancesRequest(AbstractModel):
         self.VagueInstanceName = params.get("VagueInstanceName")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.IpAddresses = params.get("IpAddresses")
 
 
 class DescribeExistedInstancesResponse(AbstractModel):
@@ -3945,6 +3949,29 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
+
+
+class SetNodePoolNodeProtectionRequest(AbstractModel):
+    """SetNodePoolNodeProtection request structure.
+
+    """
+
+
+class SetNodePoolNodeProtectionResponse(AbstractModel):
+    """SetNodePoolNodeProtection response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Tag(AbstractModel):

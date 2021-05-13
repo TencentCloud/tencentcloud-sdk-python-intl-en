@@ -54,7 +54,7 @@ class APIDocInfo(AbstractModel):
         :type ApiDocName: str
         :param ApiDocStatus: API document build status
         :type ApiDocStatus: str
-        :param ApiCount: Number of API documents
+        :param ApiCount: Number of APIs with API documents
         :type ApiCount: int
         :param ViewCount: Number of views of API document
         :type ViewCount: int

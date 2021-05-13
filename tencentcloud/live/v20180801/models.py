@@ -1501,17 +1501,17 @@ origin: original codec as the output codec
         :type Vcodec: str
         :param Description: Template description.
         :type Description: str
+        :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
+        :type NeedVideo: int
         :param Width: Width. Default value: 0.
 Value range: 0-3000
 It must be a multiple of 2. The original width is 0.
         :type Width: int
-        :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
-        :type NeedVideo: int
         :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
         :param Height: Height. Default value: 0.
-Value range: 0-3000
-It must be a multiple of 2. The original height is 0.
+Value range: [0,3000]
+The value must be a multiple of 2, and 0 is the original height.
         :type Height: int
         :param Fps: Frame rate. Default value: 0.
 Value range: 0-60
@@ -1553,8 +1553,8 @@ Value range: 0.0-0.5.
         self.AudioBitrate = None
         self.Vcodec = None
         self.Description = None
-        self.Width = None
         self.NeedVideo = None
+        self.Width = None
         self.NeedAudio = None
         self.Height = None
         self.Fps = None
@@ -1576,8 +1576,8 @@ Value range: 0.0-0.5.
         self.AudioBitrate = params.get("AudioBitrate")
         self.Vcodec = params.get("Vcodec")
         self.Description = params.get("Description")
-        self.Width = params.get("Width")
         self.NeedVideo = params.get("NeedVideo")
+        self.Width = params.get("Width")
         self.NeedAudio = params.get("NeedAudio")
         self.Height = params.get("Height")
         self.Fps = params.get("Fps")
@@ -2352,12 +2352,16 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
         """
         :param QueryTime: Query time point accurate to the minute. You can query data within the last month. As there is a 5-minute delay in the data, you're advised to pass in a time point 5 minutes earlier than needed. Format: yyyy-mm-dd HH:MM:00. As the accuracy is to the minute, please set the value of second to `00`.
         :type QueryTime: str
+        :param PlayDomains: Playback domain name list. If this parameter is left empty, full data will be queried.
+        :type PlayDomains: list of str
         """
         self.QueryTime = None
+        self.PlayDomains = None
 
 
     def _deserialize(self, params):
         self.QueryTime = params.get("QueryTime")
+        self.PlayDomains = params.get("PlayDomains")
 
 
 class DescribeAllStreamPlayInfoListResponse(AbstractModel):
@@ -4737,11 +4741,20 @@ Data is available at 3am Beijing Time the next day. You are recommended to query
         :type PageNum: int
         :param PageSize: Number of entries per page. Value range: [100,1000]. Default value: 1,000.
         :type PageSize: int
+        :param MainlandOrOversea: Valid values:
+Mainland: query data for Mainland China,
+Oversea: query data for regions outside Mainland China,
+Default: query data for all regions.
+        :type MainlandOrOversea: str
+        :param ServiceName: Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.
+        :type ServiceName: str
         """
         self.DayTime = None
         self.PlayDomain = None
         self.PageNum = None
         self.PageSize = None
+        self.MainlandOrOversea = None
+        self.ServiceName = None
 
 
     def _deserialize(self, params):
@@ -4749,6 +4762,8 @@ Data is available at 3am Beijing Time the next day. You are recommended to query
         self.PlayDomain = params.get("PlayDomain")
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.ServiceName = params.get("ServiceName")
 
 
 class DescribeStreamDayPlayInfoListResponse(AbstractModel):
@@ -4815,7 +4830,7 @@ If this parameter is left empty, full playback data will be queried.
 If it is left empty, the full playback data will be queried.
 Note: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.
         :type AppName: str
-        :param ServiceName: 
+        :param ServiceName: Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.
         :type ServiceName: str
         """
         self.StartTime = None
