@@ -17,21 +17,21 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CountryCodeItem(AbstractModel):
-    """Get an element type of the country code interface
+    """Country/region code list
 
     """
 
     def __init__(self):
         """
-        :param EnName: Country English Name
+        :param EnName: Country/region name in English
         :type EnName: str
-        :param Name: Country Chinese Name
+        :param Name: Country/region name in Chinese
         :type Name: str
         :param IOS2: IOS2 standard country/region code
         :type IOS2: str
         :param IOS3: IOS3 standard country/region code
         :type IOS3: str
-        :param Code: Phone Code
+        :param Code: Phone code
         :type Code: str
         """
         self.EnName = None
@@ -56,25 +56,25 @@ class CreateAccountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccountType: The account type identification of the newly created customer. The value of this interface is: business
+        :param AccountType: Account type of a new customer. Valid value: `business`.
         :type AccountType: str
-        :param Mail: Registered email address. The caller needs to ensure the validity and correctness of the email address.
-The email format must be met. For example: account@qq.com
+        :param Mail: Registered email address, which should be valid and correct.
+For example, account@qq.com.
         :type Mail: str
-        :param Password: Account password.
-Length limit: [8,20].
-It must also contain numbers, letters and special symbols (!@#$%^&*() and other non-spaces)
+        :param Password: Account password
+Length limit: 8-20 characters
+A password must contain numbers, letters, and special symbols [!@#$%^&*()]. Spaces are not allowed.
         :type Password: str
-        :param ConfirmPassword: Reconfirm the password. It must be the same as the Password value
+        :param ConfirmPassword: Confirm the password. It must be the same as the `Password` field.
         :type ConfirmPassword: str
-        :param PhoneNum: Customer's mobile phone number. The caller is required to ensure the validity and correctness of the mobile phone number.
-Length limit: [1,32]. Global mobile phone numbers are supported. For example, 18888888888
+        :param PhoneNum: Customer mobile number, which should be valid and correct.
+A global mobile number within 1-32 digits is allowed, such as 18888888888.
         :type PhoneNum: str
-        :param CountryCode: The country code of the customer. For the value, please refer to the GetCountryCodes interface GetCountryCodes. Such as 86
+        :param CountryCode: Country code, which can be obtained via the `GetCountryCodes` API, such as `86`.
         :type CountryCode: str
-        :param Area: Customer's IOS2 standard country code. Refer to the GetCountryCodes interface for obtaining country codes. It needs to correspond to the CountryCode value. Such as CN
+        :param Area: ISO2 standard country code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field.
         :type Area: str
-        :param Extended: Extension field, default is empty
+        :param Extended: Expanded field, which is left empty by default.
         :type Extended: str
         """
         self.AccountType = None
@@ -105,7 +105,7 @@ class CreateAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Uin: The uin of the account
+        :param Uin: Account UIN
         :type Uin: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -132,7 +132,7 @@ class GetCountryCodesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: List of Country Codes
+        :param Data: List of country/region codes
         :type Data: list of CountryCodeItem
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

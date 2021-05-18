@@ -27,11 +27,11 @@ class IpClient(AbstractClient):
 
 
     def CreateAccount(self, request):
-        """On the partner platform, create a Tencent Cloud account. After the sub-customer is registered, it will be automatically bound to the partner account.
+        """This API is used to create a Tencent Cloud account in the International Partner platform for a customer. After registration, the customer will be automatically bound to the partner account.
 
-        Notes: <br>
-        1. Create a Tencent Cloud account and enter the email address , Mobile phone number, the partner needs to verify the validity.<br>
-        2, the customer needs to add personal information for the first login
+        Notes:<br>
+        1. To create the Tencent Cloud account, the partner should enter and verify the customer’s email address and mobile number.<br>
+        2. The customer needs to complete personal information after the first login.
 
         :param request: Request instance for CreateAccount.
         :type request: :class:`tencentcloud.ip.v20210409.models.CreateAccountRequest`
@@ -59,7 +59,7 @@ class IpClient(AbstractClient):
 
 
     def GetCountryCodes(self, request):
-        """Get country and region code
+        """This API is used to obtain country and region codes.
 
         :param request: Request instance for GetCountryCodes.
         :type request: :class:`tencentcloud.ip.v20210409.models.GetCountryCodesRequest`
