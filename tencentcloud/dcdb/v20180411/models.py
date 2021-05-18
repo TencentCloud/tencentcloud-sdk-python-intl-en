@@ -58,6 +58,31 @@ class AssociateSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BriefNodeInfo(AbstractModel):
+    """Node information of a sharded database
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param Role: Node role. Valid values: `master`, `slave`
+        :type Role: str
+        :param ShardId: The ID of the shard where the node resides
+        :type ShardId: str
+        """
+        self.NodeId = None
+        self.Role = None
+        self.ShardId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.Role = params.get("Role")
+        self.ShardId = params.get("ShardId")
+
+
 class CloneAccountRequest(AbstractModel):
     """CloneAccount request structure.
 
@@ -1182,6 +1207,61 @@ class DescribeDBSyncModeResponse(AbstractModel):
         self.SyncMode = params.get("SyncMode")
         self.IsModifying = params.get("IsModifying")
         self.CurrentSyncMode = params.get("CurrentSyncMode")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDCDBInstanceNodeInfoRequest(AbstractModel):
+    """DescribeDCDBInstanceNodeInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Limit: The maximum number of results returned at a time. Value range: `(0-100]`. Default value: `100`.
+        :type Limit: int
+        :param Offset: Offset of the returned results. Default value: `0`.
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeDCDBInstanceNodeInfoResponse(AbstractModel):
+    """DescribeDCDBInstanceNodeInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of nodes
+        :type TotalCount: int
+        :param NodesInfo: Node information
+        :type NodesInfo: list of BriefNodeInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.NodesInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("NodesInfo") is not None:
+            self.NodesInfo = []
+            for item in params.get("NodesInfo"):
+                obj = BriefNodeInfo()
+                obj._deserialize(item)
+                self.NodesInfo.append(obj)
         self.RequestId = params.get("RequestId")
 
 

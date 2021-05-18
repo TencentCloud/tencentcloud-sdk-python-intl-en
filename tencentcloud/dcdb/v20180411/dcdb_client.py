@@ -364,6 +364,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDCDBInstanceNodeInfo(self, request):
+        """This API is used to query the information of instance nodes.
+
+        :param request: Request instance for DescribeDCDBInstanceNodeInfo.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceNodeInfoRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceNodeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDCDBInstanceNodeInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDCDBInstanceNodeInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDCDBInstances(self, request):
         """This API is used to query the list of TencentDB instances. It supports filtering instances by project ID, instance ID, private network address, and instance name.
         If no filter is specified, 10 instances will be returned by default. Up to 100 instances can be returned for a single request.

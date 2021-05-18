@@ -589,6 +589,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceNodeInfo(self, request):
+        """This API is used to query the information of primary and replica nodes of an instance.
+
+        :param request: Request instance for DescribeInstanceNodeInfo.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeInstanceNodeInfoRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeInstanceNodeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceNodeInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceNodeInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLogFileRetentionPeriod(self, request):
         """This API is used to view the configured number of days for retention of database backup logs.
 
