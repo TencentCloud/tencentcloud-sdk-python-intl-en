@@ -82,7 +82,7 @@ class CopyFleetRequest(AbstractModel):
         :type SelectedTimerType: str
         :param CcnInfos: Information of the CCN instance, including the owner account and the instance ID.
         :type CcnInfos: list of CcnInfo
-        :param InternetMaxBandwidthOut: 
+        :param InternetMaxBandwidthOut: Maximum outbound public network bandwidth of the server fleet. Value range: 1 - 200 Mbps. Default value: 100 Mbps.
         :type InternetMaxBandwidthOut: int
         """
         self.FleetId = None
@@ -750,7 +750,8 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param RelatedCcnInfos: CCN instance information
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type RelatedCcnInfos: list of RelatedCcnInfo
-        :param InternetMaxBandwidthOut: 
+        :param InternetMaxBandwidthOut: Maximum outbound public network bandwidth of the server fleet. Value range: 1 - 200 Mbps. Default value: 100 Mbps.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InternetMaxBandwidthOut: int
         """
         self.AssetId = None
