@@ -139,7 +139,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def CreateSnapshots(self, request):
-        """This API is used to create one or more table snapshots at specific points in time in the past.
+        """This API is used to create one or more table snapshots at a specified past time point.
 
         :param request: Request instance for CreateSnapshots.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateSnapshotsRequest`

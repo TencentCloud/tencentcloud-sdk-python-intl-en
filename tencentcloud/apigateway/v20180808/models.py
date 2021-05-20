@@ -1952,12 +1952,16 @@ class DeleteServiceRequest(AbstractModel):
         """
         :param ServiceId: Unique ID of the service to be deleted.
         :type ServiceId: str
+        :param SkipVerification: A parameter which is specified to skip the deletion precondition verification (only supported for services on dedicated instances).
+        :type SkipVerification: int
         """
         self.ServiceId = None
+        self.SkipVerification = None
 
 
     def _deserialize(self, params):
         self.ServiceId = params.get("ServiceId")
+        self.SkipVerification = params.get("SkipVerification")
 
 
 class DeleteServiceResponse(AbstractModel):

@@ -1219,7 +1219,7 @@ class DescribeDCDBInstanceNodeInfoRequest(AbstractModel):
         """
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param Limit: The maximum number of results returned at a time. Value range: `(0-100]`. Default value: `100`.
+        :param Limit: The maximum number of results returned at a time. Value range: (0-100]. Default value: `100`.
         :type Limit: int
         :param Offset: Offset of the returned results. Default value: `0`.
         :type Offset: int

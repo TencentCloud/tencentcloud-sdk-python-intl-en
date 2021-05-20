@@ -1715,7 +1715,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
         """
         :param DBInstanceIdSet: Resource ID list
         :type DBInstanceIdSet: list of str
-        :param Period: Specify the valid period (in months) of the monthly-subscribed instance when removing it from isolation
+        :param Period: The valid period (in months) of the monthly-subscribed instance when removing it from isolation
         :type Period: int
         :param AutoVoucher: Whether to use vouchers
         :type AutoVoucher: bool
