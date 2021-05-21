@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -47,6 +49,13 @@ Note:
         self.RoleSessionName = params.get("RoleSessionName")
         self.DurationSeconds = params.get("DurationSeconds")
         self.Policy = params.get("Policy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AssumeRoleResponse(AbstractModel):
@@ -78,6 +87,13 @@ class AssumeRoleResponse(AbstractModel):
         self.ExpiredTime = params.get("ExpiredTime")
         self.Expiration = params.get("Expiration")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AssumeRoleWithSAMLRequest(AbstractModel):
@@ -111,6 +127,13 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
         self.RoleArn = params.get("RoleArn")
         self.RoleSessionName = params.get("RoleSessionName")
         self.DurationSeconds = params.get("DurationSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AssumeRoleWithSAMLResponse(AbstractModel):
@@ -142,6 +165,13 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
         self.ExpiredTime = params.get("ExpiredTime")
         self.Expiration = params.get("Expiration")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Credentials(AbstractModel):
@@ -167,6 +197,13 @@ class Credentials(AbstractModel):
         self.Token = params.get("Token")
         self.TmpSecretId = params.get("TmpSecretId")
         self.TmpSecretKey = params.get("TmpSecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetFederationTokenRequest(AbstractModel):
@@ -196,6 +233,13 @@ Note:
         self.Name = params.get("Name")
         self.Policy = params.get("Policy")
         self.DurationSeconds = params.get("DurationSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetFederationTokenResponse(AbstractModel):
@@ -228,3 +272,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ExpiredTime = params.get("ExpiredTime")
         self.Expiration = params.get("Expiration")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

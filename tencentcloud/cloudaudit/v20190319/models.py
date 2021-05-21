@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -89,6 +91,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Configuration = params.get("Configuration")
         self.ResourceAlias = params.get("ResourceAlias")
         self.ConfigurationItemStatus = params.get("ConfigurationItemStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateRecorderRequest(AbstractModel):
@@ -118,6 +127,13 @@ class CreateRecorderRequest(AbstractModel):
         self.AllSupported = params.get("AllSupported")
         self.Enable = params.get("Enable")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateRecorderResponse(AbstractModel):
@@ -139,6 +155,13 @@ class CreateRecorderResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteRecorderRequest(AbstractModel):
@@ -166,6 +189,13 @@ class DeleteRecorderResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDiscoveredResourceRequest(AbstractModel):
@@ -183,6 +213,13 @@ class DescribeDiscoveredResourceRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDiscoveredResourceResponse(AbstractModel):
@@ -236,6 +273,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ResourceRegion = params.get("ResourceRegion")
         self.ResourceAlias = params.get("ResourceAlias")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRecorderRequest(AbstractModel):
@@ -309,6 +353,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.CreateTime = params.get("CreateTime")
         self.Role = params.get("Role")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetConfigurationItemsRequest(AbstractModel):
@@ -350,6 +401,13 @@ class GetConfigurationItemsRequest(AbstractModel):
         self.DiffMode = params.get("DiffMode")
         self.Limit = params.get("Limit")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetConfigurationItemsResponse(AbstractModel):
@@ -381,6 +439,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 self.ConfigurationItems.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListDiscoveredResourcesRequest(AbstractModel):
@@ -418,6 +483,13 @@ class ListDiscoveredResourcesRequest(AbstractModel):
         self.ResourceRegion = params.get("ResourceRegion")
         self.Offset = params.get("Offset")
         self.IsDeleted = params.get("IsDeleted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListDiscoveredResourcesResponse(AbstractModel):
@@ -449,6 +521,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.Resources.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListSupportResourceTypesRequest(AbstractModel):
@@ -481,6 +560,13 @@ class ListSupportResourceTypesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceTypes.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecordResourceType(AbstractModel):
@@ -518,6 +604,13 @@ class RecordResourceType(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.ServiceName = params.get("ServiceName")
         self.ResourceTypeName = params.get("ResourceTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RelatedEvent(AbstractModel):
@@ -547,6 +640,13 @@ class RelatedEvent(AbstractModel):
         self.EventTime = params.get("EventTime")
         self.OperateUin = params.get("OperateUin")
         self.EventReqId = params.get("EventReqId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Resources(AbstractModel):
@@ -584,6 +684,13 @@ class Resources(AbstractModel):
         self.ResourceRegion = params.get("ResourceRegion")
         self.ResourceAlias = params.get("ResourceAlias")
         self.IsDeleted = params.get("IsDeleted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SupportResourceType(AbstractModel):
@@ -617,6 +724,13 @@ class SupportResourceType(AbstractModel):
         self.ServiceName = params.get("ServiceName")
         self.ResourceTypeName = params.get("ResourceTypeName")
         self.Service = params.get("Service")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateRecorderRequest(AbstractModel):
@@ -642,6 +756,13 @@ class UpdateRecorderRequest(AbstractModel):
         self.AllSupported = params.get("AllSupported")
         self.Enable = params.get("Enable")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateRecorderResponse(AbstractModel):
@@ -663,3 +784,10 @@ class UpdateRecorderResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

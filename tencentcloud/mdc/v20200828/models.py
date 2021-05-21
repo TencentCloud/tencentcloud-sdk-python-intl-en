@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -55,6 +57,13 @@ class CreateInput(AbstractModel):
         if params.get("RTPSettings") is not None:
             self.RTPSettings = CreateInputRTPSettings()
             self.RTPSettings._deserialize(params.get("RTPSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateInputRTPSettings(AbstractModel):
@@ -76,6 +85,13 @@ class CreateInputRTPSettings(AbstractModel):
     def _deserialize(self, params):
         self.FEC = params.get("FEC")
         self.IdleTimeout = params.get("IdleTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateInputSRTSettings(AbstractModel):
@@ -117,6 +133,13 @@ class CreateInputSRTSettings(AbstractModel):
         self.PeerIdleTimeout = params.get("PeerIdleTimeout")
         self.Passphrase = params.get("Passphrase")
         self.PbKeyLen = params.get("PbKeyLen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaConnectFlowRequest(AbstractModel):
@@ -147,6 +170,13 @@ class CreateMediaConnectFlowRequest(AbstractModel):
                 obj = CreateInput()
                 obj._deserialize(item)
                 self.InputGroup.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaConnectFlowResponse(AbstractModel):
@@ -170,6 +200,13 @@ class CreateMediaConnectFlowResponse(AbstractModel):
             self.Info = DescribeFlow()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaConnectOutputRequest(AbstractModel):
@@ -193,6 +230,13 @@ class CreateMediaConnectOutputRequest(AbstractModel):
         if params.get("Output") is not None:
             self.Output = CreateOutput()
             self.Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaConnectOutputResponse(AbstractModel):
@@ -216,6 +260,13 @@ class CreateMediaConnectOutputResponse(AbstractModel):
             self.Info = DescribeOutput()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOutput(AbstractModel):
@@ -263,6 +314,13 @@ class CreateOutput(AbstractModel):
         if params.get("RTMPSettings") is not None:
             self.RTMPSettings = CreateOutputRTMPSettings()
             self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOutputRTMPSettings(AbstractModel):
@@ -289,6 +347,13 @@ class CreateOutputRTMPSettings(AbstractModel):
                 obj._deserialize(item)
                 self.Destinations.append(obj)
         self.ChunkSize = params.get("ChunkSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOutputRTPSettings(AbstractModel):
@@ -316,6 +381,13 @@ class CreateOutputRTPSettings(AbstractModel):
             self.Destinations._deserialize(params.get("Destinations"))
         self.FEC = params.get("FEC")
         self.IdleTimeout = params.get("IdleTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOutputRTPSettingsDestinations(AbstractModel):
@@ -337,6 +409,13 @@ class CreateOutputRTPSettingsDestinations(AbstractModel):
     def _deserialize(self, params):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOutputRtmpSettingsDestinations(AbstractModel):
@@ -358,6 +437,13 @@ class CreateOutputRtmpSettingsDestinations(AbstractModel):
     def _deserialize(self, params):
         self.Url = params.get("Url")
         self.StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOutputSrtSettings(AbstractModel):
@@ -408,6 +494,13 @@ class CreateOutputSrtSettings(AbstractModel):
         self.PeerIdleTimeout = params.get("PeerIdleTimeout")
         self.Passphrase = params.get("Passphrase")
         self.PbKeyLen = params.get("PbKeyLen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOutputSrtSettingsDestinations(AbstractModel):
@@ -429,6 +522,13 @@ class CreateOutputSrtSettingsDestinations(AbstractModel):
     def _deserialize(self, params):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaConnectFlowRequest(AbstractModel):
@@ -446,6 +546,13 @@ class DeleteMediaConnectFlowRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaConnectFlowResponse(AbstractModel):
@@ -463,6 +570,13 @@ class DeleteMediaConnectFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaConnectOutputRequest(AbstractModel):
@@ -484,6 +598,13 @@ class DeleteMediaConnectOutputRequest(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.OutputId = params.get("OutputId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaConnectOutputResponse(AbstractModel):
@@ -501,6 +622,13 @@ class DeleteMediaConnectOutputResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFlow(AbstractModel):
@@ -549,6 +677,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = DescribeOutput()
                 obj._deserialize(item)
                 self.OutputGroup.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInput(AbstractModel):
@@ -610,6 +745,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.RTPSettings = DescribeInputRTPSettings()
             self.RTPSettings._deserialize(params.get("RTPSettings"))
         self.InputRegion = params.get("InputRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInputRTPSettings(AbstractModel):
@@ -631,6 +773,13 @@ class DescribeInputRTPSettings(AbstractModel):
     def _deserialize(self, params):
         self.FEC = params.get("FEC")
         self.IdleTimeout = params.get("IdleTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInputSRTSettings(AbstractModel):
@@ -672,6 +821,13 @@ class DescribeInputSRTSettings(AbstractModel):
         self.PeerIdleTimeout = params.get("PeerIdleTimeout")
         self.Passphrase = params.get("Passphrase")
         self.PbKeyLen = params.get("PbKeyLen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaConnectFlowRequest(AbstractModel):
@@ -689,6 +845,13 @@ class DescribeMediaConnectFlowRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaConnectFlowResponse(AbstractModel):
@@ -712,6 +875,13 @@ class DescribeMediaConnectFlowResponse(AbstractModel):
             self.Info = DescribeFlow()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaConnectFlowsRequest(AbstractModel):
@@ -733,6 +903,13 @@ class DescribeMediaConnectFlowsRequest(AbstractModel):
     def _deserialize(self, params):
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaConnectFlowsResponse(AbstractModel):
@@ -775,6 +952,13 @@ class DescribeMediaConnectFlowsResponse(AbstractModel):
         self.TotalNum = params.get("TotalNum")
         self.TotalPage = params.get("TotalPage")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeOutput(AbstractModel):
@@ -844,6 +1028,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("RTMPSettings") is not None:
             self.RTMPSettings = DescribeOutputRTMPSettings()
             self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeOutputRTMPSettings(AbstractModel):
@@ -877,6 +1068,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = RTMPAddressDestination()
                 obj._deserialize(item)
                 self.Destinations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeOutputRTPSettings(AbstractModel):
@@ -910,6 +1108,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.Destinations.append(obj)
         self.FEC = params.get("FEC")
         self.IdleTimeout = params.get("IdleTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeOutputSRTSettings(AbstractModel):
@@ -968,6 +1173,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.PeerIdleTimeout = params.get("PeerIdleTimeout")
         self.Passphrase = params.get("Passphrase")
         self.PbKeyLen = params.get("PbKeyLen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputAddress(AbstractModel):
@@ -989,6 +1201,13 @@ class InputAddress(AbstractModel):
     def _deserialize(self, params):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyInput(AbstractModel):
@@ -1030,6 +1249,13 @@ class ModifyInput(AbstractModel):
         if params.get("RTPSettings") is not None:
             self.RTPSettings = CreateInputRTPSettings()
             self.RTPSettings._deserialize(params.get("RTPSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaConnectFlowRequest(AbstractModel):
@@ -1051,6 +1277,13 @@ class ModifyMediaConnectFlowRequest(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.FlowName = params.get("FlowName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaConnectFlowResponse(AbstractModel):
@@ -1068,6 +1301,13 @@ class ModifyMediaConnectFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaConnectInputRequest(AbstractModel):
@@ -1091,6 +1331,13 @@ class ModifyMediaConnectInputRequest(AbstractModel):
         if params.get("Input") is not None:
             self.Input = ModifyInput()
             self.Input._deserialize(params.get("Input"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaConnectInputResponse(AbstractModel):
@@ -1114,6 +1361,13 @@ class ModifyMediaConnectInputResponse(AbstractModel):
             self.Info = DescribeInput()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaConnectOutputRequest(AbstractModel):
@@ -1137,6 +1391,13 @@ class ModifyMediaConnectOutputRequest(AbstractModel):
         if params.get("Output") is not None:
             self.Output = ModifyOutput()
             self.Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaConnectOutputResponse(AbstractModel):
@@ -1160,6 +1421,13 @@ class ModifyMediaConnectOutputResponse(AbstractModel):
             self.Info = DescribeOutput()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyOutput(AbstractModel):
@@ -1207,6 +1475,13 @@ class ModifyOutput(AbstractModel):
         if params.get("RTMPSettings") is not None:
             self.RTMPSettings = CreateOutputRTMPSettings()
             self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputAddress(AbstractModel):
@@ -1224,6 +1499,13 @@ class OutputAddress(AbstractModel):
 
     def _deserialize(self, params):
         self.Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RTMPAddressDestination(AbstractModel):
@@ -1245,6 +1527,13 @@ class RTMPAddressDestination(AbstractModel):
     def _deserialize(self, params):
         self.Url = params.get("Url")
         self.StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RTPAddressDestination(AbstractModel):
@@ -1266,6 +1555,13 @@ class RTPAddressDestination(AbstractModel):
     def _deserialize(self, params):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SRTAddressDestination(AbstractModel):
@@ -1287,6 +1583,13 @@ class SRTAddressDestination(AbstractModel):
     def _deserialize(self, params):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartMediaConnectFlowRequest(AbstractModel):
@@ -1304,6 +1607,13 @@ class StartMediaConnectFlowRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartMediaConnectFlowResponse(AbstractModel):
@@ -1321,6 +1631,13 @@ class StartMediaConnectFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopMediaConnectFlowRequest(AbstractModel):
@@ -1338,6 +1655,13 @@ class StopMediaConnectFlowRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopMediaConnectFlowResponse(AbstractModel):
@@ -1355,3 +1679,10 @@ class StopMediaConnectFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class ApplySnapshotRequest(AbstractModel):
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
         self.DiskId = params.get("DiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ApplySnapshotResponse(AbstractModel):
@@ -52,6 +61,13 @@ class ApplySnapshotResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AttachDetail(AbstractModel):
@@ -77,6 +93,13 @@ class AttachDetail(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.AttachedDiskCount = params.get("AttachedDiskCount")
         self.MaxAttachCount = params.get("MaxAttachCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AttachDisksRequest(AbstractModel):
@@ -102,6 +125,13 @@ class AttachDisksRequest(AbstractModel):
         self.DiskIds = params.get("DiskIds")
         self.InstanceId = params.get("InstanceId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AttachDisksResponse(AbstractModel):
@@ -119,6 +149,13 @@ class AttachDisksResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AutoSnapshotPolicy(AbstractModel):
@@ -177,6 +214,13 @@ class AutoSnapshotPolicy(AbstractModel):
                 obj._deserialize(item)
                 self.Policy.append(obj)
         self.DiskIdSet = params.get("DiskIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BindAutoSnapshotPolicyRequest(AbstractModel):
@@ -198,6 +242,13 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
     def _deserialize(self, params):
         self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
         self.DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BindAutoSnapshotPolicyResponse(AbstractModel):
@@ -215,6 +266,13 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAutoSnapshotPolicyRequest(AbstractModel):
@@ -257,6 +315,13 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
         self.IsPermanent = params.get("IsPermanent")
         self.RetentionDays = params.get("RetentionDays")
         self.DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAutoSnapshotPolicyResponse(AbstractModel):
@@ -282,6 +347,13 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
         self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
         self.NextTriggerTime = params.get("NextTriggerTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDisksRequest(AbstractModel):
@@ -356,6 +428,13 @@ class CreateDisksRequest(AbstractModel):
                 self.Tags.append(obj)
         self.Shareable = params.get("Shareable")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDisksResponse(AbstractModel):
@@ -377,6 +456,13 @@ class CreateDisksResponse(AbstractModel):
     def _deserialize(self, params):
         self.DiskIdSet = params.get("DiskIdSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSnapshotRequest(AbstractModel):
@@ -402,6 +488,13 @@ class CreateSnapshotRequest(AbstractModel):
         self.DiskId = params.get("DiskId")
         self.SnapshotName = params.get("SnapshotName")
         self.Deadline = params.get("Deadline")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSnapshotResponse(AbstractModel):
@@ -423,6 +516,13 @@ class CreateSnapshotResponse(AbstractModel):
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteAutoSnapshotPoliciesRequest(AbstractModel):
@@ -440,6 +540,13 @@ class DeleteAutoSnapshotPoliciesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteAutoSnapshotPoliciesResponse(AbstractModel):
@@ -457,6 +564,13 @@ class DeleteAutoSnapshotPoliciesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSnapshotsRequest(AbstractModel):
@@ -474,6 +588,13 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SnapshotIds = params.get("SnapshotIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSnapshotsResponse(AbstractModel):
@@ -491,6 +612,13 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
@@ -533,6 +661,13 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Order = params.get("Order")
         self.OrderField = params.get("OrderField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
@@ -563,6 +698,13 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AutoSnapshotPolicySet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDiskAssociatedAutoSnapshotPolicyRequest(AbstractModel):
@@ -580,6 +722,13 @@ class DescribeDiskAssociatedAutoSnapshotPolicyRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DiskId = params.get("DiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDiskAssociatedAutoSnapshotPolicyResponse(AbstractModel):
@@ -610,6 +759,13 @@ class DescribeDiskAssociatedAutoSnapshotPolicyResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AutoSnapshotPolicySet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDiskConfigQuotaRequest(AbstractModel):
@@ -655,6 +811,13 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
         self.InstanceFamilies = params.get("InstanceFamilies")
         self.CPU = params.get("CPU")
         self.Memory = params.get("Memory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDiskConfigQuotaResponse(AbstractModel):
@@ -681,6 +844,13 @@ class DescribeDiskConfigQuotaResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DiskConfigSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDiskOperationLogsRequest(AbstractModel):
@@ -712,6 +882,13 @@ class DescribeDiskOperationLogsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDiskOperationLogsResponse(AbstractModel):
@@ -738,6 +915,13 @@ class DescribeDiskOperationLogsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DiskOperationLogSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDisksRequest(AbstractModel):
@@ -784,6 +968,13 @@ class DescribeDisksRequest(AbstractModel):
         self.Order = params.get("Order")
         self.OrderField = params.get("OrderField")
         self.ReturnBindAutoSnapshotPolicy = params.get("ReturnBindAutoSnapshotPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDisksResponse(AbstractModel):
@@ -814,6 +1005,13 @@ class DescribeDisksResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DiskSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInstancesDiskNumRequest(AbstractModel):
@@ -831,6 +1029,13 @@ class DescribeInstancesDiskNumRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInstancesDiskNumResponse(AbstractModel):
@@ -857,6 +1062,13 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AttachDetail.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSnapshotOperationLogsRequest(AbstractModel):
@@ -888,6 +1100,13 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSnapshotOperationLogsResponse(AbstractModel):
@@ -914,6 +1133,13 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SnapshotOperationLogSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSnapshotSharePermissionRequest(AbstractModel):
@@ -931,6 +1157,13 @@ class DescribeSnapshotSharePermissionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSnapshotSharePermissionResponse(AbstractModel):
@@ -957,6 +1190,13 @@ class DescribeSnapshotSharePermissionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SharePermissionSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSnapshotsRequest(AbstractModel):
@@ -1001,6 +1241,13 @@ class DescribeSnapshotsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Order = params.get("Order")
         self.OrderField = params.get("OrderField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSnapshotsResponse(AbstractModel):
@@ -1031,6 +1278,13 @@ class DescribeSnapshotsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SnapshotSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetachDisksRequest(AbstractModel):
@@ -1052,6 +1306,13 @@ class DetachDisksRequest(AbstractModel):
     def _deserialize(self, params):
         self.DiskIds = params.get("DiskIds")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetachDisksResponse(AbstractModel):
@@ -1069,6 +1330,13 @@ class DetachDisksResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Disk(AbstractModel):
@@ -1237,6 +1505,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SnapshotSize = params.get("SnapshotSize")
         self.BackupDisk = params.get("BackupDisk")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DiskChargePrepaid(AbstractModel):
@@ -1262,6 +1537,13 @@ class DiskChargePrepaid(AbstractModel):
         self.Period = params.get("Period")
         self.RenewFlag = params.get("RenewFlag")
         self.CurInstanceDeadline = params.get("CurInstanceDeadline")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DiskConfig(AbstractModel):
@@ -1313,6 +1595,13 @@ Note: This field may return null, indicating that no valid value was found.
         self.Zone = params.get("Zone")
         self.DeviceClass = params.get("DeviceClass")
         self.InstanceFamily = params.get("InstanceFamily")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DiskOperationLog(AbstractModel):
@@ -1362,6 +1651,13 @@ PROCESSING: Operation in process
         self.OperationState = params.get("OperationState")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -1383,6 +1679,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetSnapOverviewRequest(AbstractModel):
@@ -1422,6 +1725,13 @@ class GetSnapOverviewResponse(AbstractModel):
         self.FreeQuota = params.get("FreeQuota")
         self.TotalNums = params.get("TotalNums")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Image(AbstractModel):
@@ -1443,6 +1753,13 @@ class Image(AbstractModel):
     def _deserialize(self, params):
         self.ImageId = params.get("ImageId")
         self.ImageName = params.get("ImageName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
@@ -1464,6 +1781,13 @@ class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
     def _deserialize(self, params):
         self.DiskId = params.get("DiskId")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquirePriceModifyDiskExtraPerformanceResponse(AbstractModel):
@@ -1487,6 +1811,13 @@ class InquirePriceModifyDiskExtraPerformanceResponse(AbstractModel):
             self.DiskPrice = Price()
             self.DiskPrice._deserialize(params.get("DiskPrice"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquiryPriceCreateDisksRequest(AbstractModel):
@@ -1530,6 +1861,13 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
         self.DiskCount = params.get("DiskCount")
         self.ProjectId = params.get("ProjectId")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquiryPriceCreateDisksResponse(AbstractModel):
@@ -1553,6 +1891,13 @@ class InquiryPriceCreateDisksResponse(AbstractModel):
             self.DiskPrice = Price()
             self.DiskPrice._deserialize(params.get("DiskPrice"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquiryPriceResizeDiskRequest(AbstractModel):
@@ -1578,6 +1923,13 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
         self.DiskId = params.get("DiskId")
         self.DiskSize = params.get("DiskSize")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquiryPriceResizeDiskResponse(AbstractModel):
@@ -1601,6 +1953,13 @@ class InquiryPriceResizeDiskResponse(AbstractModel):
             self.DiskPrice = PrepayPrice()
             self.DiskPrice._deserialize(params.get("DiskPrice"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
@@ -1643,6 +2002,13 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
         self.IsActivated = params.get("IsActivated")
         self.IsPermanent = params.get("IsPermanent")
         self.RetentionDays = params.get("RetentionDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyAutoSnapshotPolicyAttributeResponse(AbstractModel):
@@ -1660,6 +2026,13 @@ class ModifyAutoSnapshotPolicyAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDiskAttributesRequest(AbstractModel):
@@ -1697,6 +2070,13 @@ class ModifyDiskAttributesRequest(AbstractModel):
         self.Portable = params.get("Portable")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.DiskType = params.get("DiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDiskAttributesResponse(AbstractModel):
@@ -1714,6 +2094,13 @@ class ModifyDiskAttributesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDiskExtraPerformanceRequest(AbstractModel):
@@ -1735,6 +2122,13 @@ class ModifyDiskExtraPerformanceRequest(AbstractModel):
     def _deserialize(self, params):
         self.DiskId = params.get("DiskId")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDiskExtraPerformanceResponse(AbstractModel):
@@ -1752,6 +2146,13 @@ class ModifyDiskExtraPerformanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySnapshotAttributeRequest(AbstractModel):
@@ -1781,6 +2182,13 @@ class ModifySnapshotAttributeRequest(AbstractModel):
         self.SnapshotName = params.get("SnapshotName")
         self.IsPermanent = params.get("IsPermanent")
         self.Deadline = params.get("Deadline")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySnapshotAttributeResponse(AbstractModel):
@@ -1798,6 +2206,13 @@ class ModifySnapshotAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySnapshotsSharePermissionRequest(AbstractModel):
@@ -1823,6 +2238,13 @@ class ModifySnapshotsSharePermissionRequest(AbstractModel):
         self.AccountIds = params.get("AccountIds")
         self.Permission = params.get("Permission")
         self.SnapshotIds = params.get("SnapshotIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySnapshotsSharePermissionResponse(AbstractModel):
@@ -1840,6 +2262,13 @@ class ModifySnapshotsSharePermissionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Placement(AbstractModel):
@@ -1876,6 +2305,13 @@ Note: This field may return null, indicating that no valid value was found.
         self.CdcId = params.get("CdcId")
         self.CageId = params.get("CageId")
         self.CdcName = params.get("CdcName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Policy(AbstractModel):
@@ -1897,6 +2333,13 @@ class Policy(AbstractModel):
     def _deserialize(self, params):
         self.DayOfWeek = params.get("DayOfWeek")
         self.Hour = params.get("Hour")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PrepayPrice(AbstractModel):
@@ -1951,6 +2394,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.UnitPriceDiscount = params.get("UnitPriceDiscount")
         self.UnitPriceHigh = params.get("UnitPriceHigh")
         self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Price(AbstractModel):
@@ -2009,6 +2459,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DiscountPriceHigh = params.get("DiscountPriceHigh")
         self.UnitPriceHigh = params.get("UnitPriceHigh")
         self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResizeDiskRequest(AbstractModel):
@@ -2030,6 +2487,13 @@ class ResizeDiskRequest(AbstractModel):
     def _deserialize(self, params):
         self.DiskId = params.get("DiskId")
         self.DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResizeDiskResponse(AbstractModel):
@@ -2047,6 +2511,13 @@ class ResizeDiskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SharePermission(AbstractModel):
@@ -2068,6 +2539,13 @@ class SharePermission(AbstractModel):
     def _deserialize(self, params):
         self.CreatedTime = params.get("CreatedTime")
         self.AccountId = params.get("AccountId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Snapshot(AbstractModel):
@@ -2164,6 +2642,13 @@ class Snapshot(AbstractModel):
         self.SnapshotType = params.get("SnapshotType")
         self.ShareReference = params.get("ShareReference")
         self.TimeStartShare = params.get("TimeStartShare")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SnapshotOperationLog(AbstractModel):
@@ -2212,6 +2697,13 @@ PROCESSING: Operation in process
         self.OperationState = params.get("OperationState")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Tag(AbstractModel):
@@ -2233,6 +2725,13 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TerminateDisksRequest(AbstractModel):
@@ -2250,6 +2749,13 @@ class TerminateDisksRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TerminateDisksResponse(AbstractModel):
@@ -2267,6 +2773,13 @@ class TerminateDisksResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UnbindAutoSnapshotPolicyRequest(AbstractModel):
@@ -2288,6 +2801,13 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
     def _deserialize(self, params):
         self.DiskIds = params.get("DiskIds")
         self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UnbindAutoSnapshotPolicyResponse(AbstractModel):
@@ -2305,3 +2825,10 @@ class UnbindAutoSnapshotPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

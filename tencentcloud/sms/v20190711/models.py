@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class AddSignStatus(AbstractModel):
     def _deserialize(self, params):
         self.SignId = params.get("SignId")
         self.SignApplyId = params.get("SignApplyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddSmsSignRequest(AbstractModel):
@@ -101,6 +110,13 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
         self.ProofImage = params.get("ProofImage")
         self.CommissionImage = params.get("CommissionImage")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddSmsSignResponse(AbstractModel):
@@ -124,6 +140,13 @@ class AddSmsSignResponse(AbstractModel):
             self.AddSignStatus = AddSignStatus()
             self.AddSignStatus._deserialize(params.get("AddSignStatus"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddSmsTemplateRequest(AbstractModel):
@@ -159,6 +182,13 @@ class AddSmsTemplateRequest(AbstractModel):
         self.SmsType = params.get("SmsType")
         self.International = params.get("International")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddSmsTemplateResponse(AbstractModel):
@@ -182,6 +212,13 @@ class AddSmsTemplateResponse(AbstractModel):
             self.AddTemplateStatus = AddTemplateStatus()
             self.AddTemplateStatus._deserialize(params.get("AddTemplateStatus"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddTemplateStatus(AbstractModel):
@@ -199,6 +236,13 @@ class AddTemplateStatus(AbstractModel):
 
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CallbackStatusStatistics(AbstractModel):
@@ -248,6 +292,13 @@ class CallbackStatusStatistics(AbstractModel):
         self.ShutdownErrorCount = params.get("ShutdownErrorCount")
         self.BlackListCount = params.get("BlackListCount")
         self.FrequencyLimitCount = params.get("FrequencyLimitCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CallbackStatusStatisticsRequest(AbstractModel):
@@ -284,6 +335,13 @@ Note: this parameter is currently fixed at 0.
         self.SmsSdkAppid = params.get("SmsSdkAppid")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CallbackStatusStatisticsResponse(AbstractModel):
@@ -307,6 +365,13 @@ class CallbackStatusStatisticsResponse(AbstractModel):
             self.CallbackStatusStatistics = CallbackStatusStatistics()
             self.CallbackStatusStatistics._deserialize(params.get("CallbackStatusStatistics"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSignStatus(AbstractModel):
@@ -328,6 +393,13 @@ class DeleteSignStatus(AbstractModel):
     def _deserialize(self, params):
         self.DeleteStatus = params.get("DeleteStatus")
         self.DeleteTime = params.get("DeleteTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSmsSignRequest(AbstractModel):
@@ -345,6 +417,13 @@ class DeleteSmsSignRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SignId = params.get("SignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSmsSignResponse(AbstractModel):
@@ -368,6 +447,13 @@ class DeleteSmsSignResponse(AbstractModel):
             self.DeleteSignStatus = DeleteSignStatus()
             self.DeleteSignStatus._deserialize(params.get("DeleteSignStatus"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSmsTemplateRequest(AbstractModel):
@@ -385,6 +471,13 @@ class DeleteSmsTemplateRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSmsTemplateResponse(AbstractModel):
@@ -408,6 +501,13 @@ class DeleteSmsTemplateResponse(AbstractModel):
             self.DeleteTemplateStatus = DeleteTemplateStatus()
             self.DeleteTemplateStatus._deserialize(params.get("DeleteTemplateStatus"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteTemplateStatus(AbstractModel):
@@ -429,6 +529,13 @@ class DeleteTemplateStatus(AbstractModel):
     def _deserialize(self, params):
         self.DeleteStatus = params.get("DeleteStatus")
         self.DeleteTime = params.get("DeleteTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSignListStatus(AbstractModel):
@@ -470,6 +577,13 @@ class DescribeSignListStatus(AbstractModel):
         self.ReviewReply = params.get("ReviewReply")
         self.SignName = params.get("SignName")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsSignListRequest(AbstractModel):
@@ -493,6 +607,13 @@ class DescribeSmsSignListRequest(AbstractModel):
     def _deserialize(self, params):
         self.SignIdSet = params.get("SignIdSet")
         self.International = params.get("International")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsSignListResponse(AbstractModel):
@@ -519,6 +640,13 @@ class DescribeSmsSignListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DescribeSignListStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsTemplateListRequest(AbstractModel):
@@ -542,6 +670,13 @@ class DescribeSmsTemplateListRequest(AbstractModel):
     def _deserialize(self, params):
         self.TemplateIdSet = params.get("TemplateIdSet")
         self.International = params.get("International")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsTemplateListResponse(AbstractModel):
@@ -568,6 +703,13 @@ class DescribeSmsTemplateListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DescribeTemplateStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTemplateListStatus(AbstractModel):
@@ -609,6 +751,13 @@ class DescribeTemplateListStatus(AbstractModel):
         self.ReviewReply = params.get("ReviewReply")
         self.TemplateName = params.get("TemplateName")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySignStatus(AbstractModel):
@@ -630,6 +779,13 @@ class ModifySignStatus(AbstractModel):
     def _deserialize(self, params):
         self.SignId = params.get("SignId")
         self.SignApplyId = params.get("SignApplyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySmsSignRequest(AbstractModel):
@@ -700,6 +856,13 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
         self.ProofImage = params.get("ProofImage")
         self.CommissionImage = params.get("CommissionImage")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySmsSignResponse(AbstractModel):
@@ -723,6 +886,13 @@ class ModifySmsSignResponse(AbstractModel):
             self.ModifySignStatus = ModifySignStatus()
             self.ModifySignStatus._deserialize(params.get("ModifySignStatus"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySmsTemplateRequest(AbstractModel):
@@ -762,6 +932,13 @@ class ModifySmsTemplateRequest(AbstractModel):
         self.SmsType = params.get("SmsType")
         self.International = params.get("International")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySmsTemplateResponse(AbstractModel):
@@ -785,6 +962,13 @@ class ModifySmsTemplateResponse(AbstractModel):
             self.ModifyTemplateStatus = ModifyTemplateStatus()
             self.ModifyTemplateStatus._deserialize(params.get("ModifyTemplateStatus"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyTemplateStatus(AbstractModel):
@@ -802,6 +986,13 @@ class ModifyTemplateStatus(AbstractModel):
 
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PullSmsReplyStatus(AbstractModel):
@@ -843,6 +1034,13 @@ class PullSmsReplyStatus(AbstractModel):
         self.ReplyContent = params.get("ReplyContent")
         self.ReplyTime = params.get("ReplyTime")
         self.ReplyUnixTime = params.get("ReplyUnixTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
@@ -881,6 +1079,13 @@ Note: this parameter is currently fixed at 0.
         self.PhoneNumber = params.get("PhoneNumber")
         self.SmsSdkAppid = params.get("SmsSdkAppid")
         self.EndDateTime = params.get("EndDateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
@@ -907,6 +1112,13 @@ class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PullSmsReplyStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PullSmsReplyStatusRequest(AbstractModel):
@@ -928,6 +1140,13 @@ class PullSmsReplyStatusRequest(AbstractModel):
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
         self.SmsSdkAppid = params.get("SmsSdkAppid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PullSmsReplyStatusResponse(AbstractModel):
@@ -954,6 +1173,13 @@ class PullSmsReplyStatusResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PullSmsReplyStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PullSmsSendStatus(AbstractModel):
@@ -999,6 +1225,13 @@ class PullSmsSendStatus(AbstractModel):
         self.SerialNo = params.get("SerialNo")
         self.ReportStatus = params.get("ReportStatus")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
@@ -1037,6 +1270,13 @@ Note: this parameter is currently fixed at 0.
         self.PhoneNumber = params.get("PhoneNumber")
         self.SmsSdkAppid = params.get("SmsSdkAppid")
         self.EndDateTime = params.get("EndDateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
@@ -1063,6 +1303,13 @@ class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PullSmsSendStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PullSmsSendStatusRequest(AbstractModel):
@@ -1084,6 +1331,13 @@ class PullSmsSendStatusRequest(AbstractModel):
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
         self.SmsSdkAppid = params.get("SmsSdkAppid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PullSmsSendStatusResponse(AbstractModel):
@@ -1110,6 +1364,13 @@ class PullSmsSendStatusResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PullSmsSendStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendSmsRequest(AbstractModel):
@@ -1156,6 +1417,13 @@ Example: +8613711112222, which has a + sign followed by 86 (country/region code)
         self.ExtendCode = params.get("ExtendCode")
         self.SessionContext = params.get("SessionContext")
         self.SenderId = params.get("SenderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendSmsResponse(AbstractModel):
@@ -1182,6 +1450,13 @@ class SendSmsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SendStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendStatus(AbstractModel):
@@ -1223,6 +1498,13 @@ class SendStatus(AbstractModel):
         self.Code = params.get("Code")
         self.Message = params.get("Message")
         self.IsoCode = params.get("IsoCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendStatusStatistics(AbstractModel):
@@ -1248,6 +1530,13 @@ class SendStatusStatistics(AbstractModel):
         self.FeeCount = params.get("FeeCount")
         self.RequestCount = params.get("RequestCount")
         self.RequestSuccessCount = params.get("RequestSuccessCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendStatusStatisticsRequest(AbstractModel):
@@ -1284,6 +1573,13 @@ Note: this parameter is currently fixed at 0.
         self.SmsSdkAppid = params.get("SmsSdkAppid")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendStatusStatisticsResponse(AbstractModel):
@@ -1307,6 +1603,13 @@ class SendStatusStatisticsResponse(AbstractModel):
             self.SendStatusStatistics = SendStatusStatistics()
             self.SendStatusStatistics._deserialize(params.get("SendStatusStatistics"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsPackagesStatistics(AbstractModel):
@@ -1360,6 +1663,13 @@ class SmsPackagesStatistics(AbstractModel):
         self.TypeOfPackage = params.get("TypeOfPackage")
         self.PackageId = params.get("PackageId")
         self.CurrentUsage = params.get("CurrentUsage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsPackagesStatisticsRequest(AbstractModel):
@@ -1386,6 +1696,13 @@ Note: this parameter is currently fixed at 0.
         self.SmsSdkAppid = params.get("SmsSdkAppid")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsPackagesStatisticsResponse(AbstractModel):
@@ -1412,3 +1729,10 @@ class SmsPackagesStatisticsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SmsPackagesStatisticsSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

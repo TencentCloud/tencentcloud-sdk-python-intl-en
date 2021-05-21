@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -52,6 +54,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.VoiceFilterStatisticsItem = VoiceFilterStatisticsItem()
             self.VoiceFilterStatisticsItem._deserialize(params.get("VoiceFilterStatisticsItem"))
         self.Date = params.get("Date")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ApplicationDataStatistics(AbstractModel):
@@ -162,6 +171,13 @@ class ApplicationDataStatistics(AbstractModel):
                 obj = StatisticsItem()
                 obj._deserialize(item)
                 self.PcuDataSum.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAppRequest(AbstractModel):
@@ -218,6 +234,13 @@ class CreateAppRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAppResponse(AbstractModel):
@@ -269,6 +292,13 @@ class CreateAppResponse(AbstractModel):
         if params.get("VoiceFilterConf") is not None:
             self.VoiceFilterConf = VoiceFilterConf()
             self.VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAppStatisticsRequest(AbstractModel):
@@ -298,6 +328,13 @@ class DescribeAppStatisticsRequest(AbstractModel):
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
         self.Services = params.get("Services")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAppStatisticsResponse(AbstractModel):
@@ -320,6 +357,13 @@ class DescribeAppStatisticsResponse(AbstractModel):
                 obj = AppStatisticsItem()
                 obj._deserialize(item)
                 self.AppStatistics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeApplicationDataRequest(AbstractModel):
@@ -345,6 +389,13 @@ class DescribeApplicationDataRequest(AbstractModel):
         self.BizId = params.get("BizId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeApplicationDataResponse(AbstractModel):
@@ -368,6 +419,13 @@ class DescribeApplicationDataResponse(AbstractModel):
             self.Data = ApplicationDataStatistics()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScanResult(AbstractModel):
@@ -439,6 +497,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TaskId = params.get("TaskId")
         self.Url = params.get("Url")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScanResultListRequest(AbstractModel):
@@ -464,6 +529,13 @@ class DescribeScanResultListRequest(AbstractModel):
         self.BizId = params.get("BizId")
         self.TaskIdList = params.get("TaskIdList")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScanResultListResponse(AbstractModel):
@@ -491,6 +563,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyAppStatusRequest(AbstractModel):
@@ -512,6 +591,13 @@ class ModifyAppStatusRequest(AbstractModel):
     def _deserialize(self, params):
         self.BizId = params.get("BizId")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyAppStatusResponse(AbstractModel):
@@ -533,6 +619,13 @@ class ModifyAppStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self.BizId = params.get("BizId")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RealTimeSpeechStatisticsItem(AbstractModel):
@@ -570,6 +663,13 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
         self.OverseaDau = params.get("OverseaDau")
         self.OverseaPcu = params.get("OverseaPcu")
         self.OverseaDuration = params.get("OverseaDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RealtimeSpeechConf(AbstractModel):
@@ -591,6 +691,13 @@ class RealtimeSpeechConf(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Quality = params.get("Quality")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanDetail(AbstractModel):
@@ -624,6 +731,13 @@ class ScanDetail(AbstractModel):
         self.KeyWord = params.get("KeyWord")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanPiece(AbstractModel):
@@ -690,6 +804,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Offset = params.get("Offset")
         self.Duration = params.get("Duration")
         self.PieceStartTime = params.get("PieceStartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanVoiceRequest(AbstractModel):
@@ -730,6 +851,13 @@ class ScanVoiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tasks.append(obj)
         self.Callback = params.get("Callback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanVoiceResponse(AbstractModel):
@@ -757,6 +885,13 @@ class ScanVoiceResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanVoiceResult(AbstractModel):
@@ -778,6 +913,13 @@ class ScanVoiceResult(AbstractModel):
     def _deserialize(self, params):
         self.DataId = params.get("DataId")
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StatisticsItem(AbstractModel):
@@ -799,6 +941,13 @@ class StatisticsItem(AbstractModel):
     def _deserialize(self, params):
         self.StatDate = params.get("StatDate")
         self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Tag(AbstractModel):
@@ -822,6 +971,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Task(AbstractModel):
@@ -851,6 +1007,13 @@ class Task(AbstractModel):
         self.Url = params.get("Url")
         self.RoomId = params.get("RoomId")
         self.OpenId = params.get("OpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VoiceFilterConf(AbstractModel):
@@ -868,6 +1031,13 @@ class VoiceFilterConf(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VoiceFilterStatisticsItem(AbstractModel):
@@ -885,6 +1055,13 @@ class VoiceFilterStatisticsItem(AbstractModel):
 
     def _deserialize(self, params):
         self.Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VoiceMessageConf(AbstractModel):
@@ -906,6 +1083,13 @@ class VoiceMessageConf(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Language = params.get("Language")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VoiceMessageStatisticsItem(AbstractModel):
@@ -923,3 +1107,10 @@ class VoiceMessageStatisticsItem(AbstractModel):
 
     def _deserialize(self, params):
         self.Dau = params.get("Dau")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

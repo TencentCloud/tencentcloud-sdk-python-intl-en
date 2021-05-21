@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -45,6 +47,13 @@ class ChannelInfo(AbstractModel):
         if params.get("Points") is not None:
             self.Points = PointInfo()
             self.Points._deserialize(params.get("Points"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaPackageChannelEndpointRequest(AbstractModel):
@@ -72,6 +81,13 @@ class CreateMediaPackageChannelEndpointRequest(AbstractModel):
         if params.get("AuthInfo") is not None:
             self.AuthInfo = EndpointAuthInfo()
             self.AuthInfo._deserialize(params.get("AuthInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaPackageChannelEndpointResponse(AbstractModel):
@@ -95,6 +111,13 @@ class CreateMediaPackageChannelEndpointResponse(AbstractModel):
             self.Info = EndpointInfo()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaPackageChannelRequest(AbstractModel):
@@ -116,6 +139,13 @@ class CreateMediaPackageChannelRequest(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaPackageChannelResponse(AbstractModel):
@@ -139,6 +169,13 @@ class CreateMediaPackageChannelResponse(AbstractModel):
             self.Info = ChannelInfo()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaPackageChannelEndpointsRequest(AbstractModel):
@@ -160,6 +197,13 @@ class DeleteMediaPackageChannelEndpointsRequest(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Urls = params.get("Urls")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaPackageChannelEndpointsResponse(AbstractModel):
@@ -177,6 +221,13 @@ class DeleteMediaPackageChannelEndpointsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaPackageChannelsRequest(AbstractModel):
@@ -194,6 +245,13 @@ class DeleteMediaPackageChannelsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaPackageChannelsResponse(AbstractModel):
@@ -229,6 +287,13 @@ class DeleteMediaPackageChannelsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FailInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaPackageChannelRequest(AbstractModel):
@@ -246,6 +311,13 @@ class DescribeMediaPackageChannelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaPackageChannelResponse(AbstractModel):
@@ -269,6 +341,13 @@ class DescribeMediaPackageChannelResponse(AbstractModel):
             self.Info = ChannelInfo()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaPackageChannelsRequest(AbstractModel):
@@ -290,6 +369,13 @@ class DescribeMediaPackageChannelsRequest(AbstractModel):
     def _deserialize(self, params):
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaPackageChannelsResponse(AbstractModel):
@@ -333,6 +419,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TotalNum = params.get("TotalNum")
         self.TotalPage = params.get("TotalPage")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EndpointAuthInfo(AbstractModel):
@@ -361,6 +454,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.WhiteIpList = params.get("WhiteIpList")
         self.BlackIpList = params.get("BlackIpList")
         self.AuthKey = params.get("AuthKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EndpointInfo(AbstractModel):
@@ -388,6 +488,13 @@ class EndpointInfo(AbstractModel):
         if params.get("AuthInfo") is not None:
             self.AuthInfo = EndpointAuthInfo()
             self.AuthInfo._deserialize(params.get("AuthInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputAuthInfo(AbstractModel):
@@ -411,6 +518,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.Username = params.get("Username")
         self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputInfo(AbstractModel):
@@ -435,6 +549,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("AuthInfo") is not None:
             self.AuthInfo = InputAuthInfo()
             self.AuthInfo._deserialize(params.get("AuthInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaPackageChannelEndpointRequest(AbstractModel):
@@ -466,6 +587,13 @@ class ModifyMediaPackageChannelEndpointRequest(AbstractModel):
         if params.get("AuthInfo") is not None:
             self.AuthInfo = EndpointAuthInfo()
             self.AuthInfo._deserialize(params.get("AuthInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaPackageChannelEndpointResponse(AbstractModel):
@@ -483,6 +611,13 @@ class ModifyMediaPackageChannelEndpointResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaPackageChannelInputAuthInfoRequest(AbstractModel):
@@ -510,6 +645,13 @@ UPDATE: update authentication.
         self.Id = params.get("Id")
         self.Url = params.get("Url")
         self.ActionType = params.get("ActionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaPackageChannelInputAuthInfoResponse(AbstractModel):
@@ -533,6 +675,13 @@ class ModifyMediaPackageChannelInputAuthInfoResponse(AbstractModel):
             self.AuthInfo = InputAuthInfo()
             self.AuthInfo._deserialize(params.get("AuthInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaPackageChannelRequest(AbstractModel):
@@ -558,6 +707,13 @@ class ModifyMediaPackageChannelRequest(AbstractModel):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaPackageChannelResponse(AbstractModel):
@@ -575,6 +731,13 @@ class ModifyMediaPackageChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PointInfo(AbstractModel):
@@ -607,3 +770,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = EndpointInfo()
                 obj._deserialize(item)
                 self.Endpoints.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

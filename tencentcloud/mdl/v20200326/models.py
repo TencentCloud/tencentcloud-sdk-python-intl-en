@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -41,6 +43,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = AudioSelectorInfo()
                 obj._deserialize(item)
                 self.AudioSelectors.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AudioPidSelectionInfo(AbstractModel):
@@ -58,6 +67,13 @@ class AudioPidSelectionInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.Pid = params.get("Pid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AudioPipelineInputStatistics(AbstractModel):
@@ -83,6 +99,13 @@ class AudioPipelineInputStatistics(AbstractModel):
         self.Fps = params.get("Fps")
         self.Rate = params.get("Rate")
         self.Pid = params.get("Pid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AudioSelectorInfo(AbstractModel):
@@ -106,6 +129,13 @@ class AudioSelectorInfo(AbstractModel):
         if params.get("AudioPidSelection") is not None:
             self.AudioPidSelection = AudioPidSelectionInfo()
             self.AudioPidSelection._deserialize(params.get("AudioPidSelection"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AudioTemplateInfo(AbstractModel):
@@ -140,6 +170,13 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
         self.Acodec = params.get("Acodec")
         self.AudioBitrate = params.get("AudioBitrate")
         self.LanguageCode = params.get("LanguageCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChannelAlertInfos(AbstractModel):
@@ -171,6 +208,13 @@ class ChannelAlertInfos(AbstractModel):
                 obj = ChannelPipelineAlerts()
                 obj._deserialize(item)
                 self.Pipeline1.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChannelInfo(AbstractModel):
@@ -234,6 +278,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = VideoTemplateInfo()
                 obj._deserialize(item)
                 self.VideoTemplates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChannelInputStatistics(AbstractModel):
@@ -257,6 +308,13 @@ class ChannelInputStatistics(AbstractModel):
         if params.get("Statistics") is not None:
             self.Statistics = InputStatistics()
             self.Statistics._deserialize(params.get("Statistics"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChannelOutputsStatistics(AbstractModel):
@@ -280,6 +338,13 @@ class ChannelOutputsStatistics(AbstractModel):
         if params.get("Statistics") is not None:
             self.Statistics = OutputsStatistics()
             self.Statistics._deserialize(params.get("Statistics"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChannelPipelineAlerts(AbstractModel):
@@ -310,6 +375,13 @@ This time is available only after the alarm ends.
         self.ClearTime = params.get("ClearTime")
         self.Type = params.get("Type")
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaLiveChannelRequest(AbstractModel):
@@ -363,6 +435,13 @@ class CreateMediaLiveChannelRequest(AbstractModel):
                 obj = VideoTemplateInfo()
                 obj._deserialize(item)
                 self.VideoTemplates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaLiveChannelResponse(AbstractModel):
@@ -384,6 +463,13 @@ class CreateMediaLiveChannelResponse(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaLiveInputRequest(AbstractModel):
@@ -420,6 +506,13 @@ Only one security group can be associated.
                 obj = InputSettingInfo()
                 obj._deserialize(item)
                 self.InputSettings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaLiveInputResponse(AbstractModel):
@@ -441,6 +534,13 @@ class CreateMediaLiveInputResponse(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaLiveInputSecurityGroupRequest(AbstractModel):
@@ -462,6 +562,13 @@ class CreateMediaLiveInputSecurityGroupRequest(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Whitelist = params.get("Whitelist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMediaLiveInputSecurityGroupResponse(AbstractModel):
@@ -483,6 +590,13 @@ class CreateMediaLiveInputSecurityGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DashRemuxSettingsInfo(AbstractModel):
@@ -508,6 +622,13 @@ class DashRemuxSettingsInfo(AbstractModel):
         self.SegmentDuration = params.get("SegmentDuration")
         self.SegmentNumber = params.get("SegmentNumber")
         self.PeriodTriggers = params.get("PeriodTriggers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaLiveChannelRequest(AbstractModel):
@@ -525,6 +646,13 @@ class DeleteMediaLiveChannelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaLiveChannelResponse(AbstractModel):
@@ -542,6 +670,13 @@ class DeleteMediaLiveChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaLiveInputRequest(AbstractModel):
@@ -559,6 +694,13 @@ class DeleteMediaLiveInputRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaLiveInputResponse(AbstractModel):
@@ -576,6 +718,13 @@ class DeleteMediaLiveInputResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaLiveInputSecurityGroupRequest(AbstractModel):
@@ -593,6 +742,13 @@ class DeleteMediaLiveInputSecurityGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMediaLiveInputSecurityGroupResponse(AbstractModel):
@@ -610,6 +766,13 @@ class DeleteMediaLiveInputSecurityGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelAlertsRequest(AbstractModel):
@@ -627,6 +790,13 @@ class DescribeMediaLiveChannelAlertsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelAlertsResponse(AbstractModel):
@@ -650,6 +820,13 @@ class DescribeMediaLiveChannelAlertsResponse(AbstractModel):
             self.Infos = ChannelAlertInfos()
             self.Infos._deserialize(params.get("Infos"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelInputStatisticsRequest(AbstractModel):
@@ -681,6 +858,13 @@ UTC time, such as `2020-01-01T12:00:00Z`.
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelInputStatisticsResponse(AbstractModel):
@@ -707,6 +891,13 @@ class DescribeMediaLiveChannelInputStatisticsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Infos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelLogsRequest(AbstractModel):
@@ -734,6 +925,13 @@ UTC time, such as `2020-01-01T12:00:00Z`.
         self.ChannelId = params.get("ChannelId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelLogsResponse(AbstractModel):
@@ -757,6 +955,13 @@ class DescribeMediaLiveChannelLogsResponse(AbstractModel):
             self.Infos = PipelineLogInfo()
             self.Infos._deserialize(params.get("Infos"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelOutputStatisticsRequest(AbstractModel):
@@ -788,6 +993,13 @@ UTC time, such as `2020-01-01T12:00:00Z`.
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelOutputStatisticsResponse(AbstractModel):
@@ -814,6 +1026,13 @@ class DescribeMediaLiveChannelOutputStatisticsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Infos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelRequest(AbstractModel):
@@ -831,6 +1050,13 @@ class DescribeMediaLiveChannelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelResponse(AbstractModel):
@@ -854,6 +1080,13 @@ class DescribeMediaLiveChannelResponse(AbstractModel):
             self.Info = ChannelInfo()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveChannelsRequest(AbstractModel):
@@ -887,6 +1120,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Infos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveInputRequest(AbstractModel):
@@ -904,6 +1144,13 @@ class DescribeMediaLiveInputRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveInputResponse(AbstractModel):
@@ -927,6 +1174,13 @@ class DescribeMediaLiveInputResponse(AbstractModel):
             self.Info = InputInfo()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveInputSecurityGroupRequest(AbstractModel):
@@ -944,6 +1198,13 @@ class DescribeMediaLiveInputSecurityGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveInputSecurityGroupResponse(AbstractModel):
@@ -967,6 +1228,13 @@ class DescribeMediaLiveInputSecurityGroupResponse(AbstractModel):
             self.Info = InputSecurityGroupInfo()
             self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveInputSecurityGroupsRequest(AbstractModel):
@@ -999,6 +1267,13 @@ class DescribeMediaLiveInputSecurityGroupsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Infos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMediaLiveInputsRequest(AbstractModel):
@@ -1032,6 +1307,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Infos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DestinationInfo(AbstractModel):
@@ -1064,6 +1346,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AuthKey = params.get("AuthKey")
         self.Username = params.get("Username")
         self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DrmKey(AbstractModel):
@@ -1102,6 +1391,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Track = params.get("Track")
         self.KeyId = params.get("KeyId")
         self.Iv = params.get("Iv")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DrmSettingsInfo(AbstractModel):
@@ -1141,6 +1437,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = DrmKey()
                 obj._deserialize(item)
                 self.Keys.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HlsRemuxSettingsInfo(AbstractModel):
@@ -1170,6 +1473,13 @@ class HlsRemuxSettingsInfo(AbstractModel):
         self.SegmentNumber = params.get("SegmentNumber")
         self.PdtInsertion = params.get("PdtInsertion")
         self.PdtDuration = params.get("PdtDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputInfo(AbstractModel):
@@ -1217,6 +1527,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = InputSettingInfo()
                 obj._deserialize(item)
                 self.InputSettings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputSecurityGroupInfo(AbstractModel):
@@ -1251,6 +1568,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Whitelist = params.get("Whitelist")
         self.OccupiedInputs = params.get("OccupiedInputs")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputSettingInfo(AbstractModel):
@@ -1284,6 +1608,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.StreamName = params.get("StreamName")
         self.SourceUrl = params.get("SourceUrl")
         self.InputAddress = params.get("InputAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputStatistics(AbstractModel):
@@ -1315,6 +1646,13 @@ class InputStatistics(AbstractModel):
                 obj = PipelineInputStatistics()
                 obj._deserialize(item)
                 self.Pipeline1.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LogInfo(AbstractModel):
@@ -1343,6 +1681,13 @@ It contains the value of `StreamStart` which refers to the push information.
         if params.get("Message") is not None:
             self.Message = LogMessageInfo()
             self.Message._deserialize(params.get("Message"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LogMessageInfo(AbstractModel):
@@ -1363,6 +1708,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("StreamInfo") is not None:
             self.StreamInfo = StreamInfo()
             self.StreamInfo._deserialize(params.get("StreamInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MediaPackageSettingsInfo(AbstractModel):
@@ -1380,6 +1732,13 @@ class MediaPackageSettingsInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaLiveChannelRequest(AbstractModel):
@@ -1437,6 +1796,13 @@ class ModifyMediaLiveChannelRequest(AbstractModel):
                 obj = VideoTemplateInfo()
                 obj._deserialize(item)
                 self.VideoTemplates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaLiveChannelResponse(AbstractModel):
@@ -1454,6 +1820,13 @@ class ModifyMediaLiveChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaLiveInputRequest(AbstractModel):
@@ -1491,6 +1864,13 @@ Note: if it is left empty or the array is empty, the original `InputSettings` va
                 obj = InputSettingInfo()
                 obj._deserialize(item)
                 self.InputSettings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaLiveInputResponse(AbstractModel):
@@ -1508,6 +1888,13 @@ class ModifyMediaLiveInputResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaLiveInputSecurityGroupRequest(AbstractModel):
@@ -1533,6 +1920,13 @@ class ModifyMediaLiveInputSecurityGroupRequest(AbstractModel):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.Whitelist = params.get("Whitelist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMediaLiveInputSecurityGroupResponse(AbstractModel):
@@ -1550,6 +1944,13 @@ class ModifyMediaLiveInputSecurityGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputGroupsInfo(AbstractModel):
@@ -1616,6 +2017,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("MediaPackageSettings") is not None:
             self.MediaPackageSettings = MediaPackageSettingsInfo()
             self.MediaPackageSettings._deserialize(params.get("MediaPackageSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputInfo(AbstractModel):
@@ -1650,6 +2058,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Scte35Settings") is not None:
             self.Scte35Settings = Scte35SettingsInfo()
             self.Scte35Settings._deserialize(params.get("Scte35Settings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputsStatistics(AbstractModel):
@@ -1681,6 +2096,13 @@ class OutputsStatistics(AbstractModel):
                 obj = PipelineOutputStatistics()
                 obj._deserialize(item)
                 self.Pipeline1.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PipelineInputStatistics(AbstractModel):
@@ -1724,6 +2146,13 @@ For other inputs, the quantity is 1.
                 obj = AudioPipelineInputStatistics()
                 obj._deserialize(item)
                 self.Audio.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PipelineLogInfo(AbstractModel):
@@ -1757,6 +2186,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = LogInfo()
                 obj._deserialize(item)
                 self.Pipeline1.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PipelineOutputStatistics(AbstractModel):
@@ -1779,6 +2215,13 @@ In seconds, indicating data time.
     def _deserialize(self, params):
         self.Timestamp = params.get("Timestamp")
         self.NetworkOut = params.get("NetworkOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Scte35SettingsInfo(AbstractModel):
@@ -1796,6 +2239,13 @@ class Scte35SettingsInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.Behavior = params.get("Behavior")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartMediaLiveChannelRequest(AbstractModel):
@@ -1813,6 +2263,13 @@ class StartMediaLiveChannelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartMediaLiveChannelResponse(AbstractModel):
@@ -1830,6 +2287,13 @@ class StartMediaLiveChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopMediaLiveChannelRequest(AbstractModel):
@@ -1847,6 +2311,13 @@ class StopMediaLiveChannelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopMediaLiveChannelResponse(AbstractModel):
@@ -1864,6 +2335,13 @@ class StopMediaLiveChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StreamAudioInfo(AbstractModel):
@@ -1902,6 +2380,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Fps = params.get("Fps")
         self.Rate = params.get("Rate")
         self.SampleRate = params.get("SampleRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StreamInfo(AbstractModel):
@@ -1946,6 +2431,13 @@ class StreamInfo(AbstractModel):
                 obj = StreamScte35Info()
                 obj._deserialize(item)
                 self.Scte35.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StreamScte35Info(AbstractModel):
@@ -1964,6 +2456,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Pid = params.get("Pid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StreamVideoInfo(AbstractModel):
@@ -2007,6 +2506,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Rate = params.get("Rate")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VideoPipelineInputStatistics(AbstractModel):
@@ -2032,6 +2538,13 @@ class VideoPipelineInputStatistics(AbstractModel):
         self.Fps = params.get("Fps")
         self.Rate = params.get("Rate")
         self.Pid = params.get("Pid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VideoTemplateInfo(AbstractModel):
@@ -2077,3 +2590,10 @@ class VideoTemplateInfo(AbstractModel):
         self.Fps = params.get("Fps")
         self.TopSpeed = params.get("TopSpeed")
         self.BitrateCompressionRatio = params.get("BitrateCompressionRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -39,6 +41,13 @@ class AddUserContactRequest(AbstractModel):
         self.Name = params.get("Name")
         self.ContactInfo = params.get("ContactInfo")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddUserContactResponse(AbstractModel):
@@ -60,6 +69,13 @@ class AddUserContactResponse(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ContactItem(AbstractModel):
@@ -85,6 +101,13 @@ class ContactItem(AbstractModel):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.Mail = params.get("Mail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDBDiagReportTaskRequest(AbstractModel):
@@ -126,6 +149,13 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
         self.ContactPerson = params.get("ContactPerson")
         self.ContactGroup = params.get("ContactGroup")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDBDiagReportTaskResponse(AbstractModel):
@@ -148,6 +178,13 @@ Note: this field may return `null`, indicating that no valid value is obtained.
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDBDiagReportUrlRequest(AbstractModel):
@@ -173,6 +210,13 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.AsyncRequestId = params.get("AsyncRequestId")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDBDiagReportUrlResponse(AbstractModel):
@@ -198,6 +242,13 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
         self.ReportUrl = params.get("ReportUrl")
         self.ExpireTime = params.get("ExpireTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMailProfileRequest(AbstractModel):
@@ -237,6 +288,13 @@ class CreateMailProfileRequest(AbstractModel):
         self.ProfileType = params.get("ProfileType")
         self.Product = params.get("Product")
         self.BindInstanceIds = params.get("BindInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMailProfileResponse(AbstractModel):
@@ -254,6 +312,13 @@ class CreateMailProfileResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSchedulerMailProfileRequest(AbstractModel):
@@ -289,6 +354,13 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
         self.ProfileName = params.get("ProfileName")
         self.BindInstanceId = params.get("BindInstanceId")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSchedulerMailProfileResponse(AbstractModel):
@@ -306,6 +378,13 @@ class CreateSchedulerMailProfileResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAllUserContactRequest(AbstractModel):
@@ -327,6 +406,13 @@ class DescribeAllUserContactRequest(AbstractModel):
     def _deserialize(self, params):
         self.Product = params.get("Product")
         self.Names = params.get("Names")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAllUserContactResponse(AbstractModel):
@@ -358,6 +444,13 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 obj._deserialize(item)
                 self.Contacts.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAllUserGroupRequest(AbstractModel):
@@ -379,6 +472,13 @@ class DescribeAllUserGroupRequest(AbstractModel):
     def _deserialize(self, params):
         self.Product = params.get("Product")
         self.Names = params.get("Names")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAllUserGroupResponse(AbstractModel):
@@ -410,6 +510,13 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 obj._deserialize(item)
                 self.Groups.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDBDiagEventRequest(AbstractModel):
@@ -435,6 +542,13 @@ class DescribeDBDiagEventRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.EventId = params.get("EventId")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDBDiagEventResponse(AbstractModel):
@@ -497,6 +611,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Metric = params.get("Metric")
         self.EndTime = params.get("EndTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDBDiagHistoryRequest(AbstractModel):
@@ -526,6 +647,13 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDBDiagHistoryResponse(AbstractModel):
@@ -552,6 +680,13 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Events.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDBDiagReportTasksRequest(AbstractModel):
@@ -601,6 +736,13 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDBDiagReportTasksResponse(AbstractModel):
@@ -631,6 +773,13 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDBSpaceStatusRequest(AbstractModel):
@@ -656,6 +805,13 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.RangeDays = params.get("RangeDays")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDBSpaceStatusResponse(AbstractModel):
@@ -689,6 +845,13 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
         self.Total = params.get("Total")
         self.AvailableDays = params.get("AvailableDays")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDiagDBInstancesRequest(AbstractModel):
@@ -730,6 +893,13 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
         self.InstanceNames = params.get("InstanceNames")
         self.InstanceIds = params.get("InstanceIds")
         self.Regions = params.get("Regions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDiagDBInstancesResponse(AbstractModel):
@@ -764,6 +934,13 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeHealthScoreRequest(AbstractModel):
@@ -789,6 +966,13 @@ class DescribeHealthScoreRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.Time = params.get("Time")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeHealthScoreResponse(AbstractModel):
@@ -812,6 +996,13 @@ class DescribeHealthScoreResponse(AbstractModel):
             self.Data = HealthScoreInfo()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMailProfileRequest(AbstractModel):
@@ -845,6 +1036,13 @@ class DescribeMailProfileRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ProfileName = params.get("ProfileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMailProfileResponse(AbstractModel):
@@ -877,6 +1075,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 self.ProfileList.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
@@ -906,6 +1111,13 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
@@ -942,6 +1154,13 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
             self.SeriesData = MonitorMetricSeriesData()
             self.SeriesData._deserialize(params.get("SeriesData"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSlowLogTopSqlsRequest(AbstractModel):
@@ -996,6 +1215,13 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
                 obj._deserialize(item)
                 self.SchemaList.append(obj)
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSlowLogTopSqlsResponse(AbstractModel):
@@ -1026,6 +1252,13 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Rows.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSlowLogUserHostStatsRequest(AbstractModel):
@@ -1055,6 +1288,13 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSlowLogUserHostStatsResponse(AbstractModel):
@@ -1085,6 +1325,13 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
@@ -1122,6 +1369,13 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
@@ -1148,6 +1402,13 @@ class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TopSpaceSchemaTimeSeries.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTopSpaceSchemasRequest(AbstractModel):
@@ -1177,6 +1438,13 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.SortBy = params.get("SortBy")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTopSpaceSchemasResponse(AbstractModel):
@@ -1207,6 +1475,13 @@ class DescribeTopSpaceSchemasResponse(AbstractModel):
                 self.TopSpaceSchemas.append(obj)
         self.Timestamp = params.get("Timestamp")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
@@ -1244,6 +1519,13 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
@@ -1270,6 +1552,13 @@ class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TopSpaceTableTimeSeries.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTopSpaceTablesRequest(AbstractModel):
@@ -1299,6 +1588,13 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.SortBy = params.get("SortBy")
         self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTopSpaceTablesResponse(AbstractModel):
@@ -1329,6 +1625,13 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
                 self.TopSpaceTables.append(obj)
         self.Timestamp = params.get("Timestamp")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeUserSqlAdviceRequest(AbstractModel):
@@ -1354,6 +1657,13 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.SqlText = params.get("SqlText")
         self.Schema = params.get("Schema")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeUserSqlAdviceResponse(AbstractModel):
@@ -1399,6 +1709,13 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
         self.SqlPlan = params.get("SqlPlan")
         self.Cost = params.get("Cost")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DiagHistoryEventItem(AbstractModel):
@@ -1455,6 +1772,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.InstanceId = params.get("InstanceId")
         self.Metric = params.get("Metric")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EventInfo(AbstractModel):
@@ -1504,6 +1828,13 @@ class EventInfo(AbstractModel):
         self.ScoreLost = params.get("ScoreLost")
         self.Metric = params.get("Metric")
         self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GroupItem(AbstractModel):
@@ -1529,6 +1860,13 @@ class GroupItem(AbstractModel):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.MemberCount = params.get("MemberCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HealthReportTask(AbstractModel):
@@ -1578,6 +1916,13 @@ class HealthReportTask(AbstractModel):
         if params.get("HealthStatus") is not None:
             self.HealthStatus = HealthStatus()
             self.HealthStatus._deserialize(params.get("HealthStatus"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HealthScoreInfo(AbstractModel):
@@ -1612,6 +1957,13 @@ class HealthScoreInfo(AbstractModel):
         self.EventsTotalCount = params.get("EventsTotalCount")
         self.HealthScore = params.get("HealthScore")
         self.HealthLevel = params.get("HealthLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HealthStatus(AbstractModel):
@@ -1647,6 +1999,13 @@ Note: `null` may be returned for this field, indicating that no valid values can
                 obj = ScoreDetail()
                 obj._deserialize(item)
                 self.ScoreDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InstanceBasicInfo(AbstractModel):
@@ -1684,6 +2043,13 @@ class InstanceBasicInfo(AbstractModel):
         self.Vport = params.get("Vport")
         self.Product = params.get("Product")
         self.EngineVersion = params.get("EngineVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InstanceConfs(AbstractModel):
@@ -1705,6 +2071,13 @@ class InstanceConfs(AbstractModel):
     def _deserialize(self, params):
         self.DailyInspection = params.get("DailyInspection")
         self.OverviewDisplay = params.get("OverviewDisplay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InstanceInfo(AbstractModel):
@@ -1832,6 +2205,13 @@ class InstanceInfo(AbstractModel):
         self.SecAuditStatus = params.get("SecAuditStatus")
         self.AuditPolicyStatus = params.get("AuditPolicyStatus")
         self.AuditRunningStatus = params.get("AuditRunningStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class IssueTypeInfo(AbstractModel):
@@ -1862,6 +2242,13 @@ class IssueTypeInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Events.append(obj)
         self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MailConfiguration(AbstractModel):
@@ -1895,6 +2282,13 @@ class MailConfiguration(AbstractModel):
         self.HealthStatus = params.get("HealthStatus")
         self.ContactPerson = params.get("ContactPerson")
         self.ContactGroup = params.get("ContactGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDiagDBInstanceConfRequest(AbstractModel):
@@ -1926,6 +2320,13 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
         self.Regions = params.get("Regions")
         self.Product = params.get("Product")
         self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDiagDBInstanceConfResponse(AbstractModel):
@@ -1943,6 +2344,13 @@ class ModifyDiagDBInstanceConfResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MonitorFloatMetric(AbstractModel):
@@ -1969,6 +2377,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Metric = params.get("Metric")
         self.Unit = params.get("Unit")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MonitorFloatMetricSeriesData(AbstractModel):
@@ -1995,6 +2410,13 @@ class MonitorFloatMetricSeriesData(AbstractModel):
                 obj._deserialize(item)
                 self.Series.append(obj)
         self.Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MonitorMetric(AbstractModel):
@@ -2021,6 +2443,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Metric = params.get("Metric")
         self.Unit = params.get("Unit")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MonitorMetricSeriesData(AbstractModel):
@@ -2047,6 +2476,13 @@ class MonitorMetricSeriesData(AbstractModel):
                 obj._deserialize(item)
                 self.Series.append(obj)
         self.Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProfileInfo(AbstractModel):
@@ -2070,6 +2506,13 @@ class ProfileInfo(AbstractModel):
         if params.get("MailConfiguration") is not None:
             self.MailConfiguration = MailConfiguration()
             self.MailConfiguration._deserialize(params.get("MailConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SchemaItem(AbstractModel):
@@ -2087,6 +2530,13 @@ class SchemaItem(AbstractModel):
 
     def _deserialize(self, params):
         self.Schema = params.get("Schema")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SchemaSpaceData(AbstractModel):
@@ -2133,6 +2583,13 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.FragRatio = params.get("FragRatio")
         self.TableRows = params.get("TableRows")
         self.PhysicalFileSize = params.get("PhysicalFileSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SchemaSpaceTimeSeries(AbstractModel):
@@ -2156,6 +2613,13 @@ class SchemaSpaceTimeSeries(AbstractModel):
         if params.get("SeriesData") is not None:
             self.SeriesData = MonitorMetricSeriesData()
             self.SeriesData._deserialize(params.get("SeriesData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScoreDetail(AbstractModel):
@@ -2191,6 +2655,13 @@ Note: `null` may be returned for this field, indicating that no valid values can
                 obj = ScoreItem()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScoreItem(AbstractModel):
@@ -2224,6 +2695,13 @@ class ScoreItem(AbstractModel):
         self.TopSeverity = params.get("TopSeverity")
         self.Count = params.get("Count")
         self.ScoreLost = params.get("ScoreLost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SlowLogHost(AbstractModel):
@@ -2249,6 +2727,13 @@ class SlowLogHost(AbstractModel):
         self.UserHost = params.get("UserHost")
         self.Ratio = params.get("Ratio")
         self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SlowLogTopSqlItem(AbstractModel):
@@ -2358,6 +2843,13 @@ class SlowLogTopSqlItem(AbstractModel):
         self.RowsSentAvg = params.get("RowsSentAvg")
         self.LockTimeAvg = params.get("LockTimeAvg")
         self.RowsExaminedAvg = params.get("RowsExaminedAvg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TableSpaceData(AbstractModel):
@@ -2411,6 +2903,13 @@ class TableSpaceData(AbstractModel):
         self.FragRatio = params.get("FragRatio")
         self.TableRows = params.get("TableRows")
         self.PhysicalFileSize = params.get("PhysicalFileSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TableSpaceTimeSeries(AbstractModel):
@@ -2442,6 +2941,13 @@ class TableSpaceTimeSeries(AbstractModel):
         if params.get("SeriesData") is not None:
             self.SeriesData = MonitorFloatMetricSeriesData()
             self.SeriesData._deserialize(params.get("SeriesData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TimeSlice(AbstractModel):
@@ -2463,6 +2969,13 @@ class TimeSlice(AbstractModel):
     def _deserialize(self, params):
         self.Count = params.get("Count")
         self.Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UserProfile(AbstractModel):
@@ -2502,3 +3015,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("ProfileInfo") is not None:
             self.ProfileInfo = ProfileInfo()
             self.ProfileInfo._deserialize(params.get("ProfileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

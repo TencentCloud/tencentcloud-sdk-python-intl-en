@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -56,6 +58,13 @@ Different algorithm model versions correspond to different face recognition algo
         self.Url = params.get("Url")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AnalyzeFaceResponse(AbstractModel):
@@ -94,6 +103,13 @@ class AnalyzeFaceResponse(AbstractModel):
                 self.FaceShapeSet.append(obj)
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Candidate(AbstractModel):
@@ -145,6 +161,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = PersonGroupInfo()
                 obj._deserialize(item)
                 self.PersonGroupInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CompareFaceRequest(AbstractModel):
@@ -213,6 +236,13 @@ If the image quality does not meet the requirement, the returned result will pro
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.QualityControl = params.get("QualityControl")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CompareFaceResponse(AbstractModel):
@@ -242,6 +272,13 @@ If you need to verify whether the faces in the two images are the same person, w
         self.Score = params.get("Score")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CopyPersonRequest(AbstractModel):
@@ -263,6 +300,13 @@ class CopyPersonRequest(AbstractModel):
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
         self.GroupIds = params.get("GroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CopyPersonResponse(AbstractModel):
@@ -288,6 +332,13 @@ class CopyPersonResponse(AbstractModel):
         self.SucGroupNum = params.get("SucGroupNum")
         self.SucGroupIds = params.get("SucGroupIds")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateFaceRequest(AbstractModel):
@@ -344,6 +395,13 @@ If the image quality does not meet the requirement, the returned result will pro
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
         self.QualityControl = params.get("QualityControl")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateFaceResponse(AbstractModel):
@@ -394,6 +452,13 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
                 self.SucFaceRects.append(obj)
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateGroupRequest(AbstractModel):
@@ -435,6 +500,13 @@ Different algorithm model versions correspond to different face recognition algo
         self.GroupExDescriptions = params.get("GroupExDescriptions")
         self.Tag = params.get("Tag")
         self.FaceModelVersion = params.get("FaceModelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateGroupResponse(AbstractModel):
@@ -456,6 +528,13 @@ class CreateGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePersonRequest(AbstractModel):
@@ -537,6 +616,13 @@ If the image quality does not meet the requirement, the returned result will pro
         self.UniquePersonControl = params.get("UniquePersonControl")
         self.QualityControl = params.get("QualityControl")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePersonResponse(AbstractModel):
@@ -574,6 +660,13 @@ This parameter is meaningful only if the `UniquePersonControl` parameter is not 
         self.SimilarPersonId = params.get("SimilarPersonId")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteFaceRequest(AbstractModel):
@@ -595,6 +688,13 @@ class DeleteFaceRequest(AbstractModel):
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
         self.FaceIds = params.get("FaceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteFaceResponse(AbstractModel):
@@ -620,6 +720,13 @@ class DeleteFaceResponse(AbstractModel):
         self.SucDeletedNum = params.get("SucDeletedNum")
         self.SucFaceIds = params.get("SucFaceIds")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteGroupRequest(AbstractModel):
@@ -637,6 +744,13 @@ class DeleteGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteGroupResponse(AbstractModel):
@@ -654,6 +768,13 @@ class DeleteGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePersonFromGroupRequest(AbstractModel):
@@ -675,6 +796,13 @@ class DeletePersonFromGroupRequest(AbstractModel):
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePersonFromGroupResponse(AbstractModel):
@@ -692,6 +820,13 @@ class DeletePersonFromGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePersonRequest(AbstractModel):
@@ -709,6 +844,13 @@ class DeletePersonRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePersonResponse(AbstractModel):
@@ -726,6 +868,13 @@ class DeletePersonResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectFaceRequest(AbstractModel):
@@ -789,6 +938,13 @@ Different algorithm model versions correspond to different face recognition algo
         self.NeedQualityDetection = params.get("NeedQualityDetection")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectFaceResponse(AbstractModel):
@@ -827,6 +983,13 @@ class DetectFaceResponse(AbstractModel):
                 self.FaceInfos.append(obj)
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectLiveFaceRequest(AbstractModel):
@@ -862,6 +1025,13 @@ Different algorithm model versions correspond to different face recognition algo
         self.Image = params.get("Image")
         self.Url = params.get("Url")
         self.FaceModelVersion = params.get("FaceModelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectLiveFaceResponse(AbstractModel):
@@ -893,6 +1063,13 @@ This field is meaningful only if `FaceModelVersion` is 3.0.
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.IsLiveness = params.get("IsLiveness")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceAttributesInfo(AbstractModel):
@@ -964,6 +1141,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.Hair = FaceHairAttributesInfo()
             self.Hair._deserialize(params.get("Hair"))
         self.EyeOpen = params.get("EyeOpen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceHairAttributesInfo(AbstractModel):
@@ -992,6 +1176,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Length = params.get("Length")
         self.Bang = params.get("Bang")
         self.Color = params.get("Color")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceInfo(AbstractModel):
@@ -1039,6 +1230,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("FaceQualityInfo") is not None:
             self.FaceQualityInfo = FaceQualityInfo()
             self.FaceQualityInfo._deserialize(params.get("FaceQualityInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceQualityCompleteness(AbstractModel):
@@ -1088,6 +1286,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Cheek = params.get("Cheek")
         self.Mouth = params.get("Mouth")
         self.Chin = params.get("Chin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceQualityInfo(AbstractModel):
@@ -1130,6 +1335,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Completeness") is not None:
             self.Completeness = FaceQualityCompleteness()
             self.Completeness._deserialize(params.get("Completeness"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceRect(AbstractModel):
@@ -1163,6 +1375,13 @@ If you want to capture a complete face, you can set the negative coordinates to 
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceShape(AbstractModel):
@@ -1257,6 +1476,13 @@ class FaceShape(AbstractModel):
                 obj = Point()
                 obj._deserialize(item)
                 self.RightPupil.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetGroupInfoRequest(AbstractModel):
@@ -1274,6 +1500,13 @@ class GetGroupInfoRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetGroupInfoResponse(AbstractModel):
@@ -1315,6 +1548,13 @@ class GetGroupInfoResponse(AbstractModel):
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.CreationTimestamp = params.get("CreationTimestamp")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetGroupListRequest(AbstractModel):
@@ -1336,6 +1576,13 @@ class GetGroupListRequest(AbstractModel):
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetGroupListResponse(AbstractModel):
@@ -1367,6 +1614,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.GroupInfos.append(obj)
         self.GroupNum = params.get("GroupNum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetPersonBaseInfoRequest(AbstractModel):
@@ -1384,6 +1638,13 @@ class GetPersonBaseInfoRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetPersonBaseInfoResponse(AbstractModel):
@@ -1413,6 +1674,13 @@ class GetPersonBaseInfoResponse(AbstractModel):
         self.Gender = params.get("Gender")
         self.FaceIds = params.get("FaceIds")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetPersonGroupInfoRequest(AbstractModel):
@@ -1438,6 +1706,13 @@ class GetPersonGroupInfoRequest(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetPersonGroupInfoResponse(AbstractModel):
@@ -1474,6 +1749,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.GroupNum = params.get("GroupNum")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetPersonListNumRequest(AbstractModel):
@@ -1491,6 +1773,13 @@ class GetPersonListNumRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetPersonListNumResponse(AbstractModel):
@@ -1516,6 +1805,13 @@ class GetPersonListNumResponse(AbstractModel):
         self.PersonNum = params.get("PersonNum")
         self.FaceNum = params.get("FaceNum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetPersonListRequest(AbstractModel):
@@ -1541,6 +1837,13 @@ class GetPersonListRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetPersonListResponse(AbstractModel):
@@ -1582,6 +1885,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.FaceNum = params.get("FaceNum")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GroupCandidate(AbstractModel):
@@ -1608,6 +1918,13 @@ class GroupCandidate(AbstractModel):
                 obj = Candidate()
                 obj._deserialize(item)
                 self.Candidates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GroupExDescriptionInfo(AbstractModel):
@@ -1630,6 +1947,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.GroupExDescriptionIndex = params.get("GroupExDescriptionIndex")
         self.GroupExDescription = params.get("GroupExDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GroupInfo(AbstractModel):
@@ -1672,6 +1996,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Tag = params.get("Tag")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.CreationTimestamp = params.get("CreationTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyGroupRequest(AbstractModel):
@@ -1706,6 +2037,13 @@ class ModifyGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self.GroupExDescriptionInfos.append(obj)
         self.Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyGroupResponse(AbstractModel):
@@ -1723,6 +2061,13 @@ class ModifyGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonBaseInfoRequest(AbstractModel):
@@ -1748,6 +2093,13 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.PersonName = params.get("PersonName")
         self.Gender = params.get("Gender")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonBaseInfoResponse(AbstractModel):
@@ -1765,6 +2117,13 @@ class ModifyPersonBaseInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonGroupInfoRequest(AbstractModel):
@@ -1795,6 +2154,13 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
                 obj = PersonExDescriptionInfo()
                 obj._deserialize(item)
                 self.PersonExDescriptionInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonGroupInfoResponse(AbstractModel):
@@ -1812,6 +2178,13 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonExDescriptionInfo(AbstractModel):
@@ -1834,6 +2207,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.PersonExDescriptionIndex = params.get("PersonExDescriptionIndex")
         self.PersonExDescription = params.get("PersonExDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonGroupInfo(AbstractModel):
@@ -1855,6 +2235,13 @@ class PersonGroupInfo(AbstractModel):
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
         self.PersonExDescriptions = params.get("PersonExDescriptions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonInfo(AbstractModel):
@@ -1893,6 +2280,13 @@ The UNIX epoch time is 00:00:00, Thursday, January 1, 1970, Coordinated Universa
         self.PersonExDescriptions = params.get("PersonExDescriptions")
         self.FaceIds = params.get("FaceIds")
         self.CreationTimestamp = params.get("CreationTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Point(AbstractModel):
@@ -1914,6 +2308,13 @@ class Point(AbstractModel):
     def _deserialize(self, params):
         self.X = params.get("X")
         self.Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Result(AbstractModel):
@@ -1947,6 +2348,13 @@ class Result(AbstractModel):
             self.FaceRect = FaceRect()
             self.FaceRect._deserialize(params.get("FaceRect"))
         self.RetCode = params.get("RetCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResultsReturnsByGroup(AbstractModel):
@@ -1980,6 +2388,13 @@ class ResultsReturnsByGroup(AbstractModel):
                 obj._deserialize(item)
                 self.GroupCandidates.append(obj)
         self.RetCode = params.get("RetCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchFacesRequest(AbstractModel):
@@ -2051,6 +2466,13 @@ If the image quality does not meet the requirement, the returned result will pro
         self.QualityControl = params.get("QualityControl")
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchFacesResponse(AbstractModel):
@@ -2085,6 +2507,13 @@ class SearchFacesResponse(AbstractModel):
         self.FaceNum = params.get("FaceNum")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchFacesReturnsByGroupRequest(AbstractModel):
@@ -2157,6 +2586,13 @@ Value range: [0.0,100.0).
         self.QualityControl = params.get("QualityControl")
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchFacesReturnsByGroupResponse(AbstractModel):
@@ -2191,6 +2627,13 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
                 self.ResultsReturnsByGroup.append(obj)
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchPersonsRequest(AbstractModel):
@@ -2263,6 +2706,13 @@ If the image quality does not meet the requirement, the returned result will pro
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
         self.NeedPersonInfo = params.get("NeedPersonInfo")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchPersonsResponse(AbstractModel):
@@ -2298,6 +2748,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.PersonNum = params.get("PersonNum")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchPersonsReturnsByGroupRequest(AbstractModel):
@@ -2368,6 +2825,13 @@ If the image quality does not meet the requirement, the returned result will pro
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
         self.NeedPersonInfo = params.get("NeedPersonInfo")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchPersonsReturnsByGroupResponse(AbstractModel):
@@ -2402,6 +2866,13 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
                 self.ResultsReturnsByGroup.append(obj)
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyFaceRequest(AbstractModel):
@@ -2451,6 +2922,13 @@ If the image quality does not meet the requirement, the returned result will pro
         self.Url = params.get("Url")
         self.QualityControl = params.get("QualityControl")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyFaceResponse(AbstractModel):
@@ -2484,6 +2962,13 @@ The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90,
         self.IsMatch = params.get("IsMatch")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyPersonRequest(AbstractModel):
@@ -2533,6 +3018,13 @@ If the image quality does not meet the requirement, the returned result will pro
         self.Url = params.get("Url")
         self.QualityControl = params.get("QualityControl")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyPersonResponse(AbstractModel):
@@ -2562,3 +3054,10 @@ class VerifyPersonResponse(AbstractModel):
         self.IsMatch = params.get("IsMatch")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

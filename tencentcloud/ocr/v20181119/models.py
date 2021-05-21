@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -60,6 +62,13 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
         self.EnableCopyCheck = params.get("EnableCopyCheck")
         self.EnableReshootCheck = params.get("EnableReshootCheck")
         self.EnableBorderCheck = params.get("EnableBorderCheck")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BankCardOCRResponse(AbstractModel):
@@ -118,6 +127,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.CardNoImage = params.get("CardNoImage")
         self.WarningCode = params.get("WarningCode")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Coord(AbstractModel):
@@ -139,6 +155,13 @@ class Coord(AbstractModel):
     def _deserialize(self, params):
         self.X = params.get("X")
         self.Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralAccurateOCRRequest(AbstractModel):
@@ -164,6 +187,13 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralAccurateOCRResponse(AbstractModel):
@@ -194,6 +224,13 @@ class GeneralAccurateOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Angel = params.get("Angel")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralBasicOCRRequest(AbstractModel):
@@ -248,6 +285,13 @@ Arabic.
         self.LanguageType = params.get("LanguageType")
         self.IsPdf = params.get("IsPdf")
         self.PdfPageNumber = params.get("PdfPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralBasicOCRResponse(AbstractModel):
@@ -286,6 +330,13 @@ class GeneralBasicOCRResponse(AbstractModel):
         self.Angel = params.get("Angel")
         self.PdfPageSize = params.get("PdfPageSize")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HKIDCardOCRRequest(AbstractModel):
@@ -321,6 +372,13 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
         self.ReturnHeadImage = params.get("ReturnHeadImage")
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HKIDCardOCRResponse(AbstractModel):
@@ -402,6 +460,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.HeadImage = params.get("HeadImage")
         self.WarningCode = params.get("WarningCode")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ItemCoord(AbstractModel):
@@ -431,6 +496,13 @@ class ItemCoord(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MLIDCardOCRRequest(AbstractModel):
@@ -462,6 +534,13 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.RetImage = params.get("RetImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MLIDCardOCRResponse(AbstractModel):
@@ -532,6 +611,13 @@ IKAD: Malaysia Temporary Employment Visit Pass
         self.Type = params.get("Type")
         self.Birthday = params.get("Birthday")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MLIDPassportOCRRequest(AbstractModel):
@@ -553,6 +639,13 @@ class MLIDPassportOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.RetImage = params.get("RetImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MLIDPassportOCRResponse(AbstractModel):
@@ -621,6 +714,13 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.Image = params.get("Image")
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TableOCRRequest(AbstractModel):
@@ -649,6 +749,13 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TableOCRResponse(AbstractModel):
@@ -679,6 +786,13 @@ class TableOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextDetection(AbstractModel):
@@ -721,6 +835,13 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
         if params.get("ItemPolygon") is not None:
             self.ItemPolygon = ItemCoord()
             self.ItemPolygon._deserialize(params.get("ItemPolygon"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextTable(AbstractModel):
@@ -775,3 +896,10 @@ class TextTable(AbstractModel):
                 obj._deserialize(item)
                 self.Polygon.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
