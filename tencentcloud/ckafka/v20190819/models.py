@@ -131,6 +131,57 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.Topics.append(obj)
 
 
+class ClusterInfo(AbstractModel):
+    """Cluster information entity
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: int
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param MaxDiskSize: The cluster’s maximum disk capacity in GB
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type MaxDiskSize: int
+        :param MaxBandWidth: The cluster’s maximum bandwidth in MB/s
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type MaxBandWidth: int
+        :param AvailableDiskSize: The cluster’s available disk capacity in GB
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type AvailableDiskSize: int
+        :param AvailableBandWidth: The cluster’s available bandwidth in MB/s
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type AvailableBandWidth: int
+        :param ZoneId: The AZ which the cluster belongs to
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ZoneId: int
+        :param ZoneIds: The AZ which the cluster nodes belong to. If the cluster is a multi-AZ cluster, this field means multiple AZs which the cluster nodes belong to.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ZoneIds: list of int
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.MaxDiskSize = None
+        self.MaxBandWidth = None
+        self.AvailableDiskSize = None
+        self.AvailableBandWidth = None
+        self.ZoneId = None
+        self.ZoneIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.MaxDiskSize = params.get("MaxDiskSize")
+        self.MaxBandWidth = params.get("MaxBandWidth")
+        self.AvailableDiskSize = params.get("AvailableDiskSize")
+        self.AvailableBandWidth = params.get("AvailableBandWidth")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneIds = params.get("ZoneIds")
+
+
 class Config(AbstractModel):
     """Advanced configuration object
 
@@ -917,6 +968,35 @@ class DescribeAppInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCkafkaZoneRequest(AbstractModel):
+    """DescribeCkafkaZone request structure.
+
+    """
+
+
+class DescribeCkafkaZoneResponse(AbstractModel):
+    """DescribeCkafkaZone response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: The entity of query result complex objects
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ZoneResponse`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ZoneResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeConsumerGroupRequest(AbstractModel):
     """DescribeConsumerGroup request structure.
 
@@ -1320,6 +1400,58 @@ class DescribeInstancesResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = InstanceResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRegionRequest(AbstractModel):
+    """DescribeRegion request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: The offset value
+        :type Offset: int
+        :param Limit: The maximum number of results returned
+        :type Limit: int
+        :param Business: Business field, which can be ignored.
+        :type Business: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Business = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Business = params.get("Business")
+
+
+class DescribeRegionResponse(AbstractModel):
+    """DescribeRegion response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: List of the returned results of enumerated regions
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Result: list of Region
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = Region()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2630,6 +2762,77 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Offset = params.get("Offset")
 
 
+class Price(AbstractModel):
+    """Message price entity
+
+    """
+
+    def __init__(self):
+        """
+        :param RealTotalCost: Discounted price
+        :type RealTotalCost: float
+        :param TotalCost: Original price
+        :type TotalCost: float
+        """
+        self.RealTotalCost = None
+        self.TotalCost = None
+
+
+    def _deserialize(self, params):
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.TotalCost = params.get("TotalCost")
+
+
+class Region(AbstractModel):
+    """Region entity object
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: Region ID
+        :type RegionId: int
+        :param RegionName: Region name
+        :type RegionName: str
+        :param AreaName: Area name
+        :type AreaName: str
+        :param RegionCode: Region code
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type RegionCode: str
+        :param RegionCodeV3: Region code (V3)
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type RegionCodeV3: str
+        :param Support: NONE: no special models are supported by default.\nCVM: the CVM type is supported.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Support: str
+        :param Ipv6: Whether ipv6 is supported. `0` indicates no, and `1` indicates yes.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Ipv6: int
+        :param MultiZone: Whether multi-zone clusters are supported.`0` indicates no, and `1` indicates yes.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type MultiZone: int
+        """
+        self.RegionId = None
+        self.RegionName = None
+        self.AreaName = None
+        self.RegionCode = None
+        self.RegionCodeV3 = None
+        self.Support = None
+        self.Ipv6 = None
+        self.MultiZone = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+        self.AreaName = params.get("AreaName")
+        self.RegionCode = params.get("RegionCode")
+        self.RegionCodeV3 = params.get("RegionCodeV3")
+        self.Support = params.get("Support")
+        self.Ipv6 = params.get("Ipv6")
+        self.MultiZone = params.get("MultiZone")
+
+
 class Route(AbstractModel):
     """Route entity object
 
@@ -3098,3 +3301,120 @@ class VipEntity(AbstractModel):
     def _deserialize(self, params):
         self.Vip = params.get("Vip")
         self.Vport = params.get("Vport")
+
+
+class ZoneInfo(AbstractModel):
+    """Zone information entity
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneId: Zone ID
+        :type ZoneId: str
+        :param IsInternalApp: Whether it is an internal App.
+        :type IsInternalApp: int
+        :param AppId: app id
+        :type AppId: int
+        :param Flag: Identifier
+        :type Flag: bool
+        :param ZoneName: Zone name
+        :type ZoneName: str
+        :param ZoneStatus: Zone status
+        :type ZoneStatus: int
+        :param Exflag: Extra identifier
+        :type Exflag: str
+        :param SoldOut: JSON object. The key is the model. The value `true` means “sold out”, and `false` means “not sold out”.
+        :type SoldOut: str
+        """
+        self.ZoneId = None
+        self.IsInternalApp = None
+        self.AppId = None
+        self.Flag = None
+        self.ZoneName = None
+        self.ZoneStatus = None
+        self.Exflag = None
+        self.SoldOut = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.IsInternalApp = params.get("IsInternalApp")
+        self.AppId = params.get("AppId")
+        self.Flag = params.get("Flag")
+        self.ZoneName = params.get("ZoneName")
+        self.ZoneStatus = params.get("ZoneStatus")
+        self.Exflag = params.get("Exflag")
+        self.SoldOut = params.get("SoldOut")
+
+
+class ZoneResponse(AbstractModel):
+    """The entity returned for the query of Kafka’s zone information
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneList: Zone list
+        :type ZoneList: list of ZoneInfo
+        :param MaxBuyInstanceNum: Maximum number of instances to be purchased
+        :type MaxBuyInstanceNum: int
+        :param MaxBandwidth: Maximum bandwidth in MB/S
+        :type MaxBandwidth: int
+        :param UnitPrice: Pay-as-you-go unit price
+        :type UnitPrice: :class:`tencentcloud.ckafka.v20190819.models.Price`
+        :param MessagePrice: Pay-as-you-go unit message price
+        :type MessagePrice: :class:`tencentcloud.ckafka.v20190819.models.Price`
+        :param ClusterInfo: Cluster information dedicated to a user
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ClusterInfo: list of ClusterInfo
+        :param Standard: Purchase of Standard Edition configurations
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Standard: str
+        :param StandardS2: Purchase of Standard S2 Edition configurations
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type StandardS2: str
+        :param Profession: Purchase of Pro Edition configurations
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Profession: str
+        :param Physical: Purchase of Physical Dedicated Edition configurations
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Physical: str
+        """
+        self.ZoneList = None
+        self.MaxBuyInstanceNum = None
+        self.MaxBandwidth = None
+        self.UnitPrice = None
+        self.MessagePrice = None
+        self.ClusterInfo = None
+        self.Standard = None
+        self.StandardS2 = None
+        self.Profession = None
+        self.Physical = None
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneList") is not None:
+            self.ZoneList = []
+            for item in params.get("ZoneList"):
+                obj = ZoneInfo()
+                obj._deserialize(item)
+                self.ZoneList.append(obj)
+        self.MaxBuyInstanceNum = params.get("MaxBuyInstanceNum")
+        self.MaxBandwidth = params.get("MaxBandwidth")
+        if params.get("UnitPrice") is not None:
+            self.UnitPrice = Price()
+            self.UnitPrice._deserialize(params.get("UnitPrice"))
+        if params.get("MessagePrice") is not None:
+            self.MessagePrice = Price()
+            self.MessagePrice._deserialize(params.get("MessagePrice"))
+        if params.get("ClusterInfo") is not None:
+            self.ClusterInfo = []
+            for item in params.get("ClusterInfo"):
+                obj = ClusterInfo()
+                obj._deserialize(item)
+                self.ClusterInfo.append(obj)
+        self.Standard = params.get("Standard")
+        self.StandardS2 = params.get("StandardS2")
+        self.Profession = params.get("Profession")
+        self.Physical = params.get("Physical")
