@@ -2811,12 +2811,15 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         :type GatewayType: str
         :param ModeType: CCN route publishing method. Valid values: `standard` and `exquisite`. This parameter is only valid for the CCN direct connect gateway.
         :type ModeType: str
+        :param Zone: Availability zone where the direct connect gateway resides.
+        :type Zone: str
         """
         self.DirectConnectGatewayName = None
         self.NetworkType = None
         self.NetworkInstanceId = None
         self.GatewayType = None
         self.ModeType = None
+        self.Zone = None
 
 
     def _deserialize(self, params):
@@ -2825,6 +2828,7 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         self.NetworkInstanceId = params.get("NetworkInstanceId")
         self.GatewayType = params.get("GatewayType")
         self.ModeType = params.get("ModeType")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9135,8 +9139,7 @@ class DescribeRouteTablesRequest(AbstractModel):
 <li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
 <li>association.main - String - (Filter condition) Whether it is the main route table.</li>
 <li>tag-key - String - Required: no - (Filter condition) Filter by tag key.</li>
-<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 2 for the detailed usage.</li>
-<li>is-need-router-info - String - (Filter condition) Whether to obtain routing policies. It defaults to `false`. To obtain routing policies, change the parameter value to `true`.</li>
+<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`. See Example 2 for the detailed usage.</li>
         :type Filters: list of Filter
         :param RouteTableIds: The route table instance ID, such as `rtb-azd4dt1c`.
         :type RouteTableIds: list of str
@@ -10840,6 +10843,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ModeType: CCN route publishing mode. Valid values: `standard` and `exquisite`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ModeType: str
+        :param LocalZone: Whether the direct connect gateway is for an edge zone.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type LocalZone: bool
+        :param Zone: Availability zone where the direct connect gateway resides.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Zone: str
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
@@ -10856,6 +10865,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.NatGatewayId = None
         self.VXLANSupport = None
         self.ModeType = None
+        self.LocalZone = None
+        self.Zone = None
 
 
     def _deserialize(self, params):
@@ -10874,6 +10885,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.NatGatewayId = params.get("NatGatewayId")
         self.VXLANSupport = params.get("VXLANSupport")
         self.ModeType = params.get("ModeType")
+        self.LocalZone = params.get("LocalZone")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12167,9 +12180,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param PropoEncryAlgorithm: Encryption algorithm. Available values: '3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', and 'DES-CBC'. Default is 3DES-CBC.
+        :param PropoEncryAlgorithm: Encryption algorithm. Valid values: `3DES-CBC`, `AES-CBC-128`, `AES-CBS-192`, `AES-CBC-256`, `DES-CBC`, and `SM4`; default value: `3DES-CBC`.
         :type PropoEncryAlgorithm: str
-        :param PropoAuthenAlgorithm: Verification algorithm. Available value: 'MD5' and 'SHA1'. Default is MD5.
+        :param PropoAuthenAlgorithm: Authentication algorithm. Valid values: `MD5`, `SHA1` and `SHA-256`; default value: `MD5`.
         :type PropoAuthenAlgorithm: str
         :param ExchangeMode: Negotiation mode. Available values: 'AGGRESSIVE' and 'MAIN'. Default is MAIN.
         :type ExchangeMode: str
@@ -16793,7 +16806,7 @@ class ResourceDashboard(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: Vpc instance ID, e.g. vpc-f1xjkw1b.
+        :param VpcId: VPC instance ID, such as `vpc-bq4bzxpj`.
         :type VpcId: str
         :param SubnetId: Subnet instance ID, such as subnet-bthucmmy.
         :type SubnetId: str
@@ -16803,7 +16816,7 @@ class ResourceDashboard(AbstractModel):
         :type Dcg: int
         :param Pcx: Peering connection.
         :type Pcx: int
-        :param Ip: The total number of used IP addresses.
+        :param Ip: Total number of used IPs except for CVM IP, EIP and network probe IP. The three IP types will be independently counted.
         :type Ip: int
         :param Nat: NAT gateway.
         :type Nat: int
