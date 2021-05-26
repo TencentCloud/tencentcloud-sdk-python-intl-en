@@ -923,7 +923,7 @@ class CreateLifecycleHookRequest(AbstractModel):
         :type LifecycleTransition: str
         :param DefaultResult: Defined actions when lifecycle hook times out. Valid values: "CONTINUE" and "ABANDON". Default value: "CONTINUE"
         :type DefaultResult: str
-        :param HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7,200. Default value: 300
+        :param HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300
         :type HeartbeatTimeout: int
         :param NotificationMetadata: Additional information of a notification that Auto Scaling sends to targets. This parameter is left empty by default. Up to 1024 characters are allowed.
         :type NotificationMetadata: str
@@ -3153,7 +3153,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param InstanceChargePrepaid: Sets prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param DiskTypePolicy: Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
+        :param DiskTypePolicy: Specifies how to select the cloud disk type. 
 <br><li>ORIGINAL: uses the configured cloud disk type
 <br><li>AUTOMATIC: automatically chooses an available cloud disk type in the current availability zone
         :type DiskTypePolicy: str
@@ -4896,7 +4896,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
         :type LifecycleTransition: str
         :param DefaultResult: Defines the action to be taken by the auto scaling group upon lifecycle hook timeout. Value range: "CONTINUE", "ABANDON". Default value: "CONTINUE"
         :type DefaultResult: str
-        :param HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7,200. Default value: 300
+        :param HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300
         :type HeartbeatTimeout: int
         :param NotificationMetadata: Additional information of a notification that Auto Scaling sends to targets. This parameter is left empty by default.
         :type NotificationMetadata: str

@@ -74,6 +74,86 @@ class AssignProjectResponse(AbstractModel):
         
 
 
+class BackupDownloadTask(AbstractModel):
+    """Backup download task information
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateTime: Task creation time
+        :type CreateTime: str
+        :param BackupName: Backup name
+        :type BackupName: str
+        :param ReplicaSetId: Shard name
+        :type ReplicaSetId: str
+        :param BackupSize: Backup size in bytes
+        :type BackupSize: int
+        :param Status: Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)
+        :type Status: int
+        :param Percent: Task progress in terms of percentage
+        :type Percent: int
+        :param TimeSpend: Task duration in seconds
+        :type TimeSpend: int
+        :param Url: Backup download address
+        :type Url: str
+        """
+        self.CreateTime = None
+        self.BackupName = None
+        self.ReplicaSetId = None
+        self.BackupSize = None
+        self.Status = None
+        self.Percent = None
+        self.TimeSpend = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.BackupName = params.get("BackupName")
+        self.ReplicaSetId = params.get("ReplicaSetId")
+        self.BackupSize = params.get("BackupSize")
+        self.Status = params.get("Status")
+        self.Percent = params.get("Percent")
+        self.TimeSpend = params.get("TimeSpend")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class BackupDownloadTaskStatus(AbstractModel):
+    """The result of the created backup download task
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplicaSetId: Shard name
+        :type ReplicaSetId: str
+        :param Status: Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)
+        :type Status: int
+        """
+        self.ReplicaSetId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ReplicaSetId = params.get("ReplicaSetId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class BackupFile(AbstractModel):
     """Storage information of a backup file
 
@@ -250,6 +330,76 @@ class CreateBackupDBInstanceResponse(AbstractModel):
         
 
 
+class CreateBackupDownloadTaskRequest(AbstractModel):
+    """CreateBackupDownloadTask request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5", which is the same as the instance ID displayed in the TencentDB console
+        :type InstanceId: str
+        :param BackupName: The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API
+        :type BackupName: str
+        :param BackupSets: The list of shards whose backups will be downloaded
+        :type BackupSets: list of ReplicaSetInfo
+        """
+        self.InstanceId = None
+        self.BackupName = None
+        self.BackupSets = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupName = params.get("BackupName")
+        if params.get("BackupSets") is not None:
+            self.BackupSets = []
+            for item in params.get("BackupSets"):
+                obj = ReplicaSetInfo()
+                obj._deserialize(item)
+                self.BackupSets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateBackupDownloadTaskResponse(AbstractModel):
+    """CreateBackupDownloadTask response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Tasks: Download task status
+        :type Tasks: list of BackupDownloadTaskStatus
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = BackupDownloadTaskStatus()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateDBInstanceHourRequest(AbstractModel):
     """CreateDBInstanceHour request structure.
 
@@ -279,7 +429,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: VPC subnet ID. If VpcId is set, then SubnetId will be required
         :type SubnetId: str
-        :param Password: Instance password. If this parameter is not set, you need to set an instance password through the password setting API after creating an instance. The password can only contain 8-16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()` |
+        :param Password: Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of "instance ID+@+root account UIN". For example, if the instance ID is "cmgo-higv73ed" and the root account UIN "100000001", the instance password will be "cmgo-higv73ed@100000001".
         :type Password: str
         :param ProjectId: Project ID. If this parameter is not set, the default project will be used
         :type ProjectId: int
@@ -408,7 +558,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the `DescribeSubnets` API to query the subnet list.
         :type SubnetId: str
-        :param Password: Instance password. If this parameter is not set, you need to set an instance password through the `SetPassword` API after creating an instance. The password can only contain 8-16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()`.
+        :param Password: Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of "instance ID+@+root account UIN". For example, if the instance ID is "cmgo-higv73ed" and the root account UIN "100000001", the instance password will be "cmgo-higv73ed@100000001".
         :type Password: str
         :param Tags: Instance tag information.
         :type Tags: list of TagInfo
@@ -684,6 +834,99 @@ class DescribeBackupAccessResponse(AbstractModel):
                 obj = BackupFile()
                 obj._deserialize(item)
                 self.Files.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeBackupDownloadTaskRequest(AbstractModel):
+    """DescribeBackupDownloadTask request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5", which is the same as the instance ID displayed in the TencentDB console
+        :type InstanceId: str
+        :param BackupName: The name of a backup file whose download tasks will be queried
+        :type BackupName: str
+        :param StartTime: The start time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the start time can be any time earlier than the end time.
+        :type StartTime: str
+        :param EndTime: The end time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the end time can be any time later than the start time.
+        :type EndTime: str
+        :param Limit: The maximum number of results returned per page. Value range: 1-100. Default value: `20`.
+        :type Limit: int
+        :param Offset: Offset for pagination. Default value: `0`.
+        :type Offset: int
+        :param OrderBy: The field used to sort the results. Valid values: `createTime` (default), `finishTime`.
+        :type OrderBy: str
+        :param OrderByType: Sort order. Valid values: `asc`, `desc` (default).
+        :type OrderByType: str
+        :param Status: The status of the tasks to be queried. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry). If it is left empty, tasks in any status will be returned.
+        :type Status: list of int
+        """
+        self.InstanceId = None
+        self.BackupName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupName = params.get("BackupName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeBackupDownloadTaskResponse(AbstractModel):
+    """DescribeBackupDownloadTask response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of results
+        :type TotalCount: int
+        :param Tasks: The list of download tasks
+        :type Tasks: list of BackupDownloadTask
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = BackupDownloadTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1005,6 +1248,63 @@ class DescribeDBInstancesResponse(AbstractModel):
                 obj = InstanceDetail()
                 obj._deserialize(item)
                 self.InstanceDetails.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeSecurityGroupRequest(AbstractModel):
+    """DescribeSecurityGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5"
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeSecurityGroupResponse(AbstractModel):
+    """DescribeSecurityGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: Security groups associated with the instance
+        :type Groups: list of SecurityGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2005,6 +2305,30 @@ class RenewDBInstancesResponse(AbstractModel):
         
 
 
+class ReplicaSetInfo(AbstractModel):
+    """Shard information
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplicaSetId: Shard name
+        :type ReplicaSetId: str
+        """
+        self.ReplicaSetId = None
+
+
+    def _deserialize(self, params):
+        self.ReplicaSetId = params.get("ReplicaSetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ResetDBInstancePasswordRequest(AbstractModel):
     """ResetDBInstancePassword request structure.
 
@@ -2056,6 +2380,100 @@ class ResetDBInstancePasswordResponse(AbstractModel):
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SecurityGroup(AbstractModel):
+    """Security group information
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param Inbound: Inbound rule
+        :type Inbound: list of SecurityGroupBound
+        :param Outbound: Outbound rule
+        :type Outbound: list of SecurityGroupBound
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param SecurityGroupName: Security group name
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: Security group remarks
+        :type SecurityGroupRemark: str
+        """
+        self.ProjectId = None
+        self.CreateTime = None
+        self.Inbound = None
+        self.Outbound = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupRemark = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("Inbound") is not None:
+            self.Inbound = []
+            for item in params.get("Inbound"):
+                obj = SecurityGroupBound()
+                obj._deserialize(item)
+                self.Inbound.append(obj)
+        if params.get("Outbound") is not None:
+            self.Outbound = []
+            for item in params.get("Outbound"):
+                obj = SecurityGroupBound()
+                obj._deserialize(item)
+                self.Outbound.append(obj)
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupRemark = params.get("SecurityGroupRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SecurityGroupBound(AbstractModel):
+    """Security group rule
+
+    """
+
+    def __init__(self):
+        """
+        :param Action: Policy. Valid values: `ACCEPT`, `DROP`
+        :type Action: str
+        :param CidrIp: IP range
+        :type CidrIp: str
+        :param PortRange: Port range
+        :type PortRange: str
+        :param IpProtocol: Transport layer protocol. Valid values: `tcp`, `udp`, `ALL`
+        :type IpProtocol: str
+        """
+        self.Action = None
+        self.CidrIp = None
+        self.PortRange = None
+        self.IpProtocol = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.CidrIp = params.get("CidrIp")
+        self.PortRange = params.get("PortRange")
+        self.IpProtocol = params.get("IpProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2164,7 +2582,7 @@ class SpecItem(AbstractModel):
         :type SpecCode: str
         :param Status: Specification purchasable flag. Valid values: 0 (not purchasable), 1 (purchasable)
         :type Status: int
-        :param Cpu: Specification purchasable flag. Valid values: 0 (not purchasable), 1 (purchasable)
+        :param Cpu: Computing resource specification in terms of CPU core
         :type Cpu: int
         :param Memory: Memory size in MB
         :type Memory: int

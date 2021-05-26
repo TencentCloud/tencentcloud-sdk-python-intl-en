@@ -258,7 +258,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteNamespace(self, request):
-        """This API is used to create a namespace based on the input parameters.
+        """This API is used to delete the specific namespace according to the parameters passed in.
 
         :param request: Request instance for DeleteNamespace.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteNamespaceRequest`

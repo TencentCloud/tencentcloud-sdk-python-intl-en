@@ -82,6 +82,34 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBackupDownloadTask(self, request):
+        """This API is used to create a backup download task.
+
+        :param request: Request instance for CreateBackupDownloadTask.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateBackupDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.CreateBackupDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBackupDownloadTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBackupDownloadTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDBInstance(self, request):
         """This API is used to create a monthly subscription TencentDB for MongoDB instance. The purchasable specifications supported by this API can be obtained through the `DescribeSpecInfo` API.
 
@@ -167,7 +195,11 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeBackupAccess(self, request):
-        """This API is used to get the permission to download a backup file. The specific backup file information can be obtained through the DescribeDBBackups API.
+        """备份下载功能已调整，此接口即将下线
+
+        TencentDB will soon stop supporting this API, as the backup download feature has been modified.
+
+        This API is used to get the permission to download a backup file. The detailed backup file information can be obtained through the `DescribeDBBackups` API.
 
         :param request: Request instance for DescribeBackupAccess.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupAccessRequest`
@@ -180,6 +212,34 @@ class MongodbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupAccessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupDownloadTask(self, request):
+        """This API is used to query backup download task information.
+
+        :param request: Request instance for DescribeBackupDownloadTask.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupDownloadTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupDownloadTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -292,6 +352,34 @@ class MongodbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityGroup(self, request):
+        """This API is used to query the security groups associated with an instance.
+
+        :param request: Request instance for DescribeSecurityGroup.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

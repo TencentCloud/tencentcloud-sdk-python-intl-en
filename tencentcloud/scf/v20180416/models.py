@@ -272,7 +272,7 @@ class Code(AbstractModel):
         :type CosBucketName: str
         :param CosObjectName: COS object path
         :type CosObjectName: str
-        :param ZipFile: It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.
+        :param ZipFile: This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded
         :type ZipFile: str
         :param CosBucketRegion: COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.
         :type CosBucketRegion: str
@@ -537,6 +537,10 @@ class CreateFunctionRequest(AbstractModel):
         :type InitTimeout: int
         :param Tags: Tag parameter of the function. It is an array of key-value pairs.
         :type Tags: list of Tag
+        :param AsyncRunEnable: Whether to enable the async attribute. TRUE: yes; FALSE: no
+        :type AsyncRunEnable: str
+        :param TraceEnable: Whether to enable event tracking. TRUE: yes; FALSE: no
+        :type TraceEnable: str
         """
         self.FunctionName = None
         self.Code = None
@@ -559,6 +563,8 @@ class CreateFunctionRequest(AbstractModel):
         self.CfsConfig = None
         self.InitTimeout = None
         self.Tags = None
+        self.AsyncRunEnable = None
+        self.TraceEnable = None
 
 
     def _deserialize(self, params):
@@ -605,6 +611,8 @@ class CreateFunctionRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.AsyncRunEnable = params.get("AsyncRunEnable")
+        self.TraceEnable = params.get("TraceEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2386,11 +2394,11 @@ class InvokeRequest(AbstractModel):
         :type FunctionName: str
         :param InvocationType: The value is `RequestResponse` (synchronous) or `Event` (asynchronous). The default value is synchronous.
         :type InvocationType: str
-        :param Qualifier: Version number of the triggered function
+        :param Qualifier: Version number or name of the triggered function
         :type Qualifier: str
         :param ClientContext: Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.
         :type ClientContext: str
-        :param LogType: If this field is specified for a synchronous invocation, the return value will contain a 4-KB log. The value is `None` (default) or `Tail`. If the value is `Tail`, `logMsg` in the return parameter will contain the corresponding function execution log.
+        :param LogType: If this field is specified during sync invocation, the returned value will contain 4 KB of logs. Valid values: None, Tail. Default value: None. If the value is `Tail`, the `Log` field in the returned parameter will contain the corresponding function execution log
         :type LogType: str
         :param Namespace: Namespace
         :type Namespace: str

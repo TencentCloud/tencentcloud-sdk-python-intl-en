@@ -639,11 +639,11 @@ class DescribePictureRequest(AbstractModel):
         """
         :param SdkAppId: Application ID
         :type SdkAppId: int
-        :param PictureId: Image ID. If it is not passed in, the IDs of all images under the application are returned.
+        :param PictureId: Image ID. If it is left empty, the IDs of all images under the application are returned.
         :type PictureId: int
-        :param PageSize: Number of records per page
+        :param PageSize: Number of records per page. `10` is used if it is left empty.
         :type PageSize: int
-        :param PageNo: Page number
+        :param PageNo: Page number. `1` is used if it is left empty.
         :type PageNo: int
         """
         self.SdkAppId = None
@@ -1567,7 +1567,7 @@ class PresetLayoutConfig(AbstractModel):
         :type LocationX: int
         :param LocationY: Y offset of the output image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the mixed stream. If this parameter is not set, 0 is used by default.
         :type LocationY: int
-        :param ZOrder: Z-order of the image in pixels. If this parameter is not set, 0 is used by default.
+        :param ZOrder: Output order of the image. `0` is used if it is left empty.
         :type ZOrder: int
         :param RenderMode: Render mode of the output image. 0: cropping; 1: scaling; 2: scaling on a black background. If this parameter is not set, 0 is used by default.
         :type RenderMode: int

@@ -513,13 +513,13 @@ class MLIDCardOCRRequest(AbstractModel):
     def __init__(self):
         """
         :param ImageBase64: Base64-encoded value of an image.
-Supported image formats: PNG, JPG, JPEG. GIF is not supported at present.
-Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
+Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
+Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
         :type ImageBase64: str
-        :param ImageUrl: URL address of an image. (This field is not supported outside Mainland China)
-Supported image formats: PNG, JPG, JPEG. GIF is not supported at present.
-Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-It is recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
+        :param ImageUrl: URL of an image. (This field is not supported outside the Chinese mainland)
+Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
+Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
+We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
         :param RetImage: Whether to return an image
@@ -575,13 +575,14 @@ class MLIDCardOCRResponse(AbstractModel):
     }
 }
         :type AdvancedInfo: str
-        :param Type: Certificate types
-MyKad: Malaysian Identity Card
-MyPR: Malaysia Permanent Resident Identity Card
-MyTentera: Malaysian Armed Forces Identity Card
-MyKAS: Malaysian Temporary Resident Identity Card
-POLIS: Royal Malaysia Police Identity Card
-IKAD: Malaysia Temporary Employment Visit Pass
+        :param Type: Certificate type
+MyKad  ID card
+MyPR    Permanent resident card
+MyTentera   Military identity card
+MyKAS    Temporary ID card
+POLIS  Police card
+IKAD   Work permit
+MyKid   Kid card
         :type Type: str
         :param Birthday: Date of birth (currently, this field is only supported for IKAD).
         :type Birthday: str

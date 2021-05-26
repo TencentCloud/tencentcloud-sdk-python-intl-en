@@ -1209,6 +1209,8 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         :type Currency: str
         :param RouterCount: Number of router nodes added.
         :type RouterCount: int
+        :param MasterCount: Number of master nodes to add
+        :type MasterCount: int
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -1219,6 +1221,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         self.TaskCount = None
         self.Currency = None
         self.RouterCount = None
+        self.MasterCount = None
 
 
     def _deserialize(self, params):
@@ -1231,6 +1234,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         self.TaskCount = params.get("TaskCount")
         self.Currency = params.get("Currency")
         self.RouterCount = params.get("RouterCount")
+        self.MasterCount = params.get("MasterCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
