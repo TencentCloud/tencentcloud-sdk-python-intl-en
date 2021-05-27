@@ -194,6 +194,34 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceTypes(self, request):
+        """This API is used to obtain the list of CVM types in the specified region.
+
+        :param request: Request instance for DescribeInstanceTypes.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeInstanceTypesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeInstanceTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceTypes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceTypesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePlayerSessions(self, request):
         """This API is used to get the list of player sessions.
 

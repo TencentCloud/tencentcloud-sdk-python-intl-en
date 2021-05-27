@@ -606,6 +606,45 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         
 
 
+class DescribeInstanceTypesRequest(AbstractModel):
+    """DescribeInstanceTypes request structure.
+
+    """
+
+
+class DescribeInstanceTypesResponse(AbstractModel):
+    """DescribeInstanceTypes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceTypeList: List of server types
+        :type InstanceTypeList: list of InstanceTypeInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceTypeList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceTypeList") is not None:
+            self.InstanceTypeList = []
+            for item in params.get("InstanceTypeList"):
+                obj = InstanceTypeInfo()
+                obj._deserialize(item)
+                self.InstanceTypeList.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DescribePlayerSessionsRequest(AbstractModel):
     """DescribePlayerSessions request structure.
 
@@ -1450,6 +1489,46 @@ class InstanceAccess(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.IpAddress = params.get("IpAddress")
         self.OperatingSystem = params.get("OperatingSystem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class InstanceTypeInfo(AbstractModel):
+    """The server instance type information
+
+    """
+
+    def __init__(self):
+        """
+        :param TypeName: Name of the server type, such as `Standard SA1`
+        :type TypeName: str
+        :param InstanceType: Specification of the server type, such as `SA1.SMALL1`
+        :type InstanceType: str
+        :param Cpu: CPU, in core
+        :type Cpu: int
+        :param Memory: Memory, in GB
+        :type Memory: int
+        :param NetworkCard: The packet sending and receiving capability, in 10k PPS. 
+        :type NetworkCard: int
+        """
+        self.TypeName = None
+        self.InstanceType = None
+        self.Cpu = None
+        self.Memory = None
+        self.NetworkCard = None
+
+
+    def _deserialize(self, params):
+        self.TypeName = params.get("TypeName")
+        self.InstanceType = params.get("InstanceType")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.NetworkCard = params.get("NetworkCard")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
