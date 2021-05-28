@@ -184,10 +184,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
         :param AvailableBandWidth: The cluster’s available bandwidth in MB/s
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type AvailableBandWidth: int
-        :param ZoneId: The AZ which the cluster belongs to
+        :param ZoneId: The AZ where the cluster resides
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type ZoneId: int
-        :param ZoneIds: The AZ which the cluster nodes belong to. If the cluster is a multi-AZ cluster, this field means multiple AZs which the cluster nodes belong to.
+        :param ZoneIds: The AZ where the cluster nodes reside. If the cluster is a multi-AZ cluster, this field means multiple AZs where the cluster nodes reside.
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type ZoneIds: list of int
         """
@@ -1207,7 +1207,7 @@ class DescribeCkafkaZoneResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: The entity of query result complex objects
+        :param Result: Returned results for the query
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ZoneResponse`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3431,16 +3431,16 @@ class Region(AbstractModel):
         :param RegionCode: Region code
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type RegionCode: str
-        :param RegionCodeV3: Region code (V3)
+        :param RegionCodeV3: Region code (v3)
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type RegionCodeV3: str
         :param Support: NONE: no special models are supported by default.\nCVM: the CVM type is supported.
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type Support: str
-        :param Ipv6: Whether ipv6 is supported. `0` indicates no, and `1` indicates yes.
+        :param Ipv6: Whether IPv6 is supported. `0` indicates no, and `1` indicates yes.
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type Ipv6: int
-        :param MultiZone: Whether multi-zone clusters are supported.`0` indicates no, and `1` indicates yes.
+        :param MultiZone: Whether cross-AZ clusters are supported.`0` indicates no, and `1` indicates yes.
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type MultiZone: int
         """
@@ -4049,17 +4049,17 @@ class ZoneInfo(AbstractModel):
         """
         :param ZoneId: Zone ID
         :type ZoneId: str
-        :param IsInternalApp: Whether it is an internal App.
+        :param IsInternalApp: Whether it is an internal application.
         :type IsInternalApp: int
-        :param AppId: app id
+        :param AppId: Application ID
         :type AppId: int
-        :param Flag: Identifier
+        :param Flag: Flag
         :type Flag: bool
         :param ZoneName: Zone name
         :type ZoneName: str
         :param ZoneStatus: Zone status
         :type ZoneStatus: int
-        :param Exflag: Extra identifier
+        :param Exflag: Extra flag
         :type Exflag: str
         :param SoldOut: JSON object. The key is the model. The value `true` means “sold out”, and `false` means “not sold out”.
         :type SoldOut: str

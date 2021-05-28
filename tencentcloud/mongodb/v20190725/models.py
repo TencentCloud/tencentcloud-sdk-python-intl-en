@@ -91,7 +91,7 @@ class BackupDownloadTask(AbstractModel):
         :type BackupSize: int
         :param Status: Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)
         :type Status: int
-        :param Percent: Task progress in terms of percentage
+        :param Percent: Task progress in percentage
         :type Percent: int
         :param TimeSpend: Task duration in seconds
         :type TimeSpend: int
@@ -341,7 +341,7 @@ class CreateBackupDownloadTaskRequest(AbstractModel):
         :type InstanceId: str
         :param BackupName: The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API
         :type BackupName: str
-        :param BackupSets: The list of shards whose backups will be downloaded
+        :param BackupSets: The list of shards with backups to be downloaded
         :type BackupSets: list of ReplicaSetInfo
         """
         self.InstanceId = None
@@ -853,7 +853,7 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
         """
         :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5", which is the same as the instance ID displayed in the TencentDB console
         :type InstanceId: str
-        :param BackupName: The name of a backup file whose download tasks will be queried
+        :param BackupName: The name of a backup file with download tasks to be queried
         :type BackupName: str
         :param StartTime: The start time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the start time can be any time earlier than the end time.
         :type StartTime: str
@@ -2454,7 +2454,7 @@ class SecurityGroupBound(AbstractModel):
 
     def __init__(self):
         """
-        :param Action: Policy. Valid values: `ACCEPT`, `DROP`
+        :param Action: Execution rule. Valid values: `ACCEPT`, `DROP`
         :type Action: str
         :param CidrIp: IP range
         :type CidrIp: str
@@ -2462,11 +2462,23 @@ class SecurityGroupBound(AbstractModel):
         :type PortRange: str
         :param IpProtocol: Transport layer protocol. Valid values: `tcp`, `udp`, `ALL`
         :type IpProtocol: str
+        :param Id: 
+        :type Id: str
+        :param AddressModule: 
+        :type AddressModule: str
+        :param ServiceModule: 
+        :type ServiceModule: str
+        :param Desc: 
+        :type Desc: str
         """
         self.Action = None
         self.CidrIp = None
         self.PortRange = None
         self.IpProtocol = None
+        self.Id = None
+        self.AddressModule = None
+        self.ServiceModule = None
+        self.Desc = None
 
 
     def _deserialize(self, params):
@@ -2474,6 +2486,10 @@ class SecurityGroupBound(AbstractModel):
         self.CidrIp = params.get("CidrIp")
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
+        self.Id = params.get("Id")
+        self.AddressModule = params.get("AddressModule")
+        self.ServiceModule = params.get("ServiceModule")
+        self.Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -335,7 +335,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeCkafkaZone(self, request):
-        """This API is used to view the availability zone (AZ) list of Ckafka.
+        """This API is used to view the AZ list of Ckafka.
 
         :param request: Request instance for DescribeCkafkaZone.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeCkafkaZoneRequest`
@@ -559,7 +559,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeRegion(self, request):
-        """This API is used to enumerate regions, only including Guangzhou.
+        """This API is used to enumerate regions, and can be called only in Guangzhou.
 
         :param request: Request instance for DescribeRegion.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeRegionRequest`

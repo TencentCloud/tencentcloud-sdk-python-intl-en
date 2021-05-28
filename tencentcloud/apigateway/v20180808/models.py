@@ -2276,7 +2276,7 @@ class DeleteServiceRequest(AbstractModel):
         """
         :param ServiceId: Unique ID of the service to be deleted.
         :type ServiceId: str
-        :param SkipVerification: A parameter which is specified to skip the deletion precondition verification (only supported for services on dedicated instances).
+        :param SkipVerification: A parameter used to set to skip the deletion precondition verification (only supported for services on dedicated instances).
         :type SkipVerification: int
         """
         self.ServiceId = None
