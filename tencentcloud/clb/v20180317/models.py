@@ -1028,6 +1028,8 @@ They represent weighted round robin and least connections, respectively. Default
         :type KeepaliveEnable: int
         :param EndPort: This parameter is used to specify the end port and is required when creating a port range listener. Only one member can be passed in when inputting the `Ports` parameter, which is used to specify the start port. If you want to try the port range feature, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type EndPort: int
+        :param DeregisterTargetRst: Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.
+        :type DeregisterTargetRst: bool
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -1042,6 +1044,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.SessionType = None
         self.KeepaliveEnable = None
         self.EndPort = None
+        self.DeregisterTargetRst = None
 
 
     def _deserialize(self, params):
@@ -1062,6 +1065,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.SessionType = params.get("SessionType")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.EndPort = params.get("EndPort")
+        self.DeregisterTargetRst = params.get("DeregisterTargetRst")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3799,6 +3803,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Toa: Only the NAT64 CLB TCP listeners are supported.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Toa: bool
+        :param DeregisterTargetRst: Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DeregisterTargetRst: bool
         """
         self.ListenerId = None
         self.Protocol = None
@@ -3817,6 +3824,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SessionType = None
         self.KeepaliveEnable = None
         self.Toa = None
+        self.DeregisterTargetRst = None
 
 
     def _deserialize(self, params):
@@ -3848,6 +3856,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SessionType = params.get("SessionType")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.Toa = params.get("Toa")
+        self.DeregisterTargetRst = params.get("DeregisterTargetRst")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4836,6 +4845,8 @@ They represent weighted round robin and least connections, respectively. Default
         :type SniSwitch: int
         :param KeepaliveEnable: Whether to enable a persistent connection. This parameter is applicable only to HTTP and HTTPS listeners.
         :type KeepaliveEnable: int
+        :param DeregisterTargetRst: Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.
+        :type DeregisterTargetRst: bool
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -4846,6 +4857,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.Scheduler = None
         self.SniSwitch = None
         self.KeepaliveEnable = None
+        self.DeregisterTargetRst = None
 
 
     def _deserialize(self, params):
@@ -4862,6 +4874,7 @@ They represent weighted round robin and least connections, respectively. Default
         self.Scheduler = params.get("Scheduler")
         self.SniSwitch = params.get("SniSwitch")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
+        self.DeregisterTargetRst = params.get("DeregisterTargetRst")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

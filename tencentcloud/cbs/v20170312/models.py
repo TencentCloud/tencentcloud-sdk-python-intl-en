@@ -109,22 +109,26 @@ class AttachDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskIds: ID of the elastic cloud disk to be mounted, which can be queried through the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1). A maximum of 10 elastic cloud disks can be mounted in a single request.
-        :type DiskIds: list of str
         :param InstanceId: ID of the CVM instance on which the cloud disk will be mounted. It can be queried via the API [DescribeInstances](https://intl.cloud.tencent.com/document/product/213/15728?from_cn_redirect=1).
         :type InstanceId: str
+        :param DiskIds: ID of the elastic cloud disk to be mounted, which can be queried through the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1). A maximum of 10 elastic cloud disks can be mounted in a single request.
+        :type DiskIds: list of str
         :param DeleteWithInstance: Optional parameter. If this is not passed only the mount operation is executed. If `True` is passed, the cloud disk will be configured to be terminated when the server it is mounted to is terminated. This is only valid for pay-as-you-go cloud disks.
         :type DeleteWithInstance: bool
+        :param AttachMode: (Optional) Specifies the cloud disk mounting method. It’s only valid for BM models. Valid values: <br><li>PF<br><li>VF
+        :type AttachMode: str
         """
-        self.DiskIds = None
         self.InstanceId = None
+        self.DiskIds = None
         self.DeleteWithInstance = None
+        self.AttachMode = None
 
 
     def _deserialize(self, params):
-        self.DiskIds = params.get("DiskIds")
         self.InstanceId = params.get("InstanceId")
+        self.DiskIds = params.get("DiskIds")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.AttachMode = params.get("AttachMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
