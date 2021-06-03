@@ -111,7 +111,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateDBInstances(self, request):
-        """This API is used to create one or more TencentDB for PostgreSQL instances.
+        """This API is used to create (but not initialize) one or more TencentDB for PostgreSQL instances.
 
         :param request: Request instance for CreateDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstancesRequest`
@@ -124,6 +124,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateInstances(self, request):
+        """This API is used to create and initialize one or more TencentDB for PostgreSQL instances.
+
+        :param request: Request instance for CreateInstances.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateInstancesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -235,7 +235,7 @@ class CreateDBInstancesRequest(AbstractModel):
         """
         :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
         :type SpecCode: str
-        :param DBVersion: PostgreSQL kernel version. Currently, only two versions are supported: 9.3.5 and 9.5.4.
+        :param DBVersion: PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.
         :type DBVersion: str
         :param Storage: Instance capacity size in GB.
         :type Storage: int
@@ -335,6 +335,151 @@ class CreateDBInstancesResponse(AbstractModel):
         :param BillId: Bill ID of frozen fees
         :type BillId: str
         :param DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the billing mode is postpaid.
+        :type DBInstanceIdSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealNames = None
+        self.BillId = None
+        self.DBInstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
+        self.BillId = params.get("BillId")
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateInstancesRequest(AbstractModel):
+    """CreateInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
+        :type SpecCode: str
+        :param DBVersion: PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.
+        :type DBVersion: str
+        :param Storage: Instance storage capacity in GB
+        :type Storage: int
+        :param InstanceCount: The number of instances purchased at a time. Value range: 1-10.
+        :type InstanceCount: int
+        :param Period: Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.
+        :type Period: int
+        :param Zone: Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
+        :type Zone: str
+        :param Charset: Instance character set. Valid values: `UTF8`, `LATIN1`.
+        :type Charset: str
+        :param AdminName: Instance root account name
+        :type AdminName: str
+        :param AdminPassword: Instance root account password
+        :type AdminPassword: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
+        :type InstanceChargeType: str
+        :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
+        :type AutoVoucher: int
+        :param VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
+        :type VoucherIds: list of str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: ID of a subnet in the VPC specified by `VpcId`
+        :type SubnetId: str
+        :param AutoRenewFlag: Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.
+        :type AutoRenewFlag: int
+        :param ActivityId: Campaign ID
+        :type ActivityId: int
+        :param Name: Instance name
+        :type Name: str
+        :param NeedSupportIpv6: Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no).
+        :type NeedSupportIpv6: int
+        :param TagList: The information of tags to be associated with instances. This parameter is left empty by default.
+        :type TagList: list of Tag
+        :param SecurityGroupIds: Security group IDs
+        :type SecurityGroupIds: list of str
+        """
+        self.SpecCode = None
+        self.DBVersion = None
+        self.Storage = None
+        self.InstanceCount = None
+        self.Period = None
+        self.Zone = None
+        self.Charset = None
+        self.AdminName = None
+        self.AdminPassword = None
+        self.ProjectId = None
+        self.InstanceChargeType = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.AutoRenewFlag = None
+        self.ActivityId = None
+        self.Name = None
+        self.NeedSupportIpv6 = None
+        self.TagList = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SpecCode = params.get("SpecCode")
+        self.DBVersion = params.get("DBVersion")
+        self.Storage = params.get("Storage")
+        self.InstanceCount = params.get("InstanceCount")
+        self.Period = params.get("Period")
+        self.Zone = params.get("Zone")
+        self.Charset = params.get("Charset")
+        self.AdminName = params.get("AdminName")
+        self.AdminPassword = params.get("AdminPassword")
+        self.ProjectId = params.get("ProjectId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.ActivityId = params.get("ActivityId")
+        self.Name = params.get("Name")
+        self.NeedSupportIpv6 = params.get("NeedSupportIpv6")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateInstancesResponse(AbstractModel):
+    """CreateInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DealNames: Order number list. Each instance corresponds to an order number.
+        :type DealNames: list of str
+        :param BillId: Bill ID of frozen fees
+        :type BillId: str
+        :param DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.
         :type DBInstanceIdSet: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2069,7 +2214,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
         :type DBInstanceIdSet: list of str
         :param Period: The valid period (in months) of the monthly-subscribed instance when removing it from isolation
         :type Period: int
-        :param AutoVoucher: Whether to use vouchers
+        :param AutoVoucher: Whether to use vouchers. Valid values: `true` (yes), `false` (no). Default value: `false`.
         :type AutoVoucher: bool
         :param VoucherIds: Voucher ID list
         :type VoucherIds: list of str
