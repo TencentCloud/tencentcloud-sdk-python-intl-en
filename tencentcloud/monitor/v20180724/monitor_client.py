@@ -281,6 +281,8 @@ class MonitorClient(AbstractClient):
     def DescribeAlarmHistories(self, request):
         """This API is used to query the alarm records.
 
+        Note: **If you query the alarm records as a sub-user, you can only query those of authorized projects** or those of products which are not categorized by projects. For information on how to grant a sub-account the project permission, see [Project & Tag](https://intl.cloud.tencent.com/document/product/598/32738?from_cn_redirect=1).
+
         :param request: Request instance for DescribeAlarmHistories.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmHistoriesRequest`
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmHistoriesResponse`

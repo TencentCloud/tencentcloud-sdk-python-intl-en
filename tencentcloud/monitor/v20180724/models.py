@@ -1721,21 +1721,23 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type PageSize: int
         :param Order: Sort by the first occurrence time in descending order by default. Valid values: ASC (ascending), DESC (descending)
         :type Order: str
-        :param StartTime: Start time, which corresponds to `FirstOccurTime` (time when an alarm first occurred). The default value is the timestamp of a day earlier.
+        :param StartTime: Start time, which is the timestamp one day ago by default and the time when the alarm `FirstOccurTime` first occurs. An alarm record can be searched only if its `FirstOccurTime` is later than the `StartTime`.
         :type StartTime: int
-        :param EndTime: End time, which corresponds to `FirstOccurTime` (time when an alarm first occurred). The default value is the current timestamp.
+        :param EndTime: End time, which is the current timestamp and the time when the alarm `FirstOccurTime` first occurs. An alarm record can be searched only if its `FirstOccurTime` is earlier than the `EndTime`.
         :type EndTime: int
-        :param MonitorTypes: Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default
+        :param MonitorTypes: Filter by monitoring type. Valid value: `MT_QCE` (Tencent Cloud service monitoring). If this parameter is left empty, all types will be queried by default.
         :type MonitorTypes: list of str
         :param AlarmObject: Filter by alarm object. Fuzzy search with string is supported
         :type AlarmObject: str
         :param AlarmStatus: Filter by alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data). If this parameter is left empty, all will be queried by default
         :type AlarmStatus: list of str
-        :param ProjectIds: Filter by project ID. Valid values: -1 (no project), 0 (default project)
+        :param ProjectIds: Filter by project ID. Valid values: `-1` (no project), `0` (default project)
+You can query [Project Management](https://console.cloud.tencent.com/project) on this page.
         :type ProjectIds: list of int
         :param InstanceGroupIds: Filter by instance group ID
         :type InstanceGroupIds: list of int
-        :param Namespaces: Filter by policy type
+        :param Namespaces: Filter by policy type. Monitoring type and policy type are first-level and second-level filters respectively and both need to be passed in. For example, `[{"MonitorType": "MT_QCE", "Namespace": "cvm_device"}]`
+This parameter can be queried with the API [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1).
         :type Namespaces: list of MonitorTypeNamespace
         :param MetricNames: Filter by metric name
         :type MetricNames: list of str
@@ -1743,9 +1745,9 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type PolicyName: str
         :param Content: Fuzzy search by alarm content
         :type Content: str
-        :param ReceiverUids: Search by recipient
+        :param ReceiverUids: Search by recipient. You can get the user list with the API [ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1) in “Cloud Access Management” or query the sub-user information with the API [GetUser](https://intl.cloud.tencent.com/document/product/598/34590?from_cn_redirect=1). The `Uid` field in the returned result should be entered here.
         :type ReceiverUids: list of int
-        :param ReceiverGroups: Search by recipient group
+        :param ReceiverGroups: Search by recipient group. You can get the user group list with the API [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) in “Cloud Access Management” or query the user group list where a sub-user is in with the API [ListGroupsForUser](https://intl.cloud.tencent.com/document/product/598/34588?from_cn_redirect=1). The `GroupId` field in the returned result should be entered here.
         :type ReceiverGroups: list of int
         :param PolicyIds: Search by alarm policy ID list
         :type PolicyIds: list of str
@@ -2134,21 +2136,15 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :param Namespaces: Filter by namespace. For the values of different policy types, please see:
 [Policy Type List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)
         :type Namespaces: list of str
-        :param Dimensions: Alarm object list. The outer array corresponds to multiple instances.
-Each inner array corresponds to one instance, where `object` corresponds to the dimension information of the instance. The format is as follows:
-[
-	[{"name":"unInstanceId","value":"ins-qr888845g"}],
-	[{"name":"unInstanceId","value":"ins-qr8d555g"}]
-	...
-]
-For the samples for different Tencent Cloud services, please see:
-[Dimension List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)
+        :param Dimensions: The alarm object list, which is a JSON string. The outer array corresponds to multiple instances, and the inner array is the dimension of an object. For example, “CVM - Basic Monitor” can be written as:
+`[ {"Dimensions": {"unInstanceId": "ins-qr8d555g"}}, {"Dimensions": {"unInstanceId": "ins-qr8d555h"}} ]`
+You can also refer to the “Example 2” below.
+
+For more information on the parameter samples of different Tencent Cloud services, see [Product Policy Type and Dimension Information](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1).
         :type Dimensions: str
-        :param ReceiverUids: Search by recipient `uid`, which should be queried by calling the CAM API. For more information, please see:
-[ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1)
+        :param ReceiverUids: Search by recipient. You can get the user list with the API [ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1) in “Cloud Access Management” or query the sub-user information with the API [GetUser](https://intl.cloud.tencent.com/document/product/598/34590?from_cn_redirect=1). The `Uid` field in the returned result should be entered here.
         :type ReceiverUids: list of int
-        :param ReceiverGroups: Search by recipient group `uid`, which should be queried by calling the CAM API. For more information, please see:
-[ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1)
+        :param ReceiverGroups: Search by recipient group. You can get the user group list with the API [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) in “Cloud Access Management” or query the user group list where a sub-user is in with the API [ListGroupsForUser](https://intl.cloud.tencent.com/document/product/598/34588?from_cn_redirect=1). The `GroupId` field in the returned result should be entered here.
         :type ReceiverGroups: list of int
         :param PolicyType: Filter by default policy. Valid values: DEFAULT (display default policy), NOT_DEFAULT (display non-default policies). If this parameter is left empty, all policies will be displayed
         :type PolicyType: list of str
@@ -2160,7 +2156,7 @@ For the samples for different Tencent Cloud services, please see:
 [Project Management](https://console.cloud.tencent.com/project)
         :type ProjectIds: list of int
         :param NoticeIds: ID list of the notification template, which can be obtained by querying the notification template list.
-[DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1)
+It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1).
         :type NoticeIds: list of str
         :param RuleTypes: Filter by trigger condition. Valid values: STATIC (display policies with static threshold), DYNAMIC (display policies with dynamic threshold). If this parameter is left empty, all policies will be displayed
         :type RuleTypes: list of str
@@ -4738,7 +4734,7 @@ class GetMonitorDataRequest(AbstractModel):
         """
         :param Namespace: Namespace, such as QCE/CVM. For more information on the namespaces of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1)
         :type Namespace: str
-        :param MetricName: Metric name, such as `CPUUsage`. For more information on the metrics of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The corresponding metric name is the `MetricName`
+        :param MetricName: Metric name, such as `CPUUsage`. Only one monitoring metric can be pulled at a time. For more information on the metrics of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The corresponding metric name is `MetricName`.
         :type MetricName: str
         :param Instances: Dimension combination of instance object in the format of `key-value` pair, such as [{"Name":"InstanceId","Value":"ins-j0hk02zo"}]. For more information on the dimensions of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The value in the dimension column is the `key` in the dimension combination, and the value corresponding to the `key` is the `value` in the combination
         :type Instances: list of Instance

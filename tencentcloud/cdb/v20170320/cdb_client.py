@@ -139,7 +139,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateAccounts(self, request):
-        """This API (CreateAccounts) is used to create TencentDB accounts. The new account names, domain names, and passwords need to be specified, and account remarks can also be added.
+        """This API is used to create one or more TencentDB instance accounts. The account names, host addresses, and passwords are required, and account remarks and the maximum connections are optional.
 
         :param request: Request instance for CreateAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAccountsRequest`
@@ -1874,6 +1874,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountDescriptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAccountMaxUserConnections(self, request):
+        """This API is used to modify the maximum connections of one or more TencentDB instance accounts.
+
+        :param request: Request instance for ModifyAccountMaxUserConnections.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountMaxUserConnectionsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountMaxUserConnectionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAccountMaxUserConnections", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAccountMaxUserConnectionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

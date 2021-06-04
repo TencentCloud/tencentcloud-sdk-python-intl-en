@@ -1100,7 +1100,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type LocalZone: bool
         :param VlanZeroDirectConnectTunnelCount: Number of dedicated tunnels with disabled VLAN in the connection
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: this field may return `null`, indicating that no valid value can be found.
         :type VlanZeroDirectConnectTunnelCount: int
         :param OtherVlanDirectConnectTunnelCount: Number of dedicated tunnels with enabled VLAN in the connection
 Note: this field may return `null`, indicating that no valid values can be obtained.

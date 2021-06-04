@@ -63,8 +63,10 @@ class AccountInfo(AbstractModel):
         :type ModifyTime: str
         :param ModifyPasswordTime: Password modification time
         :type ModifyPasswordTime: str
-        :param CreateTime: Account creation time
+        :param CreateTime: This parameter is no longer supported.
         :type CreateTime: str
+        :param MaxUserConnections: The maximum number of instance connections supported by an account
+        :type MaxUserConnections: int
         """
         self.Notes = None
         self.Host = None
@@ -72,6 +74,7 @@ class AccountInfo(AbstractModel):
         self.ModifyTime = None
         self.ModifyPasswordTime = None
         self.CreateTime = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -81,6 +84,7 @@ class AccountInfo(AbstractModel):
         self.ModifyTime = params.get("ModifyTime")
         self.ModifyPasswordTime = params.get("ModifyPasswordTime")
         self.CreateTime = params.get("CreateTime")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -721,11 +725,14 @@ class CreateAccountsRequest(AbstractModel):
         :type Password: str
         :param Description: Remarks
         :type Description: str
+        :param MaxUserConnections: The maximum number of instance connections supported by the new account
+        :type MaxUserConnections: int
         """
         self.InstanceId = None
         self.Accounts = None
         self.Password = None
         self.Description = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -738,6 +745,7 @@ class CreateAccountsRequest(AbstractModel):
                 self.Accounts.append(obj)
         self.Password = params.get("Password")
         self.Description = params.get("Description")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1986,11 +1994,14 @@ class DescribeAccountsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: Details of eligible accounts.
         :type Items: list of AccountInfo
+        :param MaxUserConnections: The maximum number of instance connections (set by the MySQL parameter `max_connections`)
+        :type MaxUserConnections: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TotalCount = None
         self.Items = None
+        self.MaxUserConnections = None
         self.RequestId = None
 
 
@@ -2002,6 +2013,7 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = AccountInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.MaxUserConnections = params.get("MaxUserConnections")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3160,6 +3172,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type WithMaster: int
         :param DeployGroupIds: Placement group ID list.
         :type DeployGroupIds: list of str
+        :param TagKeysForSearch: Whether to use the tag key as a filter condition
+        :type TagKeysForSearch: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -3187,6 +3201,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.WithRo = None
         self.WithMaster = None
         self.DeployGroupIds = None
+        self.TagKeysForSearch = None
 
 
     def _deserialize(self, params):
@@ -3216,6 +3231,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.WithRo = params.get("WithRo")
         self.WithMaster = params.get("WithMaster")
         self.DeployGroupIds = params.get("DeployGroupIds")
+        self.TagKeysForSearch = params.get("TagKeysForSearch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5670,6 +5686,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type ZoneId: int
         :param InstanceNodes: Number of nodes
         :type InstanceNodes: int
+        :param TagList: List of tags
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TagList: list of TagInfoItem
         """
         self.WanStatus = None
         self.Zone = None
@@ -5713,6 +5732,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DeployGroupId = None
         self.ZoneId = None
         self.InstanceNodes = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -5774,6 +5794,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DeployGroupId = params.get("DeployGroupId")
         self.ZoneId = params.get("ZoneId")
         self.InstanceNodes = params.get("InstanceNodes")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfoItem()
+                obj._deserialize(item)
+                self.TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6062,6 +6088,71 @@ class ModifyAccountDescriptionResponse(AbstractModel):
         
 
 
+class ModifyAccountMaxUserConnectionsRequest(AbstractModel):
+    """ModifyAccountMaxUserConnections request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Accounts: List of TencentDB accounts
+        :type Accounts: list of Account
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        :param MaxUserConnections: The maximum number of instance connections supported by an account
+        :type MaxUserConnections: int
+        """
+        self.Accounts = None
+        self.InstanceId = None
+        self.MaxUserConnections = None
+
+
+    def _deserialize(self, params):
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        self.MaxUserConnections = params.get("MaxUserConnections")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyAccountMaxUserConnectionsResponse(AbstractModel):
+    """ModifyAccountMaxUserConnections response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ModifyAccountPasswordRequest(AbstractModel):
     """ModifyAccountPassword request structure.
 
@@ -6150,6 +6241,8 @@ Note: if this parameter is not passed in, it means to clear the permission.
         :param ColumnPrivileges: Column permission in table. Valid values: "SELECT", "INSERT", "UPDATE", "REFERENCES".
 Note: if this parameter is not passed in, it means to clear the permission.
         :type ColumnPrivileges: list of ColumnPrivilege
+        :param ModifyAction: If this parameter is specified, permissions are modified in batches. Valid values: `grant`, `revoke`.
+        :type ModifyAction: str
         """
         self.InstanceId = None
         self.Accounts = None
@@ -6157,6 +6250,7 @@ Note: if this parameter is not passed in, it means to clear the permission.
         self.DatabasePrivileges = None
         self.TablePrivileges = None
         self.ColumnPrivileges = None
+        self.ModifyAction = None
 
 
     def _deserialize(self, params):
@@ -6186,6 +6280,7 @@ Note: if this parameter is not passed in, it means to clear the permission.
                 obj = ColumnPrivilege()
                 obj._deserialize(item)
                 self.ColumnPrivileges.append(obj)
+        self.ModifyAction = params.get("ModifyAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9122,6 +9217,36 @@ class TagInfo(AbstractModel):
         :type TagKey: str
         :param TagValue: Tag value
         :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class TagInfoItem(AbstractModel):
+    """Tag information
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: Tag key
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TagKey: str
+        :param TagValue: Tag value
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TagValue: str
         """
         self.TagKey = None
         self.TagValue = None
