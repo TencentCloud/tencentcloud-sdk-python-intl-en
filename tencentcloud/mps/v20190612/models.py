@@ -3043,15 +3043,16 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 <li>review.</li>
 <li>block.</li>
         :type Suggestion: str
-        :param Label: Tag of the detected terrorism information in a video. Valid values:
-<li>guns: Weapons and guns.</li>
-<li>crowd: Crowd.</li>
-<li>police: Police force.</li>
-<li>bloody: Bloody scenes.</li>
-<li>banners: Terrorism flags.</li>
-<li>militant: Militants.</li>
-<li>explosion: Explosions and fires.</li>
-<li>terrorists: Terrorists.</li>
+        :param Label: Tags for detected terrorism information in a video. Valid values:
+<li>`guns`: weapons and guns</li>
+<li>`crowd`: crowds</li>
+<li>`police`: police forces</li>
+<li>`bloody`: bloodiness</li>
+<li>`banners`: terrorism flags</li>
+<li>`militant`: militants</li>
+<li>`explosion`: explosions and fires</li>
+<li>`terrorists`: terrorists</li>
+<li>`scenario`: terrorism images</li>
         :type Label: str
         :param SegmentSet: List of video segments that contain the detected terrorism information.
         :type SegmentSet: list of MediaContentReviewSegmentItem
@@ -12444,10 +12445,16 @@ Default value: 10%.
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px.</li>
 Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
         :type Height: str
+        :param RepeatType: Repeat type of an animated watermark. Valid values:
+<li>`once`: no longer appears after watermark playback ends.</li>
+<li>`repeat_last_frame`: stays on the last frame after watermark playback ends.</li>
+<li>`repeat` (default): repeats the playback until the video ends.</li>
+        :type RepeatType: str
         """
         self.ImageContent = None
         self.Width = None
         self.Height = None
+        self.RepeatType = None
 
 
     def _deserialize(self, params):
@@ -12456,6 +12463,7 @@ Default value: 0 px, which means that `Height` will be proportionally scaled acc
             self.ImageContent._deserialize(params.get("ImageContent"))
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.RepeatType = params.get("RepeatType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13354,15 +13362,16 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>ON: Enables a terrorism information detection in image task;</li>
 <li>OFF: Disables a terrorism information detection in image task.</li>
         :type Switch: str
-        :param LabelSet: Filter tag for terrorism information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>guns: Weapons and guns;</li>
-<li>crowd: Crowd;</li>
-<li>bloody: Bloody scenes;</li>
-<li>police: Police force;</li>
-<li>banners: Terrorism flags;</li>
-<li>militant: Militants;</li>
-<li>explosion: Explosions and fires;</li>
-<li>terrorists: Terrorists.</li>
+        :param LabelSet: Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:
+<li>`guns`: weapons and guns</li>
+<li>`crowd`: crowds</li>
+<li>`bloody`: bloodiness</li>
+<li>`police`: police forces</li>
+<li>`banners`: terrorism flags</li>
+<li>`militant`: militants</li>
+<li>`explosion`: explosions and fires</li>
+<li>`terrorists`: terrorists</li>
+<li>`scenario`: terrorism images</li>
         :type LabelSet: list of str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
@@ -13400,15 +13409,16 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON: Enables a terrorism information detection in image task;</li>
 <li>OFF: Disables a terrorism information detection in image task.</li>
         :type Switch: str
-        :param LabelSet: Filter tag for terrorism information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
-<li>guns: Weapons and guns;</li>
-<li>crowd: Crowd;</li>
-<li>bloody: Bloody scenes;</li>
-<li>police: Police force;</li>
-<li>banners: Terrorism flags;</li>
-<li>militant: Militants;</li>
-<li>explosion: Explosions and fires;</li>
-<li>terrorists: Terrorists.</li>
+        :param LabelSet: Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:
+<li>`guns`: weapons and guns</li>
+<li>`crowd`: crowds</li>
+<li>`bloody`: bloodiness</li>
+<li>`police`: police forces</li>
+<li>`banners`: terrorism flags</li>
+<li>`militant`: militants</li>
+<li>`explosion`: explosions and fires</li>
+<li>`terrorists`: terrorists</li>
+<li>`scenario`: terrorism images</li>
         :type LabelSet: list of str
         :param BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int

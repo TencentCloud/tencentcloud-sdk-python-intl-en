@@ -390,6 +390,34 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApplications(self, request):
+        """This API is used to query the list of cluster operation applications.
+
+        :param request: Request instance for DescribeApplications.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeApplicationsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApplications", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterTags(self, request):
         """This API is used to get the associated tag list of a cluster.
 
@@ -838,6 +866,62 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def MergeTablesData(self, request):
+        """This API is used to merge tables.
+
+        :param request: Request instance for MergeTablesData.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.MergeTablesDataRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.MergeTablesDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MergeTablesData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MergeTablesDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCensorship(self, request):
+        """This API is used to enable or disable the cluster operation approval feature.
+
+        :param request: Request instance for ModifyCensorship.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyCensorshipRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyCensorshipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCensorship", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCensorshipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClusterMachine(self, request):
         """This API is used to modify the machines of a dedicated cluster.
 
@@ -1216,6 +1300,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetTableIndexResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateApply(self, request):
+        """This API is used to update the application status.
+
+        :param request: Request instance for UpdateApply.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.UpdateApplyRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.UpdateApplyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateApply", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateApplyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

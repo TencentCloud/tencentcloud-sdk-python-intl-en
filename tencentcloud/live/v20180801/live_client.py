@@ -1413,6 +1413,35 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveDomainReferer(self, request):
+        """This API is used to query referer allowlist/blocklist configuration of a live streaming domain name.
+        Referer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.
+
+        :param request: Request instance for DescribeLiveDomainReferer.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainRefererRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainRefererResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveDomainReferer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainRefererResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveDomains(self, request):
         """This API is used to query domain names by domain name status and type.
 
@@ -2525,6 +2554,35 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveDomainCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLiveDomainReferer(self, request):
+        """This API is used to configure referer allowlist/blocklist of a live streaming domain name.
+        Referer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.
+
+        :param request: Request instance for ModifyLiveDomainReferer.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveDomainRefererRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLiveDomainRefererResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLiveDomainReferer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLiveDomainRefererResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

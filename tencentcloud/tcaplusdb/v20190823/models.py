@@ -18,6 +18,182 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Application(AbstractModel):
+    """Cluster operation application
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param ApplicationType: Application type
+        :type ApplicationType: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param TableGroupName: Table group name
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TableGroupName: str
+        :param TableName: Table name
+        :type TableName: str
+        :param Applicant: Applicant
+        :type Applicant: str
+        :param CreatedTime: The creation time of the application
+        :type CreatedTime: str
+        :param ApplicationStatus: Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)
+        :type ApplicationStatus: int
+        :param TableGroupId: Table group ID
+        :type TableGroupId: str
+        :param TaskId: ID of the submitted task (if the application is not approved, this parameter is `0`)
+        :type TaskId: str
+        :param TableInstanceId: Globally unique table ID
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TableInstanceId: str
+        :param UpdateTime: Update time
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param ExecuteUser: Approver
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ExecuteUser: str
+        :param ExecuteStatus: Execution status
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ExecuteStatus: str
+        :param CanCensor: Whether the application can be approved by the API caller
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type CanCensor: bool
+        :param CanWithdrawal: Whether the application can be canceled by the API caller
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type CanWithdrawal: bool
+        """
+        self.ApplicationId = None
+        self.ApplicationType = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.TableGroupName = None
+        self.TableName = None
+        self.Applicant = None
+        self.CreatedTime = None
+        self.ApplicationStatus = None
+        self.TableGroupId = None
+        self.TaskId = None
+        self.TableInstanceId = None
+        self.UpdateTime = None
+        self.ExecuteUser = None
+        self.ExecuteStatus = None
+        self.CanCensor = None
+        self.CanWithdrawal = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationType = params.get("ApplicationType")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.TableGroupName = params.get("TableGroupName")
+        self.TableName = params.get("TableName")
+        self.Applicant = params.get("Applicant")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ApplicationStatus = params.get("ApplicationStatus")
+        self.TableGroupId = params.get("TableGroupId")
+        self.TaskId = params.get("TaskId")
+        self.TableInstanceId = params.get("TableInstanceId")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ExecuteUser = params.get("ExecuteUser")
+        self.ExecuteStatus = params.get("ExecuteStatus")
+        self.CanCensor = params.get("CanCensor")
+        self.CanWithdrawal = params.get("CanWithdrawal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ApplyResult(AbstractModel):
+    """Application update results
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param ApplicationType: Application type
+        :type ApplicationType: int
+        :param ApplicationStatus: Status. Valid values: `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ApplicationStatus: int
+        :param TaskId: ID of the submitted task
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param Error: Error information
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
+        self.ApplicationId = None
+        self.ApplicationType = None
+        self.ApplicationStatus = None
+        self.TaskId = None
+        self.Error = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationType = params.get("ApplicationType")
+        self.ApplicationStatus = params.get("ApplicationStatus")
+        self.TaskId = params.get("TaskId")
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ApplyStatus(AbstractModel):
+    """Application ID and status
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: Value format: cluster ID-application ID
+        :type ApplicationId: str
+        :param ApplicationStatus: Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected). Only applications in the pending approval status can be updated.
+        :type ApplicationStatus: int
+        :param ApplicationType: Application type
+        :type ApplicationType: int
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ApplicationId = None
+        self.ApplicationStatus = None
+        self.ApplicationType = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationStatus = params.get("ApplicationStatus")
+        self.ApplicationType = params.get("ApplicationType")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ClearTablesRequest(AbstractModel):
     """ClearTables request structure.
 
@@ -148,6 +324,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ProxyList: Information of the machine at the access layer (tcaproxy) in a dedicated cluster
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ProxyList: list of ProxyDetailInfo
+        :param Censorship: Whether the cluster operation approval feature is enabled. Valid values: `0` (disabled), `1` (enabled)
+        :type Censorship: int
+        :param DbaUins: Approver UIN list
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type DbaUins: list of str
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -171,6 +352,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.DiskVolume = None
         self.ServerList = None
         self.ProxyList = None
+        self.Censorship = None
+        self.DbaUins = None
 
 
     def _deserialize(self, params):
@@ -206,6 +389,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = ProxyDetailInfo()
                 obj._deserialize(item)
                 self.ProxyList.append(obj)
+        self.Censorship = params.get("Censorship")
+        self.DbaUins = params.get("DbaUins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -312,6 +497,58 @@ class CompareIdlFilesResponse(AbstractModel):
         
 
 
+class CompareTablesInfo(AbstractModel):
+    """Compare the meta information of two tables
+
+    """
+
+    def __init__(self):
+        """
+        :param SrcTableClusterId: Cluster ID of the source table
+        :type SrcTableClusterId: str
+        :param SrcTableGroupId: Table group ID of the source table
+        :type SrcTableGroupId: str
+        :param SrcTableName: Source table name
+        :type SrcTableName: str
+        :param DstTableClusterId: Cluster ID of the target table
+        :type DstTableClusterId: str
+        :param DstTableGroupId: Table group ID of the target table
+        :type DstTableGroupId: str
+        :param DstTableName: Target table name
+        :type DstTableName: str
+        :param SrcTableInstanceId: Source table ID
+        :type SrcTableInstanceId: str
+        :param DstTableInstanceId: Target table ID
+        :type DstTableInstanceId: str
+        """
+        self.SrcTableClusterId = None
+        self.SrcTableGroupId = None
+        self.SrcTableName = None
+        self.DstTableClusterId = None
+        self.DstTableGroupId = None
+        self.DstTableName = None
+        self.SrcTableInstanceId = None
+        self.DstTableInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.SrcTableClusterId = params.get("SrcTableClusterId")
+        self.SrcTableGroupId = params.get("SrcTableGroupId")
+        self.SrcTableName = params.get("SrcTableName")
+        self.DstTableClusterId = params.get("DstTableClusterId")
+        self.DstTableGroupId = params.get("DstTableGroupId")
+        self.DstTableName = params.get("DstTableName")
+        self.SrcTableInstanceId = params.get("SrcTableInstanceId")
+        self.DstTableInstanceId = params.get("DstTableInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateBackupRequest(AbstractModel):
     """CreateBackup request structure.
 
@@ -356,17 +593,23 @@ class CreateBackupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskIds: List of IDs of created backup tasks
+        :param TaskIds: List of backup creation task IDs
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type TaskIds: list of str
+        :param ApplicationIds: List of backup creation application IDs
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ApplicationIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TaskIds = None
+        self.ApplicationIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TaskIds = params.get("TaskIds")
+        self.ApplicationIds = params.get("ApplicationIds")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1085,6 +1328,95 @@ class DeleteTablesResponse(AbstractModel):
                 obj = TableResultNew()
                 obj._deserialize(item)
                 self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeApplicationsRequest(AbstractModel):
+    """DescribeApplications request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: ID of the cluster whose applications will be queried
+        :type ClusterId: str
+        :param Limit: The maximum number of results returned per page
+        :type Limit: int
+        :param Offset: Pagination offset
+        :type Offset: int
+        :param CensorStatus: Application status used as a filter condition
+        :type CensorStatus: int
+        :param TableGroupId: Table group ID used as a filter condition
+        :type TableGroupId: str
+        :param TableName: Table name used as a filter condition
+        :type TableName: str
+        :param Applicant: Applicant UIN used as a filter condition
+        :type Applicant: str
+        :param ApplyType: Application type used as a filter condition
+        :type ApplyType: int
+        """
+        self.ClusterId = None
+        self.Limit = None
+        self.Offset = None
+        self.CensorStatus = None
+        self.TableGroupId = None
+        self.TableName = None
+        self.Applicant = None
+        self.ApplyType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.CensorStatus = params.get("CensorStatus")
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.Applicant = params.get("Applicant")
+        self.ApplyType = params.get("ApplyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeApplicationsResponse(AbstractModel):
+    """DescribeApplications response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Applications: Application list
+        :type Applications: list of Application
+        :param TotalCount: Total number of applications
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Applications = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Applications") is not None:
+            self.Applications = []
+            for item in params.get("Applications"):
+                obj = Application()
+                obj._deserialize(item)
+                self.Applications.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2181,14 +2513,18 @@ class Filter(AbstractModel):
         :type Name: str
         :param Value: Filter field value
         :type Value: str
+        :param Values: Filter field value
+        :type Values: list of str
         """
         self.Name = None
         self.Value = None
+        self.Values = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        self.Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2432,6 +2768,214 @@ class MachineInfo(AbstractModel):
     def _deserialize(self, params):
         self.MachineType = params.get("MachineType")
         self.MachineNum = params.get("MachineNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class MergeTableResult(AbstractModel):
+    """Table merging results
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: Task ID
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param Error: If table merging is successful, `null` will be returned
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        :param Table: Comparison results of tables
+        :type Table: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
+        :param ApplicationId: Application ID
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ApplicationId: str
+        """
+        self.TaskId = None
+        self.Error = None
+        self.Table = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
+        if params.get("Table") is not None:
+            self.Table = CompareTablesInfo()
+            self.Table._deserialize(params.get("Table"))
+        self.ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class MergeTablesDataRequest(AbstractModel):
+    """MergeTablesData request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SelectedTables: Tables to be merged
+        :type SelectedTables: list of MergeTablesInfo
+        :param IsOnlyCompare: Valid values: `true` (only compare), `false` (compare and merge)
+        :type IsOnlyCompare: bool
+        """
+        self.SelectedTables = None
+        self.IsOnlyCompare = None
+
+
+    def _deserialize(self, params):
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = MergeTablesInfo()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+        self.IsOnlyCompare = params.get("IsOnlyCompare")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class MergeTablesDataResponse(AbstractModel):
+    """MergeTablesData response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Results: Table merging results
+        :type Results: list of MergeTableResult
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = MergeTableResult()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class MergeTablesInfo(AbstractModel):
+    """Request parameters used to merge tables
+
+    """
+
+    def __init__(self):
+        """
+        :param MergeTables: Information of tables to be merged
+        :type MergeTables: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
+        :param CheckIndex: Whether to check indexes
+        :type CheckIndex: bool
+        """
+        self.MergeTables = None
+        self.CheckIndex = None
+
+
+    def _deserialize(self, params):
+        if params.get("MergeTables") is not None:
+            self.MergeTables = CompareTablesInfo()
+            self.MergeTables._deserialize(params.get("MergeTables"))
+        self.CheckIndex = params.get("CheckIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyCensorshipRequest(AbstractModel):
+    """ModifyCensorship request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Censorship: Whether to enable the operation approval feature for this cluster. Valid values: `0` (disable), `1` (enable)
+        :type Censorship: int
+        :param Uins: Approver UIN list
+        :type Uins: list of str
+        """
+        self.ClusterId = None
+        self.Censorship = None
+        self.Uins = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Censorship = params.get("Censorship")
+        self.Uins = params.get("Uins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyCensorshipResponse(AbstractModel):
+    """ModifyCensorship response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Uins: Approver UIN list
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type Uins: list of str
+        :param Censorship: Whether the operation approval feature is enabled for this cluster. Valid values: `0` (disabled), `1` (enabled)
+        :type Censorship: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.Uins = None
+        self.Censorship = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Uins = params.get("Uins")
+        self.Censorship = params.get("Censorship")
+        self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4273,6 +4817,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TaskIds: Task ID list, which is valid for the API that creates multiple tasks
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TaskIds: list of str
+        :param ApplicationId: Cluster operation application ID
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ApplicationId: str
         """
         self.TableInstanceId = None
         self.TaskId = None
@@ -4282,6 +4829,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TableGroupId = None
         self.Error = None
         self.TaskIds = None
+        self.ApplicationId = None
 
 
     def _deserialize(self, params):
@@ -4295,6 +4843,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.Error = ErrorInfo()
             self.Error._deserialize(params.get("Error"))
         self.TaskIds = params.get("TaskIds")
+        self.ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4589,6 +5138,73 @@ class TaskInfoNew(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.Operator = params.get("Operator")
         self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class UpdateApplyRequest(AbstractModel):
+    """UpdateApply request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplyStatus: Application status
+        :type ApplyStatus: list of ApplyStatus
+        """
+        self.ApplyStatus = None
+
+
+    def _deserialize(self, params):
+        if params.get("ApplyStatus") is not None:
+            self.ApplyStatus = []
+            for item in params.get("ApplyStatus"):
+                obj = ApplyStatus()
+                obj._deserialize(item)
+                self.ApplyStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class UpdateApplyResponse(AbstractModel):
+    """UpdateApply response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplyResults: List of updated applications
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :type ApplyResults: list of ApplyResult
+        :param TotalCount: Total number of updated applications
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ApplyResults = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ApplyResults") is not None:
+            self.ApplyResults = []
+            for item in params.get("ApplyResults"):
+                obj = ApplyResult()
+                obj._deserialize(item)
+                self.ApplyResults.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

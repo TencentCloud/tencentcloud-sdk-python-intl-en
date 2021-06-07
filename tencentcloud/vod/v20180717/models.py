@@ -9906,9 +9906,10 @@ class DescribeTasksRequest(AbstractModel):
         :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         :param FinishTime: Filter: task end time.
         :type FinishTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param Sort: Sort field. Valid values:
-<li> CreateTime: task creation time</li>
-<li>FinishTime: task end time</li>
+        :param Sort: (Not supported now)
+Sort field. Valid values:
+<li>`CreateTime`: task creation time</li>
+<li>`FinishTime`: task end time</li>
         :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
         :param Limit: Number of entries to be returned. Default value: 10. Maximum value: 100.
         :type Limit: int
@@ -11416,6 +11417,30 @@ class HeadTailConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class HeadTailTaskInput(AbstractModel):
+    """Input parameters for a video opening/closing credits generation task
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: Video opening/closing credits configuration template ID
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20257,6 +20282,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type WatermarkSet: list of WatermarkInput
         :param MosaicSet: List of blurs. Up to 10 ones can be supported.
         :type MosaicSet: list of MosaicInput
+        :param HeadTailSet: List of video opening/closing credits configuration template IDs. You can enter up to 10 IDs.
+        :type HeadTailSet: list of HeadTailTaskInput
         :param StartTimeOffset: Start time offset of a transcoded video, in seconds.
 <li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>
 <li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>
@@ -20271,6 +20298,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Definition = None
         self.WatermarkSet = None
         self.MosaicSet = None
+        self.HeadTailSet = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
 
@@ -20289,6 +20317,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = MosaicInput()
                 obj._deserialize(item)
                 self.MosaicSet.append(obj)
+        if params.get("HeadTailSet") is not None:
+            self.HeadTailSet = []
+            for item in params.get("HeadTailSet"):
+                obj = HeadTailTaskInput()
+                obj._deserialize(item)
+                self.HeadTailSet.append(obj)
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
         memeber_set = set(params.keys())

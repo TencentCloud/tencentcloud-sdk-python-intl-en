@@ -3827,6 +3827,60 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
         
 
 
+class DescribeLiveDomainRefererRequest(AbstractModel):
+    """DescribeLiveDomainReferer request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Playback domain name
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeLiveDomainRefererResponse(AbstractModel):
+    """DescribeLiveDomainReferer response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RefererAuthConfig: Referer allowlist/blocklist configuration of a domain name
+        :type RefererAuthConfig: :class:`tencentcloud.live.v20180801.models.RefererAuthConfig`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RefererAuthConfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RefererAuthConfig") is not None:
+            self.RefererAuthConfig = RefererAuthConfig()
+            self.RefererAuthConfig._deserialize(params.get("RefererAuthConfig"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DescribeLiveDomainRequest(AbstractModel):
     """DescribeLiveDomain request structure.
 
@@ -7241,6 +7295,70 @@ class ModifyLiveDomainCertResponse(AbstractModel):
         
 
 
+class ModifyLiveDomainRefererRequest(AbstractModel):
+    """ModifyLiveDomainReferer request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Playback domain name
+        :type DomainName: str
+        :param Enable: Whether to enable referer allowlist/blocklist authentication for the current domain name
+        :type Enable: int
+        :param Type: List type. Valid values: `0` (blocklist), `1` (allowlist)
+        :type Type: int
+        :param AllowEmpty: Whether to allow empty referer. Valid values: `0` (no), `1` (yes)
+        :type AllowEmpty: int
+        :param Rules: Referer list. Separate items in it with semicolons (;).
+        :type Rules: str
+        """
+        self.DomainName = None
+        self.Enable = None
+        self.Type = None
+        self.AllowEmpty = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.Enable = params.get("Enable")
+        self.Type = params.get("Type")
+        self.AllowEmpty = params.get("AllowEmpty")
+        self.Rules = params.get("Rules")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyLiveDomainRefererResponse(AbstractModel):
+    """ModifyLiveDomainReferer response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ModifyLivePlayAuthKeyRequest(AbstractModel):
     """ModifyLivePlayAuthKey request structure.
 
@@ -8438,6 +8556,46 @@ class RecordTemplateInfo(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class RefererAuthConfig(AbstractModel):
+    """Referer allowlist/blocklist configuration of a live streaming domain name
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: Domain name
+        :type DomainName: str
+        :param Enable: Whether to enable referer. Valid values: `0` (no), `1` (yes)
+        :type Enable: int
+        :param Type: List type. Valid values: `0` (blocklist), `1` (allowlist)
+        :type Type: int
+        :param AllowEmpty: Whether to allow empty referer. Valid values: `0` (no), `1` (yes)
+        :type AllowEmpty: int
+        :param Rules: Referer list. Separate items in it with semicolons (;).
+        :type Rules: str
+        """
+        self.DomainName = None
+        self.Enable = None
+        self.Type = None
+        self.AllowEmpty = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.Enable = params.get("Enable")
+        self.Type = params.get("Type")
+        self.AllowEmpty = params.get("AllowEmpty")
+        self.Rules = params.get("Rules")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
