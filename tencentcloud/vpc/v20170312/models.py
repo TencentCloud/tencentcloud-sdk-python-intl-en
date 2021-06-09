@@ -212,6 +212,9 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param InternetChargeType: Network billing mode of EIP. The EIP for the bill-by-CVM account will return `null`.
 Note: this field may return `null`, indicating that no valid value was found.
         :type InternetChargeType: str
+        :param TagSet: List of tags associated with the EIP
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type TagSet: list of Tag
         """
         self.AddressId = None
         self.AddressName = None
@@ -231,6 +234,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.LocalBgp = None
         self.Bandwidth = None
         self.InternetChargeType = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -254,6 +258,12 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.LocalBgp = params.get("LocalBgp")
         self.Bandwidth = params.get("Bandwidth")
         self.InternetChargeType = params.get("InternetChargeType")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1286,14 +1296,18 @@ class AttachNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param InstanceId: The ID of the CVM instance, such as `ins-r8hr2upy`.
         :type InstanceId: str
+        :param AttachType: ENI mounting type. Valid values: `0` (standard); `1` (extension); default value: `0`
+        :type AttachType: int
         """
         self.NetworkInterfaceId = None
         self.InstanceId = None
+        self.AttachType = None
 
 
     def _deserialize(self, params):
         self.NetworkInterfaceId = params.get("NetworkInterfaceId")
         self.InstanceId = params.get("InstanceId")
+        self.AttachType = params.get("AttachType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2310,6 +2324,8 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceDescription: str
         :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
+        :param AttachType: ENI mounting type. Valid values: `0` (standard); `1` (extension); default value: `0`
+        :type AttachType: int
         """
         self.VpcId = None
         self.NetworkInterfaceName = None
@@ -2320,6 +2336,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.NetworkInterfaceDescription = None
         self.Tags = None
+        self.AttachType = None
 
 
     def _deserialize(self, params):
@@ -2342,6 +2359,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.AttachType = params.get("AttachType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3313,19 +3331,21 @@ class CreateNetDetectRequest(AbstractModel):
         :type NetDetectName: str
         :param DetectDestinationIp: The array of detection destination IPv4 addresses, which contains at most two IP addresses.
         :type DetectDestinationIp: list of str
-        :param NextHopType: The type of the next hop. Currently supported types are:
-VPN: VPN gateway;
-DIRECTCONNECT: direct connect gateway;
-PEERCONNECTION: peering connection;
-NAT: NAT gateway;
-NORMAL_CVM: normal CVM.
+        :param NextHopType: Type of the next hop. Valid values:
+`VPN`: VPN gateway;
+`DIRECTCONNECT`: direct connect gateway;
+`PEERCONNECTION`: peering connection;
+`NAT`: NAT gateway;
+`NORMAL_CVM`: normal CVM;
+`CCN`: CCN gateway.
         :type NextHopType: str
-        :param NextHopDestination: The next-hop destination gateway. The value is related to NextHopType.
-If NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.
-If NextHopType is set to DIRECTCONNECT, the value of this parameter is the direct connect gateway ID, such as dcg-12345678.
-If NextHopType is set to PEERCONNECTION, the value of this parameter is the peering connection ID, such as pcx-12345678.
-If NextHopType is set to NAT, the value of this parameter is the NAT gateway ID, such as nat-12345678.
-If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.
+        :param NextHopDestination: Next-hop destination gateway. Its value is determined by `NextHopType`.
+If `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.
+If `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.
+If `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.
+If `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.
+If `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.
+If `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.
         :type NextHopDestination: str
         :param NetDetectDescription: Network detection description.
         :type NetDetectDescription: str
@@ -6637,17 +6657,20 @@ class DescribeAddressesRequest(AbstractModel):
         :param AddressIds: The list of unique IDs of EIPs in the format of `eip-11112222`. `AddressIds` and `Filters.address-id` cannot be specified at the same time.
         :type AddressIds: list of str
         :param Filters: Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
-<li> address-id - String - Required: No - (Filter condition) Filter by the unique EIP ID in the format of `eip-11112222`.</li>
+<li> address-id - String - Required: No - (Filter condition) Filter by the unique EIP ID, such as `eip-11112222`.</li>
 <li> address-name - String - Required: No - (Filter condition) Filter by the EIP name. Fuzzy filtering is not supported.</li>
 <li> address-ip - String - Required: No - (Filter condition) Filter by EIP.</li>
 <li> address-status - String - Required: No - (Filter condition) Filter by the EIP state. Valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>
-<li> instance-id - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP in the format of `ins-11112222`.</li>
+<li> instance-id - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP, such as `ins-11112222`.</li>
 <li> private-ip-address - String - Required: No - (Filter condition) Filter by the private IP address bound to the EIP.</li>
-<li> network-interface-id - String - Required: No - (Filter condition) Filter by the ID of the ENI bound to the EIP in the format of `eni-11112222`.</li>
+<li> network-interface-id - String - Required: No - (Filter condition) Filter by ID of the ENI bound to the EIP, such as `eni-11112222`.</li>
 <li> is-arrears - String - Required: No - (Filter condition) Whether the EIP is overdue (TRUE: the EIP is overdue | FALSE: the billing status of the EIP is normal).</li>
 <li> address-type - String - Required: No - (Filter condition) Filter by the IP type. Valid values: `EIP`, `AnycastEIP`, and `HighQualityEIP`.</li>
 <li> address-isp - String - Required: No - (Filter condition) Filter by the ISP type. Valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>
-<li> dedicated-cluster-id - String - Required: No - (Filter condition) Filter by the unique CDC ID in the format of `cluster-11112222`.</li>
+<li> dedicated-cluster-id - String - Required: No - (Filter condition) Filter by the unique CDC ID, such as `cluster-11112222`.</li>
+<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
+<li> tag-value - String - Required: No - (Filter condition) Filter by tag value.</li>
+<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
         :type Filters: list of Filter
         :param Offset: The Offset. The default value is 0. For more information on `Offset`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/product/11646).
         :type Offset: int
@@ -6984,11 +7007,14 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
         :param Filters: Each request can have up to 10 `Filters`. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
 <li> bandwidth-package_id - String - Required: No - (Filter condition) Filter by the unique ID of the bandwidth package.</li>
 <li> bandwidth-package-name - String - Required: No - (Filter condition) Filter by the bandwidth package name. Fuzzy filtering is not supported.</li>
-<li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Types include 'BGP', 'SINGLEISP', and 'ANYCAST'.</li>
-<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing mode. Billing modes include 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'.</li>
-<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Resource types include 'Address' and 'LoadBalance'.</li>
-<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as 'eip-xxxx' and 'lb-xxxx'.</li>
+<li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Valid values: `HIGH_QUALITY_BGP`, `BGP`, `SINGLEISP`, and `ANYCAST`.</li>
+<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing mode. Valid values: `TOP5_POSTPAID_BY_MONTH` and `PERCENT95_POSTPAID_BY_MONTH`.</li>
+<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Valid values: `Address` and `LoadBalance`.</li>
+<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as `eip-xxxx` and `lb-xxxx`.</li>
 <li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>
+<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
+<li> tag-value - String - Required: No - (Filter condition) Filter by tag value.</li>
+<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
         :type Filters: list of Filter
         :param Offset: Offset of the query results
         :type Offset: int
@@ -9012,21 +9038,31 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EniQuantity: ENI quota
+        :param EniQuantity: Quota of ENIs mounted to a CVM instance in a standard way
         :type EniQuantity: int
-        :param EniPrivateIpAddressQuantity: Quota of IP addresses that can be allocated to each ENI.
+        :param EniPrivateIpAddressQuantity: Quota of IP addresses that can be allocated to each standard-mounted ENI
         :type EniPrivateIpAddressQuantity: int
+        :param ExtendEniQuantity: Quota of ENIs mounted to a CVM instance as an extension
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ExtendEniQuantity: int
+        :param ExtendEniPrivateIpAddressQuantity: Quota of IP addresses that can be allocated to each extension-mounted ENI.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ExtendEniPrivateIpAddressQuantity: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.EniQuantity = None
         self.EniPrivateIpAddressQuantity = None
+        self.ExtendEniQuantity = None
+        self.ExtendEniPrivateIpAddressQuantity = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.EniQuantity = params.get("EniQuantity")
         self.EniPrivateIpAddressQuantity = params.get("EniPrivateIpAddressQuantity")
+        self.ExtendEniQuantity = params.get("ExtendEniQuantity")
+        self.ExtendEniPrivateIpAddressQuantity = params.get("ExtendEniPrivateIpAddressQuantity")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -9626,13 +9662,15 @@ class DescribeSubnetsRequest(AbstractModel):
         :param Filters: Filter condition. `SubnetIds` and `Filters` cannot be specified at the same time.
 <li>subnet-id - String - (Filter condition) Subnet instance name.</li>
 <li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
-<li>cidr-block - String - (Filter condition) The subnet IP range, such as 192.168.1.0.</li>
+<li>cidr-block - String - (Filter condition) Subnet IP range, such as `192.168.1.0`.</li>
 <li>is-default - Boolean - (Filter condition) Whether it is the default subnet.</li>
 <li>is-remote-vpc-snat - Boolean - (Filter condition) Whether it is a VPC SNAT address pool subnet.</li>
 <li>subnet-name - String - (Filter condition) Subnet name.</li>
 <li>zone - String - (Filter condition) Availability zone.</li>
-<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
-<li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key is replaced with the specific tag key. For usage, refer to case 2.</li>
+<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
+<li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`. For its usage, see example 2.</li>
+<li>cdc-id - String - Required: No - (Filter condition) Filter by CDC ID to obtain subnets in the specified CDC.</li>
+<li>is-cdc-subnet - String - Required: No - (Filter condition) Whether it is a CDC subnet. Valid values: `0` (no); `1` (yes).</li>
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0.
         :type Offset: str
@@ -12845,16 +12883,20 @@ class MigrateNetworkInterfaceRequest(AbstractModel):
         :type SourceInstanceId: str
         :param DestinationInstanceId: ID of the destination CVM instance to be migrated.
         :type DestinationInstanceId: str
+        :param AttachType: ENI mount method. Valid values: 0: standard; 1: extension; default value: 0
+        :type AttachType: int
         """
         self.NetworkInterfaceId = None
         self.SourceInstanceId = None
         self.DestinationInstanceId = None
+        self.AttachType = None
 
 
     def _deserialize(self, params):
         self.NetworkInterfaceId = params.get("NetworkInterfaceId")
         self.SourceInstanceId = params.get("SourceInstanceId")
         self.DestinationInstanceId = params.get("DestinationInstanceId")
+        self.AttachType = params.get("AttachType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15392,19 +15434,21 @@ class NetDetect(AbstractModel):
         :type DetectDestinationIp: list of str
         :param DetectSourceIp: The array of detection source IPv4 addresses automatically allocated by the system. The length is 2.
         :type DetectSourceIp: list of str
-        :param NextHopType: Type of the next hop. Currently supported types are:
+        :param NextHopType: Type of the next hop. Valid values:
 VPN: VPN gateway;
 DIRECTCONNECT: direct connect gateway;
 PEERCONNECTION: peering connection;
 NAT: NAT gateway;
 NORMAL_CVM: normal CVM.
+CCN: CCN gateway.
         :type NextHopType: str
-        :param NextHopDestination: Next-hop destination gateway. The value is related to NextHopType.
-If NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.
-If NextHopType is set to DIRECTCONNECT, the value of this parameter is the direct connect gateway ID, such as dcg-12345678.
-If NextHopType is set to PEERCONNECTION, the value of this parameter is the peering connection ID, such as pcx-12345678.
-If NextHopType is set to NAT, the value of this parameter is the NAT gateway ID, such as nat-12345678.
-If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.
+        :param NextHopDestination: Next-hop destination gateway. Its value is determined by `NextHopType`.
+If `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.
+If `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.
+If `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.
+If `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.
+If `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.
+If `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.
         :type NextHopDestination: str
         :param NextHopName: The name of the next-hop gateway.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -15728,6 +15772,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param CdcId: ID of the CDC instance associated with the ENI
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CdcId: str
+        :param AttachType: ENI type. Valid values: `0` (standard); `1` (extension). Default value: `0`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AttachType: int
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -15747,6 +15794,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.EniType = None
         self.Business = None
         self.CdcId = None
+        self.AttachType = None
 
 
     def _deserialize(self, params):
@@ -15785,6 +15833,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.EniType = params.get("EniType")
         self.Business = params.get("Business")
         self.CdcId = params.get("CdcId")
+        self.AttachType = params.get("AttachType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17544,9 +17593,12 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
         :type CcnId: str
         :param CcnRegionBandwidthLimits: The outbound bandwidth cap of each CCN region.
         :type CcnRegionBandwidthLimits: list of CcnRegionBandwidthLimit
+        :param SetDefaultLimitFlag: Whether to restore the region outbound bandwidth limit or inter-region bandwidth limit to default 1Gbps. Valid values: `false` (no); `true` (yes). Default value: `false`. When the parameter is set to `true`, the CCN instance created will not be displayed in the console.
+        :type SetDefaultLimitFlag: bool
         """
         self.CcnId = None
         self.CcnRegionBandwidthLimits = None
+        self.SetDefaultLimitFlag = None
 
 
     def _deserialize(self, params):
@@ -17557,6 +17609,7 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
                 obj = CcnRegionBandwidthLimit()
                 obj._deserialize(item)
                 self.CcnRegionBandwidthLimits.append(obj)
+        self.SetDefaultLimitFlag = params.get("SetDefaultLimitFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

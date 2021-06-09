@@ -2462,13 +2462,13 @@ class SecurityGroupBound(AbstractModel):
         :type PortRange: str
         :param IpProtocol: Transport layer protocol. Valid values: `tcp`, `udp`, `ALL`
         :type IpProtocol: str
-        :param Id: 
+        :param Id: All the addresses that the security group ID represents
         :type Id: str
-        :param AddressModule: 
+        :param AddressModule: All the addresses that the address group ID represents
         :type AddressModule: str
-        :param ServiceModule: 
+        :param ServiceModule: All the protocols and ports that the service group ID represents
         :type ServiceModule: str
-        :param Desc: 
+        :param Desc: Description
         :type Desc: str
         """
         self.Action = None
