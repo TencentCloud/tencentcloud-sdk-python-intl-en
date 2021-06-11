@@ -230,6 +230,62 @@ class AddNodeToNodePoolResponse(AbstractModel):
         
 
 
+class AddVpcCniSubnetsRequest(AbstractModel):
+    """AddVpcCniSubnets request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param SubnetIds: The subnets added for the cluster container network
+        :type SubnetIds: list of str
+        :param VpcId: ID of the VPC where the cluster resides
+        :type VpcId: str
+        """
+        self.ClusterId = None
+        self.SubnetIds = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.VpcId = params.get("VpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class AddVpcCniSubnetsResponse(AbstractModel):
+    """AddVpcCniSubnets response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class AutoScalingGroupRange(AbstractModel):
     """Maximum and minimum number of pods in cluster-associated scaling groups
 
@@ -922,6 +978,15 @@ class ClusterNetworkSettings(AbstractModel):
         :type VpcId: str
         :param Cni: Whether CNI is enabled for network plugin(s). Default value: enabled
         :type Cni: bool
+        :param KubeProxyMode: The network mode of service. This parameter is only applicable to ipvs+bpf mode.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type KubeProxyMode: str
+        :param ServiceCIDR: The IP range for service assignment. It cannot conflict with the VPC’s CIDR block nor the CIDR blocks of other clusters in the same VPC.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type ServiceCIDR: str
+        :param Subnets: The container subnet associated with the cluster
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Subnets: list of str
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
@@ -930,6 +995,9 @@ class ClusterNetworkSettings(AbstractModel):
         self.Ipvs = None
         self.VpcId = None
         self.Cni = None
+        self.KubeProxyMode = None
+        self.ServiceCIDR = None
+        self.Subnets = None
 
 
     def _deserialize(self, params):
@@ -940,6 +1008,9 @@ class ClusterNetworkSettings(AbstractModel):
         self.Ipvs = params.get("Ipvs")
         self.VpcId = params.get("VpcId")
         self.Cni = params.get("Cni")
+        self.KubeProxyMode = params.get("KubeProxyMode")
+        self.ServiceCIDR = params.get("ServiceCIDR")
+        self.Subnets = params.get("Subnets")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

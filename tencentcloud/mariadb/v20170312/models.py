@@ -494,7 +494,7 @@ class DBInstance(AbstractModel):
         :type VpcId: int
         :param SubnetId: Subnet ID, which is 0 if the basic network is used
         :type SubnetId: int
-        :param Status: Instance status. 0: creating, 1: processing, 2: running, 3: instance not initialized, -1: instance isolated, -2: instance deleted
+        :param Status: Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated), `-2` (eliminated), `4` (initializing), `5` (eliminating), `6` (restarting), `7` (migrating data)
         :type Status: int
         :param Vip: Private IP address
         :type Vip: str
@@ -748,6 +748,70 @@ class Database(AbstractModel):
 
     def _deserialize(self, params):
         self.DbName = params.get("DbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DcnDetailItem(AbstractModel):
+    """DCN details
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param Region: Region where the instance resides
+        :type Region: str
+        :param Zone: Availability zone where the instance resides
+        :type Zone: str
+        :param Vip: Instance IP address
+        :type Vip: str
+        :param Vipv6: Instance IPv6 address
+        :type Vipv6: str
+        :param Vport: Instance port
+        :type Vport: int
+        :param Status: Instance status
+        :type Status: int
+        :param StatusDesc: Instance status description
+        :type StatusDesc: str
+        :param DcnFlag: DCN flag. Valid values: `1` (primary), `2` (replica)
+        :type DcnFlag: int
+        :param DcnStatus: DCN status. Valid values: `0` (null), `1` (creating), `2` (syncing), `3` (disconnected)
+        :type DcnStatus: int
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Region = None
+        self.Zone = None
+        self.Vip = None
+        self.Vipv6 = None
+        self.Vport = None
+        self.Status = None
+        self.StatusDesc = None
+        self.DcnFlag = None
+        self.DcnStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.Vip = params.get("Vip")
+        self.Vipv6 = params.get("Vipv6")
+        self.Vport = params.get("Vport")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.DcnFlag = params.get("DcnFlag")
+        self.DcnStatus = params.get("DcnStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1065,6 +1129,10 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type TagKeys: list of str
         :param FilterInstanceType: Instance types used in filtering. Valid values: 1 (dedicated instance), 2 (primary instance), 3 (disaster recovery instance). Multiple values should be separated by commas.
         :type FilterInstanceType: str
+        :param Status: Use this filter to include instances in specific statuses
+        :type Status: list of int
+        :param ExcludeStatus: Use this filter to exclude instances in specific statuses
+        :type ExcludeStatus: list of int
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -1083,6 +1151,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.ExclusterIds = None
         self.TagKeys = None
         self.FilterInstanceType = None
+        self.Status = None
+        self.ExcludeStatus = None
 
 
     def _deserialize(self, params):
@@ -1103,6 +1173,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.ExclusterIds = params.get("ExclusterIds")
         self.TagKeys = params.get("TagKeys")
         self.FilterInstanceType = params.get("FilterInstanceType")
+        self.Status = params.get("Status")
+        self.ExcludeStatus = params.get("ExcludeStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1882,6 +1954,63 @@ class DescribeDatabasesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Databases.append(obj)
         self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeDcnDetailRequest(AbstractModel):
+    """DescribeDcnDetail request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeDcnDetailResponse(AbstractModel):
+    """DescribeDcnDetail response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DcnDetails: DCN synchronization details
+        :type DcnDetails: list of DcnDetailItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DcnDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DcnDetails") is not None:
+            self.DcnDetails = []
+            for item in params.get("DcnDetails"):
+                obj = DcnDetailItem()
+                obj._deserialize(item)
+                self.DcnDetails.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

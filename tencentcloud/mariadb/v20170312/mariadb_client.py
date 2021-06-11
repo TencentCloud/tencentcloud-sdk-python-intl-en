@@ -561,6 +561,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDcnDetail(self, request):
+        """This API is used to query the disaster recovery details of an instance.
+
+        :param request: Request instance for DescribeDcnDetail.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDcnDetailRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDcnDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDcnDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDcnDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFlow(self, request):
         """This API is used to query flow status.
 
