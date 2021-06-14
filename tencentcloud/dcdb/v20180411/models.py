@@ -995,9 +995,9 @@ class DcnDetailItem(AbstractModel):
         :type Status: int
         :param StatusDesc: Instance status description
         :type StatusDesc: str
-        :param DcnFlag: DCN flag. Valid values: `1` (primary), `2` (secondary)
+        :param DcnFlag: DCN flag. Valid values: `1` (primary), `2` (disaster recovery)
         :type DcnFlag: int
-        :param DcnStatus: DCN status. Valid values: `0` (null), `1` (creating), `2` (syncing), `3` (disconnected)
+        :param DcnStatus: DCN status. Valid values: `0` (none), `1` (creating), `2` (syncing), `3` (disconnected)
         :type DcnStatus: int
         """
         self.InstanceId = None
