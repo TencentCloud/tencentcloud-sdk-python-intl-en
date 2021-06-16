@@ -8306,8 +8306,9 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
     def __init__(self):
         """
         :param Metric: Metrics to query. Valid values:
-<li>Traffic: traffic in bytes.</li>
-<li>Bandwidth: bandwidth in bps.</li>
+<li>`Traffic`: traffic in bytes</li>
+<li>`Bandwidth`: bandwidth in bps</li>
+<li>`Requests`: the number of requests</li>
         :type Metric: str
         :param StartTime: Start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type StartTime: str
@@ -9489,11 +9490,20 @@ class DescribeStorageDetailsRequest(AbstractModel):
 <li>Day: 1-day granularity</li>
 The value is set according to query period length by default. 5-minute granularity is set for periods no longer than 1 day, and 1-day granularity is set for periods longer than 1 day.
         :type Interval: str
-        :param StorageType: Storage class to be queried. Valid values:
-<li>TotalStorage: total storage capacity.</li>
-<li>StandardStorage: Standard storage.</li>
-<li>InfrequentStorage: Standard_IA storage.</li>
-Default value: TotalStorage.
+        :param StorageType: Storage class to query. Valid values:
+<li>`TotalStorage`: total storage usage in classes of STANDARD, STANDARD_IA, ARCHIVE, and DEEP ARCHIVE, excluding the storage usage for data deleted in advance.</li>
+<li>`StandardStorage`: STANDARD</li>
+<li>`InfrequentStorage`: STANDARD_IA</li>
+<li>`ArchiveStorage`: ARCHIVE</li>
+<li>`DeepArchiveStorage`: DEEP ARCHIVE</li>
+<li>`DeletedArchiveStorage`: ARCHIVE data deleted in advance</li>
+<li>`DeletedDeepArchiveStorage`: DEEP ARCHIVE data deleted in advance</li>
+<li>`ArchiveStandardRetrieval`: ARCHIVE data retrieved using standard retrievals</li>
+<li>`ArchiveExpeditedRetrieval`: ARCHIVE data retrieved using expedited retrievals</li>
+<li>`ArchiveBulkRetrieval`: ARCHIVE data retrieved using bulk retrievals</li>
+<li>`DeepArchiveStandardRetrieval`: DEEP ARCHIVE data retrieved using standard retrievals</li>
+<li>`DeepArchiveBulkRetrieval`: DEEP ARCHIVE data retrieved using bulk retrievals</li>
+Default value: `TotalStorage`
         :type StorageType: str
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
 When the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin.
@@ -9906,8 +9916,7 @@ class DescribeTasksRequest(AbstractModel):
         :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         :param FinishTime: Filter: task end time.
         :type FinishTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param Sort: (Not supported now)
-Sort field. Valid values:
+        :param Sort: Sort field. Valid values:
 <li>`CreateTime`: task creation time</li>
 <li>`FinishTime`: task end time</li>
         :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
@@ -19301,11 +19310,17 @@ class StorageStatData(AbstractModel):
         :type InfrequentStorage: int
         :param StandardStorage: Current STANDARD storage capacity in bytes.
         :type StandardStorage: int
+        :param ArchiveStorage: Current ARCHIVE storage usage in bytes
+        :type ArchiveStorage: int
+        :param DeepArchiveStorage: Current DEEP ARCHIVE storage usage in bytes
+        :type DeepArchiveStorage: int
         """
         self.Area = None
         self.TotalStorage = None
         self.InfrequentStorage = None
         self.StandardStorage = None
+        self.ArchiveStorage = None
+        self.DeepArchiveStorage = None
 
 
     def _deserialize(self, params):
@@ -19313,6 +19328,8 @@ class StorageStatData(AbstractModel):
         self.TotalStorage = params.get("TotalStorage")
         self.InfrequentStorage = params.get("InfrequentStorage")
         self.StandardStorage = params.get("StandardStorage")
+        self.ArchiveStorage = params.get("ArchiveStorage")
+        self.DeepArchiveStorage = params.get("DeepArchiveStorage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

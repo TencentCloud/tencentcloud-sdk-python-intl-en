@@ -1362,6 +1362,8 @@ class LayoutParams(AbstractModel):
         :type PlaceHolderMode: int
         :param PureAudioHoldPlaceMode: Whether an audio-only stream occupies an image spot, which takes effect in a floating, grid, or screen sharing template. Valid values: 0 (default): when a floating or grid template is used, users sending audio only occupy image spots; when a screen sharing template is used, users (except the user whose screen is shared) sending audio only do not occupy image spots; 1: users sending audio only occupy image spots; 2: users sending audio only do not occupy image spots.
         :type PureAudioHoldPlaceMode: int
+        :param WaterMarkParams: Watermark parameters
+        :type WaterMarkParams: :class:`tencentcloud.trtc.v20190722.models.WaterMarkParams`
         """
         self.Template = None
         self.MainVideoUserId = None
@@ -1372,6 +1374,7 @@ class LayoutParams(AbstractModel):
         self.PresetLayoutConfig = None
         self.PlaceHolderMode = None
         self.PureAudioHoldPlaceMode = None
+        self.WaterMarkParams = None
 
 
     def _deserialize(self, params):
@@ -1391,6 +1394,9 @@ class LayoutParams(AbstractModel):
                 self.PresetLayoutConfig.append(obj)
         self.PlaceHolderMode = params.get("PlaceHolderMode")
         self.PureAudioHoldPlaceMode = params.get("PureAudioHoldPlaceMode")
+        if params.get("WaterMarkParams") is not None:
+            self.WaterMarkParams = WaterMarkParams()
+            self.WaterMarkParams._deserialize(params.get("WaterMarkParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2276,6 +2282,46 @@ class UserInformation(AbstractModel):
         self.SdkVersion = params.get("SdkVersion")
         self.ClientIp = params.get("ClientIp")
         self.Finished = params.get("Finished")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class WaterMarkParams(AbstractModel):
+    """Watermark parameters for On-Cloud MixTranscoding
+
+    """
+
+    def __init__(self):
+        """
+        :param WaterMarkId: Image ID of the watermark, which is generated after the image is uploaded to the TRTC console
+        :type WaterMarkId: int
+        :param WaterMarkWidth: Width (px) of the watermark for On-Cloud MixTranscoding
+        :type WaterMarkWidth: int
+        :param WaterMarkHeight: Height (px) of the watermark for On-Cloud MixTranscoding
+        :type WaterMarkHeight: int
+        :param LocationX: Horizontal offset (px) of the watermark
+        :type LocationX: int
+        :param LocationY: Vertical offset (px) of the watermark
+        :type LocationY: int
+        """
+        self.WaterMarkId = None
+        self.WaterMarkWidth = None
+        self.WaterMarkHeight = None
+        self.LocationX = None
+        self.LocationY = None
+
+
+    def _deserialize(self, params):
+        self.WaterMarkId = params.get("WaterMarkId")
+        self.WaterMarkWidth = params.get("WaterMarkWidth")
+        self.WaterMarkHeight = params.get("WaterMarkHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

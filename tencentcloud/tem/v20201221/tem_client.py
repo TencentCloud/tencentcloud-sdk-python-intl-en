@@ -278,6 +278,34 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRelatedIngresses(self, request):
+        """This API is used to query the list of ingress rules associated with the service.
+
+        :param request: Request instance for DescribeRelatedIngresses.
+        :type request: :class:`tencentcloud.tem.v20201221.models.DescribeRelatedIngressesRequest`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.DescribeRelatedIngressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRelatedIngresses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRelatedIngressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeServiceRunPodListV2(self, request):
         """This API is used to get the list of running pods under a service.
 
@@ -348,6 +376,62 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNamespaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyServiceInfo(self, request):
+        """This API is used to modify a service’s basic information.
+
+        :param request: Request instance for ModifyServiceInfo.
+        :type request: :class:`tencentcloud.tem.v20201221.models.ModifyServiceInfoRequest`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.ModifyServiceInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyServiceInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyServiceInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RestartServiceRunPod(self, request):
+        """This API is used to restart an instance.
+
+        :param request: Request instance for RestartServiceRunPod.
+        :type request: :class:`tencentcloud.tem.v20201221.models.RestartServiceRunPodRequest`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.RestartServiceRunPodResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RestartServiceRunPod", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestartServiceRunPodResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

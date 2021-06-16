@@ -160,6 +160,8 @@ class CreateNamespaceRequest(AbstractModel):
         :type K8sVersion: str
         :param SourceChannel: Source channel
         :type SourceChannel: int
+        :param EnableTswTraceService: Whether to enable the TSW service.
+        :type EnableTswTraceService: bool
         """
         self.NamespaceName = None
         self.Vpc = None
@@ -167,6 +169,7 @@ class CreateNamespaceRequest(AbstractModel):
         self.Description = None
         self.K8sVersion = None
         self.SourceChannel = None
+        self.EnableTswTraceService = None
 
 
     def _deserialize(self, params):
@@ -176,6 +179,7 @@ class CreateNamespaceRequest(AbstractModel):
         self.Description = params.get("Description")
         self.K8sVersion = params.get("K8sVersion")
         self.SourceChannel = params.get("SourceChannel")
+        self.EnableTswTraceService = params.get("EnableTswTraceService")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -501,6 +505,14 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         :type ImageCommand: str
         :param ImageArgs: Image command parameters
         :type ImageArgs: list of str
+        :param PortMappings: Service port mapping.
+        :type PortMappings: list of PortMapping
+        :param UseRegistryDefaultConfig: Whether to add the registry’s default configurations.
+        :type UseRegistryDefaultConfig: bool
+        :param SettingConfs: 
+        :type SettingConfs: list of MountedSettingConf
+        :param EksService: 
+        :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`
         """
         self.ServiceId = None
         self.ContainerPort = None
@@ -526,6 +538,10 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         self.Description = None
         self.ImageCommand = None
         self.ImageArgs = None
+        self.PortMappings = None
+        self.UseRegistryDefaultConfig = None
+        self.SettingConfs = None
+        self.EksService = None
 
 
     def _deserialize(self, params):
@@ -572,6 +588,22 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         self.Description = params.get("Description")
         self.ImageCommand = params.get("ImageCommand")
         self.ImageArgs = params.get("ImageArgs")
+        if params.get("PortMappings") is not None:
+            self.PortMappings = []
+            for item in params.get("PortMappings"):
+                obj = PortMapping()
+                obj._deserialize(item)
+                self.PortMappings.append(obj)
+        self.UseRegistryDefaultConfig = params.get("UseRegistryDefaultConfig")
+        if params.get("SettingConfs") is not None:
+            self.SettingConfs = []
+            for item in params.get("SettingConfs"):
+                obj = MountedSettingConf()
+                obj._deserialize(item)
+                self.SettingConfs.append(obj)
+        if params.get("EksService") is not None:
+            self.EksService = EksService()
+            self.EksService._deserialize(params.get("EksService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -688,16 +720,20 @@ class DescribeIngressesRequest(AbstractModel):
         :type EksNamespace: str
         :param SourceChannel: Source channel
         :type SourceChannel: int
+        :param Names: Ingress rule name list.
+        :type Names: list of str
         """
         self.NamespaceId = None
         self.EksNamespace = None
         self.SourceChannel = None
+        self.Names = None
 
 
     def _deserialize(self, params):
         self.NamespaceId = params.get("NamespaceId")
         self.EksNamespace = params.get("EksNamespace")
         self.SourceChannel = params.get("SourceChannel")
+        self.Names = params.get("Names")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -793,6 +829,76 @@ class DescribeNamespacesResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = NamespacePage()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeRelatedIngressesRequest(AbstractModel):
+    """DescribeRelatedIngresses request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespaceId: Environment ID.
+        :type NamespaceId: str
+        :param EksNamespace: EKS namespace.
+        :type EksNamespace: str
+        :param SourceChannel: Source channel.
+        :type SourceChannel: int
+        :param ServiceId: Service ID.
+        :type ServiceId: str
+        """
+        self.NamespaceId = None
+        self.EksNamespace = None
+        self.SourceChannel = None
+        self.ServiceId = None
+
+
+    def _deserialize(self, params):
+        self.NamespaceId = params.get("NamespaceId")
+        self.EksNamespace = params.get("EksNamespace")
+        self.SourceChannel = params.get("SourceChannel")
+        self.ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeRelatedIngressesResponse(AbstractModel):
+    """DescribeRelatedIngresses response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Ingress array.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Result: list of IngressInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = IngressInfo()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -929,6 +1035,75 @@ class DescribeServiceRunPodListV2Response(AbstractModel):
         
 
 
+class EksService(AbstractModel):
+    """eks service info
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: service name
+        :type Name: str
+        :param Ports: 
+        :type Ports: list of int
+        :param Yaml: 
+        :type Yaml: str
+        :param ServiceName: 
+        :type ServiceName: str
+        :param VersionName: 
+        :type VersionName: str
+        :param ClusterIp: 
+        :type ClusterIp: list of str
+        :param ExternalIp: 
+        :type ExternalIp: str
+        :param Type: 
+        :type Type: str
+        :param SubnetId: 
+        :type SubnetId: str
+        :param LoadBalanceId: 
+        :type LoadBalanceId: str
+        :param PortMappings: 
+        :type PortMappings: list of PortMapping
+        """
+        self.Name = None
+        self.Ports = None
+        self.Yaml = None
+        self.ServiceName = None
+        self.VersionName = None
+        self.ClusterIp = None
+        self.ExternalIp = None
+        self.Type = None
+        self.SubnetId = None
+        self.LoadBalanceId = None
+        self.PortMappings = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Ports = params.get("Ports")
+        self.Yaml = params.get("Yaml")
+        self.ServiceName = params.get("ServiceName")
+        self.VersionName = params.get("VersionName")
+        self.ClusterIp = params.get("ClusterIp")
+        self.ExternalIp = params.get("ExternalIp")
+        self.Type = params.get("Type")
+        self.SubnetId = params.get("SubnetId")
+        self.LoadBalanceId = params.get("LoadBalanceId")
+        if params.get("PortMappings") is not None:
+            self.PortMappings = []
+            for item in params.get("PortMappings"):
+                obj = PortMapping()
+                obj._deserialize(item)
+                self.PortMappings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class EsInfo(AbstractModel):
     """Auto scaling configuration
 
@@ -999,6 +1174,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Vip: clb ip
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Vip: str
+        :param CreateTime: Creation time.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type CreateTime: str
+        :param Mixed: Whether to listen on both the HTTP Port 80 and HTTPS Port 443. The default value is `false`. The optional value `true` means listening on both the HTTP Port 80 and HTTPS Port 443.
+        :type Mixed: bool
         """
         self.NamespaceId = None
         self.EksNamespace = None
@@ -1009,6 +1189,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Tls = None
         self.ClusterId = None
         self.Vip = None
+        self.CreateTime = None
+        self.Mixed = None
 
 
     def _deserialize(self, params):
@@ -1031,6 +1213,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.Tls.append(obj)
         self.ClusterId = params.get("ClusterId")
         self.Vip = params.get("Vip")
+        self.CreateTime = params.get("CreateTime")
+        self.Mixed = params.get("Mixed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1052,9 +1236,12 @@ class IngressRule(AbstractModel):
         :param Host: Host address
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Host: str
+        :param Protocol: Protocol. Options include HTTP and HTTPS. The default option is HTTP.
+        :type Protocol: str
         """
         self.Http = None
         self.Host = None
+        self.Protocol = None
 
 
     def _deserialize(self, params):
@@ -1062,6 +1249,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.Http = IngressRuleValue()
             self.Http._deserialize(params.get("Http"))
         self.Host = params.get("Host")
+        self.Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1165,18 +1353,22 @@ class IngressTls(AbstractModel):
 
     def __init__(self):
         """
-        :param Hosts: Host array
+        :param Hosts: Host array. An empty array indicates the default certificate for all domain names.
         :type Hosts: list of str
-        :param SecretName: secret name
+        :param SecretName: Secret name. If a certificate is used, this field is left empty.
         :type SecretName: str
+        :param CertificateId: SSL Certificate Id
+        :type CertificateId: str
         """
         self.Hosts = None
         self.SecretName = None
+        self.CertificateId = None
 
 
     def _deserialize(self, params):
         self.Hosts = params.get("Hosts")
         self.SecretName = params.get("SecretName")
+        self.CertificateId = params.get("CertificateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1358,6 +1550,104 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class ModifyServiceInfoRequest(AbstractModel):
+    """ModifyServiceInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: Service ID.
+        :type ServiceId: str
+        :param Description: Description.
+        :type Description: str
+        :param SourceChannel: Source channel.
+        :type SourceChannel: int
+        """
+        self.ServiceId = None
+        self.Description = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.Description = params.get("Description")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyServiceInfoResponse(AbstractModel):
+    """ModifyServiceInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Results.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class MountedSettingConf(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigDataName: 
+        :type ConfigDataName: str
+        :param MountedPath: 
+        :type MountedPath: str
+        :param Data: 
+        :type Data: list of Pair
+        """
+        self.ConfigDataName = None
+        self.MountedPath = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.ConfigDataName = params.get("ConfigDataName")
+        self.MountedPath = params.get("MountedPath")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = Pair()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class NamespacePage(AbstractModel):
     """Namespace pagination
 
@@ -1427,6 +1717,115 @@ class Pair(AbstractModel):
         
 
 
+class PortMapping(AbstractModel):
+    """Service port mapping
+
+    """
+
+    def __init__(self):
+        """
+        :param Port: Port.
+        :type Port: int
+        :param TargetPort: Mapped port.
+        :type TargetPort: int
+        :param Protocol: TCP/UDP protocol stack.
+        :type Protocol: str
+        """
+        self.Port = None
+        self.TargetPort = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.TargetPort = params.get("TargetPort")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class RestartServiceRunPodRequest(AbstractModel):
+    """RestartServiceRunPod request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespaceId: Environment ID.
+        :type NamespaceId: str
+        :param ServiceId: Service ID.
+        :type ServiceId: str
+        :param PodName: Pod name.
+        :type PodName: str
+        :param Limit: Number of items per page.
+        :type Limit: int
+        :param Offset: Page number.
+        :type Offset: int
+        :param Status: Pod status.
+        :type Status: str
+        :param SourceChannel: Source channel.
+        :type SourceChannel: int
+        """
+        self.NamespaceId = None
+        self.ServiceId = None
+        self.PodName = None
+        self.Limit = None
+        self.Offset = None
+        self.Status = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.NamespaceId = params.get("NamespaceId")
+        self.ServiceId = params.get("ServiceId")
+        self.PodName = params.get("PodName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Status = params.get("Status")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class RestartServiceRunPodResponse(AbstractModel):
+    """RestartServiceRunPod response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Returned results.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class RunVersionPod(AbstractModel):
     """Pod
 
@@ -1442,14 +1841,22 @@ class RunVersionPod(AbstractModel):
         :type Status: str
         :param CreateTime: Creation time
         :type CreateTime: str
-        :param PodIp: Pod IP
+        :param PodIp: Pod IP.
         :type PodIp: str
+        :param Zone: Availability zone.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Zone: str
+        :param DeployVersion: Deployed version.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type DeployVersion: str
         """
         self.Webshell = None
         self.PodId = None
         self.Status = None
         self.CreateTime = None
         self.PodIp = None
+        self.Zone = None
+        self.DeployVersion = None
 
 
     def _deserialize(self, params):
@@ -1458,6 +1865,8 @@ class RunVersionPod(AbstractModel):
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
         self.PodIp = params.get("PodIp")
+        self.Zone = params.get("Zone")
+        self.DeployVersion = params.get("DeployVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

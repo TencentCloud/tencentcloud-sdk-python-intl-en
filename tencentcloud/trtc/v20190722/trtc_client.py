@@ -27,7 +27,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreatePicture(self, request):
-        """This API is used to upload an image.
+        """This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).
 
         :param request: Request instance for CreatePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.CreatePictureRequest`
@@ -83,7 +83,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeletePicture(self, request):
-        """This API is used to delete an image.
+        """This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).
 
         :param request: Request instance for DeletePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeletePictureRequest`
@@ -224,7 +224,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribePicture(self, request):
-        """This API is used to query the parameters of an image.
+        """This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).
 
         :param request: Request instance for DescribePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribePictureRequest`
@@ -450,7 +450,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyPicture(self, request):
-        """This API is used to modify the parameters of an image.
+        """This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).
 
         :param request: Request instance for ModifyPicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyPictureRequest`
