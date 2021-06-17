@@ -4278,6 +4278,118 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ScaleInInstancesRequest(AbstractModel):
+    """ScaleInInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: Scaling group ID
+        :type AutoScalingGroupId: str
+        :param ScaleInNumber: Number of instances to be reduced
+        :type ScaleInNumber: int
+        """
+        self.AutoScalingGroupId = None
+        self.ScaleInNumber = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.ScaleInNumber = params.get("ScaleInNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ScaleInInstancesResponse(AbstractModel):
+    """ScaleInInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: Scaling activity ID
+        :type ActivityId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ScaleOutInstancesRequest(AbstractModel):
+    """ScaleOutInstances request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: Scaling group ID
+        :type AutoScalingGroupId: str
+        :param ScaleOutNumber: Number of instances to be added
+        :type ScaleOutNumber: int
+        """
+        self.AutoScalingGroupId = None
+        self.ScaleOutNumber = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.ScaleOutNumber = params.get("ScaleOutNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ScaleOutInstancesResponse(AbstractModel):
+    """ScaleOutInstances response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: Scaling activity ID
+        :type ActivityId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ScalingPolicy(AbstractModel):
     """Alarm trigger policy.
 
