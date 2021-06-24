@@ -561,6 +561,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFlow(self, request):
+        """This API is used to query task status.
+
+        :param request: Request instance for DescribeFlow.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeFlowRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFlow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProjectSecurityGroups(self, request):
         """This API is used to query the security group details of a project.
 
@@ -603,6 +631,62 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DestroyDCDBInstance(self, request):
+        """This API is used to terminate an isolated monthly-subscribed instance.
+
+        :param request: Request instance for DestroyDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DestroyDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DestroyDCDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyDCDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DestroyHourDCDBInstance(self, request):
+        """This API is used to terminate a pay-as-you-go instance.
+
+        :param request: Request instance for DestroyHourDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyHourDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DestroyHourDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DestroyHourDCDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyHourDCDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

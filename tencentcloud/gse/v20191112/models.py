@@ -867,6 +867,62 @@ class DiskInfo(AbstractModel):
         
 
 
+class EndGameServerSessionAndProcessRequest(AbstractModel):
+    """EndGameServerSessionAndProcess request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param GameServerSessionId: Game server session ID. If a game server session ID is passed in, its corresponding processes, game server sessions, and player sessions will be terminated.
+        :type GameServerSessionId: str
+        :param IpAddress: The public IP of the CVM. You need to pass in `IpAddress` and `Port` at the same time to terminate the matched processes, game server sessions and player sessions (if any exists). It does not take effect in case only the `IpAddress` passed in.
+        :type IpAddress: str
+        :param Port: Port number. Value range: 1025 - 60000. You need to pass in `IpAddress` and `Port` at the same time to terminate the matched processes, game server sessions (if any exists) and player sessions (if any exists). It does not take effect in case only the `IpAddress` passed in.
+        :type Port: int
+        """
+        self.GameServerSessionId = None
+        self.IpAddress = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.GameServerSessionId = params.get("GameServerSessionId")
+        self.IpAddress = params.get("IpAddress")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class EndGameServerSessionAndProcessResponse(AbstractModel):
+    """EndGameServerSessionAndProcess response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class FleetAttributes(AbstractModel):
     """Service deployment attributes
 

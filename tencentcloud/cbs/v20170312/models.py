@@ -1350,165 +1350,170 @@ class Disk(AbstractModel):
 
     def __init__(self):
         """
+        :param DeleteWithInstance: Whether the cloud disk terminates along with the instance mounted to it. <br><li>true: Cloud disk will also be terminated when instance terminates, so only hourly postpaid cloud disk are supported.<br><li>false: Cloud disk does not terminate when instance terminates.
+Note: This field may return null, indicating that no valid value was found.
+        :type DeleteWithInstance: bool
+        :param RenewFlag: Auto renewal flag. Supported values:<br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically<br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but not renew automatically<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically.
+Note: This field may return null, indicating that no valid value was found.
+        :type RenewFlag: str
+        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD
+        :type DiskType: str
+        :param DiskState: The state of the cloud disk. Value range: <br><li>UNATTACHED: Not mounted <br><li>ATTACHING: Mounting <br><li>ATTACHED: Mounted <br><li>DETACHING: Un-mounting <br><li>EXPANDING: Expanding <br><li>ROLLBACKING: Rolling back <br><li>TORECYCE: Pending recycling. <br><li>DUMPING: Copying the hard drive.
+        :type DiskState: str
+        :param SnapshotCount: The total number of snapshots of the cloud disk.
+        :type SnapshotCount: int
+        :param AutoRenewFlagError: Cloud disk already mounted to CVM, and both CVM and cloud disk use monthly subscription.<br><li>true: CVM has auto-renewal flag set up, but cloud disk does not.<br><li>false: Cloud disk auto-renewal flag set up normally.
+Note: This field may return null, indicating that no valid value was found.
+        :type AutoRenewFlagError: bool
+        :param Rollbacking: Whether the cloud disk is in the status of snapshot rollback. Value range: <br><li>false: No <br><li>true: Yes
+        :type Rollbacking: bool
+        :param InstanceIdList: For non-shareable cloud disks, this parameter is null. For shareable cloud disks, this parameters indicates this cloud disk's Instance IDs currently mounted to the CVM.
+        :type InstanceIdList: list of str
+        :param Encrypt: Whether the cloud disk is encrypted. Value range: <br><li>false: Not encrypted <br><li>true: Encrypted.
+        :type Encrypt: bool
+        :param DiskName: Cloud disk name.
+        :type DiskName: str
+        :param BackupDisk: Specifies whether to create a snapshot when the cloud disk is terminated due to overdue payment or expiration. `true`: create snapshot; `false`: do not create snapshot.
+        :type BackupDisk: bool
+        :param Tags: The tag bound to the cloud disk. The value Null is used when no tag is bound to the cloud disk.
+Note: This field may return null, indicating that no valid value was found.
+        :type Tags: list of Tag
+        :param InstanceId: ID of the CVM to which the cloud disk is mounted.
+        :type InstanceId: str
+        :param AttachMode: Cloud disk mount method. Valid values: <br><li>PF: mount as a PF (Physical Function)<br><li>VF: mount as a VF (Virtual Function)
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type AttachMode: str
+        :param AutoSnapshotPolicyIds: ID of the periodic snapshot associated to the cloud disk. This parameter is returned only if the value of parameter ReturnBindAutoSnapshotPolicy is TRUE when the API DescribeDisks is called.
+Note: This field may return null, indicating that no valid value was found.
+        :type AutoSnapshotPolicyIds: list of str
+        :param ThroughputPerformance: Extra performance for a cloud disk, in MB/sec.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ThroughputPerformance: int
+        :param Migrating: Whether cloud disk is in process of type change. Value range: <br><li>false: Cloud disk not in process of type change. <br><li>true: Cloud disk type change has been launched, and migration is in process.
+Note: This field may return null, indicating that no valid value was found.
+        :type Migrating: bool
         :param DiskId: Cloud disk ID.
         :type DiskId: str
+        :param SnapshotSize: The total capacity of the snapshots of the cloud disk. Unit: MB.
+        :type SnapshotSize: int
+        :param Placement: Location of the cloud disk.
+        :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        :param IsReturnable: Determines whether or not prepaid cloud disk supports active return. <br><li>true: Active return supported.<br><li>false: Active return not supported.
+Note: This field may return null, indicating that no valid value was found.
+        :type IsReturnable: bool
+        :param DeadlineTime: Expiration time of the cloud disk.
+        :type DeadlineTime: str
+        :param Attached: Whether the cloud disk is mounted to the CVM. Value range: <br><li>false: Unmounted <br><li>true: Mounted.
+        :type Attached: bool
+        :param DiskSize: Cloud disk size (in GB).
+        :type DiskSize: int
+        :param MigratePercent: Migration progress of cloud disk type change, from 0 to 100.
+Note: This field may return null, indicating that no valid value was found.
+        :type MigratePercent: int
         :param DiskUsage: Cloud disk type. Value range:<br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.
         :type DiskUsage: str
         :param DiskChargeType: Billing method. Value range: <br><li>PREPAID: Prepaid, that is, monthly subscription<br><li>POSTPAID_BY_HOUR: Postpaid, that is, pay as you go.
         :type DiskChargeType: str
         :param Portable: Whether it is an elastic cloud disk. false: Non-elastic cloud disk; true: Elastic cloud disk.
         :type Portable: bool
-        :param Placement: Location of the cloud disk.
-        :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
         :param SnapshotAbility: Whether the cloud disk has the capability to create snapshots. Value range: <br><li>false: Cannot create snapshots. true: Can create snapshots.
         :type SnapshotAbility: bool
-        :param DiskName: Cloud disk name.
-        :type DiskName: str
-        :param DiskSize: Cloud disk size (in GB).
-        :type DiskSize: int
-        :param DiskState: The state of the cloud disk. Value range: <br><li>UNATTACHED: Not mounted <br><li>ATTACHING: Mounting <br><li>ATTACHED: Mounted <br><li>DETACHING: Un-mounting <br><li>EXPANDING: Expanding <br><li>ROLLBACKING: Rolling back <br><li>TORECYCE: Pending recycling. <br><li>DUMPING: Copying the hard drive.
-        :type DiskState: str
-        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD
-        :type DiskType: str
-        :param Attached: Whether the cloud disk is mounted to the CVM. Value range: <br><li>false: Unmounted <br><li>true: Mounted.
-        :type Attached: bool
-        :param InstanceId: ID of the CVM to which the cloud disk is mounted.
-        :type InstanceId: str
-        :param CreateTime: Creation time of the cloud disk.
-        :type CreateTime: str
-        :param DeadlineTime: Expiration time of the cloud disk.
-        :type DeadlineTime: str
-        :param Rollbacking: Whether the cloud disk is in the status of snapshot rollback. Value range: <br><li>false: No <br><li>true: Yes
-        :type Rollbacking: bool
-        :param RollbackPercent: Rollback progress of a cloud disk snapshot.
-        :type RollbackPercent: int
-        :param Encrypt: Whether the cloud disk is encrypted. Value range: <br><li>false: Not encrypted <br><li>true: Encrypted.
-        :type Encrypt: bool
-        :param AutoRenewFlagError: Cloud disk already mounted to CVM, and both CVM and cloud disk use monthly subscription.<br><li>true: CVM has auto-renewal flag set up, but cloud disk does not.<br><li>false: Cloud disk auto-renewal flag set up normally.
-Note: This field may return null, indicating that no valid value was found.
-        :type AutoRenewFlagError: bool
-        :param RenewFlag: Auto renewal flag. Supported values:<br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically<br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but not renew automatically<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically.
-Note: This field may return null, indicating that no valid value was found.
-        :type RenewFlag: str
         :param DeadlineError: This field is only applicable when the instance is already mounted to the cloud disk, and both the instance and the cloud disk use monthly subscription. <br><li>true: Expiration time of cloud disk is earlier than that of the instance.<br><li>false:Expiration time of cloud disk is later than that of the instance.
 Note: This field may return null, indicating that no valid value was found.
         :type DeadlineError: bool
-        :param IsReturnable: Determines whether or not prepaid cloud disk supports active return. <br><li>true: Active return supported.<br><li>false: Active return not supported.
-Note: This field may return null, indicating that no valid value was found.
-        :type IsReturnable: bool
-        :param ReturnFailCode: In circumstances where the prepaid cloud disk does not support active return, this parameter indicates the reason that return is not supported. Value range: <br><li>1: The cloud disk has already been returned. <br><li>2: The cloud disk has already expired. <br><li>3: The cloud disk does not support return. <br><li> 8: The limit on the number of returns is exceeded.
-Note: This field may return null, indicating that no valid value was found.
-        :type ReturnFailCode: int
-        :param AutoSnapshotPolicyIds: ID of the periodic snapshot associated to the cloud disk. This parameter is returned only if the value of parameter ReturnBindAutoSnapshotPolicy is TRUE when the API DescribeDisks is called.
-Note: This field may return null, indicating that no valid value was found.
-        :type AutoSnapshotPolicyIds: list of str
-        :param Tags: The tag bound to the cloud disk. The value Null is used when no tag is bound to the cloud disk.
-Note: This field may return null, indicating that no valid value was found.
-        :type Tags: list of Tag
-        :param DeleteWithInstance: Whether the cloud disk terminates along with the instance mounted to it. <br><li>true: Cloud disk will also be terminated when instance terminates, so only hourly postpaid cloud disk are supported.<br><li>false: Cloud disk does not terminate when instance terminates.
-Note: This field may return null, indicating that no valid value was found.
-        :type DeleteWithInstance: bool
+        :param RollbackPercent: Rollback progress of a cloud disk snapshot.
+        :type RollbackPercent: int
         :param DifferDaysOfDeadline: Number of days from current time until disk expiration (only applicable for prepaid disks).
 Note: This field may return null, indicating that no valid value was found.
         :type DifferDaysOfDeadline: int
-        :param Migrating: Whether cloud disk is in process of type change. Value range: <br><li>false: Cloud disk not in process of type change. <br><li>true: Cloud disk type change has been launched, and migration is in process.
+        :param ReturnFailCode: In circumstances where the prepaid cloud disk does not support active return, this parameter indicates the reason that return is not supported. Value range: <br><li>1: The cloud disk has already been returned. <br><li>2: The cloud disk has already expired. <br><li>3: The cloud disk does not support return. <br><li> 8: The limit on the number of returns is exceeded.
 Note: This field may return null, indicating that no valid value was found.
-        :type Migrating: bool
-        :param MigratePercent: Migration progress of cloud disk type change, from 0 to 100.
-Note: This field may return null, indicating that no valid value was found.
-        :type MigratePercent: int
+        :type ReturnFailCode: int
         :param Shareable: Whether or not cloud disk is shareable cloud disk.
         :type Shareable: bool
-        :param InstanceIdList: For non-shareable cloud disks, this parameter is null. For shareable cloud disks, this parameters indicates this cloud disk's Instance IDs currently mounted to the CVM.
-        :type InstanceIdList: list of str
-        :param SnapshotCount: The total number of snapshots of the cloud disk.
-        :type SnapshotCount: int
-        :param SnapshotSize: The total capacity of the snapshots of the cloud disk. Unit: MB.
-        :type SnapshotSize: int
-        :param BackupDisk: Specifies whether to create a snapshot when the cloud disk is terminated due to overdue payment or expiration. `true`: create snapshot; `false`: do not create snapshot.
-        :type BackupDisk: bool
-        :param ThroughputPerformance: Extra performance for a cloud disk, in MB/sec.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ThroughputPerformance: int
+        :param CreateTime: Creation time of the cloud disk.
+        :type CreateTime: str
         """
+        self.DeleteWithInstance = None
+        self.RenewFlag = None
+        self.DiskType = None
+        self.DiskState = None
+        self.SnapshotCount = None
+        self.AutoRenewFlagError = None
+        self.Rollbacking = None
+        self.InstanceIdList = None
+        self.Encrypt = None
+        self.DiskName = None
+        self.BackupDisk = None
+        self.Tags = None
+        self.InstanceId = None
+        self.AttachMode = None
+        self.AutoSnapshotPolicyIds = None
+        self.ThroughputPerformance = None
+        self.Migrating = None
         self.DiskId = None
+        self.SnapshotSize = None
+        self.Placement = None
+        self.IsReturnable = None
+        self.DeadlineTime = None
+        self.Attached = None
+        self.DiskSize = None
+        self.MigratePercent = None
         self.DiskUsage = None
         self.DiskChargeType = None
         self.Portable = None
-        self.Placement = None
         self.SnapshotAbility = None
-        self.DiskName = None
-        self.DiskSize = None
-        self.DiskState = None
-        self.DiskType = None
-        self.Attached = None
-        self.InstanceId = None
-        self.CreateTime = None
-        self.DeadlineTime = None
-        self.Rollbacking = None
-        self.RollbackPercent = None
-        self.Encrypt = None
-        self.AutoRenewFlagError = None
-        self.RenewFlag = None
         self.DeadlineError = None
-        self.IsReturnable = None
-        self.ReturnFailCode = None
-        self.AutoSnapshotPolicyIds = None
-        self.Tags = None
-        self.DeleteWithInstance = None
+        self.RollbackPercent = None
         self.DifferDaysOfDeadline = None
-        self.Migrating = None
-        self.MigratePercent = None
+        self.ReturnFailCode = None
         self.Shareable = None
-        self.InstanceIdList = None
-        self.SnapshotCount = None
-        self.SnapshotSize = None
-        self.BackupDisk = None
-        self.ThroughputPerformance = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
-        self.DiskId = params.get("DiskId")
-        self.DiskUsage = params.get("DiskUsage")
-        self.DiskChargeType = params.get("DiskChargeType")
-        self.Portable = params.get("Portable")
-        if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.SnapshotAbility = params.get("SnapshotAbility")
-        self.DiskName = params.get("DiskName")
-        self.DiskSize = params.get("DiskSize")
-        self.DiskState = params.get("DiskState")
-        self.DiskType = params.get("DiskType")
-        self.Attached = params.get("Attached")
-        self.InstanceId = params.get("InstanceId")
-        self.CreateTime = params.get("CreateTime")
-        self.DeadlineTime = params.get("DeadlineTime")
-        self.Rollbacking = params.get("Rollbacking")
-        self.RollbackPercent = params.get("RollbackPercent")
-        self.Encrypt = params.get("Encrypt")
-        self.AutoRenewFlagError = params.get("AutoRenewFlagError")
+        self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.RenewFlag = params.get("RenewFlag")
-        self.DeadlineError = params.get("DeadlineError")
-        self.IsReturnable = params.get("IsReturnable")
-        self.ReturnFailCode = params.get("ReturnFailCode")
-        self.AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
+        self.DiskType = params.get("DiskType")
+        self.DiskState = params.get("DiskState")
+        self.SnapshotCount = params.get("SnapshotCount")
+        self.AutoRenewFlagError = params.get("AutoRenewFlagError")
+        self.Rollbacking = params.get("Rollbacking")
+        self.InstanceIdList = params.get("InstanceIdList")
+        self.Encrypt = params.get("Encrypt")
+        self.DiskName = params.get("DiskName")
+        self.BackupDisk = params.get("BackupDisk")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
-        self.DeleteWithInstance = params.get("DeleteWithInstance")
-        self.DifferDaysOfDeadline = params.get("DifferDaysOfDeadline")
-        self.Migrating = params.get("Migrating")
-        self.MigratePercent = params.get("MigratePercent")
-        self.Shareable = params.get("Shareable")
-        self.InstanceIdList = params.get("InstanceIdList")
-        self.SnapshotCount = params.get("SnapshotCount")
-        self.SnapshotSize = params.get("SnapshotSize")
-        self.BackupDisk = params.get("BackupDisk")
+        self.InstanceId = params.get("InstanceId")
+        self.AttachMode = params.get("AttachMode")
+        self.AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        self.Migrating = params.get("Migrating")
+        self.DiskId = params.get("DiskId")
+        self.SnapshotSize = params.get("SnapshotSize")
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.IsReturnable = params.get("IsReturnable")
+        self.DeadlineTime = params.get("DeadlineTime")
+        self.Attached = params.get("Attached")
+        self.DiskSize = params.get("DiskSize")
+        self.MigratePercent = params.get("MigratePercent")
+        self.DiskUsage = params.get("DiskUsage")
+        self.DiskChargeType = params.get("DiskChargeType")
+        self.Portable = params.get("Portable")
+        self.SnapshotAbility = params.get("SnapshotAbility")
+        self.DeadlineError = params.get("DeadlineError")
+        self.RollbackPercent = params.get("RollbackPercent")
+        self.DifferDaysOfDeadline = params.get("DifferDaysOfDeadline")
+        self.ReturnFailCode = params.get("ReturnFailCode")
+        self.Shareable = params.get("Shareable")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2284,31 +2289,35 @@ class Placement(AbstractModel):
         """
         :param Zone: The ID of the [Availability Zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) to which the cloud disk belongs. This parameter can be obtained from the Zone field in the returned values of [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1).
         :type Zone: str
-        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the projectId field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used.
-        :type ProjectId: int
-        :param CdcId: ID of dedicated cluster which the instance belongs to. When it is an input parameter, the specified CdcId dedicated cluster resource is operated, and it can be left blank. When it is an output parameter, it is the ID of the dedicated cluster which the resource belongs to, and it can be left blank.
-Note: This field may return null, indicating that no valid value was found.
-        :type CdcId: str
         :param CageId: Cage ID. When it is an input parameter, the specified CageID resource is operated, and it can be left blank. When it is an output parameter, it is the ID of the cage the resource belongs to, and it can be left blank.
 Note: This field may return null, indicating that no valid value was found.
         :type CageId: str
+        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the projectId field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used.
+        :type ProjectId: int
         :param CdcName: Dedicated cluster name. When it is an input parameter, it is ignored.  When it is an output parameter, it is the name of the dedicated cluster the cloud disk belongs to, and it can be left blank.
 Note: This field may return null, indicating that no valid value was found.
         :type CdcName: str
+        :param CdcId: ID of dedicated cluster which the instance belongs to. When it is an input parameter, the specified CdcId dedicated cluster resource is operated, and it can be left blank. When it is an output parameter, it is the ID of the dedicated cluster which the resource belongs to, and it can be left blank.
+Note: This field may return null, indicating that no valid value was found.
+        :type CdcId: str
+        :param DedicatedClusterId: Dedicated cluster ID
+        :type DedicatedClusterId: str
         """
         self.Zone = None
-        self.ProjectId = None
-        self.CdcId = None
         self.CageId = None
+        self.ProjectId = None
         self.CdcName = None
+        self.CdcId = None
+        self.DedicatedClusterId = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
-        self.ProjectId = params.get("ProjectId")
-        self.CdcId = params.get("CdcId")
         self.CageId = params.get("CageId")
+        self.ProjectId = params.get("ProjectId")
         self.CdcName = params.get("CdcName")
+        self.CdcId = params.get("CdcId")
+        self.DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
