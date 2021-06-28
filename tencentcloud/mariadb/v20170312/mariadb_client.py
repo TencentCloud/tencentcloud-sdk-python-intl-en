@@ -701,6 +701,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DestroyHourDBInstance(self, request):
+        """This API is used to terminate a pay-as-you-go instance.
+
+        :param request: Request instance for DestroyHourDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DestroyHourDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DestroyHourDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DestroyHourDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyHourDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisassociateSecurityGroups(self, request):
         """This API is used to unassociate security groups from instances in batches.
 
@@ -801,6 +829,39 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountDescriptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAccountPrivileges(self, request):
+        """This API is used to modify the permissions of a TencentDB instance account.
+
+        **Notes**
+        - Only the SELECT permission (that is, set the permission parameter to `["SELECT"]`) of the system database `mysql` can be granted.
+        - An error will be reported if read-write permissions are granted to a read-only account.
+        - If the parameter of permissions at a level is left empty, no change will be made to the permissions at the level that have been granted. To clear granted permissions at a level, set `GlobalPrivileges.N` or `Privileges` to an empty array.
+
+        :param request: Request instance for ModifyAccountPrivileges.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyAccountPrivilegesRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyAccountPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAccountPrivileges", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAccountPrivilegesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

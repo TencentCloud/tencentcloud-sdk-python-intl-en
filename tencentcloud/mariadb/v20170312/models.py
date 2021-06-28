@@ -18,6 +18,34 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Account(AbstractModel):
+    """TencentDB account information
+
+    """
+
+    def __init__(self):
+        """
+        :param User: Account name
+        :type User: str
+        :param Host: Host address
+        :type Host: str
+        """
+        self.User = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.User = params.get("User")
+        self.Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups request structure.
 
@@ -193,6 +221,42 @@ class CloseDBExtranetAccessResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ColumnPrivilege(AbstractModel):
+    """Column permission information
+
+    """
+
+    def __init__(self):
+        """
+        :param Database: Database name
+        :type Database: str
+        :param Table: Table name
+        :type Table: str
+        :param Column: Column name
+        :type Column: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.Table = None
+        self.Column = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Column = params.get("Column")
+        self.Privileges = params.get("Privileges")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -748,6 +812,34 @@ class Database(AbstractModel):
 
     def _deserialize(self, params):
         self.DbName = params.get("DbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DatabasePrivilege(AbstractModel):
+    """Database permission
+
+    """
+
+    def __init__(self):
+        """
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        :param Database: Database name
+        :type Database: str
+        """
+        self.Privileges = None
+        self.Database = None
+
+
+    def _deserialize(self, params):
+        self.Privileges = params.get("Privileges")
+        self.Database = params.get("Database")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2259,6 +2351,62 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         
 
 
+class DestroyHourDBInstanceRequest(AbstractModel):
+    """DestroyHourDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of tdsql-avw0207d. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DestroyHourDBInstanceResponse(AbstractModel):
+    """DestroyHourDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/237/16177?from_cn_redirect=1) API to query the async task result.
+        :type FlowId: int
+        :param InstanceId: Instance ID, which is the same as the request parameter `InstanceId`.
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DisassociateSecurityGroupsRequest(AbstractModel):
     """DisassociateSecurityGroups request structure.
 
@@ -2306,6 +2454,38 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class FunctionPrivilege(AbstractModel):
+    """Function permission information
+
+    """
+
+    def __init__(self):
+        """
+        :param Database: Database name
+        :type Database: str
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.FunctionName = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.FunctionName = params.get("FunctionName")
+        self.Privileges = params.get("Privileges")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2546,6 +2726,132 @@ class ModifyAccountDescriptionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyAccountPrivilegesRequest(AbstractModel):
+    """ModifyAccountPrivileges request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of tdsql-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        :param Accounts: Database account, including username and host address.
+        :type Accounts: list of Account
+        :param GlobalPrivileges: Global permission. Valid values of `GlobalPrivileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"PROCESS"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"SHOW DATABASES"`, `"CREATE TEMPORARY TABLES"`, `"LOCK TABLES"`, `"EXECUTE"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"CREATE ROUTINE"`, `"ALTER ROUTINE"`, `"EVENT"`, `"TRIGGER"`.
+Note: if the parameter is left empty, no change will be made to the granted global permissions. To clear the granted global permissions, set the parameter to an empty array.
+        :type GlobalPrivileges: list of str
+        :param DatabasePrivileges: Database permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE TEMPORARY TABLES"`, `"LOCK TABLES"`, `"EXECUTE"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"CREATE ROUTINE"`, `"ALTER ROUTINE"`, `"EVENT"`, `"TRIGGER"`.
+Note: if the parameter is left empty, no change will be made to the granted database permissions. To clear the granted database permissions, set `Privileges` to an empty array.
+        :type DatabasePrivileges: list of DatabasePrivilege
+        :param TablePrivileges: Table permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"TRIGGER"`.
+Note: if the parameter is left empty, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.
+        :type TablePrivileges: list of TablePrivilege
+        :param ColumnPrivileges: Column permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"REFERENCES"`.
+Note: if the parameter is left empty, no change will be made to the granted column permissions. To clear the granted column permissions, set `Privileges` to an empty array.
+        :type ColumnPrivileges: list of ColumnPrivilege
+        :param ViewPrivileges: View permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"TRIGGER"`.
+Note: if the parameter is left empty, no change will be made to the granted view permissions. To clear the granted view permissions, set `Privileges` to an empty array.
+        :type ViewPrivileges: list of ViewPrivileges
+        :param FunctionPrivileges: Function permissions. Valid values of `Privileges`: `"ALTER ROUTINE"`, `"EXECUTE"`.
+Note: if the parameter is left empty, no change will be made to the granted function permissions. To clear the granted function permissions, set `Privileges` to an empty array.
+        :type FunctionPrivileges: list of FunctionPrivilege
+        :param ProcedurePrivileges: Stored procedure permission. Valid values of `Privileges`: `"ALTER ROUTINE"`, `"EXECUTE"`.
+Note: if the parameter is left empty, no change will be made to the granted stored procedure permissions. To clear the granted stored procedure permissions, set `Privileges` to an empty array.
+        :type ProcedurePrivileges: list of ProcedurePrivilege
+        """
+        self.InstanceId = None
+        self.Accounts = None
+        self.GlobalPrivileges = None
+        self.DatabasePrivileges = None
+        self.TablePrivileges = None
+        self.ColumnPrivileges = None
+        self.ViewPrivileges = None
+        self.FunctionPrivileges = None
+        self.ProcedurePrivileges = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        self.GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivileges") is not None:
+            self.DatabasePrivileges = []
+            for item in params.get("DatabasePrivileges"):
+                obj = DatabasePrivilege()
+                obj._deserialize(item)
+                self.DatabasePrivileges.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self.TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = TablePrivilege()
+                obj._deserialize(item)
+                self.TablePrivileges.append(obj)
+        if params.get("ColumnPrivileges") is not None:
+            self.ColumnPrivileges = []
+            for item in params.get("ColumnPrivileges"):
+                obj = ColumnPrivilege()
+                obj._deserialize(item)
+                self.ColumnPrivileges.append(obj)
+        if params.get("ViewPrivileges") is not None:
+            self.ViewPrivileges = []
+            for item in params.get("ViewPrivileges"):
+                obj = ViewPrivileges()
+                obj._deserialize(item)
+                self.ViewPrivileges.append(obj)
+        if params.get("FunctionPrivileges") is not None:
+            self.FunctionPrivileges = []
+            for item in params.get("FunctionPrivileges"):
+                obj = FunctionPrivilege()
+                obj._deserialize(item)
+                self.FunctionPrivileges.append(obj)
+        if params.get("ProcedurePrivileges") is not None:
+            self.ProcedurePrivileges = []
+            for item in params.get("ProcedurePrivileges"):
+                obj = ProcedurePrivilege()
+                obj._deserialize(item)
+                self.ProcedurePrivileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyAccountPrivilegesResponse(AbstractModel):
+    """ModifyAccountPrivileges response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/237/16177?from_cn_redirect=1) API to query the async task result.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3216,6 +3522,38 @@ class PerformanceMonitorSet(AbstractModel):
         
 
 
+class ProcedurePrivilege(AbstractModel):
+    """Stored procedure permission information
+
+    """
+
+    def __init__(self):
+        """
+        :param Database: Database name
+        :type Database: str
+        :param Procedure: Stored procedure name
+        :type Procedure: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.Procedure = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Procedure = params.get("Procedure")
+        self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ResetAccountPasswordRequest(AbstractModel):
     """ResetAccountPassword request structure.
 
@@ -3498,6 +3836,70 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TsMin = params.get("TsMin")
         self.User = params.get("User")
         self.ExampleSql = params.get("ExampleSql")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class TablePrivilege(AbstractModel):
+    """Table permission
+
+    """
+
+    def __init__(self):
+        """
+        :param Database: Database name
+        :type Database: str
+        :param Table: Table name
+        :type Table: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.Table = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ViewPrivileges(AbstractModel):
+    """View permission information
+
+    """
+
+    def __init__(self):
+        """
+        :param Database: Database name
+        :type Database: str
+        :param View: View name
+        :type View: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.View = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.View = params.get("View")
+        self.Privileges = params.get("Privileges")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
