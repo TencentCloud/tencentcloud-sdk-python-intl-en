@@ -200,7 +200,10 @@ class CdnClient(AbstractClient):
         + Traffic (in bytes)
         + Bandwidth (in bps)
         + Number of requests
-        + Traffic hit rate (in % with two decimal digits)
+        + Number of hit requests
+        + Request hit rate (in %)
+        + Hit traffic (in bytes)
+        + Traffic hit rate (in %)
         + Aggregate list of 2xx status codes and the details of status codes starting with 2 (in entries)
         + Aggregate list of 3xx status codes and the details of status codes starting with 3 (in entries)
         + Aggregate list of 4xx status codes and the details of status codes starting with 4 (in entries)
