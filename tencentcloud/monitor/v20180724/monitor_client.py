@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -757,9 +757,10 @@ class MonitorClient(AbstractClient):
 
 
     def GetMonitorData(self, request):
-        """This API is used to get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.
-        API call rate limit: 20 calls/second (1,200 calls/minute). A single request can obtain the data of up to 10 instances and up to 1,440 data points.
-        This API may fail due to the rate limit if you need to call a lot of metrics and objects. We recommended that you spread the call requests over time.
+        """This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, please use the API [DescribeStatisticData](https://intl.cloud.tencent.com/document/product/248/51845?from_cn_redirect=1).
+        You can get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.
+        API call rate limit: 20 calls/second (1,200 calls/minute). A single request can get the data of up to 10 instances at up to 1,440 data points.
+        If you need to call a large number of APIs to pull metrics or objects at a time, some APIs may fail to be called due to the rate limit. We suggest you evenly arrange API calls at a time granularity.
 
         :param request: Request instance for GetMonitorData.
         :type request: :class:`tencentcloud.monitor.v20180724.models.GetMonitorDataRequest`

@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -40,6 +40,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChangeReplicaToMaster(self, request):
+        """This API is used to promote a replica node group of a multi-AZ deployed instance to master node group.
+
+        :param request: Request instance for ChangeReplicaToMaster.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ChangeReplicaToMasterRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ChangeReplicaToMasterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ChangeReplicaToMaster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeReplicaToMasterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# CAM signature/authentication error.
+AUTHFAILURE = 'AuthFailure'
+
+# Invalid authorization.
+AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
 
 # Failed to add the security group information of an instance.
 FAILEDOPERATION_ADDINSTANCEINFOFAILED = 'FailedOperation.AddInstanceInfoFailed'
@@ -80,6 +86,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # The parameter is empty.
 INVALIDPARAMETER_EMPTYPARAM = 'InvalidParameter.EmptyParam'
 
+# Invalid parameter.
+INVALIDPARAMETER_ILLEGALPARAMETERERROR = 'InvalidParameter.IllegalParameterError'
+
 # Invalid service parameter.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
@@ -91,6 +100,9 @@ INVALIDPARAMETER_PERIOD = 'InvalidParameter.Period'
 
 # The API has no CAM permissions.
 INVALIDPARAMETER_PERMISSIONDENIED = 'InvalidParameter.PermissionDenied'
+
+# Invalid parameter value.
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # The backup does not exist.
 INVALIDPARAMETERVALUE_BACKUPNOTEXISTS = 'InvalidParameterValue.BackupNotExists'

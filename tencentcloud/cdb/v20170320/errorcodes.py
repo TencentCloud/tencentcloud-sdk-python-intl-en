@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -202,6 +202,9 @@ INVALIDPARAMETER_INVALIDNAME = 'InvalidParameter.InvalidName'
 
 # Invalid parameter value
 INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError'
+
+# 
+INVALIDPARAMETER_JSONUNMARSHALERROR = 'InvalidParameter.JsonUnmarshalError'
 
 # The quota of placement group resources has been exceeded.
 INVALIDPARAMETER_OVERDEPLOYGROUPQUOTA = 'InvalidParameter.OverDeployGroupQuota'
