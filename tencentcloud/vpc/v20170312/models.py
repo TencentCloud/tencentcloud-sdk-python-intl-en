@@ -4269,6 +4269,65 @@ class CreateVpnGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateVpnGatewayRoutesRequest(AbstractModel):
+    """CreateVpnGatewayRoutes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN gateway ID
+        :type VpnGatewayId: str
+        :param Routes: Destination route list of a VPN gateway
+        :type Routes: list of VpnGatewayRoute
+        """
+        self.VpnGatewayId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpnGatewayRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVpnGatewayRoutesResponse(AbstractModel):
+    """CreateVpnGatewayRoutes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Routes: Destination routes of a VPN gateway
+        :type Routes: list of VpnGatewayRoute
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Routes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpnGatewayRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CrossBorderCompliance(AbstractModel):
     """Compliance review request
 
@@ -5836,6 +5895,51 @@ class DeleteVpnGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteVpnGatewayRoutesRequest(AbstractModel):
+    """DeleteVpnGatewayRoutes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: Instance ID of the VPN gateway
+        :type VpnGatewayId: str
+        :param RouteIds: List of route IDs
+        :type RouteIds: list of str
+        """
+        self.VpnGatewayId = None
+        self.RouteIds = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.RouteIds = params.get("RouteIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVpnGatewayRoutesResponse(AbstractModel):
+    """DeleteVpnGatewayRoutes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAccountAttributesRequest(AbstractModel):
     """DescribeAccountAttributes request structure.
 
@@ -6838,6 +6942,10 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         :type ServiceEndDate: str
         :param State: (Exact match) Status. Valid values: `PENDING`, `APPROVED`, and `DENY`.
         :type State: str
+        :param Offset: The offset value
+        :type Offset: int
+        :param Limit: Quantity of returned items
+        :type Limit: int
         """
         self.ServiceProvider = None
         self.ComplianceId = None
@@ -6855,6 +6963,8 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         self.ServiceStartDate = None
         self.ServiceEndDate = None
         self.State = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
@@ -6874,6 +6984,8 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         self.ServiceStartDate = params.get("ServiceStartDate")
         self.ServiceEndDate = params.get("ServiceEndDate")
         self.State = params.get("State")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9576,6 +9688,73 @@ class DescribeVpnGatewayCcnRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpnGatewayRoutesRequest(AbstractModel):
+    """DescribeVpnGatewayRoutes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN gateway ID
+        :type VpnGatewayId: str
+        :param Filters: Filter condition. Valid values: `DestinationCidr`, `InstanceId`, and `InstanceType`.
+        :type Filters: list of Filter
+        :param Offset: Offset. Default value: 0
+        :type Offset: int
+        :param Limit: Number of returned results per page. Default value: 20; maximum value: 100
+        :type Limit: int
+        """
+        self.VpnGatewayId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVpnGatewayRoutesResponse(AbstractModel):
+    """DescribeVpnGatewayRoutes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Routes: Destination routes of the VPN gateway
+        :type Routes: list of VpnGatewayRoute
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Routes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpnGatewayRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpnGatewaysRequest(AbstractModel):
     """DescribeVpnGateways request structure.
 
@@ -11187,9 +11366,9 @@ class IPSECOptionsSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param EncryptAlgorithm: Encryption algorithm. Available values: '3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', and 'NULL'. Default is AES-CBC-128.
+        :param EncryptAlgorithm: Encryption algorithm. Valid values: `3DES-CBC`, `AES-CBC-128`, `AES-CBC-192`, `AES-CBC-256`, `DES-CBC`, `SM4`, and `NULL`; default value: `AES-CBC-128`.
         :type EncryptAlgorithm: str
-        :param IntegrityAlgorith: Verification algorithm. Available value: 'MD5' and 'SHA1'. Default is:
+        :param IntegrityAlgorith: Authentication algorithm. Valid values: `MD5`, `SHA1` and `SHA-256`; default value: `SHA1`.
         :type IntegrityAlgorith: str
         :param IPSECSaLifetimeSeconds: IPsec SA lifetime (in sec). Value range: 180-604800
         :type IPSECSaLifetimeSeconds: int
@@ -13815,6 +13994,66 @@ class ModifyVpnGatewayCcnRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyVpnGatewayRoutesRequest(AbstractModel):
+    """ModifyVpnGatewayRoutes request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN gateway ID
+        :type VpnGatewayId: str
+        :param Routes: Route parameters to modify
+        :type Routes: list of VpnGatewayRouteModify
+        """
+        self.VpnGatewayId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpnGatewayRouteModify()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVpnGatewayRoutesResponse(AbstractModel):
+    """ModifyVpnGatewayRoutes response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Routes: Route information of the VPN gateway
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Routes: list of VpnGatewayRoute
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Routes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpnGatewayRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class NatGateway(AbstractModel):
     """NAT gateway object.
 
@@ -15541,16 +15780,15 @@ class Route(AbstractModel):
         :param DestinationCidrBlock: Destination IP range, such as 112.20.51.0/24. Values cannot be in the VPC IP range.
         :type DestinationCidrBlock: str
         :param GatewayType: Type of the next hop. Valid values:
-CVM: public gateway CVM;
-VPN: VPN gateway;
-DIRECTCONNECT: direct connect gateway;
-PEERCONNECTION: peering connection;
-SSLVPN: SSL VPN gateway;
-NAT: NAT Gateway; 
-NORMAL_CVM: normal CVM;
-EIP: public IP address of the CVM;
-CCN: Cloud Connect Network;
-LOCAL_GATEWAY: local gateway.
+`CVM`: public gateway CVM;
+`VPN`: VPN gateway;
+`DIRECTCONNECT`: direct connect gateway;
+`PEERCONNECTION`: peering connection;
+`HAVIP`: HAVIP;
+`NAT`: NAT Gateway; 
+`NORMAL_CVM`: normal CVM;
+`EIP`: public IP address of the CVM;
+`LOCAL_GATEWAY`: local gateway.
         :type GatewayType: str
         :param GatewayId: Next hop address. You simply need to specify the gateway ID of a different next hop type, and the system will automatically match the next hop address.
 Important note: When the GatewayType is EIP, the GatewayId has a fixed value `0`
@@ -16088,7 +16326,7 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
         :type CcnId: str
         :param CcnRegionBandwidthLimits: The outbound bandwidth cap of each CCN region.
         :type CcnRegionBandwidthLimits: list of CcnRegionBandwidthLimit
-        :param SetDefaultLimitFlag: Whether to restore the region outbound bandwidth limit or inter-region bandwidth limit to default 1Gbps. Valid values: `false` (no); `true` (yes). Default value: `false`. When the parameter is set to `true`, the CCN instance created will not be displayed in the console.
+        :param SetDefaultLimitFlag: Whether to restore the region outbound bandwidth limit or inter-region bandwidth limit to default 1 Gbps. Valid values: `false` (no); `true` (yes). Default value: `false`. When the parameter is set to `true`, the CCN instance created will not be displayed in the console.
         :type SetDefaultLimitFlag: bool
         """
         self.CcnId = None
@@ -17008,6 +17246,90 @@ class VpnGatewayQuota(AbstractModel):
         self.Bandwidth = params.get("Bandwidth")
         self.Cname = params.get("Cname")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpnGatewayRoute(AbstractModel):
+    """Destination routes of a VPN gateway
+
+    """
+
+    def __init__(self):
+        """
+        :param DestinationCidrBlock: Destination IDC IP range
+        :type DestinationCidrBlock: str
+        :param InstanceType: Next hop type (type of the associated instance). Valid values: `VPNCONN` (VPN tunnel) and `CCN` (CCN instance)
+        :type InstanceType: str
+        :param InstanceId: Instance ID of the next hop
+        :type InstanceId: str
+        :param Priority: Priority. Valid values: `0` and `100`
+        :type Priority: int
+        :param Status: Status. Valid values: `ENABLE` and `DISABLE`
+        :type Status: str
+        :param RouteId: Route ID
+        :type RouteId: str
+        :param Type: Route type. Valid values: `VPC`, `CCN` (CCN-propagated route), `Static`, and `BGP`.
+        :type Type: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param UpdateTime: Update time
+        :type UpdateTime: str
+        """
+        self.DestinationCidrBlock = None
+        self.InstanceType = None
+        self.InstanceId = None
+        self.Priority = None
+        self.Status = None
+        self.RouteId = None
+        self.Type = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceId = params.get("InstanceId")
+        self.Priority = params.get("Priority")
+        self.Status = params.get("Status")
+        self.RouteId = params.get("RouteId")
+        self.Type = params.get("Type")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpnGatewayRouteModify(AbstractModel):
+    """Modify route status of the VPN gateway
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteId: Route ID of the VPN gateway
+        :type RouteId: str
+        :param Status: Route status of the VPN gateway. Valid values: `ENABLE`, and `DISABLE`.
+        :type Status: str
+        """
+        self.RouteId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RouteId = params.get("RouteId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

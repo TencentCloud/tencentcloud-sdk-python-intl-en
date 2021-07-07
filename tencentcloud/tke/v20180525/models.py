@@ -459,6 +459,9 @@ Note: this field may return null, indicating that no valid value is obtained.
         :param DeletionProtection: Whether Deletion Protection is enabled
 Note: this field may return null, indicating that no valid value is obtained.
         :type DeletionProtection: bool
+        :param EnableExternalNode: Specifies whether the cluster supports external nodes.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type EnableExternalNode: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -478,6 +481,7 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.ContainerRuntime = None
         self.CreatedTime = None
         self.DeletionProtection = None
+        self.EnableExternalNode = None
 
 
     def _deserialize(self, params):
@@ -506,6 +510,7 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.ContainerRuntime = params.get("ContainerRuntime")
         self.CreatedTime = params.get("CreatedTime")
         self.DeletionProtection = params.get("DeletionProtection")
+        self.EnableExternalNode = params.get("EnableExternalNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -560,6 +565,8 @@ The following conditions are required to use ipvs-bpf network mode:
         :type EnableCustomizedPodCIDR: bool
         :param BasePodNumber: The basic number of Pods in custom mode
         :type BasePodNumber: int
+        :param CiliumMode: Specifies whether to enable Cilium. If it’s left empty, Cilium is not enabled. If `clusterIP` is passed in, it means to enable Cilium to support the clusterIP service type.
+        :type CiliumMode: str
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -577,6 +584,7 @@ The following conditions are required to use ipvs-bpf network mode:
         self.RuntimeVersion = None
         self.EnableCustomizedPodCIDR = None
         self.BasePodNumber = None
+        self.CiliumMode = None
 
 
     def _deserialize(self, params):
@@ -598,6 +606,7 @@ The following conditions are required to use ipvs-bpf network mode:
         self.RuntimeVersion = params.get("RuntimeVersion")
         self.EnableCustomizedPodCIDR = params.get("EnableCustomizedPodCIDR")
         self.BasePodNumber = params.get("BasePodNumber")
+        self.CiliumMode = params.get("CiliumMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
