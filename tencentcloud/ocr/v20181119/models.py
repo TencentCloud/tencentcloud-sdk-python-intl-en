@@ -44,6 +44,8 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
         :type EnableReshootCheck: bool
         :param EnableBorderCheck: Whether to enable obscured border check. If the input image is a bank card with obscured border, an alarm will be returned. Default value: `false`
         :type EnableBorderCheck: bool
+        :param EnableQualityValue: Whether to return the image quality value, which measures how clear an image is. Default value: `false`
+        :type EnableQualityValue: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
@@ -52,6 +54,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
         self.EnableCopyCheck = None
         self.EnableReshootCheck = None
         self.EnableBorderCheck = None
+        self.EnableQualityValue = None
 
 
     def _deserialize(self, params):
@@ -62,6 +65,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
         self.EnableCopyCheck = params.get("EnableCopyCheck")
         self.EnableReshootCheck = params.get("EnableReshootCheck")
         self.EnableBorderCheck = params.get("EnableBorderCheck")
+        self.EnableQualityValue = params.get("EnableQualityValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -103,6 +107,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 Multiple warning codes may be returned at a time.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type WarningCode: list of int
+        :param QualityValue: Image quality value, which is returned when `EnableQualityValue` is set to `true`. The smaller the value, the less clear the image is. Value range: 0−100 (a threshold greater than or equal to 50 is recommended.)
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type QualityValue: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -114,6 +121,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.BorderCutImage = None
         self.CardNoImage = None
         self.WarningCode = None
+        self.QualityValue = None
         self.RequestId = None
 
 
@@ -126,6 +134,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.BorderCutImage = params.get("BorderCutImage")
         self.CardNoImage = params.get("CardNoImage")
         self.WarningCode = params.get("WarningCode")
+        self.QualityValue = params.get("QualityValue")
         self.RequestId = params.get("RequestId")
 
 
@@ -157,6 +166,63 @@ class Coord(AbstractModel):
         
 
 
+class DetectedWordCoordPoint(AbstractModel):
+    """Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner
+
+    """
+
+    def __init__(self):
+        """
+        :param WordCoordinate: Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner
+        :type WordCoordinate: list of Coord
+        """
+        self.WordCoordinate = None
+
+
+    def _deserialize(self, params):
+        if params.get("WordCoordinate") is not None:
+            self.WordCoordinate = []
+            for item in params.get("WordCoordinate"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.WordCoordinate.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectedWords(AbstractModel):
+    """Information about a character detected, including the character itself and its confidence
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: Confidence. Value range: 0–100
+        :type Confidence: int
+        :param Character: A possible character
+        :type Character: str
+        """
+        self.Confidence = None
+        self.Character = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Character = params.get("Character")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GeneralAccurateOCRRequest(AbstractModel):
     """GeneralAccurateOCR request structure.
 
@@ -172,14 +238,18 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are pr
 The image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
+        :param IsWords: Whether to return the character information. Default value: `false`
+        :type IsWords: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.IsWords = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.IsWords = params.get("IsWords")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -255,6 +325,8 @@ Arabic.
         :type IsPdf: bool
         :param PdfPageNumber: Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1.
         :type PdfPageNumber: int
+        :param IsWords: Whether to return the character information. Default value: `false`
+        :type IsWords: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
@@ -262,6 +334,7 @@ Arabic.
         self.LanguageType = None
         self.IsPdf = None
         self.PdfPageNumber = None
+        self.IsWords = None
 
 
     def _deserialize(self, params):
@@ -271,6 +344,7 @@ Arabic.
         self.LanguageType = params.get("LanguageType")
         self.IsPdf = params.get("IsPdf")
         self.PdfPageNumber = params.get("PdfPageNumber")
+        self.IsWords = params.get("IsWords")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -766,12 +840,18 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
         :type AdvancedInfo: str
         :param ItemPolygon: Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.
         :type ItemPolygon: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
+        :param Words: Information about a character, including the character itself and its confidence. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`
+        :type Words: list of DetectedWords
+        :param WordCoordPoint: Coordinates of a word’s four corners on the input image. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`
+        :type WordCoordPoint: list of DetectedWordCoordPoint
         """
         self.DetectedText = None
         self.Confidence = None
         self.Polygon = None
         self.AdvancedInfo = None
         self.ItemPolygon = None
+        self.Words = None
+        self.WordCoordPoint = None
 
 
     def _deserialize(self, params):
@@ -787,6 +867,18 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
         if params.get("ItemPolygon") is not None:
             self.ItemPolygon = ItemCoord()
             self.ItemPolygon._deserialize(params.get("ItemPolygon"))
+        if params.get("Words") is not None:
+            self.Words = []
+            for item in params.get("Words"):
+                obj = DetectedWords()
+                obj._deserialize(item)
+                self.Words.append(obj)
+        if params.get("WordCoordPoint") is not None:
+            self.WordCoordPoint = []
+            for item in params.get("WordCoordPoint"):
+                obj = DetectedWordCoordPoint()
+                obj._deserialize(item)
+                self.WordCoordPoint.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
