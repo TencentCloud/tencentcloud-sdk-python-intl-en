@@ -212,6 +212,9 @@ INVALIDPARAMETER_UINERROR = 'InvalidParameter.UinError'
 # Limit on number of user groups joined by a sub-user reached.
 INVALIDPARAMETER_USERGROUPFULL = 'InvalidParameter.UserGroupFull'
 
+# Invalid username.
+INVALIDPARAMETER_USERNAMEILLEGAL = 'InvalidParameter.UserNameIllegal'
+
 # User object does not exist
 INVALIDPARAMETER_USERNOTEXIST = 'InvalidParameter.UserNotExist'
 
@@ -238,6 +241,9 @@ OPERATIONDENIED_SUBUIN = 'OperationDenied.SubUin'
 
 # The access key does not match the account.
 OPERATIONDENIED_UINNOTMATCH = 'OperationDenied.UinNotMatch'
+
+# The frequency limit of creating sub-users has been reached.
+REQUESTLIMITEXCEEDED_CREATEUSER = 'RequestLimitExceeded.CreateUser'
 
 # User group does not exist.
 RESOURCENOTFOUND_GROUPNOTEXIST = 'ResourceNotFound.GroupNotExist'

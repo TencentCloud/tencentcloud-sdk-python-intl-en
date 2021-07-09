@@ -194,13 +194,13 @@ INVALIDPARAMETER = 'InvalidParameter'
 # Auto scaling group creation parameter error.
 INVALIDPARAMETER_ASCOMMONERROR = 'InvalidParameter.AsCommonError'
 
-# 
+# The CIDR block conflicts with the CIDR blocks of other clusters.
 INVALIDPARAMETER_CIDRCONFLICTWITHOTHERCLUSTER = 'InvalidParameter.CidrConflictWithOtherCluster'
 
 # The route to create conflicts with existing routes.
 INVALIDPARAMETER_CIDRCONFLICTWITHOTHERROUTE = 'InvalidParameter.CidrConflictWithOtherRoute'
 
-# 
+# The CIDR block conflicts with the VPC’s CIDR block.
 INVALIDPARAMETER_CIDRCONFLICTWITHVPCCIDR = 'InvalidParameter.CidrConflictWithVpcCidr'
 
 # 

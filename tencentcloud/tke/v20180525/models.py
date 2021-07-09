@@ -1573,12 +1573,16 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param MountTarget: Mounting directory
 Note: This field may return null, indicating that no valid value was found.
         :type MountTarget: str
+        :param DiskPartition: The name of the device or partition to mount
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type DiskPartition: str
         """
         self.DiskType = None
         self.FileSystem = None
         self.DiskSize = None
         self.AutoFormatAndMount = None
         self.MountTarget = None
+        self.DiskPartition = None
 
 
     def _deserialize(self, params):
@@ -1587,6 +1591,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.DiskSize = params.get("DiskSize")
         self.AutoFormatAndMount = params.get("AutoFormatAndMount")
         self.MountTarget = params.get("MountTarget")
+        self.DiskPartition = params.get("DiskPartition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3445,12 +3450,14 @@ Note: This field may return null, indicating that no valid value was found.
         :param Labels: Node label array
 Note: This field may return null, indicating that no valid value was found.
         :type Labels: list of Label
-        :param DataDisks: Mounting information of multiple data disks. Ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks, for example `DataDisks` under `RunInstancesPara` of the `CreateClusterInstances` API. You can refer to the example of adding a cluster node with multiple data disks in the CreateClusterInstances API. This parameter does not take effect when the AddExistedInstances API is called.
+        :param DataDisks: Mounting information of multiple data disks. When you create a node, ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks. For example, the `DataDisks` under `RunInstancesPara` of the `CreateClusterInstances` API should be configured accordingly (Referto document of CreateClusterInstances API). When you add an existing node, ensure that the specified partition exists in the node.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DataDisks: list of DataDisk
         :param ExtraArgs: Information about node custom parameters
 Note: This field may return null, indicating that no valid value was found.
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
+        :param DesiredPodNumber: 
+        :type DesiredPodNumber: int
         """
         self.MountTarget = None
         self.DockerGraphPath = None
@@ -3459,6 +3466,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.Labels = None
         self.DataDisks = None
         self.ExtraArgs = None
+        self.DesiredPodNumber = None
 
 
     def _deserialize(self, params):
@@ -3481,6 +3489,7 @@ Note: This field may return null, indicating that no valid value was found.
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
+        self.DesiredPodNumber = params.get("DesiredPodNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

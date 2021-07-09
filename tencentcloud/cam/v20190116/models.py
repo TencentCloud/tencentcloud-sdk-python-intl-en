@@ -1972,6 +1972,56 @@ class GetSAMLProviderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetSecurityLastUsedRequest(AbstractModel):
+    """GetSecurityLastUsed request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretIdList: A parameter used to query the key ID list.
+        :type SecretIdList: list of str
+        """
+        self.SecretIdList = None
+
+
+    def _deserialize(self, params):
+        self.SecretIdList = params.get("SecretIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetSecurityLastUsedResponse(AbstractModel):
+    """GetSecurityLastUsed response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretIdLastUsedRows: List of key ID’s recent usage records.
+        :type SecretIdLastUsedRows: list of SecretIdLastUsed
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SecretIdLastUsedRows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecretIdLastUsedRows") is not None:
+            self.SecretIdLastUsedRows = []
+            for item in params.get("SecretIdLastUsedRows"):
+                obj = SecretIdLastUsed()
+                obj._deserialize(item)
+                self.SecretIdLastUsedRows.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetServiceLinkedRoleDeletionStatusRequest(AbstractModel):
     """GetServiceLinkedRoleDeletionStatus request structure.
 
@@ -3409,6 +3459,35 @@ class SAMLProviderInfo(AbstractModel):
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecretIdLastUsed(AbstractModel):
+    """The last time the key was used.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretId: Key ID.
+        :type SecretId: str
+        :param LastUsedDate: The date when the key ID was last used (the value is obtained one day later).
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type LastUsedDate: str
+        """
+        self.SecretId = None
+        self.LastUsedDate = None
+
+
+    def _deserialize(self, params):
+        self.SecretId = params.get("SecretId")
+        self.LastUsedDate = params.get("LastUsedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
