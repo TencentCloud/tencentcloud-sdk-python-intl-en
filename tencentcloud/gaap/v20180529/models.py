@@ -584,12 +584,15 @@ class CheckProxyCreateRequest(AbstractModel):
         :type Concurrent: int
         :param GroupId: Connection group ID that needs to be entered when a connection is created in a connection group
         :type GroupId: str
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
         self.AccessRegion = None
         self.RealServerRegion = None
         self.Bandwidth = None
         self.Concurrent = None
         self.GroupId = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -598,6 +601,7 @@ class CheckProxyCreateRequest(AbstractModel):
         self.Bandwidth = params.get("Bandwidth")
         self.Concurrent = params.get("Concurrent")
         self.GroupId = params.get("GroupId")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1224,12 +1228,15 @@ class CreateProxyGroupRequest(AbstractModel):
         :type TagSet: list of TagPair
         :param AccessRegionSet: List of acceleration regions, including their names, bandwidth, and concurrence configuration.
         :type AccessRegionSet: list of AccessConfiguration
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
         self.ProjectId = None
         self.GroupName = None
         self.RealServerRegion = None
         self.TagSet = None
         self.AccessRegionSet = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -1248,6 +1255,7 @@ class CreateProxyGroupRequest(AbstractModel):
                 obj = AccessConfiguration()
                 obj._deserialize(item)
                 self.AccessRegionSet.append(obj)
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1309,6 +1317,8 @@ The connection is to be replicated if this parameter is set.
         :type ClonedProxyId: str
         :param BillingType: Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)
         :type BillingType: int
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
         self.ProjectId = None
         self.ProxyName = None
@@ -1321,6 +1331,7 @@ The connection is to be replicated if this parameter is set.
         self.TagSet = None
         self.ClonedProxyId = None
         self.BillingType = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -1340,6 +1351,7 @@ The connection is to be replicated if this parameter is set.
                 self.TagSet.append(obj)
         self.ClonedProxyId = params.get("ClonedProxyId")
         self.BillingType = params.get("BillingType")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1588,6 +1600,10 @@ class CreateTCPListenersRequest(AbstractModel):
         :type ClientIPMethod: int
         :param FailoverSwitch: Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.
         :type FailoverSwitch: int
+        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+        :type UnhealthyThreshold: int
         """
         self.ListenerName = None
         self.Ports = None
@@ -1601,6 +1617,8 @@ class CreateTCPListenersRequest(AbstractModel):
         self.RealServerPorts = None
         self.ClientIPMethod = None
         self.FailoverSwitch = None
+        self.HealthyThreshold = None
+        self.UnhealthyThreshold = None
 
 
     def _deserialize(self, params):
@@ -1616,6 +1634,8 @@ class CreateTCPListenersRequest(AbstractModel):
         self.RealServerPorts = params.get("RealServerPorts")
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.FailoverSwitch = params.get("FailoverSwitch")
+        self.HealthyThreshold = params.get("HealthyThreshold")
+        self.UnhealthyThreshold = params.get("UnhealthyThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2104,12 +2124,16 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
         """
         :param DestRegion: Origin server region: the DescribeDestRegions API returns the value of `RegionId` field of `DestRegionSet`.
         :type DestRegion: str
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
         self.DestRegion = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
         self.DestRegion = params.get("DestRegion")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2904,12 +2928,13 @@ class DescribeProxiesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of results to be returned. The default value is 20, and the maximum value is 100.
         :type Limit: int
-        :param Filters: Filter conditions.   
-The upper limit on Filters for each request is 10, and the upper limit on Filter.Values is 5. This parameter does not support specifying InstanceIds and Filters at the same time. 
-ProjectId - String - Required: No - Filter by a project ID.    
-AccessRegion - String - Required: No - Filter by an access region.    
-RealServerRegion - String - Required: No - Filter by an origin server region.
-GroupId - String - Required: No - Filter by a connection group ID.
+        :param Filters: Filter condition   
+The upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` with this parameter. 
+ProjectId - String - Required: No - Filter by project ID.   
+AccessRegion - String - Required: No - Filter by access region.    
+RealServerRegion - String - Required: No - Filter by origin server region.
+GroupId - String - Required: No - Filter by connection group ID.
+IPAddressVersion - String - Required: No - Filter by IP version.
         :type Filters: list of Filter
         :param ProxyIds: Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's a new parameter, and replaces InstanceIds.
         :type ProxyIds: list of str
@@ -3649,6 +3674,24 @@ class DescribeRegionAndPriceRequest(AbstractModel):
     """DescribeRegionAndPrice request structure.
 
     """
+
+    def __init__(self):
+        """
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
+        """
+        self.IPAddressVersion = None
+
+
+    def _deserialize(self, params):
+        self.IPAddressVersion = params.get("IPAddressVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeRegionAndPriceResponse(AbstractModel):
@@ -4808,6 +4851,8 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type Concurrent: int
         :param BillingType: Billing mode. Valid values: 0: bill-by-bandwidth (default value); 1: bill-by-traffic.
         :type BillingType: int
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+        :type IPAddressVersion: str
         """
         self.AccessRegion = None
         self.Bandwidth = None
@@ -4816,6 +4861,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.RealServerRegion = None
         self.Concurrent = None
         self.BillingType = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -4826,6 +4872,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.RealServerRegion = params.get("RealServerRegion")
         self.Concurrent = params.get("Concurrent")
         self.BillingType = params.get("BillingType")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5735,6 +5782,10 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         :type HealthCheck: int
         :param FailoverSwitch: Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.
         :type FailoverSwitch: int
+        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 -10.
+        :type UnhealthyThreshold: int
         """
         self.ListenerId = None
         self.GroupId = None
@@ -5745,6 +5796,8 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         self.ConnectTimeout = None
         self.HealthCheck = None
         self.FailoverSwitch = None
+        self.HealthyThreshold = None
+        self.UnhealthyThreshold = None
 
 
     def _deserialize(self, params):
@@ -5757,6 +5810,8 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         self.ConnectTimeout = params.get("ConnectTimeout")
         self.HealthCheck = params.get("HealthCheck")
         self.FailoverSwitch = params.get("FailoverSwitch")
+        self.HealthyThreshold = params.get("HealthyThreshold")
+        self.UnhealthyThreshold = params.get("UnhealthyThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6100,6 +6155,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ClientIPMethod: Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ClientIPMethod: list of int
+        :param IPAddressVersion: IP version. Valid values: `IPv4` (default), `IPv6`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IPAddressVersion: str
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -6117,6 +6175,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.PolicyId = None
         self.Version = None
         self.ClientIPMethod = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -6143,6 +6202,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.PolicyId = params.get("PolicyId")
         self.Version = params.get("Version")
         self.ClientIPMethod = params.get("ClientIPMethod")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6337,6 +6397,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ClientIPMethod: Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ClientIPMethod: list of int
+        :param IPAddressVersion: IP version. Valid values: `IPv4`, `IPv6`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type IPAddressVersion: str
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6365,6 +6428,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ModifyConfigTime = None
         self.ProxyType = None
         self.ClientIPMethod = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -6404,6 +6468,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ModifyConfigTime = params.get("ModifyConfigTime")
         self.ProxyType = params.get("ProxyType")
         self.ClientIPMethod = params.get("ClientIPMethod")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7065,6 +7130,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ClientIPMethod: Describes how the listener obtains client IPs. 0: TOA; 1: Proxy Protocol.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ClientIPMethod: int
+        :param HealthyThreshold: Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type UnhealthyThreshold: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -7081,6 +7152,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RealServerSet = None
         self.CreateTime = None
         self.ClientIPMethod = None
+        self.HealthyThreshold = None
+        self.UnhealthyThreshold = None
 
 
     def _deserialize(self, params):
@@ -7104,6 +7177,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 self.RealServerSet.append(obj)
         self.CreateTime = params.get("CreateTime")
         self.ClientIPMethod = params.get("ClientIPMethod")
+        self.HealthyThreshold = params.get("HealthyThreshold")
+        self.UnhealthyThreshold = params.get("UnhealthyThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -276,34 +276,6 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreatePaiInstance(self, request):
-        """This API (CreatePaiInstance) is used to create a PAI instance.
-
-        :param request: Request instance for CreatePaiInstance.
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreatePaiInstanceRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreatePaiInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreatePaiInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreatePaiInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateScalingPolicy(self, request):
         """This API (CreateScalingPolicy) is used to create an alarm trigger policy.
 
@@ -769,37 +741,6 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePaiInstances(self, request):
-        """This API (DescribePaiInstances) is used to query the information of PAI instances.
-
-        * You can query the detailed information of PAI instances based on information such as instance ID and instance domain name. For more information on filters, see `Filter`.
-        * If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of PAI instances of the current user will be returned.
-
-        :param request: Request instance for DescribePaiInstances.
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribePaiInstancesRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribePaiInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribePaiInstances", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribePaiInstancesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeScalingPolicies(self, request):
         """This API (DescribeScalingPolicies) is used to query alarm trigger policies.
 
@@ -1166,34 +1107,6 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyScheduledActionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def PreviewPaiDomainName(self, request):
-        """This API (PreviewPaiDomainName) is used to preview a PAI domain name.
-
-        :param request: Request instance for PreviewPaiDomainName.
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.PreviewPaiDomainNameRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.PreviewPaiDomainNameResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("PreviewPaiDomainName", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.PreviewPaiDomainNameResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

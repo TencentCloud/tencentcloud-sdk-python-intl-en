@@ -619,6 +619,10 @@ Notes about this policy:
 <br><li> During instance creation, apply the multi-model policy and then apply the multi-availability zones/subnet policy. For example, if you have models A and B and subnets 1, 2, and 3 (based on the PRIORITY policy), creation will be attempted in the following order: A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 (not B1) is tried next.
 <br><li> No matter what policy is used, a single scaling event always uses a specific configuration at priority (model * availability zone/subnet).
         :type MultiZoneSubnetPolicy: str
+        :param HealthCheckType: Health check type of instances in a scaling group.<br><li>CVM: confirm whether an instance is healthy based on the network status. If the pinged instance is unreachable, the instance will be considered unhealthy. For more information, see [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1)<br><li>CLB: confirm whether an instance is healthy based on the CLB health check status. For more information, see [Health Check Overview](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).<br>If the parameter is set to `CLB`, the scaling group will check both the network status and the CLB health check status. If the network check indicates unhealthy, the `HealthStatus` field will return `UNHEALTHY`. If the CLB health check indicates unhealthy, the `HealthStatus` field will return `CLB_UNHEALTHY`. If both checks indicate unhealthy, the `HealthStatus` field will return `UNHEALTHY|CLB_UNHEALTHY`. Default value: `CLB`.
+        :type HealthCheckType: str
+        :param LoadBalancerHealthCheckGracePeriod: Grace period of the CLB health check during which the `IN_SERVICE` instances added will not be marked as `CLB_UNHEALTHY`.<br>Valid range: 0-7200, in seconds. Default value: `0`.
+        :type LoadBalancerHealthCheckGracePeriod: int
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -639,6 +643,8 @@ Notes about this policy:
         self.ServiceSettings = None
         self.Ipv6AddressCount = None
         self.MultiZoneSubnetPolicy = None
+        self.HealthCheckType = None
+        self.LoadBalancerHealthCheckGracePeriod = None
 
 
     def _deserialize(self, params):
@@ -673,6 +679,8 @@ Notes about this policy:
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
+        self.HealthCheckType = params.get("HealthCheckType")
+        self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -997,97 +1005,6 @@ class CreateNotificationConfigurationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
-        self.RequestId = params.get("RequestId")
-
-
-class CreatePaiInstanceRequest(AbstractModel):
-    """CreatePaiInstance request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param DomainName: PAI instance domain name.
-        :type DomainName: str
-        :param InternetAccessible: Information of the public network bandwidth configuration.
-        :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
-        :param InitScript: Base64-encoded string of the launch script.
-        :type InitScript: str
-        :param Zones: List of availability zones.
-        :type Zones: list of str
-        :param VpcId: VPC ID.
-        :type VpcId: str
-        :param SubnetIds: List of subnets.
-        :type SubnetIds: list of str
-        :param InstanceName: Instance display name.
-        :type InstanceName: str
-        :param InstanceTypes: List of instance models.
-        :type InstanceTypes: list of str
-        :param LoginSettings: Instance login settings.
-        :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
-        :param InstanceChargeType: Instance billing type.
-        :type InstanceChargeType: str
-        :param InstanceChargePrepaid: Relevant parameter settings for the prepaid mode (i.e., monthly subscription). This parameter can specify the purchased usage period, whether to set automatic renewal, and other attributes of the instance purchased on a prepaid basis. If the billing method of the specified instance is prepaid, this parameter is required.
-        :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        """
-        self.DomainName = None
-        self.InternetAccessible = None
-        self.InitScript = None
-        self.Zones = None
-        self.VpcId = None
-        self.SubnetIds = None
-        self.InstanceName = None
-        self.InstanceTypes = None
-        self.LoginSettings = None
-        self.InstanceChargeType = None
-        self.InstanceChargePrepaid = None
-
-
-    def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        if params.get("InternetAccessible") is not None:
-            self.InternetAccessible = InternetAccessible()
-            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
-        self.InitScript = params.get("InitScript")
-        self.Zones = params.get("Zones")
-        self.VpcId = params.get("VpcId")
-        self.SubnetIds = params.get("SubnetIds")
-        self.InstanceName = params.get("InstanceName")
-        self.InstanceTypes = params.get("InstanceTypes")
-        if params.get("LoginSettings") is not None:
-            self.LoginSettings = LoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
-        self.InstanceChargeType = params.get("InstanceChargeType")
-        if params.get("InstanceChargePrepaid") is not None:
-            self.InstanceChargePrepaid = InstanceChargePrepaid()
-            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreatePaiInstanceResponse(AbstractModel):
-    """CreatePaiInstance response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param InstanceIdSet: This parameter is returned when an instance is created via this API, representing one or more instance `IDs`. The return of the instance `ID` list does not mean that the instance is created successfully. You can find out whether the instance is created by checking the status of the instance `ID` in the InstancesSet returned by the [DescribeInstances API](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). If the status of the instance changes from "pending" to "running", the instance is created successfully.
-        :type InstanceIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.InstanceIdSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.InstanceIdSet = params.get("InstanceIdSet")
         self.RequestId = params.get("RequestId")
 
 
@@ -2067,77 +1984,6 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
                 obj = AutoScalingNotification()
                 obj._deserialize(item)
                 self.AutoScalingNotificationSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribePaiInstancesRequest(AbstractModel):
-    """DescribePaiInstances request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param InstanceIds: Queries by PAI instance ID.
-        :type InstanceIds: list of str
-        :param Filters: Filter.
-        :type Filters: list of Filter
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
-        :type Limit: int
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        """
-        self.InstanceIds = None
-        self.Filters = None
-        self.Limit = None
-        self.Offset = None
-
-
-    def _deserialize(self, params):
-        self.InstanceIds = params.get("InstanceIds")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribePaiInstancesResponse(AbstractModel):
-    """DescribePaiInstances response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: Number of eligible PAI instances
-        :type TotalCount: int
-        :param PaiInstanceSet: PAI instance details
-        :type PaiInstanceSet: list of PaiInstance
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.PaiInstanceSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("PaiInstanceSet") is not None:
-            self.PaiInstanceSet = []
-            for item in params.get("PaiInstanceSet"):
-                obj = PaiInstance()
-                obj._deserialize(item)
-                self.PaiInstanceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3294,6 +3140,10 @@ Notes about this policy:
 <br><li> During instance creation, apply the multi-model policy and then apply the multi-availability zones/subnet policy. For example, if you have models A and B and subnets 1, 2, and 3 (based on the PRIORITY policy), creation will be attempted in the following order: A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 (not B1) is tried next.
 <br><li> No matter what policy is used, a single scaling event always uses a specific configuration at priority (model * availability zone/subnet).
         :type MultiZoneSubnetPolicy: str
+        :param HealthCheckType: Health check type of instances in a scaling group.<br><li>CVM: confirm whether an instance is healthy based on the network status. If the pinged instance is unreachable, the instance will be considered unhealthy. For more information, see [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1)<br><li>CLB: confirm whether an instance is healthy based on the CLB health check status. For more information, see [Health Check Overview](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).
+        :type HealthCheckType: str
+        :param LoadBalancerHealthCheckGracePeriod: Grace period of the CLB health check
+        :type LoadBalancerHealthCheckGracePeriod: int
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -3312,6 +3162,8 @@ Notes about this policy:
         self.ServiceSettings = None
         self.Ipv6AddressCount = None
         self.MultiZoneSubnetPolicy = None
+        self.HealthCheckType = None
+        self.LoadBalancerHealthCheckGracePeriod = None
 
 
     def _deserialize(self, params):
@@ -3334,6 +3186,8 @@ Notes about this policy:
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
+        self.HealthCheckType = params.get("HealthCheckType")
+        self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3815,83 +3669,6 @@ class NotificationTarget(AbstractModel):
         
 
 
-class PaiInstance(AbstractModel):
-    """PAI instance
-
-    """
-
-    def __init__(self):
-        """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param DomainName: Instance domain name
-        :type DomainName: str
-        :param PaiMateUrl: URL of the PAI management page
-        :type PaiMateUrl: str
-        """
-        self.InstanceId = None
-        self.DomainName = None
-        self.PaiMateUrl = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.DomainName = params.get("DomainName")
-        self.PaiMateUrl = params.get("PaiMateUrl")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PreviewPaiDomainNameRequest(AbstractModel):
-    """PreviewPaiDomainName request structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param DomainNameType: Domain name type
-        :type DomainNameType: str
-        """
-        self.DomainNameType = None
-
-
-    def _deserialize(self, params):
-        self.DomainNameType = params.get("DomainNameType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PreviewPaiDomainNameResponse(AbstractModel):
-    """PreviewPaiDomainName response structure.
-
-    """
-
-    def __init__(self):
-        """
-        :param DomainName: Available PAI domain name
-        :type DomainName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.DomainName = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.RequestId = params.get("RequestId")
-
-
 class RemoveInstancesRequest(AbstractModel):
     """RemoveInstances request structure.
 
@@ -4217,14 +3994,18 @@ CLASSIC_SCALING: this is the typical scaling method, which creates and terminate
 WAKE_UP_STOPPED_SCALING: this scaling method first tries to start stopped instances. If the number of instances woken up is insufficient, the system creates new instances for scale-out. For scale-in, instances are terminated as in the typical method. You can use the StopAutoScalingInstances API to stop instances in the scaling group. Scale-out operations triggered by alarms will still create new instances.
 Default value: CLASSIC_SCALING
         :type ScalingMode: str
+        :param ReplaceLoadBalancerUnhealthy: Enable unhealthy instance replacement. If this feature is enabled, AS will replace instances that are found unhealthy in the CLB health check. If this parameter is not specified, the default value `False` will be used.
+        :type ReplaceLoadBalancerUnhealthy: bool
         """
         self.ReplaceMonitorUnhealthy = None
         self.ScalingMode = None
+        self.ReplaceLoadBalancerUnhealthy = None
 
 
     def _deserialize(self, params):
         self.ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
         self.ScalingMode = params.get("ScalingMode")
+        self.ReplaceLoadBalancerUnhealthy = params.get("ReplaceLoadBalancerUnhealthy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
