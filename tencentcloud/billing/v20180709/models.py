@@ -692,6 +692,10 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :type NeedRecordNum: int
         :param ActionType: 
         :type ActionType: str
+        :param ResourceId: ID of the instance to be queried
+        :type ResourceId: str
+        :param PayMode: Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)
+        :type PayMode: str
         """
         self.Offset = None
         self.Limit = None
@@ -699,6 +703,8 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.Month = None
         self.NeedRecordNum = None
         self.ActionType = None
+        self.ResourceId = None
+        self.PayMode = None
 
 
     def _deserialize(self, params):
@@ -708,6 +714,8 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.Month = params.get("Month")
         self.NeedRecordNum = params.get("NeedRecordNum")
         self.ActionType = params.get("ActionType")
+        self.ResourceId = params.get("ResourceId")
+        self.PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

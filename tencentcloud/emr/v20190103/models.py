@@ -266,6 +266,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ProductId: Cluster version ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProductId: int
+        :param Zone: Availability zone
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Zone: str
         """
         self.Id = None
         self.ClusterId = None
@@ -296,6 +299,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ServiceClass = None
         self.AliasInfo = None
         self.ProductId = None
+        self.Zone = None
 
 
     def _deserialize(self, params):
@@ -335,6 +339,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ServiceClass = params.get("ServiceClass")
         self.AliasInfo = params.get("AliasInfo")
         self.ProductId = params.get("ProductId")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -850,6 +855,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param CbsEncrypt: Whether to enable CBS encryption
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CbsEncrypt: int
+        :param ApplicationRole: Custom application role
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type ApplicationRole: str
+        :param SecurityGroups: Security groups
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type SecurityGroups: list of str
         """
         self.SoftInfo = None
         self.MasterNodeSize = None
@@ -867,6 +878,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SecurityOn = None
         self.SecurityGroup = None
         self.CbsEncrypt = None
+        self.ApplicationRole = None
+        self.SecurityGroups = None
 
 
     def _deserialize(self, params):
@@ -894,6 +907,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SecurityOn = params.get("SecurityOn")
         self.SecurityGroup = params.get("SecurityGroup")
         self.CbsEncrypt = params.get("CbsEncrypt")
+        self.ApplicationRole = params.get("ApplicationRole")
+        self.SecurityGroups = params.get("SecurityGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -55,7 +55,7 @@ class CreateInstanceRequest(AbstractModel):
         """
         :param Zone: Availability Zone
         :type Zone: str
-        :param EsVersion: Instance version ("5.6.4", "6.4.3", "6.8.2", or "7.5.1")
+        :param EsVersion: Instance version. Valid values: `5.6.4`, `6.4.3`, `6.8.2`, `7.5.1`, `7.10.1`
         :type EsVersion: str
         :param VpcId: VPC ID
         :type VpcId: str
@@ -117,6 +117,8 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         :type BasicSecurityType: int
         :param SceneType: Scenario template type. 0: not enabled; 1: general; 2: log; 3: search
         :type SceneType: int
+        :param WebNodeTypeInfo: Visual node configuration
+        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         self.Zone = None
         self.EsVersion = None
@@ -146,6 +148,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         self.TagList = None
         self.BasicSecurityType = None
         self.SceneType = None
+        self.WebNodeTypeInfo = None
 
 
     def _deserialize(self, params):
@@ -192,6 +195,9 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
                 self.TagList.append(obj)
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.SceneType = params.get("SceneType")
+        if params.get("WebNodeTypeInfo") is not None:
+            self.WebNodeTypeInfo = WebNodeTypeInfo()
+            self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -838,6 +844,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param KibanaConfig: Kibana configuration item.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type KibanaConfig: str
+        :param KibanaNodeInfo: Kibana node information
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type KibanaNodeInfo: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -893,6 +902,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SecurityType = None
         self.SceneType = None
         self.KibanaConfig = None
+        self.KibanaNodeInfo = None
 
 
     def _deserialize(self, params):
@@ -975,6 +985,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SecurityType = params.get("SecurityType")
         self.SceneType = params.get("SceneType")
         self.KibanaConfig = params.get("KibanaConfig")
+        if params.get("KibanaNodeInfo") is not None:
+            self.KibanaNodeInfo = KibanaNodeInfo()
+            self.KibanaNodeInfo._deserialize(params.get("KibanaNodeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1039,6 +1052,50 @@ class KeyValue(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KibanaNodeInfo(AbstractModel):
+    """Kibana node information
+
+    """
+
+    def __init__(self):
+        """
+        :param KibanaNodeType: Kibana node specification
+        :type KibanaNodeType: str
+        :param KibanaNodeNum: Number of Kibana nodes
+        :type KibanaNodeNum: int
+        :param KibanaNodeCpuNum: Number of Kibana node's CPUs
+        :type KibanaNodeCpuNum: int
+        :param KibanaNodeMemSize: Kibana node's memory in GB
+        :type KibanaNodeMemSize: int
+        :param KibanaNodeDiskType: Kibana node's disk type
+        :type KibanaNodeDiskType: str
+        :param KibanaNodeDiskSize: Kibana node's disk size
+        :type KibanaNodeDiskSize: int
+        """
+        self.KibanaNodeType = None
+        self.KibanaNodeNum = None
+        self.KibanaNodeCpuNum = None
+        self.KibanaNodeMemSize = None
+        self.KibanaNodeDiskType = None
+        self.KibanaNodeDiskSize = None
+
+
+    def _deserialize(self, params):
+        self.KibanaNodeType = params.get("KibanaNodeType")
+        self.KibanaNodeNum = params.get("KibanaNodeNum")
+        self.KibanaNodeCpuNum = params.get("KibanaNodeCpuNum")
+        self.KibanaNodeMemSize = params.get("KibanaNodeMemSize")
+        self.KibanaNodeDiskType = params.get("KibanaNodeDiskType")
+        self.KibanaNodeDiskSize = params.get("KibanaNodeDiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1139,10 +1196,11 @@ class NodeInfo(AbstractModel):
         :type NodeNum: int
         :param NodeType: Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
         :type NodeType: str
-        :param Type: Node type <li>hotData: hot data node</li>
-<li>warmData: warm data node</li>
-<li>dedicatedMaster: dedicated primary node</li>
-Default value: hotData
+        :param Type: Node type<li>`hotData`: hot data node</li>
+<li>`warmData`: warm data node</li>
+<li>`dedicatedMaster`: dedicated master node</li>
+<li>`kibana`: Kibana node</li>
+Default value: `hotData`
         :type Type: str
         :param DiskType: Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD
         :type DiskType: str
@@ -1912,6 +1970,34 @@ class UpgradeLicenseResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class WebNodeTypeInfo(AbstractModel):
+    """Visual node configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeNum: Number of visual nodes. The value is always `1`.
+        :type NodeNum: int
+        :param NodeType: Visual node specification
+        :type NodeType: str
+        """
+        self.NodeNum = None
+        self.NodeType = None
+
+
+    def _deserialize(self, params):
+        self.NodeNum = params.get("NodeNum")
+        self.NodeType = params.get("NodeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ZoneDetail(AbstractModel):
