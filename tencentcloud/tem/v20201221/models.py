@@ -89,11 +89,14 @@ class CreateCosTokenV2Request(AbstractModel):
         :type OptType: int
         :param SourceChannel: Source channel
         :type SourceChannel: int
+        :param TimeVersion: Input parameter of `deployVersion`
+        :type TimeVersion: str
         """
         self.ServiceId = None
         self.PkgName = None
         self.OptType = None
         self.SourceChannel = None
+        self.TimeVersion = None
 
 
     def _deserialize(self, params):
@@ -101,6 +104,7 @@ class CreateCosTokenV2Request(AbstractModel):
         self.PkgName = params.get("PkgName")
         self.OptType = params.get("OptType")
         self.SourceChannel = params.get("SourceChannel")
+        self.TimeVersion = params.get("TimeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -474,10 +478,12 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         :type PortMappings: list of PortMapping
         :param UseRegistryDefaultConfig: Whether to add the registry’s default configurations.
         :type UseRegistryDefaultConfig: bool
-        :param SettingConfs: 
+        :param SettingConfs: Mounting configurations
         :type SettingConfs: list of MountedSettingConf
-        :param EksService: 
+        :param EksService: EKS access configuration
         :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`
+        :param VersionId: ID of the version that you want to roll back to
+        :type VersionId: str
         """
         self.ServiceId = None
         self.ContainerPort = None
@@ -507,6 +513,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         self.UseRegistryDefaultConfig = None
         self.SettingConfs = None
         self.EksService = None
+        self.VersionId = None
 
 
     def _deserialize(self, params):
@@ -569,6 +576,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         if params.get("EksService") is not None:
             self.EksService = EksService()
             self.EksService._deserialize(params.get("EksService"))
+        self.VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -959,33 +967,44 @@ class DescribeServiceRunPodListV2Response(AbstractModel):
 
 
 class EksService(AbstractModel):
-    """eks service info
+    """EKS service information
 
     """
 
     def __init__(self):
         """
-        :param Name: service name
+        :param Name: Service name
         :type Name: str
-        :param Ports: 
+        :param Ports: Available ports
         :type Ports: list of int
-        :param Yaml: 
+        :param Yaml: Yaml contents
         :type Yaml: str
-        :param ServiceName: 
+        :param ServiceName: Service name
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type ServiceName: str
-        :param VersionName: 
+        :param VersionName: Version name
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type VersionName: str
-        :param ClusterIp: 
+        :param ClusterIp: Private IP
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type ClusterIp: list of str
-        :param ExternalIp: 
+        :param ExternalIp: Public IP
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type ExternalIp: str
-        :param Type: 
+        :param Type: The access type. Valid values:
+- EXTERNAL (internet access)
+- VPC（Intra-VPC access)
+- CLUSTER (Intra-cluster access)
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type Type: str
-        :param SubnetId: 
+        :param SubnetId: Subnet ID. It is filled when the access type is `VPC`.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type SubnetId: str
-        :param LoadBalanceId: 
+        :param LoadBalanceId: Load balancer ID. It is filled when the access type is `EXTERNAL` or `CLUSTER`. It’s created automatically by default.
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type LoadBalanceId: str
-        :param PortMappings: 
+        :param PortMappings: Port Mapping
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type PortMappings: list of PortMapping
         """
         self.Name = None
@@ -1065,6 +1084,64 @@ class EsInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GenerateDownloadUrlRequest(AbstractModel):
+    """GenerateDownloadUrl request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: Service ID
+        :type ServiceId: str
+        :param PkgName: Package Name
+        :type PkgName: str
+        :param DeployVersion: Version of the package to download
+        :type DeployVersion: str
+        :param SourceChannel: Source channel
+        :type SourceChannel: int
+        """
+        self.ServiceId = None
+        self.PkgName = None
+        self.DeployVersion = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.PkgName = params.get("PkgName")
+        self.DeployVersion = params.get("DeployVersion")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateDownloadUrlResponse(AbstractModel):
+    """GenerateDownloadUrl response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Temp download URL for the package
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class IngressInfo(AbstractModel):
@@ -1514,17 +1591,17 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
 
 class MountedSettingConf(AbstractModel):
-    """
+    """Mounting configuration information
 
     """
 
     def __init__(self):
         """
-        :param ConfigDataName: 
+        :param ConfigDataName: Configuration Name
         :type ConfigDataName: str
-        :param MountedPath: 
+        :param MountedPath: Mount point path
         :type MountedPath: str
-        :param Data: 
+        :param Data: Configuration Content
         :type Data: list of Pair
         """
         self.ConfigDataName = None

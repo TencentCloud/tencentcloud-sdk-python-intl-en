@@ -4188,6 +4188,10 @@ class DomainSetList(AbstractModel):
         :type Protocol: str
         :param NetType: Network type. Valid values: INNER, OUTER.
         :type NetType: str
+        :param IsForcedHttps: Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
+        :type IsForcedHttps: bool
+        :param RegistrationStatus: ICP filing status
+        :type RegistrationStatus: bool
         """
         self.DomainName = None
         self.Status = None
@@ -4195,6 +4199,8 @@ class DomainSetList(AbstractModel):
         self.IsDefaultMapping = None
         self.Protocol = None
         self.NetType = None
+        self.IsForcedHttps = None
+        self.RegistrationStatus = None
 
 
     def _deserialize(self, params):
@@ -4204,6 +4210,8 @@ class DomainSetList(AbstractModel):
         self.IsDefaultMapping = params.get("IsDefaultMapping")
         self.Protocol = params.get("Protocol")
         self.NetType = params.get("NetType")
+        self.IsForcedHttps = params.get("IsForcedHttps")
+        self.RegistrationStatus = params.get("RegistrationStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

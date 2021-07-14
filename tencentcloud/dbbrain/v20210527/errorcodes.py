@@ -29,6 +29,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# The quota limit is exceeded.
+LIMITEXCEEDED = 'LimitExceeded'
+
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 

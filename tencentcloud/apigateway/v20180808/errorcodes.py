@@ -179,6 +179,9 @@ INVALIDPARAMETERVALUE_INVALIDACCESSKEYIDS = 'InvalidParameterValue.InvalidAccess
 # The API business type passed in must be `OAUTH`.
 INVALIDPARAMETERVALUE_INVALIDAPIBUSINESSTYPE = 'InvalidParameterValue.InvalidApiBusinessType'
 
+# 
+INVALIDPARAMETERVALUE_INVALIDAPIIDS = 'InvalidParameterValue.InvalidApiIds'
+
 # Invalid API configuration.
 INVALIDPARAMETERVALUE_INVALIDAPIREQUESTCONFIG = 'InvalidParameterValue.InvalidApiRequestConfig'
 
@@ -238,6 +241,9 @@ INVALIDPARAMETERVALUE_INVALIDSERVICEPARAMETERS = 'InvalidParameterValue.InvalidS
 
 # The backend service type is incorrect. For backend services in WEBSOCKET type, the frontend protocol should be configured as WEBSOCKET.
 INVALIDPARAMETERVALUE_INVALIDSERVICETYPE = 'InvalidParameterValue.InvalidServiceType'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDTAGVALUES = 'InvalidParameterValue.InvalidTagValues'
 
 # Incorrect configuration of the TSF-type API.
 INVALIDPARAMETERVALUE_INVALIDTSFCONFIG = 'InvalidParameterValue.InvalidTsfConfig'
@@ -368,7 +374,7 @@ UNSUPPORTEDOPERATION_FORCEHTTPS = 'UnsupportedOperation.ForceHttps'
 # API error.
 UNSUPPORTEDOPERATION_INVALIDACTION = 'UnsupportedOperation.InvalidAction'
 
-# 
+# Backend type not supported
 UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = 'UnsupportedOperation.InvalidEndpointType'
 
 # The service is currently isolated and therefore the operation is not supported.

@@ -334,6 +334,34 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GenerateDownloadUrl(self, request):
+        """Generate the pre-signed download URL for the specified package
+
+        :param request: Request instance for GenerateDownloadUrl.
+        :type request: :class:`tencentcloud.tem.v20201221.models.GenerateDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.GenerateDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GenerateDownloadUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GenerateDownloadUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyIngress(self, request):
         """This API is used to create or update an ingress rule.
 
