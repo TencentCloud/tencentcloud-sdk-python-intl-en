@@ -4532,9 +4532,9 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
         :type PushDomain: str
         :param StreamName: Stream name.
         :type StreamName: str
-        :param DayTime: Start time (Beijing time).
-In the format of `yyyymmdd`.
-Note: details for a specified day in the last month can be queried.
+        :param DayTime: Query date (UTC+8)
+Format: yyyymmdd
+Note: you can query the statistics for a day in the past month, with yesterday as the latest date allowed.
         :type DayTime: str
         :param PageNum: Number of pages. Default value: 1.
 Up to 100 pages.
@@ -4546,9 +4546,9 @@ Value range: [10,1000].
 In the format of `yyyymmdd`.
 Note: details for the last month can be queried.
         :type StartDayTime: str
-        :param EndDayTime: End day time (Beijing time),
-In the format of `yyyymmdd`.
-Note: detailed data for the last month can be queried. Either `DayTime` or `(StartDayTime,EndDayTime)` must be passed in. If both are passed in, `DayTime` shall prevail.
+        :param EndDayTime: End date (UTC+8)
+Format: yyyymmdd
+Note: you can query the statistics for a period in the past month, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.
         :type EndDayTime: str
         """
         self.PushDomain = None
@@ -7764,14 +7764,14 @@ class RecordParam(AbstractModel):
 
     def __init__(self):
         """
-        :param RecordInterval: Recording interval.
-In seconds. Default value: 1800.
-Value range: 300-7200.
-This parameter is not valid for HLS, and a file will be generated from push start to interruption during HLS recording.
+        :param RecordInterval: Max recording time per file
+Default value: `1800` (seconds)
+Value range: 60-7200
+This parameter is invalid for HLS. Only one HLS file will be generated from push start to push end.
         :type RecordInterval: int
-        :param StorageTime: Recording storage period.
-In seconds. Value range: 0-93312000.
-0: permanent storage.
+        :param StorageTime: Storage duration of the recording file
+Value range: 0-129600000 seconds (0-1500 days)
+`0`: permanent
         :type StorageTime: int
         :param Enable: Whether to enable recording in the current format. Default value: 0. 0: no, 1: yes.
         :type Enable: int
@@ -7797,12 +7797,26 @@ Supported special placeholders include:
 
 If this parameter is not set, the recording filename will be `{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}` by default
         :type VodFileName: str
+        :param Procedure: Task flow
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type Procedure: str
+        :param StorageMode: Video storage class. Valid values:
+`normal`: STANDARD
+`cold`: STANDARD_IA
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type StorageMode: str
+        :param ClassId: VOD subapplication category
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :type ClassId: int
         """
         self.RecordInterval = None
         self.StorageTime = None
         self.Enable = None
         self.VodSubAppId = None
         self.VodFileName = None
+        self.Procedure = None
+        self.StorageMode = None
+        self.ClassId = None
 
 
     def _deserialize(self, params):
@@ -7811,6 +7825,9 @@ If this parameter is not set, the recording filename will be `{StreamID}_{StartY
         self.Enable = params.get("Enable")
         self.VodSubAppId = params.get("VodSubAppId")
         self.VodFileName = params.get("VodFileName")
+        self.Procedure = params.get("Procedure")
+        self.StorageMode = params.get("StorageMode")
+        self.ClassId = params.get("ClassId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
