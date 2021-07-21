@@ -698,6 +698,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSafeAuthFlagIntl(self, request):
+        """This API is used to query security settings.
+
+        :param request: Request instance for DescribeSafeAuthFlagIntl.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DescribeSafeAuthFlagIntlRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeSafeAuthFlagIntlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSafeAuthFlagIntl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSafeAuthFlagIntlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSubAccounts(self, request):
         """This API is used to query sub-users through the sub-user UIN list.
 
@@ -796,6 +824,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachUserPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetAccountSummary(self, request):
+        """This API is used to query account summary.
+
+        :param request: Request instance for GetAccountSummary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetAccountSummaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetAccountSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAccountSummary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAccountSummaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

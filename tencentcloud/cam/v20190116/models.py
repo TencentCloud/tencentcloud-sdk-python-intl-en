@@ -1378,6 +1378,47 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSafeAuthFlagIntlRequest(AbstractModel):
+    """DescribeSafeAuthFlagIntl request structure.
+
+    """
+
+
+class DescribeSafeAuthFlagIntlResponse(AbstractModel):
+    """DescribeSafeAuthFlagIntl response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param LoginFlag: Login protection settings
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
+        :param ActionFlag: Sensitive operation protection settings
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
+        :param OffsiteFlag: Suspicious login location protection settings
+        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LoginFlag = None
+        self.ActionFlag = None
+        self.OffsiteFlag = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoginFlag") is not None:
+            self.LoginFlag = LoginActionFlagIntl()
+            self.LoginFlag._deserialize(params.get("LoginFlag"))
+        if params.get("ActionFlag") is not None:
+            self.ActionFlag = LoginActionFlagIntl()
+            self.ActionFlag._deserialize(params.get("ActionFlag"))
+        if params.get("OffsiteFlag") is not None:
+            self.OffsiteFlag = OffsiteFlag()
+            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSafeAuthFlagRequest(AbstractModel):
     """DescribeSafeAuthFlag request structure.
 
@@ -1609,6 +1650,53 @@ class DetachUserPolicyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class GetAccountSummaryRequest(AbstractModel):
+    """GetAccountSummary request structure.
+
+    """
+
+
+class GetAccountSummaryResponse(AbstractModel):
+    """GetAccountSummary response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Policies: Number of policies
+        :type Policies: int
+        :param Roles: Number of roles
+        :type Roles: int
+        :param Idps: Number of identity providers
+        :type Idps: int
+        :param User: Number of sub-accounts
+        :type User: int
+        :param Group: Number of groups
+        :type Group: int
+        :param Member: Total number of grouped users
+        :type Member: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Policies = None
+        self.Roles = None
+        self.Idps = None
+        self.User = None
+        self.Group = None
+        self.Member = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Policies = params.get("Policies")
+        self.Roles = params.get("Roles")
+        self.Idps = params.get("Idps")
+        self.User = params.get("User")
+        self.Group = params.get("Group")
+        self.Member = params.get("Member")
         self.RequestId = params.get("RequestId")
 
 
@@ -3073,6 +3161,50 @@ class LoginActionFlag(AbstractModel):
         self.Stoken = params.get("Stoken")
         self.Wechat = params.get("Wechat")
         self.Custom = params.get("Custom")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoginActionFlagIntl(AbstractModel):
+    """Login and sensitive operation flag
+
+    """
+
+    def __init__(self):
+        """
+        :param Phone: Mobile number
+        :type Phone: int
+        :param Token: Hard token
+        :type Token: int
+        :param Stoken: Soft token
+        :type Stoken: int
+        :param Wechat: WeChat
+        :type Wechat: int
+        :param Custom: Custom
+        :type Custom: int
+        :param Mail: Email
+        :type Mail: int
+        """
+        self.Phone = None
+        self.Token = None
+        self.Stoken = None
+        self.Wechat = None
+        self.Custom = None
+        self.Mail = None
+
+
+    def _deserialize(self, params):
+        self.Phone = params.get("Phone")
+        self.Token = params.get("Token")
+        self.Stoken = params.get("Stoken")
+        self.Wechat = params.get("Wechat")
+        self.Custom = params.get("Custom")
+        self.Mail = params.get("Mail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
