@@ -14094,6 +14094,15 @@ class NatGateway(AbstractModel):
         :param SecurityGroupSet: The list of the security groups bound to the NAT Gateway
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SecurityGroupSet: list of str
+        :param SourceIpTranslationNatRuleSet: SNAT forwarding rule of the NAT Gateway.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type SourceIpTranslationNatRuleSet: list of SourceIpTranslationNatRule
+        :param IsExclusive: Whether the NAT Gateway is dedicated.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type IsExclusive: bool
+        :param ExclusiveGatewayBandwidth: Bandwidth of the gateway cluster where the dedicated NAT Gateway resides. Unit: Mbps. This field does not exist when the `IsExclusive` field is set to `false`.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type ExclusiveGatewayBandwidth: int
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -14110,6 +14119,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SubnetId = None
         self.TagSet = None
         self.SecurityGroupSet = None
+        self.SourceIpTranslationNatRuleSet = None
+        self.IsExclusive = None
+        self.ExclusiveGatewayBandwidth = None
 
 
     def _deserialize(self, params):
@@ -14143,6 +14155,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.SecurityGroupSet = params.get("SecurityGroupSet")
+        if params.get("SourceIpTranslationNatRuleSet") is not None:
+            self.SourceIpTranslationNatRuleSet = []
+            for item in params.get("SourceIpTranslationNatRuleSet"):
+                obj = SourceIpTranslationNatRule()
+                obj._deserialize(item)
+                self.SourceIpTranslationNatRuleSet.append(obj)
+        self.IsExclusive = params.get("IsExclusive")
+        self.ExclusiveGatewayBandwidth = params.get("ExclusiveGatewayBandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15794,6 +15814,7 @@ class Route(AbstractModel):
 Important note: When the GatewayType is EIP, the GatewayId has a fixed value `0`
         :type GatewayId: str
         :param RouteId: Routing policy ID. The IPv4 routing policy will have a meaningful value, while the IPv6 routing policy is always 0. We recommend using the unique ID `RouteItemId` for the routing policy.
+This field is required when you want to delete a routing policy.
         :type RouteId: int
         :param RouteDescription: The description of the routing policy.
         :type RouteDescription: str

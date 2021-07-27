@@ -339,71 +339,75 @@ class CreateDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD
-        :type DiskType: str
-        :param DiskChargeType: Cloud disk billing method. POSTPAID_BY_HOUR: pay as you go by hour<br><li>CDCPAID: Billed together with the bound dedicated cluster<br>For information about the pricing of each method, see the cloud disk [Pricing Overview](https://intl.cloud.tencent.com/document/product/362/2413?from_cn_redirect=1).
-        :type DiskChargeType: str
         :param Placement: The location of the instance. The availability zone and the project that the instance belongs to can be specified using this parameter. If the project is not specified, it will be created under the default project.
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        :param DiskChargeType: Cloud disk billing method. POSTPAID_BY_HOUR: pay as you go by hour<br><li>CDCPAID: Billed together with the bound dedicated cluster<br>For information about the pricing of each method, see the cloud disk [Pricing Overview](https://intl.cloud.tencent.com/document/product/362/2413?from_cn_redirect=1).
+        :type DiskChargeType: str
+        :param DiskType: Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD
+        :type DiskType: str
         :param DiskName: The displayed name of the cloud disk. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.
         :type DiskName: str
-        :param DiskCount: If the number of cloud disks to be created is left empty, the default is 1. There is a limit to the maximum number of cloud disks that can be created for a single request. For more information, please see [CBS Use Limits](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).
-        :type DiskCount: int
-        :param DiskChargePrepaid: Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk. 
-        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
-        :param DiskSize: Cloud hard disk size (in GB). <br><li> If `SnapshotId` is passed, `DiskSize` cannot be passed. In this case, the size of the cloud disk is the size of the snapshot. <br><li>To pass `SnapshotId` and `DiskSize` at the same time, the size of the disk must be larger than or equal to the size of the snapshot. <br><li>For information about the size range of cloud disks, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
-        :type DiskSize: int
+        :param Tags: Cloud disk binding tag.
+        :type Tags: list of Tag
         :param SnapshotId: Snapshot ID. If this parameter is specified, the cloud disk is created based on the snapshot. The snapshot type must be a data disk snapshot. The snapshot can be queried in the DiskUsage field in the output parameter through the API [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).
         :type SnapshotId: str
+        :param DiskCount: If the number of cloud disks to be created is left empty, the default is 1. There is a limit to the maximum number of cloud disks that can be created for a single request. For more information, please see [CBS Use Limits](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).
+        :type DiskCount: int
+        :param ThroughputPerformance: Extra performance purchased for a cloud disk.<br>This optional parameter is only valid for Tremendous SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD).
+        :type ThroughputPerformance: int
+        :param DiskSize: Cloud hard disk size (in GB). <br><li> If `SnapshotId` is passed, `DiskSize` cannot be passed. In this case, the size of the cloud disk is the size of the snapshot. <br><li>To pass `SnapshotId` and `DiskSize` at the same time, the size of the disk must be larger than or equal to the size of the snapshot. <br><li>For information about the size range of cloud disks, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
+        :type DiskSize: int
+        :param Shareable: The default of optional parameter is False. When True is selected, the cloud disk will be created as a shareable cloud disk.
+        :type Shareable: bool
         :param ClientToken: A string to ensure the idempotency of the request, which is generated by the client. Each request shall have a unique string with a maximum of 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be ensured.
         :type ClientToken: str
         :param Encrypt: This parameter is used to create an encrypted cloud disk. Its value is always ENCRYPT.
         :type Encrypt: str
-        :param Tags: Cloud disk binding tag.
-        :type Tags: list of Tag
-        :param Shareable: The default of optional parameter is False. When True is selected, the cloud disk will be created as a shareable cloud disk.
-        :type Shareable: bool
-        :param ThroughputPerformance: Extra performance purchased for a cloud disk.<br>This optional parameter is only valid for Tremendous SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD).
-        :type ThroughputPerformance: int
+        :param DiskChargePrepaid: Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk. 
+        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
+        :param DeleteSnapshot: Whether to delete the associated non-permanent snapshots when a cloud disk is terminated. Valid values: `0` (do not delete); `1` (delete). Default value: `0`. To find out whether a snapshot is permanent, you can call the `DescribeSnapshots` API and check the `IsPermanent` field (`true`: permanent; `false`: non-permanent) in its response.
+        :type DeleteSnapshot: int
         """
-        self.DiskType = None
-        self.DiskChargeType = None
         self.Placement = None
+        self.DiskChargeType = None
+        self.DiskType = None
         self.DiskName = None
-        self.DiskCount = None
-        self.DiskChargePrepaid = None
-        self.DiskSize = None
+        self.Tags = None
         self.SnapshotId = None
+        self.DiskCount = None
+        self.ThroughputPerformance = None
+        self.DiskSize = None
+        self.Shareable = None
         self.ClientToken = None
         self.Encrypt = None
-        self.Tags = None
-        self.Shareable = None
-        self.ThroughputPerformance = None
+        self.DiskChargePrepaid = None
+        self.DeleteSnapshot = None
 
 
     def _deserialize(self, params):
-        self.DiskType = params.get("DiskType")
-        self.DiskChargeType = params.get("DiskChargeType")
         if params.get("Placement") is not None:
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
+        self.DiskChargeType = params.get("DiskChargeType")
+        self.DiskType = params.get("DiskType")
         self.DiskName = params.get("DiskName")
-        self.DiskCount = params.get("DiskCount")
-        if params.get("DiskChargePrepaid") is not None:
-            self.DiskChargePrepaid = DiskChargePrepaid()
-            self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
-        self.DiskSize = params.get("DiskSize")
-        self.SnapshotId = params.get("SnapshotId")
-        self.ClientToken = params.get("ClientToken")
-        self.Encrypt = params.get("Encrypt")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
-        self.Shareable = params.get("Shareable")
+        self.SnapshotId = params.get("SnapshotId")
+        self.DiskCount = params.get("DiskCount")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        self.DiskSize = params.get("DiskSize")
+        self.Shareable = params.get("Shareable")
+        self.ClientToken = params.get("ClientToken")
+        self.Encrypt = params.get("Encrypt")
+        if params.get("DiskChargePrepaid") is not None:
+            self.DiskChargePrepaid = DiskChargePrepaid()
+            self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self.DeleteSnapshot = params.get("DeleteSnapshot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -537,12 +541,16 @@ class DeleteSnapshotsRequest(AbstractModel):
         """
         :param SnapshotIds: List of IDs of snapshots to be deleted, which can be queried via [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).
         :type SnapshotIds: list of str
+        :param DeleteBindImages: Whether to forcibly delete the image associated with the snapshot
+        :type DeleteBindImages: bool
         """
         self.SnapshotIds = None
+        self.DeleteBindImages = None
 
 
     def _deserialize(self, params):
         self.SnapshotIds = params.get("SnapshotIds")
+        self.DeleteBindImages = params.get("DeleteBindImages")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

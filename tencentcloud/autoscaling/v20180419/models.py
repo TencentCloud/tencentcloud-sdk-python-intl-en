@@ -251,6 +251,16 @@ class AutoScalingGroup(AbstractModel):
 <br><li> PRIORITY: when creating instances, choose the availability zone/subnet based on the order in the list from top to bottom. If the first instance is successfully created in the availability zone/subnet of the highest priority, all instances will be created in this availability zone/subnet.
 <br><li> EQUALITY: chooses the availability zone/subnet with the least instances for scale-out. This gives each availability zone/subnet an opportunity for scale-out and disperses the instances created during multiple scale-out operations across different availability zones/subnets.
         :type MultiZoneSubnetPolicy: str
+        :param HealthCheckType: Health check type of instances in a scaling group.<br><li>CVM: confirm whether an instance is healthy based on the network status. If the pinged instance is unreachable, the instance will be considered unhealthy. For more information, see [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1)<br><li>CLB: confirm whether an instance is healthy based on the CLB health check status. For more information, see [Health Check Overview](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).
+        :type HealthCheckType: str
+        :param LoadBalancerHealthCheckGracePeriod: Grace period of the CLB health check
+        :type LoadBalancerHealthCheckGracePeriod: int
+        :param InstanceAllocationPolicy: 
+        :type InstanceAllocationPolicy: str
+        :param SpotMixedAllocationPolicy: 
+        :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        :param CapacityRebalance: 
+        :type CapacityRebalance: bool
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -278,6 +288,11 @@ class AutoScalingGroup(AbstractModel):
         self.ServiceSettings = None
         self.Ipv6AddressCount = None
         self.MultiZoneSubnetPolicy = None
+        self.HealthCheckType = None
+        self.LoadBalancerHealthCheckGracePeriod = None
+        self.InstanceAllocationPolicy = None
+        self.SpotMixedAllocationPolicy = None
+        self.CapacityRebalance = None
 
 
     def _deserialize(self, params):
@@ -319,6 +334,13 @@ class AutoScalingGroup(AbstractModel):
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
+        self.HealthCheckType = params.get("HealthCheckType")
+        self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
+        self.InstanceAllocationPolicy = params.get("InstanceAllocationPolicy")
+        if params.get("SpotMixedAllocationPolicy") is not None:
+            self.SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
+            self.SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
+        self.CapacityRebalance = params.get("CapacityRebalance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -404,14 +426,24 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         :param ClearDataDisks: Whether to clear data disk information. This parameter is optional and the default value is `false`.
 Setting it to `true` will clear data disks, which means that CVM newly created on this launch configuration will have no data disk.
         :type ClearDataDisks: bool
+        :param ClearHostNameSettings: Whether to clear the CVM hostname settings. This parameter is optional and the default value is `false`.
+Setting it to `true` will clear the hostname settings, which means that CVM newly created on this launch configuration will have no hostname.
+        :type ClearHostNameSettings: bool
+        :param ClearInstanceNameSettings: Whether to clear the CVM instance name settings. This parameter is optional and the default value is `false`.
+Setting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the “as-{{AutoScalingGroupName}} format.
+        :type ClearInstanceNameSettings: bool
         """
         self.LaunchConfigurationId = None
         self.ClearDataDisks = None
+        self.ClearHostNameSettings = None
+        self.ClearInstanceNameSettings = None
 
 
     def _deserialize(self, params):
         self.LaunchConfigurationId = params.get("LaunchConfigurationId")
         self.ClearDataDisks = params.get("ClearDataDisks")
+        self.ClearHostNameSettings = params.get("ClearHostNameSettings")
+        self.ClearInstanceNameSettings = params.get("ClearInstanceNameSettings")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1159,8 +1191,8 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: Data disk type. For more information on limits of data disk types, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). Value range: <br><li>LOCAL_BASIC: Local disk <br><li>LOCAL_SSD: Local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium cloud disk <br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: LOCAL_BASIC.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param DiskType: Data disk type. For more information on limits of data disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>LOCAL_BASIC: local disk <br><li>LOCAL_SSD: local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk <br><br>The default value should be the same as the `DiskType` field under `SystemDisk`.
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type DiskType: str
         :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -3271,7 +3303,7 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :param ImageId: Valid [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1).</li>
         :type ImageId: str
         :param InstanceTypes: List of instance types. Each type specifies different resource specifications. This list contains up to 10 instance types.
-The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. After `InstanceTypes` is successfully specified for the launch configuration, the original `InstanceType` will be automatically invalidated.
+The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. Specifying the `InstanceTypes` field will invalidate the original `InstanceType`.
         :type InstanceTypes: list of str
         :param InstanceTypesCheckPolicy: Instance type verification policy which works when InstanceTypes is actually modified. Value range: ALL, ANY. Default value: ANY.
 <br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.
@@ -3282,23 +3314,27 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
         :type InstanceTypesCheckPolicy: str
         :param LaunchConfigurationName: Display name of the launch configuration, which can contain Chinese characters, letters, numbers, underscores, separators ("-"), and decimal points with a maximum length of 60 bytes.
         :type LaunchConfigurationName: str
-        :param UserData: Base64-encoded custom data of up to 16 KB. If you want to clear UserData, specify it as an empty string
+        :param UserData: Base64-encoded custom data of up to 16 KB. If you want to clear `UserData`, set it to an empty string.
         :type UserData: str
         :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the `SecurityGroupId` field in the response of the [`DescribeSecurityGroups`](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API.
 At least one security group is required for this parameter. The security group specified is sequential.
         :type SecurityGroupIds: list of str
         :param InternetAccessible: Information of the public network bandwidth configuration.
-To modify it or even its subfield, you should specify all the subfields again.
+When the public outbound network bandwidth is 0 Mbps, assigning a public IP is not allowed. Accordingly, if a public IP is assigned, the new public network outbound bandwidth must be greater than 0 Mbps.
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         :param InstanceChargeType: Instance billing mode. Valid values:
 <br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly
 <br><li>SPOTPAID: spot instance
         :type InstanceChargeType: str
-        :param InstanceChargePrepaid: 
+        :param InstanceChargePrepaid: Parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set the auto-renewal, and other attributes of the monthly-subscribed instances.
+This parameter is required when changing the instance billing mode to monthly subscription. It will be automatically discarded after you choose another billing mode.
+This field requires passing in the `Period` field. Other fields that are not passed in will use their default values.
+This field can be modified only when the current billing mode is monthly subscription.
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         :param InstanceMarketOptions: Market-related options for instances, such as parameters related to spot instances.
-This parameter is required when changing the instance billing mode to spot instance. It will be automatically discarded after the spot instance is changed to another instance billing mode.
-To modify it or even its subfield, you should specify all the subfields again.
+This parameter is required when changing the instance billing mode to spot instance. It will be automatically discarded after you choose another instance billing mode.
+This field requires passing in the `MaxPrice` field under the `SpotOptions`. Other fields that are not passed in will use their default values.
+This field can be modified only when the current billing mode is spot instance.
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         :param DiskTypePolicy: Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
 <br><li>ORIGINAL: uses the configured cloud disk type
@@ -3306,8 +3342,18 @@ To modify it or even its subfield, you should specify all the subfields again.
         :type DiskTypePolicy: str
         :param SystemDisk: Instance system disk configurations
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param DataDisks: Instance data disk configurations. Up to 11 data disks can be specified and will be collectively modified. Please provide all the new values for the modification.
+        :param DataDisks: Configuration information of instance data disks.
+Up to 11 data disks can be specified and will be collectively modified. Please provide all the new values for the modification.
+The default data disk should be the same as the system disk.
         :type DataDisks: list of DataDisk
+        :param HostNameSettings: CVM hostname settings.
+This field is not supported for Windows instances.
+This field requires passing the `HostName` field. Other fields that are not passed in will use their default values.
+        :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        :param InstanceNameSettings: Settings of CVM instance names. 
+If this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.
+This field requires passing in the `InstanceName` field. Other fields that are not passed in will use their default values.
+        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3323,6 +3369,8 @@ To modify it or even its subfield, you should specify all the subfields again.
         self.DiskTypePolicy = None
         self.SystemDisk = None
         self.DataDisks = None
+        self.HostNameSettings = None
+        self.InstanceNameSettings = None
 
 
     def _deserialize(self, params):
@@ -3353,6 +3401,12 @@ To modify it or even its subfield, you should specify all the subfields again.
                 obj = DataDisk()
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
+        if params.get("HostNameSettings") is not None:
+            self.HostNameSettings = HostNameSettings()
+            self.HostNameSettings._deserialize(params.get("HostNameSettings"))
+        if params.get("InstanceNameSettings") is not None:
+            self.InstanceNameSettings = InstanceNameSettings()
+            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4093,6 +4147,42 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class SpotMixedAllocationPolicy(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        """
+        :param BaseCapacity: 
+        :type BaseCapacity: int
+        :param OnDemandPercentageAboveBaseCapacity: 
+        :type OnDemandPercentageAboveBaseCapacity: int
+        :param SpotAllocationStrategy: 
+        :type SpotAllocationStrategy: str
+        :param CompensateWithBaseInstance: 
+        :type CompensateWithBaseInstance: bool
+        """
+        self.BaseCapacity = None
+        self.OnDemandPercentageAboveBaseCapacity = None
+        self.SpotAllocationStrategy = None
+        self.CompensateWithBaseInstance = None
+
+
+    def _deserialize(self, params):
+        self.BaseCapacity = params.get("BaseCapacity")
+        self.OnDemandPercentageAboveBaseCapacity = params.get("OnDemandPercentageAboveBaseCapacity")
+        self.SpotAllocationStrategy = params.get("SpotAllocationStrategy")
+        self.CompensateWithBaseInstance = params.get("CompensateWithBaseInstance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartAutoScalingInstancesRequest(AbstractModel):
     """StartAutoScalingInstances request structure.
 
@@ -4205,8 +4295,8 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: System disk type. For more information on limits of system disk types, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). Value range: <br><li>LOCAL_BASIC: Local disk <br><li>LOCAL_SSD: Local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium cloud disk <br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: LOCAL_BASIC.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param DiskType: System disk type. For more information on limits of system disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>LOCAL_BASIC: local disk <br><li>LOCAL_SSD: local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: CLOUD_PREMIUM.
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type DiskType: str
         :param DiskSize: System disk size in GB. Default value: 50
 Note: This field may return null, indicating that no valid values can be obtained.

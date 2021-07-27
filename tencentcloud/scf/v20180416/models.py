@@ -2236,6 +2236,73 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class InvokeFunctionRequest(AbstractModel):
+    """InvokeFunction request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param Qualifier: Version number or alias of the triggered function
+        :type Qualifier: str
+        :param Event: Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.
+        :type Event: str
+        :param LogType: If this field is specified for a synchronous invocation, the return value will contain a 4 KB log. Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the return parameter will contain the corresponding function execution log.
+        :type LogType: str
+        :param Namespace: Namespace
+        :type Namespace: str
+        :param RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
+        :type RoutingKey: str
+        """
+        self.FunctionName = None
+        self.Qualifier = None
+        self.Event = None
+        self.LogType = None
+        self.Namespace = None
+        self.RoutingKey = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Qualifier = params.get("Qualifier")
+        self.Event = params.get("Event")
+        self.LogType = params.get("LogType")
+        self.Namespace = params.get("Namespace")
+        self.RoutingKey = params.get("RoutingKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeFunctionResponse(AbstractModel):
+    """InvokeFunction response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: Function execution result
+        :type Result: :class:`tencentcloud.scf.v20180416.models.Result`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = Result()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke request structure.
 
