@@ -490,7 +490,7 @@ class DCDBInstanceInfo(AbstractModel):
         :type SubnetId: int
         :param StatusDesc: Status description
         :type StatusDesc: str
-        :param Status: Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated), `-2` (eliminated), `4` (initializing), `5` (eliminating), `6` (restarting), `7` (migrating data)
+        :param Status: Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated), `4` (initializing), `5` (eliminating), `6` (restarting), `7` (migrating data)
         :type Status: int
         :param Vip: Private IP
         :type Vip: str
@@ -964,6 +964,20 @@ class DcnDetailItem(AbstractModel):
         :type DcnFlag: int
         :param DcnStatus: DCN status. Valid values: `0` (none), `1` (creating), `2` (syncing), `3` (disconnected)
         :type DcnStatus: int
+        :param Cpu: Number of CPU cores of the instance
+        :type Cpu: int
+        :param Memory: Instance memory capacity in GB
+        :type Memory: int
+        :param Storage: Instance storage capacity in GB
+        :type Storage: int
+        :param PayMode: Billing mode
+        :type PayMode: int
+        :param CreateTime: Creation time of the instance in the format of 2006-01-02 15:04:05
+        :type CreateTime: str
+        :param PeriodEndTime: Expiration time of the instance in the format of 2006-01-02 15:04:05
+        :type PeriodEndTime: str
+        :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery instance), and `4` (dedicated disaster recovery instance).
+        :type InstanceType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -976,6 +990,13 @@ class DcnDetailItem(AbstractModel):
         self.StatusDesc = None
         self.DcnFlag = None
         self.DcnStatus = None
+        self.Cpu = None
+        self.Memory = None
+        self.Storage = None
+        self.PayMode = None
+        self.CreateTime = None
+        self.PeriodEndTime = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -990,6 +1011,13 @@ class DcnDetailItem(AbstractModel):
         self.StatusDesc = params.get("StatusDesc")
         self.DcnFlag = params.get("DcnFlag")
         self.DcnStatus = params.get("DcnStatus")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.PayMode = params.get("PayMode")
+        self.CreateTime = params.get("CreateTime")
+        self.PeriodEndTime = params.get("PeriodEndTime")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

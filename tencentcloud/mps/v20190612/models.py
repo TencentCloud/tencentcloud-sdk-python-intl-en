@@ -6785,6 +6785,30 @@ class EditMediaFileInfo(AbstractModel):
         
 
 
+class EditMediaOutputConfig(AbstractModel):
+    """Configuration for output files of video editing
+
+    """
+
+    def __init__(self):
+        """
+        :param Container: Format. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`
+        :type Container: str
+        """
+        self.Container = None
+
+
+    def _deserialize(self, params):
+        self.Container = params.get("Container")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EditMediaRequest(AbstractModel):
     """EditMedia request structure.
 
@@ -6798,6 +6822,8 @@ class EditMediaRequest(AbstractModel):
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param OutputObjectPath: Target path of video processing output file.
         :type OutputObjectPath: str
+        :param OutputConfig: Configuration for output files of video editing
+        :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`
         :param TaskNotifyConfig: Event notification information of task. If this parameter is left empty, no event notifications will be obtained.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
@@ -6810,6 +6836,7 @@ class EditMediaRequest(AbstractModel):
         self.FileInfos = None
         self.OutputStorage = None
         self.OutputObjectPath = None
+        self.OutputConfig = None
         self.TaskNotifyConfig = None
         self.TasksPriority = None
         self.SessionId = None
@@ -6827,6 +6854,9 @@ class EditMediaRequest(AbstractModel):
             self.OutputStorage = TaskOutputStorage()
             self.OutputStorage._deserialize(params.get("OutputStorage"))
         self.OutputObjectPath = params.get("OutputObjectPath")
+        if params.get("OutputConfig") is not None:
+            self.OutputConfig = EditMediaOutputConfig()
+            self.OutputConfig._deserialize(params.get("OutputConfig"))
         if params.get("TaskNotifyConfig") is not None:
             self.TaskNotifyConfig = TaskNotifyConfig()
             self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
@@ -7082,8 +7112,8 @@ class FaceConfigureInfo(AbstractModel):
 <li>sport: Sports celebrity;</li>
 <li>politician: Politically sensitive figure.</li>
         :type DefaultLibraryLabelSet: list of str
-        :param UserDefineLibraryLabelSet: Custom figure filter tag, which specifies the custom figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the custom figures will be returned. Valid values:
-There can be up to 10 tags, each with a length limit of 16 characters.
+        :param UserDefineLibraryLabelSet: Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.
+Up to 100 tags are allowed, each containing no more than 16 characters.
         :type UserDefineLibraryLabelSet: list of str
         :param FaceLibrary: Figure library. Valid values:
 <li>Default: Default figure library;</li>
@@ -7132,8 +7162,8 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 <li>sport: Sports celebrity;</li>
 <li>politician: Politically sensitive figure.</li>
         :type DefaultLibraryLabelSet: list of str
-        :param UserDefineLibraryLabelSet: Custom figure filter tag, which specifies the custom figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the custom figures will be returned. Valid values:
-There can be up to 10 tags, each with a length limit of 16 characters.
+        :param UserDefineLibraryLabelSet: Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.
+Up to 100 tags are allowed, each containing no more than 16 characters.
         :type UserDefineLibraryLabelSet: list of str
         :param FaceLibrary: Figure library. Valid values:
 <li>Default: Default figure library;</li>

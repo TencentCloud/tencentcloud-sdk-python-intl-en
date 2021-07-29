@@ -375,7 +375,13 @@ class CreateInstanceAccountRequest(AbstractModel):
         :type InstanceId: str
         :param AccountName: Sub-account name
         :type AccountName: str
-        :param AccountPassword: Sub-account password
+        :param AccountPassword: 1. The password must contain 8-30 characters. A password of 12 or more characters is recommended.
+2. The password cannot start with a slash (/).
+3. The password must contain at least two of the following four types:
+    a. Lowercase letters (a-z)
+    b. Uppercase letters (A-Z)
+    c. Digits (0-9)
+    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/
         :type AccountPassword: str
         :param ReadonlyPolicy: Routing policy. Enter `master` for primary node or `replication` for secondary node
         :type ReadonlyPolicy: list of str
@@ -784,7 +790,7 @@ class DescribeCommonDBInstancesRequest(AbstractModel):
         :type OrderByType: str
         :param Vips: List of instance VIPs
         :type Vips: list of str
-        :param UniqVpcIds: List of unique VPC IDs
+        :param UniqVpcIds: List of VPC IDs
         :type UniqVpcIds: list of str
         :param UniqSubnetIds: List of unique subnet IDs
         :type UniqSubnetIds: list of str
@@ -3873,6 +3879,61 @@ class InstanceTextParam(AbstractModel):
         
 
 
+class KillMasterGroupRequest(AbstractModel):
+    """KillMasterGroup request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Password: 1. The password must contain 8-30 characters. A password of 12 or more characters is recommended.
+2. The password cannot start with a slash (/).
+3. The password must contain at least two of the following four types:
+    a. Lowercase letters (a-z)
+    b. Uppercase letters (A-Z)
+    c. Digits (0-9)
+    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KillMasterGroupResponse(AbstractModel):
+    """KillMasterGroup response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: Async task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ManualBackupInstanceRequest(AbstractModel):
     """ManualBackupInstance request structure.
 
@@ -4627,7 +4688,7 @@ class RedisCommonInstanceList(AbstractModel):
         :type VpcId: str
         :param SubnetId: Subnet ID
         :type SubnetId: str
-        :param Status: Instance status. Valid values: `0` (creating), `1` (running)
+        :param Status: Instance status. Valid values: `1` (task running), `2` (instance running), `-2` (instance isolated), `-3` (instance being eliminated), `-4` (instance eliminated)
         :type Status: str
         :param Vips: Instance network IP
         :type Vips: list of str
