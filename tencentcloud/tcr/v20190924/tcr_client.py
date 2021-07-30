@@ -26,6 +26,62 @@ class TcrClient(AbstractClient):
     _service = 'tcr'
 
 
+    def CheckInstance(self, request):
+        """This API is used to verify the information of the Enterprise Edition instance.
+
+        :param request: Request instance for CheckInstance.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CheckInstanceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CheckInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateImmutableTagRules(self, request):
+        """This API is used to create the tag immutability rule.
+
+        :param request: Request instance for CreateImmutableTagRules.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateImmutableTagRulesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateImmutableTagRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateImmutableTagRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImmutableTagRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMultipleSecurityPolicy(self, request):
         """This API is used to create multiple public network access allowlist policies of the TCR instance.
 
@@ -54,6 +110,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteImmutableTagRules(self, request):
+        """This API is used to delete the tag immutability rule.
+
+        :param request: Request instance for DeleteImmutableTagRules.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImmutableTagRulesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteImmutableTagRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteImmutableTagRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImmutableTagRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteMultipleSecurityPolicy(self, request):
         """This API is used to delete multiple public network access allowlist policies of the instance.
 
@@ -68,6 +152,62 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMultipleSecurityPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImmutableTagRules(self, request):
+        """This API is used to list the tag immutability rule.
+
+        :param request: Request instance for DescribeImmutableTagRules.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImmutableTagRulesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeImmutableTagRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImmutableTagRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImmutableTagRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyImmutableTagRules(self, request):
+        """This API is used to update the tag immutability rule.
+
+        :param request: Request instance for ModifyImmutableTagRules.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyImmutableTagRulesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyImmutableTagRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyImmutableTagRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyImmutableTagRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

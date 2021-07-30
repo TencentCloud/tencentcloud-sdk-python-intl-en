@@ -18,6 +18,106 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CheckInstanceRequest(AbstractModel):
+    """CheckInstance request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: ID of the instance to be verified.
+        :type RegistryId: str
+        """
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckInstanceResponse(AbstractModel):
+    """CheckInstance response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param IsValidated: Verification result. true: valid, false: invalid
+        :type IsValidated: bool
+        :param RegionId: ID of the region where the instance is located.
+        :type RegionId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IsValidated = None
+        self.RegionId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsValidated = params.get("IsValidated")
+        self.RegionId = params.get("RegionId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateImmutableTagRulesRequest(AbstractModel):
+    """CreateImmutableTagRules request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param NamespaceName: Namespace
+        :type NamespaceName: str
+        :param Rule: Rule
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        if params.get("Rule") is not None:
+            self.Rule = ImmutableTagRule()
+            self.Rule._deserialize(params.get("Rule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateImmutableTagRulesResponse(AbstractModel):
+    """CreateImmutableTagRules response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMultipleSecurityPolicyRequest(AbstractModel):
     """CreateMultipleSecurityPolicy request structure.
 
@@ -72,6 +172,55 @@ class CreateMultipleSecurityPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteImmutableTagRulesRequest(AbstractModel):
+    """DeleteImmutableTagRules request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param NamespaceName: Namespace
+        :type NamespaceName: str
+        :param RuleId: Rule ID
+        :type RuleId: int
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteImmutableTagRulesResponse(AbstractModel):
+    """DeleteImmutableTagRules response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteMultipleSecurityPolicyRequest(AbstractModel):
     """DeleteMultipleSecurityPolicy request structure.
 
@@ -123,6 +272,169 @@ class DeleteMultipleSecurityPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImmutableTagRulesRequest(AbstractModel):
+    """DescribeImmutableTagRules request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        """
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImmutableTagRulesResponse(AbstractModel):
+    """DescribeImmutableTagRules response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: Rule list
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Rules: list of ImmutableTagRule
+        :param EmptyNs: Namespace with no rules created
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type EmptyNs: list of str
+        :param Total: Total rules
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.EmptyNs = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = ImmutableTagRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.EmptyNs = params.get("EmptyNs")
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class ImmutableTagRule(AbstractModel):
+    """Tag immutability rule
+
+    """
+
+    def __init__(self):
+        """
+        :param RepositoryPattern: Repository matching rule
+        :type RepositoryPattern: str
+        :param TagPattern: Tag matching rule
+        :type TagPattern: str
+        :param RepositoryDecoration: repoMatches or repoExcludes
+        :type RepositoryDecoration: str
+        :param TagDecoration: matches or excludes
+        :type TagDecoration: str
+        :param Disabled: Disabling rule
+        :type Disabled: bool
+        :param RuleId: Rule ID
+        :type RuleId: int
+        :param NsName: Namespace
+        :type NsName: str
+        """
+        self.RepositoryPattern = None
+        self.TagPattern = None
+        self.RepositoryDecoration = None
+        self.TagDecoration = None
+        self.Disabled = None
+        self.RuleId = None
+        self.NsName = None
+
+
+    def _deserialize(self, params):
+        self.RepositoryPattern = params.get("RepositoryPattern")
+        self.TagPattern = params.get("TagPattern")
+        self.RepositoryDecoration = params.get("RepositoryDecoration")
+        self.TagDecoration = params.get("TagDecoration")
+        self.Disabled = params.get("Disabled")
+        self.RuleId = params.get("RuleId")
+        self.NsName = params.get("NsName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyImmutableTagRulesRequest(AbstractModel):
+    """ModifyImmutableTagRules request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: Instance ID
+        :type RegistryId: str
+        :param NamespaceName: Namespace
+        :type NamespaceName: str
+        :param RuleId: Rule ID
+        :type RuleId: int
+        :param Rule: Rule
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.RuleId = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.RuleId = params.get("RuleId")
+        if params.get("Rule") is not None:
+            self.Rule = ImmutableTagRule()
+            self.Rule._deserialize(params.get("Rule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyImmutableTagRulesResponse(AbstractModel):
+    """ModifyImmutableTagRules response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
