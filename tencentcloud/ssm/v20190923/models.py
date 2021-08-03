@@ -18,6 +18,132 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CreateProductSecretRequest(AbstractModel):
+    """CreateProductSecret request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretName: Credential name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens, and underscores and must begin with a letter or digit.
+        :type SecretName: str
+        :param UserNamePrefix: Prefix of the user account name, which is specified by you and can contain up to 8 characters.
+Supported character sets include:
+Digits: [0, 9].
+Lowercase letters: [a, z].
+Uppercase letters: [A, Z].
+Special symbols: underscore.
+The prefix must begin with a letter.
+        :type UserNamePrefix: str
+        :param ProductName: Name of the Tencent Cloud service bound to the credential, such as `Mysql`. The `DescribeSupportedProducts` API can be used to get the names of the supported Tencent Cloud services.
+        :type ProductName: str
+        :param InstanceID: Tencent Cloud service instance ID.
+        :type InstanceID: str
+        :param Domains: Domain name of the account in the form of IP. You can enter `%`.
+        :type Domains: list of str
+        :param PrivilegesList: List of permissions that need to be granted when the credential is bound to a Tencent Cloud service.
+        :type PrivilegesList: list of ProductPrivilegeUnit
+        :param Description: Description, which is used to describe the purpose in detail and can contain up to 2,048 bytes.
+        :type Description: str
+        :param KmsKeyId: Specifies the KMS CMK that encrypts the credential.
+If this parameter is left empty, the CMK created by Secrets Manager by default will be used for encryption.
+You can also specify a custom KMS CMK created in the same region for encryption.
+        :type KmsKeyId: str
+        :param Tags: List of tags.
+        :type Tags: list of Tag
+        :param RotationBeginTime: User-Defined rotation start time in the format of 2006-01-02 15:04:05.
+When `EnableRotation` is `True`, this parameter is required.
+        :type RotationBeginTime: str
+        :param EnableRotation: Specifies whether to enable rotation
+True - enable
+False - do not enable
+If this parameter is not specified, `False` will be used by default.
+        :type EnableRotation: bool
+        :param RotationFrequency: Rotation frequency in days. Default value: 1 day.
+        :type RotationFrequency: int
+        """
+        self.SecretName = None
+        self.UserNamePrefix = None
+        self.ProductName = None
+        self.InstanceID = None
+        self.Domains = None
+        self.PrivilegesList = None
+        self.Description = None
+        self.KmsKeyId = None
+        self.Tags = None
+        self.RotationBeginTime = None
+        self.EnableRotation = None
+        self.RotationFrequency = None
+
+
+    def _deserialize(self, params):
+        self.SecretName = params.get("SecretName")
+        self.UserNamePrefix = params.get("UserNamePrefix")
+        self.ProductName = params.get("ProductName")
+        self.InstanceID = params.get("InstanceID")
+        self.Domains = params.get("Domains")
+        if params.get("PrivilegesList") is not None:
+            self.PrivilegesList = []
+            for item in params.get("PrivilegesList"):
+                obj = ProductPrivilegeUnit()
+                obj._deserialize(item)
+                self.PrivilegesList.append(obj)
+        self.Description = params.get("Description")
+        self.KmsKeyId = params.get("KmsKeyId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RotationBeginTime = params.get("RotationBeginTime")
+        self.EnableRotation = params.get("EnableRotation")
+        self.RotationFrequency = params.get("RotationFrequency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProductSecretResponse(AbstractModel):
+    """CreateProductSecret response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretName: Name of the created credential.
+        :type SecretName: str
+        :param TagCode: Tag operation return code. 0: success; 1: internal error; 2: business processing error.
+Note: this field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TagCode: int
+        :param TagMsg: Tag operation return message.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type TagMsg: str
+        :param FlowID: ID of the created Tencent Cloud service credential async task.
+        :type FlowID: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SecretName = None
+        self.TagCode = None
+        self.TagMsg = None
+        self.FlowID = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SecretName = params.get("SecretName")
+        self.TagCode = params.get("TagCode")
+        self.TagMsg = params.get("TagMsg")
+        self.FlowID = params.get("FlowID")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSecretRequest(AbstractModel):
     """CreateSecret request structure.
 
@@ -212,6 +338,164 @@ class DeleteSecretVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAsyncRequestInfoRequest(AbstractModel):
+    """DescribeAsyncRequestInfo request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowID: Async task ID.
+        :type FlowID: int
+        """
+        self.FlowID = None
+
+
+    def _deserialize(self, params):
+        self.FlowID = params.get("FlowID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAsyncRequestInfoResponse(AbstractModel):
+    """DescribeAsyncRequestInfo response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskStatus: 0: processing, 1: processing succeeded, 2: processing failed
+        :type TaskStatus: int
+        :param Description: Task description.
+        :type Description: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskStatus = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskStatus = params.get("TaskStatus")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRotationDetailRequest(AbstractModel):
+    """DescribeRotationDetail request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretName: Specifies the name of the credential for which to get the credential rotation details.
+        :type SecretName: str
+        """
+        self.SecretName = None
+
+
+    def _deserialize(self, params):
+        self.SecretName = params.get("SecretName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRotationDetailResponse(AbstractModel):
+    """DescribeRotationDetail response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param EnableRotation: Specifies whether to allow rotation. True: yes; False: no.
+        :type EnableRotation: bool
+        :param Frequency: Rotation frequency in days. Default value: 1 day.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Frequency: int
+        :param LatestRotateTime: Last rotation time, which is an explicitly visible time string in the format of 2006-01-02 15:04:05.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type LatestRotateTime: str
+        :param NextRotateBeginTime: Next rotation start time, which is an explicitly visible time string in the format of 2006-01-02 15:04:05.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NextRotateBeginTime: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EnableRotation = None
+        self.Frequency = None
+        self.LatestRotateTime = None
+        self.NextRotateBeginTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EnableRotation = params.get("EnableRotation")
+        self.Frequency = params.get("Frequency")
+        self.LatestRotateTime = params.get("LatestRotateTime")
+        self.NextRotateBeginTime = params.get("NextRotateBeginTime")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRotationHistoryRequest(AbstractModel):
+    """DescribeRotationHistory request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretName: Specifies the name of the credential for which to get the credential rotation records.
+        :type SecretName: str
+        """
+        self.SecretName = None
+
+
+    def _deserialize(self, params):
+        self.SecretName = params.get("SecretName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRotationHistoryResponse(AbstractModel):
+    """DescribeRotationHistory response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param VersionIDs: List of version numbers.
+        :type VersionIDs: list of str
+        :param TotalCount: Number of version numbers. The maximum number of version numbers that can be shown to users is 10.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.VersionIDs = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VersionIDs = params.get("VersionIDs")
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecretRequest(AbstractModel):
     """DescribeSecret request structure.
 
@@ -251,12 +535,27 @@ class DescribeSecretResponse(AbstractModel):
         :type KmsKeyId: str
         :param CreateUin: Creator UIN.
         :type CreateUin: int
-        :param Status: Secret status, which can be `Enabled`, `Disabled`, or `PendingDelete`.
+        :param Status: Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.
         :type Status: str
         :param DeleteTime: Deletion time, formatted as a Unix timestamp. For a Secret that is not in `PendingDelete` status, this value is 0.
         :type DeleteTime: int
         :param CreateTime: Creation time.
         :type CreateTime: int
+        :param SecretType: 0: user-defined credential; 1: Tencent Cloud service credential.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SecretType: int
+        :param ProductName: Tencent Cloud service name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProductName: str
+        :param ResourceID: Tencent Cloud service instance ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ResourceID: str
+        :param RotationStatus: Whether to enable rotation. True: yes; False: no.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RotationStatus: bool
+        :param RotationFrequency: Rotation frequency in days by default.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RotationFrequency: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -267,6 +566,11 @@ class DescribeSecretResponse(AbstractModel):
         self.Status = None
         self.DeleteTime = None
         self.CreateTime = None
+        self.SecretType = None
+        self.ProductName = None
+        self.ResourceID = None
+        self.RotationStatus = None
+        self.RotationFrequency = None
         self.RequestId = None
 
 
@@ -278,6 +582,42 @@ class DescribeSecretResponse(AbstractModel):
         self.Status = params.get("Status")
         self.DeleteTime = params.get("DeleteTime")
         self.CreateTime = params.get("CreateTime")
+        self.SecretType = params.get("SecretType")
+        self.ProductName = params.get("ProductName")
+        self.ResourceID = params.get("ResourceID")
+        self.RotationStatus = params.get("RotationStatus")
+        self.RotationFrequency = params.get("RotationFrequency")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSupportedProductsRequest(AbstractModel):
+    """DescribeSupportedProducts request structure.
+
+    """
+
+
+class DescribeSupportedProductsResponse(AbstractModel):
+    """DescribeSupportedProducts response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Products: List of supported services.
+        :type Products: list of str
+        :param TotalCount: Number of supported services
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Products = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Products = params.get("Products")
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -407,7 +747,8 @@ class GetSecretValueRequest(AbstractModel):
         """
         :param SecretName: Name of a Secret.
         :type SecretName: str
-        :param VersionId: ID of the Secret version.
+        :param VersionId: Specifies the version number of the corresponding credential.
+For Tencent Cloud service credentials such as MySQL credentials, this API is used to get the plaintext information of a previously rotated credential by specifying the credential name and historical version number. If you want to get the plaintext of the credential version currently in use, you need to specify the version number as `SSM_Current`.
         :type VersionId: str
         """
         self.SecretName = None
@@ -437,9 +778,11 @@ class GetSecretValueResponse(AbstractModel):
         :type SecretName: str
         :param VersionId: ID of the Secret version.
         :type VersionId: str
-        :param SecretBinary: If the `SecretBinary` field in the request body is specified in the `CreateSecret` call, this field is returned and base64-encoded. The caller needs to perform base64 decoding to obtain the original data. Either `SecretBinary` or `SecretString` will be returned.
+        :param SecretBinary: When creating a credential (CreateSecret), if you specify binary data, this field will be the Base64-encoded returned result. The application needs to Base64-decode the result to get the original data.
+Either `SecretBinary` or `SecretString` cannot be empty.
         :type SecretBinary: str
-        :param SecretString: If the `SecretString` field in the request body is specified in the `CreateSecret` call, this field is returned. Either `SecretBinary` or `SecretString` will be returned.
+        :param SecretString: When creating a credential (CreateSecret), if you specify general text data, this field will be the returned result.
+Either `SecretBinary` or `SecretString` cannot be empty.
         :type SecretString: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -558,12 +901,23 @@ class ListSecretsRequest(AbstractModel):
         :type Limit: int
         :param OrderType: Sorting order according to the creation time. If not set or set to 0, descending order is used; if set to 1, ascending order is used.
         :type OrderType: int
-        :param State: Filter according to Secret statuses. `0` (default): all Secrets; `1`: Secrets in `Enabled` status; `2`: Secrets in `Disabled` status; `3`: Secrets in `PendingDelete` status.
+        :param State: Filter based on credential status.
+The default value is 0, indicating to query all.
+1: query the list of credentials in `Enabled` status.
+2: query the list of credentials in `Disabled` status.
+3: query the list of credentials in `PendingDelete` status.
+4: query the list of credentials in `PendingCreate` status.
+5: query the list of credentials in `CreateFailed` status.
+The `PendingCreate` and `CreateFailed` status only take effect when `SecretType` is Tencent Cloud service credential
         :type State: int
         :param SearchSecretName: Filter according to Secret names. If left empty, this filter is not applied.
         :type SearchSecretName: str
-        :param TagFilters: Tag filter condition.
+        :param TagFilters: Tag filter.
         :type TagFilters: list of TagFilter
+        :param SecretType: 0: user-defined credential (default value).
+1: Tencent Cloud service credential.
+Either 1 or 0 can be selected for this parameter.
+        :type SecretType: int
         """
         self.Offset = None
         self.Limit = None
@@ -571,6 +925,7 @@ class ListSecretsRequest(AbstractModel):
         self.State = None
         self.SearchSecretName = None
         self.TagFilters = None
+        self.SecretType = None
 
 
     def _deserialize(self, params):
@@ -585,6 +940,7 @@ class ListSecretsRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
+        self.SecretType = params.get("SecretType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -624,6 +980,71 @@ class ListSecretsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ProductPrivilegeUnit(AbstractModel):
+    """Permission granted when the credential is associated with the service
+
+    """
+
+    def __init__(self):
+        """
+        :param PrivilegeName: Permission name. Valid values:
+GlobalPrivileges
+DatabasePrivileges
+TablePrivileges
+ColumnPrivileges
+
+When the permission is `DatabasePrivileges`, the database name must be specified by the `Database` parameter;
+
+When the permission is `TablePrivileges`, the database name and the table name in the database must be specified by the `Database` and `TableName` parameters;
+
+When the permission is `ColumnPrivileges`, the database name, table name in the database, and column name in the table must be specified by the `Database`, `TableName`, and `ColumnName` parameters.
+        :type PrivilegeName: str
+        :param Privileges: Permission list.
+For the `Mysql` service, optional permission values are:
+
+1. Valid values of `GlobalPrivileges`: "SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER".
+Note: if this parameter is not passed in, it means to clear the permission.
+
+2. Valid values of `DatabasePrivileges`: "SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER".
+Note: if this parameter is not passed in, it means to clear the permission.
+
+3. Valid values of `TablePrivileges`: "SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER".
+Note: if this parameter is not passed in, it means to clear the permission.
+
+4. Valid values of `ColumnPrivileges`: "SELECT","INSERT","UPDATE","REFERENCES".
+Note: if this parameter is not passed in, it means to clear the permission.
+        :type Privileges: list of str
+        :param Database: This value takes effect only when `PrivilegeName` is `DatabasePrivileges`.
+        :type Database: str
+        :param TableName: This value takes effect only when `PrivilegeName` is `TablePrivileges`, and the `Database` parameter is required in this case to explicitly indicate the database instance.
+        :type TableName: str
+        :param ColumnName: This value takes effect only when `PrivilegeName` is `ColumnPrivileges`, and the following parameters are required in this case:
+Database: explicitly indicate the database instance.
+TableName: explicitly indicate the table
+        :type ColumnName: str
+        """
+        self.PrivilegeName = None
+        self.Privileges = None
+        self.Database = None
+        self.TableName = None
+        self.ColumnName = None
+
+
+    def _deserialize(self, params):
+        self.PrivilegeName = params.get("PrivilegeName")
+        self.Privileges = params.get("Privileges")
+        self.Database = params.get("Database")
+        self.TableName = params.get("TableName")
+        self.ColumnName = params.get("ColumnName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PutSecretValueRequest(AbstractModel):
     """PutSecretValue request structure.
 
@@ -635,7 +1056,8 @@ class PutSecretValueRequest(AbstractModel):
         :type SecretName: str
         :param VersionId: ID of the new Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.
         :type VersionId: str
-        :param SecretBinary: Binary Secret information that is base64-encoded. Either `SecretBinary` or `SecretString` must be set.
+        :param SecretBinary: Base64-encoded binary credential information.
+Either `SecretBinary` or `SecretString` must be set.
         :type SecretBinary: str
         :param SecretString: Secret information plaintext in text format, base64 encoding is not needed. Either `SecretBinary` or `SecretString` must be set.
         :type SecretString: str
@@ -730,6 +1152,51 @@ class RestoreSecretResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RotateProductSecretRequest(AbstractModel):
+    """RotateProductSecret request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretName: Name of the credential to be rotated.
+        :type SecretName: str
+        """
+        self.SecretName = None
+
+
+    def _deserialize(self, params):
+        self.SecretName = params.get("SecretName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RotateProductSecretResponse(AbstractModel):
+    """RotateProductSecret response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowID: Async rotation task ID.
+        :type FlowID: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowID = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowID = params.get("FlowID")
+        self.RequestId = params.get("RequestId")
+
+
 class SecretMetadata(AbstractModel):
     """Basic information of the Secret.
 
@@ -737,22 +1204,34 @@ class SecretMetadata(AbstractModel):
 
     def __init__(self):
         """
-        :param SecretName: Name of the Secret.
+        :param SecretName: Credential name
         :type SecretName: str
-        :param Description: Description of the Secret.
+        :param Description: Credential description
         :type Description: str
-        :param KmsKeyId: KMS Key ID used for Secret encryption.
+        :param KmsKeyId: KMS `KeyId` used to encrypt the credential
         :type KmsKeyId: str
-        :param CreateUin: Creator UIN.
+        :param CreateUin: Creator UIN
         :type CreateUin: int
-        :param Status: Secret status, which can be `Enabled`, `Disabled`, or `PendingDelete`.
+        :param Status: Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.
         :type Status: str
-        :param DeleteTime: Secret deletion time, formatted as a Unix timestamp. This parameter is only applicable for Secrets in `PendingDelete` status.
+        :param DeleteTime: Credential deletion date, which takes effect for credentials in `PendingDelete` status and is in UNIX timestamp format
         :type DeleteTime: int
-        :param CreateTime: Secret creation time, formatted as a Unix timestamp.
+        :param CreateTime: Credential creation time in UNIX timestamp format
         :type CreateTime: int
-        :param KmsKeyType: Type of KMS CMK used for Secret encryption. `DEFAULT`: default key created by SecretsManager; `CUSTOMER`: user-specified key.
+        :param KmsKeyType: Type of the KMS CMK used to encrypt the credential. `DEFAULT` represents the default key created by Secrets Manager, and `CUSTOMER` represents the user-specified key
         :type KmsKeyType: str
+        :param RotationStatus: 1: enable rotation; 0: disable rotation
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RotationStatus: int
+        :param NextRotationTime: Start time of the next rotation in UNIX timestamp format
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type NextRotationTime: int
+        :param SecretType: 0: user-defined credential; 1: Tencent Cloud service credential.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SecretType: int
+        :param ProductName: Tencent Cloud service name, which takes effect only when `SecretType` is 1 (Tencent Cloud service credential)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ProductName: str
         """
         self.SecretName = None
         self.Description = None
@@ -762,6 +1241,10 @@ class SecretMetadata(AbstractModel):
         self.DeleteTime = None
         self.CreateTime = None
         self.KmsKeyType = None
+        self.RotationStatus = None
+        self.NextRotationTime = None
+        self.SecretType = None
+        self.ProductName = None
 
 
     def _deserialize(self, params):
@@ -773,6 +1256,10 @@ class SecretMetadata(AbstractModel):
         self.DeleteTime = params.get("DeleteTime")
         self.CreateTime = params.get("CreateTime")
         self.KmsKeyType = params.get("KmsKeyType")
+        self.RotationStatus = params.get("RotationStatus")
+        self.NextRotationTime = params.get("NextRotationTime")
+        self.SecretType = params.get("SecretType")
+        self.ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -887,6 +1374,62 @@ class UpdateDescriptionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateRotationStatusRequest(AbstractModel):
+    """UpdateRotationStatus request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretName: Tencent Cloud service credential name.
+        :type SecretName: str
+        :param EnableRotation: Specifies whether to enable rotation.
+True: enable rotation.
+False: disable rotation.
+        :type EnableRotation: bool
+        :param Frequency: Rotation frequency in days. Value range: 30–365.
+        :type Frequency: int
+        :param RotationBeginTime: User-Defined rotation start time in the format of 2006-01-02 15:04:05.
+When `EnableRotation` is `True`, if `RotationBeginTime` is left empty, the current time will be entered by default.
+        :type RotationBeginTime: str
+        """
+        self.SecretName = None
+        self.EnableRotation = None
+        self.Frequency = None
+        self.RotationBeginTime = None
+
+
+    def _deserialize(self, params):
+        self.SecretName = params.get("SecretName")
+        self.EnableRotation = params.get("EnableRotation")
+        self.Frequency = params.get("Frequency")
+        self.RotationBeginTime = params.get("RotationBeginTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRotationStatusResponse(AbstractModel):
+    """UpdateRotationStatus response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateSecretRequest(AbstractModel):
     """UpdateSecret request structure.
 
@@ -898,9 +1441,10 @@ class UpdateSecretRequest(AbstractModel):
         :type SecretName: str
         :param VersionId: ID of the Secret version whose content is to be updated.
         :type VersionId: str
-        :param SecretBinary: Use this field if the new Secret content is in binary format, and base64-encoded. Either `SecretBinary` or `SecretString` is set.
+        :param SecretBinary: This field should be used and Base64-encoded if the content of the new credential is binary.
+Either `SecretBinary` or `SecretString` cannot be empty.
         :type SecretBinary: str
-        :param SecretString: Use this field if the new Secret content is in text format, and base64-encoding is not required. Either `SecretBinary` or `SecretString` is set.
+        :param SecretString: This field should be used without being Base64-encoded if the content of the new credential is text. Either `SecretBinary` or `SecretString` cannot be empty.
         :type SecretString: str
         """
         self.SecretName = None

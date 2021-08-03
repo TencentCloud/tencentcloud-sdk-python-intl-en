@@ -854,11 +854,14 @@ class AssociateAddressRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param PrivateIpAddress: The private IP to be bound. If you specify `NetworkInterfaceId`, then you must also specify `PrivateIpAddress`, indicating the EIP is bound to the specified private IP of the specified ENI. At the same time, you must ensure the specified `PrivateIpAddress` is a private IP on the `NetworkInterfaceId`. You can query the private IP of the specified ENI by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `privateIpAddress` field in the returned result of [DescribeNetworkInterfaces](https://intl.cloud.tencent.com/document/api/215/15817?from_cn_redirect=1) API.
         :type PrivateIpAddress: str
+        :param EipDirectConnection: Whether to enable direct access when binding a specified EIP. For more information, see [EIP Direct Access](https://intl.cloud.tencent.com/document/product/1199/41709?from_cn_redirect=1). Valid values: `True` and `False`; default value: `False`. You can set this parameter to `True` when binding an EIP to a CVM instance or an EKS elastic cluster. This parameter is currently in beta. To use it, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&level3_id=1071&queue=96&scene_code=34639&step=2).
+        :type EipDirectConnection: bool
         """
         self.AddressId = None
         self.InstanceId = None
         self.NetworkInterfaceId = None
         self.PrivateIpAddress = None
+        self.EipDirectConnection = None
 
 
     def _deserialize(self, params):
@@ -866,6 +869,7 @@ class AssociateAddressRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.NetworkInterfaceId = params.get("NetworkInterfaceId")
         self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.EipDirectConnection = params.get("EipDirectConnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9470,6 +9474,55 @@ class DescribeVpcResourceDashboardResponse(AbstractModel):
                 obj = ResourceDashboard()
                 obj._deserialize(item)
                 self.ResourceDashboardSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpcTaskResultRequest(AbstractModel):
+    """DescribeVpcTaskResult request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: `RequestId` returned by an async task
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVpcTaskResultResponse(AbstractModel):
+    """DescribeVpcTaskResult response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Execution result of an async task Valid values: `SUCCESS`: the task has been successfully executed; `FAILED`: the job execution failed; `RUNNING`: the job is executing.
+        :type Status: str
+        :param Output: Output of the async task execution result
+        :type Output: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Output = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Output = params.get("Output")
         self.RequestId = params.get("RequestId")
 
 

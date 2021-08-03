@@ -56,6 +56,9 @@ INVALIDINSTANCEID_ALREADYBINDEIP = 'InvalidInstanceId.AlreadyBindEip'
 # Invalid instance ID. The specified instance ID does not exist.
 INVALIDINSTANCEID_NOTFOUND = 'InvalidInstanceId.NotFound'
 
+# The specified NetworkInterfaceId does not exist or the specified PrivateIpAddress is not on the NetworkInterfaceId.
+INVALIDNETWORKINTERFACEID_NOTFOUND = 'InvalidNetworkInterfaceId.NotFound'
+
 # A parameter error occurred.
 INVALIDPARAMETER = 'InvalidParameter'
 
@@ -142,6 +145,9 @@ INVALIDPARAMETERVALUE_VPNCONNCIDRCONFLICT = 'InvalidParameterValue.VpnConnCidrCo
 
 # The `Zone` parameter value should be the zone where CDC resides.
 INVALIDPARAMETERVALUE_ZONECONFLICT = 'InvalidParameterValue.ZoneConflict'
+
+# The specified private IP of the specified ENI has already been bound to an EIP. A private IP cannot be bound to more than one EIP.
+INVALIDPRIVATEIPADDRESS_ALREADYBINDEIP = 'InvalidPrivateIpAddress.AlreadyBindEip'
 
 # Invalid routing policy ID (RouteId).
 INVALIDROUTEID_NOTFOUND = 'InvalidRouteId.NotFound'
@@ -263,6 +269,9 @@ UNSUPPORTEDOPERATION_CCNATTACHED = 'UnsupportedOperation.CcnAttached'
 # The instance is not associated with a CCN.
 UNSUPPORTEDOPERATION_CCNNOTATTACHED = 'UnsupportedOperation.CcnNotAttached'
 
+# 
+UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = 'UnsupportedOperation.CcnRouteTableNotExist'
+
 # CDC subnet can only create a route to the local gateway.
 UNSUPPORTEDOPERATION_CDCSUBNETNOTSUPPORTUNLOCALGATEWAY = 'UnsupportedOperation.CdcSubnetNotSupportUnLocalGateway'
 
@@ -296,8 +305,14 @@ UNSUPPORTEDOPERATION_ECMPWITHCCNROUTE = 'UnsupportedOperation.EcmpWithCcnRoute'
 # Form an ECMP with the user’s custom routes.
 UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = 'UnsupportedOperation.EcmpWithUserRoute'
 
+# 
+UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = 'UnsupportedOperation.InstanceAndRtbNotMatch'
+
 # Insufficient account balance.
 UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = 'UnsupportedOperation.InsufficientFunds'
+
+# 
+UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = 'UnsupportedOperation.InvalidInstanceState'
 
 # Invalid resource status.
 UNSUPPORTEDOPERATION_INVALIDSTATE = 'UnsupportedOperation.InvalidState'
@@ -343,6 +358,9 @@ UNSUPPORTEDOPERATION_PUBLICIPADDRESSISNOTEXISTED = 'UnsupportedOperation.PublicI
 
 # The EIP bound to the NAT gateway is not bill-by-traffic.
 UNSUPPORTEDOPERATION_PUBLICIPADDRESSNOTBILLEDBYTRAFFIC = 'UnsupportedOperation.PublicIpAddressNotBilledByTraffic'
+
+# The resource ID entered does not match with any resource bound with the IP. Check and try again.
+UNSUPPORTEDOPERATION_RESOURCEMISMATCH = 'UnsupportedOperation.ResourceMismatch'
 
 # The endpoint created by the specified endpoint service cannot be bound to a security group.
 UNSUPPORTEDOPERATION_SPECIALENDPOINTSERVICE = 'UnsupportedOperation.SpecialEndPointService'

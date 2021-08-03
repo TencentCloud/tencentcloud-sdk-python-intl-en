@@ -26,6 +26,34 @@ class SsmClient(AbstractClient):
     _service = 'ssm'
 
 
+    def CreateProductSecret(self, request):
+        """This API is used to create a Tencent Cloud service credential.
+
+        :param request: Request instance for CreateProductSecret.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.CreateProductSecretRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.CreateProductSecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateProductSecret", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateProductSecretResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSecret(self, request):
         """This API is used to create a KMS-encrypted Secret. You can create and store up to 1,000 Secrets in each region.
 
@@ -83,7 +111,8 @@ class SsmClient(AbstractClient):
 
 
     def DeleteSecretVersion(self, request):
-        """This API is used to delete a version of a Secret. The deletion takes effect immediately. Secret versions in any status can be deleted.
+        """This API is used to directly delete a single credential version under the specified credential. The deletion takes effect immediately, and the credential version in all status can be deleted.
+        This API is only applicable to user-defined credentials but not Tencent Cloud service credentials.
 
         :param request: Request instance for DeleteSecretVersion.
         :type request: :class:`tencentcloud.ssm.v20190923.models.DeleteSecretVersionRequest`
@@ -96,6 +125,92 @@ class SsmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecretVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAsyncRequestInfo(self, request):
+        """This API is used to query the execution result of an async task.
+
+        :param request: Request instance for DescribeAsyncRequestInfo.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.DescribeAsyncRequestInfoRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.DescribeAsyncRequestInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAsyncRequestInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAsyncRequestInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRotationDetail(self, request):
+        """This API is used to query the details of a credential rotation policy.
+        This API is only applicable to Tencent Cloud service credentials.
+
+        :param request: Request instance for DescribeRotationDetail.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.DescribeRotationDetailRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.DescribeRotationDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRotationDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRotationDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRotationHistory(self, request):
+        """This API is used to query the historical versions of a rotated credential.
+        This API is only applicable to Tencent Cloud service credentials.
+
+        :param request: Request instance for DescribeRotationHistory.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.DescribeRotationHistoryRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.DescribeRotationHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRotationHistory", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRotationHistoryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -124,6 +239,34 @@ class SsmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecretResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSupportedProducts(self, request):
+        """This API is used to query the list of supported Tencent Cloud services.
+
+        :param request: Request instance for DescribeSupportedProducts.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.DescribeSupportedProductsRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.DescribeSupportedProductsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSupportedProducts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSupportedProductsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -223,7 +366,8 @@ class SsmClient(AbstractClient):
 
 
     def GetSecretValue(self, request):
-        """This API is used to obtain the plaintext of a specified Secret and version. Only plaintext of an enabled Secret can be obtained.
+        """For user-defined credentials, this API is used to get the plaintext information of a credential by specifying the credential name and version.
+        For Tencent Cloud service credentials such as MySQL credentials, this API is used to get the plaintext information of a previously rotated credential by specifying the credential name and historical version number. If you want to get the plaintext of the credential version currently in use, you need to specify the version number as `SSM_Current`.
 
         :param request: Request instance for GetSecretValue.
         :type request: :class:`tencentcloud.ssm.v20190923.models.GetSecretValueRequest`
@@ -335,7 +479,8 @@ class SsmClient(AbstractClient):
 
 
     def PutSecretValue(self, request):
-        """This API is used to add a new version to a specified Secret. Each Secret supports up to 10 versions. You can only add versions to Secrets in `Enabled` or `Disabled` status.
+        """This API adds the new version of the credential content under the specified credential. One credential can have up to 10 versions. New versions can be added to credentials only in `Enabled` or `Disabled` status.
+        This API is only applicable to user-defined credentials but not Tencent Cloud service credentials.
 
         :param request: Request instance for PutSecretValue.
         :type request: :class:`tencentcloud.ssm.v20190923.models.PutSecretValueRequest`
@@ -390,6 +535,34 @@ class SsmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RotateProductSecret(self, request):
+        """This API is used to rotate a Tencent Cloud service credential. It is only applicable to Tencent Cloud service credentials in `Enabled` status but not Tencent Cloud service credentials in other status or user-defined credentials.
+
+        :param request: Request instance for RotateProductSecret.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.RotateProductSecretRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.RotateProductSecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RotateProductSecret", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RotateProductSecretResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateDescription(self, request):
         """This API is used to update the description of a Secret. This API can only update Secrets in `Enabled` or `Disabled` status.
 
@@ -418,8 +591,40 @@ class SsmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateRotationStatus(self, request):
+        """This API is used to set a Tencent Cloud service credential rotation policy, including the following parameters:
+        Specifies whether to enable rotation
+        Rotation frequency
+        Rotation start time
+
+        :param request: Request instance for UpdateRotationStatus.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.UpdateRotationStatusRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.UpdateRotationStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateRotationStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRotationStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateSecret(self, request):
-        """This API is used to update the name and version ID of a Secret. Calling this API encrypts the new Secret content and overwrites the old content. This API can only update Secrets in `Enabled` or `Disabled` status.
+        """This API is used to update the credential content of the specified credential name and version number. Calling this API will encrypt the content of the new credential and overwrite the old content. Only credentials in `Enabled` or `Disabled` status can be updated.
+        This API is only applicable to user-defined credentials but not Tencent Cloud service credentials.
 
         :param request: Request instance for UpdateSecret.
         :type request: :class:`tencentcloud.ssm.v20190923.models.UpdateSecretRequest`

@@ -55,7 +55,7 @@ class DcdbClient(AbstractClient):
 
 
     def CancelDcnJob(self, request):
-        """This API is used to cancel CDN synchronization.
+        """This API is used to cancel DCN synchronization.
 
         :param request: Request instance for CancelDcnJob.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CancelDcnJobRequest`

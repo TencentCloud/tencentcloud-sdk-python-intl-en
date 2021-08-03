@@ -71,6 +71,9 @@ INTERNALERROR_COSCONFIGURATION = 'InternalError.CosConfiguration'
 # Backup file signature failed.
 INTERNALERROR_COSSIGNURL = 'InternalError.CosSignUrl'
 
+# Failed to create a task.
+INTERNALERROR_CREATEFLOWFAILED = 'InternalError.CreateFlowFailed'
+
 # No database data has changed.
 INTERNALERROR_DBROWSAFFECTEDERROR = 'InternalError.DBRowsAffectedError'
 

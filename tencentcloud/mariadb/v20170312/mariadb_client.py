@@ -54,6 +54,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CancelDcnJob(self, request):
+        """This API is used to cancel DCN synchronization.
+
+        :param request: Request instance for CancelDcnJob.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.CancelDcnJobRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.CancelDcnJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelDcnJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelDcnJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloneAccount(self, request):
         """This API is used to clone an instance account.
 
