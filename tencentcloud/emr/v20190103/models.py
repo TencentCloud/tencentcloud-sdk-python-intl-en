@@ -357,18 +357,31 @@ class CreateInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param ProductId: Product ID. Different product IDs represent different EMR product versions. Valid values:
-<li>1: EMR v1.3.1.</li>
-<li>2: EMR v2.0.1.</li>
-<li>4: EMR v2.1.0.</li>
-<li>7: EMR v3.0.0.</li>
+<li>1: EMR v1.3.1</li>
+<li>2: EMR v2.0.1</li>
+<li>4: EMR v2.1.0</li>
+<li>7: EMR v3.0.0</li>
+<li>9: EMR v2.2.0</li>
+<li>11: ClickHouse v1.0.0</li>
+<li>13: Druid v1.0.0</li>
+<li>15: EMR v2.2.1</li>
+<li>16: EMR v2.3.0</li>
+<li>17: ClickHouse v1.1.0</li>
+<li>19: EMR v2.4.0</li>
+<li>20: EMR v2.5.0</li>
+<li>22: ClickHouse v1.2.0</li>
+<li>24: EMR TianQiong v1.0.0</li>
+<li>25: EMR v3.1.0</li>
+<li>26: Doris v1.0.0</li>
+<li>27: Kafka v1.0.0</li>
+<li>28: EMR v3.2.0</li>
+<li>29: EMR v2.5.1</li>
+<li>30: EMR v2.6.0</li>
         :type ProductId: int
         :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param Software: List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):
-<li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
-<li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
-<li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>
-<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>
+        :param Software: List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
+Enter an instance value: `hive` or `flink`.
         :type Software: list of str
         :param ResourceSpec: Node resource specification.
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
@@ -401,7 +414,7 @@ class CreateInstanceRequest(AbstractModel):
         :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`
         :param SgId: Security group to which an instance belongs in the format of `sg-xxxxxxxx`. This parameter can be obtained from the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) API.
         :type SgId: str
-        :param PreExecutedFileSettings: Bootstrap script settings.
+        :param PreExecutedFileSettings: [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings
         :type PreExecutedFileSettings: list of PreExecuteFileSettings
         :param AutoRenew: Whether auto-renewal is enabled. Valid values:
 <li>0: auto-renewal not enabled.</li>
@@ -422,6 +435,7 @@ class CreateInstanceRequest(AbstractModel):
         :param Tags: Tag description list. This parameter is used to bind a tag to a resource instance.
         :type Tags: list of Tag
         :param DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.
+This parameter can be obtained in the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1) API.
         :type DisasterRecoverGroupIds: list of str
         :param CbsEncrypt: CBS disk encryption at the cluster level. 0: not encrypted, 1: encrypted
         :type CbsEncrypt: int
@@ -532,13 +546,18 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param InstanceId: Instance ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.InstanceId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1097,6 +1116,8 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         :type TimeUnit: str
         :param Currency: Currency.
         :type Currency: str
+        :param ModifyPayMode: Whether to change from pay-as-you-go billing to monthly subscription billing. `0`: no; `1`: yes
+        :type ModifyPayMode: int
         """
         self.TimeSpan = None
         self.ResourceIds = None
@@ -1104,6 +1125,7 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         self.PayMode = None
         self.TimeUnit = None
         self.Currency = None
+        self.ModifyPayMode = None
 
 
     def _deserialize(self, params):
@@ -1115,6 +1137,7 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.TimeUnit = params.get("TimeUnit")
         self.Currency = params.get("Currency")
+        self.ModifyPayMode = params.get("ModifyPayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1388,7 +1411,10 @@ class MultiDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: Cloud disk type. Valid values: CLOUD_PREMIUM, CLOUD_SSD, CLOUD_BASIC
+        :param DiskType: Cloud disk type
+<li>`CLOUD_SSD`: SSD</li>
+<li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>
+<li>`CLOUD_HSSD`: Enhanced SSD</li>
         :type DiskType: str
         :param Volume: Cloud disk size
         :type Volume: int
@@ -1632,6 +1658,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param DynamicPodSpec: Floating specification in JSON string
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DynamicPodSpec: str
+        :param SupportModifyPayMode: Whether to support billing mode change. `0`: no; `1`: yes
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SupportModifyPayMode: int
         """
         self.AppId = None
         self.SerialNo = None
@@ -1672,6 +1701,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.HardwareResourceType = None
         self.IsDynamicSpec = None
         self.DynamicPodSpec = None
+        self.SupportModifyPayMode = None
 
 
     def _deserialize(self, params):
@@ -1726,6 +1756,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.HardwareResourceType = params.get("HardwareResourceType")
         self.IsDynamicSpec = params.get("IsDynamicSpec")
         self.DynamicPodSpec = params.get("DynamicPodSpec")
+        self.SupportModifyPayMode = params.get("SupportModifyPayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1873,8 +1904,116 @@ class PodParameter(AbstractModel):
         :param ClusterId: TKE or EKS cluster ID
         :type ClusterId: str
         :param Config: Custom permission
+Example:
+{
+  "apiVersion": "v1",
+  "clusters": [
+    {
+      "cluster": {
+        "certificate-authority-data": "xxxxxx==",
+        "server": "https://xxxxx.com"
+      },
+      "name": "cls-xxxxx"
+    }
+  ],
+  "contexts": [
+    {
+      "context": {
+        "cluster": "cls-xxxxx",
+        "user": "100014xxxxx"
+      },
+      "name": "cls-a44yhcxxxxxxxxxx"
+    }
+  ],
+  "current-context": "cls-a4xxxx-context-default",
+  "kind": "Config",
+  "preferences": {},
+  "users": [
+    {
+      "name": "100014xxxxx",
+      "user": {
+        "client-certificate-data": "xxxxxx",
+        "client-key-data": "xxxxxx"
+      }
+    }
+  ]
+}
         :type Config: str
         :param Parameter: Custom parameter
+Example:
+{
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "name": "test-deployment",
+      "labels": {
+        "app": "test"
+      }
+    },
+    "spec": {
+      "replicas": 3,
+      "selector": {
+        "matchLabels": {
+          "app": "test-app"
+        }
+      },
+      "template": {
+        "metadata": {
+          "annotations": {
+            "your-organization.com/department-v1": "test-example-v1",
+            "your-organization.com/department-v2": "test-example-v2"
+          },
+          "labels": {
+            "app": "test-app",
+            "environment": "production"
+          }
+        },
+        "spec": {
+          "nodeSelector": {
+            "your-organization/node-test": "test-node"
+          },
+          "containers": [
+            {
+              "name": "nginx",
+              "image": "nginx:1.14.2",
+              "ports": [
+                {
+                  "containerPort": 80
+                }
+              ]
+            }
+          ],
+          "affinity": {
+            "nodeAffinity": {
+              "requiredDuringSchedulingIgnoredDuringExecution": {
+                "nodeSelectorTerms": [
+                  {
+                    "matchExpressions": [
+                      {
+                        "key": "disk-type",
+                        "operator": "In",
+                        "values": [
+                          "ssd",
+                          "sas"
+                        ]
+                      },
+                      {
+                        "key": "cpu-num",
+                        "operator": "Gt",
+                        "values": [
+                          "6"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
         :type Parameter: str
         """
         self.ClusterId = None
@@ -1923,6 +2062,12 @@ class PodSpec(AbstractModel):
         :param DynamicPodSpec: Floating specification
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
+        :param VpcId: Unique VPC ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param SubnetId: Unique VPC subnet ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SubnetId: str
         """
         self.ResourceProviderIdentifier = None
         self.ResourceProviderType = None
@@ -1934,6 +2079,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.PodVolumes = None
         self.IsDynamicSpec = None
         self.DynamicPodSpec = None
+        self.VpcId = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -1954,6 +2101,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("DynamicPodSpec") is not None:
             self.DynamicPodSpec = DynamicPodSpec()
             self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2172,14 +2321,24 @@ class Resource(AbstractModel):
 
     def __init__(self):
         """
-        :param Spec: Node specification description
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Spec: Node specification description, such as CVM.SA2
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Spec: str
-        :param StorageType: Storage class
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param StorageType: Storage type
+Valid values:
+<li>4: SSD</li>
+<li>5: Premium Cloud Storage</li>
+<li>6: Enhanced SSD</li>
+<li>11: High-Throughput cloud disk</li>
+<li>12: Tremendous SSD</li>
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type StorageType: int
         :param DiskType: Disk type
-Note: this field may return null, indicating that no valid values can be obtained.
+Valid values:
+<li>`CLOUD_SSD`: SSD</li>
+<li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>
+<li>`CLOUD_BASIC`: HDD</li>
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DiskType: str
         :param MemSize: Memory capacity in MB
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2199,14 +2358,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: List of tags to be bound
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param InstanceType: Specification type
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param InstanceType: Specification type, such as S2.MEDIUM8
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InstanceType: str
-        :param LocalDiskNum: Number of local disks
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param LocalDiskNum: Number of local disks. This field has been disused.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LocalDiskNum: int
-        :param DiskNum: Number of disks
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param DiskNum: Number of local disks, such as 2
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DiskNum: int
         """
         self.Spec = None
@@ -2295,7 +2454,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type DisasterRecoverGroupIds: list of str
         :param Tags: List of tags bound to added nodes.
         :type Tags: list of Tag
-        :param HardwareResourceType: Resource type selected for expansion. Valid values: host (general CVM resource), pod (resource provided by TKE cluster)
+        :param HardwareResourceType: Resource type selected for scaling. Valid values: `host` (general CVM resource), `pod` (resource provided by TKE or EKS cluster)
         :type HardwareResourceType: str
         :param PodSpec: Specified information such as pod specification and source for expansion with pod resources
         :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
@@ -2308,7 +2467,12 @@ class ScaleOutInstanceRequest(AbstractModel):
         :param PodParameter: Custom pod permission and parameter
         :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodParameter`
         :param MasterCount: Number of master nodes to be added
+When a ClickHouse cluster is scaled, this parameter does not take effect.
+When a Kafka cluster is scaled, this parameter does not take effect.
+When `HardwareResourceType` is `pod`, this parameter does not take effect.
         :type MasterCount: int
+        :param StartServiceAfterScaleOut: Whether to start the service after scaling. `true`: yes; `false`: no
+        :type StartServiceAfterScaleOut: str
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -2331,6 +2495,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.YarnNodeLabel = None
         self.PodParameter = None
         self.MasterCount = None
+        self.StartServiceAfterScaleOut = None
 
 
     def _deserialize(self, params):
@@ -2369,6 +2534,7 @@ class ScaleOutInstanceRequest(AbstractModel):
             self.PodParameter = PodParameter()
             self.PodParameter._deserialize(params.get("PodParameter"))
         self.MasterCount = params.get("MasterCount")
+        self.StartServiceAfterScaleOut = params.get("StartServiceAfterScaleOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

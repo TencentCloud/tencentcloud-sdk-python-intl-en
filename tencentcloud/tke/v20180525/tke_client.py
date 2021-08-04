@@ -698,6 +698,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterCommonNames(self, request):
+        """This API is used to obtain the CommonName from the kube-apiserver client certificate that corresponding to the sub-account in RBAC authorization mode.
+
+        :param request: Request instance for DescribeClusterCommonNames.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterCommonNamesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterCommonNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterCommonNames", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterCommonNamesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterEndpointStatus(self, request):
         """Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)
 
@@ -978,6 +1006,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEnableVpcCniProgress(self, request):
+        """This API is used to query the task progress of enabling VPC-CNI mode.
+
+        :param request: Request instance for DescribeEnableVpcCniProgress.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEnableVpcCniProgressRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEnableVpcCniProgressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEnableVpcCniProgress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEnableVpcCniProgressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExistedInstances(self, request):
         """This API is used to query one or more existing node and determine whether they can be added to a cluster.
 
@@ -1076,6 +1132,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTableConflictsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableVpcCniNetworkType(self, request):
+        """This API is used to enable the VPC-CNI network mode for GR clusters.
+
+        :param request: Request instance for EnableVpcCniNetworkType.
+        :type request: :class:`tencentcloud.tke.v20180525.models.EnableVpcCniNetworkTypeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.EnableVpcCniNetworkTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableVpcCniNetworkType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableVpcCniNetworkTypeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -84,6 +84,10 @@ class AddExistedInstancesRequest(AbstractModel):
         :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`
         :param SkipValidateOptions: Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck
         :type SkipValidateOptions: list of str
+        :param InstanceAdvancedSettingsOverrides: This parameter is used to customize the configuration of an instance, which corresponds to the `InstanceIds` one-to-one in sequence. If this parameter is passed in, the default parameter `InstanceAdvancedSettings` will be overwritten and will not take effect. If this parameter is not passed in, the `InstanceAdvancedSettings` will take effect for each instance.
+
+The array length of `InstanceAdvancedSettingsOverride` should be the same as the array length of `InstanceIds`. If its array length is greater than the `InstanceIds` array length, an error will be reported. If its array length is less than the `InstanceIds` array length, the instance without corresponding configuration will use the default configuration.
+        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
         """
         self.ClusterId = None
         self.InstanceIds = None
@@ -94,6 +98,7 @@ class AddExistedInstancesRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.NodePool = None
         self.SkipValidateOptions = None
+        self.InstanceAdvancedSettingsOverrides = None
 
 
     def _deserialize(self, params):
@@ -114,6 +119,12 @@ class AddExistedInstancesRequest(AbstractModel):
             self.NodePool = NodePoolOption()
             self.NodePool._deserialize(params.get("NodePool"))
         self.SkipValidateOptions = params.get("SkipValidateOptions")
+        if params.get("InstanceAdvancedSettingsOverrides") is not None:
+            self.InstanceAdvancedSettingsOverrides = []
+            for item in params.get("InstanceAdvancedSettingsOverrides"):
+                obj = InstanceAdvancedSettings()
+                obj._deserialize(item)
+                self.InstanceAdvancedSettingsOverrides.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1013,6 +1024,34 @@ class ClusterVersion(AbstractModel):
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.Versions = params.get("Versions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommonName(AbstractModel):
+    """The CommonName in the certificate of the client corresponding to the user UIN
+
+    """
+
+    def __init__(self):
+        """
+        :param SubaccountUin: User UIN
+        :type SubaccountUin: str
+        :param CN: The CommonName in the certificate of the client corresponding to the sub-account
+        :type CN: str
+        """
+        self.SubaccountUin = None
+        self.CN = None
+
+
+    def _deserialize(self, params):
+        self.SubaccountUin = params.get("SubaccountUin")
+        self.CN = params.get("CN")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2168,6 +2207,64 @@ class DescribeClusterAsGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterCommonNamesRequest(AbstractModel):
+    """DescribeClusterCommonNames request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param SubaccountUins: Sub-account. Up to 50 sub-accounts can be passed in at a time.
+        :type SubaccountUins: list of str
+        :param RoleIds: Role ID. Up to 50 role IDs can be passed in at a time.
+        :type RoleIds: list of str
+        """
+        self.ClusterId = None
+        self.SubaccountUins = None
+        self.RoleIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SubaccountUins = params.get("SubaccountUins")
+        self.RoleIds = params.get("RoleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterCommonNamesResponse(AbstractModel):
+    """DescribeClusterCommonNames response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param CommonNames: The CommonName in the certificate of the client corresponding to the sub-account UIN
+        :type CommonNames: list of CommonName
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CommonNames = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CommonNames") is not None:
+            self.CommonNames = []
+            for item in params.get("CommonNames"):
+                obj = CommonName()
+                obj._deserialize(item)
+                self.CommonNames.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterEndpointStatusRequest(AbstractModel):
     """DescribeClusterEndpointStatus request structure.
 
@@ -2203,7 +2300,8 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: Queries cluster access port status (Created = successfully enabled; Creating = in the process of being enabled; NotFound = not enabled).
+        :param Status: The status of cluster access port. It can be `Created` (enabled); `Creating` (enabling) and `NotFound` (not enabled)
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type Status: str
         :param ErrorMsg: Details of the error occurred while opening the access port
 Note: this field may return `null`, indicating that no valid value is obtained.
@@ -2743,6 +2841,56 @@ class DescribeClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEnableVpcCniProgressRequest(AbstractModel):
+    """DescribeEnableVpcCniProgress request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: ID of the cluster for which you want to enable the VPC-CNI mode
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnableVpcCniProgressResponse(AbstractModel):
+    """DescribeEnableVpcCniProgress response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Task status, which can be `Running`, `Succeed`, or `Failed`.
+        :type Status: str
+        :param ErrorMessage: The description for the task status when the task status is “Failed”, for example, failed to install the IPAMD component.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ErrorMessage: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.ErrorMessage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExistedInstancesRequest(AbstractModel):
     """DescribeExistedInstances request structure.
 
@@ -2966,6 +3114,63 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class EnableVpcCniNetworkTypeRequest(AbstractModel):
+    """EnableVpcCniNetworkType request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param VpcCniType: The VPC-CNI mode. `tke-route-eni`: Multi-IP ENI, `tke-direct-eni`: Independent ENI
+        :type VpcCniType: str
+        :param EnableStaticIp: Whether to enable static IP address
+        :type EnableStaticIp: bool
+        :param Subnets: The container subnet being used
+        :type Subnets: list of str
+        :param ExpiredSeconds: Specifies when to release the IP after the Pod termination in static IP mode. It must be longer than 300 seconds. If this parameter is left empty, the IP address will never be released.
+        :type ExpiredSeconds: int
+        """
+        self.ClusterId = None
+        self.VpcCniType = None
+        self.EnableStaticIp = None
+        self.Subnets = None
+        self.ExpiredSeconds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VpcCniType = params.get("VpcCniType")
+        self.EnableStaticIp = params.get("EnableStaticIp")
+        self.Subnets = params.get("Subnets")
+        self.ExpiredSeconds = params.get("ExpiredSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableVpcCniNetworkTypeResponse(AbstractModel):
+    """EnableVpcCniNetworkType response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EnhancedService(AbstractModel):
     """Describes the configuration of enhanced services, such as Cloud Security and Cloud Monitor.
 
@@ -3100,10 +3305,13 @@ class ExistedInstancesForNode(AbstractModel):
         :type ExistedInstancesPara: :class:`tencentcloud.tke.v20180525.models.ExistedInstancesPara`
         :param InstanceAdvancedSettingsOverride: Advanced node setting, which overrides the InstanceAdvancedSettings item set at the cluster level (currently valid for the ExtraArgs node custom parameter only)
         :type InstanceAdvancedSettingsOverride: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param DesiredPodNumbers: When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.
+        :type DesiredPodNumbers: list of int
         """
         self.NodeRole = None
         self.ExistedInstancesPara = None
         self.InstanceAdvancedSettingsOverride = None
+        self.DesiredPodNumbers = None
 
 
     def _deserialize(self, params):
@@ -3114,6 +3322,7 @@ class ExistedInstancesForNode(AbstractModel):
         if params.get("InstanceAdvancedSettingsOverride") is not None:
             self.InstanceAdvancedSettingsOverride = InstanceAdvancedSettings()
             self.InstanceAdvancedSettingsOverride._deserialize(params.get("InstanceAdvancedSettingsOverride"))
+        self.DesiredPodNumbers = params.get("DesiredPodNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3456,7 +3665,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ExtraArgs: Information about node custom parameters
 Note: This field may return null, indicating that no valid value was found.
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
-        :param DesiredPodNumber: 
+        :param DesiredPodNumber: When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DesiredPodNumber: int
         """
         self.MountTarget = None
@@ -4621,6 +4831,36 @@ class SetNodePoolNodeProtectionRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param InstanceIds: Node ID
+        :type InstanceIds: list of str
+        :param ProtectedFromScaleIn: Whether the node needs removal protection
+        :type ProtectedFromScaleIn: bool
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.InstanceIds = None
+        self.ProtectedFromScaleIn = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.ProtectedFromScaleIn = params.get("ProtectedFromScaleIn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class SetNodePoolNodeProtectionResponse(AbstractModel):
     """SetNodePoolNodeProtection response structure.
@@ -4629,13 +4869,23 @@ class SetNodePoolNodeProtectionResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param SucceedInstanceIds: ID of the node that has successfully set the removal protection
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type SucceedInstanceIds: list of str
+        :param FailedInstanceIds: ID of the node that fails to set the removal protection
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type FailedInstanceIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.SucceedInstanceIds = None
+        self.FailedInstanceIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SucceedInstanceIds = params.get("SucceedInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
         self.RequestId = params.get("RequestId")
 
 

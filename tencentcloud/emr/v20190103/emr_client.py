@@ -27,7 +27,7 @@ class EmrClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """This API is used to create EMR instance.
+        """This API is used to create an EMR cluster instance.
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateInstanceRequest`
