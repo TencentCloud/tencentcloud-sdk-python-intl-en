@@ -351,13 +351,13 @@ class CreateClustersRequest(AbstractModel):
         :type ProjectId: int
         :param Cpu: Number of CPU cores of normal instance
         :type Cpu: int
-        :param Memory: Memory of normal instance
+        :param Memory: Memory of a non-serverless instance in GB
         :type Memory: int
-        :param Storage: Storage
+        :param Storage: Storage capacity in GB
         :type Storage: int
         :param ClusterName: Cluster name
         :type ClusterName: str
-        :param AdminPassword: Account password, which can contain 8–64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()~)
+        :param AdminPassword: Account password (it must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/).)
         :type AdminPassword: str
         :param Port: Port. Default value: 5432
         :type Port: int
@@ -378,7 +378,8 @@ timeRollback: rollback by time point
         :type ExpectTime: str
         :param ExpectTimeThresh: Specified allowed time range for time point rollback
         :type ExpectTimeThresh: int
-        :param StorageLimit: Storage upper limit of normal instance in GB
+        :param StorageLimit: The maximum storage of a non-serverless instance in GB
+If `DbType` is `MYSQL` and the storage billing mode is prepaid, the parameter value cannot exceed the maximum storage corresponding to the CPU and memory specifications.
         :type StorageLimit: int
         :param InstanceCount: Number of instances
         :type InstanceCount: int
@@ -415,6 +416,10 @@ Default value: yes
         :param AutoPauseDelay: This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]
 Default value: 600
         :type AutoPauseDelay: int
+        :param StoragePayMode: The billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid). Default value: `0`.
+If `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be postpaid.
+Clusters with storage billed in prepaid mode cannot be cloned or rolled back.
+        :type StoragePayMode: int
         """
         self.Zone = None
         self.VpcId = None
@@ -449,6 +454,7 @@ Default value: 600
         self.MaxCpu = None
         self.AutoPause = None
         self.AutoPauseDelay = None
+        self.StoragePayMode = None
 
 
     def _deserialize(self, params):
@@ -490,6 +496,7 @@ Default value: 600
         self.MaxCpu = params.get("MaxCpu")
         self.AutoPause = params.get("AutoPause")
         self.AutoPauseDelay = params.get("AutoPauseDelay")
+        self.StoragePayMode = params.get("StoragePayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -606,6 +613,16 @@ class CynosdbCluster(AbstractModel):
 resume
 pause
         :type ServerlessStatus: str
+        :param Storage: Prepaid cluster storage
+        :type Storage: int
+        :param StorageId: Cluster storage ID used in prepaid storage modification
+        :type StorageId: str
+        :param StoragePayMode: Billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid)
+        :type StoragePayMode: int
+        :param MinStorageSize: The minimum storage corresponding to the compute specifications of the cluster
+        :type MinStorageSize: int
+        :param MaxStorageSize: The maximum storage corresponding to the compute specifications of the cluster
+        :type MaxStorageSize: int
         """
         self.Status = None
         self.UpdateTime = None
@@ -635,6 +652,11 @@ pause
         self.ResourceTags = None
         self.DbMode = None
         self.ServerlessStatus = None
+        self.Storage = None
+        self.StorageId = None
+        self.StoragePayMode = None
+        self.MinStorageSize = None
+        self.MaxStorageSize = None
 
 
     def _deserialize(self, params):
@@ -676,6 +698,11 @@ pause
                 self.ResourceTags.append(obj)
         self.DbMode = params.get("DbMode")
         self.ServerlessStatus = params.get("ServerlessStatus")
+        self.Storage = params.get("Storage")
+        self.StorageId = params.get("StorageId")
+        self.StoragePayMode = params.get("StoragePayMode")
+        self.MinStorageSize = params.get("MinStorageSize")
+        self.MaxStorageSize = params.get("MaxStorageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -909,6 +936,12 @@ class CynosdbInstance(AbstractModel):
 resume
 pause
         :type ServerlessStatus: str
+        :param StoragePayMode: Storage billing mode
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type StoragePayMode: int
+        :param StorageId: Prepaid storage ID
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type StorageId: str
         """
         self.Uin = None
         self.AppId = None
@@ -950,6 +983,8 @@ pause
         self.MinCpu = None
         self.MaxCpu = None
         self.ServerlessStatus = None
+        self.StoragePayMode = None
+        self.StorageId = None
 
 
     def _deserialize(self, params):
@@ -993,6 +1028,8 @@ pause
         self.MinCpu = params.get("MinCpu")
         self.MaxCpu = params.get("MaxCpu")
         self.ServerlessStatus = params.get("ServerlessStatus")
+        self.StoragePayMode = params.get("StoragePayMode")
+        self.StorageId = params.get("StorageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1071,6 +1108,14 @@ class CynosdbInstanceDetail(AbstractModel):
         :type CynosVersion: str
         :param RenewFlag: Renewal flag
         :type RenewFlag: int
+        :param MinCpu: The minimum number of CPU cores for a serverless instance
+        :type MinCpu: float
+        :param MaxCpu: The maximum number of CPU cores for a serverless instance
+        :type MaxCpu: float
+        :param ServerlessStatus: Serverless instance status. Valid values:
+resume
+pause
+        :type ServerlessStatus: str
         """
         self.Uin = None
         self.AppId = None
@@ -1103,6 +1148,9 @@ class CynosdbInstanceDetail(AbstractModel):
         self.Charset = None
         self.CynosVersion = None
         self.RenewFlag = None
+        self.MinCpu = None
+        self.MaxCpu = None
+        self.ServerlessStatus = None
 
 
     def _deserialize(self, params):
@@ -1137,6 +1185,9 @@ class CynosdbInstanceDetail(AbstractModel):
         self.Charset = params.get("Charset")
         self.CynosVersion = params.get("CynosVersion")
         self.RenewFlag = params.get("RenewFlag")
+        self.MinCpu = params.get("MinCpu")
+        self.MaxCpu = params.get("MaxCpu")
+        self.ServerlessStatus = params.get("ServerlessStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1366,16 +1417,21 @@ class DescribeBackupListRequest(AbstractModel):
         :type Limit: int
         :param Offset: Backup file list start
         :type Offset: int
+        :param DbType: Database type. Valid values: 
+<li> MYSQL </li>
+        :type DbType: str
         """
         self.ClusterId = None
         self.Limit = None
         self.Offset = None
+        self.DbType = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.DbType = params.get("DbType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1948,7 +2004,7 @@ class DescribeResourcesByDealNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DealName: Billing order ID
+        :param DealName: Order ID. (If the cluster is not delivered yet, the `DescribeResourcesByDealName` API may return the `InvalidParameterValue.DealNameNotFound` error. Please call the API again until it succeeds.)
         :type DealName: str
         """
         self.DealName = None

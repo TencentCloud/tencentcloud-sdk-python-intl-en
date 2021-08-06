@@ -255,11 +255,16 @@ class AutoScalingGroup(AbstractModel):
         :type HealthCheckType: str
         :param LoadBalancerHealthCheckGracePeriod: Grace period of the CLB health check
         :type LoadBalancerHealthCheckGracePeriod: int
-        :param InstanceAllocationPolicy: 
+        :param InstanceAllocationPolicy: Specifies how to assign instances. Valid values: `LAUNCH_CONFIGURATION` and `SPOT_MIXED`.
+<br><li>`LAUNCH_CONFIGURATION`: the launch configuration mode.
+<br><li>`SPOT_MIXED`: a mixed instance mode. Currently, this mode is supported only when the launch configuration takes the pay-as-you-go billing mode. With this mode, the scaling group can provision a combination of pay-as-you-go instances and spot instances to meet the configured capacity. Note that the billing mode of the associated launch configuration cannot be modified when this mode is used.
         :type InstanceAllocationPolicy: str
-        :param SpotMixedAllocationPolicy: 
+        :param SpotMixedAllocationPolicy: Specifies how to assign pay-as-you-go instances and spot instances.
+A valid value will be returned only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.
         :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
-        :param CapacityRebalance: 
+        :param CapacityRebalance: Indicates whether the capacity rebalancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:
+<br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.
+<br><li>`FALSE`: no. AS will add instances to meet the desired capacity only after the spot instances are terminated.
         :type CapacityRebalance: bool
         """
         self.AutoScalingGroupId = None
@@ -655,6 +660,13 @@ Notes about this policy:
         :type HealthCheckType: str
         :param LoadBalancerHealthCheckGracePeriod: Grace period of the CLB health check during which the `IN_SERVICE` instances added will not be marked as `CLB_UNHEALTHY`.<br>Valid range: 0-7200, in seconds. Default value: `0`.
         :type LoadBalancerHealthCheckGracePeriod: int
+        :param InstanceAllocationPolicy: Specifies how to assign instances. Valid values: `LAUNCH_CONFIGURATION` and `SPOT_MIXED`; default value: `LAUNCH_CONFIGURATION`.
+<br><li>`LAUNCH_CONFIGURATION`: the launch configuration mode.
+<br><li>`SPOT_MIXED`: a mixed instance mode. Currently, this mode is supported only when the launch configuration takes the pay-as-you-go billing mode. With this mode, the scaling group can provision a combination of pay-as-you-go instances and spot instances to meet the configured capacity. Note that the billing mode of the associated launch configuration cannot be modified when this mode is used.
+        :type InstanceAllocationPolicy: str
+        :param SpotMixedAllocationPolicy: Specifies how to assign pay-as-you-go instances and spot instances.
+This parameter is valid only when `InstanceAllocationPolicy ` is set to `SPOT_MIXED`.
+        :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -677,6 +689,8 @@ Notes about this policy:
         self.MultiZoneSubnetPolicy = None
         self.HealthCheckType = None
         self.LoadBalancerHealthCheckGracePeriod = None
+        self.InstanceAllocationPolicy = None
+        self.SpotMixedAllocationPolicy = None
 
 
     def _deserialize(self, params):
@@ -713,6 +727,10 @@ Notes about this policy:
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
         self.HealthCheckType = params.get("HealthCheckType")
         self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
+        self.InstanceAllocationPolicy = params.get("InstanceAllocationPolicy")
+        if params.get("SpotMixedAllocationPolicy") is not None:
+            self.SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
+            self.SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1191,7 +1209,7 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: Data disk type. For more information on limits of data disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>LOCAL_BASIC: local disk <br><li>LOCAL_SSD: local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk <br><br>The default value should be the same as the `DiskType` field under `SystemDisk`.
+        :param DiskType: Data disk type. For more information on limits of data disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: local disk <br><li>`LOCAL_SSD`: local SSD disk <br><li>`CLOUD_BASIC`: HDD cloud disk <br><li>`CLOUD_PREMIUM`: premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk <br><br>The default value should be the same as the `DiskType` field under `SystemDisk`.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type DiskType: str
         :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
@@ -2647,17 +2665,14 @@ class InstanceNameSettings(AbstractModel):
         """
         :param InstanceName: CVM instance name
 
-The `InstanceName` cannot start or end with a period (.) or hyphen (-), and cannot contain consecutive periods and hyphens.
-
-Other types of instances (such as Linux): the name contains 2 to 40 characters, and supports multiple periods (.). The string between two periods can consist of letters (case insensitive), numbers, and hyphens (-), and cannot be all numbers.
-Note: this field may return `null`, indicating that no valid value is obtained.
+The `InstanceName` cannot start or end with a dot (.) or hyphen (-), and cannot contain consecutive dots and hyphens.
+The name contains 2 to 40 characters, and supports multiple dots (.). The string between two dots can consist of letters (case-insensitive), numbers, and hyphens (-), and cannot be all numbers.
         :type InstanceName: str
-        :param InstanceNameStyle: Type of CVM instance name. Valid values: "ORIGINAL" and "UNIQUE". Default value: "ORIGINAL".
+        :param InstanceNameStyle: Type of CVM instance name. Valid values: `ORIGINAL` and `UNIQUE`. Default value: `ORIGINAL`.
 
-ORIGINAL: Auto Scaling transfers the input parameter `InstanceName` to the CVM directly. The CVM may append a serial number to the `InstanceName`. The `InstanceName` of the instances within the auto scaling group may conflict.
+`ORIGINAL`: Auto Scaling sends the input parameter `InstanceName` to the CVM directly. The CVM may append a serial number to the `InstanceName`. The `InstanceName` of the instances within the scaling group may conflict.
 
-UNIQUE: the input parameter `InstanceName` is the prefix of an instance name. Auto Scaling and CVM expand it. The `InstanceName` of an instance in the auto scaling group is unique.
-Note: this field may return null, indicating that no valid values can be obtained.
+`UNIQUE`: the input parameter `InstanceName` is the prefix of an instance name. Auto Scaling and CVM expand it. The `InstanceName` of an instance in the scaling group is unique.
         :type InstanceNameStyle: str
         """
         self.InstanceName = None
@@ -3176,6 +3191,13 @@ Notes about this policy:
         :type HealthCheckType: str
         :param LoadBalancerHealthCheckGracePeriod: Grace period of the CLB health check
         :type LoadBalancerHealthCheckGracePeriod: int
+        :param InstanceAllocationPolicy: Specifies how to assign instances. Valid values: `LAUNCH_CONFIGURATION` and `SPOT_MIXED`.
+<br><li>`LAUNCH_CONFIGURATION`: the launch configuration mode.
+<br><li>`SPOT_MIXED`: a mixed instance mode. Currently, this mode is supported only when the launch configuration takes the pay-as-you-go billing mode. With this mode, the scaling group can provision a combination of pay-as-you-go instances and spot instances to meet the configured capacity. Note that the billing mode of the associated launch configuration cannot be modified when this mode is used.
+        :type InstanceAllocationPolicy: str
+        :param SpotMixedAllocationPolicy: Specifies how to assign pay-as-you-go instances and spot instances.
+This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.
+        :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -3196,6 +3218,8 @@ Notes about this policy:
         self.MultiZoneSubnetPolicy = None
         self.HealthCheckType = None
         self.LoadBalancerHealthCheckGracePeriod = None
+        self.InstanceAllocationPolicy = None
+        self.SpotMixedAllocationPolicy = None
 
 
     def _deserialize(self, params):
@@ -3220,6 +3244,10 @@ Notes about this policy:
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
         self.HealthCheckType = params.get("HealthCheckType")
         self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
+        self.InstanceAllocationPolicy = params.get("InstanceAllocationPolicy")
+        if params.get("SpotMixedAllocationPolicy") is not None:
+            self.SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
+            self.SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4148,19 +4176,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SpotMixedAllocationPolicy(AbstractModel):
-    """
+    """Specifies how to assign pay-as-you-go instances and spot instances in a mixed instance mode.
 
     """
 
     def __init__(self):
         """
-        :param BaseCapacity: 
+        :param BaseCapacity: The minimum number of the scaling group’s capacity that must be fulfilled by pay-as-you-go instances. It defaults to 0 if not specified. Its value cannot exceed the max capacity of the scaling group.
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type BaseCapacity: int
-        :param OnDemandPercentageAboveBaseCapacity: 
+        :param OnDemandPercentageAboveBaseCapacity: Controls the percentage of pay-as-you-go instances for the additional capacity beyond `BaseCapacity`. Valid range: 0-100. The value 0 indicates that only spot instances are provisioned, while the value 100 indicates that only pay-as-you-go instances are provisioned. It defaults to 70 if not specified. The number of pay-as-you-go instances calculated on the percentage should be rounded up.
+For example, if the desired capacity is 3, the `BaseCapacity` is set to 1, and the `OnDemandPercentageAboveBaseCapacity` is set to 1, the scaling group will have 2 pay-as-you-go instance (one comes from the base capacity, and the other comes from the rounded up value of the proportion), and 1 spot instance.
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type OnDemandPercentageAboveBaseCapacity: int
-        :param SpotAllocationStrategy: 
+        :param SpotAllocationStrategy: Specifies how to assign spot instances in a mixed instance mode. Valid values: `COST_OPTIMIZED` and `CAPACITY_OPTIMIZED`; default value: `COST_OPTIMIZED`.
+<br><li>`COST_OPTIMIZED`: the lowest cost policy. For each model in the launch configuration, AS tries to purchase it based on the lowest unit price per core in each availability zone. If the purchase failed, try the second-lowest unit price.
+<br><li>`CAPACITY_OPTIMIZED`: the optimal capacity policy. For each model in the launch configuration, AS tries to purchase it based on the largest stock in each availability zone, minimizing the automatic repossession probability of spot instances.
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type SpotAllocationStrategy: str
-        :param CompensateWithBaseInstance: 
+        :param CompensateWithBaseInstance: Whether to replace with pay-as-you go instances. Valid values:
+<br><li>`TRUE`: yes. After the purchase of spot instances failed due to insufficient stock and other reasons, purchase pay-as-you-go instances.
+<br><li>`FALSE`: no. The scaling group only tries the configured model of spot instances when it needs to add spot instances.
+
+Default value: `TRUE`.
+Note: this field may return `null`, indicating that no valid value can be obtained.
         :type CompensateWithBaseInstance: bool
         """
         self.BaseCapacity = None
@@ -4295,7 +4334,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: System disk type. For more information on limits of system disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>LOCAL_BASIC: local disk <br><li>LOCAL_SSD: local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: CLOUD_PREMIUM.
+        :param DiskType: System disk type. For more information on limits of system disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: local disk <br><li>`LOCAL_SSD`: local SSD disk <br><li>`CLOUD_BASIC`: HDD cloud disk <br><li>`CLOUD_PREMIUM`: premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk <br><br>Default value: `CLOUD_PREMIUM`.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type DiskType: str
         :param DiskSize: System disk size in GB. Default value: 50

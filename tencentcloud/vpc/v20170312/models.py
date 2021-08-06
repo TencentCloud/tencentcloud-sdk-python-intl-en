@@ -1401,6 +1401,12 @@ Note: This field may return null, indicating no valid value.
         :type TagSet: list of Tag
         :param RoutePriorityFlag: Whether the CCN route priority feature is supported. Valid values: False: do not support; True: support.
         :type RoutePriorityFlag: bool
+        :param RouteTableCount: Number of route tables associated with the instance.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RouteTableCount: int
+        :param RouteTableFlag: Whether the multiple route tables feature is enabled for the CCN instance. Valid values: `False`: no; `True`: yes. Default value: `False`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RouteTableFlag: bool
         """
         self.CcnId = None
         self.CcnName = None
@@ -1413,6 +1419,8 @@ Note: This field may return null, indicating no valid value.
         self.BandwidthLimitType = None
         self.TagSet = None
         self.RoutePriorityFlag = None
+        self.RouteTableCount = None
+        self.RouteTableFlag = None
 
 
     def _deserialize(self, params):
@@ -1432,6 +1440,8 @@ Note: This field may return null, indicating no valid value.
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.RoutePriorityFlag = params.get("RoutePriorityFlag")
+        self.RouteTableCount = params.get("RouteTableCount")
+        self.RouteTableFlag = params.get("RouteTableFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1484,6 +1494,12 @@ class CcnAttachedInstance(AbstractModel):
         :type InstanceArea: str
         :param Description: Description
         :type Description: str
+        :param RouteTableId: Route table ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RouteTableId: str
+        :param RouteTableName: Route table name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RouteTableName: str
         """
         self.CcnId = None
         self.InstanceType = None
@@ -1497,6 +1513,8 @@ class CcnAttachedInstance(AbstractModel):
         self.CcnUin = None
         self.InstanceArea = None
         self.Description = None
+        self.RouteTableId = None
+        self.RouteTableName = None
 
 
     def _deserialize(self, params):
@@ -1512,6 +1530,8 @@ class CcnAttachedInstance(AbstractModel):
         self.CcnUin = params.get("CcnUin")
         self.InstanceArea = params.get("InstanceArea")
         self.Description = params.get("Description")
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteTableName = params.get("RouteTableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1591,11 +1611,15 @@ class CcnInstance(AbstractModel):
         :type InstanceType: str
         :param Description: Description
         :type Description: str
+        :param RouteTableId: The ID of the route table associated with the instance
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type RouteTableId: str
         """
         self.InstanceId = None
         self.InstanceRegion = None
         self.InstanceType = None
         self.Description = None
+        self.RouteTableId = None
 
 
     def _deserialize(self, params):
@@ -1603,6 +1627,7 @@ class CcnInstance(AbstractModel):
         self.InstanceRegion = params.get("InstanceRegion")
         self.InstanceType = params.get("InstanceType")
         self.Description = params.get("Description")
+        self.RouteTableId = params.get("RouteTableId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6240,7 +6265,7 @@ class DescribeAssistantCidrRequest(AbstractModel):
         """
         :param VpcIds: The ID of a VPC instance set, such as `vpc-6v2ht8q5`.
         :type VpcIds: list of str
-        :param Filters: Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
+        :param Filters: Filter condition. `VpcIds` and `Filters` cannot be specified at the same time.
 <li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0.

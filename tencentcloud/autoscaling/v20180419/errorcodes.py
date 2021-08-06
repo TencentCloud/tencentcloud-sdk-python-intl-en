@@ -26,10 +26,10 @@ FAILEDOPERATION_NOACTIVITYTOGENERATE = 'FailedOperation.NoActivityToGenerate'
 # An internal error occurred.
 INTERNALERROR = 'InternalError'
 
-# 
+# The CMQ API call failed.
 INTERNALERROR_CALLCMQERROR = 'InternalError.CallCmqError'
 
-# 
+# The internal API call failed.
 INTERNALERROR_CALLERROR = 'InternalError.CallError'
 
 # CLB API call failed.
@@ -38,16 +38,16 @@ INTERNALERROR_CALLLBERROR = 'InternalError.CallLbError'
 # Monitor API call failed.
 INTERNALERROR_CALLMONITORERROR = 'InternalError.CallMonitorError'
 
-# 
+# The notification service API call failed.
 INTERNALERROR_CALLNOTIFICATIONERROR = 'InternalError.CallNotificationError'
 
-# 
+# The STS API call failed.
 INTERNALERROR_CALLSTSERROR = 'InternalError.CallStsError'
 
-# 
+# The tag API call failed.
 INTERNALERROR_CALLTAGERROR = 'InternalError.CallTagError'
 
-# 
+# The TVPC API call failed.
 INTERNALERROR_CALLTVPCERROR = 'InternalError.CallTvpcError'
 
 # VPC API call failed.
@@ -64,12 +64,6 @@ INVALIDLAUNCHCONFIGURATION = 'InvalidLaunchConfiguration'
 
 # The launch configuration ID is invalid.
 INVALIDLAUNCHCONFIGURATIONID = 'InvalidLaunchConfigurationId'
-
-# The launch configuration is in use.
-INVALIDLAUNCHCONFIGURATIONID_INUSE = 'InvalidLaunchConfigurationId.InUse'
-
-# The launch configuration was not found.
-INVALIDLAUNCHCONFIGURATIONID_NOTFOUND = 'InvalidLaunchConfigurationId.NotFound'
 
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
@@ -98,7 +92,7 @@ INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 # Wrong parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# 
+# The specified base capacity cannot exceed the max capacity.
 INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = 'InvalidParameterValue.BaseCapacityTooLarge'
 
 # A classic CLB should be specified.
@@ -131,10 +125,10 @@ INVALIDPARAMETERVALUE_FORWARDLB = 'InvalidParameterValue.ForwardLb'
 # The auto scaling group name already exists.
 INVALIDPARAMETERVALUE_GROUPNAMEDUPLICATED = 'InvalidParameterValue.GroupNameDuplicated'
 
-# 
+# Invalid hostname
 INVALIDPARAMETERVALUE_HOSTNAMEILLEGAL = 'InvalidParameterValue.HostNameIllegal'
 
-# 
+# The specified image does not exist.
 INVALIDPARAMETERVALUE_IMAGENOTFOUND = 'InvalidParameterValue.ImageNotFound'
 
 # Invalid instance name
@@ -169,6 +163,9 @@ INVALIDPARAMETERVALUE_INVALIDINSTANCEID = 'InvalidParameterValue.InvalidInstance
 
 # Invalid instance type.
 INVALIDPARAMETERVALUE_INVALIDINSTANCETYPE = 'InvalidParameterValue.InvalidInstanceType'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATION = 'InvalidParameterValue.InvalidLaunchConfiguration'
 
 # Invalid launch configuration ID.
 INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = 'InvalidParameterValue.InvalidLaunchConfigurationId'
@@ -254,14 +251,11 @@ INVALIDPARAMETERVALUE_USERDATASIZEEXCEEDED = 'InvalidParameterValue.UserDataSize
 # The user group does not exist.
 INVALIDPARAMETERVALUE_USERGROUPIDNOTFOUND = 'InvalidParameterValue.UserGroupIdNotFound'
 
-# 
+# The specified availability zone is not in the region.
 INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = 'InvalidParameterValue.ZoneMismatchRegion'
 
 # The account does not support this operation.
 INVALIDPERMISSION = 'InvalidPermission'
-
-# The launch configuration quota is exceeded.
-LAUNCHCONFIGURATIONQUOTALIMITEXCEEDED = 'LaunchConfigurationQuotaLimitExceeded'
 
 # The quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
@@ -274,6 +268,9 @@ LIMITEXCEEDED_DESIREDCAPACITYLIMITEXCEEDED = 'LimitExceeded.DesiredCapacityLimit
 
 # Too many values for the specified filter
 LIMITEXCEEDED_FILTERVALUESTOOLONG = 'LimitExceeded.FilterValuesTooLong'
+
+# 
+LIMITEXCEEDED_LAUNCHCONFIGURATIONQUOTANOTENOUGH = 'LimitExceeded.LaunchConfigurationQuotaNotEnough'
 
 # The maximum number of instances exceeds the limit.
 LIMITEXCEEDED_MAXSIZELIMITEXCEEDED = 'LimitExceeded.MaxSizeLimitExceeded'
@@ -326,7 +323,7 @@ RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = 'ResourceNotFound.AutoScalingGroupNo
 # The notification does not exist.
 RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = 'ResourceNotFound.AutoScalingNotificationNotFound'
 
-# 
+# The specified CMQ queue does not exist.
 RESOURCENOTFOUND_CMQQUEUENOTFOUND = 'ResourceNotFound.CmqQueueNotFound'
 
 # The specified instance does not exist.
@@ -368,7 +365,7 @@ RESOURCEUNAVAILABLE_AUTOSCALINGGROUPDISABLED = 'ResourceUnavailable.AutoScalingG
 # The auto scaling group is active.
 RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = 'ResourceUnavailable.AutoScalingGroupInActivity'
 
-# 
+# There are no subscribers for the specified CMQ topic.
 RESOURCEUNAVAILABLE_CMQTOPICHASNOSUBSCRIBER = 'ResourceUnavailable.CmqTopicHasNoSubscriber'
 
 # The instance and the auto scaling group are in different VPCs.
@@ -401,5 +398,5 @@ RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = 'ResourceUnavailable.LoadBalancerI
 # Project inconsistency.
 RESOURCEUNAVAILABLE_PROJECTINCONSISTENT = 'ResourceUnavailable.ProjectInconsistent'
 
-# 
+# The specified availability zone is unavailable.
 RESOURCEUNAVAILABLE_ZONEUNAVAILABLE = 'ResourceUnavailable.ZoneUnavailable'
