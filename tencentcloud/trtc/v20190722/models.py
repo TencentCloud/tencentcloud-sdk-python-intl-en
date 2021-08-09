@@ -25,12 +25,8 @@ class AbnormalEvent(AbstractModel):
 
     def __init__(self):
         """
-        :param AbnormalEventId: Exception event ID. For specific values, please see Appendix. Exceptional Experience ID Mapping Table.
-        :type AbnormalEventId: int
-        :param PeerId: Remote user ID. If this parameter is left empty, it indicates that the exception event is not caused by the remote user.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type PeerId: str
-        """
+        :param AbnormalEventId: Exception event ID. For specific values, please see Appendix. Exceptional Experience ID Mapping Table.\n        :type AbnormalEventId: int\n        :param PeerId: Remote user ID. If this parameter is left empty, it indicates that the exception event is not caused by the remote user.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type PeerId: str\n        """
         self.AbnormalEventId = None
         self.PeerId = None
 
@@ -54,17 +50,7 @@ class AbnormalExperience(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: User ID
-        :type UserId: str
-        :param ExperienceId: Exceptional experience ID
-        :type ExperienceId: int
-        :param RoomId: Room ID in string type
-        :type RoomId: str
-        :param AbnormalEventList: Exception event array
-        :type AbnormalEventList: list of AbnormalEvent
-        :param EventTime: Report time of the exception event
-        :type EventTime: int
-        """
+        :param UserId: User ID\n        :type UserId: str\n        :param ExperienceId: Exceptional experience ID\n        :type ExperienceId: int\n        :param RoomId: Room ID in string type\n        :type RoomId: str\n        :param AbnormalEventList: Exception event array\n        :type AbnormalEventList: list of AbnormalEvent\n        :param EventTime: Report time of the exception event\n        :type EventTime: int\n        """
         self.UserId = None
         self.ExperienceId = None
         self.RoomId = None
@@ -99,21 +85,7 @@ class CreatePictureRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: Application ID
-        :type SdkAppId: int
-        :param Content: Base64-encoded image content
-        :type Content: str
-        :param Suffix: Image file extension
-        :type Suffix: str
-        :param Height: Image height
-        :type Height: int
-        :param Width: Image width
-        :type Width: int
-        :param XPosition: X-axis value of the image’s position
-        :type XPosition: int
-        :param YPosition: Y-axis value of the image’s position
-        :type YPosition: int
-        """
+        :param SdkAppId: Application ID\n        :type SdkAppId: int\n        :param Content: Base64-encoded image content\n        :type Content: str\n        :param Suffix: Image file extension\n        :type Suffix: str\n        :param Height: Image height\n        :type Height: int\n        :param Width: Image width\n        :type Width: int\n        :param XPosition: X-axis value of the image’s position\n        :type XPosition: int\n        :param YPosition: Y-axis value of the image’s position\n        :type YPosition: int\n        """
         self.SdkAppId = None
         self.Content = None
         self.Suffix = None
@@ -147,11 +119,7 @@ class CreatePictureResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PictureId: Image ID
-        :type PictureId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PictureId: Image ID\n        :type PictureId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PictureId = None
         self.RequestId = None
 
@@ -168,17 +136,7 @@ class CreateTroubleInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: Application ID
-        :type SdkAppId: str
-        :param RoomId: Room ID
-        :type RoomId: str
-        :param TeacherUserId: Teacher user ID
-        :type TeacherUserId: str
-        :param StudentUserId: Student user ID
-        :type StudentUserId: str
-        :param TroubleUserId: ID of the user (teacher or student) with exception.
-        :type TroubleUserId: str
-        :param TroubleType: Exception type.
+        :param SdkAppId: Application ID\n        :type SdkAppId: str\n        :param RoomId: Room ID\n        :type RoomId: str\n        :param TeacherUserId: Teacher user ID\n        :type TeacherUserId: str\n        :param StudentUserId: Student user ID\n        :type StudentUserId: str\n        :param TroubleUserId: ID of the user (teacher or student) with exception.\n        :type TroubleUserId: str\n        :param TroubleType: Exception type.
 1: exceptional video
 2: exceptional audio
 3: exceptional video and audio
@@ -186,13 +144,7 @@ class CreateTroubleInfoRequest(AbstractModel):
 4: course switch
 6: help seeking
 7: problem feedback
-8: complaint
-        :type TroubleType: int
-        :param TroubleTime: UNIX timestamp when the exception occurred in seconds.
-        :type TroubleTime: int
-        :param TroubleMsg: Exception details
-        :type TroubleMsg: str
-        """
+8: complaint\n        :type TroubleType: int\n        :param TroubleTime: UNIX timestamp when the exception occurred in seconds.\n        :type TroubleTime: int\n        :param TroubleMsg: Exception details\n        :type TroubleMsg: str\n        """
         self.SdkAppId = None
         self.RoomId = None
         self.TeacherUserId = None
@@ -228,9 +180,7 @@ class CreateTroubleInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -245,11 +195,7 @@ class DeletePictureRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PictureId: Image ID
-        :type PictureId: int
-        :param SdkAppId: Application ID
-        :type SdkAppId: int
-        """
+        :param PictureId: Image ID\n        :type PictureId: int\n        :param SdkAppId: Application ID\n        :type SdkAppId: int\n        """
         self.PictureId = None
         self.SdkAppId = None
 
@@ -273,9 +219,7 @@ class DeletePictureResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -290,15 +234,7 @@ class DescribeAbnormalEventRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: User `SDKAppID`, which can be used to query 20 exceptional experience events (in one or more rooms)
-        :type SdkAppId: str
-        :param StartTime: Query start time
-        :type StartTime: int
-        :param EndTime: Query end time
-        :type EndTime: int
-        :param RoomId: Room ID, which can be used to query up to 20 exceptional experience events in a specific room
-        :type RoomId: str
-        """
+        :param SdkAppId: User `SDKAppID`, which can be used to query 20 exceptional experience events (in one or more rooms)\n        :type SdkAppId: str\n        :param StartTime: Query start time\n        :type StartTime: int\n        :param EndTime: Query end time\n        :type EndTime: int\n        :param RoomId: Room ID, which can be used to query up to 20 exceptional experience events in a specific room\n        :type RoomId: str\n        """
         self.SdkAppId = None
         self.StartTime = None
         self.EndTime = None
@@ -326,13 +262,7 @@ class DescribeAbnormalEventResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Number of returned data entries.
-        :type Total: int
-        :param AbnormalExperienceList: Exceptional experience list.
-        :type AbnormalExperienceList: list of AbnormalExperience
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Total: Number of returned data entries.\n        :type Total: int\n        :param AbnormalExperienceList: Exceptional experience list.\n        :type AbnormalExperienceList: list of AbnormalExperience\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.AbnormalExperienceList = None
         self.RequestId = None
@@ -356,17 +286,7 @@ class DescribeCallDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
-        :type CommId: str
-        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
-        :type EndTime: int
-        :param SdkAppId: User `SDKAppID`, such as 1400188366.
-        :type SdkAppId: str
-        :param UserIds: User array to query, which contains up to 6 users. If it is left empty, 6 users will be returned by default.
-        :type UserIds: list of str
-        :param DataType: Metric to query. The user list will be returned if it is left empty; all metrics will be returned if its value is `all`.
+        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).\n        :type CommId: str\n        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.\n        :type StartTime: int\n        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.\n        :type EndTime: int\n        :param SdkAppId: User `SDKAppID`, such as 1400188366.\n        :type SdkAppId: str\n        :param UserIds: User array to query, which contains up to 6 users. If it is left empty, 6 users will be returned by default.\n        :type UserIds: list of str\n        :param DataType: Metric to query. The user list will be returned if it is left empty; all metrics will be returned if its value is `all`.
 appCpu: CPU utilization of the application;
 sysCpu: CPU utilization of the system;
 aBit: upstream/downstream audio bitrate;
@@ -379,13 +299,7 @@ bigvBlock: video lag duration;
 aLoss: upstream/downstream audio packet loss;
 bigvLoss: upstream/downstream video packet loss;
 bigvWidth: upstream/downstream resolution in width;
-bigvHeight: upstream/downstream resolution in height.
-        :type DataType: list of str
-        :param PageNumber: Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default.
-        :type PageNumber: str
-        :param PageSize: Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default. When either `DataType` or `UserId` is not null, `PageSize` is up to 6. When `DataType` and `UserId` are null, `PageSize` is up to 100.
-        :type PageSize: str
-        """
+bigvHeight: upstream/downstream resolution in height.\n        :type DataType: list of str\n        :param PageNumber: Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default.\n        :type PageNumber: str\n        :param PageSize: Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default. When either `DataType` or `UserId` is not null, `PageSize` is up to 6. When `DataType` and `UserId` are null, `PageSize` is up to 100.\n        :type PageSize: str\n        """
         self.CommId = None
         self.StartTime = None
         self.EndTime = None
@@ -421,15 +335,7 @@ class DescribeCallDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total number of returned users
-        :type Total: int
-        :param UserList: User information list
-        :type UserList: list of UserInformation
-        :param Data: Quality data
-        :type Data: list of QualityData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Total: Total number of returned users\n        :type Total: int\n        :param UserList: User information list\n        :type UserList: list of UserInformation\n        :param Data: Quality data\n        :type Data: list of QualityData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.UserList = None
         self.Data = None
@@ -460,17 +366,7 @@ class DescribeDetailEventRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
-        :type CommId: str
-        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
-        :type EndTime: int
-        :param UserId: User ID
-        :type UserId: str
-        :param RoomId: Room ID
-        :type RoomId: str
-        """
+        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).\n        :type CommId: str\n        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.\n        :type StartTime: int\n        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.\n        :type EndTime: int\n        :param UserId: User ID\n        :type UserId: str\n        :param RoomId: Room ID\n        :type RoomId: str\n        """
         self.CommId = None
         self.StartTime = None
         self.EndTime = None
@@ -500,11 +396,7 @@ class DescribeDetailEventResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: List of returned events
-        :type Data: list of EventList
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Data: List of returned events\n        :type Data: list of EventList\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -526,13 +418,7 @@ class DescribeHistoryScaleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: User `sdkappid`
-        :type SdkAppId: str
-        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 5 days.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
-        :type EndTime: int
-        """
+        :param SdkAppId: User `sdkappid`\n        :type SdkAppId: str\n        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 5 days.\n        :type StartTime: int\n        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.\n        :type EndTime: int\n        """
         self.SdkAppId = None
         self.StartTime = None
         self.EndTime = None
@@ -558,13 +444,7 @@ class DescribeHistoryScaleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Number of returned data entries
-        :type Total: int
-        :param ScaleList: Returned data
-        :type ScaleList: list of ScaleInfomation
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Total: Number of returned data entries\n        :type Total: int\n        :param ScaleList: Returned data\n        :type ScaleList: list of ScaleInfomation\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.ScaleList = None
         self.RequestId = None
@@ -588,15 +468,7 @@ class DescribePictureRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: Application ID
-        :type SdkAppId: int
-        :param PictureId: Image ID. If it is left empty, the IDs of all images under the application are returned.
-        :type PictureId: int
-        :param PageSize: Number of records per page. `10` is used if it is left empty.
-        :type PageSize: int
-        :param PageNo: Page number. `1` is used if it is left empty.
-        :type PageNo: int
-        """
+        :param SdkAppId: Application ID\n        :type SdkAppId: int\n        :param PictureId: Image ID. If it is left empty, the IDs of all images under the application are returned.\n        :type PictureId: int\n        :param PageSize: Number of records per page. `10` is used if it is left empty.\n        :type PageSize: int\n        :param PageNo: Page number. `1` is used if it is left empty.\n        :type PageNo: int\n        """
         self.SdkAppId = None
         self.PictureId = None
         self.PageSize = None
@@ -624,13 +496,7 @@ class DescribePictureResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Number of records returned
-        :type Total: int
-        :param PictureInfo: Image information list
-        :type PictureInfo: list of PictureInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Total: Number of records returned\n        :type Total: int\n        :param PictureInfo: Image information list\n        :type PictureInfo: list of PictureInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.PictureInfo = None
         self.RequestId = None
@@ -654,17 +520,9 @@ class DescribeRealtimeNetworkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
-        :type EndTime: int
-        :param SdkAppId: User `sdkappid`
-        :type SdkAppId: str
-        :param DataType: Type of data to query
+        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.\n        :type StartTime: int\n        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.\n        :type EndTime: int\n        :param SdkAppId: User `sdkappid`\n        :type SdkAppId: str\n        :param DataType: Type of data to query
 sendLossRateRaw: upstream packet loss rate;
-recvLossRateRaw: downstream packet loss rate.
-        :type DataType: list of str
-        """
+recvLossRateRaw: downstream packet loss rate.\n        :type DataType: list of str\n        """
         self.StartTime = None
         self.EndTime = None
         self.SdkAppId = None
@@ -692,11 +550,7 @@ class DescribeRealtimeNetworkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: Data returned by query
-        :type Data: list of RealtimeData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Data: Data returned by query\n        :type Data: list of RealtimeData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -718,19 +572,11 @@ class DescribeRealtimeQualityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
-        :type EndTime: int
-        :param SdkAppId: User `sdkappid`
-        :type SdkAppId: str
-        :param DataType: Type of data to query
+        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.\n        :type StartTime: int\n        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.\n        :type EndTime: int\n        :param SdkAppId: User `sdkappid`\n        :type SdkAppId: str\n        :param DataType: Type of data to query
 enterTotalSuccPercent: room entry success rate;
 fistFreamInSecRate: instant playback rate of the first frame;
 blockPercent: video lag rate;
-audioBlockPercent: audio lag rate.
-        :type DataType: list of str
-        """
+audioBlockPercent: audio lag rate.\n        :type DataType: list of str\n        """
         self.StartTime = None
         self.EndTime = None
         self.SdkAppId = None
@@ -758,11 +604,7 @@ class DescribeRealtimeQualityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: Type of returned data
-        :type Data: list of RealtimeData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Data: Type of returned data\n        :type Data: list of RealtimeData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -784,17 +626,9 @@ class DescribeRealtimeScaleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
-        :type EndTime: int
-        :param SdkAppId: User `sdkappid`
-        :type SdkAppId: str
-        :param DataType: Type of data to query
+        :param StartTime: Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.\n        :type StartTime: int\n        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.\n        :type EndTime: int\n        :param SdkAppId: User `sdkappid`\n        :type SdkAppId: str\n        :param DataType: Type of data to query
 `UserNum: number of users in call;
-RoomNum: number of rooms.
-        :type DataType: list of str
-        """
+RoomNum: number of rooms.\n        :type DataType: list of str\n        """
         self.StartTime = None
         self.EndTime = None
         self.SdkAppId = None
@@ -822,11 +656,7 @@ class DescribeRealtimeScaleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: Returned data array
-        :type Data: list of RealtimeData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Data: Returned data array\n        :type Data: list of RealtimeData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -848,19 +678,7 @@ class DescribeRoomInformationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: User `sdkappid`
-        :type SdkAppId: str
-        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.
-        :type EndTime: int
-        :param RoomId: Room ID in string type
-        :type RoomId: str
-        :param PageNumber: Page index starting from 0 (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default)
-        :type PageNumber: str
-        :param PageSize: Number of entries per page (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default. Maximum value: 100)
-        :type PageSize: str
-        """
+        :param SdkAppId: User `sdkappid`\n        :type SdkAppId: str\n        :param StartTime: Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.\n        :type StartTime: int\n        :param EndTime: Query end time in the format of local UNIX timestamp, such as 1588031999s.\n        :type EndTime: int\n        :param RoomId: Room ID in string type\n        :type RoomId: str\n        :param PageNumber: Page index starting from 0 (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default)\n        :type PageNumber: str\n        :param PageSize: Number of entries per page (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default. Maximum value: 100)\n        :type PageSize: str\n        """
         self.SdkAppId = None
         self.StartTime = None
         self.EndTime = None
@@ -892,13 +710,7 @@ class DescribeRoomInformationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total number of data entries displayed on the current page
-        :type Total: int
-        :param RoomList: Room information list
-        :type RoomList: list of RoomState
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Total: Total number of data entries displayed on the current page\n        :type Total: int\n        :param RoomList: Room information list\n        :type RoomList: list of RoomState\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.RoomList = None
         self.RequestId = None
@@ -922,21 +734,7 @@ class DescribeUserInformationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).
-        :type CommId: str
-        :param StartTime: Query start time in the format of UNIX timestamp (e.g. 1588031999s) in the last 5 days.
-        :type StartTime: int
-        :param EndTime: Query end time in the format of UNIX timestamp (e.g. 1588031999s).
-        :type EndTime: int
-        :param SdkAppId: User `SDKAppID` (e.g. 1400188366).
-        :type SdkAppId: str
-        :param UserIds: The array of user IDs for query. You can enter up to 6 user IDs. If it is left empty, data of 6 users will be returned.
-        :type UserIds: list of str
-        :param PageNumber: Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned.
-        :type PageNumber: str
-        :param PageSize: Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned. `PageSize` is up to 100.
-        :type PageSize: str
-        """
+        :param CommId: Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).\n        :type CommId: str\n        :param StartTime: Query start time in the format of UNIX timestamp (e.g. 1588031999s) in the last 5 days.\n        :type StartTime: int\n        :param EndTime: Query end time in the format of UNIX timestamp (e.g. 1588031999s).\n        :type EndTime: int\n        :param SdkAppId: User `SDKAppID` (e.g. 1400188366).\n        :type SdkAppId: str\n        :param UserIds: The array of user IDs for query. You can enter up to 6 user IDs. If it is left empty, data of 6 users will be returned.\n        :type UserIds: list of str\n        :param PageNumber: Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned.\n        :type PageNumber: str\n        :param PageSize: Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned. `PageSize` is up to 100.\n        :type PageSize: str\n        """
         self.CommId = None
         self.StartTime = None
         self.EndTime = None
@@ -970,14 +768,8 @@ class DescribeUserInformationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total number of users whose information will be returned
-        :type Total: int
-        :param UserList: User information list
-Note: this field may return `null`, indicating that no valid value was found.
-        :type UserList: list of UserInformation
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Total: Total number of users whose information will be returned\n        :type Total: int\n        :param UserList: User information list
+Note: this field may return `null`, indicating that no valid value was found.\n        :type UserList: list of UserInformation\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.UserList = None
         self.RequestId = None
@@ -1001,11 +793,7 @@ class DismissRoomByStrRoomIdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: `SDKAppId` of TRTC
-        :type SdkAppId: int
-        :param RoomId: Room ID
-        :type RoomId: str
-        """
+        :param SdkAppId: `SDKAppId` of TRTC\n        :type SdkAppId: int\n        :param RoomId: Room ID\n        :type RoomId: str\n        """
         self.SdkAppId = None
         self.RoomId = None
 
@@ -1029,9 +817,7 @@ class DismissRoomByStrRoomIdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1046,11 +832,7 @@ class DismissRoomRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: `SDKAppId` of TRTC.
-        :type SdkAppId: int
-        :param RoomId: Room number.
-        :type RoomId: int
-        """
+        :param SdkAppId: `SDKAppId` of TRTC.\n        :type SdkAppId: int\n        :param RoomId: Room number.\n        :type RoomId: int\n        """
         self.SdkAppId = None
         self.RoomId = None
 
@@ -1074,9 +856,7 @@ class DismissRoomResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1091,36 +871,14 @@ class EncodeParams(AbstractModel):
 
     def __init__(self):
         """
-        :param AudioSampleRate: Output audio sample rate (Hz) for On-Cloud MixTranscoding. Valid values: 48000, 44100, 32000, 24000, 16000, 8000
-        :type AudioSampleRate: int
-        :param AudioBitrate: Output audio bitrate (Kbps) for On-Cloud MixTranscoding. Value range: 8-500
-        :type AudioBitrate: int
-        :param AudioChannels: Number of sound channels of output stream for On-Cloud MixTranscoding. Valid values: 1, 2. 1 represents mono-channel, and 2 represents dual-channel.
-        :type AudioChannels: int
-        :param VideoWidth: Output stream width in pixels for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [0, 1920].
-        :type VideoWidth: int
-        :param VideoHeight: Output stream height in pixels for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [0, 1080].
-        :type VideoHeight: int
-        :param VideoBitrate: Output bitrate (Kbps) for On-Cloud MixTranscoding, which is required for audio-video output. Value range: 1-10000
-        :type VideoBitrate: int
-        :param VideoFramerate: Output stream frame rate for On-Cloud MixTranscoding in FPS. This parameter is required for audio/video outputs. Value range: [1, 60].
-        :type VideoFramerate: int
-        :param VideoGop: Output stream GOP in seconds for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [1, 5].
-        :type VideoGop: int
-        :param BackgroundColor: Output background color for On-Cloud MixTranscoding. Valid values: decimal integers. Commonly used colors include:
+        :param AudioSampleRate: Output audio sample rate (Hz) for On-Cloud MixTranscoding. Valid values: 48000, 44100, 32000, 24000, 16000, 8000\n        :type AudioSampleRate: int\n        :param AudioBitrate: Output audio bitrate (Kbps) for On-Cloud MixTranscoding. Value range: 8-500\n        :type AudioBitrate: int\n        :param AudioChannels: Number of sound channels of output stream for On-Cloud MixTranscoding. Valid values: 1, 2. 1 represents mono-channel, and 2 represents dual-channel.\n        :type AudioChannels: int\n        :param VideoWidth: Output stream width in pixels for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [0, 1920].\n        :type VideoWidth: int\n        :param VideoHeight: Output stream height in pixels for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [0, 1080].\n        :type VideoHeight: int\n        :param VideoBitrate: Output bitrate (Kbps) for On-Cloud MixTranscoding, which is required for audio-video output. Value range: 1-10000\n        :type VideoBitrate: int\n        :param VideoFramerate: Output stream frame rate for On-Cloud MixTranscoding in FPS. This parameter is required for audio/video outputs. Value range: [1, 60].\n        :type VideoFramerate: int\n        :param VideoGop: Output stream GOP in seconds for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [1, 5].\n        :type VideoGop: int\n        :param BackgroundColor: Output background color for On-Cloud MixTranscoding. Valid values: decimal integers. Commonly used colors include:
 Red: 0xff0000, whose decimal number is 16724736
 Yellow: 0xffff00, whose decimal number is 16776960
 Green: 0x33cc00, whose decimal number is 3394560
 Blue: 0x0066ff, whose decimal number is 26367
 Black: 0x000000, whose decimal number is 0
 White: 0xFFFFFF, whose decimal number is 16777215
-Grey: 0x999999, whose decimal number is 10066329
-        :type BackgroundColor: int
-        :param BackgroundImageId: Output stream background image for stream mix. Its value is the ID of image uploaded through the TRTC Console.
-        :type BackgroundImageId: int
-        :param AudioCodec: Output audio codec for On-Cloud MixTranscoding. Valid values: 0, 1, 2. 0 (default): LC-AAC; 1: HE-AAC; 2: HE-AACv2. If this parameter is set to 2 (HE-AACv2), On-Cloud MixTranscoding can produce only dual-channel streams. If it is set to 1 (HE-AAC) or 2 (HE-AACv2), the valid values for the audio sample rate of output streams are 48000, 44100, 32000, 24000, and 16000.
-        :type AudioCodec: int
-        """
+Grey: 0x999999, whose decimal number is 10066329\n        :type BackgroundColor: int\n        :param BackgroundImageId: Output stream background image for stream mix. Its value is the ID of image uploaded through the TRTC Console.\n        :type BackgroundImageId: int\n        :param AudioCodec: Output audio codec for On-Cloud MixTranscoding. Valid values: 0, 1, 2. 0 (default): LC-AAC; 1: HE-AAC; 2: HE-AACv2. If this parameter is set to 2 (HE-AACv2), On-Cloud MixTranscoding can produce only dual-channel streams. If it is set to 1 (HE-AAC) or 2 (HE-AACv2), the valid values for the audio sample rate of output streams are 48000, 44100, 32000, 24000, and 16000.\n        :type AudioCodec: int\n        """
         self.AudioSampleRate = None
         self.AudioBitrate = None
         self.AudioChannels = None
@@ -1162,11 +920,7 @@ class EventList(AbstractModel):
 
     def __init__(self):
         """
-        :param Content: Data content
-        :type Content: list of EventMessage
-        :param PeerId: Sender `userId`
-        :type PeerId: str
-        """
+        :param Content: Data content\n        :type Content: list of EventMessage\n        :param PeerId: Sender `userId`\n        :type PeerId: str\n        """
         self.Content = None
         self.PeerId = None
 
@@ -1199,17 +953,7 @@ class EventMessage(AbstractModel):
 0: non-video event;
 2: big image;
 3: small image;
-7: relayed stream image.
-        :type Type: int
-        :param Time: Event reporting time in the format of UNIX timestamp, such as 1589891188801ms
-        :type Time: int
-        :param EventId: Event ID. Events divide into SDK events and WebRTC events. For more information, please see Appendix - Event ID Mapping Table at https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1
-        :type EventId: int
-        :param ParamOne: First event parameter, such as video resolution width
-        :type ParamOne: int
-        :param ParamTwo: Second event parameter, such as video resolution height
-        :type ParamTwo: int
-        """
+7: relayed stream image.\n        :type Type: int\n        :param Time: Event reporting time in the format of UNIX timestamp, such as 1589891188801ms\n        :type Time: int\n        :param EventId: Event ID. Events divide into SDK events and WebRTC events. For more information, please see Appendix - Event ID Mapping Table at https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1\n        :type EventId: int\n        :param ParamOne: First event parameter, such as video resolution width\n        :type ParamOne: int\n        :param ParamTwo: Second event parameter, such as video resolution height\n        :type ParamTwo: int\n        """
         self.Type = None
         self.Time = None
         self.EventId = None
@@ -1239,27 +983,7 @@ class LayoutParams(AbstractModel):
 
     def __init__(self):
         """
-        :param Template: On-cloud stream mix layout template ID. 0: floating template (default value); 1: grid template; 2: screen sharing template; 3: picture-in-picture template; 4: custom template.
-        :type Template: int
-        :param MainVideoUserId: ID of the user in the big image, which takes effect in a screen sharing, floating, or picture-in-picture template.
-        :type MainVideoUserId: str
-        :param MainVideoStreamType: Stream type of the big image, which takes effect in a screen sharing, floating, or picture-in-picture template. 0: camera; 1: screen sharing. If a web user's stream is displayed in the big image on the left, enter 0 for this parameter.
-        :type MainVideoStreamType: int
-        :param SmallVideoLayoutParams: Layout parameter of the small image, which takes effect in a picture-in-picture template.
-        :type SmallVideoLayoutParams: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`
-        :param MainVideoRightAlign: You can set the layout parameter as 1 or 0 in the screen sharing template. 1: big image on the right and small images on the left, 0: big image on the left and small images on the right. The default value is 0. 
-        :type MainVideoRightAlign: int
-        :param MixVideoUids: A user list, which takes effect for floating, grid, or screen sharing templates. When the user list has been set, the stream mix output for users in this user list will include both audio and video; the stream mix output for users not in the list will only include audio. Up to 16 users can be set.
-        :type MixVideoUids: list of str
-        :param PresetLayoutConfig: Valid in custom template, used to specify the video image position of a user in mixed streams.
-        :type PresetLayoutConfig: list of PresetLayoutConfig
-        :param PlaceHolderMode: Valid in custom templates. 1: the placeholding feature is enabled; 0 (default): the feature is disabled. When the feature is enabled, but a user for whom a position is reserved is not sending video data, the position will show the corresponding placeholder image.
-        :type PlaceHolderMode: int
-        :param PureAudioHoldPlaceMode: Whether an audio-only stream occupies an image spot, which takes effect in a floating, grid, or screen sharing template. Valid values: 0 (default): when a floating or grid template is used, users sending audio only occupy image spots; when a screen sharing template is used, users (except the user whose screen is shared) sending audio only do not occupy image spots; 1: users sending audio only occupy image spots; 2: users sending audio only do not occupy image spots.
-        :type PureAudioHoldPlaceMode: int
-        :param WaterMarkParams: Watermark parameters
-        :type WaterMarkParams: :class:`tencentcloud.trtc.v20190722.models.WaterMarkParams`
-        """
+        :param Template: On-cloud stream mix layout template ID. 0: floating template (default value); 1: grid template; 2: screen sharing template; 3: picture-in-picture template; 4: custom template.\n        :type Template: int\n        :param MainVideoUserId: ID of the user in the big image, which takes effect in a screen sharing, floating, or picture-in-picture template.\n        :type MainVideoUserId: str\n        :param MainVideoStreamType: Stream type of the big image, which takes effect in a screen sharing, floating, or picture-in-picture template. 0: camera; 1: screen sharing. If a web user's stream is displayed in the big image on the left, enter 0 for this parameter.\n        :type MainVideoStreamType: int\n        :param SmallVideoLayoutParams: Layout parameter of the small image, which takes effect in a picture-in-picture template.\n        :type SmallVideoLayoutParams: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`\n        :param MainVideoRightAlign: You can set the layout parameter as 1 or 0 in the screen sharing template. 1: big image on the right and small images on the left, 0: big image on the left and small images on the right. The default value is 0. \n        :type MainVideoRightAlign: int\n        :param MixVideoUids: A user list, which takes effect for floating, grid, or screen sharing templates. When the user list has been set, the stream mix output for users in this user list will include both audio and video; the stream mix output for users not in the list will only include audio. Up to 16 users can be set.\n        :type MixVideoUids: list of str\n        :param PresetLayoutConfig: Valid in custom template, used to specify the video image position of a user in mixed streams.\n        :type PresetLayoutConfig: list of PresetLayoutConfig\n        :param PlaceHolderMode: Valid in custom templates. 1: the placeholding feature is enabled; 0 (default): the feature is disabled. When the feature is enabled, but a user for whom a position is reserved is not sending video data, the position will show the corresponding placeholder image.\n        :type PlaceHolderMode: int\n        :param PureAudioHoldPlaceMode: Whether an audio-only stream occupies an image spot, which takes effect in a floating, grid, or screen sharing template. Valid values: 0 (default): when a floating or grid template is used, users sending audio only occupy image spots; when a screen sharing template is used, users (except the user whose screen is shared) sending audio only do not occupy image spots; 1: users sending audio only occupy image spots; 2: users sending audio only do not occupy image spots.\n        :type PureAudioHoldPlaceMode: int\n        :param WaterMarkParams: Watermark parameters\n        :type WaterMarkParams: :class:`tencentcloud.trtc.v20190722.models.WaterMarkParams`\n        """
         self.Template = None
         self.MainVideoUserId = None
         self.MainVideoStreamType = None
@@ -1308,19 +1032,7 @@ class ModifyPictureRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PictureId: Image ID
-        :type PictureId: int
-        :param SdkAppId: Application ID
-        :type SdkAppId: int
-        :param Height: Image height
-        :type Height: int
-        :param Width: Image width
-        :type Width: int
-        :param XPosition: X-axis value of the image’s position
-        :type XPosition: int
-        :param YPosition: Y-axis value of the image’s position
-        :type YPosition: int
-        """
+        :param PictureId: Image ID\n        :type PictureId: int\n        :param SdkAppId: Application ID\n        :type SdkAppId: int\n        :param Height: Image height\n        :type Height: int\n        :param Width: Image width\n        :type Width: int\n        :param XPosition: X-axis value of the image’s position\n        :type XPosition: int\n        :param YPosition: Y-axis value of the image’s position\n        :type YPosition: int\n        """
         self.PictureId = None
         self.SdkAppId = None
         self.Height = None
@@ -1352,9 +1064,7 @@ class ModifyPictureResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1369,15 +1079,7 @@ class OutputParams(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamId: Custom live stream ID, which must be different from the ID of relayed stream.
-        :type StreamId: str
-        :param PureAudioStream: Value range: [0, 1]. If it is 0, live streams are audio and video; if it is 1, live streams are only audio. Default value: 0.
-        :type PureAudioStream: int
-        :param RecordId: Prefix of custom recording file names. Please enable the recording feature in the TRTC console first. https://intl.cloud.tencent.com/document/product/647/50768?from_cn_redirect=1
-        :type RecordId: str
-        :param RecordAudioOnly: Whether to record audio only. Valid values: 0, 1. `0`: no meaning; `1`: records into MP3 files. This parameter is not recommended. Instead, you are advised to create an audio-only recording template in the TRTC console.
-        :type RecordAudioOnly: int
-        """
+        :param StreamId: Custom live stream ID, which must be different from the ID of relayed stream.\n        :type StreamId: str\n        :param PureAudioStream: Value range: [0, 1]. If it is 0, live streams are audio and video; if it is 1, live streams are only audio. Default value: 0.\n        :type PureAudioStream: int\n        :param RecordId: Prefix of custom recording file names. Please enable the recording feature in the TRTC console first. https://intl.cloud.tencent.com/document/product/647/50768?from_cn_redirect=1\n        :type RecordId: str\n        :param RecordAudioOnly: Whether to record audio only. Valid values: 0, 1. `0`: no meaning; `1`: records into MP3 files. This parameter is not recommended. Instead, you are advised to create an audio-only recording template in the TRTC console.\n        :type RecordAudioOnly: int\n        """
         self.StreamId = None
         self.PureAudioStream = None
         self.RecordId = None
@@ -1405,19 +1107,7 @@ class PictureInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Height: Image height
-        :type Height: int
-        :param Width: Image width
-        :type Width: int
-        :param XPosition: X-axis value of the image’s position
-        :type XPosition: int
-        :param YPosition: Y-axis value of the image’s position
-        :type YPosition: int
-        :param SdkAppId: Application ID
-        :type SdkAppId: int
-        :param PictureId: Image ID
-        :type PictureId: int
-        """
+        :param Height: Image height\n        :type Height: int\n        :param Width: Image width\n        :type Width: int\n        :param XPosition: X-axis value of the image’s position\n        :type XPosition: int\n        :param YPosition: Y-axis value of the image’s position\n        :type YPosition: int\n        :param SdkAppId: Application ID\n        :type SdkAppId: int\n        :param PictureId: Image ID\n        :type PictureId: int\n        """
         self.Height = None
         self.Width = None
         self.XPosition = None
@@ -1449,27 +1139,7 @@ class PresetLayoutConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: Used to assign users to preset positions; if not assigned, users will occupy the positions set in `PresetLayoutConfig` in room entry sequence.
-        :type UserId: str
-        :param StreamType: Stream type of the user when a specified user is assigned to the image. 0: camera; 1: screen sharing. Set this parameter to 0 when the small image is occupied by a web user.
-        :type StreamType: int
-        :param ImageWidth: Width of the output image in pixels. If this parameter is not set, 0 is used by default.
-        :type ImageWidth: int
-        :param ImageHeight: Height of the output image in pixels. If this parameter is not set, 0 is used by default.
-        :type ImageHeight: int
-        :param LocationX: X offset of the output image in pixels. The sum of `LocationX` and `ImageWidth` cannot exceed the total width of the mixed stream. If this parameter is not set, 0 is used by default.
-        :type LocationX: int
-        :param LocationY: Y offset of the output image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the mixed stream. If this parameter is not set, 0 is used by default.
-        :type LocationY: int
-        :param ZOrder: Output order of the image. `0` is used if it is left empty.
-        :type ZOrder: int
-        :param RenderMode: Render mode of the output image. 0: cropping; 1: scaling; 2: scaling on a black background. If this parameter is not set, 0 is used by default.
-        :type RenderMode: int
-        :param MixInputType: Media type of the mixed stream of the user occupying the current position. 0 (default): audio and video; 1: audio; 2: video. You are advised to specify a user ID when using this parameter.
-        :type MixInputType: int
-        :param PlaceImageId: ID of the placeholder image. If the placeholding feature is enabled, and a user for whom an image position is reserved is not sending video data, the position will show the placeholder image. The ID is generated after the placeholder image is uploaded in the TRTC console. https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1
-        :type PlaceImageId: int
-        """
+        :param UserId: Used to assign users to preset positions; if not assigned, users will occupy the positions set in `PresetLayoutConfig` in room entry sequence.\n        :type UserId: str\n        :param StreamType: Stream type of the user when a specified user is assigned to the image. 0: camera; 1: screen sharing. Set this parameter to 0 when the small image is occupied by a web user.\n        :type StreamType: int\n        :param ImageWidth: Width of the output image in pixels. If this parameter is not set, 0 is used by default.\n        :type ImageWidth: int\n        :param ImageHeight: Height of the output image in pixels. If this parameter is not set, 0 is used by default.\n        :type ImageHeight: int\n        :param LocationX: X offset of the output image in pixels. The sum of `LocationX` and `ImageWidth` cannot exceed the total width of the mixed stream. If this parameter is not set, 0 is used by default.\n        :type LocationX: int\n        :param LocationY: Y offset of the output image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the mixed stream. If this parameter is not set, 0 is used by default.\n        :type LocationY: int\n        :param ZOrder: Output order of the image. `0` is used if it is left empty.\n        :type ZOrder: int\n        :param RenderMode: Render mode of the output image. 0: cropping; 1: scaling; 2: scaling on a black background. If this parameter is not set, 0 is used by default.\n        :type RenderMode: int\n        :param MixInputType: Media type of the mixed stream of the user occupying the current position. 0 (default): audio and video; 1: audio; 2: video. You are advised to specify a user ID when using this parameter.\n        :type MixInputType: int\n        :param PlaceImageId: ID of the placeholder image. If the placeholding feature is enabled, and a user for whom an image position is reserved is not sending video data, the position will show the placeholder image. The ID is generated after the placeholder image is uploaded in the TRTC console. https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1\n        :type PlaceImageId: int\n        """
         self.UserId = None
         self.StreamType = None
         self.ImageWidth = None
@@ -1509,11 +1179,7 @@ class PublishCdnParams(AbstractModel):
 
     def __init__(self):
         """
-        :param BizId: Tencent Cloud LVB BizId
-        :type BizId: int
-        :param PublishCdnUrls: Destination of non-Tencent Cloud CDN relayed push. It is possible to push to only one non-Tencent Cloud CDN address at a time.
-        :type PublishCdnUrls: list of str
-        """
+        :param BizId: Tencent Cloud LVB BizId\n        :type BizId: int\n        :param PublishCdnUrls: Destination of non-Tencent Cloud CDN relayed push. It is possible to push to only one non-Tencent Cloud CDN address at a time.\n        :type PublishCdnUrls: list of str\n        """
         self.BizId = None
         self.PublishCdnUrls = None
 
@@ -1537,15 +1203,7 @@ class QualityData(AbstractModel):
 
     def __init__(self):
         """
-        :param Content: Data content
-        :type Content: list of TimeValue
-        :param UserId: User ID
-        :type UserId: str
-        :param PeerId: Peer ID. An empty value indicates that the returned data is upstream.
-        :type PeerId: str
-        :param DataType: Data type
-        :type DataType: str
-        """
+        :param Content: Data content\n        :type Content: list of TimeValue\n        :param UserId: User ID\n        :type UserId: str\n        :param PeerId: Peer ID. An empty value indicates that the returned data is upstream.\n        :type PeerId: str\n        :param DataType: Data type\n        :type DataType: str\n        """
         self.Content = None
         self.UserId = None
         self.PeerId = None
@@ -1578,11 +1236,7 @@ class RealtimeData(AbstractModel):
 
     def __init__(self):
         """
-        :param Content: Returned data
-        :type Content: list of TimeValue
-        :param DataType: Data type field
-        :type DataType: str
-        """
+        :param Content: Returned data\n        :type Content: list of TimeValue\n        :param DataType: Data type field\n        :type DataType: str\n        """
         self.Content = None
         self.DataType = None
 
@@ -1611,13 +1265,7 @@ class RemoveUserByStrRoomIdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: `SDKAppId` of TRTC
-        :type SdkAppId: int
-        :param RoomId: Room ID
-        :type RoomId: str
-        :param UserIds: List of up to 10 users to be removed
-        :type UserIds: list of str
-        """
+        :param SdkAppId: `SDKAppId` of TRTC\n        :type SdkAppId: int\n        :param RoomId: Room ID\n        :type RoomId: str\n        :param UserIds: List of up to 10 users to be removed\n        :type UserIds: list of str\n        """
         self.SdkAppId = None
         self.RoomId = None
         self.UserIds = None
@@ -1643,9 +1291,7 @@ class RemoveUserByStrRoomIdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1660,13 +1306,7 @@ class RemoveUserRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: `SDKAppId` of TRTC.
-        :type SdkAppId: int
-        :param RoomId: Room number.
-        :type RoomId: int
-        :param UserIds: List of up to 10 users to be removed.
-        :type UserIds: list of str
-        """
+        :param SdkAppId: `SDKAppId` of TRTC.\n        :type SdkAppId: int\n        :param RoomId: Room number.\n        :type RoomId: int\n        :param UserIds: List of up to 10 users to be removed.\n        :type UserIds: list of str\n        """
         self.SdkAppId = None
         self.RoomId = None
         self.UserIds = None
@@ -1692,9 +1332,7 @@ class RemoveUserResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1709,19 +1347,7 @@ class RoomState(AbstractModel):
 
     def __init__(self):
         """
-        :param CommId: Call ID (unique call ID)
-        :type CommId: str
-        :param RoomString: Room ID of string type
-        :type RoomString: str
-        :param CreateTime: Room creation time
-        :type CreateTime: int
-        :param DestroyTime: Room termination time
-        :type DestroyTime: int
-        :param IsFinished: Whether the room is terminated
-        :type IsFinished: bool
-        :param UserId: Room creator ID
-        :type UserId: str
-        """
+        :param CommId: Call ID (unique call ID)\n        :type CommId: str\n        :param RoomString: Room ID of string type\n        :type RoomString: str\n        :param CreateTime: Room creation time\n        :type CreateTime: int\n        :param DestroyTime: Room termination time\n        :type DestroyTime: int\n        :param IsFinished: Whether the room is terminated\n        :type IsFinished: bool\n        :param UserId: Room creator ID\n        :type UserId: str\n        """
         self.CommId = None
         self.RoomString = None
         self.CreateTime = None
@@ -1753,18 +1379,10 @@ class ScaleInfomation(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Start time for each day
-        :type Time: int
-        :param UserNumber: Number of users in room. If a user enters the room for multiple times, the user will be counted as one user.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UserNumber: int
-        :param UserCount: Number of room entries. Every time when a user enters the room, it will be counted as one room entry.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UserCount: int
-        :param RoomNumbers: Number of rooms under `sdkappid` on a day
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RoomNumbers: int
-        """
+        :param Time: Start time for each day\n        :type Time: int\n        :param UserNumber: Number of users in room. If a user enters the room for multiple times, the user will be counted as one user.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type UserNumber: int\n        :param UserCount: Number of room entries. Every time when a user enters the room, it will be counted as one room entry.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type UserCount: int\n        :param RoomNumbers: Number of rooms under `sdkappid` on a day
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RoomNumbers: int\n        """
         self.Time = None
         self.UserNumber = None
         self.UserCount = None
@@ -1792,19 +1410,7 @@ class SmallVideoLayoutParams(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: ID of the user in the small image.
-        :type UserId: str
-        :param StreamType: Stream type of the small image. 0: camera; 1: screen sharing. If a web user's stream is displayed in the small image, enter 0 for this parameter.
-        :type StreamType: int
-        :param ImageWidth: Output width of the small image in pixels. If this parameter is left empty, 0 will be used by default.
-        :type ImageWidth: int
-        :param ImageHeight: Output height of the small image in pixels. If this parameter is left empty, 0 will be used by default.
-        :type ImageHeight: int
-        :param LocationX: Output X-axis offset of the small image in pixels. The sum of `LocationX` and `ImageWidth` cannot exceed the total width of the output mixed stream. If this parameter is left empty, 0 will be used by default.
-        :type LocationX: int
-        :param LocationY: Output Y-axis offset of the small image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the output mixed stream. If this parameter is left empty, 0 will be used by default.
-        :type LocationY: int
-        """
+        :param UserId: ID of the user in the small image.\n        :type UserId: str\n        :param StreamType: Stream type of the small image. 0: camera; 1: screen sharing. If a web user's stream is displayed in the small image, enter 0 for this parameter.\n        :type StreamType: int\n        :param ImageWidth: Output width of the small image in pixels. If this parameter is left empty, 0 will be used by default.\n        :type ImageWidth: int\n        :param ImageHeight: Output height of the small image in pixels. If this parameter is left empty, 0 will be used by default.\n        :type ImageHeight: int\n        :param LocationX: Output X-axis offset of the small image in pixels. The sum of `LocationX` and `ImageWidth` cannot exceed the total width of the output mixed stream. If this parameter is left empty, 0 will be used by default.\n        :type LocationX: int\n        :param LocationY: Output Y-axis offset of the small image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the output mixed stream. If this parameter is left empty, 0 will be used by default.\n        :type LocationY: int\n        """
         self.UserId = None
         self.StreamType = None
         self.ImageWidth = None
@@ -1836,19 +1442,7 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: `SDKAppId` of TRTC
-        :type SdkAppId: int
-        :param StrRoomId: Room ID in string type
-        :type StrRoomId: str
-        :param OutputParams: On-Cloud MixTranscoding output parameters
-        :type OutputParams: :class:`tencentcloud.trtc.v20190722.models.OutputParams`
-        :param EncodeParams: On-Cloud MixTranscoding output encoding parameters
-        :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
-        :param LayoutParams: On-Cloud MixTranscoding output layout parameters
-        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
-        :param PublishCdnParams: Relayed push parameters of a non-Tencent Cloud CDN
-        :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
-        """
+        :param SdkAppId: `SDKAppId` of TRTC\n        :type SdkAppId: int\n        :param StrRoomId: Room ID in string type\n        :type StrRoomId: str\n        :param OutputParams: On-Cloud MixTranscoding output parameters\n        :type OutputParams: :class:`tencentcloud.trtc.v20190722.models.OutputParams`\n        :param EncodeParams: On-Cloud MixTranscoding output encoding parameters\n        :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`\n        :param LayoutParams: On-Cloud MixTranscoding output layout parameters\n        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`\n        :param PublishCdnParams: Relayed push parameters of a non-Tencent Cloud CDN\n        :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`\n        """
         self.SdkAppId = None
         self.StrRoomId = None
         self.OutputParams = None
@@ -1888,9 +1482,7 @@ class StartMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1905,19 +1497,7 @@ class StartMCUMixTranscodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: `SDKAppId` of TRTC.
-        :type SdkAppId: int
-        :param RoomId: Room ID.
-        :type RoomId: int
-        :param OutputParams: On-Cloud MixTranscoding output control parameters.
-        :type OutputParams: :class:`tencentcloud.trtc.v20190722.models.OutputParams`
-        :param EncodeParams: On-Cloud MixTranscoding output encoding parameters.
-        :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
-        :param LayoutParams: On-Cloud MixTranscoding output layout parameters.
-        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
-        :param PublishCdnParams: Relayed push parameters of a non-Tencent Cloud CDN
-        :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
-        """
+        :param SdkAppId: `SDKAppId` of TRTC.\n        :type SdkAppId: int\n        :param RoomId: Room ID.\n        :type RoomId: int\n        :param OutputParams: On-Cloud MixTranscoding output control parameters.\n        :type OutputParams: :class:`tencentcloud.trtc.v20190722.models.OutputParams`\n        :param EncodeParams: On-Cloud MixTranscoding output encoding parameters.\n        :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`\n        :param LayoutParams: On-Cloud MixTranscoding output layout parameters.\n        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`\n        :param PublishCdnParams: Relayed push parameters of a non-Tencent Cloud CDN\n        :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`\n        """
         self.SdkAppId = None
         self.RoomId = None
         self.OutputParams = None
@@ -1957,9 +1537,7 @@ class StartMCUMixTranscodeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1974,11 +1552,7 @@ class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: `SDKAppId` of TRTC
-        :type SdkAppId: int
-        :param StrRoomId: Room ID in string type
-        :type StrRoomId: str
-        """
+        :param SdkAppId: `SDKAppId` of TRTC\n        :type SdkAppId: int\n        :param StrRoomId: Room ID in string type\n        :type StrRoomId: str\n        """
         self.SdkAppId = None
         self.StrRoomId = None
 
@@ -2002,9 +1576,7 @@ class StopMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2019,11 +1591,7 @@ class StopMCUMixTranscodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: `SDKAppId` of TRTC.
-        :type SdkAppId: int
-        :param RoomId: Room ID.
-        :type RoomId: int
-        """
+        :param SdkAppId: `SDKAppId` of TRTC.\n        :type SdkAppId: int\n        :param RoomId: Room ID.\n        :type RoomId: int\n        """
         self.SdkAppId = None
         self.RoomId = None
 
@@ -2047,9 +1615,7 @@ class StopMCUMixTranscodeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2064,11 +1630,7 @@ class TimeValue(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Time in the format of UNIX timestamp, such as 1590065877s.
-        :type Time: int
-        :param Value: Parameter value returned in the current time. For example, if `bigvCapFps` is set to 0 when the current time is 1590065877s (UNIX timestamp), the value of this parameter is 0.
-        :type Value: float
-        """
+        :param Time: Time in the format of UNIX timestamp, such as 1590065877s.\n        :type Time: int\n        :param Value: Parameter value returned in the current time. For example, if `bigvCapFps` is set to 0 when the current time is 1590065877s (UNIX timestamp), the value of this parameter is 0.\n        :type Value: float\n        """
         self.Time = None
         self.Value = None
 
@@ -2092,23 +1654,7 @@ class UserInformation(AbstractModel):
 
     def __init__(self):
         """
-        :param RoomStr: Room ID
-        :type RoomStr: str
-        :param UserId: User ID
-        :type UserId: str
-        :param JoinTs: The time when the user enters the room
-        :type JoinTs: int
-        :param LeaveTs: The time when the user exits the room. If the user is still in the room, the current time will be returned
-        :type LeaveTs: int
-        :param DeviceType: Device type
-        :type DeviceType: str
-        :param SdkVersion: SDK version number
-        :type SdkVersion: str
-        :param ClientIp: Client IP
-        :type ClientIp: str
-        :param Finished: Determine whether a user has left the room
-        :type Finished: bool
-        """
+        :param RoomStr: Room ID\n        :type RoomStr: str\n        :param UserId: User ID\n        :type UserId: str\n        :param JoinTs: The time when the user enters the room\n        :type JoinTs: int\n        :param LeaveTs: The time when the user exits the room. If the user is still in the room, the current time will be returned\n        :type LeaveTs: int\n        :param DeviceType: Device type\n        :type DeviceType: str\n        :param SdkVersion: SDK version number\n        :type SdkVersion: str\n        :param ClientIp: Client IP\n        :type ClientIp: str\n        :param Finished: Determine whether a user has left the room\n        :type Finished: bool\n        """
         self.RoomStr = None
         self.UserId = None
         self.JoinTs = None
@@ -2144,17 +1690,7 @@ class WaterMarkParams(AbstractModel):
 
     def __init__(self):
         """
-        :param WaterMarkId: Image ID of the watermark, which is generated after the image is uploaded to the TRTC console
-        :type WaterMarkId: int
-        :param WaterMarkWidth: Width (px) of the watermark for On-Cloud MixTranscoding
-        :type WaterMarkWidth: int
-        :param WaterMarkHeight: Height (px) of the watermark for On-Cloud MixTranscoding
-        :type WaterMarkHeight: int
-        :param LocationX: Horizontal offset (px) of the watermark
-        :type LocationX: int
-        :param LocationY: Vertical offset (px) of the watermark
-        :type LocationY: int
-        """
+        :param WaterMarkId: Image ID of the watermark, which is generated after the image is uploaded to the TRTC console\n        :type WaterMarkId: int\n        :param WaterMarkWidth: Width (px) of the watermark for On-Cloud MixTranscoding\n        :type WaterMarkWidth: int\n        :param WaterMarkHeight: Height (px) of the watermark for On-Cloud MixTranscoding\n        :type WaterMarkHeight: int\n        :param LocationX: Horizontal offset (px) of the watermark\n        :type LocationX: int\n        :param LocationY: Vertical offset (px) of the watermark\n        :type LocationY: int\n        """
         self.WaterMarkId = None
         self.WaterMarkWidth = None
         self.WaterMarkHeight = None

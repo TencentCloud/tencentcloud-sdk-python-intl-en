@@ -25,9 +25,7 @@ class AcquireClusterAdminRoleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -49,9 +47,7 @@ class AcquireClusterAdminRoleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -66,29 +62,9 @@ class AddExistedInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param InstanceIds: Instance list. Spot instance is not supported.
-        :type InstanceIds: list of str
-        :param InstanceAdvancedSettings: Detailed information of the instance
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param EnhancedService: Enhanced services. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled by default.
-        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
-        :param LoginSettings: Node login information (currently only supports using Password or single KeyIds)
-        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
-        :param HostName: When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.
-        :type HostName: str
-        :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the `sgId` field returned by DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)
-        :type SecurityGroupIds: list of str
-        :param NodePool: Node pool options
-        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`
-        :param SkipValidateOptions: Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck
-        :type SkipValidateOptions: list of str
-        :param InstanceAdvancedSettingsOverrides: This parameter is used to customize the configuration of an instance, which corresponds to the `InstanceIds` one-to-one in sequence. If this parameter is passed in, the default parameter `InstanceAdvancedSettings` will be overwritten and will not take effect. If this parameter is not passed in, the `InstanceAdvancedSettings` will take effect for each instance.
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param InstanceIds: Instance list. Spot instance is not supported.\n        :type InstanceIds: list of str\n        :param InstanceAdvancedSettings: Detailed information of the instance\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param EnhancedService: Enhanced services. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled by default.\n        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`\n        :param LoginSettings: Node login information (currently only supports using Password or single KeyIds)\n        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`\n        :param HostName: When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.\n        :type HostName: str\n        :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the `sgId` field returned by DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)\n        :type SecurityGroupIds: list of str\n        :param NodePool: Node pool options\n        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`\n        :param SkipValidateOptions: Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck\n        :type SkipValidateOptions: list of str\n        :param InstanceAdvancedSettingsOverrides: This parameter is used to customize the configuration of an instance, which corresponds to the `InstanceIds` one-to-one in sequence. If this parameter is passed in, the default parameter `InstanceAdvancedSettings` will be overwritten and will not take effect. If this parameter is not passed in, the `InstanceAdvancedSettings` will take effect for each instance.
 
-The array length of `InstanceAdvancedSettingsOverride` should be the same as the array length of `InstanceIds`. If its array length is greater than the `InstanceIds` array length, an error will be reported. If its array length is less than the `InstanceIds` array length, the instance without corresponding configuration will use the default configuration.
-        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
-        """
+The array length of `InstanceAdvancedSettingsOverride` should be the same as the array length of `InstanceIds`. If its array length is greater than the `InstanceIds` array length, an error will be reported. If its array length is less than the `InstanceIds` array length, the instance without corresponding configuration will use the default configuration.\n        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings\n        """
         self.ClusterId = None
         self.InstanceIds = None
         self.InstanceAdvancedSettings = None
@@ -142,20 +118,10 @@ class AddExistedInstancesResponse(AbstractModel):
     def __init__(self):
         """
         :param FailedInstanceIds: IDs of failed nodes
-Note: This field may return null, indicating that no valid value was found.
-        :type FailedInstanceIds: list of str
-        :param SuccInstanceIds: IDs of successful nodes
-Note: This field may return null, indicating that no valid value was found.
-        :type SuccInstanceIds: list of str
-        :param TimeoutInstanceIds: IDs of (successful or failed) nodes that timed out
-Note: This field may return null, indicating that no valid value was found.
-        :type TimeoutInstanceIds: list of str
-        :param FailedReasons: Causes of the failure to add a node to a cluster
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type FailedReasons: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: This field may return null, indicating that no valid value was found.\n        :type FailedInstanceIds: list of str\n        :param SuccInstanceIds: IDs of successful nodes
+Note: This field may return null, indicating that no valid value was found.\n        :type SuccInstanceIds: list of str\n        :param TimeoutInstanceIds: IDs of (successful or failed) nodes that timed out
+Note: This field may return null, indicating that no valid value was found.\n        :type TimeoutInstanceIds: list of str\n        :param FailedReasons: Causes of the failure to add a node to a cluster
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type FailedReasons: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FailedInstanceIds = None
         self.SuccInstanceIds = None
         self.TimeoutInstanceIds = None
@@ -178,13 +144,7 @@ class AddNodeToNodePoolRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param NodePoolId: Node pool ID
-        :type NodePoolId: str
-        :param InstanceIds: Node ID
-        :type InstanceIds: list of str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param NodePoolId: Node pool ID\n        :type NodePoolId: str\n        :param InstanceIds: Node ID\n        :type InstanceIds: list of str\n        """
         self.ClusterId = None
         self.NodePoolId = None
         self.InstanceIds = None
@@ -210,9 +170,7 @@ class AddNodeToNodePoolResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -227,13 +185,7 @@ class AddVpcCniSubnetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param SubnetIds: The subnets added for the cluster container network
-        :type SubnetIds: list of str
-        :param VpcId: ID of the VPC where the cluster resides
-        :type VpcId: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param SubnetIds: The subnets added for the cluster container network\n        :type SubnetIds: list of str\n        :param VpcId: ID of the VPC where the cluster resides\n        :type VpcId: str\n        """
         self.ClusterId = None
         self.SubnetIds = None
         self.VpcId = None
@@ -259,9 +211,7 @@ class AddVpcCniSubnetsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -276,11 +226,7 @@ class AutoScalingGroupRange(AbstractModel):
 
     def __init__(self):
         """
-        :param MinSize: Minimum number of pods in a scaling group
-        :type MinSize: int
-        :param MaxSize: Maximum number of pods in a scaling group
-        :type MaxSize: int
-        """
+        :param MinSize: Minimum number of pods in a scaling group\n        :type MinSize: int\n        :param MaxSize: Maximum number of pods in a scaling group\n        :type MaxSize: int\n        """
         self.MinSize = None
         self.MaxSize = None
 
@@ -304,15 +250,7 @@ class AutoscalingAdded(AbstractModel):
 
     def __init__(self):
         """
-        :param Joining: Number of nodes that are being added
-        :type Joining: int
-        :param Initializing: Number of nodes that are being initialized
-        :type Initializing: int
-        :param Normal: Number of normal nodes
-        :type Normal: int
-        :param Total: Total number of nodes
-        :type Total: int
-        """
+        :param Joining: Number of nodes that are being added\n        :type Joining: int\n        :param Initializing: Number of nodes that are being initialized\n        :type Initializing: int\n        :param Normal: Number of normal nodes\n        :type Normal: int\n        :param Total: Total number of nodes\n        :type Total: int\n        """
         self.Joining = None
         self.Initializing = None
         self.Normal = None
@@ -340,19 +278,7 @@ class CheckInstancesUpgradeAbleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param InstanceIds: Specify the node list to check. If it’s not passed in, all nodes of the cluster will be checked.
-        :type InstanceIds: list of str
-        :param UpgradeType: Upgrade type
-        :type UpgradeType: str
-        :param Offset: Pagination offset
-        :type Offset: int
-        :param Limit: Pagination limit
-        :type Limit: int
-        :param Filter: Filtering
-        :type Filter: list of Filter
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param InstanceIds: Specify the node list to check. If it’s not passed in, all nodes of the cluster will be checked.\n        :type InstanceIds: list of str\n        :param UpgradeType: Upgrade type\n        :type UpgradeType: str\n        :param Offset: Pagination offset\n        :type Offset: int\n        :param Limit: Pagination limit\n        :type Limit: int\n        :param Filter: Filtering\n        :type Filter: list of Filter\n        """
         self.ClusterId = None
         self.InstanceIds = None
         self.UpgradeType = None
@@ -389,19 +315,9 @@ class CheckInstancesUpgradeAbleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterVersion: The current minor version of cluster Master
-        :type ClusterVersion: str
-        :param LatestVersion: The latest minor version of cluster Master corresponding major version
-        :type LatestVersion: str
-        :param UpgradeAbleInstances: List of nodes that can be upgraded
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type UpgradeAbleInstances: list of UpgradeAbleInstancesItem
-        :param Total: Total number
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Total: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param ClusterVersion: The current minor version of cluster Master\n        :type ClusterVersion: str\n        :param LatestVersion: The latest minor version of cluster Master corresponding major version\n        :type LatestVersion: str\n        :param UpgradeAbleInstances: List of nodes that can be upgraded
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type UpgradeAbleInstances: list of UpgradeAbleInstancesItem\n        :param Total: Total number
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Total: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ClusterVersion = None
         self.LatestVersion = None
         self.UpgradeAbleInstances = None
@@ -429,51 +345,13 @@ class Cluster(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param ClusterName: Cluster name
-        :type ClusterName: str
-        :param ClusterDescription: Cluster description
-        :type ClusterDescription: str
-        :param ClusterVersion: Cluster version. The default value is 1.10.5.
-        :type ClusterVersion: str
-        :param ClusterOs: Cluster operating system. centOS 7.2x86_64 or ubuntu 16.04.1 LTSx86_64. Default value: ubuntu 16.04.1 LTSx86_64
-        :type ClusterOs: str
-        :param ClusterType: Cluster type. Managed cluster: MANAGED_CLUSTER; Self-deployed cluster: INDEPENDENT_CLUSTER.
-        :type ClusterType: str
-        :param ClusterNetworkSettings: Cluster network-related parameters
-        :type ClusterNetworkSettings: :class:`tencentcloud.tke.v20180525.models.ClusterNetworkSettings`
-        :param ClusterNodeNum: Current number of nodes in the cluster
-        :type ClusterNodeNum: int
-        :param ProjectId: ID of the project to which the cluster belongs
-        :type ProjectId: int
-        :param TagSpecification: Tag description list.
-        :type TagSpecification: list of TagSpecification
-        :param ClusterStatus: Cluster status (Running, Creating, or Abnormal)
-        :type ClusterStatus: str
-        :param Property: Cluster attributes (including a map of different cluster attributes, with attribute fields including NodeNameType (lan-ip mode and hostname mode, with lan-ip mode as default))
-        :type Property: str
-        :param ClusterMaterNodeNum: Number of primary nodes currently in the cluster
-        :type ClusterMaterNodeNum: int
-        :param ImageId: ID of the image used by the cluster
-Note: this field may return null, indicating that no valid value is obtained.
-        :type ImageId: str
-        :param OsCustomizeType: Container image tag
-Note: This field may return null, indicating that no valid value was found.
-        :type OsCustomizeType: str
-        :param ContainerRuntime: Runtime environment of the cluster. Values can be `docker` or `containerd`.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type ContainerRuntime: str
-        :param CreatedTime: Creation time
-Note: this field may return null, indicating that no valid value is obtained.
-        :type CreatedTime: str
-        :param DeletionProtection: Whether Deletion Protection is enabled
-Note: this field may return null, indicating that no valid value is obtained.
-        :type DeletionProtection: bool
-        :param EnableExternalNode: Specifies whether the cluster supports external nodes.
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type EnableExternalNode: bool
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ClusterName: Cluster name\n        :type ClusterName: str\n        :param ClusterDescription: Cluster description\n        :type ClusterDescription: str\n        :param ClusterVersion: Cluster version. The default value is 1.10.5.\n        :type ClusterVersion: str\n        :param ClusterOs: Cluster operating system. centOS 7.2x86_64 or ubuntu 16.04.1 LTSx86_64. Default value: ubuntu 16.04.1 LTSx86_64\n        :type ClusterOs: str\n        :param ClusterType: Cluster type. Managed cluster: MANAGED_CLUSTER; Self-deployed cluster: INDEPENDENT_CLUSTER.\n        :type ClusterType: str\n        :param ClusterNetworkSettings: Cluster network-related parameters\n        :type ClusterNetworkSettings: :class:`tencentcloud.tke.v20180525.models.ClusterNetworkSettings`\n        :param ClusterNodeNum: Current number of nodes in the cluster\n        :type ClusterNodeNum: int\n        :param ProjectId: ID of the project to which the cluster belongs\n        :type ProjectId: int\n        :param TagSpecification: Tag description list.\n        :type TagSpecification: list of TagSpecification\n        :param ClusterStatus: Cluster status (Running, Creating, or Abnormal)\n        :type ClusterStatus: str\n        :param Property: Cluster attributes (including a map of different cluster attributes, with attribute fields including NodeNameType (lan-ip mode and hostname mode, with lan-ip mode as default))\n        :type Property: str\n        :param ClusterMaterNodeNum: Number of primary nodes currently in the cluster\n        :type ClusterMaterNodeNum: int\n        :param ImageId: ID of the image used by the cluster
+Note: this field may return null, indicating that no valid value is obtained.\n        :type ImageId: str\n        :param OsCustomizeType: Container image tag
+Note: This field may return null, indicating that no valid value was found.\n        :type OsCustomizeType: str\n        :param ContainerRuntime: Runtime environment of the cluster. Values can be `docker` or `containerd`.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type ContainerRuntime: str\n        :param CreatedTime: Creation time
+Note: this field may return null, indicating that no valid value is obtained.\n        :type CreatedTime: str\n        :param DeletionProtection: Whether Deletion Protection is enabled
+Note: this field may return null, indicating that no valid value is obtained.\n        :type DeletionProtection: bool\n        :param EnableExternalNode: Specifies whether the cluster supports external nodes.
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type EnableExternalNode: bool\n        """
         self.ClusterId = None
         self.ClusterName = None
         self.ClusterDescription = None
@@ -538,47 +416,13 @@ class ClusterAdvancedSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param IPVS: Whether IPVS is enabled
-        :type IPVS: bool
-        :param AsEnabled: Whether auto-scaling is enabled for nodes in the cluster (Enabling this function is not supported when you create a cluster)
-        :type AsEnabled: bool
-        :param ContainerRuntime: Type of runtime component used by the cluster. The types include "docker" and "containerd". Default value: docker
-        :type ContainerRuntime: str
-        :param NodeNameType: NodeName type for a node in a cluster (This includes the two forms of **hostname** and **lan-ip**, with the default as **lan-ip**. If **hostname** is used, you need to set the HostName parameter when creating a node, and the InstanceName needs to be the same as the HostName.)
-        :type NodeNameType: str
-        :param ExtraArgs: Cluster custom parameter
-        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
-        :param NetworkType: Cluster network type, which can be GR (Global Router) or VPC-CNI. The default value is GR.
-        :type NetworkType: str
-        :param IsNonStaticIpMode: Whether a cluster in VPC-CNI mode uses dynamic IP addresses. The default value is FALSE, which indicates that static IP addresses are used.
-        :type IsNonStaticIpMode: bool
-        :param DeletionProtection: Indicates whether to enable cluster deletion protection.
-        :type DeletionProtection: bool
-        :param KubeProxyMode: Cluster network proxy model, which is only used when ipvs-bpf mode is used. At present, TKE cluster supports three network proxy modes including `iptables`, `ipvs` and `ipvs-bpf` and their parameter setting relationships are as follows:
+        :param IPVS: Whether IPVS is enabled\n        :type IPVS: bool\n        :param AsEnabled: Whether auto-scaling is enabled for nodes in the cluster (Enabling this function is not supported when you create a cluster)\n        :type AsEnabled: bool\n        :param ContainerRuntime: Type of runtime component used by the cluster. The types include "docker" and "containerd". Default value: docker\n        :type ContainerRuntime: str\n        :param NodeNameType: NodeName type for a node in a cluster (This includes the two forms of **hostname** and **lan-ip**, with the default as **lan-ip**. If **hostname** is used, you need to set the HostName parameter when creating a node, and the InstanceName needs to be the same as the HostName.)\n        :type NodeNameType: str\n        :param ExtraArgs: Cluster custom parameter\n        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`\n        :param NetworkType: Cluster network type, which can be GR (Global Router) or VPC-CNI. The default value is GR.\n        :type NetworkType: str\n        :param IsNonStaticIpMode: Whether a cluster in VPC-CNI mode uses dynamic IP addresses. The default value is FALSE, which indicates that static IP addresses are used.\n        :type IsNonStaticIpMode: bool\n        :param DeletionProtection: Indicates whether to enable cluster deletion protection.\n        :type DeletionProtection: bool\n        :param KubeProxyMode: Cluster network proxy model, which is only used when ipvs-bpf mode is used. At present, TKE cluster supports three network proxy modes including `iptables`, `ipvs` and `ipvs-bpf` and their parameter setting relationships are as follows:
 `iptables`: do not set IPVS and KubeProxyMode.
 `ipvs`: set IPVS to `true` and do not set KubeProxyMode.
 `ipvs-bpf`: set KubeProxyMode to `kube-proxy-bpf`.
 The following conditions are required to use ipvs-bpf network mode:
 1. The cluster version must be v1.14 or later.
-2. The system image must be Tencent Linux 2.4.
-        :type KubeProxyMode: str
-        :param AuditEnabled: Indicates whether to enable auditing
-        :type AuditEnabled: bool
-        :param AuditLogsetId: Specifies the ID of logset to which the audit logs are uploaded.
-        :type AuditLogsetId: str
-        :param AuditLogTopicId: Specifies the ID of topic to which the audit logs are uploaded.
-        :type AuditLogTopicId: str
-        :param VpcCniType: Specifies whether the VPC CNI type is multi-IP ENI or or independent ENI.
-        :type VpcCniType: str
-        :param RuntimeVersion: Runtime version
-        :type RuntimeVersion: str
-        :param EnableCustomizedPodCIDR: Indicates whether to enable the custom mode for the node’s pod CIDR range
-        :type EnableCustomizedPodCIDR: bool
-        :param BasePodNumber: The basic number of Pods in custom mode
-        :type BasePodNumber: int
-        :param CiliumMode: Specifies whether to enable Cilium. If it’s left empty, Cilium is not enabled. If `clusterIP` is passed in, it means to enable Cilium to support the clusterIP service type.
-        :type CiliumMode: str
-        """
+2. The system image must be Tencent Linux 2.4.\n        :type KubeProxyMode: str\n        :param AuditEnabled: Indicates whether to enable auditing\n        :type AuditEnabled: bool\n        :param AuditLogsetId: Specifies the ID of logset to which the audit logs are uploaded.\n        :type AuditLogsetId: str\n        :param AuditLogTopicId: Specifies the ID of topic to which the audit logs are uploaded.\n        :type AuditLogTopicId: str\n        :param VpcCniType: Specifies whether the VPC CNI type is multi-IP ENI or or independent ENI.\n        :type VpcCniType: str\n        :param RuntimeVersion: Runtime version\n        :type RuntimeVersion: str\n        :param EnableCustomizedPodCIDR: Indicates whether to enable the custom mode for the node’s pod CIDR range\n        :type EnableCustomizedPodCIDR: bool\n        :param BasePodNumber: The basic number of Pods in custom mode\n        :type BasePodNumber: int\n        :param CiliumMode: Specifies whether to enable Cilium. If it’s left empty, Cilium is not enabled. If `clusterIP` is passed in, it means to enable Cilium to support the clusterIP service type.\n        :type CiliumMode: str\n        """
         self.IPVS = None
         self.AsEnabled = None
         self.ContainerRuntime = None
@@ -634,19 +478,9 @@ class ClusterAsGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param AutoScalingGroupId: Scaling group ID
-        :type AutoScalingGroupId: str
-        :param Status: Scaling group status (`enabled`, `enabling`, `disabled`, `disabling`, `updating`, `deleting`, `scaleDownEnabling`, `scaleDownDisabling`)
-        :type Status: str
-        :param IsUnschedulable: Whether the node is set to unschedulable
-Note: this field may return null, indicating that no valid value was found.
-        :type IsUnschedulable: bool
-        :param Labels: Scaling group label list
-Note: this field may return null, indicating that no valid value was found.
-        :type Labels: list of Label
-        :param CreatedTime: Creation time
-        :type CreatedTime: str
-        """
+        :param AutoScalingGroupId: Scaling group ID\n        :type AutoScalingGroupId: str\n        :param Status: Scaling group status (`enabled`, `enabling`, `disabled`, `disabling`, `updating`, `deleting`, `scaleDownEnabling`, `scaleDownDisabling`)\n        :type Status: str\n        :param IsUnschedulable: Whether the node is set to unschedulable
+Note: this field may return null, indicating that no valid value was found.\n        :type IsUnschedulable: bool\n        :param Labels: Scaling group label list
+Note: this field may return null, indicating that no valid value was found.\n        :type Labels: list of Label\n        :param CreatedTime: Creation time\n        :type CreatedTime: str\n        """
         self.AutoScalingGroupId = None
         self.Status = None
         self.IsUnschedulable = None
@@ -681,13 +515,7 @@ class ClusterAsGroupAttribute(AbstractModel):
 
     def __init__(self):
         """
-        :param AutoScalingGroupId: Scaling group ID
-        :type AutoScalingGroupId: str
-        :param AutoScalingGroupEnabled: Whether it is enabled
-        :type AutoScalingGroupEnabled: bool
-        :param AutoScalingGroupRange: Maximum and minimum number of pods in a scaling group
-        :type AutoScalingGroupRange: :class:`tencentcloud.tke.v20180525.models.AutoScalingGroupRange`
-        """
+        :param AutoScalingGroupId: Scaling group ID\n        :type AutoScalingGroupId: str\n        :param AutoScalingGroupEnabled: Whether it is enabled\n        :type AutoScalingGroupEnabled: bool\n        :param AutoScalingGroupRange: Maximum and minimum number of pods in a scaling group\n        :type AutoScalingGroupRange: :class:`tencentcloud.tke.v20180525.models.AutoScalingGroupRange`\n        """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupEnabled = None
         self.AutoScalingGroupRange = None
@@ -716,45 +544,19 @@ class ClusterAsGroupOption(AbstractModel):
     def __init__(self):
         """
         :param IsScaleDownEnabled: Whether to enable scale-in
-Note: this field may return null, indicating that no valid value was found.
-        :type IsScaleDownEnabled: bool
-        :param Expander: The scale-out method when there are multiple scaling groups. `random`: select a random scaling group. `most-pods`: choose the scaling group that can schedule the most pods. `least-waste`: select the scaling group that can ensure the fewest remaining resources after Pod scheduling.. The default value is `random`.)
-Note: this field may return null, indicating that no valid value was found.
-        :type Expander: str
-        :param MaxEmptyBulkDelete: Max concurrent scale-in volume
-Note: this field may return null, indicating that no valid value was found.
-        :type MaxEmptyBulkDelete: int
-        :param ScaleDownDelay: Number of minutes after cluster scale-out when the system starts judging whether to perform scale-in
-Note: this field may return null, indicating that no valid value was found.
-        :type ScaleDownDelay: int
-        :param ScaleDownUnneededTime: Number of consecutive minutes of idleness after which the node is subject to scale-in (default value: 10)
-Note: this field may return null, indicating that no valid value was found.
-        :type ScaleDownUnneededTime: int
-        :param ScaleDownUtilizationThreshold: Percentage of node resource usage below which the node is considered to be idle (default value: 50)
-Note: this field may return null, indicating that no valid value was found.
-        :type ScaleDownUtilizationThreshold: int
-        :param SkipNodesWithLocalStorage: During scale-in, ignore nodes with local storage pods (default value: False)
-Note: this field may return null, indicating that no valid value was found.
-        :type SkipNodesWithLocalStorage: bool
-        :param SkipNodesWithSystemPods: During scale-in, ignore nodes with pods in the kube-system namespace that are not managed by DaemonSet (default value: False)
-Note: this field may return null, indicating that no valid value was found.
-        :type SkipNodesWithSystemPods: bool
-        :param IgnoreDaemonSetsUtilization: Whether to ignore DaemonSet pods by default when calculating resource usage (default value: False: do not ignore)
-Note: this field may return null, indicating that no valid value was found.
-        :type IgnoreDaemonSetsUtilization: bool
-        :param OkTotalUnreadyCount: Number at which CA health detection is triggered (default value: 3). After the number specified in OkTotalUnreadyCount is exceeded, CA will perform health detection.
-Note: this field may return null, indicating that no valid value was found.
-        :type OkTotalUnreadyCount: int
-        :param MaxTotalUnreadyPercentage: Max percentage of unready nodes. After the max percentage is exceeded, CA will stop operation.
-Note: this field may return null, indicating that no valid value was found.
-        :type MaxTotalUnreadyPercentage: int
-        :param ScaleDownUnreadyTime: Amount of time before unready nodes become eligible for scale-in
-Note: this field may return null, indicating that no valid value was found.
-        :type ScaleDownUnreadyTime: int
-        :param UnregisteredNodeRemovalTime: Waiting time before CA deletes nodes that are not registered in Kubernetes
-Note: this field may return null, indicating that no valid value was found.
-        :type UnregisteredNodeRemovalTime: int
-        """
+Note: this field may return null, indicating that no valid value was found.\n        :type IsScaleDownEnabled: bool\n        :param Expander: The scale-out method when there are multiple scaling groups. `random`: select a random scaling group. `most-pods`: choose the scaling group that can schedule the most pods. `least-waste`: select the scaling group that can ensure the fewest remaining resources after Pod scheduling.. The default value is `random`.)
+Note: this field may return null, indicating that no valid value was found.\n        :type Expander: str\n        :param MaxEmptyBulkDelete: Max concurrent scale-in volume
+Note: this field may return null, indicating that no valid value was found.\n        :type MaxEmptyBulkDelete: int\n        :param ScaleDownDelay: Number of minutes after cluster scale-out when the system starts judging whether to perform scale-in
+Note: this field may return null, indicating that no valid value was found.\n        :type ScaleDownDelay: int\n        :param ScaleDownUnneededTime: Number of consecutive minutes of idleness after which the node is subject to scale-in (default value: 10)
+Note: this field may return null, indicating that no valid value was found.\n        :type ScaleDownUnneededTime: int\n        :param ScaleDownUtilizationThreshold: Percentage of node resource usage below which the node is considered to be idle (default value: 50)
+Note: this field may return null, indicating that no valid value was found.\n        :type ScaleDownUtilizationThreshold: int\n        :param SkipNodesWithLocalStorage: During scale-in, ignore nodes with local storage pods (default value: False)
+Note: this field may return null, indicating that no valid value was found.\n        :type SkipNodesWithLocalStorage: bool\n        :param SkipNodesWithSystemPods: During scale-in, ignore nodes with pods in the kube-system namespace that are not managed by DaemonSet (default value: False)
+Note: this field may return null, indicating that no valid value was found.\n        :type SkipNodesWithSystemPods: bool\n        :param IgnoreDaemonSetsUtilization: Whether to ignore DaemonSet pods by default when calculating resource usage (default value: False: do not ignore)
+Note: this field may return null, indicating that no valid value was found.\n        :type IgnoreDaemonSetsUtilization: bool\n        :param OkTotalUnreadyCount: Number at which CA health detection is triggered (default value: 3). After the number specified in OkTotalUnreadyCount is exceeded, CA will perform health detection.
+Note: this field may return null, indicating that no valid value was found.\n        :type OkTotalUnreadyCount: int\n        :param MaxTotalUnreadyPercentage: Max percentage of unready nodes. After the max percentage is exceeded, CA will stop operation.
+Note: this field may return null, indicating that no valid value was found.\n        :type MaxTotalUnreadyPercentage: int\n        :param ScaleDownUnreadyTime: Amount of time before unready nodes become eligible for scale-in
+Note: this field may return null, indicating that no valid value was found.\n        :type ScaleDownUnreadyTime: int\n        :param UnregisteredNodeRemovalTime: Waiting time before CA deletes nodes that are not registered in Kubernetes
+Note: this field may return null, indicating that no valid value was found.\n        :type UnregisteredNodeRemovalTime: int\n        """
         self.IsScaleDownEnabled = None
         self.Expander = None
         self.MaxEmptyBulkDelete = None
@@ -800,25 +602,7 @@ class ClusterBasicSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterOs: Cluster operating system. CentOS 7.2x86_64 or Ubuntu 16.04.1 LTSx86_64. Default value: Ubuntu 16.04.1 LTSx86_64
-        :type ClusterOs: str
-        :param ClusterVersion: Cluster version. The default value is 1.10.5.
-        :type ClusterVersion: str
-        :param ClusterName: Cluster name
-        :type ClusterName: str
-        :param ClusterDescription: Cluster description
-        :type ClusterDescription: str
-        :param VpcId: VPC ID, in the format of vpc-xxx, which is required when you create an empty managed cluster.
-        :type VpcId: str
-        :param ProjectId: ID of the project to which the new resources in the cluster belong.
-        :type ProjectId: int
-        :param TagSpecification: Tag description list. This parameter is used to bind a tag to a resource instance. Currently, a tag can only be bound to cluster instances.
-        :type TagSpecification: list of TagSpecification
-        :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
-        :type OsCustomizeType: str
-        :param NeedWorkSecurityGroup: Whether to enable the node’s default security group (default: `No`, Aphla feature)
-        :type NeedWorkSecurityGroup: bool
-        """
+        :param ClusterOs: Cluster operating system. CentOS 7.2x86_64 or Ubuntu 16.04.1 LTSx86_64. Default value: Ubuntu 16.04.1 LTSx86_64\n        :type ClusterOs: str\n        :param ClusterVersion: Cluster version. The default value is 1.10.5.\n        :type ClusterVersion: str\n        :param ClusterName: Cluster name\n        :type ClusterName: str\n        :param ClusterDescription: Cluster description\n        :type ClusterDescription: str\n        :param VpcId: VPC ID, in the format of vpc-xxx, which is required when you create an empty managed cluster.\n        :type VpcId: str\n        :param ProjectId: ID of the project to which the new resources in the cluster belong.\n        :type ProjectId: int\n        :param TagSpecification: Tag description list. This parameter is used to bind a tag to a resource instance. Currently, a tag can only be bound to cluster instances.\n        :type TagSpecification: list of TagSpecification\n        :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)\n        :type OsCustomizeType: str\n        :param NeedWorkSecurityGroup: Whether to enable the node’s default security group (default: `No`, Aphla feature)\n        :type NeedWorkSecurityGroup: bool\n        """
         self.ClusterOs = None
         self.ClusterVersion = None
         self.ClusterName = None
@@ -861,21 +645,7 @@ class ClusterCIDRSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterCIDR: CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC
-        :type ClusterCIDR: str
-        :param IgnoreClusterCIDRConflict: Whether to ignore ClusterCIDR conflict errors, which are not ignored by default
-        :type IgnoreClusterCIDRConflict: bool
-        :param MaxNodePodNum: Maximum number of pods on each node in the cluster
-        :type MaxNodePodNum: int
-        :param MaxClusterServiceNum: Maximum number of cluster services
-        :type MaxClusterServiceNum: int
-        :param ServiceCIDR: The CIDR block used to assign cluster service IP addresses. It must conflict with neither the VPC CIDR block nor with CIDR blocks of other clusters in the same VPC instance. The IP range must be within the private network IP range, such as 10.1.0.0/14, 192.168.0.1/18, and 172.16.0.0/16.
-        :type ServiceCIDR: str
-        :param EniSubnetIds: Subnet ID of the ENI in VPC-CNI network mode
-        :type EniSubnetIds: list of str
-        :param ClaimExpiredSeconds: Repossession time of ENI IP addresses in VPC-CNI network mode, whose range is [300,15768000)
-        :type ClaimExpiredSeconds: int
-        """
+        :param ClusterCIDR: CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC\n        :type ClusterCIDR: str\n        :param IgnoreClusterCIDRConflict: Whether to ignore ClusterCIDR conflict errors, which are not ignored by default\n        :type IgnoreClusterCIDRConflict: bool\n        :param MaxNodePodNum: Maximum number of pods on each node in the cluster\n        :type MaxNodePodNum: int\n        :param MaxClusterServiceNum: Maximum number of cluster services\n        :type MaxClusterServiceNum: int\n        :param ServiceCIDR: The CIDR block used to assign cluster service IP addresses. It must conflict with neither the VPC CIDR block nor with CIDR blocks of other clusters in the same VPC instance. The IP range must be within the private network IP range, such as 10.1.0.0/14, 192.168.0.1/18, and 172.16.0.0/16.\n        :type ServiceCIDR: str\n        :param EniSubnetIds: Subnet ID of the ENI in VPC-CNI network mode\n        :type EniSubnetIds: list of str\n        :param ClaimExpiredSeconds: Repossession time of ENI IP addresses in VPC-CNI network mode, whose range is [300,15768000)\n        :type ClaimExpiredSeconds: int\n        """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
         self.MaxNodePodNum = None
@@ -910,18 +680,10 @@ class ClusterExtraArgs(AbstractModel):
     def __init__(self):
         """
         :param KubeAPIServer: kube-apiserver custom parameter, in the format of ["k1=v1", "k1=v2"], for example: ["max-requests-inflight=500","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"].
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type KubeAPIServer: list of str
-        :param KubeControllerManager: kube-controller-manager custom parameter
-Note: this field may return null, indicating that no valid value is obtained.
-        :type KubeControllerManager: list of str
-        :param KubeScheduler: kube-scheduler custom parameter
-Note: this field may return null, indicating that no valid value is obtained.
-        :type KubeScheduler: list of str
-        :param Etcd: etcd custom parameter, which is only effective for self-deployed cluster.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Etcd: list of str
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type KubeAPIServer: list of str\n        :param KubeControllerManager: kube-controller-manager custom parameter
+Note: this field may return null, indicating that no valid value is obtained.\n        :type KubeControllerManager: list of str\n        :param KubeScheduler: kube-scheduler custom parameter
+Note: this field may return null, indicating that no valid value is obtained.\n        :type KubeScheduler: list of str\n        :param Etcd: etcd custom parameter, which is only effective for self-deployed cluster.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Etcd: list of str\n        """
         self.KubeAPIServer = None
         self.KubeControllerManager = None
         self.KubeScheduler = None
@@ -949,30 +711,10 @@ class ClusterNetworkSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterCIDR: CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC.
-        :type ClusterCIDR: str
-        :param IgnoreClusterCIDRConflict: Whether to ignore ClusterCIDR conflict errors. It defaults to not ignore.
-        :type IgnoreClusterCIDRConflict: bool
-        :param MaxNodePodNum: Maximum number of pods on each node in the cluster. Default value: 256
-        :type MaxNodePodNum: int
-        :param MaxClusterServiceNum: Maximum number of cluster services. Default value: 256
-        :type MaxClusterServiceNum: int
-        :param Ipvs: Whether IPVS is enabled. Default value: disabled
-        :type Ipvs: bool
-        :param VpcId: Cluster VPC ID, which is required when you create an empty cluster; otherwise, it is automatically set to be consistent with that of the nodes in the cluster
-        :type VpcId: str
-        :param Cni: Whether CNI is enabled for network plugin(s). Default value: enabled
-        :type Cni: bool
-        :param KubeProxyMode: The network mode of service. This parameter is only applicable to ipvs+bpf mode.
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type KubeProxyMode: str
-        :param ServiceCIDR: The IP range for service assignment. It cannot conflict with the VPC’s CIDR block nor the CIDR blocks of other clusters in the same VPC.
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type ServiceCIDR: str
-        :param Subnets: The container subnet associated with the cluster
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type Subnets: list of str
-        """
+        :param ClusterCIDR: CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC.\n        :type ClusterCIDR: str\n        :param IgnoreClusterCIDRConflict: Whether to ignore ClusterCIDR conflict errors. It defaults to not ignore.\n        :type IgnoreClusterCIDRConflict: bool\n        :param MaxNodePodNum: Maximum number of pods on each node in the cluster. Default value: 256\n        :type MaxNodePodNum: int\n        :param MaxClusterServiceNum: Maximum number of cluster services. Default value: 256\n        :type MaxClusterServiceNum: int\n        :param Ipvs: Whether IPVS is enabled. Default value: disabled\n        :type Ipvs: bool\n        :param VpcId: Cluster VPC ID, which is required when you create an empty cluster; otherwise, it is automatically set to be consistent with that of the nodes in the cluster\n        :type VpcId: str\n        :param Cni: Whether CNI is enabled for network plugin(s). Default value: enabled\n        :type Cni: bool\n        :param KubeProxyMode: The network mode of service. This parameter is only applicable to ipvs+bpf mode.
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type KubeProxyMode: str\n        :param ServiceCIDR: The IP range for service assignment. It cannot conflict with the VPC’s CIDR block nor the CIDR blocks of other clusters in the same VPC.
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type ServiceCIDR: str\n        :param Subnets: The container subnet associated with the cluster
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type Subnets: list of str\n        """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
         self.MaxNodePodNum = None
@@ -1012,11 +754,7 @@ class ClusterVersion(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param Versions: The list of cluster major version, such as 1.18.4
-        :type Versions: list of str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param Versions: The list of cluster major version, such as 1.18.4\n        :type Versions: list of str\n        """
         self.ClusterId = None
         self.Versions = None
 
@@ -1040,11 +778,7 @@ class CommonName(AbstractModel):
 
     def __init__(self):
         """
-        :param SubaccountUin: User UIN
-        :type SubaccountUin: str
-        :param CN: The CommonName in the certificate of the client corresponding to the sub-account
-        :type CN: str
-        """
+        :param SubaccountUin: User UIN\n        :type SubaccountUin: str\n        :param CN: The CommonName in the certificate of the client corresponding to the sub-account\n        :type CN: str\n        """
         self.SubaccountUin = None
         self.CN = None
 
@@ -1068,17 +802,7 @@ class CreateClusterAsGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param AutoScalingGroupPara: The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20440?from_cn_redirect=1) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry.
-        :type AutoScalingGroupPara: str
-        :param LaunchConfigurePara: The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://intl.cloud.tencent.com/document/api/377/20447?from_cn_redirect=1) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**.
-        :type LaunchConfigurePara: str
-        :param InstanceAdvancedSettings: Advanced configuration information of the node
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param Labels: Node label array
-        :type Labels: list of Label
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param AutoScalingGroupPara: The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20440?from_cn_redirect=1) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry.\n        :type AutoScalingGroupPara: str\n        :param LaunchConfigurePara: The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://intl.cloud.tencent.com/document/api/377/20447?from_cn_redirect=1) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**.\n        :type LaunchConfigurePara: str\n        :param InstanceAdvancedSettings: Advanced configuration information of the node\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param Labels: Node label array\n        :type Labels: list of Label\n        """
         self.ClusterId = None
         self.AutoScalingGroupPara = None
         self.LaunchConfigurePara = None
@@ -1115,13 +839,7 @@ class CreateClusterAsGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LaunchConfigurationId: Launch configuration ID
-        :type LaunchConfigurationId: str
-        :param AutoScalingGroupId: Scaling group ID
-        :type AutoScalingGroupId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param LaunchConfigurationId: Launch configuration ID\n        :type LaunchConfigurationId: str\n        :param AutoScalingGroupId: Scaling group ID\n        :type AutoScalingGroupId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.LaunchConfigurationId = None
         self.AutoScalingGroupId = None
         self.RequestId = None
@@ -1140,13 +858,7 @@ class CreateClusterEndpointRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param SubnetId: The ID of the subnet where the cluster's port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster's VPC). 
-        :type SubnetId: str
-        :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).
-        :type IsExtranet: bool
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param SubnetId: The ID of the subnet where the cluster's port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster's VPC). \n        :type SubnetId: str\n        :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).\n        :type IsExtranet: bool\n        """
         self.ClusterId = None
         self.SubnetId = None
         self.IsExtranet = None
@@ -1172,9 +884,7 @@ class CreateClusterEndpointResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1189,11 +899,7 @@ class CreateClusterEndpointVipRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param SecurityPolicies: Security policy opens single IP or CIDR to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).
-        :type SecurityPolicies: list of str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param SecurityPolicies: Security policy opens single IP or CIDR to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).\n        :type SecurityPolicies: list of str\n        """
         self.ClusterId = None
         self.SecurityPolicies = None
 
@@ -1217,11 +923,7 @@ class CreateClusterEndpointVipResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestFlowId: Request job's FlowId
-        :type RequestFlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestFlowId: Request job's FlowId\n        :type RequestFlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestFlowId = None
         self.RequestId = None
 
@@ -1238,15 +940,7 @@ class CreateClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID. Enter the ClusterId field returned by the DescribeClusters API
-        :type ClusterId: str
-        :param RunInstancePara: Pass-through parameter for CVM creation in the format of a JSON string. To ensure the idempotence of requests for adding cluster nodes, you need to add the ClientToken field in this parameter. For more information, see the documentation for [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.
-        :type RunInstancePara: str
-        :param InstanceAdvancedSettings: Additional parameter to be set for the instance
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param SkipValidateOptions: Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck
-        :type SkipValidateOptions: list of str
-        """
+        :param ClusterId: Cluster ID. Enter the ClusterId field returned by the DescribeClusters API\n        :type ClusterId: str\n        :param RunInstancePara: Pass-through parameter for CVM creation in the format of a JSON string. To ensure the idempotence of requests for adding cluster nodes, you need to add the ClientToken field in this parameter. For more information, see the documentation for [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.\n        :type RunInstancePara: str\n        :param InstanceAdvancedSettings: Additional parameter to be set for the instance\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param SkipValidateOptions: Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck\n        :type SkipValidateOptions: list of str\n        """
         self.ClusterId = None
         self.RunInstancePara = None
         self.InstanceAdvancedSettings = None
@@ -1276,11 +970,7 @@ class CreateClusterInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIdSet: Instance ID
-        :type InstanceIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param InstanceIdSet: Instance ID\n        :type InstanceIdSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceIdSet = None
         self.RequestId = None
 
@@ -1297,11 +987,7 @@ class CreateClusterNodePoolFromExistingAsgRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param AutoscalingGroupId: Scaling group ID
-        :type AutoscalingGroupId: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param AutoscalingGroupId: Scaling group ID\n        :type AutoscalingGroupId: str\n        """
         self.ClusterId = None
         self.AutoscalingGroupId = None
 
@@ -1325,11 +1011,7 @@ class CreateClusterNodePoolFromExistingAsgResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NodePoolId: Node pool ID
-        :type NodePoolId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param NodePoolId: Node pool ID\n        :type NodePoolId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.NodePoolId = None
         self.RequestId = None
 
@@ -1346,27 +1028,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param AutoScalingGroupPara: AS group parameters
-        :type AutoScalingGroupPara: str
-        :param LaunchConfigurePara: Running parameters
-        :type LaunchConfigurePara: str
-        :param InstanceAdvancedSettings: Sample parameters
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param EnableAutoscale: Indicates whether to enable auto scaling
-        :type EnableAutoscale: bool
-        :param Name: Node pool name
-        :type Name: str
-        :param Labels: Labels
-        :type Labels: list of Label
-        :param Taints: Taints
-        :type Taints: list of Taint
-        :param NodePoolOs: Operating system of the node pool
-        :type NodePoolOs: str
-        :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
-        :type OsCustomizeType: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param AutoScalingGroupPara: AS group parameters\n        :type AutoScalingGroupPara: str\n        :param LaunchConfigurePara: Running parameters\n        :type LaunchConfigurePara: str\n        :param InstanceAdvancedSettings: Sample parameters\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param EnableAutoscale: Indicates whether to enable auto scaling\n        :type EnableAutoscale: bool\n        :param Name: Node pool name\n        :type Name: str\n        :param Labels: Labels\n        :type Labels: list of Label\n        :param Taints: Taints\n        :type Taints: list of Taint\n        :param NodePoolOs: Operating system of the node pool\n        :type NodePoolOs: str\n        :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)\n        :type OsCustomizeType: str\n        """
         self.ClusterId = None
         self.AutoScalingGroupPara = None
         self.LaunchConfigurePara = None
@@ -1418,11 +1080,7 @@ class CreateClusterNodePoolResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NodePoolId: Node pool ID
-        :type NodePoolId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param NodePoolId: Node pool ID\n        :type NodePoolId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.NodePoolId = None
         self.RequestId = None
 
@@ -1439,25 +1097,7 @@ class CreateClusterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterCIDRSettings: Container networking configuration information for the cluster
-        :type ClusterCIDRSettings: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`
-        :param ClusterType: Cluster type. Managed cluster: MANAGED_CLUSTER; self-deployed cluster: INDEPENDENT_CLUSTER.
-        :type ClusterType: str
-        :param RunInstancesForNode: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1).
-        :type RunInstancesForNode: list of RunInstancesForNode
-        :param ClusterBasicSettings: Basic configuration information of the cluster
-        :type ClusterBasicSettings: :class:`tencentcloud.tke.v20180525.models.ClusterBasicSettings`
-        :param ClusterAdvancedSettings: Advanced configuration information of the cluster
-        :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.ClusterAdvancedSettings`
-        :param InstanceAdvancedSettings: Advanced configuration information of the node
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param ExistedInstancesForNode: Configuration information of an existing instance
-        :type ExistedInstancesForNode: list of ExistedInstancesForNode
-        :param InstanceDataDiskMountSettings: CVM type and the corresponding data disk mounting configuration information.
-        :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting
-        :param ExtensionAddons: Information of the add-on to be installed
-        :type ExtensionAddons: list of ExtensionAddon
-        """
+        :param ClusterCIDRSettings: Container networking configuration information for the cluster\n        :type ClusterCIDRSettings: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`\n        :param ClusterType: Cluster type. Managed cluster: MANAGED_CLUSTER; self-deployed cluster: INDEPENDENT_CLUSTER.\n        :type ClusterType: str\n        :param RunInstancesForNode: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1).\n        :type RunInstancesForNode: list of RunInstancesForNode\n        :param ClusterBasicSettings: Basic configuration information of the cluster\n        :type ClusterBasicSettings: :class:`tencentcloud.tke.v20180525.models.ClusterBasicSettings`\n        :param ClusterAdvancedSettings: Advanced configuration information of the cluster\n        :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.ClusterAdvancedSettings`\n        :param InstanceAdvancedSettings: Advanced configuration information of the node\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param ExistedInstancesForNode: Configuration information of an existing instance\n        :type ExistedInstancesForNode: list of ExistedInstancesForNode\n        :param InstanceDataDiskMountSettings: CVM type and the corresponding data disk mounting configuration information.\n        :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting\n        :param ExtensionAddons: Information of the add-on to be installed\n        :type ExtensionAddons: list of ExtensionAddon\n        """
         self.ClusterCIDRSettings = None
         self.ClusterType = None
         self.RunInstancesForNode = None
@@ -1523,11 +1163,7 @@ class CreateClusterResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ClusterId = None
         self.RequestId = None
 
@@ -1544,15 +1180,7 @@ class CreateClusterRouteTableRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: Route table name
-        :type RouteTableName: str
-        :param RouteTableCidrBlock: Route table CIDR
-        :type RouteTableCidrBlock: str
-        :param VpcId: VPC bound to the route table
-        :type VpcId: str
-        :param IgnoreClusterCidrConflict: Whether to ignore CIDR conflicts
-        :type IgnoreClusterCidrConflict: int
-        """
+        :param RouteTableName: Route table name\n        :type RouteTableName: str\n        :param RouteTableCidrBlock: Route table CIDR\n        :type RouteTableCidrBlock: str\n        :param VpcId: VPC bound to the route table\n        :type VpcId: str\n        :param IgnoreClusterCidrConflict: Whether to ignore CIDR conflicts\n        :type IgnoreClusterCidrConflict: int\n        """
         self.RouteTableName = None
         self.RouteTableCidrBlock = None
         self.VpcId = None
@@ -1580,9 +1208,7 @@ class CreateClusterRouteTableResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1598,24 +1224,12 @@ class DataDisk(AbstractModel):
     def __init__(self):
         """
         :param DiskType: Disk type
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DiskType: str
-        :param FileSystem: File system (ext3/ext4/xfs)
-Note: This field may return null, indicating that no valid value was found.
-        :type FileSystem: str
-        :param DiskSize: Disk size (G)
-Note: This field may return null, indicating that no valid value was found.
-        :type DiskSize: int
-        :param AutoFormatAndMount: Whether the disk is auto-formatted and mounted
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type AutoFormatAndMount: bool
-        :param MountTarget: Mounting directory
-Note: This field may return null, indicating that no valid value was found.
-        :type MountTarget: str
-        :param DiskPartition: The name of the device or partition to mount
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type DiskPartition: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type DiskType: str\n        :param FileSystem: File system (ext3/ext4/xfs)
+Note: This field may return null, indicating that no valid value was found.\n        :type FileSystem: str\n        :param DiskSize: Disk size (G)
+Note: This field may return null, indicating that no valid value was found.\n        :type DiskSize: int\n        :param AutoFormatAndMount: Whether the disk is auto-formatted and mounted
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type AutoFormatAndMount: bool\n        :param MountTarget: Mounting directory
+Note: This field may return null, indicating that no valid value was found.\n        :type MountTarget: str\n        :param DiskPartition: The name of the device or partition to mount
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type DiskPartition: str\n        """
         self.DiskType = None
         self.FileSystem = None
         self.DiskSize = None
@@ -1647,13 +1261,7 @@ class DeleteClusterAsGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: The cluster ID, obtained through the [DescribeClusters](https://intl.cloud.tencent.com/document/api/457/31862?from_cn_redirect=1) API.
-        :type ClusterId: str
-        :param AutoScalingGroupIds: Cluster scaling group ID list
-        :type AutoScalingGroupIds: list of str
-        :param KeepInstance: Whether to keep nodes in the scaling group. Default to **false** (not keep)
-        :type KeepInstance: bool
-        """
+        :param ClusterId: The cluster ID, obtained through the [DescribeClusters](https://intl.cloud.tencent.com/document/api/457/31862?from_cn_redirect=1) API.\n        :type ClusterId: str\n        :param AutoScalingGroupIds: Cluster scaling group ID list\n        :type AutoScalingGroupIds: list of str\n        :param KeepInstance: Whether to keep nodes in the scaling group. Default to **false** (not keep)\n        :type KeepInstance: bool\n        """
         self.ClusterId = None
         self.AutoScalingGroupIds = None
         self.KeepInstance = None
@@ -1679,9 +1287,7 @@ class DeleteClusterAsGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1696,11 +1302,7 @@ class DeleteClusterEndpointRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).
-        :type IsExtranet: bool
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).\n        :type IsExtranet: bool\n        """
         self.ClusterId = None
         self.IsExtranet = None
 
@@ -1724,9 +1326,7 @@ class DeleteClusterEndpointResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1741,9 +1341,7 @@ class DeleteClusterEndpointVipRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -1765,9 +1363,7 @@ class DeleteClusterEndpointVipResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1782,15 +1378,7 @@ class DeleteClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param InstanceIds: List of Instance IDs
-        :type InstanceIds: list of str
-        :param InstanceDeleteMode: Policy used to delete an instance in the cluster: `terminate` (terminates the instance. Only available for pay-as-you-go CVMs); `retain` (only removes it from the cluster. The instance will be retained.)
-        :type InstanceDeleteMode: str
-        :param ForceDelete: Whether or not there is forced deletion (when a node is initialized, the parameters can be specified as TRUE)
-        :type ForceDelete: bool
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param InstanceIds: List of Instance IDs\n        :type InstanceIds: list of str\n        :param InstanceDeleteMode: Policy used to delete an instance in the cluster: `terminate` (terminates the instance. Only available for pay-as-you-go CVMs); `retain` (only removes it from the cluster. The instance will be retained.)\n        :type InstanceDeleteMode: str\n        :param ForceDelete: Whether or not there is forced deletion (when a node is initialized, the parameters can be specified as TRUE)\n        :type ForceDelete: bool\n        """
         self.ClusterId = None
         self.InstanceIds = None
         self.InstanceDeleteMode = None
@@ -1818,15 +1406,7 @@ class DeleteClusterInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SuccInstanceIds: IDs of deleted instances
-        :type SuccInstanceIds: list of str
-        :param FailedInstanceIds: IDs of instances failed to be deleted
-        :type FailedInstanceIds: list of str
-        :param NotFoundInstanceIds: IDs of instances that cannot be found
-        :type NotFoundInstanceIds: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param SuccInstanceIds: IDs of deleted instances\n        :type SuccInstanceIds: list of str\n        :param FailedInstanceIds: IDs of instances failed to be deleted\n        :type FailedInstanceIds: list of str\n        :param NotFoundInstanceIds: IDs of instances that cannot be found\n        :type NotFoundInstanceIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SuccInstanceIds = None
         self.FailedInstanceIds = None
         self.NotFoundInstanceIds = None
@@ -1847,13 +1427,7 @@ class DeleteClusterNodePoolRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: ClusterId of a node pool
-        :type ClusterId: str
-        :param NodePoolIds: IDs of node pools to delete
-        :type NodePoolIds: list of str
-        :param KeepInstance: Indicates whether nodes in a node pool are retained when the node pool is deleted. (The nodes are removed from the cluster. However, the corresponding instances will not be terminated.)
-        :type KeepInstance: bool
-        """
+        :param ClusterId: ClusterId of a node pool\n        :type ClusterId: str\n        :param NodePoolIds: IDs of node pools to delete\n        :type NodePoolIds: list of str\n        :param KeepInstance: Indicates whether nodes in a node pool are retained when the node pool is deleted. (The nodes are removed from the cluster. However, the corresponding instances will not be terminated.)\n        :type KeepInstance: bool\n        """
         self.ClusterId = None
         self.NodePoolIds = None
         self.KeepInstance = None
@@ -1879,9 +1453,7 @@ class DeleteClusterNodePoolResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1896,13 +1468,7 @@ class DeleteClusterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param InstanceDeleteMode: Policy used to delete an instance in the cluster: terminate (terminates the instance. Only available for instances on pay-as-you-go CVMs); retain (only removes it from the cluster. The instance will be retained.)
-        :type InstanceDeleteMode: str
-        :param ResourceDeleteOptions: Specifies the policy to deal with resources in the cluster when the cluster is deleted. It only supports CBS now. The default policy is to retain CBS disks.
-        :type ResourceDeleteOptions: list of ResourceDeleteOption
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param InstanceDeleteMode: Policy used to delete an instance in the cluster: terminate (terminates the instance. Only available for instances on pay-as-you-go CVMs); retain (only removes it from the cluster. The instance will be retained.)\n        :type InstanceDeleteMode: str\n        :param ResourceDeleteOptions: Specifies the policy to deal with resources in the cluster when the cluster is deleted. It only supports CBS now. The default policy is to retain CBS disks.\n        :type ResourceDeleteOptions: list of ResourceDeleteOption\n        """
         self.ClusterId = None
         self.InstanceDeleteMode = None
         self.ResourceDeleteOptions = None
@@ -1933,9 +1499,7 @@ class DeleteClusterResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1950,13 +1514,7 @@ class DeleteClusterRouteRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: Route table name.
-        :type RouteTableName: str
-        :param GatewayIp: Next hop address.
-        :type GatewayIp: str
-        :param DestinationCidrBlock: Destination CIDR.
-        :type DestinationCidrBlock: str
-        """
+        :param RouteTableName: Route table name.\n        :type RouteTableName: str\n        :param GatewayIp: Next hop address.\n        :type GatewayIp: str\n        :param DestinationCidrBlock: Destination CIDR.\n        :type DestinationCidrBlock: str\n        """
         self.RouteTableName = None
         self.GatewayIp = None
         self.DestinationCidrBlock = None
@@ -1982,9 +1540,7 @@ class DeleteClusterRouteResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1999,9 +1555,7 @@ class DeleteClusterRouteTableRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: Route table name
-        :type RouteTableName: str
-        """
+        :param RouteTableName: Route table name\n        :type RouteTableName: str\n        """
         self.RouteTableName = None
 
 
@@ -2023,9 +1577,7 @@ class DeleteClusterRouteTableResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2040,11 +1592,7 @@ class DescribeAvailableClusterVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param ClusterIds: List of cluster IDs
-        :type ClusterIds: list of str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ClusterIds: List of cluster IDs\n        :type ClusterIds: list of str\n        """
         self.ClusterId = None
         self.ClusterIds = None
 
@@ -2069,14 +1617,8 @@ class DescribeAvailableClusterVersionResponse(AbstractModel):
     def __init__(self):
         """
         :param Versions: Upgradable cluster version
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Versions: list of str
-        :param Clusters: Cluster information
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Clusters: list of ClusterVersion
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Versions: list of str\n        :param Clusters: Cluster information
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Clusters: list of ClusterVersion\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Versions = None
         self.Clusters = None
         self.RequestId = None
@@ -2100,9 +1642,7 @@ class DescribeClusterAsGroupOptionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -2125,11 +1665,7 @@ class DescribeClusterAsGroupOptionResponse(AbstractModel):
     def __init__(self):
         """
         :param ClusterAsGroupOption: Cluster auto scaling attributes
-Note: this field may return null, indicating that no valid value was found.
-        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid value was found.\n        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ClusterAsGroupOption = None
         self.RequestId = None
 
@@ -2148,15 +1684,7 @@ class DescribeClusterAsGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param AutoScalingGroupIds: Scaling group ID list. If this value is null, it indicates that all cluster-associated scaling groups are pulled.
-        :type AutoScalingGroupIds: list of str
-        :param Offset: Offset. This value defaults to 0. For more information on Offset, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
-        :type Offset: int
-        :param Limit: Number of returned results. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
-        :type Limit: int
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param AutoScalingGroupIds: Scaling group ID list. If this value is null, it indicates that all cluster-associated scaling groups are pulled.\n        :type AutoScalingGroupIds: list of str\n        :param Offset: Offset. This value defaults to 0. For more information on Offset, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).\n        :type Offset: int\n        :param Limit: Number of returned results. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).\n        :type Limit: int\n        """
         self.ClusterId = None
         self.AutoScalingGroupIds = None
         self.Offset = None
@@ -2184,13 +1712,7 @@ class DescribeClusterAsGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of scaling groups associated with the cluster
-        :type TotalCount: int
-        :param ClusterAsGroupSet: Cluster-associated scaling group list
-        :type ClusterAsGroupSet: list of ClusterAsGroup
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of scaling groups associated with the cluster\n        :type TotalCount: int\n        :param ClusterAsGroupSet: Cluster-associated scaling group list\n        :type ClusterAsGroupSet: list of ClusterAsGroup\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ClusterAsGroupSet = None
         self.RequestId = None
@@ -2214,13 +1736,7 @@ class DescribeClusterCommonNamesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param SubaccountUins: Sub-account. Up to 50 sub-accounts can be passed in at a time.
-        :type SubaccountUins: list of str
-        :param RoleIds: Role ID. Up to 50 role IDs can be passed in at a time.
-        :type RoleIds: list of str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param SubaccountUins: Sub-account. Up to 50 sub-accounts can be passed in at a time.\n        :type SubaccountUins: list of str\n        :param RoleIds: Role ID. Up to 50 role IDs can be passed in at a time.\n        :type RoleIds: list of str\n        """
         self.ClusterId = None
         self.SubaccountUins = None
         self.RoleIds = None
@@ -2246,11 +1762,7 @@ class DescribeClusterCommonNamesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CommonNames: The CommonName in the certificate of the client corresponding to the sub-account UIN
-        :type CommonNames: list of CommonName
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CommonNames: The CommonName in the certificate of the client corresponding to the sub-account UIN\n        :type CommonNames: list of CommonName\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CommonNames = None
         self.RequestId = None
 
@@ -2272,11 +1784,7 @@ class DescribeClusterEndpointStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).
-        :type IsExtranet: bool
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param IsExtranet: Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).\n        :type IsExtranet: bool\n        """
         self.ClusterId = None
         self.IsExtranet = None
 
@@ -2301,14 +1809,8 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
     def __init__(self):
         """
         :param Status: The status of cluster access port. It can be `Created` (enabled); `Creating` (enabling) and `NotFound` (not enabled)
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Status: str
-        :param ErrorMsg: Details of the error occurred while opening the access port
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type ErrorMsg: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Status: str\n        :param ErrorMsg: Details of the error occurred while opening the access port
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type ErrorMsg: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.ErrorMsg = None
         self.RequestId = None
@@ -2327,9 +1829,7 @@ class DescribeClusterEndpointVipStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -2351,13 +1851,7 @@ class DescribeClusterEndpointVipStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: Port operation status (Creating = in the process of creation; CreateFailed = creation has failed; Created = creation completed; Deleting = in the process of deletion; DeletedFailed = deletion has failed; Deleted = deletion completed; NotFound = operation not found)
-        :type Status: str
-        :param ErrorMsg: Reason for operation failure
-        :type ErrorMsg: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Status: Port operation status (Creating = in the process of creation; CreateFailed = creation has failed; Created = creation completed; Deleting = in the process of deletion; DeletedFailed = deletion has failed; Deleted = deletion completed; NotFound = operation not found)\n        :type Status: str\n        :param ErrorMsg: Reason for operation failure\n        :type ErrorMsg: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.ErrorMsg = None
         self.RequestId = None
@@ -2376,17 +1870,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param Offset: Offset. Default value: 0
-        :type Offset: int
-        :param Limit: Maximum number of output entries. Default value: 20
-        :type Limit: int
-        :param InstanceIds: List of instance IDs to be obtained. This parameter is empty by default, which indicates that all instances in the cluster will be pulled.
-        :type InstanceIds: list of str
-        :param InstanceRole: Node role. Valid values are MASTER, WORKER, ETCD, MASTER_ETCD, and ALL. Default value: WORKER.
-        :type InstanceRole: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param Offset: Offset. Default value: 0\n        :type Offset: int\n        :param Limit: Maximum number of output entries. Default value: 20\n        :type Limit: int\n        :param InstanceIds: List of instance IDs to be obtained. This parameter is empty by default, which indicates that all instances in the cluster will be pulled.\n        :type InstanceIds: list of str\n        :param InstanceRole: Node role. Valid values are MASTER, WORKER, ETCD, MASTER_ETCD, and ALL. Default value: WORKER.\n        :type InstanceRole: str\n        """
         self.ClusterId = None
         self.Offset = None
         self.Limit = None
@@ -2416,13 +1900,7 @@ class DescribeClusterInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of instances in the cluster
-        :type TotalCount: int
-        :param InstanceSet: List of instances in the cluster
-        :type InstanceSet: list of Instance
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of instances in the cluster\n        :type TotalCount: int\n        :param InstanceSet: List of instances in the cluster\n        :type InstanceSet: list of Instance\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceSet = None
         self.RequestId = None
@@ -2446,9 +1924,7 @@ class DescribeClusterKubeconfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -2470,11 +1946,7 @@ class DescribeClusterKubeconfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Kubeconfig: Sub-account kubeconfig file, used to access the cluster kube-apiserver directly
-        :type Kubeconfig: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Kubeconfig: Sub-account kubeconfig file, used to access the cluster kube-apiserver directly\n        :type Kubeconfig: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Kubeconfig = None
         self.RequestId = None
 
@@ -2491,11 +1963,7 @@ class DescribeClusterNodePoolDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param NodePoolId: Node pool ID
-        :type NodePoolId: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param NodePoolId: Node pool ID\n        :type NodePoolId: str\n        """
         self.ClusterId = None
         self.NodePoolId = None
 
@@ -2519,11 +1987,7 @@ class DescribeClusterNodePoolDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NodePool: Node pool details
-        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePool`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param NodePool: Node pool details\n        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePool`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.NodePool = None
         self.RequestId = None
 
@@ -2542,9 +2006,7 @@ class DescribeClusterNodePoolsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: ClusterId (cluster ID)
-        :type ClusterId: str
-        """
+        :param ClusterId: ClusterId (cluster ID)\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -2567,13 +2029,7 @@ class DescribeClusterNodePoolsResponse(AbstractModel):
     def __init__(self):
         """
         :param NodePoolSet: NodePools (node pool list)
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type NodePoolSet: list of NodePool
-        :param TotalCount: Total resources
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type NodePoolSet: list of NodePool\n        :param TotalCount: Total resources\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.NodePoolSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -2603,13 +2059,7 @@ class DescribeClusterRouteTablesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of instances that match the filter condition(s).
-        :type TotalCount: int
-        :param RouteTableSet: Object of cluster route table.
-        :type RouteTableSet: list of RouteTableInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of instances that match the filter condition(s).\n        :type TotalCount: int\n        :param RouteTableSet: Object of cluster route table.\n        :type RouteTableSet: list of RouteTableInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RouteTableSet = None
         self.RequestId = None
@@ -2633,11 +2083,7 @@ class DescribeClusterRoutesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: Route table name.
-        :type RouteTableName: str
-        :param Filters: Filtering conditions, which are optional. Currently, only filtering by GatewayIP is supported.
-        :type Filters: list of Filter
-        """
+        :param RouteTableName: Route table name.\n        :type RouteTableName: str\n        :param Filters: Filtering conditions, which are optional. Currently, only filtering by GatewayIP is supported.\n        :type Filters: list of Filter\n        """
         self.RouteTableName = None
         self.Filters = None
 
@@ -2666,13 +2112,7 @@ class DescribeClusterRoutesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of instances that match the filter condition(s).
-        :type TotalCount: int
-        :param RouteSet: Object of cluster route.
-        :type RouteSet: list of RouteInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of instances that match the filter condition(s).\n        :type TotalCount: int\n        :param RouteSet: Object of cluster route.\n        :type RouteSet: list of RouteInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RouteSet = None
         self.RequestId = None
@@ -2696,9 +2136,7 @@ class DescribeClusterSecurityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID. Enter the ClusterId field returned by the DescribeClusters API
-        :type ClusterId: str
-        """
+        :param ClusterId: Cluster ID. Enter the ClusterId field returned by the DescribeClusters API\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -2720,30 +2158,10 @@ class DescribeClusterSecurityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: Cluster's account name
-        :type UserName: str
-        :param Password: Cluster's password
-        :type Password: str
-        :param CertificationAuthority: Cluster's access CA certificate
-        :type CertificationAuthority: str
-        :param ClusterExternalEndpoint: Cluster's access address
-        :type ClusterExternalEndpoint: str
-        :param Domain: Domain name accessed by the cluster
-        :type Domain: str
-        :param PgwEndpoint: Cluster's endpoint address
-        :type PgwEndpoint: str
-        :param SecurityPolicy: Cluster's access policy group
-Note: This field may return null, indicating that no valid value was found.
-        :type SecurityPolicy: list of str
-        :param Kubeconfig: Cluster Kubeconfig file
-Note: This field may return null, indicating that no valid value was found.
-        :type Kubeconfig: str
-        :param JnsGwEndpoint: Access address of the cluster JnsGw
-Note: This field may return null, indicating that no valid value was found.
-        :type JnsGwEndpoint: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param UserName: Cluster's account name\n        :type UserName: str\n        :param Password: Cluster's password\n        :type Password: str\n        :param CertificationAuthority: Cluster's access CA certificate\n        :type CertificationAuthority: str\n        :param ClusterExternalEndpoint: Cluster's access address\n        :type ClusterExternalEndpoint: str\n        :param Domain: Domain name accessed by the cluster\n        :type Domain: str\n        :param PgwEndpoint: Cluster's endpoint address\n        :type PgwEndpoint: str\n        :param SecurityPolicy: Cluster's access policy group
+Note: This field may return null, indicating that no valid value was found.\n        :type SecurityPolicy: list of str\n        :param Kubeconfig: Cluster Kubeconfig file
+Note: This field may return null, indicating that no valid value was found.\n        :type Kubeconfig: str\n        :param JnsGwEndpoint: Access address of the cluster JnsGw
+Note: This field may return null, indicating that no valid value was found.\n        :type JnsGwEndpoint: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.UserName = None
         self.Password = None
         self.CertificationAuthority = None
@@ -2777,15 +2195,7 @@ class DescribeClustersRequest(AbstractModel):
     def __init__(self):
         """
         :param ClusterIds: Cluster ID list (When it is empty,
-all clusters under the account will be obtained)
-        :type ClusterIds: list of str
-        :param Offset: Offset. Default value: 0
-        :type Offset: int
-        :param Limit: Maximum number of output entries. Default value: 20
-        :type Limit: int
-        :param Filters: Filter condition. Currently, only filtering by a single ClusterName is supported
-        :type Filters: list of Filter
-        """
+all clusters under the account will be obtained)\n        :type ClusterIds: list of str\n        :param Offset: Offset. Default value: 0\n        :type Offset: int\n        :param Limit: Maximum number of output entries. Default value: 20\n        :type Limit: int\n        :param Filters: Filter condition. Currently, only filtering by a single ClusterName is supported\n        :type Filters: list of Filter\n        """
         self.ClusterIds = None
         self.Offset = None
         self.Limit = None
@@ -2818,13 +2228,7 @@ class DescribeClustersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of clusters
-        :type TotalCount: int
-        :param Clusters: Cluster information list
-        :type Clusters: list of Cluster
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of clusters\n        :type TotalCount: int\n        :param Clusters: Cluster information list\n        :type Clusters: list of Cluster\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Clusters = None
         self.RequestId = None
@@ -2848,9 +2252,7 @@ class DescribeEnableVpcCniProgressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: ID of the cluster for which you want to enable the VPC-CNI mode
-        :type ClusterId: str
-        """
+        :param ClusterId: ID of the cluster for which you want to enable the VPC-CNI mode\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -2872,14 +2274,8 @@ class DescribeEnableVpcCniProgressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: Task status, which can be `Running`, `Succeed`, or `Failed`.
-        :type Status: str
-        :param ErrorMessage: The description for the task status when the task status is “Failed”, for example, failed to install the IPAMD component.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ErrorMessage: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Status: Task status, which can be `Running`, `Succeed`, or `Failed`.\n        :type Status: str\n        :param ErrorMessage: The description for the task status when the task status is “Failed”, for example, failed to install the IPAMD component.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ErrorMessage: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.ErrorMessage = None
         self.RequestId = None
@@ -2898,23 +2294,7 @@ class DescribeExistedInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID. Enter the `ClusterId` field returned when you call the DescribeClusters API (Only VPC ID obtained through `ClusterId` need filtering conditions. When comparing statuses, the nodes on all clusters in this region will be used for comparison. You cannot specify `InstanceIds` and `ClusterId` at the same time.)
-        :type ClusterId: str
-        :param InstanceIds: Query by one or more instance ID(s). Instance ID format: ins-xxxxxxxx. (Refer to section ID.N of the API overview for this parameter's specific format.) Up to 100 instances are allowed for each request. You cannot specify InstanceIds and Filters at the same time.
-        :type InstanceIds: list of str
-        :param Filters: Filter condition. For fields and other information, see [the DescribeInstances API](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a "vpc-id" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID.
-        :type Filters: list of Filter
-        :param VagueIpAddress: Filter by instance IP (Supports both private and public IPs)
-        :type VagueIpAddress: str
-        :param VagueInstanceName: Filter by instance name
-        :type VagueInstanceName: str
-        :param Offset: Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
-        :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
-        :type Limit: int
-        :param IpAddresses: Filter by multiple instance IPs
-        :type IpAddresses: list of str
-        """
+        :param ClusterId: Cluster ID. Enter the `ClusterId` field returned when you call the DescribeClusters API (Only VPC ID obtained through `ClusterId` need filtering conditions. When comparing statuses, the nodes on all clusters in this region will be used for comparison. You cannot specify `InstanceIds` and `ClusterId` at the same time.)\n        :type ClusterId: str\n        :param InstanceIds: Query by one or more instance ID(s). Instance ID format: ins-xxxxxxxx. (Refer to section ID.N of the API overview for this parameter's specific format.) Up to 100 instances are allowed for each request. You cannot specify InstanceIds and Filters at the same time.\n        :type InstanceIds: list of str\n        :param Filters: Filter condition. For fields and other information, see [the DescribeInstances API](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a "vpc-id" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID.\n        :type Filters: list of Filter\n        :param VagueIpAddress: Filter by instance IP (Supports both private and public IPs)\n        :type VagueIpAddress: str\n        :param VagueInstanceName: Filter by instance name\n        :type VagueInstanceName: str\n        :param Offset: Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).\n        :type Offset: int\n        :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).\n        :type Limit: int\n        :param IpAddresses: Filter by multiple instance IPs\n        :type IpAddresses: list of str\n        """
         self.ClusterId = None
         self.InstanceIds = None
         self.Filters = None
@@ -2956,13 +2336,7 @@ class DescribeExistedInstancesResponse(AbstractModel):
     def __init__(self):
         """
         :param ExistedInstanceSet: Array of existing instance information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ExistedInstanceSet: list of ExistedInstance
-        :param TotalCount: Number of instances that match the filter condition(s).
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type ExistedInstanceSet: list of ExistedInstance\n        :param TotalCount: Number of instances that match the filter condition(s).\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ExistedInstanceSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -2993,14 +2367,8 @@ class DescribeImagesResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: Number of images
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TotalCount: int
-        :param ImageInstanceSet: Image information list
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ImageInstanceSet: list of ImageInstance
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TotalCount: int\n        :param ImageInstanceSet: Image information list
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ImageInstanceSet: list of ImageInstance\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ImageInstanceSet = None
         self.RequestId = None
@@ -3031,14 +2399,8 @@ class DescribeRegionsResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: Number of regions
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TotalCount: int
-        :param RegionInstanceSet: ## Region List
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RegionInstanceSet: list of RegionInstance
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TotalCount: int\n        :param RegionInstanceSet: ## Region List
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RegionInstanceSet: list of RegionInstance\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RegionInstanceSet = None
         self.RequestId = None
@@ -3062,11 +2424,7 @@ class DescribeRouteTableConflictsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableCidrBlock: Route table CIDR
-        :type RouteTableCidrBlock: str
-        :param VpcId: VPC bound to the route table
-        :type VpcId: str
-        """
+        :param RouteTableCidrBlock: Route table CIDR\n        :type RouteTableCidrBlock: str\n        :param VpcId: VPC bound to the route table\n        :type VpcId: str\n        """
         self.RouteTableCidrBlock = None
         self.VpcId = None
 
@@ -3090,14 +2448,8 @@ class DescribeRouteTableConflictsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param HasConflict: Whether there is a conflict in the route table.
-        :type HasConflict: bool
-        :param RouteTableConflictSet: Route table conflict list.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RouteTableConflictSet: list of RouteTableConflict
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param HasConflict: Whether there is a conflict in the route table.\n        :type HasConflict: bool\n        :param RouteTableConflictSet: Route table conflict list.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type RouteTableConflictSet: list of RouteTableConflict\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.HasConflict = None
         self.RouteTableConflictSet = None
         self.RequestId = None
@@ -3121,17 +2473,7 @@ class EnableVpcCniNetworkTypeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param VpcCniType: The VPC-CNI mode. `tke-route-eni`: Multi-IP ENI, `tke-direct-eni`: Independent ENI
-        :type VpcCniType: str
-        :param EnableStaticIp: Whether to enable static IP address
-        :type EnableStaticIp: bool
-        :param Subnets: The container subnet being used
-        :type Subnets: list of str
-        :param ExpiredSeconds: Specifies when to release the IP after the Pod termination in static IP mode. It must be longer than 300 seconds. If this parameter is left empty, the IP address will never be released.
-        :type ExpiredSeconds: int
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param VpcCniType: The VPC-CNI mode. `tke-route-eni`: Multi-IP ENI, `tke-direct-eni`: Independent ENI\n        :type VpcCniType: str\n        :param EnableStaticIp: Whether to enable static IP address\n        :type EnableStaticIp: bool\n        :param Subnets: The container subnet being used\n        :type Subnets: list of str\n        :param ExpiredSeconds: Specifies when to release the IP after the Pod termination in static IP mode. It must be longer than 300 seconds. If this parameter is left empty, the IP address will never be released.\n        :type ExpiredSeconds: int\n        """
         self.ClusterId = None
         self.VpcCniType = None
         self.EnableStaticIp = None
@@ -3161,9 +2503,7 @@ class EnableVpcCniNetworkTypeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3178,11 +2518,7 @@ class EnhancedService(AbstractModel):
 
     def __init__(self):
         """
-        :param SecurityService: Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.
-        :type SecurityService: :class:`tencentcloud.tke.v20180525.models.RunSecurityServiceEnabled`
-        :param MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
-        :type MonitorService: :class:`tencentcloud.tke.v20180525.models.RunMonitorServiceEnabled`
-        """
+        :param SecurityService: Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.\n        :type SecurityService: :class:`tencentcloud.tke.v20180525.models.RunSecurityServiceEnabled`\n        :param MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.\n        :type MonitorService: :class:`tencentcloud.tke.v20180525.models.RunMonitorServiceEnabled`\n        """
         self.SecurityService = None
         self.MonitorService = None
 
@@ -3211,47 +2547,19 @@ class ExistedInstance(AbstractModel):
     def __init__(self):
         """
         :param Usable: Whether the instance supports being added to the cluster (TRUE: support; FALSE: not support).
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Usable: bool
-        :param UnusableReason: Reason that the instance does not support being added.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type UnusableReason: str
-        :param AlreadyInCluster: ID of the cluster in which the instance currently resides.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type AlreadyInCluster: str
-        :param InstanceId: Instance ID, in the format of ins-xxxxxxxx.
-        :type InstanceId: str
-        :param InstanceName: Instance name.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type InstanceName: str
-        :param PrivateIpAddresses: List of private IPs of the instance's primary ENI.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type PrivateIpAddresses: list of str
-        :param PublicIpAddresses: List of public IPs of the instance's primary ENI.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type PublicIpAddresses: list of str
-        :param CreatedTime: Creation time, which follows the ISO8601 standard and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type CreatedTime: str
-        :param CPU: Instance's number of CPU cores. Unit: cores.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type CPU: int
-        :param Memory: Instance's memory capacity. Unit: GB.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Memory: int
-        :param OsName: Operating system name.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type OsName: str
-        :param InstanceType: Instance model.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type InstanceType: str
-        :param AutoscalingGroupId: Auto scaling group ID
-Note: This field may return null, indicating that no valid value was found.
-        :type AutoscalingGroupId: str
-        :param InstanceChargeType: Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)
-Note: This field may return null, indicating that no valid value was found.
-        :type InstanceChargeType: str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type Usable: bool\n        :param UnusableReason: Reason that the instance does not support being added.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type UnusableReason: str\n        :param AlreadyInCluster: ID of the cluster in which the instance currently resides.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type AlreadyInCluster: str\n        :param InstanceId: Instance ID, in the format of ins-xxxxxxxx.\n        :type InstanceId: str\n        :param InstanceName: Instance name.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type InstanceName: str\n        :param PrivateIpAddresses: List of private IPs of the instance's primary ENI.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type PrivateIpAddresses: list of str\n        :param PublicIpAddresses: List of public IPs of the instance's primary ENI.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type PublicIpAddresses: list of str\n        :param CreatedTime: Creation time, which follows the ISO8601 standard and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type CreatedTime: str\n        :param CPU: Instance's number of CPU cores. Unit: cores.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type CPU: int\n        :param Memory: Instance's memory capacity. Unit: GB.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type Memory: int\n        :param OsName: Operating system name.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type OsName: str\n        :param InstanceType: Instance model.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type InstanceType: str\n        :param AutoscalingGroupId: Auto scaling group ID
+Note: This field may return null, indicating that no valid value was found.\n        :type AutoscalingGroupId: str\n        :param InstanceChargeType: Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)
+Note: This field may return null, indicating that no valid value was found.\n        :type InstanceChargeType: str\n        """
         self.Usable = None
         self.UnusableReason = None
         self.AlreadyInCluster = None
@@ -3299,15 +2607,7 @@ class ExistedInstancesForNode(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeRole: Node role. Values: MASTER_ETCD, WORKER. You only need to specify MASTER_ETCD when creating a self-deployed cluster (INDEPENDENT_CLUSTER).
-        :type NodeRole: str
-        :param ExistedInstancesPara: Reinstallation parameter of existing instances
-        :type ExistedInstancesPara: :class:`tencentcloud.tke.v20180525.models.ExistedInstancesPara`
-        :param InstanceAdvancedSettingsOverride: Advanced node setting, which overrides the InstanceAdvancedSettings item set at the cluster level (currently valid for the ExtraArgs node custom parameter only)
-        :type InstanceAdvancedSettingsOverride: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param DesiredPodNumbers: When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.
-        :type DesiredPodNumbers: list of int
-        """
+        :param NodeRole: Node role. Values: MASTER_ETCD, WORKER. You only need to specify MASTER_ETCD when creating a self-deployed cluster (INDEPENDENT_CLUSTER).\n        :type NodeRole: str\n        :param ExistedInstancesPara: Reinstallation parameter of existing instances\n        :type ExistedInstancesPara: :class:`tencentcloud.tke.v20180525.models.ExistedInstancesPara`\n        :param InstanceAdvancedSettingsOverride: Advanced node setting, which overrides the InstanceAdvancedSettings item set at the cluster level (currently valid for the ExtraArgs node custom parameter only)\n        :type InstanceAdvancedSettingsOverride: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param DesiredPodNumbers: When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.\n        :type DesiredPodNumbers: list of int\n        """
         self.NodeRole = None
         self.ExistedInstancesPara = None
         self.InstanceAdvancedSettingsOverride = None
@@ -3339,19 +2639,7 @@ class ExistedInstancesPara(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: Cluster ID
-        :type InstanceIds: list of str
-        :param InstanceAdvancedSettings: Additional parameter to be set for the instance
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param EnhancedService: Enhanced services. This parameter is used to specify whether to enable Cloud Security, Cloud Monitor and other services. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled by default.
-        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
-        :param LoginSettings: Node login information (currently only supports using Password or single KeyIds)
-        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
-        :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the sgId field in the returned values of DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)
-        :type SecurityGroupIds: list of str
-        :param HostName: When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.
-        :type HostName: str
-        """
+        :param InstanceIds: Cluster ID\n        :type InstanceIds: list of str\n        :param InstanceAdvancedSettings: Additional parameter to be set for the instance\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param EnhancedService: Enhanced services. This parameter is used to specify whether to enable Cloud Security, Cloud Monitor and other services. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled by default.\n        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`\n        :param LoginSettings: Node login information (currently only supports using Password or single KeyIds)\n        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`\n        :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the sgId field in the returned values of DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)\n        :type SecurityGroupIds: list of str\n        :param HostName: When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.\n        :type HostName: str\n        """
         self.InstanceIds = None
         self.InstanceAdvancedSettings = None
         self.EnhancedService = None
@@ -3389,11 +2677,7 @@ class ExtensionAddon(AbstractModel):
 
     def __init__(self):
         """
-        :param AddonName: Add-on name
-        :type AddonName: str
-        :param AddonParam: Add-on information (description of the add-on resource object in JSON string format)
-        :type AddonParam: str
-        """
+        :param AddonName: Add-on name\n        :type AddonName: str\n        :param AddonParam: Add-on information (description of the add-on resource object in JSON string format)\n        :type AddonParam: str\n        """
         self.AddonName = None
         self.AddonParam = None
 
@@ -3427,11 +2711,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Filters.
-        :type Name: str
-        :param Values: Filter values.
-        :type Values: list of str
-        """
+        :param Name: Filters.\n        :type Name: str\n        :param Values: Filter values.\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -3455,13 +2735,7 @@ class GetUpgradeInstanceProgressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param Limit: Maximum number of nodes to be queried
-        :type Limit: int
-        :param Offset: The starting node for the query
-        :type Offset: int
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param Limit: Maximum number of nodes to be queried\n        :type Limit: int\n        :param Offset: The starting node for the query\n        :type Offset: int\n        """
         self.ClusterId = None
         self.Limit = None
         self.Offset = None
@@ -3487,25 +2761,13 @@ class GetUpgradeInstanceProgressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total nodes to upgrade
-        :type Total: int
-        :param Done: Total upgraded nodes
-        :type Done: int
-        :param LifeState: The lifecycle of the upgrade task
+        :param Total: Total nodes to upgrade\n        :type Total: int\n        :param Done: Total upgraded nodes\n        :type Done: int\n        :param LifeState: The lifecycle of the upgrade task
 process: running
 paused: stopped
 pausing: stopping
 done: completed
 timeout: timed out
-aborted: canceled
-        :type LifeState: str
-        :param Instances: Details of upgrade progress of each node
-        :type Instances: list of InstanceUpgradeProgressItem
-        :param ClusterStatus: Current cluster status
-        :type ClusterStatus: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradeClusterStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+aborted: canceled\n        :type LifeState: str\n        :param Instances: Details of upgrade progress of each node\n        :type Instances: list of InstanceUpgradeProgressItem\n        :param ClusterStatus: Current cluster status\n        :type ClusterStatus: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradeClusterStatus`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.Done = None
         self.LifeState = None
@@ -3538,18 +2800,10 @@ class ImageInstance(AbstractModel):
     def __init__(self):
         """
         :param Alias: Image alias
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Alias: str
-        :param OsName: Operating system name
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OsName: str
-        :param ImageId: Image ID
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ImageId: str
-        :param OsCustomizeType: Container image tag, **DOCKER_CUSTOMIZE** (container customized tag), **GENERAL** (general tag, default value)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OsCustomizeType: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Alias: str\n        :param OsName: Operating system name
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OsName: str\n        :param ImageId: Image ID
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ImageId: str\n        :param OsCustomizeType: Container image tag, **DOCKER_CUSTOMIZE** (container customized tag), **GENERAL** (general tag, default value)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OsCustomizeType: str\n        """
         self.Alias = None
         self.OsName = None
         self.ImageId = None
@@ -3577,32 +2831,12 @@ class Instance(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param InstanceRole: Node role: MASTER, WORKER, ETCD, MASTER_ETCD, and ALL. Default value: WORKER
-        :type InstanceRole: str
-        :param FailedReason: Reason for instance exception (or initialization)
-        :type FailedReason: str
-        :param InstanceState: Instance status (running, initializing, or failed)
-        :type InstanceState: str
-        :param DrainStatus: Whether the instance is drained
-Note: this field may return null, indicating that no valid value is obtained.
-        :type DrainStatus: str
-        :param InstanceAdvancedSettings: Node settings
-Note: this field may return null, indicating that no valid value is obtained.
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param CreatedTime: Creation time
-        :type CreatedTime: str
-        :param LanIP: Node private IP
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type LanIP: str
-        :param NodePoolId: Resource pool ID
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type NodePoolId: str
-        :param AutoscalingGroupId: ID of the auto-scaling group
-Note: this field may return null, indicating that no valid value is obtained.
-        :type AutoscalingGroupId: str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceRole: Node role: MASTER, WORKER, ETCD, MASTER_ETCD, and ALL. Default value: WORKER\n        :type InstanceRole: str\n        :param FailedReason: Reason for instance exception (or initialization)\n        :type FailedReason: str\n        :param InstanceState: Instance status (running, initializing, or failed)\n        :type InstanceState: str\n        :param DrainStatus: Whether the instance is drained
+Note: this field may return null, indicating that no valid value is obtained.\n        :type DrainStatus: str\n        :param InstanceAdvancedSettings: Node settings
+Note: this field may return null, indicating that no valid value is obtained.\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param CreatedTime: Creation time\n        :type CreatedTime: str\n        :param LanIP: Node private IP
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type LanIP: str\n        :param NodePoolId: Resource pool ID
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type NodePoolId: str\n        :param AutoscalingGroupId: ID of the auto-scaling group
+Note: this field may return null, indicating that no valid value is obtained.\n        :type AutoscalingGroupId: str\n        """
         self.InstanceId = None
         self.InstanceRole = None
         self.FailedReason = None
@@ -3646,29 +2880,13 @@ class InstanceAdvancedSettings(AbstractModel):
         """
         :param MountTarget: Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 (xfs for tlinux system) and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.
 Note: in multi-disk scenarios, use the DataDisks data structure below to set the corresponding information, such as cloud disk type, cloud disk size, mount path, and whether to perform formatting.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type MountTarget: str
-        :param DockerGraphPath: Specified value of dockerd --graph. Default value: /var/lib/docker
-Note: This field may return null, indicating that no valid value was found.
-        :type DockerGraphPath: str
-        :param UserScript: Base64-encoded user script, which will be executed after the K8s component starts running. You need to ensure the reentrant and retry logic of the script. The script and its log files can be viewed at the node path: /data/ccs_userscript/. If you want to initialize nodes before adding them to the scheduling list, you can use this parameter together with the unschedulable parameter. After the final initialization of userScript is completed, add the kubectl uncordon nodename --kubeconfig=/root/.kube/config command to enable the node for scheduling.
-Note: This field may return null, indicating that no valid value was found.
-        :type UserScript: str
-        :param Unschedulable: Sets whether the added node is schedulable. 0 (default): schedulable; other values: unschedulable. After node initialization is completed, you can run kubectl uncordon nodename to enable this node for scheduling.
-        :type Unschedulable: int
-        :param Labels: Node label array
-Note: This field may return null, indicating that no valid value was found.
-        :type Labels: list of Label
-        :param DataDisks: Mounting information of multiple data disks. When you create a node, ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks. For example, the `DataDisks` under `RunInstancesPara` of the `CreateClusterInstances` API should be configured accordingly (Referto document of CreateClusterInstances API). When you add an existing node, ensure that the specified partition exists in the node.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DataDisks: list of DataDisk
-        :param ExtraArgs: Information about node custom parameters
-Note: This field may return null, indicating that no valid value was found.
-        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
-        :param DesiredPodNumber: When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DesiredPodNumber: int
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type MountTarget: str\n        :param DockerGraphPath: Specified value of dockerd --graph. Default value: /var/lib/docker
+Note: This field may return null, indicating that no valid value was found.\n        :type DockerGraphPath: str\n        :param UserScript: Base64-encoded user script, which will be executed after the K8s component starts running. You need to ensure the reentrant and retry logic of the script. The script and its log files can be viewed at the node path: /data/ccs_userscript/. If you want to initialize nodes before adding them to the scheduling list, you can use this parameter together with the unschedulable parameter. After the final initialization of userScript is completed, add the kubectl uncordon nodename --kubeconfig=/root/.kube/config command to enable the node for scheduling.
+Note: This field may return null, indicating that no valid value was found.\n        :type UserScript: str\n        :param Unschedulable: Sets whether the added node is schedulable. 0 (default): schedulable; other values: unschedulable. After node initialization is completed, you can run kubectl uncordon nodename to enable this node for scheduling.\n        :type Unschedulable: int\n        :param Labels: Node label array
+Note: This field may return null, indicating that no valid value was found.\n        :type Labels: list of Label\n        :param DataDisks: Mounting information of multiple data disks. When you create a node, ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks. For example, the `DataDisks` under `RunInstancesPara` of the `CreateClusterInstances` API should be configured accordingly (Referto document of CreateClusterInstances API). When you add an existing node, ensure that the specified partition exists in the node.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DataDisks: list of DataDisk\n        :param ExtraArgs: Information about node custom parameters
+Note: This field may return null, indicating that no valid value was found.\n        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`\n        :param DesiredPodNumber: When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DesiredPodNumber: int\n        """
         self.MountTarget = None
         self.DockerGraphPath = None
         self.UserScript = None
@@ -3716,13 +2934,7 @@ class InstanceDataDiskMountSetting(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceType: CVM instance type
-        :type InstanceType: str
-        :param DataDisks: Data disk mounting information
-        :type DataDisks: list of DataDisk
-        :param Zone: Availability zone where the CVM instance is located
-        :type Zone: str
-        """
+        :param InstanceType: CVM instance type\n        :type InstanceType: str\n        :param DataDisks: Data disk mounting information\n        :type DataDisks: list of DataDisk\n        :param Zone: Availability zone where the CVM instance is located\n        :type Zone: str\n        """
         self.InstanceType = None
         self.DataDisks = None
         self.Zone = None
@@ -3754,9 +2966,7 @@ class InstanceExtraArgs(AbstractModel):
     def __init__(self):
         """
         :param Kubelet: Kubelet custom parameter, in the format of ["k1=v1", "k1=v2"], for example: ["root-dir=/var/lib/kubelet","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"].
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Kubelet: list of str
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Kubelet: list of str\n        """
         self.Kubelet = None
 
 
@@ -3778,11 +2988,7 @@ class InstanceUpgradeClusterStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param PodTotal: Total Pods
-        :type PodTotal: int
-        :param NotReadyPod: Total number of NotReady Pods
-        :type NotReadyPod: int
-        """
+        :param PodTotal: Total Pods\n        :type PodTotal: int\n        :param NotReadyPod: Total number of NotReady Pods\n        :type NotReadyPod: int\n        """
         self.PodTotal = None
         self.NotReadyPod = None
 
@@ -3806,13 +3012,7 @@ class InstanceUpgradePreCheckResult(AbstractModel):
 
     def __init__(self):
         """
-        :param CheckPass: Whether the check is passed
-        :type CheckPass: bool
-        :param Items: Array of check items
-        :type Items: list of InstanceUpgradePreCheckResultItem
-        :param SinglePods: List of independent pods on this node
-        :type SinglePods: list of str
-        """
+        :param CheckPass: Whether the check is passed\n        :type CheckPass: bool\n        :param Items: Array of check items\n        :type Items: list of InstanceUpgradePreCheckResultItem\n        :param SinglePods: List of independent pods on this node\n        :type SinglePods: list of str\n        """
         self.CheckPass = None
         self.Items = None
         self.SinglePods = None
@@ -3843,19 +3043,7 @@ class InstanceUpgradePreCheckResultItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Namespace: The namespace of the workload
-        :type Namespace: str
-        :param WorkLoadKind: Workload type
-        :type WorkLoadKind: str
-        :param WorkLoadName: Workload name
-        :type WorkLoadName: str
-        :param Before: The number of running pods in the workload before draining the node
-        :type Before: int
-        :param After: The number of running pods in the workload after draining the node
-        :type After: int
-        :param Pods: The pod list of the workload on this node
-        :type Pods: list of str
-        """
+        :param Namespace: The namespace of the workload\n        :type Namespace: str\n        :param WorkLoadKind: Workload type\n        :type WorkLoadKind: str\n        :param WorkLoadName: Workload name\n        :type WorkLoadName: str\n        :param Before: The number of running pods in the workload before draining the node\n        :type Before: int\n        :param After: The number of running pods in the workload after draining the node\n        :type After: int\n        :param Pods: The pod list of the workload on this node\n        :type Pods: list of str\n        """
         self.Namespace = None
         self.WorkLoadKind = None
         self.WorkLoadName = None
@@ -3887,28 +3075,16 @@ class InstanceUpgradeProgressItem(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceID: Node instance ID
-        :type InstanceID: str
-        :param LifeState: Task lifecycle
+        :param InstanceID: Node instance ID\n        :type InstanceID: str\n        :param LifeState: Task lifecycle
 process: running
 paused: stopped
 pausing: stopping
 done: completed
 timeout: timed out
 aborted: canceled
-pending: not started
-        :type LifeState: str
-        :param StartAt: Upgrade start time
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type StartAt: str
-        :param EndAt: Upgrade end time
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type EndAt: str
-        :param CheckResult: Check result before upgrading
-        :type CheckResult: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradePreCheckResult`
-        :param Detail: Upgrade steps details
-        :type Detail: list of TaskStepInfo
-        """
+pending: not started\n        :type LifeState: str\n        :param StartAt: Upgrade start time
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type StartAt: str\n        :param EndAt: Upgrade end time
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type EndAt: str\n        :param CheckResult: Check result before upgrading\n        :type CheckResult: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradePreCheckResult`\n        :param Detail: Upgrade steps details\n        :type Detail: list of TaskStepInfo\n        """
         self.InstanceID = None
         self.LifeState = None
         self.StartAt = None
@@ -3947,11 +3123,7 @@ class Label(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Name in map list
-        :type Name: str
-        :param Value: Value in map list
-        :type Value: str
-        """
+        :param Name: Name in map list\n        :type Name: str\n        :param Value: Value in map list\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -3976,15 +3148,9 @@ class LoginSettings(AbstractModel):
     def __init__(self):
         """
         :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-30 characters long and contain at least two of the following types: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-30 characters long and contain at least three of the following categories: [a-z], [A-Z], [0-9] and [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type Password: str
-        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. A key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type KeyIds: list of str
-        :param KeepImageLogin: Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.
-Note: This field may return null, indicating that no valid value is found.
-        :type KeepImageLogin: str
-        """
+Note: this field may return null, indicating that no valid value is obtained.\n        :type Password: str\n        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. A key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type KeyIds: list of str\n        :param KeepImageLogin: Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.
+Note: This field may return null, indicating that no valid value is found.\n        :type KeepImageLogin: str\n        """
         self.Password = None
         self.KeyIds = None
         self.KeepImageLogin = None
@@ -4010,15 +3176,7 @@ class ManuallyAdded(AbstractModel):
 
     def __init__(self):
         """
-        :param Joining: Number of nodes that are being added
-        :type Joining: int
-        :param Initializing: Number of nodes that are being initialized
-        :type Initializing: int
-        :param Normal: Number of normal nodes
-        :type Normal: int
-        :param Total: Total number of nodes
-        :type Total: int
-        """
+        :param Joining: Number of nodes that are being added\n        :type Joining: int\n        :param Initializing: Number of nodes that are being initialized\n        :type Initializing: int\n        :param Normal: Number of normal nodes\n        :type Normal: int\n        :param Total: Total number of nodes\n        :type Total: int\n        """
         self.Joining = None
         self.Initializing = None
         self.Normal = None
@@ -4046,11 +3204,7 @@ class ModifyClusterAsGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param ClusterAsGroupAttribute: Cluster-associated scaling group attributes
-        :type ClusterAsGroupAttribute: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupAttribute`
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ClusterAsGroupAttribute: Cluster-associated scaling group attributes\n        :type ClusterAsGroupAttribute: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupAttribute`\n        """
         self.ClusterId = None
         self.ClusterAsGroupAttribute = None
 
@@ -4076,9 +3230,7 @@ class ModifyClusterAsGroupAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4093,11 +3245,7 @@ class ModifyClusterAsGroupOptionAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param ClusterAsGroupOption: Cluster auto scaling attributes
-        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ClusterAsGroupOption: Cluster auto scaling attributes\n        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`\n        """
         self.ClusterId = None
         self.ClusterAsGroupOption = None
 
@@ -4123,9 +3271,7 @@ class ModifyClusterAsGroupOptionAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4140,15 +3286,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param ProjectId: Project of the Cluster
-        :type ProjectId: int
-        :param ClusterName: Cluster name
-        :type ClusterName: str
-        :param ClusterDesc: Cluster description
-        :type ClusterDesc: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param ProjectId: Project of the Cluster\n        :type ProjectId: int\n        :param ClusterName: Cluster name\n        :type ClusterName: str\n        :param ClusterDesc: Cluster description\n        :type ClusterDesc: str\n        """
         self.ClusterId = None
         self.ProjectId = None
         self.ClusterName = None
@@ -4177,17 +3315,9 @@ class ModifyClusterAttributeResponse(AbstractModel):
     def __init__(self):
         """
         :param ProjectId: Project of the Cluster
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ProjectId: int
-        :param ClusterName: Cluster name
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ClusterName: str
-        :param ClusterDesc: Cluster description
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ClusterDesc: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProjectId: int\n        :param ClusterName: Cluster name
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClusterName: str\n        :param ClusterDesc: Cluster description
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClusterDesc: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ProjectId = None
         self.ClusterName = None
         self.ClusterDesc = None
@@ -4208,11 +3338,7 @@ class ModifyClusterEndpointSPRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param SecurityPolicies: Security policy opens single IP or CIDR block to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).
-        :type SecurityPolicies: list of str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param SecurityPolicies: Security policy opens single IP or CIDR block to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).\n        :type SecurityPolicies: list of str\n        """
         self.ClusterId = None
         self.SecurityPolicies = None
 
@@ -4236,9 +3362,7 @@ class ModifyClusterEndpointSPResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4253,27 +3377,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param NodePoolId: Node pool ID
-        :type NodePoolId: str
-        :param Name: Name
-        :type Name: str
-        :param MaxNodesNum: Maximum number of nodes
-        :type MaxNodesNum: int
-        :param MinNodesNum: Minimum number of nodes
-        :type MinNodesNum: int
-        :param Labels: Labels
-        :type Labels: list of Label
-        :param Taints: Taints
-        :type Taints: list of Taint
-        :param EnableAutoscale: Indicates whether auto scaling is enabled.
-        :type EnableAutoscale: bool
-        :param OsName: Operating system name
-        :type OsName: str
-        :param OsCustomizeType: Image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
-        :type OsCustomizeType: str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param NodePoolId: Node pool ID\n        :type NodePoolId: str\n        :param Name: Name\n        :type Name: str\n        :param MaxNodesNum: Maximum number of nodes\n        :type MaxNodesNum: int\n        :param MinNodesNum: Minimum number of nodes\n        :type MinNodesNum: int\n        :param Labels: Labels\n        :type Labels: list of Label\n        :param Taints: Taints\n        :type Taints: list of Taint\n        :param EnableAutoscale: Indicates whether auto scaling is enabled.\n        :type EnableAutoscale: bool\n        :param OsName: Operating system name\n        :type OsName: str\n        :param OsCustomizeType: Image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)\n        :type OsCustomizeType: str\n        """
         self.ClusterId = None
         self.NodePoolId = None
         self.Name = None
@@ -4323,9 +3427,7 @@ class ModifyClusterNodePoolResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4341,12 +3443,8 @@ class NodeCountSummary(AbstractModel):
     def __init__(self):
         """
         :param ManuallyAdded: Nodes that are manually managed
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type ManuallyAdded: :class:`tencentcloud.tke.v20180525.models.ManuallyAdded`
-        :param AutoscalingAdded: Nodes that are automatically managed
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type AutoscalingAdded: :class:`tencentcloud.tke.v20180525.models.AutoscalingAdded`
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type ManuallyAdded: :class:`tencentcloud.tke.v20180525.models.ManuallyAdded`\n        :param AutoscalingAdded: Nodes that are automatically managed
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type AutoscalingAdded: :class:`tencentcloud.tke.v20180525.models.AutoscalingAdded`\n        """
         self.ManuallyAdded = None
         self.AutoscalingAdded = None
 
@@ -4374,51 +3472,15 @@ class NodePool(AbstractModel):
 
     def __init__(self):
         """
-        :param NodePoolId: Node pool ID
-        :type NodePoolId: str
-        :param Name: Node pool name
-        :type Name: str
-        :param ClusterInstanceId: Cluster instance ID
-        :type ClusterInstanceId: str
-        :param LifeState: The lifecycle state of the current node pool. Valid values: `creating`, `normal`, `updating`, `deleting`, and `deleted`.
-        :type LifeState: str
-        :param LaunchConfigurationId: Launch configuration ID
-        :type LaunchConfigurationId: str
-        :param AutoscalingGroupId: Auto-scaling group ID
-        :type AutoscalingGroupId: str
-        :param Labels: Labels
-        :type Labels: list of Label
-        :param Taints: Array of taint
-        :type Taints: list of Taint
-        :param NodeCountSummary: Node list
-        :type NodeCountSummary: :class:`tencentcloud.tke.v20180525.models.NodeCountSummary`
-        :param AutoscalingGroupStatus: 
-        :type AutoscalingGroupStatus: str
-        :param MaxNodesNum: Maximum number of nodes
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type MaxNodesNum: int
-        :param MinNodesNum: Minimum number of nodes
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type MinNodesNum: int
-        :param DesiredNodesNum: Desired number of nodes
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type DesiredNodesNum: int
-        :param NodePoolOs: The operating system of the node pool
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type NodePoolOs: str
-        :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type OsCustomizeType: str
-        :param ImageId: Image ID
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type ImageId: str
-        :param DesiredPodNum: This parameter is required when the custom PodCIDR mode is enabled for the cluster.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type DesiredPodNum: int
-        :param UserScript: Custom script
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type UserScript: str
-        """
+        :param NodePoolId: Node pool ID\n        :type NodePoolId: str\n        :param Name: Node pool name\n        :type Name: str\n        :param ClusterInstanceId: Cluster instance ID\n        :type ClusterInstanceId: str\n        :param LifeState: The lifecycle state of the current node pool. Valid values: `creating`, `normal`, `updating`, `deleting`, and `deleted`.\n        :type LifeState: str\n        :param LaunchConfigurationId: Launch configuration ID\n        :type LaunchConfigurationId: str\n        :param AutoscalingGroupId: Auto-scaling group ID\n        :type AutoscalingGroupId: str\n        :param Labels: Labels\n        :type Labels: list of Label\n        :param Taints: Array of taint\n        :type Taints: list of Taint\n        :param NodeCountSummary: Node list\n        :type NodeCountSummary: :class:`tencentcloud.tke.v20180525.models.NodeCountSummary`\n        :param AutoscalingGroupStatus: \n        :type AutoscalingGroupStatus: str\n        :param MaxNodesNum: Maximum number of nodes
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MaxNodesNum: int\n        :param MinNodesNum: Minimum number of nodes
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type MinNodesNum: int\n        :param DesiredNodesNum: Desired number of nodes
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type DesiredNodesNum: int\n        :param NodePoolOs: The operating system of the node pool
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type NodePoolOs: str\n        :param OsCustomizeType: Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type OsCustomizeType: str\n        :param ImageId: Image ID
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type ImageId: str\n        :param DesiredPodNum: This parameter is required when the custom PodCIDR mode is enabled for the cluster.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type DesiredPodNum: int\n        :param UserScript: Custom script
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type UserScript: str\n        """
         self.NodePoolId = None
         self.Name = None
         self.ClusterInstanceId = None
@@ -4486,13 +3548,7 @@ class NodePoolOption(AbstractModel):
 
     def __init__(self):
         """
-        :param AddToNodePool: Whether to add to the node pool.
-        :type AddToNodePool: bool
-        :param NodePoolId: Node pool ID
-        :type NodePoolId: str
-        :param InheritConfigurationFromNodePool: Whether to inherit the node pool configuration.
-        :type InheritConfigurationFromNodePool: bool
-        """
+        :param AddToNodePool: Whether to add to the node pool.\n        :type AddToNodePool: bool\n        :param NodePoolId: Node pool ID\n        :type NodePoolId: str\n        :param InheritConfigurationFromNodePool: Whether to inherit the node pool configuration.\n        :type InheritConfigurationFromNodePool: bool\n        """
         self.AddToNodePool = None
         self.NodePoolId = None
         self.InheritConfigurationFromNodePool = None
@@ -4519,24 +3575,12 @@ class RegionInstance(AbstractModel):
     def __init__(self):
         """
         :param RegionName: Region name
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RegionName: str
-        :param RegionId: Region ID
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RegionId: int
-        :param Status: Region status
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Status: str
-        :param FeatureGates: Status of region-related features (return all attributes in JSON format)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FeatureGates: str
-        :param Alias: Region abbreviation
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Alias: str
-        :param Remark: Whitelisted location
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Remark: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RegionName: str\n        :param RegionId: Region ID
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RegionId: int\n        :param Status: Region status
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Status: str\n        :param FeatureGates: Status of region-related features (return all attributes in JSON format)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FeatureGates: str\n        :param Alias: Region abbreviation
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Alias: str\n        :param Remark: Whitelisted location
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Remark: str\n        """
         self.RegionName = None
         self.RegionId = None
         self.Status = None
@@ -4568,13 +3612,7 @@ class RemoveNodeFromNodePoolRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param NodePoolId: Node pool ID
-        :type NodePoolId: str
-        :param InstanceIds: Node ID list
-        :type InstanceIds: list of str
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param NodePoolId: Node pool ID\n        :type NodePoolId: str\n        :param InstanceIds: Node ID list\n        :type InstanceIds: list of str\n        """
         self.ClusterId = None
         self.NodePoolId = None
         self.InstanceIds = None
@@ -4600,9 +3638,7 @@ class RemoveNodeFromNodePoolResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4617,11 +3653,7 @@ class ResourceDeleteOption(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceType: Resource type, for example `CBS`
-        :type ResourceType: str
-        :param DeleteMode: Specifies the policy to deal with resources in the cluster when the cluster is deleted. It can be `terminate` or `retain`.
-        :type DeleteMode: str
-        """
+        :param ResourceType: Resource type, for example `CBS`\n        :type ResourceType: str\n        :param DeleteMode: Specifies the policy to deal with resources in the cluster when the cluster is deleted. It can be `terminate` or `retain`.\n        :type DeleteMode: str\n        """
         self.ResourceType = None
         self.DeleteMode = None
 
@@ -4645,13 +3677,7 @@ class RouteInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: Route table name.
-        :type RouteTableName: str
-        :param DestinationCidrBlock: Destination CIDR.
-        :type DestinationCidrBlock: str
-        :param GatewayIp: Next hop address.
-        :type GatewayIp: str
-        """
+        :param RouteTableName: Route table name.\n        :type RouteTableName: str\n        :param DestinationCidrBlock: Destination CIDR.\n        :type DestinationCidrBlock: str\n        :param GatewayIp: Next hop address.\n        :type GatewayIp: str\n        """
         self.RouteTableName = None
         self.DestinationCidrBlock = None
         self.GatewayIp = None
@@ -4677,18 +3703,10 @@ class RouteTableConflict(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableType: Route table type.
-        :type RouteTableType: str
-        :param RouteTableCidrBlock: Route table CIDR.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RouteTableCidrBlock: str
-        :param RouteTableName: Route table name.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RouteTableName: str
-        :param RouteTableId: Route table ID.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RouteTableId: str
-        """
+        :param RouteTableType: Route table type.\n        :type RouteTableType: str\n        :param RouteTableCidrBlock: Route table CIDR.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type RouteTableCidrBlock: str\n        :param RouteTableName: Route table name.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type RouteTableName: str\n        :param RouteTableId: Route table ID.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type RouteTableId: str\n        """
         self.RouteTableType = None
         self.RouteTableCidrBlock = None
         self.RouteTableName = None
@@ -4716,13 +3734,7 @@ class RouteTableInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: Route table name.
-        :type RouteTableName: str
-        :param RouteTableCidrBlock: Route table CIDR.
-        :type RouteTableCidrBlock: str
-        :param VpcId: VPC instance ID.
-        :type VpcId: str
-        """
+        :param RouteTableName: Route table name.\n        :type RouteTableName: str\n        :param RouteTableCidrBlock: Route table CIDR.\n        :type RouteTableCidrBlock: str\n        :param VpcId: VPC instance ID.\n        :type VpcId: str\n        """
         self.RouteTableName = None
         self.RouteTableCidrBlock = None
         self.VpcId = None
@@ -4748,13 +3760,7 @@ class RunInstancesForNode(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeRole: Node role. Values: MASTER_ETCD, WORKER. You only need to specify MASTER_ETCD when creating a self-deployed cluster (INDEPENDENT_CLUSTER).
-        :type NodeRole: str
-        :param RunInstancesPara: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1). Pass any parameter other than common parameters. ImageId will be replaced with the image corresponding to the TKE cluster operating system.
-        :type RunInstancesPara: list of str
-        :param InstanceAdvancedSettingsOverrides: An advanced node setting. This parameter overrides the InstanceAdvancedSettings item set at the cluster level and corresponds to RunInstancesPara in a one-to-one sequential manner (currently valid for the ExtraArgs node custom parameter only).
-        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
-        """
+        :param NodeRole: Node role. Values: MASTER_ETCD, WORKER. You only need to specify MASTER_ETCD when creating a self-deployed cluster (INDEPENDENT_CLUSTER).\n        :type NodeRole: str\n        :param RunInstancesPara: Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1). Pass any parameter other than common parameters. ImageId will be replaced with the image corresponding to the TKE cluster operating system.\n        :type RunInstancesPara: list of str\n        :param InstanceAdvancedSettingsOverrides: An advanced node setting. This parameter overrides the InstanceAdvancedSettings item set at the cluster level and corresponds to RunInstancesPara in a one-to-one sequential manner (currently valid for the ExtraArgs node custom parameter only).\n        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings\n        """
         self.NodeRole = None
         self.RunInstancesPara = None
         self.InstanceAdvancedSettingsOverrides = None
@@ -4785,9 +3791,7 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.
-        :type Enabled: bool
-        """
+        :param Enabled: Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.\n        :type Enabled: bool\n        """
         self.Enabled = None
 
 
@@ -4809,9 +3813,7 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
-        :type Enabled: bool
-        """
+        :param Enabled: Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.\n        :type Enabled: bool\n        """
         self.Enabled = None
 
 
@@ -4833,15 +3835,7 @@ class SetNodePoolNodeProtectionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param NodePoolId: Node pool ID
-        :type NodePoolId: str
-        :param InstanceIds: Node ID
-        :type InstanceIds: list of str
-        :param ProtectedFromScaleIn: Whether the node needs removal protection
-        :type ProtectedFromScaleIn: bool
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param NodePoolId: Node pool ID\n        :type NodePoolId: str\n        :param InstanceIds: Node ID\n        :type InstanceIds: list of str\n        :param ProtectedFromScaleIn: Whether the node needs removal protection\n        :type ProtectedFromScaleIn: bool\n        """
         self.ClusterId = None
         self.NodePoolId = None
         self.InstanceIds = None
@@ -4870,14 +3864,8 @@ class SetNodePoolNodeProtectionResponse(AbstractModel):
     def __init__(self):
         """
         :param SucceedInstanceIds: ID of the node that has successfully set the removal protection
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SucceedInstanceIds: list of str
-        :param FailedInstanceIds: ID of the node that fails to set the removal protection
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type FailedInstanceIds: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SucceedInstanceIds: list of str\n        :param FailedInstanceIds: ID of the node that fails to set the removal protection
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type FailedInstanceIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SucceedInstanceIds = None
         self.FailedInstanceIds = None
         self.RequestId = None
@@ -4896,11 +3884,7 @@ class Tag(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: Tag key.
-        :type Key: str
-        :param Value: Tag value.
-        :type Value: str
-        """
+        :param Key: Tag key.\n        :type Key: str\n        :param Value: Tag value.\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -4924,11 +3908,7 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceType: The type of resource that the tag is bound to. The type currently supported is `cluster`.
-        :type ResourceType: str
-        :param Tags: List of tag pairs
-        :type Tags: list of Tag
-        """
+        :param ResourceType: The type of resource that the tag is bound to. The type currently supported is `cluster`.\n        :type ResourceType: str\n        :param Tags: List of tag pairs\n        :type Tags: list of Tag\n        """
         self.ResourceType = None
         self.Tags = None
 
@@ -4957,13 +3937,7 @@ class Taint(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: Key of the taint
-        :type Key: str
-        :param Value: Value of the taint
-        :type Value: str
-        :param Effect: Effect of the taint
-        :type Effect: str
-        """
+        :param Key: Key of the taint\n        :type Key: str\n        :param Value: Value of the taint\n        :type Value: str\n        :param Effect: Effect of the taint\n        :type Effect: str\n        """
         self.Key = None
         self.Value = None
         self.Effect = None
@@ -4989,24 +3963,14 @@ class TaskStepInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Step: Step name
-        :type Step: str
-        :param LifeState: Lifecycle
+        :param Step: Step name\n        :type Step: str\n        :param LifeState: Lifecycle
 pending: the step is not started
 running: the step is in progress
 success: the step is completed
-failed: the step failed
-        :type LifeState: str
-        :param StartAt: Step start time
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type StartAt: str
-        :param EndAt: Step end time
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type EndAt: str
-        :param FailedMsg: If the lifecycle of the step is failed, this field will display the error information.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type FailedMsg: str
-        """
+failed: the step failed\n        :type LifeState: str\n        :param StartAt: Step start time
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type StartAt: str\n        :param EndAt: Step end time
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type EndAt: str\n        :param FailedMsg: If the lifecycle of the step is failed, this field will display the error information.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type FailedMsg: str\n        """
         self.Step = None
         self.LifeState = None
         self.StartAt = None
@@ -5036,17 +4000,7 @@ class UpdateClusterVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param DstVersion: The version that needs to upgrade to
-        :type DstVersion: str
-        :param ExtraArgs: Cluster custom parameter
-        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
-        :param MaxNotReadyPercent: The maximum tolerable number of unavailable pods
-        :type MaxNotReadyPercent: float
-        :param SkipPreCheck: Whether to skip the precheck
-        :type SkipPreCheck: bool
-        """
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param DstVersion: The version that needs to upgrade to\n        :type DstVersion: str\n        :param ExtraArgs: Cluster custom parameter\n        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`\n        :param MaxNotReadyPercent: The maximum tolerable number of unavailable pods\n        :type MaxNotReadyPercent: float\n        :param SkipPreCheck: Whether to skip the precheck\n        :type SkipPreCheck: bool\n        """
         self.ClusterId = None
         self.DstVersion = None
         self.ExtraArgs = None
@@ -5078,9 +4032,7 @@ class UpdateClusterVersionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5095,14 +4047,8 @@ class UpgradeAbleInstancesItem(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Node ID
-        :type InstanceId: str
-        :param Version: The current version of the node
-        :type Version: str
-        :param LatestVersion: The latest minor version of the current version
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type LatestVersion: str
-        """
+        :param InstanceId: Node ID\n        :type InstanceId: str\n        :param Version: The current version of the node\n        :type Version: str\n        :param LatestVersion: The latest minor version of the current version
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type LatestVersion: str\n        """
         self.InstanceId = None
         self.Version = None
         self.LatestVersion = None
@@ -5128,27 +4074,13 @@ class UpgradeClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param Operation: create: starting an upgrade task
+        :param ClusterId: Cluster ID\n        :type ClusterId: str\n        :param Operation: create: starting an upgrade task
 pause: pausing the task
 resume: continuing the task
-abort: stopping the task
-        :type Operation: str
-        :param UpgradeType: Upgrade type. It’s only required when `Operation` is set as `create`.
+abort: stopping the task\n        :type Operation: str\n        :param UpgradeType: Upgrade type. It’s only required when `Operation` is set as `create`.
 reset: the reinstallation and upgrade of major version
 hot: the hot upgrade of minor version
-major: in-place upgrade of major version
-        :type UpgradeType: str
-        :param InstanceIds: List of nodes that need to upgrade
-        :type InstanceIds: list of str
-        :param ResetParam: This parameter is used when the node joins the cluster again. Refer to the API of creating one or more cluster nodes.
-        :type ResetParam: :class:`tencentcloud.tke.v20180525.models.UpgradeNodeResetParam`
-        :param SkipPreCheck: Whether to skip the pre-upgrade check of the node
-        :type SkipPreCheck: bool
-        :param MaxNotReadyPercent: The maximum tolerable proportion of unavailable pods
-        :type MaxNotReadyPercent: float
-        """
+major: in-place upgrade of major version\n        :type UpgradeType: str\n        :param InstanceIds: List of nodes that need to upgrade\n        :type InstanceIds: list of str\n        :param ResetParam: This parameter is used when the node joins the cluster again. Refer to the API of creating one or more cluster nodes.\n        :type ResetParam: :class:`tencentcloud.tke.v20180525.models.UpgradeNodeResetParam`\n        :param SkipPreCheck: Whether to skip the pre-upgrade check of the node\n        :type SkipPreCheck: bool\n        :param MaxNotReadyPercent: The maximum tolerable proportion of unavailable pods\n        :type MaxNotReadyPercent: float\n        """
         self.ClusterId = None
         self.Operation = None
         self.UpgradeType = None
@@ -5184,9 +4116,7 @@ class UpgradeClusterInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5201,15 +4131,7 @@ class UpgradeNodeResetParam(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceAdvancedSettings: Additional parameters set for the instance
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param EnhancedService: Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
-        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
-        :param LoginSettings: Node login information. For now, it only supports Password or a single KeyIds
-        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
-        :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the `sgId` field in the response of `DescribeSecurityGroups`. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId.)
-        :type SecurityGroupIds: list of str
-        """
+        :param InstanceAdvancedSettings: Additional parameters set for the instance\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param EnhancedService: Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.\n        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`\n        :param LoginSettings: Node login information. For now, it only supports Password or a single KeyIds\n        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`\n        :param SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the `sgId` field in the response of `DescribeSecurityGroups`. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId.)\n        :type SecurityGroupIds: list of str\n        """
         self.InstanceAdvancedSettings = None
         self.EnhancedService = None
         self.LoginSettings = None

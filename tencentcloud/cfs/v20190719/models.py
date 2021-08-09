@@ -25,11 +25,7 @@ class AvailableProtoStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param SaleStatus: Sale status. Valid values: sale_out (sold out), saling (purchasable), no_saling (non-purchasable)
-        :type SaleStatus: str
-        :param Protocol: Protocol type. Valid values: NFS, CIFS
-        :type Protocol: str
-        """
+        :param SaleStatus: Sale status. Valid values: sale_out (sold out), saling (purchasable), no_saling (non-purchasable)\n        :type SaleStatus: str\n        :param Protocol: Protocol type. Valid values: NFS, CIFS\n        :type Protocol: str\n        """
         self.SaleStatus = None
         self.Protocol = None
 
@@ -53,17 +49,7 @@ class AvailableRegion(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Region name, such as "ap-beijing"
-        :type Region: str
-        :param RegionName: Region name, such as "bj"
-        :type RegionName: str
-        :param RegionStatus: Region availability. If a region has at least one AZ where resources are purchasable, this value will be `AVAILABLE`; otherwise, it will be `UNAVAILABLE`
-        :type RegionStatus: str
-        :param Zones: Array of AZs
-        :type Zones: list of AvailableZone
-        :param RegionCnName: Region name, such as "Guangzhou"
-        :type RegionCnName: str
-        """
+        :param Region: Region name, such as "ap-beijing"\n        :type Region: str\n        :param RegionName: Region name, such as "bj"\n        :type RegionName: str\n        :param RegionStatus: Region availability. If a region has at least one AZ where resources are purchasable, this value will be `AVAILABLE`; otherwise, it will be `UNAVAILABLE`\n        :type RegionStatus: str\n        :param Zones: Array of AZs\n        :type Zones: list of AvailableZone\n        :param RegionCnName: Region name, such as "Guangzhou"\n        :type RegionCnName: str\n        """
         self.Region = None
         self.RegionName = None
         self.RegionStatus = None
@@ -98,13 +84,7 @@ class AvailableType(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocols: Protocol and sale details
-        :type Protocols: list of AvailableProtoStatus
-        :param Type: Storage class. Valid values: `SD` (standard storage) and `HP` (high-performance storage)
-        :type Type: str
-        :param Prepayment: Indicates whether prepaid is supported. `true`: yes; `false`: no
-        :type Prepayment: bool
-        """
+        :param Protocols: Protocol and sale details\n        :type Protocols: list of AvailableProtoStatus\n        :param Type: Storage class. Valid values: `SD` (standard storage) and `HP` (high-performance storage)\n        :type Type: str\n        :param Prepayment: Indicates whether prepaid is supported. `true`: yes; `false`: no\n        :type Prepayment: bool\n        """
         self.Protocols = None
         self.Type = None
         self.Prepayment = None
@@ -135,17 +115,7 @@ class AvailableZone(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: AZ name
-        :type Zone: str
-        :param ZoneId: AZ ID
-        :type ZoneId: int
-        :param ZoneCnName: Chinese name of an AZ
-        :type ZoneCnName: str
-        :param Types: Array of classes
-        :type Types: list of AvailableType
-        :param ZoneName: Chinese and English names of an AZ
-        :type ZoneName: str
-        """
+        :param Zone: AZ name\n        :type Zone: str\n        :param ZoneId: AZ ID\n        :type ZoneId: int\n        :param ZoneCnName: Chinese name of an AZ\n        :type ZoneCnName: str\n        :param Types: Array of classes\n        :type Types: list of AvailableType\n        :param ZoneName: Chinese and English names of an AZ\n        :type ZoneName: str\n        """
         self.Zone = None
         self.ZoneId = None
         self.ZoneCnName = None
@@ -180,29 +150,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: AZ name, such as "ap-beijing-1". For the list of regions and AZs, please see [Overview](https://intl.cloud.tencent.com/document/product/582/13225?from_cn_redirect=1)
-        :type Zone: str
-        :param NetInterface: Network type. Valid values: VPC (VPC), BASIC (basic network)
-        :type NetInterface: str
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param Protocol: File system protocol type. Valid values: NFS, CIFS. If this parameter is left empty, NFS will be used by default
-        :type Protocol: str
-        :param StorageType: File system storage class. Valid values: SD (standard), HP (high-performance)
-        :type StorageType: str
-        :param VpcId: VPC ID. This field is required if network type is VPC.
-        :type VpcId: str
-        :param SubnetId: Subnet ID. This field is required if network type is VPC.
-        :type SubnetId: str
-        :param MountIP: Specifies an IP address, which is supported only for VPC. If this parameter is left empty, a random IP will be assigned in the subnet
-        :type MountIP: str
-        :param FsName: Custom file system name
-        :type FsName: str
-        :param ResourceTags: File system tag
-        :type ResourceTags: list of TagInfo
-        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. This string is valid for 2 hours.
-        :type ClientToken: str
-        """
+        :param Zone: AZ name, such as "ap-beijing-1". For the list of regions and AZs, please see [Overview](https://intl.cloud.tencent.com/document/product/582/13225?from_cn_redirect=1)\n        :type Zone: str\n        :param NetInterface: Network type. Valid values: VPC (VPC), BASIC (basic network)\n        :type NetInterface: str\n        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param Protocol: File system protocol type. Valid values: NFS, CIFS. If this parameter is left empty, NFS will be used by default\n        :type Protocol: str\n        :param StorageType: File system storage class. Valid values: SD (standard), HP (high-performance)\n        :type StorageType: str\n        :param VpcId: VPC ID. This field is required if network type is VPC.\n        :type VpcId: str\n        :param SubnetId: Subnet ID. This field is required if network type is VPC.\n        :type SubnetId: str\n        :param MountIP: Specifies an IP address, which is supported only for VPC. If this parameter is left empty, a random IP will be assigned in the subnet\n        :type MountIP: str\n        :param FsName: Custom file system name\n        :type FsName: str\n        :param ResourceTags: File system tag\n        :type ResourceTags: list of TagInfo\n        :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. This string is valid for 2 hours.\n        :type ClientToken: str\n        """
         self.Zone = None
         self.NetInterface = None
         self.PGroupId = None
@@ -249,25 +197,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CreationTime: File system creation time
-        :type CreationTime: str
-        :param CreationToken: Custom file system name
-        :type CreationToken: str
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        :param LifeCycleState: File system status
-        :type LifeCycleState: str
-        :param SizeByte: Used file system capacity
-        :type SizeByte: int
-        :param ZoneId: AZ ID
-        :type ZoneId: int
-        :param FsName: Custom file system name
-        :type FsName: str
-        :param Encrypted: Whether a file system is encrypted
-        :type Encrypted: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CreationTime: File system creation time\n        :type CreationTime: str\n        :param CreationToken: Custom file system name\n        :type CreationToken: str\n        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        :param LifeCycleState: File system status\n        :type LifeCycleState: str\n        :param SizeByte: Used file system capacity\n        :type SizeByte: int\n        :param ZoneId: AZ ID\n        :type ZoneId: int\n        :param FsName: Custom file system name\n        :type FsName: str\n        :param Encrypted: Whether a file system is encrypted\n        :type Encrypted: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CreationTime = None
         self.CreationToken = None
         self.FileSystemId = None
@@ -298,11 +228,7 @@ class CreateCfsPGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes
-        :type Name: str
-        :param DescInfo: Permission group description, which can contain 1-255 characters
-        :type DescInfo: str
-        """
+        :param Name: Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes\n        :type Name: str\n        :param DescInfo: Permission group description, which can contain 1-255 characters\n        :type DescInfo: str\n        """
         self.Name = None
         self.DescInfo = None
 
@@ -326,19 +252,7 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param Name: Permission group name
-        :type Name: str
-        :param DescInfo: Permission group description
-        :type DescInfo: str
-        :param BindCfsNum: The number of file systems bound to this permission group
-        :type BindCfsNum: int
-        :param CDate: Permission group creation time
-        :type CDate: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param Name: Permission group name\n        :type Name: str\n        :param DescInfo: Permission group description\n        :type DescInfo: str\n        :param BindCfsNum: The number of file systems bound to this permission group\n        :type BindCfsNum: int\n        :param CDate: Permission group creation time\n        :type CDate: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PGroupId = None
         self.Name = None
         self.DescInfo = None
@@ -363,17 +277,7 @@ class CreateCfsRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param AuthClientIp: You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.
-        :type AuthClientIp: str
-        :param Priority: Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest
-        :type Priority: int
-        :param RWPermission: Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO
-        :type RWPermission: str
-        :param UserPermission: User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.
-        :type UserPermission: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param AuthClientIp: You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.\n        :type AuthClientIp: str\n        :param Priority: Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest\n        :type Priority: int\n        :param RWPermission: Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO\n        :type RWPermission: str\n        :param UserPermission: User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.\n        :type UserPermission: str\n        """
         self.PGroupId = None
         self.AuthClientIp = None
         self.Priority = None
@@ -403,21 +307,7 @@ class CreateCfsRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param AuthClientIp: Client IP
-        :type AuthClientIp: str
-        :param RWPermission: Read & write permissions
-        :type RWPermission: str
-        :param UserPermission: User permission
-        :type UserPermission: str
-        :param Priority: Priority
-        :type Priority: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RuleId: Rule ID\n        :type RuleId: str\n        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param AuthClientIp: Client IP\n        :type AuthClientIp: str\n        :param RWPermission: Read & write permissions\n        :type RWPermission: str\n        :param UserPermission: User permission\n        :type UserPermission: str\n        :param Priority: Priority\n        :type Priority: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RuleId = None
         self.PGroupId = None
         self.AuthClientIp = None
@@ -444,9 +334,7 @@ class DeleteCfsFileSystemRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: File system ID. Note: please call the `DeleteMountTarget` API to delete the mount target first before deleting a file system; otherwise, the delete operation will fail.
-        :type FileSystemId: str
-        """
+        :param FileSystemId: File system ID. Note: please call the `DeleteMountTarget` API to delete the mount target first before deleting a file system; otherwise, the delete operation will fail.\n        :type FileSystemId: str\n        """
         self.FileSystemId = None
 
 
@@ -468,9 +356,7 @@ class DeleteCfsFileSystemResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -485,9 +371,7 @@ class DeleteCfsPGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        """
         self.PGroupId = None
 
 
@@ -509,13 +393,7 @@ class DeleteCfsPGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param AppId: User ID
-        :type AppId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param AppId: User ID\n        :type AppId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PGroupId = None
         self.AppId = None
         self.RequestId = None
@@ -534,11 +412,7 @@ class DeleteCfsRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param RuleId: Rule ID
-        :type RuleId: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param RuleId: Rule ID\n        :type RuleId: str\n        """
         self.PGroupId = None
         self.RuleId = None
 
@@ -562,13 +436,7 @@ class DeleteCfsRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RuleId: Rule ID\n        :type RuleId: str\n        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RuleId = None
         self.PGroupId = None
         self.RequestId = None
@@ -587,11 +455,7 @@ class DeleteMountTargetRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        :param MountTargetId: Mount target ID
-        :type MountTargetId: str
-        """
+        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        :param MountTargetId: Mount target ID\n        :type MountTargetId: str\n        """
         self.FileSystemId = None
         self.MountTargetId = None
 
@@ -615,9 +479,7 @@ class DeleteMountTargetResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -638,11 +500,7 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RegionZones: Information such as resource availability in each AZ and the supported storage classes and protocols
-        :type RegionZones: list of AvailableRegion
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RegionZones: Information such as resource availability in each AZ and the supported storage classes and protocols\n        :type RegionZones: list of AvailableRegion\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RegionZones = None
         self.RequestId = None
 
@@ -664,9 +522,7 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        """
+        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        """
         self.FileSystemId = None
 
 
@@ -688,11 +544,7 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ClientList: Client list
-        :type ClientList: list of FileSystemClient
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param ClientList: Client list\n        :type ClientList: list of FileSystemClient\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ClientList = None
         self.RequestId = None
 
@@ -714,13 +566,7 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: Subnet ID
-        :type SubnetId: str
-        """
+        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        """
         self.FileSystemId = None
         self.VpcId = None
         self.SubnetId = None
@@ -746,13 +592,7 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystems: File system information
-        :type FileSystems: list of FileSystemInfo
-        :param TotalCount: Total number of file systems
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FileSystems: File system information\n        :type FileSystems: list of FileSystemInfo\n        :param TotalCount: Total number of file systems\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FileSystems = None
         self.TotalCount = None
         self.RequestId = None
@@ -782,11 +622,7 @@ class DescribeCfsPGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupList: Permission group information list
-        :type PGroupList: list of PGroupInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PGroupList: Permission group information list\n        :type PGroupList: list of PGroupInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PGroupList = None
         self.RequestId = None
 
@@ -808,9 +644,7 @@ class DescribeCfsRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        """
         self.PGroupId = None
 
 
@@ -832,11 +666,7 @@ class DescribeCfsRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleList: List of permission group rules
-        :type RuleList: list of PGroupRuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RuleList: List of permission group rules\n        :type RuleList: list of PGroupRuleInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RuleList = None
         self.RequestId = None
 
@@ -864,11 +694,7 @@ class DescribeCfsServiceStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CfsServiceStatus: Current status of the CFS service for this user. Valid values: none (not activated), creating (activating), created (activated)
-        :type CfsServiceStatus: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CfsServiceStatus: Current status of the CFS service for this user. Valid values: none (not activated), creating (activating), created (activated)\n        :type CfsServiceStatus: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CfsServiceStatus = None
         self.RequestId = None
 
@@ -885,9 +711,7 @@ class DescribeMountTargetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        """
+        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        """
         self.FileSystemId = None
 
 
@@ -909,13 +733,7 @@ class DescribeMountTargetsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MountTargets: Mount target details
-        :type MountTargets: list of MountInfo
-        :param NumberOfMountTargets: The number of mount targets
-        :type NumberOfMountTargets: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param MountTargets: Mount target details\n        :type MountTargets: list of MountInfo\n        :param NumberOfMountTargets: The number of mount targets\n        :type NumberOfMountTargets: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MountTargets = None
         self.NumberOfMountTargets = None
         self.RequestId = None
@@ -939,19 +757,7 @@ class FileSystemClient(AbstractModel):
 
     def __init__(self):
         """
-        :param CfsVip: IP address of the file system
-        :type CfsVip: str
-        :param ClientIp: Client IP
-        :type ClientIp: str
-        :param VpcId: File system VPCID
-        :type VpcId: str
-        :param Zone: Name of the availability zone, e.g. ap-beijing-1. For more information, see regions and availability zones in the Overview document
-        :type Zone: str
-        :param ZoneName: AZ name
-        :type ZoneName: str
-        :param MountDirectory: Path in which the file system is mounted to the client
-        :type MountDirectory: str
-        """
+        :param CfsVip: IP address of the file system\n        :type CfsVip: str\n        :param ClientIp: Client IP\n        :type ClientIp: str\n        :param VpcId: File system VPCID\n        :type VpcId: str\n        :param Zone: Name of the availability zone, e.g. ap-beijing-1. For more information, see regions and availability zones in the Overview document\n        :type Zone: str\n        :param ZoneName: AZ name\n        :type ZoneName: str\n        :param MountDirectory: Path in which the file system is mounted to the client\n        :type MountDirectory: str\n        """
         self.CfsVip = None
         self.ClientIp = None
         self.VpcId = None
@@ -983,43 +789,7 @@ class FileSystemInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param CreationTime: Creation time
-        :type CreationTime: str
-        :param CreationToken: Custom name
-        :type CreationToken: str
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        :param LifeCycleState: File system status
-        :type LifeCycleState: str
-        :param SizeByte: Used file system capacity
-        :type SizeByte: int
-        :param SizeLimit: Maximum storage limit of a file system
-        :type SizeLimit: int
-        :param ZoneId: Region ID
-        :type ZoneId: int
-        :param Zone: Region name
-        :type Zone: str
-        :param Protocol: File system protocol type
-        :type Protocol: str
-        :param StorageType: File system storage class
-        :type StorageType: str
-        :param StorageResourcePkg: Prepaid storage pack bound with the file system
-        :type StorageResourcePkg: str
-        :param BandwidthResourcePkg: Prepaid bandwidth pack bound to a file system (not supported currently)
-        :type BandwidthResourcePkg: str
-        :param PGroup: Information of permission groups bound to a file system
-        :type PGroup: :class:`tencentcloud.cfs.v20190719.models.PGroup`
-        :param FsName: Custom name
-        :type FsName: str
-        :param Encrypted: Whether a file system is encrypted
-        :type Encrypted: bool
-        :param KmsKeyId: Key used for encryption, which can be the key ID or ARN
-        :type KmsKeyId: str
-        :param AppId: Application ID
-        :type AppId: int
-        :param BandwidthLimit: The upper limit on the file system’s throughput, which is determined based on its current usage, and bound resource packs for both storage and throughput
-        :type BandwidthLimit: float
-        """
+        :param CreationTime: Creation time\n        :type CreationTime: str\n        :param CreationToken: Custom name\n        :type CreationToken: str\n        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        :param LifeCycleState: File system status\n        :type LifeCycleState: str\n        :param SizeByte: Used file system capacity\n        :type SizeByte: int\n        :param SizeLimit: Maximum storage limit of a file system\n        :type SizeLimit: int\n        :param ZoneId: Region ID\n        :type ZoneId: int\n        :param Zone: Region name\n        :type Zone: str\n        :param Protocol: File system protocol type\n        :type Protocol: str\n        :param StorageType: File system storage class\n        :type StorageType: str\n        :param StorageResourcePkg: Prepaid storage pack bound with the file system\n        :type StorageResourcePkg: str\n        :param BandwidthResourcePkg: Prepaid bandwidth pack bound to a file system (not supported currently)\n        :type BandwidthResourcePkg: str\n        :param PGroup: Information of permission groups bound to a file system\n        :type PGroup: :class:`tencentcloud.cfs.v20190719.models.PGroup`\n        :param FsName: Custom name\n        :type FsName: str\n        :param Encrypted: Whether a file system is encrypted\n        :type Encrypted: bool\n        :param KmsKeyId: Key used for encryption, which can be the key ID or ARN\n        :type KmsKeyId: str\n        :param AppId: Application ID\n        :type AppId: int\n        :param BandwidthLimit: The upper limit on the file system’s throughput, which is determined based on its current usage, and bound resource packs for both storage and throughput\n        :type BandwidthLimit: float\n        """
         self.CreationTime = None
         self.CreationToken = None
         self.FileSystemId = None
@@ -1077,27 +847,7 @@ class MountInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        :param MountTargetId: Mount target ID
-        :type MountTargetId: str
-        :param IpAddress: Mount target IP
-        :type IpAddress: str
-        :param FSID: Mount root-directory
-        :type FSID: str
-        :param LifeCycleState: Mount target status
-        :type LifeCycleState: str
-        :param NetworkInterface: Network type
-        :type NetworkInterface: str
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param VpcName: VPC name
-        :type VpcName: str
-        :param SubnetId: Subnet ID
-        :type SubnetId: str
-        :param SubnetName: Subnet name
-        :type SubnetName: str
-        """
+        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        :param MountTargetId: Mount target ID\n        :type MountTargetId: str\n        :param IpAddress: Mount target IP\n        :type IpAddress: str\n        :param FSID: Mount root-directory\n        :type FSID: str\n        :param LifeCycleState: Mount target status\n        :type LifeCycleState: str\n        :param NetworkInterface: Network type\n        :type NetworkInterface: str\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param VpcName: VPC name\n        :type VpcName: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param SubnetName: Subnet name\n        :type SubnetName: str\n        """
         self.FileSystemId = None
         self.MountTargetId = None
         self.IpAddress = None
@@ -1137,11 +887,7 @@ class PGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param Name: Permission group name
-        :type Name: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param Name: Permission group name\n        :type Name: str\n        """
         self.PGroupId = None
         self.Name = None
 
@@ -1165,17 +911,7 @@ class PGroupInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param Name: Permission group name
-        :type Name: str
-        :param DescInfo: Description
-        :type DescInfo: str
-        :param CDate: Creation time
-        :type CDate: str
-        :param BindCfsNum: The number of bound file system
-        :type BindCfsNum: int
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param Name: Permission group name\n        :type Name: str\n        :param DescInfo: Description\n        :type DescInfo: str\n        :param CDate: Creation time\n        :type CDate: str\n        :param BindCfsNum: The number of bound file system\n        :type BindCfsNum: int\n        """
         self.PGroupId = None
         self.Name = None
         self.DescInfo = None
@@ -1205,17 +941,7 @@ class PGroupRuleInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param AuthClientIp: Client IP allowed for access
-        :type AuthClientIp: str
-        :param RWPermission: Read/write permission. ro: read-only; rw: read & write
-        :type RWPermission: str
-        :param UserPermission: User permission. all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions.
-        :type UserPermission: str
-        :param Priority: Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest
-        :type Priority: int
-        """
+        :param RuleId: Rule ID\n        :type RuleId: str\n        :param AuthClientIp: Client IP allowed for access\n        :type AuthClientIp: str\n        :param RWPermission: Read/write permission. ro: read-only; rw: read & write\n        :type RWPermission: str\n        :param UserPermission: User permission. all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions.\n        :type UserPermission: str\n        :param Priority: Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest\n        :type Priority: int\n        """
         self.RuleId = None
         self.AuthClientIp = None
         self.RWPermission = None
@@ -1251,11 +977,7 @@ class SignUpCfsServiceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CfsServiceStatus: Current status of the CFS service for this user. Valid values: none (not activated), creating (activating), created (activated)
-        :type CfsServiceStatus: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CfsServiceStatus: Current status of the CFS service for this user. Valid values: none (not activated), creating (activating), created (activated)\n        :type CfsServiceStatus: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CfsServiceStatus = None
         self.RequestId = None
 
@@ -1272,11 +994,7 @@ class TagInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key
-        :type TagKey: str
-        :param TagValue: Tag value
-        :type TagValue: str
-        """
+        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -1300,11 +1018,7 @@ class UpdateCfsFileSystemNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        :param FsName: Custom file system name
-        :type FsName: str
-        """
+        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        :param FsName: Custom file system name\n        :type FsName: str\n        """
         self.FileSystemId = None
         self.FsName = None
 
@@ -1328,15 +1042,7 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CreationToken: Custom file system name
-        :type CreationToken: str
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        :param FsName: Custom file system name
-        :type FsName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CreationToken: Custom file system name\n        :type CreationToken: str\n        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        :param FsName: Custom file system name\n        :type FsName: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CreationToken = None
         self.FileSystemId = None
         self.FsName = None
@@ -1357,11 +1063,7 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        """
         self.PGroupId = None
         self.FileSystemId = None
 
@@ -1385,13 +1087,7 @@ class UpdateCfsFileSystemPGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PGroupId = None
         self.FileSystemId = None
         self.RequestId = None
@@ -1410,11 +1106,7 @@ class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FsLimit: File system capacity limit in GB. Value range: 0-1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity.
-        :type FsLimit: int
-        :param FileSystemId: File system ID
-        :type FileSystemId: str
-        """
+        :param FsLimit: File system capacity limit in GB. Value range: 0-1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity.\n        :type FsLimit: int\n        :param FileSystemId: File system ID\n        :type FileSystemId: str\n        """
         self.FsLimit = None
         self.FileSystemId = None
 
@@ -1438,9 +1130,7 @@ class UpdateCfsFileSystemSizeLimitResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1455,13 +1145,7 @@ class UpdateCfsPGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param Name: Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes
-        :type Name: str
-        :param DescInfo: Permission group description, which can contain 1-255 characters
-        :type DescInfo: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param Name: Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes\n        :type Name: str\n        :param DescInfo: Permission group description, which can contain 1-255 characters\n        :type DescInfo: str\n        """
         self.PGroupId = None
         self.Name = None
         self.DescInfo = None
@@ -1487,15 +1171,7 @@ class UpdateCfsPGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param Name: Permission group name
-        :type Name: str
-        :param DescInfo: Description
-        :type DescInfo: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param Name: Permission group name\n        :type Name: str\n        :param DescInfo: Description\n        :type DescInfo: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PGroupId = None
         self.Name = None
         self.DescInfo = None
@@ -1516,19 +1192,7 @@ class UpdateCfsRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param AuthClientIp: You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.
-        :type AuthClientIp: str
-        :param RWPermission: Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO
-        :type RWPermission: str
-        :param UserPermission: User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.
-        :type UserPermission: str
-        :param Priority: Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest
-        :type Priority: int
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param RuleId: Rule ID\n        :type RuleId: str\n        :param AuthClientIp: You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.\n        :type AuthClientIp: str\n        :param RWPermission: Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO\n        :type RWPermission: str\n        :param UserPermission: User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.\n        :type UserPermission: str\n        :param Priority: Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest\n        :type Priority: int\n        """
         self.PGroupId = None
         self.RuleId = None
         self.AuthClientIp = None
@@ -1560,21 +1224,7 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: Permission group ID
-        :type PGroupId: str
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param AuthClientIp: Client IP or IP range allowed for access
-        :type AuthClientIp: str
-        :param RWPermission: Read & write permission
-        :type RWPermission: str
-        :param UserPermission: User permission
-        :type UserPermission: str
-        :param Priority: Priority
-        :type Priority: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PGroupId: Permission group ID\n        :type PGroupId: str\n        :param RuleId: Rule ID\n        :type RuleId: str\n        :param AuthClientIp: Client IP or IP range allowed for access\n        :type AuthClientIp: str\n        :param RWPermission: Read & write permission\n        :type RWPermission: str\n        :param UserPermission: User permission\n        :type UserPermission: str\n        :param Priority: Priority\n        :type Priority: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PGroupId = None
         self.RuleId = None
         self.AuthClientIp = None

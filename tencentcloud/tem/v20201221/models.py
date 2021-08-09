@@ -25,25 +25,7 @@ class CosToken(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: Unique request ID
-        :type RequestId: str
-        :param Bucket: Bucket name
-        :type Bucket: str
-        :param Region: Bucket region
-        :type Region: str
-        :param TmpSecretId: `SecretId` of temporary key
-        :type TmpSecretId: str
-        :param TmpSecretKey: `SecretKey` of temporary key
-        :type TmpSecretKey: str
-        :param SessionToken: `sessionToken` of temporary key
-        :type SessionToken: str
-        :param StartTime: `StartTime` of temporary key acquisition
-        :type StartTime: str
-        :param ExpiredTime: `ExpiredTime` of temporary key
-        :type ExpiredTime: str
-        :param FullPath: Full package path
-        :type FullPath: str
-        """
+        :param RequestId: Unique request ID\n        :type RequestId: str\n        :param Bucket: Bucket name\n        :type Bucket: str\n        :param Region: Bucket region\n        :type Region: str\n        :param TmpSecretId: `SecretId` of temporary key\n        :type TmpSecretId: str\n        :param TmpSecretKey: `SecretKey` of temporary key\n        :type TmpSecretKey: str\n        :param SessionToken: `sessionToken` of temporary key\n        :type SessionToken: str\n        :param StartTime: `StartTime` of temporary key acquisition\n        :type StartTime: str\n        :param ExpiredTime: `ExpiredTime` of temporary key\n        :type ExpiredTime: str\n        :param FullPath: Full package path\n        :type FullPath: str\n        """
         self.RequestId = None
         self.Bucket = None
         self.Region = None
@@ -81,17 +63,7 @@ class CreateCosTokenV2Request(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Service ID
-        :type ServiceId: str
-        :param PkgName: Package name
-        :type PkgName: str
-        :param OptType: optType. 1: upload; 2: query
-        :type OptType: int
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        :param TimeVersion: Input parameter of `deployVersion`
-        :type TimeVersion: str
-        """
+        :param ServiceId: Service ID\n        :type ServiceId: str\n        :param PkgName: Package name\n        :type PkgName: str\n        :param OptType: optType. 1: upload; 2: query\n        :type OptType: int\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        :param TimeVersion: Input parameter of `deployVersion`\n        :type TimeVersion: str\n        """
         self.ServiceId = None
         self.PkgName = None
         self.OptType = None
@@ -122,11 +94,7 @@ class CreateCosTokenV2Response(AbstractModel):
     def __init__(self):
         """
         :param Result: `CosToken` object in case of success and `null` in case of failure
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Result: :class:`tencentcloud.tem.v20201221.models.CosToken`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Result: :class:`tencentcloud.tem.v20201221.models.CosToken`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -145,21 +113,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespaceName: Namespace name
-        :type NamespaceName: str
-        :param Vpc: VPC name
-        :type Vpc: str
-        :param SubnetIds: Subnet list
-        :type SubnetIds: list of str
-        :param Description: Namespace description
-        :type Description: str
-        :param K8sVersion: K8s version
-        :type K8sVersion: str
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        :param EnableTswTraceService: Whether to enable the TSW service.
-        :type EnableTswTraceService: bool
-        """
+        :param NamespaceName: Namespace name\n        :type NamespaceName: str\n        :param Vpc: VPC name\n        :type Vpc: str\n        :param SubnetIds: Subnet list\n        :type SubnetIds: list of str\n        :param Description: Namespace description\n        :type Description: str\n        :param K8sVersion: K8s version\n        :type K8sVersion: str\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        :param EnableTswTraceService: Whether to enable the TSW service.\n        :type EnableTswTraceService: bool\n        """
         self.NamespaceName = None
         self.Vpc = None
         self.SubnetIds = None
@@ -194,11 +148,7 @@ class CreateNamespaceResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: Namespace ID in case of success and `null` in case of failure
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Result: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Result: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -215,15 +165,7 @@ class CreateResourceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespaceId: Namespace ID
-        :type NamespaceId: str
-        :param ResourceType: Resource type. Valid values: CFS (file system), CLS (log service), TSE_SRE (registry)
-        :type ResourceType: str
-        :param ResourceId: Resource ID
-        :type ResourceId: str
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        """
+        :param NamespaceId: Namespace ID\n        :type NamespaceId: str\n        :param ResourceType: Resource type. Valid values: CFS (file system), CLS (log service), TSE_SRE (registry)\n        :type ResourceType: str\n        :param ResourceId: Resource ID\n        :type ResourceId: str\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.ResourceType = None
         self.ResourceId = None
@@ -252,11 +194,7 @@ class CreateResourceResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: Success or failure
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Result: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -273,34 +211,12 @@ class CreateServiceV2Request(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceName: Service name
-        :type ServiceName: str
-        :param Description: Description
-        :type Description: str
-        :param UseDefaultImageService: Whether to use the default image service. 1: yes; 0: no
-        :type UseDefaultImageService: int
-        :param RepoType: Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition
-        :type RepoType: int
-        :param InstanceId: Instance ID of Enterprise Edition image service
-        :type InstanceId: str
-        :param RepoServer: Address of the bound image server
-        :type RepoServer: str
-        :param RepoName: Name of the bound image repository
-        :type RepoName: str
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        :param SubnetList: Service subnet
-        :type SubnetList: list of str
-        :param CodingLanguage: Programming language 
+        :param ServiceName: Service name\n        :type ServiceName: str\n        :param Description: Description\n        :type Description: str\n        :param UseDefaultImageService: Whether to use the default image service. 1: yes; 0: no\n        :type UseDefaultImageService: int\n        :param RepoType: Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition\n        :type RepoType: int\n        :param InstanceId: Instance ID of Enterprise Edition image service\n        :type InstanceId: str\n        :param RepoServer: Address of the bound image server\n        :type RepoServer: str\n        :param RepoName: Name of the bound image repository\n        :type RepoName: str\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        :param SubnetList: Service subnet\n        :type SubnetList: list of str\n        :param CodingLanguage: Programming language 
 - JAVA
-- OTHER
-        :type CodingLanguage: str
-        :param DeployMode: Deployment mode 
+- OTHER\n        :type CodingLanguage: str\n        :param DeployMode: Deployment mode 
 - IMAGE
 - JAR
-- WAR
-        :type DeployMode: str
-        """
+- WAR\n        :type DeployMode: str\n        """
         self.ServiceName = None
         self.Description = None
         self.UseDefaultImageService = None
@@ -342,11 +258,7 @@ class CreateServiceV2Response(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Service code
-        :type Result: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: Service code\n        :type Result: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -363,15 +275,7 @@ class DeleteIngressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespaceId: tem NamespaceId
-        :type NamespaceId: str
-        :param EksNamespace: EKS namespace name
-        :type EksNamespace: str
-        :param Name: Ingress rule name
-        :type Name: str
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        """
+        :param NamespaceId: tem NamespaceId\n        :type NamespaceId: str\n        :param EksNamespace: EKS namespace name\n        :type EksNamespace: str\n        :param Name: Ingress rule name\n        :type Name: str\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.EksNamespace = None
         self.Name = None
@@ -399,11 +303,7 @@ class DeleteIngressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Whether deletion succeeded
-        :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: Whether deletion succeeded\n        :type Result: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -420,71 +320,13 @@ class DeployServiceV2Request(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Service ID
-        :type ServiceId: str
-        :param ContainerPort: Container port
-        :type ContainerPort: int
-        :param InitPodNum: Number of initialized pods
-        :type InitPodNum: int
-        :param CpuSpec: CPU specification
-        :type CpuSpec: float
-        :param MemorySpec: Memory specification
-        :type MemorySpec: float
-        :param NamespaceId: Environment ID
-        :type NamespaceId: str
-        :param ImgRepo: Image repository
-        :type ImgRepo: str
-        :param VersionDesc: Version description
-        :type VersionDesc: str
-        :param JvmOpts: Launch parameters
-        :type JvmOpts: str
-        :param EsInfo: Auto scaling configuration. If this parameter is left empty, auto scaling will not be enabled
-        :type EsInfo: :class:`tencentcloud.tem.v20201221.models.EsInfo`
-        :param EnvConf: Environment variable configuration
-        :type EnvConf: list of Pair
-        :param LogConfs: Log configuration
-        :type LogConfs: list of str
-        :param StorageConfs: Data volume configuration
-        :type StorageConfs: list of StorageConf
-        :param StorageMountConfs: Data volume mount configuration
-        :type StorageMountConfs: list of StorageMountConf
-        :param DeployMode: Deployment type.
+        :param ServiceId: Service ID\n        :type ServiceId: str\n        :param ContainerPort: Container port\n        :type ContainerPort: int\n        :param InitPodNum: Number of initialized pods\n        :type InitPodNum: int\n        :param CpuSpec: CPU specification\n        :type CpuSpec: float\n        :param MemorySpec: Memory specification\n        :type MemorySpec: float\n        :param NamespaceId: Environment ID\n        :type NamespaceId: str\n        :param ImgRepo: Image repository\n        :type ImgRepo: str\n        :param VersionDesc: Version description\n        :type VersionDesc: str\n        :param JvmOpts: Launch parameters\n        :type JvmOpts: str\n        :param EsInfo: Auto scaling configuration. If this parameter is left empty, auto scaling will not be enabled\n        :type EsInfo: :class:`tencentcloud.tem.v20201221.models.EsInfo`\n        :param EnvConf: Environment variable configuration\n        :type EnvConf: list of Pair\n        :param LogConfs: Log configuration\n        :type LogConfs: list of str\n        :param StorageConfs: Data volume configuration\n        :type StorageConfs: list of StorageConf\n        :param StorageMountConfs: Data volume mount configuration\n        :type StorageMountConfs: list of StorageMountConf\n        :param DeployMode: Deployment type.
 - JAR: deployment through JAR package
 - WAR: deployment through WAR package
-- IMAGE: deployment through image
-        :type DeployMode: str
-        :param DeployVersion: When the deployment type is `IMAGE`, this parameter indicates the image tag.
-When the deployment type is `JAR` or `WAR`, this parameter indicates the package version number.
-        :type DeployVersion: str
-        :param PkgName: Package name, which is required when using JAR or WAR packages for deployment.
-        :type PkgName: str
-        :param JdkVersion: JDK version.
+- IMAGE: deployment through image\n        :type DeployMode: str\n        :param DeployVersion: When the deployment type is `IMAGE`, this parameter indicates the image tag.
+When the deployment type is `JAR` or `WAR`, this parameter indicates the package version number.\n        :type DeployVersion: str\n        :param PkgName: Package name, which is required when using JAR or WAR packages for deployment.\n        :type PkgName: str\n        :param JdkVersion: JDK version.
 - KONA: use KONA JDK.
-- OPEN: use open JDK.
-        :type JdkVersion: str
-        :param SecurityGroupIds: Security group IDs
-        :type SecurityGroupIds: list of str
-        :param LogOutputConf: Log output configuration
-        :type LogOutputConf: :class:`tencentcloud.tem.v20201221.models.LogOutputConf`
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        :param Description: Version description
-        :type Description: str
-        :param ImageCommand: Image command
-        :type ImageCommand: str
-        :param ImageArgs: Image command parameters
-        :type ImageArgs: list of str
-        :param PortMappings: Service port mapping.
-        :type PortMappings: list of PortMapping
-        :param UseRegistryDefaultConfig: Whether to add the registry’s default configurations.
-        :type UseRegistryDefaultConfig: bool
-        :param SettingConfs: Mounting configurations
-        :type SettingConfs: list of MountedSettingConf
-        :param EksService: EKS access configuration
-        :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`
-        :param VersionId: ID of the version that you want to roll back to
-        :type VersionId: str
-        """
+- OPEN: use open JDK.\n        :type JdkVersion: str\n        :param SecurityGroupIds: Security group IDs\n        :type SecurityGroupIds: list of str\n        :param LogOutputConf: Log output configuration\n        :type LogOutputConf: :class:`tencentcloud.tem.v20201221.models.LogOutputConf`\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        :param Description: Version description\n        :type Description: str\n        :param ImageCommand: Image command\n        :type ImageCommand: str\n        :param ImageArgs: Image command parameters\n        :type ImageArgs: list of str\n        :param PortMappings: Service port mapping.\n        :type PortMappings: list of PortMapping\n        :param UseRegistryDefaultConfig: Whether to add the registry’s default configurations.\n        :type UseRegistryDefaultConfig: bool\n        :param SettingConfs: Mounting configurations\n        :type SettingConfs: list of MountedSettingConf\n        :param EksService: EKS access configuration\n        :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`\n        :param VersionId: ID of the version that you want to roll back to\n        :type VersionId: str\n        """
         self.ServiceId = None
         self.ContainerPort = None
         self.InitPodNum = None
@@ -593,11 +435,7 @@ class DeployServiceV2Response(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Version ID (which can be ignored for the frontend)
-        :type Result: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: Version ID (which can be ignored for the frontend)\n        :type Result: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -614,15 +452,7 @@ class DescribeIngressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespaceId: tem namespaceId
-        :type NamespaceId: str
-        :param EksNamespace: EKS namespace name
-        :type EksNamespace: str
-        :param Name: Ingress rule name
-        :type Name: str
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        """
+        :param NamespaceId: tem namespaceId\n        :type NamespaceId: str\n        :param EksNamespace: EKS namespace name\n        :type EksNamespace: str\n        :param Name: Ingress rule name\n        :type Name: str\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.EksNamespace = None
         self.Name = None
@@ -650,11 +480,7 @@ class DescribeIngressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Ingress rule configuration
-        :type Result: :class:`tencentcloud.tem.v20201221.models.IngressInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: Ingress rule configuration\n        :type Result: :class:`tencentcloud.tem.v20201221.models.IngressInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -673,15 +499,7 @@ class DescribeIngressesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespaceId: namespace id
-        :type NamespaceId: str
-        :param EksNamespace: namespace
-        :type EksNamespace: str
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        :param Names: Ingress rule name list.
-        :type Names: list of str
-        """
+        :param NamespaceId: namespace id\n        :type NamespaceId: str\n        :param EksNamespace: namespace\n        :type EksNamespace: str\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        :param Names: Ingress rule name list.\n        :type Names: list of str\n        """
         self.NamespaceId = None
         self.EksNamespace = None
         self.SourceChannel = None
@@ -710,11 +528,7 @@ class DescribeIngressesResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: Ingress array
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Result: list of IngressInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Result: list of IngressInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -736,13 +550,7 @@ class DescribeNamespacesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: Number of items per page
-        :type Limit: int
-        :param Offset: Page number
-        :type Offset: int
-        :param SourceChannel: Source
-        :type SourceChannel: int
-        """
+        :param Limit: Number of items per page\n        :type Limit: int\n        :param Offset: Page number\n        :type Offset: int\n        :param SourceChannel: Source\n        :type SourceChannel: int\n        """
         self.Limit = None
         self.Offset = None
         self.SourceChannel = None
@@ -768,11 +576,7 @@ class DescribeNamespacesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Returned result
-        :type Result: :class:`tencentcloud.tem.v20201221.models.NamespacePage`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: Returned result\n        :type Result: :class:`tencentcloud.tem.v20201221.models.NamespacePage`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -791,15 +595,7 @@ class DescribeRelatedIngressesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespaceId: Environment ID.
-        :type NamespaceId: str
-        :param EksNamespace: EKS namespace.
-        :type EksNamespace: str
-        :param SourceChannel: Source channel.
-        :type SourceChannel: int
-        :param ServiceId: Service ID.
-        :type ServiceId: str
-        """
+        :param NamespaceId: Environment ID.\n        :type NamespaceId: str\n        :param EksNamespace: EKS namespace.\n        :type EksNamespace: str\n        :param SourceChannel: Source channel.\n        :type SourceChannel: int\n        :param ServiceId: Service ID.\n        :type ServiceId: str\n        """
         self.NamespaceId = None
         self.EksNamespace = None
         self.SourceChannel = None
@@ -828,11 +624,7 @@ class DescribeRelatedIngressesResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: Ingress array.
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type Result: list of IngressInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type Result: list of IngressInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -854,17 +646,7 @@ class DescribeRunPodPage(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Page number
-        :type Offset: int
-        :param Limit: Number of items per page
-        :type Limit: int
-        :param TotalCount: Total number
-        :type TotalCount: int
-        :param RequestId: Request ID
-        :type RequestId: str
-        :param PodList: Number of items
-        :type PodList: list of RunVersionPod
-        """
+        :param Offset: Page number\n        :type Offset: int\n        :param Limit: Number of items per page\n        :type Limit: int\n        :param TotalCount: Total number\n        :type TotalCount: int\n        :param RequestId: Request ID\n        :type RequestId: str\n        :param PodList: Number of items\n        :type PodList: list of RunVersionPod\n        """
         self.Offset = None
         self.Limit = None
         self.TotalCount = None
@@ -899,24 +681,10 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespaceId: Environment ID
-        :type NamespaceId: str
-        :param ServiceId: Service name ID
-        :type ServiceId: str
-        :param Limit: Number of items per page. Default value: 20
-        :type Limit: int
-        :param Offset: Page number. Default value: 0
-        :type Offset: int
-        :param Status: Pod status 
+        :param NamespaceId: Environment ID\n        :type NamespaceId: str\n        :param ServiceId: Service name ID\n        :type ServiceId: str\n        :param Limit: Number of items per page. Default value: 20\n        :type Limit: int\n        :param Offset: Page number. Default value: 0\n        :type Offset: int\n        :param Status: Pod status 
 - Running 
 - Pending 
-- Error
-        :type Status: str
-        :param PodName: Pod name
-        :type PodName: str
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        """
+- Error\n        :type Status: str\n        :param PodName: Pod name\n        :type PodName: str\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.ServiceId = None
         self.Limit = None
@@ -950,11 +718,7 @@ class DescribeServiceRunPodListV2Response(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Returned result
-        :type Result: :class:`tencentcloud.tem.v20201221.models.DescribeRunPodPage`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: Returned result\n        :type Result: :class:`tencentcloud.tem.v20201221.models.DescribeRunPodPage`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -973,40 +737,18 @@ class EksService(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Service name
-        :type Name: str
-        :param Ports: Available ports
-        :type Ports: list of int
-        :param Yaml: Yaml contents
-        :type Yaml: str
-        :param ServiceName: Service name
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type ServiceName: str
-        :param VersionName: Version name
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type VersionName: str
-        :param ClusterIp: Private IP
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type ClusterIp: list of str
-        :param ExternalIp: Public IP
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type ExternalIp: str
-        :param Type: The access type. Valid values:
+        :param Name: Service name\n        :type Name: str\n        :param Ports: Available ports\n        :type Ports: list of int\n        :param Yaml: Yaml contents\n        :type Yaml: str\n        :param ServiceName: Service name
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type ServiceName: str\n        :param VersionName: Version name
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type VersionName: str\n        :param ClusterIp: Private IP
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type ClusterIp: list of str\n        :param ExternalIp: Public IP
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type ExternalIp: str\n        :param Type: The access type. Valid values:
 - EXTERNAL (internet access)
 - VPC（Intra-VPC access)
 - CLUSTER (Intra-cluster access)
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type Type: str
-        :param SubnetId: Subnet ID. It is filled when the access type is `VPC`.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type SubnetId: str
-        :param LoadBalanceId: Load balancer ID. It is filled when the access type is `EXTERNAL` or `CLUSTER`. It’s created automatically by default.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type LoadBalanceId: str
-        :param PortMappings: Port Mapping
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type PortMappings: list of PortMapping
-        """
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type Type: str\n        :param SubnetId: Subnet ID. It is filled when the access type is `VPC`.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type SubnetId: str\n        :param LoadBalanceId: Load balancer ID. It is filled when the access type is `EXTERNAL` or `CLUSTER`. It’s created automatically by default.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type LoadBalanceId: str\n        :param PortMappings: Port Mapping
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type PortMappings: list of PortMapping\n        """
         self.Name = None
         self.Ports = None
         self.Yaml = None
@@ -1053,17 +795,7 @@ class EsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MinAliveInstances: Minimum number of instances
-        :type MinAliveInstances: int
-        :param MaxAliveInstances: Maximum number of instances
-        :type MaxAliveInstances: int
-        :param EsStrategy: Auto scaling policy. 1: CPU; 2: memory
-        :type EsStrategy: int
-        :param Threshold: Auto scaling condition value
-        :type Threshold: int
-        :param VersionId: Version ID
-        :type VersionId: str
-        """
+        :param MinAliveInstances: Minimum number of instances\n        :type MinAliveInstances: int\n        :param MaxAliveInstances: Maximum number of instances\n        :type MaxAliveInstances: int\n        :param EsStrategy: Auto scaling policy. 1: CPU; 2: memory\n        :type EsStrategy: int\n        :param Threshold: Auto scaling condition value\n        :type Threshold: int\n        :param VersionId: Version ID\n        :type VersionId: str\n        """
         self.MinAliveInstances = None
         self.MaxAliveInstances = None
         self.EsStrategy = None
@@ -1093,15 +825,7 @@ class GenerateDownloadUrlRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Service ID
-        :type ServiceId: str
-        :param PkgName: Package Name
-        :type PkgName: str
-        :param DeployVersion: Version of the package to download
-        :type DeployVersion: str
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        """
+        :param ServiceId: Service ID\n        :type ServiceId: str\n        :param PkgName: Package Name\n        :type PkgName: str\n        :param DeployVersion: Version of the package to download\n        :type DeployVersion: str\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        """
         self.ServiceId = None
         self.PkgName = None
         self.DeployVersion = None
@@ -1130,11 +854,7 @@ class GenerateDownloadUrlResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: Temp download URL for the package
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type Result: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type Result: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1152,34 +872,12 @@ class IngressInfo(AbstractModel):
     def __init__(self):
         """
         :param NamespaceId: tem namespaceId
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type NamespaceId: str
-        :param EksNamespace: eks namespace
-        :type EksNamespace: str
-        :param AddressIPVersion: ip version
-        :type AddressIPVersion: str
-        :param Name: ingress name
-        :type Name: str
-        :param Rules: Rules configuration
-        :type Rules: list of IngressRule
-        :param ClbId: clb ID
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ClbId: str
-        :param Tls: TLS configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Tls: list of IngressTls
-        :param ClusterId: eks clusterId
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ClusterId: str
-        :param Vip: clb ip
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Vip: str
-        :param CreateTime: Creation time.
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type CreateTime: str
-        :param Mixed: Whether to listen on both the HTTP Port 80 and HTTPS Port 443. The default value is `false`. The optional value `true` means listening on both the HTTP Port 80 and HTTPS Port 443.
-        :type Mixed: bool
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type NamespaceId: str\n        :param EksNamespace: eks namespace\n        :type EksNamespace: str\n        :param AddressIPVersion: ip version\n        :type AddressIPVersion: str\n        :param Name: ingress name\n        :type Name: str\n        :param Rules: Rules configuration\n        :type Rules: list of IngressRule\n        :param ClbId: clb ID
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClbId: str\n        :param Tls: TLS configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Tls: list of IngressTls\n        :param ClusterId: eks clusterId
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClusterId: str\n        :param Vip: clb ip
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Vip: str\n        :param CreateTime: Creation time.
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type CreateTime: str\n        :param Mixed: Whether to listen on both the HTTP Port 80 and HTTPS Port 443. The default value is `false`. The optional value `true` means listening on both the HTTP Port 80 and HTTPS Port 443.\n        :type Mixed: bool\n        """
         self.NamespaceId = None
         self.EksNamespace = None
         self.AddressIPVersion = None
@@ -1231,14 +929,8 @@ class IngressRule(AbstractModel):
 
     def __init__(self):
         """
-        :param Http: ingress rule value
-        :type Http: :class:`tencentcloud.tem.v20201221.models.IngressRuleValue`
-        :param Host: Host address
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Host: str
-        :param Protocol: Protocol. Options include HTTP and HTTPS. The default option is HTTP.
-        :type Protocol: str
-        """
+        :param Http: ingress rule value\n        :type Http: :class:`tencentcloud.tem.v20201221.models.IngressRuleValue`\n        :param Host: Host address
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Host: str\n        :param Protocol: Protocol. Options include HTTP and HTTPS. The default option is HTTP.\n        :type Protocol: str\n        """
         self.Http = None
         self.Host = None
         self.Protocol = None
@@ -1266,11 +958,7 @@ class IngressRuleBackend(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceName: EKS service name
-        :type ServiceName: str
-        :param ServicePort: EKS service port
-        :type ServicePort: int
-        """
+        :param ServiceName: EKS service name\n        :type ServiceName: str\n        :param ServicePort: EKS service port\n        :type ServicePort: int\n        """
         self.ServiceName = None
         self.ServicePort = None
 
@@ -1294,11 +982,7 @@ class IngressRulePath(AbstractModel):
 
     def __init__(self):
         """
-        :param Path: Path information
-        :type Path: str
-        :param Backend: Backend configuration
-        :type Backend: :class:`tencentcloud.tem.v20201221.models.IngressRuleBackend`
-        """
+        :param Path: Path information\n        :type Path: str\n        :param Backend: Backend configuration\n        :type Backend: :class:`tencentcloud.tem.v20201221.models.IngressRuleBackend`\n        """
         self.Path = None
         self.Backend = None
 
@@ -1324,9 +1008,7 @@ class IngressRuleValue(AbstractModel):
 
     def __init__(self):
         """
-        :param Paths: Overall rule configuration
-        :type Paths: list of IngressRulePath
-        """
+        :param Paths: Overall rule configuration\n        :type Paths: list of IngressRulePath\n        """
         self.Paths = None
 
 
@@ -1353,13 +1035,7 @@ class IngressTls(AbstractModel):
 
     def __init__(self):
         """
-        :param Hosts: Host array. An empty array indicates the default certificate for all domain names.
-        :type Hosts: list of str
-        :param SecretName: Secret name. If a certificate is used, this field is left empty.
-        :type SecretName: str
-        :param CertificateId: SSL Certificate Id
-        :type CertificateId: str
-        """
+        :param Hosts: Host array. An empty array indicates the default certificate for all domain names.\n        :type Hosts: list of str\n        :param SecretName: Secret name. If a certificate is used, this field is left empty.\n        :type SecretName: str\n        :param CertificateId: SSL Certificate Id\n        :type CertificateId: str\n        """
         self.Hosts = None
         self.SecretName = None
         self.CertificateId = None
@@ -1385,17 +1061,7 @@ class LogOutputConf(AbstractModel):
 
     def __init__(self):
         """
-        :param OutputType: Log consumer type
-        :type OutputType: str
-        :param ClsLogsetName: CLS logset
-        :type ClsLogsetName: str
-        :param ClsLogTopicId: CLS log topic
-        :type ClsLogTopicId: str
-        :param ClsLogsetId: CLS logset ID
-        :type ClsLogsetId: str
-        :param ClsLogTopicName: CLS log topic name
-        :type ClsLogTopicName: str
-        """
+        :param OutputType: Log consumer type\n        :type OutputType: str\n        :param ClsLogsetName: CLS logset\n        :type ClsLogsetName: str\n        :param ClsLogTopicId: CLS log topic\n        :type ClsLogTopicId: str\n        :param ClsLogsetId: CLS logset ID\n        :type ClsLogsetId: str\n        :param ClsLogTopicName: CLS log topic name\n        :type ClsLogTopicName: str\n        """
         self.OutputType = None
         self.ClsLogsetName = None
         self.ClsLogTopicId = None
@@ -1425,11 +1091,7 @@ class ModifyIngressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ingress: Ingress rule configuration
-        :type Ingress: :class:`tencentcloud.tem.v20201221.models.IngressInfo`
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        """
+        :param Ingress: Ingress rule configuration\n        :type Ingress: :class:`tencentcloud.tem.v20201221.models.IngressInfo`\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        """
         self.Ingress = None
         self.SourceChannel = None
 
@@ -1456,11 +1118,7 @@ class ModifyIngressResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: Created successfully
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Result: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1477,19 +1135,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespaceId: Environment ID
-        :type NamespaceId: str
-        :param NamespaceName: Namespace name
-        :type NamespaceName: str
-        :param Description: Namespace description
-        :type Description: str
-        :param Vpc: VPC name
-        :type Vpc: str
-        :param SubnetIds: Subnet
-        :type SubnetIds: list of str
-        :param SourceChannel: Source channel
-        :type SourceChannel: int
-        """
+        :param NamespaceId: Environment ID\n        :type NamespaceId: str\n        :param NamespaceName: Namespace name\n        :type NamespaceName: str\n        :param Description: Namespace description\n        :type Description: str\n        :param Vpc: VPC name\n        :type Vpc: str\n        :param SubnetIds: Subnet\n        :type SubnetIds: list of str\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.NamespaceName = None
         self.Description = None
@@ -1522,11 +1168,7 @@ class ModifyNamespaceResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: Namespace ID in case of success and `null` in case of failure
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Result: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1543,13 +1185,7 @@ class ModifyServiceInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: Service ID.
-        :type ServiceId: str
-        :param Description: Description.
-        :type Description: str
-        :param SourceChannel: Source channel.
-        :type SourceChannel: int
-        """
+        :param ServiceId: Service ID.\n        :type ServiceId: str\n        :param Description: Description.\n        :type Description: str\n        :param SourceChannel: Source channel.\n        :type SourceChannel: int\n        """
         self.ServiceId = None
         self.Description = None
         self.SourceChannel = None
@@ -1576,11 +1212,7 @@ class ModifyServiceInfoResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: Results.
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type Result: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1597,13 +1229,7 @@ class MountedSettingConf(AbstractModel):
 
     def __init__(self):
         """
-        :param ConfigDataName: Configuration Name
-        :type ConfigDataName: str
-        :param MountedPath: Mount point path
-        :type MountedPath: str
-        :param Data: Configuration Content
-        :type Data: list of Pair
-        """
+        :param ConfigDataName: Configuration Name\n        :type ConfigDataName: str\n        :param MountedPath: Mount point path\n        :type MountedPath: str\n        :param Data: Configuration Content\n        :type Data: list of Pair\n        """
         self.ConfigDataName = None
         self.MountedPath = None
         self.Data = None
@@ -1634,15 +1260,7 @@ class NamespacePage(AbstractModel):
 
     def __init__(self):
         """
-        :param Records: Records
-        :type Records: list of TemNamespaceInfo
-        :param Total: Total number
-        :type Total: int
-        :param Size: Number of items
-        :type Size: int
-        :param Pages: Number of pages
-        :type Pages: int
-        """
+        :param Records: Records\n        :type Records: list of TemNamespaceInfo\n        :param Total: Total number\n        :type Total: int\n        :param Size: Number of items\n        :type Size: int\n        :param Pages: Number of pages\n        :type Pages: int\n        """
         self.Records = None
         self.Total = None
         self.Size = None
@@ -1675,11 +1293,7 @@ class Pair(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: Key
-        :type Key: str
-        :param Value: Value
-        :type Value: str
-        """
+        :param Key: Key\n        :type Key: str\n        :param Value: Value\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -1703,13 +1317,7 @@ class PortMapping(AbstractModel):
 
     def __init__(self):
         """
-        :param Port: Port.
-        :type Port: int
-        :param TargetPort: Mapped port.
-        :type TargetPort: int
-        :param Protocol: TCP/UDP protocol stack.
-        :type Protocol: str
-        """
+        :param Port: Port.\n        :type Port: int\n        :param TargetPort: Mapped port.\n        :type TargetPort: int\n        :param Protocol: TCP/UDP protocol stack.\n        :type Protocol: str\n        """
         self.Port = None
         self.TargetPort = None
         self.Protocol = None
@@ -1735,21 +1343,7 @@ class RestartServiceRunPodRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespaceId: Environment ID.
-        :type NamespaceId: str
-        :param ServiceId: Service ID.
-        :type ServiceId: str
-        :param PodName: Pod name.
-        :type PodName: str
-        :param Limit: Number of items per page.
-        :type Limit: int
-        :param Offset: Page number.
-        :type Offset: int
-        :param Status: Pod status.
-        :type Status: str
-        :param SourceChannel: Source channel.
-        :type SourceChannel: int
-        """
+        :param NamespaceId: Environment ID.\n        :type NamespaceId: str\n        :param ServiceId: Service ID.\n        :type ServiceId: str\n        :param PodName: Pod name.\n        :type PodName: str\n        :param Limit: Number of items per page.\n        :type Limit: int\n        :param Offset: Page number.\n        :type Offset: int\n        :param Status: Pod status.\n        :type Status: str\n        :param SourceChannel: Source channel.\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.ServiceId = None
         self.PodName = None
@@ -1784,11 +1378,7 @@ class RestartServiceRunPodResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: Returned results.
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type Result: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1805,23 +1395,9 @@ class RunVersionPod(AbstractModel):
 
     def __init__(self):
         """
-        :param Webshell: Shell address
-        :type Webshell: str
-        :param PodId: Pod ID
-        :type PodId: str
-        :param Status: Status
-        :type Status: str
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param PodIp: Pod IP.
-        :type PodIp: str
-        :param Zone: Availability zone.
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type Zone: str
-        :param DeployVersion: Deployed version.
-Note: this field may return `null`, indicating that no valid value can be obtained.
-        :type DeployVersion: str
-        """
+        :param Webshell: Shell address\n        :type Webshell: str\n        :param PodId: Pod ID\n        :type PodId: str\n        :param Status: Status\n        :type Status: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param PodIp: Pod IP.\n        :type PodIp: str\n        :param Zone: Availability zone.
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type Zone: str\n        :param DeployVersion: Deployed version.
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type DeployVersion: str\n        """
         self.Webshell = None
         self.PodId = None
         self.Status = None
@@ -1855,14 +1431,8 @@ class StorageConf(AbstractModel):
 
     def __init__(self):
         """
-        :param StorageVolName: Storage volume name
-        :type StorageVolName: str
-        :param StorageVolPath: Storage volume path
-        :type StorageVolPath: str
-        :param StorageVolIp: Storage volume IP
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type StorageVolIp: str
-        """
+        :param StorageVolName: Storage volume name\n        :type StorageVolName: str\n        :param StorageVolPath: Storage volume path\n        :type StorageVolPath: str\n        :param StorageVolIp: Storage volume IP
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type StorageVolIp: str\n        """
         self.StorageVolName = None
         self.StorageVolPath = None
         self.StorageVolIp = None
@@ -1888,11 +1458,7 @@ class StorageMountConf(AbstractModel):
 
     def __init__(self):
         """
-        :param VolumeName: Data volume name
-        :type VolumeName: str
-        :param MountPath: Data volume binding path
-        :type MountPath: str
-        """
+        :param VolumeName: Data volume name\n        :type VolumeName: str\n        :param MountPath: Data volume binding path\n        :type MountPath: str\n        """
         self.VolumeName = None
         self.MountPath = None
 
@@ -1916,42 +1482,8 @@ class TemNamespaceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespaceId: Namespace ID
-        :type NamespaceId: str
-        :param Channel: Channel
-        :type Channel: str
-        :param NamespaceName: Namespace name
-        :type NamespaceName: str
-        :param Region: Region name
-        :type Region: str
-        :param Description: Namespace description
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Description: str
-        :param Status: Status. 1: terminated; 0: normal
-        :type Status: int
-        :param Vpc: VPC
-        :type Vpc: str
-        :param CreateDate: Creation time
-        :type CreateDate: str
-        :param ModifyDate: Modification time
-        :type ModifyDate: str
-        :param Modifier: Modifier
-        :type Modifier: str
-        :param Creator: Creator
-        :type Creator: str
-        :param ServiceNum: Number of services
-        :type ServiceNum: int
-        :param RunInstancesNum: Number of running instances
-        :type RunInstancesNum: int
-        :param SubnetId: Subnet
-        :type SubnetId: str
-        :param TcbEnvStatus: TCB environment status
-        :type TcbEnvStatus: str
-        :param ClusterStatus: eks cluster status
-        :type ClusterStatus: str
-        :param EnableTswTraceService: Whether to enable TSW
-        :type EnableTswTraceService: bool
-        """
+        :param NamespaceId: Namespace ID\n        :type NamespaceId: str\n        :param Channel: Channel\n        :type Channel: str\n        :param NamespaceName: Namespace name\n        :type NamespaceName: str\n        :param Region: Region name\n        :type Region: str\n        :param Description: Namespace description
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Description: str\n        :param Status: Status. 1: terminated; 0: normal\n        :type Status: int\n        :param Vpc: VPC\n        :type Vpc: str\n        :param CreateDate: Creation time\n        :type CreateDate: str\n        :param ModifyDate: Modification time\n        :type ModifyDate: str\n        :param Modifier: Modifier\n        :type Modifier: str\n        :param Creator: Creator\n        :type Creator: str\n        :param ServiceNum: Number of services\n        :type ServiceNum: int\n        :param RunInstancesNum: Number of running instances\n        :type RunInstancesNum: int\n        :param SubnetId: Subnet\n        :type SubnetId: str\n        :param TcbEnvStatus: TCB environment status\n        :type TcbEnvStatus: str\n        :param ClusterStatus: eks cluster status\n        :type ClusterStatus: str\n        :param EnableTswTraceService: Whether to enable TSW\n        :type EnableTswTraceService: bool\n        """
         self.NamespaceId = None
         self.Channel = None
         self.NamespaceName = None

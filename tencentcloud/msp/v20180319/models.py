@@ -25,9 +25,7 @@ class DeregisterMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Task ID
-        :type TaskId: str
-        """
+        :param TaskId: Task ID\n        :type TaskId: str\n        """
         self.TaskId = None
 
 
@@ -49,9 +47,7 @@ class DeregisterMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -66,9 +62,7 @@ class DescribeMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Task ID, such as msp-jitoh33n
-        :type TaskId: str
-        """
+        :param TaskId: Task ID, such as msp-jitoh33n\n        :type TaskId: str\n        """
         self.TaskId = None
 
 
@@ -90,11 +84,7 @@ class DescribeMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskStatus: Migration details list
-        :type TaskStatus: list of TaskStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TaskStatus: Migration details list\n        :type TaskStatus: list of TaskStatus\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskStatus = None
         self.RequestId = None
 
@@ -116,15 +106,7 @@ class DstInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Migration destination region
-        :type Region: str
-        :param Ip: 
-        :type Ip: str
-        :param Port: Migration destination port
-        :type Port: str
-        :param InstanceId: Migration destination instance ID
-        :type InstanceId: str
-        """
+        :param Region: Migration destination region\n        :type Region: str\n        :param Ip: \n        :type Ip: str\n        :param Port: Migration destination port\n        :type Port: str\n        :param InstanceId: Migration destination instance ID\n        :type InstanceId: str\n        """
         self.Region = None
         self.Ip = None
         self.Port = None
@@ -152,11 +134,7 @@ class ListMigrationProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: The initial number of records, default value: 0
-        :type Offset: int
-        :param Limit: The number of records returned, default value: 500
-        :type Limit: int
-        """
+        :param Offset: The initial number of records, default value: 0\n        :type Offset: int\n        :param Limit: The number of records returned, default value: 500\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -180,13 +158,7 @@ class ListMigrationProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Projects: Project list
-        :type Projects: list of Project
-        :param TotalCount: Total number of projects
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Projects: Project list\n        :type Projects: list of Project\n        :param TotalCount: Total number of projects\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Projects = None
         self.TotalCount = None
         self.RequestId = None
@@ -210,13 +182,7 @@ class ListMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: The initial number of records, default value: 0
-        :type Offset: int
-        :param Limit: Number of records, default value: 10
-        :type Limit: int
-        :param ProjectId: Project ID, the default value is empty.
-        :type ProjectId: int
-        """
+        :param Offset: The initial number of records, default value: 0\n        :type Offset: int\n        :param Limit: Number of records, default value: 10\n        :type Limit: int\n        :param ProjectId: Project ID, the default value is empty.\n        :type ProjectId: int\n        """
         self.Offset = None
         self.Limit = None
         self.ProjectId = None
@@ -242,13 +208,7 @@ class ListMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of records
-        :type TotalCount: int
-        :param Tasks: Migration task list
-        :type Tasks: list of Task
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of records\n        :type TotalCount: int\n        :param Tasks: Migration task list\n        :type Tasks: list of Task\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Tasks = None
         self.RequestId = None
@@ -272,11 +232,7 @@ class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Task ID, such as msp-jitoh33n
-        :type TaskId: str
-        :param ProjectId: Project ID, such as 10005
-        :type ProjectId: int
-        """
+        :param TaskId: Task ID, such as msp-jitoh33n\n        :type TaskId: str\n        :param ProjectId: Project ID, such as 10005\n        :type ProjectId: int\n        """
         self.TaskId = None
         self.ProjectId = None
 
@@ -300,9 +256,7 @@ class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -317,11 +271,7 @@ class ModifyMigrationTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: Task status, valid values include `unstart` (migration has not started), `migrating` (migration in progress), `finish` (migration completed) or `fail` (migration failed).
-        :type Status: str
-        :param TaskId: Task ID, such as msp-jitoh33n
-        :type TaskId: str
-        """
+        :param Status: Task status, valid values include `unstart` (migration has not started), `migrating` (migration in progress), `finish` (migration completed) or `fail` (migration failed).\n        :type Status: str\n        :param TaskId: Task ID, such as msp-jitoh33n\n        :type TaskId: str\n        """
         self.Status = None
         self.TaskId = None
 
@@ -345,9 +295,7 @@ class ModifyMigrationTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -362,11 +310,7 @@ class Project(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param ProjectName: Project name
-        :type ProjectName: str
-        """
+        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param ProjectName: Project name\n        :type ProjectName: str\n        """
         self.ProjectId = None
         self.ProjectName = None
 
@@ -390,31 +334,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskType: Task type, valid values include `database` (database migration), `file` (file migration) or `host` (host migration).
-        :type TaskType: str
-        :param TaskName: Task name
-        :type TaskName: str
-        :param ServiceSupplier: Service supplier name
-        :type ServiceSupplier: str
-        :param CreateTime: Migration task creation time
-        :type CreateTime: str
-        :param UpdateTime: Migration task update time
-        :type UpdateTime: str
-        :param MigrateClass: Migration type, for example `mysql:mysql` in database migration means migration from mysql to mysql and `oss:cos` in file migration means migration from Alibaba Cloud OSS to Tencent COS.
-        :type MigrateClass: str
-        :param SrcInfo: Migration task source information
-        :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
-        :param DstInfo: Migration task destination information
-        :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`
-        :param SrcAccessType: Source instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)
-        :type SrcAccessType: str
-        :param SrcDatabaseType: Database type of the source instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`
-        :type SrcDatabaseType: str
-        :param DstAccessType: Target instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)
-        :type DstAccessType: str
-        :param DstDatabaseType: Database type of the target instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`
-        :type DstDatabaseType: str
-        """
+        :param TaskType: Task type, valid values include `database` (database migration), `file` (file migration) or `host` (host migration).\n        :type TaskType: str\n        :param TaskName: Task name\n        :type TaskName: str\n        :param ServiceSupplier: Service supplier name\n        :type ServiceSupplier: str\n        :param CreateTime: Migration task creation time\n        :type CreateTime: str\n        :param UpdateTime: Migration task update time\n        :type UpdateTime: str\n        :param MigrateClass: Migration type, for example `mysql:mysql` in database migration means migration from mysql to mysql and `oss:cos` in file migration means migration from Alibaba Cloud OSS to Tencent COS.\n        :type MigrateClass: str\n        :param SrcInfo: Migration task source information\n        :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`\n        :param DstInfo: Migration task destination information\n        :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`\n        :param SrcAccessType: Source instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)\n        :type SrcAccessType: str\n        :param SrcDatabaseType: Database type of the source instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`\n        :type SrcDatabaseType: str\n        :param DstAccessType: Target instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)\n        :type DstAccessType: str\n        :param DstDatabaseType: Database type of the target instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`\n        :type DstDatabaseType: str\n        """
         self.TaskType = None
         self.TaskName = None
         self.ServiceSupplier = None
@@ -462,11 +382,7 @@ class RegisterMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Task ID
-        :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TaskId: Task ID\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -483,15 +399,7 @@ class SrcInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Migration source region
-        :type Region: str
-        :param Ip: 
-        :type Ip: str
-        :param Port: Migration source port
-        :type Port: str
-        :param InstanceId: Migration source instance ID
-        :type InstanceId: str
-        """
+        :param Region: Migration source region\n        :type Region: str\n        :param Ip: \n        :type Ip: str\n        :param Port: Migration source port\n        :type Port: str\n        :param InstanceId: Migration source instance ID\n        :type InstanceId: str\n        """
         self.Region = None
         self.Ip = None
         self.Port = None
@@ -519,27 +427,7 @@ class Task(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Task ID
-        :type TaskId: str
-        :param TaskName: Task name
-        :type TaskName: str
-        :param MigrationType: Migration type
-        :type MigrationType: str
-        :param Status: Migration status
-        :type Status: str
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param ProjectName: Project name
-        :type ProjectName: str
-        :param SrcInfo: Migration source information
-        :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
-        :param MigrationTimeLine: Migration time information
-        :type MigrationTimeLine: :class:`tencentcloud.msp.v20180319.models.TimeObj`
-        :param Updated: Status update time
-        :type Updated: str
-        :param DstInfo: Migration destination information
-        :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`
-        """
+        :param TaskId: Task ID\n        :type TaskId: str\n        :param TaskName: Task name\n        :type TaskName: str\n        :param MigrationType: Migration type\n        :type MigrationType: str\n        :param Status: Migration status\n        :type Status: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param ProjectName: Project name\n        :type ProjectName: str\n        :param SrcInfo: Migration source information\n        :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`\n        :param MigrationTimeLine: Migration time information\n        :type MigrationTimeLine: :class:`tencentcloud.msp.v20180319.models.TimeObj`\n        :param Updated: Status update time\n        :type Updated: str\n        :param DstInfo: Migration destination information\n        :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`\n        """
         self.TaskId = None
         self.TaskName = None
         self.MigrationType = None
@@ -585,13 +473,7 @@ class TaskStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: Migration status
-        :type Status: str
-        :param Progress: Migration progress
-        :type Progress: str
-        :param UpdateTime: Migration date
-        :type UpdateTime: str
-        """
+        :param Status: Migration status\n        :type Status: str\n        :param Progress: Migration progress\n        :type Progress: str\n        :param UpdateTime: Migration date\n        :type UpdateTime: str\n        """
         self.Status = None
         self.Progress = None
         self.UpdateTime = None
@@ -617,11 +499,7 @@ class TimeObj(AbstractModel):
 
     def __init__(self):
         """
-        :param CreateTime: The creation time
-        :type CreateTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        """
+        :param CreateTime: The creation time\n        :type CreateTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        """
         self.CreateTime = None
         self.EndTime = None
 

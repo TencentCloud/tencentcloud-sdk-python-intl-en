@@ -25,12 +25,8 @@ class AttachedInputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Media input ID.
-        :type Id: str
-        :param AudioSelectors: Audio selector for media input. Quantity limit: [0,20]
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AudioSelectors: list of AudioSelectorInfo
-        """
+        :param Id: Media input ID.\n        :type Id: str\n        :param AudioSelectors: Audio selector for media input. Quantity limit: [0,20]
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AudioSelectors: list of AudioSelectorInfo\n        """
         self.Id = None
         self.AudioSelectors = None
 
@@ -59,9 +55,7 @@ class AudioPidSelectionInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Pid: Audio `Pid`. Default value: 0.
-        :type Pid: int
-        """
+        :param Pid: Audio `Pid`. Default value: 0.\n        :type Pid: int\n        """
         self.Pid = None
 
 
@@ -83,13 +77,7 @@ class AudioPipelineInputStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param Fps: Audio FPS.
-        :type Fps: int
-        :param Rate: Audio bitrate in bps.
-        :type Rate: int
-        :param Pid: Audio `Pid`, which is available only if the input is `rtp/udp`.
-        :type Pid: int
-        """
+        :param Fps: Audio FPS.\n        :type Fps: int\n        :param Rate: Audio bitrate in bps.\n        :type Rate: int\n        :param Pid: Audio `Pid`, which is available only if the input is `rtp/udp`.\n        :type Pid: int\n        """
         self.Fps = None
         self.Rate = None
         self.Pid = None
@@ -115,11 +103,7 @@ class AudioSelectorInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Audio name, which can contain 1-32 letters, digits, and underscores.
-        :type Name: str
-        :param AudioPidSelection: Audio `Pid` selection.
-        :type AudioPidSelection: :class:`tencentcloud.mdl.v20200326.models.AudioPidSelectionInfo`
-        """
+        :param Name: Audio name, which can contain 1-32 letters, digits, and underscores.\n        :type Name: str\n        :param AudioPidSelection: Audio `Pid` selection.\n        :type AudioPidSelection: :class:`tencentcloud.mdl.v20200326.models.AudioPidSelectionInfo`\n        """
         self.Name = None
         self.AudioPidSelection = None
 
@@ -145,18 +129,8 @@ class AudioTemplateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AudioSelectorName: Only `AttachedInputs.AudioSelectors.Name` can be selected. This parameter is required for RTP_PUSH and UDP_PUSH.
-        :type AudioSelectorName: str
-        :param Name: Audio transcoding template name, which can contain 1-20 letters and digits.
-        :type Name: str
-        :param Acodec: Audio codec. Valid value: AAC. Default value: AAC.
-        :type Acodec: str
-        :param AudioBitrate: Audio bitrate. If this parameter is left empty, the original value will be used.
-Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000, 512000, 576000, 640000, 768000, 896000, 1024000
-        :type AudioBitrate: int
-        :param LanguageCode: Audio language code, whose length is always 3 characters.
-        :type LanguageCode: str
-        """
+        :param AudioSelectorName: Only `AttachedInputs.AudioSelectors.Name` can be selected. This parameter is required for RTP_PUSH and UDP_PUSH.\n        :type AudioSelectorName: str\n        :param Name: Audio transcoding template name, which can contain 1-20 letters and digits.\n        :type Name: str\n        :param Acodec: Audio codec. Valid value: AAC. Default value: AAC.\n        :type Acodec: str\n        :param AudioBitrate: Audio bitrate. If this parameter is left empty, the original value will be used.
+Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000, 512000, 576000, 640000, 768000, 896000, 1024000\n        :type AudioBitrate: int\n        :param LanguageCode: Audio language code, whose length is always 3 characters.\n        :type LanguageCode: str\n        """
         self.AudioSelectorName = None
         self.Name = None
         self.Acodec = None
@@ -186,11 +160,7 @@ class ChannelAlertInfos(AbstractModel):
 
     def __init__(self):
         """
-        :param Pipeline0: Alarm details of pipeline 0 under this channel.
-        :type Pipeline0: list of ChannelPipelineAlerts
-        :param Pipeline1: Alarm details of pipeline 1 under this channel.
-        :type Pipeline1: list of ChannelPipelineAlerts
-        """
+        :param Pipeline0: Alarm details of pipeline 0 under this channel.\n        :type Pipeline0: list of ChannelPipelineAlerts\n        :param Pipeline1: Alarm details of pipeline 1 under this channel.\n        :type Pipeline1: list of ChannelPipelineAlerts\n        """
         self.Pipeline0 = None
         self.Pipeline1 = None
 
@@ -224,23 +194,9 @@ class ChannelInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Channel ID.
-        :type Id: str
-        :param State: Channel status.
-        :type State: str
-        :param AttachedInputs: Information of associated input.
-        :type AttachedInputs: list of AttachedInputInfo
-        :param OutputGroups: Information of output group.
-        :type OutputGroups: list of OutputGroupsInfo
-        :param Name: Channel name.
-        :type Name: str
-        :param AudioTemplates: Audio transcoding template array.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AudioTemplates: list of AudioTemplateInfo
-        :param VideoTemplates: Video transcoding template array.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VideoTemplates: list of VideoTemplateInfo
-        """
+        :param Id: Channel ID.\n        :type Id: str\n        :param State: Channel status.\n        :type State: str\n        :param AttachedInputs: Information of associated input.\n        :type AttachedInputs: list of AttachedInputInfo\n        :param OutputGroups: Information of output group.\n        :type OutputGroups: list of OutputGroupsInfo\n        :param Name: Channel name.\n        :type Name: str\n        :param AudioTemplates: Audio transcoding template array.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AudioTemplates: list of AudioTemplateInfo\n        :param VideoTemplates: Video transcoding template array.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type VideoTemplates: list of VideoTemplateInfo\n        """
         self.Id = None
         self.State = None
         self.AttachedInputs = None
@@ -294,11 +250,7 @@ class ChannelInputStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param InputId: Input ID.
-        :type InputId: str
-        :param Statistics: Input statistics.
-        :type Statistics: :class:`tencentcloud.mdl.v20200326.models.InputStatistics`
-        """
+        :param InputId: Input ID.\n        :type InputId: str\n        :param Statistics: Input statistics.\n        :type Statistics: :class:`tencentcloud.mdl.v20200326.models.InputStatistics`\n        """
         self.InputId = None
         self.Statistics = None
 
@@ -324,11 +276,7 @@ class ChannelOutputsStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param OutputGroupName: Output group name.
-        :type OutputGroupName: str
-        :param Statistics: Output group statistics.
-        :type Statistics: :class:`tencentcloud.mdl.v20200326.models.OutputsStatistics`
-        """
+        :param OutputGroupName: Output group name.\n        :type OutputGroupName: str\n        :param Statistics: Output group statistics.\n        :type Statistics: :class:`tencentcloud.mdl.v20200326.models.OutputsStatistics`\n        """
         self.OutputGroupName = None
         self.Statistics = None
 
@@ -354,16 +302,8 @@ class ChannelPipelineAlerts(AbstractModel):
 
     def __init__(self):
         """
-        :param SetTime: Alarm start time in UTC time.
-        :type SetTime: str
-        :param ClearTime: Alarm end time in UTC time.
-This time is available only after the alarm ends.
-        :type ClearTime: str
-        :param Type: Alarm type.
-        :type Type: str
-        :param Message: Alarm details.
-        :type Message: str
-        """
+        :param SetTime: Alarm start time in UTC time.\n        :type SetTime: str\n        :param ClearTime: Alarm end time in UTC time.
+This time is available only after the alarm ends.\n        :type ClearTime: str\n        :param Type: Alarm type.\n        :type Type: str\n        :param Message: Alarm details.\n        :type Message: str\n        """
         self.SetTime = None
         self.ClearTime = None
         self.Type = None
@@ -391,17 +331,7 @@ class CreateMediaLiveChannelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Channel name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.
-        :type Name: str
-        :param AttachedInputs: Associated media input. Quantity limit: [1,1].
-        :type AttachedInputs: list of AttachedInputInfo
-        :param OutputGroups: Configuration information of channel output groups. Quantity limit: [1,10].
-        :type OutputGroups: list of OutputGroupsInfo
-        :param AudioTemplates: Audio transcoding template array. Quantity limit: [1,20].
-        :type AudioTemplates: list of AudioTemplateInfo
-        :param VideoTemplates: Video transcoding template array. Quantity limit: [1,10].
-        :type VideoTemplates: list of VideoTemplateInfo
-        """
+        :param Name: Channel name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.\n        :type Name: str\n        :param AttachedInputs: Associated media input. Quantity limit: [1,1].\n        :type AttachedInputs: list of AttachedInputInfo\n        :param OutputGroups: Configuration information of channel output groups. Quantity limit: [1,10].\n        :type OutputGroups: list of OutputGroupsInfo\n        :param AudioTemplates: Audio transcoding template array. Quantity limit: [1,20].\n        :type AudioTemplates: list of AudioTemplateInfo\n        :param VideoTemplates: Video transcoding template array. Quantity limit: [1,10].\n        :type VideoTemplates: list of VideoTemplateInfo\n        """
         self.Name = None
         self.AttachedInputs = None
         self.OutputGroups = None
@@ -451,11 +381,7 @@ class CreateMediaLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Channel ID.
-        :type Id: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Id: Channel ID.\n        :type Id: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Id = None
         self.RequestId = None
 
@@ -472,17 +398,9 @@ class CreateMediaLiveInputRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Media input name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.
-        :type Name: str
-        :param Type: Media input type.
-Valid values: RTMP_PUSH/RTP_PUSH/UDP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.
-        :type Type: str
-        :param SecurityGroupIds: ID of the input security group to be bound.
-Only one security group can be associated.
-        :type SecurityGroupIds: list of str
-        :param InputSettings: Input settings information, one or two sets of which need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.
-        :type InputSettings: list of InputSettingInfo
-        """
+        :param Name: Media input name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.\n        :type Name: str\n        :param Type: Media input type.
+Valid values: RTMP_PUSH/RTP_PUSH/UDP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.\n        :type Type: str\n        :param SecurityGroupIds: ID of the input security group to be bound.
+Only one security group can be associated.\n        :type SecurityGroupIds: list of str\n        :param InputSettings: Input settings information, one or two sets of which need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.\n        :type InputSettings: list of InputSettingInfo\n        """
         self.Name = None
         self.Type = None
         self.SecurityGroupIds = None
@@ -515,11 +433,7 @@ class CreateMediaLiveInputResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Media input ID.
-        :type Id: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Id: Media input ID.\n        :type Id: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Id = None
         self.RequestId = None
 
@@ -536,11 +450,7 @@ class CreateMediaLiveInputSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Input security group name, which can contain letters, digits, and underscores and must be unique at the region level.
-        :type Name: str
-        :param Whitelist: List of allowlist entries. Quantity limit: [1,10].
-        :type Whitelist: list of str
-        """
+        :param Name: Input security group name, which can contain letters, digits, and underscores and must be unique at the region level.\n        :type Name: str\n        :param Whitelist: List of allowlist entries. Quantity limit: [1,10].\n        :type Whitelist: list of str\n        """
         self.Name = None
         self.Whitelist = None
 
@@ -564,11 +474,7 @@ class CreateMediaLiveInputSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Security group ID.
-        :type Id: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Id: Security group ID.\n        :type Id: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Id = None
         self.RequestId = None
 
@@ -585,13 +491,7 @@ class DashRemuxSettingsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SegmentDuration: Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
-        :type SegmentDuration: int
-        :param SegmentNumber: Number of segments. Value range: [1,30]. Default value: 5.
-        :type SegmentNumber: int
-        :param PeriodTriggers: Whether to enable multi-period. Valid values: CLOSE/OPEN. Default value: CLOSE.
-        :type PeriodTriggers: str
-        """
+        :param SegmentDuration: Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.\n        :type SegmentDuration: int\n        :param SegmentNumber: Number of segments. Value range: [1,30]. Default value: 5.\n        :type SegmentNumber: int\n        :param PeriodTriggers: Whether to enable multi-period. Valid values: CLOSE/OPEN. Default value: CLOSE.\n        :type PeriodTriggers: str\n        """
         self.SegmentDuration = None
         self.SegmentNumber = None
         self.PeriodTriggers = None
@@ -617,9 +517,7 @@ class DeleteMediaLiveChannelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Channel ID.
-        :type Id: str
-        """
+        :param Id: Channel ID.\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -641,9 +539,7 @@ class DeleteMediaLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -658,9 +554,7 @@ class DeleteMediaLiveInputRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Media input ID.
-        :type Id: str
-        """
+        :param Id: Media input ID.\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -682,9 +576,7 @@ class DeleteMediaLiveInputResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -699,9 +591,7 @@ class DeleteMediaLiveInputSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Input security group ID.
-        :type Id: str
-        """
+        :param Id: Input security group ID.\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -723,9 +613,7 @@ class DeleteMediaLiveInputSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -740,9 +628,7 @@ class DescribeMediaLiveChannelAlertsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ChannelId: Channel ID.
-        :type ChannelId: str
-        """
+        :param ChannelId: Channel ID.\n        :type ChannelId: str\n        """
         self.ChannelId = None
 
 
@@ -764,11 +650,7 @@ class DescribeMediaLiveChannelAlertsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Infos: Alarm information of two pipelines under this channel.
-        :type Infos: :class:`tencentcloud.mdl.v20200326.models.ChannelAlertInfos`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Infos: Alarm information of two pipelines under this channel.\n        :type Infos: :class:`tencentcloud.mdl.v20200326.models.ChannelAlertInfos`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Infos = None
         self.RequestId = None
 
@@ -787,17 +669,9 @@ class DescribeMediaLiveChannelInputStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ChannelId: Channel ID.
-        :type ChannelId: str
-        :param StartTime: Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.
-UTC time, such as `2020-01-01T12:00:00Z`.
-        :type StartTime: str
-        :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
-UTC time, such as `2020-01-01T12:00:00Z`.
-        :type EndTime: str
-        :param Period: Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min.
-        :type Period: str
-        """
+        :param ChannelId: Channel ID.\n        :type ChannelId: str\n        :param StartTime: Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.
+UTC time, such as `2020-01-01T12:00:00Z`.\n        :type StartTime: str\n        :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
+UTC time, such as `2020-01-01T12:00:00Z`.\n        :type EndTime: str\n        :param Period: Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min.\n        :type Period: str\n        """
         self.ChannelId = None
         self.StartTime = None
         self.EndTime = None
@@ -825,11 +699,7 @@ class DescribeMediaLiveChannelInputStatisticsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Infos: Channel input statistics array.
-        :type Infos: list of ChannelInputStatistics
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Infos: Channel input statistics array.\n        :type Infos: list of ChannelInputStatistics\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Infos = None
         self.RequestId = None
 
@@ -851,15 +721,9 @@ class DescribeMediaLiveChannelLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ChannelId: Channel ID.
-        :type ChannelId: str
-        :param StartTime: Log start time, which is one hour ago by default. Maximum value: the last 7 days.
-UTC time, such as `2020-01-01T12:00:00Z`.
-        :type StartTime: str
-        :param EndTime: Log end time, which is one hour after `StartTime` by default.
-UTC time, such as `2020-01-01T12:00:00Z`.
-        :type EndTime: str
-        """
+        :param ChannelId: Channel ID.\n        :type ChannelId: str\n        :param StartTime: Log start time, which is one hour ago by default. Maximum value: the last 7 days.
+UTC time, such as `2020-01-01T12:00:00Z`.\n        :type StartTime: str\n        :param EndTime: Log end time, which is one hour after `StartTime` by default.
+UTC time, such as `2020-01-01T12:00:00Z`.\n        :type EndTime: str\n        """
         self.ChannelId = None
         self.StartTime = None
         self.EndTime = None
@@ -885,11 +749,7 @@ class DescribeMediaLiveChannelLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Infos: Pipeline push information.
-        :type Infos: :class:`tencentcloud.mdl.v20200326.models.PipelineLogInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Infos: Pipeline push information.\n        :type Infos: :class:`tencentcloud.mdl.v20200326.models.PipelineLogInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Infos = None
         self.RequestId = None
 
@@ -908,17 +768,9 @@ class DescribeMediaLiveChannelOutputStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ChannelId: Channel ID.
-        :type ChannelId: str
-        :param StartTime: Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.
-UTC time, such as `2020-01-01T12:00:00Z`.
-        :type StartTime: str
-        :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
-UTC time, such as `2020-01-01T12:00:00Z`.
-        :type EndTime: str
-        :param Period: Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min.
-        :type Period: str
-        """
+        :param ChannelId: Channel ID.\n        :type ChannelId: str\n        :param StartTime: Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.
+UTC time, such as `2020-01-01T12:00:00Z`.\n        :type StartTime: str\n        :param EndTime: Statistics end time, which is one hour after `StartTime` by default.
+UTC time, such as `2020-01-01T12:00:00Z`.\n        :type EndTime: str\n        :param Period: Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min.\n        :type Period: str\n        """
         self.ChannelId = None
         self.StartTime = None
         self.EndTime = None
@@ -946,11 +798,7 @@ class DescribeMediaLiveChannelOutputStatisticsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Infos: Channel output information.
-        :type Infos: list of ChannelOutputsStatistics
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Infos: Channel output information.\n        :type Infos: list of ChannelOutputsStatistics\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Infos = None
         self.RequestId = None
 
@@ -972,9 +820,7 @@ class DescribeMediaLiveChannelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Channel ID.
-        :type Id: str
-        """
+        :param Id: Channel ID.\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -996,11 +842,7 @@ class DescribeMediaLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Info: Channel information.
-        :type Info: :class:`tencentcloud.mdl.v20200326.models.ChannelInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Info: Channel information.\n        :type Info: :class:`tencentcloud.mdl.v20200326.models.ChannelInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -1026,11 +868,7 @@ class DescribeMediaLiveChannelsResponse(AbstractModel):
     def __init__(self):
         """
         :param Infos: Channel list information.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Infos: list of ChannelInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Infos: list of ChannelInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Infos = None
         self.RequestId = None
 
@@ -1052,9 +890,7 @@ class DescribeMediaLiveInputRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Media input ID.
-        :type Id: str
-        """
+        :param Id: Media input ID.\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -1076,11 +912,7 @@ class DescribeMediaLiveInputResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Info: MediaLive input information.
-        :type Info: :class:`tencentcloud.mdl.v20200326.models.InputInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Info: MediaLive input information.\n        :type Info: :class:`tencentcloud.mdl.v20200326.models.InputInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -1099,9 +931,7 @@ class DescribeMediaLiveInputSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Input security group ID.
-        :type Id: str
-        """
+        :param Id: Input security group ID.\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -1123,11 +953,7 @@ class DescribeMediaLiveInputSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Info: Input security group information.
-        :type Info: :class:`tencentcloud.mdl.v20200326.models.InputSecurityGroupInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Info: Input security group information.\n        :type Info: :class:`tencentcloud.mdl.v20200326.models.InputSecurityGroupInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Info = None
         self.RequestId = None
 
@@ -1152,11 +978,7 @@ class DescribeMediaLiveInputSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Infos: Input security group information list.
-        :type Infos: list of InputSecurityGroupInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Infos: Input security group information list.\n        :type Infos: list of InputSecurityGroupInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Infos = None
         self.RequestId = None
 
@@ -1185,11 +1007,7 @@ class DescribeMediaLiveInputsResponse(AbstractModel):
     def __init__(self):
         """
         :param Infos: MediaLive input information list.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Infos: list of InputInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Infos: list of InputInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Infos = None
         self.RequestId = None
 
@@ -1211,18 +1029,10 @@ class DestinationInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param OutputUrl: Relay destination address. Length limit: [1,512].
-        :type OutputUrl: str
-        :param AuthKey: Authentication key. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AuthKey: str
-        :param Username: Authentication username. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Username: str
-        :param Password: Authentication password. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Password: str
-        """
+        :param OutputUrl: Relay destination address. Length limit: [1,512].\n        :type OutputUrl: str\n        :param AuthKey: Authentication key. Length limit: [1,128].
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AuthKey: str\n        :param Username: Authentication username. Length limit: [1,128].
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Username: str\n        :param Password: Authentication password. Length limit: [1,128].
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Password: str\n        """
         self.OutputUrl = None
         self.AuthKey = None
         self.Username = None
@@ -1251,23 +1061,15 @@ class DrmKey(AbstractModel):
     def __init__(self):
         """
         :param Key: DRM key, which is a 32-bit hexadecimal string.
-Note: uppercase letters in the string will be automatically converted to lowercase ones.
-        :type Key: str
-        :param Track: Required for Widevine encryption. Valid values: SD, HD, UHD1, UHD2, AUDIO, ALL.
+Note: uppercase letters in the string will be automatically converted to lowercase ones.\n        :type Key: str\n        :param Track: Required for Widevine encryption. Valid values: SD, HD, UHD1, UHD2, AUDIO, ALL.
 ALL refers to all tracks. If this parameter is set to ALL, no other tracks can be added.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Track: str
-        :param KeyId: Required for Widevine encryption. It is a 32-bit hexadecimal string.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Track: str\n        :param KeyId: Required for Widevine encryption. It is a 32-bit hexadecimal string.
 Note: uppercase letters in the string will be automatically converted to lowercase ones.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type KeyId: str
-        :param Iv: Required when FairPlay uses the AES encryption method. It is a 32-bit hexadecimal string.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type KeyId: str\n        :param Iv: Required when FairPlay uses the AES encryption method. It is a 32-bit hexadecimal string.
 For more information about this parameter, please see: 
 https://tools.ietf.org/html/rfc3826
 Note: uppercase letters in the string will be automatically converted to lowercase ones.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Iv: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Iv: str\n        """
         self.Key = None
         self.Track = None
         self.KeyId = None
@@ -1296,19 +1098,11 @@ class DrmSettingsInfo(AbstractModel):
     def __init__(self):
         """
         :param State: Whether to enable DRM encryption. Valid value: CLOSE/OPEN. Default value: CLOSE.
-Currently, this is supported only for HLS/DASH/HLS_ARCHIVE/DASH_ARCHIVE.
-        :type State: str
-        :param ContentId: When `Scheme` is set to TencentDRM, this parameter should be set to the `ContentId` of DRM encryption, and if this parameter is left empty, a `ContentId` will be automatically created. For more information, please see [here](https://intl.cloud.tencent.com/document/product/1000/40960?from_cn_redirect=1).
-When `Scheme` is set to CustomDRMKeys, this parameter is required and should be specified by the user.
-        :type ContentId: str
-        :param Scheme: Valid values: TencentDRM, CustomDRMKeys. If this parameter is left empty, TencentDRM will be used by default.
+Currently, this is supported only for HLS/DASH/HLS_ARCHIVE/DASH_ARCHIVE.\n        :type State: str\n        :param ContentId: When `Scheme` is set to TencentDRM, this parameter should be set to the `ContentId` of DRM encryption, and if this parameter is left empty, a `ContentId` will be automatically created. For more information, please see [here](https://intl.cloud.tencent.com/document/product/1000/40960?from_cn_redirect=1).
+When `Scheme` is set to CustomDRMKeys, this parameter is required and should be specified by the user.\n        :type ContentId: str\n        :param Scheme: Valid values: TencentDRM, CustomDRMKeys. If this parameter is left empty, TencentDRM will be used by default.
 TencentDRM refers to Tencent digital rights management (DRM) encryption. For more information, please see [here](https://intl.cloud.tencent.com/solution/drm?from_cn_redirect=1).
-CustomDRMKeys refers to an encryption key customized by the user.
-        :type Scheme: str
-        :param Keys: The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Keys: list of DrmKey
-        """
+CustomDRMKeys refers to an encryption key customized by the user.\n        :type Scheme: str\n        :param Keys: The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Keys: list of DrmKey\n        """
         self.State = None
         self.ContentId = None
         self.Scheme = None
@@ -1341,15 +1135,7 @@ class HlsRemuxSettingsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SegmentDuration: Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
-        :type SegmentDuration: int
-        :param SegmentNumber: Number of segments. Value range: [1,30]. Default value: 5.
-        :type SegmentNumber: int
-        :param PdtInsertion: Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.
-        :type PdtInsertion: str
-        :param PdtDuration: PDT duration in seconds. Value range: (0,3000]. Default value: 600.
-        :type PdtDuration: int
-        """
+        :param SegmentDuration: Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.\n        :type SegmentDuration: int\n        :param SegmentNumber: Number of segments. Value range: [1,30]. Default value: 5.\n        :type SegmentNumber: int\n        :param PdtInsertion: Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.\n        :type PdtInsertion: str\n        :param PdtDuration: PDT duration in seconds. Value range: (0,3000]. Default value: 600.\n        :type PdtDuration: int\n        """
         self.SegmentDuration = None
         self.SegmentNumber = None
         self.PdtInsertion = None
@@ -1377,22 +1163,8 @@ class InputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Input region.
-        :type Region: str
-        :param Id: Input ID.
-        :type Id: str
-        :param Name: Input name.
-        :type Name: str
-        :param Type: Input type.
-        :type Type: str
-        :param SecurityGroupIds: Array of security groups associated with input.
-        :type SecurityGroupIds: list of str
-        :param AttachedChannels: Array of channels associated with input.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AttachedChannels: list of str
-        :param InputSettings: Input configuration array.
-        :type InputSettings: list of InputSettingInfo
-        """
+        :param Region: Input region.\n        :type Region: str\n        :param Id: Input ID.\n        :type Id: str\n        :param Name: Input name.\n        :type Name: str\n        :param Type: Input type.\n        :type Type: str\n        :param SecurityGroupIds: Array of security groups associated with input.\n        :type SecurityGroupIds: list of str\n        :param AttachedChannels: Array of channels associated with input.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AttachedChannels: list of str\n        :param InputSettings: Input configuration array.\n        :type InputSettings: list of InputSettingInfo\n        """
         self.Region = None
         self.Id = None
         self.Name = None
@@ -1431,18 +1203,8 @@ class InputSecurityGroupInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Input security group ID.
-        :type Id: str
-        :param Name: Input security group name.
-        :type Name: str
-        :param Whitelist: List of allowlist entries.
-        :type Whitelist: list of str
-        :param OccupiedInputs: List of bound input streams.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OccupiedInputs: list of str
-        :param Region: Input security group address.
-        :type Region: str
-        """
+        :param Id: Input security group ID.\n        :type Id: str\n        :param Name: Input security group name.\n        :type Name: str\n        :param Whitelist: List of allowlist entries.\n        :type Whitelist: list of str\n        :param OccupiedInputs: List of bound input streams.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OccupiedInputs: list of str\n        :param Region: Input security group address.\n        :type Region: str\n        """
         self.Id = None
         self.Name = None
         self.Whitelist = None
@@ -1473,18 +1235,10 @@ class InputSettingInfo(AbstractModel):
     def __init__(self):
         """
         :param AppName: Application name, which is used for RTMP_PUSH and can contain 1-32 letters and digits.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AppName: str
-        :param StreamName: Stream name, which is used for RTMP_PUSH and can contain 1-32 letters and digits.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type StreamName: str
-        :param SourceUrl: Origin-pull URL, which is used for RTMP_PULL/HLS_PULL/MP4_PULL. Length limit: [1,512].
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SourceUrl: str
-        :param InputAddress: RTP/UDP input address, which does not need to be entered for the input parameter.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type InputAddress: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AppName: str\n        :param StreamName: Stream name, which is used for RTMP_PUSH and can contain 1-32 letters and digits.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type StreamName: str\n        :param SourceUrl: Origin-pull URL, which is used for RTMP_PULL/HLS_PULL/MP4_PULL. Length limit: [1,512].
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SourceUrl: str\n        :param InputAddress: RTP/UDP input address, which does not need to be entered for the input parameter.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type InputAddress: str\n        """
         self.AppName = None
         self.StreamName = None
         self.SourceUrl = None
@@ -1512,11 +1266,7 @@ class InputStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param Pipeline0: Input statistics of pipeline 0.
-        :type Pipeline0: list of PipelineInputStatistics
-        :param Pipeline1: Input statistics of pipeline 1.
-        :type Pipeline1: list of PipelineInputStatistics
-        """
+        :param Pipeline0: Input statistics of pipeline 0.\n        :type Pipeline0: list of PipelineInputStatistics\n        :param Pipeline1: Input statistics of pipeline 1.\n        :type Pipeline1: list of PipelineInputStatistics\n        """
         self.Pipeline0 = None
         self.Pipeline1 = None
 
@@ -1551,13 +1301,7 @@ class LogInfo(AbstractModel):
     def __init__(self):
         """
         :param Type: Log type.
-It contains the value of `StreamStart` which refers to the push information.
-        :type Type: str
-        :param Time: Time when the log is printed.
-        :type Time: str
-        :param Message: Log details.
-        :type Message: :class:`tencentcloud.mdl.v20200326.models.LogMessageInfo`
-        """
+It contains the value of `StreamStart` which refers to the push information.\n        :type Type: str\n        :param Time: Time when the log is printed.\n        :type Time: str\n        :param Message: Log details.\n        :type Message: :class:`tencentcloud.mdl.v20200326.models.LogMessageInfo`\n        """
         self.Type = None
         self.Time = None
         self.Message = None
@@ -1586,9 +1330,7 @@ class LogMessageInfo(AbstractModel):
     def __init__(self):
         """
         :param StreamInfo: Push information.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type StreamInfo: :class:`tencentcloud.mdl.v20200326.models.StreamInfo`
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type StreamInfo: :class:`tencentcloud.mdl.v20200326.models.StreamInfo`\n        """
         self.StreamInfo = None
 
 
@@ -1612,9 +1354,7 @@ class MediaPackageSettingsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Media packaging ID.
-        :type Id: str
-        """
+        :param Id: Media packaging ID.\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -1636,19 +1376,7 @@ class ModifyMediaLiveChannelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Channel ID.
-        :type Id: str
-        :param Name: Channel name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.
-        :type Name: str
-        :param AttachedInputs: Associated media input. Quantity limit: [1,1].
-        :type AttachedInputs: list of AttachedInputInfo
-        :param OutputGroups: Configuration information of channel output groups. Quantity limit: [1,10].
-        :type OutputGroups: list of OutputGroupsInfo
-        :param AudioTemplates: Audio transcoding template array. Quantity limit: [1,20].
-        :type AudioTemplates: list of AudioTemplateInfo
-        :param VideoTemplates: Video transcoding template array. Quantity limit: [1,10].
-        :type VideoTemplates: list of VideoTemplateInfo
-        """
+        :param Id: Channel ID.\n        :type Id: str\n        :param Name: Channel name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.\n        :type Name: str\n        :param AttachedInputs: Associated media input. Quantity limit: [1,1].\n        :type AttachedInputs: list of AttachedInputInfo\n        :param OutputGroups: Configuration information of channel output groups. Quantity limit: [1,10].\n        :type OutputGroups: list of OutputGroupsInfo\n        :param AudioTemplates: Audio transcoding template array. Quantity limit: [1,20].\n        :type AudioTemplates: list of AudioTemplateInfo\n        :param VideoTemplates: Video transcoding template array. Quantity limit: [1,10].\n        :type VideoTemplates: list of VideoTemplateInfo\n        """
         self.Id = None
         self.Name = None
         self.AttachedInputs = None
@@ -1700,9 +1428,7 @@ class ModifyMediaLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1717,18 +1443,10 @@ class ModifyMediaLiveInputRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Media input ID.
-        :type Id: str
-        :param Name: Media input name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.
-        :type Name: str
-        :param SecurityGroupIds: List of IDs of bound security groups.
-        :type SecurityGroupIds: list of str
-        :param InputSettings: Input settings information.
+        :param Id: Media input ID.\n        :type Id: str\n        :param Name: Media input name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.\n        :type Name: str\n        :param SecurityGroupIds: List of IDs of bound security groups.\n        :type SecurityGroupIds: list of str\n        :param InputSettings: Input settings information.
 One or two sets of settings need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.
 This parameter can be left empty for RTP_PUSH and UDP_PUSH.
-Note: if it is left empty or the array is empty, the original `InputSettings` value will be used.
-        :type InputSettings: list of InputSettingInfo
-        """
+Note: if it is left empty or the array is empty, the original `InputSettings` value will be used.\n        :type InputSettings: list of InputSettingInfo\n        """
         self.Id = None
         self.Name = None
         self.SecurityGroupIds = None
@@ -1761,9 +1479,7 @@ class ModifyMediaLiveInputResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1778,13 +1494,7 @@ class ModifyMediaLiveInputSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Input security group ID.
-        :type Id: str
-        :param Name: Input security group name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.
-        :type Name: str
-        :param Whitelist: List of allowlist entries. Up to 10 entries are allowed.
-        :type Whitelist: list of str
-        """
+        :param Id: Input security group ID.\n        :type Id: str\n        :param Name: Input security group name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.\n        :type Name: str\n        :param Whitelist: List of allowlist entries. Up to 10 entries are allowed.\n        :type Whitelist: list of str\n        """
         self.Id = None
         self.Name = None
         self.Whitelist = None
@@ -1810,9 +1520,7 @@ class ModifyMediaLiveInputSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1827,26 +1535,10 @@ class OutputGroupsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Channel output group name, which can contain 1–32 letters, digits, and underscores and must be unique at the channel level.
-        :type Name: str
-        :param Type: Output protocol type.
-Valid values: HLS, DASH, HLS_ARCHIVE, HLS_MEDIA_PACKAGE, DASH_MEDIA_PACKAGE.
-        :type Type: str
-        :param Outputs: Output information.
-Quantity limit: [1,1] for RTMP/RTP; [1,10] for HLS/DASH.
-        :type Outputs: list of OutputInfo
-        :param Destinations: Relay destination address. Quantity limit: [1,2].
-        :type Destinations: list of DestinationInfo
-        :param HlsRemuxSettings: HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE.
-        :type HlsRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`
-        :param DashRemuxSettings: DASH protocol configuration information, which takes effect only for DASH/DSAH_ARCHIVE.
-        :type DashRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.DashRemuxSettingsInfo`
-        :param DrmSettings: DRM configuration information.
-        :type DrmSettings: :class:`tencentcloud.mdl.v20200326.models.DrmSettingsInfo`
-        :param MediaPackageSettings: Configuration information of media packaging, which is required when `Type` is set to MediaPackage.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MediaPackageSettings: :class:`tencentcloud.mdl.v20200326.models.MediaPackageSettingsInfo`
-        """
+        :param Name: Channel output group name, which can contain 1–32 letters, digits, and underscores and must be unique at the channel level.\n        :type Name: str\n        :param Type: Output protocol type.
+Valid values: HLS, DASH, HLS_ARCHIVE, HLS_MEDIA_PACKAGE, DASH_MEDIA_PACKAGE.\n        :type Type: str\n        :param Outputs: Output information.
+Quantity limit: [1,1] for RTMP/RTP; [1,10] for HLS/DASH.\n        :type Outputs: list of OutputInfo\n        :param Destinations: Relay destination address. Quantity limit: [1,2].\n        :type Destinations: list of DestinationInfo\n        :param HlsRemuxSettings: HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE.\n        :type HlsRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`\n        :param DashRemuxSettings: DASH protocol configuration information, which takes effect only for DASH/DSAH_ARCHIVE.\n        :type DashRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.DashRemuxSettingsInfo`\n        :param DrmSettings: DRM configuration information.\n        :type DrmSettings: :class:`tencentcloud.mdl.v20200326.models.DrmSettingsInfo`\n        :param MediaPackageSettings: Configuration information of media packaging, which is required when `Type` is set to MediaPackage.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MediaPackageSettings: :class:`tencentcloud.mdl.v20200326.models.MediaPackageSettingsInfo`\n        """
         self.Name = None
         self.Type = None
         self.Outputs = None
@@ -1900,18 +1592,10 @@ class OutputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Output name.
-        :type Name: str
-        :param AudioTemplateNames: Audio transcoding template name array.
+        :param Name: Output name.\n        :type Name: str\n        :param AudioTemplateNames: Audio transcoding template name array.
 Quantity limit: [0,1] for RTMP; [0,20] for others.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AudioTemplateNames: list of str
-        :param VideoTemplateNames: Video transcoding template name array. Quantity limit: [0,1].
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VideoTemplateNames: list of str
-        :param Scte35Settings: SCTE-35 information configuration.
-        :type Scte35Settings: :class:`tencentcloud.mdl.v20200326.models.Scte35SettingsInfo`
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AudioTemplateNames: list of str\n        :param VideoTemplateNames: Video transcoding template name array. Quantity limit: [0,1].
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type VideoTemplateNames: list of str\n        :param Scte35Settings: SCTE-35 information configuration.\n        :type Scte35Settings: :class:`tencentcloud.mdl.v20200326.models.Scte35SettingsInfo`\n        """
         self.Name = None
         self.AudioTemplateNames = None
         self.VideoTemplateNames = None
@@ -1941,11 +1625,7 @@ class OutputsStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param Pipeline0: Output information of pipeline 0.
-        :type Pipeline0: list of PipelineOutputStatistics
-        :param Pipeline1: Output information of pipeline 1.
-        :type Pipeline1: list of PipelineOutputStatistics
-        """
+        :param Pipeline0: Output information of pipeline 0.\n        :type Pipeline0: list of PipelineOutputStatistics\n        :param Pipeline1: Output information of pipeline 1.\n        :type Pipeline1: list of PipelineOutputStatistics\n        """
         self.Pipeline0 = None
         self.Pipeline1 = None
 
@@ -1979,19 +1659,11 @@ class PipelineInputStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param Timestamp: Data timestamp in seconds.
-        :type Timestamp: int
-        :param NetworkIn: Input bandwidth in bps.
-        :type NetworkIn: int
-        :param Video: Video information array.
+        :param Timestamp: Data timestamp in seconds.\n        :type Timestamp: int\n        :param NetworkIn: Input bandwidth in bps.\n        :type NetworkIn: int\n        :param Video: Video information array.
 For `rtp/udp` input, the quantity is the number of `Pid` of the input video.
-For other inputs, the quantity is 1.
-        :type Video: list of VideoPipelineInputStatistics
-        :param Audio: Audio information array.
+For other inputs, the quantity is 1.\n        :type Video: list of VideoPipelineInputStatistics\n        :param Audio: Audio information array.
 For `rtp/udp` input, the quantity is the number of `Pid` of the input audio.
-For other inputs, the quantity is 1.
-        :type Audio: list of AudioPipelineInputStatistics
-        """
+For other inputs, the quantity is 1.\n        :type Audio: list of AudioPipelineInputStatistics\n        """
         self.Timestamp = None
         self.NetworkIn = None
         self.Video = None
@@ -2030,12 +1702,8 @@ class PipelineLogInfo(AbstractModel):
     def __init__(self):
         """
         :param Pipeline0: Log information of pipeline 0.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Pipeline0: list of LogInfo
-        :param Pipeline1: Log information of pipeline 1.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Pipeline1: list of LogInfo
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Pipeline0: list of LogInfo\n        :param Pipeline1: Log information of pipeline 1.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Pipeline1: list of LogInfo\n        """
         self.Pipeline0 = None
         self.Pipeline1 = None
 
@@ -2070,11 +1738,7 @@ class PipelineOutputStatistics(AbstractModel):
     def __init__(self):
         """
         :param Timestamp: Timestamp.
-In seconds, indicating data time.
-        :type Timestamp: int
-        :param NetworkOut: Output bandwidth in bps.
-        :type NetworkOut: int
-        """
+In seconds, indicating data time.\n        :type Timestamp: int\n        :param NetworkOut: Output bandwidth in bps.\n        :type NetworkOut: int\n        """
         self.Timestamp = None
         self.NetworkOut = None
 
@@ -2098,9 +1762,7 @@ class Scte35SettingsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Behavior: Whether to pass through SCTE-35 information. Valid values: NO_PASSTHROUGH/PASSTHROUGH. Default value: NO_PASSTHROUGH.
-        :type Behavior: str
-        """
+        :param Behavior: Whether to pass through SCTE-35 information. Valid values: NO_PASSTHROUGH/PASSTHROUGH. Default value: NO_PASSTHROUGH.\n        :type Behavior: str\n        """
         self.Behavior = None
 
 
@@ -2122,9 +1784,7 @@ class StartMediaLiveChannelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Channel ID.
-        :type Id: str
-        """
+        :param Id: Channel ID.\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -2146,9 +1806,7 @@ class StartMediaLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2163,9 +1821,7 @@ class StopMediaLiveChannelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Channel ID.
-        :type Id: str
-        """
+        :param Id: Channel ID.\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -2187,9 +1843,7 @@ class StopMediaLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2205,21 +1859,11 @@ class StreamAudioInfo(AbstractModel):
     def __init__(self):
         """
         :param Pid: Audio `Pid`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Pid: int
-        :param Codec: Audio codec.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Codec: str
-        :param Fps: Audio frame rate.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Fps: int
-        :param Rate: Audio bitrate.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Rate: int
-        :param SampleRate: Audio sample rate.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SampleRate: int
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Pid: int\n        :param Codec: Audio codec.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Codec: str\n        :param Fps: Audio frame rate.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Fps: int\n        :param Rate: Audio bitrate.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Rate: int\n        :param SampleRate: Audio sample rate.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SampleRate: int\n        """
         self.Pid = None
         self.Codec = None
         self.Fps = None
@@ -2249,15 +1893,7 @@ class StreamInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ClientIp: Client IP.
-        :type ClientIp: str
-        :param Video: Video information of pushed streams.
-        :type Video: list of StreamVideoInfo
-        :param Audio: Audio information of pushed streams.
-        :type Audio: list of StreamAudioInfo
-        :param Scte35: SCTE-35 information of pushed streams.
-        :type Scte35: list of StreamScte35Info
-        """
+        :param ClientIp: Client IP.\n        :type ClientIp: str\n        :param Video: Video information of pushed streams.\n        :type Video: list of StreamVideoInfo\n        :param Audio: Audio information of pushed streams.\n        :type Audio: list of StreamAudioInfo\n        :param Scte35: SCTE-35 information of pushed streams.\n        :type Scte35: list of StreamScte35Info\n        """
         self.ClientIp = None
         self.Video = None
         self.Audio = None
@@ -2301,9 +1937,7 @@ class StreamScte35Info(AbstractModel):
     def __init__(self):
         """
         :param Pid: SCTE-35 `Pid`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Pid: int
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Pid: int\n        """
         self.Pid = None
 
 
@@ -2326,24 +1960,12 @@ class StreamVideoInfo(AbstractModel):
     def __init__(self):
         """
         :param Pid: Video `Pid`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Pid: int
-        :param Codec: Video codec.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Codec: str
-        :param Fps: Video frame rate.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Fps: int
-        :param Rate: Video bitrate.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Rate: int
-        :param Width: Video width.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Width: int
-        :param Height: Video height.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Height: int
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Pid: int\n        :param Codec: Video codec.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Codec: str\n        :param Fps: Video frame rate.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Fps: int\n        :param Rate: Video bitrate.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Rate: int\n        :param Width: Video width.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Width: int\n        :param Height: Video height.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Height: int\n        """
         self.Pid = None
         self.Codec = None
         self.Fps = None
@@ -2375,13 +1997,7 @@ class VideoPipelineInputStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param Fps: Video FPS.
-        :type Fps: int
-        :param Rate: Video bitrate in bps.
-        :type Rate: int
-        :param Pid: Video `Pid`, which is available only if the input is `rtp/udp`.
-        :type Pid: int
-        """
+        :param Fps: Video FPS.\n        :type Fps: int\n        :param Rate: Video bitrate in bps.\n        :type Rate: int\n        :param Pid: Video `Pid`, which is available only if the input is `rtp/udp`.\n        :type Pid: int\n        """
         self.Fps = None
         self.Rate = None
         self.Pid = None
@@ -2407,23 +2023,7 @@ class VideoTemplateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Video transcoding template name, which can contain 1-20 letters and digits.
-        :type Name: str
-        :param Vcodec: Video codec. Valid values: H264/H265. If this parameter is left empty, the original value will be used.
-        :type Vcodec: str
-        :param VideoBitrate: Video bitrate. Value range: [50000,40000000]. The value can only be a multiple of 1,000. If this parameter is left empty, the original value will be used.
-        :type VideoBitrate: int
-        :param Width: Video width. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.
-        :type Width: int
-        :param Height: Video height. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.
-        :type Height: int
-        :param Fps: Video frame rate. Value range: [1,240]. If this parameter is left empty, the original value will be used.
-        :type Fps: int
-        :param TopSpeed: Whether to enable top speed codec. Valid value: CLOSE/OPEN. Default value: CLOSE.
-        :type TopSpeed: str
-        :param BitrateCompressionRatio: Top speed codec compression ratio. Value range: [0,50]. The lower the compression ratio, the higher the image quality.
-        :type BitrateCompressionRatio: int
-        """
+        :param Name: Video transcoding template name, which can contain 1-20 letters and digits.\n        :type Name: str\n        :param Vcodec: Video codec. Valid values: H264/H265. If this parameter is left empty, the original value will be used.\n        :type Vcodec: str\n        :param VideoBitrate: Video bitrate. Value range: [50000,40000000]. The value can only be a multiple of 1,000. If this parameter is left empty, the original value will be used.\n        :type VideoBitrate: int\n        :param Width: Video width. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.\n        :type Width: int\n        :param Height: Video height. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.\n        :type Height: int\n        :param Fps: Video frame rate. Value range: [1,240]. If this parameter is left empty, the original value will be used.\n        :type Fps: int\n        :param TopSpeed: Whether to enable top speed codec. Valid value: CLOSE/OPEN. Default value: CLOSE.\n        :type TopSpeed: str\n        :param BitrateCompressionRatio: Top speed codec compression ratio. Value range: [0,50]. The lower the compression ratio, the higher the image quality.\n        :type BitrateCompressionRatio: int\n        """
         self.Name = None
         self.Vcodec = None
         self.VideoBitrate = None

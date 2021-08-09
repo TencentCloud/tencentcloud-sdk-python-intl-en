@@ -26,27 +26,11 @@ class BankCardOCRRequest(AbstractModel):
     def __init__(self):
         """
         :param ImageBase64: Base64-encoded value of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
-Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
-        :type ImageBase64: str
-        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.\n        :type ImageBase64: str\n        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
 Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
-The download speed and stability of non-Tencent Cloud URLs may be low.
-        :type ImageUrl: str
-        :param RetBorderCutImage: Whether to return the bank card image data after preprocessing (precise cropping and alignment). Default value: `false`
-        :type RetBorderCutImage: bool
-        :param RetCardNoImage: Whether to return the card number image data after slicing. Default value: `false`
-        :type RetCardNoImage: bool
-        :param EnableCopyCheck: Whether to enable photocopy check. If the input image is a bank card photocopy, an alarm will be returned. Default value: `false`
-        :type EnableCopyCheck: bool
-        :param EnableReshootCheck: Whether to enable photograph check. If the input image is a bank card photograph, an alarm will be returned. Default value: `false`
-        :type EnableReshootCheck: bool
-        :param EnableBorderCheck: Whether to enable obscured border check. If the input image is a bank card with obscured border, an alarm will be returned. Default value: `false`
-        :type EnableBorderCheck: bool
-        :param EnableQualityValue: Whether to return the image quality value, which measures how clear an image is. Default value: `false`
-        :type EnableQualityValue: bool
-        """
+The download speed and stability of non-Tencent Cloud URLs may be low.\n        :type ImageUrl: str\n        :param RetBorderCutImage: Whether to return the bank card image data after preprocessing (precise cropping and alignment). Default value: `false`\n        :type RetBorderCutImage: bool\n        :param RetCardNoImage: Whether to return the card number image data after slicing. Default value: `false`\n        :type RetCardNoImage: bool\n        :param EnableCopyCheck: Whether to enable photocopy check. If the input image is a bank card photocopy, an alarm will be returned. Default value: `false`\n        :type EnableCopyCheck: bool\n        :param EnableReshootCheck: Whether to enable photograph check. If the input image is a bank card photograph, an alarm will be returned. Default value: `false`\n        :type EnableReshootCheck: bool\n        :param EnableBorderCheck: Whether to enable obscured border check. If the input image is a bank card with obscured border, an alarm will be returned. Default value: `false`\n        :type EnableBorderCheck: bool\n        :param EnableQualityValue: Whether to return the image quality value, which measures how clear an image is. Default value: `false`\n        :type EnableQualityValue: bool\n        """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.RetBorderCutImage = None
@@ -82,37 +66,17 @@ class BankCardOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CardNo: Card number
-        :type CardNo: str
-        :param BankInfo: Bank information
-        :type BankInfo: str
-        :param ValidDate: Expiration date. Format: 07/2023
-        :type ValidDate: str
-        :param CardType: Card type
-        :type CardType: str
-        :param CardName: Card name
-        :type CardName: str
-        :param BorderCutImage: Sliced image data
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type BorderCutImage: str
-        :param CardNoImage: Card number image data
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type CardNoImage: str
-        :param WarningCode: Warning code:
+        :param CardNo: Card number\n        :type CardNo: str\n        :param BankInfo: Bank information\n        :type BankInfo: str\n        :param ValidDate: Expiration date. Format: 07/2023\n        :type ValidDate: str\n        :param CardType: Card type\n        :type CardType: str\n        :param CardName: Card name\n        :type CardName: str\n        :param BorderCutImage: Sliced image data
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type BorderCutImage: str\n        :param CardNoImage: Card number image data
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type CardNoImage: str\n        :param WarningCode: Warning code:
 -9110: the bank card date is invalid. 
 -9111: the bank card border is incomplete. 
 -9112: the bank card image is reflective.
 -9113: the bank card image is a photocopy.
 -9114: the bank card image is a photograph.
 Multiple warning codes may be returned at a time.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type WarningCode: list of int
-        :param QualityValue: Image quality value, which is returned when `EnableQualityValue` is set to `true`. The smaller the value, the less clear the image is. Value range: 0−100 (a threshold greater than or equal to 50 is recommended.)
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type QualityValue: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type WarningCode: list of int\n        :param QualityValue: Image quality value, which is returned when `EnableQualityValue` is set to `true`. The smaller the value, the less clear the image is. Value range: 0−100 (a threshold greater than or equal to 50 is recommended.)
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type QualityValue: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CardNo = None
         self.BankInfo = None
         self.ValidDate = None
@@ -145,11 +109,7 @@ class Coord(AbstractModel):
 
     def __init__(self):
         """
-        :param X: Horizontal coordinate
-        :type X: int
-        :param Y: Vertical coordinate
-        :type Y: int
-        """
+        :param X: Horizontal coordinate\n        :type X: int\n        :param Y: Vertical coordinate\n        :type Y: int\n        """
         self.X = None
         self.Y = None
 
@@ -173,9 +133,7 @@ class DetectedWordCoordPoint(AbstractModel):
 
     def __init__(self):
         """
-        :param WordCoordinate: Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner
-        :type WordCoordinate: list of Coord
-        """
+        :param WordCoordinate: Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner\n        :type WordCoordinate: list of Coord\n        """
         self.WordCoordinate = None
 
 
@@ -202,11 +160,7 @@ class DetectedWords(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Confidence. Value range: 0–100
-        :type Confidence: int
-        :param Character: A possible character
-        :type Character: str
-        """
+        :param Confidence: Confidence. Value range: 0–100\n        :type Confidence: int\n        :param Character: A possible character\n        :type Character: str\n        """
         self.Confidence = None
         self.Character = None
 
@@ -232,15 +186,9 @@ class GeneralAccurateOCRRequest(AbstractModel):
         """
         :param ImageBase64: Base64-encoded value of image.
 The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
-Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
-        :type ImageBase64: str
-        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
+Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.\n        :type ImageBase64: str\n        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
 The image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
-We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
-        :type ImageUrl: str
-        :param IsWords: Whether to return the character information. Default value: `false`
-        :type IsWords: bool
-        """
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.\n        :type ImageUrl: str\n        :param IsWords: Whether to return the character information. Default value: `false`\n        :type IsWords: bool\n        """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.IsWords = None
@@ -266,13 +214,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TextDetections: Information on recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
-        :type TextDetections: list of TextDetection
-        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text. A positive value indicates clockwise rotation. A negative value indicates anticlockwise rotation. For more information, please see <a href="https://intl.cloud.tencent.com/document/product/866/45139?from_cn_redirect=1">How to Correct Tilted Text</a>.
-        :type Angel: float
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TextDetections: Information on recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.\n        :type TextDetections: list of TextDetection\n        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text. A positive value indicates clockwise rotation. A negative value indicates anticlockwise rotation. For more information, please see <a href="https://intl.cloud.tencent.com/document/product/866/45139?from_cn_redirect=1">How to Correct Tilted Text</a>.\n        :type Angel: float\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TextDetections = None
         self.Angel = None
         self.RequestId = None
@@ -297,15 +239,9 @@ class GeneralBasicOCRRequest(AbstractModel):
     def __init__(self):
         """
         :param ImageBase64: Base64-encoded value of image/PDF.
+The image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\n        :type ImageBase64: str\n        :param ImageUrl: URL address of image/PDF. (This field is not supported outside Chinese mainland)
 The image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
-        :type ImageBase64: str
-        :param ImageUrl: URL address of image/PDF. (This field is not supported outside Chinese mainland)
-The image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
-We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
-        :type ImageUrl: str
-        :param Scene: Reserved field.
-        :type Scene: str
-        :param LanguageType: Language to be recognized.
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.\n        :type ImageUrl: str\n        :param Scene: Reserved field.\n        :type Scene: str\n        :param LanguageType: Language to be recognized.
 The language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.
 Valid values:
 zh\auto\jap\kor\
@@ -319,15 +255,7 @@ Spanish, French, German, Portuguese,
 Vietnamese, Malay, Russian, Italian,
 Dutch, Swedish, Finnish, Danish,
 Norwegian, Hungarian, Thai, Latin,
-Arabic.
-        :type LanguageType: str
-        :param IsPdf: Whether to enable PDF recognition. Default value: false. After this feature is enabled, both images and PDF files can be recognized at the same time.
-        :type IsPdf: bool
-        :param PdfPageNumber: Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1.
-        :type PdfPageNumber: int
-        :param IsWords: Whether to return the character information. Default value: `false`
-        :type IsWords: bool
-        """
+Arabic.\n        :type LanguageType: str\n        :param IsPdf: Whether to enable PDF recognition. Default value: false. After this feature is enabled, both images and PDF files can be recognized at the same time.\n        :type IsPdf: bool\n        :param PdfPageNumber: Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1.\n        :type PdfPageNumber: int\n        :param IsWords: Whether to return the character information. Default value: `false`\n        :type IsWords: bool\n        """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.Scene = None
@@ -361,17 +289,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TextDetections: Information of recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
-        :type TextDetections: list of TextDetection
-        :param Language: Detected language. For more information on the supported languages, please see the description of the `LanguageType` input parameter.
-        :type Language: str
-        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation. For more information, please see <a href="https://intl.cloud.tencent.com/document/product/866/45139?from_cn_redirect=1">How to Correct Tilted Text</a>.
-        :type Angel: float
-        :param PdfPageSize: Total number of PDF pages to be returned if the image is a PDF. Default value: 0.
-        :type PdfPageSize: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TextDetections: Information of recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.\n        :type TextDetections: list of TextDetection\n        :param Language: Detected language. For more information on the supported languages, please see the description of the `LanguageType` input parameter.\n        :type Language: str\n        :param Angel: Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation. For more information, please see <a href="https://intl.cloud.tencent.com/document/product/866/45139?from_cn_redirect=1">How to Correct Tilted Text</a>.\n        :type Angel: float\n        :param PdfPageSize: Total number of PDF pages to be returned if the image is a PDF. Default value: 0.\n        :type PdfPageSize: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TextDetections = None
         self.Language = None
         self.Angel = None
@@ -399,21 +317,13 @@ class HKIDCardOCRRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DetectFake: Whether to check for authenticity.
-        :type DetectFake: bool
-        :param ReturnHeadImage: Whether to return identity photo.
-        :type ReturnHeadImage: bool
-        :param ImageBase64: Base64-encoded value of image.
+        :param DetectFake: Whether to check for authenticity.\n        :type DetectFake: bool\n        :param ReturnHeadImage: Whether to return identity photo.\n        :type ReturnHeadImage: bool\n        :param ImageBase64: Base64-encoded value of image.
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
-Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-        :type ImageBase64: str
-        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
+Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\n        :type ImageBase64: str\n        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
 Supported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
-The download speed and stability of non-Tencent Cloud URLs may be low.
-        :type ImageUrl: str
-        """
+The download speed and stability of non-Tencent Cloud URLs may be low.\n        :type ImageUrl: str\n        """
         self.DetectFake = None
         self.ReturnHeadImage = None
         self.ImageBase64 = None
@@ -441,47 +351,19 @@ class HKIDCardOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CnName: Name in Chinese
-        :type CnName: str
-        :param EnName: Name in English
-        :type EnName: str
-        :param TelexCode: Telecode for the name in Chinese
-        :type TelexCode: str
-        :param Sex: Gender. Valid values: Male, Female
-        :type Sex: str
-        :param Birthday: Date of birth
-        :type Birthday: str
-        :param Permanent: Permanent identity card.
+        :param CnName: Name in Chinese\n        :type CnName: str\n        :param EnName: Name in English\n        :type EnName: str\n        :param TelexCode: Telecode for the name in Chinese\n        :type TelexCode: str\n        :param Sex: Gender. Valid values: Male, Female\n        :type Sex: str\n        :param Birthday: Date of birth\n        :type Birthday: str\n        :param Permanent: Permanent identity card.
 0: non-permanent;
 1: permanent;
--1: unknown.
-        :type Permanent: int
-        :param IdNum: Identity card number
-        :type IdNum: str
-        :param Symbol: Document symbol, i.e., the symbol under the date of birth, such as "***AZ"
-        :type Symbol: str
-        :param FirstIssueDate: First issue date
-        :type FirstIssueDate: str
-        :param CurrentIssueDate: Last receipt date
-        :type CurrentIssueDate: str
-        :param FakeDetectResult: Authenticity check.
+-1: unknown.\n        :type Permanent: int\n        :param IdNum: Identity card number\n        :type IdNum: str\n        :param Symbol: Document symbol, i.e., the symbol under the date of birth, such as "***AZ"\n        :type Symbol: str\n        :param FirstIssueDate: First issue date\n        :type FirstIssueDate: str\n        :param CurrentIssueDate: Last receipt date\n        :type CurrentIssueDate: str\n        :param FakeDetectResult: Authenticity check.
 0: unable to judge (because the image is blurred, incomplete, reflective, too dark, etc.);
 1: forged;
 2: authentic.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FakeDetectResult: int
-        :param HeadImage: Base64-encoded identity photo
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type HeadImage: str
-        :param WarningCode: Multiple alarm codes. If the ID card is spoofed, photocopied, or doctored, the corresponding alarm code will be returned.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FakeDetectResult: int\n        :param HeadImage: Base64-encoded identity photo
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type HeadImage: str\n        :param WarningCode: Multiple alarm codes. If the ID card is spoofed, photocopied, or doctored, the corresponding alarm code will be returned.
 -9102: alarm for photocopied document
 -9103: alarm for spoofed document
 -9104: alarm for doctored document
--9105: alarm for forged document
-        :type WarningCode: list of int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+-9105: alarm for forged document\n        :type WarningCode: list of int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CnName = None
         self.EnName = None
         self.TelexCode = None
@@ -522,15 +404,7 @@ class ItemCoord(AbstractModel):
 
     def __init__(self):
         """
-        :param X: X-coordinate of top-left point.
-        :type X: int
-        :param Y: Y-coordinate of top-left point.
-        :type Y: int
-        :param Width: Width
-        :type Width: int
-        :param Height: Height
-        :type Height: int
-        """
+        :param X: X-coordinate of top-left point.\n        :type X: int\n        :param Y: Y-coordinate of top-left point.\n        :type Y: int\n        :param Width: Width\n        :type Width: int\n        :param Height: Height\n        :type Height: int\n        """
         self.X = None
         self.Y = None
         self.Width = None
@@ -560,17 +434,11 @@ class MLIDCardOCRRequest(AbstractModel):
         """
         :param ImageBase64: Base64-encoded value of an image.
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
-Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-        :type ImageBase64: str
-        :param ImageUrl: URL of an image. (This field is not supported outside the Chinese mainland)
+Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\n        :type ImageBase64: str\n        :param ImageUrl: URL of an image. (This field is not supported outside the Chinese mainland)
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
 Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
-The download speed and stability of non-Tencent Cloud URLs may be low.
-        :type ImageUrl: str
-        :param RetImage: Whether to return an image
-        :type RetImage: bool
-        """
+The download speed and stability of non-Tencent Cloud URLs may be low.\n        :type ImageUrl: str\n        :param RetImage: Whether to return an image\n        :type RetImage: bool\n        """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.RetImage = None
@@ -596,22 +464,10 @@ class MLIDCardOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ID: Identity card number
-        :type ID: str
-        :param Name: Name
-        :type Name: str
-        :param Address: Address
-        :type Address: str
-        :param Sex: Gender
-        :type Sex: str
-        :param Warn: Alarm code
+        :param ID: Identity card number\n        :type ID: str\n        :param Name: Name\n        :type Name: str\n        :param Address: Address\n        :type Address: str\n        :param Sex: Gender\n        :type Sex: str\n        :param Warn: Alarm code
 -9103	Alarm for photographed document
 -9102	Alarm for photocopied document
--9106       Alarm for covered card
-        :type Warn: list of int
-        :param Image: Identity photo
-        :type Image: str
-        :param AdvancedInfo: Extended field:
+-9106       Alarm for covered card\n        :type Warn: list of int\n        :param Image: Identity photo\n        :type Image: str\n        :param AdvancedInfo: Extended field:
 {
     ID:{
         Confidence:0.9999
@@ -619,22 +475,14 @@ class MLIDCardOCRResponse(AbstractModel):
     Name:{
         Confidence:0.9996
     }
-}
-        :type AdvancedInfo: str
-        :param Type: Certificate type
+}\n        :type AdvancedInfo: str\n        :param Type: Certificate type
 MyKad  ID card
 MyPR    Permanent resident card
 MyTentera   Military identity card
 MyKAS    Temporary ID card
 POLIS  Police card
 IKAD   Work permit
-MyKid   Kid card
-        :type Type: str
-        :param Birthday: Date of birth (currently, this field is only supported for IKAD).
-        :type Birthday: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+MyKid   Kid card\n        :type Type: str\n        :param Birthday: Date of birth (currently, this field is only supported for IKAD).\n        :type Birthday: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ID = None
         self.Name = None
         self.Address = None
@@ -667,11 +515,7 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageBase64: Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.
-        :type ImageBase64: str
-        :param RetImage: Whether to return an image. Default value: false.
-        :type RetImage: bool
-        """
+        :param ImageBase64: Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.\n        :type ImageBase64: str\n        :param RetImage: Whether to return an image. Default value: false.\n        :type RetImage: bool\n        """
         self.ImageBase64 = None
         self.RetImage = None
 
@@ -695,28 +539,10 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ID: Passport ID
-        :type ID: str
-        :param Name: Name
-        :type Name: str
-        :param DateOfBirth: Date of birth
-        :type DateOfBirth: str
-        :param Sex: Gender (F: female, M: male)
-        :type Sex: str
-        :param DateOfExpiration: Expiration date
-        :type DateOfExpiration: str
-        :param IssuingCountry: Issuing country
-        :type IssuingCountry: str
-        :param Nationality: Nationality
-        :type Nationality: str
-        :param Warn: Alarm code
+        :param ID: Passport ID\n        :type ID: str\n        :param Name: Name\n        :type Name: str\n        :param DateOfBirth: Date of birth\n        :type DateOfBirth: str\n        :param Sex: Gender (F: female, M: male)\n        :type Sex: str\n        :param DateOfExpiration: Expiration date\n        :type DateOfExpiration: str\n        :param IssuingCountry: Issuing country\n        :type IssuingCountry: str\n        :param Nationality: Nationality\n        :type Nationality: str\n        :param Warn: Alarm code
 -9103 Alarm for spoofed card
 -9102 Alarm for photocopied card
--9106 Alarm for covered card
-        :type Warn: list of int
-        :param Image: Identity photo
-        :type Image: str
-        :param AdvancedInfo: Extended field:
+-9106 Alarm for covered card\n        :type Warn: list of int\n        :param Image: Identity photo\n        :type Image: str\n        :param AdvancedInfo: Extended field:
 {
     ID:{
         Confidence:0.9999
@@ -724,11 +550,7 @@ class MLIDPassportOCRResponse(AbstractModel):
     Name:{
         Confidence:0.9996
     }
-}
-        :type AdvancedInfo: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+}\n        :type AdvancedInfo: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ID = None
         self.Name = None
         self.DateOfBirth = None
@@ -766,15 +588,11 @@ class TableOCRRequest(AbstractModel):
         :param ImageBase64: Base64-encoded value of image.
 Supported image formats: PNG, JPG, JPEG. GIF is not supported at present.
 Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
-Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
-        :type ImageBase64: str
-        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
+Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.\n        :type ImageBase64: str\n        :param ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
 Supported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
-The download speed and stability of non-Tencent Cloud URLs may be low.
-        :type ImageUrl: str
-        """
+The download speed and stability of non-Tencent Cloud URLs may be low.\n        :type ImageUrl: str\n        """
         self.ImageBase64 = None
         self.ImageUrl = None
 
@@ -798,13 +616,7 @@ class TableOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TextDetections: Recognized text. For more information, please click the link on the left
-        :type TextDetections: list of TextTable
-        :param Data: Base64-encoded Excel data.
-        :type Data: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TextDetections: Recognized text. For more information, please click the link on the left\n        :type TextDetections: list of TextTable\n        :param Data: Base64-encoded Excel data.\n        :type Data: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TextDetections = None
         self.Data = None
         self.RequestId = None
@@ -828,23 +640,9 @@ class TextDetection(AbstractModel):
 
     def __init__(self):
         """
-        :param DetectedText: Recognized text line content.
-        :type DetectedText: str
-        :param Confidence: Confidence. Value range: 0–100.
-        :type Confidence: int
-        :param Polygon: Text line coordinates, which are represented as 4 vertex coordinates.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Polygon: list of Coord
-        :param AdvancedInfo: Extended field.
-The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains `ParagNo`.
-        :type AdvancedInfo: str
-        :param ItemPolygon: Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.
-        :type ItemPolygon: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
-        :param Words: Information about a character, including the character itself and its confidence. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`
-        :type Words: list of DetectedWords
-        :param WordCoordPoint: Coordinates of a word’s four corners on the input image. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`
-        :type WordCoordPoint: list of DetectedWordCoordPoint
-        """
+        :param DetectedText: Recognized text line content.\n        :type DetectedText: str\n        :param Confidence: Confidence. Value range: 0–100.\n        :type Confidence: int\n        :param Polygon: Text line coordinates, which are represented as 4 vertex coordinates.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Polygon: list of Coord\n        :param AdvancedInfo: Extended field.
+The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains `ParagNo`.\n        :type AdvancedInfo: str\n        :param ItemPolygon: Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.\n        :type ItemPolygon: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`\n        :param Words: Information about a character, including the character itself and its confidence. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`\n        :type Words: list of DetectedWords\n        :param WordCoordPoint: Coordinates of a word’s four corners on the input image. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`\n        :type WordCoordPoint: list of DetectedWordCoordPoint\n        """
         self.DetectedText = None
         self.Confidence = None
         self.Polygon = None
@@ -895,25 +693,7 @@ class TextTable(AbstractModel):
 
     def __init__(self):
         """
-        :param ColTl: Column index of the top-left corner of the cell.
-        :type ColTl: int
-        :param RowTl: Row index of the top-left corner of the cell.
-        :type RowTl: int
-        :param ColBr: Column index of the bottom-right corner of the cell.
-        :type ColBr: int
-        :param RowBr: Row index of the bottom-right corner of the cell.
-        :type RowBr: int
-        :param Text: Cell text
-        :type Text: str
-        :param Type: Cell type. Valid values: body, header, footer
-        :type Type: str
-        :param Confidence: Confidence. Value range: 0–100
-        :type Confidence: int
-        :param Polygon: Text line coordinates, which are represented as 4 vertex coordinates.
-        :type Polygon: list of Coord
-        :param AdvancedInfo: Extended field
-        :type AdvancedInfo: str
-        """
+        :param ColTl: Column index of the top-left corner of the cell.\n        :type ColTl: int\n        :param RowTl: Row index of the top-left corner of the cell.\n        :type RowTl: int\n        :param ColBr: Column index of the bottom-right corner of the cell.\n        :type ColBr: int\n        :param RowBr: Row index of the bottom-right corner of the cell.\n        :type RowBr: int\n        :param Text: Cell text\n        :type Text: str\n        :param Type: Cell type. Valid values: body, header, footer\n        :type Type: str\n        :param Confidence: Confidence. Value range: 0–100\n        :type Confidence: int\n        :param Polygon: Text line coordinates, which are represented as 4 vertex coordinates.\n        :type Polygon: list of Coord\n        :param AdvancedInfo: Extended field\n        :type AdvancedInfo: str\n        """
         self.ColTl = None
         self.RowTl = None
         self.ColBr = None

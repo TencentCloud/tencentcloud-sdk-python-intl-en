@@ -25,19 +25,7 @@ class AccountInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-lnp6j617
-        :type DBInstanceId: str
-        :param UserName: Account
-        :type UserName: str
-        :param Remark: Account remarks
-        :type Remark: str
-        :param Status: Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting
-        :type Status: int
-        :param CreateTime: Account creation time
-        :type CreateTime: str
-        :param UpdateTime: Account last modified time
-        :type UpdateTime: str
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-lnp6j617\n        :type DBInstanceId: str\n        :param UserName: Account\n        :type UserName: str\n        :param Remark: Account remarks\n        :type Remark: str\n        :param Status: Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting\n        :type Status: int\n        :param CreateTime: Account creation time\n        :type CreateTime: str\n        :param UpdateTime: Account last modified time\n        :type UpdateTime: str\n        """
         self.DBInstanceId = None
         self.UserName = None
         self.Remark = None
@@ -69,11 +57,7 @@ class AddDBInstanceToReadOnlyGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID
-        :type DBInstanceId: str
-        :param ReadOnlyGroupId: RO group ID
-        :type ReadOnlyGroupId: str
-        """
+        :param DBInstanceId: Instance ID\n        :type DBInstanceId: str\n        :param ReadOnlyGroupId: RO group ID\n        :type ReadOnlyGroupId: str\n        """
         self.DBInstanceId = None
         self.ReadOnlyGroupId = None
 
@@ -97,11 +81,7 @@ class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -118,11 +98,7 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-6r233v55
-        :type DBInstanceId: str
-        :param IsIpv6: Whether to disable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)
-        :type IsIpv6: int
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-6r233v55\n        :type DBInstanceId: str\n        :param IsIpv6: Whether to disable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)\n        :type IsIpv6: int\n        """
         self.DBInstanceId = None
         self.IsIpv6 = None
 
@@ -146,11 +122,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Async task flow ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Async task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -167,11 +139,7 @@ class CloseServerlessDBExtranetAccessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Unique ID of an instance
-        :type DBInstanceId: str
-        :param DBInstanceName: Instance name
-        :type DBInstanceName: str
-        """
+        :param DBInstanceId: Unique ID of an instance\n        :type DBInstanceId: str\n        :param DBInstanceName: Instance name\n        :type DBInstanceName: str\n        """
         self.DBInstanceId = None
         self.DBInstanceName = None
 
@@ -195,9 +163,7 @@ class CloseServerlessDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -212,43 +178,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
-        :type SpecCode: str
-        :param DBVersion: PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.
-        :type DBVersion: str
-        :param Storage: Instance capacity size in GB.
-        :type Storage: int
-        :param InstanceCount: Number of instances purchased at a time. Value range: 1-100.
-        :type InstanceCount: int
-        :param Period: Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.
-        :type Period: int
-        :param Zone: AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
-        :type Zone: str
-        :param ProjectId: Project ID.
-        :type ProjectId: int
-        :param InstanceChargeType: Instance billing type.
-        :type InstanceChargeType: str
-        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: no.
-        :type AutoVoucher: int
-        :param VoucherIds: Voucher ID list (only one voucher can be specified currently).
-        :type VoucherIds: list of str
-        :param VpcId: VPC ID.
-        :type VpcId: str
-        :param SubnetId: VPC subnet ID.
-        :type SubnetId: str
-        :param AutoRenewFlag: Renewal flag. 0: normal renewal (default), 1: auto-renewal.
-        :type AutoRenewFlag: int
-        :param ActivityId: Activity ID
-        :type ActivityId: int
-        :param Name: Instance name (which will be supported in the future)
-        :type Name: str
-        :param NeedSupportIpv6: Whether to support IPv6 address access. Valid values: 1 (yes), 0 (no)
-        :type NeedSupportIpv6: int
-        :param TagList: The information of tags to be associated with instances. This parameter is left empty by default.
-        :type TagList: list of Tag
-        :param SecurityGroupIds: Security group ID
-        :type SecurityGroupIds: list of str
-        """
+        :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.\n        :type SpecCode: str\n        :param DBVersion: PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.\n        :type DBVersion: str\n        :param Storage: Instance capacity size in GB.\n        :type Storage: int\n        :param InstanceCount: Number of instances purchased at a time. Value range: 1-100.\n        :type InstanceCount: int\n        :param Period: Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.\n        :type Period: int\n        :param Zone: AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.\n        :type Zone: str\n        :param ProjectId: Project ID.\n        :type ProjectId: int\n        :param InstanceChargeType: Instance billing type.\n        :type InstanceChargeType: str\n        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: no.\n        :type AutoVoucher: int\n        :param VoucherIds: Voucher ID list (only one voucher can be specified currently).\n        :type VoucherIds: list of str\n        :param VpcId: VPC ID.\n        :type VpcId: str\n        :param SubnetId: VPC subnet ID.\n        :type SubnetId: str\n        :param AutoRenewFlag: Renewal flag. 0: normal renewal (default), 1: auto-renewal.\n        :type AutoRenewFlag: int\n        :param ActivityId: Activity ID\n        :type ActivityId: int\n        :param Name: Instance name (which will be supported in the future)\n        :type Name: str\n        :param NeedSupportIpv6: Whether to support IPv6 address access. Valid values: 1 (yes), 0 (no)\n        :type NeedSupportIpv6: int\n        :param TagList: The information of tags to be associated with instances. This parameter is left empty by default.\n        :type TagList: list of Tag\n        :param SecurityGroupIds: Security group ID\n        :type SecurityGroupIds: list of str\n        """
         self.SpecCode = None
         self.DBVersion = None
         self.Storage = None
@@ -309,15 +239,7 @@ class CreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealNames: Order number list. Each instance corresponds to an order number.
-        :type DealNames: list of str
-        :param BillId: Bill ID of frozen fees
-        :type BillId: str
-        :param DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the billing mode is postpaid.
-        :type DBInstanceIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DealNames: Order number list. Each instance corresponds to an order number.\n        :type DealNames: list of str\n        :param BillId: Bill ID of frozen fees\n        :type BillId: str\n        :param DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the billing mode is postpaid.\n        :type DBInstanceIdSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealNames = None
         self.BillId = None
         self.DBInstanceIdSet = None
@@ -338,49 +260,7 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
-        :type SpecCode: str
-        :param DBVersion: PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.
-        :type DBVersion: str
-        :param Storage: Instance storage capacity in GB
-        :type Storage: int
-        :param InstanceCount: The number of instances purchased at a time. Value range: 1-10.
-        :type InstanceCount: int
-        :param Period: Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.
-        :type Period: int
-        :param Zone: Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
-        :type Zone: str
-        :param Charset: Instance character set. Valid values: `UTF8`, `LATIN1`.
-        :type Charset: str
-        :param AdminName: Instance root account name
-        :type AdminName: str
-        :param AdminPassword: Instance root account password
-        :type AdminPassword: str
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
-        :type InstanceChargeType: str
-        :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
-        :type AutoVoucher: int
-        :param VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
-        :type VoucherIds: list of str
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: ID of a subnet in the VPC specified by `VpcId`
-        :type SubnetId: str
-        :param AutoRenewFlag: Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.
-        :type AutoRenewFlag: int
-        :param ActivityId: Campaign ID
-        :type ActivityId: int
-        :param Name: Instance name
-        :type Name: str
-        :param NeedSupportIpv6: Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no).
-        :type NeedSupportIpv6: int
-        :param TagList: The information of tags to be associated with instances. This parameter is left empty by default.
-        :type TagList: list of Tag
-        :param SecurityGroupIds: Security group IDs
-        :type SecurityGroupIds: list of str
-        """
+        :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.\n        :type SpecCode: str\n        :param DBVersion: PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.\n        :type DBVersion: str\n        :param Storage: Instance storage capacity in GB\n        :type Storage: int\n        :param InstanceCount: The number of instances purchased at a time. Value range: 1-10.\n        :type InstanceCount: int\n        :param Period: Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.\n        :type Period: int\n        :param Zone: Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.\n        :type Zone: str\n        :param Charset: Instance character set. Valid values: `UTF8`, `LATIN1`.\n        :type Charset: str\n        :param AdminName: Instance root account name\n        :type AdminName: str\n        :param AdminPassword: Instance root account password\n        :type AdminPassword: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).\n        :type InstanceChargeType: str\n        :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.\n        :type AutoVoucher: int\n        :param VoucherIds: Voucher ID list. Currently, you can specify only one voucher.\n        :type VoucherIds: list of str\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: ID of a subnet in the VPC specified by `VpcId`\n        :type SubnetId: str\n        :param AutoRenewFlag: Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.\n        :type AutoRenewFlag: int\n        :param ActivityId: Campaign ID\n        :type ActivityId: int\n        :param Name: Instance name\n        :type Name: str\n        :param NeedSupportIpv6: Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no). Default value: `0`\n        :type NeedSupportIpv6: int\n        :param TagList: The information of tags to be associated with instances. This parameter is left empty by default.\n        :type TagList: list of Tag\n        :param SecurityGroupIds: Security group IDs\n        :type SecurityGroupIds: list of str\n        """
         self.SpecCode = None
         self.DBVersion = None
         self.Storage = None
@@ -447,15 +327,7 @@ class CreateInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealNames: Order number list. Each instance corresponds to an order number.
-        :type DealNames: list of str
-        :param BillId: Bill ID of frozen fees
-        :type BillId: str
-        :param DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.
-        :type DBInstanceIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DealNames: Order number list. Each instance corresponds to an order number.\n        :type DealNames: list of str\n        :param BillId: Bill ID of frozen fees\n        :type BillId: str\n        :param DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.\n        :type DBInstanceIdSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealNames = None
         self.BillId = None
         self.DBInstanceIdSet = None
@@ -476,47 +348,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
-        :type SpecCode: str
-        :param DBVersion: PostgreSQL kernel version, which must be the same as that of the primary instance
-        :type DBVersion: str
-        :param Storage: Instance storage capacity in GB
-        :type Storage: int
-        :param InstanceCount: Number of instances purchased at a time. Value range: 1–100.
-        :type InstanceCount: int
-        :param Period: Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.
-        :type Period: int
-        :param MasterDBInstanceId: ID of the primary instance to which the read-only replica belongs
-        :type MasterDBInstanceId: str
-        :param Zone: Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
-        :type Zone: str
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
-        :type InstanceChargeType: str
-        :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
-        :type AutoVoucher: int
-        :param VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
-        :type VoucherIds: list of str
-        :param AutoRenewFlag: Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.
-        :type AutoRenewFlag: int
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: VPC subnet ID
-        :type SubnetId: str
-        :param ActivityId: Special offer ID
-        :type ActivityId: int
-        :param Name: Instance name (which will be supported in the future)
-        :type Name: str
-        :param NeedSupportIpv6: Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no).
-        :type NeedSupportIpv6: int
-        :param ReadOnlyGroupId: RO group ID
-        :type ReadOnlyGroupId: str
-        :param TagList: The information of tags to be associated with instances. This parameter is left empty by default.
-        :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`
-        :param SecurityGroupIds: Security group ID
-        :type SecurityGroupIds: list of str
-        """
+        :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.\n        :type SpecCode: str\n        :param DBVersion: PostgreSQL kernel version, which must be the same as that of the primary instance\n        :type DBVersion: str\n        :param Storage: Instance storage capacity in GB\n        :type Storage: int\n        :param InstanceCount: Number of instances purchased at a time. Value range: 1–100.\n        :type InstanceCount: int\n        :param Period: Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.\n        :type Period: int\n        :param MasterDBInstanceId: ID of the primary instance to which the read-only replica belongs\n        :type MasterDBInstanceId: str\n        :param Zone: Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.\n        :type Zone: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).\n        :type InstanceChargeType: str\n        :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.\n        :type AutoVoucher: int\n        :param VoucherIds: Voucher ID list. Currently, you can specify only one voucher.\n        :type VoucherIds: list of str\n        :param AutoRenewFlag: Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.\n        :type AutoRenewFlag: int\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: VPC subnet ID\n        :type SubnetId: str\n        :param ActivityId: Special offer ID\n        :type ActivityId: int\n        :param Name: Instance name (which will be supported in the future)\n        :type Name: str\n        :param NeedSupportIpv6: Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no).\n        :type NeedSupportIpv6: int\n        :param ReadOnlyGroupId: RO group ID\n        :type ReadOnlyGroupId: str\n        :param TagList: The information of tags to be associated with instances. This parameter is left empty by default.\n        :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`\n        :param SecurityGroupIds: Security group ID\n        :type SecurityGroupIds: list of str\n        """
         self.SpecCode = None
         self.DBVersion = None
         self.Storage = None
@@ -578,15 +410,7 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealNames: Order number list. Each instance corresponds to an order number.
-        :type DealNames: list of str
-        :param BillId: Bill ID of frozen fees
-        :type BillId: str
-        :param DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.
-        :type DBInstanceIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DealNames: Order number list. Each instance corresponds to an order number.\n        :type DealNames: list of str\n        :param BillId: Bill ID of frozen fees\n        :type BillId: str\n        :param DBInstanceIdSet: ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.\n        :type DBInstanceIdSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealNames = None
         self.BillId = None
         self.DBInstanceIdSet = None
@@ -607,29 +431,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MasterDBInstanceId: Primary instance ID
-        :type MasterDBInstanceId: str
-        :param Name: RO group name
-        :type Name: str
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: Subnet ID
-        :type SubnetId: str
-        :param ReplayLagEliminate: Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
-        :type ReplayLagEliminate: int
-        :param ReplayLatencyEliminate: Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
-        :type ReplayLatencyEliminate: int
-        :param MaxReplayLag: Delay threshold in ms
-        :type MaxReplayLag: int
-        :param MaxReplayLatency: Delayed log size threshold in MB
-        :type MaxReplayLatency: int
-        :param MinDelayEliminateReserve: The minimum number of read-only replicas that must be retained in an RO group
-        :type MinDelayEliminateReserve: int
-        :param SecurityGroupIds: Security group ID
-        :type SecurityGroupIds: list of str
-        """
+        :param MasterDBInstanceId: Primary instance ID\n        :type MasterDBInstanceId: str\n        :param Name: RO group name\n        :type Name: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        :param ReplayLagEliminate: Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).\n        :type ReplayLagEliminate: int\n        :param ReplayLatencyEliminate: Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).\n        :type ReplayLatencyEliminate: int\n        :param MaxReplayLag: Delay threshold in ms\n        :type MaxReplayLag: int\n        :param MaxReplayLatency: Delayed log size threshold in MB\n        :type MaxReplayLatency: int\n        :param MinDelayEliminateReserve: The minimum number of read-only replicas that must be retained in an RO group\n        :type MinDelayEliminateReserve: int\n        :param SecurityGroupIds: Security group ID\n        :type SecurityGroupIds: list of str\n        """
         self.MasterDBInstanceId = None
         self.Name = None
         self.ProjectId = None
@@ -671,14 +473,8 @@ class CreateReadOnlyGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ReadOnlyGroupId: RO group ID
-        :type ReadOnlyGroupId: str
-        :param FlowId: Task ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param ReadOnlyGroupId: RO group ID\n        :type ReadOnlyGroupId: str\n        :param FlowId: Task ID
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ReadOnlyGroupId = None
         self.FlowId = None
         self.RequestId = None
@@ -697,23 +493,7 @@ class CreateServerlessDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: Availability zone ID. Only ap-shanghai-2, ap-beijing-1, and ap-guangzhou-2 are supported during the beta test.
-        :type Zone: str
-        :param DBInstanceName: Instance name. The value must be unique for the same account.
-        :type DBInstanceName: str
-        :param DBVersion: Kernel version of a PostgreSQL instance. Currently, only 10.4 is supported.
-        :type DBVersion: str
-        :param DBCharset: Database character set of a PostgreSQL instance. Currently, only UTF-8 is supported.
-        :type DBCharset: str
-        :param ProjectId: Project ID.
-        :type ProjectId: int
-        :param VpcId: VPC ID.
-        :type VpcId: str
-        :param SubnetId: VPC subnet ID.
-        :type SubnetId: str
-        :param TagList: Array of tags to be bound with the instance
-        :type TagList: list of Tag
-        """
+        :param Zone: Availability zone ID. Only ap-shanghai-2, ap-beijing-1, and ap-guangzhou-2 are supported during the beta test.\n        :type Zone: str\n        :param DBInstanceName: Instance name. The value must be unique for the same account.\n        :type DBInstanceName: str\n        :param DBVersion: Kernel version of a PostgreSQL instance. Currently, only 10.4 is supported.\n        :type DBVersion: str\n        :param DBCharset: Database character set of a PostgreSQL instance. Currently, only UTF-8 is supported.\n        :type DBCharset: str\n        :param ProjectId: Project ID.\n        :type ProjectId: int\n        :param VpcId: VPC ID.\n        :type VpcId: str\n        :param SubnetId: VPC subnet ID.\n        :type SubnetId: str\n        :param TagList: Array of tags to be bound with the instance\n        :type TagList: list of Tag\n        """
         self.Zone = None
         self.DBInstanceName = None
         self.DBVersion = None
@@ -754,11 +534,7 @@ class CreateServerlessDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID, such as "postgres-xxxxx". The value must be globally unique.
-        :type DBInstanceId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DBInstanceId: Instance ID, such as "postgres-xxxxx". The value must be globally unique.\n        :type DBInstanceId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DBInstanceId = None
         self.RequestId = None
 
@@ -775,29 +551,7 @@ class DBBackup(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Unique backup file ID
-        :type Id: int
-        :param StartTime: File generation start time
-        :type StartTime: str
-        :param EndTime: File generation end time
-        :type EndTime: str
-        :param Size: File size in KB
-        :type Size: int
-        :param Strategy: Policy (0: instance backup, 1: multi-database backup)
-        :type Strategy: int
-        :param Way: Type (0: scheduled)
-        :type Way: int
-        :param Type: Backup mode (1: full)
-        :type Type: int
-        :param Status: Status (1: creating, 2: success, 3: failure)
-        :type Status: int
-        :param DbList: DB list
-        :type DbList: list of str
-        :param InternalAddr: Download address on private network
-        :type InternalAddr: str
-        :param ExternalAddr: Download address on public network
-        :type ExternalAddr: str
-        """
+        :param Id: Unique backup file ID\n        :type Id: int\n        :param StartTime: File generation start time\n        :type StartTime: str\n        :param EndTime: File generation end time\n        :type EndTime: str\n        :param Size: File size in KB\n        :type Size: int\n        :param Strategy: Policy (0: instance backup, 1: multi-database backup)\n        :type Strategy: int\n        :param Way: Type (0: scheduled)\n        :type Way: int\n        :param Type: Backup mode (1: full)\n        :type Type: int\n        :param Status: Status (1: creating, 2: success, 3: failure)\n        :type Status: int\n        :param DbList: DB list\n        :type DbList: list of str\n        :param InternalAddr: Download address on private network\n        :type InternalAddr: str\n        :param ExternalAddr: Download address on public network\n        :type ExternalAddr: str\n        """
         self.Id = None
         self.StartTime = None
         self.EndTime = None
@@ -839,76 +593,12 @@ class DBInstance(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Instance region such as ap-guangzhou, which corresponds to the `Region` field of `RegionSet`
-        :type Region: str
-        :param Zone: Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`
-        :type Zone: str
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: SubnetId
-        :type SubnetId: str
-        :param DBInstanceId: Instance ID
-        :type DBInstanceId: str
-        :param DBInstanceName: Instance name
-        :type DBInstanceName: str
-        :param DBInstanceStatus: Instance status
-        :type DBInstanceStatus: str
-        :param DBInstanceMemory: Assigned instance memory size in GB
-        :type DBInstanceMemory: int
-        :param DBInstanceStorage: Assigned instance storage capacity in GB
-        :type DBInstanceStorage: int
-        :param DBInstanceCpu: Number of assigned CPUs
-        :type DBInstanceCpu: int
-        :param DBInstanceClass: Purchasable specification ID
-        :type DBInstanceClass: str
-        :param DBInstanceType: Instance type. 1: primary (master instance), 2: readonly (read-only instance), 3: guard (disaster recovery instance), 4: temp (temp instance)
-        :type DBInstanceType: str
-        :param DBInstanceVersion: Instance edition. Currently, only `standard` edition (dual-server high-availability one-master-one-slave edition) is supported
-        :type DBInstanceVersion: str
-        :param DBCharset: Instance database character set
-        :type DBCharset: str
-        :param DBVersion: PostgreSQL kernel version
-        :type DBVersion: str
-        :param CreateTime: Instance creation time
-        :type CreateTime: str
-        :param UpdateTime: Instance last modified time
-        :type UpdateTime: str
-        :param ExpireTime: Instance expiration time
-        :type ExpireTime: str
-        :param IsolatedTime: Instance isolation time
-        :type IsolatedTime: str
-        :param PayType: Billing mode. postpaid: pay-as-you-go
-        :type PayType: str
-        :param AutoRenew: Whether to renew automatically. 1: yes, 0: no
-        :type AutoRenew: int
-        :param DBInstanceNetInfo: Instance network connection information
-        :type DBInstanceNetInfo: list of DBInstanceNetInfo
-        :param Type: Machine type
-        :type Type: str
-        :param AppId: User `AppId`
-        :type AppId: int
-        :param Uid: Instance `Uid`
-        :type Uid: int
-        :param SupportIpv6: Whether the instance supports IPv6 address access. Valid values: 1 (yes), 0 (no)
-        :type SupportIpv6: int
-        :param TagList: The information of tags associated with instances.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TagList: list of Tag
-        :param MasterDBInstanceId: Primary instance information, which is returned only when the instance is read-only
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MasterDBInstanceId: str
-        :param ReadOnlyInstanceNum: Number of read-only instances
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ReadOnlyInstanceNum: int
-        :param StatusInReadonlyGroup: The status of a instance in a read-only group
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type StatusInReadonlyGroup: str
-        :param OfflineTime: Elimination time
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OfflineTime: str
-        """
+        :param Region: Instance region such as ap-guangzhou, which corresponds to the `Region` field of `RegionSet`\n        :type Region: str\n        :param Zone: Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`\n        :type Zone: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: SubnetId\n        :type SubnetId: str\n        :param DBInstanceId: Instance ID\n        :type DBInstanceId: str\n        :param DBInstanceName: Instance name\n        :type DBInstanceName: str\n        :param DBInstanceStatus: Instance status\n        :type DBInstanceStatus: str\n        :param DBInstanceMemory: Assigned instance memory size in GB\n        :type DBInstanceMemory: int\n        :param DBInstanceStorage: Assigned instance storage capacity in GB\n        :type DBInstanceStorage: int\n        :param DBInstanceCpu: Number of assigned CPUs\n        :type DBInstanceCpu: int\n        :param DBInstanceClass: Purchasable specification ID\n        :type DBInstanceClass: str\n        :param DBInstanceType: Instance type. 1: primary (master instance), 2: readonly (read-only instance), 3: guard (disaster recovery instance), 4: temp (temp instance)\n        :type DBInstanceType: str\n        :param DBInstanceVersion: Instance edition. Currently, only `standard` edition (dual-server high-availability one-master-one-slave edition) is supported\n        :type DBInstanceVersion: str\n        :param DBCharset: Instance database character set\n        :type DBCharset: str\n        :param DBVersion: PostgreSQL kernel version\n        :type DBVersion: str\n        :param CreateTime: Instance creation time\n        :type CreateTime: str\n        :param UpdateTime: Instance last modified time\n        :type UpdateTime: str\n        :param ExpireTime: Instance expiration time\n        :type ExpireTime: str\n        :param IsolatedTime: Instance isolation time\n        :type IsolatedTime: str\n        :param PayType: Billing mode. postpaid: pay-as-you-go\n        :type PayType: str\n        :param AutoRenew: Whether to renew automatically. 1: yes, 0: no\n        :type AutoRenew: int\n        :param DBInstanceNetInfo: Instance network connection information\n        :type DBInstanceNetInfo: list of DBInstanceNetInfo\n        :param Type: Machine type\n        :type Type: str\n        :param AppId: User `AppId`\n        :type AppId: int\n        :param Uid: Instance `Uid`\n        :type Uid: int\n        :param SupportIpv6: Whether the instance supports IPv6 address access. Valid values: 1 (yes), 0 (no)\n        :type SupportIpv6: int\n        :param TagList: The information of tags associated with instances.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TagList: list of Tag\n        :param MasterDBInstanceId: Primary instance information, which is returned only when the instance is read-only
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MasterDBInstanceId: str\n        :param ReadOnlyInstanceNum: Number of read-only instances
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ReadOnlyInstanceNum: int\n        :param StatusInReadonlyGroup: The status of a instance in a read-only group
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type StatusInReadonlyGroup: str\n        :param OfflineTime: Elimination time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OfflineTime: str\n        """
         self.Region = None
         self.Zone = None
         self.ProjectId = None
@@ -1002,17 +692,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Address: DNS domain name
-        :type Address: str
-        :param Ip: Ip
-        :type Ip: str
-        :param Port: Connection port address
-        :type Port: int
-        :param NetType: Network type. 1: inner (private network address), 2: public (public network address)
-        :type NetType: str
-        :param Status: Network connection status
-        :type Status: str
-        """
+        :param Address: DNS domain name\n        :type Address: str\n        :param Ip: Ip\n        :type Ip: str\n        :param Port: Connection port address\n        :type Port: int\n        :param NetType: Network type. 1: inner (private network address), 2: public (public network address)\n        :type NetType: str\n        :param Status: Network connection status\n        :type Status: str\n        """
         self.Address = None
         self.Ip = None
         self.Port = None
@@ -1042,9 +722,7 @@ class DeleteReadOnlyGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ReadOnlyGroupId: ID of the RO group to be deleted
-        :type ReadOnlyGroupId: str
-        """
+        :param ReadOnlyGroupId: ID of the RO group to be deleted\n        :type ReadOnlyGroupId: str\n        """
         self.ReadOnlyGroupId = None
 
 
@@ -1067,11 +745,7 @@ class DeleteReadOnlyGroupResponse(AbstractModel):
     def __init__(self):
         """
         :param FlowId: Task ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -1088,11 +762,7 @@ class DeleteServerlessDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceName: Instance name. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.
-        :type DBInstanceName: str
-        :param DBInstanceId: Instance ID. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.
-        :type DBInstanceId: str
-        """
+        :param DBInstanceName: Instance name. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.\n        :type DBInstanceName: str\n        :param DBInstanceId: Instance ID. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.\n        :type DBInstanceId: str\n        """
         self.DBInstanceName = None
         self.DBInstanceId = None
 
@@ -1116,9 +786,7 @@ class DeleteServerlessDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1133,17 +801,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-6fego161
-        :type DBInstanceId: str
-        :param Limit: Number of entries returned per page. Default value: 20. Value range: 1-100.
-        :type Limit: int
-        :param Offset: Page number for data return in paged query. Pagination starts from 0
-        :type Offset: int
-        :param OrderBy: Whether to sort by creation time or username. Valid values: `createTime` (sort by creation time), `name` (sort by username)
-        :type OrderBy: str
-        :param OrderByType: Whether returns are sorted in ascending or descending order. Valid values: `desc` (descending), `asc` (ascending)
-        :type OrderByType: str
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-6fego161\n        :type DBInstanceId: str\n        :param Limit: Number of entries returned per page. Default value: 20. Value range: 1-100.\n        :type Limit: int\n        :param Offset: Page number for data return in paged query. Pagination starts from 0\n        :type Offset: int\n        :param OrderBy: Whether to sort by creation time or username. Valid values: `createTime` (sort by creation time), `name` (sort by username)\n        :type OrderBy: str\n        :param OrderByType: Whether returns are sorted in ascending or descending order. Valid values: `desc` (descending), `asc` (ascending)\n        :type OrderByType: str\n        """
         self.DBInstanceId = None
         self.Limit = None
         self.Offset = None
@@ -1173,13 +831,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of date entries returned for this API call.
-        :type TotalCount: int
-        :param Details: Account list details.
-        :type Details: list of AccountInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of date entries returned for this API call.\n        :type TotalCount: int\n        :param Details: Account list details.\n        :type Details: list of AccountInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Details = None
         self.RequestId = None
@@ -1203,19 +855,7 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-4wdeb0zv.
-        :type DBInstanceId: str
-        :param Type: Backup mode (1: full). Currently, only full backup is supported. The value is 1.
-        :type Type: int
-        :param StartTime: Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago
-        :type StartTime: str
-        :param EndTime: Query end time in the format of 2018-06-10 17:06:38
-        :type EndTime: str
-        :param Limit: Number of entries to be returned per page for backup list. Default value: 20. Minimum value: 1. Maximum value: 100. (If this parameter is left empty or 0, the default value will be used)
-        :type Limit: int
-        :param Offset: Page number for data return in paged query. Pagination starts from 0. Default value: 0.
-        :type Offset: int
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-4wdeb0zv.\n        :type DBInstanceId: str\n        :param Type: Backup mode (1: full). Currently, only full backup is supported. The value is 1.\n        :type Type: int\n        :param StartTime: Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago\n        :type StartTime: str\n        :param EndTime: Query end time in the format of 2018-06-10 17:06:38\n        :type EndTime: str\n        :param Limit: Number of entries to be returned per page for backup list. Default value: 20. Minimum value: 1. Maximum value: 100. (If this parameter is left empty or 0, the default value will be used)\n        :type Limit: int\n        :param Offset: Page number for data return in paged query. Pagination starts from 0. Default value: 0.\n        :type Offset: int\n        """
         self.DBInstanceId = None
         self.Type = None
         self.StartTime = None
@@ -1247,13 +887,7 @@ class DescribeDBBackupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of backup files in the returned backup list
-        :type TotalCount: int
-        :param BackupList: Backup list
-        :type BackupList: list of DBBackup
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of backup files in the returned backup list\n        :type TotalCount: int\n        :param BackupList: Backup list\n        :type BackupList: list of DBBackup\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.BackupList = None
         self.RequestId = None
@@ -1277,21 +911,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-5bq3wfjd
-        :type DBInstanceId: str
-        :param StartTime: Query start time in the format of 2018-01-01 00:00:00, which cannot be more than 7 days ago
-        :type StartTime: str
-        :param EndTime: Query end time in the format of 2018-01-01 00:00:00
-        :type EndTime: str
-        :param DatabaseName: Database name
-        :type DatabaseName: str
-        :param SearchKeys: Search keyword
-        :type SearchKeys: list of str
-        :param Limit: Number of entries returned per page. Value range: 1-100
-        :type Limit: int
-        :param Offset: Page number for data return in paged query. Pagination starts from 0
-        :type Offset: int
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-5bq3wfjd\n        :type DBInstanceId: str\n        :param StartTime: Query start time in the format of 2018-01-01 00:00:00, which cannot be more than 7 days ago\n        :type StartTime: str\n        :param EndTime: Query end time in the format of 2018-01-01 00:00:00\n        :type EndTime: str\n        :param DatabaseName: Database name\n        :type DatabaseName: str\n        :param SearchKeys: Search keyword\n        :type SearchKeys: list of str\n        :param Limit: Number of entries returned per page. Value range: 1-100\n        :type Limit: int\n        :param Offset: Page number for data return in paged query. Pagination starts from 0\n        :type Offset: int\n        """
         self.DBInstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1325,13 +945,7 @@ class DescribeDBErrlogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of date entries returned for this call
-        :type TotalCount: int
-        :param Details: Error log list
-        :type Details: list of ErrLogDetail
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of date entries returned for this call\n        :type TotalCount: int\n        :param Details: Error log list\n        :type Details: list of ErrLogDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Details = None
         self.RequestId = None
@@ -1355,9 +969,7 @@ class DescribeDBInstanceAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID
-        :type DBInstanceId: str
-        """
+        :param DBInstanceId: Instance ID\n        :type DBInstanceId: str\n        """
         self.DBInstanceId = None
 
 
@@ -1379,11 +991,7 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstance: Instance details.
-        :type DBInstance: :class:`tencentcloud.postgres.v20170312.models.DBInstance`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DBInstance: Instance details.\n        :type DBInstance: :class:`tencentcloud.postgres.v20170312.models.DBInstance`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DBInstance = None
         self.RequestId = None
 
@@ -1402,21 +1010,16 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: Filter condition. Valid values: db-instance-id, db-instance-name, db-project-id, db-pay-mode, db-tag-key.
-        :type Filters: list of Filter
-        :param Limit: Number of entries returned per page. Default value: 10.
-        :type Limit: int
-        :param Offset: Data offset which starts from 0
-        :type Offset: int
-        :param OrderBy: Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime
-        :type OrderBy: str
-        :param OrderByType: In ascending or descending order
-        :type OrderByType: str
-        """
+        :param Filters: Filter instances using one or more criteria. Valid filter names:
+db-instance-id: filter by instance ID (the filter value is a string)
+db-instance-name: filter by instance name (the filter value is a string)
+db-project-id: filter by project ID (the filter value is an integer)
+db-pay-mode: filter by billing mode (the filter value is a string)
+db-tag-key: filter by tag key (the filter value is a string)\n        :type Filters: list of Filter\n        :param Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`\n        :type Limit: int\n        :param OrderBy: Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime\n        :type OrderBy: str\n        :param Offset: Pagination offset, starting from 0\n        :type Offset: int\n        :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending)\n        :type OrderByType: str\n        """
         self.Filters = None
         self.Limit = None
-        self.Offset = None
         self.OrderBy = None
+        self.Offset = None
         self.OrderByType = None
 
 
@@ -1428,8 +1031,8 @@ class DescribeDBInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
         self.OrderBy = params.get("OrderBy")
+        self.Offset = params.get("Offset")
         self.OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1447,13 +1050,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of instances found.
-        :type TotalCount: int
-        :param DBInstanceSet: Instance details set.
-        :type DBInstanceSet: list of DBInstance
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of instances found.\n        :type TotalCount: int\n        :param DBInstanceSet: Instance details set.\n        :type DBInstanceSet: list of DBInstance\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DBInstanceSet = None
         self.RequestId = None
@@ -1477,23 +1074,7 @@ class DescribeDBSlowlogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-lnp6j617
-        :type DBInstanceId: str
-        :param StartTime: Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago
-        :type StartTime: str
-        :param EndTime: Query end time in the format of 2018-06-10 17:06:38
-        :type EndTime: str
-        :param DatabaseName: Database name
-        :type DatabaseName: str
-        :param OrderBy: Metric for sorting. Valid values: `sum_calls` (total number of calls), `sum_cost_time` (total time consumed)
-        :type OrderBy: str
-        :param OrderByType: Sorting order. desc: descending, asc: ascending
-        :type OrderByType: str
-        :param Limit: Number of entries returned per page. Value range: 1-100. Default value: 20.
-        :type Limit: int
-        :param Offset: Page number for data return in paged query. Pagination starts from 0
-        :type Offset: int
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-lnp6j617\n        :type DBInstanceId: str\n        :param StartTime: Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago\n        :type StartTime: str\n        :param EndTime: Query end time in the format of 2018-06-10 17:06:38\n        :type EndTime: str\n        :param DatabaseName: Database name\n        :type DatabaseName: str\n        :param OrderBy: Metric for sorting. Valid values: `sum_calls` (total number of calls), `sum_cost_time` (total time consumed)\n        :type OrderBy: str\n        :param OrderByType: Sorting order. desc: descending, asc: ascending\n        :type OrderByType: str\n        :param Limit: Number of entries returned per page. Value range: 1-100. Default value: 20.\n        :type Limit: int\n        :param Offset: Page number for data return in paged query. Pagination starts from 0\n        :type Offset: int\n        """
         self.DBInstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1529,13 +1110,7 @@ class DescribeDBSlowlogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of date entries returned this time
-        :type TotalCount: int
-        :param Detail: Slow query log details
-        :type Detail: :class:`tencentcloud.postgres.v20170312.models.SlowlogDetail`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of date entries returned this time\n        :type TotalCount: int\n        :param Detail: Slow query log details\n        :type Detail: :class:`tencentcloud.postgres.v20170312.models.SlowlogDetail`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Detail = None
         self.RequestId = None
@@ -1556,17 +1131,7 @@ class DescribeDBXlogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-4wdeb0zv.
-        :type DBInstanceId: str
-        :param StartTime: Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago
-        :type StartTime: str
-        :param EndTime: Query end time in the format of 2018-06-10 17:06:38
-        :type EndTime: str
-        :param Offset: Page number for data return in paged query. Pagination starts from 0
-        :type Offset: int
-        :param Limit: Number of entries returned per page in paged query. Value range: 1-100.
-        :type Limit: int
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-4wdeb0zv.\n        :type DBInstanceId: str\n        :param StartTime: Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago\n        :type StartTime: str\n        :param EndTime: Query end time in the format of 2018-06-10 17:06:38\n        :type EndTime: str\n        :param Offset: Page number for data return in paged query. Pagination starts from 0\n        :type Offset: int\n        :param Limit: Number of entries returned per page in paged query. Value range: 1-100.\n        :type Limit: int\n        """
         self.DBInstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1596,13 +1161,7 @@ class DescribeDBXlogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of date entries returned this time.
-        :type TotalCount: int
-        :param XlogList: Xlog list
-        :type XlogList: list of Xlog
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of date entries returned this time.\n        :type TotalCount: int\n        :param XlogList: Xlog list\n        :type XlogList: list of Xlog\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.XlogList = None
         self.RequestId = None
@@ -1626,9 +1185,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID
-        :type DBInstanceId: str
-        """
+        :param DBInstanceId: Instance ID\n        :type DBInstanceId: str\n        """
         self.DBInstanceId = None
 
 
@@ -1650,11 +1207,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Items: Database information
-        :type Items: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Items: Database information\n        :type Items: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Items = None
         self.RequestId = None
 
@@ -1671,9 +1224,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DealNames: Order name set
-        :type DealNames: list of str
-        """
+        :param DealNames: Order name set\n        :type DealNames: list of str\n        """
         self.DealNames = None
 
 
@@ -1695,13 +1246,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of orders
-        :type TotalCount: int
-        :param Deals: Order array
-        :type Deals: list of PgDeal
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of orders\n        :type TotalCount: int\n        :param Deals: Order array\n        :type Deals: list of PgDeal\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Deals = None
         self.RequestId = None
@@ -1725,9 +1270,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: AZ name
-        :type Zone: str
-        """
+        :param Zone: AZ name\n        :type Zone: str\n        """
         self.Zone = None
 
 
@@ -1749,11 +1292,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SpecInfoList: Purchasable specification list.
-        :type SpecInfoList: list of SpecInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param SpecInfoList: Purchasable specification list.\n        :type SpecInfoList: list of SpecInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SpecInfoList = None
         self.RequestId = None
 
@@ -1775,17 +1314,7 @@ class DescribeReadOnlyGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: Filter condition. The primary ID must be specified in the format of `db-master-instance-id` to filter results, or else `null` will be returned.
-        :type Filters: list of Filter
-        :param PageSize: The number of results per page. Default value: 10.
-        :type PageSize: int
-        :param PageNumber: Specify which page is displayed. Default value: 1 (the first page).
-        :type PageNumber: int
-        :param OrderBy: Sorting criterion. Valid values: `ROGroupId`, `CreateTime`, `Name`.
-        :type OrderBy: str
-        :param OrderByType: Sorting order. Valid values: `desc`, `asc`.
-        :type OrderByType: str
-        """
+        :param Filters: Filter condition. The primary ID must be specified in the format of `db-master-instance-id` to filter results, or else `null` will be returned.\n        :type Filters: list of Filter\n        :param PageSize: The number of results per page. Default value: 10.\n        :type PageSize: int\n        :param PageNumber: Specify which page is displayed. Default value: 1 (the first page).\n        :type PageNumber: int\n        :param OrderBy: Sorting criterion. Valid values: `ROGroupId`, `CreateTime`, `Name`.\n        :type OrderBy: str\n        :param OrderByType: Sorting order. Valid values: `desc`, `asc`.\n        :type OrderByType: str\n        """
         self.Filters = None
         self.PageSize = None
         self.PageNumber = None
@@ -1820,11 +1349,7 @@ class DescribeReadOnlyGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ReadOnlyGroupList: RO group list
-        :type ReadOnlyGroupList: list of ReadOnlyGroup
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param ReadOnlyGroupList: RO group list\n        :type ReadOnlyGroupList: list of ReadOnlyGroup\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ReadOnlyGroupList = None
         self.RequestId = None
 
@@ -1852,13 +1377,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of returned results.
-        :type TotalCount: int
-        :param RegionSet: Region information set.
-        :type RegionSet: list of RegionInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of returned results.\n        :type TotalCount: int\n        :param RegionSet: Region information set.\n        :type RegionSet: list of RegionInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RegionSet = None
         self.RequestId = None
@@ -1882,17 +1401,7 @@ class DescribeServerlessDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filter: Query conditions
-        :type Filter: list of Filter
-        :param Limit: The number of queries
-        :type Limit: int
-        :param Offset: The offset value
-        :type Offset: int
-        :param OrderBy: Sorting metric. Currently, only "CreateTime" (instance creation time) is supported.
-        :type OrderBy: str
-        :param OrderByType: Sorting order. Ascending and descending are supported.
-        :type OrderByType: str
-        """
+        :param Filter: Query conditions\n        :type Filter: list of Filter\n        :param Limit: The number of queries\n        :type Limit: int\n        :param Offset: The offset value\n        :type Offset: int\n        :param OrderBy: Sorting metric. Currently, only "CreateTime" (instance creation time) is supported.\n        :type OrderBy: str\n        :param OrderByType: Sorting order. Ascending and descending are supported.\n        :type OrderByType: str\n        """
         self.Filter = None
         self.Limit = None
         self.Offset = None
@@ -1927,14 +1436,8 @@ class DescribeServerlessDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: The number of query results
-        :type TotalCount: int
-        :param DBInstanceSet: Query results
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBInstanceSet: list of ServerlessDBInstance
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: The number of query results\n        :type TotalCount: int\n        :param DBInstanceSet: Query results
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBInstanceSet: list of ServerlessDBInstance\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DBInstanceSet = None
         self.RequestId = None
@@ -1964,13 +1467,7 @@ class DescribeZonesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of returned results.
-        :type TotalCount: int
-        :param ZoneSet: AZ information set.
-        :type ZoneSet: list of ZoneInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of returned results.\n        :type TotalCount: int\n        :param ZoneSet: AZ information set.\n        :type ZoneSet: list of ZoneInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ZoneSet = None
         self.RequestId = None
@@ -1994,9 +1491,7 @@ class DestroyDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: The ID of the instance to be eliminated
-        :type DBInstanceId: str
-        """
+        :param DBInstanceId: The ID of the instance to be eliminated\n        :type DBInstanceId: str\n        """
         self.DBInstanceId = None
 
 
@@ -2018,9 +1513,7 @@ class DestroyDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2035,15 +1528,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceIdSet: Resource ID list
-        :type DBInstanceIdSet: list of str
-        :param Period: The valid period (in months) of the monthly-subscribed instance when removing it from isolation
-        :type Period: int
-        :param AutoVoucher: Whether to use vouchers. Valid values: `true` (yes), `false` (no). Default value: `false`.
-        :type AutoVoucher: bool
-        :param VoucherIds: Voucher ID list
-        :type VoucherIds: list of str
-        """
+        :param DBInstanceIdSet: Resource ID list\n        :type DBInstanceIdSet: list of str\n        :param Period: The valid period (in months) of the monthly-subscribed instance when removing it from isolation\n        :type Period: int\n        :param AutoVoucher: Whether to use vouchers. Valid values: `true` (yes), `false` (no). Default value: `false`.\n        :type AutoVoucher: bool\n        :param VoucherIds: Voucher ID list\n        :type VoucherIds: list of str\n        """
         self.DBInstanceIdSet = None
         self.Period = None
         self.AutoVoucher = None
@@ -2071,9 +1556,7 @@ class DisIsolateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2088,15 +1571,7 @@ class ErrLogDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: Username
-        :type UserName: str
-        :param Database: Database name
-        :type Database: str
-        :param ErrTime: Error occurrence time
-        :type ErrTime: str
-        :param ErrMsg: Error message
-        :type ErrMsg: str
-        """
+        :param UserName: Username\n        :type UserName: str\n        :param Database: Database name\n        :type Database: str\n        :param ErrTime: Error occurrence time\n        :type ErrTime: str\n        :param ErrMsg: Error message\n        :type ErrMsg: str\n        """
         self.UserName = None
         self.Database = None
         self.ErrTime = None
@@ -2126,11 +1601,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Filter name.
-        :type Name: str
-        :param Values: One or more filter values.
-        :type Values: list of str
-        """
+        :param Name: Filter name.\n        :type Name: str\n        :param Values: One or more filter values.\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -2154,15 +1625,7 @@ class InitDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceIdSet: Instance ID set.
-        :type DBInstanceIdSet: list of str
-        :param AdminName: Instance admin account username.
-        :type AdminName: str
-        :param AdminPassword: Password corresponding to instance root account username.
-        :type AdminPassword: str
-        :param Charset: Instance character set. Valid values: UTF8, LATIN1.
-        :type Charset: str
-        """
+        :param DBInstanceIdSet: Instance ID set.\n        :type DBInstanceIdSet: list of str\n        :param AdminName: Instance admin account username.\n        :type AdminName: str\n        :param AdminPassword: Password corresponding to instance root account username.\n        :type AdminPassword: str\n        :param Charset: Instance character set. Valid values: UTF8, LATIN1.\n        :type Charset: str\n        """
         self.DBInstanceIdSet = None
         self.AdminName = None
         self.AdminPassword = None
@@ -2190,11 +1653,7 @@ class InitDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceIdSet: Instance ID set.
-        :type DBInstanceIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DBInstanceIdSet: Instance ID set.\n        :type DBInstanceIdSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DBInstanceIdSet = None
         self.RequestId = None
 
@@ -2211,21 +1670,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
-        :type Zone: str
-        :param SpecCode: Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
-        :type SpecCode: str
-        :param Storage: Storage capacity size in GB.
-        :type Storage: int
-        :param InstanceCount: Number of instances. Maximum value: 100. If you need to create more instances at a time, please contact customer service.
-        :type InstanceCount: int
-        :param Period: Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.
-        :type Period: int
-        :param Pid: Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.
-        :type Pid: int
-        :param InstanceChargeType: Instance billing type. Valid value: POSTPAID_BY_HOUR (pay-as-you-go)
-        :type InstanceChargeType: str
-        """
+        :param Zone: AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.\n        :type Zone: str\n        :param SpecCode: Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.\n        :type SpecCode: str\n        :param Storage: Storage capacity size in GB.\n        :type Storage: int\n        :param InstanceCount: Number of instances. Maximum value: 100. If you need to create more instances at a time, please contact customer service.\n        :type InstanceCount: int\n        :param Period: Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.\n        :type Period: int\n        :param Pid: Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.\n        :type Pid: int\n        :param InstanceChargeType: Instance billing type. Valid value: POSTPAID_BY_HOUR (pay-as-you-go)\n        :type InstanceChargeType: str\n        """
         self.Zone = None
         self.SpecCode = None
         self.Storage = None
@@ -2259,13 +1704,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: Original price in 0.01 CNY.
-        :type OriginalPrice: int
-        :param Price: Discounted price in 0.01 CNY.
-        :type Price: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param OriginalPrice: Original price in 0.01 CNY.\n        :type OriginalPrice: int\n        :param Price: Discounted price in 0.01 CNY.\n        :type Price: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.RequestId = None
@@ -2284,11 +1723,7 @@ class InquiryPriceRenewDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID
-        :type DBInstanceId: str
-        :param Period: Renewal duration in months. Maximum value: 48
-        :type Period: int
-        """
+        :param DBInstanceId: Instance ID\n        :type DBInstanceId: str\n        :param Period: Renewal duration in months. Maximum value: 48\n        :type Period: int\n        """
         self.DBInstanceId = None
         self.Period = None
 
@@ -2312,13 +1747,7 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: Total cost before discount; for example, 24650 indicates 246.5 CNY
-        :type OriginalPrice: int
-        :param Price: Actual amount payable; for example, 24650 indicates 246.5 CNY
-        :type Price: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param OriginalPrice: Total cost before discount; for example, 24650 indicates 246.5 CNY\n        :type OriginalPrice: int\n        :param Price: Actual amount payable; for example, 24650 indicates 246.5 CNY\n        :type Price: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.RequestId = None
@@ -2337,15 +1766,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Storage: Instance disk size in GB
-        :type Storage: int
-        :param Memory: Instance memory size in GB
-        :type Memory: int
-        :param DBInstanceId: Instance ID in the format of postgres-hez4fh0v
-        :type DBInstanceId: str
-        :param InstanceChargeType: Instance billing type. Valid value: `POSTPAID_BY_HOUR` (pay-as-you-go hourly)
-        :type InstanceChargeType: str
-        """
+        :param Storage: Instance disk size in GB\n        :type Storage: int\n        :param Memory: Instance memory size in GB\n        :type Memory: int\n        :param DBInstanceId: Instance ID in the format of postgres-hez4fh0v\n        :type DBInstanceId: str\n        :param InstanceChargeType: Instance billing type. Valid value: `POSTPAID_BY_HOUR` (pay-as-you-go hourly)\n        :type InstanceChargeType: str\n        """
         self.Storage = None
         self.Memory = None
         self.DBInstanceId = None
@@ -2373,13 +1794,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: Total cost before discount.
-        :type OriginalPrice: int
-        :param Price: Actual amount payable
-        :type Price: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param OriginalPrice: Total cost before discount.\n        :type OriginalPrice: int\n        :param Price: Actual amount payable\n        :type Price: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.RequestId = None
@@ -2398,9 +1813,7 @@ class IsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceIdSet: Instance ID set
-        :type DBInstanceIdSet: list of str
-        """
+        :param DBInstanceIdSet: Instance ID set\n        :type DBInstanceIdSet: list of str\n        """
         self.DBInstanceIdSet = None
 
 
@@ -2422,9 +1835,7 @@ class IsolateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2439,13 +1850,7 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-4wdeb0zv
-        :type DBInstanceId: str
-        :param UserName: Instance username
-        :type UserName: str
-        :param Remark: New remarks corresponding to user `UserName`
-        :type Remark: str
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-4wdeb0zv\n        :type DBInstanceId: str\n        :param UserName: Instance username\n        :type UserName: str\n        :param Remark: New remarks corresponding to user `UserName`\n        :type Remark: str\n        """
         self.DBInstanceId = None
         self.UserName = None
         self.Remark = None
@@ -2471,9 +1876,7 @@ class ModifyAccountRemarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2488,11 +1891,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Database instance ID in the format of postgres-6fego161
-        :type DBInstanceId: str
-        :param InstanceName: New name of database instance
-        :type InstanceName: str
-        """
+        :param DBInstanceId: Database instance ID in the format of postgres-6fego161\n        :type DBInstanceId: str\n        :param InstanceName: New name of database instance\n        :type InstanceName: str\n        """
         self.DBInstanceId = None
         self.InstanceName = None
 
@@ -2516,9 +1915,7 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2533,13 +1930,7 @@ class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID
-        :type DBInstanceId: str
-        :param ReadOnlyGroupId: ID of the RO group to which the read-only replica belongs
-        :type ReadOnlyGroupId: str
-        :param NewReadOnlyGroupId: ID of the new RO group into which the read-only replica will move
-        :type NewReadOnlyGroupId: str
-        """
+        :param DBInstanceId: Instance ID\n        :type DBInstanceId: str\n        :param ReadOnlyGroupId: ID of the RO group to which the read-only replica belongs\n        :type ReadOnlyGroupId: str\n        :param NewReadOnlyGroupId: ID of the new RO group into which the read-only replica will move\n        :type NewReadOnlyGroupId: str\n        """
         self.DBInstanceId = None
         self.ReadOnlyGroupId = None
         self.NewReadOnlyGroupId = None
@@ -2565,11 +1956,7 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -2586,11 +1973,7 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceIdSet: TencentDB for PostgreSQL instance ID array
-        :type DBInstanceIdSet: list of str
-        :param ProjectId: New project ID of TencentDB for PostgreSQL instance
-        :type ProjectId: str
-        """
+        :param DBInstanceIdSet: TencentDB for PostgreSQL instance ID array\n        :type DBInstanceIdSet: list of str\n        :param ProjectId: New project ID of TencentDB for PostgreSQL instance\n        :type ProjectId: str\n        """
         self.DBInstanceIdSet = None
         self.ProjectId = None
 
@@ -2614,11 +1997,7 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Count: Number of successfully transferred instances
-        :type Count: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Count: Number of successfully transferred instances\n        :type Count: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Count = None
         self.RequestId = None
 
@@ -2635,23 +2014,7 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ReadOnlyGroupId: RO group ID
-        :type ReadOnlyGroupId: str
-        :param ReadOnlyGroupName: RO group name
-        :type ReadOnlyGroupName: str
-        :param ReplayLagEliminate: Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
-        :type ReplayLagEliminate: int
-        :param ReplayLatencyEliminate: Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
-        :type ReplayLatencyEliminate: int
-        :param MaxReplayLatency: Delayed log size threshold in MB
-        :type MaxReplayLatency: int
-        :param MaxReplayLag: Delay threshold in ms
-        :type MaxReplayLag: int
-        :param Rebalance: Whether to enable automatic load balancing. Valid values: `0` (disable), `1` (enable).
-        :type Rebalance: int
-        :param MinDelayEliminateReserve: The minimum number of read-only replicas that must be retained in an RO group
-        :type MinDelayEliminateReserve: int
-        """
+        :param ReadOnlyGroupId: RO group ID\n        :type ReadOnlyGroupId: str\n        :param ReadOnlyGroupName: RO group name\n        :type ReadOnlyGroupName: str\n        :param ReplayLagEliminate: Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).\n        :type ReplayLagEliminate: int\n        :param ReplayLatencyEliminate: Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).\n        :type ReplayLatencyEliminate: int\n        :param MaxReplayLatency: Delayed log size threshold in MB\n        :type MaxReplayLatency: int\n        :param MaxReplayLag: Delay threshold in ms\n        :type MaxReplayLag: int\n        :param Rebalance: Whether to enable automatic load balancing. Valid values: `0` (disable), `1` (enable).\n        :type Rebalance: int\n        :param MinDelayEliminateReserve: The minimum number of read-only replicas that must be retained in an RO group\n        :type MinDelayEliminateReserve: int\n        """
         self.ReadOnlyGroupId = None
         self.ReadOnlyGroupName = None
         self.ReplayLagEliminate = None
@@ -2687,9 +2050,46 @@ class ModifyReadOnlyGroupConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySwitchTimePeriodRequest(AbstractModel):
+    """ModifySwitchTimePeriod request structure.
+
+    """
+
+    def __init__(self):
         """
+        :param DBInstanceId: The ID of the instance waiting for a switch\n        :type DBInstanceId: str\n        :param SwitchTag: Valid value: `0` (switch immediately)\n        :type SwitchTag: int\n        """
+        self.DBInstanceId = None
+        self.SwitchTag = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.SwitchTag = params.get("SwitchTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySwitchTimePeriodResponse(AbstractModel):
+    """ModifySwitchTimePeriod response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2704,37 +2104,7 @@ class NormalQueryItem(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: Username
-        :type UserName: str
-        :param Calls: Number of calls
-        :type Calls: int
-        :param CallsGrids: Granularity
-        :type CallsGrids: list of int
-        :param CostTime: Total time consumed
-        :type CostTime: float
-        :param Rows: Number of affected rows
-        :type Rows: int
-        :param MinCostTime: Minimum time consumed
-        :type MinCostTime: float
-        :param MaxCostTime: Maximum time consumed
-        :type MaxCostTime: float
-        :param FirstTime: Time of the earliest slow SQL statement
-        :type FirstTime: str
-        :param LastTime: Time of the latest slow SQL statement
-        :type LastTime: str
-        :param SharedReadBlks: Shared memory blocks for reads
-        :type SharedReadBlks: int
-        :param SharedWriteBlks: Shared memory blocks for writes
-        :type SharedWriteBlks: int
-        :param ReadCostTime: Total IO read time
-        :type ReadCostTime: int
-        :param WriteCostTime: Total IO write time
-        :type WriteCostTime: int
-        :param DatabaseName: Database name
-        :type DatabaseName: str
-        :param NormalQuery: Slow SQL statement after desensitization
-        :type NormalQuery: str
-        """
+        :param UserName: Username\n        :type UserName: str\n        :param Calls: Number of calls\n        :type Calls: int\n        :param CallsGrids: Granularity\n        :type CallsGrids: list of int\n        :param CostTime: Total time consumed\n        :type CostTime: float\n        :param Rows: Number of affected rows\n        :type Rows: int\n        :param MinCostTime: Minimum time consumed\n        :type MinCostTime: float\n        :param MaxCostTime: Maximum time consumed\n        :type MaxCostTime: float\n        :param FirstTime: Time of the earliest slow SQL statement\n        :type FirstTime: str\n        :param LastTime: Time of the latest slow SQL statement\n        :type LastTime: str\n        :param SharedReadBlks: Shared memory blocks for reads\n        :type SharedReadBlks: int\n        :param SharedWriteBlks: Shared memory blocks for writes\n        :type SharedWriteBlks: int\n        :param ReadCostTime: Total IO read time\n        :type ReadCostTime: int\n        :param WriteCostTime: Total IO write time\n        :type WriteCostTime: int\n        :param DatabaseName: Database name\n        :type DatabaseName: str\n        :param NormalQuery: Slow SQL statement after desensitization\n        :type NormalQuery: str\n        """
         self.UserName = None
         self.Calls = None
         self.CallsGrids = None
@@ -2784,11 +2154,7 @@ class OpenDBExtranetAccessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-hez4fh0v
-        :type DBInstanceId: str
-        :param IsIpv6: Whether to enable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)
-        :type IsIpv6: int
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-hez4fh0v\n        :type DBInstanceId: str\n        :param IsIpv6: Whether to enable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)\n        :type IsIpv6: int\n        """
         self.DBInstanceId = None
         self.IsIpv6 = None
 
@@ -2812,11 +2178,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Async task flow ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Async task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -2833,11 +2195,7 @@ class OpenServerlessDBExtranetAccessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Unique ID of an instance
-        :type DBInstanceId: str
-        :param DBInstanceName: Instance name
-        :type DBInstanceName: str
-        """
+        :param DBInstanceId: Unique ID of an instance\n        :type DBInstanceId: str\n        :param DBInstanceName: Instance name\n        :type DBInstanceName: str\n        """
         self.DBInstanceId = None
         self.DBInstanceName = None
 
@@ -2861,9 +2219,7 @@ class OpenServerlessDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2878,19 +2234,7 @@ class PgDeal(AbstractModel):
 
     def __init__(self):
         """
-        :param DealName: Order name
-        :type DealName: str
-        :param OwnerUin: User
-        :type OwnerUin: str
-        :param Count: Number of instances involved in order
-        :type Count: int
-        :param PayMode: Billing mode. 0: pay-as-you-go
-        :type PayMode: int
-        :param FlowId: Async task flow ID
-        :type FlowId: int
-        :param DBInstanceIdSet: Instance ID array
-        :type DBInstanceIdSet: list of str
-        """
+        :param DealName: Order name\n        :type DealName: str\n        :param OwnerUin: User\n        :type OwnerUin: str\n        :param Count: Number of instances involved in order\n        :type Count: int\n        :param PayMode: Billing mode. 0: pay-as-you-go\n        :type PayMode: int\n        :param FlowId: Async task flow ID\n        :type FlowId: int\n        :param DBInstanceIdSet: Instance ID array\n        :type DBInstanceIdSet: list of str\n        """
         self.DealName = None
         self.OwnerUin = None
         self.Count = None
@@ -2923,46 +2267,12 @@ class ReadOnlyGroup(AbstractModel):
     def __init__(self):
         """
         :param ReadOnlyGroupId: RO group identifier
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ReadOnlyGroupId: str
-        :param ReadOnlyGroupName: RO group name
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ReadOnlyGroupName: str
-        :param ProjectId: Project ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ProjectId: int
-        :param MasterDBInstanceId: Primary instance ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type MasterDBInstanceId: str
-        :param MinDelayEliminateReserve: The minimum number of read-only replicas that must be retained in an RO group
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type MinDelayEliminateReserve: int
-        :param MaxReplayLatency: Delayed log size threshold
-        :type MaxReplayLatency: int
-        :param ReplayLatencyEliminate: Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
-        :type ReplayLatencyEliminate: int
-        :param MaxReplayLag: Delay threshold
-        :type MaxReplayLag: float
-        :param ReplayLagEliminate: Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).
-        :type ReplayLagEliminate: int
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: Subnet ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SubnetId: str
-        :param Region: Region ID
-        :type Region: str
-        :param Zone: Availability zone ID
-        :type Zone: str
-        :param Status: Status
-        :type Status: str
-        :param ReadOnlyDBInstanceList: Instance details
-        :type ReadOnlyDBInstanceList: list of DBInstance
-        :param Rebalance: Whether to enable automatic load balancing
-        :type Rebalance: int
-        :param DBInstanceNetInfo: Network information
-        :type DBInstanceNetInfo: list of DBInstanceNetInfo
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ReadOnlyGroupId: str\n        :param ReadOnlyGroupName: RO group name
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ReadOnlyGroupName: str\n        :param ProjectId: Project ID
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ProjectId: int\n        :param MasterDBInstanceId: Primary instance ID
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type MasterDBInstanceId: str\n        :param MinDelayEliminateReserve: The minimum number of read-only replicas that must be retained in an RO group
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type MinDelayEliminateReserve: int\n        :param MaxReplayLatency: Delayed log size threshold\n        :type MaxReplayLatency: int\n        :param ReplayLatencyEliminate: Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).\n        :type ReplayLatencyEliminate: int\n        :param MaxReplayLag: Delay threshold\n        :type MaxReplayLag: float\n        :param ReplayLagEliminate: Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).\n        :type ReplayLagEliminate: int\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SubnetId: str\n        :param Region: Region ID\n        :type Region: str\n        :param Zone: Availability zone ID\n        :type Zone: str\n        :param Status: Status\n        :type Status: str\n        :param ReadOnlyDBInstanceList: Instance details\n        :type ReadOnlyDBInstanceList: list of DBInstance\n        :param Rebalance: Whether to enable automatic load balancing\n        :type Rebalance: int\n        :param DBInstanceNetInfo: Network information\n        :type DBInstanceNetInfo: list of DBInstanceNetInfo\n        """
         self.ReadOnlyGroupId = None
         self.ReadOnlyGroupName = None
         self.ProjectId = None
@@ -3026,9 +2336,7 @@ class RebalanceReadOnlyGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ReadOnlyGroupId: RO group ID
-        :type ReadOnlyGroupId: str
-        """
+        :param ReadOnlyGroupId: RO group ID\n        :type ReadOnlyGroupId: str\n        """
         self.ReadOnlyGroupId = None
 
 
@@ -3050,9 +2358,7 @@ class RebalanceReadOnlyGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3067,18 +2373,8 @@ class RegionInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Region abbreviation
-        :type Region: str
-        :param RegionName: Region name
-        :type RegionName: str
-        :param RegionId: Region number
-        :type RegionId: int
-        :param RegionState: Availability status. UNAVAILABLE: unavailable, AVAILABLE: available
-        :type RegionState: str
-        :param SupportInternational: Whether the resource can be purchased in this region. Valid values: `0` (no), `1` (yes).
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SupportInternational: int
-        """
+        :param Region: Region abbreviation\n        :type Region: str\n        :param RegionName: Region name\n        :type RegionName: str\n        :param RegionId: Region number\n        :type RegionId: int\n        :param RegionState: Availability status. UNAVAILABLE: unavailable, AVAILABLE: available\n        :type RegionState: str\n        :param SupportInternational: Whether the resource can be purchased in this region. Valid values: `0` (no), `1` (yes).
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SupportInternational: int\n        """
         self.Region = None
         self.RegionName = None
         self.RegionId = None
@@ -3108,11 +2404,7 @@ class RemoveDBInstanceFromReadOnlyGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID
-        :type DBInstanceId: str
-        :param ReadOnlyGroupId: RO group ID
-        :type ReadOnlyGroupId: str
-        """
+        :param DBInstanceId: Instance ID\n        :type DBInstanceId: str\n        :param ReadOnlyGroupId: RO group ID\n        :type ReadOnlyGroupId: str\n        """
         self.DBInstanceId = None
         self.ReadOnlyGroupId = None
 
@@ -3136,11 +2428,7 @@ class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -3157,15 +2445,7 @@ class RenewInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of `postgres-6fego161`
-        :type DBInstanceId: str
-        :param Period: Renewal duration in months
-        :type Period: int
-        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: 0
-        :type AutoVoucher: int
-        :param VoucherIds: Voucher ID list (only one voucher can be specified currently)
-        :type VoucherIds: list of str
-        """
+        :param DBInstanceId: Instance ID in the format of `postgres-6fego161`\n        :type DBInstanceId: str\n        :param Period: Renewal duration in months\n        :type Period: int\n        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: 0\n        :type AutoVoucher: int\n        :param VoucherIds: Voucher ID list (only one voucher can be specified currently)\n        :type VoucherIds: list of str\n        """
         self.DBInstanceId = None
         self.Period = None
         self.AutoVoucher = None
@@ -3193,11 +2473,7 @@ class RenewInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealName: Order name
-        :type DealName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DealName: Order name\n        :type DealName: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealName = None
         self.RequestId = None
 
@@ -3214,13 +2490,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-4wdeb0zv
-        :type DBInstanceId: str
-        :param UserName: Instance account name
-        :type UserName: str
-        :param Password: New password corresponding to `UserName` account
-        :type Password: str
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-4wdeb0zv\n        :type DBInstanceId: str\n        :param UserName: Instance account name\n        :type UserName: str\n        :param Password: New password corresponding to `UserName` account\n        :type Password: str\n        """
         self.DBInstanceId = None
         self.UserName = None
         self.Password = None
@@ -3246,9 +2516,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3263,9 +2531,7 @@ class RestartDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: Instance ID in the format of postgres-6r233v55
-        :type DBInstanceId: str
-        """
+        :param DBInstanceId: Instance ID in the format of postgres-6r233v55\n        :type DBInstanceId: str\n        """
         self.DBInstanceId = None
 
 
@@ -3287,11 +2553,7 @@ class RestartDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Async flow ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Async flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -3309,15 +2571,9 @@ class ServerlessDBAccount(AbstractModel):
     def __init__(self):
         """
         :param DBUser: Username
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBUser: str
-        :param DBPassword: Password
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBPassword: str
-        :param DBConnLimit: The maximum number of connections
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBConnLimit: int
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBUser: str\n        :param DBPassword: Password
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBPassword: str\n        :param DBConnLimit: The maximum number of connections
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBConnLimit: int\n        """
         self.DBUser = None
         self.DBPassword = None
         self.DBConnLimit = None
@@ -3344,51 +2600,21 @@ class ServerlessDBInstance(AbstractModel):
     def __init__(self):
         """
         :param DBInstanceId: Instance ID, which is the unique identifier
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBInstanceId: str
-        :param DBInstanceName: Instance name
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBInstanceName: str
-        :param DBInstanceStatus: Instance status
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBInstanceStatus: str
-        :param Region: Region
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Region: str
-        :param Zone: Availability zone
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Zone: str
-        :param ProjectId: Project ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ProjectId: int
-        :param VpcId: VPC ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type VpcId: str
-        :param SubnetId: Subnet ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SubnetId: str
-        :param DBCharset: Character set
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBCharset: str
-        :param DBVersion: Database version
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBVersion: str
-        :param CreateTime: Creation time
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type CreateTime: str
-        :param DBInstanceNetInfo: Instance network information
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBInstanceNetInfo: list of ServerlessDBInstanceNetInfo
-        :param DBAccountSet: Instance account information
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBAccountSet: list of ServerlessDBAccount
-        :param DBDatabaseList: Information of the databases in an instance
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBDatabaseList: list of str
-        :param TagList: The array of tags bound to an instance
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TagList: list of Tag
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBInstanceId: str\n        :param DBInstanceName: Instance name
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBInstanceName: str\n        :param DBInstanceStatus: Instance status
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBInstanceStatus: str\n        :param Region: Region
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Region: str\n        :param Zone: Availability zone
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Zone: str\n        :param ProjectId: Project ID
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ProjectId: int\n        :param VpcId: VPC ID
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type VpcId: str\n        :param SubnetId: Subnet ID
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SubnetId: str\n        :param DBCharset: Character set
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBCharset: str\n        :param DBVersion: Database version
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBVersion: str\n        :param CreateTime: Creation time
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type CreateTime: str\n        :param DBInstanceNetInfo: Instance network information
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBInstanceNetInfo: list of ServerlessDBInstanceNetInfo\n        :param DBAccountSet: Instance account information
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBAccountSet: list of ServerlessDBAccount\n        :param DBDatabaseList: Information of the databases in an instance
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DBDatabaseList: list of str\n        :param TagList: The array of tags bound to an instance
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TagList: list of Tag\n        """
         self.DBInstanceId = None
         self.DBInstanceName = None
         self.DBInstanceStatus = None
@@ -3454,21 +2680,11 @@ class ServerlessDBInstanceNetInfo(AbstractModel):
     def __init__(self):
         """
         :param Address: Address
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Address: str
-        :param Ip: IP address
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Ip: str
-        :param Port: Port number
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Port: int
-        :param Status: Status
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Status: str
-        :param NetType: Network type
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type NetType: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Address: str\n        :param Ip: IP address
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Ip: str\n        :param Port: Port number
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Port: int\n        :param Status: Status
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Status: str\n        :param NetType: Network type
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type NetType: str\n        """
         self.Address = None
         self.Ip = None
         self.Port = None
@@ -3498,11 +2714,7 @@ class SetAutoRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceIdSet: Instance ID array
-        :type DBInstanceIdSet: list of str
-        :param AutoRenewFlag: Renewal flag. 0: normal renewal, 1: auto-renewal, 2: no renewal upon expiration
-        :type AutoRenewFlag: int
-        """
+        :param DBInstanceIdSet: Instance ID array\n        :type DBInstanceIdSet: list of str\n        :param AutoRenewFlag: Renewal flag. 0: normal renewal, 1: auto-renewal, 2: no renewal upon expiration\n        :type AutoRenewFlag: int\n        """
         self.DBInstanceIdSet = None
         self.AutoRenewFlag = None
 
@@ -3526,11 +2738,7 @@ class SetAutoRenewFlagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Count: Number of successfully set instances
-        :type Count: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Count: Number of successfully set instances\n        :type Count: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Count = None
         self.RequestId = None
 
@@ -3547,13 +2755,7 @@ class SlowlogDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalTime: Total time consumed
-        :type TotalTime: float
-        :param TotalCalls: Total number of calls
-        :type TotalCalls: int
-        :param NormalQueries: List of slow SQL statements after desensitization
-        :type NormalQueries: list of NormalQueryItem
-        """
+        :param TotalTime: Total time consumed\n        :type TotalTime: float\n        :param TotalCalls: Total number of calls\n        :type TotalCalls: int\n        :param NormalQueries: List of slow SQL statements after desensitization\n        :type NormalQueries: list of NormalQueryItem\n        """
         self.TotalTime = None
         self.TotalCalls = None
         self.NormalQueries = None
@@ -3584,13 +2786,7 @@ class SpecInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Region abbreviation, which corresponds to the `Region` field of `RegionSet`
-        :type Region: str
-        :param Zone: AZ abbreviate, which corresponds to the `Zone` field of `ZoneSet`
-        :type Zone: str
-        :param SpecItemInfoList: Specification details list
-        :type SpecItemInfoList: list of SpecItemInfo
-        """
+        :param Region: Region abbreviation, which corresponds to the `Region` field of `RegionSet`\n        :type Region: str\n        :param Zone: AZ abbreviate, which corresponds to the `Zone` field of `ZoneSet`\n        :type Zone: str\n        :param SpecItemInfoList: Specification details list\n        :type SpecItemInfoList: list of SpecItemInfo\n        """
         self.Region = None
         self.Zone = None
         self.SpecItemInfoList = None
@@ -3621,27 +2817,7 @@ class SpecItemInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SpecCode: Specification ID
-        :type SpecCode: str
-        :param Version: PostgreSQL kernel version number
-        :type Version: str
-        :param VersionName: Full version name corresponding to kernel number
-        :type VersionName: str
-        :param Cpu: Number of CPU cores
-        :type Cpu: int
-        :param Memory: Memory size in MB
-        :type Memory: int
-        :param MaxStorage: Maximum storage capacity in GB supported by this specification
-        :type MaxStorage: int
-        :param MinStorage: Minimum storage capacity in GB supported by this specification
-        :type MinStorage: int
-        :param Qps: Estimated QPS for this specification
-        :type Qps: int
-        :param Pid: Billing ID for this specification
-        :type Pid: int
-        :param Type: Machine type
-        :type Type: str
-        """
+        :param SpecCode: Specification ID\n        :type SpecCode: str\n        :param Version: PostgreSQL kernel version number\n        :type Version: str\n        :param VersionName: Full version name corresponding to kernel number\n        :type VersionName: str\n        :param Cpu: Number of CPU cores\n        :type Cpu: int\n        :param Memory: Memory size in MB\n        :type Memory: int\n        :param MaxStorage: Maximum storage capacity in GB supported by this specification\n        :type MaxStorage: int\n        :param MinStorage: Minimum storage capacity in GB supported by this specification\n        :type MinStorage: int\n        :param Qps: Estimated QPS for this specification\n        :type Qps: int\n        :param Pid: Billing ID for this specification\n        :type Pid: int\n        :param Type: Machine type\n        :type Type: str\n        """
         self.SpecCode = None
         self.Version = None
         self.VersionName = None
@@ -3681,11 +2857,7 @@ class Tag(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key
-        :type TagKey: str
-        :param TagValue: Tag value
-        :type TagValue: str
-        """
+        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -3709,25 +2881,16 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Memory: Instance memory size in GB after upgrade
-        :type Memory: int
-        :param Storage: Instance disk size in GB after upgrade
-        :type Storage: int
-        :param DBInstanceId: Instance ID in the format of postgres-lnp6j617
-        :type DBInstanceId: str
-        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: no
-        :type AutoVoucher: int
-        :param VoucherIds: Voucher ID list (only one voucher can be specified currently)
-        :type VoucherIds: list of str
-        :param ActivityId: Activity ID
-        :type ActivityId: int
-        """
+        :param Memory: Instance memory size in GB after upgrade\n        :type Memory: int\n        :param Storage: Instance disk size in GB after upgrade\n        :type Storage: int\n        :param DBInstanceId: Instance ID in the format of postgres-lnp6j617\n        :type DBInstanceId: str\n        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: no\n        :type AutoVoucher: int\n        :param VoucherIds: Voucher ID list (only one voucher can be specified currently)\n        :type VoucherIds: list of str\n        :param ActivityId: Activity ID\n        :type ActivityId: int\n        :param SwitchTag: Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (specify a time to switch). Default value: `0`\n        :type SwitchTag: int\n        :param SwitchStartTime: The earliest time to start a switch\n        :type SwitchStartTime: str\n        :param SwitchEndTime: The latest time to start a switch\n        :type SwitchEndTime: str\n        """
         self.Memory = None
         self.Storage = None
         self.DBInstanceId = None
         self.AutoVoucher = None
         self.VoucherIds = None
         self.ActivityId = None
+        self.SwitchTag = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
 
 
     def _deserialize(self, params):
@@ -3737,6 +2900,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
         self.ActivityId = params.get("ActivityId")
+        self.SwitchTag = params.get("SwitchTag")
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3753,13 +2919,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealName: Transaction name.
-        :type DealName: str
-        :param BillId: Bill ID of frozen fees
-        :type BillId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DealName: Transaction name.\n        :type DealName: str\n        :param BillId: Bill ID of frozen fees\n        :type BillId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealName = None
         self.BillId = None
         self.RequestId = None
@@ -3778,19 +2938,7 @@ class Xlog(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Unique backup file ID
-        :type Id: int
-        :param StartTime: File generation start time
-        :type StartTime: str
-        :param EndTime: File generation end time
-        :type EndTime: str
-        :param InternalAddr: Download address on private network
-        :type InternalAddr: str
-        :param ExternalAddr: Download address on public network
-        :type ExternalAddr: str
-        :param Size: Backup file size
-        :type Size: int
-        """
+        :param Id: Unique backup file ID\n        :type Id: int\n        :param StartTime: File generation start time\n        :type StartTime: str\n        :param EndTime: File generation end time\n        :type EndTime: str\n        :param InternalAddr: Download address on private network\n        :type InternalAddr: str\n        :param ExternalAddr: Download address on public network\n        :type ExternalAddr: str\n        :param Size: Backup file size\n        :type Size: int\n        """
         self.Id = None
         self.StartTime = None
         self.EndTime = None
@@ -3822,17 +2970,7 @@ class ZoneInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: AZ abbreviation
-        :type Zone: str
-        :param ZoneName: AZ name
-        :type ZoneName: str
-        :param ZoneId: AZ number
-        :type ZoneId: int
-        :param ZoneState: Availability status. UNAVAILABLE: unavailable, AVAILABLE: available
-        :type ZoneState: str
-        :param ZoneSupportIpv6: Whether the AZ supports IPv6 address access
-        :type ZoneSupportIpv6: int
-        """
+        :param Zone: AZ abbreviation\n        :type Zone: str\n        :param ZoneName: AZ name\n        :type ZoneName: str\n        :param ZoneId: AZ number\n        :type ZoneId: int\n        :param ZoneState: Availability status. UNAVAILABLE: unavailable, AVAILABLE: available\n        :type ZoneState: str\n        :param ZoneSupportIpv6: Whether the AZ supports IPv6 address access\n        :type ZoneSupportIpv6: int\n        """
         self.Zone = None
         self.ZoneName = None
         self.ZoneId = None

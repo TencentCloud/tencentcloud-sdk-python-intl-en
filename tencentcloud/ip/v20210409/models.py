@@ -25,17 +25,7 @@ class CountryCodeItem(AbstractModel):
 
     def __init__(self):
         """
-        :param EnName: Country/region name in English
-        :type EnName: str
-        :param Name: Country/region name in Chinese
-        :type Name: str
-        :param IOS2: IOS2 standard country/region code
-        :type IOS2: str
-        :param IOS3: IOS3 standard country/region code
-        :type IOS3: str
-        :param Code: Phone code
-        :type Code: str
-        """
+        :param EnName: Country/region name in English\n        :type EnName: str\n        :param Name: Country/region name in Chinese\n        :type Name: str\n        :param IOS2: IOS2 standard country/region code\n        :type IOS2: str\n        :param IOS3: IOS3 standard country/region code\n        :type IOS3: str\n        :param Code: Phone code\n        :type Code: str\n        """
         self.EnName = None
         self.Name = None
         self.IOS2 = None
@@ -65,27 +55,11 @@ class CreateAccountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccountType: Account type of a new customer. Valid value: `business`.
-        :type AccountType: str
-        :param Mail: Registered email address, which should be valid and correct.
-For example, account@qq.com.
-        :type Mail: str
-        :param Password: Account password
+        :param AccountType: Account type of a new customer. Valid value: `business`.\n        :type AccountType: str\n        :param Mail: Registered email address, which should be valid and correct.
+For example, account@qq.com.\n        :type Mail: str\n        :param Password: Account password
 Length limit: 8-20 characters
-A password must contain numbers, letters, and special symbols [!@#$%^&*()]. Spaces are not allowed.
-        :type Password: str
-        :param ConfirmPassword: Confirm the password. It must be the same as the `Password` field.
-        :type ConfirmPassword: str
-        :param PhoneNum: Customer mobile number, which should be valid and correct.
-A global mobile number within 1-32 digits is allowed, such as 18888888888.
-        :type PhoneNum: str
-        :param CountryCode: Country code, which can be obtained via the `GetCountryCodes` API, such as `86`.
-        :type CountryCode: str
-        :param Area: ISO2 standard country code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field.
-        :type Area: str
-        :param Extended: Expanded field, which is left empty by default.
-        :type Extended: str
-        """
+A password must contain numbers, letters, and special symbols [!@#$%^&*()]. Spaces are not allowed.\n        :type Password: str\n        :param ConfirmPassword: Confirm the password. It must be the same as the `Password` field.\n        :type ConfirmPassword: str\n        :param PhoneNum: Customer mobile number, which should be valid and correct.
+A global mobile number within 1-32 digits is allowed, such as 18888888888.\n        :type PhoneNum: str\n        :param CountryCode: Country code, which can be obtained via the `GetCountryCodes` API, such as `86`.\n        :type CountryCode: str\n        :param Area: ISO2 standard country code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field.\n        :type Area: str\n        :param Extended: Expanded field, which is left empty by default.\n        :type Extended: str\n        """
         self.AccountType = None
         self.Mail = None
         self.Password = None
@@ -121,11 +95,7 @@ class CreateAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Uin: Account UIN
-        :type Uin: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Uin: Account UIN\n        :type Uin: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Uin = None
         self.RequestId = None
 
@@ -148,11 +118,7 @@ class GetCountryCodesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: List of country/region codes
-        :type Data: list of CountryCodeItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Data: List of country/region codes\n        :type Data: list of CountryCodeItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 

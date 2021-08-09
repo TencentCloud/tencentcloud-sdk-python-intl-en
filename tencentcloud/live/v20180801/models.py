@@ -25,20 +25,10 @@ class AddDelayLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param DelayTime: Delay time in seconds, up to 600s.
-        :type DelayTime: int
-        :param ExpireTime: Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.
+        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        :param DelayTime: Delay time in seconds, up to 600s.\n        :type DelayTime: int\n        :param ExpireTime: Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.
 Notes:
 1. The configuration will expire after 7 days by default and can last up to 7 days.
-2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
-        :type ExpireTime: str
-        """
+2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type ExpireTime: str\n        """
         self.AppName = None
         self.DomainName = None
         self.StreamName = None
@@ -68,9 +58,7 @@ class AddDelayLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -85,29 +73,19 @@ class AddLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Domain name.
-        :type DomainName: str
-        :param DomainType: Domain name type.
+        :param DomainName: Domain name.\n        :type DomainName: str\n        :param DomainType: Domain name type.
 0: push domain name.
-1: playback domain name.
-        :type DomainType: int
-        :param PlayType: Pull domain name type:
+1: playback domain name.\n        :type DomainType: int\n        :param PlayType: Pull domain name type:
 1: Mainland China.
 2: global.
 3: outside Mainland China.
-Default value: 1.
-        :type PlayType: int
-        :param IsDelayLive: Whether it is LCB:
+Default value: 1.\n        :type PlayType: int\n        :param IsDelayLive: Whether it is LCB:
 0: LVB,
 1: LCB.
-Default value: 0.
-        :type IsDelayLive: int
-        :param IsMiniProgramLive: Whether it is LVB on Mini Program.
+Default value: 0.\n        :type IsDelayLive: int\n        :param IsMiniProgramLive: Whether it is LVB on Mini Program.
 0: LVB.
 1: LVB on Mini Program.
-Default value: 0.
-        :type IsMiniProgramLive: int
-        """
+Default value: 0.\n        :type IsMiniProgramLive: int\n        """
         self.DomainName = None
         self.DomainType = None
         self.PlayType = None
@@ -137,9 +115,7 @@ class AddLiveDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -156,20 +132,8 @@ class AddLiveWatermarkRequest(AbstractModel):
         """
         :param PictureUrl: Watermark image URL.
 Unallowed characters in the URL:
- ;(){}$>`#"\'|
-        :type PictureUrl: str
-        :param WatermarkName: Watermark name.
-Up to 16 bytes.
-        :type WatermarkName: str
-        :param XPosition: Display position: X-axis offset in %. Default value: 0.
-        :type XPosition: int
-        :param YPosition: Display position: Y-axis offset in %. Default value: 0.
-        :type YPosition: int
-        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
-        :type Width: int
-        :param Height: Watermark height, which is set by entering a percentage of the live stream image’s original height. You are advised to set either the height or width as the other will be scaled proportionally to avoid distortions. Default value: original height.
-        :type Height: int
-        """
+ ;(){}$>`#"\'|\n        :type PictureUrl: str\n        :param WatermarkName: Watermark name.
+Up to 16 bytes.\n        :type WatermarkName: str\n        :param XPosition: Display position: X-axis offset in %. Default value: 0.\n        :type XPosition: int\n        :param YPosition: Display position: Y-axis offset in %. Default value: 0.\n        :type YPosition: int\n        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.\n        :type Width: int\n        :param Height: Watermark height, which is set by entering a percentage of the live stream image’s original height. You are advised to set either the height or width as the other will be scaled proportionally to avoid distortions. Default value: original height.\n        :type Height: int\n        """
         self.PictureUrl = None
         self.WatermarkName = None
         self.XPosition = None
@@ -201,11 +165,7 @@ class AddLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param WatermarkId: Watermark ID.
-        :type WatermarkId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param WatermarkId: Watermark ID.\n        :type WatermarkId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.WatermarkId = None
         self.RequestId = None
 
@@ -224,11 +184,7 @@ class BandwidthInfo(AbstractModel):
         """
         :param Time: Format of return value:
 yyyy-mm-dd HH:MM:SS
-The time accuracy matches with the query granularity.
-        :type Time: str
-        :param Bandwidth: Bandwidth.
-        :type Bandwidth: float
-        """
+The time accuracy matches with the query granularity.\n        :type Time: str\n        :param Bandwidth: Bandwidth.\n        :type Bandwidth: float\n        """
         self.Time = None
         self.Bandwidth = None
 
@@ -252,11 +208,7 @@ class BillAreaInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Region name
-        :type Name: str
-        :param Countrys: Detailed country information
-        :type Countrys: list of BillCountryInfo
-        """
+        :param Name: Region name\n        :type Name: str\n        :param Countrys: Detailed country information\n        :type Countrys: list of BillCountryInfo\n        """
         self.Name = None
         self.Countrys = None
 
@@ -285,11 +237,7 @@ class BillCountryInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Country
-        :type Name: str
-        :param BandInfoList: Detailed bandwidth information
-        :type BandInfoList: list of BillDataInfo
-        """
+        :param Name: Country\n        :type Name: str\n        :param BandInfoList: Detailed bandwidth information\n        :type BandInfoList: list of BillDataInfo\n        """
         self.Name = None
         self.BandInfoList = None
 
@@ -318,15 +266,7 @@ class BillDataInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Time point in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type Time: str
-        :param Bandwidth: Bandwidth in Mbps.
-        :type Bandwidth: float
-        :param Flux: Traffic in MB.
-        :type Flux: float
-        :param PeakTime: Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.
-        :type PeakTime: str
-        """
+        :param Time: Time point in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type Time: str\n        :param Bandwidth: Bandwidth in Mbps.\n        :type Bandwidth: float\n        :param Flux: Traffic in MB.\n        :type Flux: float\n        :param PeakTime: Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.\n        :type PeakTime: str\n        """
         self.Time = None
         self.Bandwidth = None
         self.Flux = None
@@ -354,13 +294,7 @@ class BindLiveDomainCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertId: Certificate ID, which can be obtained through the `CreateLiveCert` API.
-        :type CertId: int
-        :param DomainName: Playback domain name.
-        :type DomainName: str
-        :param Status: HTTPS status. 0: disabled, 1: enabled.
-        :type Status: int
-        """
+        :param CertId: Certificate ID, which can be obtained through the `CreateLiveCert` API.\n        :type CertId: int\n        :param DomainName: Playback domain name.\n        :type DomainName: str\n        :param Status: HTTPS status. 0: disabled, 1: enabled.\n        :type Status: int\n        """
         self.CertId = None
         self.DomainName = None
         self.Status = None
@@ -386,9 +320,7 @@ class BindLiveDomainCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -403,17 +335,7 @@ class CallBackRuleInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param CreateTime: Rule creation time.
-        :type CreateTime: str
-        :param UpdateTime: Rule update time.
-        :type UpdateTime: str
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param AppName: Push path.
-        :type AppName: str
-        """
+        :param CreateTime: Rule creation time.\n        :type CreateTime: str\n        :param UpdateTime: Rule update time.\n        :type UpdateTime: str\n        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param AppName: Push path.\n        :type AppName: str\n        """
         self.CreateTime = None
         self.UpdateTime = None
         self.TemplateId = None
@@ -443,33 +365,13 @@ class CallBackTemplateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param TemplateName: Template name.
-        :type TemplateName: str
-        :param Description: Description.
-        :type Description: str
-        :param StreamBeginNotifyUrl: Stream starting callback URL.
-        :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: Interruption callback URL.
-        :type StreamEndNotifyUrl: str
-        :param StreamMixNotifyUrl: Stream mixing callback URL.
-        :type StreamMixNotifyUrl: str
-        :param RecordNotifyUrl: Recording callback URL.
-        :type RecordNotifyUrl: str
-        :param SnapshotNotifyUrl: Screencapturing callback URL.
-        :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: Porn detection callback URL.
-        :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: Callback authentication key.
-        :type CallbackKey: str
-        """
+        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param TemplateName: Template name.\n        :type TemplateName: str\n        :param Description: Description.\n        :type Description: str\n        :param StreamBeginNotifyUrl: Stream starting callback URL.\n        :type StreamBeginNotifyUrl: str\n        :param StreamMixNotifyUrl: Stream mixing callback URL (disused)\n        :type StreamMixNotifyUrl: str\n        :param StreamEndNotifyUrl: Interruption callback URL.\n        :type StreamEndNotifyUrl: str\n        :param RecordNotifyUrl: Recording callback URL.\n        :type RecordNotifyUrl: str\n        :param SnapshotNotifyUrl: Screencapturing callback URL.\n        :type SnapshotNotifyUrl: str\n        :param PornCensorshipNotifyUrl: Porn detection callback URL.\n        :type PornCensorshipNotifyUrl: str\n        :param CallbackKey: Callback authentication key.\n        :type CallbackKey: str\n        """
         self.TemplateId = None
         self.TemplateName = None
         self.Description = None
         self.StreamBeginNotifyUrl = None
-        self.StreamEndNotifyUrl = None
         self.StreamMixNotifyUrl = None
+        self.StreamEndNotifyUrl = None
         self.RecordNotifyUrl = None
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
@@ -481,8 +383,8 @@ class CallBackTemplateInfo(AbstractModel):
         self.TemplateName = params.get("TemplateName")
         self.Description = params.get("Description")
         self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
-        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
         self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
+        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
         self.RecordNotifyUrl = params.get("RecordNotifyUrl")
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
@@ -504,9 +406,7 @@ class CancelCommonMixStreamRequest(AbstractModel):
     def __init__(self):
         """
         :param MixStreamSessionId: ID of stream mix session (from applying for stream mix to canceling stream mix).
-This value is the same as the `MixStreamSessionId` in `CreateCommonMixStream`.
-        :type MixStreamSessionId: str
-        """
+This value is the same as the `MixStreamSessionId` in `CreateCommonMixStream`.\n        :type MixStreamSessionId: str\n        """
         self.MixStreamSessionId = None
 
 
@@ -528,9 +428,7 @@ class CancelCommonMixStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -545,17 +443,7 @@ class CdnPlayStatData(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Time point in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type Time: str
-        :param Bandwidth: Bandwidth in Mbps.
-        :type Bandwidth: float
-        :param Flux: Traffic in MB.
-        :type Flux: float
-        :param Request: Number of new requests.
-        :type Request: int
-        :param Online: Number of concurrent connections.
-        :type Online: int
-        """
+        :param Time: Time point in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type Time: str\n        :param Bandwidth: Bandwidth in Mbps.\n        :type Bandwidth: float\n        :param Flux: Traffic in MB.\n        :type Flux: float\n        :param Request: Number of new requests.\n        :type Request: int\n        :param Online: Number of concurrent connections.\n        :type Online: int\n        """
         self.Time = None
         self.Bandwidth = None
         self.Flux = None
@@ -585,25 +473,9 @@ class CertInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param CertId: Certificate ID.
-        :type CertId: int
-        :param CertName: Certificate name.
-        :type CertName: str
-        :param Description: Description.
-        :type Description: str
-        :param CreateTime: Creation time in UTC format.
-        :type CreateTime: str
-        :param HttpsCrt: Certificate content.
-        :type HttpsCrt: str
-        :param CertType: Certificate type.
+        :param CertId: Certificate ID.\n        :type CertId: int\n        :param CertName: Certificate name.\n        :type CertName: str\n        :param Description: Description.\n        :type Description: str\n        :param CreateTime: Creation time in UTC format.\n        :type CreateTime: str\n        :param HttpsCrt: Certificate content.\n        :type HttpsCrt: str\n        :param CertType: Certificate type.
 0: user-added certificate
-1: Tencent Cloud-hosted certificate
-        :type CertType: int
-        :param CertExpireTime: Certificate expiration time in UTC format.
-        :type CertExpireTime: str
-        :param DomainList: List of domain names that use this certificate.
-        :type DomainList: list of str
-        """
+1: Tencent Cloud-hosted certificate\n        :type CertType: int\n        :param CertExpireTime: Certificate expiration time in UTC format.\n        :type CertExpireTime: str\n        :param DomainList: List of domain names that use this certificate.\n        :type DomainList: list of str\n        """
         self.CertId = None
         self.CertName = None
         self.Description = None
@@ -639,19 +511,7 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ClientIp: Client IP in dotted-decimal notation.
-        :type ClientIp: str
-        :param Province: District where the client is located.
-        :type Province: str
-        :param TotalFlux: Total traffic.
-        :type TotalFlux: float
-        :param TotalRequest: Total number of requests.
-        :type TotalRequest: int
-        :param TotalFailedRequest: Total number of failed requests.
-        :type TotalFailedRequest: int
-        :param CountryArea: Country/region where the client is located.
-        :type CountryArea: str
-        """
+        :param ClientIp: Client IP in dotted-decimal notation.\n        :type ClientIp: str\n        :param Province: District where the client is located.\n        :type Province: str\n        :param TotalFlux: Total traffic.\n        :type TotalFlux: float\n        :param TotalRequest: Total number of requests.\n        :type TotalRequest: int\n        :param TotalFailedRequest: Total number of failed requests.\n        :type TotalFailedRequest: int\n        :param CountryArea: Country/region where the client is located.\n        :type CountryArea: str\n        """
         self.ClientIp = None
         self.Province = None
         self.TotalFlux = None
@@ -684,15 +544,9 @@ class CommonMixControlParams(AbstractModel):
     def __init__(self):
         """
         :param UseMixCropCenter: Value range: [0,1]. 
-If 1 is entered, when the layer resolution in the parameter is different from the actual video resolution, the video will be automatically cropped according to the resolution set by the layer.
-        :type UseMixCropCenter: int
-        :param AllowCopy: Value range: [0,1].
-If this parameter is set to 1, when both `InputStreamList` and `OutputParams.OutputStreamType` are set to 1, you can copy a stream instead of canceling it.
-        :type AllowCopy: int
-        :param PassInputSei: Valid values: 0, 1
-If you set this parameter to 1, SEI (Supplemental Enhanced Information) of the input streams will be passed through.
-        :type PassInputSei: int
-        """
+If 1 is entered, when the layer resolution in the parameter is different from the actual video resolution, the video will be automatically cropped according to the resolution set by the layer.\n        :type UseMixCropCenter: int\n        :param AllowCopy: Value range: [0,1].
+If this parameter is set to 1, when both `InputStreamList` and `OutputParams.OutputStreamType` are set to 1, you can copy a stream instead of canceling it.\n        :type AllowCopy: int\n        :param PassInputSei: Valid values: 0, 1
+If you set this parameter to 1, SEI (Supplemental Enhanced Information) of the input streams will be passed through.\n        :type PassInputSei: int\n        """
         self.UseMixCropCenter = None
         self.AllowCopy = None
         self.PassInputSei = None
@@ -718,15 +572,7 @@ class CommonMixCropParams(AbstractModel):
 
     def __init__(self):
         """
-        :param CropWidth: Crop width. Value range: [0,2000].
-        :type CropWidth: float
-        :param CropHeight: Crop height. Value range: [0,2000].
-        :type CropHeight: float
-        :param CropStartLocationX: Starting crop X coordinate. Value range: [0,2000].
-        :type CropStartLocationX: float
-        :param CropStartLocationY: Starting crop Y coordinate. Value range: [0,2000].
-        :type CropStartLocationY: float
-        """
+        :param CropWidth: Crop width. Value range: [0,2000].\n        :type CropWidth: float\n        :param CropHeight: Crop height. Value range: [0,2000].\n        :type CropHeight: float\n        :param CropStartLocationX: Starting crop X coordinate. Value range: [0,2000].\n        :type CropStartLocationX: float\n        :param CropStartLocationY: Starting crop Y coordinate. Value range: [0,2000].\n        :type CropStartLocationY: float\n        """
         self.CropWidth = None
         self.CropHeight = None
         self.CropStartLocationX = None
@@ -754,13 +600,7 @@ class CommonMixInputParam(AbstractModel):
 
     def __init__(self):
         """
-        :param InputStreamName: Input stream name of up to 80 bytes, which is a string containing letters, digits, and underscores.
-        :type InputStreamName: str
-        :param LayoutParams: Input stream layout parameter.
-        :type LayoutParams: :class:`tencentcloud.live.v20180801.models.CommonMixLayoutParams`
-        :param CropParams: Input stream crop parameter.
-        :type CropParams: :class:`tencentcloud.live.v20180801.models.CommonMixCropParams`
-        """
+        :param InputStreamName: Input stream name of up to 80 bytes, which is a string containing letters, digits, and underscores.\n        :type InputStreamName: str\n        :param LayoutParams: Input stream layout parameter.\n        :type LayoutParams: :class:`tencentcloud.live.v20180801.models.CommonMixLayoutParams`\n        :param CropParams: Input stream crop parameter.\n        :type CropParams: :class:`tencentcloud.live.v20180801.models.CommonMixCropParams`\n        """
         self.InputStreamName = None
         self.LayoutParams = None
         self.CropParams = None
@@ -792,43 +632,31 @@ class CommonMixLayoutParams(AbstractModel):
         """
         :param ImageLayer: Input layer. Value range: [1,16].
 1) For `image_layer` of background stream (i.e., main host video image or canvas), enter 1.
-2) For audio stream mix, this parameter is also required.
-        :type ImageLayer: int
-        :param InputType: Input type. Value range: [0,5].
+2) For audio stream mix, this parameter is also required.\n        :type ImageLayer: int\n        :param InputType: Input type. Value range: [0,5].
 If this parameter is left empty, 0 will be used by default.
 0: the input stream is audio/video.
 2: the input stream is image.
 3: the input stream is canvas. 
 4: the input stream is audio.
-5: the input stream is pure video.
-        :type InputType: int
-        :param ImageWidth: Output width of input video image. Value range:
+5: the input stream is pure video.\n        :type InputType: int\n        :param ImageWidth: Output width of input video image. Value range:
 Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, the input stream width will be used by default.
-If percentage is used, the expected output is (percentage * background width).
-        :type ImageWidth: float
-        :param ImageHeight: Output height of input video image. Value range:
+If percentage is used, the expected output is (percentage * background width).\n        :type ImageWidth: float\n        :param ImageHeight: Output height of input video image. Value range:
 Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, the input stream height will be used by default.
-If percentage is used, the expected output is (percentage * background height).
-        :type ImageHeight: float
-        :param LocationX: X-axis offset of input in output video image. Value range:
+If percentage is used, the expected output is (percentage * background height).\n        :type ImageHeight: float\n        :param LocationX: X-axis offset of input in output video image. Value range:
 Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, 0 will be used by default.
 Horizontal offset from the top-left corner of main host background video image. 
-If percentage is used, the expected output is (percentage * background width).
-        :type LocationX: float
-        :param LocationY: Y-axis offset of input in output video image. Value range:
+If percentage is used, the expected output is (percentage * background width).\n        :type LocationX: float\n        :param LocationY: Y-axis offset of input in output video image. Value range:
 Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, 0 will be used by default.
 Vertical offset from the top-left corner of main host background video image. 
-If percentage is used, the expected output is (percentage * background width)
-        :type LocationY: float
-        :param Color: When `InputType` is 3 (canvas), this value indicates the canvas color.
+If percentage is used, the expected output is (percentage * background width)\n        :type LocationY: float\n        :param Color: When `InputType` is 3 (canvas), this value indicates the canvas color.
 Commonly used colors include:
 Red: 0xcc0033.
 Yellow: 0xcc9900.
@@ -836,11 +664,7 @@ Green: 0xcccc33.
 Blue: 0x99CCFF.
 Black: 0x000000.
 White: 0xFFFFFF.
-Gray: 0x999999
-        :type Color: str
-        :param WatermarkId: When `InputType` is 2 (image), this value is the watermark ID.
-        :type WatermarkId: int
-        """
+Gray: 0x999999\n        :type Color: str\n        :param WatermarkId: When `InputType` is 2 (image), this value is the watermark ID.\n        :type WatermarkId: int\n        """
         self.ImageLayer = None
         self.InputType = None
         self.ImageWidth = None
@@ -876,35 +700,17 @@ class CommonMixOutputParams(AbstractModel):
 
     def __init__(self):
         """
-        :param OutputStreamName: Output stream name.
-        :type OutputStreamName: str
-        :param OutputStreamType: Output stream type. Valid values: [0,1].
+        :param OutputStreamName: Output stream name.\n        :type OutputStreamName: str\n        :param OutputStreamType: Output stream type. Valid values: [0,1].
 If this parameter is left empty, 0 will be used by default.
 If the output stream is a stream in the input stream list, enter 0.
 If you want the stream mix result to be a new stream, enter 1.
-If this value is 1, `output_stream_id` cannot appear in `input_stram_list`, and there cannot be a stream with the same ID on the LVB backend.
-        :type OutputStreamType: int
-        :param OutputStreamBitRate: Output stream bitrate. Value range: [1,50000].
-If this parameter is left empty, the system will automatically determine.
-        :type OutputStreamBitRate: int
-        :param OutputStreamGop: Output stream GOP size. Value range: [1,10].
-If this parameter is left empty, the system will automatically determine.
-        :type OutputStreamGop: int
-        :param OutputStreamFrameRate: Output stream frame rate. Value range: [1,60].
-If this parameter is left empty, the system will automatically determine.
-        :type OutputStreamFrameRate: int
-        :param OutputAudioBitRate: Output stream audio bitrate. Value range: [1,500]
-If this parameter is left empty, the system will automatically determine.
-        :type OutputAudioBitRate: int
-        :param OutputAudioSampleRate: Output stream audio sample rate. Valid values: [96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000].
-If this parameter is left empty, the system will automatically determine.
-        :type OutputAudioSampleRate: int
-        :param OutputAudioChannels: Output stream audio sound channel. Valid values: [1,2].
-If this parameter is left empty, the system will automatically determine.
-        :type OutputAudioChannels: int
-        :param MixSei: SEI information in output stream. If there are no special needs, leave it empty.
-        :type MixSei: str
-        """
+If this value is 1, `output_stream_id` cannot appear in `input_stram_list`, and there cannot be a stream with the same ID on the LVB backend.\n        :type OutputStreamType: int\n        :param OutputStreamBitRate: Output stream bitrate. Value range: [1,50000].
+If this parameter is left empty, the system will automatically determine.\n        :type OutputStreamBitRate: int\n        :param OutputStreamGop: Output stream GOP size. Value range: [1,10].
+If this parameter is left empty, the system will automatically determine.\n        :type OutputStreamGop: int\n        :param OutputStreamFrameRate: Output stream frame rate. Value range: [1,60].
+If this parameter is left empty, the system will automatically determine.\n        :type OutputStreamFrameRate: int\n        :param OutputAudioBitRate: Output stream audio bitrate. Value range: [1,500]
+If this parameter is left empty, the system will automatically determine.\n        :type OutputAudioBitRate: int\n        :param OutputAudioSampleRate: Output stream audio sample rate. Valid values: [96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000].
+If this parameter is left empty, the system will automatically determine.\n        :type OutputAudioSampleRate: int\n        :param OutputAudioChannels: Output stream audio sound channel. Valid values: [1,2].
+If this parameter is left empty, the system will automatically determine.\n        :type OutputAudioChannels: int\n        :param MixSei: SEI information in output stream. If there are no special needs, leave it empty.\n        :type MixSei: str\n        """
         self.OutputStreamName = None
         self.OutputStreamType = None
         self.OutputStreamBitRate = None
@@ -942,11 +748,7 @@ class ConcurrentRecordStreamNum(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Time point.
-        :type Time: str
-        :param Num: Number of channels.
-        :type Num: int
-        """
+        :param Time: Time point.\n        :type Time: str\n        :param Num: Number of channels.\n        :type Num: int\n        """
         self.Time = None
         self.Num = None
 
@@ -970,23 +772,13 @@ class CreateCommonMixStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MixStreamSessionId: ID of stream mix session (from applying for stream mix to canceling stream mix).
-        :type MixStreamSessionId: str
-        :param InputStreamList: Input stream list for stream mix.
-        :type InputStreamList: list of CommonMixInputParam
-        :param OutputParams: Output stream parameter for stream mix.
-        :type OutputParams: :class:`tencentcloud.live.v20180801.models.CommonMixOutputParams`
-        :param MixStreamTemplateId: Input template ID. If this parameter is set, the output will be generated according to the default template layout, and there is no need to enter the custom position parameters.
+        :param MixStreamSessionId: ID of stream mix session (from applying for stream mix to canceling stream mix).\n        :type MixStreamSessionId: str\n        :param InputStreamList: Input stream list for stream mix.\n        :type InputStreamList: list of CommonMixInputParam\n        :param OutputParams: Output stream parameter for stream mix.\n        :type OutputParams: :class:`tencentcloud.live.v20180801.models.CommonMixOutputParams`\n        :param MixStreamTemplateId: Input template ID. If this parameter is set, the output will be generated according to the default template layout, and there is no need to enter the custom position parameters.
 If this parameter is left empty, 0 will be used by default.
 For two input sources, 10, 20, 30, 40, and 50 are supported.
 For three input sources, 310, 390, and 391 are supported.
 For four input sources, 410 is supported.
 For five input sources, 510 and 590 are supported.
-For six input sources, 610 is supported.
-        :type MixStreamTemplateId: int
-        :param ControlParams: Special control parameter for stream mix. If there are no special needs, leave it empty.
-        :type ControlParams: :class:`tencentcloud.live.v20180801.models.CommonMixControlParams`
-        """
+For six input sources, 610 is supported.\n        :type MixStreamTemplateId: int\n        :param ControlParams: Special control parameter for stream mix. If there are no special needs, leave it empty.\n        :type ControlParams: :class:`tencentcloud.live.v20180801.models.CommonMixControlParams`\n        """
         self.MixStreamSessionId = None
         self.InputStreamList = None
         self.OutputParams = None
@@ -1025,9 +817,7 @@ class CreateCommonMixStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1042,13 +832,7 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        """
+        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        :param TemplateId: Template ID.\n        :type TemplateId: int\n        """
         self.DomainName = None
         self.AppName = None
         self.TemplateId = None
@@ -1074,9 +858,7 @@ class CreateLiveCallbackRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1093,34 +875,15 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         """
         :param TemplateName: Template name.
 Maximum length: 255 bytes.
-Only letters, digits, underscores, and hyphens can be contained.
-        :type TemplateName: str
-        :param Description: Description.
+Only letters, digits, underscores, and hyphens can be contained.\n        :type TemplateName: str\n        :param Description: Description.
 Maximum length: 1,024 bytes.
-Only letters, digits, underscores, and hyphens can be contained.
-        :type Description: str
-        :param StreamBeginNotifyUrl: Stream starting callback URL,
-Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
-        :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: Interruption callback URL,
-Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
-        :type StreamEndNotifyUrl: str
-        :param RecordNotifyUrl: Recording callback URL,
-Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
-        :type RecordNotifyUrl: str
-        :param SnapshotNotifyUrl: Screencapturing callback URL,
-Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
-        :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: Porn detection callback URL,
-Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32741?from_cn_redirect=1).
-        :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
-[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
-        :type CallbackKey: str
-        :param StreamMixNotifyUrl: Stream mixing callback URL,
-Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
-        :type StreamMixNotifyUrl: str
-        """
+Only letters, digits, underscores, and hyphens can be contained.\n        :type Description: str\n        :param StreamBeginNotifyUrl: Stream starting callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).\n        :type StreamBeginNotifyUrl: str\n        :param StreamEndNotifyUrl: Interruption callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).\n        :type StreamEndNotifyUrl: str\n        :param RecordNotifyUrl: Recording callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).\n        :type RecordNotifyUrl: str\n        :param SnapshotNotifyUrl: Screencapturing callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).\n        :type SnapshotNotifyUrl: str\n        :param PornCensorshipNotifyUrl: Porn detection callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32741?from_cn_redirect=1).\n        :type PornCensorshipNotifyUrl: str\n        :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
+[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).\n        :type CallbackKey: str\n        :param StreamMixNotifyUrl: Disused\n        :type StreamMixNotifyUrl: str\n        """
         self.TemplateName = None
         self.Description = None
         self.StreamBeginNotifyUrl = None
@@ -1158,11 +921,7 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TemplateId = None
         self.RequestId = None
 
@@ -1181,19 +940,7 @@ class CreateLiveCertRequest(AbstractModel):
         """
         :param CertType: Certificate type. 0: user-added certificate, 1: Tencent Cloud-hosted certificate.
 Note: if the certificate type is 0, `HttpsCrt` and `HttpsKey` are required;
-If the certificate type is 1, the certificate corresponding to `CloudCertId` will be used first. If `CloudCertId` is empty, `HttpsCrt` and `HttpsKey` will be used.
-        :type CertType: int
-        :param CertName: Certificate name.
-        :type CertName: str
-        :param HttpsCrt: Certificate content, i.e., public key.
-        :type HttpsCrt: str
-        :param HttpsKey: Private key.
-        :type HttpsKey: str
-        :param Description: Description.
-        :type Description: str
-        :param CloudCertId: Tencent Cloud-hosted certificate ID.
-        :type CloudCertId: str
-        """
+If the certificate type is 1, the certificate corresponding to `CloudCertId` will be used first. If `CloudCertId` is empty, `HttpsCrt` and `HttpsKey` will be used.\n        :type CertType: int\n        :param CertName: Certificate name.\n        :type CertName: str\n        :param HttpsCrt: Certificate content, i.e., public key.\n        :type HttpsCrt: str\n        :param HttpsKey: Private key.\n        :type HttpsKey: str\n        :param Description: Description.\n        :type Description: str\n        :param CloudCertId: Tencent Cloud-hosted certificate ID.\n        :type CloudCertId: str\n        """
         self.CertType = None
         self.CertName = None
         self.HttpsCrt = None
@@ -1225,11 +972,7 @@ class CreateLiveCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertId: Certificate ID
-        :type CertId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CertId: Certificate ID\n        :type CertId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CertId = None
         self.RequestId = None
 
@@ -1246,44 +989,24 @@ class CreateLiveRecordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        :param DomainName: Push domain name. This parameter must be set for multi-domain name push.
-        :type DomainName: str
-        :param StartTime: Recording start time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:10:01 is 2017-01-01+10%3a10%3a01.
-In scheduled recording mode, this field must be set; in real-time video recording mode, this field is ignored.
-        :type StartTime: str
-        :param EndTime: Recording end time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:30:01 is 2017-01-01+10%3a30%3a01.
-In scheduled recording mode, this field must be set; in real-time video recording mode, this field is optional. If the recording is set to real-time video recording mode through the `Highlight` parameter, the set end time should not be more than 30 minutes after the current time. If the set end time is more than 30 minutes after the current time, earlier than the current time, or left empty, the actual end time will be 30 minutes after the current time.
-        :type EndTime: str
-        :param RecordType: Recording type.
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        :param DomainName: Push domain name. This parameter must be set for multi-domain name push.\n        :type DomainName: str\n        :param StartTime: Recording start time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:10:01 is 2017-01-01+10%3a10%3a01.
+In scheduled recording mode, this field must be set; in real-time video recording mode, this field is ignored.\n        :type StartTime: str\n        :param EndTime: Recording end time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:30:01 is 2017-01-01+10%3a30%3a01.
+In scheduled recording mode, this field must be set; in real-time video recording mode, this field is optional. If the recording is set to real-time video recording mode through the `Highlight` parameter, the set end time should not be more than 30 minutes after the current time. If the set end time is more than 30 minutes after the current time, earlier than the current time, or left empty, the actual end time will be 30 minutes after the current time.\n        :type EndTime: str\n        :param RecordType: Recording type.
 "video": Audio-video recording **(default)**.
 "audio": audio recording.
-In both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.
-        :type RecordType: str
-        :param FileFormat: Recording file format. Valid values:
+In both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.\n        :type RecordType: str\n        :param FileFormat: Recording file format. Valid values:
 "flv" **(default)**, "hls", "mp4", "aac", "mp3".
-In both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.
-        :type FileFormat: str
-        :param Highlight: Mark for enabling real-time video recording mode.
+In both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.\n        :type FileFormat: str\n        :param Highlight: Mark for enabling real-time video recording mode.
 0: Real-time video recording mode is not enabled, i.e., the scheduled recording mode is used **(default)**. See [Sample 1](#.E7.A4.BA.E4.BE.8B1-.E5.88.9B.E5.BB.BA.E5.AE.9A.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).
-1: Real-time video recording mode is enabled. See [Sample 2](#.E7.A4.BA.E4.BE.8B2-.E5.88.9B.E5.BB.BA.E5.AE.9E.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).
-        :type Highlight: int
-        :param MixStream: Flag for enabling A+B=C mixed stream recording.
+1: Real-time video recording mode is enabled. See [Sample 2](#.E7.A4.BA.E4.BE.8B2-.E5.88.9B.E5.BB.BA.E5.AE.9E.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).\n        :type Highlight: int\n        :param MixStream: Flag for enabling A+B=C mixed stream recording.
 0: A+B=C mixed stream recording is not enabled **(default)**.
 1: A+B=C mixed stream recording is enabled.
-In both scheduled and real-time video recording modes, this parameter is valid.
-        :type MixStream: int
-        :param StreamParam: Recording stream parameter. The following parameters are supported currently:
+In both scheduled and real-time video recording modes, this parameter is valid.\n        :type MixStream: int\n        :param StreamParam: Recording stream parameter. The following parameters are supported currently:
 record_interval: recording interval in seconds. Value range: 1800-7200.
 storage_time: recording file storage duration in seconds.
 Example: record_interval=3600&storage_time=2592000.
 Note: the parameter needs to be URL-encoded.
-In both scheduled and real-time video recording modes, this parameter is valid.
-        :type StreamParam: str
-        """
+In both scheduled and real-time video recording modes, this parameter is valid.\n        :type StreamParam: str\n        """
         self.StreamName = None
         self.AppName = None
         self.DomainName = None
@@ -1323,11 +1046,7 @@ class CreateLiveRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Task ID, which uniquely identifies a recording task globally.
-        :type TaskId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TaskId: Task ID, which uniquely identifies a recording task globally.\n        :type TaskId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -1344,16 +1063,8 @@ class CreateLiveRecordRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
-        :type AppName: str
-        :param StreamName: Stream name.
-Note: If the parameter is a non-empty string, the rule will be only applicable to the particular stream.
-        :type StreamName: str
-        """
+        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.\n        :type AppName: str\n        :param StreamName: Stream name.
+Note: If the parameter is a non-empty string, the rule will be only applicable to the particular stream.\n        :type StreamName: str\n        """
         self.DomainName = None
         self.TemplateId = None
         self.AppName = None
@@ -1381,9 +1092,7 @@ class CreateLiveRecordRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1398,27 +1107,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: Template name. Only letters, digits, underscores, and hyphens can be contained.
-        :type TemplateName: str
-        :param Description: Message description
-        :type Description: str
-        :param FlvParam: FLV recording parameter, which is set when FLV recording is enabled.
-        :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsParam: HLS recording parameter, which is set when HLS recording is enabled.
-        :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: Mp4 recording parameter, which is set when Mp4 recording is enabled.
-        :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param AacParam: AAC recording parameter, which is set when AAC recording is enabled.
-        :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param IsDelayLive: LVB type. Default value: 0.
+        :param TemplateName: Template name. Only letters, digits, underscores, and hyphens can be contained.\n        :type TemplateName: str\n        :param Description: Message description\n        :type Description: str\n        :param FlvParam: FLV recording parameter, which is set when FLV recording is enabled.\n        :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param HlsParam: HLS recording parameter, which is set when HLS recording is enabled.\n        :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param Mp4Param: Mp4 recording parameter, which is set when Mp4 recording is enabled.\n        :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param AacParam: AAC recording parameter, which is set when AAC recording is enabled.\n        :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param IsDelayLive: LVB type. Default value: 0.
 0: LVB.
-1: LCB.
-        :type IsDelayLive: int
-        :param HlsSpecialParam: HLS-specific recording parameter.
-        :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: Mp3 recording parameter, which is set when Mp3 recording is enabled.
-        :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        """
+1: LCB.\n        :type IsDelayLive: int\n        :param HlsSpecialParam: HLS-specific recording parameter.\n        :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`\n        :param Mp3Param: Mp3 recording parameter, which is set when Mp3 recording is enabled.\n        :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        """
         self.TemplateName = None
         self.Description = None
         self.FlvParam = None
@@ -1468,11 +1159,7 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TemplateId = None
         self.RequestId = None
 
@@ -1489,16 +1176,8 @@ class CreateLiveSnapshotRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        :param StreamName: Stream name.
-Note: if this parameter is a non-empty string, the rule will take effect only for the particular stream.
-        :type StreamName: str
-        """
+        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        :param StreamName: Stream name.
+Note: if this parameter is a non-empty string, the rule will take effect only for the particular stream.\n        :type StreamName: str\n        """
         self.DomainName = None
         self.TemplateId = None
         self.AppName = None
@@ -1526,9 +1205,7 @@ class CreateLiveSnapshotRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1545,39 +1222,17 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         """
         :param TemplateName: Template name.
 Maximum length: 255 bytes.
-Only letters, digits, underscores, and hyphens can be contained.
-        :type TemplateName: str
-        :param CosAppId: COS application ID.
-        :type CosAppId: int
-        :param CosBucket: COS bucket name.
-Note: the value of `CosBucket` cannot contain `-[appid]`.
-        :type CosBucket: str
-        :param CosRegion: COS region.
-        :type CosRegion: str
-        :param Description: Description.
+Only letters, digits, underscores, and hyphens can be contained.\n        :type TemplateName: str\n        :param CosAppId: COS application ID.\n        :type CosAppId: int\n        :param CosBucket: COS bucket name.
+Note: the value of `CosBucket` cannot contain `-[appid]`.\n        :type CosBucket: str\n        :param CosRegion: COS region.\n        :type CosRegion: str\n        :param Description: Description.
 Maximum length: 1,024 bytes.
-Only letters, digits, underscores, and hyphens can be contained.
-        :type Description: str
-        :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
-Value range: 5-300s.
-        :type SnapshotInterval: int
-        :param Width: Screenshot width. Default value: 0 (original width).
-        :type Width: int
-        :param Height: Screenshot height. Default value: 0 (original height).
-        :type Height: int
-        :param PornFlag: Whether to enable porn detection. 0: no, 1: yes. Default value: 0
-        :type PornFlag: int
-        :param CosPrefix: COS Bucket folder prefix.
+Only letters, digits, underscores, and hyphens can be contained.\n        :type Description: str\n        :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
+Value range: 5-300s.\n        :type SnapshotInterval: int\n        :param Width: Screenshot width. Default value: 0 (original width).\n        :type Width: int\n        :param Height: Screenshot height. Default value: 0 (original height).\n        :type Height: int\n        :param PornFlag: Whether to enable porn detection. 0: no, 1: yes. Default value: 0\n        :type PornFlag: int\n        :param CosPrefix: COS Bucket folder prefix.
 If no value is entered, the default value
 `/{Year}-{Month}-{Day}`
-will be used.
-        :type CosPrefix: str
-        :param CosFileName: COS filename.
+will be used.\n        :type CosPrefix: str\n        :param CosFileName: COS filename.
 If no value is entered, the default value 
 `{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}`
-will be used.
-        :type CosFileName: str
-        """
+will be used.\n        :type CosFileName: str\n        """
         self.TemplateName = None
         self.CosAppId = None
         self.CosBucket = None
@@ -1619,11 +1274,7 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TemplateId = None
         self.RequestId = None
 
@@ -1640,15 +1291,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Playback domain name.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you only bind a domain name, leave this parameter empty.
-        :type AppName: str
-        :param StreamName: Stream name. If only the domain name or path is bound, leave this parameter blank.
-        :type StreamName: str
-        :param TemplateId: Designates an existing template ID.
-        :type TemplateId: int
-        """
+        :param DomainName: Playback domain name.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you only bind a domain name, leave this parameter empty.\n        :type AppName: str\n        :param StreamName: Stream name. If only the domain name or path is bound, leave this parameter blank.\n        :type StreamName: str\n        :param TemplateId: Designates an existing template ID.\n        :type TemplateId: int\n        """
         self.DomainName = None
         self.AppName = None
         self.StreamName = None
@@ -1676,9 +1319,7 @@ class CreateLiveTranscodeRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1696,69 +1337,29 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :param TemplateName: Template name, such as “900p”. This can be only a combination of letters and digits.
 Length limit:
   Standard transcoding: 1-10 characters
-  Top speed codec transcoding: 3-10 characters
-        :type TemplateName: str
-        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8000.
-Note: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.
-        :type VideoBitrate: int
-        :param Acodec: Audio codec. Default value: aac.
-Note: this parameter is unsupported now.
-        :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Default value: 0.
-Value range: 0-500.
-        :type AudioBitrate: int
-        :param Vcodec: Video codec. Valid values: h264, h265, origin (default)
+  Top speed codec transcoding: 3-10 characters\n        :type TemplateName: str\n        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8000.
+Note: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.\n        :type VideoBitrate: int\n        :param Acodec: Audio codec. Default value: aac.
+Note: this parameter is unsupported now.\n        :type Acodec: str\n        :param AudioBitrate: Audio bitrate. Default value: 0.
+Value range: 0-500.\n        :type AudioBitrate: int\n        :param Vcodec: Video codec. Valid values: h264, h265, origin (default)
 
-origin: original codec as the output codec
-        :type Vcodec: str
-        :param Description: Template description.
-        :type Description: str
-        :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
-        :type NeedVideo: int
-        :param Width: Width. Default value: 0.
+origin: original codec as the output codec\n        :type Vcodec: str\n        :param Description: Template description.\n        :type Description: str\n        :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.\n        :type NeedVideo: int\n        :param Width: Width. Default value: 0.
 Value range: 0-3000
-It must be a multiple of 2. The original width is 0.
-        :type Width: int
-        :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
-        :type NeedAudio: int
-        :param Height: Height. Default value: 0.
+It must be a multiple of 2. The original width is 0.\n        :type Width: int\n        :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.\n        :type NeedAudio: int\n        :param Height: Height. Default value: 0.
 Value range: [0,3000]
-The value must be a multiple of 2, and 0 is the original height.
-        :type Height: int
-        :param Fps: Frame rate. Default value: 0.
-Value range: 0-60
-        :type Fps: int
-        :param Gop: Keyframe interval in seconds. Default value: original interval
-Value range: 2-6
-        :type Gop: int
-        :param Rotate: Rotation angle. Default value: 0.
-Valid values: 0, 90, 180, 270
-        :type Rotate: int
-        :param Profile: Encoding quality:
-baseline/main/high. Default value: baseline.
-        :type Profile: str
-        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+The value must be a multiple of 2, and 0 is the original height.\n        :type Height: int\n        :param Fps: Frame rate. Default value: 0.
+Value range: 0-60\n        :type Fps: int\n        :param Gop: Keyframe interval in seconds. Default value: original interval
+Value range: 2-6\n        :type Gop: int\n        :param Rotate: Rotation angle. Default value: 0.
+Valid values: 0, 90, 180, 270\n        :type Rotate: int\n        :param Profile: Encoding quality:
+baseline/main/high. Default value: baseline.\n        :type Profile: str\n        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
 0: no, 1: yes
-Default value: 0.
-        :type BitrateToOrig: int
-        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
+Default value: 0.\n        :type BitrateToOrig: int\n        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
 0: no, 1: yes
-Default value: 0.
-        :type HeightToOrig: int
-        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+Default value: 0.\n        :type HeightToOrig: int\n        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
 0: no, 1: yes
-Default value: 0.
-        :type FpsToOrig: int
-        :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
-        :type AiTransCode: int
-        :param AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
+Default value: 0.\n        :type FpsToOrig: int\n        :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.\n        :type AiTransCode: int\n        :param AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
 Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
 
-Value range: 0.0-0.5.
-        :type AdaptBitratePercent: float
-        :param ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
-        :type ShortEdgeAsHeight: int
-        """
+Value range: 0.0-0.5.\n        :type AdaptBitratePercent: float\n        :param ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.\n        :type ShortEdgeAsHeight: int\n        """
         self.TemplateName = None
         self.VideoBitrate = None
         self.Acodec = None
@@ -1818,11 +1419,7 @@ class CreateLiveTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TemplateId = None
         self.RequestId = None
 
@@ -1839,15 +1436,7 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param TemplateId: Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API.
-        :type TemplateId: int
-        """
+        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        :param TemplateId: Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API.\n        :type TemplateId: int\n        """
         self.DomainName = None
         self.AppName = None
         self.StreamName = None
@@ -1875,9 +1464,7 @@ class CreateLiveWatermarkRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1892,25 +1479,9 @@ class CreateRecordTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param AppName: Push path.
-        :type AppName: str
-        :param EndTime: Recording end time in UNIX timestamp format. “EndTime” should be later than “StartTime”, and the duration between “EndTime” and “StartTime” is up to 24 hours.
-        :type EndTime: int
-        :param StartTime: Recording start time in UNIX timestamp format. If “StartTime” is not entered, recording will start immediately after the API is successfully called. “StartTime” should be within 6 days from the current time.
-        :type StartTime: int
-        :param StreamType: Push type. Default value: 0. Valid values:
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param AppName: Push path.\n        :type AppName: str\n        :param EndTime: Recording end time in UNIX timestamp format. “EndTime” should be later than “StartTime”, and the duration between “EndTime” and “StartTime” is up to 24 hours.\n        :type EndTime: int\n        :param StartTime: Recording start time in UNIX timestamp format. If “StartTime” is not entered, recording will start immediately after the API is successfully called. “StartTime” should be within 6 days from the current time.\n        :type StartTime: int\n        :param StreamType: Push type. Default value: 0. Valid values:
 0: LVB push.
-1: mixed stream, i.e., A + B = C mixed stream.
-        :type StreamType: int
-        :param TemplateId: Recording template ID, which is the returned value of `CreateLiveRecordTemplate`. If this parameter is left empty or incorrect, the stream will be recorded in HLS format and retained permanently by default.
-        :type TemplateId: int
-        :param Extension: Extension field which is not defined now. It is empty by default.
-        :type Extension: str
-        """
+1: mixed stream, i.e., A + B = C mixed stream.\n        :type StreamType: int\n        :param TemplateId: Recording template ID, which is the returned value of `CreateLiveRecordTemplate`. If this parameter is left empty or incorrect, the stream will be recorded in HLS format and retained permanently by default.\n        :type TemplateId: int\n        :param Extension: Extension field which is not defined now. It is empty by default.\n        :type Extension: str\n        """
         self.StreamName = None
         self.DomainName = None
         self.AppName = None
@@ -1946,11 +1517,7 @@ class CreateRecordTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: A globally unique task ID. If `TaskId` is returned, the recording task has been successfully created.
-        :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TaskId: A globally unique task ID. If `TaskId` is returned, the recording task has been successfully created.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -1967,17 +1534,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Data point in time in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type Time: str
-        :param Bandwidth: Bandwidth in Mbps.
-        :type Bandwidth: float
-        :param Flux: Traffic in MB.
-        :type Flux: float
-        :param Request: Number of requests.
-        :type Request: int
-        :param Online: Number of online viewers.
-        :type Online: int
-        """
+        :param Time: Data point in time in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type Time: str\n        :param Bandwidth: Bandwidth in Mbps.\n        :type Bandwidth: float\n        :param Flux: Traffic in MB.\n        :type Flux: float\n        :param Request: Number of requests.\n        :type Request: int\n        :param Online: Number of online viewers.\n        :type Online: int\n        """
         self.Time = None
         self.Bandwidth = None
         self.Flux = None
@@ -2007,28 +1564,14 @@ class DelayInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the 
- `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param DelayInterval: Delay time in seconds.
-        :type DelayInterval: int
-        :param CreateTime: Creation time in UTC time.
+        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the 
+ `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        :param DelayInterval: Delay time in seconds.\n        :type DelayInterval: int\n        :param CreateTime: Creation time in UTC time.
 Note: the difference between UTC time and Beijing time is 8 hours.
-Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
-        :type CreateTime: str
-        :param ExpireTime: Expiration time in UTC time.
+Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).\n        :type CreateTime: str\n        :param ExpireTime: Expiration time in UTC time.
 Note: the difference between UTC time and Beijing time is 8 hours.
-Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
-        :type ExpireTime: str
-        :param Status: Current status:
+Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).\n        :type ExpireTime: str\n        :param Status: Current status:
 -1: expired.
-1: in effect.
-        :type Status: int
-        """
+1: in effect.\n        :type Status: int\n        """
         self.DomainName = None
         self.AppName = None
         self.StreamName = None
@@ -2062,11 +1605,7 @@ class DeleteLiveCallbackRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        """
+        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        """
         self.DomainName = None
         self.AppName = None
 
@@ -2090,9 +1629,7 @@ class DeleteLiveCallbackRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2109,9 +1646,7 @@ class DeleteLiveCallbackTemplateRequest(AbstractModel):
         """
         :param TemplateId: Template ID.
 1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.
-2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.
-        :type TemplateId: int
-        """
+2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.\n        :type TemplateId: int\n        """
         self.TemplateId = None
 
 
@@ -2133,9 +1668,7 @@ class DeleteLiveCallbackTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2150,9 +1683,7 @@ class DeleteLiveCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertId: Certificate ID obtained through the `DescribeLiveCerts` API.
-        :type CertId: int
-        """
+        :param CertId: Certificate ID obtained through the `DescribeLiveCerts` API.\n        :type CertId: int\n        """
         self.CertId = None
 
 
@@ -2174,9 +1705,7 @@ class DeleteLiveCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2191,11 +1720,7 @@ class DeleteLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Domain name to be deleted.
-        :type DomainName: str
-        :param DomainType: Type. 0: push, 1: playback.
-        :type DomainType: int
-        """
+        :param DomainName: Domain name to be deleted.\n        :type DomainName: str\n        :param DomainType: Type. 0: push, 1: playback.\n        :type DomainType: int\n        """
         self.DomainName = None
         self.DomainType = None
 
@@ -2219,9 +1744,7 @@ class DeleteLiveDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2236,11 +1759,7 @@ class DeleteLiveRecordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param TaskId: Task ID returned by the `CreateLiveRecord` API.
-        :type TaskId: int
-        """
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param TaskId: Task ID returned by the `CreateLiveRecord` API.\n        :type TaskId: int\n        """
         self.StreamName = None
         self.TaskId = None
 
@@ -2264,9 +1783,7 @@ class DeleteLiveRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2282,15 +1799,9 @@ class DeleteLiveRecordRuleRequest(AbstractModel):
     def __init__(self):
         """
         :param DomainName: Push domain name.
-Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
-Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
-        :type AppName: str
-        :param StreamName: Stream name.
-Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
-        :type StreamName: str
-        """
+Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.\n        :type AppName: str\n        :param StreamName: Stream name.
+Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.\n        :type StreamName: str\n        """
         self.DomainName = None
         self.AppName = None
         self.StreamName = None
@@ -2316,9 +1827,7 @@ class DeleteLiveRecordRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2333,9 +1842,7 @@ class DeleteLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID obtained through the `DescribeRecordTemplates` API.
-        :type TemplateId: int
-        """
+        :param TemplateId: Template ID obtained through the `DescribeRecordTemplates` API.\n        :type TemplateId: int\n        """
         self.TemplateId = None
 
 
@@ -2357,9 +1864,7 @@ class DeleteLiveRecordTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2374,13 +1879,7 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        """
+        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        """
         self.DomainName = None
         self.AppName = None
         self.StreamName = None
@@ -2406,9 +1905,7 @@ class DeleteLiveSnapshotRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2425,9 +1922,7 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
         """
         :param TemplateId: Template ID.
 1. Get from the returned value of the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.
-2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](https://intl.cloud.tencent.com/document/product/267/32619?from_cn_redirect=1) API.
-        :type TemplateId: int
-        """
+2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](https://intl.cloud.tencent.com/document/product/267/32619?from_cn_redirect=1) API.\n        :type TemplateId: int\n        """
         self.TemplateId = None
 
 
@@ -2449,9 +1944,7 @@ class DeleteLiveSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2466,15 +1959,7 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Playback domain name.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        """
+        :param DomainName: Playback domain name.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        :param TemplateId: Template ID.\n        :type TemplateId: int\n        """
         self.DomainName = None
         self.AppName = None
         self.StreamName = None
@@ -2502,9 +1987,7 @@ class DeleteLiveTranscodeRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2521,9 +2004,7 @@ class DeleteLiveTranscodeTemplateRequest(AbstractModel):
         """
         :param TemplateId: Template ID.
 1. Get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.
-2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](https://intl.cloud.tencent.com/document/product/267/32641?from_cn_redirect=1) API.
-        :type TemplateId: int
-        """
+2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](https://intl.cloud.tencent.com/document/product/267/32641?from_cn_redirect=1) API.\n        :type TemplateId: int\n        """
         self.TemplateId = None
 
 
@@ -2545,9 +2026,7 @@ class DeleteLiveTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2564,9 +2043,7 @@ class DeleteLiveWatermarkRequest(AbstractModel):
         """
         :param WatermarkId: Watermark ID.
 Watermark ID obtained in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.
-Watermark ID returned by the `DescribeLiveWatermarks` API.
-        :type WatermarkId: int
-        """
+Watermark ID returned by the `DescribeLiveWatermarks` API.\n        :type WatermarkId: int\n        """
         self.WatermarkId = None
 
 
@@ -2588,9 +2065,7 @@ class DeleteLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2605,13 +2080,7 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        """
+        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        """
         self.DomainName = None
         self.AppName = None
         self.StreamName = None
@@ -2637,9 +2106,7 @@ class DeleteLiveWatermarkRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2654,9 +2121,7 @@ class DeleteRecordTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Task ID returned by `CreateRecordTask`. The recording task specified by `TaskId` will be deleted.
-        :type TaskId: str
-        """
+        :param TaskId: Task ID returned by `CreateRecordTask`. The recording task specified by `TaskId` will be deleted.\n        :type TaskId: str\n        """
         self.TaskId = None
 
 
@@ -2678,9 +2143,7 @@ class DeleteRecordTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2695,11 +2158,7 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param QueryTime: Query time point accurate to the minute. You can query data within the last month. As there is a 5-minute delay in the data, you're advised to pass in a time point 5 minutes earlier than needed. Format: yyyy-mm-dd HH:MM:00. As the accuracy is to the minute, please set the value of second to `00`.
-        :type QueryTime: str
-        :param PlayDomains: Playback domain name list. If this parameter is left empty, full data will be queried.
-        :type PlayDomains: list of str
-        """
+        :param QueryTime: Query time point accurate to the minute. You can query data within the last month. As there is a 5-minute delay in the data, you're advised to pass in a time point 5 minutes earlier than needed. Format: yyyy-mm-dd HH:MM:00. As the accuracy is to the minute, please set the value of second to `00`.\n        :type QueryTime: str\n        :param PlayDomains: Playback domain name list. If this parameter is left empty, full data will be queried.\n        :type PlayDomains: list of str\n        """
         self.QueryTime = None
         self.PlayDomains = None
 
@@ -2723,13 +2182,7 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param QueryTime: Query point in time in the returned input parameters.
-        :type QueryTime: str
-        :param DataInfoList: Data information list.
-        :type DataInfoList: list of MonitorStreamPlayInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param QueryTime: Query point in time in the returned input parameters.\n        :type QueryTime: str\n        :param DataInfoList: Data information list.\n        :type DataInfoList: list of MonitorStreamPlayInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.QueryTime = None
         self.DataInfoList = None
         self.RequestId = None
@@ -2753,13 +2206,7 @@ class DescribeAreaBillBandwidthAndFluxListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
-        :type StartTime: str
-        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 1 days.
-        :type EndTime: str
-        :param PlayDomains: LVB playback domain name. If it is left blank, the full data will be queried.
-        :type PlayDomains: list of str
-        """
+        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.\n        :type StartTime: str\n        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 1 days.\n        :type EndTime: str\n        :param PlayDomains: LVB playback domain name. If it is left blank, the full data will be queried.\n        :type PlayDomains: list of str\n        """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomains = None
@@ -2785,11 +2232,7 @@ class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Detailed data information.
-        :type DataInfoList: list of BillAreaInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Detailed data information.\n        :type DataInfoList: list of BillAreaInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.RequestId = None
 
@@ -2811,27 +2254,15 @@ class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.
-        :type EndTime: str
-        :param PlayDomains: LVB playback domain name. If this parameter is left empty, full data will be queried.
-        :type PlayDomains: list of str
-        :param MainlandOrOversea: Valid values:
+        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type StartTime: str\n        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.\n        :type EndTime: str\n        :param PlayDomains: LVB playback domain name. If this parameter is left empty, full data will be queried.\n        :type PlayDomains: list of str\n        :param MainlandOrOversea: Valid values:
 Mainland: query data for Mainland China,
 Oversea: query data for regions outside Mainland China,
 Default: query data for all regions.
-Note: LEB only supports querying data for all regions.
-        :type MainlandOrOversea: str
-        :param Granularity: Data granularity. Valid values:
+Note: LEB only supports querying data for all regions.\n        :type MainlandOrOversea: str\n        :param Granularity: Data granularity. Valid values:
 5: 5-minute granularity (the query time span should be within 1 day),
 60: 1-hour granularity (the query time span should be within one month),
 1440: 1-day granularity (the query time span should be within one month).
-Default value: 5.
-        :type Granularity: int
-        :param ServiceName: Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.
-        :type ServiceName: str
-        """
+Default value: 5.\n        :type Granularity: int\n        :param ServiceName: Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.\n        :type ServiceName: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomains = None
@@ -2863,21 +2294,7 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PeakBandwidthTime: Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type PeakBandwidthTime: str
-        :param PeakBandwidth: Peak bandwidth in Mbps.
-        :type PeakBandwidth: float
-        :param P95PeakBandwidthTime: Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type P95PeakBandwidthTime: str
-        :param P95PeakBandwidth: 95th percentile bandwidth in Mbps.
-        :type P95PeakBandwidth: float
-        :param SumFlux: Total traffic in MB.
-        :type SumFlux: float
-        :param DataInfoList: Detailed data information.
-        :type DataInfoList: list of BillDataInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PeakBandwidthTime: Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type PeakBandwidthTime: str\n        :param PeakBandwidth: Peak bandwidth in Mbps.\n        :type PeakBandwidth: float\n        :param P95PeakBandwidthTime: Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type P95PeakBandwidthTime: str\n        :param P95PeakBandwidth: 95th percentile bandwidth in Mbps.\n        :type P95PeakBandwidth: float\n        :param SumFlux: Total traffic in MB.\n        :type SumFlux: float\n        :param DataInfoList: Detailed data information.\n        :type DataInfoList: list of BillDataInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PeakBandwidthTime = None
         self.PeakBandwidth = None
         self.P95PeakBandwidthTime = None
@@ -2910,19 +2327,9 @@ class DescribeConcurrentRecordStreamNumRequest(AbstractModel):
     def __init__(self):
         """
         :param LiveType: Live streaming type. SlowLive: LCB.
-NormalLive: LVB.
-        :type LiveType: str
-        :param StartTime: Start time in the format of `yyyy-mm-dd HH:MM:SS`.
-Data for the last 180 days can be queried.
-        :type StartTime: str
-        :param EndTime: End time in the format of `yyyy-mm-dd HH:MM:SS`.
-The maximum time span supported is 31 days.
-        :type EndTime: str
-        :param MainlandOrOversea: Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.
-        :type MainlandOrOversea: str
-        :param PushDomains: Playback domain name list. If this parameter is left empty, full data will be queried.
-        :type PushDomains: list of str
-        """
+NormalLive: LVB.\n        :type LiveType: str\n        :param StartTime: Start time in the format of `yyyy-mm-dd HH:MM:SS`.
+Data for the last 180 days can be queried.\n        :type StartTime: str\n        :param EndTime: End time in the format of `yyyy-mm-dd HH:MM:SS`.
+The maximum time span supported is 31 days.\n        :type EndTime: str\n        :param MainlandOrOversea: Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.\n        :type MainlandOrOversea: str\n        :param PushDomains: Playback domain name list. If this parameter is left empty, full data will be queried.\n        :type PushDomains: list of str\n        """
         self.LiveType = None
         self.StartTime = None
         self.EndTime = None
@@ -2952,11 +2359,7 @@ class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Statistics list.
-        :type DataInfoList: list of ConcurrentRecordStreamNum
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Statistics list.\n        :type DataInfoList: list of ConcurrentRecordStreamNum\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.RequestId = None
 
@@ -2978,11 +2381,7 @@ class DescribeDeliverBandwidthListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time in the format of "%Y-%m-%d %H:%M:%S".
-        :type StartTime: str
-        :param EndTime: End time in the format of "%Y-%m-%d %H:%M:%S". Data in the last 3 months can be queried, and the query period is up to 1 month.
-        :type EndTime: str
-        """
+        :param StartTime: Start time in the format of "%Y-%m-%d %H:%M:%S".\n        :type StartTime: str\n        :param EndTime: End time in the format of "%Y-%m-%d %H:%M:%S". Data in the last 3 months can be queried, and the query period is up to 1 month.\n        :type EndTime: str\n        """
         self.StartTime = None
         self.EndTime = None
 
@@ -3006,11 +2405,7 @@ class DescribeDeliverBandwidthListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Billable bandwidth of live stream relaying.
-        :type DataInfoList: list of BandwidthInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Billable bandwidth of live stream relaying.\n        :type DataInfoList: list of BandwidthInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.RequestId = None
 
@@ -3032,20 +2427,8 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End time point in the format of `yyyy-mm-dd HH:MM:SS`
-The time span is (0,3 hours]. Data for the last month can be queried.
-        :type EndTime: str
-        :param PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried.
-        :type PlayDomains: list of str
-        :param ProvinceNames: District list. If this parameter is left empty, data for all districts will be returned.
-        :type ProvinceNames: list of str
-        :param IspNames: ISP list. If this parameter is left empty, data of all ISPs will be returned.
-        :type IspNames: list of str
-        :param MainlandOrOversea: Within or outside Mainland China. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.
-        :type MainlandOrOversea: str
-        """
+        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type StartTime: str\n        :param EndTime: End time point in the format of `yyyy-mm-dd HH:MM:SS`
+The time span is (0,3 hours]. Data for the last month can be queried.\n        :type EndTime: str\n        :param PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried.\n        :type PlayDomains: list of str\n        :param ProvinceNames: District list. If this parameter is left empty, data for all districts will be returned.\n        :type ProvinceNames: list of str\n        :param IspNames: ISP list. If this parameter is left empty, data of all ISPs will be returned.\n        :type IspNames: list of str\n        :param MainlandOrOversea: Within or outside Mainland China. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.\n        :type MainlandOrOversea: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomains = None
@@ -3077,11 +2460,7 @@ class DescribeGroupProIspPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Data content.
-        :type DataInfoList: list of GroupProIspDataInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Data content.\n        :type DataInfoList: list of GroupProIspDataInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.RequestId = None
 
@@ -3104,15 +2483,9 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
     def __init__(self):
         """
         :param StartTime: Start time (Beijing time).
+Format: yyyy-mm-dd HH:MM:SS.\n        :type StartTime: str\n        :param EndTime: End time (Beijing time).
 Format: yyyy-mm-dd HH:MM:SS.
-        :type StartTime: str
-        :param EndTime: End time (Beijing time).
-Format: yyyy-mm-dd HH:MM:SS.
-Note: data in the last 3 months can be queried and the query period is up to 1 day.
-        :type EndTime: str
-        :param PlayDomains: Playback domain name list.
-        :type PlayDomains: list of str
-        """
+Note: data in the last 3 months can be queried and the query period is up to 1 day.\n        :type EndTime: str\n        :param PlayDomains: Playback domain name list.\n        :type PlayDomains: list of str\n        """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomains = None
@@ -3138,11 +2511,7 @@ class DescribeHttpStatusInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Playback status code list.
-        :type DataInfoList: list of HttpStatusData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Playback status code list.\n        :type DataInfoList: list of HttpStatusData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.RequestId = None
 
@@ -3170,11 +2539,7 @@ class DescribeLiveCallbackRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: Rule information list.
-        :type Rules: list of CallBackRuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Rules: Rule information list.\n        :type Rules: list of CallBackRuleInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Rules = None
         self.RequestId = None
 
@@ -3198,9 +2563,7 @@ class DescribeLiveCallbackTemplateRequest(AbstractModel):
         """
         :param TemplateId: Template ID.
 1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.
-2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.
-        :type TemplateId: int
-        """
+2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.\n        :type TemplateId: int\n        """
         self.TemplateId = None
 
 
@@ -3222,11 +2585,7 @@ class DescribeLiveCallbackTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Template: Callback template information.
-        :type Template: :class:`tencentcloud.live.v20180801.models.CallBackTemplateInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Template: Callback template information.\n        :type Template: :class:`tencentcloud.live.v20180801.models.CallBackTemplateInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Template = None
         self.RequestId = None
 
@@ -3251,11 +2610,7 @@ class DescribeLiveCallbackTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Templates: Template information list.
-        :type Templates: list of CallBackTemplateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Templates: Template information list.\n        :type Templates: list of CallBackTemplateInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Templates = None
         self.RequestId = None
 
@@ -3277,9 +2632,7 @@ class DescribeLiveCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertId: Certificate ID obtained through the `DescribeLiveCerts` API.
-        :type CertId: int
-        """
+        :param CertId: Certificate ID obtained through the `DescribeLiveCerts` API.\n        :type CertId: int\n        """
         self.CertId = None
 
 
@@ -3301,11 +2654,7 @@ class DescribeLiveCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertInfo: Certificate information.
-        :type CertInfo: :class:`tencentcloud.live.v20180801.models.CertInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CertInfo: Certificate information.\n        :type CertInfo: :class:`tencentcloud.live.v20180801.models.CertInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CertInfo = None
         self.RequestId = None
 
@@ -3330,11 +2679,7 @@ class DescribeLiveCertsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertInfoSet: Certificate information list.
-        :type CertInfoSet: list of CertInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CertInfoSet: Certificate information list.\n        :type CertInfoSet: list of CertInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CertInfoSet = None
         self.RequestId = None
 
@@ -3362,11 +2707,7 @@ class DescribeLiveDelayInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DelayInfoList: Delayed playback information list.
-        :type DelayInfoList: list of DelayInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DelayInfoList: Delayed playback information list.\n        :type DelayInfoList: list of DelayInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DelayInfoList = None
         self.RequestId = None
 
@@ -3388,9 +2729,7 @@ class DescribeLiveDomainCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Playback domain name.
-        :type DomainName: str
-        """
+        :param DomainName: Playback domain name.\n        :type DomainName: str\n        """
         self.DomainName = None
 
 
@@ -3412,11 +2751,7 @@ class DescribeLiveDomainCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainCertInfo: Certificate information.
-        :type DomainCertInfo: :class:`tencentcloud.live.v20180801.models.DomainCertInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DomainCertInfo: Certificate information.\n        :type DomainCertInfo: :class:`tencentcloud.live.v20180801.models.DomainCertInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DomainCertInfo = None
         self.RequestId = None
 
@@ -3435,9 +2770,7 @@ class DescribeLiveDomainPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PlayDomains: Playback domain name list.
-        :type PlayDomains: list of str
-        """
+        :param PlayDomains: Playback domain name list.\n        :type PlayDomains: list of str\n        """
         self.PlayDomains = None
 
 
@@ -3459,21 +2792,7 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Data time in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type Time: str
-        :param TotalBandwidth: Real-time total bandwidth.
-        :type TotalBandwidth: float
-        :param TotalFlux: Real-time total traffic.
-        :type TotalFlux: float
-        :param TotalRequest: Total number of requests.
-        :type TotalRequest: int
-        :param TotalOnline: Real-time total number of connections.
-        :type TotalOnline: int
-        :param DomainInfoList: Data by domain name.
-        :type DomainInfoList: list of DomainInfoList
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Time: Data time in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type Time: str\n        :param TotalBandwidth: Real-time total bandwidth.\n        :type TotalBandwidth: float\n        :param TotalFlux: Real-time total traffic.\n        :type TotalFlux: float\n        :param TotalRequest: Total number of requests.\n        :type TotalRequest: int\n        :param TotalOnline: Real-time total number of connections.\n        :type TotalOnline: int\n        :param DomainInfoList: Data by domain name.\n        :type DomainInfoList: list of DomainInfoList\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Time = None
         self.TotalBandwidth = None
         self.TotalFlux = None
@@ -3505,9 +2824,7 @@ class DescribeLiveDomainRefererRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Playback domain name
-        :type DomainName: str
-        """
+        :param DomainName: Playback domain name\n        :type DomainName: str\n        """
         self.DomainName = None
 
 
@@ -3529,11 +2846,7 @@ class DescribeLiveDomainRefererResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RefererAuthConfig: Referer allowlist/blocklist configuration of a domain name
-        :type RefererAuthConfig: :class:`tencentcloud.live.v20180801.models.RefererAuthConfig`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RefererAuthConfig: Referer allowlist/blocklist configuration of a domain name\n        :type RefererAuthConfig: :class:`tencentcloud.live.v20180801.models.RefererAuthConfig`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RefererAuthConfig = None
         self.RequestId = None
 
@@ -3552,9 +2865,7 @@ class DescribeLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Domain name.
-        :type DomainName: str
-        """
+        :param DomainName: Domain name.\n        :type DomainName: str\n        """
         self.DomainName = None
 
 
@@ -3577,11 +2888,7 @@ class DescribeLiveDomainResponse(AbstractModel):
     def __init__(self):
         """
         :param DomainInfo: Domain name information.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type DomainInfo: :class:`tencentcloud.live.v20180801.models.DomainInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type DomainInfo: :class:`tencentcloud.live.v20180801.models.DomainInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DomainInfo = None
         self.RequestId = None
 
@@ -3600,19 +2907,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainStatus: Filter by domain name status. 0: disabled, 1: enabled.
-        :type DomainStatus: int
-        :param DomainType: Filter by domain name type. 0: push. 1: playback
-        :type DomainType: int
-        :param PageSize: Number of entries per page. Value range: 10-100. Default value: 10.
-        :type PageSize: int
-        :param PageNum: Page number to get. Value range: 1-100000. Default value: 1.
-        :type PageNum: int
-        :param IsDelayLive: 0: LVB, 1: LCB. Default value: 0.
-        :type IsDelayLive: int
-        :param DomainPrefix: Domain name prefix.
-        :type DomainPrefix: str
-        """
+        :param DomainStatus: Filter by domain name status. 0: disabled, 1: enabled.\n        :type DomainStatus: int\n        :param DomainType: Filter by domain name type. 0: push. 1: playback\n        :type DomainType: int\n        :param PageSize: Number of entries per page. Value range: 10-100. Default value: 10.\n        :type PageSize: int\n        :param PageNum: Page number to get. Value range: 1-100000. Default value: 1.\n        :type PageNum: int\n        :param IsDelayLive: 0: LVB, 1: LCB. Default value: 0.\n        :type IsDelayLive: int\n        :param DomainPrefix: Domain name prefix.\n        :type DomainPrefix: str\n        """
         self.DomainStatus = None
         self.DomainType = None
         self.PageSize = None
@@ -3644,13 +2939,7 @@ class DescribeLiveDomainsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AllCount: Total number of results.
-        :type AllCount: int
-        :param DomainList: List of domain name details.
-        :type DomainList: list of DomainInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param AllCount: Total number of results.\n        :type AllCount: int\n        :param DomainList: List of domain name details.\n        :type DomainList: list of DomainInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AllCount = None
         self.DomainList = None
         self.RequestId = None
@@ -3674,15 +2963,9 @@ class DescribeLiveForbidStreamListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PageNum: Page number to get. Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Maximum value: 100. 
+        :param PageNum: Page number to get. Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Maximum value: 100. 
 Value: any integer between 1 and 100.
-Default value: 10.
-        :type PageSize: int
-        :param StreamName: The stream name to search for
-        :type StreamName: str
-        """
+Default value: 10.\n        :type PageSize: int\n        :param StreamName: The stream name to search for\n        :type StreamName: str\n        """
         self.PageNum = None
         self.PageSize = None
         self.StreamName = None
@@ -3708,19 +2991,7 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalNum: Total number of eligible ones.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param PageNum: Page number.
-        :type PageNum: int
-        :param PageSize: Number of entries displayed per page.
-        :type PageSize: int
-        :param ForbidStreamList: List of forbidden streams.
-        :type ForbidStreamList: list of ForbidStreamInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalNum: Total number of eligible ones.\n        :type TotalNum: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param PageNum: Page number.\n        :type PageNum: int\n        :param PageSize: Number of entries displayed per page.\n        :type PageSize: int\n        :param ForbidStreamList: List of forbidden streams.\n        :type ForbidStreamList: list of ForbidStreamInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalNum = None
         self.TotalPage = None
         self.PageNum = None
@@ -3750,9 +3021,7 @@ class DescribeLivePlayAuthKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Domain name.
-        :type DomainName: str
-        """
+        :param DomainName: Domain name.\n        :type DomainName: str\n        """
         self.DomainName = None
 
 
@@ -3774,11 +3043,7 @@ class DescribeLivePlayAuthKeyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PlayAuthKeyInfo: Playback authentication key information.
-        :type PlayAuthKeyInfo: :class:`tencentcloud.live.v20180801.models.PlayAuthKeyInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PlayAuthKeyInfo: Playback authentication key information.\n        :type PlayAuthKeyInfo: :class:`tencentcloud.live.v20180801.models.PlayAuthKeyInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PlayAuthKeyInfo = None
         self.RequestId = None
 
@@ -3797,9 +3062,7 @@ class DescribeLivePushAuthKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        """
+        :param DomainName: Push domain name.\n        :type DomainName: str\n        """
         self.DomainName = None
 
 
@@ -3821,11 +3084,7 @@ class DescribeLivePushAuthKeyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PushAuthKeyInfo: Push authentication key information.
-        :type PushAuthKeyInfo: :class:`tencentcloud.live.v20180801.models.PushAuthKeyInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PushAuthKeyInfo: Push authentication key information.\n        :type PushAuthKeyInfo: :class:`tencentcloud.live.v20180801.models.PushAuthKeyInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PushAuthKeyInfo = None
         self.RequestId = None
 
@@ -3850,11 +3109,7 @@ class DescribeLiveRecordRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: List of rules.
-        :type Rules: list of RuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Rules: List of rules.\n        :type Rules: list of RuleInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Rules = None
         self.RequestId = None
 
@@ -3876,9 +3131,7 @@ class DescribeLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID obtained by [DescribeLiveRecordTemplates](https://intl.cloud.tencent.com/document/product/267/32609?from_cn_redirect=1).
-        :type TemplateId: int
-        """
+        :param TemplateId: Template ID obtained by [DescribeLiveRecordTemplates](https://intl.cloud.tencent.com/document/product/267/32609?from_cn_redirect=1).\n        :type TemplateId: int\n        """
         self.TemplateId = None
 
 
@@ -3900,11 +3153,7 @@ class DescribeLiveRecordTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Template: Recording template information.
-        :type Template: :class:`tencentcloud.live.v20180801.models.RecordTemplateInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Template: Recording template information.\n        :type Template: :class:`tencentcloud.live.v20180801.models.RecordTemplateInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Template = None
         self.RequestId = None
 
@@ -3925,9 +3174,7 @@ class DescribeLiveRecordTemplatesRequest(AbstractModel):
         """
         :param IsDelayLive: Whether it is an LCB template. Default value: 0.
 0: LVB.
-1: LCB.
-        :type IsDelayLive: int
-        """
+1: LCB.\n        :type IsDelayLive: int\n        """
         self.IsDelayLive = None
 
 
@@ -3949,11 +3196,7 @@ class DescribeLiveRecordTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Templates: Recording template information list.
-        :type Templates: list of RecordTemplateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Templates: Recording template information list.\n        :type Templates: list of RecordTemplateInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Templates = None
         self.RequestId = None
 
@@ -3981,11 +3224,7 @@ class DescribeLiveSnapshotRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: Rule list.
-        :type Rules: list of RuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Rules: Rule list.\n        :type Rules: list of RuleInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Rules = None
         self.RequestId = None
 
@@ -4008,9 +3247,7 @@ class DescribeLiveSnapshotTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
-Template ID returned by the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.
-        :type TemplateId: int
-        """
+Template ID returned by the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.\n        :type TemplateId: int\n        """
         self.TemplateId = None
 
 
@@ -4032,11 +3269,7 @@ class DescribeLiveSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Template: Screencapturing template information.
-        :type Template: :class:`tencentcloud.live.v20180801.models.SnapshotTemplateInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Template: Screencapturing template information.\n        :type Template: :class:`tencentcloud.live.v20180801.models.SnapshotTemplateInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Template = None
         self.RequestId = None
 
@@ -4061,11 +3294,7 @@ class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Templates: Screencapturing template list.
-        :type Templates: list of SnapshotTemplateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Templates: Screencapturing template list.\n        :type Templates: list of SnapshotTemplateInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Templates = None
         self.RequestId = None
 
@@ -4089,43 +3318,23 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
         """
         :param StartTime: Start time. 
 In UTC format, such as 2018-12-29T19:00:00Z.
-This supports querying the history of 60 days.
-        :type StartTime: str
-        :param EndTime: End time.
+This supports querying the history of 60 days.\n        :type StartTime: str\n        :param EndTime: End time.
 In UTC format, such as 2018-12-29T20:00:00Z.
-This cannot be after the current time and cannot be more than 30 days after the start time.
-        :type EndTime: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
-        :type AppName: str
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param StreamName: Stream name; query with wildcard (*) is not supported; fuzzy match by default.
-The IsStrict field can be used to change to exact query.
-        :type StreamName: str
-        :param PageNum: Page number to get.
+This cannot be after the current time and cannot be more than 30 days after the start time.\n        :type EndTime: str\n        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.\n        :type AppName: str\n        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param StreamName: Stream name; query with wildcard (*) is not supported; fuzzy match by default.
+The IsStrict field can be used to change to exact query.\n        :type StreamName: str\n        :param PageNum: Page number to get.
 Default value: 1.
-Note: Currently, query for up to 10,000 entries is supported.
-        :type PageNum: int
-        :param PageSize: Number of entries per page.
+Note: Currently, query for up to 10,000 entries is supported.\n        :type PageNum: int\n        :param PageSize: Number of entries per page.
 Maximum value: 100.
 Value range: any integer between 1 and 100.
 Default value: 10.
-Note: currently, query for up to 10,000 entries is supported.
-        :type PageSize: int
-        :param IsFilter: Whether to filter. No filtering by default.
+Note: currently, query for up to 10,000 entries is supported.\n        :type PageSize: int\n        :param IsFilter: Whether to filter. No filtering by default.
 0: No filtering at all.
-1: Filter out the failing streams and return only the successful ones.
-        :type IsFilter: int
-        :param IsStrict: Whether to query exactly. Fuzzy match by default.
+1: Filter out the failing streams and return only the successful ones.\n        :type IsFilter: int\n        :param IsStrict: Whether to query exactly. Fuzzy match by default.
 0: Fuzzy match.
 1: Exact query.
-Note: This parameter takes effect when StreamName is used.
-        :type IsStrict: int
-        :param IsAsc: Whether to display in ascending order by end time. Descending order by default.
+Note: This parameter takes effect when StreamName is used.\n        :type IsStrict: int\n        :param IsAsc: Whether to display in ascending order by end time. Descending order by default.
 0: Descending.
-1: Ascending.
-        :type IsAsc: int
-        """
+1: Ascending.\n        :type IsAsc: int\n        """
         self.StartTime = None
         self.EndTime = None
         self.AppName = None
@@ -4165,19 +3374,7 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EventList: List of streaming events.
-        :type EventList: list of StreamEventInfo
-        :param PageNum: Page number.
-        :type PageNum: int
-        :param PageSize: Number of entries per page.
-        :type PageSize: int
-        :param TotalNum: Total number of eligible ones.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param EventList: List of streaming events.\n        :type EventList: list of StreamEventInfo\n        :param PageNum: Page number.\n        :type PageNum: int\n        :param PageSize: Number of entries per page.\n        :type PageSize: int\n        :param TotalNum: Total number of eligible ones.\n        :type TotalNum: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.EventList = None
         self.PageNum = None
         self.PageSize = None
@@ -4207,19 +3404,9 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name. If you use multiple paths, enter the `DomainName`.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you use multiple paths, enter the `AppName`.
-        :type AppName: str
-        :param PageNum: Page number to get. Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Maximum value: 100. 
+        :param DomainName: Push domain name. If you use multiple paths, enter the `DomainName`.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you use multiple paths, enter the `AppName`.\n        :type AppName: str\n        :param PageNum: Page number to get. Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Maximum value: 100. 
 Value: any integer between 10 and 100.
-Default value: 10.
-        :type PageSize: int
-        :param StreamName: Stream name, which is used for exact query.
-        :type StreamName: str
-        """
+Default value: 10.\n        :type PageSize: int\n        :param StreamName: Stream name, which is used for exact query.\n        :type StreamName: str\n        """
         self.DomainName = None
         self.AppName = None
         self.PageNum = None
@@ -4249,19 +3436,7 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalNum: Total number of eligible ones.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param PageNum: Page number.
-        :type PageNum: int
-        :param PageSize: Number of entries displayed per page.
-        :type PageSize: int
-        :param OnlineInfo: Active push information list.
-        :type OnlineInfo: list of StreamOnlineInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalNum: Total number of eligible ones.\n        :type TotalNum: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param PageNum: Page number.\n        :type PageNum: int\n        :param PageSize: Number of entries displayed per page.\n        :type PageSize: int\n        :param OnlineInfo: Active push information list.\n        :type OnlineInfo: list of StreamOnlineInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalNum = None
         self.TotalPage = None
         self.PageNum = None
@@ -4291,30 +3466,16 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Your push domain name.
-        :type DomainName: str
-        :param EndTime: End time.
+        :param DomainName: Your push domain name.\n        :type DomainName: str\n        :param EndTime: End time.
 In UTC format, such as 2016-06-30T19:00:00Z.
 This cannot be after the current time.
-Note: The difference between EndTime and StartTime cannot be greater than 30 days.
-        :type EndTime: str
-        :param StartTime: Start time. 
+Note: The difference between EndTime and StartTime cannot be greater than 30 days.\n        :type EndTime: str\n        :param StartTime: Start time. 
 In UTC format, such as 2016-06-29T19:00:00Z.
-This supports querying data in the past 60 days.
-        :type StartTime: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. Fuzzy match is not supported.
-        :type AppName: str
-        :param PageNum: Page number to get.
-Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page.
+This supports querying data in the past 60 days.\n        :type StartTime: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. Fuzzy match is not supported.\n        :type AppName: str\n        :param PageNum: Page number to get.
+Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page.
 Maximum value: 100
 Valid values: integers between 10 and 100
-Default value: 10
-        :type PageSize: int
-        :param StreamName: Stream name, which supports fuzzy match.
-        :type StreamName: str
-        """
+Default value: 10\n        :type PageSize: int\n        :param StreamName: Stream name, which supports fuzzy match.\n        :type StreamName: str\n        """
         self.DomainName = None
         self.EndTime = None
         self.StartTime = None
@@ -4348,19 +3509,7 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PublishInfo: Push record information.
-        :type PublishInfo: list of StreamName
-        :param PageNum: Page number.
-        :type PageNum: int
-        :param PageSize: Number of entries per page
-        :type PageSize: int
-        :param TotalNum: Total number of eligible ones.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PublishInfo: Push record information.\n        :type PublishInfo: list of StreamName\n        :param PageNum: Page number.\n        :type PageNum: int\n        :param PageSize: Number of entries per page\n        :type PageSize: int\n        :param TotalNum: Total number of eligible ones.\n        :type TotalNum: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PublishInfo = None
         self.PageNum = None
         self.PageSize = None
@@ -4390,19 +3539,11 @@ class DescribeLiveStreamPushInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PushDomain: Push domain name.
-        :type PushDomain: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        :param PageNum: Number of pages,
+        :param PushDomain: Push domain name.\n        :type PushDomain: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        :param PageNum: Number of pages,
 Value range: [1,10000],
-Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page,
+Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page,
 Value range: [1,1000],
-Default value: 200.
-        :type PageSize: int
-        """
+Default value: 200.\n        :type PageSize: int\n        """
         self.PushDomain = None
         self.AppName = None
         self.PageNum = None
@@ -4430,19 +3571,7 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Live stream statistics list.
-        :type DataInfoList: list of PushDataInfo
-        :param TotalNum: Total number of live streams.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param PageNum: Page number where the current data resides.
-        :type PageNum: int
-        :param PageSize: Number of live streams per page.
-        :type PageSize: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Live stream statistics list.\n        :type DataInfoList: list of PushDataInfo\n        :param TotalNum: Total number of live streams.\n        :type TotalNum: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param PageNum: Page number where the current data resides.\n        :type PageNum: int\n        :param PageSize: Number of live streams per page.\n        :type PageSize: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.TotalNum = None
         self.TotalPage = None
@@ -4472,13 +3601,7 @@ class DescribeLiveStreamStateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
-        :type AppName: str
-        :param DomainName: Your push domain name.
-        :type DomainName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        """
+        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.\n        :type AppName: str\n        :param DomainName: Your push domain name.\n        :type DomainName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        """
         self.AppName = None
         self.DomainName = None
         self.StreamName = None
@@ -4507,11 +3630,7 @@ class DescribeLiveStreamStateResponse(AbstractModel):
         :param StreamState: Stream status,
 active: active
 inactive: Inactive
-forbid: forbidden.
-        :type StreamState: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+forbid: forbidden.\n        :type StreamState: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.StreamState = None
         self.RequestId = None
 
@@ -4528,29 +3647,15 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PushDomain: Push domain name.
-        :type PushDomain: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param DayTime: Query date (UTC+8)
+        :param PushDomain: Push domain name.\n        :type PushDomain: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        :param DayTime: Query date (UTC+8)
 Format: yyyymmdd
-Note: you can query the statistics for a day in the past month, with yesterday as the latest date allowed.
-        :type DayTime: str
-        :param PageNum: Number of pages. Default value: 1.
-Up to 100 pages.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Default value: 20,
-Value range: [10,1000].
-        :type PageSize: int
-        :param StartDayTime: Start day time (Beijing time),
+Note: you can query the statistics for a day in the past month, with yesterday as the latest date allowed.\n        :type DayTime: str\n        :param PageNum: Number of pages. Default value: 1.
+Up to 100 pages.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Default value: 20,
+Value range: [10,1000].\n        :type PageSize: int\n        :param StartDayTime: Start day time (Beijing time),
 In the format of `yyyymmdd`.
-Note: details for the last month can be queried.
-        :type StartDayTime: str
-        :param EndDayTime: End date (UTC+8)
+Note: details for the last month can be queried.\n        :type StartDayTime: str\n        :param EndDayTime: End date (UTC+8)
 Format: yyyymmdd
-Note: you can query the statistics for a period in the past month, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.
-        :type EndDayTime: str
-        """
+Note: you can query the statistics for a period in the past month, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.\n        :type EndDayTime: str\n        """
         self.PushDomain = None
         self.StreamName = None
         self.DayTime = None
@@ -4584,19 +3689,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Statistics list.
-        :type DataInfoList: list of TranscodeDetailInfo
-        :param PageNum: Page number.
-        :type PageNum: int
-        :param PageSize: Number of entries per page.
-        :type PageSize: int
-        :param TotalNum: Total number.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Statistics list.\n        :type DataInfoList: list of TranscodeDetailInfo\n        :param PageNum: Page number.\n        :type PageNum: int\n        :param PageSize: Number of entries per page.\n        :type PageSize: int\n        :param TotalNum: Total number.\n        :type TotalNum: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.PageNum = None
         self.PageSize = None
@@ -4626,11 +3719,7 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateIds: An array of template IDs to be filtered.
-        :type TemplateIds: list of int
-        :param DomainNames: An array of domain names to be filtered.
-        :type DomainNames: list of str
-        """
+        :param TemplateIds: An array of template IDs to be filtered.\n        :type TemplateIds: list of int\n        :param DomainNames: An array of domain names to be filtered.\n        :type DomainNames: list of str\n        """
         self.TemplateIds = None
         self.DomainNames = None
 
@@ -4654,11 +3743,7 @@ class DescribeLiveTranscodeRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: List of transcoding rules.
-        :type Rules: list of RuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Rules: List of transcoding rules.\n        :type Rules: list of RuleInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Rules = None
         self.RequestId = None
 
@@ -4681,9 +3766,7 @@ class DescribeLiveTranscodeTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: Template ID.
-Note: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.
-        :type TemplateId: int
-        """
+Note: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.\n        :type TemplateId: int\n        """
         self.TemplateId = None
 
 
@@ -4705,11 +3788,7 @@ class DescribeLiveTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Template: Template information.
-        :type Template: :class:`tencentcloud.live.v20180801.models.TemplateInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Template: Template information.\n        :type Template: :class:`tencentcloud.live.v20180801.models.TemplateInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Template = None
         self.RequestId = None
 
@@ -4734,11 +3813,7 @@ class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Templates: List of transcoding templates.
-        :type Templates: list of TemplateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Templates: List of transcoding templates.\n        :type Templates: list of TemplateInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Templates = None
         self.RequestId = None
 
@@ -4760,9 +3835,7 @@ class DescribeLiveWatermarkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WatermarkId: Watermark ID returned by the `DescribeLiveWatermarks` API.
-        :type WatermarkId: int
-        """
+        :param WatermarkId: Watermark ID returned by the `DescribeLiveWatermarks` API.\n        :type WatermarkId: int\n        """
         self.WatermarkId = None
 
 
@@ -4784,11 +3857,7 @@ class DescribeLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Watermark: Watermark information.
-        :type Watermark: :class:`tencentcloud.live.v20180801.models.WatermarkInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Watermark: Watermark information.\n        :type Watermark: :class:`tencentcloud.live.v20180801.models.WatermarkInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Watermark = None
         self.RequestId = None
 
@@ -4813,11 +3882,7 @@ class DescribeLiveWatermarkRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: Watermarking rule list.
-        :type Rules: list of RuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Rules: Watermarking rule list.\n        :type Rules: list of RuleInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Rules = None
         self.RequestId = None
 
@@ -4845,13 +3910,7 @@ class DescribeLiveWatermarksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalNum: Total number of watermarks.
-        :type TotalNum: int
-        :param WatermarkList: Watermark information list.
-        :type WatermarkList: list of WatermarkInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalNum: Total number of watermarks.\n        :type TotalNum: int\n        :param WatermarkList: Watermark information list.\n        :type WatermarkList: list of WatermarkInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalNum = None
         self.WatermarkList = None
         self.RequestId = None
@@ -4876,22 +3935,10 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
     def __init__(self):
         """
         :param StartTime: Start time (Beijing time),
+In the format of `yyyy-mm-dd HH:MM:SS`.\n        :type StartTime: str\n        :param EndTime: End time (Beijing time),
 In the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End time (Beijing time),
-In the format of `yyyy-mm-dd HH:MM:SS`.
-Note: `EndTime` and `StartTime` only support querying data for the last day.
-        :type EndTime: str
-        :param Granularity: Query granularity:
-1: 1-minute granularity.
-        :type Granularity: int
-        :param StatType: Yes. Valid values: "4xx", "5xx". Mixed codes in the format of `4xx,5xx` are also supported.
-        :type StatType: str
-        :param PlayDomains: Playback domain name list.
-        :type PlayDomains: list of str
-        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
-        :type MainlandOrOversea: str
-        """
+Note: `EndTime` and `StartTime` only support querying data for the last day.\n        :type EndTime: str\n        :param Granularity: Query granularity:
+1: 1-minute granularity.\n        :type Granularity: int\n        :param StatType: Yes. Valid values: "4xx", "5xx". Mixed codes in the format of `4xx,5xx` are also supported.\n        :type StatType: str\n        :param PlayDomains: Playback domain name list.\n        :type PlayDomains: list of str\n        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.\n        :type MainlandOrOversea: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Granularity = None
@@ -4923,13 +3970,7 @@ class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param HttpCodeList: Statistics list.
-        :type HttpCodeList: list of HttpCodeInfo
-        :param StatType: Statistics type.
-        :type StatType: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param HttpCodeList: Statistics list.\n        :type HttpCodeList: list of HttpCodeInfo\n        :param StatType: Statistics type.\n        :type StatType: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.HttpCodeList = None
         self.StatType = None
         self.RequestId = None
@@ -4954,25 +3995,9 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
     def __init__(self):
         """
         :param StartTime: Start point in time (Beijing time).
+In the format of `yyyy-mm-dd HH:MM:SS`.\n        :type StartTime: str\n        :param EndTime: End point in time (Beijing time).
 In the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End point in time (Beijing time).
-In the format of `yyyy-mm-dd HH:MM:SS`.
-Note: `EndTime` and `StartTime` only support querying data for the last day.
-        :type EndTime: str
-        :param PlayDomains: Playback domain name list. If this parameter is left empty, full data will be queried.
-        :type PlayDomains: list of str
-        :param PageNum: Number of pages. Value range: [1,1000]. Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
-        :type PageSize: int
-        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
-        :type MainlandOrOversea: str
-        :param GroupType: Grouping parameter. Valid values: CountryProIsp (default value), Country (country/region). Grouping is made by country/region + district + ISP by default. Currently, districts and ISPs outside Mainland China cannot be recognized.
-        :type GroupType: str
-        :param OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.
-        :type OutLanguage: str
-        """
+Note: `EndTime` and `StartTime` only support querying data for the last day.\n        :type EndTime: str\n        :param PlayDomains: Playback domain name list. If this parameter is left empty, full data will be queried.\n        :type PlayDomains: list of str\n        :param PageNum: Number of pages. Value range: [1,1000]. Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.\n        :type PageSize: int\n        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.\n        :type MainlandOrOversea: str\n        :param GroupType: Grouping parameter. Valid values: CountryProIsp (default value), Country (country/region). Grouping is made by country/region + district + ISP by default. Currently, districts and ISPs outside Mainland China cannot be recognized.\n        :type GroupType: str\n        :param OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.\n        :type OutLanguage: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomains = None
@@ -5008,31 +4033,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProIspInfoList: Information of error codes starting with 2, 3, 4, or 5 by district and ISP.
-        :type ProIspInfoList: list of ProIspPlayCodeDataInfo
-        :param TotalCodeAll: Total occurrences of all status codes.
-        :type TotalCodeAll: int
-        :param TotalCode4xx: Occurrences of 4xx status codes.
-        :type TotalCode4xx: int
-        :param TotalCode5xx: Occurrences of 5xx status codes.
-        :type TotalCode5xx: int
-        :param TotalCodeList: Total occurrences of each status code.
-        :type TotalCodeList: list of PlayCodeTotalInfo
-        :param PageNum: Page number.
-        :type PageNum: int
-        :param PageSize: Number of entries per page.
-        :type PageSize: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param TotalNum: Total number of results.
-        :type TotalNum: int
-        :param TotalCode2xx: Occurrences of 2xx status codes.
-        :type TotalCode2xx: int
-        :param TotalCode3xx: Occurrences of 3xx status codes.
-        :type TotalCode3xx: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param ProIspInfoList: Information of error codes starting with 2, 3, 4, or 5 by district and ISP.\n        :type ProIspInfoList: list of ProIspPlayCodeDataInfo\n        :param TotalCodeAll: Total occurrences of all status codes.\n        :type TotalCodeAll: int\n        :param TotalCode4xx: Occurrences of 4xx status codes.\n        :type TotalCode4xx: int\n        :param TotalCode5xx: Occurrences of 5xx status codes.\n        :type TotalCode5xx: int\n        :param TotalCodeList: Total occurrences of each status code.\n        :type TotalCodeList: list of PlayCodeTotalInfo\n        :param PageNum: Page number.\n        :type PageNum: int\n        :param PageSize: Number of entries per page.\n        :type PageSize: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param TotalNum: Total number of results.\n        :type TotalNum: int\n        :param TotalCode2xx: Occurrences of 2xx status codes.\n        :type TotalCode2xx: int\n        :param TotalCode3xx: Occurrences of 3xx status codes.\n        :type TotalCode3xx: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ProIspInfoList = None
         self.TotalCodeAll = None
         self.TotalCode4xx = None
@@ -5080,25 +4081,9 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
     def __init__(self):
         """
         :param StartTime: Start time (Beijing time).
+In the format of `yyyy-mm-dd HH:MM:SS`.\n        :type StartTime: str\n        :param EndTime: End time (Beijing time).
 In the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End time (Beijing time).
-In the format of `yyyy-mm-dd HH:MM:SS`.
-Note: `EndTime` and `StartTime` only support querying data for the last day.
-        :type EndTime: str
-        :param StatType: Statistics type. Valid values: Province (district), Isp (ISP), CountryOrArea (country or region).
-        :type StatType: str
-        :param PlayDomains: Playback domain name list. If it is left empty, it refers to all playback domain names.
-        :type PlayDomains: list of str
-        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
-        :type PageSize: int
-        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
-        :type MainlandOrOversea: str
-        :param OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.
-        :type OutLanguage: str
-        """
+Note: `EndTime` and `StartTime` only support querying data for the last day.\n        :type EndTime: str\n        :param StatType: Statistics type. Valid values: Province (district), Isp (ISP), CountryOrArea (country or region).\n        :type StatType: str\n        :param PlayDomains: Playback domain name list. If it is left empty, it refers to all playback domain names.\n        :type PlayDomains: list of str\n        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.\n        :type PageSize: int\n        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.\n        :type MainlandOrOversea: str\n        :param OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.\n        :type OutLanguage: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.StatType = None
@@ -5134,27 +4119,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalFlux: Total traffic.
-        :type TotalFlux: float
-        :param TotalRequest: Total number of requests.
-        :type TotalRequest: int
-        :param StatType: Statistics type.
-        :type StatType: str
-        :param PageSize: Number of results per page.
-        :type PageSize: int
-        :param PageNum: Page number.
-        :type PageNum: int
-        :param TotalNum: Total number of results.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param DataInfoList: Aggregated data list by district, ISP, or country/region.
-        :type DataInfoList: list of ProIspPlaySumInfo
-        :param AvgFluxPerSecond: Download speed in MB/s. Calculation method: total traffic/total duration.
-        :type AvgFluxPerSecond: float
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalFlux: Total traffic.\n        :type TotalFlux: float\n        :param TotalRequest: Total number of requests.\n        :type TotalRequest: int\n        :param StatType: Statistics type.\n        :type StatType: str\n        :param PageSize: Number of results per page.\n        :type PageSize: int\n        :param PageNum: Page number.\n        :type PageNum: int\n        :param TotalNum: Total number of results.\n        :type TotalNum: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param DataInfoList: Aggregated data list by district, ISP, or country/region.\n        :type DataInfoList: list of ProIspPlaySumInfo\n        :param AvgFluxPerSecond: Download speed in MB/s. Calculation method: total traffic/total duration.\n        :type AvgFluxPerSecond: float\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalFlux = None
         self.TotalRequest = None
         self.StatType = None
@@ -5193,35 +4158,17 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
     def __init__(self):
         """
         :param StartTime: Start point in time (Beijing time).
-Example: 2019-02-21 10:00:00.
-        :type StartTime: str
-        :param EndTime: End point in time (Beijing time).
+Example: 2019-02-21 10:00:00.\n        :type StartTime: str\n        :param EndTime: End point in time (Beijing time).
 Example: 2019-02-21 12:00:00.
-Note: `EndTime` and `StartTime` only support querying data for the last day.
-        :type EndTime: str
-        :param Granularity: Supported granularities:
-1: 1-minute granularity (the query interval should be within 1 day)
-        :type Granularity: int
-        :param StatType: Statistical metric type:
+Note: `EndTime` and `StartTime` only support querying data for the last day.\n        :type EndTime: str\n        :param Granularity: Supported granularities:
+1: 1-minute granularity (the query interval should be within 1 day)\n        :type Granularity: int\n        :param StatType: Statistical metric type:
 "Bandwidth": bandwidth
 "FluxPerSecond": average traffic
 "Flux": traffic
 "Request": number of requests
-"Online": number of concurrent connections
-        :type StatType: str
-        :param PlayDomains: Playback domain name list.
-        :type PlayDomains: list of str
-        :param ProvinceNames: List of the districts to be queried, such as Beijing.
-        :type ProvinceNames: list of str
-        :param IspNames: List of the ISPs to be queried, such as China Mobile. If this parameter is left empty, the data of all ISPs will be queried.
-        :type IspNames: list of str
-        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
-        :type MainlandOrOversea: str
-        :param IpType: IP type:
+"Online": number of concurrent connections\n        :type StatType: str\n        :param PlayDomains: Playback domain name list.\n        :type PlayDomains: list of str\n        :param ProvinceNames: List of the districts to be queried, such as Beijing.\n        :type ProvinceNames: list of str\n        :param IspNames: List of the ISPs to be queried, such as China Mobile. If this parameter is left empty, the data of all ISPs will be queried.\n        :type IspNames: list of str\n        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.\n        :type MainlandOrOversea: str\n        :param IpType: IP type:
 "Ipv6": IPv6 data
-Data of all IPs will be returned if this parameter is left empty.
-        :type IpType: str
-        """
+Data of all IPs will be returned if this parameter is left empty.\n        :type IpType: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Granularity = None
@@ -5259,13 +4206,7 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Playback information list.
-        :type DataInfoList: list of PlayStatInfo
-        :param StatType: Statistics type, which is the same as the input parameter.
-        :type StatType: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Playback information list.\n        :type DataInfoList: list of PlayStatInfo\n        :param StatType: Statistics type, which is the same as the input parameter.\n        :type StatType: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.StatType = None
         self.RequestId = None
@@ -5289,17 +4230,7 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.
-        :type StartTime: str
-        :param EndTime: End time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`. Data for the last year can be queried.
-        :type EndTime: str
-        :param Zone: Region information. Valid values: Mainland, Oversea. The former is to query data within Mainland China, while the latter outside Mainland China. If this parameter is left empty, data of all regions will be queried.
-        :type Zone: str
-        :param PushDomains: Push domain name (data at the domain name level after November 1, 2019 can be queried).
-        :type PushDomains: list of str
-        :param Granularity: Data dimension. The data has a delay of one and a half hours. Valid values: 1. Minute (5-minute granularity, which supports a maximum query time range of 31 days); 2. Day (1-day granularity, which is the default value and supports a maximum query time range of 186 days).
-        :type Granularity: str
-        """
+        :param StartTime: Start time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.\n        :type StartTime: str\n        :param EndTime: End time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`. Data for the last year can be queried.\n        :type EndTime: str\n        :param Zone: Region information. Valid values: Mainland, Oversea. The former is to query data within Mainland China, while the latter outside Mainland China. If this parameter is left empty, data of all regions will be queried.\n        :type Zone: str\n        :param PushDomains: Push domain name (data at the domain name level after November 1, 2019 can be queried).\n        :type PushDomains: list of str\n        :param Granularity: Data dimension. The data has a delay of one and a half hours. Valid values: 1. Minute (5-minute granularity, which supports a maximum query time range of 31 days); 2. Day (1-day granularity, which is the default value and supports a maximum query time range of 186 days).\n        :type Granularity: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Zone = None
@@ -5329,11 +4260,7 @@ class DescribeScreenShotSheetNumListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Data information list.
-        :type DataInfoList: list of TimeValue
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Data information list.\n        :type DataInfoList: list of TimeValue\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.RequestId = None
 
@@ -5356,22 +4283,10 @@ class DescribeStreamDayPlayInfoListRequest(AbstractModel):
     def __init__(self):
         """
         :param DayTime: Date in the format of YYYY-mm-dd
-Data is available at 3am Beijing Time the next day. You are recommended to query the latest data after this time point. Data in the last 3 months can be queried.
-        :type DayTime: str
-        :param PlayDomain: Playback domain name.
-        :type PlayDomain: str
-        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [100,1000]. Default value: 1,000.
-        :type PageSize: int
-        :param MainlandOrOversea: Valid values:
+Data is available at 3am Beijing Time the next day. You are recommended to query the latest data after this time point. Data in the last 3 months can be queried.\n        :type DayTime: str\n        :param PlayDomain: Playback domain name.\n        :type PlayDomain: str\n        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Value range: [100,1000]. Default value: 1,000.\n        :type PageSize: int\n        :param MainlandOrOversea: Valid values:
 Mainland: query data for Mainland China,
 Oversea: query data for regions outside Mainland China,
-Default: query data for all regions.
-        :type MainlandOrOversea: str
-        :param ServiceName: Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.
-        :type ServiceName: str
-        """
+Default: query data for all regions.\n        :type MainlandOrOversea: str\n        :param ServiceName: Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.\n        :type ServiceName: str\n        """
         self.DayTime = None
         self.PlayDomain = None
         self.PageNum = None
@@ -5403,19 +4318,7 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Playback data information list.
-        :type DataInfoList: list of PlayDataInfoByStream
-        :param TotalNum: Total number.
-        :type TotalNum: int
-        :param TotalPage: Total number of pages.
-        :type TotalPage: int
-        :param PageNum: Page number where the current data resides.
-        :type PageNum: int
-        :param PageSize: Number of entries per page.
-        :type PageSize: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Playback data information list.\n        :type DataInfoList: list of PlayDataInfoByStream\n        :param TotalNum: Total number.\n        :type TotalNum: int\n        :param TotalPage: Total number of pages.\n        :type TotalPage: int\n        :param PageNum: Page number where the current data resides.\n        :type PageNum: int\n        :param PageSize: Number of entries per page.\n        :type PageSize: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.TotalNum = None
         self.TotalPage = None
@@ -5445,24 +4348,12 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
-        :type StartTime: str
-        :param EndTime: End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.
-The difference between the start time and end time cannot be greater than 24 hours. Data in the last 30 days can be queried.
-        :type EndTime: str
-        :param PlayDomain: Playback domain name,
-If this parameter is left empty, data of live streams of all playback domain names will be queried.
-        :type PlayDomain: str
-        :param StreamName: Stream name (exact match).
-If this parameter is left empty, full playback data will be queried.
-        :type StreamName: str
-        :param AppName: Push address. Its value is the same as the `AppName` in playback address. It supports exact match, and takes effect only when `StreamName` is passed at the same time.
+        :param StartTime: Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS\n        :type StartTime: str\n        :param EndTime: End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.
+The difference between the start time and end time cannot be greater than 24 hours. Data in the last 30 days can be queried.\n        :type EndTime: str\n        :param PlayDomain: Playback domain name,
+If this parameter is left empty, data of live streams of all playback domain names will be queried.\n        :type PlayDomain: str\n        :param StreamName: Stream name (exact match).
+If this parameter is left empty, full playback data will be queried.\n        :type StreamName: str\n        :param AppName: Push address. Its value is the same as the `AppName` in playback address. It supports exact match, and takes effect only when `StreamName` is passed at the same time.
 If it is left empty, the full playback data will be queried.
-Note: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.
-        :type AppName: str
-        :param ServiceName: Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.
-        :type ServiceName: str
-        """
+Note: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.\n        :type AppName: str\n        :param ServiceName: Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.\n        :type ServiceName: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomain = None
@@ -5494,11 +4385,7 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Statistics list at a 1-minute granularity.
-        :type DataInfoList: list of DayStreamPlayInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Statistics list at a 1-minute granularity.\n        :type DataInfoList: list of DayStreamPlayInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.RequestId = None
 
@@ -5520,17 +4407,7 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End time point in the format of `yyyy-mm-dd HH:MM:SS`. The maximum time span is 6 hours. Data for the last 6 days can be queried.
-        :type EndTime: str
-        :param PushDomain: Push domain name.
-        :type PushDomain: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
-        :type AppName: str
-        """
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type StartTime: str\n        :param EndTime: End time point in the format of `yyyy-mm-dd HH:MM:SS`. The maximum time span is 6 hours. Data for the last 6 days can be queried.\n        :type EndTime: str\n        :param PushDomain: Push domain name.\n        :type PushDomain: str\n        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.\n        :type AppName: str\n        """
         self.StreamName = None
         self.StartTime = None
         self.EndTime = None
@@ -5560,11 +4437,7 @@ class DescribeStreamPushInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Returned data list.
-        :type DataInfoList: list of PushQualityData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Returned data list.\n        :type DataInfoList: list of PushQualityData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.RequestId = None
 
@@ -5586,24 +4459,8 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End point in time in the format of `yyyy-mm-dd HH:MM:SS`
-The time span is [0,4 hours]. Data for the last day can be queried.
-        :type EndTime: str
-        :param PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried by default.
-        :type PlayDomains: list of str
-        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
-        :type PageSize: int
-        :param OrderParam: Sorting metric. Valid values: TotalRequest (default value), FailedRequest, TotalFlux.
-        :type OrderParam: str
-        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
-        :type MainlandOrOversea: str
-        :param OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.
-        :type OutLanguage: str
-        """
+        :param StartTime: Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type StartTime: str\n        :param EndTime: End point in time in the format of `yyyy-mm-dd HH:MM:SS`
+The time span is [0,4 hours]. Data for the last day can be queried.\n        :type EndTime: str\n        :param PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried by default.\n        :type PlayDomains: list of str\n        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.\n        :type PageSize: int\n        :param OrderParam: Sorting metric. Valid values: TotalRequest (default value), FailedRequest, TotalFlux.\n        :type OrderParam: str\n        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.\n        :type MainlandOrOversea: str\n        :param OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.\n        :type OutLanguage: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomains = None
@@ -5639,21 +4496,7 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
-        :type PageSize: int
-        :param OrderParam: Sorting metric. Valid values: "TotalRequest", "FailedRequest", "TotalFlux".
-        :type OrderParam: str
-        :param TotalNum: Total number of results.
-        :type TotalNum: int
-        :param TotalPage: Total number of result pages.
-        :type TotalPage: int
-        :param DataInfoList: Data content.
-        :type DataInfoList: list of ClientIpPlaySumInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.\n        :type PageSize: int\n        :param OrderParam: Sorting metric. Valid values: "TotalRequest", "FailedRequest", "TotalFlux".\n        :type OrderParam: str\n        :param TotalNum: Total number of results.\n        :type TotalNum: int\n        :param TotalPage: Total number of result pages.\n        :type TotalPage: int\n        :param DataInfoList: Data content.\n        :type DataInfoList: list of ClientIpPlaySumInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PageNum = None
         self.PageSize = None
         self.OrderParam = None
@@ -5685,18 +4528,10 @@ class DescribeUploadStreamNumsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
-        :type StartTime: str
-        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 31 days can be queried.
-        :type EndTime: str
-        :param Domains: LVB domain names. If this parameter is left empty, data of all domain names will be queried.
-        :type Domains: list of str
-        :param Granularity: Time granularity of the data. Valid values:
+        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.\n        :type StartTime: str\n        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 31 days can be queried.\n        :type EndTime: str\n        :param Domains: LVB domain names. If this parameter is left empty, data of all domain names will be queried.\n        :type Domains: list of str\n        :param Granularity: Time granularity of the data. Valid values:
 5: 5-minute granularity (the query period is up to 1 day)
 1440: 1-day granularity (the query period is up to 1 month)
-Default value: 5
-        :type Granularity: int
-        """
+Default value: 5\n        :type Granularity: int\n        """
         self.StartTime = None
         self.EndTime = None
         self.Domains = None
@@ -5724,11 +4559,7 @@ class DescribeUploadStreamNumsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: Detailed data.
-        :type DataInfoList: list of ConcurrentRecordStreamNum
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataInfoList: Detailed data.\n        :type DataInfoList: list of ConcurrentRecordStreamNum\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.RequestId = None
 
@@ -5750,25 +4581,11 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type StartTime: str
-        :param EndTime: End point in time in the format of `yyyy-mm-dd HH:MM:SS`
-The time span is (0,4 hours]. Data for the last day can be queried.
-        :type EndTime: str
-        :param TopIndex: Bandwidth metric. Valid values: "Domain", "StreamId".
-        :type TopIndex: str
-        :param PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried by default.
-        :type PlayDomains: list of str
-        :param PageNum: Page number,
+        :param StartTime: Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type StartTime: str\n        :param EndTime: End point in time in the format of `yyyy-mm-dd HH:MM:SS`
+The time span is (0,4 hours]. Data for the last day can be queried.\n        :type EndTime: str\n        :param TopIndex: Bandwidth metric. Valid values: "Domain", "StreamId".\n        :type TopIndex: str\n        :param PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried by default.\n        :type PlayDomains: list of str\n        :param PageNum: Page number,
 Value range: [1,1000],
-Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000].
-Default value: 20.
-        :type PageSize: int
-        :param OrderParam: Sorting metric. Valid values: "AvgFluxPerSecond", "TotalRequest" (default), "TotalFlux".
-        :type OrderParam: str
-        """
+Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Value range: [1,1000].
+Default value: 20.\n        :type PageSize: int\n        :param OrderParam: Sorting metric. Valid values: "AvgFluxPerSecond", "TotalRequest" (default), "TotalFlux".\n        :type OrderParam: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.TopIndex = None
@@ -5804,24 +4621,8 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
         """
         :param PageNum: Page number,
 Value range: [1,1000],
-Default value: 1.
-        :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000].
-Default value: 20.
-        :type PageSize: int
-        :param TopIndex: Bandwidth metric. Valid values: "Domain", "StreamId".
-        :type TopIndex: str
-        :param OrderParam: Sorting metric. Valid values: AvgFluxPerSecond (sort by average traffic per second), TotalRequest (sort by total requests), TotalFlux (sort by total traffic). Default value: TotalRequest.
-        :type OrderParam: str
-        :param TotalNum: Total number of results.
-        :type TotalNum: int
-        :param TotalPage: Total number of result pages.
-        :type TotalPage: int
-        :param DataInfoList: Data content.
-        :type DataInfoList: list of PlaySumStatInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Default value: 1.\n        :type PageNum: int\n        :param PageSize: Number of entries per page. Value range: [1,1000].
+Default value: 20.\n        :type PageSize: int\n        :param TopIndex: Bandwidth metric. Valid values: "Domain", "StreamId".\n        :type TopIndex: str\n        :param OrderParam: Sorting metric. Valid values: AvgFluxPerSecond (sort by average traffic per second), TotalRequest (sort by total requests), TotalFlux (sort by total traffic). Default value: TotalRequest.\n        :type OrderParam: str\n        :param TotalNum: Total number of results.\n        :type TotalNum: int\n        :param TotalPage: Total number of result pages.\n        :type TotalPage: int\n        :param DataInfoList: Data content.\n        :type DataInfoList: list of PlaySumStatInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PageNum = None
         self.PageSize = None
         self.TopIndex = None
@@ -5855,34 +4656,12 @@ class DomainCertInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param CertId: Certificate ID.
-        :type CertId: int
-        :param CertName: Certificate name.
-        :type CertName: str
-        :param Description: Description.
-        :type Description: str
-        :param CreateTime: Creation time in UTC format.
-        :type CreateTime: str
-        :param HttpsCrt: Certificate content.
-        :type HttpsCrt: str
-        :param CertType: Certificate type.
+        :param CertId: Certificate ID.\n        :type CertId: int\n        :param CertName: Certificate name.\n        :type CertName: str\n        :param Description: Description.\n        :type Description: str\n        :param CreateTime: Creation time in UTC format.\n        :type CreateTime: str\n        :param HttpsCrt: Certificate content.\n        :type HttpsCrt: str\n        :param CertType: Certificate type.
 0: user-added certificate
-1: Tencent Cloud-hosted certificate.
-        :type CertType: int
-        :param CertExpireTime: Certificate expiration time in UTC format.
-        :type CertExpireTime: str
-        :param DomainName: Domain name that uses this certificate.
-        :type DomainName: str
-        :param Status: Certificate status.
-        :type Status: int
-        :param CertDomains: List of domain names in the certificate.
+1: Tencent Cloud-hosted certificate.\n        :type CertType: int\n        :param CertExpireTime: Certificate expiration time in UTC format.\n        :type CertExpireTime: str\n        :param DomainName: Domain name that uses this certificate.\n        :type DomainName: str\n        :param Status: Certificate status.\n        :type Status: int\n        :param CertDomains: List of domain names in the certificate.
 ["*.x.com"] for example.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type CertDomains: list of str
-        :param CloudCertId: Tencent Cloud SSL certificate ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type CloudCertId: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type CertDomains: list of str\n        :param CloudCertId: Tencent Cloud SSL certificate ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type CloudCertId: str\n        """
         self.CertId = None
         self.CertName = None
         self.Description = None
@@ -5926,17 +4705,7 @@ class DomainDetailInfo(AbstractModel):
         """
         :param MainlandOrOversea: In or outside Mainland China:
 Mainland: data in Mainland China.
-Oversea: data outside Mainland China.
-        :type MainlandOrOversea: str
-        :param Bandwidth: Bandwidth in Mbps.
-        :type Bandwidth: float
-        :param Flux: Traffic in MB.
-        :type Flux: float
-        :param Online: Number of viewers.
-        :type Online: int
-        :param Request: Number of requests.
-        :type Request: int
-        """
+Oversea: data outside Mainland China.\n        :type MainlandOrOversea: str\n        :param Bandwidth: Bandwidth in Mbps.\n        :type Bandwidth: float\n        :param Flux: Traffic in MB.\n        :type Flux: float\n        :param Online: Number of viewers.\n        :type Online: int\n        :param Request: Number of requests.\n        :type Request: int\n        """
         self.MainlandOrOversea = None
         self.Bandwidth = None
         self.Flux = None
@@ -5966,44 +4735,20 @@ class DomainInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: LVB domain name.
-        :type Name: str
-        :param Type: Domain name type:
+        :param Name: LVB domain name.\n        :type Name: str\n        :param Type: Domain name type:
 0: push.
-1: playback.
-        :type Type: int
-        :param Status: Domain name status:
+1: playback.\n        :type Type: int\n        :param Status: Domain name status:
 0: deactivated.
-1: activated.
-        :type Status: int
-        :param CreateTime: Creation time.
-        :type CreateTime: str
-        :param BCName: Whether there is a CNAME record pointing to a fixed rule domain name:
+1: activated.\n        :type Status: int\n        :param CreateTime: Creation time.\n        :type CreateTime: str\n        :param BCName: Whether there is a CNAME record pointing to a fixed rule domain name:
 0: no.
-1: yes.
-        :type BCName: int
-        :param TargetDomain: Domain name corresponding to CNAME record.
-        :type TargetDomain: str
-        :param PlayType: Playback region. This parameter is valid only if `Type` is 1.
+1: yes.\n        :type BCName: int\n        :param TargetDomain: Domain name corresponding to CNAME record.\n        :type TargetDomain: str\n        :param PlayType: Playback region. This parameter is valid only if `Type` is 1.
 1: in Mainland China.
 2: global.
-3: outside Mainland China.
-        :type PlayType: int
-        :param IsDelayLive: Whether it is LCB:
+3: outside Mainland China.\n        :type PlayType: int\n        :param IsDelayLive: Whether it is LCB:
 0: LVB.
-1: LCB.
-        :type IsDelayLive: int
-        :param CurrentCName: Information of currently used CNAME record.
-        :type CurrentCName: str
-        :param RentTag: Disused parameter, which can be ignored.
-        :type RentTag: int
-        :param RentExpireTime: Disused parameter, which can be ignored.
-        :type RentExpireTime: str
-        :param IsMiniProgramLive: 0: LVB.
+1: LCB.\n        :type IsDelayLive: int\n        :param CurrentCName: Information of currently used CNAME record.\n        :type CurrentCName: str\n        :param RentTag: Disused parameter, which can be ignored.\n        :type RentTag: int\n        :param RentExpireTime: Disused parameter, which can be ignored.\n        :type RentExpireTime: str\n        :param IsMiniProgramLive: 0: LVB.
 1: LVB on Mini Program.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IsMiniProgramLive: int
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsMiniProgramLive: int\n        """
         self.Name = None
         self.Type = None
         self.Status = None
@@ -6047,11 +4792,7 @@ class DomainInfoList(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: Domain name.
-        :type Domain: str
-        :param DetailInfoList: Details.
-        :type DetailInfoList: list of DomainDetailInfo
-        """
+        :param Domain: Domain name.\n        :type Domain: str\n        :param DetailInfoList: Details.\n        :type DetailInfoList: list of DomainDetailInfo\n        """
         self.Domain = None
         self.DetailInfoList = None
 
@@ -6080,13 +4821,7 @@ class DropLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param DomainName: Your acceleration domain name.
-        :type DomainName: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
-        :type AppName: str
-        """
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param DomainName: Your acceleration domain name.\n        :type DomainName: str\n        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.\n        :type AppName: str\n        """
         self.StreamName = None
         self.DomainName = None
         self.AppName = None
@@ -6112,9 +4847,7 @@ class DropLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6129,9 +4862,7 @@ class EnableLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: LVB domain name to be enabled.
-        :type DomainName: str
-        """
+        :param DomainName: LVB domain name to be enabled.\n        :type DomainName: str\n        """
         self.DomainName = None
 
 
@@ -6153,9 +4884,7 @@ class EnableLiveDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6170,9 +4899,7 @@ class ForbidLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: LVB domain name to be disabled.
-        :type DomainName: str
-        """
+        :param DomainName: LVB domain name to be disabled.\n        :type DomainName: str\n        """
         self.DomainName = None
 
 
@@ -6194,9 +4921,7 @@ class ForbidLiveDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6211,22 +4936,12 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
-        :type AppName: str
-        :param DomainName: Your push domain name.
-        :type DomainName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param ResumeTime: Time to resume the stream in UTC format, such as 2018-11-29T19:00:00Z.
+        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.\n        :type AppName: str\n        :param DomainName: Your push domain name.\n        :type DomainName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        :param ResumeTime: Time to resume the stream in UTC format, such as 2018-11-29T19:00:00Z.
 Notes:
 1. The duration of forbidding is 7 days by default and can be up to 90 days.
-2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
-        :type ResumeTime: str
-        :param Reason: Reason for forbidding.
+2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n        :type ResumeTime: str\n        :param Reason: Reason for forbidding.
 Note: Be sure to enter the reason for forbidding to avoid any faulty operations.
-Length limit: 2,048 bytes.
-        :type Reason: str
-        """
+Length limit: 2,048 bytes.\n        :type Reason: str\n        """
         self.AppName = None
         self.DomainName = None
         self.StreamName = None
@@ -6256,9 +4971,7 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6273,13 +4986,7 @@ class ForbidStreamInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param CreateTime: Creation time.
-        :type CreateTime: str
-        :param ExpireTime: Forbidding expiration time.
-        :type ExpireTime: str
-        """
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param CreateTime: Creation time.\n        :type CreateTime: str\n        :param ExpireTime: Forbidding expiration time.\n        :type ExpireTime: str\n        """
         self.StreamName = None
         self.CreateTime = None
         self.ExpireTime = None
@@ -6305,13 +5012,7 @@ class GroupProIspDataInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ProvinceName: District.
-        :type ProvinceName: str
-        :param IspName: ISP.
-        :type IspName: str
-        :param DetailInfoList: Detailed data at the minute level.
-        :type DetailInfoList: list of CdnPlayStatData
-        """
+        :param ProvinceName: District.\n        :type ProvinceName: str\n        :param IspName: ISP.\n        :type IspName: str\n        :param DetailInfoList: Detailed data at the minute level.\n        :type DetailInfoList: list of CdnPlayStatData\n        """
         self.ProvinceName = None
         self.IspName = None
         self.DetailInfoList = None
@@ -6343,9 +5044,7 @@ class HlsSpecialParam(AbstractModel):
     def __init__(self):
         """
         :param FlowContinueDuration: Timeout period for restarting an interrupted HLS push.
-Value range: [0, 1,800].
-        :type FlowContinueDuration: int
-        """
+Value range: [0, 1,800].\n        :type FlowContinueDuration: int\n        """
         self.FlowContinueDuration = None
 
 
@@ -6368,11 +5067,7 @@ class HttpCodeInfo(AbstractModel):
     def __init__(self):
         """
         :param HttpCode: HTTP return code.
-Example: "2xx", "3xx", "4xx", "5xx".
-        :type HttpCode: str
-        :param ValueList: Statistics. 0 will be added for points in time when there is no data.
-        :type ValueList: list of HttpCodeValue
-        """
+Example: "2xx", "3xx", "4xx", "5xx".\n        :type HttpCode: str\n        :param ValueList: Statistics. 0 will be added for points in time when there is no data.\n        :type ValueList: list of HttpCodeValue\n        """
         self.HttpCode = None
         self.ValueList = None
 
@@ -6401,13 +5096,7 @@ class HttpCodeValue(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Time in the format of `yyyy-mm-dd HH:MM:SS`.
-        :type Time: str
-        :param Numbers: Occurrences.
-        :type Numbers: int
-        :param Percentage: Proportion.
-        :type Percentage: float
-        """
+        :param Time: Time in the format of `yyyy-mm-dd HH:MM:SS`.\n        :type Time: str\n        :param Numbers: Occurrences.\n        :type Numbers: int\n        :param Percentage: Proportion.\n        :type Percentage: float\n        """
         self.Time = None
         self.Numbers = None
         self.Percentage = None
@@ -6434,11 +5123,7 @@ class HttpStatusData(AbstractModel):
     def __init__(self):
         """
         :param Time: Data point in time,
-In the format of `yyyy-mm-dd HH:MM:SS`.
-        :type Time: str
-        :param HttpStatusInfoList: Playback status code details.
-        :type HttpStatusInfoList: list of HttpStatusInfo
-        """
+In the format of `yyyy-mm-dd HH:MM:SS`.\n        :type Time: str\n        :param HttpStatusInfoList: Playback status code details.\n        :type HttpStatusInfoList: list of HttpStatusInfo\n        """
         self.Time = None
         self.HttpStatusInfoList = None
 
@@ -6467,11 +5152,7 @@ class HttpStatusInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param HttpStatus: Playback HTTP status code.
-        :type HttpStatus: str
-        :param Num: Quantity.
-        :type Num: int
-        """
+        :param HttpStatus: Playback HTTP status code.\n        :type HttpStatus: str\n        :param Num: Quantity.\n        :type Num: int\n        """
         self.HttpStatus = None
         self.Num = None
 
@@ -6495,26 +5176,8 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID returned by the `DescribeLiveCallbackTemplates` API.
-        :type TemplateId: int
-        :param TemplateName: Template name.
-        :type TemplateName: str
-        :param Description: Description.
-        :type Description: str
-        :param StreamBeginNotifyUrl: Stream starting callback URL.
-        :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: Interruption callback URL.
-        :type StreamEndNotifyUrl: str
-        :param RecordNotifyUrl: Recording callback URL.
-        :type RecordNotifyUrl: str
-        :param SnapshotNotifyUrl: Screencapturing callback URL.
-        :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: Porn detection callback URL.
-        :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
-[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
-        :type CallbackKey: str
-        """
+        :param TemplateId: Template ID returned by the `DescribeLiveCallbackTemplates` API.\n        :type TemplateId: int\n        :param TemplateName: Template name.\n        :type TemplateName: str\n        :param Description: Description.\n        :type Description: str\n        :param StreamBeginNotifyUrl: Stream starting callback URL.\n        :type StreamBeginNotifyUrl: str\n        :param StreamEndNotifyUrl: Interruption callback URL.\n        :type StreamEndNotifyUrl: str\n        :param RecordNotifyUrl: Recording callback URL.\n        :type RecordNotifyUrl: str\n        :param SnapshotNotifyUrl: Screencapturing callback URL.\n        :type SnapshotNotifyUrl: str\n        :param PornCensorshipNotifyUrl: Porn detection callback URL.\n        :type PornCensorshipNotifyUrl: str\n        :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
+[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).\n        :type CallbackKey: str\n        """
         self.TemplateId = None
         self.TemplateName = None
         self.Description = None
@@ -6552,9 +5215,7 @@ class ModifyLiveCallbackTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6569,19 +5230,7 @@ class ModifyLiveCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertId: Certificate ID.
-        :type CertId: str
-        :param CertType: Certificate type. 0: user-added certificate, 1: Tencent Cloud-hosted certificate.
-        :type CertType: int
-        :param CertName: Certificate name.
-        :type CertName: str
-        :param HttpsCrt: Certificate content, i.e., public key.
-        :type HttpsCrt: str
-        :param HttpsKey: Private key.
-        :type HttpsKey: str
-        :param Description: Description.
-        :type Description: str
-        """
+        :param CertId: Certificate ID.\n        :type CertId: str\n        :param CertType: Certificate type. 0: user-added certificate, 1: Tencent Cloud-hosted certificate.\n        :type CertType: int\n        :param CertName: Certificate name.\n        :type CertName: str\n        :param HttpsCrt: Certificate content, i.e., public key.\n        :type HttpsCrt: str\n        :param HttpsKey: Private key.\n        :type HttpsKey: str\n        :param Description: Description.\n        :type Description: str\n        """
         self.CertId = None
         self.CertType = None
         self.CertName = None
@@ -6613,9 +5262,7 @@ class ModifyLiveCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6630,13 +5277,7 @@ class ModifyLiveDomainCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Playback domain name.
-        :type DomainName: str
-        :param CertId: Certificate ID.
-        :type CertId: int
-        :param Status: Status. 0: off, 1: on.
-        :type Status: int
-        """
+        :param DomainName: Playback domain name.\n        :type DomainName: str\n        :param CertId: Certificate ID.\n        :type CertId: int\n        :param Status: Status. 0: off, 1: on.\n        :type Status: int\n        """
         self.DomainName = None
         self.CertId = None
         self.Status = None
@@ -6662,9 +5303,7 @@ class ModifyLiveDomainCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6679,17 +5318,7 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Playback domain name
-        :type DomainName: str
-        :param Enable: Whether to enable referer allowlist/blocklist authentication for the current domain name
-        :type Enable: int
-        :param Type: List type. Valid values: `0` (blocklist), `1` (allowlist)
-        :type Type: int
-        :param AllowEmpty: Whether to allow empty referer. Valid values: `0` (no), `1` (yes)
-        :type AllowEmpty: int
-        :param Rules: Referer list. Separate items in it with semicolons (;).
-        :type Rules: str
-        """
+        :param DomainName: Playback domain name\n        :type DomainName: str\n        :param Enable: Whether to enable referer allowlist/blocklist authentication for the current domain name\n        :type Enable: int\n        :param Type: List type. Valid values: `0` (blocklist), `1` (allowlist)\n        :type Type: int\n        :param AllowEmpty: Whether to allow empty referer. Valid values: `0` (no), `1` (yes)\n        :type AllowEmpty: int\n        :param Rules: Referer list. Separate items in it with semicolons (;).\n        :type Rules: str\n        """
         self.DomainName = None
         self.Enable = None
         self.Type = None
@@ -6719,9 +5348,7 @@ class ModifyLiveDomainRefererResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6736,21 +5363,11 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Playback domain name.
-        :type DomainName: str
-        :param Enable: Whether to enable. 0: disabled; 1: enabled.
-If this parameter is left empty, the current value will not be modified.
-        :type Enable: int
-        :param AuthKey: Authentication key.
-If this parameter is left empty, the current value will not be modified.
-        :type AuthKey: str
-        :param AuthDelta: Validity period in seconds.
-If this parameter is left empty, the current value will not be modified.
-        :type AuthDelta: int
-        :param AuthBackKey: Backup authentication key.
-If this parameter is left empty, the current value will not be modified.
-        :type AuthBackKey: str
-        """
+        :param DomainName: Playback domain name.\n        :type DomainName: str\n        :param Enable: Whether to enable. 0: disabled; 1: enabled.
+If this parameter is left empty, the current value will not be modified.\n        :type Enable: int\n        :param AuthKey: Authentication key.
+If this parameter is left empty, the current value will not be modified.\n        :type AuthKey: str\n        :param AuthDelta: Validity period in seconds.
+If this parameter is left empty, the current value will not be modified.\n        :type AuthDelta: int\n        :param AuthBackKey: Backup authentication key.
+If this parameter is left empty, the current value will not be modified.\n        :type AuthBackKey: str\n        """
         self.DomainName = None
         self.Enable = None
         self.AuthKey = None
@@ -6780,9 +5397,7 @@ class ModifyLivePlayAuthKeyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6797,11 +5412,7 @@ class ModifyLivePlayDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Playback domain name.
-        :type DomainName: str
-        :param PlayType: Pull domain name type. 1: Mainland China. 2: global, 3: outside Mainland China
-        :type PlayType: int
-        """
+        :param DomainName: Playback domain name.\n        :type DomainName: str\n        :param PlayType: Pull domain name type. 1: Mainland China. 2: global, 3: outside Mainland China\n        :type PlayType: int\n        """
         self.DomainName = None
         self.PlayType = None
 
@@ -6825,9 +5436,7 @@ class ModifyLivePlayDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6842,20 +5451,10 @@ class ModifyLivePushAuthKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param Enable: Whether to enable. 0: disabled; 1: enabled.
-If this parameter is left empty, the current value will not be modified.
-        :type Enable: int
-        :param MasterAuthKey: Master authentication key.
-If this parameter is left empty, the current value will not be modified.
-        :type MasterAuthKey: str
-        :param BackupAuthKey: Backup authentication key.
-If this parameter is left empty, the current value will not be modified.
-        :type BackupAuthKey: str
-        :param AuthDelta: Validity period in seconds.
-        :type AuthDelta: int
-        """
+        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param Enable: Whether to enable. 0: disabled; 1: enabled.
+If this parameter is left empty, the current value will not be modified.\n        :type Enable: int\n        :param MasterAuthKey: Master authentication key.
+If this parameter is left empty, the current value will not be modified.\n        :type MasterAuthKey: str\n        :param BackupAuthKey: Backup authentication key.
+If this parameter is left empty, the current value will not be modified.\n        :type BackupAuthKey: str\n        :param AuthDelta: Validity period in seconds.\n        :type AuthDelta: int\n        """
         self.DomainName = None
         self.Enable = None
         self.MasterAuthKey = None
@@ -6885,9 +5484,7 @@ class ModifyLivePushAuthKeyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6902,25 +5499,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID obtained through the `DescribeRecordTemplates` API.
-        :type TemplateId: int
-        :param TemplateName: Template name.
-        :type TemplateName: str
-        :param Description: Message description
-        :type Description: str
-        :param FlvParam: FLV recording parameter, which is set when FLV recording is enabled.
-        :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsParam: HLS recording parameter, which is set when HLS recording is enabled.
-        :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: MP4 recording parameter, which is set when MP4 recording is enabled.
-        :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param AacParam: AAC recording parameter, which is set when AAC recording is enabled.
-        :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsSpecialParam: Custom HLS recording parameter.
-        :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: MP3 recording parameter, which is set when MP3 recording is enabled.
-        :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        """
+        :param TemplateId: Template ID obtained through the `DescribeRecordTemplates` API.\n        :type TemplateId: int\n        :param TemplateName: Template name.\n        :type TemplateName: str\n        :param Description: Message description\n        :type Description: str\n        :param FlvParam: FLV recording parameter, which is set when FLV recording is enabled.\n        :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param HlsParam: HLS recording parameter, which is set when HLS recording is enabled.\n        :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param Mp4Param: MP4 recording parameter, which is set when MP4 recording is enabled.\n        :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param AacParam: AAC recording parameter, which is set when AAC recording is enabled.\n        :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param HlsSpecialParam: Custom HLS recording parameter.\n        :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`\n        :param Mp3Param: MP3 recording parameter, which is set when MP3 recording is enabled.\n        :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        """
         self.TemplateId = None
         self.TemplateName = None
         self.Description = None
@@ -6970,9 +5549,7 @@ class ModifyLiveRecordTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6987,37 +5564,13 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param TemplateName: Template name.
-Maximum length: 255 bytes.
-        :type TemplateName: str
-        :param Description: Description.
-Maximum length: 1,024 bytes.
-        :type Description: str
-        :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
-Value range: 5-300s.
-        :type SnapshotInterval: int
-        :param Width: Screenshot width. Default value: 0 (original width).
-        :type Width: int
-        :param Height: Screenshot height. Default value: 0 (original height).
-        :type Height: int
-        :param PornFlag: Whether to enable porn detection. Default value: 0.
+        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param TemplateName: Template name.
+Maximum length: 255 bytes.\n        :type TemplateName: str\n        :param Description: Description.
+Maximum length: 1,024 bytes.\n        :type Description: str\n        :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
+Value range: 5-300s.\n        :type SnapshotInterval: int\n        :param Width: Screenshot width. Default value: 0 (original width).\n        :type Width: int\n        :param Height: Screenshot height. Default value: 0 (original height).\n        :type Height: int\n        :param PornFlag: Whether to enable porn detection. Default value: 0.
 0: do not enable.
-1: enable.
-        :type PornFlag: int
-        :param CosAppId: COS application ID.
-        :type CosAppId: int
-        :param CosBucket: COS bucket name.
-Note: the value of `CosBucket` cannot contain `-[appid]`.
-        :type CosBucket: str
-        :param CosRegion: COS region.
-        :type CosRegion: str
-        :param CosPrefix: COS bucket folder prefix.
-        :type CosPrefix: str
-        :param CosFileName: COS filename.
-        :type CosFileName: str
-        """
+1: enable.\n        :type PornFlag: int\n        :param CosAppId: COS application ID.\n        :type CosAppId: int\n        :param CosBucket: COS bucket name.
+Note: the value of `CosBucket` cannot contain `-[appid]`.\n        :type CosBucket: str\n        :param CosRegion: COS region.\n        :type CosRegion: str\n        :param CosPrefix: COS bucket folder prefix.\n        :type CosPrefix: str\n        :param CosFileName: COS filename.\n        :type CosFileName: str\n        """
         self.TemplateId = None
         self.TemplateName = None
         self.Description = None
@@ -7061,9 +5614,7 @@ class ModifyLiveSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7078,65 +5629,27 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param Vcodec: Video codec. Valid values: h264, h265, origin (default)
+        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param Vcodec: Video codec. Valid values: h264, h265, origin (default)
 
-origin: original codec as the output codec
-        :type Vcodec: str
-        :param Acodec: Audio codec. Defaut value: aac.
-Note: this parameter is unsupported now.
-        :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Default value: 0.
-Value range: 0-500.
-        :type AudioBitrate: int
-        :param Description: Template description.
-        :type Description: str
-        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8000.
-Note: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.
-        :type VideoBitrate: int
-        :param Width: Width in pixels. Value range: 0-3000.
-It must be a multiple of 2. The original width is 0.
-        :type Width: int
-        :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
-        :type NeedVideo: int
-        :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
-        :type NeedAudio: int
-        :param Height: Height in pixels. Value range: 0-3000.
-It must be a multiple of 2. The original height is 0.
-        :type Height: int
-        :param Fps: Frame rate in fps. Default value: 0.
-Value range: 0-60
-        :type Fps: int
-        :param Gop: Keyframe interval in seconds.
-Value range: 2-6
-        :type Gop: int
-        :param Rotate: Rotation angle. Default value: 0.
-Valid values: 0, 90, 180, 270
-        :type Rotate: int
-        :param Profile: Encoding quality:
-baseline/main/high.
-        :type Profile: str
-        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+origin: original codec as the output codec\n        :type Vcodec: str\n        :param Acodec: Audio codec. Defaut value: aac.
+Note: this parameter is unsupported now.\n        :type Acodec: str\n        :param AudioBitrate: Audio bitrate. Default value: 0.
+Value range: 0-500.\n        :type AudioBitrate: int\n        :param Description: Template description.\n        :type Description: str\n        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8000.
+Note: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.\n        :type VideoBitrate: int\n        :param Width: Width in pixels. Value range: 0-3000.
+It must be a multiple of 2. The original width is 0.\n        :type Width: int\n        :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.\n        :type NeedVideo: int\n        :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.\n        :type NeedAudio: int\n        :param Height: Height in pixels. Value range: 0-3000.
+It must be a multiple of 2. The original height is 0.\n        :type Height: int\n        :param Fps: Frame rate in fps. Default value: 0.
+Value range: 0-60\n        :type Fps: int\n        :param Gop: Keyframe interval in seconds.
+Value range: 2-6\n        :type Gop: int\n        :param Rotate: Rotation angle. Default value: 0.
+Valid values: 0, 90, 180, 270\n        :type Rotate: int\n        :param Profile: Encoding quality:
+baseline/main/high.\n        :type Profile: str\n        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
 0: no, 1: yes
-Default value: 0.
-        :type BitrateToOrig: int
-        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
+Default value: 0.\n        :type BitrateToOrig: int\n        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
 0: no, 1: yes
-Default value: 0.
-        :type HeightToOrig: int
-        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+Default value: 0.\n        :type HeightToOrig: int\n        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
 0: no, 1: yes
-Default value: 0.
-        :type FpsToOrig: int
-        :param AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
+Default value: 0.\n        :type FpsToOrig: int\n        :param AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
 Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
 
-Value range: 0.0-0.5.
-        :type AdaptBitratePercent: float
-        :param ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
-        :type ShortEdgeAsHeight: int
-        """
+Value range: 0.0-0.5.\n        :type AdaptBitratePercent: float\n        :param ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.\n        :type ShortEdgeAsHeight: int\n        """
         self.TemplateId = None
         self.Vcodec = None
         self.Acodec = None
@@ -7194,9 +5707,7 @@ class ModifyLiveTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7211,21 +5722,7 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param PlayDomain: Playback domain name.
-        :type PlayDomain: str
-        :param StreamName: Stream ID.
-        :type StreamName: str
-        :param Rate: Playback bitrate. 0 indicates the original bitrate.
-        :type Rate: int
-        :param Protocol: Playback protocol. Valid values: Unknown, Flv, Hls, Rtmp, Huyap2p.
-        :type Protocol: str
-        :param Bandwidth: Bandwidth in Mbps.
-        :type Bandwidth: float
-        :param Online: Number of online viewers. A data point is sampled per minute, and the number of TCP connections across the sample points is calculated.
-        :type Online: int
-        :param Request: Number of requests.
-        :type Request: int
-        """
+        :param PlayDomain: Playback domain name.\n        :type PlayDomain: str\n        :param StreamName: Stream ID.\n        :type StreamName: str\n        :param Rate: Playback bitrate. 0 indicates the original bitrate.\n        :type Rate: int\n        :param Protocol: Playback protocol. Valid values: Unknown, Flv, Hls, Rtmp, Huyap2p.\n        :type Protocol: str\n        :param Bandwidth: Bandwidth in Mbps.\n        :type Bandwidth: float\n        :param Online: Number of online viewers. A data point is sampled per minute, and the number of TCP connections across the sample points is calculated.\n        :type Online: int\n        :param Request: Number of requests.\n        :type Request: int\n        """
         self.PlayDomain = None
         self.StreamName = None
         self.Rate = None
@@ -7259,19 +5756,9 @@ class PlayAuthKeyInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Domain name.
-        :type DomainName: str
-        :param Enable: Whether to enable:
+        :param DomainName: Domain name.\n        :type DomainName: str\n        :param Enable: Whether to enable:
 0: disable.
-1: enable.
-        :type Enable: int
-        :param AuthKey: Authentication key.
-        :type AuthKey: str
-        :param AuthDelta: Validity period in seconds.
-        :type AuthDelta: int
-        :param AuthBackKey: Authentication `BackKey`.
-        :type AuthBackKey: str
-        """
+1: enable.\n        :type Enable: int\n        :param AuthKey: Authentication key.\n        :type AuthKey: str\n        :param AuthDelta: Validity period in seconds.\n        :type AuthDelta: int\n        :param AuthBackKey: Authentication `BackKey`.\n        :type AuthBackKey: str\n        """
         self.DomainName = None
         self.Enable = None
         self.AuthKey = None
@@ -7302,11 +5789,7 @@ class PlayCodeTotalInfo(AbstractModel):
     def __init__(self):
         """
         :param Code: HTTP code. Valid values:
-400, 403, 404, 500, 502, 503, 504.
-        :type Code: str
-        :param Num: Total occurrences.
-        :type Num: int
-        """
+400, 403, 404, 500, 502, 503, 504.\n        :type Code: str\n        :param Num: Total occurrences.\n        :type Num: int\n        """
         self.Code = None
         self.Num = None
 
@@ -7330,11 +5813,7 @@ class PlayDataInfoByStream(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param TotalFlux: Total traffic in MB.
-        :type TotalFlux: float
-        """
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param TotalFlux: Total traffic in MB.\n        :type TotalFlux: float\n        """
         self.StreamName = None
         self.TotalFlux = None
 
@@ -7358,12 +5837,8 @@ class PlayStatInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Data point in time.
-        :type Time: str
-        :param Value: Value of bandwidth/traffic/number of requests/number of concurrent connections/download speed. If there is no data returned, the value is 0.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Value: float
-        """
+        :param Time: Data point in time.\n        :type Time: str\n        :param Value: Value of bandwidth/traffic/number of requests/number of concurrent connections/download speed. If there is no data returned, the value is 0.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Value: float\n        """
         self.Time = None
         self.Value = None
 
@@ -7387,17 +5862,9 @@ class PlaySumStatInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Domain name or stream ID.
-        :type Name: str
-        :param AvgFluxPerSecond: Average download speed,
+        :param Name: Domain name or stream ID.\n        :type Name: str\n        :param AvgFluxPerSecond: Average download speed,
 In MB/s.
-Calculation formula: average download speed per minute.
-        :type AvgFluxPerSecond: float
-        :param TotalFlux: Total traffic in MB.
-        :type TotalFlux: float
-        :param TotalRequest: Total number of requests.
-        :type TotalRequest: int
-        """
+Calculation formula: average download speed per minute.\n        :type AvgFluxPerSecond: float\n        :param TotalFlux: Total traffic in MB.\n        :type TotalFlux: float\n        :param TotalRequest: Total number of requests.\n        :type TotalRequest: int\n        """
         self.Name = None
         self.AvgFluxPerSecond = None
         self.TotalFlux = None
@@ -7425,21 +5892,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param CountryAreaName: Country or region.
-        :type CountryAreaName: str
-        :param ProvinceName: District.
-        :type ProvinceName: str
-        :param IspName: ISP.
-        :type IspName: str
-        :param Code2xx: Occurrences of 2xx error codes.
-        :type Code2xx: int
-        :param Code3xx: Occurrences of 3xx error codes.
-        :type Code3xx: int
-        :param Code4xx: Occurrences of 4xx error codes.
-        :type Code4xx: int
-        :param Code5xx: Occurrences of 5xx error codes.
-        :type Code5xx: int
-        """
+        :param CountryAreaName: Country or region.\n        :type CountryAreaName: str\n        :param ProvinceName: District.\n        :type ProvinceName: str\n        :param IspName: ISP.\n        :type IspName: str\n        :param Code2xx: Occurrences of 2xx error codes.\n        :type Code2xx: int\n        :param Code3xx: Occurrences of 3xx error codes.\n        :type Code3xx: int\n        :param Code4xx: Occurrences of 4xx error codes.\n        :type Code4xx: int\n        :param Code5xx: Occurrences of 5xx error codes.\n        :type Code5xx: int\n        """
         self.CountryAreaName = None
         self.ProvinceName = None
         self.IspName = None
@@ -7473,15 +5926,7 @@ class ProIspPlaySumInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: District/ISP/country/region.
-        :type Name: str
-        :param TotalFlux: Total traffic in MB.
-        :type TotalFlux: float
-        :param TotalRequest: Total number of requests.
-        :type TotalRequest: int
-        :param AvgFluxPerSecond: Average download traffic in MB/s.
-        :type AvgFluxPerSecond: float
-        """
+        :param Name: District/ISP/country/region.\n        :type Name: str\n        :param TotalFlux: Total traffic in MB.\n        :type TotalFlux: float\n        :param TotalRequest: Total number of requests.\n        :type TotalRequest: int\n        :param AvgFluxPerSecond: Average download traffic in MB/s.\n        :type AvgFluxPerSecond: float\n        """
         self.Name = None
         self.TotalFlux = None
         self.TotalRequest = None
@@ -7510,9 +5955,7 @@ class PublishTime(AbstractModel):
     def __init__(self):
         """
         :param PublishTime: Push time.
-In UTC format, such as 2018-06-29T19:00:00Z.
-        :type PublishTime: str
-        """
+In UTC format, such as 2018-06-29T19:00:00Z.\n        :type PublishTime: str\n        """
         self.PublishTime = None
 
 
@@ -7534,17 +5977,7 @@ class PushAuthKeyInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Domain name.
-        :type DomainName: str
-        :param Enable: Whether to enable. 0: disabled; 1: enabled.
-        :type Enable: int
-        :param MasterAuthKey: Master authentication key.
-        :type MasterAuthKey: str
-        :param BackupAuthKey: Standby authentication key.
-        :type BackupAuthKey: str
-        :param AuthDelta: Validity period in seconds.
-        :type AuthDelta: int
-        """
+        :param DomainName: Domain name.\n        :type DomainName: str\n        :param Enable: Whether to enable. 0: disabled; 1: enabled.\n        :type Enable: int\n        :param MasterAuthKey: Master authentication key.\n        :type MasterAuthKey: str\n        :param BackupAuthKey: Standby authentication key.\n        :type BackupAuthKey: str\n        :param AuthDelta: Validity period in seconds.\n        :type AuthDelta: int\n        """
         self.DomainName = None
         self.Enable = None
         self.MasterAuthKey = None
@@ -7574,43 +6007,9 @@ class PushDataInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param AppName: Push path.
-        :type AppName: str
-        :param ClientIp: Push client IP.
-        :type ClientIp: str
-        :param ServerIp: IP of the server that receives the stream.
-        :type ServerIp: str
-        :param VideoFps: Pushed video frame rate in Hz.
-        :type VideoFps: int
-        :param VideoSpeed: Pushed video bitrate in bps.
-        :type VideoSpeed: int
-        :param AudioFps: Pushed audio frame rate in Hz.
-        :type AudioFps: int
-        :param AudioSpeed: Pushed audio bitrate in bps.
-        :type AudioSpeed: int
-        :param PushDomain: Push domain name.
-        :type PushDomain: str
-        :param BeginPushTime: Push start time.
-        :type BeginPushTime: str
-        :param Acodec: Audio codec,
-Example: AAC.
-        :type Acodec: str
-        :param Vcodec: Video codec,
-Example: H.264.
-        :type Vcodec: str
-        :param Resolution: Resolution.
-        :type Resolution: str
-        :param AsampleRate: Sample rate.
-        :type AsampleRate: int
-        :param MetaAudioSpeed: Audio bitrate in `metadata` in Kbps.
-        :type MetaAudioSpeed: int
-        :param MetaVideoSpeed: Video bitrate in `metadata` in Kbps.
-        :type MetaVideoSpeed: int
-        :param MetaFps: Frame rate in `metadata`.
-        :type MetaFps: int
-        """
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param AppName: Push path.\n        :type AppName: str\n        :param ClientIp: Push client IP.\n        :type ClientIp: str\n        :param ServerIp: IP of the server that receives the stream.\n        :type ServerIp: str\n        :param VideoFps: Pushed video frame rate in Hz.\n        :type VideoFps: int\n        :param VideoSpeed: Pushed video bitrate in bps.\n        :type VideoSpeed: int\n        :param AudioFps: Pushed audio frame rate in Hz.\n        :type AudioFps: int\n        :param AudioSpeed: Pushed audio bitrate in bps.\n        :type AudioSpeed: int\n        :param PushDomain: Push domain name.\n        :type PushDomain: str\n        :param BeginPushTime: Push start time.\n        :type BeginPushTime: str\n        :param Acodec: Audio codec,
+Example: AAC.\n        :type Acodec: str\n        :param Vcodec: Video codec,
+Example: H.264.\n        :type Vcodec: str\n        :param Resolution: Resolution.\n        :type Resolution: str\n        :param AsampleRate: Sample rate.\n        :type AsampleRate: int\n        :param MetaAudioSpeed: Audio bitrate in `metadata` in Kbps.\n        :type MetaAudioSpeed: int\n        :param MetaVideoSpeed: Video bitrate in `metadata` in Kbps.\n        :type MetaVideoSpeed: int\n        :param MetaFps: Frame rate in `metadata`.\n        :type MetaFps: int\n        """
         self.StreamName = None
         self.AppName = None
         self.ClientIp = None
@@ -7664,47 +6063,7 @@ class PushQualityData(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: Data time in the format of `%Y-%m-%d %H:%M:%S.%ms` and accurate down to the millisecond level.
-        :type Time: str
-        :param PushDomain: Push domain name.
-        :type PushDomain: str
-        :param AppName: Push path.
-        :type AppName: str
-        :param ClientIp: Push client IP.
-        :type ClientIp: str
-        :param BeginPushTime: Push start time in the format of `%Y-%m-%d %H:%M:%S.%ms` and accurate down to the millisecond level.
-        :type BeginPushTime: str
-        :param Resolution: Resolution information.
-        :type Resolution: str
-        :param VCodec: Video codec.
-        :type VCodec: str
-        :param ACodec: Audio codec.
-        :type ACodec: str
-        :param Sequence: Push serial number, which uniquely identifies a push.
-        :type Sequence: str
-        :param VideoFps: Video frame rate.
-        :type VideoFps: int
-        :param VideoRate: Video bitrate in bps.
-        :type VideoRate: int
-        :param AudioFps: Audio frame rate.
-        :type AudioFps: int
-        :param AudioRate: Audio bitrate in bps.
-        :type AudioRate: int
-        :param LocalTs: Local elapsed time in milliseconds. The greater the difference between audio/video elapsed time and local elapsed time, the poorer the push quality and the more serious the upstream lag.
-        :type LocalTs: int
-        :param VideoTs: Video elapsed time in milliseconds.
-        :type VideoTs: int
-        :param AudioTs: Audio elapsed time in milliseconds.
-        :type AudioTs: int
-        :param MetaVideoRate: Video bitrate in `metadata` in Kbps.
-        :type MetaVideoRate: int
-        :param MetaAudioRate: Audio bitrate in `metadata` in Kbps.
-        :type MetaAudioRate: int
-        :param MateFps: Frame rate in `metadata`.
-        :type MateFps: int
-        :param StreamParam: Push parameter
-        :type StreamParam: str
-        """
+        :param Time: Data time in the format of `%Y-%m-%d %H:%M:%S.%ms` and accurate down to the millisecond level.\n        :type Time: str\n        :param PushDomain: Push domain name.\n        :type PushDomain: str\n        :param AppName: Push path.\n        :type AppName: str\n        :param ClientIp: Push client IP.\n        :type ClientIp: str\n        :param BeginPushTime: Push start time in the format of `%Y-%m-%d %H:%M:%S.%ms` and accurate down to the millisecond level.\n        :type BeginPushTime: str\n        :param Resolution: Resolution information.\n        :type Resolution: str\n        :param VCodec: Video codec.\n        :type VCodec: str\n        :param ACodec: Audio codec.\n        :type ACodec: str\n        :param Sequence: Push serial number, which uniquely identifies a push.\n        :type Sequence: str\n        :param VideoFps: Video frame rate.\n        :type VideoFps: int\n        :param VideoRate: Video bitrate in bps.\n        :type VideoRate: int\n        :param AudioFps: Audio frame rate.\n        :type AudioFps: int\n        :param AudioRate: Audio bitrate in bps.\n        :type AudioRate: int\n        :param LocalTs: Local elapsed time in milliseconds. The greater the difference between audio/video elapsed time and local elapsed time, the poorer the push quality and the more serious the upstream lag.\n        :type LocalTs: int\n        :param VideoTs: Video elapsed time in milliseconds.\n        :type VideoTs: int\n        :param AudioTs: Audio elapsed time in milliseconds.\n        :type AudioTs: int\n        :param MetaVideoRate: Video bitrate in `metadata` in Kbps.\n        :type MetaVideoRate: int\n        :param MetaAudioRate: Audio bitrate in `metadata` in Kbps.\n        :type MetaAudioRate: int\n        :param MateFps: Frame rate in `metadata`.\n        :type MateFps: int\n        :param StreamParam: Push parameter\n        :type StreamParam: str\n        """
         self.Time = None
         self.PushDomain = None
         self.AppName = None
@@ -7767,17 +6126,9 @@ class RecordParam(AbstractModel):
         :param RecordInterval: Max recording time per file
 Default value: `1800` (seconds)
 Value range: 60-7200
-This parameter is invalid for HLS. Only one HLS file will be generated from push start to push end.
-        :type RecordInterval: int
-        :param StorageTime: Storage duration of the recording file
+This parameter is invalid for HLS. Only one HLS file will be generated from push start to push end.\n        :type RecordInterval: int\n        :param StorageTime: Storage duration of the recording file
 Value range: 0-129600000 seconds (0-1500 days)
-`0`: permanent
-        :type StorageTime: int
-        :param Enable: Whether to enable recording in the current format. Default value: 0. 0: no, 1: yes.
-        :type Enable: int
-        :param VodSubAppId: VOD subapplication ID.
-        :type VodSubAppId: int
-        :param VodFileName: Recording filename.
+`0`: permanent\n        :type StorageTime: int\n        :param Enable: Whether to enable recording in the current format. Default value: 0. 0: no, 1: yes.\n        :type Enable: int\n        :param VodSubAppId: VOD subapplication ID.\n        :type VodSubAppId: int\n        :param VodFileName: Recording filename.
 Supported special placeholders include:
 {StreamID}: stream ID
 {StartYear}: start time - year
@@ -7795,20 +6146,12 @@ Supported special placeholders include:
 {EndSecond}: end time - second
 {EndMillisecond}: end time - millisecond
 
-If this parameter is not set, the recording filename will be `{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}` by default
-        :type VodFileName: str
-        :param Procedure: Task flow
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Procedure: str
-        :param StorageMode: Video storage class. Valid values:
+If this parameter is not set, the recording filename will be `{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}` by default\n        :type VodFileName: str\n        :param Procedure: Task flow
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Procedure: str\n        :param StorageMode: Video storage class. Valid values:
 `normal`: STANDARD
 `cold`: STANDARD_IA
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type StorageMode: str
-        :param ClassId: VOD subapplication category
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type ClassId: int
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type StorageMode: str\n        :param ClassId: VOD subapplication category
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type ClassId: int\n        """
         self.RecordInterval = None
         self.StorageTime = None
         self.Enable = None
@@ -7844,28 +6187,8 @@ class RecordTemplateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param TemplateName: Template name.
-        :type TemplateName: str
-        :param Description: Message description
-        :type Description: str
-        :param FlvParam: FLV recording parameter.
-        :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsParam: HLS recording parameter.
-        :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: MP4 recording parameter.
-        :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param AacParam: AAC recording parameter.
-        :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param IsDelayLive: 0: LVB,
-1: LCB.
-        :type IsDelayLive: int
-        :param HlsSpecialParam: Custom HLS recording parameter
-        :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: MP3 recording parameter.
-        :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        """
+        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param TemplateName: Template name.\n        :type TemplateName: str\n        :param Description: Message description\n        :type Description: str\n        :param FlvParam: FLV recording parameter.\n        :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param HlsParam: HLS recording parameter.\n        :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param Mp4Param: MP4 recording parameter.\n        :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param AacParam: AAC recording parameter.\n        :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        :param IsDelayLive: 0: LVB,
+1: LCB.\n        :type IsDelayLive: int\n        :param HlsSpecialParam: Custom HLS recording parameter\n        :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`\n        :param Mp3Param: MP3 recording parameter.\n        :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`\n        """
         self.TemplateId = None
         self.TemplateName = None
         self.Description = None
@@ -7917,17 +6240,7 @@ class RefererAuthConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Domain name
-        :type DomainName: str
-        :param Enable: Whether to enable referer. Valid values: `0` (no), `1` (yes)
-        :type Enable: int
-        :param Type: List type. Valid values: `0` (blocklist), `1` (allowlist)
-        :type Type: int
-        :param AllowEmpty: Whether to allow empty referer. Valid values: `0` (no), `1` (yes)
-        :type AllowEmpty: int
-        :param Rules: Referer list. Separate items in it with semicolons (;).
-        :type Rules: str
-        """
+        :param DomainName: Domain name\n        :type DomainName: str\n        :param Enable: Whether to enable referer. Valid values: `0` (no), `1` (yes)\n        :type Enable: int\n        :param Type: List type. Valid values: `0` (blocklist), `1` (allowlist)\n        :type Type: int\n        :param AllowEmpty: Whether to allow empty referer. Valid values: `0` (no), `1` (yes)\n        :type AllowEmpty: int\n        :param Rules: Referer list. Separate items in it with semicolons (;).\n        :type Rules: str\n        """
         self.DomainName = None
         self.Enable = None
         self.Type = None
@@ -7957,13 +6270,7 @@ class ResumeDelayLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
-        :type AppName: str
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        """
+        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.\n        :type AppName: str\n        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        """
         self.AppName = None
         self.DomainName = None
         self.StreamName = None
@@ -7989,9 +6296,7 @@ class ResumeDelayLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8006,13 +6311,7 @@ class ResumeLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
-        :type AppName: str
-        :param DomainName: Your push domain name.
-        :type DomainName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        """
+        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.\n        :type AppName: str\n        :param DomainName: Your push domain name.\n        :type DomainName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        """
         self.AppName = None
         self.DomainName = None
         self.StreamName = None
@@ -8038,9 +6337,7 @@ class ResumeLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8055,19 +6352,7 @@ class RuleInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param CreateTime: Rule creation time.
-        :type CreateTime: str
-        :param UpdateTime: Rule update time.
-        :type UpdateTime: str
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param AppName: Push path.
-        :type AppName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        """
+        :param CreateTime: Rule creation time.\n        :type CreateTime: str\n        :param UpdateTime: Rule update time.\n        :type UpdateTime: str\n        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param AppName: Push path.\n        :type AppName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        """
         self.CreateTime = None
         self.UpdateTime = None
         self.TemplateId = None
@@ -8099,35 +6384,11 @@ class SnapshotTemplateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param TemplateName: Template name.
-        :type TemplateName: str
-        :param SnapshotInterval: Screencapturing interval. Value range: 5-300s.
-        :type SnapshotInterval: int
-        :param Width: Screenshot width. Value range: 0-3000. 
-0: original width and fit to the original ratio.
-        :type Width: int
-        :param Height: Screenshot height. Value range: 0-2000.
-0: original height and fit to the original ratio.
-        :type Height: int
-        :param PornFlag: Whether to enable porn detection. 0: no, 1: yes.
-        :type PornFlag: int
-        :param CosAppId: COS application ID.
-        :type CosAppId: int
-        :param CosBucket: COS bucket name.
-        :type CosBucket: str
-        :param CosRegion: COS region.
-        :type CosRegion: str
-        :param Description: Template description.
-        :type Description: str
-        :param CosPrefix: COS bucket folder prefix.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CosPrefix: str
-        :param CosFileName: COS filename.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CosFileName: str
-        """
+        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param TemplateName: Template name.\n        :type TemplateName: str\n        :param SnapshotInterval: Screencapturing interval. Value range: 5-300s.\n        :type SnapshotInterval: int\n        :param Width: Screenshot width. Value range: 0-3000. 
+0: original width and fit to the original ratio.\n        :type Width: int\n        :param Height: Screenshot height. Value range: 0-2000.
+0: original height and fit to the original ratio.\n        :type Height: int\n        :param PornFlag: Whether to enable porn detection. 0: no, 1: yes.\n        :type PornFlag: int\n        :param CosAppId: COS application ID.\n        :type CosAppId: int\n        :param CosBucket: COS bucket name.\n        :type CosBucket: str\n        :param CosRegion: COS region.\n        :type CosRegion: str\n        :param Description: Template description.\n        :type Description: str\n        :param CosPrefix: COS bucket folder prefix.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CosPrefix: str\n        :param CosFileName: COS filename.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CosFileName: str\n        """
         self.TemplateId = None
         self.TemplateName = None
         self.SnapshotInterval = None
@@ -8171,11 +6432,7 @@ class StopLiveRecordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param TaskId: Task ID returned by the `CreateLiveRecord` API.
-        :type TaskId: int
-        """
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param TaskId: Task ID returned by the `CreateLiveRecord` API.\n        :type TaskId: int\n        """
         self.StreamName = None
         self.TaskId = None
 
@@ -8199,9 +6456,7 @@ class StopLiveRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8216,9 +6471,7 @@ class StopRecordTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Recording task ID.
-        :type TaskId: str
-        """
+        :param TaskId: Recording task ID.\n        :type TaskId: str\n        """
         self.TaskId = None
 
 
@@ -8240,9 +6493,7 @@ class StopRecordTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8257,27 +6508,9 @@ class StreamEventInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: Application name.
-        :type AppName: str
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param StreamStartTime: Push start time.
-In UTC format, such as 2019-01-07T12:00:00Z.
-        :type StreamStartTime: str
-        :param StreamEndTime: Push end time.
-In UTC format, such as 2019-01-07T15:00:00Z.
-        :type StreamEndTime: str
-        :param StopReason: Stop reason.
-        :type StopReason: str
-        :param Duration: Push duration in seconds.
-        :type Duration: int
-        :param ClientIp: Host IP.
-        :type ClientIp: str
-        :param Resolution: Resolution.
-        :type Resolution: str
-        """
+        :param AppName: Application name.\n        :type AppName: str\n        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param StreamName: Stream name.\n        :type StreamName: str\n        :param StreamStartTime: Push start time.
+In UTC format, such as 2019-01-07T12:00:00Z.\n        :type StreamStartTime: str\n        :param StreamEndTime: Push end time.
+In UTC format, such as 2019-01-07T15:00:00Z.\n        :type StreamEndTime: str\n        :param StopReason: Stop reason.\n        :type StopReason: str\n        :param Duration: Push duration in seconds.\n        :type Duration: int\n        :param ClientIp: Host IP.\n        :type ClientIp: str\n        :param Resolution: Resolution.\n        :type Resolution: str\n        """
         self.AppName = None
         self.DomainName = None
         self.StreamName = None
@@ -8315,27 +6548,9 @@ class StreamName(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param AppName: Application name.
-        :type AppName: str
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        :param StreamStartTime: Push start time.
-In UTC format, such as 2019-01-07T12:00:00Z.
-        :type StreamStartTime: str
-        :param StreamEndTime: Push end time.
-In UTC format, such as 2019-01-07T15:00:00Z.
-        :type StreamEndTime: str
-        :param StopReason: Stop reason.
-        :type StopReason: str
-        :param Duration: Push duration in seconds.
-        :type Duration: int
-        :param ClientIp: Host IP.
-        :type ClientIp: str
-        :param Resolution: Resolution.
-        :type Resolution: str
-        """
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param AppName: Application name.\n        :type AppName: str\n        :param DomainName: Push domain name.\n        :type DomainName: str\n        :param StreamStartTime: Push start time.
+In UTC format, such as 2019-01-07T12:00:00Z.\n        :type StreamStartTime: str\n        :param StreamEndTime: Push end time.
+In UTC format, such as 2019-01-07T15:00:00Z.\n        :type StreamEndTime: str\n        :param StopReason: Stop reason.\n        :type StopReason: str\n        :param Duration: Push duration in seconds.\n        :type Duration: int\n        :param ClientIp: Host IP.\n        :type ClientIp: str\n        :param Resolution: Resolution.\n        :type Resolution: str\n        """
         self.StreamName = None
         self.AppName = None
         self.DomainName = None
@@ -8373,15 +6588,7 @@ class StreamOnlineInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param PublishTimeList: Push time list
-        :type PublishTimeList: list of PublishTime
-        :param AppName: Application name.
-        :type AppName: str
-        :param DomainName: Push domain name.
-        :type DomainName: str
-        """
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param PublishTimeList: Push time list\n        :type PublishTimeList: list of PublishTime\n        :param AppName: Application name.\n        :type AppName: str\n        :param DomainName: Push domain name.\n        :type DomainName: str\n        """
         self.StreamName = None
         self.PublishTimeList = None
         self.AppName = None
@@ -8416,72 +6623,30 @@ class TemplateInfo(AbstractModel):
         """
         :param Vcodec: Codec: h264/h265/origin. Default value: h264.
 
-origin: keep the original codec.
-        :type Vcodec: str
-        :param VideoBitrate: Video bitrate. Value range: 0–8,000 Kbps.
+origin: keep the original codec.\n        :type Vcodec: str\n        :param VideoBitrate: Video bitrate. Value range: 0–8,000 Kbps.
 If the value is 0, the original bitrate will be retained.
-Note: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.
-        :type VideoBitrate: int
-        :param Acodec: Audio codec: aac. Default value: aac.
-Note: This parameter will not take effect for now and will be supported soon.
-        :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0–500 Kbps.
-0 by default.
-        :type AudioBitrate: int
-        :param Width: Width. Default value: 0.
+Note: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.\n        :type VideoBitrate: int\n        :param Acodec: Audio codec: aac. Default value: aac.
+Note: This parameter will not take effect for now and will be supported soon.\n        :type Acodec: str\n        :param AudioBitrate: Audio bitrate. Value range: 0–500 Kbps.
+0 by default.\n        :type AudioBitrate: int\n        :param Width: Width. Default value: 0.
 Value range: [0-3,000].
-The value must be a multiple of 2. The original width is 0.
-        :type Width: int
-        :param Height: Height. Default value: 0.
+The value must be a multiple of 2. The original width is 0.\n        :type Width: int\n        :param Height: Height. Default value: 0.
 Value range: [0-3,000].
-The value must be a multiple of 2. The original width is 0.
-        :type Height: int
-        :param Fps: Frame rate. Default value: 0.
-Range: 0-60 Fps.
-        :type Fps: int
-        :param Gop: Keyframe interval, unit: second.
+The value must be a multiple of 2. The original width is 0.\n        :type Height: int\n        :param Fps: Frame rate. Default value: 0.
+Range: 0-60 Fps.\n        :type Fps: int\n        :param Gop: Keyframe interval, unit: second.
 Original interval by default
-Range: 2-6
-        :type Gop: int
-        :param Rotate: Rotation angle. Default value: 0.
-Value range: 0, 90, 180, 270
-        :type Rotate: int
-        :param Profile: Encoding quality:
-baseline/main/high. Default value: baseline.
-        :type Profile: str
-        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+Range: 2-6\n        :type Gop: int\n        :param Rotate: Rotation angle. Default value: 0.
+Value range: 0, 90, 180, 270\n        :type Rotate: int\n        :param Profile: Encoding quality:
+baseline/main/high. Default value: baseline.\n        :type Profile: str\n        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
 0: no, 1: yes
-Default value: 0.
-        :type BitrateToOrig: int
-        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
+Default value: 0.\n        :type BitrateToOrig: int\n        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
 0: no, 1: yes
-Default value: 0.
-        :type HeightToOrig: int
-        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+Default value: 0.\n        :type HeightToOrig: int\n        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
 0: no, 1: yes
-Default value: 0.
-        :type FpsToOrig: int
-        :param NeedVideo: Whether to keep the video. 0: no; 1: yes.
-        :type NeedVideo: int
-        :param NeedAudio: Whether to keep the audio. 0: no; 1: yes.
-        :type NeedAudio: int
-        :param TemplateId: Template ID.
-        :type TemplateId: int
-        :param TemplateName: Template name.
-        :type TemplateName: str
-        :param Description: Template description.
-        :type Description: str
-        :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
-        :type AiTransCode: int
-        :param AdaptBitratePercent: Bitrate compression ratio of top speed code video.
+Default value: 0.\n        :type FpsToOrig: int\n        :param NeedVideo: Whether to keep the video. 0: no; 1: yes.\n        :type NeedVideo: int\n        :param NeedAudio: Whether to keep the audio. 0: no; 1: yes.\n        :type NeedAudio: int\n        :param TemplateId: Template ID.\n        :type TemplateId: int\n        :param TemplateName: Template name.\n        :type TemplateName: str\n        :param Description: Template description.\n        :type Description: str\n        :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.\n        :type AiTransCode: int\n        :param AdaptBitratePercent: Bitrate compression ratio of top speed code video.
 Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
 
-Value range: 0.0-0.5.
-        :type AdaptBitratePercent: float
-        :param ShortEdgeAsHeight: Whether to take the shorter side as height. 0: no, 1: yes. Default value: 0.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type ShortEdgeAsHeight: int
-        """
+Value range: 0.0-0.5.\n        :type AdaptBitratePercent: float\n        :param ShortEdgeAsHeight: Whether to take the shorter side as height. 0: no, 1: yes. Default value: 0.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type ShortEdgeAsHeight: int\n        """
         self.Vcodec = None
         self.VideoBitrate = None
         self.Acodec = None
@@ -8543,11 +6708,7 @@ class TimeValue(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.
-        :type Time: str
-        :param Num: Value.
-        :type Num: int
-        """
+        :param Time: UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.\n        :type Time: str\n        :param Num: Value.\n        :type Num: int\n        """
         self.Time = None
         self.Num = None
 
@@ -8571,31 +6732,13 @@ class TranscodeDetailInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamName: Stream name.
-        :type StreamName: str
-        :param StartTime: Start time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.
-        :type StartTime: str
-        :param EndTime: End time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.
-        :type EndTime: str
-        :param Duration: Transcoding duration in minutes.
-Note: given the possible interruptions during push, duration here is the sum of actual duration of transcoding instead of the interval between the start time and end time.
-        :type Duration: int
-        :param ModuleCodec: Codec with modules,
+        :param StreamName: Stream name.\n        :type StreamName: str\n        :param StartTime: Start time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.\n        :type StartTime: str\n        :param EndTime: End time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.\n        :type EndTime: str\n        :param Duration: Transcoding duration in minutes.
+Note: given the possible interruptions during push, duration here is the sum of actual duration of transcoding instead of the interval between the start time and end time.\n        :type Duration: int\n        :param ModuleCodec: Codec with modules,
 Example:
 liveprocessor_H264: LVB transcoding - H264,
 liveprocessor_H265: LVB transcoding - H265,
 topspeed_H264: top speed codec - H264,
-topspeed_H265: top speed codec - H265.
-        :type ModuleCodec: str
-        :param Bitrate: Bitrate.
-        :type Bitrate: int
-        :param Type: Type. Valid values: Transcode, MixStream, WaterMark.
-        :type Type: str
-        :param PushDomain: Push domain name.
-        :type PushDomain: str
-        :param Resolution: Resolution.
-        :type Resolution: str
-        """
+topspeed_H265: top speed codec - H265.\n        :type ModuleCodec: str\n        :param Bitrate: Bitrate.\n        :type Bitrate: int\n        :param Type: Type. Valid values: Transcode, MixStream, WaterMark.\n        :type Type: str\n        :param PushDomain: Push domain name.\n        :type PushDomain: str\n        :param Resolution: Resolution.\n        :type Resolution: str\n        """
         self.StreamName = None
         self.StartTime = None
         self.EndTime = None
@@ -8633,14 +6776,18 @@ class UnBindLiveDomainCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: Playback domain name.
-        :type DomainName: str
-        """
+        :param DomainName: Playback domain name.\n        :type DomainName: str\n        :param Type: Valid values:
+`gray`: unbind the canary certificate
+`formal` (default): unbind the formal certificate
+
+`formal` will be used if no value is passed in\n        :type Type: str\n        """
         self.DomainName = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.DomainName = params.get("DomainName")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8657,9 +6804,7 @@ class UnBindLiveDomainCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8675,24 +6820,10 @@ class UpdateLiveWatermarkRequest(AbstractModel):
     def __init__(self):
         """
         :param WatermarkId: Watermark ID.
-Get the watermark ID in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.
-        :type WatermarkId: int
-        :param PictureUrl: Watermark image URL.
+Get the watermark ID in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.\n        :type WatermarkId: int\n        :param PictureUrl: Watermark image URL.
 Unallowed characters in the URL:
- ;(){}$>`#"\'|
-        :type PictureUrl: str
-        :param XPosition: Display position: X-axis offset in %. Default value: 0.
-        :type XPosition: int
-        :param YPosition: Display position: Y-axis offset in %. Default value: 0.
-        :type YPosition: int
-        :param WatermarkName: Watermark name.
-Up to 16 bytes.
-        :type WatermarkName: str
-        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
-        :type Width: int
-        :param Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default.
-        :type Height: int
-        """
+ ;(){}$>`#"\'|\n        :type PictureUrl: str\n        :param XPosition: Display position: X-axis offset in %. Default value: 0.\n        :type XPosition: int\n        :param YPosition: Display position: Y-axis offset in %. Default value: 0.\n        :type YPosition: int\n        :param WatermarkName: Watermark name.
+Up to 16 bytes.\n        :type WatermarkName: str\n        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.\n        :type Width: int\n        :param Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default.\n        :type Height: int\n        """
         self.WatermarkId = None
         self.PictureUrl = None
         self.XPosition = None
@@ -8726,9 +6857,7 @@ class UpdateLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8743,25 +6872,7 @@ class WatermarkInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param WatermarkId: Watermark ID.
-        :type WatermarkId: int
-        :param PictureUrl: Watermark image URL.
-        :type PictureUrl: str
-        :param XPosition: Display position: X-axis offset.
-        :type XPosition: int
-        :param YPosition: Display position: Y-axis offset.
-        :type YPosition: int
-        :param WatermarkName: Watermark name.
-        :type WatermarkName: str
-        :param Status: Current status. 0: not used. 1: in use.
-        :type Status: int
-        :param CreateTime: Creation time.
-        :type CreateTime: str
-        :param Width: Watermark width.
-        :type Width: int
-        :param Height: Watermark height.
-        :type Height: int
-        """
+        :param WatermarkId: Watermark ID.\n        :type WatermarkId: int\n        :param PictureUrl: Watermark image URL.\n        :type PictureUrl: str\n        :param XPosition: Display position: X-axis offset.\n        :type XPosition: int\n        :param YPosition: Display position: Y-axis offset.\n        :type YPosition: int\n        :param WatermarkName: Watermark name.\n        :type WatermarkName: str\n        :param Status: Current status. 0: not used. 1: in use.\n        :type Status: int\n        :param CreateTime: Creation time.\n        :type CreateTime: str\n        :param Width: Watermark width.\n        :type Width: int\n        :param Height: Watermark height.\n        :type Height: int\n        """
         self.WatermarkId = None
         self.PictureUrl = None
         self.XPosition = None

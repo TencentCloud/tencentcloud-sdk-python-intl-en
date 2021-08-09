@@ -32,13 +32,7 @@ intraffic: inbound traffic;
 outtraffic: outbound traffic;
 alltraffic: sum of inbound and outbound traffic;
 inpkg: inbound packet rate;
-outpkg: outbound packet rate;)
-        :type MetricName: str
-        :param Data: Value array
-        :type Data: list of float
-        :param Count: Value array size
-        :type Count: int
-        """
+outpkg: outbound packet rate;)\n        :type MetricName: str\n        :param Data: Value array\n        :type Data: list of float\n        :param Count: Value array size\n        :type Count: int\n        """
         self.MetricName = None
         self.Data = None
         self.Count = None
@@ -64,15 +58,7 @@ class BoundIpInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP address
-        :type Ip: str
-        :param BizType: Category of product that can be bound. Valid values: public (CVM and CLB), bm (BM), eni (ENI), vpngw (VPN gateway), natgw (NAT gateway), waf (WAF), fpc (financial products), gaap (GAAP), and other (Hosted IP).
-        :type BizType: str
-        :param DeviceType: Subtype under product type. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]
-        :type DeviceType: str
-        :param InstanceId: Resource instance ID of IP. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`; if it is a hosted IP without corresponding resource instance ID, enter "none";
-        :type InstanceId: str
-        """
+        :param Ip: IP address\n        :type Ip: str\n        :param BizType: Category of product that can be bound. Valid values: public (CVM and CLB), bm (BM), eni (ENI), vpngw (VPN gateway), natgw (NAT gateway), waf (WAF), fpc (financial products), gaap (GAAP), and other (Hosted IP).\n        :type BizType: str\n        :param DeviceType: Subtype under product type. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]\n        :type DeviceType: str\n        :param InstanceId: Resource instance ID of IP. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`; if it is a hosted IP without corresponding resource instance ID, enter "none";\n        :type InstanceId: str\n        """
         self.Ip = None
         self.BizType = None
         self.DeviceType = None
@@ -100,9 +86,7 @@ class CCAlarmThreshold(AbstractModel):
 
     def __init__(self):
         """
-        :param AlarmThreshold: CC alarm threshold
-        :type AlarmThreshold: int
-        """
+        :param AlarmThreshold: CC alarm threshold\n        :type AlarmThreshold: int\n        """
         self.AlarmThreshold = None
 
 
@@ -124,35 +108,11 @@ class CCEventRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Vip: Resource IP
-        :type Vip: str
-        :param StartTime: Attack start time
-        :type StartTime: str
-        :param EndTime: Attack end time
-        :type EndTime: str
-        :param ReqQps: Total requests peak (QPS)
-        :type ReqQps: int
-        :param DropQps: Attack peak (QPS)
-        :type DropQps: int
-        :param AttackStatus: Attack status. Valid values: [0 (ongoing), 1 (ended)]
-        :type AttackStatus: int
-        :param ResourceName: Resource name
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ResourceName: str
-        :param DomainList: Domain name list
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DomainList: str
-        :param UriList: URI list
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UriList: str
-        :param AttackipList: Attack source list
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AttackipList: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Vip: Resource IP\n        :type Vip: str\n        :param StartTime: Attack start time\n        :type StartTime: str\n        :param EndTime: Attack end time\n        :type EndTime: str\n        :param ReqQps: Total requests peak (QPS)\n        :type ReqQps: int\n        :param DropQps: Attack peak (QPS)\n        :type DropQps: int\n        :param AttackStatus: Attack status. Valid values: [0 (ongoing), 1 (ended)]\n        :type AttackStatus: int\n        :param ResourceName: Resource name
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResourceName: str\n        :param DomainList: Domain name list
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type DomainList: str\n        :param UriList: URI list
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type UriList: str\n        :param AttackipList: Attack source list
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AttackipList: str\n        """
         self.Business = None
         self.Id = None
         self.Vip = None
@@ -196,25 +156,7 @@ class CCFrequencyRule(AbstractModel):
 
     def __init__(self):
         """
-        :param CCFrequencyRuleId: ID of the access frequency control rule for CC protection
-        :type CCFrequencyRuleId: str
-        :param Uri: URI string, which must start with `/`, such as `/abc/a.php`. Length limit: 31. If URI is `/`, only prefix match can be selected as the matching mode;
-        :type Uri: str
-        :param UserAgent: `User-Agent` string. Length limit: 80
-        :type UserAgent: str
-        :param Cookie: Cookie string. Length limit: 40
-        :type Cookie: str
-        :param Mode: Matching rule. Valid values: ["include" (prefix match), "equal" (exact match)]
-        :type Mode: str
-        :param Period: Reference period in seconds. Valid values: [10, 30, 60]
-        :type Period: int
-        :param ReqNumber: Number of access requests. Value range: [1-10000]
-        :type ReqNumber: int
-        :param Act: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
-        :type Act: str
-        :param ExeDuration: Execution duration in seconds. Valid range: [1-900]
-        :type ExeDuration: int
-        """
+        :param CCFrequencyRuleId: ID of the access frequency control rule for CC protection\n        :type CCFrequencyRuleId: str\n        :param Uri: URI string, which must start with `/`, such as `/abc/a.php`. Length limit: 31. If URI is `/`, only prefix match can be selected as the matching mode;\n        :type Uri: str\n        :param UserAgent: `User-Agent` string. Length limit: 80\n        :type UserAgent: str\n        :param Cookie: Cookie string. Length limit: 40\n        :type Cookie: str\n        :param Mode: Matching rule. Valid values: ["include" (prefix match), "equal" (exact match)]\n        :type Mode: str\n        :param Period: Reference period in seconds. Valid values: [10, 30, 60]\n        :type Period: int\n        :param ReqNumber: Number of access requests. Value range: [1-10000]\n        :type ReqNumber: int\n        :param Act: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]\n        :type Act: str\n        :param ExeDuration: Execution duration in seconds. Valid range: [1-900]\n        :type ExeDuration: int\n        """
         self.CCFrequencyRuleId = None
         self.Uri = None
         self.UserAgent = None
@@ -252,31 +194,7 @@ class CCPolicy(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Policy name
-        :type Name: str
-        :param Smode: Matching mode. Valid values: [matching (matching mode), speedlimit (speed limiting mode)]
-        :type Smode: str
-        :param SetId: Policy ID
-        :type SetId: str
-        :param Frequency: Number of requests allowed per minute
-        :type Frequency: int
-        :param ExeMode: Executed policy mode. Valid values: [alg (verification code), drop (blocking)]
-        :type ExeMode: str
-        :param Switch: Specifies whether the policy is activated
-        :type Switch: int
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param RuleList: Rule list
-        :type RuleList: list of CCRule
-        :param IpList: IP list. If this field is to be left empty, please pass in an empty instead of null;
-        :type IpList: list of str
-        :param Protocol: CC protection type. Valid values: [http, https]
-        :type Protocol: str
-        :param RuleId: ID of the forwarding rule corresponding to the HTTPS CC protection domain name
-        :type RuleId: str
-        :param Domain: HTTPS CC protection domain name
-        :type Domain: str
-        """
+        :param Name: Policy name\n        :type Name: str\n        :param Smode: Matching mode. Valid values: [matching (matching mode), speedlimit (speed limiting mode)]\n        :type Smode: str\n        :param SetId: Policy ID\n        :type SetId: str\n        :param Frequency: Number of requests allowed per minute\n        :type Frequency: int\n        :param ExeMode: Executed policy mode. Valid values: [alg (verification code), drop (blocking)]\n        :type ExeMode: str\n        :param Switch: Specifies whether the policy is activated\n        :type Switch: int\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param RuleList: Rule list\n        :type RuleList: list of CCRule\n        :param IpList: IP list. If this field is to be left empty, please pass in an empty instead of null;\n        :type IpList: list of str\n        :param Protocol: CC protection type. Valid values: [http, https]\n        :type Protocol: str\n        :param RuleId: ID of the forwarding rule corresponding to the HTTPS CC protection domain name\n        :type RuleId: str\n        :param Domain: HTTPS CC protection domain name\n        :type Domain: str\n        """
         self.Name = None
         self.Smode = None
         self.SetId = None
@@ -325,13 +243,7 @@ class CCRule(AbstractModel):
 
     def __init__(self):
         """
-        :param Skey: Key of the policy. Valid values: `host`, `cgi`, `ua`, `referer`
-        :type Skey: str
-        :param Operator: Rule condition. Valid values: `include`, `not_include`, `equal`
-        :type Operator: str
-        :param Value: Value of the policy. Length limit: 31 bytes
-        :type Value: str
-        """
+        :param Skey: Key of the policy. Valid values: `host`, `cgi`, `ua`, `referer`\n        :type Skey: str\n        :param Operator: Rule condition. Valid values: `include`, `not_include`, `equal`\n        :type Operator: str\n        :param Value: Value of the policy. Length limit: 31 bytes\n        :type Value: str\n        """
         self.Skey = None
         self.Operator = None
         self.Value = None
@@ -357,15 +269,7 @@ class CCRuleConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Period: Reference period in seconds. Valid values: [10, 30, 60]
-        :type Period: int
-        :param ReqNumber: Number of access requests. Value range: [1-10000]
-        :type ReqNumber: int
-        :param Action: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
-        :type Action: str
-        :param ExeDuration: Execution duration in seconds. Valid range: [1-900]
-        :type ExeDuration: int
-        """
+        :param Period: Reference period in seconds. Valid values: [10, 30, 60]\n        :type Period: int\n        :param ReqNumber: Number of access requests. Value range: [1-10000]\n        :type ReqNumber: int\n        :param Action: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]\n        :type Action: str\n        :param ExeDuration: Execution duration in seconds. Valid range: [1-900]\n        :type ExeDuration: int\n        """
         self.Period = None
         self.ReqNumber = None
         self.Action = None
@@ -393,15 +297,7 @@ class CreateBasicDDoSAlarmThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`basic`: Anti-DDoS Basic)
-        :type Business: str
-        :param Method: `get`: read alarm threshold, `set`: set alarm threshold
-        :type Method: str
-        :param AlarmType: Alarm threshold type. 1: inbound traffic, 2: cleansed traffic. This field is required if `Method` is `set`;
-        :type AlarmType: int
-        :param AlarmThreshold: Alarm threshold. It is required if `Method` is `set`. If it is set to 0, it means to clear the alarm threshold configuration;
-        :type AlarmThreshold: int
-        """
+        :param Business: Anti-DDoS service type (`basic`: Anti-DDoS Basic)\n        :type Business: str\n        :param Method: `get`: read alarm threshold, `set`: set alarm threshold\n        :type Method: str\n        :param AlarmType: Alarm threshold type. 1: inbound traffic, 2: cleansed traffic. This field is required if `Method` is `set`;\n        :type AlarmType: int\n        :param AlarmThreshold: Alarm threshold. It is required if `Method` is `set`. If it is set to 0, it means to clear the alarm threshold configuration;\n        :type AlarmThreshold: int\n        """
         self.Business = None
         self.Method = None
         self.AlarmType = None
@@ -429,13 +325,7 @@ class CreateBasicDDoSAlarmThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AlarmThreshold: If there is an alarm threshold configuration, the returned alarm threshold will be greater than 0; otherwise, the returned alarm threshold will be 0;
-        :type AlarmThreshold: int
-        :param AlarmType: Alarm threshold type. 1: inbound traffic, 2: cleansed traffic. This field is valid if `AlarmThreshold` is above 0;
-        :type AlarmType: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param AlarmThreshold: If there is an alarm threshold configuration, the returned alarm threshold will be greater than 0; otherwise, the returned alarm threshold will be 0;\n        :type AlarmThreshold: int\n        :param AlarmType: Alarm threshold type. 1: inbound traffic, 2: cleansed traffic. This field is valid if `AlarmThreshold` is above 0;\n        :type AlarmType: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AlarmThreshold = None
         self.AlarmType = None
         self.RequestId = None
@@ -454,17 +344,7 @@ class CreateBoundIPRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param BoundDevList: Array of IPs to be bound to the Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, this array can contain only one IP. If there are no IPs to bind, it can be empty; however, either `BoundDevList` or `UnBoundDevList` must not be empty;
-        :type BoundDevList: list of BoundIpInfo
-        :param UnBoundDevList: Array of IPs to be unbound from Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, this array can contain only one IP; if there are no IPs to unbind, it can be empty; however, either `BoundDevList` or `UnBoundDevList` must not be empty;
-        :type UnBoundDevList: list of BoundIpInfo
-        :param CopyPolicy: [Disused]
-        :type CopyPolicy: str
-        """
+        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param BoundDevList: Array of IPs to be bound to the Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, this array can contain only one IP. If there are no IPs to bind, it can be empty; however, either `BoundDevList` or `UnBoundDevList` must not be empty;\n        :type BoundDevList: list of BoundIpInfo\n        :param UnBoundDevList: Array of IPs to be unbound from Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, this array can contain only one IP; if there are no IPs to unbind, it can be empty; however, either `BoundDevList` or `UnBoundDevList` must not be empty;\n        :type UnBoundDevList: list of BoundIpInfo\n        :param CopyPolicy: [Disused]\n        :type CopyPolicy: str\n        """
         self.Business = None
         self.Id = None
         self.BoundDevList = None
@@ -504,11 +384,7 @@ class CreateBoundIPResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -527,29 +403,7 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleId: Layer-7 forwarding rule ID, which can be obtained through the `DescribleL7Rules` API
-        :type RuleId: str
-        :param Mode: Matching rule. Valid values: ["include" (prefix match), "equal" (exact match)]
-        :type Mode: str
-        :param Period: Reference period in seconds. Valid values: [10, 30, 60]
-        :type Period: int
-        :param ReqNumber: Number of access requests. Value range: [1-10000]
-        :type ReqNumber: int
-        :param Act: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
-        :type Act: str
-        :param ExeDuration: Execution duration in seconds. Valid range: [1-900]
-        :type ExeDuration: int
-        :param Uri: URI string, which must start with `/`, such as `/abc/a.php`. Length limit: 31. If URI is `/`, only prefix match can be selected as the matching mode;
-        :type Uri: str
-        :param UserAgent: `User-Agent` string. Length limit: 80
-        :type UserAgent: str
-        :param Cookie: Cookie string. Length limit: 40
-        :type Cookie: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleId: Layer-7 forwarding rule ID, which can be obtained through the `DescribleL7Rules` API\n        :type RuleId: str\n        :param Mode: Matching rule. Valid values: ["include" (prefix match), "equal" (exact match)]\n        :type Mode: str\n        :param Period: Reference period in seconds. Valid values: [10, 30, 60]\n        :type Period: int\n        :param ReqNumber: Number of access requests. Value range: [1-10000]\n        :type ReqNumber: int\n        :param Act: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]\n        :type Act: str\n        :param ExeDuration: Execution duration in seconds. Valid range: [1-900]\n        :type ExeDuration: int\n        :param Uri: URI string, which must start with `/`, such as `/abc/a.php`. Length limit: 31. If URI is `/`, only prefix match can be selected as the matching mode;\n        :type Uri: str\n        :param UserAgent: `User-Agent` string. Length limit: 80\n        :type UserAgent: str\n        :param Cookie: Cookie string. Length limit: 40\n        :type Cookie: str\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -591,11 +445,7 @@ class CreateCCFrequencyRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CCFrequencyRuleId: Access frequency control rule ID for CC protection
-        :type CCFrequencyRuleId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CCFrequencyRuleId: Access frequency control rule ID for CC protection\n        :type CCFrequencyRuleId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CCFrequencyRuleId = None
         self.RequestId = None
 
@@ -612,13 +462,7 @@ class CreateCCSelfDefinePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Policy: Details of the CC protection policy
-        :type Policy: :class:`tencentcloud.dayu.v20180709.models.CCPolicy`
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Policy: Details of the CC protection policy\n        :type Policy: :class:`tencentcloud.dayu.v20180709.models.CCPolicy`\n        """
         self.Business = None
         self.Id = None
         self.Policy = None
@@ -646,11 +490,7 @@ class CreateCCSelfDefinePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -669,55 +509,7 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param CaseName: Policy scenario name string. Length limit: 64
-        :type CaseName: str
-        :param PlatformTypes: Development platform. Valid values: [PC (PC client), MOBILE (mobile device), TV (TV), SERVER (server)]
-        :type PlatformTypes: list of str
-        :param AppType: Category. Valid values: [WEB (website), GAME (game), APP (application), OTHER (other)]
-        :type AppType: str
-        :param AppProtocols: Application protocol. Valid values: [tcp (TCP protocol), udp (UDP protocol), icmp (ICMP protocol), all (other protocols)]
-        :type AppProtocols: list of str
-        :param TcpSportStart: TCP start port. Value range: (0, 65535]
-        :type TcpSportStart: str
-        :param TcpSportEnd: TCP end port. Value range: (0, 65535). It must be greater than or equal to the TCP start port.
-        :type TcpSportEnd: str
-        :param UdpSportStart: UDP start port. Value range: (0, 65535]
-        :type UdpSportStart: str
-        :param UdpSportEnd: UDP end port. Value range: (0, 65535). It must be greater than or equal to the UDP start port.
-        :type UdpSportEnd: str
-        :param HasAbroad: Whether there are customers outside China. Valid values: [no, yes]
-        :type HasAbroad: str
-        :param HasInitiateTcp: Whether to actively initiate outbound TCP requests. Valid values: [no, yes]
-        :type HasInitiateTcp: str
-        :param HasInitiateUdp: Whether to actively initiate outbound UDP requests. Valid values: [no, yes]
-        :type HasInitiateUdp: str
-        :param PeerTcpPort: Port that actively initiates TCP requests. Value range: (0, 65535]
-        :type PeerTcpPort: str
-        :param PeerUdpPort: Port that actively initiates UDP requests. Value range: (0, 65535]
-        :type PeerUdpPort: str
-        :param TcpFootprint: Fixed feature code of TCP payload. Max string length: 512
-        :type TcpFootprint: str
-        :param UdpFootprint: Fixed feature code of UDP payload. Max string length: 512
-        :type UdpFootprint: str
-        :param WebApiUrl: Web application API URL
-        :type WebApiUrl: list of str
-        :param MinTcpPackageLen: Minimum length of TCP packet. Value range: (0, 1500)
-        :type MinTcpPackageLen: str
-        :param MaxTcpPackageLen: Maximum length of TCP packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of TCP packet
-        :type MaxTcpPackageLen: str
-        :param MinUdpPackageLen: Minimum length of UDP packet. Value range: (0, 1500)
-        :type MinUdpPackageLen: str
-        :param MaxUdpPackageLen: Maximum length of UDP packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of UDP packet
-        :type MaxUdpPackageLen: str
-        :param HasVPN: Whether there are applications using VPN. Valid values: [no, yes]
-        :type HasVPN: str
-        :param TcpPortList: TCP port list. You can enter a single port, or a port range. Format: 80,443,700-800,53,1000-3000.
-        :type TcpPortList: str
-        :param UdpPortList: UDP port list. You can enter a single port, or a port range. Format: 80,443,700-800,53,1000-3000.
-        :type UdpPortList: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param CaseName: Policy scenario name string. Length limit: 64\n        :type CaseName: str\n        :param PlatformTypes: Development platform. Valid values: [PC (PC client), MOBILE (mobile device), TV (TV), SERVER (server)]\n        :type PlatformTypes: list of str\n        :param AppType: Category. Valid values: [WEB (website), GAME (game), APP (application), OTHER (other)]\n        :type AppType: str\n        :param AppProtocols: Application protocol. Valid values: [tcp (TCP protocol), udp (UDP protocol), icmp (ICMP protocol), all (other protocols)]\n        :type AppProtocols: list of str\n        :param TcpSportStart: TCP start port. Value range: (0, 65535]\n        :type TcpSportStart: str\n        :param TcpSportEnd: TCP end port. Value range: (0, 65535). It must be greater than or equal to the TCP start port.\n        :type TcpSportEnd: str\n        :param UdpSportStart: UDP start port. Value range: (0, 65535]\n        :type UdpSportStart: str\n        :param UdpSportEnd: UDP end port. Value range: (0, 65535). It must be greater than or equal to the UDP start port.\n        :type UdpSportEnd: str\n        :param HasAbroad: Whether there are customers outside China. Valid values: [no, yes]\n        :type HasAbroad: str\n        :param HasInitiateTcp: Whether to actively initiate outbound TCP requests. Valid values: [no, yes]\n        :type HasInitiateTcp: str\n        :param HasInitiateUdp: Whether to actively initiate outbound UDP requests. Valid values: [no, yes]\n        :type HasInitiateUdp: str\n        :param PeerTcpPort: Port that actively initiates TCP requests. Value range: (0, 65535]\n        :type PeerTcpPort: str\n        :param PeerUdpPort: Port that actively initiates UDP requests. Value range: (0, 65535]\n        :type PeerUdpPort: str\n        :param TcpFootprint: Fixed feature code of TCP payload. Max string length: 512\n        :type TcpFootprint: str\n        :param UdpFootprint: Fixed feature code of UDP payload. Max string length: 512\n        :type UdpFootprint: str\n        :param WebApiUrl: Web application API URL\n        :type WebApiUrl: list of str\n        :param MinTcpPackageLen: Minimum length of TCP packet. Value range: (0, 1500)\n        :type MinTcpPackageLen: str\n        :param MaxTcpPackageLen: Maximum length of TCP packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of TCP packet\n        :type MaxTcpPackageLen: str\n        :param MinUdpPackageLen: Minimum length of UDP packet. Value range: (0, 1500)\n        :type MinUdpPackageLen: str\n        :param MaxUdpPackageLen: Maximum length of UDP packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of UDP packet\n        :type MaxUdpPackageLen: str\n        :param HasVPN: Whether there are applications using VPN. Valid values: [no, yes]\n        :type HasVPN: str\n        :param TcpPortList: TCP port list. You can enter a single port, or a port range. Format: 80,443,700-800,53,1000-3000.\n        :type TcpPortList: str\n        :param UdpPortList: UDP port list. You can enter a single port, or a port range. Format: 80,443,700-800,53,1000-3000.\n        :type UdpPortList: str\n        """
         self.Business = None
         self.CaseName = None
         self.PlatformTypes = None
@@ -785,11 +577,7 @@ class CreateDDoSPolicyCaseResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SceneId: Policy scenario ID
-        :type SceneId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param SceneId: Policy scenario ID\n        :type SceneId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SceneId = None
         self.RequestId = None
 
@@ -806,21 +594,7 @@ class CreateDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param DropOptions: Protocol disablement, which must be entered, and the array length must be 1
-        :type DropOptions: list of DDoSPolicyDropOption
-        :param Name: Policy name
-        :type Name: str
-        :param PortLimits: Ports to be closed. If no ports are to be closed, enter an empty array
-        :type PortLimits: list of DDoSPolicyPortLimit
-        :param IpAllowDenys: Request source IP blocklist/allowlist, which should be an empty array if there are no blocked or allowed IPs.
-        :type IpAllowDenys: list of IpBlackWhite
-        :param PacketFilters: Packet filter. Enter an empty array if there are no packets to filter
-        :type PacketFilters: list of DDoSPolicyPacketFilter
-        :param WaterPrint: Watermarking policy parameters. Enter an empty array if the watermarking feature is not enabled. Only one watermarking policy can be passed in (that is, the size of the array cannot exceed 1)
-        :type WaterPrint: list of WaterPrintPolicy
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param DropOptions: Protocol disablement, which must be entered, and the array length must be 1\n        :type DropOptions: list of DDoSPolicyDropOption\n        :param Name: Policy name\n        :type Name: str\n        :param PortLimits: Ports to be closed. If no ports are to be closed, enter an empty array\n        :type PortLimits: list of DDoSPolicyPortLimit\n        :param IpAllowDenys: Request source IP blocklist/allowlist, which should be an empty array if there are no blocked or allowed IPs.\n        :type IpAllowDenys: list of IpBlackWhite\n        :param PacketFilters: Packet filter. Enter an empty array if there are no packets to filter\n        :type PacketFilters: list of DDoSPolicyPacketFilter\n        :param WaterPrint: Watermarking policy parameters. Enter an empty array if the watermarking feature is not enabled. Only one watermarking policy can be passed in (that is, the size of the array cannot exceed 1)\n        :type WaterPrint: list of WaterPrintPolicy\n        """
         self.Business = None
         self.DropOptions = None
         self.Name = None
@@ -879,11 +653,7 @@ class CreateDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: Policy ID
-        :type PolicyId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PolicyId: Policy ID\n        :type PolicyId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PolicyId = None
         self.RequestId = None
 
@@ -900,13 +670,7 @@ class CreateInstanceNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Name: Instance name. Length limit: 32 characters
-        :type Name: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Name: Instance name. Length limit: 32 characters\n        :type Name: str\n        """
         self.Business = None
         self.Id = None
         self.Name = None
@@ -932,11 +696,7 @@ class CreateInstanceNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -955,13 +715,7 @@ class CreateL4HealthConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param HealthConfig: Layer-4 health check configuration array
-        :type HealthConfig: list of L4HealthConfig
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param HealthConfig: Layer-4 health check configuration array\n        :type HealthConfig: list of L4HealthConfig\n        """
         self.Business = None
         self.Id = None
         self.HealthConfig = None
@@ -992,11 +746,7 @@ class CreateL4HealthConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1015,13 +765,7 @@ class CreateL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Rules: Rule list
-        :type Rules: list of L4RuleEntry
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Rules: Rule list\n        :type Rules: list of L4RuleEntry\n        """
         self.Business = None
         self.Id = None
         self.Rules = None
@@ -1052,11 +796,7 @@ class CreateL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1075,17 +815,7 @@ class CreateL7CCRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Method: Operation. Valid values: [query (query), add (add), del (delete)]
-        :type Method: str
-        :param RuleId: Layer-7 forwarding rule ID, such as rule-0000001
-        :type RuleId: str
-        :param RuleConfig: Custom layer-7 CC protection rule. If the `Method` is `query`, this field can be left empty; if the `Method` is `add` or `del`, it is required, and the array length can only be 1;
-        :type RuleConfig: list of CCRuleConfig
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Method: Operation. Valid values: [query (query), add (add), del (delete)]\n        :type Method: str\n        :param RuleId: Layer-7 forwarding rule ID, such as rule-0000001\n        :type RuleId: str\n        :param RuleConfig: Custom layer-7 CC protection rule. If the `Method` is `query`, this field can be left empty; if the `Method` is `add` or `del`, it is required, and the array length can only be 1;\n        :type RuleConfig: list of CCRuleConfig\n        """
         self.Business = None
         self.Id = None
         self.Method = None
@@ -1120,11 +850,7 @@ class CreateL7CCRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleConfig: Custom layer-7 CC protection rule parameters. If custom CC protection rule is not enabled, an empty array will be returned.
-        :type RuleConfig: list of CCRuleConfig
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RuleConfig: Custom layer-7 CC protection rule parameters. If custom CC protection rule is not enabled, an empty array will be returned.\n        :type RuleConfig: list of CCRuleConfig\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RuleConfig = None
         self.RequestId = None
 
@@ -1146,13 +872,7 @@ class CreateL7HealthConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param HealthConfig: Layer-7 health check configuration array
-        :type HealthConfig: list of L7HealthConfig
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param HealthConfig: Layer-7 health check configuration array\n        :type HealthConfig: list of L7HealthConfig\n        """
         self.Business = None
         self.Id = None
         self.HealthConfig = None
@@ -1183,11 +903,7 @@ class CreateL7HealthConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1206,21 +922,7 @@ class CreateL7RuleCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: The resource instance ID, such as the ID of an Anti-DDoS Advanced instance or the ID of an Anti-DDoS Ultimate instance.
-        :type Id: str
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param CertType: Certificate type, which is required if the protocol is HTTPS. Valid value: [2 (Tencent Cloud-hosted certificate)]
-        :type CertType: int
-        :param SSLId: If the certificate is a Tencent Cloud-hosted certificate, this field must be entered with the hosted certificate ID.
-        :type SSLId: str
-        :param Cert: [Disused] If the certificate is an external certificate, this field must be entered with the certificate content. 
-        :type Cert: str
-        :param PrivateKey: [Disused] If the certificate is an external certificate, this field must be entered with the certificate key. 
-        :type PrivateKey: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: The resource instance ID, such as the ID of an Anti-DDoS Advanced instance or the ID of an Anti-DDoS Ultimate instance.\n        :type Id: str\n        :param RuleId: Rule ID\n        :type RuleId: str\n        :param CertType: Certificate type, which is required if the protocol is HTTPS. Valid value: [2 (Tencent Cloud-hosted certificate)]\n        :type CertType: int\n        :param SSLId: If the certificate is a Tencent Cloud-hosted certificate, this field must be entered with the hosted certificate ID.\n        :type SSLId: str\n        :param Cert: [Disused] If the certificate is an external certificate, this field must be entered with the certificate content. \n        :type Cert: str\n        :param PrivateKey: [Disused] If the certificate is an external certificate, this field must be entered with the certificate key. \n        :type PrivateKey: str\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -1254,11 +956,7 @@ class CreateL7RuleCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1277,13 +975,7 @@ class CreateL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Rules: Rule list
-        :type Rules: list of L7RuleEntry
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Rules: Rule list\n        :type Rules: list of L7RuleEntry\n        """
         self.Business = None
         self.Id = None
         self.Rules = None
@@ -1314,11 +1006,7 @@ class CreateL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1337,13 +1025,7 @@ class CreateL7RulesUploadRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Rules: Rule list
-        :type Rules: list of L7RuleEntry
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Rules: Rule list\n        :type Rules: list of L7RuleEntry\n        """
         self.Business = None
         self.Id = None
         self.Rules = None
@@ -1374,11 +1056,7 @@ class CreateL7RulesUploadResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1397,11 +1075,7 @@ class CreateNetReturnRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        """
         self.Business = None
         self.Id = None
 
@@ -1425,9 +1099,7 @@ class CreateNetReturnResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1442,15 +1114,7 @@ class CreateNewL7RulesUploadRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).
-        :type Business: str
-        :param IdList: Resource ID list.
-        :type IdList: list of str
-        :param VipList: Resource IP address list.
-        :type VipList: list of str
-        :param Rules: Rule list.
-        :type Rules: list of L7RuleEntry
-        """
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).\n        :type Business: str\n        :param IdList: Resource ID list.\n        :type IdList: list of str\n        :param VipList: Resource IP address list.\n        :type VipList: list of str\n        :param Rules: Rule list.\n        :type Rules: list of L7RuleEntry\n        """
         self.Business = None
         self.IdList = None
         self.VipList = None
@@ -1483,11 +1147,7 @@ class CreateNewL7RulesUploadResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code.
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code.\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1506,11 +1166,7 @@ class CreateUnblockIpRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP
-        :type Ip: str
-        :param ActionType: Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)
-        :type ActionType: str
-        """
+        :param Ip: IP\n        :type Ip: str\n        :param ActionType: Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)\n        :type ActionType: str\n        """
         self.Ip = None
         self.ActionType = None
 
@@ -1534,15 +1190,7 @@ class CreateUnblockIpResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP
-        :type Ip: str
-        :param ActionType: Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)
-        :type ActionType: str
-        :param UnblockTime: Unblocked time (estimated)
-        :type UnblockTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Ip: IP\n        :type Ip: str\n        :param ActionType: Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)\n        :type ActionType: str\n        :param UnblockTime: Unblocked time (estimated)\n        :type UnblockTime: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ip = None
         self.ActionType = None
         self.UnblockTime = None
@@ -1563,11 +1211,7 @@ class DDoSAlarmThreshold(AbstractModel):
 
     def __init__(self):
         """
-        :param AlarmType: Alarm threshold type. 1: inbound traffic, 2: cleansed traffic
-        :type AlarmType: int
-        :param AlarmThreshold: Alarm threshold, which should be greater than 0 (currently scheduled value)
-        :type AlarmThreshold: int
-        """
+        :param AlarmType: Alarm threshold type. 1: inbound traffic, 2: cleansed traffic\n        :type AlarmType: int\n        :param AlarmThreshold: Alarm threshold, which should be greater than 0 (currently scheduled value)\n        :type AlarmThreshold: int\n        """
         self.AlarmType = None
         self.AlarmThreshold = None
 
@@ -1591,17 +1235,7 @@ class DDoSAttackSourceRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param SrcIp: Attack source IP
-        :type SrcIp: str
-        :param Province: Province (valid for Mainland China)
-        :type Province: str
-        :param Nation: Country/region
-        :type Nation: str
-        :param PacketSum: Total number of attack packets
-        :type PacketSum: int
-        :param PacketLen: Total attack traffic
-        :type PacketLen: int
-        """
+        :param SrcIp: Attack source IP\n        :type SrcIp: str\n        :param Province: Province (valid for Mainland China)\n        :type Province: str\n        :param Nation: Country/region\n        :type Nation: str\n        :param PacketSum: Total number of attack packets\n        :type PacketSum: int\n        :param PacketLen: Total attack traffic\n        :type PacketLen: int\n        """
         self.SrcIp = None
         self.Province = None
         self.Nation = None
@@ -1631,35 +1265,9 @@ class DDoSEventRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Vip: Resource IP
-        :type Vip: str
-        :param StartTime: Attack start time
-        :type StartTime: str
-        :param EndTime: Attack end time
-        :type EndTime: str
-        :param Mbps: Maximum attack bandwidth
-        :type Mbps: int
-        :param Pps: Maximum attack packet rate
-        :type Pps: int
-        :param AttackType: Attack type
-        :type AttackType: str
-        :param BlockFlag: Whether the IP is blocked. Valid values: [1 (yes), 0 (no), 2 (invalid value)]
-        :type BlockFlag: int
-        :param OverLoad: Whether the elastic protection bandwidth is exceeded. Valid values: [yes (yes), no (no), empty string (unknown value)]
-        :type OverLoad: str
-        :param AttackStatus: Attack status. Valid values: [0 (ongoing), 1 (ended)]
-        :type AttackStatus: int
-        :param ResourceName: Resource name
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ResourceName: str
-        :param EventId: Attack event ID
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type EventId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Vip: Resource IP\n        :type Vip: str\n        :param StartTime: Attack start time\n        :type StartTime: str\n        :param EndTime: Attack end time\n        :type EndTime: str\n        :param Mbps: Maximum attack bandwidth\n        :type Mbps: int\n        :param Pps: Maximum attack packet rate\n        :type Pps: int\n        :param AttackType: Attack type\n        :type AttackType: str\n        :param BlockFlag: Whether the IP is blocked. Valid values: [1 (yes), 0 (no), 2 (invalid value)]\n        :type BlockFlag: int\n        :param OverLoad: Whether the elastic protection bandwidth is exceeded. Valid values: [yes (yes), no (no), empty string (unknown value)]\n        :type OverLoad: str\n        :param AttackStatus: Attack status. Valid values: [0 (ongoing), 1 (ended)]\n        :type AttackStatus: int\n        :param ResourceName: Resource name
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResourceName: str\n        :param EventId: Attack event ID
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type EventId: str\n        """
         self.Business = None
         self.Id = None
         self.Vip = None
@@ -1705,45 +1313,7 @@ class DDoSPolicyDropOption(AbstractModel):
 
     def __init__(self):
         """
-        :param DropTcp: Blocks all TCP traffic. Valid values: [0,1]
-        :type DropTcp: int
-        :param DropUdp: Blocks all UDP traffic. Valid values: [0,1]
-        :type DropUdp: int
-        :param DropIcmp: Blocks all ICMP traffic. Valid values: [0,1]
-        :type DropIcmp: int
-        :param DropOther: Blocks traffic of other protocols. Valid values: [0,1]
-        :type DropOther: int
-        :param DropAbroad: Rejects traffic from outside Mainland China. Valid values: [0,1]
-        :type DropAbroad: int
-        :param CheckSyncConn: Null session protection. Valid values: [0,1]
-        :type CheckSyncConn: int
-        :param SdNewLimit: New connection suppression based on source IP and destination IP. Value range: [0,4294967295]
-        :type SdNewLimit: int
-        :param DstNewLimit: New connection suppression based on destination IP. Value range: [0,4294967295]
-        :type DstNewLimit: int
-        :param SdConnLimit: Concurrent connection suppression based on source IP and destination IP. Value range: [0,4294967295]
-        :type SdConnLimit: int
-        :param DstConnLimit: Concurrent connection suppression based on destination IP. Value range: [0,4294967295]
-        :type DstConnLimit: int
-        :param BadConnThreshold: Threshold for triggering connection suppression. Value range: [0,4294967295]
-        :type BadConnThreshold: int
-        :param NullConnEnable: Exceptional connection detection condition: null session protection status. Valid values: [0,1]
-        :type NullConnEnable: int
-        :param ConnTimeout: Exceptional connection detection condition: connection timeout. Valid values: [0,65535]
-        :type ConnTimeout: int
-        :param SynRate: Exceptional connection detection condition: percentage of SYN out of ACK. Valid values: [0,100]
-        :type SynRate: int
-        :param SynLimit: Exceptional connection detection condition: SYN threshold. Valid values: [0,100]
-        :type SynLimit: int
-        :param DTcpMbpsLimit: TCP speed limit. Value range: [0,4294967295]
-        :type DTcpMbpsLimit: int
-        :param DUdpMbpsLimit: UDP speed limit. Value range: [0,4294967295]
-        :type DUdpMbpsLimit: int
-        :param DIcmpMbpsLimit: ICMP speed limit. Value range: [0,4294967295]
-        :type DIcmpMbpsLimit: int
-        :param DOtherMbpsLimit: Other protocol speed limit. Value range: [0,4294967295]
-        :type DOtherMbpsLimit: int
-        """
+        :param DropTcp: Blocks all TCP traffic. Valid values: [0,1]\n        :type DropTcp: int\n        :param DropUdp: Blocks all UDP traffic. Valid values: [0,1]\n        :type DropUdp: int\n        :param DropIcmp: Blocks all ICMP traffic. Valid values: [0,1]\n        :type DropIcmp: int\n        :param DropOther: Blocks traffic of other protocols. Valid values: [0,1]\n        :type DropOther: int\n        :param DropAbroad: Rejects traffic from outside Mainland China. Valid values: [0,1]\n        :type DropAbroad: int\n        :param CheckSyncConn: Null session protection. Valid values: [0,1]\n        :type CheckSyncConn: int\n        :param SdNewLimit: New connection suppression based on source IP and destination IP. Value range: [0,4294967295]\n        :type SdNewLimit: int\n        :param DstNewLimit: New connection suppression based on destination IP. Value range: [0,4294967295]\n        :type DstNewLimit: int\n        :param SdConnLimit: Concurrent connection suppression based on source IP and destination IP. Value range: [0,4294967295]\n        :type SdConnLimit: int\n        :param DstConnLimit: Concurrent connection suppression based on destination IP. Value range: [0,4294967295]\n        :type DstConnLimit: int\n        :param BadConnThreshold: Threshold for triggering connection suppression. Value range: [0,4294967295]\n        :type BadConnThreshold: int\n        :param NullConnEnable: Exceptional connection detection condition: null session protection status. Valid values: [0,1]\n        :type NullConnEnable: int\n        :param ConnTimeout: Exceptional connection detection condition: connection timeout. Valid values: [0,65535]\n        :type ConnTimeout: int\n        :param SynRate: Exceptional connection detection condition: percentage of SYN out of ACK. Valid values: [0,100]\n        :type SynRate: int\n        :param SynLimit: Exceptional connection detection condition: SYN threshold. Valid values: [0,100]\n        :type SynLimit: int\n        :param DTcpMbpsLimit: TCP speed limit. Value range: [0,4294967295]\n        :type DTcpMbpsLimit: int\n        :param DUdpMbpsLimit: UDP speed limit. Value range: [0,4294967295]\n        :type DUdpMbpsLimit: int\n        :param DIcmpMbpsLimit: ICMP speed limit. Value range: [0,4294967295]\n        :type DIcmpMbpsLimit: int\n        :param DOtherMbpsLimit: Other protocol speed limit. Value range: [0,4294967295]\n        :type DOtherMbpsLimit: int\n        """
         self.DropTcp = None
         self.DropUdp = None
         self.DropIcmp = None
@@ -1801,40 +1371,12 @@ class DDoSPolicyPacketFilter(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: Protocol. Valid values: [tcp, udp, icmp, all]
-        :type Protocol: str
-        :param SportStart: Start source port. Value range: [0,65535]
-        :type SportStart: int
-        :param SportEnd: End source port. Value range: [0,65535]
-        :type SportEnd: int
-        :param DportStart: Start destination port. Value range: [0,65535]
-        :type DportStart: int
-        :param DportEnd: End destination port. Value range: [0,65535]
-        :type DportEnd: int
-        :param PktlenMin: Minimum packet length. Value range: [0,1500]
-        :type PktlenMin: int
-        :param PktlenMax: Maximum packet length. Value range: [0,1500]
-        :type PktlenMax: int
-        :param MatchBegin: Whether to detect the payload. Valid values: [
+        :param Protocol: Protocol. Valid values: [tcp, udp, icmp, all]\n        :type Protocol: str\n        :param SportStart: Start source port. Value range: [0,65535]\n        :type SportStart: int\n        :param SportEnd: End source port. Value range: [0,65535]\n        :type SportEnd: int\n        :param DportStart: Start destination port. Value range: [0,65535]\n        :type DportStart: int\n        :param DportEnd: End destination port. Value range: [0,65535]\n        :type DportEnd: int\n        :param PktlenMin: Minimum packet length. Value range: [0,1500]\n        :type PktlenMin: int\n        :param PktlenMax: Maximum packet length. Value range: [0,1500]\n        :type PktlenMax: int\n        :param MatchBegin: Whether to detect the payload. Valid values: [
 begin_l3 (IP header)
 begin_l4 (TCP header)
 begin_l5 (payload)
 no_match (no check)
-]
-        :type MatchBegin: str
-        :param MatchType: Whether it is a regular expression. Valid values: [sunday (keyword), pcre (regular expression)]
-        :type MatchType: str
-        :param Str: Keyword or regular expression
-        :type Str: str
-        :param Depth: Detection depth. Value range: [0,1500]
-        :type Depth: int
-        :param Offset: Detection offset. Value range: [0,1500]
-        :type Offset: int
-        :param IsNot: Whether to include. Valid values: [0 (no), 1 (yes)]
-        :type IsNot: int
-        :param Action: Policy action. Valid values: [drop, drop_black, drop_rst, drop_black_rst, transmit]
-        :type Action: str
-        """
+]\n        :type MatchBegin: str\n        :param MatchType: Whether it is a regular expression. Valid values: [sunday (keyword), pcre (regular expression)]\n        :type MatchType: str\n        :param Str: Keyword or regular expression\n        :type Str: str\n        :param Depth: Detection depth. Value range: [0,1500]\n        :type Depth: int\n        :param Offset: Detection offset. Value range: [0,1500]\n        :type Offset: int\n        :param IsNot: Whether to include. Valid values: [0 (no), 1 (yes)]\n        :type IsNot: int\n        :param Action: Policy action. Valid values: [drop, drop_black, drop_rst, drop_black_rst, transmit]\n        :type Action: str\n        """
         self.Protocol = None
         self.SportStart = None
         self.SportEnd = None
@@ -1882,25 +1424,11 @@ class DDoSPolicyPortLimit(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: Protocol. Valid values: [tcp, udp, all]
-        :type Protocol: str
-        :param DPortStart: Start destination port. Value range: [0,65535]
-        :type DPortStart: int
-        :param DPortEnd: End destination port, which must be greater than or equal to the start destination port. Value range: [0,65535]
-        :type DPortEnd: int
-        :param SPortStart: Start source port. Value range: [0,65535]
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SPortStart: int
-        :param SPortEnd: End source port, which must be greater than or equal to the start source port. Value range: [0,65535]
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SPortEnd: int
-        :param Action: Action to be executed. Valid values: [drop (discard) , transmit (forward)]
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Action: str
-        :param Kind: Type of port to be disabled. Valid values: [0 (destination port range), 1 (source port range), 2 (destination port range and source port range)]
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Kind: int
-        """
+        :param Protocol: Protocol. Valid values: [tcp, udp, all]\n        :type Protocol: str\n        :param DPortStart: Start destination port. Value range: [0,65535]\n        :type DPortStart: int\n        :param DPortEnd: End destination port, which must be greater than or equal to the start destination port. Value range: [0,65535]\n        :type DPortEnd: int\n        :param SPortStart: Start source port. Value range: [0,65535]
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SPortStart: int\n        :param SPortEnd: End source port, which must be greater than or equal to the start source port. Value range: [0,65535]
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SPortEnd: int\n        :param Action: Action to be executed. Valid values: [drop (discard) , transmit (forward)]
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Action: str\n        :param Kind: Type of port to be disabled. Valid values: [0 (destination port range), 1 (source port range), 2 (destination port range and source port range)]
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Kind: int\n        """
         self.Protocol = None
         self.DPortStart = None
         self.DPortEnd = None
@@ -1934,33 +1462,9 @@ class DDosPolicy(AbstractModel):
 
     def __init__(self):
         """
-        :param Resources: Resource bound to policy
-        :type Resources: list of ResourceIp
-        :param DropOptions: Disabled protocol
-        :type DropOptions: :class:`tencentcloud.dayu.v20180709.models.DDoSPolicyDropOption`
-        :param PortLimits: Disabled port
-        :type PortLimits: list of DDoSPolicyPortLimit
-        :param PacketFilters: Packet filter
-        :type PacketFilters: list of DDoSPolicyPacketFilter
-        :param IpBlackWhiteLists: IP blocklist/allowlist
-        :type IpBlackWhiteLists: list of IpBlackWhite
-        :param PolicyId: Policy ID
-        :type PolicyId: str
-        :param PolicyName: Policy name
-        :type PolicyName: str
-        :param CreateTime: Policy creation time
-        :type CreateTime: str
-        :param WaterPrint: Watermarking policy parameter. There can be only one policy. If there are no policies, the array is empty
-        :type WaterPrint: list of WaterPrintPolicy
-        :param WaterKey: Watermark key. There can be up to two keys. If there are no policies, the array is empty
-        :type WaterKey: list of WaterPrintKey
-        :param BoundResources: Resource instance bound to policy
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BoundResources: list of str
-        :param SceneId: Policy scenario
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SceneId: str
-        """
+        :param Resources: Resource bound to policy\n        :type Resources: list of ResourceIp\n        :param DropOptions: Disabled protocol\n        :type DropOptions: :class:`tencentcloud.dayu.v20180709.models.DDoSPolicyDropOption`\n        :param PortLimits: Disabled port\n        :type PortLimits: list of DDoSPolicyPortLimit\n        :param PacketFilters: Packet filter\n        :type PacketFilters: list of DDoSPolicyPacketFilter\n        :param IpBlackWhiteLists: IP blocklist/allowlist\n        :type IpBlackWhiteLists: list of IpBlackWhite\n        :param PolicyId: Policy ID\n        :type PolicyId: str\n        :param PolicyName: Policy name\n        :type PolicyName: str\n        :param CreateTime: Policy creation time\n        :type CreateTime: str\n        :param WaterPrint: Watermarking policy parameter. There can be only one policy. If there are no policies, the array is empty\n        :type WaterPrint: list of WaterPrintPolicy\n        :param WaterKey: Watermark key. There can be up to two keys. If there are no policies, the array is empty\n        :type WaterKey: list of WaterPrintKey\n        :param BoundResources: Resource instance bound to policy
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type BoundResources: list of str\n        :param SceneId: Policy scenario
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SceneId: str\n        """
         self.Resources = None
         self.DropOptions = None
         self.PortLimits = None
@@ -2036,11 +1540,7 @@ class DeleteCCFrequencyRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param CCFrequencyRuleId: Access frequency control rule ID for CC protection
-        :type CCFrequencyRuleId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param CCFrequencyRuleId: Access frequency control rule ID for CC protection\n        :type CCFrequencyRuleId: str\n        """
         self.Business = None
         self.CCFrequencyRuleId = None
 
@@ -2064,11 +1564,7 @@ class DeleteCCFrequencyRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2087,13 +1583,7 @@ class DeleteCCSelfDefinePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param SetId: Policy ID
-        :type SetId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param SetId: Policy ID\n        :type SetId: str\n        """
         self.Business = None
         self.Id = None
         self.SetId = None
@@ -2119,11 +1609,7 @@ class DeleteCCSelfDefinePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2142,11 +1628,7 @@ class DeleteDDoSPolicyCaseRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param SceneId: Policy scenario ID
-        :type SceneId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param SceneId: Policy scenario ID\n        :type SceneId: str\n        """
         self.Business = None
         self.SceneId = None
 
@@ -2170,11 +1652,7 @@ class DeleteDDoSPolicyCaseResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2193,11 +1671,7 @@ class DeleteDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param PolicyId: Policy ID
-        :type PolicyId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param PolicyId: Policy ID\n        :type PolicyId: str\n        """
         self.Business = None
         self.PolicyId = None
 
@@ -2221,11 +1695,7 @@ class DeleteDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2244,13 +1714,7 @@ class DeleteL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleIdList: Rule ID list
-        :type RuleIdList: list of str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleIdList: Rule ID list\n        :type RuleIdList: list of str\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -2276,11 +1740,7 @@ class DeleteL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2299,13 +1759,7 @@ class DeleteL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleIdList: Rule ID list
-        :type RuleIdList: list of str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleIdList: Rule ID list\n        :type RuleIdList: list of str\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -2331,11 +1785,7 @@ class DeleteL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2354,19 +1804,7 @@ class DescribeActionLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time
-        :type StartTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Filter: Search value, which can only be resource ID or user `UIN`
-        :type Filter: str
-        :param Limit: Number of entries per page. A value of 0 means no pagination
-        :type Limit: int
-        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page
-        :type Offset: int
-        """
+        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Filter: Search value, which can only be resource ID or user `UIN`\n        :type Filter: str\n        :param Limit: Number of entries per page. A value of 0 means no pagination\n        :type Limit: int\n        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page\n        :type Offset: int\n        """
         self.StartTime = None
         self.EndTime = None
         self.Business = None
@@ -2398,13 +1836,7 @@ class DescribeActionLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of records
-        :type TotalCount: int
-        :param Data: Record array
-        :type Data: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of records\n        :type TotalCount: int\n        :param Data: Record array\n        :type Data: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Data = None
         self.RequestId = None
@@ -2428,11 +1860,7 @@ class DescribeBGPIPL7RuleMaxCntRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        """
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        """
         self.Business = None
         self.Id = None
 
@@ -2456,11 +1884,7 @@ class DescribeBGPIPL7RuleMaxCntResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Count: Maximum number of layer-7 rules that can be added for Anti-DDoS Advanced
-        :type Count: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Count: Maximum number of layer-7 rules that can be added for Anti-DDoS Advanced\n        :type Count: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Count = None
         self.RequestId = None
 
@@ -2477,11 +1901,7 @@ class DescribeBaradDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param MetricName: Metric name. Valid values:
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param MetricName: Metric name. Valid values:
 connum: number of active TCP connections;
 new_conn: number of new TCP connections;
 inactive_conn: number of inactive connections;
@@ -2489,24 +1909,10 @@ intraffic: inbound traffic;
 outtraffic: outbound traffic;
 alltraffic: sum of inbound and outbound traffic;
 inpkg: inbound packet rate;
-outpkg: outbound packet rate;
-        :type MetricName: str
-        :param Period: Statistical time granularity in seconds (300: 5-minute, 3600: hourly, 86400: daily)
-        :type Period: int
-        :param StartTime: Statistics start time. The second part is kept at 0, and the minute part is a multiple of 5
-        :type StartTime: str
-        :param EndTime: Statistics end time. The second part is kept at 0, and the minute part is a multiple of 5
-        :type EndTime: str
-        :param Statistics: Statistical method. Valid values:
+outpkg: outbound packet rate;\n        :type MetricName: str\n        :param Period: Statistical time granularity in seconds (300: 5-minute, 3600: hourly, 86400: daily)\n        :type Period: int\n        :param StartTime: Statistics start time. The second part is kept at 0, and the minute part is a multiple of 5\n        :type StartTime: str\n        :param EndTime: Statistics end time. The second part is kept at 0, and the minute part is a multiple of 5\n        :type EndTime: str\n        :param Statistics: Statistical method. Valid values:
 max: maximum value;
 min: minimum value;
-avg: average;
-        :type Statistics: str
-        :param ProtocolPort: Protocol port array
-        :type ProtocolPort: list of ProtocolPort
-        :param Ip: Resource instance IP, which is required only if `Business` is `net` (Anti-DDoS Ultimate), because an Anti-DDoS Ultimate instance has multiple IPs;
-        :type Ip: str
-        """
+avg: average;\n        :type Statistics: str\n        :param ProtocolPort: Protocol port array\n        :type ProtocolPort: list of ProtocolPort\n        :param Ip: Resource instance IP, which is required only if `Business` is `net` (Anti-DDoS Ultimate), because an Anti-DDoS Ultimate instance has multiple IPs;\n        :type Ip: str\n        """
         self.Business = None
         self.Id = None
         self.MetricName = None
@@ -2549,11 +1955,7 @@ class DescribeBaradDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataList: Returned metric value
-        :type DataList: list of BaradData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DataList: Returned metric value\n        :type DataList: list of BaradData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DataList = None
         self.RequestId = None
 
@@ -2575,19 +1977,7 @@ class DescribeBasicCCThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BasicIp: Queried IP address, such as 1.1.1.1
-        :type BasicIp: str
-        :param BasicRegion: IP region. Valid values: region abbreviations such as gz, bj, sh, and hk
-        :type BasicRegion: str
-        :param BasicBizType: Zone type. Valid values: public (public cloud zone), bm (BM zone), nat (NAT server zone), channel (internet channel).
-        :type BasicBizType: str
-        :param BasicDeviceType: Device type. Valid values: cvm (CVM), clb (public CLB), lb (BM CLB), nat (NAT server), channel (internet channel).
-        :type BasicDeviceType: str
-        :param BasicIpInstance: IPInstance Nat gateway, which is optional. (If the device type to be queried is a NAT server, this parameter is required, which can be obtained through the NAT resource query API)
-        :type BasicIpInstance: str
-        :param BasicIspCode: ISP line, which is optional. (If the device type to be queried is a NAT server, this parameter should be 5)
-        :type BasicIspCode: int
-        """
+        :param BasicIp: Queried IP address, such as 1.1.1.1\n        :type BasicIp: str\n        :param BasicRegion: IP region. Valid values: region abbreviations such as gz, bj, sh, and hk\n        :type BasicRegion: str\n        :param BasicBizType: Zone type. Valid values: public (public cloud zone), bm (BM zone), nat (NAT server zone), channel (internet channel).\n        :type BasicBizType: str\n        :param BasicDeviceType: Device type. Valid values: cvm (CVM), clb (public CLB), lb (BM CLB), nat (NAT server), channel (internet channel).\n        :type BasicDeviceType: str\n        :param BasicIpInstance: IPInstance Nat gateway, which is optional. (If the device type to be queried is a NAT server, this parameter is required, which can be obtained through the NAT resource query API)\n        :type BasicIpInstance: str\n        :param BasicIspCode: ISP line, which is optional. (If the device type to be queried is a NAT server, this parameter should be 5)\n        :type BasicIspCode: int\n        """
         self.BasicIp = None
         self.BasicRegion = None
         self.BasicBizType = None
@@ -2619,13 +2009,7 @@ class DescribeBasicCCThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CCEnable: CC status (0: disabled, 1: enabled)
-        :type CCEnable: int
-        :param CCThreshold: CC protection threshold
-        :type CCThreshold: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CCEnable: CC status (0: disabled, 1: enabled)\n        :type CCEnable: int\n        :param CCThreshold: CC protection threshold\n        :type CCThreshold: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CCEnable = None
         self.CCThreshold = None
         self.RequestId = None
@@ -2644,21 +2028,7 @@ class DescribeBasicDeviceThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BasicIp: Queried IP address, such as 1.1.1.1
-        :type BasicIp: str
-        :param BasicRegion: IP region. Valid values: region abbreviations such as gz, bj, sh, and hk
-        :type BasicRegion: str
-        :param BasicBizType: Zone type. Valid values: public (public cloud zone), bm (BM zone), nat (NAT server zone), channel (internet channel).
-        :type BasicBizType: str
-        :param BasicDeviceType: Device type. Valid values: cvm (CVM), clb (public CLB), lb (BM CLB), nat (NAT server), channel (internet channel).
-        :type BasicDeviceType: str
-        :param BasicCheckFlag: Validity check. Valid value: 1
-        :type BasicCheckFlag: int
-        :param BasicIpInstance: IPInstance Nat gateway, which is optional. (If the device type to be queried is a NAT server, this parameter is required, which can be obtained through the NAT resource query API)
-        :type BasicIpInstance: str
-        :param BasicIspCode: ISP line, which is optional. (If the device type to be queried is a NAT server, this parameter should be 5)
-        :type BasicIspCode: int
-        """
+        :param BasicIp: Queried IP address, such as 1.1.1.1\n        :type BasicIp: str\n        :param BasicRegion: IP region. Valid values: region abbreviations such as gz, bj, sh, and hk\n        :type BasicRegion: str\n        :param BasicBizType: Zone type. Valid values: public (public cloud zone), bm (BM zone), nat (NAT server zone), channel (internet channel).\n        :type BasicBizType: str\n        :param BasicDeviceType: Device type. Valid values: cvm (CVM), clb (public CLB), lb (BM CLB), nat (NAT server), channel (internet channel).\n        :type BasicDeviceType: str\n        :param BasicCheckFlag: Validity check. Valid value: 1\n        :type BasicCheckFlag: int\n        :param BasicIpInstance: IPInstance Nat gateway, which is optional. (If the device type to be queried is a NAT server, this parameter is required, which can be obtained through the NAT resource query API)\n        :type BasicIpInstance: str\n        :param BasicIspCode: ISP line, which is optional. (If the device type to be queried is a NAT server, this parameter should be 5)\n        :type BasicIspCode: int\n        """
         self.BasicIp = None
         self.BasicRegion = None
         self.BasicBizType = None
@@ -2692,11 +2062,7 @@ class DescribeBasicDeviceThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Threshold: Blackhole blocking value
-        :type Threshold: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Threshold: Blackhole blocking value\n        :type Threshold: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Threshold = None
         self.RequestId = None
 
@@ -2713,23 +2079,7 @@ class DescribeBizHttpStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
-        :type Business: str
-        :param Id: Resource ID
-        :type Id: str
-        :param Period: Statistical period in seconds. Valid values: 300, 1800, 3600, 21600, and 86400.
-        :type Period: int
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param Statistics: Statistical mode, which only supports sum.
-        :type Statistics: str
-        :param ProtoInfo: Protocol and port list, which is valid when the statistical dimension is the number of connections. Valid protocols: TCP, UDP, HTTP, and HTTPS.
-        :type ProtoInfo: list of ProtocolPort
-        :param Domain: Specific domain name query
-        :type Domain: str
-        """
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)\n        :type Business: str\n        :param Id: Resource ID\n        :type Id: str\n        :param Period: Statistical period in seconds. Valid values: 300, 1800, 3600, 21600, and 86400.\n        :type Period: int\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param Statistics: Statistical mode, which only supports sum.\n        :type Statistics: str\n        :param ProtoInfo: Protocol and port list, which is valid when the statistical dimension is the number of connections. Valid protocols: TCP, UDP, HTTP, and HTTPS.\n        :type ProtoInfo: list of ProtocolPort\n        :param Domain: Specific domain name query\n        :type Domain: str\n        """
         self.Business = None
         self.Id = None
         self.Period = None
@@ -2770,11 +2120,7 @@ class DescribeBizHttpStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param HttpStatusMap: Statistics on the HTTP status codes of business traffic
-        :type HttpStatusMap: :class:`tencentcloud.dayu.v20180709.models.HttpStatusMap`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param HttpStatusMap: Statistics on the HTTP status codes of business traffic\n        :type HttpStatusMap: :class:`tencentcloud.dayu.v20180709.models.HttpStatusMap`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.HttpStatusMap = None
         self.RequestId = None
 
@@ -2793,11 +2139,7 @@ class DescribeCCAlarmThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param RsId: Anti-DDoS instance ID
-        :type RsId: str
-        """
+        :param Business: Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param RsId: Anti-DDoS instance ID\n        :type RsId: str\n        """
         self.Business = None
         self.RsId = None
 
@@ -2821,11 +2163,7 @@ class DescribeCCAlarmThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CCAlarmThreshold: CC alarm threshold
-        :type CCAlarmThreshold: :class:`tencentcloud.dayu.v20180709.models.CCAlarmThreshold`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CCAlarmThreshold: CC alarm threshold\n        :type CCAlarmThreshold: :class:`tencentcloud.dayu.v20180709.models.CCAlarmThreshold`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CCAlarmThreshold = None
         self.RequestId = None
 
@@ -2844,21 +2182,7 @@ class DescribeCCEvListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param StartTime: Start time
-        :type StartTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param IpList: Resource instance IP. When `business` is not `basic`, if `IpList` is not empty, `Id` must not be empty;
-        :type IpList: list of str
-        :param Limit: Number of entries per page. A value of 0 means no pagination
-        :type Limit: int
-        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page
-        :type Offset: int
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param IpList: Resource instance IP. When `business` is not `basic`, if `IpList` is not empty, `Id` must not be empty;\n        :type IpList: list of str\n        :param Limit: Number of entries per page. A value of 0 means no pagination\n        :type Limit: int\n        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page\n        :type Offset: int\n        """
         self.Business = None
         self.StartTime = None
         self.EndTime = None
@@ -2892,24 +2216,8 @@ class DescribeCCEvListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `shield`: Chess Shield; `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param IpList: Instance IP list
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IpList: list of str
-        :param StartTime: Start time
-        :type StartTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param Data: CC attack event list
-        :type Data: list of CCEventRecord
-        :param Total: Total number of records
-        :type Total: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Business: Anti-DDoS service type. `shield`: Chess Shield; `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param IpList: Instance IP list
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpList: list of str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param Data: CC attack event list\n        :type Data: list of CCEventRecord\n        :param Total: Total number of records\n        :type Total: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.IpList = None
@@ -2943,13 +2251,7 @@ class DescribeCCFrequencyRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleId: Layer-7 forwarding rule ID (which can be obtained from the layer-7 forwarding rule API). If a value is entered, it means to get the access frequency control rule of the forwarding rule;
-        :type RuleId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleId: Layer-7 forwarding rule ID (which can be obtained from the layer-7 forwarding rule API). If a value is entered, it means to get the access frequency control rule of the forwarding rule;\n        :type RuleId: str\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -2975,13 +2277,7 @@ class DescribeCCFrequencyRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CCFrequencyRuleList: Access frequency control rule list
-        :type CCFrequencyRuleList: list of CCFrequencyRule
-        :param CCFrequencyRuleStatus: Access frequency control rule status. Valid values: [on, off];
-        :type CCFrequencyRuleStatus: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CCFrequencyRuleList: Access frequency control rule list\n        :type CCFrequencyRuleList: list of CCFrequencyRule\n        :param CCFrequencyRuleStatus: Access frequency control rule status. Valid values: [on, off];\n        :type CCFrequencyRuleStatus: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CCFrequencyRuleList = None
         self.CCFrequencyRuleStatus = None
         self.RequestId = None
@@ -3005,20 +2301,8 @@ class DescribeCCIpAllowDenyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Type: Blocklist or allowlist. Valid values: [white (allowlist), black (blocklist)]
-Note: this array can only have one value. It cannot get the blocklist and allowlist at the same time
-        :type Type: list of str
-        :param Limit: Pagination parameter
-        :type Limit: int
-        :param Offset: Pagination parameter
-        :type Offset: int
-        :param Protocol: HTTP or HTTPS CC protection, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)];
-        :type Protocol: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Type: Blocklist or allowlist. Valid values: [white (allowlist), black (blocklist)]
+Note: this array can only have one value. It cannot get the blocklist and allowlist at the same time\n        :type Type: list of str\n        :param Limit: Pagination parameter\n        :type Limit: int\n        :param Offset: Pagination parameter\n        :type Offset: int\n        :param Protocol: HTTP or HTTPS CC protection, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)];\n        :type Protocol: str\n        """
         self.Business = None
         self.Id = None
         self.Type = None
@@ -3050,19 +2334,11 @@ class DescribeCCIpAllowDenyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: This field has been replaced by `RecordList` and should not be used
-        :type Data: list of KeyValue
-        :param Total: Number of records
-        :type Total: int
-        :param RecordList: Returned Blocklist/allowlist record,
+        :param Data: This field has been replaced by `RecordList` and should not be used\n        :type Data: list of KeyValue\n        :param Total: Number of records\n        :type Total: int\n        :param RecordList: Returned Blocklist/allowlist record,
 If "Key":"ip", "Value": IP;
 If "Key":"domain", "Value": domain name.
 If "Key":"type", "Value" can be `white` (allowlist) or `black` (blocklist).
-If "Key":"protocol", "Value": CC protection protocol (HTTP or HTTPS);
-        :type RecordList: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+If "Key":"protocol", "Value": CC protection protocol (HTTP or HTTPS);\n        :type RecordList: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.Total = None
         self.RecordList = None
@@ -3093,15 +2369,7 @@ class DescribeCCSelfDefinePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro, `bgp-multip`: Anti-DDoS Pro (multi-IP)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Limit: Number of entries pulled
-        :type Limit: int
-        :param Offset: Offset
-        :type Offset: int
-        """
+        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro, `bgp-multip`: Anti-DDoS Pro (multi-IP)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Limit: Number of entries pulled\n        :type Limit: int\n        :param Offset: Offset\n        :type Offset: int\n        """
         self.Business = None
         self.Id = None
         self.Limit = None
@@ -3129,13 +2397,7 @@ class DescribeCCSelfDefinePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total number of custom rules
-        :type Total: int
-        :param Policys: Policy list
-        :type Policys: list of CCPolicy
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Total: Total number of custom rules\n        :type Total: int\n        :param Policys: Policy list\n        :type Policys: list of CCPolicy\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.Policys = None
         self.RequestId = None
@@ -3159,23 +2421,7 @@ class DescribeCCTrendRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Ip: Resource IP
-        :type Ip: str
-        :param MetricName: Metric. Valid values: [inqps (total requests peak), dropqps (attack requests peak)]
-        :type MetricName: str
-        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
-        :type Period: int
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param Id: Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)
-        :type Id: str
-        :param Domain: (Optional) Domain name
-        :type Domain: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Ip: Resource IP\n        :type Ip: str\n        :param MetricName: Metric. Valid values: [inqps (total requests peak), dropqps (attack requests peak)]\n        :type MetricName: str\n        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]\n        :type Period: int\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param Id: Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)\n        :type Id: str\n        :param Domain: (Optional) Domain name\n        :type Domain: str\n        """
         self.Business = None
         self.Ip = None
         self.MetricName = None
@@ -3211,28 +2457,8 @@ class DescribeCCTrendResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Id: str
-        :param Ip: Resource IP
-        :type Ip: str
-        :param MetricName: Metric. Valid values: [inqps (total requests peak), dropqps (attack requests peak)]
-        :type MetricName: str
-        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
-        :type Period: int
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param Data: Value array
-        :type Data: list of int non-negative
-        :param Count: Number of values
-        :type Count: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Id: Anti-DDoS instance ID
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Id: str\n        :param Ip: Resource IP\n        :type Ip: str\n        :param MetricName: Metric. Valid values: [inqps (total requests peak), dropqps (attack requests peak)]\n        :type MetricName: str\n        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]\n        :type Period: int\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param Data: Value array\n        :type Data: list of int non-negative\n        :param Count: Number of values\n        :type Count: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -3265,20 +2491,8 @@ class DescribeCCUrlAllowRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Type: Blocklist or allowlist. Valid value: [white (allowlist)]. Currently, only allowlist is supported.
-Note: this array can only have one value which can only be `white`
-        :type Type: list of str
-        :param Limit: Pagination parameter
-        :type Limit: int
-        :param Offset: Pagination parameter
-        :type Offset: int
-        :param Protocol: HTTP or HTTPS CC protection, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)];
-        :type Protocol: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Type: Blocklist or allowlist. Valid value: [white (allowlist)]. Currently, only allowlist is supported.
+Note: this array can only have one value which can only be `white`\n        :type Type: list of str\n        :param Limit: Pagination parameter\n        :type Limit: int\n        :param Offset: Pagination parameter\n        :type Offset: int\n        :param Protocol: HTTP or HTTPS CC protection, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)];\n        :type Protocol: str\n        """
         self.Business = None
         self.Id = None
         self.Type = None
@@ -3310,19 +2524,11 @@ class DescribeCCUrlAllowResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: This field has been replaced by `RecordList` and should not be used
-        :type Data: list of KeyValue
-        :param Total: Total number of records
-        :type Total: int
-        :param RecordList: Returned Blocklist/allowlist record,
+        :param Data: This field has been replaced by `RecordList` and should not be used\n        :type Data: list of KeyValue\n        :param Total: Total number of records\n        :type Total: int\n        :param RecordList: Returned Blocklist/allowlist record,
 If "Key":"url", "Value": URL;
 If "Key":"domain", "Value": domain name.
 If "Key":"type", "Value" can be `white` (allowlist) or `black` (blocklist).
-If "Key":"protocol", "Value": CC protection type (HTTP protection or HTTPS domain name protection);
-        :type RecordList: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+If "Key":"protocol", "Value": CC protection type (HTTP protection or HTTPS domain name protection);\n        :type RecordList: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.Total = None
         self.RecordList = None
@@ -3353,11 +2559,7 @@ class DescribeDDoSAlarmThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param RsId: Anti-DDoS instance ID
-        :type RsId: str
-        """
+        :param Business: Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param RsId: Anti-DDoS instance ID\n        :type RsId: str\n        """
         self.Business = None
         self.RsId = None
 
@@ -3381,11 +2583,7 @@ class DescribeDDoSAlarmThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DDoSAlarmThreshold: DDoS alarm threshold
-        :type DDoSAlarmThreshold: :class:`tencentcloud.dayu.v20180709.models.DDoSAlarmThreshold`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DDoSAlarmThreshold: DDoS alarm threshold\n        :type DDoSAlarmThreshold: :class:`tencentcloud.dayu.v20180709.models.DDoSAlarmThreshold`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DDoSAlarmThreshold = None
         self.RequestId = None
 
@@ -3404,17 +2602,7 @@ class DescribeDDoSAttackIPRegionMapRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time. Maximum statistics time range: half a year;
-        :type EndTime: str
-        :param IpList: IP attack source of specified resource, which is optional
-        :type IpList: list of str
-        """
+        :param Business: Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time. Maximum statistics time range: half a year;\n        :type EndTime: str\n        :param IpList: IP attack source of specified resource, which is optional\n        :type IpList: list of str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -3444,13 +2632,7 @@ class DescribeDDoSAttackIPRegionMapResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NationCount: Global region distribution data
-        :type NationCount: list of KeyValueRecord
-        :param ProvinceCount: Chinese province distribution data
-        :type ProvinceCount: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param NationCount: Global region distribution data\n        :type NationCount: list of KeyValueRecord\n        :param ProvinceCount: Chinese province distribution data\n        :type ProvinceCount: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.NationCount = None
         self.ProvinceCount = None
         self.RequestId = None
@@ -3479,21 +2661,7 @@ class DescribeDDoSAttackSourceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Start time
-        :type StartTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param Limit: Number of entries per page. A value of 0 means no pagination
-        :type Limit: int
-        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page
-        :type Offset: int
-        :param IpList: IP attack source of specified resource, which is optional
-        :type IpList: list of str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param Limit: Number of entries per page. A value of 0 means no pagination\n        :type Limit: int\n        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page\n        :type Offset: int\n        :param IpList: IP attack source of specified resource, which is optional\n        :type IpList: list of str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -3527,13 +2695,7 @@ class DescribeDDoSAttackSourceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total number of attack sources
-        :type Total: int
-        :param AttackSourceList: Attack source list
-        :type AttackSourceList: list of DDoSAttackSourceRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Total: Total number of attack sources\n        :type Total: int\n        :param AttackSourceList: Attack source list\n        :type AttackSourceList: list of DDoSAttackSourceRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.AttackSourceList = None
         self.RequestId = None
@@ -3557,19 +2719,7 @@ class DescribeDDoSCountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Ip: Resource IP
-        :type Ip: str
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param MetricName: Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]
-        :type MetricName: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Ip: Resource IP\n        :type Ip: str\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param MetricName: Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]\n        :type MetricName: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -3601,19 +2751,7 @@ class DescribeDDoSCountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Ip: Resource IP
-        :type Ip: str
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param MetricName: Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]
-        :type MetricName: str
-        :param Data: `Key-Value` array. Valid values of `Key`:
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Ip: Resource IP\n        :type Ip: str\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param MetricName: Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]\n        :type MetricName: str\n        :param Data: `Key-Value` array. Valid values of `Key`:
 If `MetricName` is `traffic`:
 If `key` is `TcpKBSum`, it indicates the traffic of TCP packets in KB.
 If `key` is `UdpKBSum`, it indicates the traffic of UDP packets in KB.
@@ -3627,11 +2765,7 @@ If `key` is `IcmpPacketSum`, it indicates the number of ICMP packets.
 If `key` is `OtherPacketSum`, it indicates the number of other packets.
 
 If `MetricName` is `classnum`:
-The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFLOOD`, it indicates  unknown attack events.
-        :type Data: list of KeyValue
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFLOOD`, it indicates  unknown attack events.\n        :type Data: list of KeyValue\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -3665,19 +2799,7 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `basic`: Anti-DDoS Basic, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Instance ID, which is required only if `Business` is not `basic`.
-        :type Id: str
-        :param Ip: Anti-DDoS Basic IP, which is required only if `Business` is Anti-DDoS Basic;
-        :type Ip: str
-        :param BizType: Type of products bound to the anti-DDoS instance, which is required only if `Business` is Anti-DDoS Basic. Valid values: [public (CVM), bm (Bare metal products), eni (elastic network interface), vpngw (VPN Gateway), natgw (NAT Gateway), waf (Web Application Firewall), fpc (Finance products), gaap (GAAP), other (hosted IP)]
-        :type BizType: str
-        :param DeviceType: Product subtype of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]
-        :type DeviceType: str
-        :param InstanceId: Resource instance ID of IP, which is required only if `Business` is Anti-DDoS Basic. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`;
-        :type InstanceId: str
-        :param IPRegion: This field is required only if `Business` is Anti-DDoS Basic, indicating the IP region. Valid values:
+        :param Business: Anti-DDoS service type. `basic`: Anti-DDoS Basic, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Instance ID, which is required only if `Business` is not `basic`.\n        :type Id: str\n        :param Ip: Anti-DDoS Basic IP, which is required only if `Business` is Anti-DDoS Basic;\n        :type Ip: str\n        :param BizType: Type of products bound to the anti-DDoS instance, which is required only if `Business` is Anti-DDoS Basic. Valid values: [public (CVM), bm (Bare metal products), eni (elastic network interface), vpngw (VPN Gateway), natgw (NAT Gateway), waf (Web Application Firewall), fpc (Finance products), gaap (GAAP), other (hosted IP)]\n        :type BizType: str\n        :param DeviceType: Product subtype of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]\n        :type DeviceType: str\n        :param InstanceId: Resource instance ID of IP, which is required only if `Business` is Anti-DDoS Basic. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`;\n        :type InstanceId: str\n        :param IPRegion: This field is required only if `Business` is Anti-DDoS Basic, indicating the IP region. Valid values:
 "bj":     North China (Beijing)
 "cd":     Southwest China (Chengdu)
 "cq":     Southwest China (Chongqing)
@@ -3699,9 +2821,7 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 "use":    East US (Virginia)
 "ru":     Russia
 "tpe":    Taiwan (China)
-"nj":     Nanjing
-        :type IPRegion: str
-        """
+"nj":     Nanjing\n        :type IPRegion: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -3736,17 +2856,9 @@ class DescribeDDoSDefendStatusResponse(AbstractModel):
     def __init__(self):
         """
         :param DefendStatus: Protection status. 0: disabled, 1: enabled
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DefendStatus: int
-        :param UndefendExpire: Expiration time of temporary protection disablement. This field is empty if the protection is in enabled status;
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UndefendExpire: str
-        :param ShowFlag: Console feature display field. 1: displays console features, 0: hides console features
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ShowFlag: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type DefendStatus: int\n        :param UndefendExpire: Expiration time of temporary protection disablement. This field is empty if the protection is in enabled status;
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type UndefendExpire: str\n        :param ShowFlag: Console feature display field. 1: displays console features, 0: hides console features
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ShowFlag: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DefendStatus = None
         self.UndefendExpire = None
         self.ShowFlag = None
@@ -3767,17 +2879,7 @@ class DescribeDDoSEvInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Ip: Resource IP
-        :type Ip: str
-        :param StartTime: Attack start time
-        :type StartTime: str
-        :param EndTime: Attack end time
-        :type EndTime: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Ip: Resource IP\n        :type Ip: str\n        :param StartTime: Attack start time\n        :type StartTime: str\n        :param EndTime: Attack end time\n        :type EndTime: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -3807,43 +2909,7 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Ip: Resource IP
-        :type Ip: str
-        :param StartTime: Attack start time
-        :type StartTime: str
-        :param EndTime: Attack end time
-        :type EndTime: str
-        :param TcpPacketSum: Number of TCP attack packets
-        :type TcpPacketSum: int
-        :param TcpKBSum: Traffic of TCP attacks in KB
-        :type TcpKBSum: int
-        :param UdpPacketSum: Number of UDP attack packets
-        :type UdpPacketSum: int
-        :param UdpKBSum: Traffic of UDP attacks in KB
-        :type UdpKBSum: int
-        :param IcmpPacketSum: Number of ICMP attack packets
-        :type IcmpPacketSum: int
-        :param IcmpKBSum: Traffic of ICMP attacks in KB
-        :type IcmpKBSum: int
-        :param OtherPacketSum: Number of other attack packets
-        :type OtherPacketSum: int
-        :param OtherKBSum: Traffic of other attacks in KB
-        :type OtherKBSum: int
-        :param TotalTraffic: Total attack traffic in KB
-        :type TotalTraffic: int
-        :param Mbps: Attack traffic bandwidth peak
-        :type Mbps: int
-        :param Pps: Attack packet rate peak
-        :type Pps: int
-        :param PcapUrl: PCAP file download link
-        :type PcapUrl: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Ip: Resource IP\n        :type Ip: str\n        :param StartTime: Attack start time\n        :type StartTime: str\n        :param EndTime: Attack end time\n        :type EndTime: str\n        :param TcpPacketSum: Number of TCP attack packets\n        :type TcpPacketSum: int\n        :param TcpKBSum: Traffic of TCP attacks in KB\n        :type TcpKBSum: int\n        :param UdpPacketSum: Number of UDP attack packets\n        :type UdpPacketSum: int\n        :param UdpKBSum: Traffic of UDP attacks in KB\n        :type UdpKBSum: int\n        :param IcmpPacketSum: Number of ICMP attack packets\n        :type IcmpPacketSum: int\n        :param IcmpKBSum: Traffic of ICMP attacks in KB\n        :type IcmpKBSum: int\n        :param OtherPacketSum: Number of other attack packets\n        :type OtherPacketSum: int\n        :param OtherKBSum: Traffic of other attacks in KB\n        :type OtherKBSum: int\n        :param TotalTraffic: Total attack traffic in KB\n        :type TotalTraffic: int\n        :param Mbps: Attack traffic bandwidth peak\n        :type Mbps: int\n        :param Pps: Attack packet rate peak\n        :type Pps: int\n        :param PcapUrl: PCAP file download link\n        :type PcapUrl: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -3892,23 +2958,7 @@ class DescribeDDoSEvListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param StartTime: Start time
-        :type StartTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param Id: Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)
-        :type Id: str
-        :param IpList: Resource IP
-        :type IpList: list of str
-        :param OverLoad: Whether the elastic protection bandwidth is exceeded. Valid values: [yes, no]. If an empty string is entered, it means no filtering
-        :type OverLoad: str
-        :param Limit: Number of entries per page. A value of 0 means no pagination
-        :type Limit: int
-        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page
-        :type Offset: int
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param Id: Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)\n        :type Id: str\n        :param IpList: Resource IP\n        :type IpList: list of str\n        :param OverLoad: Whether the elastic protection bandwidth is exceeded. Valid values: [yes, no]. If an empty string is entered, it means no filtering\n        :type OverLoad: str\n        :param Limit: Number of entries per page. A value of 0 means no pagination\n        :type Limit: int\n        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page\n        :type Offset: int\n        """
         self.Business = None
         self.StartTime = None
         self.EndTime = None
@@ -3944,24 +2994,8 @@ class DescribeDDoSEvListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param IpList: Resource IP
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IpList: list of str
-        :param StartTime: Start time
-        :type StartTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param Data: DDoS attack event list
-        :type Data: list of DDoSEventRecord
-        :param Total: Total number of records
-        :type Total: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param IpList: Resource IP
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpList: list of str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param Data: DDoS attack event list\n        :type Data: list of DDoSEventRecord\n        :param Total: Total number of records\n        :type Total: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.IpList = None
@@ -3995,17 +3029,7 @@ class DescribeDDoSIpLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Ip: Resource IP
-        :type Ip: str
-        :param StartTime: Attack start time
-        :type StartTime: str
-        :param EndTime: Attack end time
-        :type EndTime: str
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Ip: Resource IP\n        :type Ip: str\n        :param StartTime: Attack start time\n        :type StartTime: str\n        :param EndTime: Attack end time\n        :type EndTime: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -4035,23 +3059,9 @@ class DescribeDDoSIpLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Ip: Resource IP
-        :type Ip: str
-        :param StartTime: Attack start time
-        :type StartTime: str
-        :param EndTime: Attack end time
-        :type EndTime: str
-        :param Data: IP attack log, which is a `KeyValue` array. Valid values of `Key-Value`:
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Ip: Resource IP\n        :type Ip: str\n        :param StartTime: Attack start time\n        :type StartTime: str\n        :param EndTime: Attack end time\n        :type EndTime: str\n        :param Data: IP attack log, which is a `KeyValue` array. Valid values of `Key-Value`:
 If `Key` is `LogTime`, `Value` indicates the IP log time
-If `Key` is `LogMessage`, `Value` indicates the IP log content
-        :type Data: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+If `Key` is `LogMessage`, `Value` indicates the IP log content\n        :type Data: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -4083,17 +3093,7 @@ class DescribeDDoSNetCountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param MetricName: Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]
-        :type MetricName: str
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param MetricName: Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]\n        :type MetricName: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4123,17 +3123,7 @@ class DescribeDDoSNetCountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param MetricName: Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]
-        :type MetricName: str
-        :param Data: `Key-Value` array. Valid values of `Key`:
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param MetricName: Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]\n        :type MetricName: str\n        :param Data: `Key-Value` array. Valid values of `Key`:
 If `MetricName` is `traffic`:
 If `key` is `TcpKBSum`, it indicates the traffic of TCP packets in KB.
 If `key` is `UdpKBSum`, it indicates the traffic of UDP packets in KB.
@@ -4147,11 +3137,7 @@ If `key` is `IcmpPacketSum`, it indicates the number of ICMP packets.
 If `key` is `OtherPacketSum`, it indicates the number of other packets.
 
 If `MetricName` is `classnum`:
-The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFLOOD`, it indicates  unknown attack events.
-        :type Data: list of KeyValue
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFLOOD`, it indicates  unknown attack events.\n        :type Data: list of KeyValue\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4183,15 +3169,7 @@ class DescribeDDoSNetEvInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Attack start time
-        :type StartTime: str
-        :param EndTime: Attack end time
-        :type EndTime: str
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Attack start time\n        :type StartTime: str\n        :param EndTime: Attack end time\n        :type EndTime: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4219,41 +3197,7 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Attack start time
-        :type StartTime: str
-        :param EndTime: Attack end time
-        :type EndTime: str
-        :param TcpPacketSum: Number of TCP attack packets
-        :type TcpPacketSum: int
-        :param TcpKBSum: Traffic of TCP attacks in KB
-        :type TcpKBSum: int
-        :param UdpPacketSum: Number of UDP attack packets
-        :type UdpPacketSum: int
-        :param UdpKBSum: Traffic of UDP attacks in KB
-        :type UdpKBSum: int
-        :param IcmpPacketSum: Number of ICMP attack packets
-        :type IcmpPacketSum: int
-        :param IcmpKBSum: Traffic of ICMP attacks in KB
-        :type IcmpKBSum: int
-        :param OtherPacketSum: Number of other attack packets
-        :type OtherPacketSum: int
-        :param OtherKBSum: Traffic of other attacks in KB
-        :type OtherKBSum: int
-        :param TotalTraffic: Total attack traffic in KB
-        :type TotalTraffic: int
-        :param Mbps: Attack traffic bandwidth peak
-        :type Mbps: int
-        :param Pps: Attack packet rate peak
-        :type Pps: int
-        :param PcapUrl: PCAP file download link
-        :type PcapUrl: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Attack start time\n        :type StartTime: str\n        :param EndTime: Attack end time\n        :type EndTime: str\n        :param TcpPacketSum: Number of TCP attack packets\n        :type TcpPacketSum: int\n        :param TcpKBSum: Traffic of TCP attacks in KB\n        :type TcpKBSum: int\n        :param UdpPacketSum: Number of UDP attack packets\n        :type UdpPacketSum: int\n        :param UdpKBSum: Traffic of UDP attacks in KB\n        :type UdpKBSum: int\n        :param IcmpPacketSum: Number of ICMP attack packets\n        :type IcmpPacketSum: int\n        :param IcmpKBSum: Traffic of ICMP attacks in KB\n        :type IcmpKBSum: int\n        :param OtherPacketSum: Number of other attack packets\n        :type OtherPacketSum: int\n        :param OtherKBSum: Traffic of other attacks in KB\n        :type OtherKBSum: int\n        :param TotalTraffic: Total attack traffic in KB\n        :type TotalTraffic: int\n        :param Mbps: Attack traffic bandwidth peak\n        :type Mbps: int\n        :param Pps: Attack packet rate peak\n        :type Pps: int\n        :param PcapUrl: PCAP file download link\n        :type PcapUrl: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4300,19 +3244,7 @@ class DescribeDDoSNetEvListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Start time
-        :type StartTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param Limit: Number of entries per page. A value of 0 means no pagination
-        :type Limit: int
-        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page
-        :type Offset: int
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param Limit: Number of entries per page. A value of 0 means no pagination\n        :type Limit: int\n        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page\n        :type Offset: int\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4344,21 +3276,7 @@ class DescribeDDoSNetEvListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Start time
-        :type StartTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param Data: DDoS attack event list
-        :type Data: list of DDoSEventRecord
-        :param Total: Total number of records
-        :type Total: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param Data: DDoS attack event list\n        :type Data: list of DDoSEventRecord\n        :param Total: Total number of records\n        :type Total: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4390,15 +3308,7 @@ class DescribeDDoSNetIpLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Attack start time
-        :type StartTime: str
-        :param EndTime: Attack end time
-        :type EndTime: str
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Attack start time\n        :type StartTime: str\n        :param EndTime: Attack end time\n        :type EndTime: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4426,21 +3336,9 @@ class DescribeDDoSNetIpLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Attack start time
-        :type StartTime: str
-        :param EndTime: Attack end time
-        :type EndTime: str
-        :param Data: IP attack log, which is a `KeyValue` array. Valid values of `Key-Value`:
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Attack start time\n        :type StartTime: str\n        :param EndTime: Attack end time\n        :type EndTime: str\n        :param Data: IP attack log, which is a `KeyValue` array. Valid values of `Key-Value`:
 If `Key` is `LogTime`, `Value` indicates the IP log time
-If `Key` is `LogMessage`, `Value` indicates the IP log content
-        :type Data: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+If `Key` is `LogMessage`, `Value` indicates the IP log content\n        :type Data: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4470,19 +3368,7 @@ class DescribeDDoSNetTrendRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param MetricName: Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]
-        :type MetricName: str
-        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
-        :type Period: int
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param MetricName: Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]\n        :type MetricName: str\n        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]\n        :type Period: int\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        """
         self.Business = None
         self.Id = None
         self.MetricName = None
@@ -4514,25 +3400,7 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param MetricName: Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]
-        :type MetricName: str
-        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
-        :type Period: int
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param Data: Value array
-        :type Data: list of int non-negative
-        :param Count: Number of values
-        :type Count: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param MetricName: Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]\n        :type MetricName: str\n        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]\n        :type Period: int\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param Data: Value array\n        :type Data: list of int non-negative\n        :param Count: Number of values\n        :type Count: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.MetricName = None
@@ -4563,11 +3431,7 @@ class DescribeDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Resource ID, which is optional. If a value is entered, it indicates the advanced DDoS policy bound to the resource
-        :type Id: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Resource ID, which is optional. If a value is entered, it indicates the advanced DDoS policy bound to the resource\n        :type Id: str\n        """
         self.Business = None
         self.Id = None
 
@@ -4591,11 +3455,7 @@ class DescribeDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DDosPolicyList: Advanced DDoS policy list
-        :type DDosPolicyList: list of DDosPolicy
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DDosPolicyList: Advanced DDoS policy list\n        :type DDosPolicyList: list of DDosPolicy\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DDosPolicyList = None
         self.RequestId = None
 
@@ -4617,21 +3477,7 @@ class DescribeDDoSTrendRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Ip: Anti-DDoS instance IP
-        :type Ip: str
-        :param MetricName: Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]
-        :type MetricName: str
-        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
-        :type Period: int
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param Id: Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)
-        :type Id: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Ip: Anti-DDoS instance IP\n        :type Ip: str\n        :param MetricName: Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]\n        :type MetricName: str\n        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]\n        :type Period: int\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param Id: Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)\n        :type Id: str\n        """
         self.Business = None
         self.Ip = None
         self.MetricName = None
@@ -4665,28 +3511,8 @@ class DescribeDDoSTrendResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Id: str
-        :param Ip: Resource IP
-        :type Ip: str
-        :param MetricName: Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]
-        :type MetricName: str
-        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
-        :type Period: int
-        :param StartTime: Statistics start time
-        :type StartTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param Data: Value array. The unit for attack traffic bandwidth is Mbps, and that for the packet rate is pps.
-        :type Data: list of int non-negative
-        :param Count: Number of values
-        :type Count: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Id: Anti-DDoS instance ID
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Id: str\n        :param Ip: Resource IP\n        :type Ip: str\n        :param MetricName: Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]\n        :type MetricName: str\n        :param Period: Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]\n        :type Period: int\n        :param StartTime: Statistics start time\n        :type StartTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param Data: Value array. The unit for attack traffic bandwidth is Mbps, and that for the packet rate is pps.\n        :type Data: list of int non-negative\n        :param Count: Number of values\n        :type Count: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -4719,9 +3545,7 @@ class DescribeDDoSUsedStatisRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
-        :type Business: str
-        """
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)\n        :type Business: str\n        """
         self.Business = None
 
 
@@ -4745,11 +3569,7 @@ class DescribeDDoSUsedStatisResponse(AbstractModel):
         """
         :param Data: Field value as follows:
 Days: number of days of Anti-DDoS resource use
-Attacks: number of DDoS attacks
-        :type Data: list of KeyValue
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Attacks: number of DDoS attacks\n        :type Data: list of KeyValue\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -4771,11 +3591,7 @@ class DescribeIPProductInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP)
-        :type Business: str
-        :param IpList: IP list
-        :type IpList: list of str
-        """
+        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP)\n        :type Business: str\n        :param IpList: IP list\n        :type IpList: list of str\n        """
         self.Business = None
         self.IpList = None
 
@@ -4803,11 +3619,7 @@ class DescribeIPProductInfoResponse(AbstractModel):
 If `Key` is ProductName, `value` indicates the name of a Tencent Cloud product instance;
 If `Key` is `ProductInstanceId`, `value` indicates the ID of a Tencent Cloud product instance;
 If `Key` is `ProductType`, `value` indicates the Tencent Cloud product type (cvm: CVM, clb: CLB);
-If `Key` is `IP`, `value` indicates the IP of a Tencent Cloud product instance;
-        :type Data: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+If `Key` is `IP`, `value` indicates the IP of a Tencent Cloud product instance;\n        :type Data: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -4829,9 +3641,7 @@ class DescribeInsurePacksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param IdList: Guarantee package ID, which is optional. If you need to get the guarantee package with a specified ID (such as insure-000000xe), please use this field
-        :type IdList: list of str
-        """
+        :param IdList: Guarantee package ID, which is optional. If you need to get the guarantee package with a specified ID (such as insure-000000xe), please use this field\n        :type IdList: list of str\n        """
         self.IdList = None
 
 
@@ -4853,11 +3663,7 @@ class DescribeInsurePacksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InsurePacks: Guarantee package list
-        :type InsurePacks: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param InsurePacks: Guarantee package list\n        :type InsurePacks: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InsurePacks = None
         self.RequestId = None
 
@@ -4885,11 +3691,7 @@ class DescribeIpBlockListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param List: Blocked IP list
-        :type List: list of IpBlockData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param List: Blocked IP list\n        :type List: list of IpBlockData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.List = None
         self.RequestId = None
 
@@ -4911,19 +3713,7 @@ class DescribeIpUnBlockListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BeginTime: Start time
-        :type BeginTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param Ip: IP (if this field is not empty, IP filtering will be performed)
-        :type Ip: str
-        :param Paging: Pagination parameter (paginated query will be performed if this field is not empty). This field will be disused in the future. Please use the `Limit` and `Offset` fields instead;
-        :type Paging: :class:`tencentcloud.dayu.v20180709.models.Paging`
-        :param Limit: Number of entries per page. A value of 0 means no pagination
-        :type Limit: int
-        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page
-        :type Offset: int
-        """
+        :param BeginTime: Start time\n        :type BeginTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param Ip: IP (if this field is not empty, IP filtering will be performed)\n        :type Ip: str\n        :param Paging: Pagination parameter (paginated query will be performed if this field is not empty). This field will be disused in the future. Please use the `Limit` and `Offset` fields instead;\n        :type Paging: :class:`tencentcloud.dayu.v20180709.models.Paging`\n        :param Limit: Number of entries per page. A value of 0 means no pagination\n        :type Limit: int\n        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page\n        :type Offset: int\n        """
         self.BeginTime = None
         self.EndTime = None
         self.Ip = None
@@ -4957,17 +3747,7 @@ class DescribeIpUnBlockListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BeginTime: Start time
-        :type BeginTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param List: IP unblocking record
-        :type List: list of IpUnBlockData
-        :param Total: Total number of records
-        :type Total: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param BeginTime: Start time\n        :type BeginTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param List: IP unblocking record\n        :type List: list of IpUnBlockData\n        :param Total: Total number of records\n        :type Total: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.BeginTime = None
         self.EndTime = None
         self.List = None
@@ -4995,13 +3775,7 @@ class DescribeL4HealthConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleIdList: Rule ID array. To export the health check configurations of all rules, leave this field empty or enter an empty array;
-        :type RuleIdList: list of str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleIdList: Rule ID array. To export the health check configurations of all rules, leave this field empty or enter an empty array;\n        :type RuleIdList: list of str\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -5027,11 +3801,7 @@ class DescribeL4HealthConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param HealthConfig: Layer-4 health check configuration array
-        :type HealthConfig: list of L4HealthConfig
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param HealthConfig: Layer-4 health check configuration array\n        :type HealthConfig: list of L4HealthConfig\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.HealthConfig = None
         self.RequestId = None
 
@@ -5053,11 +3823,7 @@ class DescribeL4RulesErrHealthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        """
         self.Business = None
         self.Id = None
 
@@ -5081,21 +3847,13 @@ class DescribeL4RulesErrHealthResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total number of exceptional rules
-        :type Total: int
-        :param ErrHealths: Exceptional rule list. Returned value description: `Key` is the rule ID, while `Value` is the exceptional IP. Multiple IPs are separated by ","
-        :type ErrHealths: list of KeyValue
-        :param ExtErrHealths: Exceptional rule list (which provides more error-related information). Returned value description:
+        :param Total: Total number of exceptional rules\n        :type Total: int\n        :param ErrHealths: Exceptional rule list. Returned value description: `Key` is the rule ID, while `Value` is the exceptional IP. Multiple IPs are separated by ","\n        :type ErrHealths: list of KeyValue\n        :param ExtErrHealths: Exceptional rule list (which provides more error-related information). Returned value description:
 If `key` is `RuleId`, `Value` indicates the rule ID;
 If `key` is `Protocol`, `Value` indicates the forwarding protocol of a rule;
 If `key` is `VirtualPort`, `Value` indicates the forwarding port of a rule;
 If `Key` is `ErrMessage`, `Value` indicates the exception message for health check;
 Exception message for health check in the format of `"SourceIp:1.1.1.1|SourcePort:1234|AbnormalStatTime:1570689065|AbnormalReason:connection time out|Interval:20|CheckNum:6|FailNum:6"`. Multiple error messages for the source IP should be separated by `,`,
-SourceIp: real server IP, SourcePort: real server port, AbnormalStatTime: exception time, AbnormalReason: cause of exception, Interval: check frequency, CheckNum: number of checks, FailNum: number of failures;
-        :type ExtErrHealths: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+SourceIp: real server IP, SourcePort: real server port, AbnormalStatTime: exception time, AbnormalReason: cause of exception, Interval: check frequency, CheckNum: number of checks, FailNum: number of failures;\n        :type ExtErrHealths: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.ErrHealths = None
         self.ExtErrHealths = None
@@ -5126,13 +3884,7 @@ class DescribeL7HealthConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleIdList: Rule ID array. To export the health check configurations of all rules, leave this field empty or enter an empty array;
-        :type RuleIdList: list of str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleIdList: Rule ID array. To export the health check configurations of all rules, leave this field empty or enter an empty array;\n        :type RuleIdList: list of str\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -5158,11 +3910,7 @@ class DescribeL7HealthConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param HealthConfig: Layer-7 health check configuration array
-        :type HealthConfig: list of L7HealthConfig
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param HealthConfig: Layer-7 health check configuration array\n        :type HealthConfig: list of L7HealthConfig\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.HealthConfig = None
         self.RequestId = None
 
@@ -5184,9 +3932,7 @@ class DescribePackIndexRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        """
         self.Business = None
 
 
@@ -5214,11 +3960,7 @@ AttackPackCount: number of resources being cleansed
 BlockPackCount: number of blocked resources
 ExpiredPackCount: number of expired resources
 ExpireingPackCount: number of expiring resources
-IsolatePackCount: number of isolated resources
-        :type Data: list of KeyValue
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+IsolatePackCount: number of isolated resources\n        :type Data: list of KeyValue\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -5240,17 +3982,7 @@ class DescribePcapRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param StartTime: Attack event start time in the format of "2018-08-28 07:00:00"
-        :type StartTime: str
-        :param EndTime: Attack event end time in the format of "2018-08-28 07:02:00"
-        :type EndTime: str
-        :param Ip: Resource IP, which is required only if `Business` is `net`;
-        :type Ip: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param StartTime: Attack event start time in the format of "2018-08-28 07:00:00"\n        :type StartTime: str\n        :param EndTime: Attack event end time in the format of "2018-08-28 07:02:00"\n        :type EndTime: str\n        :param Ip: Resource IP, which is required only if `Business` is `net`;\n        :type Ip: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -5280,11 +4012,7 @@ class DescribePcapResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PcapUrlList: PCAP packet download link list, which is an empty array if there are no PCAP packets;
-        :type PcapUrlList: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param PcapUrlList: PCAP packet download link list, which is an empty array if there are no PCAP packets;\n        :type PcapUrlList: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PcapUrlList = None
         self.RequestId = None
 
@@ -5301,11 +4029,7 @@ class DescribePolicyCaseRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param SceneId: Policy scenario ID
-        :type SceneId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param SceneId: Policy scenario ID\n        :type SceneId: str\n        """
         self.Business = None
         self.SceneId = None
 
@@ -5329,11 +4053,7 @@ class DescribePolicyCaseResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CaseList: Policy scenario list
-        :type CaseList: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CaseList: Policy scenario list\n        :type CaseList: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CaseList = None
         self.RequestId = None
 
@@ -5355,11 +4075,7 @@ class DescribeResIpListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param IdList: Resource ID. If this field is left empty, it means to get all resources IP of the current user
-        :type IdList: list of str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param IdList: Resource ID. If this field is left empty, it means to get all resources IP of the current user\n        :type IdList: list of str\n        """
         self.Business = None
         self.IdList = None
 
@@ -5383,11 +4099,7 @@ class DescribeResIpListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Resource: Resource IP list
-        :type Resource: list of ResourceIp
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Resource: Resource IP list\n        :type Resource: list of ResourceIp\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Resource = None
         self.RequestId = None
 
@@ -5409,33 +4121,7 @@ class DescribeResourceListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param RegionList: Region code search, which is optional. If no regions are to be specified, enter an empty array. If a region is to be specified, enter a region code, such as ["gz", "sh"]
-        :type RegionList: list of str
-        :param Line: Line search. This field can be optionally entered only when getting the list of Anti-DDoS Advanced resources. Valid values: [1 (BGP line), 2 (Nanjing Telecom), 3 (Nanjing Unicom), 99 (third-party partner line)]. Please enter an empty array when getting other products;
-        :type Line: list of int non-negative
-        :param IdList: Resource ID search, which is optional. If this field is not an empty array, it means to get the resource list of a specified resource;
-        :type IdList: list of str
-        :param Name: Resource name search, which is optional. If this field is not an empty string, it means to search for resources by name;
-        :type Name: str
-        :param IpList: IP query list, which is optional. Resources will be queried by IP if the list is not empty.
-        :type IpList: list of str
-        :param Status: Resource status search list, which is optional. Valid values: [0 (running), 1 (cleansing), 2 (blocking)]. No status search will be performed if an empty array is entered;
-        :type Status: list of int non-negative
-        :param Expire: Expiring resource search, which is optional. Valid values: [0 (no search), 1 (search for expiring resources)]
-        :type Expire: int
-        :param OderBy: Sort by field, which is optional
-        :type OderBy: list of OrderBy
-        :param Limit: Number of entries per page. A value of 0 means no pagination
-        :type Limit: int
-        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page
-        :type Offset: int
-        :param CName: CNAME of Anti-DDoS Ultimate resource, which is optional and only valid for the Anti-DDoS Ultimate resource list;
-        :type CName: str
-        :param Domain: Domain name of Anti-DDoS Ultimate resource, which is optional and only valid for the Anti-DDoS Ultimate resource list;
-        :type Domain: str
-        """
+        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param RegionList: Region code search, which is optional. If no regions are to be specified, enter an empty array. If a region is to be specified, enter a region code, such as ["gz", "sh"]\n        :type RegionList: list of str\n        :param Line: Line search. This field can be optionally entered only when getting the list of Anti-DDoS Advanced resources. Valid values: [1 (BGP line), 2 (Nanjing Telecom), 3 (Nanjing Unicom), 99 (third-party partner line)]. Please enter an empty array when getting other products;\n        :type Line: list of int non-negative\n        :param IdList: Resource ID search, which is optional. If this field is not an empty array, it means to get the resource list of a specified resource;\n        :type IdList: list of str\n        :param Name: Resource name search, which is optional. If this field is not an empty string, it means to search for resources by name;\n        :type Name: str\n        :param IpList: IP query list, which is optional. Resources will be queried by IP if the list is not empty.\n        :type IpList: list of str\n        :param Status: Resource status search list, which is optional. Valid values: [0 (running), 1 (cleansing), 2 (blocking)]. No status search will be performed if an empty array is entered;\n        :type Status: list of int non-negative\n        :param Expire: Expiring resource search, which is optional. Valid values: [0 (no search), 1 (search for expiring resources)]\n        :type Expire: int\n        :param OderBy: Sort by field, which is optional\n        :type OderBy: list of OrderBy\n        :param Limit: Number of entries per page. A value of 0 means no pagination\n        :type Limit: int\n        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page\n        :type Offset: int\n        :param CName: CNAME of Anti-DDoS Ultimate resource, which is optional and only valid for the Anti-DDoS Ultimate resource list;\n        :type CName: str\n        :param Domain: Domain name of Anti-DDoS Ultimate resource, which is optional and only valid for the Anti-DDoS Ultimate resource list;\n        :type Domain: str\n        """
         self.Business = None
         self.RegionList = None
         self.Line = None
@@ -5486,9 +4172,7 @@ class DescribeResourceListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total number of records
-        :type Total: int
-        :param ServicePacks: Resource record list. The description of key values is as follows:
+        :param Total: Total number of records\n        :type Total: int\n        :param ServicePacks: Resource record list. The description of key values is as follows:
 "Key": "CreateTime" (Instance purchase time)
 "Key": "Region" (Instance region)
 "Key": "BoundIP" (IP bound to the single-IP instance)
@@ -5518,13 +4202,7 @@ class DescribeResourceListResponse(AbstractModel):
 "Key": "Bandwidth" (Base protection value of the Anti-DDoS Pro/Advanced instance)
 "Key": "DdosMax" (Base protection value of the Anti-DDoS Ultimate instance)
 "Key": "GFBandwidth" (Base business application bandwidth of the Anti-DDoS Advanced instance)
-"Key": "ServiceBandwidth" (Base business application bandwidth of the Anti-DDoS Ultimate instance)
-        :type ServicePacks: list of KeyValueRecord
-        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+"Key": "ServiceBandwidth" (Base business application bandwidth of the Anti-DDoS Ultimate instance)\n        :type ServicePacks: list of KeyValueRecord\n        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.ServicePacks = None
         self.Business = None
@@ -5550,11 +4228,7 @@ class DescribeRuleSetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param IdList: Resource ID list
-        :type IdList: list of str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param IdList: Resource ID list\n        :type IdList: list of str\n        """
         self.Business = None
         self.IdList = None
 
@@ -5582,17 +4256,11 @@ class DescribeRuleSetsResponse(AbstractModel):
 If `Key` is "Id", `Value` indicates the resource ID
 If `Key` is "RuleIdList", `Value` indicates the resource rule ID. Multiple rule IDs are separated by ","
 If `Key` is "RuleNameList", `Value` indicates the resource rule name. Multiple rule names are separated by ","
-If `Key` is "RuleNum", `Value` indicates the number of resource rules
-        :type L4RuleSets: list of KeyValueRecord
-        :param L7RuleSets: Rule record array. Valid values:
+If `Key` is "RuleNum", `Value` indicates the number of resource rules\n        :type L4RuleSets: list of KeyValueRecord\n        :param L7RuleSets: Rule record array. Valid values:
 If `Key` is "Id", `Value` indicates the resource ID
 If `Key` is "RuleIdList", `Value` indicates the resource rule ID. Multiple rule IDs are separated by ","
 If `Key` is "RuleNameList", `Value` indicates the resource rule name. Multiple rule names are separated by ","
-If `Key` is "RuleNum", `Value` indicates the number of resource rules
-        :type L7RuleSets: list of KeyValueRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+If `Key` is "RuleNum", `Value` indicates the number of resource rules\n        :type L7RuleSets: list of KeyValueRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.L4RuleSets = None
         self.L7RuleSets = None
         self.RequestId = None
@@ -5621,13 +4289,7 @@ class DescribeSchedulingDomainListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: Number of items in a page. Returned results are not paged if you enter '0'.
-        :type Limit: int
-        :param Offset: Starting offset of the page. Value: (number of pages - 1) * items per page
-        :type Offset: int
-        :param Domain: (Optional) Filter by specific domain name
-        :type Domain: str
-        """
+        :param Limit: Number of items in a page. Returned results are not paged if you enter '0'.\n        :type Limit: int\n        :param Offset: Starting offset of the page. Value: (number of pages - 1) * items per page\n        :type Offset: int\n        :param Domain: (Optional) Filter by specific domain name\n        :type Domain: str\n        """
         self.Limit = None
         self.Offset = None
         self.Domain = None
@@ -5653,13 +4315,7 @@ class DescribeSchedulingDomainListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total number of scheduling domain names
-        :type Total: int
-        :param DomainList: List of scheduling domain names
-        :type DomainList: list of SchedulingDomain
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Total: Total number of scheduling domain names\n        :type Total: int\n        :param DomainList: List of scheduling domain names\n        :type DomainList: list of SchedulingDomain\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.DomainList = None
         self.RequestId = None
@@ -5694,15 +4350,7 @@ AttackIpCount: number of attacked IPs
 AttackCount: number of attacks
 BlockCount: number of blockings
 MaxMbps: attack bandwidth peak in Mbps
-IpNum: IP statistics
-        :type Data: list of KeyValue
-        :param BeginDate: Start time of the current month
-        :type BeginDate: str
-        :param EndDate: End time of the current month
-        :type EndDate: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+IpNum: IP statistics\n        :type Data: list of KeyValue\n        :param BeginDate: Start time of the current month\n        :type BeginDate: str\n        :param EndDate: End time of the current month\n        :type EndDate: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.BeginDate = None
         self.EndDate = None
@@ -5728,11 +4376,7 @@ class DescribeSourceIpSegmentRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        """
         self.Business = None
         self.Id = None
 
@@ -5756,11 +4400,7 @@ class DescribeSourceIpSegmentResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: Intermediate IP range. Multiple values are separated by ";"
-        :type Data: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Data: Intermediate IP range. Multiple values are separated by ";"\n        :type Data: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -5777,23 +4417,9 @@ class DescribeTransmitStatisRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param MetricName: Metric name. Valid values:
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param MetricName: Metric name. Valid values:
 traffic: traffic bandwidth;
-pkg: packet rate;
-        :type MetricName: str
-        :param Period: Statistical time granularity (300: 5-minute, 3600: hourly, 86400: daily)
-        :type Period: int
-        :param StartTime: Statistics start time. The second part is kept at 0, and the minute part is a multiple of 5
-        :type StartTime: str
-        :param EndTime: Statistics end time. The second part is kept at 0, and the minute part is a multiple of 5
-        :type EndTime: str
-        :param IpList: Resource IP, which is required and only supports one IP if `Business` is `bgp-multip`. If this field is left empty, all IPs of a resource instance will be counted by default. If the resource instance has multiple IPs (such as Anti-DDoS Ultimate), the statistical method is summation;
-        :type IpList: list of str
-        """
+pkg: packet rate;\n        :type MetricName: str\n        :param Period: Statistical time granularity (300: 5-minute, 3600: hourly, 86400: daily)\n        :type Period: int\n        :param StartTime: Statistics start time. The second part is kept at 0, and the minute part is a multiple of 5\n        :type StartTime: str\n        :param EndTime: Statistics end time. The second part is kept at 0, and the minute part is a multiple of 5\n        :type EndTime: str\n        :param IpList: Resource IP, which is required and only supports one IP if `Business` is `bgp-multip`. If this field is left empty, all IPs of a resource instance will be counted by default. If the resource instance has multiple IPs (such as Anti-DDoS Ultimate), the statistical method is summation;\n        :type IpList: list of str\n        """
         self.Business = None
         self.Id = None
         self.MetricName = None
@@ -5828,18 +4454,10 @@ class DescribeTransmitStatisResponse(AbstractModel):
     def __init__(self):
         """
         :param InDataList: If `MetricName` is `traffic`, this field indicates the inbound traffic bandwidth in bps;
-If `MetricName` is `pkg`, this field indicates the inbound packet rate in pps;
-        :type InDataList: list of float
-        :param OutDataList: If `MetricName` is `traffic`, this field indicates the outbound traffic bandwidth in bps;
-If `MetricName` is `pkg`, this field indicates the outbound packet rate in pps;
-        :type OutDataList: list of float
-        :param MetricName: Metric name:
+If `MetricName` is `pkg`, this field indicates the inbound packet rate in pps;\n        :type InDataList: list of float\n        :param OutDataList: If `MetricName` is `traffic`, this field indicates the outbound traffic bandwidth in bps;
+If `MetricName` is `pkg`, this field indicates the outbound packet rate in pps;\n        :type OutDataList: list of float\n        :param MetricName: Metric name:
 traffic: traffic bandwidth;
-pkg: packet rate;
-        :type MetricName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+pkg: packet rate;\n        :type MetricName: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InDataList = None
         self.OutDataList = None
         self.MetricName = None
@@ -5866,17 +4484,7 @@ class DescribeUnBlockStatisResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: Total number of unblocking chances
-        :type Total: int
-        :param Used: Number of used chances
-        :type Used: int
-        :param BeginTime: Statistics start time
-        :type BeginTime: str
-        :param EndTime: Statistics end time
-        :type EndTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Total: Total number of unblocking chances\n        :type Total: int\n        :param Used: Number of used chances\n        :type Used: int\n        :param BeginTime: Statistics start time\n        :type BeginTime: str\n        :param EndTime: Statistics end time\n        :type EndTime: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Total = None
         self.Used = None
         self.BeginTime = None
@@ -5899,17 +4507,7 @@ class DescribleL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleIdList: Rule ID, which is optional. If this field is entered, the specified rule will be obtained
-        :type RuleIdList: list of str
-        :param Limit: Number of entries per page. A value of 0 means no pagination
-        :type Limit: int
-        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page
-        :type Offset: int
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleIdList: Rule ID, which is optional. If this field is entered, the specified rule will be obtained\n        :type RuleIdList: list of str\n        :param Limit: Number of entries per page. A value of 0 means no pagination\n        :type Limit: int\n        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page\n        :type Offset: int\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -5939,15 +4537,7 @@ class DescribleL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: Forwarding rule list
-        :type Rules: list of L4RuleEntry
-        :param Total: Total number of rules
-        :type Total: int
-        :param Healths: Health check configuration list
-        :type Healths: list of L4RuleHealth
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Rules: Forwarding rule list\n        :type Rules: list of L4RuleEntry\n        :param Total: Total number of rules\n        :type Total: int\n        :param Healths: Health check configuration list\n        :type Healths: list of L4RuleHealth\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Rules = None
         self.Total = None
         self.Healths = None
@@ -5978,23 +4568,7 @@ class DescribleL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleIdList: Rule ID, which is optional. If this field is entered, the specified rule will be obtained
-        :type RuleIdList: list of str
-        :param Limit: Number of entries per page. A value of 0 means no pagination
-        :type Limit: int
-        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page
-        :type Offset: int
-        :param Domain: Domain name search, which is optional. Enter it if you need to search for domain names
-        :type Domain: str
-        :param ProtocolList: Forwarding protocol search, which is optional. Valid values: [http, https, http/https]
-        :type ProtocolList: list of str
-        :param StatusList: Status search, which is optional. Valid values: [0 (successfully configured rule), 1 (rule configuration taking effect), 2 (rule configuration failed), 3 (rule deletion taking effect), 5 (rule deletion failed), 6 (rule waiting for configuration), 7 (rule waiting for deletion), 8 (rule waiting for certificate configuration)]
-        :type StatusList: list of int non-negative
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleIdList: Rule ID, which is optional. If this field is entered, the specified rule will be obtained\n        :type RuleIdList: list of str\n        :param Limit: Number of entries per page. A value of 0 means no pagination\n        :type Limit: int\n        :param Offset: Page start offset, whose value is (page number - 1) * number of entries per page\n        :type Offset: int\n        :param Domain: Domain name search, which is optional. Enter it if you need to search for domain names\n        :type Domain: str\n        :param ProtocolList: Forwarding protocol search, which is optional. Valid values: [http, https, http/https]\n        :type ProtocolList: list of str\n        :param StatusList: Status search, which is optional. Valid values: [0 (successfully configured rule), 1 (rule configuration taking effect), 2 (rule configuration failed), 3 (rule deletion taking effect), 5 (rule deletion failed), 6 (rule waiting for configuration), 7 (rule waiting for deletion), 8 (rule waiting for certificate configuration)]\n        :type StatusList: list of int non-negative\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -6030,15 +4604,7 @@ class DescribleL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: Forwarding rule list
-        :type Rules: list of L7RuleEntry
-        :param Total: Total number of rules
-        :type Total: int
-        :param Healths: Health check configuration list
-        :type Healths: list of L7RuleHealth
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Rules: Forwarding rule list\n        :type Rules: list of L7RuleEntry\n        :param Total: Total number of rules\n        :type Total: int\n        :param Healths: Health check configuration list\n        :type Healths: list of L7RuleHealth\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Rules = None
         self.Total = None
         self.Healths = None
@@ -6069,11 +4635,7 @@ class DescribleRegionCountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP)
-        :type Business: str
-        :param LineList: Line search. Valid values: [1 (BGP line), 2 (Nanjing Telecom), 3 (Nanjing Unicom), 99 (third-party partner line)]. This field is valid only for Anti-DDoS Advanced and should be ignored for other product
-        :type LineList: list of int non-negative
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP)\n        :type Business: str\n        :param LineList: Line search. Valid values: [1 (BGP line), 2 (Nanjing Telecom), 3 (Nanjing Unicom), 99 (third-party partner line)]. This field is valid only for Anti-DDoS Advanced and should be ignored for other product\n        :type LineList: list of int non-negative\n        """
         self.Business = None
         self.LineList = None
 
@@ -6097,11 +4659,7 @@ class DescribleRegionCountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RegionList: Number of resource instances in region
-        :type RegionList: list of RegionInstanceCount
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RegionList: Number of resource instances in region\n        :type RegionList: list of RegionInstanceCount\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RegionList = None
         self.RequestId = None
 
@@ -6123,27 +4681,7 @@ class HttpStatusMap(AbstractModel):
 
     def __init__(self):
         """
-        :param Http2xx: HTTP 2xx Status code
-        :type Http2xx: list of float
-        :param Http3xx: HTTP 3xx Status code
-        :type Http3xx: list of float
-        :param Http404: HTTP 404 Status code
-        :type Http404: list of float
-        :param Http4xx: HTTP 4xx Status code
-        :type Http4xx: list of float
-        :param Http5xx: HTTP 5xx Status code
-        :type Http5xx: list of float
-        :param SourceHttp2xx: HTTP 2xx Forwarding status code
-        :type SourceHttp2xx: list of float
-        :param SourceHttp3xx: HTTP 3xx Forwarding status code
-        :type SourceHttp3xx: list of float
-        :param SourceHttp404: HTTP 404 Forwarding status code
-        :type SourceHttp404: list of float
-        :param SourceHttp4xx: HTTP 4xx Forwarding status code
-        :type SourceHttp4xx: list of float
-        :param SourceHttp5xx: HTTP 5xx Forwarding status code
-        :type SourceHttp5xx: list of float
-        """
+        :param Http2xx: HTTP 2xx Status code\n        :type Http2xx: list of float\n        :param Http3xx: HTTP 3xx Status code\n        :type Http3xx: list of float\n        :param Http404: HTTP 404 Status code\n        :type Http404: list of float\n        :param Http4xx: HTTP 4xx Status code\n        :type Http4xx: list of float\n        :param Http5xx: HTTP 5xx Status code\n        :type Http5xx: list of float\n        :param SourceHttp2xx: HTTP 2xx Forwarding status code\n        :type SourceHttp2xx: list of float\n        :param SourceHttp3xx: HTTP 3xx Forwarding status code\n        :type SourceHttp3xx: list of float\n        :param SourceHttp404: HTTP 404 Forwarding status code\n        :type SourceHttp404: list of float\n        :param SourceHttp4xx: HTTP 4xx Forwarding status code\n        :type SourceHttp4xx: list of float\n        :param SourceHttp5xx: HTTP 5xx Forwarding status code\n        :type SourceHttp5xx: list of float\n        """
         self.Http2xx = None
         self.Http3xx = None
         self.Http404 = None
@@ -6183,11 +4721,7 @@ class IpBlackWhite(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP address
-        :type Ip: str
-        :param Type: Blocklist/allowlist type. Valid values: [black, white]
-        :type Type: str
-        """
+        :param Ip: IP address\n        :type Ip: str\n        :param Type: Blocklist/allowlist type. Valid values: [black, white]\n        :type Type: str\n        """
         self.Ip = None
         self.Type = None
 
@@ -6211,17 +4745,7 @@ class IpBlockData(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP
-        :type Ip: str
-        :param Status: Status (Blocked: blocked, UnBlocking: unblocking, UnBlockFailed: unblocking failed)
-        :type Status: str
-        :param BlockTime: Blocked time
-        :type BlockTime: str
-        :param UnBlockTime: Unblocked time (estimated)
-        :type UnBlockTime: str
-        :param ActionType: Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)
-        :type ActionType: str
-        """
+        :param Ip: IP\n        :type Ip: str\n        :param Status: Status (Blocked: blocked, UnBlocking: unblocking, UnBlockFailed: unblocking failed)\n        :type Status: str\n        :param BlockTime: Blocked time\n        :type BlockTime: str\n        :param UnBlockTime: Unblocked time (estimated)\n        :type UnBlockTime: str\n        :param ActionType: Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)\n        :type ActionType: str\n        """
         self.Ip = None
         self.Status = None
         self.BlockTime = None
@@ -6251,15 +4775,7 @@ class IpUnBlockData(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP
-        :type Ip: str
-        :param BlockTime: Blocked time
-        :type BlockTime: str
-        :param UnBlockTime: Unblocked time (actual)
-        :type UnBlockTime: str
-        :param ActionType: Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)
-        :type ActionType: str
-        """
+        :param Ip: IP\n        :type Ip: str\n        :param BlockTime: Blocked time\n        :type BlockTime: str\n        :param UnBlockTime: Unblocked time (actual)\n        :type UnBlockTime: str\n        :param ActionType: Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)\n        :type ActionType: str\n        """
         self.Ip = None
         self.BlockTime = None
         self.UnBlockTime = None
@@ -6287,11 +4803,7 @@ class KeyValue(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: Field name
-        :type Key: str
-        :param Value: Field value
-        :type Value: str
-        """
+        :param Key: Field name\n        :type Key: str\n        :param Value: Field value\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -6315,9 +4827,7 @@ class KeyValueRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param Record: Key-Value array of a record
-        :type Record: list of KeyValue
-        """
+        :param Record: Key-Value array of a record\n        :type Record: list of KeyValue\n        """
         self.Record = None
 
 
@@ -6344,23 +4854,7 @@ class L4HealthConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: Forwarding protocol. Valid values: [TCP, UDP]
-        :type Protocol: str
-        :param VirtualPort: Forwarding port
-        :type VirtualPort: int
-        :param Enable: 1: enabled, 0: disabled
-        :type Enable: int
-        :param TimeOut: Response timeout period in seconds
-        :type TimeOut: int
-        :param Interval: Detection interval in seconds
-        :type Interval: int
-        :param KickNum: Unhealthy threshold in times.
-        :type KickNum: int
-        :param AliveNum: Healthy threshold in times.
-        :type AliveNum: int
-        :param KeepTime: Session persistence duration in seconds
-        :type KeepTime: int
-        """
+        :param Protocol: Forwarding protocol. Valid values: [TCP, UDP]\n        :type Protocol: str\n        :param VirtualPort: Forwarding port\n        :type VirtualPort: int\n        :param Enable: 1: enabled, 0: disabled\n        :type Enable: int\n        :param TimeOut: Response timeout period in seconds\n        :type TimeOut: int\n        :param Interval: Detection interval in seconds\n        :type Interval: int\n        :param KickNum: Unhealthy threshold in times.\n        :type KickNum: int\n        :param AliveNum: Healthy threshold in times.\n        :type AliveNum: int\n        :param KeepTime: Session persistence duration in seconds\n        :type KeepTime: int\n        """
         self.Protocol = None
         self.VirtualPort = None
         self.Enable = None
@@ -6396,29 +4890,7 @@ class L4RuleEntry(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: Forwarding protocol. Valid values: [TCP, UDP]
-        :type Protocol: str
-        :param VirtualPort: Forwarding port
-        :type VirtualPort: int
-        :param SourcePort: Real server port
-        :type SourcePort: int
-        :param SourceType: Forwarding method. Valid values: [1 (forwarding via domain name), 2 (forwarding via IP)]
-        :type SourceType: int
-        :param KeepTime: Session persistence duration in seconds
-        :type KeepTime: int
-        :param SourceList: Forward list
-        :type SourceList: list of L4RuleSource
-        :param LbType: Load balancing method. Valid values: [1 (weighted round robin), 2 (source IP hash)]
-        :type LbType: int
-        :param KeepEnable: Session persistence status. Valid values: [0 (disabled), 1 (enabled)];
-        :type KeepEnable: int
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param RuleName: Rule description
-        :type RuleName: str
-        :param RemoveSwitch: Watermark removal status. Valid values: [0 (disabled), 1 (enabled)]
-        :type RemoveSwitch: int
-        """
+        :param Protocol: Forwarding protocol. Valid values: [TCP, UDP]\n        :type Protocol: str\n        :param VirtualPort: Forwarding port\n        :type VirtualPort: int\n        :param SourcePort: Real server port\n        :type SourcePort: int\n        :param SourceType: Forwarding method. Valid values: [1 (forwarding via domain name), 2 (forwarding via IP)]\n        :type SourceType: int\n        :param KeepTime: Session persistence duration in seconds\n        :type KeepTime: int\n        :param SourceList: Forward list\n        :type SourceList: list of L4RuleSource\n        :param LbType: Load balancing method. Valid values: [1 (weighted round robin), 2 (source IP hash)]\n        :type LbType: int\n        :param KeepEnable: Session persistence status. Valid values: [0 (disabled), 1 (enabled)];\n        :type KeepEnable: int\n        :param RuleId: Rule ID\n        :type RuleId: str\n        :param RuleName: Rule description\n        :type RuleName: str\n        :param RemoveSwitch: Watermark removal status. Valid values: [0 (disabled), 1 (enabled)]\n        :type RemoveSwitch: int\n        """
         self.Protocol = None
         self.VirtualPort = None
         self.SourcePort = None
@@ -6465,19 +4937,7 @@ class L4RuleHealth(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param Enable: 1: enabled, 0: disabled
-        :type Enable: int
-        :param TimeOut: Response timeout period in seconds
-        :type TimeOut: int
-        :param Interval: Detection interval in seconds, which must be greater than the response timeout period
-        :type Interval: int
-        :param KickNum: Unhealthy threshold in times
-        :type KickNum: int
-        :param AliveNum: Healthy threshold in times.
-        :type AliveNum: int
-        """
+        :param RuleId: Rule ID\n        :type RuleId: str\n        :param Enable: 1: enabled, 0: disabled\n        :type Enable: int\n        :param TimeOut: Response timeout period in seconds\n        :type TimeOut: int\n        :param Interval: Detection interval in seconds, which must be greater than the response timeout period\n        :type Interval: int\n        :param KickNum: Unhealthy threshold in times\n        :type KickNum: int\n        :param AliveNum: Healthy threshold in times.\n        :type AliveNum: int\n        """
         self.RuleId = None
         self.Enable = None
         self.TimeOut = None
@@ -6509,11 +4969,7 @@ class L4RuleSource(AbstractModel):
 
     def __init__(self):
         """
-        :param Source: Intermediate IP or domain name
-        :type Source: str
-        :param Weight: Weight value. Value range: [0,100]
-        :type Weight: int
-        """
+        :param Source: Intermediate IP or domain name\n        :type Source: str\n        :param Weight: Weight value. Value range: [0,100]\n        :type Weight: int\n        """
         self.Source = None
         self.Weight = None
 
@@ -6537,25 +4993,7 @@ class L7HealthConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: Forwarding protocol. Valid values: [http, https, http/https]
-        :type Protocol: str
-        :param Domain: Forwarding domain name
-        :type Domain: str
-        :param Enable: 1: enabled, 0: disabled
-        :type Enable: int
-        :param Interval: Detection interval in seconds
-        :type Interval: int
-        :param KickNum: Number of exceptions in times
-        :type KickNum: int
-        :param AliveNum: Number of health checks in times
-        :type AliveNum: int
-        :param Method: Health check detection method. Valid values: HEAD, GET. Default VALUE: HEAD
-        :type Method: str
-        :param StatusCode: Healthy status code during health check. xx = 1, 2xx = 2, 3xx = 4, 4xx = 8, 5xx = 16. Multiple status code values are added up
-        :type StatusCode: int
-        :param Url: URL of checked directory. Default value: /
-        :type Url: str
-        """
+        :param Protocol: Forwarding protocol. Valid values: [http, https, http/https]\n        :type Protocol: str\n        :param Domain: Forwarding domain name\n        :type Domain: str\n        :param Enable: 1: enabled, 0: disabled\n        :type Enable: int\n        :param Interval: Detection interval in seconds\n        :type Interval: int\n        :param KickNum: Number of exceptions in times\n        :type KickNum: int\n        :param AliveNum: Number of health checks in times\n        :type AliveNum: int\n        :param Method: Health check detection method. Valid values: HEAD, GET. Default VALUE: HEAD\n        :type Method: str\n        :param StatusCode: Healthy status code during health check. xx = 1, 2xx = 2, 3xx = 4, 4xx = 8, 5xx = 16. Multiple status code values are added up\n        :type StatusCode: int\n        :param Url: URL of checked directory. Default value: /\n        :type Url: str\n        """
         self.Protocol = None
         self.Domain = None
         self.Enable = None
@@ -6593,48 +5031,8 @@ class L7RuleEntry(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: Forwarding protocol. Valid values: [http, https]
-        :type Protocol: str
-        :param Domain: Forwarding domain name
-        :type Domain: str
-        :param SourceType: Forwarding method. Valid values: [1 (forwarding via domain name), 2 (forwarding via IP)]
-        :type SourceType: int
-        :param KeepTime: Session persistence duration in seconds
-        :type KeepTime: int
-        :param SourceList: Forward list
-        :type SourceList: list of L4RuleSource
-        :param LbType: Load balancing method. Valid value: [1 (weighted round robin)]
-        :type LbType: int
-        :param KeepEnable: Session persistence status. Valid values: [0 (disabled), 1 (enabled)]
-        :type KeepEnable: int
-        :param RuleId: Rule ID, which is optional when adding a new rule but required when modifying or deleting a rule;
-        :type RuleId: str
-        :param CertType: Certificate source, which is required if the forwarding protocol is HTTPS. Valid value: [2 (Tencent Cloud-hosted certificate)]. If the forwarding protocol is HTTP, 0 can be entered for this field
-        :type CertType: int
-        :param SSLId: If the certificate is a Tencent Cloud-hosted certificate, this field must be entered with the hosted certificate ID
-        :type SSLId: str
-        :param Cert: If the certificate is an external certificate, this field must be entered with the certificate content. (As external certificates are no longer supported, this field has been disused and does not need to be entered)
-        :type Cert: str
-        :param PrivateKey: If the certificate is an external certificate, this field must be entered with the certificate key. (As external certificates are no longer supported, this field has been disused and does not need to be entered)
-        :type PrivateKey: str
-        :param RuleName: Rule description
-        :type RuleName: str
-        :param Status: Rule status. Valid values: [0 (successfully configured rule), 1 (rule configuration taking effect), 2 (rule configuration failed), 3 (rule deletion taking effect), 5 (rule deletion failed), 6 (rule waiting for configuration), 7 (rule waiting for deletion), 8 (rule waiting for certificate configuration)]
-        :type Status: int
-        :param CCStatus: CC protection status. Valid values: [0 (disabled), 1 (enabled)]
-        :type CCStatus: int
-        :param CCEnable: HTTPS CC protection status. Valid values: [0 (disabled), 1 (enabled)]
-        :type CCEnable: int
-        :param CCThreshold: HTTPS CC protection threshold
-        :type CCThreshold: int
-        :param CCLevel: HTTPS CC protection level
-        :type CCLevel: str
-        :param HttpsToHttpEnable: Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). The default value is disabled.
-        :type HttpsToHttpEnable: int
-        :param VirtualPort: Access port number.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VirtualPort: int
-        """
+        :param Protocol: Forwarding protocol. Valid values: [http, https]\n        :type Protocol: str\n        :param Domain: Forwarding domain name\n        :type Domain: str\n        :param SourceType: Forwarding method. Valid values: [1 (forwarding via domain name), 2 (forwarding via IP)]\n        :type SourceType: int\n        :param KeepTime: Session persistence duration in seconds\n        :type KeepTime: int\n        :param SourceList: Forward list\n        :type SourceList: list of L4RuleSource\n        :param LbType: Load balancing method. Valid value: [1 (weighted round robin)]\n        :type LbType: int\n        :param KeepEnable: Session persistence status. Valid values: [0 (disabled), 1 (enabled)]\n        :type KeepEnable: int\n        :param RuleId: Rule ID, which is optional when adding a new rule but required when modifying or deleting a rule;\n        :type RuleId: str\n        :param CertType: Certificate source, which is required if the forwarding protocol is HTTPS. Valid value: [2 (Tencent Cloud-hosted certificate)]. If the forwarding protocol is HTTP, 0 can be entered for this field\n        :type CertType: int\n        :param SSLId: If the certificate is a Tencent Cloud-hosted certificate, this field must be entered with the hosted certificate ID\n        :type SSLId: str\n        :param Cert: If the certificate is an external certificate, this field must be entered with the certificate content. (As external certificates are no longer supported, this field has been disused and does not need to be entered)\n        :type Cert: str\n        :param PrivateKey: If the certificate is an external certificate, this field must be entered with the certificate key. (As external certificates are no longer supported, this field has been disused and does not need to be entered)\n        :type PrivateKey: str\n        :param RuleName: Rule description\n        :type RuleName: str\n        :param Status: Rule status. Valid values: [0 (successfully configured rule), 1 (rule configuration taking effect), 2 (rule configuration failed), 3 (rule deletion taking effect), 5 (rule deletion failed), 6 (rule waiting for configuration), 7 (rule waiting for deletion), 8 (rule waiting for certificate configuration)]\n        :type Status: int\n        :param CCStatus: CC protection status. Valid values: [0 (disabled), 1 (enabled)]\n        :type CCStatus: int\n        :param CCEnable: HTTPS CC protection status. Valid values: [0 (disabled), 1 (enabled)]\n        :type CCEnable: int\n        :param CCThreshold: HTTPS CC protection threshold\n        :type CCThreshold: int\n        :param CCLevel: HTTPS CC protection level\n        :type CCLevel: str\n        :param HttpsToHttpEnable: Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). The default value is disabled.\n        :type HttpsToHttpEnable: int\n        :param VirtualPort: Access port number.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type VirtualPort: int\n        """
         self.Protocol = None
         self.Domain = None
         self.SourceType = None
@@ -6699,25 +5097,7 @@ class L7RuleHealth(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param Enable: 1: enabled, 0: disabled
-        :type Enable: int
-        :param Interval: Detection interval in seconds
-        :type Interval: int
-        :param KickNum: Unhealthy threshold in times.
-        :type KickNum: int
-        :param AliveNum: Healthy threshold in times.
-        :type AliveNum: int
-        :param Method: HTTP request method. Valid values: [HEAD, GET]
-        :type Method: str
-        :param StatusCode: Healthy status code during health check. xx = 1, 2xx = 2, 3xx = 4, 4xx = 8, 5xx = 16. Multiple status code values are added up
-        :type StatusCode: int
-        :param Url: URL of checked directory. Default value: /
-        :type Url: str
-        :param Status: Configuration status. 0: normal, 1: configuring, 2: configuration failed
-        :type Status: int
-        """
+        :param RuleId: Rule ID\n        :type RuleId: str\n        :param Enable: 1: enabled, 0: disabled\n        :type Enable: int\n        :param Interval: Detection interval in seconds\n        :type Interval: int\n        :param KickNum: Unhealthy threshold in times.\n        :type KickNum: int\n        :param AliveNum: Healthy threshold in times.\n        :type AliveNum: int\n        :param Method: HTTP request method. Valid values: [HEAD, GET]\n        :type Method: str\n        :param StatusCode: Healthy status code during health check. xx = 1, 2xx = 2, 3xx = 4, 4xx = 8, 5xx = 16. Multiple status code values are added up\n        :type StatusCode: int\n        :param Url: URL of checked directory. Default value: /\n        :type Url: str\n        :param Status: Configuration status. 0: normal, 1: configuring, 2: configuration failed\n        :type Status: int\n        """
         self.RuleId = None
         self.Enable = None
         self.Interval = None
@@ -6755,15 +5135,7 @@ class ModifyCCAlarmThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param RsId: Anti-DDoS instance ID
-        :type RsId: str
-        :param AlarmThreshold: Alarm threshold, which should be greater than 0 (currently scheduled value). It is set to 1000 on the backend by default
-        :type AlarmThreshold: int
-        :param IpList: List of IPs associated with resource. If no Anti-DDoS Pro instance is bound, pass in an empty array. For Anti-DDoS Ultimate, pass in multiple IPs
-        :type IpList: list of str
-        """
+        :param Business: Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param RsId: Anti-DDoS instance ID\n        :type RsId: str\n        :param AlarmThreshold: Alarm threshold, which should be greater than 0 (currently scheduled value). It is set to 1000 on the backend by default\n        :type AlarmThreshold: int\n        :param IpList: List of IPs associated with resource. If no Anti-DDoS Pro instance is bound, pass in an empty array. For Anti-DDoS Ultimate, pass in multiple IPs\n        :type IpList: list of str\n        """
         self.Business = None
         self.RsId = None
         self.AlarmThreshold = None
@@ -6791,11 +5163,7 @@ class ModifyCCAlarmThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -6814,27 +5182,7 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param CCFrequencyRuleId: CC access frequency control rule ID
-        :type CCFrequencyRuleId: str
-        :param Mode: Matching rule. Valid values: ["include" (prefix match), "equal" (exact match)]
-        :type Mode: str
-        :param Period: Reference period in seconds. Valid values: [10, 30, 60]
-        :type Period: int
-        :param ReqNumber: Number of access requests. Value range: [1-10000]
-        :type ReqNumber: int
-        :param Act: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
-        :type Act: str
-        :param ExeDuration: Execution duration in seconds. Valid range: [1-900]
-        :type ExeDuration: int
-        :param Uri: URI string, which must start with `/`, such as `/abc/a.php`. Length limit: 31. If URI is `/`, only prefix match can be selected as the matching mode;
-        :type Uri: str
-        :param UserAgent: `User-Agent` string. Length limit: 80
-        :type UserAgent: str
-        :param Cookie: Cookie string. Length limit: 40
-        :type Cookie: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param CCFrequencyRuleId: CC access frequency control rule ID\n        :type CCFrequencyRuleId: str\n        :param Mode: Matching rule. Valid values: ["include" (prefix match), "equal" (exact match)]\n        :type Mode: str\n        :param Period: Reference period in seconds. Valid values: [10, 30, 60]\n        :type Period: int\n        :param ReqNumber: Number of access requests. Value range: [1-10000]\n        :type ReqNumber: int\n        :param Act: Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]\n        :type Act: str\n        :param ExeDuration: Execution duration in seconds. Valid range: [1-900]\n        :type ExeDuration: int\n        :param Uri: URI string, which must start with `/`, such as `/abc/a.php`. Length limit: 31. If URI is `/`, only prefix match can be selected as the matching mode;\n        :type Uri: str\n        :param UserAgent: `User-Agent` string. Length limit: 80\n        :type UserAgent: str\n        :param Cookie: Cookie string. Length limit: 40\n        :type Cookie: str\n        """
         self.Business = None
         self.CCFrequencyRuleId = None
         self.Mode = None
@@ -6874,11 +5222,7 @@ class ModifyCCFrequencyRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -6897,15 +5241,7 @@ class ModifyCCFrequencyRulesStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleId: Layer-7 forwarding rule ID, which can be obtained through the `DescribleL7Rules` API
-        :type RuleId: str
-        :param Method: Enables or disable. Valid values: ["on", "off"]
-        :type Method: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleId: Layer-7 forwarding rule ID, which can be obtained through the `DescribleL7Rules` API\n        :type RuleId: str\n        :param Method: Enables or disable. Valid values: ["on", "off"]\n        :type Method: str\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -6933,11 +5269,7 @@ class ModifyCCFrequencyRulesStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -6956,15 +5288,7 @@ class ModifyCCHostProtectionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param Method: Enables/disables CC domain name protection. Valid values: [open (enable), close (disable)]
-        :type Method: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleId: Rule ID\n        :type RuleId: str\n        :param Method: Enables/disables CC domain name protection. Valid values: [open (enable), close (disable)]\n        :type Method: str\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -6992,11 +5316,7 @@ class ModifyCCHostProtectionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7015,24 +5335,8 @@ class ModifyCCIpAllowDenyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Method: add: add, delete: delete
-        :type Method: str
-        :param Type: Blocklist/allowlist type. Valid values: [white (allowlist), black (blocklist)]
-        :type Type: str
-        :param IpList: Blocklisted/whitelisted IP array
-        :type IpList: list of str
-        :param Protocol: CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `Domain` and `RuleId` fields are required;
-        :type Protocol: str
-        :param Domain: HTTPS layer-7 forwarding rule domain name (which is optional and can be obtained from the layer-7 forwarding rule API). This field is required only if `Protocol` is `https`;
-        :type Domain: str
-        :param RuleId: HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API),
-If `Method` is `delete`, this field can be left empty;
-        :type RuleId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Method: add: add, delete: delete\n        :type Method: str\n        :param Type: Blocklist/allowlist type. Valid values: [white (allowlist), black (blocklist)]\n        :type Type: str\n        :param IpList: Blocklisted/whitelisted IP array\n        :type IpList: list of str\n        :param Protocol: CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `Domain` and `RuleId` fields are required;\n        :type Protocol: str\n        :param Domain: HTTPS layer-7 forwarding rule domain name (which is optional and can be obtained from the layer-7 forwarding rule API). This field is required only if `Protocol` is `https`;\n        :type Domain: str\n        :param RuleId: HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API),
+If `Method` is `delete`, this field can be left empty;\n        :type RuleId: str\n        """
         self.Business = None
         self.Id = None
         self.Method = None
@@ -7068,11 +5372,7 @@ class ModifyCCIpAllowDenyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7091,17 +5391,7 @@ class ModifyCCLevelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Level: CC protection level. Valid values: [default (normal), loose (loose), strict (strict)];
-        :type Level: str
-        :param Protocol: CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `RuleId` field is required;
-        :type Protocol: str
-        :param RuleId: Layer-7 forwarding rule ID (which can be obtained from the layer-7 forwarding rule API);
-        :type RuleId: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Level: CC protection level. Valid values: [default (normal), loose (loose), strict (strict)];\n        :type Level: str\n        :param Protocol: CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `RuleId` field is required;\n        :type Protocol: str\n        :param RuleId: Layer-7 forwarding rule ID (which can be obtained from the layer-7 forwarding rule API);\n        :type RuleId: str\n        """
         self.Business = None
         self.Id = None
         self.Level = None
@@ -7131,11 +5421,7 @@ class ModifyCCLevelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7154,15 +5440,7 @@ class ModifyCCPolicySwitchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param SetId: Policy ID
-        :type SetId: str
-        :param Switch: Status
-        :type Switch: int
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param SetId: Policy ID\n        :type SetId: str\n        :param Switch: Status\n        :type Switch: int\n        """
         self.Business = None
         self.Id = None
         self.SetId = None
@@ -7190,11 +5468,7 @@ class ModifyCCPolicySwitchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7213,15 +5487,7 @@ class ModifyCCSelfDefinePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param SetId: Policy ID
-        :type SetId: str
-        :param Policy: Details of the CC protection policy
-        :type Policy: :class:`tencentcloud.dayu.v20180709.models.CCPolicy`
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param SetId: Policy ID\n        :type SetId: str\n        :param Policy: Details of the CC protection policy\n        :type Policy: :class:`tencentcloud.dayu.v20180709.models.CCPolicy`\n        """
         self.Business = None
         self.Id = None
         self.SetId = None
@@ -7251,11 +5517,7 @@ class ModifyCCSelfDefinePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7274,9 +5536,7 @@ class ModifyCCThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate, `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Threshold: CC protection threshold. Valid values: (0 100 150 240 350 480 550 700 850 1000 1500 2000 3000 5000 10000 20000);
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate, `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Threshold: CC protection threshold. Valid values: (0 100 150 240 350 480 550 700 850 1000 1500 2000 3000 5000 10000 20000);
 If `Business` is Anti-DDoS Advanced or Anti-DDoS Ultimate, its maximum CC protection threshold is subject to the base protection bandwidth in the following way:
   Base bandwidth: maximum CC protection threshold
   10:  20000,
@@ -7286,30 +5546,8 @@ If `Business` is Anti-DDoS Advanced or Anti-DDoS Ultimate, its maximum CC protec
   50:  150000,
   60:  200000,
   80:  250000,
-  100: 300000,
-        :type Threshold: int
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Protocol: CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `RuleId` field is required;
-        :type Protocol: str
-        :param RuleId: HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API);
-Required if `Protocol` is `https`;
-        :type RuleId: str
-        :param BasicIp: Queried IP address (only provided by Anti-DDoS Basic), such as 1.1.1.1
-        :type BasicIp: str
-        :param BasicRegion: IP region (only provided for Anti-DDoS Basic). Valid values: region abbreviations such as gz, bj, sh, and hk
-        :type BasicRegion: str
-        :param BasicBizType: Zone type (only provided for Anti-DDoS Basic). Valid values: public (public cloud zone), bm (BM zone), nat (NAT server zone), channel (internet channel).
-        :type BasicBizType: str
-        :param BasicDeviceType: Device type (only provided for Anti-DDoS Basic). Valid values: cvm (CVM), clb (public CLB), lb (BM CLB), nat (NAT server), channel (internet channel).
-        :type BasicDeviceType: str
-        :param BasicIpInstance: IPInstance Nat gateway (only provided for Anti-DDoS Basic), which is optional. (If the device type to be queried is a NAT server, this parameter is required, which can be obtained through the NAT resource query API)
-        :type BasicIpInstance: str
-        :param BasicIspCode: ISP line (only provided for Anti-DDoS Basic), which is optional. (If the device type to be queried is a NAT server, this parameter should be 5)
-        :type BasicIspCode: int
-        :param Domain: This optional field must be specified when HTTPS protocol is used.
-        :type Domain: str
-        """
+  100: 300000,\n        :type Threshold: int\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Protocol: CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `RuleId` field is required;\n        :type Protocol: str\n        :param RuleId: HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API);
+Required if `Protocol` is `https`;\n        :type RuleId: str\n        :param BasicIp: Queried IP address (only provided by Anti-DDoS Basic), such as 1.1.1.1\n        :type BasicIp: str\n        :param BasicRegion: IP region (only provided for Anti-DDoS Basic). Valid values: region abbreviations such as gz, bj, sh, and hk\n        :type BasicRegion: str\n        :param BasicBizType: Zone type (only provided for Anti-DDoS Basic). Valid values: public (public cloud zone), bm (BM zone), nat (NAT server zone), channel (internet channel).\n        :type BasicBizType: str\n        :param BasicDeviceType: Device type (only provided for Anti-DDoS Basic). Valid values: cvm (CVM), clb (public CLB), lb (BM CLB), nat (NAT server), channel (internet channel).\n        :type BasicDeviceType: str\n        :param BasicIpInstance: IPInstance Nat gateway (only provided for Anti-DDoS Basic), which is optional. (If the device type to be queried is a NAT server, this parameter is required, which can be obtained through the NAT resource query API)\n        :type BasicIpInstance: str\n        :param BasicIspCode: ISP line (only provided for Anti-DDoS Basic), which is optional. (If the device type to be queried is a NAT server, this parameter should be 5)\n        :type BasicIspCode: int\n        :param Domain: This optional field must be specified when HTTPS protocol is used.\n        :type Domain: str\n        """
         self.Business = None
         self.Threshold = None
         self.Id = None
@@ -7353,11 +5591,7 @@ class ModifyCCThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7376,26 +5610,10 @@ class ModifyCCUrlAllowRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Method: add: add, delete: delete
-        :type Method: str
-        :param Type: Blocklist/allowlist type. Valid value: [white (allowlist)]
-        :type Type: str
-        :param UrlList: URL array. URL format:
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Method: add: add, delete: delete\n        :type Method: str\n        :param Type: Blocklist/allowlist type. Valid value: [white (allowlist)]\n        :type Type: str\n        :param UrlList: URL array. URL format:
 http://domain name/cgi
-https://domain name/cgi
-        :type UrlList: list of str
-        :param Protocol: CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `Domain` and `RuleId` fields are required;
-        :type Protocol: str
-        :param Domain: HTTPS layer-7 forwarding rule domain name (which is optional and can be obtained from the layer-7 forwarding rule API). This field is required only if `Protocol` is `https`;
-        :type Domain: str
-        :param RuleId: HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API). This field is required only when adding a rule and `Protocol` is `https`;
-If `Method` is `delete`, this field can be left empty;
-        :type RuleId: str
-        """
+https://domain name/cgi\n        :type UrlList: list of str\n        :param Protocol: CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `Domain` and `RuleId` fields are required;\n        :type Protocol: str\n        :param Domain: HTTPS layer-7 forwarding rule domain name (which is optional and can be obtained from the layer-7 forwarding rule API). This field is required only if `Protocol` is `https`;\n        :type Domain: str\n        :param RuleId: HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API). This field is required only when adding a rule and `Protocol` is `https`;
+If `Method` is `delete`, this field can be left empty;\n        :type RuleId: str\n        """
         self.Business = None
         self.Id = None
         self.Method = None
@@ -7431,11 +5649,7 @@ class ModifyCCUrlAllowResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7454,15 +5668,7 @@ class ModifyDDoSAIStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Method: get (read AI protection status), set (modify AI protection status);
-        :type Method: str
-        :param DDoSAI: AI protection status, which is required if `Method` is `set`. Valid values: [on, off].
-        :type DDoSAI: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Method: get (read AI protection status), set (modify AI protection status);\n        :type Method: str\n        :param DDoSAI: AI protection status, which is required if `Method` is `set`. Valid values: [on, off].\n        :type DDoSAI: str\n        """
         self.Business = None
         self.Id = None
         self.Method = None
@@ -7490,13 +5696,7 @@ class ModifyDDoSAIStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DDoSAI: AI protection status. Valid values: [on, off]
-        :type DDoSAI: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DDoSAI: AI protection status. Valid values: [on, off]\n        :type DDoSAI: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DDoSAI = None
         self.Id = None
         self.RequestId = None
@@ -7515,17 +5715,7 @@ class ModifyDDoSAlarmThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param RsId: Anti-DDoS instance ID
-        :type RsId: str
-        :param AlarmType: Alarm threshold type. 0: not set, 1: inbound traffic, 2: cleansed traffic
-        :type AlarmType: int
-        :param AlarmThreshold: Alarm threshold, which should be greater than 0 (currently scheduled value)
-        :type AlarmThreshold: int
-        :param IpList: List of IPs associated with resource. If no Anti-DDoS Pro instance is bound, pass in an empty array. For Anti-DDoS Ultimate, pass in multiple IPs
-        :type IpList: list of str
-        """
+        :param Business: Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param RsId: Anti-DDoS instance ID\n        :type RsId: str\n        :param AlarmType: Alarm threshold type. 0: not set, 1: inbound traffic, 2: cleansed traffic\n        :type AlarmType: int\n        :param AlarmThreshold: Alarm threshold, which should be greater than 0 (currently scheduled value)\n        :type AlarmThreshold: int\n        :param IpList: List of IPs associated with resource. If no Anti-DDoS Pro instance is bound, pass in an empty array. For Anti-DDoS Ultimate, pass in multiple IPs\n        :type IpList: list of str\n        """
         self.Business = None
         self.RsId = None
         self.AlarmType = None
@@ -7555,11 +5745,7 @@ class ModifyDDoSAlarmThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7578,23 +5764,7 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate, `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Status: Protection status. Valid values: [0 (disabled), 1 (enabled)]
-        :type Status: int
-        :param Hour: Disablement duration in hours. Valid values: [0, 1, 2, 3, 4, 5, 6]. If `Status` is `0` (indicating to disable), `Hour` must be greater than 0;
-        :type Hour: int
-        :param Id: Resource ID, which is required if `Business` is not Anti-DDoS Basic;
-        :type Id: str
-        :param Ip: Anti-DDoS Basic IP, which is required only if `Business` is Anti-DDoS Basic;
-        :type Ip: str
-        :param BizType: Product type of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [public (CVM), bm (BM), eni (ENI), vpngw (VPN Gateway), natgw (NAT Gateway), waf (WAF), fpc (finance product), gaap (GAAP), other (hosted IP)]
-        :type BizType: str
-        :param DeviceType: Product subtype of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]
-        :type DeviceType: str
-        :param InstanceId: Resource instance ID of IP, which is required only if `Business` is Anti-DDoS Basic. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`;
-        :type InstanceId: str
-        :param IPRegion: This field is required only if `Business` is Anti-DDoS Basic, indicating the IP region. Valid values:
+        :param Business: Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate, `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Status: Protection status. Valid values: [0 (disabled), 1 (enabled)]\n        :type Status: int\n        :param Hour: Disablement duration in hours. Valid values: [0, 1, 2, 3, 4, 5, 6]. If `Status` is `0` (indicating to disable), `Hour` must be greater than 0;\n        :type Hour: int\n        :param Id: Resource ID, which is required if `Business` is not Anti-DDoS Basic;\n        :type Id: str\n        :param Ip: Anti-DDoS Basic IP, which is required only if `Business` is Anti-DDoS Basic;\n        :type Ip: str\n        :param BizType: Product type of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [public (CVM), bm (BM), eni (ENI), vpngw (VPN Gateway), natgw (NAT Gateway), waf (WAF), fpc (finance product), gaap (GAAP), other (hosted IP)]\n        :type BizType: str\n        :param DeviceType: Product subtype of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]\n        :type DeviceType: str\n        :param InstanceId: Resource instance ID of IP, which is required only if `Business` is Anti-DDoS Basic. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`;\n        :type InstanceId: str\n        :param IPRegion: This field is required only if `Business` is Anti-DDoS Basic, indicating the IP region. Valid values:
 "bj":     North China (Beijing)
 "cd":     Southwest China (Chengdu)
 "cq":     Southwest China (Chongqing)
@@ -7616,9 +5786,7 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 "use":    East US (Virginia)
 "ru":     Russia
 "tpe":    Taiwan (China)
-"nj":     Nanjing
-        :type IPRegion: str
-        """
+"nj":     Nanjing\n        :type IPRegion: str\n        """
         self.Business = None
         self.Status = None
         self.Hour = None
@@ -7656,11 +5824,7 @@ class ModifyDDoSDefendStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7679,15 +5843,7 @@ class ModifyDDoSLevelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Method: get (read protection level), set (modify protection level);
-        :type Method: str
-        :param DDoSLevel: Protection level, which is required if `Method` is `set`. Valid values: [low,middle,high]
-        :type DDoSLevel: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Method: get (read protection level), set (modify protection level);\n        :type Method: str\n        :param DDoSLevel: Protection level, which is required if `Method` is `set`. Valid values: [low,middle,high]\n        :type DDoSLevel: str\n        """
         self.Business = None
         self.Id = None
         self.Method = None
@@ -7715,13 +5871,7 @@ class ModifyDDoSLevelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param DDoSLevel: Protection level. Valid values: [low,middle,high]
-        :type DDoSLevel: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param DDoSLevel: Protection level. Valid values: [low,middle,high]\n        :type DDoSLevel: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Id = None
         self.DDoSLevel = None
         self.RequestId = None
@@ -7740,55 +5890,7 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param SceneId: Policy scenario ID
-        :type SceneId: str
-        :param PlatformTypes: Development platform. Valid values: [PC (PC client), MOBILE (mobile device), TV (TV), SERVER (server)]
-        :type PlatformTypes: list of str
-        :param AppType: Category. Valid values: [WEB (website), GAME (game), APP (application), OTHER (other)]
-        :type AppType: str
-        :param AppProtocols: Application protocol. Valid values: [tcp (TCP protocol), udp (UDP protocol), icmp (ICMP protocol), all (other protocols)]
-        :type AppProtocols: list of str
-        :param TcpSportStart: TCP start port. Value range: (0, 65535]
-        :type TcpSportStart: str
-        :param TcpSportEnd: TCP end port. Value range: (0, 65535). It must be greater than or equal to the TCP start port
-        :type TcpSportEnd: str
-        :param UdpSportStart: UDP start port. Value range: (0, 65535]
-        :type UdpSportStart: str
-        :param UdpSportEnd: End UDP business port. Value range: (0, 65535). It must be greater than or equal to the start UDP business port
-        :type UdpSportEnd: str
-        :param HasAbroad: Whether there are customers outside Mainland China. Valid values: [no, yes]
-        :type HasAbroad: str
-        :param HasInitiateTcp: Whether to actively initiate outbound TCP requests. Valid values: [no, yes]
-        :type HasInitiateTcp: str
-        :param HasInitiateUdp: Whether to actively initiate outbound UDP requests. Valid values: [no, yes]
-        :type HasInitiateUdp: str
-        :param PeerTcpPort: Port that actively initiates TCP requests. Value range: (0, 65535]
-        :type PeerTcpPort: str
-        :param PeerUdpPort: Port that actively initiates UDP requests. Value range: (0, 65535]
-        :type PeerUdpPort: str
-        :param TcpFootprint: Fixed feature code of TCP payload. String length limit: 512
-        :type TcpFootprint: str
-        :param UdpFootprint: Fixed feature code of UDP payload. String length limit: 512
-        :type UdpFootprint: str
-        :param WebApiUrl: Web business API URL
-        :type WebApiUrl: list of str
-        :param MinTcpPackageLen: Minimum length of TCP business packet. Value range: (0, 1500)
-        :type MinTcpPackageLen: str
-        :param MaxTcpPackageLen: Maximum length of TCP business packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of TCP business packet
-        :type MaxTcpPackageLen: str
-        :param MinUdpPackageLen: Minimum length of UDP business packet. Value range: (0, 1500)
-        :type MinUdpPackageLen: str
-        :param MaxUdpPackageLen: Maximum length of UDP business packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of UDP business packet
-        :type MaxUdpPackageLen: str
-        :param HasVPN: Whether there are VPN businesses. Valid values: [no, yes]
-        :type HasVPN: str
-        :param TcpPortList: TCP business port list. Individual ports and port ranges are supported, which should be in string type, such as 80,443,700-800,53,1000-3000
-        :type TcpPortList: str
-        :param UdpPortList: UDP business port list. Individual ports and port ranges are supported, which should be in string type, such as 80,443,700-800,53,1000-3000
-        :type UdpPortList: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param SceneId: Policy scenario ID\n        :type SceneId: str\n        :param PlatformTypes: Development platform. Valid values: [PC (PC client), MOBILE (mobile device), TV (TV), SERVER (server)]\n        :type PlatformTypes: list of str\n        :param AppType: Category. Valid values: [WEB (website), GAME (game), APP (application), OTHER (other)]\n        :type AppType: str\n        :param AppProtocols: Application protocol. Valid values: [tcp (TCP protocol), udp (UDP protocol), icmp (ICMP protocol), all (other protocols)]\n        :type AppProtocols: list of str\n        :param TcpSportStart: TCP start port. Value range: (0, 65535]\n        :type TcpSportStart: str\n        :param TcpSportEnd: TCP end port. Value range: (0, 65535). It must be greater than or equal to the TCP start port\n        :type TcpSportEnd: str\n        :param UdpSportStart: UDP start port. Value range: (0, 65535]\n        :type UdpSportStart: str\n        :param UdpSportEnd: End UDP business port. Value range: (0, 65535). It must be greater than or equal to the start UDP business port\n        :type UdpSportEnd: str\n        :param HasAbroad: Whether there are customers outside Mainland China. Valid values: [no, yes]\n        :type HasAbroad: str\n        :param HasInitiateTcp: Whether to actively initiate outbound TCP requests. Valid values: [no, yes]\n        :type HasInitiateTcp: str\n        :param HasInitiateUdp: Whether to actively initiate outbound UDP requests. Valid values: [no, yes]\n        :type HasInitiateUdp: str\n        :param PeerTcpPort: Port that actively initiates TCP requests. Value range: (0, 65535]\n        :type PeerTcpPort: str\n        :param PeerUdpPort: Port that actively initiates UDP requests. Value range: (0, 65535]\n        :type PeerUdpPort: str\n        :param TcpFootprint: Fixed feature code of TCP payload. String length limit: 512\n        :type TcpFootprint: str\n        :param UdpFootprint: Fixed feature code of UDP payload. String length limit: 512\n        :type UdpFootprint: str\n        :param WebApiUrl: Web business API URL\n        :type WebApiUrl: list of str\n        :param MinTcpPackageLen: Minimum length of TCP business packet. Value range: (0, 1500)\n        :type MinTcpPackageLen: str\n        :param MaxTcpPackageLen: Maximum length of TCP business packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of TCP business packet\n        :type MaxTcpPackageLen: str\n        :param MinUdpPackageLen: Minimum length of UDP business packet. Value range: (0, 1500)\n        :type MinUdpPackageLen: str\n        :param MaxUdpPackageLen: Maximum length of UDP business packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of UDP business packet\n        :type MaxUdpPackageLen: str\n        :param HasVPN: Whether there are VPN businesses. Valid values: [no, yes]\n        :type HasVPN: str\n        :param TcpPortList: TCP business port list. Individual ports and port ranges are supported, which should be in string type, such as 80,443,700-800,53,1000-3000\n        :type TcpPortList: str\n        :param UdpPortList: UDP business port list. Individual ports and port ranges are supported, which should be in string type, such as 80,443,700-800,53,1000-3000\n        :type UdpPortList: str\n        """
         self.Business = None
         self.SceneId = None
         self.PlatformTypes = None
@@ -7856,11 +5958,7 @@ class ModifyDDoSPolicyCaseResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7879,13 +5977,7 @@ class ModifyDDoSPolicyNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param PolicyId: Policy ID
-        :type PolicyId: str
-        :param Name: Policy name
-        :type Name: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param PolicyId: Policy ID\n        :type PolicyId: str\n        :param Name: Policy name\n        :type Name: str\n        """
         self.Business = None
         self.PolicyId = None
         self.Name = None
@@ -7911,11 +6003,7 @@ class ModifyDDoSPolicyNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7934,21 +6022,7 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param PolicyId: Policy ID
-        :type PolicyId: str
-        :param DropOptions: Protocol disablement, which must be entered, and the array length must be 1
-        :type DropOptions: list of DDoSPolicyDropOption
-        :param PortLimits: Port disablement. If no ports are to be disabled, enter an empty array
-        :type PortLimits: list of DDoSPolicyPortLimit
-        :param IpAllowDenys: IP blocklist/allowlist. Enter an empty array if there is no IP blocklist/allowlist
-        :type IpAllowDenys: list of IpBlackWhite
-        :param PacketFilters: Packet filter. Enter an empty array if there are no packets to filter
-        :type PacketFilters: list of DDoSPolicyPacketFilter
-        :param WaterPrint: Watermarking policy parameter. Enter an empty array if the watermarking feature is not enabled. At most one watermarking policy can be passed in (that is, the size of the array cannot exceed 1)
-        :type WaterPrint: list of WaterPrintPolicy
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param PolicyId: Policy ID\n        :type PolicyId: str\n        :param DropOptions: Protocol disablement, which must be entered, and the array length must be 1\n        :type DropOptions: list of DDoSPolicyDropOption\n        :param PortLimits: Port disablement. If no ports are to be disabled, enter an empty array\n        :type PortLimits: list of DDoSPolicyPortLimit\n        :param IpAllowDenys: IP blocklist/allowlist. Enter an empty array if there is no IP blocklist/allowlist\n        :type IpAllowDenys: list of IpBlackWhite\n        :param PacketFilters: Packet filter. Enter an empty array if there are no packets to filter\n        :type PacketFilters: list of DDoSPolicyPacketFilter\n        :param WaterPrint: Watermarking policy parameter. Enter an empty array if the watermarking feature is not enabled. At most one watermarking policy can be passed in (that is, the size of the array cannot exceed 1)\n        :type WaterPrint: list of WaterPrintPolicy\n        """
         self.Business = None
         self.PolicyId = None
         self.DropOptions = None
@@ -8007,11 +6081,7 @@ class ModifyDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8030,19 +6100,7 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `basic`: Anti-DDoS Basic
-        :type Business: str
-        :param Method: `get`: read DDoS protection status, `set`: modify DDoS protection status
-        :type Method: str
-        :param Ip: Anti-DDoS Basic IP, which is required only if `Business` is Anti-DDoS Basic;
-        :type Ip: str
-        :param BizType: Product type of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [public (CVM), bm (BM), eni (ENI), vpngw (VPN Gateway), natgw (NAT Gateway), waf (WAF), fpc (finance product), gaap (GAAP), other (hosted IP)]
-        :type BizType: str
-        :param DeviceType: Product subtype of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]
-        :type DeviceType: str
-        :param InstanceId: Resource instance ID of IP, which is required only if `Business` is Anti-DDoS Basic. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`;
-        :type InstanceId: str
-        :param IPRegion: This field is required only if `Business` is Anti-DDoS Basic, indicating the IP region. Valid values:
+        :param Business: Anti-DDoS service type. `basic`: Anti-DDoS Basic\n        :type Business: str\n        :param Method: `get`: read DDoS protection status, `set`: modify DDoS protection status\n        :type Method: str\n        :param Ip: Anti-DDoS Basic IP, which is required only if `Business` is Anti-DDoS Basic;\n        :type Ip: str\n        :param BizType: Product type of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [public (CVM), bm (BM), eni (ENI), vpngw (VPN Gateway), natgw (NAT Gateway), waf (WAF), fpc (finance product), gaap (GAAP), other (hosted IP)]\n        :type BizType: str\n        :param DeviceType: Product subtype of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]\n        :type DeviceType: str\n        :param InstanceId: Resource instance ID of IP, which is required only if `Business` is Anti-DDoS Basic. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`;\n        :type InstanceId: str\n        :param IPRegion: This field is required only if `Business` is Anti-DDoS Basic, indicating the IP region. Valid values:
 "bj":     North China (Beijing)
 "cd":     Southwest China (Chengdu)
 "cq":     Southwest China (Chongqing)
@@ -8064,11 +6122,7 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 "use":    East US (Virginia)
 "ru":     Russia
 "tpe":    Taiwan (China)
-"nj":     Nanjing
-        :type IPRegion: str
-        :param Status: Protection status value, which is optional. Valid values: [0 (disabled), 1 (enabled)]. If `Method` is `get`, this field can be left empty;
-        :type Status: int
-        """
+"nj":     Nanjing\n        :type IPRegion: str\n        :param Status: Protection status value, which is optional. Valid values: [0 (disabled), 1 (enabled)]. If `Method` is `get`, this field can be left empty;\n        :type Status: int\n        """
         self.Business = None
         self.Method = None
         self.Ip = None
@@ -8104,11 +6158,7 @@ class ModifyDDoSSwitchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: Current protection status value. Valid values: [0 (disabled), 1 (enabled)]
-        :type Status: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Status: Current protection status value. Valid values: [0 (disabled), 1 (enabled)]\n        :type Status: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -8125,14 +6175,8 @@ class ModifyDDoSThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Threshold: DDoS cleansing threshold. Valid values: [0, 60, 80, 100, 150, 200, 250, 300, 400, 500, 700, 1000];
-If the value is set to 0, the default value will be used;
-        :type Threshold: int
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Threshold: DDoS cleansing threshold. Valid values: [0, 60, 80, 100, 150, 200, 250, 300, 400, 500, 700, 1000];
+If the value is set to 0, the default value will be used;\n        :type Threshold: int\n        """
         self.Business = None
         self.Id = None
         self.Threshold = None
@@ -8158,11 +6202,7 @@ class ModifyDDoSThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8181,15 +6221,7 @@ class ModifyDDoSWaterKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param PolicyId: Policy ID
-        :type PolicyId: str
-        :param Method: Key operation. Valid values: [add (add), delete (delete), open (open), close (close), get (get key)]
-        :type Method: str
-        :param KeyId: Key ID, which can be left empty or 0 when adding a key but is required for other operations
-        :type KeyId: int
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param PolicyId: Policy ID\n        :type PolicyId: str\n        :param Method: Key operation. Valid values: [add (add), delete (delete), open (open), close (close), get (get key)]\n        :type Method: str\n        :param KeyId: Key ID, which can be left empty or 0 when adding a key but is required for other operations\n        :type KeyId: int\n        """
         self.Business = None
         self.PolicyId = None
         self.Method = None
@@ -8217,11 +6249,7 @@ class ModifyDDoSWaterKeyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyList: Watermark key list
-        :type KeyList: list of WaterPrintKey
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param KeyList: Watermark key list\n        :type KeyList: list of WaterPrintKey\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.KeyList = None
         self.RequestId = None
 
@@ -8243,13 +6271,7 @@ class ModifyElasticLimitRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Limit: Elastic protection threshold. Valid values: [0 10000 20000 30000 40000 50000 60000 70000 80000 90000 100000 120000 150000 200000 250000 300000 400000 600000 800000 220000 310000 110000 270000 610000]
-        :type Limit: int
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Limit: Elastic protection threshold. Valid values: [0 10000 20000 30000 40000 50000 60000 70000 80000 90000 100000 120000 150000 200000 250000 300000 400000 600000 800000 220000 310000 110000 270000 610000]\n        :type Limit: int\n        """
         self.Business = None
         self.Id = None
         self.Limit = None
@@ -8275,11 +6297,7 @@ class ModifyElasticLimitResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8298,13 +6316,7 @@ class ModifyL4HealthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Healths: Health check parameter array
-        :type Healths: list of L4RuleHealth
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Healths: Health check parameter array\n        :type Healths: list of L4RuleHealth\n        """
         self.Business = None
         self.Id = None
         self.Healths = None
@@ -8335,11 +6347,7 @@ class ModifyL4HealthResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8358,17 +6366,7 @@ class ModifyL4KeepTimeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param RuleId: Rule ID
-        :type RuleId: str
-        :param KeepEnable: Session persistence status. Valid values: [0 (disabled), 1 (enabled)]
-        :type KeepEnable: int
-        :param KeepTime: Session persistence duration in seconds
-        :type KeepTime: int
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param RuleId: Rule ID\n        :type RuleId: str\n        :param KeepEnable: Session persistence status. Valid values: [0 (disabled), 1 (enabled)]\n        :type KeepEnable: int\n        :param KeepTime: Session persistence duration in seconds\n        :type KeepTime: int\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -8398,11 +6396,7 @@ class ModifyL4KeepTimeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8421,13 +6415,7 @@ class ModifyL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Rule: Rule
-        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Rule: Rule\n        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`\n        """
         self.Business = None
         self.Id = None
         self.Rule = None
@@ -8455,11 +6443,7 @@ class ModifyL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8478,13 +6462,7 @@ class ModifyL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Rule: Rule
-        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L7RuleEntry`
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Rule: Rule\n        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L7RuleEntry`\n        """
         self.Business = None
         self.Id = None
         self.Rule = None
@@ -8512,11 +6490,7 @@ class ModifyL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8535,15 +6509,7 @@ class ModifyNetReturnSwitchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param Status: Switch status. 0: disabled, 1: enabled
-        :type Status: int
-        :param Hour: Switch duration in hours. Valid values: [0,1,2,3,4,5,6;]. If `status` is 1, this field is required and must be greater than 0
-        :type Hour: int
-        """
+        :param Business: Anti-DDoS service type (`net`: Anti-DDoS Ultimate)\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param Status: Switch status. 0: disabled, 1: enabled\n        :type Status: int\n        :param Hour: Switch duration in hours. Valid values: [0,1,2,3,4,5,6;]. If `status` is 1, this field is required and must be greater than 0\n        :type Hour: int\n        """
         self.Business = None
         self.Id = None
         self.Status = None
@@ -8571,9 +6537,7 @@ class ModifyNetReturnSwitchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8588,13 +6552,7 @@ class ModifyNewDomainRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).
-        :type Business: str
-        :param Id: Anti-DDoS instance ID.
-        :type Id: str
-        :param Rule: Domain name forwarding rule.
-        :type Rule: :class:`tencentcloud.dayu.v20180709.models.NewL7RuleEntry`
-        """
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).\n        :type Business: str\n        :param Id: Anti-DDoS instance ID.\n        :type Id: str\n        :param Rule: Domain name forwarding rule.\n        :type Rule: :class:`tencentcloud.dayu.v20180709.models.NewL7RuleEntry`\n        """
         self.Business = None
         self.Id = None
         self.Rule = None
@@ -8622,11 +6580,7 @@ class ModifyNewDomainRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code.
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code.\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8645,13 +6599,7 @@ class ModifyNewL4RuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).
-        :type Business: str
-        :param Id: Anti-DDoS instance ID.
-        :type Id: str
-        :param Rule: Forwarding rule.
-        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`
-        """
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).\n        :type Business: str\n        :param Id: Anti-DDoS instance ID.\n        :type Id: str\n        :param Rule: Forwarding rule.\n        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`\n        """
         self.Business = None
         self.Id = None
         self.Rule = None
@@ -8679,11 +6627,7 @@ class ModifyNewL4RuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code.
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code.\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8702,15 +6646,7 @@ class ModifyResBindDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
-        :type Business: str
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param PolicyId: Policy ID
-        :type PolicyId: str
-        :param Method: bind: bind policy; unbind: unbind policy
-        :type Method: str
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate\n        :type Business: str\n        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param PolicyId: Policy ID\n        :type PolicyId: str\n        :param Method: bind: bind policy; unbind: unbind policy\n        :type Method: str\n        """
         self.Business = None
         self.Id = None
         self.PolicyId = None
@@ -8738,11 +6674,7 @@ class ModifyResBindDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8761,13 +6693,7 @@ class ModifyResourceRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate, `shield`: Chess Shield, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `insurance`: guarantee package, `staticpack`: non-BGP package
-        :type Business: str
-        :param Id: Resource ID
-        :type Id: str
-        :param RenewFlag: Auto-renewal flag (0: manual renewal, 1: auto-renewal, 2: no renewal upon expiration)
-        :type RenewFlag: int
-        """
+        :param Business: Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate, `shield`: Chess Shield, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `insurance`: guarantee package, `staticpack`: non-BGP package\n        :type Business: str\n        :param Id: Resource ID\n        :type Id: str\n        :param RenewFlag: Auto-renewal flag (0: manual renewal, 1: auto-renewal, 2: no renewal upon expiration)\n        :type RenewFlag: int\n        """
         self.Business = None
         self.Id = None
         self.RenewFlag = None
@@ -8793,11 +6719,7 @@ class ModifyResourceRenewFlagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: Success code
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Success: Success code\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8816,56 +6738,8 @@ class NewL7RuleEntry(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: Forwarding protocol. Valid values: `http` and `https`.
-        :type Protocol: str
-        :param Domain: Forwarding domain name.
-        :type Domain: str
-        :param SourceType: Forwarding method. Valid values: `1` (by domain name); `2` (by IP).
-        :type SourceType: int
-        :param KeepTime: Session persistence duration, in seconds.
-        :type KeepTime: int
-        :param SourceList: List of sources
-        :type SourceList: list of L4RuleSource
-        :param LbType: Load balancing method. Valid value: `1` (weighed polling).
-        :type LbType: int
-        :param KeepEnable: Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).
-        :type KeepEnable: int
-        :param RuleId: Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.
-        :type RuleId: str
-        :param CertType: Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.
-        :type CertType: int
-        :param SSLId: When the certificate source is Tencent Cloud managed certificate, this field must be set to the ID of the managed certificate.
-        :type SSLId: str
-        :param Cert: [Disused] When the certificate is an external certificate, the certificate content should be provided here. 
-        :type Cert: str
-        :param PrivateKey: [Disused] When the certificate is an external certificate, the certificate key should be provided here. 
-        :type PrivateKey: str
-        :param RuleName: Rule description.
-        :type RuleName: str
-        :param Status: Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).
-        :type Status: int
-        :param CCStatus: CC protection status. Valid values: `0` (disabled) and `1` (enabled).
-        :type CCStatus: int
-        :param CCEnable: CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).
-        :type CCEnable: int
-        :param CCThreshold: CC protection threshold based on HTTPS.
-        :type CCThreshold: int
-        :param CCLevel: CC protection level based on HTTPS.
-        :type CCLevel: str
-        :param Region: Region code.
-        :type Region: int
-        :param Id: Anti-DDoS instance ID.
-        :type Id: str
-        :param Ip: Anti-DDoS instance IP address.
-        :type Ip: str
-        :param ModifyTime: Modification time.
-        :type ModifyTime: str
-        :param HttpsToHttpEnable: Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). The default value is disabled.
-        :type HttpsToHttpEnable: int
-        :param VirtualPort: Access port number.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VirtualPort: int
-        """
+        :param Protocol: Forwarding protocol. Valid values: `http` and `https`.\n        :type Protocol: str\n        :param Domain: Forwarding domain name.\n        :type Domain: str\n        :param SourceType: Forwarding method. Valid values: `1` (by domain name); `2` (by IP).\n        :type SourceType: int\n        :param KeepTime: Session persistence duration, in seconds.\n        :type KeepTime: int\n        :param SourceList: List of sources\n        :type SourceList: list of L4RuleSource\n        :param LbType: Load balancing method. Valid value: `1` (weighed polling).\n        :type LbType: int\n        :param KeepEnable: Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).\n        :type KeepEnable: int\n        :param RuleId: Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.\n        :type RuleId: str\n        :param CertType: Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.\n        :type CertType: int\n        :param SSLId: When the certificate source is Tencent Cloud managed certificate, this field must be set to the ID of the managed certificate.\n        :type SSLId: str\n        :param Cert: [Disused] When the certificate is an external certificate, the certificate content should be provided here. \n        :type Cert: str\n        :param PrivateKey: [Disused] When the certificate is an external certificate, the certificate key should be provided here. \n        :type PrivateKey: str\n        :param RuleName: Rule description.\n        :type RuleName: str\n        :param Status: Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).\n        :type Status: int\n        :param CCStatus: CC protection status. Valid values: `0` (disabled) and `1` (enabled).\n        :type CCStatus: int\n        :param CCEnable: CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).\n        :type CCEnable: int\n        :param CCThreshold: CC protection threshold based on HTTPS.\n        :type CCThreshold: int\n        :param CCLevel: CC protection level based on HTTPS.\n        :type CCLevel: str\n        :param Region: Region code.\n        :type Region: int\n        :param Id: Anti-DDoS instance ID.\n        :type Id: str\n        :param Ip: Anti-DDoS instance IP address.\n        :type Ip: str\n        :param ModifyTime: Modification time.\n        :type ModifyTime: str\n        :param HttpsToHttpEnable: Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). The default value is disabled.\n        :type HttpsToHttpEnable: int\n        :param VirtualPort: Access port number.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type VirtualPort: int\n        """
         self.Protocol = None
         self.Domain = None
         self.SourceType = None
@@ -8941,11 +6815,7 @@ class OrderBy(AbstractModel):
         :param Field: Sort by field name. Valid values: [
 bandwidth (bandwidth),
 overloadCount (number of times of exceeding peak value)
-]
-        :type Field: str
-        :param Order: Sorting order. Valid values: [asc (ascending), desc (descending)]
-        :type Order: str
-        """
+]\n        :type Field: str\n        :param Order: Sorting order. Valid values: [asc (ascending), desc (descending)]\n        :type Order: str\n        """
         self.Field = None
         self.Order = None
 
@@ -8969,11 +6839,7 @@ class Paging(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Starting position
-        :type Offset: int
-        :param Limit: Quantity
-        :type Limit: int
-        """
+        :param Offset: Starting position\n        :type Offset: int\n        :param Limit: Quantity\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -8997,11 +6863,7 @@ class ProtocolPort(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: Protocol (TCP, UDP)
-        :type Protocol: str
-        :param Port: Port
-        :type Port: int
-        """
+        :param Protocol: Protocol (TCP, UDP)\n        :type Protocol: str\n        :param Port: Port\n        :type Port: int\n        """
         self.Protocol = None
         self.Port = None
 
@@ -9025,13 +6887,7 @@ class RegionInstanceCount(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Region code
-        :type Region: str
-        :param RegionV3: Region code (new specification)
-        :type RegionV3: str
-        :param Count: Number of resource instances
-        :type Count: int
-        """
+        :param Region: Region code\n        :type Region: str\n        :param RegionV3: Region code (new specification)\n        :type RegionV3: str\n        :param Count: Number of resource instances\n        :type Count: int\n        """
         self.Region = None
         self.RegionV3 = None
         self.Count = None
@@ -9057,11 +6913,7 @@ class ResourceIp(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Anti-DDoS instance ID
-        :type Id: str
-        :param IpList: Resource IP array
-        :type IpList: list of str
-        """
+        :param Id: Anti-DDoS instance ID\n        :type Id: str\n        :param IpList: Resource IP array\n        :type IpList: list of str\n        """
         self.Id = None
         self.IpList = None
 
@@ -9085,29 +6937,7 @@ class SchedulingDomain(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: Scheduling domain name
-        :type Domain: str
-        :param BGPIpList: List of BGP IPs
-        :type BGPIpList: list of str
-        :param CTCCIpList: List of CTCC IPs
-        :type CTCCIpList: list of str
-        :param CUCCIpList: List of CUCC IPs
-        :type CUCCIpList: list of str
-        :param CMCCIpList: List of CMCC IPs
-        :type CMCCIpList: list of str
-        :param OverseaIpList: List of IPs outside Mainland China
-        :type OverseaIpList: list of str
-        :param Method: Scheduling method. It only supports `priority` now.
-        :type Method: str
-        :param CreateTime: The creation time.
-        :type CreateTime: str
-        :param TTL: 
-        :type TTL: int
-        :param Status: Status
-        :type Status: int
-        :param ModifyTime: Modification time
-        :type ModifyTime: str
-        """
+        :param Domain: Scheduling domain name\n        :type Domain: str\n        :param BGPIpList: List of BGP IPs\n        :type BGPIpList: list of str\n        :param CTCCIpList: List of CTCC IPs\n        :type CTCCIpList: list of str\n        :param CUCCIpList: List of CUCC IPs\n        :type CUCCIpList: list of str\n        :param CMCCIpList: List of CMCC IPs\n        :type CMCCIpList: list of str\n        :param OverseaIpList: List of IPs outside Mainland China\n        :type OverseaIpList: list of str\n        :param Method: Scheduling method. It only supports `priority` now.\n        :type Method: str\n        :param CreateTime: The creation time.\n        :type CreateTime: str\n        :param TTL: \n        :type TTL: int\n        :param Status: Status\n        :type Status: int\n        :param ModifyTime: Modification time\n        :type ModifyTime: str\n        """
         self.Domain = None
         self.BGPIpList = None
         self.CTCCIpList = None
@@ -9149,11 +6979,7 @@ class SuccessCode(AbstractModel):
 
     def __init__(self):
         """
-        :param Code: Success/error code
-        :type Code: str
-        :param Message: Description
-        :type Message: str
-        """
+        :param Code: Success/error code\n        :type Code: str\n        :param Message: Description\n        :type Message: str\n        """
         self.Code = None
         self.Message = None
 
@@ -9177,17 +7003,7 @@ class WaterPrintKey(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyId: Watermark key ID
-        :type KeyId: str
-        :param KeyContent: Watermark key value
-        :type KeyContent: str
-        :param KeyVersion: Watermark key version number
-        :type KeyVersion: str
-        :param OpenStatus: Whether it is enabled. Valid values: [0 (no), 1 (yes)]
-        :type OpenStatus: int
-        :param CreateTime: Key generation time
-        :type CreateTime: str
-        """
+        :param KeyId: Watermark key ID\n        :type KeyId: str\n        :param KeyContent: Watermark key value\n        :type KeyContent: str\n        :param KeyVersion: Watermark key version number\n        :type KeyVersion: str\n        :param OpenStatus: Whether it is enabled. Valid values: [0 (no), 1 (yes)]\n        :type OpenStatus: int\n        :param CreateTime: Key generation time\n        :type CreateTime: str\n        """
         self.KeyId = None
         self.KeyContent = None
         self.KeyVersion = None
@@ -9217,17 +7033,7 @@ class WaterPrintPolicy(AbstractModel):
 
     def __init__(self):
         """
-        :param TcpPortList: TCP port range, such as ["2000-3000","3500-4000"]
-        :type TcpPortList: list of str
-        :param UdpPortList: UDP port range, such as ["2000-3000","3500-4000"]
-        :type UdpPortList: list of str
-        :param Offset: Watermark offset. Value range: [0, 100)
-        :type Offset: int
-        :param RemoveSwitch: Whether to automatically remove. Valid values: [0 (no), 1 (yes)]
-        :type RemoveSwitch: int
-        :param OpenStatus: Whether it is enabled. Valid values: [0 (no), 1 (yes)]
-        :type OpenStatus: int
-        """
+        :param TcpPortList: TCP port range, such as ["2000-3000","3500-4000"]\n        :type TcpPortList: list of str\n        :param UdpPortList: UDP port range, such as ["2000-3000","3500-4000"]\n        :type UdpPortList: list of str\n        :param Offset: Watermark offset. Value range: [0, 100)\n        :type Offset: int\n        :param RemoveSwitch: Whether to automatically remove. Valid values: [0 (no), 1 (yes)]\n        :type RemoveSwitch: int\n        :param OpenStatus: Whether it is enabled. Valid values: [0 (no), 1 (yes)]\n        :type OpenStatus: int\n        """
         self.TcpPortList = None
         self.UdpPortList = None
         self.Offset = None

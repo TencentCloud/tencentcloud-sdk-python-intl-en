@@ -25,11 +25,7 @@ class AccessInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Host: Domain name
-        :type Host: str
-        :param Vip: VIP
-        :type Vip: str
-        """
+        :param Host: Domain name\n        :type Host: str\n        :param Vip: VIP\n        :type Vip: str\n        """
         self.Host = None
         self.Vip = None
 
@@ -53,23 +49,11 @@ class Alias(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionVersion: Master version pointed to by the alias
-        :type FunctionVersion: str
-        :param Name: Alias name
-        :type Name: str
-        :param RoutingConfig: Routing information of alias
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
-        :param Description: Description
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Description: str
-        :param AddTime: Creation time
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AddTime: str
-        :param ModTime: Update time
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ModTime: str
-        """
+        :param FunctionVersion: Master version pointed to by the alias\n        :type FunctionVersion: str\n        :param Name: Alias name\n        :type Name: str\n        :param RoutingConfig: Routing information of alias
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`\n        :param Description: Description
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Description: str\n        :param AddTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AddTime: str\n        :param ModTime: Update time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ModTime: str\n        """
         self.FunctionVersion = None
         self.Name = None
         self.RoutingConfig = None
@@ -103,19 +87,7 @@ class AsyncEvent(AbstractModel):
 
     def __init__(self):
         """
-        :param InvokeRequestId: Invocation request ID
-        :type InvokeRequestId: str
-        :param InvokeType: Invocation type
-        :type InvokeType: str
-        :param Qualifier: Function version
-        :type Qualifier: str
-        :param Status: Event status
-        :type Status: str
-        :param StartTime: Invocation start time in the format of "%Y-%m-%d %H:%M:%S.%f"
-        :type StartTime: str
-        :param EndTime: Invocation end time in the format of "%Y-%m-%d %H:%M:%S.%f"
-        :type EndTime: str
-        """
+        :param InvokeRequestId: Invocation request ID\n        :type InvokeRequestId: str\n        :param InvokeType: Invocation type\n        :type InvokeType: str\n        :param Qualifier: Function version\n        :type Qualifier: str\n        :param Status: Event status\n        :type Status: str\n        :param StartTime: Invocation start time in the format of "%Y-%m-%d %H:%M:%S.%f"\n        :type StartTime: str\n        :param EndTime: Invocation end time in the format of "%Y-%m-%d %H:%M:%S.%f"\n        :type EndTime: str\n        """
         self.InvokeRequestId = None
         self.InvokeType = None
         self.Qualifier = None
@@ -147,11 +119,7 @@ class AsyncTriggerConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param RetryConfig: Async retry configuration of function upon user error
-        :type RetryConfig: list of RetryConfig
-        :param MsgTTL: Message retention period
-        :type MsgTTL: int
-        """
+        :param RetryConfig: Async retry configuration of function upon user error\n        :type RetryConfig: list of RetryConfig\n        :param MsgTTL: Message retention period\n        :type MsgTTL: int\n        """
         self.RetryConfig = None
         self.MsgTTL = None
 
@@ -180,9 +148,7 @@ class CfsConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param CfsInsList: File system information list
-        :type CfsInsList: list of CfsInsInfo
-        """
+        :param CfsInsList: File system information list\n        :type CfsInsList: list of CfsInsInfo\n        """
         self.CfsInsList = None
 
 
@@ -209,28 +175,10 @@ class CfsInsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: User ID
-        :type UserId: str
-        :param UserGroupId: User group ID
-        :type UserGroupId: str
-        :param CfsId: CFS instance ID
-        :type CfsId: str
-        :param MountInsId: File system mount target ID
-        :type MountInsId: str
-        :param LocalMountDir: Local mount target
-        :type LocalMountDir: str
-        :param RemoteMountDir: Remote mount target
-        :type RemoteMountDir: str
-        :param IpAddress: File system IP, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IpAddress: str
-        :param MountVpcId: VPC ID of file system, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MountVpcId: str
-        :param MountSubnetId: VPC subnet ID of file system, which is not required when you configure CFS.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MountSubnetId: str
-        """
+        :param UserId: User ID\n        :type UserId: str\n        :param UserGroupId: User group ID\n        :type UserGroupId: str\n        :param CfsId: CFS instance ID\n        :type CfsId: str\n        :param MountInsId: File system mount target ID\n        :type MountInsId: str\n        :param LocalMountDir: Local mount target\n        :type LocalMountDir: str\n        :param RemoteMountDir: Remote mount target\n        :type RemoteMountDir: str\n        :param IpAddress: File system IP, which is not required when you configure CFS.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpAddress: str\n        :param MountVpcId: VPC ID of file system, which is not required when you configure CFS.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MountVpcId: str\n        :param MountSubnetId: VPC subnet ID of file system, which is not required when you configure CFS.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MountSubnetId: str\n        """
         self.UserId = None
         self.UserGroupId = None
         self.CfsId = None
@@ -268,35 +216,7 @@ class Code(AbstractModel):
 
     def __init__(self):
         """
-        :param CosBucketName: Object bucket name (enter the custom part of the bucket name without `-appid`)
-        :type CosBucketName: str
-        :param CosObjectName: COS object path
-        :type CosObjectName: str
-        :param ZipFile: This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded
-        :type ZipFile: str
-        :param CosBucketRegion: COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.
-        :type CosBucketRegion: str
-        :param DemoId: `DemoId` is required if Demo is used for the creation.
-        :type DemoId: str
-        :param TempCosObjectName: `TempCosObjectName` is required if TempCos is used for the creation.
-        :type TempCosObjectName: str
-        :param GitUrl: Git address
-        :type GitUrl: str
-        :param GitUserName: Git user name
-        :type GitUserName: str
-        :param GitPassword: Git password
-        :type GitPassword: str
-        :param GitPasswordSecret: Git password after encryption. In general, this value is not required.
-        :type GitPasswordSecret: str
-        :param GitBranch: Git branch
-        :type GitBranch: str
-        :param GitDirectory: Code path in Git repository
-        :type GitDirectory: str
-        :param GitCommitId: Version to be pulled
-        :type GitCommitId: str
-        :param GitUserNameSecret: Git user name after encryption. In general, this value is not required.
-        :type GitUserNameSecret: str
-        """
+        :param CosBucketName: Object bucket name (enter the custom part of the bucket name without `-appid`)\n        :type CosBucketName: str\n        :param CosObjectName: COS object path\n        :type CosObjectName: str\n        :param ZipFile: This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded\n        :type ZipFile: str\n        :param CosBucketRegion: COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.\n        :type CosBucketRegion: str\n        :param DemoId: `DemoId` is required if Demo is used for the creation.\n        :type DemoId: str\n        :param TempCosObjectName: `TempCosObjectName` is required if TempCos is used for the creation.\n        :type TempCosObjectName: str\n        :param GitUrl: Git address\n        :type GitUrl: str\n        :param GitUserName: Git user name\n        :type GitUserName: str\n        :param GitPassword: Git password\n        :type GitPassword: str\n        :param GitPasswordSecret: Git password after encryption. In general, this value is not required.\n        :type GitPasswordSecret: str\n        :param GitBranch: Git branch\n        :type GitBranch: str\n        :param GitDirectory: Code path in Git repository\n        :type GitDirectory: str\n        :param GitCommitId: Version to be pulled\n        :type GitCommitId: str\n        :param GitUserNameSecret: Git user name after encryption. In general, this value is not required.\n        :type GitUserNameSecret: str\n        """
         self.CosBucketName = None
         self.CosObjectName = None
         self.ZipFile = None
@@ -344,28 +264,12 @@ class CopyFunctionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function to be replicated
-        :type FunctionName: str
-        :param NewFunctionName: Name of the new function
-        :type NewFunctionName: str
-        :param Namespace: Namespace of the function to be replicated. The default value is `default`.
-        :type Namespace: str
-        :param TargetNamespace: Namespace of the replicated function. The default value is default.
-        :type TargetNamespace: str
-        :param Description: Description of the new function
-        :type Description: str
-        :param TargetRegion: Region of the target of the function replication. If the value is not set, the current region is used by default.
-        :type TargetRegion: str
-        :param Override: It specifies whether to replace the function with the same name in the target namespace. The default option is `FALSE`.
+        :param FunctionName: Name of the function to be replicated\n        :type FunctionName: str\n        :param NewFunctionName: Name of the new function\n        :type NewFunctionName: str\n        :param Namespace: Namespace of the function to be replicated. The default value is `default`.\n        :type Namespace: str\n        :param TargetNamespace: Namespace of the replicated function. The default value is default.\n        :type TargetNamespace: str\n        :param Description: Description of the new function\n        :type Description: str\n        :param TargetRegion: Region of the target of the function replication. If the value is not set, the current region is used by default.\n        :type TargetRegion: str\n        :param Override: It specifies whether to replace the function with the same name in the target namespace. The default option is `FALSE`.
 (Note: The `TRUE` option results in deletion of the function in the target namespace. Please operate with caution.)
 TRUE: Replaces the function.
-FALSE: Does not replace the function.
-        :type Override: bool
-        :param CopyConfiguration: It specifies whether to replicate the function attributes, including environment variables, memory, timeout, function description, labels, and VPC. The default value is `TRUE`.
+FALSE: Does not replace the function.\n        :type Override: bool\n        :param CopyConfiguration: It specifies whether to replicate the function attributes, including environment variables, memory, timeout, function description, labels, and VPC. The default value is `TRUE`.
 TRUE: Replicates the function configuration.
-FALSE: Does not replicate the function configuration.
-        :type CopyConfiguration: bool
-        """
+FALSE: Does not replicate the function configuration.\n        :type CopyConfiguration: bool\n        """
         self.FunctionName = None
         self.NewFunctionName = None
         self.Namespace = None
@@ -401,9 +305,7 @@ class CopyFunctionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -418,19 +320,7 @@ class CreateAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter
-        :type Name: str
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param FunctionVersion: Master version pointed to by the alias
-        :type FunctionVersion: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param RoutingConfig: Request routing configuration of alias
-        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
-        :param Description: Alias description
-        :type Description: str
-        """
+        :param Name: Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter\n        :type Name: str\n        :param FunctionName: Function name\n        :type FunctionName: str\n        :param FunctionVersion: Master version pointed to by the alias\n        :type FunctionVersion: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param RoutingConfig: Request routing configuration of alias\n        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`\n        :param Description: Alias description\n        :type Description: str\n        """
         self.Name = None
         self.FunctionName = None
         self.FunctionVersion = None
@@ -464,9 +354,7 @@ class CreateAliasResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -481,53 +369,7 @@ class CreateFunctionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the new function. The name can contain 2 to 60 characters, including English letters, digits, hyphens (-), and underscores (_). The name must start with a letter and cannot end with a hyphen or underscore.
-        :type FunctionName: str
-        :param Code: Function code. Note: `COS`, `ZipFile`, and `DemoId` cannot be specified at the same time.
-        :type Code: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param Handler: Function handler name. It supports the format of "file name.handler name" where the file name and handler name are separated with a "." (for Java, it is in the format of "package name.class name::handler name"). File and handler names can contain 2–60 letters, digits, underscores, and dashes and must start and end with letters
-        :type Handler: str
-        :param Description: Function description. It can contain up to 1,000 characters including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
-        :type Description: str
-        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3072 MB in increments of 128 MB
-        :type MemorySize: int
-        :param Timeout: Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds
-        :type Timeout: int
-        :param Environment: Function environment variable
-        :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, Php5, Php7, Go1, Java8, CustomRuntime. Default value: Python2.7
-        :type Runtime: str
-        :param VpcConfig: Function VPC configuration
-        :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param Role: Role bound to the function
-        :type Role: str
-        :param ClsLogsetId: CLS Logset ID to which the function logs are shipped
-        :type ClsLogsetId: str
-        :param ClsTopicId: CLS Topic ID to which the function logs are shipped
-        :type ClsTopicId: str
-        :param Type: Function type. The default value is `Event`. Enter `Event` if you need to create a trigger function. Enter `HTTP` if you need to create an HTTP function service.
-        :type Type: str
-        :param CodeSource: Code source. Valid values: ZipFile, Cos, Demo
-        :type CodeSource: str
-        :param Layers: List of layer versions to be associate with the function. Layers will be overwritten sequentially in the order in the list.
-        :type Layers: list of LayerVersionSimple
-        :param DeadLetterConfig: Dead letter queue parameter
-        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
-        :param PublicNetConfig: Public network access configuration
-        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
-        :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system
-        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param InitTimeout: Timeout period for function initialization
-        :type InitTimeout: int
-        :param Tags: Tag parameter of the function. It is an array of key-value pairs.
-        :type Tags: list of Tag
-        :param AsyncRunEnable: Whether to enable the async attribute. TRUE: yes; FALSE: no
-        :type AsyncRunEnable: str
-        :param TraceEnable: Whether to enable event tracking. TRUE: yes; FALSE: no
-        :type TraceEnable: str
-        """
+        :param FunctionName: Name of the new function. The name can contain 2 to 60 characters, including English letters, digits, hyphens (-), and underscores (_). The name must start with a letter and cannot end with a hyphen or underscore.\n        :type FunctionName: str\n        :param Code: Function code. Note: `COS`, `ZipFile`, and `DemoId` cannot be specified at the same time.\n        :type Code: :class:`tencentcloud.scf.v20180416.models.Code`\n        :param Handler: Function handler name. It supports the format of "file name.handler name" where the file name and handler name are separated with a "." (for Java, it is in the format of "package name.class name::handler name"). File and handler names can contain 2–60 letters, digits, underscores, and dashes and must start and end with letters\n        :type Handler: str\n        :param Description: Function description. It can contain up to 1,000 characters including letters, digits, spaces, commas (,), periods (.), and Chinese characters.\n        :type Description: str\n        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3072 MB in increments of 128 MB\n        :type MemorySize: int\n        :param Timeout: Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds\n        :type Timeout: int\n        :param Environment: Function environment variable\n        :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`\n        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, Php5, Php7, Go1, Java8, CustomRuntime. Default value: Python2.7\n        :type Runtime: str\n        :param VpcConfig: Function VPC configuration\n        :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param Role: Role bound to the function\n        :type Role: str\n        :param ClsLogsetId: CLS Logset ID to which the function logs are shipped\n        :type ClsLogsetId: str\n        :param ClsTopicId: CLS Topic ID to which the function logs are shipped\n        :type ClsTopicId: str\n        :param Type: Function type. The default value is `Event`. Enter `Event` if you need to create a trigger function. Enter `HTTP` if you need to create an HTTP function service.\n        :type Type: str\n        :param CodeSource: Code source. Valid values: ZipFile, Cos, Demo\n        :type CodeSource: str\n        :param Layers: List of layer versions to be associate with the function. Layers will be overwritten sequentially in the order in the list.\n        :type Layers: list of LayerVersionSimple\n        :param DeadLetterConfig: Dead letter queue parameter\n        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`\n        :param PublicNetConfig: Public network access configuration\n        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`\n        :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system\n        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`\n        :param InitTimeout: Timeout period for function initialization\n        :type InitTimeout: int\n        :param Tags: Tag parameter of the function. It is an array of key-value pairs.\n        :type Tags: list of Tag\n        :param AsyncRunEnable: Whether to enable the async attribute. TRUE: yes; FALSE: no\n        :type AsyncRunEnable: str\n        :param TraceEnable: Whether to enable event tracking. TRUE: yes; FALSE: no\n        :type TraceEnable: str\n        """
         self.FunctionName = None
         self.Code = None
         self.Handler = None
@@ -615,9 +457,7 @@ class CreateFunctionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -632,11 +472,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Namespace: Namespace name
-        :type Namespace: str
-        :param Description: Namespace description
-        :type Description: str
-        """
+        :param Namespace: Namespace name\n        :type Namespace: str\n        :param Description: Namespace description\n        :type Description: str\n        """
         self.Namespace = None
         self.Description = None
 
@@ -660,9 +496,7 @@ class CreateNamespaceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -677,23 +511,7 @@ class CreateTriggerRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function bound to the new trigger
-        :type FunctionName: str
-        :param TriggerName: Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.
-        :type TriggerName: str
-        :param Type: Trigger type. Currently, COS, CMQ, timer, and ckafka triggers are supported.
-        :type Type: str
-        :param TriggerDesc: For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)
-        :type TriggerDesc: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param Qualifier: Function version
-        :type Qualifier: str
-        :param Enable: Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.
-        :type Enable: str
-        :param CustomArgument: Custom argument, supporting only the timer trigger.
-        :type CustomArgument: str
-        """
+        :param FunctionName: Name of the function bound to the new trigger\n        :type FunctionName: str\n        :param TriggerName: Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.\n        :type TriggerName: str\n        :param Type: Trigger type. Currently, COS, CMQ, timer, and ckafka triggers are supported.\n        :type Type: str\n        :param TriggerDesc: For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)\n        :type TriggerDesc: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param Qualifier: Function version\n        :type Qualifier: str\n        :param Enable: Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.\n        :type Enable: str\n        :param CustomArgument: Custom argument, supporting only the timer trigger.\n        :type CustomArgument: str\n        """
         self.FunctionName = None
         self.TriggerName = None
         self.Type = None
@@ -729,11 +547,7 @@ class CreateTriggerResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TriggerInfo: Trigger information
-        :type TriggerInfo: :class:`tencentcloud.scf.v20180416.models.Trigger`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TriggerInfo: Trigger information\n        :type TriggerInfo: :class:`tencentcloud.scf.v20180416.models.Trigger`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TriggerInfo = None
         self.RequestId = None
 
@@ -752,13 +566,7 @@ class DeadLetterConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Dead letter queue mode
-        :type Type: str
-        :param Name: Dead letter queue name
-        :type Name: str
-        :param FilterType: Tag form of a dead letter queue topic mode
-        :type FilterType: str
-        """
+        :param Type: Dead letter queue mode\n        :type Type: str\n        :param Name: Dead letter queue name\n        :type Name: str\n        :param FilterType: Tag form of a dead letter queue topic mode\n        :type FilterType: str\n        """
         self.Type = None
         self.Name = None
         self.FilterType = None
@@ -784,13 +592,7 @@ class DeleteAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param Name: Alias name
-        :type Name: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Name: Alias name\n        :type Name: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.Name = None
         self.Namespace = None
@@ -816,9 +618,7 @@ class DeleteAliasResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -833,11 +633,7 @@ class DeleteFunctionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function to be deleted
-        :type FunctionName: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        """
+        :param FunctionName: Name of the function to be deleted\n        :type FunctionName: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.Namespace = None
 
@@ -861,9 +657,7 @@ class DeleteFunctionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -878,11 +672,7 @@ class DeleteLayerVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerName: Layer name
-        :type LayerName: str
-        :param LayerVersion: Version number
-        :type LayerVersion: int
-        """
+        :param LayerName: Layer name\n        :type LayerName: str\n        :param LayerVersion: Version number\n        :type LayerVersion: int\n        """
         self.LayerName = None
         self.LayerVersion = None
 
@@ -906,9 +696,7 @@ class DeleteLayerVersionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -923,9 +711,7 @@ class DeleteNamespaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Namespace: Namespace name
-        :type Namespace: str
-        """
+        :param Namespace: Namespace name\n        :type Namespace: str\n        """
         self.Namespace = None
 
 
@@ -947,9 +733,7 @@ class DeleteNamespaceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -964,13 +748,7 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function for which to delete the provisioned concurrency
-        :type FunctionName: str
-        :param Qualifier: Function version number
-        :type Qualifier: str
-        :param Namespace: Function namespace. Default value: `default`
-        :type Namespace: str
-        """
+        :param FunctionName: Name of the function for which to delete the provisioned concurrency\n        :type FunctionName: str\n        :param Qualifier: Function version number\n        :type Qualifier: str\n        :param Namespace: Function namespace. Default value: `default`\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.Qualifier = None
         self.Namespace = None
@@ -996,9 +774,7 @@ class DeleteProvisionedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1013,11 +789,7 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function for which to delete the provisioned concurrency
-        :type FunctionName: str
-        :param Namespace: Function namespace. Default value: `default`
-        :type Namespace: str
-        """
+        :param FunctionName: Name of the function for which to delete the provisioned concurrency\n        :type FunctionName: str\n        :param Namespace: Function namespace. Default value: `default`\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.Namespace = None
 
@@ -1041,9 +813,7 @@ class DeleteReservedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1058,19 +828,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param TriggerName: Name of the trigger to be deleted
-        :type TriggerName: str
-        :param Type: Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.
-        :type Type: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param TriggerDesc: This field is required if a COS trigger is to be deleted. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
-        :type TriggerDesc: str
-        :param Qualifier: Function version information
-        :type Qualifier: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param TriggerName: Name of the trigger to be deleted\n        :type TriggerName: str\n        :param Type: Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.\n        :type Type: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param TriggerDesc: This field is required if a COS trigger is to be deleted. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.\n        :type TriggerDesc: str\n        :param Qualifier: Function version information\n        :type Qualifier: str\n        """
         self.FunctionName = None
         self.TriggerName = None
         self.Type = None
@@ -1102,9 +860,7 @@ class DeleteTriggerResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1119,9 +875,7 @@ class EipConfigIn(AbstractModel):
 
     def __init__(self):
         """
-        :param EipStatus: Status of the EIP. Values: ['ENABLE','DISABLE']
-        :type EipStatus: str
-        """
+        :param EipStatus: Status of the EIP. Values: ['ENABLE','DISABLE']\n        :type EipStatus: str\n        """
         self.EipStatus = None
 
 
@@ -1143,12 +897,8 @@ class EipConfigOut(AbstractModel):
 
     def __init__(self):
         """
-        :param EipStatus: Whether it is a fixed IP. Valid values: ["ENABLE","DISABLE"]
-        :type EipStatus: str
-        :param EipAddress: IP list
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EipAddress: list of str
-        """
+        :param EipStatus: Whether it is a fixed IP. Valid values: ["ENABLE","DISABLE"]\n        :type EipStatus: str\n        :param EipAddress: IP list
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type EipAddress: list of str\n        """
         self.EipStatus = None
         self.EipAddress = None
 
@@ -1172,11 +922,7 @@ class EipOutConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param EipFixed: It specifies whether the IP is fixed. The value is `TRUE` or `FALSE`.
-        :type EipFixed: str
-        :param Eips: IP list
-        :type Eips: list of str
-        """
+        :param EipFixed: It specifies whether the IP is fixed. The value is `TRUE` or `FALSE`.\n        :type EipFixed: str\n        :param Eips: IP list\n        :type Eips: list of str\n        """
         self.EipFixed = None
         self.Eips = None
 
@@ -1200,9 +946,7 @@ class Environment(AbstractModel):
 
     def __init__(self):
         """
-        :param Variables: Environment variable array
-        :type Variables: list of Variable
-        """
+        :param Variables: Environment variable array\n        :type Variables: list of Variable\n        """
         self.Variables = None
 
 
@@ -1231,11 +975,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Fields to be filtered
-        :type Name: str
-        :param Values: Filter values of the field
-        :type Values: list of str
-        """
+        :param Name: Fields to be filtered\n        :type Name: str\n        :param Values: Filter values of the field\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -1259,37 +999,9 @@ class Function(AbstractModel):
 
     def __init__(self):
         """
-        :param ModTime: Modification time
-        :type ModTime: str
-        :param AddTime: Creation time
-        :type AddTime: str
-        :param Runtime: Running
-        :type Runtime: str
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param FunctionId: Function ID
-        :type FunctionId: str
-        :param Namespace: Namespace
-        :type Namespace: str
-        :param Status: Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)
-        :type Status: str
-        :param StatusDesc: Function status details
-        :type StatusDesc: str
-        :param Description: Function description
-        :type Description: str
-        :param Tags: Function tag
-        :type Tags: list of Tag
-        :param Type: Function type. The value is `HTTP` or `Event`.
-        :type Type: str
-        :param StatusReasons: Cause of function failure
-        :type StatusReasons: list of StatusReason
-        :param TotalProvisionedConcurrencyMem: Sum of provisioned concurrence memory for all function versions
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TotalProvisionedConcurrencyMem: int
-        :param ReservedConcurrencyMem: Reserved memory for function concurrence
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ReservedConcurrencyMem: int
-        """
+        :param ModTime: Modification time\n        :type ModTime: str\n        :param AddTime: Creation time\n        :type AddTime: str\n        :param Runtime: Running\n        :type Runtime: str\n        :param FunctionName: Function name\n        :type FunctionName: str\n        :param FunctionId: Function ID\n        :type FunctionId: str\n        :param Namespace: Namespace\n        :type Namespace: str\n        :param Status: Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)\n        :type Status: str\n        :param StatusDesc: Function status details\n        :type StatusDesc: str\n        :param Description: Function description\n        :type Description: str\n        :param Tags: Function tag\n        :type Tags: list of Tag\n        :param Type: Function type. The value is `HTTP` or `Event`.\n        :type Type: str\n        :param StatusReasons: Cause of function failure\n        :type StatusReasons: list of StatusReason\n        :param TotalProvisionedConcurrencyMem: Sum of provisioned concurrence memory for all function versions
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TotalProvisionedConcurrencyMem: int\n        :param ReservedConcurrencyMem: Reserved memory for function concurrence
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ReservedConcurrencyMem: int\n        """
         self.ModTime = None
         self.AddTime = None
         self.Runtime = None
@@ -1347,33 +1059,7 @@ class FunctionLog(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param RetMsg: Return value after the function is executed
-        :type RetMsg: str
-        :param RequestId: RequestId corresponding to the executed function
-        :type RequestId: str
-        :param StartTime: Start time of the function execution
-        :type StartTime: str
-        :param RetCode: Function execution result. `0` indicates successful execution and other values indicate failure.
-        :type RetCode: int
-        :param InvokeFinished: It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.
-        :type InvokeFinished: int
-        :param Duration: Duration of the function execution. The unit is millisecond (ms).
-        :type Duration: float
-        :param BillDuration: Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.
-        :type BillDuration: int
-        :param MemUsage: Actual memory size used during the function execution. The unit is byte.
-        :type MemUsage: int
-        :param Log: Function execution logs
-        :type Log: str
-        :param Level: Log level
-        :type Level: str
-        :param Source: Log source
-        :type Source: str
-        :param RetryNum: Number of retries
-        :type RetryNum: int
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param RetMsg: Return value after the function is executed\n        :type RetMsg: str\n        :param RequestId: RequestId corresponding to the executed function\n        :type RequestId: str\n        :param StartTime: Start time of the function execution\n        :type StartTime: str\n        :param RetCode: Function execution result. `0` indicates successful execution and other values indicate failure.\n        :type RetCode: int\n        :param InvokeFinished: It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.\n        :type InvokeFinished: int\n        :param Duration: Duration of the function execution. The unit is millisecond (ms).\n        :type Duration: float\n        :param BillDuration: Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.\n        :type BillDuration: int\n        :param MemUsage: Actual memory size used during the function execution. The unit is byte.\n        :type MemUsage: int\n        :param Log: Function execution logs\n        :type Log: str\n        :param Level: Log level\n        :type Level: str\n        :param Source: Log source\n        :type Source: str\n        :param RetryNum: Number of retries\n        :type RetryNum: int\n        """
         self.FunctionName = None
         self.RetMsg = None
         self.RequestId = None
@@ -1419,18 +1105,10 @@ class FunctionVersion(AbstractModel):
 
     def __init__(self):
         """
-        :param Version: Function version name
-        :type Version: str
-        :param Description: Version description
-Note: This field may return null, indicating that no valid values is found.
-        :type Description: str
-        :param AddTime: The creation time
-Note: This field may return null, indicating that no valid value was found.
-        :type AddTime: str
-        :param ModTime: Update time
-Note: This field may return null, indicating that no valid value was found.
-        :type ModTime: str
-        """
+        :param Version: Function version name\n        :type Version: str\n        :param Description: Version description
+Note: This field may return null, indicating that no valid values is found.\n        :type Description: str\n        :param AddTime: The creation time
+Note: This field may return null, indicating that no valid value was found.\n        :type AddTime: str\n        :param ModTime: Update time
+Note: This field may return null, indicating that no valid value was found.\n        :type ModTime: str\n        """
         self.Version = None
         self.Description = None
         self.AddTime = None
@@ -1464,13 +1142,7 @@ class GetAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AccountUsage: Namespace usage information
-        :type AccountUsage: :class:`tencentcloud.scf.v20180416.models.UsageInfo`
-        :param AccountLimit: Namespace limit information
-        :type AccountLimit: :class:`tencentcloud.scf.v20180416.models.LimitsInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param AccountUsage: Namespace usage information\n        :type AccountUsage: :class:`tencentcloud.scf.v20180416.models.UsageInfo`\n        :param AccountLimit: Namespace limit information\n        :type AccountLimit: :class:`tencentcloud.scf.v20180416.models.LimitsInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AccountUsage = None
         self.AccountLimit = None
         self.RequestId = None
@@ -1493,13 +1165,7 @@ class GetAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param Name: Alias name
-        :type Name: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Name: Alias name\n        :type Name: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.Name = None
         self.Namespace = None
@@ -1525,24 +1191,10 @@ class GetAliasResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionVersion: Master version pointed to by the alias
-        :type FunctionVersion: str
-        :param Name: Alias name
-        :type Name: str
-        :param RoutingConfig: Routing information of alias
-        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
-        :param Description: Alias description
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Description: str
-        :param AddTime: Creation time
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AddTime: str
-        :param ModTime: Update time
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ModTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FunctionVersion: Master version pointed to by the alias\n        :type FunctionVersion: str\n        :param Name: Alias name\n        :type Name: str\n        :param RoutingConfig: Routing information of alias\n        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`\n        :param Description: Alias description
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Description: str\n        :param AddTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AddTime: str\n        :param ModTime: Update time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ModTime: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FunctionVersion = None
         self.Name = None
         self.RoutingConfig = None
@@ -1571,13 +1223,7 @@ class GetFunctionAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param Qualifier: Function version
-        :type Qualifier: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Qualifier: Function version\n        :type Qualifier: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.Qualifier = None
         self.Namespace = None
@@ -1603,13 +1249,7 @@ class GetFunctionAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: Cos address of the function
-        :type Url: str
-        :param CodeSha256: SHA256 code of the function
-        :type CodeSha256: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Url: Cos address of the function\n        :type Url: str\n        :param CodeSha256: SHA256 code of the function\n        :type CodeSha256: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Url = None
         self.CodeSha256 = None
         self.RequestId = None
@@ -1628,13 +1268,7 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param Namespace: Function namespace. Default value: default
-        :type Namespace: str
-        :param Qualifier: Function version. Default value: $LATEST
-        :type Qualifier: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Namespace: Function namespace. Default value: default\n        :type Namespace: str\n        :param Qualifier: Function version. Default value: $LATEST\n        :type Qualifier: str\n        """
         self.FunctionName = None
         self.Namespace = None
         self.Qualifier = None
@@ -1660,11 +1294,7 @@ class GetFunctionEventInvokeConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncTriggerConfig: Async retry configuration information
-        :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param AsyncTriggerConfig: Async retry configuration information\n        :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AsyncTriggerConfig = None
         self.RequestId = None
 
@@ -1685,31 +1315,7 @@ class GetFunctionLogsRequest(AbstractModel):
         """
         :param FunctionName: Function name.
 - To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583?from_cn_redirect=1) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
-- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.
-        :type FunctionName: str
-        :param Offset: Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.
-        :type Offset: int
-        :param Limit: Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.
-        :type Limit: int
-        :param Order: It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.
-        :type Order: str
-        :param OrderBy: It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.
-        :type OrderBy: str
-        :param Filter: Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. 
-        :type Filter: :class:`tencentcloud.scf.v20180416.models.LogFilter`
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param Qualifier: Function version
-        :type Qualifier: str
-        :param FunctionRequestId: RequestId corresponding to the executed function
-        :type FunctionRequestId: str
-        :param StartTime: Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.
-        :type StartTime: str
-        :param EndTime: Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.
-        :type EndTime: str
-        :param SearchContext: This field is disused.
-        :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
-        """
+- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.\n        :type FunctionName: str\n        :param Offset: Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.\n        :type Offset: int\n        :param Limit: Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.\n        :type Limit: int\n        :param Order: It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.\n        :type Order: str\n        :param OrderBy: It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.\n        :type OrderBy: str\n        :param Filter: Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. \n        :type Filter: :class:`tencentcloud.scf.v20180416.models.LogFilter`\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param Qualifier: Function version\n        :type Qualifier: str\n        :param FunctionRequestId: RequestId corresponding to the executed function\n        :type FunctionRequestId: str\n        :param StartTime: Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.\n        :type StartTime: str\n        :param EndTime: Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.\n        :type EndTime: str\n        :param SearchContext: This field is disused.\n        :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`\n        """
         self.FunctionName = None
         self.Offset = None
         self.Limit = None
@@ -1757,15 +1363,7 @@ class GetFunctionLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of function logs
-        :type TotalCount: int
-        :param Data: Function log information
-        :type Data: list of FunctionLog
-        :param SearchContext: This field is disused.
-        :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of function logs\n        :type TotalCount: int\n        :param Data: Function log information\n        :type Data: list of FunctionLog\n        :param SearchContext: This field is disused.\n        :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Data = None
         self.SearchContext = None
@@ -1793,15 +1391,7 @@ class GetFunctionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function to obtain details
-        :type FunctionName: str
-        :param Qualifier: Function version number
-        :type Qualifier: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param ShowCode: It indicates whether to display the code. `TRUE` means displaying the code, and `FALSE` means hiding the code. The code will not be displayed for entry files exceeding 1 MB.
-        :type ShowCode: str
-        """
+        :param FunctionName: Name of the function to obtain details\n        :type FunctionName: str\n        :param Qualifier: Function version number\n        :type Qualifier: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param ShowCode: It indicates whether to display the code. `TRUE` means displaying the code, and `FALSE` means hiding the code. The code will not be displayed for entry files exceeding 1 MB.\n        :type ShowCode: str\n        """
         self.FunctionName = None
         self.Qualifier = None
         self.Namespace = None
@@ -1829,95 +1419,13 @@ class GetFunctionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ModTime: Latest modification time of the function
-        :type ModTime: str
-        :param CodeInfo: Function code
-        :type CodeInfo: str
-        :param Description: Function description
-        :type Description: str
-        :param Triggers: Function trigger list
-        :type Triggers: list of Trigger
-        :param Handler: Function entry
-        :type Handler: str
-        :param CodeSize: Function code size
-        :type CodeSize: int
-        :param Timeout: Function timeout
-        :type Timeout: int
-        :param FunctionVersion: Function version
-        :type FunctionVersion: str
-        :param MemorySize: Maximum available memory of the function
-        :type MemorySize: int
-        :param Runtime: Function running environment
-        :type Runtime: str
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param VpcConfig: Function VPC
-        :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
-        :param UseGpu: Whether to use GPU
-        :type UseGpu: str
-        :param Environment: Function environment variable
-        :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param CodeResult: Whether the code is correct
-        :type CodeResult: str
-        :param CodeError: Code error information
-        :type CodeError: str
-        :param ErrNo: Error code
-        :type ErrNo: int
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param Role: Role bound to the function
-        :type Role: str
-        :param InstallDependency: Whether to install dependencies automatically
-        :type InstallDependency: str
-        :param Status: Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)
-        :type Status: str
-        :param StatusDesc: Status description
-        :type StatusDesc: str
-        :param ClsLogsetId: CLS logset to which logs are shipped
-        :type ClsLogsetId: str
-        :param ClsTopicId: CLS Topic to which logs are shipped
-        :type ClsTopicId: str
-        :param FunctionId: Function ID
-        :type FunctionId: str
-        :param Tags: Function tag list
-        :type Tags: list of Tag
-        :param EipConfig: EipConfig configuration
-        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipOutConfig`
-        :param AccessInfo: Domain name information
-        :type AccessInfo: :class:`tencentcloud.scf.v20180416.models.AccessInfo`
-        :param Type: Function type. The value is `HTTP` or `Event`.
-        :type Type: str
-        :param L5Enable: Whether to enable L5
-        :type L5Enable: str
-        :param Layers: Version information of a layer associated with a function
-        :type Layers: list of LayerVersionInfo
-        :param DeadLetterConfig: Information of a dead letter queue associated with a function
-        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
-        :param AddTime: Function creation time
-        :type AddTime: str
-        :param PublicNetConfig: Public network access configuration
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigOut`
-        :param OnsEnable: Whether Ons is enabled
-Note: This field may return null, indicating that no valid value was found.
-        :type OnsEnable: str
-        :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param AvailableStatus: Function billing status. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AvailableStatus: str
-        :param Qualifier: Function version
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Qualifier: str
-        :param InitTimeout: Timeout period for function initialization
-        :type InitTimeout: int
-        :param StatusReasons: Cause of function failure
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type StatusReasons: list of StatusReason
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param ModTime: Latest modification time of the function\n        :type ModTime: str\n        :param CodeInfo: Function code\n        :type CodeInfo: str\n        :param Description: Function description\n        :type Description: str\n        :param Triggers: Function trigger list\n        :type Triggers: list of Trigger\n        :param Handler: Function entry\n        :type Handler: str\n        :param CodeSize: Function code size\n        :type CodeSize: int\n        :param Timeout: Function timeout\n        :type Timeout: int\n        :param FunctionVersion: Function version\n        :type FunctionVersion: str\n        :param MemorySize: Maximum available memory of the function\n        :type MemorySize: int\n        :param Runtime: Function running environment\n        :type Runtime: str\n        :param FunctionName: Function name\n        :type FunctionName: str\n        :param VpcConfig: Function VPC\n        :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`\n        :param UseGpu: Whether to use GPU\n        :type UseGpu: str\n        :param Environment: Function environment variable\n        :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`\n        :param CodeResult: Whether the code is correct\n        :type CodeResult: str\n        :param CodeError: Code error information\n        :type CodeError: str\n        :param ErrNo: Error code\n        :type ErrNo: int\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param Role: Role bound to the function\n        :type Role: str\n        :param InstallDependency: Whether to install dependencies automatically\n        :type InstallDependency: str\n        :param Status: Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)\n        :type Status: str\n        :param StatusDesc: Status description\n        :type StatusDesc: str\n        :param ClsLogsetId: CLS logset to which logs are shipped\n        :type ClsLogsetId: str\n        :param ClsTopicId: CLS Topic to which logs are shipped\n        :type ClsTopicId: str\n        :param FunctionId: Function ID\n        :type FunctionId: str\n        :param Tags: Function tag list\n        :type Tags: list of Tag\n        :param EipConfig: EipConfig configuration\n        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipOutConfig`\n        :param AccessInfo: Domain name information\n        :type AccessInfo: :class:`tencentcloud.scf.v20180416.models.AccessInfo`\n        :param Type: Function type. The value is `HTTP` or `Event`.\n        :type Type: str\n        :param L5Enable: Whether to enable L5\n        :type L5Enable: str\n        :param Layers: Version information of a layer associated with a function\n        :type Layers: list of LayerVersionInfo\n        :param DeadLetterConfig: Information of a dead letter queue associated with a function\n        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`\n        :param AddTime: Function creation time\n        :type AddTime: str\n        :param PublicNetConfig: Public network access configuration
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigOut`\n        :param OnsEnable: Whether Ons is enabled
+Note: This field may return null, indicating that no valid value was found.\n        :type OnsEnable: str\n        :param CfsConfig: File system configuration parameter, which is used for the function to mount the file system
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`\n        :param AvailableStatus: Function billing status. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AvailableStatus: str\n        :param Qualifier: Function version
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Qualifier: str\n        :param InitTimeout: Timeout period for function initialization\n        :type InitTimeout: int\n        :param StatusReasons: Cause of function failure
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type StatusReasons: list of StatusReason\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ModTime = None
         self.CodeInfo = None
         self.Description = None
@@ -2046,11 +1554,7 @@ class GetLayerVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerName: Layer name
-        :type LayerName: str
-        :param LayerVersion: Version number
-        :type LayerVersion: int
-        """
+        :param LayerName: Layer name\n        :type LayerName: str\n        :param LayerVersion: Version number\n        :type LayerVersion: int\n        """
         self.LayerName = None
         self.LayerVersion = None
 
@@ -2074,31 +1578,11 @@ class GetLayerVersionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CompatibleRuntimes: Compatible runtimes
-        :type CompatibleRuntimes: list of str
-        :param CodeSha256: SHA256 encoding of version file on the layer
-        :type CodeSha256: str
-        :param Location: Download address of version file on the layer
-        :type Location: str
-        :param AddTime: Version creation time
-        :type AddTime: str
-        :param Description: Version description
-        :type Description: str
-        :param LicenseInfo: License information
-        :type LicenseInfo: str
-        :param LayerVersion: Version number
-        :type LayerVersion: int
-        :param LayerName: Layer name
-        :type LayerName: str
-        :param Status: Current status of specific layer version. Valid values:
+        :param CompatibleRuntimes: Compatible runtimes\n        :type CompatibleRuntimes: list of str\n        :param CodeSha256: SHA256 encoding of version file on the layer\n        :type CodeSha256: str\n        :param Location: Download address of version file on the layer\n        :type Location: str\n        :param AddTime: Version creation time\n        :type AddTime: str\n        :param Description: Version description\n        :type Description: str\n        :param LicenseInfo: License information\n        :type LicenseInfo: str\n        :param LayerVersion: Version number\n        :type LayerVersion: int\n        :param LayerName: Layer name\n        :type LayerName: str\n        :param Status: Current status of specific layer version. Valid values:
 Active: normal
 Publishing: publishing
 PublishFailed: publishing failed
-Deleted: deleted
-        :type Status: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Deleted: deleted\n        :type Status: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CompatibleRuntimes = None
         self.CodeSha256 = None
         self.Location = None
@@ -2131,13 +1615,7 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function for which to get the provisioned concurrency details.
-        :type FunctionName: str
-        :param Namespace: Function namespace. Default value: default.
-        :type Namespace: str
-        :param Qualifier: Function version number. If this parameter is left empty, the provisioned concurrency information of all function versions will be returned.
-        :type Qualifier: str
-        """
+        :param FunctionName: Name of the function for which to get the provisioned concurrency details.\n        :type FunctionName: str\n        :param Namespace: Function namespace. Default value: default.\n        :type Namespace: str\n        :param Qualifier: Function version number. If this parameter is left empty, the provisioned concurrency information of all function versions will be returned.\n        :type Qualifier: str\n        """
         self.FunctionName = None
         self.Namespace = None
         self.Qualifier = None
@@ -2163,13 +1641,7 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param UnallocatedConcurrencyNum: Unallocated provisioned concurrency amount of function.
-        :type UnallocatedConcurrencyNum: int
-        :param Allocated: Allocated provisioned concurrency amount of function.
-        :type Allocated: list of VersionProvisionedConcurrencyInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param UnallocatedConcurrencyNum: Unallocated provisioned concurrency amount of function.\n        :type UnallocatedConcurrencyNum: int\n        :param Allocated: Allocated provisioned concurrency amount of function.\n        :type Allocated: list of VersionProvisionedConcurrencyInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.UnallocatedConcurrencyNum = None
         self.Allocated = None
         self.RequestId = None
@@ -2193,11 +1665,7 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function for which to get the provisioned concurrency details.
-        :type FunctionName: str
-        :param Namespace: Function namespace. Default value: default.
-        :type Namespace: str
-        """
+        :param FunctionName: Name of the function for which to get the provisioned concurrency details.\n        :type FunctionName: str\n        :param Namespace: Function namespace. Default value: default.\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.Namespace = None
 
@@ -2222,11 +1690,7 @@ class GetReservedConcurrencyConfigResponse(AbstractModel):
     def __init__(self):
         """
         :param ReservedMem: Reserved concurrency memory of function.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ReservedMem: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ReservedMem: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ReservedMem = None
         self.RequestId = None
 
@@ -2243,19 +1707,7 @@ class InvokeFunctionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param Qualifier: Version number or alias of the triggered function
-        :type Qualifier: str
-        :param Event: Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.
-        :type Event: str
-        :param LogType: If this field is specified for a synchronous invocation, the return value will contain a 4 KB log. Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the return parameter will contain the corresponding function execution log.
-        :type LogType: str
-        :param Namespace: Namespace
-        :type Namespace: str
-        :param RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
-        :type RoutingKey: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Qualifier: Version number or alias of the triggered function\n        :type Qualifier: str\n        :param Event: Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.\n        :type Event: str\n        :param LogType: If this field is specified for a synchronous invocation, the return value will contain a 4 KB log. Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the return parameter will contain the corresponding function execution log.\n        :type LogType: str\n        :param Namespace: Namespace\n        :type Namespace: str\n        :param RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.\n        :type RoutingKey: str\n        """
         self.FunctionName = None
         self.Qualifier = None
         self.Event = None
@@ -2287,11 +1739,7 @@ class InvokeFunctionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Function execution result
-        :type Result: :class:`tencentcloud.scf.v20180416.models.Result`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: Function execution result\n        :type Result: :class:`tencentcloud.scf.v20180416.models.Result`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -2310,21 +1758,7 @@ class InvokeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param InvocationType: The value is `RequestResponse` (synchronous) or `Event` (asynchronous). The default value is synchronous.
-        :type InvocationType: str
-        :param Qualifier: Version number or name of the triggered function
-        :type Qualifier: str
-        :param ClientContext: Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.
-        :type ClientContext: str
-        :param LogType: If this field is specified during sync invocation, the returned value will contain 4 KB of logs. Valid values: None, Tail. Default value: None. If the value is `Tail`, the `Log` field in the returned parameter will contain the corresponding function execution log
-        :type LogType: str
-        :param Namespace: Namespace
-        :type Namespace: str
-        :param RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
-        :type RoutingKey: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param InvocationType: The value is `RequestResponse` (synchronous) or `Event` (asynchronous). The default value is synchronous.\n        :type InvocationType: str\n        :param Qualifier: Version number or name of the triggered function\n        :type Qualifier: str\n        :param ClientContext: Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.\n        :type ClientContext: str\n        :param LogType: If this field is specified during sync invocation, the returned value will contain 4 KB of logs. Valid values: None, Tail. Default value: None. If the value is `Tail`, the `Log` field in the returned parameter will contain the corresponding function execution log\n        :type LogType: str\n        :param Namespace: Namespace\n        :type Namespace: str\n        :param RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.\n        :type RoutingKey: str\n        """
         self.FunctionName = None
         self.InvocationType = None
         self.Qualifier = None
@@ -2358,11 +1792,7 @@ class InvokeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Function execution result
-        :type Result: :class:`tencentcloud.scf.v20180416.models.Result`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: Function execution result\n        :type Result: :class:`tencentcloud.scf.v20180416.models.Result`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -2382,23 +1812,9 @@ class LayerVersionInfo(AbstractModel):
     def __init__(self):
         """
         :param CompatibleRuntimes: Runtime applicable to a version
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type CompatibleRuntimes: list of str
-        :param AddTime: Creation time
-        :type AddTime: str
-        :param Description: Version description
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Description: str
-        :param LicenseInfo: License information
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type LicenseInfo: str
-        :param LayerVersion: Version number
-        :type LayerVersion: int
-        :param LayerName: Layer name
-        :type LayerName: str
-        :param Status: Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
-        :type Status: str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type CompatibleRuntimes: list of str\n        :param AddTime: Creation time\n        :type AddTime: str\n        :param Description: Version description
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type Description: str\n        :param LicenseInfo: License information
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type LicenseInfo: str\n        :param LayerVersion: Version number\n        :type LayerVersion: int\n        :param LayerName: Layer name\n        :type LayerName: str\n        :param Status: Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)\n        :type Status: str\n        """
         self.CompatibleRuntimes = None
         self.AddTime = None
         self.Description = None
@@ -2432,11 +1848,7 @@ class LayerVersionSimple(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerName: Layer name
-        :type LayerName: str
-        :param LayerVersion: Version number
-        :type LayerVersion: int
-        """
+        :param LayerName: Layer name\n        :type LayerName: str\n        :param LayerVersion: Version number\n        :type LayerVersion: int\n        """
         self.LayerName = None
         self.LayerVersion = None
 
@@ -2460,11 +1872,7 @@ class LimitsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespacesCount: Limit of namespace quantity
-        :type NamespacesCount: int
-        :param Namespace: Namespace limit information
-        :type Namespace: list of NamespaceLimit
-        """
+        :param NamespacesCount: Limit of namespace quantity\n        :type NamespacesCount: int\n        :param Namespace: Namespace limit information\n        :type Namespace: list of NamespaceLimit\n        """
         self.NamespacesCount = None
         self.Namespace = None
 
@@ -2493,17 +1901,7 @@ class ListAliasesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param FunctionVersion: If this parameter is provided, only aliases associated with this function version will be returned.
-        :type FunctionVersion: str
-        :param Offset: Data offset. Default value: 0
-        :type Offset: str
-        :param Limit: Number of results to be returned. Default value: 20
-        :type Limit: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param FunctionVersion: If this parameter is provided, only aliases associated with this function version will be returned.\n        :type FunctionVersion: str\n        :param Offset: Data offset. Default value: 0\n        :type Offset: str\n        :param Limit: Number of results to be returned. Default value: 20\n        :type Limit: str\n        """
         self.FunctionName = None
         self.Namespace = None
         self.FunctionVersion = None
@@ -2533,14 +1931,8 @@ class ListAliasesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Aliases: Alias list
-        :type Aliases: list of Alias
-        :param TotalCount: Total number of aliases
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Aliases: Alias list\n        :type Aliases: list of Alias\n        :param TotalCount: Total number of aliases
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Aliases = None
         self.TotalCount = None
         self.RequestId = None
@@ -2564,31 +1956,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param Namespace: Namespace
-        :type Namespace: str
-        :param Qualifier: Filter (function version)
-        :type Qualifier: str
-        :param InvokeType: Filter (invocation type list)
-        :type InvokeType: list of str
-        :param Status: Filter (event status list)
-        :type Status: list of str
-        :param StartTimeInterval: Filter (left-closed-right-open range of execution start time)
-        :type StartTimeInterval: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
-        :param EndTimeInterval: Filter (left-closed-right-open range of execution end time)
-        :type EndTimeInterval: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
-        :param Order: Valid values: ASC, DESC. Default value: DESC
-        :type Order: str
-        :param Orderby: Valid values: StartTime, EndTime. Default value: StartTime
-        :type Orderby: str
-        :param Offset: Data offset. Default value: 0
-        :type Offset: int
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100
-        :type Limit: int
-        :param InvokeRequestId: Filter (event invocation request ID)
-        :type InvokeRequestId: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Namespace: Namespace\n        :type Namespace: str\n        :param Qualifier: Filter (function version)\n        :type Qualifier: str\n        :param InvokeType: Filter (invocation type list)\n        :type InvokeType: list of str\n        :param Status: Filter (event status list)\n        :type Status: list of str\n        :param StartTimeInterval: Filter (left-closed-right-open range of execution start time)\n        :type StartTimeInterval: :class:`tencentcloud.scf.v20180416.models.TimeInterval`\n        :param EndTimeInterval: Filter (left-closed-right-open range of execution end time)\n        :type EndTimeInterval: :class:`tencentcloud.scf.v20180416.models.TimeInterval`\n        :param Order: Valid values: ASC, DESC. Default value: DESC\n        :type Order: str\n        :param Orderby: Valid values: StartTime, EndTime. Default value: StartTime\n        :type Orderby: str\n        :param Offset: Data offset. Default value: 0\n        :type Offset: int\n        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100\n        :type Limit: int\n        :param InvokeRequestId: Filter (event invocation request ID)\n        :type InvokeRequestId: str\n        """
         self.FunctionName = None
         self.Namespace = None
         self.Qualifier = None
@@ -2636,13 +2004,7 @@ class ListAsyncEventsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of events that meet the filter
-        :type TotalCount: int
-        :param EventList: Async event list
-        :type EventList: list of AsyncEvent
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of events that meet the filter\n        :type TotalCount: int\n        :param EventList: Async event list\n        :type EventList: list of AsyncEvent\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.EventList = None
         self.RequestId = None
@@ -2666,26 +2028,10 @@ class ListFunctionsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
-        :type Order: str
-        :param Orderby: It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`, and `FunctionName`.
-        :type Orderby: str
-        :param Offset: Data offset. The default value is `0`.
-        :type Offset: int
-        :param Limit: Return data length. The default value is `20`.
-        :type Limit: int
-        :param SearchKey: It specifies whether to support fuzzy matching for the function name.
-        :type SearchKey: str
-        :param Namespace: Namespace
-        :type Namespace: str
-        :param Description: Function description. Fuzzy search is supported.
-        :type Description: str
-        :param Filters: Filters
+        :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.\n        :type Order: str\n        :param Orderby: It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`, and `FunctionName`.\n        :type Orderby: str\n        :param Offset: Data offset. The default value is `0`.\n        :type Offset: int\n        :param Limit: Return data length. The default value is `20`.\n        :type Limit: int\n        :param SearchKey: It specifies whether to support fuzzy matching for the function name.\n        :type SearchKey: str\n        :param Namespace: Namespace\n        :type Namespace: str\n        :param Description: Function description. Fuzzy search is supported.\n        :type Description: str\n        :param Filters: Filters
 - tag:tag-key - String - Required: No - Filtering criteria based on tag-key - value pairs. Replace `tag-key` with a specific tag-key.
 
-The maximum number of `Filters` for each request is 10, and that of `Filter.Values` is 5.
-        :type Filters: list of Filter
-        """
+The maximum number of `Filters` for each request is 10, and that of `Filter.Values` is 5.\n        :type Filters: list of Filter\n        """
         self.Order = None
         self.Orderby = None
         self.Offset = None
@@ -2726,13 +2072,7 @@ class ListFunctionsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Functions: Function list
-        :type Functions: list of Function
-        :param TotalCount: Total number
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Functions: Function list\n        :type Functions: list of Function\n        :param TotalCount: Total number\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Functions = None
         self.TotalCount = None
         self.RequestId = None
@@ -2756,11 +2096,7 @@ class ListLayerVersionsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerName: Layer name
-        :type LayerName: str
-        :param CompatibleRuntime: Compatible runtimes
-        :type CompatibleRuntime: list of str
-        """
+        :param LayerName: Layer name\n        :type LayerName: str\n        :param CompatibleRuntime: Compatible runtimes\n        :type CompatibleRuntime: list of str\n        """
         self.LayerName = None
         self.CompatibleRuntime = None
 
@@ -2784,11 +2120,7 @@ class ListLayerVersionsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerVersions: Layer version list
-        :type LayerVersions: list of LayerVersionInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param LayerVersions: Layer version list\n        :type LayerVersions: list of LayerVersionInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.LayerVersions = None
         self.RequestId = None
 
@@ -2810,15 +2142,7 @@ class ListLayersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CompatibleRuntime: Compatible runtimes
-        :type CompatibleRuntime: str
-        :param Offset: Offset
-        :type Offset: int
-        :param Limit: Limit
-        :type Limit: int
-        :param SearchKey: Query key, which fuzzily matches the name
-        :type SearchKey: str
-        """
+        :param CompatibleRuntime: Compatible runtimes\n        :type CompatibleRuntime: str\n        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Limit\n        :type Limit: int\n        :param SearchKey: Query key, which fuzzily matches the name\n        :type SearchKey: str\n        """
         self.CompatibleRuntime = None
         self.Offset = None
         self.Limit = None
@@ -2846,13 +2170,7 @@ class ListLayersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Layers: Layer list
-        :type Layers: list of LayerVersionInfo
-        :param TotalCount: Total number of layers
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Layers: Layer list\n        :type Layers: list of LayerVersionInfo\n        :param TotalCount: Total number of layers\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Layers = None
         self.TotalCount = None
         self.RequestId = None
@@ -2876,15 +2194,7 @@ class ListNamespacesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: Return data length. The default value is `20`.
-        :type Limit: int
-        :param Offset: Data offset. The default value is `0`.
-        :type Offset: int
-        :param Orderby: It specifies the sorting order of the results according to a specified field, such as `Name` and `Updatetime`.
-        :type Orderby: str
-        :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
-        :type Order: str
-        """
+        :param Limit: Return data length. The default value is `20`.\n        :type Limit: int\n        :param Offset: Data offset. The default value is `0`.\n        :type Offset: int\n        :param Orderby: It specifies the sorting order of the results according to a specified field, such as `Name` and `Updatetime`.\n        :type Orderby: str\n        :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.\n        :type Order: str\n        """
         self.Limit = None
         self.Offset = None
         self.Orderby = None
@@ -2912,13 +2222,7 @@ class ListNamespacesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Namespaces: Namespace details
-        :type Namespaces: list of Namespace
-        :param TotalCount: Number of return namespaces
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Namespaces: Namespace details\n        :type Namespaces: list of Namespace\n        :param TotalCount: Number of return namespaces\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Namespaces = None
         self.TotalCount = None
         self.RequestId = None
@@ -2942,22 +2246,8 @@ class ListTriggersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param Namespace: Namespace. Default value: default
-        :type Namespace: str
-        :param Offset: Data offset. Default value: 0
-        :type Offset: int
-        :param Limit: Number of results to be returned. Default value: 20
-        :type Limit: int
-        :param OrderBy: Indicates by which field to sort the returned results. Valid values: add_time, mod_time. Default value: mod_time
-        :type OrderBy: str
-        :param Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC
-        :type Order: str
-        :param Filters: * Qualifier:
-Function version, alias
-        :type Filters: list of Filter
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Namespace: Namespace. Default value: default\n        :type Namespace: str\n        :param Offset: Data offset. Default value: 0\n        :type Offset: int\n        :param Limit: Number of results to be returned. Default value: 20\n        :type Limit: int\n        :param OrderBy: Indicates by which field to sort the returned results. Valid values: add_time, mod_time. Default value: mod_time\n        :type OrderBy: str\n        :param Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC\n        :type Order: str\n        :param Filters: * Qualifier:
+Function version, alias\n        :type Filters: list of Filter\n        """
         self.FunctionName = None
         self.Namespace = None
         self.Offset = None
@@ -2996,13 +2286,7 @@ class ListTriggersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of triggers
-        :type TotalCount: int
-        :param Triggers: Trigger list
-        :type Triggers: list of TriggerInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of triggers\n        :type TotalCount: int\n        :param Triggers: Trigger list\n        :type Triggers: list of TriggerInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Triggers = None
         self.RequestId = None
@@ -3026,19 +2310,7 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function Name
-        :type FunctionName: str
-        :param Namespace: The namespace where the function locates
-        :type Namespace: str
-        :param Offset: Data offset. The default value is `0`.
-        :type Offset: int
-        :param Limit: Return data length. The default value is `20`.
-        :type Limit: int
-        :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
-        :type Order: str
-        :param OrderBy: It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.
-        :type OrderBy: str
-        """
+        :param FunctionName: Function Name\n        :type FunctionName: str\n        :param Namespace: The namespace where the function locates\n        :type Namespace: str\n        :param Offset: Data offset. The default value is `0`.\n        :type Offset: int\n        :param Limit: Return data length. The default value is `20`.\n        :type Limit: int\n        :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.\n        :type Order: str\n        :param OrderBy: It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.\n        :type OrderBy: str\n        """
         self.FunctionName = None
         self.Namespace = None
         self.Offset = None
@@ -3070,17 +2342,9 @@ class ListVersionByFunctionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionVersion: Function version
-        :type FunctionVersion: list of str
-        :param Versions: Function version list
-Note: This field may return null, indicating that no valid values is found.
-        :type Versions: list of FunctionVersion
-        :param TotalCount: Total number of function versions
-Note: This field may return null, indicating that no valid value was found.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FunctionVersion: Function version\n        :type FunctionVersion: list of str\n        :param Versions: Function version list
+Note: This field may return null, indicating that no valid values is found.\n        :type Versions: list of FunctionVersion\n        :param TotalCount: Total number of function versions
+Note: This field may return null, indicating that no valid value was found.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FunctionVersion = None
         self.Versions = None
         self.TotalCount = None
@@ -3112,9 +2376,7 @@ is0, indicating that only logs of successful execution will be returned.
 TimeLimitExceeded, indicating that logs of function invocations which timed out will be returned.
 ResourceLimitExceeded, indicating that logs of function invocations during which resources exceeded the upper limit will be returned.
 UserCodeException, indicating that logs of function invocations during which a user code error occurred will be returned.
-Blank, indicating that all logs will be returned.
-        :type RetCode: str
-        """
+Blank, indicating that all logs will be returned.\n        :type RetCode: str\n        """
         self.RetCode = None
 
 
@@ -3136,15 +2398,7 @@ class LogSearchContext(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Offset.
-        :type Offset: str
-        :param Limit: Log record number
-        :type Limit: int
-        :param Keyword: Log keyword
-        :type Keyword: str
-        :param Type: Log type. The value is `Application` (default) or `Platform`.
-        :type Type: str
-        """
+        :param Offset: Offset.\n        :type Offset: str\n        :param Limit: Log record number\n        :type Limit: int\n        :param Keyword: Log keyword\n        :type Keyword: str\n        :param Type: Log type. The value is `Application` (default) or `Platform`.\n        :type Type: str\n        """
         self.Offset = None
         self.Limit = None
         self.Keyword = None
@@ -3172,17 +2426,7 @@ class Namespace(AbstractModel):
 
     def __init__(self):
         """
-        :param ModTime: Creation time of the namespace
-        :type ModTime: str
-        :param AddTime: Modification time of the namespace
-        :type AddTime: str
-        :param Description: Namespace description
-        :type Description: str
-        :param Name: Namespace name
-        :type Name: str
-        :param Type: The default value is default. TCB indicates that the namespace is developed and created through the mini-program cloud.
-        :type Type: str
-        """
+        :param ModTime: Creation time of the namespace\n        :type ModTime: str\n        :param AddTime: Modification time of the namespace\n        :type AddTime: str\n        :param Description: Namespace description\n        :type Description: str\n        :param Name: Namespace name\n        :type Name: str\n        :param Type: The default value is default. TCB indicates that the namespace is developed and created through the mini-program cloud.\n        :type Type: str\n        """
         self.ModTime = None
         self.AddTime = None
         self.Description = None
@@ -3212,28 +2456,8 @@ class NamespaceLimit(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionsCount: Total number of functions
-        :type FunctionsCount: int
-        :param Trigger: Trigger information
-        :type Trigger: :class:`tencentcloud.scf.v20180416.models.TriggerCount`
-        :param Namespace: Namespace name
-        :type Namespace: str
-        :param ConcurrentExecutions: Concurrency
-        :type ConcurrentExecutions: int
-        :param TimeoutLimit: Timeout limit
-        :type TimeoutLimit: int
-        :param TestModelLimit: Test event limit
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TestModelLimit: int
-        :param InitTimeoutLimit: Initialization timeout limit
-        :type InitTimeoutLimit: int
-        :param RetryNumLimit: Limit of async retry attempt quantity
-        :type RetryNumLimit: int
-        :param MinMsgTTL: Lower limit of message retention time for async retry
-        :type MinMsgTTL: int
-        :param MaxMsgTTL: Upper limit of message retention time for async retry
-        :type MaxMsgTTL: int
-        """
+        :param FunctionsCount: Total number of functions\n        :type FunctionsCount: int\n        :param Trigger: Trigger information\n        :type Trigger: :class:`tencentcloud.scf.v20180416.models.TriggerCount`\n        :param Namespace: Namespace name\n        :type Namespace: str\n        :param ConcurrentExecutions: Concurrency\n        :type ConcurrentExecutions: int\n        :param TimeoutLimit: Timeout limit\n        :type TimeoutLimit: int\n        :param TestModelLimit: Test event limit
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TestModelLimit: int\n        :param InitTimeoutLimit: Initialization timeout limit\n        :type InitTimeoutLimit: int\n        :param RetryNumLimit: Limit of async retry attempt quantity\n        :type RetryNumLimit: int\n        :param MinMsgTTL: Lower limit of message retention time for async retry\n        :type MinMsgTTL: int\n        :param MaxMsgTTL: Upper limit of message retention time for async retry\n        :type MaxMsgTTL: int\n        """
         self.FunctionsCount = None
         self.Trigger = None
         self.Namespace = None
@@ -3275,13 +2499,7 @@ class NamespaceUsage(AbstractModel):
 
     def __init__(self):
         """
-        :param Functions: Function array
-        :type Functions: list of str
-        :param Namespace: Namespace name
-        :type Namespace: str
-        :param FunctionsCount: Number of functions in namespace
-        :type FunctionsCount: int
-        """
+        :param Functions: Function array\n        :type Functions: list of str\n        :param Namespace: Namespace name\n        :type Namespace: str\n        :param FunctionsCount: Number of functions in namespace\n        :type FunctionsCount: int\n        """
         self.Functions = None
         self.Namespace = None
         self.FunctionsCount = None
@@ -3307,11 +2525,7 @@ class PublicNetConfigIn(AbstractModel):
 
     def __init__(self):
         """
-        :param PublicNetStatus: Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']
-        :type PublicNetStatus: str
-        :param EipConfig: EIP configuration
-        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipConfigIn`
-        """
+        :param PublicNetStatus: Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']\n        :type PublicNetStatus: str\n        :param EipConfig: EIP configuration\n        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipConfigIn`\n        """
         self.PublicNetStatus = None
         self.EipConfig = None
 
@@ -3337,11 +2551,7 @@ class PublicNetConfigOut(AbstractModel):
 
     def __init__(self):
         """
-        :param PublicNetStatus: Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']
-        :type PublicNetStatus: str
-        :param EipConfig: EIP configuration
-        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipConfigOut`
-        """
+        :param PublicNetStatus: Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']\n        :type PublicNetStatus: str\n        :param EipConfig: EIP configuration\n        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipConfigOut`\n        """
         self.PublicNetStatus = None
         self.EipConfig = None
 
@@ -3367,17 +2577,7 @@ class PublishLayerVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerName: Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore
-        :type LayerName: str
-        :param CompatibleRuntimes: Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.
-        :type CompatibleRuntimes: list of str
-        :param Content: Layer file source or content
-        :type Content: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param Description: Layer version description
-        :type Description: str
-        :param LicenseInfo: Software license of layer
-        :type LicenseInfo: str
-        """
+        :param LayerName: Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore\n        :type LayerName: str\n        :param CompatibleRuntimes: Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.\n        :type CompatibleRuntimes: list of str\n        :param Content: Layer file source or content\n        :type Content: :class:`tencentcloud.scf.v20180416.models.Code`\n        :param Description: Layer version description\n        :type Description: str\n        :param LicenseInfo: Software license of layer\n        :type LicenseInfo: str\n        """
         self.LayerName = None
         self.CompatibleRuntimes = None
         self.Content = None
@@ -3409,11 +2609,7 @@ class PublishLayerVersionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerVersion: Version number of the layer created in this request
-        :type LayerVersion: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param LayerVersion: Version number of the layer created in this request\n        :type LayerVersion: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.LayerVersion = None
         self.RequestId = None
 
@@ -3430,13 +2626,7 @@ class PublishVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the released function
-        :type FunctionName: str
-        :param Description: Function description
-        :type Description: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        """
+        :param FunctionName: Name of the released function\n        :type FunctionName: str\n        :param Description: Function description\n        :type Description: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.Description = None
         self.Namespace = None
@@ -3462,25 +2652,7 @@ class PublishVersionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionVersion: Function version
-        :type FunctionVersion: str
-        :param CodeSize: Code size
-        :type CodeSize: int
-        :param MemorySize: Maximum available memory
-        :type MemorySize: int
-        :param Description: Function description
-        :type Description: str
-        :param Handler: Function entry
-        :type Handler: str
-        :param Timeout: Function timeout
-        :type Timeout: int
-        :param Runtime: Function running environment
-        :type Runtime: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FunctionVersion: Function version\n        :type FunctionVersion: str\n        :param CodeSize: Code size\n        :type CodeSize: int\n        :param MemorySize: Maximum available memory\n        :type MemorySize: int\n        :param Description: Function description\n        :type Description: str\n        :param Handler: Function entry\n        :type Handler: str\n        :param Timeout: Function timeout\n        :type Timeout: int\n        :param Runtime: Function running environment\n        :type Runtime: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FunctionVersion = None
         self.CodeSize = None
         self.MemorySize = None
@@ -3511,15 +2683,7 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function for which to set the provisioned concurrency
-        :type FunctionName: str
-        :param Qualifier: Function version number. Note: the `$LATEST` version does not support provisioned concurrency
-        :type Qualifier: str
-        :param VersionProvisionedConcurrencyNum: Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100
-        :type VersionProvisionedConcurrencyNum: int
-        :param Namespace: Function namespace. Default value: `default`
-        :type Namespace: str
-        """
+        :param FunctionName: Name of the function for which to set the provisioned concurrency\n        :type FunctionName: str\n        :param Qualifier: Function version number. Note: the `$LATEST` version does not support provisioned concurrency\n        :type Qualifier: str\n        :param VersionProvisionedConcurrencyNum: Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100\n        :type VersionProvisionedConcurrencyNum: int\n        :param Namespace: Function namespace. Default value: `default`\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.Qualifier = None
         self.VersionProvisionedConcurrencyNum = None
@@ -3547,9 +2711,7 @@ class PutProvisionedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3564,13 +2726,7 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function for which to set the provisioned concurrency
-        :type FunctionName: str
-        :param ReservedConcurrencyMem: Reserved concurrency memory of function. Note: the upper limit for the total reserved concurrency memory of the function is the user's total concurrency memory minus 12800
-        :type ReservedConcurrencyMem: int
-        :param Namespace: Function namespace. Default value: `default`
-        :type Namespace: str
-        """
+        :param FunctionName: Name of the function for which to set the provisioned concurrency\n        :type FunctionName: str\n        :param ReservedConcurrencyMem: Reserved concurrency memory of function. Note: the upper limit for the total reserved concurrency memory of the function is the user's total concurrency memory minus 12800\n        :type ReservedConcurrencyMem: int\n        :param Namespace: Function namespace. Default value: `default`\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.ReservedConcurrencyMem = None
         self.Namespace = None
@@ -3596,9 +2752,7 @@ class PutReservedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3613,11 +2767,7 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalConcurrencyMem: Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800
-        :type TotalConcurrencyMem: int
-        :param Namespace: Namespace. Default value: `default`
-        :type Namespace: str
-        """
+        :param TotalConcurrencyMem: Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800\n        :type TotalConcurrencyMem: int\n        :param Namespace: Namespace. Default value: `default`\n        :type Namespace: str\n        """
         self.TotalConcurrencyMem = None
         self.Namespace = None
 
@@ -3641,9 +2791,7 @@ class PutTotalConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3658,23 +2806,7 @@ class Result(AbstractModel):
 
     def __init__(self):
         """
-        :param Log: It indicates the log output during the function execution. Null is returned for asynchronous invocations.
-        :type Log: str
-        :param RetMsg: It indicates the response from the executed function. Null is returned for asynchronous invocations.
-        :type RetMsg: str
-        :param ErrMsg: It indicates the error message of the executed function. Null is returned for asynchronous invocations.
-        :type ErrMsg: str
-        :param MemUsage: It indicates the memory size (in bytes) when the function is running. Null is returned for asynchronous invocations.
-        :type MemUsage: int
-        :param Duration: It indicates the duration (in milliseconds) required for running the function. Null is returned for asynchronous invocations.
-        :type Duration: float
-        :param BillDuration: It indicates the billing duration (in milliseconds) for the function. Null is returned for asynchronous invocations.
-        :type BillDuration: int
-        :param FunctionRequestId: ID of the executed function
-        :type FunctionRequestId: str
-        :param InvokeResult: `0` indicates successful execution. Null is returned for asynchronous invocations.
-        :type InvokeResult: int
-        """
+        :param Log: It indicates the log output during the function execution. Null is returned for asynchronous invocations.\n        :type Log: str\n        :param RetMsg: It indicates the response from the executed function. Null is returned for asynchronous invocations.\n        :type RetMsg: str\n        :param ErrMsg: It indicates the error message of the executed function. Null is returned for asynchronous invocations.\n        :type ErrMsg: str\n        :param MemUsage: It indicates the memory size (in bytes) when the function is running. Null is returned for asynchronous invocations.\n        :type MemUsage: int\n        :param Duration: It indicates the duration (in milliseconds) required for running the function. Null is returned for asynchronous invocations.\n        :type Duration: float\n        :param BillDuration: It indicates the billing duration (in milliseconds) for the function. Null is returned for asynchronous invocations.\n        :type BillDuration: int\n        :param FunctionRequestId: ID of the executed function\n        :type FunctionRequestId: str\n        :param InvokeResult: `0` indicates successful execution. Null is returned for asynchronous invocations.\n        :type InvokeResult: int\n        """
         self.Log = None
         self.RetMsg = None
         self.ErrMsg = None
@@ -3710,9 +2842,7 @@ class RetryConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param RetryNum: Number of retry attempts
-        :type RetryNum: int
-        """
+        :param RetryNum: Number of retry attempts\n        :type RetryNum: int\n        """
         self.RetryNum = None
 
 
@@ -3734,11 +2864,7 @@ class RoutingConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param AdditionalVersionWeights: Additional version with random weight-based routing
-        :type AdditionalVersionWeights: list of VersionWeight
-        :param AddtionVersionMatchs: Additional version with rule-based routing
-        :type AddtionVersionMatchs: list of VersionMatch
-        """
+        :param AdditionalVersionWeights: Additional version with random weight-based routing\n        :type AdditionalVersionWeights: list of VersionWeight\n        :param AddtionVersionMatchs: Additional version with rule-based routing\n        :type AddtionVersionMatchs: list of VersionMatch\n        """
         self.AdditionalVersionWeights = None
         self.AddtionVersionMatchs = None
 
@@ -3772,11 +2898,7 @@ class StatusReason(AbstractModel):
 
     def __init__(self):
         """
-        :param ErrorCode: Error code
-        :type ErrorCode: str
-        :param ErrorMessage: Error message
-        :type ErrorMessage: str
-        """
+        :param ErrorCode: Error code\n        :type ErrorCode: str\n        :param ErrorMessage: Error message\n        :type ErrorMessage: str\n        """
         self.ErrorCode = None
         self.ErrorMessage = None
 
@@ -3800,11 +2922,7 @@ class Tag(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: Tag key
-        :type Key: str
-        :param Value: Tag value
-        :type Value: str
-        """
+        :param Key: Tag key\n        :type Key: str\n        :param Value: Tag value\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -3828,13 +2946,7 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param InvokeRequestId: Terminated invocation request ID
-        :type InvokeRequestId: str
-        :param Namespace: Namespace
-        :type Namespace: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param InvokeRequestId: Terminated invocation request ID\n        :type InvokeRequestId: str\n        :param Namespace: Namespace\n        :type Namespace: str\n        """
         self.FunctionName = None
         self.InvokeRequestId = None
         self.Namespace = None
@@ -3860,9 +2972,7 @@ class TerminateAsyncEventResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3877,11 +2987,7 @@ class TimeInterval(AbstractModel):
 
     def __init__(self):
         """
-        :param Start: Start time (inclusive) in the format of "%Y-%m-%d %H:%M:%S"
-        :type Start: str
-        :param End: End time (exclusive) in the format of "%Y-%m-%d %H:%M:%S"
-        :type End: str
-        """
+        :param Start: Start time (inclusive) in the format of "%Y-%m-%d %H:%M:%S"\n        :type Start: str\n        :param End: End time (exclusive) in the format of "%Y-%m-%d %H:%M:%S"\n        :type End: str\n        """
         self.Start = None
         self.End = None
 
@@ -3905,31 +3011,7 @@ class Trigger(AbstractModel):
 
     def __init__(self):
         """
-        :param ModTime: Latest modification time of the trigger
-        :type ModTime: str
-        :param Type: Trigger type
-        :type Type: str
-        :param TriggerDesc: Detailed trigger configuration
-        :type TriggerDesc: str
-        :param TriggerName: Trigger name
-        :type TriggerName: str
-        :param AddTime: Creation time of the trigger
-        :type AddTime: str
-        :param Enable: Enabling switch
-        :type Enable: int
-        :param CustomArgument: Custom parameter
-        :type CustomArgument: str
-        :param AvailableStatus: Trigger status
-        :type AvailableStatus: str
-        :param ResourceId: Minimum resource ID of trigger
-        :type ResourceId: str
-        :param BindStatus: Trigger-Function binding status
-        :type BindStatus: str
-        :param TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
-        :type TriggerAttribute: str
-        :param Qualifier: The alias or version bound with the trigger
-        :type Qualifier: str
-        """
+        :param ModTime: Latest modification time of the trigger\n        :type ModTime: str\n        :param Type: Trigger type\n        :type Type: str\n        :param TriggerDesc: Detailed trigger configuration\n        :type TriggerDesc: str\n        :param TriggerName: Trigger name\n        :type TriggerName: str\n        :param AddTime: Creation time of the trigger\n        :type AddTime: str\n        :param Enable: Enabling switch\n        :type Enable: int\n        :param CustomArgument: Custom parameter\n        :type CustomArgument: str\n        :param AvailableStatus: Trigger status\n        :type AvailableStatus: str\n        :param ResourceId: Minimum resource ID of trigger\n        :type ResourceId: str\n        :param BindStatus: Trigger-Function binding status\n        :type BindStatus: str\n        :param TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console\n        :type TriggerAttribute: str\n        :param Qualifier: The alias or version bound with the trigger\n        :type Qualifier: str\n        """
         self.ModTime = None
         self.Type = None
         self.TriggerDesc = None
@@ -3973,29 +3055,7 @@ class TriggerCount(AbstractModel):
 
     def __init__(self):
         """
-        :param Cos: Number of COS triggers
-        :type Cos: int
-        :param Timer: Number of timer triggers
-        :type Timer: int
-        :param Cmq: Number of CMQ triggers
-        :type Cmq: int
-        :param Total: Total number of triggers
-        :type Total: int
-        :param Ckafka: Number of CKafka triggers
-        :type Ckafka: int
-        :param Apigw: Number of API Gateway triggers
-        :type Apigw: int
-        :param Cls: Number of CLS triggers
-        :type Cls: int
-        :param Clb: Number of CLB triggers
-        :type Clb: int
-        :param Mps: Number of MPS triggers
-        :type Mps: int
-        :param Cm: Number of CM triggers
-        :type Cm: int
-        :param Vod: Number of VOD triggers
-        :type Vod: int
-        """
+        :param Cos: Number of COS triggers\n        :type Cos: int\n        :param Timer: Number of timer triggers\n        :type Timer: int\n        :param Cmq: Number of CMQ triggers\n        :type Cmq: int\n        :param Total: Total number of triggers\n        :type Total: int\n        :param Ckafka: Number of CKafka triggers\n        :type Ckafka: int\n        :param Apigw: Number of API Gateway triggers\n        :type Apigw: int\n        :param Cls: Number of CLS triggers\n        :type Cls: int\n        :param Clb: Number of CLB triggers\n        :type Clb: int\n        :param Mps: Number of MPS triggers\n        :type Mps: int\n        :param Cm: Number of CM triggers\n        :type Cm: int\n        :param Vod: Number of VOD triggers\n        :type Vod: int\n        """
         self.Cos = None
         self.Timer = None
         self.Cmq = None
@@ -4037,32 +3097,8 @@ class TriggerInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Enable: Whether to enable
-        :type Enable: int
-        :param Qualifier: Function version or alias
-        :type Qualifier: str
-        :param TriggerName: Trigger name
-        :type TriggerName: str
-        :param Type: Trigger type
-        :type Type: str
-        :param TriggerDesc: Detailed configuration of trigger
-        :type TriggerDesc: str
-        :param AvailableStatus: Whether the trigger is available
-        :type AvailableStatus: str
-        :param CustomArgument: Custom parameter
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CustomArgument: str
-        :param AddTime: Trigger creation time
-        :type AddTime: str
-        :param ModTime: Trigger last modified time
-        :type ModTime: str
-        :param ResourceId: Minimum resource ID of trigger
-        :type ResourceId: str
-        :param BindStatus: Trigger-Function binding status
-        :type BindStatus: str
-        :param TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
-        :type TriggerAttribute: str
-        """
+        :param Enable: Whether to enable\n        :type Enable: int\n        :param Qualifier: Function version or alias\n        :type Qualifier: str\n        :param TriggerName: Trigger name\n        :type TriggerName: str\n        :param Type: Trigger type\n        :type Type: str\n        :param TriggerDesc: Detailed configuration of trigger\n        :type TriggerDesc: str\n        :param AvailableStatus: Whether the trigger is available\n        :type AvailableStatus: str\n        :param CustomArgument: Custom parameter
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CustomArgument: str\n        :param AddTime: Trigger creation time\n        :type AddTime: str\n        :param ModTime: Trigger last modified time\n        :type ModTime: str\n        :param ResourceId: Minimum resource ID of trigger\n        :type ResourceId: str\n        :param BindStatus: Trigger-Function binding status\n        :type BindStatus: str\n        :param TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console\n        :type TriggerAttribute: str\n        """
         self.Enable = None
         self.Qualifier = None
         self.TriggerName = None
@@ -4106,19 +3142,7 @@ class UpdateAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param Name: Alias name
-        :type Name: str
-        :param FunctionVersion: Master version pointed to by the alias
-        :type FunctionVersion: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param RoutingConfig: Routing information of alias, which is required if you need to specify an additional version for the alias.
-        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
-        :param Description: Alias description
-        :type Description: str
-        """
+        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Name: Alias name\n        :type Name: str\n        :param FunctionVersion: Master version pointed to by the alias\n        :type FunctionVersion: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param RoutingConfig: Routing information of alias, which is required if you need to specify an additional version for the alias.\n        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`\n        :param Description: Alias description\n        :type Description: str\n        """
         self.FunctionName = None
         self.Name = None
         self.FunctionVersion = None
@@ -4152,9 +3176,7 @@ class UpdateAliasResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4169,29 +3191,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Handler: Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).
-        :type Handler: str
-        :param FunctionName: Name of the function to be modified
-        :type FunctionName: str
-        :param CosBucketName: COS bucket name
-        :type CosBucketName: str
-        :param CosObjectName: COS object path
-        :type CosObjectName: str
-        :param ZipFile: It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.
-        :type ZipFile: str
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param CosBucketRegion: COS region. Note: Beijing includes ap-beijing and ap-beijing-1.
-        :type CosBucketRegion: str
-        :param EnvId: Function environment
-        :type EnvId: str
-        :param Publish: It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.
-        :type Publish: str
-        :param Code: Function code
-        :type Code: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param CodeSource: Code source. Valid values: ZipFile, Cos, Inline
-        :type CodeSource: str
-        """
+        :param Handler: Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).\n        :type Handler: str\n        :param FunctionName: Name of the function to be modified\n        :type FunctionName: str\n        :param CosBucketName: COS bucket name\n        :type CosBucketName: str\n        :param CosObjectName: COS object path\n        :type CosObjectName: str\n        :param ZipFile: It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.\n        :type ZipFile: str\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param CosBucketRegion: COS region. Note: Beijing includes ap-beijing and ap-beijing-1.\n        :type CosBucketRegion: str\n        :param EnvId: Function environment\n        :type EnvId: str\n        :param Publish: It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.\n        :type Publish: str\n        :param Code: Function code\n        :type Code: :class:`tencentcloud.scf.v20180416.models.Code`\n        :param CodeSource: Code source. Valid values: ZipFile, Cos, Inline\n        :type CodeSource: str\n        """
         self.Handler = None
         self.FunctionName = None
         self.CosBucketName = None
@@ -4235,9 +3235,7 @@ class UpdateFunctionCodeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4252,43 +3250,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: Name of the function to be modified
-        :type FunctionName: str
-        :param Description: Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.
-        :type Description: str
-        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.
-        :type MemorySize: int
-        :param Timeout: Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds
-        :type Timeout: int
-        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime
-        :type Runtime: str
-        :param Environment: Function environment variable
-        :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Namespace: Function namespace
-        :type Namespace: str
-        :param VpcConfig: Function VPC configuration
-        :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
-        :param Role: Role bound to the function
-        :type Role: str
-        :param ClsLogsetId: CLS logset ID to which logs are shipped
-        :type ClsLogsetId: str
-        :param ClsTopicId: CLS Topic ID to which logs are shipped
-        :type ClsTopicId: str
-        :param Publish: It specifies whether to synchronously publish a new version during the update. The default value is `FALSE`, indicating not to publish a new version
-        :type Publish: str
-        :param L5Enable: Whether to enable L5 access. TRUE: enable; FALSE: not enable
-        :type L5Enable: str
-        :param Layers: List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. 
-        :type Layers: list of LayerVersionSimple
-        :param DeadLetterConfig: Information of a dead letter queue associated with a function
-        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
-        :param PublicNetConfig: Public network access configuration
-        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
-        :param CfsConfig: File system configuration input parameter, which is used for the function to bind the CFS file system
-        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param InitTimeout: Timeout period for function initialization. Default value: 15 seconds
-        :type InitTimeout: int
-        """
+        :param FunctionName: Name of the function to be modified\n        :type FunctionName: str\n        :param Description: Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.\n        :type Description: str\n        :param MemorySize: Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.\n        :type MemorySize: int\n        :param Timeout: Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds\n        :type Timeout: int\n        :param Runtime: Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime\n        :type Runtime: str\n        :param Environment: Function environment variable\n        :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`\n        :param Namespace: Function namespace\n        :type Namespace: str\n        :param VpcConfig: Function VPC configuration\n        :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`\n        :param Role: Role bound to the function\n        :type Role: str\n        :param ClsLogsetId: CLS logset ID to which logs are shipped\n        :type ClsLogsetId: str\n        :param ClsTopicId: CLS Topic ID to which logs are shipped\n        :type ClsTopicId: str\n        :param Publish: It specifies whether to synchronously publish a new version during the update. The default value is `FALSE`, indicating not to publish a new version\n        :type Publish: str\n        :param L5Enable: Whether to enable L5 access. TRUE: enable; FALSE: not enable\n        :type L5Enable: str\n        :param Layers: List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. \n        :type Layers: list of LayerVersionSimple\n        :param DeadLetterConfig: Information of a dead letter queue associated with a function\n        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`\n        :param PublicNetConfig: Public network access configuration\n        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`\n        :param CfsConfig: File system configuration input parameter, which is used for the function to bind the CFS file system\n        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`\n        :param InitTimeout: Timeout period for function initialization. Default value: 15 seconds\n        :type InitTimeout: int\n        """
         self.FunctionName = None
         self.Description = None
         self.MemorySize = None
@@ -4359,9 +3321,7 @@ class UpdateFunctionConfigurationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4376,13 +3336,7 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncTriggerConfig: Async retry configuration information
-        :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
-        :param FunctionName: Function name
-        :type FunctionName: str
-        :param Namespace: Function namespace. Default value: default
-        :type Namespace: str
-        """
+        :param AsyncTriggerConfig: Async retry configuration information\n        :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`\n        :param FunctionName: Function name\n        :type FunctionName: str\n        :param Namespace: Function namespace. Default value: default\n        :type Namespace: str\n        """
         self.AsyncTriggerConfig = None
         self.FunctionName = None
         self.Namespace = None
@@ -4410,9 +3364,7 @@ class UpdateFunctionEventInvokeConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4427,11 +3379,7 @@ class UpdateNamespaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Namespace: Namespace name
-        :type Namespace: str
-        :param Description: Namespace description
-        :type Description: str
-        """
+        :param Namespace: Namespace name\n        :type Namespace: str\n        :param Description: Namespace description\n        :type Description: str\n        """
         self.Namespace = None
         self.Description = None
 
@@ -4455,9 +3403,7 @@ class UpdateNamespaceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4472,17 +3418,7 @@ class UsageInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param NamespacesCount: Number of namespaces
-        :type NamespacesCount: int
-        :param Namespace: Namespace details
-        :type Namespace: list of NamespaceUsage
-        :param TotalConcurrencyMem: Upper limit of user concurrency memory in the current region
-        :type TotalConcurrencyMem: int
-        :param TotalAllocatedConcurrencyMem: Quota of configured user concurrency memory in the current region
-        :type TotalAllocatedConcurrencyMem: int
-        :param UserConcurrencyMemLimit: Quota of account concurrency actually configured by user
-        :type UserConcurrencyMemLimit: int
-        """
+        :param NamespacesCount: Number of namespaces\n        :type NamespacesCount: int\n        :param Namespace: Namespace details\n        :type Namespace: list of NamespaceUsage\n        :param TotalConcurrencyMem: Upper limit of user concurrency memory in the current region\n        :type TotalConcurrencyMem: int\n        :param TotalAllocatedConcurrencyMem: Quota of configured user concurrency memory in the current region\n        :type TotalAllocatedConcurrencyMem: int\n        :param UserConcurrencyMemLimit: Quota of account concurrency actually configured by user\n        :type UserConcurrencyMemLimit: int\n        """
         self.NamespacesCount = None
         self.Namespace = None
         self.TotalConcurrencyMem = None
@@ -4517,11 +3453,7 @@ class Variable(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: Variable name
-        :type Key: str
-        :param Value: Variable value
-        :type Value: str
-        """
+        :param Key: Variable name\n        :type Key: str\n        :param Value: Variable value\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -4545,22 +3477,14 @@ class VersionMatch(AbstractModel):
 
     def __init__(self):
         """
-        :param Version: Function version name
-        :type Version: str
-        :param Key: Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching rule
+        :param Version: Function version name\n        :type Version: str\n        :param Key: Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching rule
 Header method:
-Enter "invoke.headers.User" for `key` and pass in `RoutingKey:{"User":"value"}` when invoking a function through `invoke` for invocation based on rule matching
-        :type Key: str
-        :param Method: Match method. Valid values:
+Enter "invoke.headers.User" for `key` and pass in `RoutingKey:{"User":"value"}` when invoking a function through `invoke` for invocation based on rule matching\n        :type Key: str\n        :param Method: Match method. Valid values:
 range: range match
-exact: exact string match
-        :type Method: str
-        :param Expression: Rule requirements for range match:
+exact: exact string match\n        :type Method: str\n        :param Expression: Rule requirements for range match:
 It should be described in an open or closed range, i.e., `(a,b)` or `[a,b]`, where both a and b are integers
 Rule requirements for exact match:
-Exact string match
-        :type Expression: str
-        """
+Exact string match\n        :type Expression: str\n        """
         self.Version = None
         self.Key = None
         self.Method = None
@@ -4588,17 +3512,7 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AllocatedProvisionedConcurrencyNum: Set provisioned concurrency amount.
-        :type AllocatedProvisionedConcurrencyNum: int
-        :param AvailableProvisionedConcurrencyNum: Currently available provisioned concurrency amount.
-        :type AvailableProvisionedConcurrencyNum: int
-        :param Status: Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.
-        :type Status: str
-        :param StatusReason: Status description of provisioned concurrency setting task.
-        :type StatusReason: str
-        :param Qualifier: Function version number
-        :type Qualifier: str
-        """
+        :param AllocatedProvisionedConcurrencyNum: Set provisioned concurrency amount.\n        :type AllocatedProvisionedConcurrencyNum: int\n        :param AvailableProvisionedConcurrencyNum: Currently available provisioned concurrency amount.\n        :type AvailableProvisionedConcurrencyNum: int\n        :param Status: Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.\n        :type Status: str\n        :param StatusReason: Status description of provisioned concurrency setting task.\n        :type StatusReason: str\n        :param Qualifier: Function version number\n        :type Qualifier: str\n        """
         self.AllocatedProvisionedConcurrencyNum = None
         self.AvailableProvisionedConcurrencyNum = None
         self.Status = None
@@ -4628,11 +3542,7 @@ class VersionWeight(AbstractModel):
 
     def __init__(self):
         """
-        :param Version: Function version name
-        :type Version: str
-        :param Weight: Version weight
-        :type Weight: float
-        """
+        :param Version: Function version name\n        :type Version: str\n        :param Weight: Version weight\n        :type Weight: float\n        """
         self.Version = None
         self.Weight = None
 
@@ -4656,11 +3566,7 @@ class VpcConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: Subnet ID
-        :type SubnetId: str
-        """
+        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        """
         self.VpcId = None
         self.SubnetId = None
 

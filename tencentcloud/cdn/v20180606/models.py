@@ -25,15 +25,9 @@ class AccessControl(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Whether to enable request header and request URL access control. Valid values: on, off
-        :type Switch: str
-        :param AccessControlRules: Request header and request URL access rule
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AccessControlRules: list of AccessControlRule
-        :param ReturnCode: Returned status code
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ReturnCode: int
-        """
+        :param Switch: Whether to enable request header and request URL access control. Valid values: on, off\n        :type Switch: str\n        :param AccessControlRules: Request header and request URL access rule
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AccessControlRules: list of AccessControlRule\n        :param ReturnCode: Returned status code
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ReturnCode: int\n        """
         self.Switch = None
         self.AccessControlRules = None
         self.ReturnCode = None
@@ -66,19 +60,11 @@ class AccessControlRule(AbstractModel):
         """
         :param RuleType: requestHeader: access control over request header
 url: access control over access URL
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RuleType: str
-        :param RuleContent: Blocked content
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RuleContent: str
-        :param Regex: on: regular match
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RuleType: str\n        :param RuleContent: Blocked content
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RuleContent: str\n        :param Regex: on: regular match
 off: exact match
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Regex: str
-        :param RuleHeader: This parameter is required only if `RuleType` is `requestHeader`
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RuleHeader: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Regex: str\n        :param RuleHeader: This parameter is required only if `RuleType` is `requestHeader`
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RuleHeader: str\n        """
         self.RuleType = None
         self.RuleContent = None
         self.Regex = None
@@ -106,83 +92,15 @@ class AddCdnDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: Domain name
-        :type Domain: str
-        :param ServiceType: Acceleration domain name service type
+        :param Domain: Domain name\n        :type Domain: str\n        :param ServiceType: Acceleration domain name service type
 web: static acceleration
 download: download acceleration
-media: streaming media VOD acceleration
-        :type ServiceType: str
-        :param Origin: Origin server configuration
-        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param ProjectId: Project ID. Default value: 0, indicating `Default Project`
-        :type ProjectId: int
-        :param IpFilter: IP blocklist/allowlist configuration
-        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
-        :param IpFreqLimit: IP access limit configuration
-        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
-        :param StatusCodeCache: Status code cache configuration
-        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
-        :param Compression: Smart compression configuration
-        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
-        :param BandwidthAlert: Bandwidth cap configuration
-        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
-        :param RangeOriginPull: Range GETs configuration
-        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
-        :param FollowRedirect: 301/302 origin-pull follow-redirect configuration
-        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param ErrorPage: Error code redirect configuration (This feature is in beta and not generally available yet.)
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
-        :param RequestHeader: Request header configuration
-        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
-        :param ResponseHeader: Response header configuration
-        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
-        :param DownstreamCapping: Download speed configuration
-        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
-        :param CacheKey: Node cache key configuration
-        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
-        :param ResponseHeaderCache: Header cache configuration
-        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
-        :param VideoSeek: Video dragging configuration
-        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
-        :param Cache: Cache expiration time configuration
-        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param OriginPullOptimization: Cross-border linkage optimization configuration
-        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
-        :param Https: HTTPS acceleration configuration
-        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param Authentication: Timestamp hotlink protection configuration
-        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
-        :param Seo: SEO configuration
-        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
-        :param ForceRedirect: Access protocol forced redirect configuration
-        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
-        :param Referer: Referer hotlink protection configuration
-        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
-        :param MaxAge: Browser cache configuration (This feature is in beta and not generally available yet.)
-        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param Ipv6: IPv6 configuration (This feature is in beta and not generally available yet.)
-        :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
-        :param SpecificConfig: Specific region configuration
-Applicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.
-        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
-        :param Area: Domain name acceleration region
+media: streaming media VOD acceleration\n        :type ServiceType: str\n        :param Origin: Origin server configuration\n        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`\n        :param ProjectId: Project ID. Default value: 0, indicating `Default Project`\n        :type ProjectId: int\n        :param IpFilter: IP blocklist/allowlist configuration\n        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`\n        :param IpFreqLimit: IP access limit configuration\n        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`\n        :param StatusCodeCache: Status code cache configuration\n        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`\n        :param Compression: Smart compression configuration\n        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`\n        :param BandwidthAlert: Bandwidth cap configuration\n        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`\n        :param RangeOriginPull: Range GETs configuration\n        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`\n        :param FollowRedirect: 301/302 origin-pull follow-redirect configuration\n        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`\n        :param ErrorPage: Error code redirect configuration (This feature is in beta and not generally available yet.)\n        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`\n        :param RequestHeader: Request header configuration\n        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`\n        :param ResponseHeader: Response header configuration\n        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`\n        :param DownstreamCapping: Download speed configuration\n        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`\n        :param CacheKey: Node cache key configuration\n        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`\n        :param ResponseHeaderCache: Header cache configuration\n        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`\n        :param VideoSeek: Video dragging configuration\n        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`\n        :param Cache: Cache expiration time configuration\n        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`\n        :param OriginPullOptimization: Cross-border linkage optimization configuration\n        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`\n        :param Https: HTTPS acceleration configuration\n        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`\n        :param Authentication: Timestamp hotlink protection configuration\n        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`\n        :param Seo: SEO configuration\n        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`\n        :param ForceRedirect: Access protocol forced redirect configuration\n        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`\n        :param Referer: Referer hotlink protection configuration\n        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`\n        :param MaxAge: Browser cache configuration (This feature is in beta and not generally available yet.)\n        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`\n        :param Ipv6: IPv6 configuration (This feature is in beta and not generally available yet.)\n        :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`\n        :param SpecificConfig: Specific region configuration
+Applicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.\n        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`\n        :param Area: Domain name acceleration region
 mainland: acceleration inside mainland China
 overseas: acceleration outside mainland China
 global: global acceleration
-Overseas acceleration service must be enabled to use overseas acceleration and global acceleration.
-        :type Area: str
-        :param OriginPullTimeout: Origin-pull timeout configuration
-        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
-        :param Tag: Tag configuration
-        :type Tag: list of Tag
-        :param Ipv6Access: IPv6 access configuration
-        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
-        :param OfflineCache: Offline cache
-        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param Quic: QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.
-        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
-        """
+Overseas acceleration service must be enabled to use overseas acceleration and global acceleration.\n        :type Area: str\n        :param OriginPullTimeout: Origin-pull timeout configuration\n        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`\n        :param Tag: Tag configuration\n        :type Tag: list of Tag\n        :param Ipv6Access: IPv6 access configuration\n        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`\n        :param OfflineCache: Offline cache\n        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`\n        :param Quic: QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.\n        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`\n        """
         self.Domain = None
         self.ServiceType = None
         self.Origin = None
@@ -333,9 +251,7 @@ class AddCdnDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -356,21 +272,15 @@ class AdvanceCacheRule(AbstractModel):
 `directory`: effective for specified paths
 `path`: effective for specified absolute paths
 `default`: the cache rules when the origin server has not returned max-age
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CacheType: str
-        :param CacheContents: Content for each CacheType:
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheType: str\n        :param CacheContents: Content for each CacheType:
 For `all`, enter an asterisk (*).
 For `file`, enter the suffix, such as jpg, txt.
 For `directory`, enter the path, such as /xxx/test/.
 For `path`, enter the corresponding absolute path, such as /xxx/test.html.
 For `default`, enter "no max-age".
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CacheContents: list of str
-        :param CacheTime: Cache expiration time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheContents: list of str\n        :param CacheTime: Cache expiration time
 Unit: second. The maximum value is 365 days.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CacheTime: int
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheTime: int\n        """
         self.CacheType = None
         self.CacheContents = None
         self.CacheTime = None
@@ -397,14 +307,10 @@ class AdvanceConfig(AbstractModel):
     def __init__(self):
         """
         :param Name: Advanced configuration name
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Name: str
-        :param Value: Whether advanced configuration is supported:
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Name: str\n        :param Value: Whether advanced configuration is supported:
 `on`: support
 `off`: do not support
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Value: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -428,27 +334,13 @@ class AdvancedAuthentication(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Hotlink protection configuration switch (which can be on or off). If it is enabled, only one mode can and must be configured, while other modes are null.
-        :type Switch: str
-        :param TypeA: Timestamp hotlink protection advanced configuration mode A
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeA`
-        :param TypeB: Timestamp hotlink protection advanced configuration mode B
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TypeB: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeB`
-        :param TypeC: Timestamp hotlink protection advanced configuration mode C
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TypeC: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeC`
-        :param TypeD: Timestamp hotlink protection advanced configuration mode D
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TypeD: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeD`
-        :param TypeE: Timestamp hotlink protection advanced configuration mode E
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TypeE: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeE`
-        :param TypeF: Timestamp hotlink protection advanced configuration mode F
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TypeF: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeF`
-        """
+        :param Switch: Hotlink protection configuration switch (which can be on or off). If it is enabled, only one mode can and must be configured, while other modes are null.\n        :type Switch: str\n        :param TypeA: Timestamp hotlink protection advanced configuration mode A
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeA`\n        :param TypeB: Timestamp hotlink protection advanced configuration mode B
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TypeB: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeB`\n        :param TypeC: Timestamp hotlink protection advanced configuration mode C
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TypeC: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeC`\n        :param TypeD: Timestamp hotlink protection advanced configuration mode D
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TypeD: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeD`\n        :param TypeE: Timestamp hotlink protection advanced configuration mode E
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TypeE: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeE`\n        :param TypeF: Timestamp hotlink protection advanced configuration mode F
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TypeF: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeF`\n        """
         self.Switch = None
         self.TypeA = None
         self.TypeB = None
@@ -494,29 +386,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     def __init__(self):
         """
-        :param SecretKey: Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.
-        :type SecretKey: str
-        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-        :type SignParam: str
-        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-        :type TimeParam: str
-        :param ExpireTime: Expiration time in seconds
-        :type ExpireTime: int
-        :param ExpireTimeRequired: Whether the expiration time parameter is required
-        :type ExpireTimeRequired: bool
-        :param Format: URL composition, e.g., `${private_key}${schema}${host}${full_uri}`.
-        :type Format: str
-        :param TimeFormat: Time format. Valid values: dec (decimal), hex (hexadecimal).
-        :type TimeFormat: str
-        :param FailCode: Status code returned when the authentication failed
-        :type FailCode: int
-        :param ExpireCode: Status code returned when the URL expired
-        :type ExpireCode: int
-        :param RulePaths: List of URLs to be authenticated
-        :type RulePaths: list of str
-        :param Transformation: Reserved field
-        :type Transformation: int
-        """
+        :param SecretKey: Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.\n        :type SecretKey: str\n        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\n        :type SignParam: str\n        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\n        :type TimeParam: str\n        :param ExpireTime: Expiration time in seconds\n        :type ExpireTime: int\n        :param ExpireTimeRequired: Whether the expiration time parameter is required\n        :type ExpireTimeRequired: bool\n        :param Format: URL composition, e.g., `${private_key}${schema}${host}${full_uri}`.\n        :type Format: str\n        :param TimeFormat: Time format. Valid values: dec (decimal), hex (hexadecimal).\n        :type TimeFormat: str\n        :param FailCode: Status code returned when the authentication failed\n        :type FailCode: int\n        :param ExpireCode: Status code returned when the URL expired\n        :type ExpireCode: int\n        :param RulePaths: List of URLs to be authenticated\n        :type RulePaths: list of str\n        :param Transformation: Reserved field\n        :type Transformation: int\n        """
         self.SecretKey = None
         self.SignParam = None
         self.TimeParam = None
@@ -558,27 +428,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyAlpha: Alpha key name
-        :type KeyAlpha: str
-        :param KeyBeta: Beta key name
-        :type KeyBeta: str
-        :param KeyGamma: Gamma key name
-        :type KeyGamma: str
-        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-        :type SignParam: str
-        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-        :type TimeParam: str
-        :param ExpireTime: Expiration time in seconds
-        :type ExpireTime: int
-        :param TimeFormat: Time format. Valid values: dec (decimal), hex (hexadecimal).
-        :type TimeFormat: str
-        :param FailCode: Status code returned when the authentication failed
-        :type FailCode: int
-        :param ExpireCode: Status code returned when the URL expired
-        :type ExpireCode: int
-        :param RulePaths: List of URLs to be authenticated
-        :type RulePaths: list of str
-        """
+        :param KeyAlpha: Alpha key name\n        :type KeyAlpha: str\n        :param KeyBeta: Beta key name\n        :type KeyBeta: str\n        :param KeyGamma: Gamma key name\n        :type KeyGamma: str\n        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\n        :type SignParam: str\n        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\n        :type TimeParam: str\n        :param ExpireTime: Expiration time in seconds\n        :type ExpireTime: int\n        :param TimeFormat: Time format. Valid values: dec (decimal), hex (hexadecimal).\n        :type TimeFormat: str\n        :param FailCode: Status code returned when the authentication failed\n        :type FailCode: int\n        :param ExpireCode: Status code returned when the URL expired\n        :type ExpireCode: int\n        :param RulePaths: List of URLs to be authenticated\n        :type RulePaths: list of str\n        """
         self.KeyAlpha = None
         self.KeyBeta = None
         self.KeyGamma = None
@@ -618,11 +468,7 @@ class AdvancedAuthenticationTypeC(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessKey: Access key
-        :type AccessKey: str
-        :param SecretKey: Authentication key
-        :type SecretKey: str
-        """
+        :param AccessKey: Access key\n        :type AccessKey: str\n        :param SecretKey: Authentication key\n        :type SecretKey: str\n        """
         self.AccessKey = None
         self.SecretKey = None
 
@@ -646,19 +492,7 @@ class AdvancedAuthenticationTypeD(AbstractModel):
 
     def __init__(self):
         """
-        :param SecretKey: Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.
-        :type SecretKey: str
-        :param BackupSecretKey: Alternative key used for authentication after the authentication key (`SecretKey`) failed
-        :type BackupSecretKey: str
-        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-        :type SignParam: str
-        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-        :type TimeParam: str
-        :param ExpireTime: Expiration time in seconds
-        :type ExpireTime: int
-        :param TimeFormat: Time format. Valid values: dec (decimal), hex (hexadecimal).
-        :type TimeFormat: str
-        """
+        :param SecretKey: Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.\n        :type SecretKey: str\n        :param BackupSecretKey: Alternative key used for authentication after the authentication key (`SecretKey`) failed\n        :type BackupSecretKey: str\n        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\n        :type SignParam: str\n        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\n        :type TimeParam: str\n        :param ExpireTime: Expiration time in seconds\n        :type ExpireTime: int\n        :param TimeFormat: Time format. Valid values: dec (decimal), hex (hexadecimal).\n        :type TimeFormat: str\n        """
         self.SecretKey = None
         self.BackupSecretKey = None
         self.SignParam = None
@@ -691,24 +525,12 @@ class AdvancedAuthenticationTypeE(AbstractModel):
     def __init__(self):
         """
         :param SecretKey: Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SecretKey: str
-        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SignParam: str
-        :param AclSignParam: ACL signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AclSignParam: str
-        :param StartTimeParam: Start time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type StartTimeParam: str
-        :param ExpireTimeParam: Expiration time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ExpireTimeParam: str
-        :param TimeFormat: Time format (dec)
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TimeFormat: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SecretKey: str\n        :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SignParam: str\n        :param AclSignParam: ACL signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AclSignParam: str\n        :param StartTimeParam: Start time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type StartTimeParam: str\n        :param ExpireTimeParam: Expiration time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ExpireTimeParam: str\n        :param TimeFormat: Time format (dec)
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TimeFormat: str\n        """
         self.SecretKey = None
         self.SignParam = None
         self.AclSignParam = None
@@ -741,21 +563,11 @@ class AdvancedAuthenticationTypeF(AbstractModel):
     def __init__(self):
         """
         :param SignParam: Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SignParam: str
-        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TimeParam: str
-        :param TransactionParam: Transaction field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TransactionParam: str
-        :param SecretKey: CMK used for signature calculation, allowing 6 to 32 bytes of letters and digits.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SecretKey: str
-        :param BackupSecretKey: Alternative key used for signature calculation, which is used after the CMK fails in authentication. It allows 6 to 32 bytes of letters and digits.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type BackupSecretKey: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SignParam: str\n        :param TimeParam: Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TimeParam: str\n        :param TransactionParam: Transaction field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TransactionParam: str\n        :param SecretKey: CMK used for signature calculation, allowing 6 to 32 bytes of letters and digits.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SecretKey: str\n        :param BackupSecretKey: Alternative key used for signature calculation, which is used after the CMK fails in authentication. It allows 6 to 32 bytes of letters and digits.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type BackupSecretKey: str\n        """
         self.SignParam = None
         self.TimeParam = None
         self.TransactionParam = None
@@ -787,22 +599,16 @@ class AdvancedCache(AbstractModel):
     def __init__(self):
         """
         :param CacheRules: Cache expiration rule
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CacheRules: list of AdvanceCacheRule
-        :param IgnoreCacheControl: Forced cache configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheRules: list of AdvanceCacheRule\n        :param IgnoreCacheControl: Forced cache configuration
 on: enabled
 off: disabled
 When this is enabled, if the origin server returns no-cache, no-store headers, node caching will still be performed according to the cache expiration rules.
 This is disabled by default
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IgnoreCacheControl: str
-        :param IgnoreSetCookie: Whether to cache the header and body on cache nodes if the origin server returns the header `Set-Cookie`.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IgnoreCacheControl: str\n        :param IgnoreSetCookie: Whether to cache the header and body on cache nodes if the origin server returns the header `Set-Cookie`.
 on: Enable; do not cache the header and body.
 off: Disable; follow the custom cache rules of cache nodes.
 It is disabled by default.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type IgnoreSetCookie: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type IgnoreSetCookie: str\n        """
         self.CacheRules = None
         self.IgnoreCacheControl = None
         self.IgnoreSetCookie = None
@@ -836,21 +642,11 @@ class Authentication(AbstractModel):
         :param Switch: Hotlink protection configuration switch
 on: enabled
 off: disabled
-When this is enabled, one mode needs to be configured. Other modes need to be set to null.
-        :type Switch: str
-        :param TypeA: Timestamp hotlink protection mode A configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeA`
-        :param TypeB: Timestamp hotlink protection mode B configuration (mode B is being upgraded and is currently not supported)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TypeB: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeB`
-        :param TypeC: Timestamp hotlink protection mode C configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TypeC: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeC`
-        :param TypeD: Timestamp hotlink protection mode D configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TypeD: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeD`
-        """
+When this is enabled, one mode needs to be configured. Other modes need to be set to null.\n        :type Switch: str\n        :param TypeA: Timestamp hotlink protection mode A configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeA`\n        :param TypeB: Timestamp hotlink protection mode B configuration (mode B is being upgraded and is currently not supported)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TypeB: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeB`\n        :param TypeC: Timestamp hotlink protection mode C configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TypeC: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeC`\n        :param TypeD: Timestamp hotlink protection mode D configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TypeD: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeD`\n        """
         self.Switch = None
         self.TypeA = None
         self.TypeB = None
@@ -895,21 +691,11 @@ class AuthenticationTypeA(AbstractModel):
         """
         :param SecretKey: The key for signature calculation
 Only digits, upper and lower-case letters are allowed. Length limit: 6-32 characters.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SecretKey: str
-        :param SignParam: Signature parameter name
-Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.
-        :type SignParam: str
-        :param ExpireTime: Signature expiration time
-Unit: second. The maximum value is 630720000.
-        :type ExpireTime: int
-        :param FileExtensions: File extension list settings determining if authentication should be performed
-If it contains an asterisk (*), this indicates all files.
-        :type FileExtensions: list of str
-        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
-blacklist: indicates that only the file types in the FileExtensions list are authenticated
-        :type FilterType: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SecretKey: str\n        :param SignParam: Signature parameter name
+Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.\n        :type SignParam: str\n        :param ExpireTime: Signature expiration time
+Unit: second. The maximum value is 630720000.\n        :type ExpireTime: int\n        :param FileExtensions: File extension list settings determining if authentication should be performed
+If it contains an asterisk (*), this indicates all files.\n        :type FileExtensions: list of str\n        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
+blacklist: indicates that only the file types in the FileExtensions list are authenticated\n        :type FilterType: str\n        """
         self.SecretKey = None
         self.SignParam = None
         self.ExpireTime = None
@@ -941,18 +727,10 @@ class AuthenticationTypeB(AbstractModel):
         """
         :param SecretKey: The key for signature calculation
 Only digits, upper and lower-case letters are allowed. Length limit: 6-32 characters.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SecretKey: str
-        :param ExpireTime: Signature expiration time
-Unit: second. The maximum value is 630720000.
-        :type ExpireTime: int
-        :param FileExtensions: File extension list settings determining if authentication should be performed
-If it contains an asterisk (*), this indicates all files.
-        :type FileExtensions: list of str
-        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
-blacklist: indicates that only the file types in the FileExtensions list are authenticated
-        :type FilterType: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SecretKey: str\n        :param ExpireTime: Signature expiration time
+Unit: second. The maximum value is 630720000.\n        :type ExpireTime: int\n        :param FileExtensions: File extension list settings determining if authentication should be performed
+If it contains an asterisk (*), this indicates all files.\n        :type FileExtensions: list of str\n        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
+blacklist: indicates that only the file types in the FileExtensions list are authenticated\n        :type FilterType: str\n        """
         self.SecretKey = None
         self.ExpireTime = None
         self.FileExtensions = None
@@ -985,23 +763,13 @@ class AuthenticationTypeC(AbstractModel):
         """
         :param SecretKey: The key for signature calculation
 Only digits, upper and lower-case letters are allowed. Length limit: 6-32 characters.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SecretKey: str
-        :param ExpireTime: Signature expiration time
-Unit: second. The maximum value is 630720000.
-        :type ExpireTime: int
-        :param FileExtensions: File extension list settings determining if authentication should be performed
-If it contains an asterisk (*), this indicates all files.
-        :type FileExtensions: list of str
-        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
-blacklist: indicates that only the file types in the FileExtensions list are authenticated
-        :type FilterType: str
-        :param TimeFormat: Timestamp settings
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SecretKey: str\n        :param ExpireTime: Signature expiration time
+Unit: second. The maximum value is 630720000.\n        :type ExpireTime: int\n        :param FileExtensions: File extension list settings determining if authentication should be performed
+If it contains an asterisk (*), this indicates all files.\n        :type FileExtensions: list of str\n        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
+blacklist: indicates that only the file types in the FileExtensions list are authenticated\n        :type FilterType: str\n        :param TimeFormat: Timestamp settings
 dec: decimal
 hex: hexadecimal
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type TimeFormat: str
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type TimeFormat: str\n        """
         self.SecretKey = None
         self.ExpireTime = None
         self.FileExtensions = None
@@ -1036,28 +804,14 @@ class AuthenticationTypeD(AbstractModel):
         """
         :param SecretKey: The key for signature calculation
 Only digits, upper and lower-case letters are allowed. Length limit: 6-32 characters.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SecretKey: str
-        :param ExpireTime: Signature expiration time
-Unit: second. The maximum value is 630720000.
-        :type ExpireTime: int
-        :param FileExtensions: File extension list settings determining if authentication should be performed
-If it contains an asterisk (*), this indicates all files.
-        :type FileExtensions: list of str
-        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
-blacklist: indicates that only the file types in the FileExtensions list are authenticated
-        :type FilterType: str
-        :param SignParam: Signature parameter name
-Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.
-        :type SignParam: str
-        :param TimeParam: Timestamp parameter name
-Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.
-        :type TimeParam: str
-        :param TimeFormat: Timestamp settings
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SecretKey: str\n        :param ExpireTime: Signature expiration time
+Unit: second. The maximum value is 630720000.\n        :type ExpireTime: int\n        :param FileExtensions: File extension list settings determining if authentication should be performed
+If it contains an asterisk (*), this indicates all files.\n        :type FileExtensions: list of str\n        :param FilterType: allowlist: indicates that all file types apart from the FileExtensions list are authenticated
+blacklist: indicates that only the file types in the FileExtensions list are authenticated\n        :type FilterType: str\n        :param SignParam: Signature parameter name
+Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.\n        :type SignParam: str\n        :param TimeParam: Timestamp parameter name
+Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.\n        :type TimeParam: str\n        :param TimeFormat: Timestamp settings
 dec: decimal
-hex: hexadecimal
-        :type TimeFormat: str
-        """
+hex: hexadecimal\n        :type TimeFormat: str\n        """
         self.SecretKey = None
         self.ExpireTime = None
         self.FileExtensions = None
@@ -1091,15 +845,9 @@ class AwsPrivateAccess(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Switch, which can be set to on or off.
-        :type Switch: str
-        :param AccessKey: Access ID.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AccessKey: str
-        :param SecretKey: Key.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SecretKey: str
-        """
+        :param Switch: Switch, which can be set to on or off.\n        :type Switch: str\n        :param AccessKey: Access ID.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AccessKey: str\n        :param SecretKey: Key.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SecretKey: str\n        """
         self.Switch = None
         self.AccessKey = None
         self.SecretKey = None
@@ -1127,20 +875,12 @@ class BandwidthAlert(AbstractModel):
         """
         :param Switch: Bandwidth cap configuration switch
 on: enabled
-off: disabled
-        :type Switch: str
-        :param BpsThreshold: Bandwidth cap threshold (in bps)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BpsThreshold: int
-        :param CounterMeasure: Action taken when threshold is reached
+off: disabled\n        :type Switch: str\n        :param BpsThreshold: Bandwidth cap threshold (in bps)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type BpsThreshold: int\n        :param CounterMeasure: Action taken when threshold is reached
 RESOLVE_DNS_TO_ORIGIN: requests will be forwarded to the origin server. This is only supported for domain names of external origin.
 RETURN_404: a 404 error will be returned for all requests.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CounterMeasure: str
-        :param LastTriggerTime: The last time the bandwidth cap threshold was triggered
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type LastTriggerTime: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CounterMeasure: str\n        :param LastTriggerTime: The last time the bandwidth cap threshold was triggered
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type LastTriggerTime: str\n        """
         self.Switch = None
         self.BpsThreshold = None
         self.CounterMeasure = None
@@ -1168,21 +908,9 @@ class BotCookie(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Valid values: `on` and `off`.
-        :type Switch: str
-        :param RuleType: Rule type, which can only be `all` currently.
-        :type RuleType: str
-        :param RuleValue: Rule value. Valid value: `*`.
-        :type RuleValue: list of str
-        :param Action: Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.
-        :type Action: str
-        :param RedirectUrl: Redirection target page
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type RedirectUrl: str
-        :param UpdateTime: Update time
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type UpdateTime: str
-        """
+        :param Switch: Valid values: `on` and `off`.\n        :type Switch: str\n        :param RuleType: Rule type, which can only be `all` currently.\n        :type RuleType: str\n        :param RuleValue: Rule value. Valid value: `*`.\n        :type RuleValue: list of str\n        :param Action: Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.\n        :type Action: str\n        :param RedirectUrl: Redirection target page
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type RedirectUrl: str\n        :param UpdateTime: Update time
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type UpdateTime: str\n        """
         self.Switch = None
         self.RuleType = None
         self.RuleValue = None
@@ -1214,21 +942,9 @@ class BotJavaScript(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Valid values: `on` and `off`.
-        :type Switch: str
-        :param RuleType: Rule type, which can only be `file` currently.
-        :type RuleType: str
-        :param RuleValue: Rule value. Valid values: `html` and `htm`.
-        :type RuleValue: list of str
-        :param Action: Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.
-        :type Action: str
-        :param RedirectUrl: Redirection target page
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type RedirectUrl: str
-        :param UpdateTime: Update time
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type UpdateTime: str
-        """
+        :param Switch: Valid values: `on` and `off`.\n        :type Switch: str\n        :param RuleType: Rule type, which can only be `file` currently.\n        :type RuleType: str\n        :param RuleValue: Rule value. Valid values: `html` and `htm`.\n        :type RuleValue: list of str\n        :param Action: Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.\n        :type Action: str\n        :param RedirectUrl: Redirection target page
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type RedirectUrl: str\n        :param UpdateTime: Update time
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type UpdateTime: str\n        """
         self.Switch = None
         self.RuleType = None
         self.RuleValue = None
@@ -1260,34 +976,14 @@ class BriefDomain(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceId: Domain name ID
-        :type ResourceId: str
-        :param AppId: Tencent Cloud account ID
-        :type AppId: int
-        :param Domain: Acceleration domain name
-        :type Domain: str
-        :param Cname: CNAME address of domain name
-        :type Cname: str
-        :param Status: Acceleration service status
+        :param ResourceId: Domain name ID\n        :type ResourceId: str\n        :param AppId: Tencent Cloud account ID\n        :type AppId: int\n        :param Domain: Acceleration domain name\n        :type Domain: str\n        :param Cname: CNAME address of domain name\n        :type Cname: str\n        :param Status: Acceleration service status
 rejected: the domain name is rejected due to expiration/deregistration of its ICP filing
 processing: deploying
 online: activated
-offline: disabled
-        :type Status: str
-        :param ProjectId: Project ID, which can be viewed on the Tencent Cloud project management page
-        :type ProjectId: int
-        :param ServiceType: Domain name service type
+offline: disabled\n        :type Status: str\n        :param ProjectId: Project ID, which can be viewed on the Tencent Cloud project management page\n        :type ProjectId: int\n        :param ServiceType: Domain name service type
 web: static acceleration
 download: download acceleration
-media: streaming VOD acceleration
-        :type ServiceType: str
-        :param CreateTime: Domain name creation time
-        :type CreateTime: str
-        :param UpdateTime: Last modified time of domain name
-        :type UpdateTime: str
-        :param Origin: Origin server configuration details
-        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param Disable: Domain name block status
+media: streaming VOD acceleration\n        :type ServiceType: str\n        :param CreateTime: Domain name creation time\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of domain name\n        :type UpdateTime: str\n        :param Origin: Origin server configuration details\n        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`\n        :param Disable: Domain name block status
 normal: normal
 overdue: the domain name has been disabled due to account arrears. The acceleration service can be resumed after the account is topped up.
 malicious: the acceleration service has been forcibly disabled due to detection of malicious behavior.
@@ -1295,20 +991,14 @@ ddos: the acceleration service has been disabled due to large-scale DDoS attacks
 idle: no operations or data has been detected for more than 90 days. The domain name is determined to be inactive which automatically disables the acceleration service. You can restart the service.
 unlicensed: the acceleration service has been automatically disabled as the domain name has no ICP filing or its ICP filing is deregistered. Service can be resumed after an ICP filing is obtained.
 capping: the configured upper limit for bandwidth has been reached.
-readonly: the domain name has a special configuration and has been locked.
-        :type Disable: str
-        :param Area: Acceleration region
+readonly: the domain name has a special configuration and has been locked.\n        :type Disable: str\n        :param Area: Acceleration region
 mainland: acceleration in Mainland China
 overseas: acceleration outside Mainland China
-global: global acceleration
-        :type Area: str
-        :param Readonly: Domain name lock status
+global: global acceleration\n        :type Area: str\n        :param Readonly: Domain name lock status
 normal: not locked
 mainland: locked in Mainland China
 overseas: locked outside Mainland China
-global: locked globally
-        :type Readonly: str
-        """
+global: locked globally\n        :type Readonly: str\n        """
         self.ResourceId = None
         self.AppId = None
         self.Domain = None
@@ -1359,15 +1049,9 @@ class Cache(AbstractModel):
     def __init__(self):
         """
         :param SimpleCache: Basic cache expiration time configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SimpleCache: :class:`tencentcloud.cdn.v20180606.models.SimpleCache`
-        :param AdvancedCache: Advanced cache expiration configuration (This feature is in beta and not generally available yet.)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AdvancedCache: :class:`tencentcloud.cdn.v20180606.models.AdvancedCache`
-        :param RuleCache: Advanced path cache configuration
-Note: this field may return null, indicating that no valid value is obtained.
-        :type RuleCache: list of RuleCache
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SimpleCache: :class:`tencentcloud.cdn.v20180606.models.SimpleCache`\n        :param AdvancedCache: Advanced cache expiration configuration (This feature is in beta and not generally available yet.)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AdvancedCache: :class:`tencentcloud.cdn.v20180606.models.AdvancedCache`\n        :param RuleCache: Advanced path cache configuration
+Note: this field may return null, indicating that no valid value is obtained.\n        :type RuleCache: list of RuleCache\n        """
         self.SimpleCache = None
         self.AdvancedCache = None
         self.RuleCache = None
@@ -1405,31 +1089,21 @@ class CacheConfigCache(AbstractModel):
         :param Switch: Cache configuration switch
 on: enable
 off: disable
-Note: this field may return null, indicating that no valid value is obtained.
-        :type Switch: str
-        :param CacheTime: Cache expiration time settings
+Note: this field may return null, indicating that no valid value is obtained.\n        :type Switch: str\n        :param CacheTime: Cache expiration time settings
 Unit: second. The maximum value is 365 days.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type CacheTime: int
-        :param CompareMaxAge: Advanced cache expiration configuration. If this is enabled, the max-age value returned by the origin server will be compared with the cache expiration time set in CacheRules, and the smallest value will be cached on the node.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type CacheTime: int\n        :param CompareMaxAge: Advanced cache expiration configuration. If this is enabled, the max-age value returned by the origin server will be compared with the cache expiration time set in CacheRules, and the smallest value will be cached on the node.
 on: enable
 off: disable
 This is disabled by default.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type CompareMaxAge: str
-        :param IgnoreCacheControl: Force cache
+Note: this field may return null, indicating that no valid value is obtained.\n        :type CompareMaxAge: str\n        :param IgnoreCacheControl: Force cache
 on: enable
 off: disable
 This is disabled by default. If enabled, the `no-store` and `no-cache` resources returned from the origin server will be cached according to `CacheRules` rules.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type IgnoreCacheControl: str
-        :param IgnoreSetCookie: Whether to ignore the header and body on cache nodes if the origin server returns the header `Set-Cookie`.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type IgnoreCacheControl: str\n        :param IgnoreSetCookie: Whether to ignore the header and body on cache nodes if the origin server returns the header `Set-Cookie`.
 `on`: Ignore; do not cache the header and body.
 `off`: Do not ignore; follow the custom cache rules of cache nodes.
 It is disabled by default.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type IgnoreSetCookie: str
-        """
+Note: This field may return `null`, indicating that no valid value can be obtained.\n        :type IgnoreSetCookie: str\n        """
         self.Switch = None
         self.CacheTime = None
         self.CompareMaxAge = None
@@ -1461,9 +1135,7 @@ class CacheConfigFollowOrigin(AbstractModel):
         """
         :param Switch: Follow origin server switch configuration
 on: enable
-off: disable
-        :type Switch: str
-        """
+off: disable\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -1488,15 +1160,11 @@ class CacheConfigNoCache(AbstractModel):
         :param Switch: No cache configuration switch
 on: enable
 off: disable
-Note: this field may return null, indicating that no valid value is obtained.
-        :type Switch: str
-        :param Revalidate: Always forwards to the origin server for verification
+Note: this field may return null, indicating that no valid value is obtained.\n        :type Switch: str\n        :param Revalidate: Always forwards to the origin server for verification
 on: enable
 off: disable
 This is disabled by default.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type Revalidate: str
-        """
+Note: this field may return null, indicating that no valid value is obtained.\n        :type Revalidate: str\n        """
         self.Switch = None
         self.Revalidate = None
 
@@ -1522,30 +1190,14 @@ class CacheKey(AbstractModel):
         """
         :param FullUrlCache: Whether to enable full-path cache
 on: enable full-path cache (i.e., disable parameter filter)
-off: disable full-path cache (i.e., enable parameter filter)
-        :type FullUrlCache: str
-        :param IgnoreCase: Whether caches are case insensitive
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IgnoreCase: str
-        :param QueryString: Request parameter contained in `CacheKey`
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.QueryStringKey`
-        :param Cookie: Cookie contained in `CacheKey`
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Cookie: :class:`tencentcloud.cdn.v20180606.models.CookieKey`
-        :param Header: Request header contained in `CacheKey`
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Header: :class:`tencentcloud.cdn.v20180606.models.HeaderKey`
-        :param CacheTag: Custom string contained in `CacheKey`
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CacheTag: :class:`tencentcloud.cdn.v20180606.models.CacheTagKey`
-        :param Scheme: Request protocol contained in `CacheKey`
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Scheme: :class:`tencentcloud.cdn.v20180606.models.SchemeKey`
-        :param KeyRules: Path-based cache key configuration
-Note: this field may return null, indicating that no valid value is obtained.
-        :type KeyRules: list of KeyRule
-        """
+off: disable full-path cache (i.e., enable parameter filter)\n        :type FullUrlCache: str\n        :param IgnoreCase: Whether caches are case insensitive
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IgnoreCase: str\n        :param QueryString: Request parameter contained in `CacheKey`
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.QueryStringKey`\n        :param Cookie: Cookie contained in `CacheKey`
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cookie: :class:`tencentcloud.cdn.v20180606.models.CookieKey`\n        :param Header: Request header contained in `CacheKey`
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Header: :class:`tencentcloud.cdn.v20180606.models.HeaderKey`\n        :param CacheTag: Custom string contained in `CacheKey`
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheTag: :class:`tencentcloud.cdn.v20180606.models.CacheTagKey`\n        :param Scheme: Request protocol contained in `CacheKey`
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Scheme: :class:`tencentcloud.cdn.v20180606.models.SchemeKey`\n        :param KeyRules: Path-based cache key configuration
+Note: this field may return null, indicating that no valid value is obtained.\n        :type KeyRules: list of KeyRule\n        """
         self.FullUrlCache = None
         self.IgnoreCase = None
         self.QueryString = None
@@ -1597,12 +1249,8 @@ class CacheOptResult(AbstractModel):
     def __init__(self):
         """
         :param SuccessUrls: List of succeeded URLs
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type SuccessUrls: list of str
-        :param FailUrls: List of failed URLs
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type FailUrls: list of str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type SuccessUrls: list of str\n        :param FailUrls: List of failed URLs
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type FailUrls: list of str\n        """
         self.SuccessUrls = None
         self.FailUrls = None
 
@@ -1627,12 +1275,8 @@ class CacheTagKey(AbstractModel):
     def __init__(self):
         """
         :param Switch: Whether to use `CacheTag` as part of `CacheKey`
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param Value: Value of custom `CacheTag`
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Value: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param Value: Value of custom `CacheTag`
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Value: str\n        """
         self.Switch = None
         self.Value = None
 
@@ -1660,17 +1304,11 @@ class CappingRule(AbstractModel):
 `all`: effective for all files
 `file`: effective for specified file suffixes
 `directory`: effective for specified paths
-`path`: effective for specified absolute paths
-        :type RuleType: str
-        :param RulePaths: Content for each RuleType: 
+`path`: effective for specified absolute paths\n        :type RuleType: str\n        :param RulePaths: Content for each RuleType: 
 For `all`, enter an asterisk (*).
 For `file`, enter the suffix, such as jpg, txt.
 For `directory`, enter the path, such as /xxx/test/.
-For `path`, enter the corresponding absolute path, such as /xxx/test.html.
-        :type RulePaths: list of str
-        :param KBpsThreshold: Downstream speed value settings (in KB/s)
-        :type KBpsThreshold: int
-        """
+For `path`, enter the corresponding absolute path, such as /xxx/test.html.\n        :type RulePaths: list of str\n        :param KBpsThreshold: Downstream speed value settings (in KB/s)\n        :type KBpsThreshold: int\n        """
         self.RuleType = None
         self.RulePaths = None
         self.KBpsThreshold = None
@@ -1706,13 +1344,7 @@ statusCode: status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx status co
 3XX: Returns the aggregate list of 3xx status codes and the data for status codes starting with 3 (in entries)
 4XX: Returns the aggregate list of 4xx status codes and the data for status codes starting with 4 (in entries)
 5XX: Returns the aggregate list of 5xx status codes and the data for status codes starting with 5 (in entries)
-Alternatively, you can specify a status code for querying.
-        :type Metric: str
-        :param DetailData: Detailed data combination
-        :type DetailData: list of TimestampData
-        :param SummarizedData: Aggregate data combination
-        :type SummarizedData: :class:`tencentcloud.cdn.v20180606.models.SummarizedData`
-        """
+Alternatively, you can specify a status code for querying.\n        :type Metric: str\n        :param DetailData: Detailed data combination\n        :type DetailData: list of TimestampData\n        :param SummarizedData: Aggregate data combination\n        :type SummarizedData: :class:`tencentcloud.cdn.v20180606.models.SummarizedData`\n        """
         self.Metric = None
         self.DetailData = None
         self.SummarizedData = None
@@ -1745,26 +1377,14 @@ class CdnIp(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP to be queried
-        :type Ip: str
-        :param Platform: IP ownership:
+        :param Ip: IP to be queried\n        :type Ip: str\n        :param Platform: IP ownership:
 yes: Tencent Cloud CDN node
-no: non-Tencent Cloud CDN node
-        :type Platform: str
-        :param Location: Node district/country
-unknown: unknown node location
-        :type Location: str
-        :param History: Node activation and deactivation history
-        :type History: list of CdnIpHistory
-        :param Area: Node region
+no: non-Tencent Cloud CDN node\n        :type Platform: str\n        :param Location: Node district/country
+unknown: unknown node location\n        :type Location: str\n        :param History: Node activation and deactivation history\n        :type History: list of CdnIpHistory\n        :param Area: Node region
 mainland: cache node in Mainland China
 overseas: cache node outside Mainland China
-unknown: service region unknown
-        :type Area: str
-        :param City: City where the node resides
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type City: str
-        """
+unknown: service region unknown\n        :type Area: str\n        :param City: City where the node resides
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type City: str\n        """
         self.Ip = None
         self.Platform = None
         self.Location = None
@@ -1803,13 +1423,9 @@ class CdnIpHistory(AbstractModel):
         """
         :param Status: Operation type
 online: node is online
-offline: node is offline
-        :type Status: str
-        :param Datetime: Operation time corresponding to operation type
+offline: node is offline\n        :type Status: str\n        :param Datetime: Operation time corresponding to operation type
 If this value is null, there are no status change records
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Datetime: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Datetime: str\n        """
         self.Status = None
         self.Datetime = None
 
@@ -1835,20 +1451,12 @@ class ClientCert(AbstractModel):
         """
         :param Certificate: Client Certificate
 PEM format, requires Base64 encoding.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Certificate: str
-        :param CertName: Client certificate name
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CertName: str
-        :param ExpireTime: Certificate expiration time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Certificate: str\n        :param CertName: Client certificate name
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CertName: str\n        :param ExpireTime: Certificate expiration time
 When this is used as an input parameter, it can be left blank.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ExpireTime: str
-        :param DeployTime: Certificate issuance time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ExpireTime: str\n        :param DeployTime: Certificate issuance time
 When this is used as an input parameter, it can be left blank.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DeployTime: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeployTime: str\n        """
         self.Certificate = None
         self.CertName = None
         self.ExpireTime = None
@@ -1876,19 +1484,7 @@ class ClsLogObject(AbstractModel):
 
     def __init__(self):
         """
-        :param TopicId: Topic ID
-        :type TopicId: str
-        :param TopicName: Topic name
-        :type TopicName: str
-        :param Timestamp: Log time
-        :type Timestamp: str
-        :param Content: Log content
-        :type Content: str
-        :param Filename: Capture path
-        :type Filename: str
-        :param Source: Log source device
-        :type Source: str
-        """
+        :param TopicId: Topic ID\n        :type TopicId: str\n        :param TopicName: Topic name\n        :type TopicName: str\n        :param Timestamp: Log time\n        :type Timestamp: str\n        :param Content: Log content\n        :type Content: str\n        :param Filename: Capture path\n        :type Filename: str\n        :param Source: Log source device\n        :type Source: str\n        """
         self.TopicId = None
         self.TopicName = None
         self.Timestamp = None
@@ -1920,13 +1516,7 @@ class ClsSearchLogs(AbstractModel):
 
     def __init__(self):
         """
-        :param Context: Cursor for more search results
-        :type Context: str
-        :param Listover: Whether all search results have been returned
-        :type Listover: bool
-        :param Results: Log content information
-        :type Results: list of ClsLogObject
-        """
+        :param Context: Cursor for more search results\n        :type Context: str\n        :param Listover: Whether all search results have been returned\n        :type Listover: bool\n        :param Results: Log content information\n        :type Results: list of ClsLogObject\n        """
         self.Context = None
         self.Listover = None
         self.Results = None
@@ -1958,9 +1548,7 @@ class Compatibility(AbstractModel):
     def __init__(self):
         """
         :param Code: Compatibility flag status code.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Code: int
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Code: int\n        """
         self.Code = None
 
 
@@ -1984,12 +1572,8 @@ class Compression(AbstractModel):
         """
         :param Switch: Smart compression configuration switch
 on: enabled
-off: disabled
-        :type Switch: str
-        :param CompressionRules: Compression rules array
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CompressionRules: list of CompressionRule
-        """
+off: disabled\n        :type Switch: str\n        :param CompressionRules: Compression rules array
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CompressionRules: list of CompressionRule\n        """
         self.Switch = None
         self.CompressionRules = None
 
@@ -2019,25 +1603,15 @@ class CompressionRule(AbstractModel):
     def __init__(self):
         """
         :param Compress: true: must be set as true, enables compression
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Compress: bool
-        :param FileExtensions: Compress according to the file suffix type
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Compress: bool\n        :param FileExtensions: Compress according to the file suffix type
 Such as: jpg, txt
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FileExtensions: list of str
-        :param MinLength: The minimum file size to trigger compression (in bytes)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MinLength: int
-        :param MaxLength: The maximum file size to trigger compression (in bytes)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FileExtensions: list of str\n        :param MinLength: The minimum file size to trigger compression (in bytes)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MinLength: int\n        :param MaxLength: The maximum file size to trigger compression (in bytes)
 The maximum value is 30 MB
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MaxLength: int
-        :param Algorithms: File compression algorithm
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxLength: int\n        :param Algorithms: File compression algorithm
 gzip: specifies Gzip compression
 brotli: specifies Brotli compression
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Algorithms: list of str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Algorithms: list of str\n        """
         self.Compress = None
         self.FileExtensions = None
         self.MinLength = None
@@ -2068,12 +1642,8 @@ class CookieKey(AbstractModel):
     def __init__(self):
         """
         :param Switch: Whether to use `Cookie` as part of `CacheKey`. Valid values: on, off
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param Value: Used cookies (separated by ';')
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Value: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param Value: Used cookies (separated by ';')
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Value: str\n        """
         self.Switch = None
         self.Value = None
 
@@ -2097,15 +1667,7 @@ class CreateClsLogTopicRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TopicName: Log topic name
-        :type TopicName: str
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param Channel: Connection channel. Default value: cdn
-        :type Channel: str
-        :param DomainAreaConfigs: Domain name region information
-        :type DomainAreaConfigs: list of DomainAreaConfig
-        """
+        :param TopicName: Log topic name\n        :type TopicName: str\n        :param LogsetId: Logset ID\n        :type LogsetId: str\n        :param Channel: Connection channel. Default value: cdn\n        :type Channel: str\n        :param DomainAreaConfigs: Domain name region information\n        :type DomainAreaConfigs: list of DomainAreaConfig\n        """
         self.TopicName = None
         self.LogsetId = None
         self.Channel = None
@@ -2139,11 +1701,7 @@ class CreateClsLogTopicResponse(AbstractModel):
     def __init__(self):
         """
         :param TopicId: Topic ID
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type TopicId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type TopicId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TopicId = None
         self.RequestId = None
 
@@ -2160,11 +1718,7 @@ class CreateScdnFailedLogTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: ID of the failed task to retry
-        :type TaskId: str
-        :param Area: Region. Valid values: `mainland` and `overseas`.
-        :type Area: str
-        """
+        :param TaskId: ID of the failed task to retry\n        :type TaskId: str\n        :param Area: Region. Valid values: `mainland` and `overseas`.\n        :type Area: str\n        """
         self.TaskId = None
         self.Area = None
 
@@ -2189,11 +1743,7 @@ class CreateScdnFailedLogTaskResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: Creation result. 
-0: Creation succeeded
-        :type Result: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+0: Creation succeeded\n        :type Result: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -2211,9 +1761,7 @@ class DeleteCdnDomainRequest(AbstractModel):
     def __init__(self):
         """
         :param Domain: Domain name
-The domain name status should be `Disabled`
-        :type Domain: str
-        """
+The domain name status should be `Disabled`\n        :type Domain: str\n        """
         self.Domain = None
 
 
@@ -2235,9 +1783,7 @@ class DeleteCdnDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2252,13 +1798,7 @@ class DeleteClsLogTopicRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param Channel: Connection channel. Default value: cdn
-        :type Channel: str
-        """
+        :param TopicId: Log topic ID\n        :type TopicId: str\n        :param LogsetId: Logset ID\n        :type LogsetId: str\n        :param Channel: Connection channel. Default value: cdn\n        :type Channel: str\n        """
         self.TopicId = None
         self.LogsetId = None
         self.Channel = None
@@ -2284,9 +1824,7 @@ class DeleteClsLogTopicResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2303,40 +1841,24 @@ class DescribeBillingDataRequest(AbstractModel):
         """
         :param StartTime: Query start time, e.g., 2018-09-04 10:40:00. The returned result will be later than or equal to the specified time
 The time will be rounded forward based on the granularity parameter `Interval`. For example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1-hour, the time for the first returned entry will be 2018-09-04 10:00:00
-The range between the start time and end time should be less than or equal to 90 days
-        :type StartTime: str
-        :param EndTime: Query end time, e.g. 2018-09-04 10:40:00. The returned result will be earlier than or equal to the specified time
+The range between the start time and end time should be less than or equal to 90 days\n        :type StartTime: str\n        :param EndTime: Query end time, e.g. 2018-09-04 10:40:00. The returned result will be earlier than or equal to the specified time
 The time will be rounded forward based on the granularity parameter `Interval`. For example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1-hour, the time for the last returned entry will be 2018-09-04 10:00:00
-The range between the start time and end time should be less than or equal to 90 days
-        :type EndTime: str
-        :param Interval: Time granularity, which can be:
+The range between the start time and end time should be less than or equal to 90 days\n        :type EndTime: str\n        :param Interval: Time granularity, which can be:
 min: 1-minute. The query range should be less than or equal to 24 hours
 5min: 5-minute. The query range should be less than or equal to 31 days
 hour: 1-hour. The query range should be less than or equal to 31 days
 day: 1-day. The query period should be greater than 31 days
 
-Currently, data query at 1-minute granularity is not supported if the `Area` field is `overseas`
-        :type Interval: str
-        :param Domain: Domain name whose billing data is to be queried
-        :type Domain: str
-        :param Project: Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)
-If the `Domain` parameter is populated with specific domain name information, then the billing data of this domain name instead of the specified project will be returned
-        :type Project: int
-        :param Area: Acceleration region whose billing data is to be queried:
+Currently, data query at 1-minute granularity is not supported if the `Area` field is `overseas`\n        :type Interval: str\n        :param Domain: Domain name whose billing data is to be queried\n        :type Domain: str\n        :param Project: Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)
+If the `Domain` parameter is populated with specific domain name information, then the billing data of this domain name instead of the specified project will be returned\n        :type Project: int\n        :param Area: Acceleration region whose billing data is to be queried:
 mainland: in the mainland of China
 overseas: outside the mainland of China
-If this parameter is left empty, `mainland` will be used by default
-        :type Area: str
-        :param District: Country/region to be queried if `Area` is `overseas`
+If this parameter is left empty, `mainland` will be used by default\n        :type Area: str\n        :param District: Country/region to be queried if `Area` is `overseas`
 For district or country/region codes, please see [District Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
-If this parameter is left empty, all countries/regions will be queried
-        :type District: int
-        :param Metric: Billing statistics type
+If this parameter is left empty, all countries/regions will be queried\n        :type District: int\n        :param Metric: Billing statistics type
 flux: bill-by-traffic
 bandwidth: bill-by-bandwidth
-Default value: `bandwidth`
-        :type Metric: str
-        """
+Default value: `bandwidth`\n        :type Metric: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Interval = None
@@ -2376,13 +1898,7 @@ class DescribeBillingDataResponse(AbstractModel):
 min: 1-minute
 5min: 5-minute
 hour: 1-hour
-day: 1-day
-        :type Interval: str
-        :param Data: Data details
-        :type Data: list of ResourceBillingData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+day: 1-day\n        :type Interval: str\n        :param Data: Data details\n        :type Data: list of ResourceBillingData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Interval = None
         self.Data = None
         self.RequestId = None
@@ -2408,13 +1924,9 @@ class DescribeCdnDataRequest(AbstractModel):
         """
         :param StartTime: Queries start time, such as 2018-09-04 10:40:00; the returned result is later than or equal to the specified time.
 According to the specified time granularity, forward rounding is applied; for example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the first returned entry will be 2018-09-04 10:00:00.
-The gap between the start time and end time should be less than or equal to 90 days.
-        :type StartTime: str
-        :param EndTime: Queries end time, such as 2018-09-04 10:40:00; the returned result is earlier than or equal to the specified time.
+The gap between the start time and end time should be less than or equal to 90 days.\n        :type StartTime: str\n        :param EndTime: Queries end time, such as 2018-09-04 10:40:00; the returned result is earlier than or equal to the specified time.
 According to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the last returned entry will be 2018-09-04 10:00:00.
-The gap between the start time and end time should be less than or equal to 90 days.
-        :type EndTime: str
-        :param Metric: Specifies the query metric, which can be:
+The gap between the start time and end time should be less than or equal to 90 days.\n        :type EndTime: str\n        :param Metric: Specifies the query metric, which can be:
 `flux`: traffic (in bytes)
 `bandwidth`: bandwidth (in bps)
 `request`: number of requests
@@ -2427,55 +1939,31 @@ The gap between the start time and end time should be less than or equal to 90 d
 `3xx`: lists the number of all status codes starting with **3** returned during the queried period based on the specified interval (if any)
 `4xx`: lists the number of all status codes starting with **4** returned during the queried period based on the specified interval (if any)
 `5xx`: lists the number of all status codes starting with **5** returned during the queried period based on the specified interval (if any)
-It is supported to specify a status code for query. The return will be empty if the status code has never been generated.
-        :type Metric: str
-        :param Domains: Specifies the list of domain names to be queried
-Up to 30 domain names can be queried at a time
-        :type Domains: list of str
-        :param Project: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
-Please note that if domain names are specified, this parameter will be ignored.
-        :type Project: int
-        :param Interval: Time granularity; valid values:
+It is supported to specify a status code for query. The return will be empty if the status code has never been generated.\n        :type Metric: str\n        :param Domains: Specifies the list of domain names to be queried
+Up to 30 domain names can be queried at a time\n        :type Domains: list of str\n        :param Project: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
+Please note that if domain names are specified, this parameter will be ignored.\n        :type Project: int\n        :param Interval: Time granularity; valid values:
 `min`: data with 1-minute granularity is returned when the queried period is no longer than 24 hours. This value is not supported if the service region you want to query is outside Mainland China;
 `5min`: data with 5-minute granularity is returned when the queried period is no longer than 31 days;
 `hour`: data with 1-hour granularity is returned when the queried period is no longer than 31 days;
-`day`: data with 1-day granularity is returned when the queried period is longer than 31 days.
-        :type Interval: str
-        :param Detail: The aggregate data for multiple domain names is returned by default (false) during a multi-domain-name query.
-You can set it to true to return the details for each Domain (the statusCode metric is currently not supported)
-        :type Detail: bool
-        :param Isp: Specifies an ISP when you query the CDN data within Mainland China. If this is left blank, all ISPs will be queried.
+`day`: data with 1-day granularity is returned when the queried period is longer than 31 days.\n        :type Interval: str\n        :param Detail: The aggregate data for multiple domain names is returned by default (false) during a multi-domain-name query.
+You can set it to true to return the details for each Domain (the statusCode metric is currently not supported)\n        :type Detail: bool\n        :param Isp: Specifies an ISP when you query the CDN data within Mainland China. If this is left blank, all ISPs will be queried.
 To view ISP codes, see [ISP Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
-If you have specified an ISP, you cannot specify a province or an IP protocol for the same query.
-        :type Isp: int
-        :param District: Specifies a province when you query the CDN data within Mainland China. If this is left blank, all provinces will be queried.
+If you have specified an ISP, you cannot specify a province or an IP protocol for the same query.\n        :type Isp: int\n        :param District: Specifies a province when you query the CDN data within Mainland China. If this is left blank, all provinces will be queried.
 Specifies a country/region when you query the CDN data outside Mainland China. If this is left blank, all countries/regions will be queried.
 To view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
-If you have specified a province for your query on CDN data within mainland China, you cannot specify an ISP or an IP protocol for the same query.
-        :type District: int
-        :param Protocol: Specifies the protocol to be queried; if you leave it blank, all protocols will be queried.
+If you have specified a province for your query on CDN data within mainland China, you cannot specify an ISP or an IP protocol for the same query.\n        :type District: int\n        :param Protocol: Specifies the protocol to be queried; if you leave it blank, all protocols will be queried.
 all: All protocols
 http: specifies the HTTP metric to be queried
-https: specifies the HTTPS metric to be queried
-        :type Protocol: str
-        :param DataSource: Specifies the data source to be queried, which can be seen as the allowlist function.
-        :type DataSource: str
-        :param IpProtocol: Specified IP protocol to be queried. If this parameter is left empty, all protocols will be queried
+https: specifies the HTTPS metric to be queried\n        :type Protocol: str\n        :param DataSource: Specifies the data source to be queried, which can be seen as the allowlist function.\n        :type DataSource: str\n        :param IpProtocol: Specified IP protocol to be queried. If this parameter is left empty, all protocols will be queried
 all: all protocols
 ipv4: specifies to query IPv4 metrics
 ipv6: specifies to query IPv6 metrics
 If the IP protocol to be queried is specified, the district and ISP cannot be specified at the same time
-Note: non-IPv6 allowlisted users cannot specify `ipv4` and `ipv6` for query
-        :type IpProtocol: str
-        :param Area: Specifies a service region. If this value is left blank, CDN data within Mainland China will be queried.
+Note: non-IPv6 allowlisted users cannot specify `ipv4` and `ipv6` for query\n        :type IpProtocol: str\n        :param Area: Specifies a service region. If this value is left blank, CDN data within Mainland China will be queried.
 `mainland`: specifies to query CDN data within Mainland China;
-`overseas`: specifies to query CDN data outside Mainland China.
-        :type Area: str
-        :param AreaType: Specifies a region type for your query on CDN data outside Mainland China. If this parameter is left blank, data on the service region will be queried. This parameter is valid only when `Area` is `overseas`.
+`overseas`: specifies to query CDN data outside Mainland China.\n        :type Area: str\n        :param AreaType: Specifies a region type for your query on CDN data outside Mainland China. If this parameter is left blank, data on the service region will be queried. This parameter is valid only when `Area` is `overseas`.
 `server`: specifies to query data on the service region where Tencent Cloud CDN nodes are located;
-`client`: specifies to query data on the client region where the request devices are located.
-        :type AreaType: str
-        """
+`client`: specifies to query data on the client region where the request devices are located.\n        :type AreaType: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Metric = None
@@ -2527,13 +2015,7 @@ class DescribeCdnDataResponse(AbstractModel):
 min: 1 minute
 5min: 5 minutes
 hour: 1 hour
-day: 1 day
-        :type Interval: str
-        :param Data: Returned data details of the specified conditional query
-        :type Data: list of ResourceData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+day: 1 day\n        :type Interval: str\n        :param Data: Returned data details of the specified conditional query\n        :type Data: list of ResourceData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Interval = None
         self.Data = None
         self.RequestId = None
@@ -2557,26 +2039,12 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: Specifies a domain name for the query
-        :type Domain: str
-        :param StartTime: Starting time, such as `2019-09-04 00:00:00`
-        :type StartTime: str
-        :param EndTime: End time, such as `2019-09-04 12:00:00`
-        :type EndTime: str
-        :param Offset: Offset for paginated queries. Default value: 0
-        :type Offset: int
-        :param Limit: Limit on paged queries. Default value: 100. Maximum value: 1,000
-        :type Limit: int
-        :param Area: Specifies a region for the query.
+        :param Domain: Specifies a domain name for the query\n        :type Domain: str\n        :param StartTime: Starting time, such as `2019-09-04 00:00:00`\n        :type StartTime: str\n        :param EndTime: End time, such as `2019-09-04 12:00:00`\n        :type EndTime: str\n        :param Offset: Offset for paginated queries. Default value: 0\n        :type Offset: int\n        :param Limit: Limit on paged queries. Default value: 100. Maximum value: 1,000\n        :type Limit: int\n        :param Area: Specifies a region for the query.
 `mainland`: specifies to return the download link of logs on acceleration within Mainland China;
 `overseas`: specifies to return the download link of logs on acceleration outside Mainland China;
 `global`: specifies to return a download link of logs on acceleration within Mainland China and a link of logs on acceleration outside Mainland China.
-Default value: `mainland`.
-        :type Area: str
-        :param LogType: The type of log to be downloaded.
-access: access logs
-        :type LogType: str
-        """
+Default value: `mainland`.\n        :type Area: str\n        :param LogType: The type of log to be downloaded.
+access: access logs\n        :type LogType: str\n        """
         self.Domain = None
         self.StartTime = None
         self.EndTime = None
@@ -2610,13 +2078,7 @@ class DescribeCdnDomainLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainLogs: Download link of the log package
-        :type DomainLogs: list of DomainLog
-        :param TotalCount: Total number of entries obtained
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DomainLogs: Download link of the log package\n        :type DomainLogs: list of DomainLog\n        :param TotalCount: Total number of entries obtained\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DomainLogs = None
         self.TotalCount = None
         self.RequestId = None
@@ -2640,9 +2102,7 @@ class DescribeCdnIpRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ips: List of IPs to be queried
-        :type Ips: list of str
-        """
+        :param Ips: List of IPs to be queried\n        :type Ips: list of str\n        """
         self.Ips = None
 
 
@@ -2664,11 +2124,7 @@ class DescribeCdnIpResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Ips: Node ownership details
-        :type Ips: list of CdnIp
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Ips: Node ownership details\n        :type Ips: list of CdnIp\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ips = None
         self.RequestId = None
 
@@ -2696,13 +2152,7 @@ class DescribeCdnOriginIpResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Ips: Intermediate node IP details
-        :type Ips: list of OriginIp
-        :param TotalCount: Number of intermediate node IPs
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Ips: Intermediate node IP details\n        :type Ips: list of OriginIp\n        :param TotalCount: Number of intermediate node IPs\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ips = None
         self.TotalCount = None
         self.RequestId = None
@@ -2726,9 +2176,7 @@ class DescribeCertDomainsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Cert: Base64-encoded string of certificate in PEM format
-        :type Cert: str
-        """
+        :param Cert: Base64-encoded string of certificate in PEM format\n        :type Cert: str\n        """
         self.Cert = None
 
 
@@ -2751,14 +2199,8 @@ class DescribeCertDomainsResponse(AbstractModel):
     def __init__(self):
         """
         :param Domains: List of domain names connected to CDN
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Domains: list of str
-        :param CertifiedDomains: List of CDN domain names with certificates configured
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CertifiedDomains: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Domains: list of str\n        :param CertifiedDomains: List of CDN domain names with certificates configured
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CertifiedDomains: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Domains = None
         self.CertifiedDomains = None
         self.RequestId = None
@@ -2777,15 +2219,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Offset for paginated queries. Default value: 0
-        :type Offset: int
-        :param Limit: Limit on paginated queries. Default value: 100. Maximum value: 1000.
-        :type Limit: int
-        :param Filters: Query condition filter, complex type.
-        :type Filters: list of DomainFilter
-        :param Sort: Sorting rules
-        :type Sort: :class:`tencentcloud.cdn.v20180606.models.Sort`
-        """
+        :param Offset: Offset for paginated queries. Default value: 0\n        :type Offset: int\n        :param Limit: Limit on paginated queries. Default value: 100. Maximum value: 1000.\n        :type Limit: int\n        :param Filters: Query condition filter, complex type.\n        :type Filters: list of DomainFilter\n        :param Sort: Sorting rules\n        :type Sort: :class:`tencentcloud.cdn.v20180606.models.Sort`\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -2820,14 +2254,8 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Domains: List of domain names
-        :type Domains: list of DetailDomain
-        :param TotalNumber: The number of domain names that matched the query conditions
-Used for paginated queries
-        :type TotalNumber: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Domains: List of domain names\n        :type Domains: list of DetailDomain\n        :param TotalNumber: The number of domain names that matched the query conditions
+Used for paginated queries\n        :type TotalNumber: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Domains = None
         self.TotalNumber = None
         self.RequestId = None
@@ -2851,13 +2279,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Offset for paginated queries. Default value: 0
-        :type Offset: int
-        :param Limit: Limit on paginated queries. Default value: 100. Maximum value: 1000.
-        :type Limit: int
-        :param Filters: Query condition filter, complex type.
-        :type Filters: list of DomainFilter
-        """
+        :param Offset: Offset for paginated queries. Default value: 0\n        :type Offset: int\n        :param Limit: Limit on paginated queries. Default value: 100. Maximum value: 1000.\n        :type Limit: int\n        :param Filters: Query condition filter, complex type.\n        :type Filters: list of DomainFilter\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -2888,14 +2310,8 @@ class DescribeDomainsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Domains: List of domain names
-        :type Domains: list of BriefDomain
-        :param TotalNumber: The number of domain names that matched the query conditions
-Used for paginated queries
-        :type TotalNumber: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Domains: List of domain names\n        :type Domains: list of BriefDomain\n        :param TotalNumber: The number of domain names that matched the query conditions
+Used for paginated queries\n        :type TotalNumber: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Domains = None
         self.TotalNumber = None
         self.RequestId = None
@@ -2919,21 +2335,13 @@ class DescribeIpStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: Acceleration domain name
-        :type Domain: str
-        :param Layer: Node type.
+        :param Domain: Acceleration domain name\n        :type Domain: str\n        :param Layer: Node type.
 edge: edge server
 last: intermediate server
-If this parameter is left empty, edge server information will be returned by default
-        :type Layer: str
-        :param Area: Region to be queried.
+If this parameter is left empty, edge server information will be returned by default\n        :type Layer: str\n        :param Area: Region to be queried.
 mainland: domestic nodes
 overseas: overseas nodes
-global: global nodes
-        :type Area: str
-        :param Segment: Whether to return a value as an IP range
-        :type Segment: bool
-        """
+global: global nodes\n        :type Area: str\n        :param Segment: Whether to return a value as an IP range\n        :type Segment: bool\n        """
         self.Domain = None
         self.Layer = None
         self.Area = None
@@ -2961,13 +2369,7 @@ class DescribeIpStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Ips: Node list
-        :type Ips: list of IpStatus
-        :param TotalCount: Total number of nodes
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Ips: Node list\n        :type Ips: list of IpStatus\n        :param TotalCount: Total number of nodes\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ips = None
         self.TotalCount = None
         self.RequestId = None
@@ -2992,21 +2394,11 @@ class DescribeIpVisitRequest(AbstractModel):
     def __init__(self):
         """
         :param StartTime: Query start time, such as 2018-09-04 10:40:10; the returned result is later than or equal to the specified time.
-According to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:10 and the query time granularity is 5 minutes, the time for the first returned entry will be 2018-09-04 10:40:00.
-        :type StartTime: str
-        :param EndTime: Query end time, such as 2018-09-04 10:40:10; the returned result is earlier than or equal to the specified time.
-According to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:10 and the query time granularity is 5 minutes, the time for the last returned entry will be 2018-09-04 10:40:00.
-        :type EndTime: str
-        :param Domains: Specifies the list of domain names to be queried; up to 30 domain names can be queried at a time.
-        :type Domains: list of str
-        :param Project: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
-Please note that if domain names are specified, this parameter will be ignored.
-        :type Project: int
-        :param Interval: Time granularity, which can be:
+According to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:10 and the query time granularity is 5 minutes, the time for the first returned entry will be 2018-09-04 10:40:00.\n        :type StartTime: str\n        :param EndTime: Query end time, such as 2018-09-04 10:40:10; the returned result is earlier than or equal to the specified time.
+According to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:10 and the query time granularity is 5 minutes, the time for the last returned entry will be 2018-09-04 10:40:00.\n        :type EndTime: str\n        :param Domains: Specifies the list of domain names to be queried; up to 30 domain names can be queried at a time.\n        :type Domains: list of str\n        :param Project: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
+Please note that if domain names are specified, this parameter will be ignored.\n        :type Project: int\n        :param Interval: Time granularity, which can be:
 5min: 5 minutes. If the query period is within 24 hours, `5min` will be used by default.
-day: 1 day. If the query period is longer than 24 hours, `day` will be used by default.
-        :type Interval: str
-        """
+day: 1 day. If the query period is longer than 24 hours, `day` will be used by default.\n        :type Interval: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Domains = None
@@ -3036,13 +2428,7 @@ class DescribeIpVisitResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Interval: Time granularity of data statistics, which supports 5min (5 minutes) and day (1 day).
-        :type Interval: str
-        :param Data: Origin-pull data details of each resource.
-        :type Data: list of ResourceData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Interval: Time granularity of data statistics, which supports 5min (5 minutes) and day (1 day).\n        :type Interval: str\n        :param Data: Origin-pull data details of each resource.\n        :type Data: list of ResourceData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Interval = None
         self.Data = None
         self.RequestId = None
@@ -3068,9 +2454,7 @@ class DescribeMapInfoRequest(AbstractModel):
         """
         :param Name: Query type:
 `isp`: queries ISP codes
-`district`: queries codes of provinces (Mainland China) or countries/regions (outside Mainland China)
-        :type Name: str
-        """
+`district`: queries codes of provinces (Mainland China) or countries/regions (outside Mainland China)\n        :type Name: str\n        """
         self.Name = None
 
 
@@ -3092,17 +2476,9 @@ class DescribeMapInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MapInfoList: Array of mappings.
-        :type MapInfoList: list of MapInfo
-        :param ServerRegionRelation: The relationship between server region ID and sub-region ID
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ServerRegionRelation: list of RegionMapRelation
-        :param ClientRegionRelation: The relationship between client region ID and sub-region ID
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ClientRegionRelation: list of RegionMapRelation
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param MapInfoList: Array of mappings.\n        :type MapInfoList: list of MapInfo\n        :param ServerRegionRelation: The relationship between server region ID and sub-region ID
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type ServerRegionRelation: list of RegionMapRelation\n        :param ClientRegionRelation: The relationship between client region ID and sub-region ID
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type ClientRegionRelation: list of RegionMapRelation\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MapInfoList = None
         self.ServerRegionRelation = None
         self.ClientRegionRelation = None
@@ -3140,13 +2516,9 @@ class DescribeOriginDataRequest(AbstractModel):
         """
         :param StartTime: Query start time, such as 2018-09-04 10:40:00; the returned result is later than or equal to the specified time.
 According to the specified time granularity, forward rounding is applied; for example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the first returned entry will be 2018-09-04 10:00:00.
-The gap between the start time and end time should be less than or equal to 90 days.
-        :type StartTime: str
-        :param EndTime: Query end time, such as 2018-09-04 10:40:00; the returned result is earlier than or equal to the specified time.
+The gap between the start time and end time should be less than or equal to 90 days.\n        :type StartTime: str\n        :param EndTime: Query end time, such as 2018-09-04 10:40:00; the returned result is earlier than or equal to the specified time.
 According to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the last returned entry will be 2018-09-04 10:00:00.
-The gap between the start time and end time should be less than or equal to 90 days.
-        :type EndTime: str
-        :param Metric: Specifies the query metric, which can be:
+The gap between the start time and end time should be less than or equal to 90 days.\n        :type EndTime: str\n        :param Metric: Specifies the query metric, which can be:
 flux: origin-pull traffic (in bytes)
 bandwidth: origin-pull bandwidth (in bps)
 request: number of origin-pull requests
@@ -3157,28 +2529,16 @@ statusCode: origin-pull status code. The aggregate data for 2xx, 3xx, 4xx, and 5
 3xx: Returns the aggregate list of 3xx origin-pull status codes and the data for origin-pull status codes starting with 3 (in entries)
 4xx: Returns the aggregate list of 4xx origin-pull status codes and the data for origin-pull status codes starting with 4 (in entries)
 5xx: Returns the aggregate list of 5xx origin-pull status codes and the data for origin-pull status codes starting with 5 (in entries)
-It is supported to specify a status code for query. The return will be empty if the status code has never been generated.
-        :type Metric: str
-        :param Domains: Specifies the list of domain names to be queried; up to 30 domain names can be queried at a time.
-        :type Domains: list of str
-        :param Project: Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)
+It is supported to specify a status code for query. The return will be empty if the status code has never been generated.\n        :type Metric: str\n        :param Domains: Specifies the list of domain names to be queried; up to 30 domain names can be queried at a time.\n        :type Domains: list of str\n        :param Project: Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)
 If the domain name is not specified, the specified project will be queried. Up to 30 acceleration domain names can be queried at a time
-If the domain name information is specified, the domain name will prevail
-        :type Project: int
-        :param Interval: Time granularity; valid values:
+If the domain name information is specified, the domain name will prevail\n        :type Project: int\n        :param Interval: Time granularity; valid values:
 `min`: data with 1-minute granularity is returned when the queried period is no longer than 24 hours. This value is not supported if the service region you want to query is outside Mainland China;
 `5min`: data with 5-minute granularity is returned when the queried period is no longer than 31 days;
 `hour`: data with 1-hour granularity is returned when the queried period is no longer than 31 days;
-`day`: data with 1-day granularity is returned when the queried period is longer than 31 days.
-        :type Interval: str
-        :param Detail: The aggregate data for multiple domain names is returned by default (false) when multiple `Domains` are passed in.
-You can set it to true to return the details for each Domain (the statusCode metric is currently not supported)
-        :type Detail: bool
-        :param Area: Specifies a service region. If this value is left blank, CDN data within Mainland China will be queried.
+`day`: data with 1-day granularity is returned when the queried period is longer than 31 days.\n        :type Interval: str\n        :param Detail: The aggregate data for multiple domain names is returned by default (false) when multiple `Domains` are passed in.
+You can set it to true to return the details for each Domain (the statusCode metric is currently not supported)\n        :type Detail: bool\n        :param Area: Specifies a service region. If this value is left blank, CDN data within Mainland China will be queried.
 `mainland`: specifies to query CDN data within Mainland China;
-`overseas`: specifies to query CDN data outside Mainland China.
-        :type Area: str
-        """
+`overseas`: specifies to query CDN data outside Mainland China.\n        :type Area: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Metric = None
@@ -3214,13 +2574,7 @@ class DescribeOriginDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Interval: Time granularity of data statistics, which supports min (1 minute), 5min (5 minutes), hour (1 hour), and day (1 day).
-        :type Interval: str
-        :param Data: Origin-pull data details of each resource.
-        :type Data: list of ResourceOriginData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Interval: Time granularity of data statistics, which supports min (1 minute), 5min (5 minutes), hour (1 hour), and day (1 day).\n        :type Interval: str\n        :param Data: Origin-pull data details of each resource.\n        :type Data: list of ResourceOriginData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Interval = None
         self.Data = None
         self.RequestId = None
@@ -3247,9 +2601,7 @@ class DescribePayTypeRequest(AbstractModel):
         :param Area: Specifies a service region.
 `mainland`: queries billing methods within Mainland China;
 `overseas`: queries billing methods outside Mainland China.
-Default value: `mainland`.
-        :type Area: str
-        """
+Default value: `mainland`.\n        :type Area: str\n        """
         self.Area = None
 
 
@@ -3274,30 +2626,18 @@ class DescribePayTypeResponse(AbstractModel):
         :param PayType: Billing modes:
 `flux`: bill-by-traffic
 `bandwidth`: bill-by-bandwidth
-When you switch the billing mode for a daily-billing-cycle account, if there is bandwidth usage on the day, this field indicates the billing mode that will take effect on the next day; otherwise, it indicates the billing mode that has already taken effect
-        :type PayType: str
-        :param BillingCycle: Billing cycle:
+When you switch the billing mode for a daily-billing-cycle account, if there is bandwidth usage on the day, this field indicates the billing mode that will take effect on the next day; otherwise, it indicates the billing mode that has already taken effect\n        :type PayType: str\n        :param BillingCycle: Billing cycle:
 day: daily settlement
-month: monthly settlement
-        :type BillingCycle: str
-        :param StatType: Billing method:
+month: monthly settlement\n        :type BillingCycle: str\n        :param StatType: Billing method:
 monthMax: billed by the monthly average of daily peak traffic (monthly settlement)
 day95: billed by the daily 95th percentile bandwidth (monthly settlement)
 month95: billed by the monthly 95th percentile bandwidth (monthly settlement)
 sum: billed by the total traffic (daily or monthly settlement)
-max: billed by the peak bandwidth (daily settlement)
-        :type StatType: str
-        :param RegionType: Billing method outside Mainland China:
+max: billed by the peak bandwidth (daily settlement)\n        :type StatType: str\n        :param RegionType: Billing method outside Mainland China:
 `all`: unified billing for all regions
-`multiple`: separate billing for different regions
-        :type RegionType: str
-        :param CurrentPayType: Currently billing mode in effect:
+`multiple`: separate billing for different regions\n        :type RegionType: str\n        :param CurrentPayType: Currently billing mode in effect:
 `flux`: bill-by-traffic
-`bandwidth`: bill-by-bandwidth
-        :type CurrentPayType: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+`bandwidth`: bill-by-bandwidth\n        :type CurrentPayType: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PayType = None
         self.BillingCycle = None
         self.StatType = None
@@ -3328,13 +2668,7 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param UrlPurge: URL purge usage and quota.
-        :type UrlPurge: list of Quota
-        :param PathPurge: Directory purge usage and quota.
-        :type PathPurge: list of Quota
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param UrlPurge: URL purge usage and quota.\n        :type UrlPurge: list of Quota\n        :param PathPurge: Directory purge usage and quota.\n        :type PathPurge: list of Quota\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.UrlPurge = None
         self.PathPurge = None
         self.RequestId = None
@@ -3365,32 +2699,14 @@ class DescribePurgeTasksRequest(AbstractModel):
         """
         :param PurgeType: Specifies a purge type:
 `url`: URL purge record
-`path`: Directory purge record
-        :type PurgeType: str
-        :param StartTime: Specifies the starting time of the period you want to query, such as `2018-08-08 00:00:00`
-        :type StartTime: str
-        :param EndTime: Specifies the end time of the period you want to query, such as 2018-08-08 23:59:59
-        :type EndTime: str
-        :param TaskId: Specifies a task ID when you want to query by task ID.
-You must specify either a task ID or a starting time for your query.
-        :type TaskId: str
-        :param Offset: Offset for paginated queries. Default value: 0
-        :type Offset: int
-        :param Limit: Limit on paged queries. Default value: 20
-        :type Limit: int
-        :param Keyword: You can filter the results by domain name or a complete URL beginning with `http(s)://`
-        :type Keyword: str
-        :param Status: Specifies a task state for your query:
+`path`: Directory purge record\n        :type PurgeType: str\n        :param StartTime: Specifies the starting time of the period you want to query, such as `2018-08-08 00:00:00`\n        :type StartTime: str\n        :param EndTime: Specifies the end time of the period you want to query, such as 2018-08-08 23:59:59\n        :type EndTime: str\n        :param TaskId: Specifies a task ID when you want to query by task ID.
+You must specify either a task ID or a starting time for your query.\n        :type TaskId: str\n        :param Offset: Offset for paginated queries. Default value: 0\n        :type Offset: int\n        :param Limit: Limit on paged queries. Default value: 20\n        :type Limit: int\n        :param Keyword: You can filter the results by domain name or a complete URL beginning with `http(s)://`\n        :type Keyword: str\n        :param Status: Specifies a task state for your query:
 `fail`: purge failed
 `done`: purge succeeded
-`process`: purge in progress
-        :type Status: str
-        :param Area: Specifies a purge region for your query:
+`process`: purge in progress\n        :type Status: str\n        :param Area: Specifies a purge region for your query:
 `mainland`: within Mainland China
 `overseas`: outside Mainland China
-`global`: global
-        :type Area: str
-        """
+`global`: global\n        :type Area: str\n        """
         self.PurgeType = None
         self.StartTime = None
         self.EndTime = None
@@ -3429,14 +2745,8 @@ class DescribePurgeTasksResponse(AbstractModel):
     def __init__(self):
         """
         :param PurgeLogs: Detailed purge record.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type PurgeLogs: list of PurgeTask
-        :param TotalCount: Total number of tasks, which is used for pagination.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type PurgeLogs: list of PurgeTask\n        :param TotalCount: Total number of tasks, which is used for pagination.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PurgeLogs = None
         self.TotalCount = None
         self.RequestId = None
@@ -3466,11 +2776,7 @@ class DescribePushQuotaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param UrlPush: URL prefetch usage and quota.
-        :type UrlPush: list of Quota
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param UrlPush: URL prefetch usage and quota.\n        :type UrlPush: list of Quota\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.UrlPush = None
         self.RequestId = None
 
@@ -3492,30 +2798,14 @@ class DescribePushTasksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Starting time, such as `2018-08-08 00:00:00`
-        :type StartTime: str
-        :param EndTime: End time, such as `2018-08-08 23:59:59`
-        :type EndTime: str
-        :param TaskId: Specifies a task ID for your query.
-You must specify either a task ID or a starting time.
-        :type TaskId: str
-        :param Keyword: Specifies a keyword for your query. Please enter a domain name or a complete URL beginning with `http(s)://`
-        :type Keyword: str
-        :param Offset: Offset for paginated queries. Default value: 0
-        :type Offset: int
-        :param Limit: Limit on paged queries. Default value: 20
-        :type Limit: int
-        :param Area: Specifies a region for your query:
+        :param StartTime: Starting time, such as `2018-08-08 00:00:00`\n        :type StartTime: str\n        :param EndTime: End time, such as `2018-08-08 23:59:59`\n        :type EndTime: str\n        :param TaskId: Specifies a task ID for your query.
+You must specify either a task ID or a starting time.\n        :type TaskId: str\n        :param Keyword: Specifies a keyword for your query. Please enter a domain name or a complete URL beginning with `http(s)://`\n        :type Keyword: str\n        :param Offset: Offset for paginated queries. Default value: 0\n        :type Offset: int\n        :param Limit: Limit on paged queries. Default value: 20\n        :type Limit: int\n        :param Area: Specifies a region for your query:
 `mainland`: within Mainland China
 `overseas`: outside Mainland China
-`global`: global
-        :type Area: str
-        :param Status: Specifies a task state for your query:
+`global`: global\n        :type Area: str\n        :param Status: Specifies a task state for your query:
 `fail`: prefetch failed
 `done`: prefetch succeeded
-`process`: prefetch in progress
-        :type Status: str
-        """
+`process`: prefetch in progress\n        :type Status: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.TaskId = None
@@ -3552,14 +2842,8 @@ class DescribePushTasksResponse(AbstractModel):
     def __init__(self):
         """
         :param PushLogs: Prefetch history
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type PushLogs: list of PushTask
-        :param TotalCount: Total number of tasks, which is used for pagination.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type PushLogs: list of PushTask\n        :param TotalCount: Total number of tasks, which is used for pagination.
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.PushLogs = None
         self.TotalCount = None
         self.RequestId = None
@@ -3586,29 +2870,15 @@ class DescribeReportDataRequest(AbstractModel):
         :param StartTime: Query the start time in the format of `yyyy-MM-dd`
 If the report type is `daily`, the start time and end time must be the same day.
 If the report type is `weekly`, the start time must be Monday and the end time must be the Sunday of the same week.
-If the report type is `monthly`, the start time must be the first day of the calendar month and the end time must be the last day of the same calendar month.
-        :type StartTime: str
-        :param EndTime: Query the end time in the format of `yyyy-MM-dd`
+If the report type is `monthly`, the start time must be the first day of the calendar month and the end time must be the last day of the same calendar month.\n        :type StartTime: str\n        :param EndTime: Query the end time in the format of `yyyy-MM-dd`
 If the report type is `daily`, the start time and end time must be of the same day.
 If the report type is `weekly`, the start time must be Monday and the end time must be the Sunday of the same week.
-If the report type is `monthly`, the start time must be the first day of the calendar month and the end time must be the last day of the same calendar month.
-        :type EndTime: str
-        :param ReportType: Report type
+If the report type is `monthly`, the start time must be the first day of the calendar month and the end time must be the last day of the same calendar month.\n        :type EndTime: str\n        :param ReportType: Report type
 daily: daily report
 weekly: weekly report (Monday to Sunday)
-monthly: monthly report (calendar month)
-        :type ReportType: str
-        :param Area: Domain name acceleration region
+monthly: monthly report (calendar month)\n        :type ReportType: str\n        :param Area: Domain name acceleration region
 mainland: in Mainland China
-overseas: outside Mainland China
-        :type Area: str
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of data entries. Default value: 1000.
-        :type Limit: int
-        :param Project: Filters by project ID
-        :type Project: int
-        """
+overseas: outside Mainland China\n        :type Area: str\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of data entries. Default value: 1000.\n        :type Limit: int\n        :param Project: Filters by project ID\n        :type Project: int\n        """
         self.StartTime = None
         self.EndTime = None
         self.ReportType = None
@@ -3642,13 +2912,7 @@ class DescribeReportDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainReport: Domain name-level data details.
-        :type DomainReport: list of ReportData
-        :param ProjectReport: Project-level data details
-        :type ProjectReport: list of ReportData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DomainReport: Domain name-level data details.\n        :type DomainReport: list of ReportData\n        :param ProjectReport: Project-level data details\n        :type ProjectReport: list of ReportData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DomainReport = None
         self.ProjectReport = None
         self.RequestId = None
@@ -3677,13 +2941,7 @@ class DescribeUrlViolationsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Offset for paginated queries. Default value: 0
-        :type Offset: int
-        :param Limit: Limit on paginated queries. Default value: 100.
-        :type Limit: int
-        :param Domains: Specified domain name query
-        :type Domains: list of str
-        """
+        :param Offset: Offset for paginated queries. Default value: 0\n        :type Offset: int\n        :param Limit: Limit on paginated queries. Default value: 100.\n        :type Limit: int\n        :param Domains: Specified domain name query\n        :type Domains: list of str\n        """
         self.Offset = None
         self.Limit = None
         self.Domains = None
@@ -3710,13 +2968,7 @@ class DescribeUrlViolationsResponse(AbstractModel):
     def __init__(self):
         """
         :param UrlRecordList: Details of URLs in violation
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UrlRecordList: list of ViolationUrl
-        :param TotalCount: Total number of records, which is used for pagination.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type UrlRecordList: list of ViolationUrl\n        :param TotalCount: Total number of records, which is used for pagination.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.UrlRecordList = None
         self.TotalCount = None
         self.RequestId = None
@@ -3740,92 +2992,34 @@ class DetailDomain(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceId: Domain name ID
-        :type ResourceId: str
-        :param AppId: Tencent Cloud account ID
-        :type AppId: int
-        :param Domain: Acceleration domain name
-        :type Domain: str
-        :param Cname: CNAME address of domain name
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Cname: str
-        :param Status: Acceleration service status
+        :param ResourceId: Domain name ID\n        :type ResourceId: str\n        :param AppId: Tencent Cloud account ID\n        :type AppId: int\n        :param Domain: Acceleration domain name\n        :type Domain: str\n        :param Cname: CNAME address of domain name
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cname: str\n        :param Status: Acceleration service status
 rejected: the domain name is rejected due to expiration/deregistration of its ICP filing
 processing: deploying
 online: activated
-offline: disabled
-        :type Status: str
-        :param ProjectId: Project ID, which can be viewed on the Tencent Cloud project management page
-        :type ProjectId: int
-        :param ServiceType: Domain name service type
+offline: disabled\n        :type Status: str\n        :param ProjectId: Project ID, which can be viewed on the Tencent Cloud project management page\n        :type ProjectId: int\n        :param ServiceType: Domain name service type
 web: static acceleration
 download: download acceleration
-media: streaming VOD acceleration
-        :type ServiceType: str
-        :param CreateTime: Domain name creation time
-        :type CreateTime: str
-        :param UpdateTime: Last modified time of domain name
-        :type UpdateTime: str
-        :param Origin: Origin server configuration
-        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param IpFilter: IP blacklist/whitelist configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
-        :param IpFreqLimit: IP access frequency limit configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
-        :param StatusCodeCache: Status code cache configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
-        :param Compression: Smart compression configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
-        :param BandwidthAlert: Bandwidth cap configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
-        :param RangeOriginPull: Range GETs configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
-        :param FollowRedirect: 301/302 origin-pull follow-redirect configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param ErrorPage: Custom error page configuration (in beta)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
-        :param RequestHeader: Custom request header configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
-        :param ResponseHeader: Custom response header configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
-        :param DownstreamCapping: Single-link downstream speed limit configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
-        :param CacheKey: Configuration of cache with/without parameter
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
-        :param ResponseHeaderCache: Origin server header cache configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
-        :param VideoSeek: Video dragging configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
-        :param Cache: Node cache expiration rule configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param OriginPullOptimization: Cross-border linkage optimization configuration (in beta)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
-        :param Https: HTTPS acceleration configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param Authentication: Timestamp hotlink protection configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
-        :param Seo: SEO configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
-        :param Disable: Domain name block status
+media: streaming VOD acceleration\n        :type ServiceType: str\n        :param CreateTime: Domain name creation time\n        :type CreateTime: str\n        :param UpdateTime: Last modified time of domain name\n        :type UpdateTime: str\n        :param Origin: Origin server configuration\n        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`\n        :param IpFilter: IP blacklist/whitelist configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`\n        :param IpFreqLimit: IP access frequency limit configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`\n        :param StatusCodeCache: Status code cache configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`\n        :param Compression: Smart compression configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`\n        :param BandwidthAlert: Bandwidth cap configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`\n        :param RangeOriginPull: Range GETs configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`\n        :param FollowRedirect: 301/302 origin-pull follow-redirect configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`\n        :param ErrorPage: Custom error page configuration (in beta)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`\n        :param RequestHeader: Custom request header configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`\n        :param ResponseHeader: Custom response header configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`\n        :param DownstreamCapping: Single-link downstream speed limit configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`\n        :param CacheKey: Configuration of cache with/without parameter
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`\n        :param ResponseHeaderCache: Origin server header cache configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`\n        :param VideoSeek: Video dragging configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`\n        :param Cache: Node cache expiration rule configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`\n        :param OriginPullOptimization: Cross-border linkage optimization configuration (in beta)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`\n        :param Https: HTTPS acceleration configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`\n        :param Authentication: Timestamp hotlink protection configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`\n        :param Seo: SEO configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`\n        :param Disable: Domain name block status
 normal: normal
 overdue: the domain name has been disabled due to account arrears. The acceleration service can be resumed after the account is topped up.
 malicious: the acceleration service has been forcibly disabled due to detection of malicious behavior.
@@ -3834,92 +3028,38 @@ idle: no operations or data has been detected for more than 90 days. The domain 
 unlicensed: the acceleration service has been automatically disabled as the domain name has no ICP filing or its ICP filing is deregistered. Service can be resumed after an ICP filing is obtained.
 capping: the configured upper limit for bandwidth has been reached.
 readonly: the domain name has a special configuration and has been locked.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Disable: str
-        :param ForceRedirect: Access protocol forced redirect configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
-        :param Referer: Referer hotlink protection configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
-        :param MaxAge: Browser cache expiration rule configuration (in beta)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param Ipv6: IPv6 origin-pull configuration (in beta)
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
-        :param Compatibility: Backwards compatibility configuration (compatibility field for internal use)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Compatibility: :class:`tencentcloud.cdn.v20180606.models.Compatibility`
-        :param SpecificConfig: Region-specific configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
-        :param Area: Acceleration region
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Disable: str\n        :param ForceRedirect: Access protocol forced redirect configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`\n        :param Referer: Referer hotlink protection configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`\n        :param MaxAge: Browser cache expiration rule configuration (in beta)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`\n        :param Ipv6: IPv6 origin-pull configuration (in beta)
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`\n        :param Compatibility: Backwards compatibility configuration (compatibility field for internal use)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Compatibility: :class:`tencentcloud.cdn.v20180606.models.Compatibility`\n        :param SpecificConfig: Region-specific configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`\n        :param Area: Acceleration region
 mainland: acceleration in Mainland China
 overseas: acceleration outside Mainland China
 global: global acceleration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Area: str
-        :param Readonly: Domain name lock status
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Area: str\n        :param Readonly: Domain name lock status
 normal: not locked
 mainland: locked in Mainland China
 overseas: locked outside Mainland China
 global: locked globally
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Readonly: str
-        :param OriginPullTimeout: Origin-pull timeout configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
-        :param AwsPrivateAccess: S3 bucket origin access authentication configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
-        :param SecurityConfig: SCDN configuration
-        :type SecurityConfig: :class:`tencentcloud.cdn.v20180606.models.SecurityConfig`
-        :param ImageOptimization: Image Optimization configuration
-        :type ImageOptimization: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`
-        :param UserAgentFilter: `UA` blocklist/allowlist configuration
-        :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
-        :param AccessControl: Access control
-        :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
-        :param Advance: Whether to support advanced configuration items
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Readonly: str\n        :param OriginPullTimeout: Origin-pull timeout configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`\n        :param AwsPrivateAccess: S3 bucket origin access authentication configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`\n        :param SecurityConfig: SCDN configuration\n        :type SecurityConfig: :class:`tencentcloud.cdn.v20180606.models.SecurityConfig`\n        :param ImageOptimization: Image Optimization configuration\n        :type ImageOptimization: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`\n        :param UserAgentFilter: `UA` blocklist/allowlist configuration\n        :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`\n        :param AccessControl: Access control\n        :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`\n        :param Advance: Whether to support advanced configuration items
 on: supported
 off: not supported
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Advance: str
-        :param UrlRedirect: URL redirect configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
-        :param AccessPort: Access port configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AccessPort: list of int
-        :param Tag: Tag configuration
-Note: this field may return null, indicating that no valid value is obtained.
-        :type Tag: list of Tag
-        :param AdvancedAuthentication: Timestamp hotlink protection advanced configuration (allowlist feature)
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
-        :param OriginAuthentication: Origin-pull authentication advanced configuration (allowlist feature)
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
-        :param Ipv6Access: IPv6 access configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
-        :param AdvanceSet: Advanced configuration set
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AdvanceSet: list of AdvanceConfig
-        :param OfflineCache: Offline cache
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param OriginCombine: Merging pull requests
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
-        :param PostMaxSize: POST request configuration item
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type PostMaxSize: :class:`tencentcloud.cdn.v20180606.models.PostSize`
-        :param Quic: QUIC configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Advance: str\n        :param UrlRedirect: URL redirect configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`\n        :param AccessPort: Access port configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AccessPort: list of int\n        :param Tag: Tag configuration
+Note: this field may return null, indicating that no valid value is obtained.\n        :type Tag: list of Tag\n        :param AdvancedAuthentication: Timestamp hotlink protection advanced configuration (allowlist feature)
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`\n        :param OriginAuthentication: Origin-pull authentication advanced configuration (allowlist feature)
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`\n        :param Ipv6Access: IPv6 access configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`\n        :param AdvanceSet: Advanced configuration set
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AdvanceSet: list of AdvanceConfig\n        :param OfflineCache: Offline cache
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`\n        :param OriginCombine: Merging pull requests
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`\n        :param PostMaxSize: POST request configuration item
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type PostMaxSize: :class:`tencentcloud.cdn.v20180606.models.PostSize`\n        :param Quic: QUIC configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`\n        """
         self.ResourceId = None
         self.AppId = None
         self.Domain = None
@@ -4142,9 +3282,7 @@ class DisableCachesRequest(AbstractModel):
     def __init__(self):
         """
         :param Urls: List of URLs to be blocked (URLs must contain `http://` or `https://`).
-Up to 100 entries can be submitted at a time and 3,000 entries per day.
-        :type Urls: list of str
-        """
+Up to 100 entries can be submitted at a time and 3,000 entries per day.\n        :type Urls: list of str\n        """
         self.Urls = None
 
 
@@ -4167,11 +3305,7 @@ class DisableCachesResponse(AbstractModel):
     def __init__(self):
         """
         :param CacheOptResult: Submission result
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CacheOptResult = None
         self.RequestId = None
 
@@ -4190,13 +3324,7 @@ class DisableClsLogTopicRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param Channel: Connection channel. Default value: cdn
-        :type Channel: str
-        """
+        :param LogsetId: Logset ID\n        :type LogsetId: str\n        :param TopicId: Log topic ID\n        :type TopicId: str\n        :param Channel: Connection channel. Default value: cdn\n        :type Channel: str\n        """
         self.LogsetId = None
         self.TopicId = None
         self.Channel = None
@@ -4222,9 +3350,7 @@ class DisableClsLogTopicResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4239,11 +3365,7 @@ class DomainAreaConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: Domain name
-        :type Domain: str
-        :param Area: Region list, where the element can be `mainland/overseas`
-        :type Area: list of str
-        """
+        :param Domain: Domain name\n        :type Domain: str\n        :param Area: Region list, where the element can be `mainland/overseas`\n        :type Area: list of str\n        """
         self.Domain = None
         self.Area = None
 
@@ -4278,14 +3400,8 @@ class DomainFilter(AbstractModel):
 - fullUrlCache: full-path cache, which can be on or off.
 - https: whether to configure HTTPS, which can be on, off or processing.
 - originPullProtocol: origin-pull protocol type. HTTP, follow, or HTTPS are supported.
-- tagKey: tag key.
-        :type Name: str
-        :param Value: Filter field value.
-        :type Value: list of str
-        :param Fuzzy: Whether to enable fuzzy query. Only `origin` or `domain` is supported for the filter field name.
-When fuzzy query is enabled, the maximum Value length is 1. When fuzzy query is disabled, the maximum Value length is 5.
-        :type Fuzzy: bool
-        """
+- tagKey: tag key.\n        :type Name: str\n        :param Value: Filter field value.\n        :type Value: list of str\n        :param Fuzzy: Whether to enable fuzzy query. Only `origin` or `domain` is supported for the filter field name.
+When fuzzy query is enabled, the maximum Value length is 1. When fuzzy query is disabled, the maximum Value length is 5.\n        :type Fuzzy: bool\n        """
         self.Name = None
         self.Value = None
         self.Fuzzy = None
@@ -4311,19 +3427,9 @@ class DomainLog(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Starting time of the log package
-        :type StartTime: str
-        :param EndTime: End time of the log package
-        :type EndTime: str
-        :param LogPath: Log package download link
-        :type LogPath: str
-        :param Area: Acceleration region corresponding to the log package
+        :param StartTime: Starting time of the log package\n        :type StartTime: str\n        :param EndTime: End time of the log package\n        :type EndTime: str\n        :param LogPath: Log package download link\n        :type LogPath: str\n        :param Area: Acceleration region corresponding to the log package
 `mainland`: within Mainland China
-`overseas`: outside Mainland China
-        :type Area: str
-        :param LogName: Log package filename
-        :type LogName: str
-        """
+`overseas`: outside Mainland China\n        :type Area: str\n        :param LogName: Log package filename\n        :type LogName: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.LogPath = None
@@ -4355,12 +3461,8 @@ class DownstreamCapping(AbstractModel):
         """
         :param Switch: Downstream speed configuration switch
 on: enabled
-off: disabled
-        :type Switch: str
-        :param CappingRules: Downstream speed limiting rules
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CappingRules: list of CappingRule
-        """
+off: disabled\n        :type Switch: str\n        :param CappingRules: Downstream speed limiting rules
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CappingRules: list of CappingRule\n        """
         self.Switch = None
         self.CappingRules = None
 
@@ -4389,11 +3491,7 @@ class EnableCachesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Urls: List of unblocked URLs
-        :type Urls: list of str
-        :param Date: URL blocking date
-        :type Date: str
-        """
+        :param Urls: List of unblocked URLs\n        :type Urls: list of str\n        :param Date: URL blocking date\n        :type Date: str\n        """
         self.Urls = None
         self.Date = None
 
@@ -4418,11 +3516,7 @@ class EnableCachesResponse(AbstractModel):
     def __init__(self):
         """
         :param CacheOptResult: Result list
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CacheOptResult = None
         self.RequestId = None
 
@@ -4441,13 +3535,7 @@ class EnableClsLogTopicRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param Channel: Connection channel. Default value: cdn
-        :type Channel: str
-        """
+        :param LogsetId: Logset ID\n        :type LogsetId: str\n        :param TopicId: Log topic ID\n        :type TopicId: str\n        :param Channel: Connection channel. Default value: cdn\n        :type Channel: str\n        """
         self.LogsetId = None
         self.TopicId = None
         self.Channel = None
@@ -4473,9 +3561,7 @@ class EnableClsLogTopicResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4493,12 +3579,8 @@ class ErrorPage(AbstractModel):
         :param Switch: Status code redirect configuration switch
 on: enabled
 off: disabled
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param PageRules: Status code redirect rules configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type PageRules: list of ErrorPageRule
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param PageRules: Status code redirect rules configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type PageRules: list of ErrorPageRule\n        """
         self.Switch = None
         self.PageRules = None
 
@@ -4528,15 +3610,9 @@ class ErrorPageRule(AbstractModel):
     def __init__(self):
         """
         :param StatusCode: Status code
-Supports 400, 403, 404, 500.
-        :type StatusCode: int
-        :param RedirectCode: Redirect status code settings
-Supports 301 or 302.
-        :type RedirectCode: int
-        :param RedirectUrl: Redirect URL
-Requires a full redirect path, such as https://www.test.com/error.html.
-        :type RedirectUrl: str
-        """
+Supports 400, 403, 404, 500.\n        :type StatusCode: int\n        :param RedirectCode: Redirect status code settings
+Supports 301 or 302.\n        :type RedirectCode: int\n        :param RedirectUrl: Redirect URL
+Requires a full redirect path, such as https://www.test.com/error.html.\n        :type RedirectUrl: str\n        """
         self.StatusCode = None
         self.RedirectCode = None
         self.RedirectUrl = None
@@ -4564,9 +3640,7 @@ class FollowRedirect(AbstractModel):
         """
         :param Switch: Origin-pull follow-redirect switch
 on: enabled
-off: disabled
-        :type Switch: str
-        """
+off: disabled\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -4591,21 +3665,13 @@ class ForceRedirect(AbstractModel):
         :param Switch: Access forced redirect configuration switch
 on: enabled
 off: disabled
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param RedirectType: Access forced redirect types
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param RedirectType: Access forced redirect types
 http: forced HTTP redirect
 https: forced HTTPS redirect
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RedirectType: str
-        :param RedirectStatusCode: Status code returned for forced redirect 
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RedirectType: str\n        :param RedirectStatusCode: Status code returned for forced redirect 
 Supports 301, 302.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RedirectStatusCode: int
-        :param CarryHeaders: Whether to return the added header in forced redirection.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type CarryHeaders: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RedirectStatusCode: int\n        :param CarryHeaders: Whether to return the added header in forced redirection.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type CarryHeaders: str\n        """
         self.Switch = None
         self.RedirectType = None
         self.RedirectStatusCode = None
@@ -4633,21 +3699,9 @@ class GetDisableRecordsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Starting time, such as `2018-12-12 10:24:00`
-        :type StartTime: str
-        :param EndTime: End time, such as 2018-12-14 10:24:00
-        :type EndTime: str
-        :param Url: Specifies the URL to be queried
-        :type Url: str
-        :param Status: Current URL status
+        :param StartTime: Starting time, such as `2018-12-12 10:24:00`\n        :type StartTime: str\n        :param EndTime: End time, such as 2018-12-14 10:24:00\n        :type EndTime: str\n        :param Url: Specifies the URL to be queried\n        :type Url: str\n        :param Status: Current URL status
 disable: The URL remains disabled, and accessing it will return an error 403
-enable: The URL is enabled (unblocked) and can be normally accessed
-        :type Status: str
-        :param Offset: Offset for paginated queries. Default value: 0
-        :type Offset: int
-        :param Limit: Limit on paged queries. Default value: 20
-        :type Limit: int
-        """
+enable: The URL is enabled (unblocked) and can be normally accessed\n        :type Status: str\n        :param Offset: Offset for paginated queries. Default value: 0\n        :type Offset: int\n        :param Limit: Limit on paged queries. Default value: 20\n        :type Limit: int\n        """
         self.StartTime = None
         self.EndTime = None
         self.Url = None
@@ -4680,14 +3734,8 @@ class GetDisableRecordsResponse(AbstractModel):
     def __init__(self):
         """
         :param UrlRecordList: Blocking history
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type UrlRecordList: list of UrlRecord
-        :param TotalCount: Total number of tasks, which is used for pagination
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type UrlRecordList: list of UrlRecord\n        :param TotalCount: Total number of tasks, which is used for pagination
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.UrlRecordList = None
         self.TotalCount = None
         self.RequestId = None
@@ -4712,9 +3760,7 @@ class GuetzliAdapter(AbstractModel):
     def __init__(self):
         """
         :param Switch: Switch. Valid values: on, off
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -4737,12 +3783,8 @@ class HeaderKey(AbstractModel):
     def __init__(self):
         """
         :param Switch: Whether to use it as part of `CacheKey`
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param Value: Array of headers that make up the `CacheKey` (separated by ';')
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Value: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param Value: Array of headers that make up the `CacheKey` (separated by ';')
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Value: str\n        """
         self.Switch = None
         self.Value = None
 
@@ -4766,15 +3808,9 @@ class Hsts(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Whether to enable. Valid values: on, off.
-        :type Switch: str
-        :param MaxAge: `MaxAge` value.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MaxAge: int
-        :param IncludeSubDomains: Whether to include subdomain names. Valid values: on, off.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IncludeSubDomains: str
-        """
+        :param Switch: Whether to enable. Valid values: on, off.\n        :type Switch: str\n        :param MaxAge: `MaxAge` value.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxAge: int\n        :param IncludeSubDomains: Whether to include subdomain names. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IncludeSubDomains: str\n        """
         self.Switch = None
         self.MaxAge = None
         self.IncludeSubDomains = None
@@ -4804,31 +3840,21 @@ class HttpHeaderPathRule(AbstractModel):
 `set`: sets a value for an existing header parameter, a new header parameter, or multiple header parameters. Multiple header parameters will be merged into one.
 `del`: deletes a header parameter.
 `add`: adds a header parameter. By default, you can repeat the same action to add the same header parameter, which may affect browser response. Please consider the set operation first.
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :type HeaderMode: str
-        :param HeaderName: HTTP header name. Up to 100 characters can be set.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type HeaderName: str
-        :param HeaderValue: HTTP header value. Up to 1000 characters can be set.
+Note: This field may return `null`, indicating that no valid values can be obtained.\n        :type HeaderMode: str\n        :param HeaderName: HTTP header name. Up to 100 characters can be set.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type HeaderName: str\n        :param HeaderValue: HTTP header value. Up to 1000 characters can be set.
 Not required when Mode is del
 Required when Mode is add/set
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type HeaderValue: str
-        :param RuleType: Rule types:
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type HeaderValue: str\n        :param RuleType: Rule types:
 `all`: effective for all files
 `file`: effective for specified file suffixes
 `directory`: effective for specified paths
 `path`: effective for specified absolute paths
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RuleType: str
-        :param RulePaths: Content for each RuleType:
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RuleType: str\n        :param RulePaths: Content for each RuleType:
 For `all`, enter an asterisk (*).
 For `file`, enter the suffix, such as jpg, txt.
 For `directory`, enter the path, such as /xxx/test/.
 For `path`, enter the corresponding absolute path, such as /xxx/test.html.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RulePaths: list of str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RulePaths: list of str\n        """
         self.HeaderMode = None
         self.HeaderName = None
         self.HeaderValue = None
@@ -4858,13 +3884,7 @@ class HttpHeaderRule(AbstractModel):
 
     def __init__(self):
         """
-        :param HeaderMode: HTTP header setting method. Valid values: `add` (add header), `set` (set header) or `del` (delete header).
-        :type HeaderMode: str
-        :param HeaderName: HTTP header name
-        :type HeaderName: str
-        :param HeaderValue: HTTP header value
-        :type HeaderValue: str
-        """
+        :param HeaderMode: HTTP header setting method. Valid values: `add` (add header), `set` (set header) or `del` (delete header).\n        :type HeaderMode: str\n        :param HeaderName: HTTP header name\n        :type HeaderName: str\n        :param HeaderValue: HTTP header value\n        :type HeaderValue: str\n        """
         self.HeaderMode = None
         self.HeaderName = None
         self.HeaderValue = None
@@ -4893,51 +3913,31 @@ class Https(AbstractModel):
         :param Switch: HTTPS configuration switch
 on: enabled
 off: disabled
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param Http2: HTTP2 configuration switch
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param Http2: HTTP2 configuration switch
 on: enabled
 off: disabled
 Enabling HTTPS acceleration for the first time will enable HTTP2 configuration by default.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Http2: str
-        :param OcspStapling: OCSP configuration switch
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Http2: str\n        :param OcspStapling: OCSP configuration switch
 on: enabled
 off: disabled
 This is disabled by default
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OcspStapling: str
-        :param VerifyClient: Client certificate authentication feature
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OcspStapling: str\n        :param VerifyClient: Client certificate authentication feature
 on: enabled
 off: disabled
 This is disabled by default. The client certificate information is needed when enabled. This is still in beta and not generally available yet.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VerifyClient: str
-        :param CertInfo: Server certificate configuration information
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CertInfo: :class:`tencentcloud.cdn.v20180606.models.ServerCert`
-        :param ClientCertInfo: Client certificate configuration information
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ClientCertInfo: :class:`tencentcloud.cdn.v20180606.models.ClientCert`
-        :param Spdy: Spdy configuration switch
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type VerifyClient: str\n        :param CertInfo: Server certificate configuration information
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CertInfo: :class:`tencentcloud.cdn.v20180606.models.ServerCert`\n        :param ClientCertInfo: Client certificate configuration information
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ClientCertInfo: :class:`tencentcloud.cdn.v20180606.models.ClientCert`\n        :param Spdy: Spdy configuration switch
 on: enabled
 off: disabled
 This is disabled by default
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Spdy: str
-        :param SslStatus: HTTPS certificate deployment status
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Spdy: str\n        :param SslStatus: HTTPS certificate deployment status
 closed: already closed
 deploying: in deployment
 deployed: successfully deployed
 failed: deployment failed
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SslStatus: str
-        :param Hsts: HSTS configuration
-        :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
-        :param TlsVersion: TLS version settings, which only support certain advanced domain names. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TlsVersion: list of str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SslStatus: str\n        :param Hsts: HSTS configuration\n        :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`\n        :param TlsVersion: TLS version settings, which only support certain advanced domain names. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TlsVersion: list of str\n        """
         self.Switch = None
         self.Http2 = None
         self.OcspStapling = None
@@ -4984,15 +3984,9 @@ class ImageOptimization(AbstractModel):
     def __init__(self):
         """
         :param WebpAdapter: `WebpAdapter` configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type WebpAdapter: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
-        :param TpgAdapter: `TpgAdapter` configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TpgAdapter: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
-        :param GuetzliAdapter: `GuetzliAdapter` configuration
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type WebpAdapter: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`\n        :param TpgAdapter: `TpgAdapter` configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TpgAdapter: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`\n        :param GuetzliAdapter: `GuetzliAdapter` configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`\n        """
         self.WebpAdapter = None
         self.TpgAdapter = None
         self.GuetzliAdapter = None
@@ -5026,22 +4020,14 @@ class IpFilter(AbstractModel):
         """
         :param Switch: IP blocklist/allowlist configuration switch
 on: enabled
-off: disabled
-        :type Switch: str
-        :param FilterType: IP blocklist/allowlist type
+off: disabled\n        :type Switch: str\n        :param FilterType: IP blocklist/allowlist type
 whitelist: allowlist
 blacklist: blocklist
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FilterType: str
-        :param Filters: IP blocklist/allowlist list
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FilterType: str\n        :param Filters: IP blocklist/allowlist list
 Supports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges.
 Up to 50 allowlists or blocklists can be entered
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Filters: list of str
-        :param FilterRules: IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type FilterRules: list of IpFilterPathRule
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Filters: list of str\n        :param FilterRules: IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type FilterRules: list of IpFilterPathRule\n        """
         self.Switch = None
         self.FilterType = None
         self.Filters = None
@@ -5077,28 +4063,20 @@ class IpFilterPathRule(AbstractModel):
         :param FilterType: IP blocklist/allowlist type
 `whitelist`: allowlist IPs
 `blacklist`: blocklist IPs
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type FilterType: str
-        :param Filters: IP blocklist/allowlist list
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type FilterType: str\n        :param Filters: IP blocklist/allowlist list
 Supports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges.
 Up to 50 allowlists or blocklists can be entered.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Filters: list of str
-        :param RuleType: Rule types:
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Filters: list of str\n        :param RuleType: Rule types:
 `all`: effective for all files
 `file`: effective for specified file suffixes
 `directory`: effective for specified paths
 `path`: effective for specified absolute paths
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type RuleType: str
-        :param RulePaths: Content for each RuleType:
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type RuleType: str\n        :param RulePaths: Content for each RuleType:
 For `all`, enter an asterisk (*).
 For `file`, enter the suffix, such as jpg, txt.
 For `directory`, enter the path, such as /xxx/test/.
 For `path`, enter the corresponding absolute path, such as /xxx/test.html.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type RulePaths: list of str
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type RulePaths: list of str\n        """
         self.FilterType = None
         self.Filters = None
         self.RuleType = None
@@ -5128,13 +4106,9 @@ class IpFreqLimit(AbstractModel):
         """
         :param Switch: IP access limit configuration switch
 on: enabled
-off: disabled
-        :type Switch: str
-        :param Qps: Sets the limited number of requests per second
+off: disabled\n        :type Switch: str\n        :param Qps: Sets the limited number of requests per second
 514 will be returned for requests that exceed the limit
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Qps: int
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Qps: int\n        """
         self.Switch = None
         self.Qps = None
 
@@ -5158,19 +4132,9 @@ class IpStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: Node IP
-        :type Ip: str
-        :param District: Node region
-        :type District: str
-        :param Isp: Node ISP
-        :type Isp: str
-        :param City: Node city
-        :type City: str
-        :param Status: Node status
+        :param Ip: Node IP\n        :type Ip: str\n        :param District: Node region\n        :type District: str\n        :param Isp: Node ISP\n        :type Isp: str\n        :param City: Node city\n        :type City: str\n        :param Status: Node status
 online: the node is online; scheduling service running
-offline: the node is offline
-        :type Status: str
-        """
+offline: the node is offline\n        :type Status: str\n        """
         self.Ip = None
         self.District = None
         self.Isp = None
@@ -5201,9 +4165,7 @@ class Ipv6(AbstractModel):
     def __init__(self):
         """
         :param Switch: Whether to enable the IPv6 feature for a domain name. Values include `on` or `off`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -5226,9 +4188,7 @@ class Ipv6Access(AbstractModel):
     def __init__(self):
         """
         :param Switch: Whether to enable the IPv6 access feature for a domain name. Valid values: `on` and `off`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Switch: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -5255,30 +4215,18 @@ For `file`, enter the suffix, such as jpg, txt.
 For `directory`, enter the path, such as /xxx/test/.
 For `path`, enter the corresponding absolute path, such as /xxx/test.html.
 For `index`, enter a backslash (/).
-Note: this field may return null, indicating that no valid value is obtained.
-        :type RulePaths: list of str
-        :param RuleType: Rule types:
+Note: this field may return null, indicating that no valid value is obtained.\n        :type RulePaths: list of str\n        :param RuleType: Rule types:
 `file`: effective for specified file suffixes
 `directory`: effective for specified paths
 `path`: effective for specified absolute paths
 `index`: home page
-Note: this field may return null, indicating that no valid value is obtained.
-        :type RuleType: str
-        :param FullUrlCache: Whether to enable full-path cache
+Note: this field may return null, indicating that no valid value is obtained.\n        :type RuleType: str\n        :param FullUrlCache: Whether to enable full-path cache
 on: enable full-path cache (i.e., disable parameter filter)
 off: disable full-path cache (i.e., enable parameter filter)
-Note: this field may return null, indicating that no valid value is obtained.
-        :type FullUrlCache: str
-        :param IgnoreCase: Whether caches are case insensitive
-Note: this field may return null, indicating that no valid value is obtained.
-        :type IgnoreCase: str
-        :param QueryString: Request parameter contained in `CacheKey`
-Note: this field may return null, indicating that no valid value is obtained.
-        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.RuleQueryString`
-        :param RuleTag: Path cache key tag, the value "user" is passed.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type RuleTag: str
-        """
+Note: this field may return null, indicating that no valid value is obtained.\n        :type FullUrlCache: str\n        :param IgnoreCase: Whether caches are case insensitive
+Note: this field may return null, indicating that no valid value is obtained.\n        :type IgnoreCase: str\n        :param QueryString: Request parameter contained in `CacheKey`
+Note: this field may return null, indicating that no valid value is obtained.\n        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.RuleQueryString`\n        :param RuleTag: Path cache key tag, the value "user" is passed.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type RuleTag: str\n        """
         self.RulePaths = None
         self.RuleType = None
         self.FullUrlCache = None
@@ -5312,9 +4260,7 @@ class ListClsLogTopicsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Channel: Connection channel. Default value: cdn
-        :type Channel: str
-        """
+        :param Channel: Connection channel. Default value: cdn\n        :type Channel: str\n        """
         self.Channel = None
 
 
@@ -5336,14 +4282,8 @@ class ListClsLogTopicsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Logset: Logset information
-        :type Logset: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
-        :param Topics: Log topic information list
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Topics: list of TopicInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Logset: Logset information\n        :type Logset: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`\n        :param Topics: Log topic information list
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Topics: list of TopicInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Logset = None
         self.Topics = None
         self.RequestId = None
@@ -5369,13 +4309,7 @@ class ListClsTopicDomainsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param Channel: Connection channel. Default value: cdn
-        :type Channel: str
-        """
+        :param LogsetId: Logset ID\n        :type LogsetId: str\n        :param TopicId: Log topic ID\n        :type TopicId: str\n        :param Channel: Connection channel. Default value: cdn\n        :type Channel: str\n        """
         self.LogsetId = None
         self.TopicId = None
         self.Channel = None
@@ -5401,24 +4335,8 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AppId: Developer ID
-        :type AppId: int
-        :param Channel: Channel
-        :type Channel: str
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param DomainAreaConfigs: Domain name region configuration, which may contain deleted domain names. If this is to be used in `ManageClsTopicDomains` API, you need to exclude deleted domain names by using the `ListCdnDomains` API.
-        :type DomainAreaConfigs: list of DomainAreaConfig
-        :param TopicName: Log topic name
-        :type TopicName: str
-        :param UpdateTime: Last modified time of log topic
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UpdateTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param AppId: Developer ID\n        :type AppId: int\n        :param Channel: Channel\n        :type Channel: str\n        :param LogsetId: Logset ID\n        :type LogsetId: str\n        :param TopicId: Log topic ID\n        :type TopicId: str\n        :param DomainAreaConfigs: Domain name region configuration, which may contain deleted domain names. If this is to be used in `ManageClsTopicDomains` API, you need to exclude deleted domain names by using the `ListCdnDomains` API.\n        :type DomainAreaConfigs: list of DomainAreaConfig\n        :param TopicName: Log topic name\n        :type TopicName: str\n        :param UpdateTime: Last modified time of log topic
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type UpdateTime: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AppId = None
         self.Channel = None
         self.LogsetId = None
@@ -5455,21 +4373,15 @@ class ListTopDataRequest(AbstractModel):
         :param StartTime: Query start time in the format of `yyyy-MM-dd HH:mm:ss`
 Only supports data query at daily granularity. The date in the input parameter is used as the start date.
 Data generated after or at 00:00:00 on the start date will be returned
-Only data for the last 90 days can be queried
-        :type StartTime: str
-        :param EndTime: Query end time in the format of `yyyy-MM-dd HH:mm:ss`
+Only data for the last 90 days can be queried\n        :type StartTime: str\n        :param EndTime: Query end time in the format of `yyyy-MM-dd HH:mm:ss`
 Only supports data query at daily granularity. The date in the input parameter is used as the end date.
 Data generated before or at 23:59:59 on the end date will be returned
-`EndTime` must be later than or equal to `StartTime`
-        :type EndTime: str
-        :param Metric: Object representing the sort criteria. The following objects are supported:
+`EndTime` must be later than or equal to `StartTime`\n        :type EndTime: str\n        :param Metric: Object representing the sort criteria. The following objects are supported:
 `url`: sorts by access URL (URLs carrying no parameters). Supported filters are `flux` and `request`.
 `district`: sorts by province, country, or region. Supported filters are `flux` and `request`.
 `isp`: sorts by ISP. Supported filters are `flux` and `request`.
 `host`: sorts by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, and `statusCode` (2XX, 3XX, 4XX, 5XX).
-`originHost`: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, and `OriginStatusCode` (origin_2XX, origin_3XX, origin_4XX, origin_5XX).
-        :type Metric: str
-        :param Filter: Metric name used for sorting:
+`originHost`: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, and `OriginStatusCode` (origin_2XX, origin_3XX, origin_4XX, origin_5XX).\n        :type Metric: str\n        :param Filter: Metric name used for sorting:
 flux: If Metric is `host`, it indicates the access traffic; if Metric is `originHost`, it indicates the origin-pull traffic.
 bandwidth: If Metric is `host`, it indicates the access bandwidth; if Metric is `originHost`, it indicates the origin-pull bandwidth.
 request: If Metric is `host`, it indicates the number of access requests; if Metric is `originHost`, it indicates the number of origin-pull requests.
@@ -5483,27 +4395,13 @@ origin_3XX: origin-pull 3XX status code
 origin_4XX: origin-pull 4XX status code
 origin_5XX: origin-pull 5XX status code
 statusCode: statistics of a specific access status code which is specified in the `Code` parameter.
-OriginStatusCode: statistics of a specific origin-pull status code which is specified in the `Code` parameter.
-        :type Filter: str
-        :param Domains: Specifies the list of domain names to be queried; up to 30 domain names can be queried at a time.
-        :type Domains: list of str
-        :param Project: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
-Please note that if domain names are specified, this parameter will be ignored.
-        :type Project: int
-        :param Detail: Default is `false` for multi-domain name queries, which returns sorted results of all domain names. 
-If `Metric` is `url`, `path`, `district`, or `isp` and `Filter` is `flux` or `request`, it can be set to `true` to return the sorted results of each domain.
-        :type Detail: bool
-        :param Code: When Filter is `statusCode` or `OriginStatusCode`, enter a code to query and sort results.
-        :type Code: str
-        :param Area: Specifies a service region for the query. If it is left blank, CDN data within Mainland China will be queried.
+OriginStatusCode: statistics of a specific origin-pull status code which is specified in the `Code` parameter.\n        :type Filter: str\n        :param Domains: Specifies the list of domain names to be queried; up to 30 domain names can be queried at a time.\n        :type Domains: list of str\n        :param Project: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
+Please note that if domain names are specified, this parameter will be ignored.\n        :type Project: int\n        :param Detail: Default is `false` for multi-domain name queries, which returns sorted results of all domain names. 
+If `Metric` is `url`, `path`, `district`, or `isp` and `Filter` is `flux` or `request`, it can be set to `true` to return the sorted results of each domain.\n        :type Detail: bool\n        :param Code: When Filter is `statusCode` or `OriginStatusCode`, enter a code to query and sort results.\n        :type Code: str\n        :param Area: Specifies a service region for the query. If it is left blank, CDN data within Mainland China will be queried.
 `mainland`: specifies to query CDN data within Mainland China;
-`overseas`: specifies to query CDN data outside Mainland China. Supported metrics are `url`, `district`, `host`, and `originHost`. If `Metric` is `originHost`, supported filters are `flux`, `request`, and `bandwidth`.
-        :type Area: str
-        :param AreaType: The region type can be specified only when you query CDN data outside Mainland China and `Metric` is `district` or `host`; if you leave it empty, data of the service region will be queried (only applicable when `Area` is `overseas` and `Metric` is `district` or `host`)
+`overseas`: specifies to query CDN data outside Mainland China. Supported metrics are `url`, `district`, `host`, and `originHost`. If `Metric` is `originHost`, supported filters are `flux`, `request`, and `bandwidth`.\n        :type Area: str\n        :param AreaType: The region type can be specified only when you query CDN data outside Mainland China and `Metric` is `district` or `host`; if you leave it empty, data of the service region will be queried (only applicable when `Area` is `overseas` and `Metric` is `district` or `host`)
 server: specifies to query data of service region (where a CDN node is located)
-client: specifies to query data of the client region (where a user request device is located). If `Metric` is `host`, `Filter` can only be `flux`, `request`, or `bandwidth`
-        :type AreaType: str
-        """
+client: specifies to query data of the client region (where a user request device is located). If `Metric` is `host`, `Filter` can only be `flux`, `request`, or `bandwidth`\n        :type AreaType: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Metric = None
@@ -5543,11 +4441,7 @@ class ListTopDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: Top access data details of each resource
-        :type Data: list of TopData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Data: Top access data details of each resource\n        :type Data: list of TopData\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -5569,24 +4463,8 @@ class LogSetInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AppId: Developer ID
-        :type AppId: int
-        :param Channel: Channel
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Channel: str
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param LogsetName: Logset name
-        :type LogsetName: str
-        :param IsDefault: Whether it is the default logset
-        :type IsDefault: int
-        :param LogsetSavePeriod: Log retention period in days
-        :type LogsetSavePeriod: int
-        :param CreateTime: Creation date
-        :type CreateTime: str
-        :param Region: Region
-        :type Region: str
-        """
+        :param AppId: Developer ID\n        :type AppId: int\n        :param Channel: Channel
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Channel: str\n        :param LogsetId: Logset ID\n        :type LogsetId: str\n        :param LogsetName: Logset name\n        :type LogsetName: str\n        :param IsDefault: Whether it is the default logset\n        :type IsDefault: int\n        :param LogsetSavePeriod: Log retention period in days\n        :type LogsetSavePeriod: int\n        :param CreateTime: Creation date\n        :type CreateTime: str\n        :param Region: Region\n        :type Region: str\n        """
         self.AppId = None
         self.Channel = None
         self.LogsetId = None
@@ -5629,78 +4507,30 @@ class MainlandConfig(AbstractModel):
     def __init__(self):
         """
         :param Authentication: Timestamp hotlink protection configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
-        :param BandwidthAlert: Bandwidth cap configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
-        :param Cache: Cache rules configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param CacheKey: Cache configurations.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
-        :param Compression: Smart compression configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
-        :param DownstreamCapping: Download speed limit configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
-        :param ErrorPage: Error code redirect configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
-        :param FollowRedirect: 301 and 302 automatic origin-pull follow-redirect configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param ForceRedirect: Access protocol forced redirect configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
-        :param Https: HTTPS configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param IpFilter: IP blocklist/allowlist configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
-        :param IpFreqLimit: IP access limit configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
-        :param MaxAge: Browser cache rules configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param Origin: Origin server configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param OriginPullOptimization: Cross-border optimization configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
-        :param RangeOriginPull: Range GETs configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
-        :param Referer: Hotlink protection configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
-        :param RequestHeader: Origin-pull request header configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
-        :param ResponseHeader: Origin server response header configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
-        :param ResponseHeaderCache: Follows origin server cache header configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
-        :param Seo: SEO configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
-        :param ServiceType: Domain name service type. `web`: static acceleration; `download`: download acceleration; `media`: streaming media acceleration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ServiceType: str
-        :param StatusCodeCache: Status code cache configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
-        :param VideoSeek: Video dragging configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`\n        :param BandwidthAlert: Bandwidth cap configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`\n        :param Cache: Cache rules configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`\n        :param CacheKey: Cache configurations.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`\n        :param Compression: Smart compression configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`\n        :param DownstreamCapping: Download speed limit configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`\n        :param ErrorPage: Error code redirect configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`\n        :param FollowRedirect: 301 and 302 automatic origin-pull follow-redirect configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`\n        :param ForceRedirect: Access protocol forced redirect configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`\n        :param Https: HTTPS configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`\n        :param IpFilter: IP blocklist/allowlist configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`\n        :param IpFreqLimit: IP access limit configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`\n        :param MaxAge: Browser cache rules configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`\n        :param Origin: Origin server configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`\n        :param OriginPullOptimization: Cross-border optimization configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`\n        :param RangeOriginPull: Range GETs configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`\n        :param Referer: Hotlink protection configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`\n        :param RequestHeader: Origin-pull request header configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`\n        :param ResponseHeader: Origin server response header configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`\n        :param ResponseHeaderCache: Follows origin server cache header configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`\n        :param Seo: SEO configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`\n        :param ServiceType: Domain name service type. `web`: static acceleration; `download`: download acceleration; `media`: streaming media acceleration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ServiceType: str\n        :param StatusCodeCache: Status code cache configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`\n        :param VideoSeek: Video dragging configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`\n        """
         self.Authentication = None
         self.BandwidthAlert = None
         self.Cache = None
@@ -5814,15 +4644,7 @@ class ManageClsTopicDomainsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LogsetId: Logset ID
-        :type LogsetId: str
-        :param TopicId: Log topic ID
-        :type TopicId: str
-        :param Channel: Connection channel. Default value: cdn
-        :type Channel: str
-        :param DomainAreaConfigs: Domain name region configuration. Note: if this field is empty, it means to unbind all domain names from the corresponding topic
-        :type DomainAreaConfigs: list of DomainAreaConfig
-        """
+        :param LogsetId: Logset ID\n        :type LogsetId: str\n        :param TopicId: Log topic ID\n        :type TopicId: str\n        :param Channel: Connection channel. Default value: cdn\n        :type Channel: str\n        :param DomainAreaConfigs: Domain name region configuration. Note: if this field is empty, it means to unbind all domain names from the corresponding topic\n        :type DomainAreaConfigs: list of DomainAreaConfig\n        """
         self.LogsetId = None
         self.TopicId = None
         self.Channel = None
@@ -5855,9 +4677,7 @@ class ManageClsTopicDomainsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5872,11 +4692,7 @@ class MapInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Object ID
-        :type Id: int
-        :param Name: Object name
-        :type Name: str
-        """
+        :param Id: Object ID\n        :type Id: int\n        :param Name: Object name\n        :type Name: str\n        """
         self.Id = None
         self.Name = None
 
@@ -5903,12 +4719,8 @@ class MaxAge(AbstractModel):
         :param Switch: Browser cache configuration switch
 on: enabled
 off: disabled
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param MaxAgeRules: MaxAge rule
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MaxAgeRules: list of MaxAgeRule
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param MaxAgeRules: MaxAge rule
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxAgeRules: list of MaxAgeRule\n        """
         self.Switch = None
         self.MaxAgeRules = None
 
@@ -5942,23 +4754,15 @@ class MaxAgeRule(AbstractModel):
 `file`: effective for specified file suffixes.
 `directory`: effective for specified paths.
 `path`: effective for specified absolute paths.
-`index`: effective for specified homepages.
-        :type MaxAgeType: str
-        :param MaxAgeContents: Content for each `MaxAgeType`:
+`index`: effective for specified homepages.\n        :type MaxAgeType: str\n        :param MaxAgeContents: Content for each `MaxAgeType`:
 For `all`, enter a wildcard `*`.
 For `file`, enter a suffix, e.g., `jpg` or `txt`.
 For `directory`, enter a path, e.g., `/xxx/test/`.
 For `path`, enter an absolute path, e.g., `/xxx/test.html`.
 For `index`, enter a forward slash `/`.
-Note: the rule `all` cannot be deleted. It follows origin by default and can be modified.
-        :type MaxAgeContents: list of str
-        :param MaxAgeTime: MaxAge time (in seconds)
-Note: the value `0` means not to cache.
-        :type MaxAgeTime: int
-        :param FollowOrigin: Whether to follow the origin server. Valid values: `on` and `off`. If it's on, `MaxAgeTime` is ignored.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type FollowOrigin: str
-        """
+Note: the rule `all` cannot be deleted. It follows origin by default and can be modified.\n        :type MaxAgeContents: list of str\n        :param MaxAgeTime: MaxAge time (in seconds)
+Note: the value `0` means not to cache.\n        :type MaxAgeTime: int\n        :param FollowOrigin: Whether to follow the origin server. Valid values: `on` and `off`. If it's on, `MaxAgeTime` is ignored.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type FollowOrigin: str\n        """
         self.MaxAgeType = None
         self.MaxAgeContents = None
         self.MaxAgeTime = None
@@ -5986,9 +4790,7 @@ class OfflineCache(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Whether to enable offline cache. Valid values: `on` and `off`.
-        :type Switch: str
-        """
+        :param Switch: Whether to enable offline cache. Valid values: `on` and `off`.\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -6019,9 +4821,7 @@ class Origin(AbstractModel):
         """
         :param Origins: Master origin server list
 When modifying the origin server, you need to enter the corresponding OriginType.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Origins: list of str
-        :param OriginType: Master origin server type
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Origins: list of str\n        :param OriginType: Master origin server type
 The following types are supported for input parameters:
 domain: domain name type
 cos: COS origin
@@ -6033,44 +4833,24 @@ image: Cloud Infinite origin
 ftp: legacy FTP origin, which is no longer maintained.
 When modifying `Origins`, you need to enter the corresponding OriginType.
 The IPv6 feature is not generally available yet. Please send in a whitelist application to use this feature.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OriginType: str
-        :param ServerName: Host header used when accessing the master origin server. If left empty, the acceleration domain name will be used by default.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginType: str\n        :param ServerName: Host header used when accessing the master origin server. If left empty, the acceleration domain name will be used by default.
 If a wildcard domain name is accessed, then the sub-domain name during the access will be used by default.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ServerName: str
-        :param CosPrivateAccess: When OriginType is COS, you can specify if access to private buckets is allowed.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ServerName: str\n        :param CosPrivateAccess: When OriginType is COS, you can specify if access to private buckets is allowed.
 Note: to enable this configuration, you need to first grant CDN access to the private bucket.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CosPrivateAccess: str
-        :param OriginPullProtocol: Origin-pull protocol configuration
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CosPrivateAccess: str\n        :param OriginPullProtocol: Origin-pull protocol configuration
 http: forced HTTP origin-pull
 follow: protocol follow origin-pull
 https: forced HTTPS origin-pull. This only supports origin server port 443 for origin-pull.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OriginPullProtocol: str
-        :param BackupOrigins: Backup origin server list
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginPullProtocol: str\n        :param BackupOrigins: Backup origin server list
 When modifying the backup origin server, you need to enter the corresponding BackupOriginType.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BackupOrigins: list of str
-        :param BackupOriginType: Backup origin server type, which supports the following types:
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type BackupOrigins: list of str\n        :param BackupOriginType: Backup origin server type, which supports the following types:
 domain: domain name type
 ip: IP list used as origin server
 When modifying BackupOrigins, you need to enter the corresponding BackupOriginType.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BackupOriginType: str
-        :param BackupServerName: Host header used when accessing the backup origin server. If left empty, the ServerName of master origin server will be used by default.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BackupServerName: str
-        :param BasePath: 
-        :type BasePath: str
-        :param PathRules: Origin URL rewrite rule configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type PathRules: list of PathRule
-        :param PathBasedOrigin: Path-based origin-pull configurations
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type PathBasedOrigin: list of PathBasedOriginRule
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type BackupOriginType: str\n        :param BackupServerName: Host header used when accessing the backup origin server. If left empty, the ServerName of master origin server will be used by default.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type BackupServerName: str\n        :param BasePath: \n        :type BasePath: str\n        :param PathRules: Origin URL rewrite rule configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type PathRules: list of PathRule\n        :param PathBasedOrigin: Path-based origin-pull configurations
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type PathBasedOrigin: list of PathBasedOriginRule\n        """
         self.Origins = None
         self.OriginType = None
         self.ServerName = None
@@ -6123,12 +4903,8 @@ class OriginAuthentication(AbstractModel):
     def __init__(self):
         """
         :param Switch: Authentication switch, which can be on or off.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param TypeA: Authentication type configuration A
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.OriginAuthenticationTypeA`
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param TypeA: Authentication type configuration A
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.OriginAuthenticationTypeA`\n        """
         self.Switch = None
         self.TypeA = None
 
@@ -6155,9 +4931,7 @@ class OriginAuthenticationTypeA(AbstractModel):
     def __init__(self):
         """
         :param SecretKey: Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SecretKey: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SecretKey: str\n        """
         self.SecretKey = None
 
 
@@ -6179,9 +4953,7 @@ class OriginCombine(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Whether to enable the merging pull requests feature. Valid values: `on` and `off`.
-        :type Switch: str
-        """
+        :param Switch: Whether to enable the merging pull requests feature. Valid values: `on` and `off`.\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -6203,9 +4975,7 @@ class OriginIp(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: Intermediate IP range/intermediate IP. The IP range information is returned by default.
-        :type Ip: str
-        """
+        :param Ip: Intermediate IP range/intermediate IP. The IP range information is returned by default.\n        :type Ip: str\n        """
         self.Ip = None
 
 
@@ -6229,14 +4999,10 @@ class OriginPullOptimization(AbstractModel):
         """
         :param Switch: Cross-border origin-pull optimization configuration switch
 on: enabled
-off: disabled
-        :type Switch: str
-        :param OptimizationType: Cross-border types
+off: disabled\n        :type Switch: str\n        :param OptimizationType: Cross-border types
 OVToCN: origin-pull from outside mainland China to inside mainland China
 CNToOV: origin-pull from inside mainland China to outside mainland China
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OptimizationType: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OptimizationType: str\n        """
         self.Switch = None
         self.OptimizationType = None
 
@@ -6261,12 +5027,8 @@ class OriginPullTimeout(AbstractModel):
     def __init__(self):
         """
         :param ConnectTimeout: The origin-pull connection timeout (in seconds). Valid range: 5-60.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ConnectTimeout: int
-        :param ReceiveTimeout: The origin-pull receipt timeout (in seconds). Valid range: 10-60.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ReceiveTimeout: int
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ConnectTimeout: int\n        :param ReceiveTimeout: The origin-pull receipt timeout (in seconds). Valid range: 10-60.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ReceiveTimeout: int\n        """
         self.ConnectTimeout = None
         self.ReceiveTimeout = None
 
@@ -6297,78 +5059,30 @@ class OverseaConfig(AbstractModel):
     def __init__(self):
         """
         :param Authentication: Timestamp hotlink protection configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
-        :param BandwidthAlert: Bandwidth cap configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
-        :param Cache: Cache rules configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param CacheKey: Cache configurations.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
-        :param Compression: Smart compression configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
-        :param DownstreamCapping: Download speed limit configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
-        :param ErrorPage: Error code redirect configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
-        :param FollowRedirect: 301 and 302 automatic origin-pull follow-redirect configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param ForceRedirect: Access protocol forced redirect configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
-        :param Https: HTTPS configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param IpFilter: IP blocklist/allowlist configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
-        :param IpFreqLimit: IP access limit configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
-        :param MaxAge: Browser cache rules configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param Origin: Origin server configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param OriginPullOptimization: Cross-border optimization configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
-        :param RangeOriginPull: Range GETs configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
-        :param Referer: Hotlink protection configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
-        :param RequestHeader: Origin-pull request header configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
-        :param ResponseHeader: Origin server response header configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
-        :param ResponseHeaderCache: Follows origin server cache header configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
-        :param Seo: SEO configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
-        :param ServiceType: Domain name service type. `web`: static acceleration; `download`: download acceleration; `media`: streaming media acceleration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ServiceType: str
-        :param StatusCodeCache: Status code cache configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
-        :param VideoSeek: Video dragging configuration.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`\n        :param BandwidthAlert: Bandwidth cap configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`\n        :param Cache: Cache rules configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`\n        :param CacheKey: Cache configurations.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`\n        :param Compression: Smart compression configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`\n        :param DownstreamCapping: Download speed limit configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`\n        :param ErrorPage: Error code redirect configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`\n        :param FollowRedirect: 301 and 302 automatic origin-pull follow-redirect configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`\n        :param ForceRedirect: Access protocol forced redirect configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`\n        :param Https: HTTPS configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`\n        :param IpFilter: IP blocklist/allowlist configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`\n        :param IpFreqLimit: IP access limit configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`\n        :param MaxAge: Browser cache rules configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`\n        :param Origin: Origin server configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`\n        :param OriginPullOptimization: Cross-border optimization configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`\n        :param RangeOriginPull: Range GETs configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`\n        :param Referer: Hotlink protection configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`\n        :param RequestHeader: Origin-pull request header configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`\n        :param ResponseHeader: Origin server response header configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`\n        :param ResponseHeaderCache: Follows origin server cache header configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`\n        :param Seo: SEO configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`\n        :param ServiceType: Domain name service type. `web`: static acceleration; `download`: download acceleration; `media`: streaming media acceleration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ServiceType: str\n        :param StatusCodeCache: Status code cache configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`\n        :param VideoSeek: Video dragging configuration.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`\n        """
         self.Authentication = None
         self.BandwidthAlert = None
         self.Cache = None
@@ -6486,17 +5200,11 @@ class PathBasedOriginRule(AbstractModel):
 `file`: effective for files with specified suffixes.
 `directory`: effective for specified paths.
 `path`: effective for specified absolute paths.
-`index`: effective for specified homepages.
-        :type RuleType: str
-        :param RulePaths: Content for each `RuleType`:
+`index`: effective for specified homepages.\n        :type RuleType: str\n        :param RulePaths: Content for each `RuleType`:
 For `file`, enter a suffix, e.g., `jpg` or `txt`.
 For `directory`, enter a path, e.g., `/xxx/test/`.
 For `path`, enter an absolute path, e.g., `/xxx/test.html`.
-For `index`, enter a forward slash `/`.
-        :type RulePaths: list of str
-        :param Origin: Origin server list. Domain names and IPv4 addresses are supported.
-        :type Origin: list of str
-        """
+For `index`, enter a forward slash `/`.\n        :type RulePaths: list of str\n        :param Origin: Origin server list. Domain names and IPv4 addresses are supported.\n        :type Origin: list of str\n        """
         self.RuleType = None
         self.RulePaths = None
         self.Origin = None
@@ -6525,30 +5233,16 @@ class PathRule(AbstractModel):
         :param Regex: Whether to enable wildcard match (`*`).
 false: disable
 true: enable
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Regex: bool
-        :param Path: Matched URL. Only URLs are supported, while parameters are not. The exact match is used by default. If wildcard match is enabled, up to 5 wildcards are supported. The URL can contain up to 1,024 characters.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Path: str
-        :param Origin: Origin server when the path matches. COS origin with private read/write is not supported. The default origin server will be used by default when this field is left empty.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Origin: str
-        :param ServerName: Origin server host header when the path matches. The default `ServerName` will be used by default when this field is left empty.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ServerName: str
-        :param OriginArea: Origin server region. Valid values: `CN` and `OV`.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Regex: bool\n        :param Path: Matched URL. Only URLs are supported, while parameters are not. The exact match is used by default. If wildcard match is enabled, up to 5 wildcards are supported. The URL can contain up to 1,024 characters.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Path: str\n        :param Origin: Origin server when the path matches. COS origin with private read/write is not supported. The default origin server will be used by default when this field is left empty.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Origin: str\n        :param ServerName: Origin server host header when the path matches. The default `ServerName` will be used by default when this field is left empty.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ServerName: str\n        :param OriginArea: Origin server region. Valid values: `CN` and `OV`.
 CN: the Chinese mainland
 OV: outside the Chinese mainland
 Default value: `CN`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type OriginArea: str
-        :param ForwardUri: Origin server URI path when the path matches, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the match path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ForwardUri: str
-        :param RequestHeaders: Origin-pull header setting when the path matches.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type RequestHeaders: list of HttpHeaderRule
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type OriginArea: str\n        :param ForwardUri: Origin server URI path when the path matches, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the match path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ForwardUri: str\n        :param RequestHeaders: Origin-pull header setting when the path matches.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type RequestHeaders: list of HttpHeaderRule\n        """
         self.Regex = None
         self.Path = None
         self.Origin = None
@@ -6589,11 +5283,7 @@ class PostSize(AbstractModel):
         """
         :param Switch: Limit the size of a POST request. The default value is 32 MB.
 off: Disable
-on: Enable
-        :type Switch: str
-        :param MaxSize: Maximum size. Value range: 1 MB to 200 MB.
-        :type MaxSize: int
-        """
+on: Enable\n        :type Switch: str\n        :param MaxSize: Maximum size. Value range: 1 MB to 200 MB.\n        :type MaxSize: int\n        """
         self.Switch = None
         self.MaxSize = None
 
@@ -6617,15 +5307,9 @@ class PurgePathCacheRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Paths: List of directories. The protocol header such as "http://" or "https://" needs to be included.
-        :type Paths: list of str
-        :param FlushType: Purge type:
+        :param Paths: List of directories. The protocol header such as "http://" or "https://" needs to be included.\n        :type Paths: list of str\n        :param FlushType: Purge type:
 `flush`: purges updated resources
-`delete`: purges all resources
-        :type FlushType: str
-        :param UrlEncode: Whether to encode Chinese characters before purge.
-        :type UrlEncode: bool
-        """
+`delete`: purges all resources\n        :type FlushType: str\n        :param UrlEncode: Whether to encode Chinese characters before purge.\n        :type UrlEncode: bool\n        """
         self.Paths = None
         self.FlushType = None
         self.UrlEncode = None
@@ -6651,11 +5335,7 @@ class PurgePathCacheResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Purge task ID. Directories submitted in one request share a task ID.
-        :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TaskId: Purge task ID. Directories submitted in one request share a task ID.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -6672,26 +5352,14 @@ class PurgeTask(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Purge task ID
-        :type TaskId: str
-        :param Url: Purged URL
-        :type Url: str
-        :param Status: Purge task status
+        :param TaskId: Purge task ID\n        :type TaskId: str\n        :param Url: Purged URL\n        :type Url: str\n        :param Status: Purge task status
 `fail`: purge failed
 `done`: purge succeeded
-`process`: purge in progress
-        :type Status: str
-        :param PurgeType: Purge type
+`process`: purge in progress\n        :type Status: str\n        :param PurgeType: Purge type
 `url`: URL purge
-`path`: directory purge
-        :type PurgeType: str
-        :param FlushType: Purge method
+`path`: directory purge\n        :type PurgeType: str\n        :param FlushType: Purge method
 `flush`: purges updated resources; this type is available only for directory purges
-`delete`: purges all resources
-        :type FlushType: str
-        :param CreateTime: Purge task submission time
-        :type CreateTime: str
-        """
+`delete`: purges all resources\n        :type FlushType: str\n        :param CreateTime: Purge task submission time\n        :type CreateTime: str\n        """
         self.TaskId = None
         self.Url = None
         self.Status = None
@@ -6723,17 +5391,11 @@ class PurgeUrlsCacheRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Urls: List of URLs. The protocol header such as "http://" or "https://" needs to be included.
-        :type Urls: list of str
-        :param Area: Purging region
+        :param Urls: List of URLs. The protocol header such as "http://" or "https://" needs to be included.\n        :type Urls: list of str\n        :param Area: Purging region
 The acceleration region of the acceleration domain name will be purged if this parameter is not passed in
 If `mainland` is passed in, only the content cached on nodes in the Chinese mainland will be purged
 If `overseas` is passed in, only the content cached on nodes outside the Chinese mainland will be purged
-The specified purging region should match the domain name acceleration region
-        :type Area: str
-        :param UrlEncode: Whether to encode Chinese characters before purge.
-        :type UrlEncode: bool
-        """
+The specified purging region should match the domain name acceleration region\n        :type Area: str\n        :param UrlEncode: Whether to encode Chinese characters before purge.\n        :type UrlEncode: bool\n        """
         self.Urls = None
         self.Area = None
         self.UrlEncode = None
@@ -6759,11 +5421,7 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Purge task ID. URLs submitted in one request share a task ID.
-        :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TaskId: Purge task ID. URLs submitted in one request share a task ID.\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -6780,28 +5438,14 @@ class PushTask(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: Prefetch task ID
-        :type TaskId: str
-        :param Url: Prefetched URL
-        :type Url: str
-        :param Status: Prefetch task status
+        :param TaskId: Prefetch task ID\n        :type TaskId: str\n        :param Url: Prefetched URL\n        :type Url: str\n        :param Status: Prefetch task status
 `fail`: prefetch failed
 `done`: prefetch succeeded
-`process`: prefetch in progress
-        :type Status: str
-        :param Percent: Prefetch progress in percentage
-        :type Percent: int
-        :param CreateTime: Prefetch task submission time
-        :type CreateTime: str
-        :param Area: Prefetch region
+`process`: prefetch in progress\n        :type Status: str\n        :param Percent: Prefetch progress in percentage\n        :type Percent: int\n        :param CreateTime: Prefetch task submission time\n        :type CreateTime: str\n        :param Area: Prefetch region
 `mainland`: within Mainland China
 `overseas`: outside Mainland China
-`global`: global
-        :type Area: str
-        :param UpdateTime: Prefetch task update time
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UpdateTime: str
-        """
+`global`: global\n        :type Area: str\n        :param UpdateTime: Prefetch task update time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type UpdateTime: str\n        """
         self.TaskId = None
         self.Url = None
         self.Status = None
@@ -6835,26 +5479,16 @@ class PushUrlsCacheRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Urls: List of URLs. The protocol header such as "http://" or "https://" needs to be included.
-        :type Urls: list of str
-        :param UserAgent: Specifies the User-Agent header of an HTTP prefetch request when it is forwarded to the origin server
-Default value: `TencentCdn`
-        :type UserAgent: str
-        :param Area: Destination region for the prefetch
+        :param Urls: List of URLs. The protocol header such as "http://" or "https://" needs to be included.\n        :type Urls: list of str\n        :param UserAgent: Specifies the User-Agent header of an HTTP prefetch request when it is forwarded to the origin server
+Default value: `TencentCdn`\n        :type UserAgent: str\n        :param Area: Destination region for the prefetch
 `mainland`: prefetches resources to nodes within Mainland China
 `overseas`: prefetches resources to nodes outside Mainland China
 `global`: prefetches resources to global nodes
-Default value: `mainland`. You can prefetch a URL to nodes in a region provided that CDN service has been enabled for the domain name in the URL in the region.
-        :type Area: str
-        :param Layer: If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node
-        :type Layer: str
-        :param ParseM3U8: Whether to recursively resolve the M3U8 index file and prefetch the TS shards in it.
+Default value: `mainland`. You can prefetch a URL to nodes in a region provided that CDN service has been enabled for the domain name in the URL in the region.\n        :type Area: str\n        :param Layer: If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node\n        :type Layer: str\n        :param ParseM3U8: Whether to recursively resolve the M3U8 index file and prefetch the TS shards in it.
 Notes:
 1. This feature requires that the M3U8 index file can be directly requested and obtained.
 2. In the M3U8 index file, currently only the TS shards at the first to the third level can be recursively resolved.
-3. Prefetching the TS shards obtained through recursive resolution consumes the daily prefetch quota. If the usage exceeds the quota, the feature will be disabled and TS shards will not be prefetched.
-        :type ParseM3U8: bool
-        """
+3. Prefetching the TS shards obtained through recursive resolution consumes the daily prefetch quota. If the usage exceeds the quota, the feature will be disabled and TS shards will not be prefetched.\n        :type ParseM3U8: bool\n        """
         self.Urls = None
         self.UserAgent = None
         self.Area = None
@@ -6884,11 +5518,7 @@ class PushUrlsCacheResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: ID of the submitted task
-        :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TaskId: ID of the submitted task\n        :type TaskId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -6906,18 +5536,10 @@ class QueryStringKey(AbstractModel):
     def __init__(self):
         """
         :param Switch: Whether to use `QueryString` as part of `CacheKey`. Valid values: on, off
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param Reorder: Whether to sort again
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Reorder: str
-        :param Action: Include/exclude query parameters. Valid values: `includeAll`, `excludeAll`, `includeCustom`, `excludeAll`
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Action: str
-        :param Value: Array of included/excluded URL parameters (separated by ';')
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Value: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param Reorder: Whether to sort again
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Reorder: str\n        :param Action: Include/exclude query parameters. Valid values: `includeAll`, `excludeAll`, `includeCustom`, `excludeAll`
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Action: str\n        :param Value: Array of included/excluded URL parameters (separated by ';')
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Value: str\n        """
         self.Switch = None
         self.Reorder = None
         self.Action = None
@@ -6945,9 +5567,7 @@ class Quic(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Whether to enable QUIC
-        :type Switch: str
-        """
+        :param Switch: Whether to enable QUIC\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -6969,15 +5589,7 @@ class Quota(AbstractModel):
 
     def __init__(self):
         """
-        :param Batch: Quota limit for one batch submission request.
-        :type Batch: int
-        :param Total: Daily submission quota limit.
-        :type Total: int
-        :param Available: Remaining daily submission quota.
-        :type Available: int
-        :param Area: Quota region.
-        :type Area: str
-        """
+        :param Batch: Quota limit for one batch submission request.\n        :type Batch: int\n        :param Total: Daily submission quota limit.\n        :type Total: int\n        :param Available: Remaining daily submission quota.\n        :type Available: int\n        :param Area: Quota region.\n        :type Area: str\n        """
         self.Batch = None
         self.Total = None
         self.Available = None
@@ -7007,9 +5619,7 @@ class RangeOriginPull(AbstractModel):
         """
         :param Switch: Range GETs configuration switch
 on: enabled
-off: disabled
-        :type Switch: str
-        """
+off: disabled\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -7033,12 +5643,8 @@ class Referer(AbstractModel):
         """
         :param Switch: Referer blocklist/allowlist configuration switch
 on: enabled
-off: disabled
-        :type Switch: str
-        :param RefererRules: Referer blocklist/allowlist configuration rule
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RefererRules: list of RefererRule
-        """
+off: disabled\n        :type Switch: str\n        :param RefererRules: Referer blocklist/allowlist configuration rule
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RefererRules: list of RefererRule\n        """
         self.Switch = None
         self.RefererRules = None
 
@@ -7071,25 +5677,15 @@ class RefererRule(AbstractModel):
 `all`: effective for all files
 `file`: effective for specified file suffixes
 `directory`: effective for specified paths
-`path`: effective for specified absolute paths
-        :type RuleType: str
-        :param RulePaths: Content for each RuleType:
+`path`: effective for specified absolute paths\n        :type RuleType: str\n        :param RulePaths: Content for each RuleType:
 For `all`, enter an asterisk (*).
 For `file`, enter the suffix, such as jpg, txt.
 For `directory`, enter the path, such as /xxx/test/.
-For `path`, enter the corresponding absolute path, such as /xxx/test.html.
-        :type RulePaths: list of str
-        :param RefererType: Referer configuration types
+For `path`, enter the corresponding absolute path, such as /xxx/test.html.\n        :type RulePaths: list of str\n        :param RefererType: Referer configuration types
 whitelist: allowlist
-blacklist: blocklist
-        :type RefererType: str
-        :param Referers: Referer content list
-        :type Referers: list of str
-        :param AllowEmpty: Whether to allow empty referer
+blacklist: blocklist\n        :type RefererType: str\n        :param Referers: Referer content list\n        :type Referers: list of str\n        :param AllowEmpty: Whether to allow empty referer
 true: allow empty referer
-false: do not allow empty referer
-        :type AllowEmpty: bool
-        """
+false: do not allow empty referer\n        :type AllowEmpty: bool\n        """
         self.RuleType = None
         self.RulePaths = None
         self.RefererType = None
@@ -7119,11 +5715,7 @@ class RegionMapRelation(AbstractModel):
 
     def __init__(self):
         """
-        :param RegionId: Region ID
-        :type RegionId: int
-        :param SubRegionIdList: List of sub-region IDs
-        :type SubRegionIdList: list of int
-        """
+        :param RegionId: Region ID\n        :type RegionId: int\n        :param SubRegionIdList: List of sub-region IDs\n        :type SubRegionIdList: list of int\n        """
         self.RegionId = None
         self.SubRegionIdList = None
 
@@ -7147,19 +5739,7 @@ class ReportData(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceId: Project ID/domain name ID.
-        :type ResourceId: str
-        :param Resource: Project name/domain name.
-        :type Resource: str
-        :param Value: Total traffic/max bandwidth in bytes and bps, respectively.
-        :type Value: int
-        :param Percentage: Percentage of individual resource out of all resources.
-        :type Percentage: float
-        :param BillingValue: Total billable traffic/max billable bandwidth in bytes and bps, respectively.
-        :type BillingValue: int
-        :param BillingPercentage: Percentage of billable amount out of total amount.
-        :type BillingPercentage: float
-        """
+        :param ResourceId: Project ID/domain name ID.\n        :type ResourceId: str\n        :param Resource: Project name/domain name.\n        :type Resource: str\n        :param Value: Total traffic/max bandwidth in bytes and bps, respectively.\n        :type Value: int\n        :param Percentage: Percentage of individual resource out of all resources.\n        :type Percentage: float\n        :param BillingValue: Total billable traffic/max billable bandwidth in bytes and bps, respectively.\n        :type BillingValue: int\n        :param BillingPercentage: Percentage of billable amount out of total amount.\n        :type BillingPercentage: float\n        """
         self.ResourceId = None
         self.Resource = None
         self.Value = None
@@ -7193,12 +5773,8 @@ class RequestHeader(AbstractModel):
         """
         :param Switch: Custom request header configuration switch
 on: enabled
-off: disabled
-        :type Switch: str
-        :param HeaderRules: Custom request header configuration rules
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type HeaderRules: list of HttpHeaderPathRule
-        """
+off: disabled\n        :type Switch: str\n        :param HeaderRules: Custom request header configuration rules
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type HeaderRules: list of HttpHeaderPathRule\n        """
         self.Switch = None
         self.HeaderRules = None
 
@@ -7231,11 +5807,7 @@ class ResourceBillingData(AbstractModel):
 Specific domain name: domain name details
 multiDomains: aggregated details of multiple domain names
 Project ID: displays the ID of the specified project to be queried
-all: the details at the account level
-        :type Resource: str
-        :param BillingData: Billing data details
-        :type BillingData: list of CdnData
-        """
+all: the details at the account level\n        :type Resource: str\n        :param BillingData: Billing data details\n        :type BillingData: list of CdnData\n        """
         self.Resource = None
         self.BillingData = None
 
@@ -7268,11 +5840,7 @@ class ResourceData(AbstractModel):
 A specific domain name: This indicates the details of this domain name
 multiDomains: This indicates the aggregate details of multiple domain names
 Project ID: This displays the ID of the specifically queried project
-all: This indicates the details at the account level
-        :type Resource: str
-        :param CdnData: Data details of a resource
-        :type CdnData: list of CdnData
-        """
+all: This indicates the details at the account level\n        :type Resource: str\n        :param CdnData: Data details of a resource\n        :type CdnData: list of CdnData\n        """
         self.Resource = None
         self.CdnData = None
 
@@ -7305,11 +5873,7 @@ class ResourceOriginData(AbstractModel):
 A specific domain name: This indicates the details of this domain name
 multiDomains: This indicates the aggregate details of multiple domain names
 Project ID: This displays the ID of the specifically queried project
-all: This indicates the details at the account level
-        :type Resource: str
-        :param OriginData: Origin-pull data details
-        :type OriginData: list of CdnData
-        """
+all: This indicates the details at the account level\n        :type Resource: str\n        :param OriginData: Origin-pull data details\n        :type OriginData: list of CdnData\n        """
         self.Resource = None
         self.OriginData = None
 
@@ -7340,12 +5904,8 @@ class ResponseHeader(AbstractModel):
         """
         :param Switch: Custom response header switch
 on: enabled
-off: disabled
-        :type Switch: str
-        :param HeaderRules: Custom response header rules
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type HeaderRules: list of HttpHeaderPathRule
-        """
+off: disabled\n        :type Switch: str\n        :param HeaderRules: Custom response header rules
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type HeaderRules: list of HttpHeaderPathRule\n        """
         self.Switch = None
         self.HeaderRules = None
 
@@ -7376,9 +5936,7 @@ class ResponseHeaderCache(AbstractModel):
         """
         :param Switch: Origin server header cache switch
 on: enabled
-off: disabled
-        :type Switch: str
-        """
+off: disabled\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -7401,12 +5959,8 @@ class Revalidate(AbstractModel):
     def __init__(self):
         """
         :param Switch: Whether to always forward to the origin server for verification. Valid values: on, off
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param Path: Forwards to the origin server for verification only for specific request path
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Path: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param Path: Forwards to the origin server for verification only for specific request path
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Path: str\n        """
         self.Switch = None
         self.Path = None
 
@@ -7438,20 +5992,14 @@ For `file`, enter the suffix, e.g., `jpg` or `txt`.
 For `directory`, enter the path, e.g., `/xxx/test/`.
 For `path`, enter the absolute path, e.g., `/xxx/test.html`.
 For `index`, enter a forward slash `/`.
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :type RulePaths: list of str
-        :param RuleType: Rule types:
+Note: This field may return `null`, indicating that no valid values can be obtained.\n        :type RulePaths: list of str\n        :param RuleType: Rule types:
 `all`: effective for all files.
 `file`: effective for specified file suffixes.
 `directory`: effective for specified paths.
 `path`: effective for specified absolute paths.
 `index`: homepage.
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :type RuleType: str
-        :param CacheConfig: Cache configuration
-Note: this field may return null, indicating that no valid value is obtained.
-        :type CacheConfig: :class:`tencentcloud.cdn.v20180606.models.RuleCacheConfig`
-        """
+Note: This field may return `null`, indicating that no valid values can be obtained.\n        :type RuleType: str\n        :param CacheConfig: Cache configuration
+Note: this field may return null, indicating that no valid value is obtained.\n        :type CacheConfig: :class:`tencentcloud.cdn.v20180606.models.RuleCacheConfig`\n        """
         self.RulePaths = None
         self.RuleType = None
         self.CacheConfig = None
@@ -7480,15 +6028,9 @@ class RuleCacheConfig(AbstractModel):
     def __init__(self):
         """
         :param Cache: Cache configuration
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Cache: :class:`tencentcloud.cdn.v20180606.models.CacheConfigCache`
-        :param NoCache: No cache configuration
-Note: this field may return null, indicating that no valid value is obtained.
-        :type NoCache: :class:`tencentcloud.cdn.v20180606.models.CacheConfigNoCache`
-        :param FollowOrigin: Follows the origin server configuration
-Note: this field may return null, indicating that no valid value is obtained.
-        :type FollowOrigin: :class:`tencentcloud.cdn.v20180606.models.CacheConfigFollowOrigin`
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Cache: :class:`tencentcloud.cdn.v20180606.models.CacheConfigCache`\n        :param NoCache: No cache configuration
+Note: this field may return null, indicating that no valid value is obtained.\n        :type NoCache: :class:`tencentcloud.cdn.v20180606.models.CacheConfigNoCache`\n        :param FollowOrigin: Follows the origin server configuration
+Note: this field may return null, indicating that no valid value is obtained.\n        :type FollowOrigin: :class:`tencentcloud.cdn.v20180606.models.CacheConfigFollowOrigin`\n        """
         self.Cache = None
         self.NoCache = None
         self.FollowOrigin = None
@@ -7521,15 +6063,9 @@ class RuleQueryString(AbstractModel):
     def __init__(self):
         """
         :param Switch: Whether to use `QueryString` as part of `CacheKey`. Valid values: on, off
-Note: this field may return null, indicating that no valid value is obtained.
-        :type Switch: str
-        :param Action: `includeCustom` will retain partial query strings
-Note: this field may return null, indicating that no valid value is obtained.
-        :type Action: str
-        :param Value: Array of included/excluded query strings (separated by ';')
-Note: this field may return null, indicating that no valid value is obtained.
-        :type Value: str
-        """
+Note: this field may return null, indicating that no valid value is obtained.\n        :type Switch: str\n        :param Action: `includeCustom` will retain partial query strings
+Note: this field may return null, indicating that no valid value is obtained.\n        :type Action: str\n        :param Value: Array of included/excluded query strings (separated by ';')
+Note: this field may return null, indicating that no valid value is obtained.\n        :type Value: str\n        """
         self.Switch = None
         self.Action = None
         self.Value = None
@@ -7555,15 +6091,9 @@ class ScdnAclConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Whether to enable. Valid values: `on` and `off`.
-        :type Switch: str
-        :param ScriptData: ACL rule group, which is required when the access control is on.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ScriptData: list of ScdnAclGroup
-        :param ErrorPage: Error page configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        """
+        :param Switch: Whether to enable. Valid values: `on` and `off`.\n        :type Switch: str\n        :param ScriptData: ACL rule group, which is required when the access control is on.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ScriptData: list of ScdnAclGroup\n        :param ErrorPage: Error page configuration
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`\n        """
         self.Switch = None
         self.ScriptData = None
         self.ErrorPage = None
@@ -7596,15 +6126,7 @@ class ScdnAclGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleName: Rule name
-        :type RuleName: str
-        :param Configure: Specific configurations
-        :type Configure: list of ScdnAclRule
-        :param Result: Rule action, which is generally `refuse`.
-        :type Result: str
-        :param Status: Whether the rule is effective. Valid values: `active` and `inactive`.
-        :type Status: str
-        """
+        :param RuleName: Rule name\n        :type RuleName: str\n        :param Configure: Specific configurations\n        :type Configure: list of ScdnAclRule\n        :param Result: Rule action, which is generally `refuse`.\n        :type Result: str\n        :param Status: Whether the rule is effective. Valid values: `active` and `inactive`.\n        :type Status: str\n        """
         self.RuleName = None
         self.Configure = None
         self.Result = None
@@ -7637,13 +6159,7 @@ class ScdnAclRule(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchKey: Match keywords. Valid values: `params`, `url`, `ip`, `referer`, and `user-agent`.
-        :type MatchKey: str
-        :param LogiOperator: Logical operator. Valid values: `exclude`, `include`, `notequal`, `equal`, `len-less`, `len-equal`, and `len-more`.
-        :type LogiOperator: str
-        :param MatchValue: Match value
-        :type MatchValue: str
-        """
+        :param MatchKey: Match keywords. Valid values: `params`, `url`, `ip`, `referer`, and `user-agent`.\n        :type MatchKey: str\n        :param LogiOperator: Logical operator. Valid values: `exclude`, `include`, `notequal`, `equal`, `len-less`, `len-equal`, and `len-more`.\n        :type LogiOperator: str\n        :param MatchValue: Match value\n        :type MatchValue: str\n        """
         self.MatchKey = None
         self.LogiOperator = None
         self.MatchValue = None
@@ -7669,15 +6185,9 @@ class ScdnBotConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Valid values: `on` and `off`.
-        :type Switch: str
-        :param BotCookie: Bot cookie policy
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type BotCookie: list of BotCookie
-        :param BotJavaScript: Bot JS policy
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type BotJavaScript: list of BotJavaScript
-        """
+        :param Switch: Valid values: `on` and `off`.\n        :type Switch: str\n        :param BotCookie: Bot cookie policy
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type BotCookie: list of BotCookie\n        :param BotJavaScript: Bot JS policy
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type BotJavaScript: list of BotJavaScript\n        """
         self.Switch = None
         self.BotCookie = None
         self.BotJavaScript = None
@@ -7718,31 +6228,13 @@ class ScdnCCRules(AbstractModel):
 `file`: effective for specified file suffixes.
 `directory`: effective for specified paths.
 `path`: effective for specified absolute paths.
-`index`: effective for web homepages and root directories.
-        :type RuleType: str
-        :param RuleValue: Rule value (blocking condition)
-        :type RuleValue: list of str
-        :param Qps: IP access limit rule
-        :type Qps: int
-        :param DetectionTime: Detection granularity
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DetectionTime: int
-        :param FrequencyLimit: Frequency threshold
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type FrequencyLimit: int
-        :param PunishmentSwitch: Whether to block or redirect requests from suspicious IPs. Valid values: `on` and `off`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type PunishmentSwitch: str
-        :param PunishmentTime: Suspicious IP restriction duration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type PunishmentTime: int
-        :param Action: Action. Valid values: `intercept` and `redirect`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Action: str
-        :param RedirectUrl: The redirection target URL used when the `Action` is `redirect`
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type RedirectUrl: str
-        """
+`index`: effective for web homepages and root directories.\n        :type RuleType: str\n        :param RuleValue: Rule value (blocking condition)\n        :type RuleValue: list of str\n        :param Qps: IP access limit rule\n        :type Qps: int\n        :param DetectionTime: Detection granularity
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type DetectionTime: int\n        :param FrequencyLimit: Frequency threshold
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type FrequencyLimit: int\n        :param PunishmentSwitch: Whether to block or redirect requests from suspicious IPs. Valid values: `on` and `off`.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type PunishmentSwitch: str\n        :param PunishmentTime: Suspicious IP restriction duration
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type PunishmentTime: int\n        :param Action: Action. Valid values: `intercept` and `redirect`.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Action: str\n        :param RedirectUrl: The redirection target URL used when the `Action` is `redirect`
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type RedirectUrl: str\n        """
         self.RuleType = None
         self.RuleValue = None
         self.Qps = None
@@ -7780,12 +6272,8 @@ class ScdnConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Valid values: `on` and `off`.
-        :type Switch: str
-        :param Rules: Custom CC attack defense rule
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Rules: list of ScdnCCRules
-        """
+        :param Switch: Valid values: `on` and `off`.\n        :type Switch: str\n        :param Rules: Custom CC attack defense rule
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Rules: list of ScdnCCRules\n        """
         self.Switch = None
         self.Rules = None
 
@@ -7814,9 +6302,7 @@ class ScdnDdosConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Whether to enable DDoS defense. Valid values: `on` and `off`.
-        :type Switch: str
-        """
+        :param Switch: Whether to enable DDoS defense. Valid values: `on` and `off`.\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -7838,11 +6324,7 @@ class ScdnErrorPage(AbstractModel):
 
     def __init__(self):
         """
-        :param RedirectCode: Status code
-        :type RedirectCode: int
-        :param RedirectUrl: Redirection URL
-        :type RedirectUrl: str
-        """
+        :param RedirectCode: Status code\n        :type RedirectCode: int\n        :param RedirectUrl: Redirection URL\n        :type RedirectUrl: str\n        """
         self.RedirectCode = None
         self.RedirectUrl = None
 
@@ -7866,27 +6348,13 @@ class ScdnWafConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Whether to enable WAF. Valid values: `on` and `off`.
-        :type Switch: str
-        :param Mode: WAF protection mode. Valid values: `intercept` and `observe`. Default value: `intercept`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Mode: str
-        :param ErrorPage: Redirection error page
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        :param WebShellSwitch: Whether to enable Web shell blocking. Valid values: `on` and `off`. Default value: `off`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type WebShellSwitch: str
-        :param Rules: Attack blocking rules
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Rules: list of ScdnWafRule
-        :param Level: WAF rule level. Valid values: 100, 200, and 300.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Level: int
-        :param SubRuleSwitch: WAF sub-rule switch
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SubRuleSwitch: list of WafSubRuleStatus
-        """
+        :param Switch: Whether to enable WAF. Valid values: `on` and `off`.\n        :type Switch: str\n        :param Mode: WAF protection mode. Valid values: `intercept` and `observe`. Default value: `intercept`.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Mode: str\n        :param ErrorPage: Redirection error page
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`\n        :param WebShellSwitch: Whether to enable Web shell blocking. Valid values: `on` and `off`. Default value: `off`.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type WebShellSwitch: str\n        :param Rules: Attack blocking rules
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Rules: list of ScdnWafRule\n        :param Level: WAF rule level. Valid values: 100, 200, and 300.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Level: int\n        :param SubRuleSwitch: WAF sub-rule switch
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SubRuleSwitch: list of WafSubRuleStatus\n        """
         self.Switch = None
         self.Mode = None
         self.ErrorPage = None
@@ -7932,11 +6400,7 @@ class ScdnWafRule(AbstractModel):
 
     def __init__(self):
         """
-        :param AttackType: Attack type
-        :type AttackType: str
-        :param Operate: Defense action. Valid value: `observe`.
-        :type Operate: str
-        """
+        :param AttackType: Attack type\n        :type AttackType: str\n        :param Operate: Defense action. Valid value: `observe`.\n        :type Operate: str\n        """
         self.AttackType = None
         self.Operate = None
 
@@ -7961,9 +6425,7 @@ class SchemeKey(AbstractModel):
     def __init__(self):
         """
         :param Switch: Whether to use the scheme as part of the cache key. Valid values: on, off
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -7985,25 +6447,7 @@ class SearchClsLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LogsetId: ID of logset to be queried
-        :type LogsetId: str
-        :param TopicIds: List of IDs of log topics to be queried, separated by commas
-        :type TopicIds: str
-        :param StartTime: Start time of log to be queried in the format of `YYYY-mm-dd HH:MM:SS`
-        :type StartTime: str
-        :param EndTime: End time of log to be queried in the format of `YYYY-mm-dd HH:MM:SS`
-        :type EndTime: str
-        :param Limit: Number of logs to be returned at a time. Maximum value: 100
-        :type Limit: int
-        :param Channel: Connection channel. Default value: cdn
-        :type Channel: str
-        :param Query: Content to be queried. For more information, please visit https://intl.cloud.tencent.com/document/product/614/16982?from_cn_redirect=1
-        :type Query: str
-        :param Context: This field is used when loading more results. Pass through the last `context` value returned to get more log content. Up to 10,000 logs can be obtained through the cursor. Please narrow down the time range as much as possible.
-        :type Context: str
-        :param Sort: Sorting by log time. Valid values: asc (ascending), desc (descending). Default value: desc
-        :type Sort: str
-        """
+        :param LogsetId: ID of logset to be queried\n        :type LogsetId: str\n        :param TopicIds: List of IDs of log topics to be queried, separated by commas\n        :type TopicIds: str\n        :param StartTime: Start time of log to be queried in the format of `YYYY-mm-dd HH:MM:SS`\n        :type StartTime: str\n        :param EndTime: End time of log to be queried in the format of `YYYY-mm-dd HH:MM:SS`\n        :type EndTime: str\n        :param Limit: Number of logs to be returned at a time. Maximum value: 100\n        :type Limit: int\n        :param Channel: Connection channel. Default value: cdn\n        :type Channel: str\n        :param Query: Content to be queried. For more information, please visit https://intl.cloud.tencent.com/document/product/614/16982?from_cn_redirect=1\n        :type Query: str\n        :param Context: This field is used when loading more results. Pass through the last `context` value returned to get more log content. Up to 10,000 logs can be obtained through the cursor. Please narrow down the time range as much as possible.\n        :type Context: str\n        :param Sort: Sorting by log time. Valid values: asc (ascending), desc (descending). Default value: desc\n        :type Sort: str\n        """
         self.LogsetId = None
         self.TopicIds = None
         self.StartTime = None
@@ -8041,11 +6485,7 @@ class SearchClsLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Logs: Query result
-        :type Logs: :class:`tencentcloud.cdn.v20180606.models.ClsSearchLogs`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Logs: Query result\n        :type Logs: :class:`tencentcloud.cdn.v20180606.models.ClsSearchLogs`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Logs = None
         self.RequestId = None
 
@@ -8064,9 +6504,7 @@ class SecurityConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: on|off
-        :type Switch: str
-        """
+        :param Switch: on|off\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -8091,9 +6529,7 @@ class Seo(AbstractModel):
         :param Switch: SEO configuration switch
 on: enabled
 off: disabled
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -8120,32 +6556,18 @@ class ServerCert(AbstractModel):
         """
         :param CertId: Server certificate ID
 This is auto-generated when the certificate is being hosted by the SSL Certificate Service
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CertId: str
-        :param CertName: Server certificate name
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CertId: str\n        :param CertName: Server certificate name
 This is auto-generated when the certificate is being hosted by the SSL Certificate Service
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CertName: str
-        :param Certificate: Server certificate information
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CertName: str\n        :param Certificate: Server certificate information
 This is required when uploading an external certificate, which should contain the complete certificate chain.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Certificate: str
-        :param PrivateKey: Server key information
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Certificate: str\n        :param PrivateKey: Server key information
 This is required when uploading an external certificate.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type PrivateKey: str
-        :param ExpireTime: Certificate expiration time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type PrivateKey: str\n        :param ExpireTime: Certificate expiration time
 Can be left blank when used as an input parameter
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ExpireTime: str
-        :param DeployTime: Certificate issuance time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ExpireTime: str\n        :param DeployTime: Certificate issuance time
 Can be left blank when used as an input parameter
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DeployTime: str
-        :param Message: Certificate remarks
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Message: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeployTime: str\n        :param Message: Certificate remarks
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Message: str\n        """
         self.CertId = None
         self.CertName = None
         self.Certificate = None
@@ -8183,37 +6605,25 @@ class SimpleCache(AbstractModel):
     def __init__(self):
         """
         :param CacheRules: Cache expiration time rules
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CacheRules: list of SimpleCacheRule
-        :param FollowOrigin: Follows origin server Cache-Control: max-age configurations
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheRules: list of SimpleCacheRule\n        :param FollowOrigin: Follows origin server Cache-Control: max-age configurations
 on: enabled
 off: disabled
 If this is enabled, resources that do not match CacheRules rules will be cached by the node according to the max-age value returned by the origin server. Resources that match CacheRules rules will be cached on the node according to the cache expiration time set in CacheRules.
 This conflicts with CompareMaxAge. The two cannot be enabled at the same time.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FollowOrigin: str
-        :param IgnoreCacheControl: Forced cache
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FollowOrigin: str\n        :param IgnoreCacheControl: Forced cache
 on: enable
 off: disable
 This is disabled by default. If enabled, the `no-store` and `no-cache` resources returned from the origin server will be cached according to `CacheRules` rules.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IgnoreCacheControl: str
-        :param IgnoreSetCookie: Ignores the Set-Cookie header of the origin server
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IgnoreCacheControl: str\n        :param IgnoreSetCookie: Ignores the Set-Cookie header of the origin server
 on: enabled
 off: disabled
 This is disabled by default
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IgnoreSetCookie: str
-        :param CompareMaxAge: Advanced cache expiration configuration. If this is enabled, the max-age value returned by the origin server will be compared with the cache expiration time set in CacheRules, and the smallest value will be cached on the node.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IgnoreSetCookie: str\n        :param CompareMaxAge: Advanced cache expiration configuration. If this is enabled, the max-age value returned by the origin server will be compared with the cache expiration time set in CacheRules, and the smallest value will be cached on the node.
 on: enabled
 off: disabled
 This is disabled by default
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CompareMaxAge: str
-        :param Revalidate: Always forwards to the origin server for verification
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Revalidate: :class:`tencentcloud.cdn.v20180606.models.Revalidate`
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CompareMaxAge: str\n        :param Revalidate: Always forwards to the origin server for verification
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Revalidate: :class:`tencentcloud.cdn.v20180606.models.Revalidate`\n        """
         self.CacheRules = None
         self.FollowOrigin = None
         self.IgnoreCacheControl = None
@@ -8257,19 +6667,13 @@ class SimpleCacheRule(AbstractModel):
 `file`: effective for specified file suffixes
 `directory`: effective for specified paths
 `path`: effective for specified absolute paths
-index: home page
-        :type CacheType: str
-        :param CacheContents: Content for each CacheType:
+index: home page\n        :type CacheType: str\n        :param CacheContents: Content for each CacheType:
 Enter `*` for `all`
 Enter an extension for `file`, such as `jpg` or `txt`
 Enter a path for `directory`, such as `/xxx/test`
 Enter an absolute path for `path`, such as `/xxx/test.html`
-Enter `/` for `index`
-        :type CacheContents: list of str
-        :param CacheTime: Cache expiration time settings
-Unit: second. The maximum value is 365 days.
-        :type CacheTime: int
-        """
+Enter `/` for `index`\n        :type CacheContents: list of str\n        :param CacheTime: Cache expiration time settings
+Unit: second. The maximum value is 365 days.\n        :type CacheTime: int\n        """
         self.CacheType = None
         self.CacheContents = None
         self.CacheTime = None
@@ -8298,11 +6702,7 @@ class Sort(AbstractModel):
         :param Key: Fields that can be sorted. Currently supports:
 `createTime`: domain name creation time.
 `certExpireTime`: certificate expiration time.
-Default value: createTime.
-        :type Key: str
-        :param Sequence: `asc` or `desc`. Default: `desc`.
-        :type Sequence: str
-        """
+Default value: createTime.\n        :type Key: str\n        :param Sequence: `asc` or `desc`. Default: `desc`.\n        :type Sequence: str\n        """
         self.Key = None
         self.Sequence = None
 
@@ -8327,12 +6727,8 @@ class SpecificConfig(AbstractModel):
     def __init__(self):
         """
         :param Mainland: Specific configuration for domain name inside mainland China.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Mainland: :class:`tencentcloud.cdn.v20180606.models.MainlandConfig`
-        :param Overseas: Specific configuration for domain name outside mainland China.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Overseas: :class:`tencentcloud.cdn.v20180606.models.OverseaConfig`
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Mainland: :class:`tencentcloud.cdn.v20180606.models.MainlandConfig`\n        :param Overseas: Specific configuration for domain name outside mainland China.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Overseas: :class:`tencentcloud.cdn.v20180606.models.OverseaConfig`\n        """
         self.Mainland = None
         self.Overseas = None
 
@@ -8361,9 +6757,7 @@ class StartCdnDomainRequest(AbstractModel):
     def __init__(self):
         """
         :param Domain: Domain name
-The domain name status should be `Disabled`
-        :type Domain: str
-        """
+The domain name status should be `Disabled`\n        :type Domain: str\n        """
         self.Domain = None
 
 
@@ -8385,9 +6779,7 @@ class StartCdnDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8405,12 +6797,8 @@ class StatusCodeCache(AbstractModel):
         :param Switch: Status code cache expiration configuration switch
 on: enabled
 off: disabled
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param CacheRules: Status code cache expiration rules details
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CacheRules: list of StatusCodeCacheRule
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param CacheRules: Status code cache expiration rules details
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CacheRules: list of StatusCodeCacheRule\n        """
         self.Switch = None
         self.CacheRules = None
 
@@ -8440,11 +6828,7 @@ class StatusCodeCacheRule(AbstractModel):
     def __init__(self):
         """
         :param StatusCode: HTTP status code
-Supports 403 and 404 status codes
-        :type StatusCode: str
-        :param CacheTime: Status code cache expiration time (in seconds)
-        :type CacheTime: int
-        """
+Supports 403 and 404 status codes\n        :type StatusCode: str\n        :param CacheTime: Status code cache expiration time (in seconds)\n        :type CacheTime: int\n        """
         self.StatusCode = None
         self.CacheTime = None
 
@@ -8469,9 +6853,7 @@ class StopCdnDomainRequest(AbstractModel):
     def __init__(self):
         """
         :param Domain: Domain name
-The domain name status should be **Enabled**
-        :type Domain: str
-        """
+The domain name status should be **Enabled**\n        :type Domain: str\n        """
         self.Domain = None
 
 
@@ -8493,9 +6875,7 @@ class StopCdnDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8513,11 +6893,7 @@ class SummarizedData(AbstractModel):
         :param Name: Aggregation method, which can be:
 sum: aggregate summation
 max: maximum value; in bandwidth mode, the peak bandwidth is calculated based on the aggregate data with 5-minute granularity.
-avg: average value
-        :type Name: str
-        :param Value: Aggregate data value
-        :type Value: float
-        """
+avg: average value\n        :type Name: str\n        :param Value: Aggregate data value\n        :type Value: float\n        """
         self.Name = None
         self.Value = None
 
@@ -8542,12 +6918,8 @@ class Tag(AbstractModel):
     def __init__(self):
         """
         :param TagKey: Tag key
-Note: this field may return null, indicating that no valid value is obtained.
-        :type TagKey: str
-        :param TagValue: Tag value.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type TagValue: str
-        """
+Note: this field may return null, indicating that no valid value is obtained.\n        :type TagKey: str\n        :param TagValue: Tag value.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -8572,11 +6944,7 @@ class TimestampData(AbstractModel):
     def __init__(self):
         """
         :param Time: Statistical point in time in forward rounding mode
-Taking the 5-minute granularity as an example, 13:35:00 indicates that the statistical interval is between 13:35:00 and 13:39:59.
-        :type Time: str
-        :param Value: Data value
-        :type Value: float
-        """
+Taking the 5-minute granularity as an example, 13:35:00 indicates that the statistical interval is between 13:35:00 and 13:39:59.\n        :type Time: str\n        :param Value: Data value\n        :type Value: float\n        """
         self.Time = None
         self.Value = None
 
@@ -8604,11 +6972,7 @@ class TopData(AbstractModel):
 A specific domain name: This indicates the details of this domain name
 multiDomains: This indicates the aggregate details of multiple domain names
 Project ID: This displays the ID of the specifically queried project
-all: This indicates the details at the account level
-        :type Resource: str
-        :param DetailData: Detailed sorting results
-        :type DetailData: list of TopDetailData
-        """
+all: This indicates the details at the account level\n        :type Resource: str\n        :param DetailData: Detailed sorting results\n        :type DetailData: list of TopDetailData\n        """
         self.Resource = None
         self.DetailData = None
 
@@ -8637,11 +7001,7 @@ class TopDetailData(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Datatype name
-        :type Name: str
-        :param Value: Data value
-        :type Value: float
-        """
+        :param Name: Datatype name\n        :type Name: str\n        :param Value: Data value\n        :type Value: float\n        """
         self.Name = None
         self.Value = None
 
@@ -8665,16 +7025,8 @@ class TopicInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TopicId: Topic ID
-        :type TopicId: str
-        :param TopicName: Topic name
-        :type TopicName: str
-        :param Enabled: Whether to enable publishing
-        :type Enabled: int
-        :param CreateTime: Creation time
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CreateTime: str
-        """
+        :param TopicId: Topic ID\n        :type TopicId: str\n        :param TopicName: Topic name\n        :type TopicName: str\n        :param Enabled: Whether to enable publishing\n        :type Enabled: int\n        :param CreateTime: Creation time
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CreateTime: str\n        """
         self.TopicId = None
         self.TopicName = None
         self.Enabled = None
@@ -8703,9 +7055,7 @@ class TpgAdapter(AbstractModel):
     def __init__(self):
         """
         :param Switch: Switch. Valid values: on, off
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -8727,94 +7077,14 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: Domain name
-        :type Domain: str
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param Origin: Origin server configuration
-        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param IpFilter: IP blocklist/allowlist configuration
-        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
-        :param IpFreqLimit: IP access limit configuration
-        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
-        :param StatusCodeCache: Status code cache configuration
-        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
-        :param Compression: Smart compression configuration
-        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
-        :param BandwidthAlert: Bandwidth cap configuration
-        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
-        :param RangeOriginPull: Range GETs configuration
-        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
-        :param FollowRedirect: 301/302 origin-pull follow-redirect configuration
-        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param ErrorPage: Error code redirect configuration (This feature is in beta and not generally available yet.)
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
-        :param RequestHeader: Request header configuration
-        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
-        :param ResponseHeader: Response header configuration
-        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
-        :param DownstreamCapping: Download speed configuration
-        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
-        :param CacheKey: Node cache key configuration
-        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
-        :param ResponseHeaderCache: Header cache configuration
-        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
-        :param VideoSeek: Video dragging configuration
-        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
-        :param Cache: Cache expiration time configuration
-        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param OriginPullOptimization: Cross-border linkage optimization configuration
-        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
-        :param Https: HTTPS acceleration configuration
-        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param Authentication: Timestamp hotlink protection configuration
-        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
-        :param Seo: SEO configuration
-        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
-        :param ForceRedirect: Access protocol forced redirect configuration
-        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
-        :param Referer: Referer hotlink protection configuration
-        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
-        :param MaxAge: Browser cache configuration (This feature is in beta and not generally available yet.)
-        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param ServiceType: Domain name service type
+        :param Domain: Domain name\n        :type Domain: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param Origin: Origin server configuration\n        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`\n        :param IpFilter: IP blocklist/allowlist configuration\n        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`\n        :param IpFreqLimit: IP access limit configuration\n        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`\n        :param StatusCodeCache: Status code cache configuration\n        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`\n        :param Compression: Smart compression configuration\n        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`\n        :param BandwidthAlert: Bandwidth cap configuration\n        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`\n        :param RangeOriginPull: Range GETs configuration\n        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`\n        :param FollowRedirect: 301/302 origin-pull follow-redirect configuration\n        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`\n        :param ErrorPage: Error code redirect configuration (This feature is in beta and not generally available yet.)\n        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`\n        :param RequestHeader: Request header configuration\n        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`\n        :param ResponseHeader: Response header configuration\n        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`\n        :param DownstreamCapping: Download speed configuration\n        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`\n        :param CacheKey: Node cache key configuration\n        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`\n        :param ResponseHeaderCache: Header cache configuration\n        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`\n        :param VideoSeek: Video dragging configuration\n        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`\n        :param Cache: Cache expiration time configuration\n        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`\n        :param OriginPullOptimization: Cross-border linkage optimization configuration\n        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`\n        :param Https: HTTPS acceleration configuration\n        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`\n        :param Authentication: Timestamp hotlink protection configuration\n        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`\n        :param Seo: SEO configuration\n        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`\n        :param ForceRedirect: Access protocol forced redirect configuration\n        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`\n        :param Referer: Referer hotlink protection configuration\n        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`\n        :param MaxAge: Browser cache configuration (This feature is in beta and not generally available yet.)\n        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`\n        :param ServiceType: Domain name service type
 web: static acceleration
 download: download acceleration
-media: streaming media VOD acceleration
-        :type ServiceType: str
-        :param SpecificConfig: Specific region configuration
-Applicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.
-        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
-        :param Area: Domain name acceleration region
+media: streaming media VOD acceleration\n        :type ServiceType: str\n        :param SpecificConfig: Specific region configuration
+Applicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.\n        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`\n        :param Area: Domain name acceleration region
 mainland: acceleration inside mainland China
 overseas: acceleration outside mainland China
-global: global acceleration
-        :type Area: str
-        :param OriginPullTimeout: Origin-pull timeout configuration
-        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
-        :param AwsPrivateAccess: Origin access authentication for S3 bucket
-        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
-        :param UserAgentFilter: UA blocklist/allowlist Configuration
-        :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
-        :param AccessControl: Access control
-        :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
-        :param UrlRedirect: URL redirect configuration
-        :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
-        :param AccessPort: Access port configuration
-        :type AccessPort: list of int
-        :param AdvancedAuthentication: Timestamp hotlink protection advanced configuration (allowlist feature)
-        :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
-        :param OriginAuthentication: Origin-pull authentication advanced configuration (allowlist feature)
-        :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
-        :param Ipv6Access: IPv6 access configuration
-        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
-        :param OfflineCache: Offline cache
-        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param OriginCombine: Merging pull requests
-        :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
-        :param Quic: QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.
-        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
-        """
+global: global acceleration\n        :type Area: str\n        :param OriginPullTimeout: Origin-pull timeout configuration\n        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`\n        :param AwsPrivateAccess: Origin access authentication for S3 bucket\n        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`\n        :param UserAgentFilter: UA blocklist/allowlist Configuration\n        :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`\n        :param AccessControl: Access control\n        :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`\n        :param UrlRedirect: URL redirect configuration\n        :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`\n        :param AccessPort: Access port configuration\n        :type AccessPort: list of int\n        :param AdvancedAuthentication: Timestamp hotlink protection advanced configuration (allowlist feature)\n        :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`\n        :param OriginAuthentication: Origin-pull authentication advanced configuration (allowlist feature)\n        :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`\n        :param Ipv6Access: IPv6 access configuration\n        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`\n        :param OfflineCache: Offline cache\n        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`\n        :param OriginCombine: Merging pull requests\n        :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`\n        :param Quic: QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.\n        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`\n        """
         self.Domain = None
         self.ProjectId = None
         self.Origin = None
@@ -8984,9 +7254,7 @@ class UpdateDomainConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -9001,11 +7269,7 @@ class UpdatePayTypeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Area: Billing region, which can be mainland or overseas.
-        :type Area: str
-        :param PayType: Billing mode, which can be flux or bandwidth.
-        :type PayType: str
-        """
+        :param Area: Billing region, which can be mainland or overseas.\n        :type Area: str\n        :param PayType: Billing mode, which can be flux or bandwidth.\n        :type PayType: str\n        """
         self.Area = None
         self.PayType = None
 
@@ -9029,9 +7293,7 @@ class UpdatePayTypeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -9046,19 +7308,7 @@ class UpdateScdnDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: Domain name
-        :type Domain: str
-        :param Waf: WAF configuration
-        :type Waf: :class:`tencentcloud.cdn.v20180606.models.ScdnWafConfig`
-        :param Acl: Custom defense policy configuration
-        :type Acl: :class:`tencentcloud.cdn.v20180606.models.ScdnAclConfig`
-        :param CC: CC attack defense configurations. CC attack defense is enabled by default.
-        :type CC: :class:`tencentcloud.cdn.v20180606.models.ScdnConfig`
-        :param Ddos: DDoS defense configuration. DDoS defense is enabled by default.
-        :type Ddos: :class:`tencentcloud.cdn.v20180606.models.ScdnDdosConfig`
-        :param Bot: Bot defense configuration
-        :type Bot: :class:`tencentcloud.cdn.v20180606.models.ScdnBotConfig`
-        """
+        :param Domain: Domain name\n        :type Domain: str\n        :param Waf: WAF configuration\n        :type Waf: :class:`tencentcloud.cdn.v20180606.models.ScdnWafConfig`\n        :param Acl: Custom defense policy configuration\n        :type Acl: :class:`tencentcloud.cdn.v20180606.models.ScdnAclConfig`\n        :param CC: CC attack defense configurations. CC attack defense is enabled by default.\n        :type CC: :class:`tencentcloud.cdn.v20180606.models.ScdnConfig`\n        :param Ddos: DDoS defense configuration. DDoS defense is enabled by default.\n        :type Ddos: :class:`tencentcloud.cdn.v20180606.models.ScdnDdosConfig`\n        :param Bot: Bot defense configuration\n        :type Bot: :class:`tencentcloud.cdn.v20180606.models.ScdnBotConfig`\n        """
         self.Domain = None
         self.Waf = None
         self.Acl = None
@@ -9100,11 +7350,7 @@ class UpdateScdnDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: Result of the request. `Success` indicates that the configurations are updated.
-        :type Result: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: Result of the request. `Success` indicates that the configurations are updated.\n        :type Result: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -9122,18 +7368,10 @@ class UrlRecord(AbstractModel):
     def __init__(self):
         """
         :param Status: Status (disable: blocked; enable: unblocked)
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Status: str
-        :param RealUrl: Corresponding URL
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RealUrl: str
-        :param CreateTime: Creation time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type CreateTime: str
-        :param UpdateTime: Update time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type UpdateTime: str
-        """
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type Status: str\n        :param RealUrl: Corresponding URL
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type RealUrl: str\n        :param CreateTime: Creation time
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type CreateTime: str\n        :param UpdateTime: Update time
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type UpdateTime: str\n        """
         self.Status = None
         self.RealUrl = None
         self.CreateTime = None
@@ -9163,12 +7401,8 @@ class UrlRedirect(AbstractModel):
         """
         :param Switch: URL redirect configuration switch
 on: enabled
-off: disabled
-        :type Switch: str
-        :param PathRules: URL redirect rule, which is required if `Switch` is `on`. There can be up to 10 rules.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type PathRules: list of UrlRedirectRule
-        """
+off: disabled\n        :type Switch: str\n        :param PathRules: URL redirect rule, which is required if `Switch` is `on`. There can be up to 10 rules.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type PathRules: list of UrlRedirectRule\n        """
         self.Switch = None
         self.PathRules = None
 
@@ -9197,16 +7431,8 @@ class UrlRedirectRule(AbstractModel):
 
     def __init__(self):
         """
-        :param RedirectStatusCode: Redirect status code. Valid values: 301, 302
-        :type RedirectStatusCode: int
-        :param Pattern: URL to be matched. Only URLs are supported, while parameters are not. The exact match is used by default. In regex match, up to 5 wildcards `*` are supported. The URL can contain up to 1,024 characters.
-        :type Pattern: str
-        :param RedirectUrl: Target URL, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.
-        :type RedirectUrl: str
-        :param RedirectHost: Target host. It should be a standard domain name starting with `http://` or `https://`. If it is left empty, “http://[current domain name]” will be used by default.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type RedirectHost: str
-        """
+        :param RedirectStatusCode: Redirect status code. Valid values: 301, 302\n        :type RedirectStatusCode: int\n        :param Pattern: URL to be matched. Only URLs are supported, while parameters are not. The exact match is used by default. In regex match, up to 5 wildcards `*` are supported. The URL can contain up to 1,024 characters.\n        :type Pattern: str\n        :param RedirectUrl: Target URL, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.\n        :type RedirectUrl: str\n        :param RedirectHost: Target host. It should be a standard domain name starting with `http://` or `https://`. If it is left empty, “http://[current domain name]” will be used by default.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type RedirectHost: str\n        """
         self.RedirectStatusCode = None
         self.Pattern = None
         self.RedirectUrl = None
@@ -9235,12 +7461,8 @@ class UserAgentFilter(AbstractModel):
     def __init__(self):
         """
         :param Switch: Switch. Valid values: on, off
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        :param FilterRules: UA blocklist/allowlist effect rule list
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FilterRules: list of UserAgentFilterRule
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        :param FilterRules: UA blocklist/allowlist effect rule list
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FilterRules: list of UserAgentFilterRule\n        """
         self.Switch = None
         self.FilterRules = None
 
@@ -9274,18 +7496,10 @@ all: all access paths are effective
 file: effective by file extension
 directory: effective by directory
 path: effective by full access path
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RuleType: str
-        :param RulePaths: Effective access paths
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type RulePaths: list of str
-        :param UserAgents: `UserAgent` list
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UserAgents: list of str
-        :param FilterType: blocklist or allowlist. Valid values: blacklist, whitelist
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FilterType: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RuleType: str\n        :param RulePaths: Effective access paths
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type RulePaths: list of str\n        :param UserAgents: `UserAgent` list
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type UserAgents: list of str\n        :param FilterType: blocklist or allowlist. Valid values: blacklist, whitelist
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FilterType: str\n        """
         self.RuleType = None
         self.RulePaths = None
         self.UserAgents = None
@@ -9315,9 +7529,7 @@ class VideoSeek(AbstractModel):
         """
         :param Switch: Video dragging switch
 on: enabled
-off: disabled
-        :type Switch: str
-        """
+off: disabled\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -9339,24 +7551,12 @@ class ViolationUrl(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: ID
-        :type Id: int
-        :param RealUrl: Origin access URL of the resource in violation
-        :type RealUrl: str
-        :param DownloadUrl: Snapshot path. This is used to display a snapshot of the content in violation on the console.
-        :type DownloadUrl: str
-        :param UrlStatus: Current status of the resources in violation
+        :param Id: ID\n        :type Id: int\n        :param RealUrl: Origin access URL of the resource in violation\n        :type RealUrl: str\n        :param DownloadUrl: Snapshot path. This is used to display a snapshot of the content in violation on the console.\n        :type DownloadUrl: str\n        :param UrlStatus: Current status of the resources in violation
 forbid: blocked
 release: unblocked
 delay: processing delayed 
 reject: appeal dismissed. The status is still blocked.
-complain: appeal in process
-        :type UrlStatus: str
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param UpdateTime: Update time
-        :type UpdateTime: str
-        """
+complain: appeal in process\n        :type UrlStatus: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param UpdateTime: Update time\n        :type UpdateTime: str\n        """
         self.Id = None
         self.RealUrl = None
         self.DownloadUrl = None
@@ -9388,11 +7588,7 @@ class WafSubRuleStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param Switch: Sub-rule status. Valid values: `on` and `off`.
-        :type Switch: str
-        :param SubIds: List of rule IDs
-        :type SubIds: list of int
-        """
+        :param Switch: Sub-rule status. Valid values: `on` and `off`.\n        :type Switch: str\n        :param SubIds: List of rule IDs\n        :type SubIds: list of int\n        """
         self.Switch = None
         self.SubIds = None
 
@@ -9417,9 +7613,7 @@ class WebpAdapter(AbstractModel):
     def __init__(self):
         """
         :param Switch: Switch. Valid values: on, off
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Switch: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Switch: str\n        """
         self.Switch = None
 
 

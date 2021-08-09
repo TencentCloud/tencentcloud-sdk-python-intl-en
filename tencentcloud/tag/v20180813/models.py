@@ -25,13 +25,7 @@ class AddResourceTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key.
-        :type TagKey: str
-        :param TagValue: Tag value.
-        :type TagValue: str
-        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)
-        :type Resource: str
-        """
+        :param TagKey: Tag key.\n        :type TagKey: str\n        :param TagValue: Tag value.\n        :type TagValue: str\n        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)\n        :type Resource: str\n        """
         self.TagKey = None
         self.TagValue = None
         self.Resource = None
@@ -57,9 +51,7 @@ class AddResourceTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -74,19 +66,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: Resource service name
-        :type ServiceType: str
-        :param ResourceIds: Resource ID array, which can contain up to 50 resources
-        :type ResourceIds: list of str
-        :param TagKey: Tag key
-        :type TagKey: str
-        :param TagValue: Tag value
-        :type TagValue: str
-        :param ResourceRegion: Resource region. This field is not required for resources that do not have the region attribute
-        :type ResourceRegion: str
-        :param ResourcePrefix: Resource prefix, which is not required for COS buckets
-        :type ResourcePrefix: str
-        """
+        :param ServiceType: Resource service name\n        :type ServiceType: str\n        :param ResourceIds: Resource ID array, which can contain up to 50 resources\n        :type ResourceIds: list of str\n        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        :param ResourceRegion: Resource region. This field is not required for resources that do not have the region attribute\n        :type ResourceRegion: str\n        :param ResourcePrefix: Resource prefix, which is not required for COS buckets\n        :type ResourcePrefix: str\n        """
         self.ServiceType = None
         self.ResourceIds = None
         self.TagKey = None
@@ -118,9 +98,7 @@ class AttachResourcesTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -135,11 +113,7 @@ class CreateTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key.
-        :type TagKey: str
-        :param TagValue: Tag value.
-        :type TagValue: str
-        """
+        :param TagKey: Tag key.\n        :type TagKey: str\n        :param TagValue: Tag value.\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -163,9 +137,7 @@ class CreateTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -180,11 +152,7 @@ class DeleteResourceTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key.
-        :type TagKey: str
-        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)
-        :type Resource: str
-        """
+        :param TagKey: Tag key.\n        :type TagKey: str\n        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)\n        :type Resource: str\n        """
         self.TagKey = None
         self.Resource = None
 
@@ -208,9 +176,7 @@ class DeleteResourceTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -225,11 +191,7 @@ class DeleteTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: The tag key to be deleted.
-        :type TagKey: str
-        :param TagValue: The tag value to be deleted.
-        :type TagValue: str
-        """
+        :param TagKey: The tag key to be deleted.\n        :type TagKey: str\n        :param TagValue: The tag value to be deleted.\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -253,9 +215,7 @@ class DeleteTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -270,19 +230,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: Service type.
-        :type ServiceType: str
-        :param ResourcePrefix: Resource prefix.
-        :type ResourcePrefix: str
-        :param ResourceIds: Unique resource ID.
-        :type ResourceIds: list of str
-        :param ResourceRegion: The resource's region.
-        :type ResourceRegion: str
-        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.
-        :type Offset: int
-        :param Limit: Page size. The default value is 0.
-        :type Limit: int
-        """
+        :param ServiceType: Service type.\n        :type ServiceType: str\n        :param ResourcePrefix: Resource prefix.\n        :type ResourcePrefix: str\n        :param ResourceIds: Unique resource ID.\n        :type ResourceIds: list of str\n        :param ResourceRegion: The resource's region.\n        :type ResourceRegion: str\n        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.\n        :type Offset: int\n        :param Limit: Page size. The default value is 0.\n        :type Limit: int\n        """
         self.ServiceType = None
         self.ResourcePrefix = None
         self.ResourceIds = None
@@ -314,17 +262,7 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results.
-        :type TotalCount: int
-        :param Offset: Data offset.
-        :type Offset: int
-        :param Limit: Page size.
-        :type Limit: int
-        :param Tags: Tag list.
-        :type Tags: list of TagResource
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results.\n        :type TotalCount: int\n        :param Offset: Data offset.\n        :type Offset: int\n        :param Limit: Page size.\n        :type Limit: int\n        :param Tags: Tag list.\n        :type Tags: list of TagResource\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -352,19 +290,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: Service type
-        :type ServiceType: str
-        :param ResourcePrefix: Resource prefix
-        :type ResourcePrefix: str
-        :param ResourceIds: Unique resource ID
-        :type ResourceIds: list of str
-        :param ResourceRegion: Resource region
-        :type ResourceRegion: str
-        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter
-        :type Offset: int
-        :param Limit: Number of entries per page. Default value: 15
-        :type Limit: int
-        """
+        :param ServiceType: Service type\n        :type ServiceType: str\n        :param ResourcePrefix: Resource prefix\n        :type ResourcePrefix: str\n        :param ResourceIds: Unique resource ID\n        :type ResourceIds: list of str\n        :param ResourceRegion: Resource region\n        :type ResourceRegion: str\n        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter\n        :type Offset: int\n        :param Limit: Number of entries per page. Default value: 15\n        :type Limit: int\n        """
         self.ServiceType = None
         self.ResourcePrefix = None
         self.ResourceIds = None
@@ -396,17 +322,7 @@ class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results
-        :type TotalCount: int
-        :param Offset: Data offset
-        :type Offset: int
-        :param Limit: Number of entries per page
-        :type Limit: int
-        :param Tags: Tag list
-        :type Tags: list of TagResource
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param Offset: Data offset\n        :type Offset: int\n        :param Limit: Number of entries per page\n        :type Limit: int\n        :param Tags: Tag list\n        :type Tags: list of TagResource\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -434,21 +350,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: Service type
-        :type ServiceType: str
-        :param ResourcePrefix: Resource prefix
-        :type ResourcePrefix: str
-        :param ResourceRegion: Resource region
-        :type ResourceRegion: str
-        :param ResourceIds: Unique resource ID
-        :type ResourceIds: list of str
-        :param TagKeys: Resource tag key
-        :type TagKeys: list of str
-        :param Limit: Number of entries per page. Default value: 400
-        :type Limit: int
-        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter
-        :type Offset: int
-        """
+        :param ServiceType: Service type\n        :type ServiceType: str\n        :param ResourcePrefix: Resource prefix\n        :type ResourcePrefix: str\n        :param ResourceRegion: Resource region\n        :type ResourceRegion: str\n        :param ResourceIds: Unique resource ID\n        :type ResourceIds: list of str\n        :param TagKeys: Resource tag key\n        :type TagKeys: list of str\n        :param Limit: Number of entries per page. Default value: 400\n        :type Limit: int\n        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter\n        :type Offset: int\n        """
         self.ServiceType = None
         self.ResourcePrefix = None
         self.ResourceRegion = None
@@ -482,17 +384,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results
-        :type TotalCount: int
-        :param Offset: Data offset
-        :type Offset: int
-        :param Limit: Number of entries per page
-        :type Limit: int
-        :param Rows: Resource tag
-        :type Rows: list of ResourceIdTag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param Offset: Data offset\n        :type Offset: int\n        :param Limit: Number of entries per page\n        :type Limit: int\n        :param Rows: Resource tag\n        :type Rows: list of ResourceIdTag\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -520,23 +412,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CreateUin: Creator `uin`
-        :type CreateUin: int
-        :param ResourceRegion: Resource region.
-        :type ResourceRegion: str
-        :param ServiceType: Service type.
-        :type ServiceType: str
-        :param ResourcePrefix: Resource prefix
-        :type ResourcePrefix: str
-        :param ResourceId: Unique resource ID
-        :type ResourceId: str
-        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter
-        :type Offset: int
-        :param Limit: Number of entries per page. Default value: 15
-        :type Limit: int
-        :param CosResourceId: Whether it is a COS resource ID
-        :type CosResourceId: int
-        """
+        :param CreateUin: Creator `uin`\n        :type CreateUin: int\n        :param ResourceRegion: Resource region.\n        :type ResourceRegion: str\n        :param ServiceType: Service type.\n        :type ServiceType: str\n        :param ResourcePrefix: Resource prefix\n        :type ResourcePrefix: str\n        :param ResourceId: Unique resource ID\n        :type ResourceId: str\n        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter\n        :type Offset: int\n        :param Limit: Number of entries per page. Default value: 15\n        :type Limit: int\n        :param CosResourceId: Whether it is a COS resource ID\n        :type CosResourceId: int\n        """
         self.CreateUin = None
         self.ResourceRegion = None
         self.ServiceType = None
@@ -572,18 +448,8 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results
-        :type TotalCount: int
-        :param Offset: Data offset.
-        :type Offset: int
-        :param Limit: Number of entries per page.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Limit: int
-        :param Rows: Resource tag
-        :type Rows: list of TagResource
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param Offset: Data offset.\n        :type Offset: int\n        :param Limit: Number of entries per page.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Limit: int\n        :param Rows: Resource tag\n        :type Rows: list of TagResource\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -611,23 +477,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagFilters: Tag filtering arrays.
-        :type TagFilters: list of TagFilter
-        :param CreateUin: Tag creator uin.
-        :type CreateUin: int
-        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.
-        :type Offset: int
-        :param Limit: Page size. The default value is 15.
-        :type Limit: int
-        :param ResourcePrefix: Resource prefix.
-        :type ResourcePrefix: str
-        :param ResourceId: Unique resource ID.
-        :type ResourceId: str
-        :param ResourceRegion: The resource's region.
-        :type ResourceRegion: str
-        :param ServiceType: Service type.
-        :type ServiceType: str
-        """
+        :param TagFilters: Tag filtering arrays.\n        :type TagFilters: list of TagFilter\n        :param CreateUin: Tag creator uin.\n        :type CreateUin: int\n        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.\n        :type Offset: int\n        :param Limit: Page size. The default value is 15.\n        :type Limit: int\n        :param ResourcePrefix: Resource prefix.\n        :type ResourcePrefix: str\n        :param ResourceId: Unique resource ID.\n        :type ResourceId: str\n        :param ResourceRegion: The resource's region.\n        :type ResourceRegion: str\n        :param ServiceType: Service type.\n        :type ServiceType: str\n        """
         self.TagFilters = None
         self.CreateUin = None
         self.Offset = None
@@ -668,18 +518,8 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results.
-        :type TotalCount: int
-        :param Offset: Data offset.
-        :type Offset: int
-        :param Limit: Number of entries per page.
-Note: This field may return null, indicating that no valid value is found.
-        :type Limit: int
-        :param Rows: Resource tag.
-        :type Rows: list of ResourceTag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results.\n        :type TotalCount: int\n        :param Offset: Data offset.\n        :type Offset: int\n        :param Limit: Number of entries per page.
+Note: This field may return null, indicating that no valid value is found.\n        :type Limit: int\n        :param Rows: Resource tag.\n        :type Rows: list of ResourceTag\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -707,23 +547,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagFilters: Tag filtering arrays.
-        :type TagFilters: list of TagFilter
-        :param CreateUin: Tag creator uin.
-        :type CreateUin: int
-        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.
-        :type Offset: int
-        :param Limit: Page size. The default value is 15.
-        :type Limit: int
-        :param ResourcePrefix: Resource prefix.
-        :type ResourcePrefix: str
-        :param ResourceId: Unique resource ID.
-        :type ResourceId: str
-        :param ResourceRegion: The resource’s region.
-        :type ResourceRegion: str
-        :param ServiceType: Service type
-        :type ServiceType: str
-        """
+        :param TagFilters: Tag filtering arrays.\n        :type TagFilters: list of TagFilter\n        :param CreateUin: Tag creator uin.\n        :type CreateUin: int\n        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.\n        :type Offset: int\n        :param Limit: Page size. The default value is 15.\n        :type Limit: int\n        :param ResourcePrefix: Resource prefix.\n        :type ResourcePrefix: str\n        :param ResourceId: Unique resource ID.\n        :type ResourceId: str\n        :param ResourceRegion: The resource’s region.\n        :type ResourceRegion: str\n        :param ServiceType: Service type\n        :type ServiceType: str\n        """
         self.TagFilters = None
         self.CreateUin = None
         self.Offset = None
@@ -764,17 +588,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results.
-        :type TotalCount: int
-        :param Offset: Data offset.
-        :type Offset: int
-        :param Limit: The size of each page.
-        :type Limit: int
-        :param Rows: Resource tag.
-        :type Rows: list of ResourceTag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results.\n        :type TotalCount: int\n        :param Offset: Data offset.\n        :type Offset: int\n        :param Limit: The size of each page.\n        :type Limit: int\n        :param Rows: Resource tag.\n        :type Rows: list of ResourceTag\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -802,15 +616,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CreateUin: Creator `Uin`. If not specified, `Uin` is only used as the query condition.
-        :type CreateUin: int
-        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.
-        :type Offset: int
-        :param Limit: Page size. The default value is 0.
-        :type Limit: int
-        :param ShowProject: Whether to show project
-        :type ShowProject: int
-        """
+        :param CreateUin: Creator `Uin`. If not specified, `Uin` is only used as the query condition.\n        :type CreateUin: int\n        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.\n        :type Offset: int\n        :param Limit: Page size. The default value is 0.\n        :type Limit: int\n        :param ShowProject: Whether to show project\n        :type ShowProject: int\n        """
         self.CreateUin = None
         self.Offset = None
         self.Limit = None
@@ -838,17 +644,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results.
-        :type TotalCount: int
-        :param Offset: Data offset.
-        :type Offset: int
-        :param Limit: Page size.
-        :type Limit: int
-        :param Tags: Tag list.
-        :type Tags: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results.\n        :type TotalCount: int\n        :param Offset: Data offset.\n        :type Offset: int\n        :param Limit: Page size.\n        :type Limit: int\n        :param Tags: Tag list.\n        :type Tags: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -871,15 +667,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKeys: Tag key list.
-        :type TagKeys: list of str
-        :param CreateUin: Creator `Uin`. If not specified, `Uin` is only used as the query condition.
-        :type CreateUin: int
-        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.
-        :type Offset: int
-        :param Limit: Page size. The default value is 0.
-        :type Limit: int
-        """
+        :param TagKeys: Tag key list.\n        :type TagKeys: list of str\n        :param CreateUin: Creator `Uin`. If not specified, `Uin` is only used as the query condition.\n        :type CreateUin: int\n        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.\n        :type Offset: int\n        :param Limit: Page size. The default value is 0.\n        :type Limit: int\n        """
         self.TagKeys = None
         self.CreateUin = None
         self.Offset = None
@@ -907,17 +695,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results.
-        :type TotalCount: int
-        :param Offset: Data offset.
-        :type Offset: int
-        :param Limit: Page size.
-        :type Limit: int
-        :param Tags: Tag list.
-        :type Tags: list of Tag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results.\n        :type TotalCount: int\n        :param Offset: Data offset.\n        :type Offset: int\n        :param Limit: Page size.\n        :type Limit: int\n        :param Tags: Tag list.\n        :type Tags: list of Tag\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -945,15 +723,7 @@ class DescribeTagValuesSeqRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKeys: Tag key list
-        :type TagKeys: list of str
-        :param CreateUin: Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query
-        :type CreateUin: int
-        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter
-        :type Offset: int
-        :param Limit: Number of entries per page. Default value: 15
-        :type Limit: int
-        """
+        :param TagKeys: Tag key list\n        :type TagKeys: list of str\n        :param CreateUin: Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query\n        :type CreateUin: int\n        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter\n        :type Offset: int\n        :param Limit: Number of entries per page. Default value: 15\n        :type Limit: int\n        """
         self.TagKeys = None
         self.CreateUin = None
         self.Offset = None
@@ -981,17 +751,7 @@ class DescribeTagValuesSeqResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results
-        :type TotalCount: int
-        :param Offset: Data offset
-        :type Offset: int
-        :param Limit: Number of entries per page
-        :type Limit: int
-        :param Tags: Tag list
-        :type Tags: list of Tag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param Offset: Data offset\n        :type Offset: int\n        :param Limit: Number of entries per page\n        :type Limit: int\n        :param Tags: Tag list\n        :type Tags: list of Tag\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -1019,21 +779,7 @@ class DescribeTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key. Either exists or does not exist alongside the tag value. If it does not exist, all of the user's tags will be queried.
-        :type TagKey: str
-        :param TagValue: Tag value. Either exists or does not exist alongside the tag key. If it does not exist, all of the user's tags will be queried.
-        :type TagValue: str
-        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.
-        :type Offset: int
-        :param Limit: Page size. The default value is 0.
-        :type Limit: int
-        :param CreateUin: Creator `Uin`. If not specified, `Uin` is only used as the query condition.
-        :type CreateUin: int
-        :param TagKeys: Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored.
-        :type TagKeys: list of str
-        :param ShowProject: Whether to show project tag
-        :type ShowProject: int
-        """
+        :param TagKey: Tag key. Either exists or does not exist alongside the tag value. If it does not exist, all of the user's tags will be queried.\n        :type TagKey: str\n        :param TagValue: Tag value. Either exists or does not exist alongside the tag key. If it does not exist, all of the user's tags will be queried.\n        :type TagValue: str\n        :param Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.\n        :type Offset: int\n        :param Limit: Page size. The default value is 0.\n        :type Limit: int\n        :param CreateUin: Creator `Uin`. If not specified, `Uin` is only used as the query condition.\n        :type CreateUin: int\n        :param TagKeys: Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored.\n        :type TagKeys: list of str\n        :param ShowProject: Whether to show project tag\n        :type ShowProject: int\n        """
         self.TagKey = None
         self.TagValue = None
         self.Offset = None
@@ -1067,17 +813,7 @@ class DescribeTagsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results.
-        :type TotalCount: int
-        :param Offset: Data offset.
-        :type Offset: int
-        :param Limit: Page size.
-        :type Limit: int
-        :param Tags: Tag list.
-        :type Tags: list of TagWithDelete
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results.\n        :type TotalCount: int\n        :param Offset: Data offset.\n        :type Offset: int\n        :param Limit: Page size.\n        :type Limit: int\n        :param Tags: Tag list.\n        :type Tags: list of TagWithDelete\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -1105,21 +841,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried
-        :type TagKey: str
-        :param TagValue: Tag value, which either exists or does not exist with the tag key. If it does not exist, all tags of the user will be queried
-        :type TagValue: str
-        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter
-        :type Offset: int
-        :param Limit: Number of entries per page. Default value: 15
-        :type Limit: int
-        :param CreateUin: Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query
-        :type CreateUin: int
-        :param TagKeys: Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored.
-        :type TagKeys: list of str
-        :param ShowProject: Whether to show project tag
-        :type ShowProject: int
-        """
+        :param TagKey: Tag key, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried\n        :type TagKey: str\n        :param TagValue: Tag value, which either exists or does not exist with the tag key. If it does not exist, all tags of the user will be queried\n        :type TagValue: str\n        :param Offset: Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter\n        :type Offset: int\n        :param Limit: Number of entries per page. Default value: 15\n        :type Limit: int\n        :param CreateUin: Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query\n        :type CreateUin: int\n        :param TagKeys: Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored.\n        :type TagKeys: list of str\n        :param ShowProject: Whether to show project tag\n        :type ShowProject: int\n        """
         self.TagKey = None
         self.TagValue = None
         self.Offset = None
@@ -1153,17 +875,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results
-        :type TotalCount: int
-        :param Offset: Data offset
-        :type Offset: int
-        :param Limit: Number of entries per page
-        :type Limit: int
-        :param Tags: Tag list
-        :type Tags: list of TagWithDelete
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param Offset: Data offset\n        :type Offset: int\n        :param Limit: Number of entries per page\n        :type Limit: int\n        :param Tags: Tag list\n        :type Tags: list of TagWithDelete\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -1191,17 +903,7 @@ class DetachResourcesTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: Resource service name
-        :type ServiceType: str
-        :param ResourceIds: Resource ID array, which can contain up to 50 resources
-        :type ResourceIds: list of str
-        :param TagKey: Tag key to be unbound
-        :type TagKey: str
-        :param ResourceRegion: Resource region. This field is not required for resources that do not have the region attribute
-        :type ResourceRegion: str
-        :param ResourcePrefix: Resource prefix, which is not required for COS buckets
-        :type ResourcePrefix: str
-        """
+        :param ServiceType: Resource service name\n        :type ServiceType: str\n        :param ResourceIds: Resource ID array, which can contain up to 50 resources\n        :type ResourceIds: list of str\n        :param TagKey: Tag key to be unbound\n        :type TagKey: str\n        :param ResourceRegion: Resource region. This field is not required for resources that do not have the region attribute\n        :type ResourceRegion: str\n        :param ResourcePrefix: Resource prefix, which is not required for COS buckets\n        :type ResourcePrefix: str\n        """
         self.ServiceType = None
         self.ResourceIds = None
         self.TagKey = None
@@ -1231,9 +933,7 @@ class DetachResourcesTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1248,13 +948,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)
-        :type Resource: str
-        :param ReplaceTags: The tags to be added or modified. If the resource described by `Resource` is not associated with the input tag keys, an association will be added. If the tag keys are already associated, the values corresponding to the associated tag keys will be modified to the input values. This API must contain either `ReplaceTags` or `DeleteTag`. And these two parameters cannot include the same tag keys.
-        :type ReplaceTags: list of Tag
-        :param DeleteTags: The tags to be unassociated. This API must contain either `ReplaceTags` or `DeleteTag`. And these two parameters cannot include the same tag keys.
-        :type DeleteTags: list of TagKeyObject
-        """
+        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)\n        :type Resource: str\n        :param ReplaceTags: The tags to be added or modified. If the resource described by `Resource` is not associated with the input tag keys, an association will be added. If the tag keys are already associated, the values corresponding to the associated tag keys will be modified to the input values. This API must contain either `ReplaceTags` or `DeleteTag`. And these two parameters cannot include the same tag keys.\n        :type ReplaceTags: list of Tag\n        :param DeleteTags: The tags to be unassociated. This API must contain either `ReplaceTags` or `DeleteTag`. And these two parameters cannot include the same tag keys.\n        :type DeleteTags: list of TagKeyObject\n        """
         self.Resource = None
         self.ReplaceTags = None
         self.DeleteTags = None
@@ -1290,9 +984,7 @@ class ModifyResourceTagsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1307,19 +999,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: Resource service name
-        :type ServiceType: str
-        :param ResourceIds: Resource ID array, which can contain up to 50 resources
-        :type ResourceIds: list of str
-        :param TagKey: Tag key
-        :type TagKey: str
-        :param TagValue: Tag value
-        :type TagValue: str
-        :param ResourceRegion: Resource region. This field is not required for resources that do not have the region attribute
-        :type ResourceRegion: str
-        :param ResourcePrefix: Resource prefix, which is not required for COS buckets
-        :type ResourcePrefix: str
-        """
+        :param ServiceType: Resource service name\n        :type ServiceType: str\n        :param ResourceIds: Resource ID array, which can contain up to 50 resources\n        :type ResourceIds: list of str\n        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        :param ResourceRegion: Resource region. This field is not required for resources that do not have the region attribute\n        :type ResourceRegion: str\n        :param ResourcePrefix: Resource prefix, which is not required for COS buckets\n        :type ResourcePrefix: str\n        """
         self.ServiceType = None
         self.ResourceIds = None
         self.TagKey = None
@@ -1351,9 +1031,7 @@ class ModifyResourcesTagValueResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1369,12 +1047,8 @@ class ResourceIdTag(AbstractModel):
     def __init__(self):
         """
         :param ResourceId: Unique resource ID
-Note: this field may return null, indicating that no valid values can be obtained
-        :type ResourceId: str
-        :param TagKeyValues: Tag key-value pair
-Note: this field may return null, indicating that no valid values can be obtained
-        :type TagKeyValues: list of Tag
-        """
+Note: this field may return null, indicating that no valid values can be obtained\n        :type ResourceId: str\n        :param TagKeyValues: Tag key-value pair
+Note: this field may return null, indicating that no valid values can be obtained\n        :type TagKeyValues: list of Tag\n        """
         self.ResourceId = None
         self.TagKeyValues = None
 
@@ -1404,21 +1078,11 @@ class ResourceTag(AbstractModel):
     def __init__(self):
         """
         :param ResourceRegion: The resource's region.
-Note: This field may return null, indicating that no valid value is found.
-        :type ResourceRegion: str
-        :param ServiceType: Service type.
-Note: This field may return null, indicating that no valid value is found.
-        :type ServiceType: str
-        :param ResourcePrefix: Resource prefix.
-Note: This field may return null, indicating that no valid value is found.
-        :type ResourcePrefix: str
-        :param ResourceId: Unique resource ID.
-Note: This field may return null, indicating that no valid value is found.
-        :type ResourceId: str
-        :param Tags: Resource tag.
-Note: This field may return null, indicating that no valid value is found.
-        :type Tags: list of Tag
-        """
+Note: This field may return null, indicating that no valid value is found.\n        :type ResourceRegion: str\n        :param ServiceType: Service type.
+Note: This field may return null, indicating that no valid value is found.\n        :type ServiceType: str\n        :param ResourcePrefix: Resource prefix.
+Note: This field may return null, indicating that no valid value is found.\n        :type ResourcePrefix: str\n        :param ResourceId: Unique resource ID.
+Note: This field may return null, indicating that no valid value is found.\n        :type ResourceId: str\n        :param Tags: Resource tag.
+Note: This field may return null, indicating that no valid value is found.\n        :type Tags: list of Tag\n        """
         self.ResourceRegion = None
         self.ServiceType = None
         self.ResourcePrefix = None
@@ -1453,11 +1117,7 @@ class Tag(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key.
-        :type TagKey: str
-        :param TagValue: Tag value.
-        :type TagValue: str
-        """
+        :param TagKey: Tag key.\n        :type TagKey: str\n        :param TagValue: Tag value.\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -1481,11 +1141,7 @@ class TagFilter(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key.
-        :type TagKey: str
-        :param TagValue: Tag value array. '**OR**' relation if multiple values.
-        :type TagValue: list of str
-        """
+        :param TagKey: Tag key.\n        :type TagKey: str\n        :param TagValue: Tag value array. '**OR**' relation if multiple values.\n        :type TagValue: list of str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -1509,9 +1165,7 @@ class TagKeyObject(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key.
-        :type TagKey: str
-        """
+        :param TagKey: Tag key.\n        :type TagKey: str\n        """
         self.TagKey = None
 
 
@@ -1533,20 +1187,8 @@ class TagResource(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key.
-        :type TagKey: str
-        :param TagValue: Tag value.
-        :type TagValue: str
-        :param ResourceId: Resource ID.
-        :type ResourceId: str
-        :param TagKeyMd5: Tag key MD5 value.
-        :type TagKeyMd5: str
-        :param TagValueMd5: Tag value MD5 value.
-        :type TagValueMd5: str
-        :param ServiceType: Resource type
-Note: this field may return null, indicating that no valid values found.
-        :type ServiceType: str
-        """
+        :param TagKey: Tag key.\n        :type TagKey: str\n        :param TagValue: Tag value.\n        :type TagValue: str\n        :param ResourceId: Resource ID.\n        :type ResourceId: str\n        :param TagKeyMd5: Tag key MD5 value.\n        :type TagKeyMd5: str\n        :param TagValueMd5: Tag value MD5 value.\n        :type TagValueMd5: str\n        :param ServiceType: Resource type
+Note: this field may return null, indicating that no valid values found.\n        :type ServiceType: str\n        """
         self.TagKey = None
         self.TagValue = None
         self.ResourceId = None
@@ -1578,13 +1220,7 @@ class TagWithDelete(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key.
-        :type TagKey: str
-        :param TagValue: Tag value.
-        :type TagValue: str
-        :param CanDelete: If deletion is allowed.
-        :type CanDelete: int
-        """
+        :param TagKey: Tag key.\n        :type TagKey: str\n        :param TagValue: Tag value.\n        :type TagValue: str\n        :param CanDelete: If deletion is allowed.\n        :type CanDelete: int\n        """
         self.TagKey = None
         self.TagValue = None
         self.CanDelete = None
@@ -1610,13 +1246,7 @@ class UpdateResourceTagValueRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key associated with the resource.
-        :type TagKey: str
-        :param TagValue: Modified tag value.
-        :type TagValue: str
-        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)
-        :type Resource: str
-        """
+        :param TagKey: Tag key associated with the resource.\n        :type TagKey: str\n        :param TagValue: Modified tag value.\n        :type TagValue: str\n        :param Resource: [Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)\n        :type Resource: str\n        """
         self.TagKey = None
         self.TagValue = None
         self.Resource = None
@@ -1642,9 +1272,7 @@ class UpdateResourceTagValueResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

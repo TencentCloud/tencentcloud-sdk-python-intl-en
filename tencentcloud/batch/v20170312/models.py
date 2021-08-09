@@ -25,29 +25,9 @@ class Activity(AbstractModel):
 
     def __init__(self):
         """
-        :param ActivityId: Activity ID
-        :type ActivityId: str
-        :param ComputeNodeId: Compute node ID
-        :type ComputeNodeId: str
-        :param ComputeNodeActivityType: Compute node activity type: creation or termination
-        :type ComputeNodeActivityType: str
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param Cause: Cause
-        :type Cause: str
-        :param ActivityState: Active status
-        :type ActivityState: str
-        :param StateReason: State reason
-        :type StateReason: str
-        :param StartTime: Activity start time
-        :type StartTime: str
-        :param EndTime: Activity end time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EndTime: str
-        :param InstanceId: CVM instance ID
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type InstanceId: str
-        """
+        :param ActivityId: Activity ID\n        :type ActivityId: str\n        :param ComputeNodeId: Compute node ID\n        :type ComputeNodeId: str\n        :param ComputeNodeActivityType: Compute node activity type: creation or termination\n        :type ComputeNodeActivityType: str\n        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param Cause: Cause\n        :type Cause: str\n        :param ActivityState: Active status\n        :type ActivityState: str\n        :param StateReason: State reason\n        :type StateReason: str\n        :param StartTime: Activity start time\n        :type StartTime: str\n        :param EndTime: Activity end time
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type EndTime: str\n        :param InstanceId: CVM instance ID
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type InstanceId: str\n        """
         self.ActivityId = None
         self.ComputeNodeId = None
         self.ComputeNodeActivityType = None
@@ -87,13 +67,7 @@ class AgentRunningMode(AbstractModel):
 
     def __init__(self):
         """
-        :param Scene: Scenario type. Windows is supported
-        :type Scene: str
-        :param User: The user that runs the Agent
-        :type User: str
-        :param Session: The session that runs the Agent
-        :type Session: str
-        """
+        :param Scene: Scenario type. Windows is supported\n        :type Scene: str\n        :param User: The user that runs the Agent\n        :type User: str\n        :param Session: The session that runs the Agent\n        :type Session: str\n        """
         self.Scene = None
         self.User = None
         self.Session = None
@@ -119,15 +93,7 @@ class AnonymousComputeEnv(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvType: Compute environment management type
-        :type EnvType: str
-        :param EnvData: Compute environment's specific parameters
-        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
-        :param MountDataDisks: Data disk mounting option
-        :type MountDataDisks: list of MountDataDisk
-        :param AgentRunningMode: Agent running mode; applicable for Windows
-        :type AgentRunningMode: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`
-        """
+        :param EnvType: Compute environment management type\n        :type EnvType: str\n        :param EnvData: Compute environment's specific parameters\n        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`\n        :param MountDataDisks: Data disk mounting option\n        :type MountDataDisks: list of MountDataDisk\n        :param AgentRunningMode: Agent running mode; applicable for Windows\n        :type AgentRunningMode: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`\n        """
         self.EnvType = None
         self.EnvData = None
         self.MountDataDisks = None
@@ -164,15 +130,7 @@ class Application(AbstractModel):
 
     def __init__(self):
         """
-        :param Command: Task execution command
-        :type Command: str
-        :param DeliveryForm: Delivery form of the application. Value range: PACKAGE, LOCAL, which refer to remotely stored software package and local compute environment, respectively.
-        :type DeliveryForm: str
-        :param PackagePath: Remote storage path of the application package
-        :type PackagePath: str
-        :param Docker: Relevant configuration of the Docker used by the application. In case that the Docker configuration is used, "LOCAL" DeliveryForm means that the application software inside the Docker image is used directly and run in Docker mode; "PACKAGE" DeliveryForm means that the remote application package is run in Docker mode after being injected into the Docker image. To avoid compatibility issues with different versions of Docker, the Docker installation package and relevant dependencies are taken care of by BatchCompute. For custom images where Docker has already been installed, uninstall Docker first and then use the Docker feature.
-        :type Docker: :class:`tencentcloud.batch.v20170312.models.Docker`
-        """
+        :param Command: Task execution command\n        :type Command: str\n        :param DeliveryForm: Delivery form of the application. Value range: PACKAGE, LOCAL, which refer to remotely stored software package and local compute environment, respectively.\n        :type DeliveryForm: str\n        :param PackagePath: Remote storage path of the application package\n        :type PackagePath: str\n        :param Docker: Relevant configuration of the Docker used by the application. In case that the Docker configuration is used, "LOCAL" DeliveryForm means that the application software inside the Docker image is used directly and run in Docker mode; "PACKAGE" DeliveryForm means that the remote application package is run in Docker mode after being injected into the Docker image. To avoid compatibility issues with different versions of Docker, the Docker installation package and relevant dependencies are taken care of by BatchCompute. For custom images where Docker has already been installed, uninstall Docker first and then use the Docker feature.\n        :type Docker: :class:`tencentcloud.batch.v20170312.models.Docker`\n        """
         self.Command = None
         self.DeliveryForm = None
         self.PackagePath = None
@@ -202,11 +160,7 @@ class AttachInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param Instances: List of instances that added to the compute environment
-        :type Instances: list of Instance
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param Instances: List of instances that added to the compute environment\n        :type Instances: list of Instance\n        """
         self.EnvId = None
         self.Instances = None
 
@@ -235,9 +189,7 @@ class AttachInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -252,13 +204,7 @@ class Authentication(AbstractModel):
 
     def __init__(self):
         """
-        :param Scene: Authentication scenario such as COS
-        :type Scene: str
-        :param SecretId: SecretId
-        :type SecretId: str
-        :param SecretKey: SecretKey
-        :type SecretKey: str
-        """
+        :param Scene: Authentication scenario such as COS\n        :type Scene: str\n        :param SecretId: SecretId\n        :type SecretId: str\n        :param SecretKey: SecretKey\n        :type SecretKey: str\n        """
         self.Scene = None
         self.SecretId = None
         self.SecretKey = None
@@ -284,36 +230,14 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param EnvName: Compute environment name
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EnvName: str
-        :param EnvDescription: Compute environment description
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EnvDescription: str
-        :param EnvType: Compute environment type. Only "MANAGED" type is supported
-        :type EnvType: str
-        :param EnvData: Compute environment parameter
-        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
-        :param MountDataDisks: Data disk mounting option
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type MountDataDisks: list of MountDataDisk
-        :param InputMappings: Input mapping
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type InputMappings: list of InputMapping
-        :param Authentications: Authorization information
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Authentications: list of Authentication
-        :param Notifications: Notification information
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Notifications: list of Notification
-        :param DesiredComputeNodeCount: Number of desired compute nodes
-        :type DesiredComputeNodeCount: int
-        :param Tags: Tag list of the compute environment.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Tags: list of Tag
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param EnvName: Compute environment name
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type EnvName: str\n        :param EnvDescription: Compute environment description
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type EnvDescription: str\n        :param EnvType: Compute environment type. Only "MANAGED" type is supported\n        :type EnvType: str\n        :param EnvData: Compute environment parameter\n        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`\n        :param MountDataDisks: Data disk mounting option
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type MountDataDisks: list of MountDataDisk\n        :param InputMappings: Input mapping
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type InputMappings: list of InputMapping\n        :param Authentications: Authorization information
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type Authentications: list of Authentication\n        :param Notifications: Notification information
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type Notifications: list of Notification\n        :param DesiredComputeNodeCount: Number of desired compute nodes\n        :type DesiredComputeNodeCount: int\n        :param Tags: Tag list of the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.\n        :type Tags: list of Tag\n        """
         self.EnvId = None
         self.EnvName = None
         self.EnvDescription = None
@@ -382,9 +306,7 @@ class ComputeEnvData(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceTypes: List of CVM instance types
-        :type InstanceTypes: list of str
-        """
+        :param InstanceTypes: List of CVM instance types\n        :type InstanceTypes: list of str\n        """
         self.InstanceTypes = None
 
 
@@ -406,30 +328,8 @@ class ComputeEnvView(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param EnvName: Compute environment name
-        :type EnvName: str
-        :param Placement: Location information
-        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param ComputeNodeMetrics: Compute node statistical metrics
-        :type ComputeNodeMetrics: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`
-        :param EnvType: Compute environment type
-        :type EnvType: str
-        :param DesiredComputeNodeCount: Number of desired compute nodes
-        :type DesiredComputeNodeCount: int
-        :param ResourceType: Compute environment resource type. Valid values: `CVM`, `CPM` (Bare Metal)
-        :type ResourceType: str
-        :param NextAction: Next action
-        :type NextAction: str
-        :param AttachedComputeNodeCount: Number of compute nodes added to the compute environment by the user
-        :type AttachedComputeNodeCount: int
-        :param Tags: Tag list bound to the compute environment.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Tags: list of Tag
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param EnvName: Compute environment name\n        :type EnvName: str\n        :param Placement: Location information\n        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param ComputeNodeMetrics: Compute node statistical metrics\n        :type ComputeNodeMetrics: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`\n        :param EnvType: Compute environment type\n        :type EnvType: str\n        :param DesiredComputeNodeCount: Number of desired compute nodes\n        :type DesiredComputeNodeCount: int\n        :param ResourceType: Compute environment resource type. Valid values: `CVM`, `CPM` (Bare Metal)\n        :type ResourceType: str\n        :param NextAction: Next action\n        :type NextAction: str\n        :param AttachedComputeNodeCount: Number of compute nodes added to the compute environment by the user\n        :type AttachedComputeNodeCount: int\n        :param Tags: Tag list bound to the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.\n        :type Tags: list of Tag\n        """
         self.EnvId = None
         self.EnvName = None
         self.Placement = None
@@ -480,32 +380,8 @@ class ComputeNode(AbstractModel):
 
     def __init__(self):
         """
-        :param ComputeNodeId: Compute node ID
-        :type ComputeNodeId: str
-        :param ComputeNodeInstanceId: Compute node instance ID. In a CVM scenario, this parameter is the CVM InstanceId
-        :type ComputeNodeInstanceId: str
-        :param ComputeNodeState: Compute node state
-        :type ComputeNodeState: str
-        :param Cpu: Number of CPU cores
-        :type Cpu: int
-        :param Mem: Memory size in GiB
-        :type Mem: int
-        :param ResourceCreatedTime: Resource creation time
-        :type ResourceCreatedTime: str
-        :param TaskInstanceNumAvailable: Available capacity of the compute node when running TaskInstance. 0 means that the compute node is busy.
-        :type TaskInstanceNumAvailable: int
-        :param AgentVersion: BatchCompute Agent version
-        :type AgentVersion: str
-        :param PrivateIpAddresses: Private IP of the instance
-        :type PrivateIpAddresses: list of str
-        :param PublicIpAddresses: Public IP of the instance
-        :type PublicIpAddresses: list of str
-        :param ResourceType: Compute environment resource type. Valid values: `CVM`, `CPM` (Bare Metal)
-        :type ResourceType: str
-        :param ResourceOrigin: Source of compute environment resources. <br>BATCH_CREATED: instance resources created by BatchCompute.<br>
-USER_ATTACHED: instance resources added by users to the compute environment.
-        :type ResourceOrigin: str
-        """
+        :param ComputeNodeId: Compute node ID\n        :type ComputeNodeId: str\n        :param ComputeNodeInstanceId: Compute node instance ID. In a CVM scenario, this parameter is the CVM InstanceId\n        :type ComputeNodeInstanceId: str\n        :param ComputeNodeState: Compute node state\n        :type ComputeNodeState: str\n        :param Cpu: Number of CPU cores\n        :type Cpu: int\n        :param Mem: Memory size in GiB\n        :type Mem: int\n        :param ResourceCreatedTime: Resource creation time\n        :type ResourceCreatedTime: str\n        :param TaskInstanceNumAvailable: Available capacity of the compute node when running TaskInstance. 0 means that the compute node is busy.\n        :type TaskInstanceNumAvailable: int\n        :param AgentVersion: BatchCompute Agent version\n        :type AgentVersion: str\n        :param PrivateIpAddresses: Private IP of the instance\n        :type PrivateIpAddresses: list of str\n        :param PublicIpAddresses: Public IP of the instance\n        :type PublicIpAddresses: list of str\n        :param ResourceType: Compute environment resource type. Valid values: `CVM`, `CPM` (Bare Metal)\n        :type ResourceType: str\n        :param ResourceOrigin: Source of compute environment resources. <br>BATCH_CREATED: instance resources created by BatchCompute.<br>
+USER_ATTACHED: instance resources added by users to the compute environment.\n        :type ResourceOrigin: str\n        """
         self.ComputeNodeId = None
         self.ComputeNodeInstanceId = None
         self.ComputeNodeState = None
@@ -549,21 +425,7 @@ class ComputeNodeMetrics(AbstractModel):
 
     def __init__(self):
         """
-        :param SubmittedCount: Number of compute nodes that have been submitted
-        :type SubmittedCount: int
-        :param CreatingCount: Number of compute nodes that are being created
-        :type CreatingCount: int
-        :param CreationFailedCount: Number of compute nodes that failed to be created
-        :type CreationFailedCount: int
-        :param CreatedCount: Number of compute nodes that have been created
-        :type CreatedCount: int
-        :param RunningCount: Number of running compute nodes
-        :type RunningCount: int
-        :param DeletingCount: Number of compute nodes that are being terminated
-        :type DeletingCount: int
-        :param AbnormalCount: Number of exceptional compute nodes
-        :type AbnormalCount: int
-        """
+        :param SubmittedCount: Number of compute nodes that have been submitted\n        :type SubmittedCount: int\n        :param CreatingCount: Number of compute nodes that are being created\n        :type CreatingCount: int\n        :param CreationFailedCount: Number of compute nodes that failed to be created\n        :type CreationFailedCount: int\n        :param CreatedCount: Number of compute nodes that have been created\n        :type CreatedCount: int\n        :param RunningCount: Number of running compute nodes\n        :type RunningCount: int\n        :param DeletingCount: Number of compute nodes that are being terminated\n        :type DeletingCount: int\n        :param AbnormalCount: Number of exceptional compute nodes\n        :type AbnormalCount: int\n        """
         self.SubmittedCount = None
         self.CreatingCount = None
         self.CreationFailedCount = None
@@ -597,13 +459,7 @@ class CreateComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ComputeEnv: Compute environment information
-        :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.NamedComputeEnv`
-        :param Placement: Location information
-        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
-        :param ClientToken: The string used to guarantee the idempotency of the request, which is generated by the user and must be unique for different requests. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
-        :type ClientToken: str
-        """
+        :param ComputeEnv: Compute environment information\n        :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.NamedComputeEnv`\n        :param Placement: Location information\n        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`\n        :param ClientToken: The string used to guarantee the idempotency of the request, which is generated by the user and must be unique for different requests. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.\n        :type ClientToken: str\n        """
         self.ComputeEnv = None
         self.Placement = None
         self.ClientToken = None
@@ -633,11 +489,7 @@ class CreateComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.EnvId = None
         self.RequestId = None
 
@@ -654,15 +506,7 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskTemplateName: Task template name
-        :type TaskTemplateName: str
-        :param TaskTemplateInfo: Task template content with the same parameter requirements as the task
-        :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
-        :param TaskTemplateDescription: Task template description
-        :type TaskTemplateDescription: str
-        :param Tags: Tag list. By setting this parameter, you can bind tags to a task template. Each task template supports up to 10 tags.
-        :type Tags: list of Tag
-        """
+        :param TaskTemplateName: Task template name\n        :type TaskTemplateName: str\n        :param TaskTemplateInfo: Task template content with the same parameter requirements as the task\n        :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`\n        :param TaskTemplateDescription: Task template description\n        :type TaskTemplateDescription: str\n        :param Tags: Tag list. By setting this parameter, you can bind tags to a task template. Each task template supports up to 10 tags.\n        :type Tags: list of Tag\n        """
         self.TaskTemplateName = None
         self.TaskTemplateInfo = None
         self.TaskTemplateDescription = None
@@ -697,11 +541,7 @@ class CreateTaskTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskTemplateId: Task template ID
-        :type TaskTemplateId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TaskTemplateId: Task template ID\n        :type TaskTemplateId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskTemplateId = None
         self.RequestId = None
 
@@ -718,38 +558,22 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
-        :type DiskSize: int
-        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
-        :type DiskType: str
-        :param DiskId: Data disk ID. Data disks of the type `LOCAL_BASIC` or `LOCAL_SSD` do not have IDs and do not support this parameter.
-        :type DiskId: str
-        :param DeleteWithInstance: Whether to terminate the data disk when its CVM is terminated. Valid values:
+        :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.\n        :type DiskSize: int\n        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.\n        :type DiskType: str\n        :param DiskId: Data disk ID. Data disks of the type `LOCAL_BASIC` or `LOCAL_SSD` do not have IDs and do not support this parameter.\n        :type DiskId: str\n        :param DeleteWithInstance: Whether to terminate the data disk when its CVM is terminated. Valid values:
 <li>TRUE: terminate the data disk when its CVM is terminated. This value only supports pay-as-you-go cloud disks billed on an hourly basis.
 <li>FALSE: retain the data disk when its CVM is terminated.<br>
 Default value: TRUE<br>
 Currently this parameter is only used in the `RunInstances` API.
-Note: This field may return null, indicating that no valid value is found.
-        :type DeleteWithInstance: bool
-        :param SnapshotId: Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.
-Note: This field may return null, indicating that no valid value is found.
-        :type SnapshotId: str
-        :param Encrypt: Specifies whether the data disk is encrypted. Valid values: 
+Note: This field may return null, indicating that no valid value is found.\n        :type DeleteWithInstance: bool\n        :param SnapshotId: Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.
+Note: This field may return null, indicating that no valid value is found.\n        :type SnapshotId: str\n        :param Encrypt: Specifies whether the data disk is encrypted. Valid values: 
 <li>TRUE: encrypted
 <li>FALSE: not encrypted<br>
 Default value: FALSE<br>
 This parameter is only used with `RunInstances`.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Encrypt: bool
-        :param KmsKeyId: ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Encrypt: bool\n        :param KmsKeyId: ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.
 
 Currently, this parameter is only used in the `RunInstances` API.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type KmsKeyId: str
-        :param ThroughputPerformance: Cloud disk performance, in MB/s
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ThroughputPerformance: int
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type KmsKeyId: str\n        :param ThroughputPerformance: Cloud disk performance, in MB/s
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ThroughputPerformance: int\n        """
         self.DiskSize = None
         self.DiskType = None
         self.DiskId = None
@@ -785,9 +609,7 @@ class DeleteComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        """
         self.EnvId = None
 
 
@@ -809,9 +631,7 @@ class DeleteComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -826,9 +646,7 @@ class DeleteJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Job ID
-        :type JobId: str
-        """
+        :param JobId: Job ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -850,9 +668,7 @@ class DeleteJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -867,9 +683,7 @@ class DeleteTaskTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskTemplateIds: This API is used to delete task template information.
-        :type TaskTemplateIds: list of str
-        """
+        :param TaskTemplateIds: This API is used to delete task template information.\n        :type TaskTemplateIds: list of str\n        """
         self.TaskTemplateIds = None
 
 
@@ -891,9 +705,7 @@ class DeleteTaskTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -908,11 +720,7 @@ class Dependence(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTask: Dependency start task name |
-        :type StartTask: str
-        :param EndTask: Dependency end task name |
-        :type EndTask: str
-        """
+        :param StartTask: Dependency start task name |\n        :type StartTask: str\n        :param EndTask: Dependency end task name |\n        :type EndTask: str\n        """
         self.StartTask = None
         self.EndTask = None
 
@@ -938,9 +746,7 @@ class DescribeAvailableCvmInstanceTypesRequest(AbstractModel):
         """
         :param Filters: Filter.
 <li> zone - String - Required: No - (Filter) Filter by availability zone.</li>
-<li> instance-family - String - Required: No - (Filter) Filter by model family such as S1, I1, and M1.</li>
-        :type Filters: list of Filter
-        """
+<li> instance-family - String - Required: No - (Filter) Filter by model family such as S1, I1, and M1.</li>\n        :type Filters: list of Filter\n        """
         self.Filters = None
 
 
@@ -967,11 +773,7 @@ class DescribeAvailableCvmInstanceTypesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceTypeConfigSet: Array of model configurations
-        :type InstanceTypeConfigSet: list of InstanceTypeConfig
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param InstanceTypeConfigSet: Array of model configurations\n        :type InstanceTypeConfigSet: list of InstanceTypeConfig\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceTypeConfigSet = None
         self.RequestId = None
 
@@ -993,16 +795,8 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param Offset: Offset
-        :type Offset: int
-        :param Limit: Number of returned results
-        :type Limit: int
-        :param Filters: Filter
-<li> compute-node-id - String - Required: No - (Filter) Filter by compute node ID.</li>
-        :type Filters: :class:`tencentcloud.batch.v20170312.models.Filter`
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Number of returned results\n        :type Limit: int\n        :param Filters: Filter
+<li> compute-node-id - String - Required: No - (Filter) Filter by compute node ID.</li>\n        :type Filters: :class:`tencentcloud.batch.v20170312.models.Filter`\n        """
         self.EnvId = None
         self.Offset = None
         self.Limit = None
@@ -1032,13 +826,7 @@ class DescribeComputeEnvActivitiesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ActivitySet: List of activities in the compute environment
-        :type ActivitySet: list of Activity
-        :param TotalCount: Number of activities
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param ActivitySet: List of activities in the compute environment\n        :type ActivitySet: list of Activity\n        :param TotalCount: Number of activities\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ActivitySet = None
         self.TotalCount = None
         self.RequestId = None
@@ -1062,9 +850,7 @@ class DescribeComputeEnvCreateInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        """
         self.EnvId = None
 
 
@@ -1086,33 +872,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param EnvName: Compute environment name
-        :type EnvName: str
-        :param EnvDescription: Compute environment description
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EnvDescription: str
-        :param EnvType: Compute environment type. Only "MANAGED" type is supported
-        :type EnvType: str
-        :param EnvData: Compute environment parameter
-        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
-        :param MountDataDisks: Data disk mounting option
-        :type MountDataDisks: list of MountDataDisk
-        :param InputMappings: Input mapping
-        :type InputMappings: list of InputMapping
-        :param Authentications: Authorization information
-        :type Authentications: list of Authentication
-        :param Notifications: Notification information
-        :type Notifications: list of Notification
-        :param DesiredComputeNodeCount: Number of desired compute nodes
-        :type DesiredComputeNodeCount: int
-        :param Tags: Tag list bound to the compute environment.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Tags: list of Tag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param EnvName: Compute environment name\n        :type EnvName: str\n        :param EnvDescription: Compute environment description
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type EnvDescription: str\n        :param EnvType: Compute environment type. Only "MANAGED" type is supported\n        :type EnvType: str\n        :param EnvData: Compute environment parameter\n        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`\n        :param MountDataDisks: Data disk mounting option\n        :type MountDataDisks: list of MountDataDisk\n        :param InputMappings: Input mapping\n        :type InputMappings: list of InputMapping\n        :param Authentications: Authorization information\n        :type Authentications: list of Authentication\n        :param Notifications: Notification information\n        :type Notifications: list of Notification\n        :param DesiredComputeNodeCount: Number of desired compute nodes\n        :type DesiredComputeNodeCount: int\n        :param Tags: Tag list bound to the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.\n        :type Tags: list of Tag\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.EnvId = None
         self.EnvName = None
         self.EnvDescription = None
@@ -1176,18 +938,10 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvIds: Compute environment ID
-        :type EnvIds: list of str
-        :param Filters: Filter
+        :param EnvIds: Compute environment ID\n        :type EnvIds: list of str\n        :param Filters: Filter
 <li> zone - String - Required: No - (Filter) Filter by availability zone.</li>
 <li> env-id - String - Required: No - (Filter) Filter by compute environment ID.</li>
-<li> env-name - String - Required: No - (Filter) Filter by compute environment name.</li>
-        :type Filters: list of Filter
-        :param Offset: Offset
-        :type Offset: int
-        :param Limit: Number of returned results
-        :type Limit: int
-        """
+<li> env-name - String - Required: No - (Filter) Filter by compute environment name.</li>\n        :type Filters: list of Filter\n        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Number of returned results\n        :type Limit: int\n        """
         self.EnvIds = None
         self.Filters = None
         self.Offset = None
@@ -1220,13 +974,7 @@ class DescribeComputeEnvCreateInfosResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of compute environments
-        :type TotalCount: int
-        :param ComputeEnvCreateInfoSet: List of compute environment creation information
-        :type ComputeEnvCreateInfoSet: list of ComputeEnvCreateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of compute environments\n        :type TotalCount: int\n        :param ComputeEnvCreateInfoSet: List of compute environment creation information\n        :type ComputeEnvCreateInfoSet: list of ComputeEnvCreateInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ComputeEnvCreateInfoSet = None
         self.RequestId = None
@@ -1250,9 +998,7 @@ class DescribeComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        """
         self.EnvId = None
 
 
@@ -1274,34 +1020,8 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param EnvName: Compute environment name
-        :type EnvName: str
-        :param Placement: Location information
-        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
-        :param CreateTime: Compute environment creation time
-        :type CreateTime: str
-        :param ComputeNodeSet: List of compute nodes
-        :type ComputeNodeSet: list of ComputeNode
-        :param ComputeNodeMetrics: Compute node statistical metrics
-        :type ComputeNodeMetrics: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`
-        :param DesiredComputeNodeCount: Number of desired compute nodes
-        :type DesiredComputeNodeCount: int
-        :param EnvType: Compute environment type
-        :type EnvType: str
-        :param ResourceType: Compute environment resource type. Valid values: CVM, CPM (Bare Metal)
-        :type ResourceType: str
-        :param NextAction: Next action
-        :type NextAction: str
-        :param AttachedComputeNodeCount: Number of compute nodes added to the compute environment by the user
-        :type AttachedComputeNodeCount: int
-        :param Tags: Tag list bound to the compute environment.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Tags: list of Tag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param EnvName: Compute environment name\n        :type EnvName: str\n        :param Placement: Location information\n        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`\n        :param CreateTime: Compute environment creation time\n        :type CreateTime: str\n        :param ComputeNodeSet: List of compute nodes\n        :type ComputeNodeSet: list of ComputeNode\n        :param ComputeNodeMetrics: Compute node statistical metrics\n        :type ComputeNodeMetrics: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`\n        :param DesiredComputeNodeCount: Number of desired compute nodes\n        :type DesiredComputeNodeCount: int\n        :param EnvType: Compute environment type\n        :type EnvType: str\n        :param ResourceType: Compute environment resource type. Valid values: CVM, CPM (Bare Metal)\n        :type ResourceType: str\n        :param NextAction: Next action\n        :type NextAction: str\n        :param AttachedComputeNodeCount: Number of compute nodes added to the compute environment by the user\n        :type AttachedComputeNodeCount: int\n        :param Tags: Tag list bound to the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.\n        :type Tags: list of Tag\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.EnvId = None
         self.EnvName = None
         self.Placement = None
@@ -1354,9 +1074,7 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvIds: Compute environment ID
-        :type EnvIds: list of str
-        :param Filters: Filter.
+        :param EnvIds: Compute environment ID\n        :type EnvIds: list of str\n        :param Filters: Filter.
 <li> `zone` - String - Optional - Filter by availability zone.</li>
 <li> `env-id` - String - Optional - Filter by compute environment ID.</li>
 <li> `env-name` - String - Optional - Filter by compute environment name.</li>
@@ -1364,13 +1082,7 @@ class DescribeComputeEnvsRequest(AbstractModel):
 <li> `tag-key` - String - Optional - Filter by tag key.</li>
 </li>`tag-value` - String - Optional - Filter by tag value.</li>
 <li> `tag:tag-key` - String - Optional - Filter by tag key-value pair. The tag-key should be replaced by a specified tag key.</li>
-It cannot be specified together with the `EnvIds` parameter.
-        :type Filters: list of Filter
-        :param Offset: Offset
-        :type Offset: int
-        :param Limit: Number of returned results
-        :type Limit: int
-        """
+It cannot be specified together with the `EnvIds` parameter.\n        :type Filters: list of Filter\n        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Number of returned results\n        :type Limit: int\n        """
         self.EnvIds = None
         self.Filters = None
         self.Offset = None
@@ -1403,13 +1115,7 @@ class DescribeComputeEnvsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ComputeEnvSet: List of compute environments
-        :type ComputeEnvSet: list of ComputeEnvView
-        :param TotalCount: Number of compute environments
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param ComputeEnvSet: List of compute environments\n        :type ComputeEnvSet: list of ComputeEnvView\n        :param TotalCount: Number of compute environments\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ComputeEnvSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -1437,9 +1143,7 @@ class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
 <li> zone - String - Required: No - (Filter) Filter by availability zone.</li>
 <li> instance-family - String - Required: No - (Filter) Filter by model family such as S1, I1, and M1.</li>
 <li> instance-type - String - Required: No - (Filter) Filter by model.</li>
-<li> instance-charge-type - String - Required: No - (Filter) Filter by instance billing method. ( POSTPAID_BY_HOUR: pay-as-you-go | SPOTPAID: bidding.)  </li>
-        :type Filters: list of Filter
-        """
+<li> instance-charge-type - String - Required: No - (Filter) Filter by instance billing method. ( POSTPAID_BY_HOUR: pay-as-you-go | SPOTPAID: bidding.)  </li>\n        :type Filters: list of Filter\n        """
         self.Filters = None
 
 
@@ -1466,11 +1170,7 @@ class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceTypeQuotaSet: List of model configurations in the availability zone.
-        :type InstanceTypeQuotaSet: list of InstanceTypeQuotaItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param InstanceTypeQuotaSet: List of model configurations in the availability zone.\n        :type InstanceTypeQuotaSet: list of InstanceTypeQuotaItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceTypeQuotaSet = None
         self.RequestId = None
 
@@ -1498,11 +1198,7 @@ class DescribeInstanceCategoriesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceCategorySet: List of CVM instance categories
-        :type InstanceCategorySet: list of InstanceCategoryItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param InstanceCategorySet: List of CVM instance categories\n        :type InstanceCategorySet: list of InstanceCategoryItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceCategorySet = None
         self.RequestId = None
 
@@ -1524,9 +1220,7 @@ class DescribeJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Instance ID
-        :type JobId: str
-        """
+        :param JobId: Instance ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -1548,39 +1242,9 @@ class DescribeJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Instance ID
-        :type JobId: str
-        :param JobName: Instance name
-        :type JobName: str
-        :param Zone: Information of availability zone
-        :type Zone: str
-        :param Priority: Instance priority
-        :type Priority: int
-        :param JobState: Instance state
-        :type JobState: str
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param TaskSet: Task view information
-        :type TaskSet: list of TaskView
-        :param DependenceSet: Information of the dependency among tasks
-        :type DependenceSet: list of Dependence
-        :param TaskMetrics: Task statistical metrics
-        :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
-        :param TaskInstanceMetrics: Task instance statistical metrics
-        :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
-        :param StateReason: Instance failure reason
-        :type StateReason: str
-        :param Tags: Tag list bound to the job.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Tags: list of Tag
-        :param NextAction: Next action
-Note: This field may return `null`, indicating that no valid value was found.
-        :type NextAction: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param JobId: Instance ID\n        :type JobId: str\n        :param JobName: Instance name\n        :type JobName: str\n        :param Zone: Information of availability zone\n        :type Zone: str\n        :param Priority: Instance priority\n        :type Priority: int\n        :param JobState: Instance state\n        :type JobState: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param TaskSet: Task view information\n        :type TaskSet: list of TaskView\n        :param DependenceSet: Information of the dependency among tasks\n        :type DependenceSet: list of Dependence\n        :param TaskMetrics: Task statistical metrics\n        :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`\n        :param TaskInstanceMetrics: Task instance statistical metrics\n        :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`\n        :param StateReason: Instance failure reason\n        :type StateReason: str\n        :param Tags: Tag list bound to the job.
+Note: This field may return `null`, indicating that no valid value was found.\n        :type Tags: list of Tag\n        :param NextAction: Next action
+Note: This field may return `null`, indicating that no valid value was found.\n        :type NextAction: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.JobId = None
         self.JobName = None
         self.Zone = None
@@ -1642,9 +1306,7 @@ class DescribeJobSubmitInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Instance ID
-        :type JobId: str
-        """
+        :param JobId: Instance ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -1666,24 +1328,8 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Instance ID
-        :type JobId: str
-        :param JobName: Instance name
-        :type JobName: str
-        :param JobDescription: Instance description
-        :type JobDescription: str
-        :param Priority: Job priority. Tasks (Task) and task instances (TaskInstance) inherit the priority of the job
-        :type Priority: int
-        :param Tasks: Task information
-        :type Tasks: list of Task
-        :param Dependences: Dependency information
-        :type Dependences: list of Dependence
-        :param Tags: Tag list bound to the job.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Tags: list of Tag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param JobId: Instance ID\n        :type JobId: str\n        :param JobName: Instance name\n        :type JobName: str\n        :param JobDescription: Instance description\n        :type JobDescription: str\n        :param Priority: Job priority. Tasks (Task) and task instances (TaskInstance) inherit the priority of the job\n        :type Priority: int\n        :param Tasks: Task information\n        :type Tasks: list of Task\n        :param Dependences: Dependency information\n        :type Dependences: list of Dependence\n        :param Tags: Tag list bound to the job.
+Note: This field may return `null`, indicating that no valid value was found.\n        :type Tags: list of Tag\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.JobId = None
         self.JobName = None
         self.JobDescription = None
@@ -1727,9 +1373,7 @@ class DescribeJobsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobIds: Instance ID
-        :type JobIds: list of str
-        :param Filters: Filter.
+        :param JobIds: Instance ID\n        :type JobIds: list of str\n        :param Filters: Filter.
 <li> `job-id` - String - Optional - Filter by job ID.</li>
 <li> `job-name` - String - Optional - Filter by job name.</li>
 <li> `job-state` - String - Optional - Filter by job state.</li>
@@ -1737,13 +1381,7 @@ class DescribeJobsRequest(AbstractModel):
 <li> `tag-key` - String - Optional - Filter by tag key.</li>
 <li> `tag-value` - String - Optional - Filter by tag value.</li>
 <li> `tag:tag-key` - String - Optional - Filter by tag key-value pair. The tag-key should be replaced by a specified tag key.</li>
-It cannot be specified together with the `JobIds` parameter.
-        :type Filters: list of Filter
-        :param Offset: Offset
-        :type Offset: int
-        :param Limit: Number of returned results
-        :type Limit: int
-        """
+It cannot be specified together with the `JobIds` parameter.\n        :type Filters: list of Filter\n        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Number of returned results\n        :type Limit: int\n        """
         self.JobIds = None
         self.Filters = None
         self.Offset = None
@@ -1776,13 +1414,7 @@ class DescribeJobsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param JobSet: List of instances
-        :type JobSet: list of JobView
-        :param TotalCount: Number of eligible instances
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param JobSet: List of instances\n        :type JobSet: list of JobView\n        :param TotalCount: Number of eligible instances\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.JobSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -1806,17 +1438,7 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Instance ID
-        :type JobId: str
-        :param TaskName: Job name
-        :type TaskName: str
-        :param TaskInstanceIndexes: Set of task instances
-        :type TaskInstanceIndexes: list of int non-negative
-        :param Offset: Starting task instance
-        :type Offset: int
-        :param Limit: Maximum number of task instances
-        :type Limit: int
-        """
+        :param JobId: Instance ID\n        :type JobId: str\n        :param TaskName: Job name\n        :type TaskName: str\n        :param TaskInstanceIndexes: Set of task instances\n        :type TaskInstanceIndexes: list of int non-negative\n        :param Offset: Starting task instance\n        :type Offset: int\n        :param Limit: Maximum number of task instances\n        :type Limit: int\n        """
         self.JobId = None
         self.TaskName = None
         self.TaskInstanceIndexes = None
@@ -1846,13 +1468,7 @@ class DescribeTaskLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of task instances
-        :type TotalCount: int
-        :param TaskInstanceLogSet: Set of task instance log details
-        :type TaskInstanceLogSet: list of TaskInstanceLog
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of task instances\n        :type TotalCount: int\n        :param TaskInstanceLogSet: Set of task instance log details\n        :type TaskInstanceLogSet: list of TaskInstanceLog\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TaskInstanceLogSet = None
         self.RequestId = None
@@ -1876,18 +1492,8 @@ class DescribeTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Instance ID
-        :type JobId: str
-        :param TaskName: Task name
-        :type TaskName: str
-        :param Offset: Offset
-        :type Offset: int
-        :param Limit: Number of returned results. Default value: 100. Maximum value: 1,000.
-        :type Limit: int
-        :param Filters: Filter as detailed below:
-<li> task-instance-type - String - Required: No - (Filter) Filter by task instance state. (SUBMITTED: submitted; PENDING: pending; RUNNABLE: runnable; STARTING: starting; RUNNING: running; SUCCEED: succeeded; FAILED: failed; FAILED_INTERRUPTED: instance retained after failure).</li>
-        :type Filters: list of Filter
-        """
+        :param JobId: Instance ID\n        :type JobId: str\n        :param TaskName: Task name\n        :type TaskName: str\n        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Number of returned results. Default value: 100. Maximum value: 1,000.\n        :type Limit: int\n        :param Filters: Filter as detailed below:
+<li> task-instance-type - String - Required: No - (Filter) Filter by task instance state. (SUBMITTED: submitted; PENDING: pending; RUNNABLE: runnable; STARTING: starting; RUNNING: running; SUCCEED: succeeded; FAILED: failed; FAILED_INTERRUPTED: instance retained after failure).</li>\n        :type Filters: list of Filter\n        """
         self.JobId = None
         self.TaskName = None
         self.Offset = None
@@ -1922,25 +1528,7 @@ class DescribeTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Instance ID
-        :type JobId: str
-        :param TaskName: Job name
-        :type TaskName: str
-        :param TaskState: Job state
-        :type TaskState: str
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param TaskInstanceTotalCount: Total number of task instances
-        :type TaskInstanceTotalCount: int
-        :param TaskInstanceSet: Task instance information
-        :type TaskInstanceSet: list of TaskInstanceView
-        :param TaskInstanceMetrics: Task instance statistical metrics
-        :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param JobId: Instance ID\n        :type JobId: str\n        :param TaskName: Job name\n        :type TaskName: str\n        :param TaskState: Job state\n        :type TaskState: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param TaskInstanceTotalCount: Total number of task instances\n        :type TaskInstanceTotalCount: int\n        :param TaskInstanceSet: Task instance information\n        :type TaskInstanceSet: list of TaskInstanceView\n        :param TaskInstanceMetrics: Task instance statistical metrics\n        :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.JobId = None
         self.TaskName = None
         self.TaskState = None
@@ -1978,20 +1566,12 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskTemplateIds: Job template ID
-        :type TaskTemplateIds: list of str
-        :param Filters: Filter.
+        :param TaskTemplateIds: Job template ID\n        :type TaskTemplateIds: list of str\n        :param Filters: Filter.
 <li> `task-template-name` - String - Optional - Filter by task template name.</li>
 <li> `tag-key` - String - Optional - Filter by tag key.</li>
 <li> `tag-value` - String - Optional - Filter by tag value.</li>
 <li> `tag:tag-key` - String - Optional - Filter by tag key-value pair. The tag-key should be replaced by a specified tag key.</li>
-It cannot be specified together with the `TaskTemplateIds` parameter.
-        :type Filters: list of Filter
-        :param Offset: Offset
-        :type Offset: int
-        :param Limit: Number of returned results
-        :type Limit: int
-        """
+It cannot be specified together with the `TaskTemplateIds` parameter.\n        :type Filters: list of Filter\n        :param Offset: Offset\n        :type Offset: int\n        :param Limit: Number of returned results\n        :type Limit: int\n        """
         self.TaskTemplateIds = None
         self.Filters = None
         self.Offset = None
@@ -2024,13 +1604,7 @@ class DescribeTaskTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskTemplateSet: List of job templates
-        :type TaskTemplateSet: list of TaskTemplateView
-        :param TotalCount: Number of job templates
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TaskTemplateSet: List of job templates\n        :type TaskTemplateSet: list of TaskTemplateView\n        :param TotalCount: Number of job templates\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TaskTemplateSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -2054,11 +1628,7 @@ class DetachInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param InstanceIds: Instance ID list
-        :type InstanceIds: list of str
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param InstanceIds: Instance ID list\n        :type InstanceIds: list of str\n        """
         self.EnvId = None
         self.InstanceIds = None
 
@@ -2082,9 +1652,7 @@ class DetachInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2099,15 +1667,7 @@ class Docker(AbstractModel):
 
     def __init__(self):
         """
-        :param User: Docker Hub username or Tencent Registry username
-        :type User: str
-        :param Password: Docker Hub password or Tencent Registry password
-        :type Password: str
-        :param Image: For Docker Hub, enter "[user/repo]:[tag]"; for Tencent Registry, enter "ccr.ccs.tencentyun.com/[namespace/repo]:[tag]"
-        :type Image: str
-        :param Server: For Docker Hub, this can be left blank, but please ensure public network access is present. For Tencent Registry, the server address is "ccr.ccs.tencentyun.com"
-        :type Server: str
-        """
+        :param User: Docker Hub username or Tencent Registry username\n        :type User: str\n        :param Password: Docker Hub password or Tencent Registry password\n        :type Password: str\n        :param Image: For Docker Hub, enter "[user/repo]:[tag]"; for Tencent Registry, enter "ccr.ccs.tencentyun.com/[namespace/repo]:[tag]"\n        :type Image: str\n        :param Server: For Docker Hub, this can be left blank, but please ensure public network access is present. For Tencent Registry, the server address is "ccr.ccs.tencentyun.com"\n        :type Server: str\n        """
         self.User = None
         self.Password = None
         self.Image = None
@@ -2135,11 +1695,7 @@ class EnhancedService(AbstractModel):
 
     def __init__(self):
         """
-        :param SecurityService: Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.
-        :type SecurityService: :class:`tencentcloud.batch.v20170312.models.RunSecurityServiceEnabled`
-        :param MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
-        :type MonitorService: :class:`tencentcloud.batch.v20170312.models.RunMonitorServiceEnabled`
-        """
+        :param SecurityService: Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.\n        :type SecurityService: :class:`tencentcloud.batch.v20170312.models.RunSecurityServiceEnabled`\n        :param MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.\n        :type MonitorService: :class:`tencentcloud.batch.v20170312.models.RunMonitorServiceEnabled`\n        """
         self.SecurityService = None
         self.MonitorService = None
 
@@ -2167,39 +1723,7 @@ class EnvData(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceType: CVM instance type, which cannot be present together with InstanceTypes or InstanceTypeOptions at the same time.
-        :type InstanceType: str
-        :param ImageId: CVM image ID
-        :type ImageId: str
-        :param SystemDisk: Information of the instance's system disk configuration
-        :type SystemDisk: :class:`tencentcloud.batch.v20170312.models.SystemDisk`
-        :param DataDisks: Information of the instance's data disk configuration
-        :type DataDisks: list of DataDisk
-        :param VirtualPrivateCloud: Information of the VPC configuration, which cannot be specified together with Zones and VirtualPrivateClouds.
-        :type VirtualPrivateCloud: :class:`tencentcloud.batch.v20170312.models.VirtualPrivateCloud`
-        :param InternetAccessible: Information of the public network bandwidth configuration
-        :type InternetAccessible: :class:`tencentcloud.batch.v20170312.models.InternetAccessible`
-        :param InstanceName: CVM instance display name
-        :type InstanceName: str
-        :param LoginSettings: Instance login settings
-        :type LoginSettings: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
-        :param SecurityGroupIds: Security group of the instance
-        :type SecurityGroupIds: list of str
-        :param EnhancedService: Enhanced service. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitoring and Cloud Security will be enabled by default.
-        :type EnhancedService: :class:`tencentcloud.batch.v20170312.models.EnhancedService`
-        :param InstanceChargeType: CVM instance billing method <br><li>POSTPAID_BY_HOUR: pay-as-you-go by the hour <br><li>SPOTPAID: bidding <br>Default value: POSTPAID_BY_HOUR.
-        :type InstanceChargeType: str
-        :param InstanceMarketOptions: Market-related options of the instance, such as parameters related to spot instance
-        :type InstanceMarketOptions: :class:`tencentcloud.batch.v20170312.models.InstanceMarketOptionsRequest`
-        :param InstanceTypes: List of CVM instance types, which cannot be present together with InstanceType or InstanceTypeOptions at the same time. After the field is specified, the system will try creating compute nodes in the order of the models until successful creation and then stop the traversal process. Up to 10 models are supported.
-        :type InstanceTypes: list of str
-        :param InstanceTypeOptions: CVM instance model configuration, which cannot be present together with InstanceType or InstanceTypes at the same time.
-        :type InstanceTypeOptions: :class:`tencentcloud.batch.v20170312.models.InstanceTypeOptions`
-        :param Zones: List of availability zones (creation of CVM instances across availability zones is supported), which cannot be specified together with VirtualPrivateCloud or VirtualPrivateClouds at the same time.
-        :type Zones: list of str
-        :param VirtualPrivateClouds: List of VPCs (creation of CVM instances across VPCs is supported), which cannot be specified together with VirtualPrivateCloud or Zones at the same time.
-        :type VirtualPrivateClouds: list of VirtualPrivateCloud
-        """
+        :param InstanceType: CVM instance type, which cannot be present together with InstanceTypes or InstanceTypeOptions at the same time.\n        :type InstanceType: str\n        :param ImageId: CVM image ID\n        :type ImageId: str\n        :param SystemDisk: Information of the instance's system disk configuration\n        :type SystemDisk: :class:`tencentcloud.batch.v20170312.models.SystemDisk`\n        :param DataDisks: Information of the instance's data disk configuration\n        :type DataDisks: list of DataDisk\n        :param VirtualPrivateCloud: Information of the VPC configuration, which cannot be specified together with Zones and VirtualPrivateClouds.\n        :type VirtualPrivateCloud: :class:`tencentcloud.batch.v20170312.models.VirtualPrivateCloud`\n        :param InternetAccessible: Information of the public network bandwidth configuration\n        :type InternetAccessible: :class:`tencentcloud.batch.v20170312.models.InternetAccessible`\n        :param InstanceName: CVM instance display name\n        :type InstanceName: str\n        :param LoginSettings: Instance login settings\n        :type LoginSettings: :class:`tencentcloud.batch.v20170312.models.LoginSettings`\n        :param SecurityGroupIds: Security group of the instance\n        :type SecurityGroupIds: list of str\n        :param EnhancedService: Enhanced service. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitoring and Cloud Security will be enabled by default.\n        :type EnhancedService: :class:`tencentcloud.batch.v20170312.models.EnhancedService`\n        :param InstanceChargeType: CVM instance billing method <br><li>POSTPAID_BY_HOUR: pay-as-you-go by the hour <br><li>SPOTPAID: bidding <br>Default value: POSTPAID_BY_HOUR.\n        :type InstanceChargeType: str\n        :param InstanceMarketOptions: Market-related options of the instance, such as parameters related to spot instance\n        :type InstanceMarketOptions: :class:`tencentcloud.batch.v20170312.models.InstanceMarketOptionsRequest`\n        :param InstanceTypes: List of CVM instance types, which cannot be present together with InstanceType or InstanceTypeOptions at the same time. After the field is specified, the system will try creating compute nodes in the order of the models until successful creation and then stop the traversal process. Up to 10 models are supported.\n        :type InstanceTypes: list of str\n        :param InstanceTypeOptions: CVM instance model configuration, which cannot be present together with InstanceType or InstanceTypes at the same time.\n        :type InstanceTypeOptions: :class:`tencentcloud.batch.v20170312.models.InstanceTypeOptions`\n        :param Zones: List of availability zones (creation of CVM instances across availability zones is supported), which cannot be specified together with VirtualPrivateCloud or VirtualPrivateClouds at the same time.\n        :type Zones: list of str\n        :param VirtualPrivateClouds: List of VPCs (creation of CVM instances across VPCs is supported), which cannot be specified together with VirtualPrivateCloud or Zones at the same time.\n        :type VirtualPrivateClouds: list of VirtualPrivateCloud\n        """
         self.InstanceType = None
         self.ImageId = None
         self.SystemDisk = None
@@ -2275,11 +1799,7 @@ class EnvVar(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Environment variable name
-        :type Name: str
-        :param Value: Environment variable value
-        :type Value: str
-        """
+        :param Name: Environment variable name\n        :type Name: str\n        :param Value: Environment variable value\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -2303,11 +1823,7 @@ class EventConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param EventName: Event type. Value range: <br/><li>"JOB_RUNNING": the job is running, applicable to "SubmitJob". </li><li>"JOB_SUCCEED: the job succeeded, applicable to "SubmitJob". </li><li>"JOB_FAILED": the job failed, applicable to "SubmitJob". </li><li>"JOB_FAILED_INTERRUPTED": the job failed and the instance is retained, applicable to "SubmitJob". </li><li>"TASK_RUNNING": the task is running, applicable to "SubmitJob". </li><li>"TASK_SUCCEED": the task succeeded, applicable to "SubmitJob". </li><li>"TASK_FAILED": the task failed, applicable to "SubmitJob". </li><li>"TASK_FAILED_INTERRUPTED": the task failed and the instance is retained, applicable to "SubmitJob". </li><li>"TASK_INSTANCE_RUNNING": the task instance is running, applicable to "SubmitJob". </li><li>"TASK_INSTANCE_SUCCEED": the task instance succeeded, applicable to "SubmitJob". </li><li>"TASK_INSTANCE_FAILED": the task instance failed, applicable to "SubmitJob". </li><li>"TASK_INSTANCE_FAILED_INTERRUPTED": the task instance failed and the instance is retained, applicable to "SubmitJob". </li><li>"COMPUTE_ENV_CREATED": the compute environment has been created, applicable to "CreateComputeEnv". </li><li>"COMPUTE_ENV_DELETED": the compute environment has been deleted, applicable to "CreateComputeEnv". </li><li>"COMPUTE_NODE_CREATED": the compute node has been created, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>"COMPUTE_NODE_CREATION_FAILED": the compute node creation failed, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>"COMPUTE_NODE_RUNNING": the compute node is running, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>"COMPUTE_NODE_ABNORMAL": the compute node is exceptional, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>"COMPUTE_NODE_DELETING": the compute node has been deleted, applicable to "CreateComputeEnv" and "SubmitJob". </li>
-        :type EventName: str
-        :param EventVars: Custom key-value pair
-        :type EventVars: list of EventVar
-        """
+        :param EventName: Event type. Value range: <br/><li>"JOB_RUNNING": the job is running, applicable to "SubmitJob". </li><li>"JOB_SUCCEED: the job succeeded, applicable to "SubmitJob". </li><li>"JOB_FAILED": the job failed, applicable to "SubmitJob". </li><li>"JOB_FAILED_INTERRUPTED": the job failed and the instance is retained, applicable to "SubmitJob". </li><li>"TASK_RUNNING": the task is running, applicable to "SubmitJob". </li><li>"TASK_SUCCEED": the task succeeded, applicable to "SubmitJob". </li><li>"TASK_FAILED": the task failed, applicable to "SubmitJob". </li><li>"TASK_FAILED_INTERRUPTED": the task failed and the instance is retained, applicable to "SubmitJob". </li><li>"TASK_INSTANCE_RUNNING": the task instance is running, applicable to "SubmitJob". </li><li>"TASK_INSTANCE_SUCCEED": the task instance succeeded, applicable to "SubmitJob". </li><li>"TASK_INSTANCE_FAILED": the task instance failed, applicable to "SubmitJob". </li><li>"TASK_INSTANCE_FAILED_INTERRUPTED": the task instance failed and the instance is retained, applicable to "SubmitJob". </li><li>"COMPUTE_ENV_CREATED": the compute environment has been created, applicable to "CreateComputeEnv". </li><li>"COMPUTE_ENV_DELETED": the compute environment has been deleted, applicable to "CreateComputeEnv". </li><li>"COMPUTE_NODE_CREATED": the compute node has been created, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>"COMPUTE_NODE_CREATION_FAILED": the compute node creation failed, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>"COMPUTE_NODE_RUNNING": the compute node is running, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>"COMPUTE_NODE_ABNORMAL": the compute node is exceptional, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>"COMPUTE_NODE_DELETING": the compute node has been deleted, applicable to "CreateComputeEnv" and "SubmitJob". </li>\n        :type EventName: str\n        :param EventVars: Custom key-value pair\n        :type EventVars: list of EventVar\n        """
         self.EventName = None
         self.EventVars = None
 
@@ -2336,11 +1852,7 @@ class EventVar(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Custom key
-        :type Name: str
-        :param Value: Custom value
-        :type Value: str
-        """
+        :param Name: Custom key\n        :type Name: str\n        :param Value: Custom value\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -2365,15 +1877,9 @@ class Externals(AbstractModel):
     def __init__(self):
         """
         :param ReleaseAddress: Release address
-Note: This field may return null, indicating that no valid value is found.
-        :type ReleaseAddress: bool
-        :param UnsupportNetworks: Not supported network. Value: <br><li>BASIC: classic network<br><li>VPC1.0: VPC1.0
-Note: This field may return null, indicating that no valid value was found.
-        :type UnsupportNetworks: list of str
-        :param StorageBlockAttr: Attributes of local HDD storage
-Note: This field may return null, indicating that no valid value is found.
-        :type StorageBlockAttr: :class:`tencentcloud.batch.v20170312.models.StorageBlock`
-        """
+Note: This field may return null, indicating that no valid value is found.\n        :type ReleaseAddress: bool\n        :param UnsupportNetworks: Not supported network. Value: <br><li>BASIC: classic network<br><li>VPC1.0: VPC1.0
+Note: This field may return null, indicating that no valid value was found.\n        :type UnsupportNetworks: list of str\n        :param StorageBlockAttr: Attributes of local HDD storage
+Note: This field may return null, indicating that no valid value is found.\n        :type StorageBlockAttr: :class:`tencentcloud.batch.v20170312.models.StorageBlock`\n        """
         self.ReleaseAddress = None
         self.UnsupportNetworks = None
         self.StorageBlockAttr = None
@@ -2411,11 +1917,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Filters.
-        :type Name: str
-        :param Values: Filter values.
-        :type Values: list of str
-        """
+        :param Name: Filters.\n        :type Name: str\n        :param Values: Filter values.\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -2439,13 +1941,7 @@ class InputMapping(AbstractModel):
 
     def __init__(self):
         """
-        :param SourcePath: Source path
-        :type SourcePath: str
-        :param DestinationPath: Destination path
-        :type DestinationPath: str
-        :param MountOptionParameter: Mounting configuration item parameter
-        :type MountOptionParameter: str
-        """
+        :param SourcePath: Source path\n        :type SourcePath: str\n        :param DestinationPath: Destination path\n        :type DestinationPath: str\n        :param MountOptionParameter: Mounting configuration item parameter\n        :type MountOptionParameter: str\n        """
         self.SourcePath = None
         self.DestinationPath = None
         self.MountOptionParameter = None
@@ -2471,13 +1967,7 @@ class Instance(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param ImageId: Image ID.
-        :type ImageId: str
-        :param LoginSettings: Instance login settings.
-        :type LoginSettings: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param ImageId: Image ID.\n        :type ImageId: str\n        :param LoginSettings: Instance login settings.\n        :type LoginSettings: :class:`tencentcloud.batch.v20170312.models.LoginSettings`\n        """
         self.InstanceId = None
         self.ImageId = None
         self.LoginSettings = None
@@ -2505,11 +1995,7 @@ class InstanceCategoryItem(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceCategory: Instance type name
-        :type InstanceCategory: str
-        :param InstanceFamilySet: List of instance families
-        :type InstanceFamilySet: list of str
-        """
+        :param InstanceCategory: Instance type name\n        :type InstanceCategory: str\n        :param InstanceFamilySet: List of instance families\n        :type InstanceFamilySet: list of str\n        """
         self.InstanceCategory = None
         self.InstanceFamilySet = None
 
@@ -2533,11 +2019,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SpotOptions: Options related to bidding
-        :type SpotOptions: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`
-        :param MarketType: Market option type. Currently `spot` is the only supported value.
-        :type MarketType: str
-        """
+        :param SpotOptions: Options related to bidding\n        :type SpotOptions: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`\n        :param MarketType: Market option type. Currently `spot` is the only supported value.\n        :type MarketType: str\n        """
         self.SpotOptions = None
         self.MarketType = None
 
@@ -2563,17 +2045,7 @@ class InstanceTypeConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Mem: Memory size in GB.
-        :type Mem: int
-        :param Cpu: Number of CPU cores.
-        :type Cpu: int
-        :param InstanceType: Instance model.
-        :type InstanceType: str
-        :param Zone: Availability zone.
-        :type Zone: str
-        :param InstanceFamily: Instance model family.
-        :type InstanceFamily: str
-        """
+        :param Mem: Memory size in GB.\n        :type Mem: int\n        :param Cpu: Number of CPU cores.\n        :type Cpu: int\n        :param InstanceType: Instance model.\n        :type InstanceType: str\n        :param Zone: Availability zone.\n        :type Zone: str\n        :param InstanceFamily: Instance model family.\n        :type InstanceFamily: str\n        """
         self.Mem = None
         self.Cpu = None
         self.InstanceType = None
@@ -2603,13 +2075,7 @@ class InstanceTypeOptions(AbstractModel):
 
     def __init__(self):
         """
-        :param CPU: Number of CPU cores.
-        :type CPU: int
-        :param Memory: Memory size in GB.
-        :type Memory: int
-        :param InstanceCategories: Instance model category. Value range: "ALL", "GENERAL", "GENERAL_2", "GENERAL_3", "COMPUTE", "COMPUTE_2", and "COMPUTE_3". Default value: "ALL".
-        :type InstanceCategories: list of str
-        """
+        :param CPU: Number of CPU cores.\n        :type CPU: int\n        :param Memory: Memory size in GB.\n        :type Memory: int\n        :param InstanceCategories: Instance model category. Value range: "ALL", "GENERAL", "GENERAL_2", "GENERAL_3", "COMPUTE", "COMPUTE_2", and "COMPUTE_3". Default value: "ALL".\n        :type InstanceCategories: list of str\n        """
         self.CPU = None
         self.Memory = None
         self.InstanceCategories = None
@@ -2635,49 +2101,9 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: Availability zone.
-        :type Zone: str
-        :param InstanceType: Instance model.
-        :type InstanceType: str
-        :param InstanceChargeType: Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) billing plan. Applicable to `CDH` only, not the instances on the host.
-        :type InstanceChargeType: str
-        :param NetworkCard: ENI type. For example, 25 represents an ENI of 25 GB.
-        :type NetworkCard: int
-        :param Externals: Additional data.
-Note: This field may return null, indicating that no valid value is found.
-        :type Externals: :class:`tencentcloud.batch.v20170312.models.Externals`
-        :param Cpu: Number of CPU cores of an instance model.
-        :type Cpu: int
-        :param Memory: Instance memory capacity; unit: `GB`.
-        :type Memory: int
-        :param InstanceFamily: Instance model family.
-        :type InstanceFamily: str
-        :param TypeName: Model name.
-        :type TypeName: str
-        :param LocalDiskTypeList: List of local disk specifications. If the parameter returns null, it means that local disks cannot be created.
-        :type LocalDiskTypeList: list of LocalDiskType
-        :param Status: Whether an instance model is available. Valid values: <br><li>SELL: available <br><li>SOLD_OUT: sold out
-        :type Status: str
-        :param Price: Price of an instance model.
-        :type Price: :class:`tencentcloud.batch.v20170312.models.ItemPrice`
-        :param SoldOutReason: Details of out-of-stock items
-Note: this field may return null, indicating that no valid value is obtained.
-        :type SoldOutReason: str
-        :param InstanceBandwidth: Private network bandwidth, in Gbps.
-        :type InstanceBandwidth: float
-        :param InstancePps: The max packet sending and receiving capability (in 10k PPS).
-        :type InstancePps: int
-        :param StorageBlockAmount: Number of local storage blocks.
-        :type StorageBlockAmount: int
-        :param CpuType: CPU type.
-        :type CpuType: str
-        :param Gpu: Number of GPUs of the instance.
-        :type Gpu: int
-        :param Fpga: Number of FPGAs of the instance.
-        :type Fpga: int
-        :param Remark: Descriptive information of the instance.
-        :type Remark: str
-        """
+        :param Zone: Availability zone.\n        :type Zone: str\n        :param InstanceType: Instance model.\n        :type InstanceType: str\n        :param InstanceChargeType: Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) billing plan. Applicable to `CDH` only, not the instances on the host.\n        :type InstanceChargeType: str\n        :param NetworkCard: ENI type. For example, 25 represents an ENI of 25 GB.\n        :type NetworkCard: int\n        :param Externals: Additional data.
+Note: This field may return null, indicating that no valid value is found.\n        :type Externals: :class:`tencentcloud.batch.v20170312.models.Externals`\n        :param Cpu: Number of CPU cores of an instance model.\n        :type Cpu: int\n        :param Memory: Instance memory capacity; unit: `GB`.\n        :type Memory: int\n        :param InstanceFamily: Instance model family.\n        :type InstanceFamily: str\n        :param TypeName: Model name.\n        :type TypeName: str\n        :param LocalDiskTypeList: List of local disk specifications. If the parameter returns null, it means that local disks cannot be created.\n        :type LocalDiskTypeList: list of LocalDiskType\n        :param Status: Whether an instance model is available. Valid values: <br><li>SELL: available <br><li>SOLD_OUT: sold out\n        :type Status: str\n        :param Price: Price of an instance model.\n        :type Price: :class:`tencentcloud.batch.v20170312.models.ItemPrice`\n        :param SoldOutReason: Details of out-of-stock items
+Note: this field may return null, indicating that no valid value is obtained.\n        :type SoldOutReason: str\n        :param InstanceBandwidth: Private network bandwidth, in Gbps.\n        :type InstanceBandwidth: float\n        :param InstancePps: The max packet sending and receiving capability (in 10k PPS).\n        :type InstancePps: int\n        :param StorageBlockAmount: Number of local storage blocks.\n        :type StorageBlockAmount: int\n        :param CpuType: CPU type.\n        :type CpuType: str\n        :param Gpu: Number of GPUs of the instance.\n        :type Gpu: int\n        :param Fpga: Number of FPGAs of the instance.\n        :type Fpga: int\n        :param Remark: Descriptive information of the instance.\n        :type Remark: str\n        """
         self.Zone = None
         self.InstanceType = None
         self.InstanceChargeType = None
@@ -2746,15 +2172,7 @@ class InternetAccessible(AbstractModel):
 
     def __init__(self):
         """
-        :param InternetChargeType: Network connection billing plan. Valid value: <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour.
-        :type InternetChargeType: str
-        :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
-        :type InternetMaxBandwidthOut: int
-        :param PublicIpAssigned: Whether to assign a public IP. Valid values: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you can choose whether to assign a public IP; by default a public IP will be assigned. If the public network bandwidth is 0 Mbps, you will not be able to assign a public IP.
-        :type PublicIpAssigned: bool
-        :param BandwidthPackageId: Bandwidth package ID. To obatin the IDs, you can call [`DescribeBandwidthPackages`](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) and look for the `BandwidthPackageId` fields in the response.
-        :type BandwidthPackageId: str
-        """
+        :param InternetChargeType: Network connection billing plan. Valid value: <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour.\n        :type InternetChargeType: str\n        :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).\n        :type InternetMaxBandwidthOut: int\n        :param PublicIpAssigned: Whether to assign a public IP. Valid values: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you can choose whether to assign a public IP; by default a public IP will be assigned. If the public network bandwidth is 0 Mbps, you will not be able to assign a public IP.\n        :type PublicIpAssigned: bool\n        :param BandwidthPackageId: Bandwidth package ID. To obatin the IDs, you can call [`DescribeBandwidthPackages`](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) and look for the `BandwidthPackageId` fields in the response.\n        :type BandwidthPackageId: str\n        """
         self.InternetChargeType = None
         self.InternetMaxBandwidthOut = None
         self.PublicIpAssigned = None
@@ -2783,72 +2201,34 @@ class ItemPrice(AbstractModel):
     def __init__(self):
         """
         :param UnitPrice: The original unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type UnitPrice: float
-        :param ChargeUnit: Billing unit for pay-as-you-go mode. Valid values: <br><li>HOUR: billed on an hourly basis. It's used for hourly postpaid instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. It's used for postpaid products that are billed by the hourly traffic (`TRAFFIC_POSTPAID_BY_HOUR`).
-Note: this field may return null, indicating that no valid value is obtained.
-        :type ChargeUnit: str
-        :param OriginalPrice: The original price of a pay-in-advance instance, in USD.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type OriginalPrice: float
-        :param DiscountPrice: Discount price of a prepaid instance, in USD.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type DiscountPrice: float
-        :param Discount: Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Discount: float
-        :param UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type UnitPriceDiscount: float
-        :param UnitPriceSecondStep: Original unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type UnitPriceSecondStep: float
-        :param UnitPriceDiscountSecondStep: Discounted unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type UnitPriceDiscountSecondStep: float
-        :param UnitPriceThirdStep: Original unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type UnitPriceThirdStep: float
-        :param UnitPriceDiscountThirdStep: Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
-        :type UnitPriceDiscountThirdStep: float
-        :param OriginalPriceThreeYear: Original 3-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type UnitPrice: float\n        :param ChargeUnit: Billing unit for pay-as-you-go mode. Valid values: <br><li>HOUR: billed on an hourly basis. It's used for hourly postpaid instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. It's used for postpaid products that are billed by the hourly traffic (`TRAFFIC_POSTPAID_BY_HOUR`).
+Note: this field may return null, indicating that no valid value is obtained.\n        :type ChargeUnit: str\n        :param OriginalPrice: The original price of a pay-in-advance instance, in USD.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type OriginalPrice: float\n        :param DiscountPrice: Discount price of a prepaid instance, in USD.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type DiscountPrice: float\n        :param Discount: Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Discount: float\n        :param UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type UnitPriceDiscount: float\n        :param UnitPriceSecondStep: Original unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type UnitPriceSecondStep: float\n        :param UnitPriceDiscountSecondStep: Discounted unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type UnitPriceDiscountSecondStep: float\n        :param UnitPriceThirdStep: Original unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type UnitPriceThirdStep: float\n        :param UnitPriceDiscountThirdStep: Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.\n        :type UnitPriceDiscountThirdStep: float\n        :param OriginalPriceThreeYear: Original 3-year payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.\n        :type OriginalPriceThreeYear: float\n        :param DiscountPriceThreeYear: Discounted 3-year upfront payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
-        :type OriginalPriceThreeYear: float
-        :param DiscountPriceThreeYear: Discounted 3-year upfront payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.\n        :type DiscountPriceThreeYear: float\n        :param DiscountThreeYear: Discount for 3-year upfront payment. For example, 20.0 indicates 80% off.
 Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.\n        :type DiscountThreeYear: float\n        :param OriginalPriceFiveYear: Original 5-year payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
-        :type DiscountPriceThreeYear: float
-        :param DiscountThreeYear: Discount for 3-year upfront payment. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.\n        :type OriginalPriceFiveYear: float\n        :param DiscountPriceFiveYear: Discounted 5-year upfront payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.\n        :type DiscountPriceFiveYear: float\n        :param DiscountFiveYear: Discount for 5-year upfront payment. For example, 20.0 indicates 80% off.
 Note: this field may return `null`, indicating that no valid value was found.
-        :type DiscountThreeYear: float
-        :param OriginalPriceFiveYear: Original 5-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.\n        :type DiscountFiveYear: float\n        :param OriginalPriceOneYear: Original 1-year payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.\n        :type OriginalPriceOneYear: float\n        :param DiscountPriceOneYear: Discounted 1-year payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
-        :type OriginalPriceFiveYear: float
-        :param DiscountPriceFiveYear: Discounted 5-year upfront payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.\n        :type DiscountPriceOneYear: float\n        :param DiscountOneYear: Discount for 1-year upfront payment. For example, 20.0 indicates 80% off.
 Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
-        :type DiscountPriceFiveYear: float
-        :param DiscountFiveYear: Discount for 5-year upfront payment. For example, 20.0 indicates 80% off.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
-        :type DiscountFiveYear: float
-        :param OriginalPriceOneYear: Original 1-year payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
-        :type OriginalPriceOneYear: float
-        :param DiscountPriceOneYear: Discounted 1-year payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
-        :type DiscountPriceOneYear: float
-        :param DiscountOneYear: Discount for 1-year upfront payment. For example, 20.0 indicates 80% off.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
-        :type DiscountOneYear: float
-        """
+Note: this field may return `null`, indicating that no valid value was found.\n        :type DiscountOneYear: float\n        """
         self.UnitPrice = None
         self.ChargeUnit = None
         self.OriginalPrice = None
@@ -2906,25 +2286,7 @@ class Job(AbstractModel):
 
     def __init__(self):
         """
-        :param Tasks: Job information
-        :type Tasks: list of Task
-        :param JobName: Instance name
-        :type JobName: str
-        :param JobDescription: Instance description
-        :type JobDescription: str
-        :param Priority: Instance priority. Tasks (Task) and task instances (TaskInstance) inherit the priority of the instance
-        :type Priority: int
-        :param Dependences: Dependency information
-        :type Dependences: list of Dependence
-        :param Notifications: Notification information
-        :type Notifications: list of Notification
-        :param TaskExecutionDependOn: This is the dependency of the subsequent task on the previous task if there is a dependent relationship between them. Value range: PRE_TASK_SUCCEED, PRE_TASK_AT_LEAST_PARTLY_SUCCEED, PRE_TASK_FINISHED. Default value: PRE_TASK_SUCCEED.
-        :type TaskExecutionDependOn: str
-        :param StateIfCreateCvmFailed: Indicates which policy will be used in case that CVM instance creation fails. Value range: FAILED, RUNNABLE. FAILED indicates that the CVM instance creation failure will be processed as an execution failure, while RUNNABLE indicates that the failure will be processed as "keep waiting". Default value: FAILED. StateIfCreateCvmFailed is not valid for submitted jobs for which a compute environment is specified.
-        :type StateIfCreateCvmFailed: str
-        :param Tags: Tag list. By setting this parameter, you can bind tags to a job. Each job supports up to 10 tags.
-        :type Tags: list of Tag
-        """
+        :param Tasks: Job information\n        :type Tasks: list of Task\n        :param JobName: Instance name\n        :type JobName: str\n        :param JobDescription: Instance description\n        :type JobDescription: str\n        :param Priority: Instance priority. Tasks (Task) and task instances (TaskInstance) inherit the priority of the instance\n        :type Priority: int\n        :param Dependences: Dependency information\n        :type Dependences: list of Dependence\n        :param Notifications: Notification information\n        :type Notifications: list of Notification\n        :param TaskExecutionDependOn: This is the dependency of the subsequent task on the previous task if there is a dependent relationship between them. Value range: PRE_TASK_SUCCEED, PRE_TASK_AT_LEAST_PARTLY_SUCCEED, PRE_TASK_FINISHED. Default value: PRE_TASK_SUCCEED.\n        :type TaskExecutionDependOn: str\n        :param StateIfCreateCvmFailed: Indicates which policy will be used in case that CVM instance creation fails. Value range: FAILED, RUNNABLE. FAILED indicates that the CVM instance creation failure will be processed as an execution failure, while RUNNABLE indicates that the failure will be processed as "keep waiting". Default value: FAILED. StateIfCreateCvmFailed is not valid for submitted jobs for which a compute environment is specified.\n        :type StateIfCreateCvmFailed: str\n        :param Tags: Tag list. By setting this parameter, you can bind tags to a job. Each job supports up to 10 tags.\n        :type Tags: list of Tag\n        """
         self.Tasks = None
         self.JobName = None
         self.JobDescription = None
@@ -2982,28 +2344,10 @@ class JobView(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Instance ID
-        :type JobId: str
-        :param JobName: Instance name
-        :type JobName: str
-        :param JobState: Instance state
-        :type JobState: str
-        :param Priority: Instance priority
-        :type Priority: int
-        :param Placement: Location information
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param EndTime: End time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EndTime: str
-        :param TaskMetrics: Task statistical metrics
-        :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
-        :param Tags: Tag list bound to the job.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Tags: list of Tag
-        """
+        :param JobId: Instance ID\n        :type JobId: str\n        :param JobName: Instance name\n        :type JobName: str\n        :param JobState: Instance state\n        :type JobState: str\n        :param Priority: Instance priority\n        :type Priority: int\n        :param Placement: Location information
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param EndTime: End time
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type EndTime: str\n        :param TaskMetrics: Task statistical metrics\n        :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`\n        :param Tags: Tag list bound to the job.
+Note: This field may return `null`, indicating that no valid value was found.\n        :type Tags: list of Tag\n        """
         self.JobId = None
         self.JobName = None
         self.JobState = None
@@ -3050,17 +2394,7 @@ class LocalDiskType(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Type of a local disk.
-        :type Type: str
-        :param PartitionType: Attributes of a local disk.
-        :type PartitionType: str
-        :param MinSize: Minimum size of a local disk.
-        :type MinSize: int
-        :param MaxSize: Maximum size of a local disk.
-        :type MaxSize: int
-        :param Required: Whether a local disk is required during purchase. Valid values:<br><li>REQUIRED: required<br><li>OPTIONAL: optional
-        :type Required: str
-        """
+        :param Type: Type of a local disk.\n        :type Type: str\n        :param PartitionType: Attributes of a local disk.\n        :type PartitionType: str\n        :param MinSize: Minimum size of a local disk.\n        :type MinSize: int\n        :param MaxSize: Maximum size of a local disk.\n        :type MaxSize: int\n        :param Required: Whether a local disk is required during purchase. Valid values:<br><li>REQUIRED: required<br><li>OPTIONAL: optional\n        :type Required: str\n        """
         self.Type = None
         self.PartitionType = None
         self.MinSize = None
@@ -3090,13 +2424,7 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-16 characters long and contain at least one character from two of the following categories: [a-z, A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-16 characters long and contain at least one character from three of the following categories: [a-z], [A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
-        :type Password: str
-        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
-        :type KeyIds: list of str
-        :param KeepImageLogin: Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.
-        :type KeepImageLogin: str
-        """
+        :param Password: Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-16 characters long and contain at least one character from two of the following categories: [a-z, A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-16 characters long and contain at least one character from three of the following categories: [a-z], [A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.\n        :type Password: str\n        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.\n        :type KeyIds: list of str\n        :param KeepImageLogin: Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.\n        :type KeepImageLogin: str\n        """
         self.Password = None
         self.KeyIds = None
         self.KeepImageLogin = None
@@ -3122,17 +2450,7 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param DesiredComputeNodeCount: Number of desired compute nodes
-        :type DesiredComputeNodeCount: int
-        :param EnvName: Compute environment name
-        :type EnvName: str
-        :param EnvDescription: Compute environment description
-        :type EnvDescription: str
-        :param EnvData: Compute environment attributes
-        :type EnvData: :class:`tencentcloud.batch.v20170312.models.ComputeEnvData`
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param DesiredComputeNodeCount: Number of desired compute nodes\n        :type DesiredComputeNodeCount: int\n        :param EnvName: Compute environment name\n        :type EnvName: str\n        :param EnvDescription: Compute environment description\n        :type EnvDescription: str\n        :param EnvData: Compute environment attributes\n        :type EnvData: :class:`tencentcloud.batch.v20170312.models.ComputeEnvData`\n        """
         self.EnvId = None
         self.DesiredComputeNodeCount = None
         self.EnvName = None
@@ -3164,9 +2482,7 @@ class ModifyComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3181,15 +2497,7 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskTemplateId: Job template ID
-        :type TaskTemplateId: str
-        :param TaskTemplateName: Job template name
-        :type TaskTemplateName: str
-        :param TaskTemplateDescription: Job template description
-        :type TaskTemplateDescription: str
-        :param TaskTemplateInfo: Job template information
-        :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
-        """
+        :param TaskTemplateId: Job template ID\n        :type TaskTemplateId: str\n        :param TaskTemplateName: Job template name\n        :type TaskTemplateName: str\n        :param TaskTemplateDescription: Job template description\n        :type TaskTemplateDescription: str\n        :param TaskTemplateInfo: Job template information\n        :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`\n        """
         self.TaskTemplateId = None
         self.TaskTemplateName = None
         self.TaskTemplateDescription = None
@@ -3219,9 +2527,7 @@ class ModifyTaskTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3236,11 +2542,7 @@ class MountDataDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param LocalPath: Mounting point. For Linux, this parameter should be a valid path. For Windows, this parameter should be a system disk letter such as "H:\\"
-        :type LocalPath: str
-        :param FileSystemType: File system type. For Linux, "EXT3" and "EXT4" are supported and the default value is "EXT3". For Windows, only "NTFS" is supported
-        :type FileSystemType: str
-        """
+        :param LocalPath: Mounting point. For Linux, this parameter should be a valid path. For Windows, this parameter should be a system disk letter such as "H:\\"\n        :type LocalPath: str\n        :param FileSystemType: File system type. For Linux, "EXT3" and "EXT4" are supported and the default value is "EXT3". For Windows, only "NTFS" is supported\n        :type FileSystemType: str\n        """
         self.LocalPath = None
         self.FileSystemType = None
 
@@ -3264,33 +2566,7 @@ class NamedComputeEnv(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvName: Compute environment name
-        :type EnvName: str
-        :param DesiredComputeNodeCount: Number of desired compute nodes
-        :type DesiredComputeNodeCount: int
-        :param EnvDescription: Compute environment description
-        :type EnvDescription: str
-        :param EnvType: Compute environment management type
-        :type EnvType: str
-        :param EnvData: Compute environment's specific parameters
-        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
-        :param MountDataDisks: Data disk mounting option
-        :type MountDataDisks: list of MountDataDisk
-        :param Authentications: Authorization information
-        :type Authentications: list of Authentication
-        :param InputMappings: Input mapping information
-        :type InputMappings: list of InputMapping
-        :param AgentRunningMode: Agent running mode; applicable for Windows
-        :type AgentRunningMode: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`
-        :param Notifications: Notification information
-        :type Notifications: :class:`tencentcloud.batch.v20170312.models.Notification`
-        :param ActionIfComputeNodeInactive: Inactive node processing policy. Default value: RECREATE, which means that instance resources will be re-created periodically for compute nodes where instance creation fails or is abnormally returned.
-        :type ActionIfComputeNodeInactive: str
-        :param ResourceMaxRetryCount: When the instances are failed to be created or returned because of exceptions, the related compute node will retry to create instances periodically. This parameter specifies the maximum retry attempts. The max value is 11 and the default value is 7.
-        :type ResourceMaxRetryCount: int
-        :param Tags: Tag list. By setting this parameter, you can bind tags to a compute environment. Each compute environment supports up to 10 tags.
-        :type Tags: list of Tag
-        """
+        :param EnvName: Compute environment name\n        :type EnvName: str\n        :param DesiredComputeNodeCount: Number of desired compute nodes\n        :type DesiredComputeNodeCount: int\n        :param EnvDescription: Compute environment description\n        :type EnvDescription: str\n        :param EnvType: Compute environment management type\n        :type EnvType: str\n        :param EnvData: Compute environment's specific parameters\n        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`\n        :param MountDataDisks: Data disk mounting option\n        :type MountDataDisks: list of MountDataDisk\n        :param Authentications: Authorization information\n        :type Authentications: list of Authentication\n        :param InputMappings: Input mapping information\n        :type InputMappings: list of InputMapping\n        :param AgentRunningMode: Agent running mode; applicable for Windows\n        :type AgentRunningMode: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`\n        :param Notifications: Notification information\n        :type Notifications: :class:`tencentcloud.batch.v20170312.models.Notification`\n        :param ActionIfComputeNodeInactive: Inactive node processing policy. Default value: RECREATE, which means that instance resources will be re-created periodically for compute nodes where instance creation fails or is abnormally returned.\n        :type ActionIfComputeNodeInactive: str\n        :param ResourceMaxRetryCount: When the instances are failed to be created or returned because of exceptions, the related compute node will retry to create instances periodically. This parameter specifies the maximum retry attempts. The max value is 11 and the default value is 7.\n        :type ResourceMaxRetryCount: int\n        :param Tags: Tag list. By setting this parameter, you can bind tags to a compute environment. Each compute environment supports up to 10 tags.\n        :type Tags: list of Tag\n        """
         self.EnvName = None
         self.DesiredComputeNodeCount = None
         self.EnvDescription = None
@@ -3362,11 +2638,7 @@ class Notification(AbstractModel):
 
     def __init__(self):
         """
-        :param TopicName: CMQ topic name which should be valid and associated with a subscription
-        :type TopicName: str
-        :param EventConfigs: Event configuration
-        :type EventConfigs: list of EventConfig
-        """
+        :param TopicName: CMQ topic name which should be valid and associated with a subscription\n        :type TopicName: str\n        :param EventConfigs: Event configuration\n        :type EventConfigs: list of EventConfig\n        """
         self.TopicName = None
         self.EventConfigs = None
 
@@ -3395,11 +2667,7 @@ class OutputMapping(AbstractModel):
 
     def __init__(self):
         """
-        :param SourcePath: Source path
-        :type SourcePath: str
-        :param DestinationPath: Destination path
-        :type DestinationPath: str
-        """
+        :param SourcePath: Source path\n        :type SourcePath: str\n        :param DestinationPath: Destination path\n        :type DestinationPath: str\n        """
         self.SourcePath = None
         self.DestinationPath = None
 
@@ -3423,13 +2691,7 @@ class OutputMappingConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Scene: Storage type. Only COS is supported
-        :type Scene: str
-        :param WorkerNum: Number of parallel workers
-        :type WorkerNum: int
-        :param WorkerPartSize: Size of a worker part, in MB.
-        :type WorkerPartSize: int
-        """
+        :param Scene: Storage type. Only COS is supported\n        :type Scene: str\n        :param WorkerNum: Number of parallel workers\n        :type WorkerNum: int\n        :param WorkerPartSize: Size of a worker part, in MB.\n        :type WorkerPartSize: int\n        """
         self.Scene = None
         self.WorkerNum = None
         self.WorkerPartSize = None
@@ -3455,17 +2717,7 @@ class Placement(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain the ID in the returned `Zone` field.
-        :type Zone: str
-        :param ProjectId: ID of the project to which the instance belongs. To obtain the project IDs, you can call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) and look for the `projectId` fields in the response. If this parameter is not specified, the default project will be used.
-        :type ProjectId: int
-        :param HostIds: ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.
-        :type HostIds: list of str
-        :param HostIps: Master host IP used to create the CVM
-        :type HostIps: list of str
-        :param HostId: The ID of the CDH to which the instance belongs, only used as an output parameter.
-        :type HostId: str
-        """
+        :param Zone: ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain the ID in the returned `Zone` field.\n        :type Zone: str\n        :param ProjectId: ID of the project to which the instance belongs. To obtain the project IDs, you can call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) and look for the `projectId` fields in the response. If this parameter is not specified, the default project will be used.\n        :type ProjectId: int\n        :param HostIds: ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.\n        :type HostIds: list of str\n        :param HostIps: Master host IP used to create the CVM\n        :type HostIps: list of str\n        :param HostId: The ID of the CDH to which the instance belongs, only used as an output parameter.\n        :type HostId: str\n        """
         self.Zone = None
         self.ProjectId = None
         self.HostIds = None
@@ -3495,15 +2747,7 @@ class RedirectInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StdoutRedirectPath: Standard output redirection path
-        :type StdoutRedirectPath: str
-        :param StderrRedirectPath: Standard error redirection path
-        :type StderrRedirectPath: str
-        :param StdoutRedirectFileName: Standard output redirection file name, which supports three placeholders: ${BATCH_JOB_ID}, ${BATCH_TASK_NAME}, and ${BATCH_TASK_INSTANCE_INDEX}
-        :type StdoutRedirectFileName: str
-        :param StderrRedirectFileName: Standard error redirection file name, which supports three placeholders: ${BATCH_JOB_ID}, ${BATCH_TASK_NAME}, and ${BATCH_TASK_INSTANCE_INDEX}
-        :type StderrRedirectFileName: str
-        """
+        :param StdoutRedirectPath: Standard output redirection path\n        :type StdoutRedirectPath: str\n        :param StderrRedirectPath: Standard error redirection path\n        :type StderrRedirectPath: str\n        :param StdoutRedirectFileName: Standard output redirection file name, which supports three placeholders: ${BATCH_JOB_ID}, ${BATCH_TASK_NAME}, and ${BATCH_TASK_INSTANCE_INDEX}\n        :type StdoutRedirectFileName: str\n        :param StderrRedirectFileName: Standard error redirection file name, which supports three placeholders: ${BATCH_JOB_ID}, ${BATCH_TASK_NAME}, and ${BATCH_TASK_INSTANCE_INDEX}\n        :type StderrRedirectFileName: str\n        """
         self.StdoutRedirectPath = None
         self.StderrRedirectPath = None
         self.StdoutRedirectFileName = None
@@ -3531,15 +2775,7 @@ class RedirectLocalInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StdoutLocalPath: Standard output redirection local path
-        :type StdoutLocalPath: str
-        :param StderrLocalPath: Standard error redirection local path
-        :type StderrLocalPath: str
-        :param StdoutLocalFileName: Standard output redirection local file name, which supports three placeholders: ${BATCH_JOB_ID}, ${BATCH_TASK_NAME}, and ${BATCH_TASK_INSTANCE_INDEX}
-        :type StdoutLocalFileName: str
-        :param StderrLocalFileName: Standard error redirection local file name, which supports three placeholders: ${BATCH_JOB_ID}, ${BATCH_TASK_NAME}, and ${BATCH_TASK_INSTANCE_INDEX}
-        :type StderrLocalFileName: str
-        """
+        :param StdoutLocalPath: Standard output redirection local path\n        :type StdoutLocalPath: str\n        :param StderrLocalPath: Standard error redirection local path\n        :type StderrLocalPath: str\n        :param StdoutLocalFileName: Standard output redirection local file name, which supports three placeholders: ${BATCH_JOB_ID}, ${BATCH_TASK_NAME}, and ${BATCH_TASK_INSTANCE_INDEX}\n        :type StdoutLocalFileName: str\n        :param StderrLocalFileName: Standard error redirection local file name, which supports three placeholders: ${BATCH_JOB_ID}, ${BATCH_TASK_NAME}, and ${BATCH_TASK_INSTANCE_INDEX}\n        :type StderrLocalFileName: str\n        """
         self.StdoutLocalPath = None
         self.StderrLocalPath = None
         self.StdoutLocalFileName = None
@@ -3567,9 +2803,7 @@ class RetryJobsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobIds: List of instance IDs.
-        :type JobIds: list of str
-        """
+        :param JobIds: List of instance IDs.\n        :type JobIds: list of str\n        """
         self.JobIds = None
 
 
@@ -3591,9 +2825,7 @@ class RetryJobsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3608,9 +2840,7 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.
-        :type Enabled: bool
-        """
+        :param Enabled: Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.\n        :type Enabled: bool\n        """
         self.Enabled = None
 
 
@@ -3632,9 +2862,7 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
-        :type Enabled: bool
-        """
+        :param Enabled: Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.\n        :type Enabled: bool\n        """
         self.Enabled = None
 
 
@@ -3656,11 +2884,7 @@ class SpotMarketOptions(AbstractModel):
 
     def __init__(self):
         """
-        :param MaxPrice: Bidding price
-        :type MaxPrice: str
-        :param SpotInstanceType: Bidding request type. Currently only "one-time" is supported.
-        :type SpotInstanceType: str
-        """
+        :param MaxPrice: Bidding price\n        :type MaxPrice: str\n        :param SpotInstanceType: Bidding request type. Currently only "one-time" is supported.\n        :type SpotInstanceType: str\n        """
         self.MaxPrice = None
         self.SpotInstanceType = None
 
@@ -3685,15 +2909,9 @@ class StorageBlock(AbstractModel):
     def __init__(self):
         """
         :param Type: Local HDD storage type. Value: LOCAL_PRO.
-Note: This field may return null, indicating that no valid value is found.
-        :type Type: str
-        :param MinSize: Minimum capacity of local HDD storage
-Note: This field may return null, indicating that no valid value is found.
-        :type MinSize: int
-        :param MaxSize: Maximum capacity of local HDD storage
-Note: This field may return null, indicating that no valid value is found.
-        :type MaxSize: int
-        """
+Note: This field may return null, indicating that no valid value is found.\n        :type Type: str\n        :param MinSize: Minimum capacity of local HDD storage
+Note: This field may return null, indicating that no valid value is found.\n        :type MinSize: int\n        :param MaxSize: Maximum capacity of local HDD storage
+Note: This field may return null, indicating that no valid value is found.\n        :type MaxSize: int\n        """
         self.Type = None
         self.MinSize = None
         self.MaxSize = None
@@ -3719,13 +2937,7 @@ class SubmitJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Placement: Location information of the submitted job. This parameter allows you to specify information such as the availability zone of the CVM instance with which the job is associated.
-        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
-        :param Job: Job information
-        :type Job: :class:`tencentcloud.batch.v20170312.models.Job`
-        :param ClientToken: The string used to guarantee the idempotency of the request, which is generated by the user and must be unique for different requests. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
-        :type ClientToken: str
-        """
+        :param Placement: Location information of the submitted job. This parameter allows you to specify information such as the availability zone of the CVM instance with which the job is associated.\n        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`\n        :param Job: Job information\n        :type Job: :class:`tencentcloud.batch.v20170312.models.Job`\n        :param ClientToken: The string used to guarantee the idempotency of the request, which is generated by the user and must be unique for different requests. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.\n        :type ClientToken: str\n        """
         self.Placement = None
         self.Job = None
         self.ClientToken = None
@@ -3755,11 +2967,7 @@ class SubmitJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: When a job is submitted through this API, this parameter is returned and indicates the job ID. Returning the list of job IDs does not mean that the job is parsed/executed successfully. The job state can be queried using the DescribeJob API.
-        :type JobId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param JobId: When a job is submitted through this API, this parameter is returned and indicates the job ID. Returning the list of job IDs does not mean that the job is parsed/executed successfully. The job state can be queried using the DescribeJob API.\n        :type JobId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.JobId = None
         self.RequestId = None
 
@@ -3776,13 +2984,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><br>The disk type currently in stock will be used by default. 
-        :type DiskType: str
-        :param DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter currently.
-        :type DiskId: str
-        :param DiskSize: System disk size; unit: GB; default value: 50 GB.
-        :type DiskSize: int
-        """
+        :param DiskType: System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><br>The disk type currently in stock will be used by default. \n        :type DiskType: str\n        :param DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter currently.\n        :type DiskId: str\n        :param DiskSize: System disk size; unit: GB; default value: 50 GB.\n        :type DiskSize: int\n        """
         self.DiskType = None
         self.DiskId = None
         self.DiskSize = None
@@ -3809,12 +3011,8 @@ class Tag(AbstractModel):
     def __init__(self):
         """
         :param Key: Tag key.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Key: str
-        :param Value: Tag value.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Value: str
-        """
+Note: This field may return `null`, indicating that no valid value was found.\n        :type Key: str\n        :param Value: Tag value.
+Note: This field may return `null`, indicating that no valid value was found.\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -3838,43 +3036,7 @@ class Task(AbstractModel):
 
     def __init__(self):
         """
-        :param Application: Application information
-        :type Application: :class:`tencentcloud.batch.v20170312.models.Application`
-        :param TaskName: Job name, which should be unique within instance
-        :type TaskName: str
-        :param TaskInstanceNum: Number of running task instances
-        :type TaskInstanceNum: int
-        :param ComputeEnv: Compute environment information. One (and only one) parameter must be specified for ComputeEnv and EnvId.
-        :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.AnonymousComputeEnv`
-        :param EnvId: Compute environment ID. One (and only one) parameter must be specified for ComputeEnv and EnvId.
-        :type EnvId: str
-        :param RedirectInfo: Redirection information
-        :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
-        :param RedirectLocalInfo: Local redirection information
-        :type RedirectLocalInfo: :class:`tencentcloud.batch.v20170312.models.RedirectLocalInfo`
-        :param InputMappings: Input mapping
-        :type InputMappings: list of InputMapping
-        :param OutputMappings: Output mapping
-        :type OutputMappings: list of OutputMapping
-        :param OutputMappingConfigs: Output mapping configuration
-        :type OutputMappingConfigs: list of OutputMappingConfig
-        :param EnvVars: Custom environment variable
-        :type EnvVars: list of EnvVar
-        :param Authentications: Authorization information
-        :type Authentications: list of Authentication
-        :param FailedAction: The processing method after the TaskInstance fails; Value range: TERMINATE (default), INTERRUPT, FAST_INTERRUPT.
-        :type FailedAction: str
-        :param MaxRetryCount: The maximum number of retries after the task fails. Default value: 0
-        :type MaxRetryCount: int
-        :param Timeout: Timeout period in seconds after the task starts. Defaults value: 86,400
-        :type Timeout: int
-        :param MaxConcurrentNum: The maximum number of concurrent tasks. There is no limit by default.
-        :type MaxConcurrentNum: int
-        :param RestartComputeNode: Restarts the compute node after the task is completed. This is suitable for specifying the compute environment for task execution.
-        :type RestartComputeNode: bool
-        :param ResourceMaxRetryCount: Maximum number of retry attempts after failing to create computing resources such as the CVM in the task launch process. Default value: 0.
-        :type ResourceMaxRetryCount: int
-        """
+        :param Application: Application information\n        :type Application: :class:`tencentcloud.batch.v20170312.models.Application`\n        :param TaskName: Job name, which should be unique within instance\n        :type TaskName: str\n        :param TaskInstanceNum: Number of running task instances\n        :type TaskInstanceNum: int\n        :param ComputeEnv: Compute environment information. One (and only one) parameter must be specified for ComputeEnv and EnvId.\n        :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.AnonymousComputeEnv`\n        :param EnvId: Compute environment ID. One (and only one) parameter must be specified for ComputeEnv and EnvId.\n        :type EnvId: str\n        :param RedirectInfo: Redirection information\n        :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`\n        :param RedirectLocalInfo: Local redirection information\n        :type RedirectLocalInfo: :class:`tencentcloud.batch.v20170312.models.RedirectLocalInfo`\n        :param InputMappings: Input mapping\n        :type InputMappings: list of InputMapping\n        :param OutputMappings: Output mapping\n        :type OutputMappings: list of OutputMapping\n        :param OutputMappingConfigs: Output mapping configuration\n        :type OutputMappingConfigs: list of OutputMappingConfig\n        :param EnvVars: Custom environment variable\n        :type EnvVars: list of EnvVar\n        :param Authentications: Authorization information\n        :type Authentications: list of Authentication\n        :param FailedAction: The processing method after the TaskInstance fails; Value range: TERMINATE (default), INTERRUPT, FAST_INTERRUPT.\n        :type FailedAction: str\n        :param MaxRetryCount: The maximum number of retries after the task fails. Default value: 0\n        :type MaxRetryCount: int\n        :param Timeout: Timeout period in seconds after the task starts. Defaults value: 86,400\n        :type Timeout: int\n        :param MaxConcurrentNum: The maximum number of concurrent tasks. There is no limit by default.\n        :type MaxConcurrentNum: int\n        :param RestartComputeNode: Restarts the compute node after the task is completed. This is suitable for specifying the compute environment for task execution.\n        :type RestartComputeNode: bool\n        :param ResourceMaxRetryCount: Maximum number of retry attempts after failing to create computing resources such as the CVM in the task launch process. Default value: 0.\n        :type ResourceMaxRetryCount: int\n        """
         self.Application = None
         self.TaskName = None
         self.TaskInstanceNum = None
@@ -3963,27 +3125,13 @@ class TaskInstanceLog(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskInstanceIndex: Task instance
-        :type TaskInstanceIndex: int
-        :param StdoutLog: Standard output log (Base64-encoded)
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type StdoutLog: str
-        :param StderrLog: Standard error log (Base64-encoded)
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type StderrLog: str
-        :param StdoutRedirectPath: Standard output redirection path
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type StdoutRedirectPath: str
-        :param StderrRedirectPath: Standard error redirection path
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type StderrRedirectPath: str
-        :param StdoutRedirectFileName: Standard output redirection file name
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type StdoutRedirectFileName: str
-        :param StderrRedirectFileName: Standard error redirection file name
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type StderrRedirectFileName: str
-        """
+        :param TaskInstanceIndex: Task instance\n        :type TaskInstanceIndex: int\n        :param StdoutLog: Standard output log (Base64-encoded)
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type StdoutLog: str\n        :param StderrLog: Standard error log (Base64-encoded)
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type StderrLog: str\n        :param StdoutRedirectPath: Standard output redirection path
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type StdoutRedirectPath: str\n        :param StderrRedirectPath: Standard error redirection path
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type StderrRedirectPath: str\n        :param StdoutRedirectFileName: Standard output redirection file name
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type StdoutRedirectFileName: str\n        :param StderrRedirectFileName: Standard error redirection file name
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type StderrRedirectFileName: str\n        """
         self.TaskInstanceIndex = None
         self.StdoutLog = None
         self.StderrLog = None
@@ -4017,23 +3165,7 @@ class TaskInstanceMetrics(AbstractModel):
 
     def __init__(self):
         """
-        :param SubmittedCount: Submitted count
-        :type SubmittedCount: int
-        :param PendingCount: Pending count
-        :type PendingCount: int
-        :param RunnableCount: Runnable count
-        :type RunnableCount: int
-        :param StartingCount: Starting count
-        :type StartingCount: int
-        :param RunningCount: Running count
-        :type RunningCount: int
-        :param SucceedCount: Succeed count
-        :type SucceedCount: int
-        :param FailedInterruptedCount: FailedInterrupted count
-        :type FailedInterruptedCount: int
-        :param FailedCount: Failed count
-        :type FailedCount: int
-        """
+        :param SubmittedCount: Submitted count\n        :type SubmittedCount: int\n        :param PendingCount: Pending count\n        :type PendingCount: int\n        :param RunnableCount: Runnable count\n        :type RunnableCount: int\n        :param StartingCount: Starting count\n        :type StartingCount: int\n        :param RunningCount: Running count\n        :type RunningCount: int\n        :param SucceedCount: Succeed count\n        :type SucceedCount: int\n        :param FailedInterruptedCount: FailedInterrupted count\n        :type FailedInterruptedCount: int\n        :param FailedCount: Failed count\n        :type FailedCount: int\n        """
         self.SubmittedCount = None
         self.PendingCount = None
         self.RunnableCount = None
@@ -4069,34 +3201,12 @@ class TaskInstanceView(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskInstanceIndex: Task instance index
-        :type TaskInstanceIndex: int
-        :param TaskInstanceState: Task instance state
-        :type TaskInstanceState: str
-        :param ExitCode: Exit code after application execution is completed
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ExitCode: int
-        :param StateReason: Task instance state reason. If the task instance fails, the reason for the failure will be logged.
-        :type StateReason: str
-        :param ComputeNodeInstanceId: The InstanceId of the compute node (e.g., CVM instance) where the task instance is running. This field is empty if the task instance is not running or has already been completed and will change when the task instance is retried
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ComputeNodeInstanceId: str
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param LaunchTime: Start time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type LaunchTime: str
-        :param RunningTime: Running start time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RunningTime: str
-        :param EndTime: End time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EndTime: str
-        :param RedirectInfo: Redirection information
-        :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
-        :param StateDetailedReason: Task instance state reason details. If the task instance fails, the reason for the failure will be logged
-        :type StateDetailedReason: str
-        """
+        :param TaskInstanceIndex: Task instance index\n        :type TaskInstanceIndex: int\n        :param TaskInstanceState: Task instance state\n        :type TaskInstanceState: str\n        :param ExitCode: Exit code after application execution is completed
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type ExitCode: int\n        :param StateReason: Task instance state reason. If the task instance fails, the reason for the failure will be logged.\n        :type StateReason: str\n        :param ComputeNodeInstanceId: The InstanceId of the compute node (e.g., CVM instance) where the task instance is running. This field is empty if the task instance is not running or has already been completed and will change when the task instance is retried
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type ComputeNodeInstanceId: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param LaunchTime: Start time
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type LaunchTime: str\n        :param RunningTime: Running start time
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type RunningTime: str\n        :param EndTime: End time
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type EndTime: str\n        :param RedirectInfo: Redirection information\n        :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`\n        :param StateDetailedReason: Task instance state reason details. If the task instance fails, the reason for the failure will be logged\n        :type StateDetailedReason: str\n        """
         self.TaskInstanceIndex = None
         self.TaskInstanceState = None
         self.ExitCode = None
@@ -4140,23 +3250,7 @@ class TaskMetrics(AbstractModel):
 
     def __init__(self):
         """
-        :param SubmittedCount: Submitted count
-        :type SubmittedCount: int
-        :param PendingCount: Pending count
-        :type PendingCount: int
-        :param RunnableCount: Runnable count
-        :type RunnableCount: int
-        :param StartingCount: Starting count
-        :type StartingCount: int
-        :param RunningCount: Running count
-        :type RunningCount: int
-        :param SucceedCount: Succeed count
-        :type SucceedCount: int
-        :param FailedInterruptedCount: FailedInterrupted count
-        :type FailedInterruptedCount: int
-        :param FailedCount: Failed count
-        :type FailedCount: int
-        """
+        :param SubmittedCount: Submitted count\n        :type SubmittedCount: int\n        :param PendingCount: Pending count\n        :type PendingCount: int\n        :param RunnableCount: Runnable count\n        :type RunnableCount: int\n        :param StartingCount: Starting count\n        :type StartingCount: int\n        :param RunningCount: Running count\n        :type RunningCount: int\n        :param SucceedCount: Succeed count\n        :type SucceedCount: int\n        :param FailedInterruptedCount: FailedInterrupted count\n        :type FailedInterruptedCount: int\n        :param FailedCount: Failed count\n        :type FailedCount: int\n        """
         self.SubmittedCount = None
         self.PendingCount = None
         self.RunnableCount = None
@@ -4192,20 +3286,8 @@ class TaskTemplateView(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskTemplateId: Task template ID
-        :type TaskTemplateId: str
-        :param TaskTemplateName: Task template name
-        :type TaskTemplateName: str
-        :param TaskTemplateDescription: Task template description
-        :type TaskTemplateDescription: str
-        :param TaskTemplateInfo: Task template information
-        :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param Tags: Tag list bound to the task template.
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Tags: list of Tag
-        """
+        :param TaskTemplateId: Task template ID\n        :type TaskTemplateId: str\n        :param TaskTemplateName: Task template name\n        :type TaskTemplateName: str\n        :param TaskTemplateDescription: Task template description\n        :type TaskTemplateDescription: str\n        :param TaskTemplateInfo: Task template information\n        :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param Tags: Tag list bound to the task template.
+Note: This field may return `null`, indicating that no valid value was found.\n        :type Tags: list of Tag\n        """
         self.TaskTemplateId = None
         self.TaskTemplateName = None
         self.TaskTemplateDescription = None
@@ -4244,16 +3326,8 @@ class TaskView(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskName: Task name
-        :type TaskName: str
-        :param TaskState: Task state
-        :type TaskState: str
-        :param CreateTime: Create time
-        :type CreateTime: str
-        :param EndTime: End time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EndTime: str
-        """
+        :param TaskName: Task name\n        :type TaskName: str\n        :param TaskState: Task state\n        :type TaskState: str\n        :param CreateTime: Create time\n        :type CreateTime: str\n        :param EndTime: End time
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type EndTime: str\n        """
         self.TaskName = None
         self.TaskState = None
         self.CreateTime = None
@@ -4281,11 +3355,7 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param ComputeNodeId: Compute node ID
-        :type ComputeNodeId: str
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param ComputeNodeId: Compute node ID\n        :type ComputeNodeId: str\n        """
         self.EnvId = None
         self.ComputeNodeId = None
 
@@ -4309,9 +3379,7 @@ class TerminateComputeNodeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4326,11 +3394,7 @@ class TerminateComputeNodesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: Compute environment ID
-        :type EnvId: str
-        :param ComputeNodeIds: List of compute node IDs
-        :type ComputeNodeIds: list of str
-        """
+        :param EnvId: Compute environment ID\n        :type EnvId: str\n        :param ComputeNodeIds: List of compute node IDs\n        :type ComputeNodeIds: list of str\n        """
         self.EnvId = None
         self.ComputeNodeIds = None
 
@@ -4354,9 +3418,7 @@ class TerminateComputeNodesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4371,9 +3433,7 @@ class TerminateJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Instance ID
-        :type JobId: str
-        """
+        :param JobId: Instance ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -4395,9 +3455,7 @@ class TerminateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4412,13 +3470,7 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: Instance ID
-        :type JobId: str
-        :param TaskName: Task name
-        :type TaskName: str
-        :param TaskInstanceIndex: Task instance index
-        :type TaskInstanceIndex: int
-        """
+        :param JobId: Instance ID\n        :type JobId: str\n        :param TaskName: Task name\n        :type TaskName: str\n        :param TaskInstanceIndex: Task instance index\n        :type TaskInstanceIndex: int\n        """
         self.JobId = None
         self.TaskName = None
         self.TaskInstanceIndex = None
@@ -4444,9 +3496,7 @@ class TerminateTaskInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4461,17 +3511,7 @@ class VirtualPrivateCloud(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.
-        :type VpcId: str
-        :param SubnetId: VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.
-        :type SubnetId: str
-        :param AsVpcGateway: Whether to use an instance as a public gateway. An instance can be used as a public gateway only when it has a public IP and resides in a VPC. Valid values: <br><li>TRUE: use the instance as a public gateway <br><li>FALSE: do not use the instance as a public gateway <br><br>Default value: FALSE.
-        :type AsVpcGateway: bool
-        :param PrivateIpAddresses: Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
-        :type PrivateIpAddresses: list of str
-        :param Ipv6AddressCount: Number of IPv6 addresses randomly generated for the ENI.
-        :type Ipv6AddressCount: int
-        """
+        :param VpcId: VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.\n        :type VpcId: str\n        :param SubnetId: VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.\n        :type SubnetId: str\n        :param AsVpcGateway: Whether to use an instance as a public gateway. An instance can be used as a public gateway only when it has a public IP and resides in a VPC. Valid values: <br><li>TRUE: use the instance as a public gateway <br><li>FALSE: do not use the instance as a public gateway <br><br>Default value: FALSE.\n        :type AsVpcGateway: bool\n        :param PrivateIpAddresses: Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.\n        :type PrivateIpAddresses: list of str\n        :param Ipv6AddressCount: Number of IPv6 addresses randomly generated for the ENI.\n        :type Ipv6AddressCount: int\n        """
         self.VpcId = None
         self.SubnetId = None
         self.AsVpcGateway = None

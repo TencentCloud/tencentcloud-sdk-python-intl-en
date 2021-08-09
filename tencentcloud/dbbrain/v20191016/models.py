@@ -25,13 +25,7 @@ class AddUserContactRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Contact name, which needs to be unique and can contain 2-60 characters, supporting uppercase and lowercase letters, numbers, and underline “_”. It cannot start with “_”.
-        :type Name: str
-        :param ContactInfo: Email address, which can contain uppercase and lowercase letters, numbers, and underline “_”, and cannot start with “_”.
-        :type ContactInfo: str
-        :param Product: Service type, which is fixed to “mysql”.
-        :type Product: str
-        """
+        :param Name: Contact name, which needs to be unique and can contain 2-60 characters, supporting uppercase and lowercase letters, numbers, and underline “_”. It cannot start with “_”.\n        :type Name: str\n        :param ContactInfo: Email address, which can contain uppercase and lowercase letters, numbers, and underline “_”, and cannot start with “_”.\n        :type ContactInfo: str\n        :param Product: Service type, which is fixed to “mysql”.\n        :type Product: str\n        """
         self.Name = None
         self.ContactInfo = None
         self.Product = None
@@ -57,11 +51,7 @@ class AddUserContactResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: The successfully added contact ID
-        :type Id: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Id: The successfully added contact ID\n        :type Id: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Id = None
         self.RequestId = None
 
@@ -78,13 +68,7 @@ class ContactItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Contact ID.
-        :type Id: int
-        :param Name: Contact name.
-        :type Name: str
-        :param Mail: The email address of the contact.
-        :type Mail: str
-        """
+        :param Id: Contact ID.\n        :type Id: int\n        :param Name: Contact name.\n        :type Name: str\n        :param Mail: The email address of the contact.\n        :type Mail: str\n        """
         self.Id = None
         self.Name = None
         self.Mail = None
@@ -110,21 +94,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param StartTime: Start time, such as `2020-11-08T14:00:00+08:00`.
-        :type StartTime: str
-        :param EndTime: End time, such as `2020-11-09T14:00:00+08:00`.
-        :type EndTime: str
-        :param SendMailFlag: Whether to send an email. Valid values: 0 - Yes, 1 - No.
-        :type SendMailFlag: int
-        :param ContactPerson: An array of contact IDs to receive the email.
-        :type ContactPerson: list of int
-        :param ContactGroup: An array of contact group IDs to receive the email.
-        :type ContactGroup: list of int
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param StartTime: Start time, such as `2020-11-08T14:00:00+08:00`.\n        :type StartTime: str\n        :param EndTime: End time, such as `2020-11-09T14:00:00+08:00`.\n        :type EndTime: str\n        :param SendMailFlag: Whether to send an email. Valid values: 0 - Yes, 1 - No.\n        :type SendMailFlag: int\n        :param ContactPerson: An array of contact IDs to receive the email.\n        :type ContactPerson: list of int\n        :param ContactGroup: An array of contact group IDs to receive the email.\n        :type ContactGroup: list of int\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -159,11 +129,7 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
     def __init__(self):
         """
         :param AsyncRequestId: ID of an async task request, which can be used to query the execution result of an async task.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type AsyncRequestId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type AsyncRequestId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AsyncRequestId = None
         self.RequestId = None
 
@@ -180,13 +146,7 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param AsyncRequestId: The health report task ID, which can be queried through `DescribeDBDiagReportTasks`.
-        :type AsyncRequestId: int
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param AsyncRequestId: The health report task ID, which can be queried through `DescribeDBDiagReportTasks`.\n        :type AsyncRequestId: int\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.AsyncRequestId = None
         self.Product = None
@@ -212,13 +172,7 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ReportUrl: The URL of the health report.
-        :type ReportUrl: str
-        :param ExpireTime: The expiration timestamp of the health report URL (in seconds).
-        :type ExpireTime: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param ReportUrl: The URL of the health report.\n        :type ReportUrl: str\n        :param ExpireTime: The expiration timestamp of the health report URL (in seconds).\n        :type ExpireTime: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ReportUrl = None
         self.ExpireTime = None
         self.RequestId = None
@@ -237,19 +191,7 @@ class CreateMailProfileRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProfileInfo: Email configurations
-        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
-        :param ProfileLevel: Configuration level. Valid values: "User" (user-level), "Instance" (instance-level). For database inspection report, it should be `User`; and for scheduled task reports, it should be `Instance`.
-        :type ProfileLevel: str
-        :param ProfileName: Configuration name, which needs to be unique. For database inspection reports, this name can be customize as needed. For scheduled task reports, the name should be in the format of "scheduler_" + {instanceId}, such as "schduler_cdb-test".
-        :type ProfileName: str
-        :param ProfileType: Configuration type. Valid values: "dbScan_mail_configuration" (email configuration of database inspection report), "scheduler_mail_configuration" (email configuration of scheduled task report).
-        :type ProfileType: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
-        :type Product: str
-        :param BindInstanceIds: Instance ID bound with the configuration, which is set when the configuration level is "Instance". Only one instance can be bound at a time. When the configuration level is “User”, leave this parameter empty.
-        :type BindInstanceIds: list of str
-        """
+        :param ProfileInfo: Email configurations\n        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`\n        :param ProfileLevel: Configuration level. Valid values: "User" (user-level), "Instance" (instance-level). For database inspection report, it should be `User`; and for scheduled task reports, it should be `Instance`.\n        :type ProfileLevel: str\n        :param ProfileName: Configuration name, which needs to be unique. For database inspection reports, this name can be customize as needed. For scheduled task reports, the name should be in the format of "scheduler_" + {instanceId}, such as "schduler_cdb-test".\n        :type ProfileName: str\n        :param ProfileType: Configuration type. Valid values: "dbScan_mail_configuration" (email configuration of database inspection report), "scheduler_mail_configuration" (email configuration of scheduled task report).\n        :type ProfileType: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).\n        :type Product: str\n        :param BindInstanceIds: Instance ID bound with the configuration, which is set when the configuration level is "Instance". Only one instance can be bound at a time. When the configuration level is “User”, leave this parameter empty.\n        :type BindInstanceIds: list of str\n        """
         self.ProfileInfo = None
         self.ProfileLevel = None
         self.ProfileName = None
@@ -283,9 +225,7 @@ class CreateMailProfileResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -300,17 +240,7 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WeekConfiguration: Value range: 1-7, representing Monday to Sunday respectively.
-        :type WeekConfiguration: list of int
-        :param ProfileInfo: Email configurations
-        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
-        :param ProfileName: Configuration name, which needs to be unique. For scheduled task reports, the name should be in the format of "scheduler_" + {instanceId}, such as "schduler_cdb-test".
-        :type ProfileName: str
-        :param BindInstanceId: Configure the instance ID that you need to generate the health report.
-        :type BindInstanceId: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
-        :type Product: str
-        """
+        :param WeekConfiguration: Value range: 1-7, representing Monday to Sunday respectively.\n        :type WeekConfiguration: list of int\n        :param ProfileInfo: Email configurations\n        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`\n        :param ProfileName: Configuration name, which needs to be unique. For scheduled task reports, the name should be in the format of "scheduler_" + {instanceId}, such as "schduler_cdb-test".\n        :type ProfileName: str\n        :param BindInstanceId: Configure the instance ID that you need to generate the health report.\n        :type BindInstanceId: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.\n        :type Product: str\n        """
         self.WeekConfiguration = None
         self.ProfileInfo = None
         self.ProfileName = None
@@ -342,9 +272,7 @@ class CreateSchedulerMailProfileResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -359,11 +287,7 @@ class DescribeAllUserContactRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: Service type, which is fixed to “mysql”.
-        :type Product: str
-        :param Names: An array of contact name. Fuzzy search is supported.
-        :type Names: list of str
-        """
+        :param Product: Service type, which is fixed to “mysql”.\n        :type Product: str\n        :param Names: An array of contact name. Fuzzy search is supported.\n        :type Names: list of str\n        """
         self.Product = None
         self.Names = None
 
@@ -387,14 +311,8 @@ class DescribeAllUserContactResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of contacts.
-        :type TotalCount: int
-        :param Contacts: Contact information.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Contacts: list of ContactItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of contacts.\n        :type TotalCount: int\n        :param Contacts: Contact information.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Contacts: list of ContactItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Contacts = None
         self.RequestId = None
@@ -418,11 +336,7 @@ class DescribeAllUserGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: Service type, which is fixed to “mysql”.
-        :type Product: str
-        :param Names: An array of contact group name. Fuzzy search is supported.
-        :type Names: list of str
-        """
+        :param Product: Service type, which is fixed to “mysql”.\n        :type Product: str\n        :param Names: An array of contact group name. Fuzzy search is supported.\n        :type Names: list of str\n        """
         self.Product = None
         self.Names = None
 
@@ -446,14 +360,8 @@ class DescribeAllUserGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of contact groups.
-        :type TotalCount: int
-        :param Groups: Contact group information.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type Groups: list of GroupItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of contact groups.\n        :type TotalCount: int\n        :param Groups: Contact group information.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type Groups: list of GroupItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Groups = None
         self.RequestId = None
@@ -477,13 +385,7 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param EventId: Event ID, which can be obtained through the `DescribeDBDiagHistory` API.
-        :type EventId: int
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param EventId: Event ID, which can be obtained through the `DescribeDBDiagHistory` API.\n        :type EventId: int\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.EventId = None
         self.Product = None
@@ -509,32 +411,8 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DiagItem: Diagnosis item.
-        :type DiagItem: str
-        :param DiagType: Diagnosis type.
-        :type DiagType: str
-        :param EventId: Event ID.
-        :type EventId: int
-        :param Explanation: Event details.
-        :type Explanation: str
-        :param Outline: Summary.
-        :type Outline: str
-        :param Problem: Problem found.
-        :type Problem: str
-        :param Severity: Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.
-        :type Severity: int
-        :param StartTime: Start time
-        :type StartTime: str
-        :param Suggestions: Suggestion.
-        :type Suggestions: str
-        :param Metric: Reserved field.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Metric: str
-        :param EndTime: End time.
-        :type EndTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DiagItem: Diagnosis item.\n        :type DiagItem: str\n        :param DiagType: Diagnosis type.\n        :type DiagType: str\n        :param EventId: Event ID.\n        :type EventId: int\n        :param Explanation: Event details.\n        :type Explanation: str\n        :param Outline: Summary.\n        :type Outline: str\n        :param Problem: Problem found.\n        :type Problem: str\n        :param Severity: Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.\n        :type Severity: int\n        :param StartTime: Start time\n        :type StartTime: str\n        :param Suggestions: Suggestion.\n        :type Suggestions: str\n        :param Metric: Reserved field.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Metric: str\n        :param EndTime: End time.\n        :type EndTime: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DiagItem = None
         self.DiagType = None
         self.EventId = None
@@ -571,15 +449,7 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param StartTime: Start time, such as "2019-09-10 12:13:14".
-        :type StartTime: str
-        :param EndTime: End time, such as "2019-09-11 12:13:14". The interval between the end time and the start time can be up to 2 days.
-        :type EndTime: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param StartTime: Start time, such as "2019-09-10 12:13:14".\n        :type StartTime: str\n        :param EndTime: End time, such as "2019-09-11 12:13:14". The interval between the end time and the start time can be up to 2 days.\n        :type EndTime: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -607,11 +477,7 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Events: Event description.
-        :type Events: list of DiagHistoryEventItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Events: Event description.\n        :type Events: list of DiagHistoryEventItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Events = None
         self.RequestId = None
 
@@ -633,25 +499,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start time of the first task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.
-        :type StartTime: str
-        :param EndTime: End time of the last task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.
-        :type EndTime: str
-        :param InstanceIds: Instance ID array, which is used to filter the task list of a specified instance.
-        :type InstanceIds: list of str
-        :param Sources: Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (timed generation), and `MANUAL` (manual trigger).
-        :type Sources: list of str
-        :param HealthLevels: Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).
-        :type HealthLevels: str
-        :param TaskStatuses: The task status. Valid values: `created` (create), `chosen` (to be executed), `running` (being executed), `failed` (failed), and `finished` (completed).
-        :type TaskStatuses: str
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of returned results. Default value: 20.
-        :type Limit: int
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
-        :type Product: str
-        """
+        :param StartTime: Start time of the first task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.\n        :type StartTime: str\n        :param EndTime: End time of the last task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.\n        :type EndTime: str\n        :param InstanceIds: Instance ID array, which is used to filter the task list of a specified instance.\n        :type InstanceIds: list of str\n        :param Sources: Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (timed generation), and `MANUAL` (manual trigger).\n        :type Sources: list of str\n        :param HealthLevels: Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).\n        :type HealthLevels: str\n        :param TaskStatuses: The task status. Valid values: `created` (create), `chosen` (to be executed), `running` (being executed), `failed` (failed), and `finished` (completed).\n        :type TaskStatuses: str\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned results. Default value: 20.\n        :type Limit: int\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.\n        :type Product: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.InstanceIds = None
@@ -689,13 +537,7 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of tasks.
-        :type TotalCount: int
-        :param Tasks: Task list.
-        :type Tasks: list of HealthReportTask
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of tasks.\n        :type TotalCount: int\n        :param Tasks: Task list.\n        :type Tasks: list of HealthReportTask\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Tasks = None
         self.RequestId = None
@@ -719,13 +561,7 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param RangeDays: Query period in days. The end date is the current date and the query period is 7 days by default.
-        :type RangeDays: int
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param RangeDays: Query period in days. The end date is the current date and the query period is 7 days by default.\n        :type RangeDays: int\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.RangeDays = None
         self.Product = None
@@ -751,17 +587,7 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Growth: Disk usage growth in MB.
-        :type Growth: int
-        :param Remain: Available disk space in MB.
-        :type Remain: int
-        :param Total: Total disk space in MB.
-        :type Total: int
-        :param AvailableDays: Estimated number of available days.
-        :type AvailableDays: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Growth: Disk usage growth in MB.\n        :type Growth: int\n        :param Remain: Available disk space in MB.\n        :type Remain: int\n        :param Total: Total disk space in MB.\n        :type Total: int\n        :param AvailableDays: Estimated number of available days.\n        :type AvailableDays: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Growth = None
         self.Remain = None
         self.Total = None
@@ -784,21 +610,7 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param IsSupported: Whether it is an instance supported by DBbrain. It is fixed to “true”.
-        :type IsSupported: bool
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
-        :type Product: str
-        :param Offset: Pagination parameter indicating the offset.
-        :type Offset: int
-        :param Limit: Pagination parameter indicating the number of entries for each page.
-        :type Limit: int
-        :param InstanceNames: Query by instance name.
-        :type InstanceNames: list of str
-        :param InstanceIds: Query by instance ID.
-        :type InstanceIds: list of str
-        :param Regions: Query by region.
-        :type Regions: list of str
-        """
+        :param IsSupported: Whether it is an instance supported by DBbrain. It is fixed to “true”.\n        :type IsSupported: bool\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.\n        :type Product: str\n        :param Offset: Pagination parameter indicating the offset.\n        :type Offset: int\n        :param Limit: Pagination parameter indicating the number of entries for each page.\n        :type Limit: int\n        :param InstanceNames: Query by instance name.\n        :type InstanceNames: list of str\n        :param InstanceIds: Query by instance ID.\n        :type InstanceIds: list of str\n        :param Regions: Query by region.\n        :type Regions: list of str\n        """
         self.IsSupported = None
         self.Product = None
         self.Offset = None
@@ -832,15 +644,7 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total Number of Instances
-        :type TotalCount: int
-        :param DbScanStatus: Status of all instance inspection. 0: all instance inspection enabled, 1: all instance inspection disabled
-        :type DbScanStatus: int
-        :param Items: Instance related information
-        :type Items: list of InstanceInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total Number of Instances\n        :type TotalCount: int\n        :param DbScanStatus: Status of all instance inspection. 0: all instance inspection enabled, 1: all instance inspection disabled\n        :type DbScanStatus: int\n        :param Items: Instance related information\n        :type Items: list of InstanceInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DbScanStatus = None
         self.Items = None
@@ -866,13 +670,7 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: The instance ID that needs to obtain the health score
-        :type InstanceId: str
-        :param Time: Time to obtain the health score
-        :type Time: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: The instance ID that needs to obtain the health score\n        :type InstanceId: str\n        :param Time: Time to obtain the health score\n        :type Time: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.Time = None
         self.Product = None
@@ -898,11 +696,7 @@ class DescribeHealthScoreResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: Health score and deduction for exceptions
-        :type Data: :class:`tencentcloud.dbbrain.v20191016.models.HealthScoreInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Data: Health score and deduction for exceptions\n        :type Data: :class:`tencentcloud.dbbrain.v20191016.models.HealthScoreInfo`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -921,17 +715,7 @@ class DescribeMailProfileRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProfileType: Configuration type. Valid values: "dbScan_mail_configuration" (email configuration of database inspection report), "scheduler_mail_configuration" (email configuration of scheduled task report).
-        :type ProfileType: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
-        :type Product: str
-        :param Offset: Pagination offset
-        :type Offset: int
-        :param Limit: The number of results per page in paginated queries. Maximum value: 50
-        :type Limit: int
-        :param ProfileName: Query by the name of email configuration. The name of the regularly sent email configuration should be in the format of "scheduler_"+{instanceId}.
-        :type ProfileName: str
-        """
+        :param ProfileType: Configuration type. Valid values: "dbScan_mail_configuration" (email configuration of database inspection report), "scheduler_mail_configuration" (email configuration of scheduled task report).\n        :type ProfileType: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.\n        :type Product: str\n        :param Offset: Pagination offset\n        :type Offset: int\n        :param Limit: The number of results per page in paginated queries. Maximum value: 50\n        :type Limit: int\n        :param ProfileName: Query by the name of email configuration. The name of the regularly sent email configuration should be in the format of "scheduler_"+{instanceId}.\n        :type ProfileName: str\n        """
         self.ProfileType = None
         self.Product = None
         self.Offset = None
@@ -962,14 +746,8 @@ class DescribeMailProfileResponse(AbstractModel):
     def __init__(self):
         """
         :param ProfileList: Email configuration details
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ProfileList: list of UserProfile
-        :param TotalCount: Total number of email templates
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ProfileList: list of UserProfile\n        :param TotalCount: Total number of email templates
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.ProfileList = None
         self.TotalCount = None
         self.RequestId = None
@@ -993,15 +771,7 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param StartTime: Start time, such as "2019-09-10 12:13:14".
-        :type StartTime: str
-        :param EndTime: End time, such as "2019-09-10 12:13:14". The interval between the end time and the start time can be up to 7 days.
-        :type EndTime: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param StartTime: Start time, such as "2019-09-10 12:13:14".\n        :type StartTime: str\n        :param EndTime: End time, such as "2019-09-10 12:13:14". The interval between the end time and the start time can be up to 7 days.\n        :type EndTime: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1029,15 +799,7 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Period: Time range in seconds in histogram.
-        :type Period: int
-        :param TimeSeries: Number of slow logs in specified time range.
-        :type TimeSeries: list of TimeSlice
-        :param SeriesData: Instance CPU utilization monitoring data in specified time range.
-        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorMetricSeriesData`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Period: Time range in seconds in histogram.\n        :type Period: int\n        :param TimeSeries: Number of slow logs in specified time range.\n        :type TimeSeries: list of TimeSlice\n        :param SeriesData: Instance CPU utilization monitoring data in specified time range.\n        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorMetricSeriesData`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Period = None
         self.TimeSeries = None
         self.SeriesData = None
@@ -1065,25 +827,7 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param StartTime: Start time, such as "2019-09-10 12:13:14".
-        :type StartTime: str
-        :param EndTime: End time, such as "2019-09-10 12:13:14". The interval between the end time and the start time can be up to 7 days.
-        :type EndTime: str
-        :param SortBy: Sorting key. Valid values: QueryTime, ExecTimes, RowsSent, LockTime, RowsExamined.
-        :type SortBy: str
-        :param OrderBy: Sorting order. Valid values: ASC (ascending), DESC (descending).
-        :type OrderBy: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
-        :type Limit: int
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        :param SchemaList: Database name array.
-        :type SchemaList: list of SchemaItem
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param StartTime: Start time, such as "2019-09-10 12:13:14".\n        :type StartTime: str\n        :param EndTime: End time, such as "2019-09-10 12:13:14". The interval between the end time and the start time can be up to 7 days.\n        :type EndTime: str\n        :param SortBy: Sorting key. Valid values: QueryTime, ExecTimes, RowsSent, LockTime, RowsExamined.\n        :type SortBy: str\n        :param OrderBy: Sorting order. Valid values: ASC (ascending), DESC (descending).\n        :type OrderBy: str\n        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param SchemaList: Database name array.\n        :type SchemaList: list of SchemaItem\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1126,13 +870,7 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of eligible entries.
-        :type TotalCount: int
-        :param Rows: List of top slow SQL statements
-        :type Rows: list of SlowLogTopSqlItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of eligible entries.\n        :type TotalCount: int\n        :param Rows: List of top slow SQL statements\n        :type Rows: list of SlowLogTopSqlItem\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Rows = None
         self.RequestId = None
@@ -1156,15 +894,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param StartTime: Start time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.
-        :type StartTime: str
-        :param EndTime: End time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.
-        :type EndTime: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param StartTime: Start time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.\n        :type StartTime: str\n        :param EndTime: End time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.\n        :type EndTime: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1192,13 +922,7 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of source addresses.
-        :type TotalCount: int
-        :param Items: Detailed list of the proportion of slow logs from each source address.
-        :type Items: list of SlowLogHost
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of source addresses.\n        :type TotalCount: int\n        :param Items: Detailed list of the proportion of slow logs from each source address.\n        :type Items: list of SlowLogHost\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Items = None
         self.RequestId = None
@@ -1222,19 +946,7 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param Limit: Number of returned top databases. Maximum value: 100. Default value: 20.
-        :type Limit: int
-        :param SortBy: Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`; for other database instances, the default value is `TotalLength`.
-        :type SortBy: str
-        :param StartDate: Start date. It can be as early as 29 days before the current date, and defaults to 6 days before the end date.
-        :type StartDate: str
-        :param EndDate: End date. It can be as early as 29 days before the current date, and defaults to the current date.
-        :type EndDate: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param Limit: Number of returned top databases. Maximum value: 100. Default value: 20.\n        :type Limit: int\n        :param SortBy: Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`; for other database instances, the default value is `TotalLength`.\n        :type SortBy: str\n        :param StartDate: Start date. It can be as early as 29 days before the current date, and defaults to 6 days before the end date.\n        :type StartDate: str\n        :param EndDate: End date. It can be as early as 29 days before the current date, and defaults to the current date.\n        :type EndDate: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.Limit = None
         self.SortBy = None
@@ -1266,11 +978,7 @@ class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TopSpaceSchemaTimeSeries: Time series list of the returned space statistics of top databases.
-        :type TopSpaceSchemaTimeSeries: list of SchemaSpaceTimeSeries
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TopSpaceSchemaTimeSeries: Time series list of the returned space statistics of top databases.\n        :type TopSpaceSchemaTimeSeries: list of SchemaSpaceTimeSeries\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TopSpaceSchemaTimeSeries = None
         self.RequestId = None
 
@@ -1292,15 +1000,7 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param Limit: Number of returned top databases. Maximum value: 100. Default value: 20.
-        :type Limit: int
-        :param SortBy: Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`; for other database instances, the default value is `TotalLength`.
-        :type SortBy: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param Limit: Number of returned top databases. Maximum value: 100. Default value: 20.\n        :type Limit: int\n        :param SortBy: Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`; for other database instances, the default value is `TotalLength`.\n        :type SortBy: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.Limit = None
         self.SortBy = None
@@ -1328,13 +1028,7 @@ class DescribeTopSpaceSchemasResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TopSpaceSchemas: List of the returned space statistics of top databases.
-        :type TopSpaceSchemas: list of SchemaSpaceData
-        :param Timestamp: Timestamp (in seconds) of database space data collect points
-        :type Timestamp: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TopSpaceSchemas: List of the returned space statistics of top databases.\n        :type TopSpaceSchemas: list of SchemaSpaceData\n        :param Timestamp: Timestamp (in seconds) of database space data collect points\n        :type Timestamp: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TopSpaceSchemas = None
         self.Timestamp = None
         self.RequestId = None
@@ -1358,19 +1052,7 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param Limit: Number of returned top tables. Maximum value: 100. Default value: 20.
-        :type Limit: int
-        :param SortBy: Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.
-        :type SortBy: str
-        :param StartDate: Start date. It can be as early as 29 days before the current date, and defaults to 6 days before the end date.
-        :type StartDate: str
-        :param EndDate: End date. It can be as early as 29 days before the current date, and defaults to the current date.
-        :type EndDate: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param Limit: Number of returned top tables. Maximum value: 100. Default value: 20.\n        :type Limit: int\n        :param SortBy: Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.\n        :type SortBy: str\n        :param StartDate: Start date. It can be as early as 29 days before the current date, and defaults to 6 days before the end date.\n        :type StartDate: str\n        :param EndDate: End date. It can be as early as 29 days before the current date, and defaults to the current date.\n        :type EndDate: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.Limit = None
         self.SortBy = None
@@ -1402,11 +1084,7 @@ class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TopSpaceTableTimeSeries: Time series list of the returned space statistics of top tables.
-        :type TopSpaceTableTimeSeries: list of TableSpaceTimeSeries
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TopSpaceTableTimeSeries: Time series list of the returned space statistics of top tables.\n        :type TopSpaceTableTimeSeries: list of TableSpaceTimeSeries\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TopSpaceTableTimeSeries = None
         self.RequestId = None
 
@@ -1428,15 +1106,7 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param Limit: Number of returned top tables. Maximum value: 100. Default value: 20.
-        :type Limit: int
-        :param SortBy: Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (only supported by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is PhysicalFileSize; for other database instances, the default value is `TotalLength`.
-        :type SortBy: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
-        :type Product: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param Limit: Number of returned top tables. Maximum value: 100. Default value: 20.\n        :type Limit: int\n        :param SortBy: Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (only supported by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is PhysicalFileSize; for other database instances, the default value is `TotalLength`.\n        :type SortBy: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.\n        :type Product: str\n        """
         self.InstanceId = None
         self.Limit = None
         self.SortBy = None
@@ -1464,13 +1134,7 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TopSpaceTables: List of the returned space statistics of top tables.
-        :type TopSpaceTables: list of TableSpaceData
-        :param Timestamp: Timestamp (in seconds) of tablespace data collect points
-        :type Timestamp: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TopSpaceTables: List of the returned space statistics of top tables.\n        :type TopSpaceTables: list of TableSpaceData\n        :param Timestamp: Timestamp (in seconds) of tablespace data collect points\n        :type Timestamp: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TopSpaceTables = None
         self.Timestamp = None
         self.RequestId = None
@@ -1494,13 +1158,7 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param SqlText: SQL statement.
-        :type SqlText: str
-        :param Schema: Database name.
-        :type Schema: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param SqlText: SQL statement.\n        :type SqlText: str\n        :param Schema: Database name.\n        :type Schema: str\n        """
         self.InstanceId = None
         self.SqlText = None
         self.Schema = None
@@ -1526,23 +1184,7 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Advices: SQL statement optimization suggestions, which can be parsed into JSON arrays.
-        :type Advices: str
-        :param Comments: Notes of SQL statement optimization suggestions, which can be parsed into String arrays.
-        :type Comments: str
-        :param SqlText: SQL statement.
-        :type SqlText: str
-        :param Schema: Database name.
-        :type Schema: str
-        :param Tables: DDL information of related tables, which can be parsed into JSON arrays.
-        :type Tables: str
-        :param SqlPlan: SQL execution plan, which can be parsed into JSON.
-        :type SqlPlan: str
-        :param Cost: Cost saving details after SQL statement optimization, which can be parsed into JSON.
-        :type Cost: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Advices: SQL statement optimization suggestions, which can be parsed into JSON arrays.\n        :type Advices: str\n        :param Comments: Notes of SQL statement optimization suggestions, which can be parsed into String arrays.\n        :type Comments: str\n        :param SqlText: SQL statement.\n        :type SqlText: str\n        :param Schema: Database name.\n        :type Schema: str\n        :param Tables: DDL information of related tables, which can be parsed into JSON arrays.\n        :type Tables: str\n        :param SqlPlan: SQL execution plan, which can be parsed into JSON.\n        :type SqlPlan: str\n        :param Cost: Cost saving details after SQL statement optimization, which can be parsed into JSON.\n        :type Cost: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Advices = None
         self.Comments = None
         self.SqlText = None
@@ -1571,30 +1213,10 @@ class DiagHistoryEventItem(AbstractModel):
 
     def __init__(self):
         """
-        :param DiagType: Diagnosis type.
-        :type DiagType: str
-        :param EndTime: End time.
-        :type EndTime: str
-        :param StartTime: Start time.
-        :type StartTime: str
-        :param EventId: Event ID.
-        :type EventId: int
-        :param Severity: Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.
-        :type Severity: int
-        :param Outline: Summary.
-        :type Outline: str
-        :param DiagItem: Diagnosis item.
-        :type DiagItem: str
-        :param InstanceId: Instance ID.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type InstanceId: str
-        :param Metric: Reserved field
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Metric: str
-        :param Region: Region
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Region: str
-        """
+        :param DiagType: Diagnosis type.\n        :type DiagType: str\n        :param EndTime: End time.\n        :type EndTime: str\n        :param StartTime: Start time.\n        :type StartTime: str\n        :param EventId: Event ID.\n        :type EventId: int\n        :param Severity: Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.\n        :type Severity: int\n        :param Outline: Summary.\n        :type Outline: str\n        :param DiagItem: Diagnosis item.\n        :type DiagItem: str\n        :param InstanceId: Instance ID.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type InstanceId: str\n        :param Metric: Reserved field
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Metric: str\n        :param Region: Region
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Region: str\n        """
         self.DiagType = None
         self.EndTime = None
         self.StartTime = None
@@ -1634,25 +1256,7 @@ class EventInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param EventId: Event ID
-        :type EventId: int
-        :param DiagType: Diagnosis type
-        :type DiagType: str
-        :param StartTime: Start time
-        :type StartTime: str
-        :param EndTime: End time
-        :type EndTime: str
-        :param Outline: Summary
-        :type Outline: str
-        :param Severity: Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.
-        :type Severity: int
-        :param ScoreLost: Deduction
-        :type ScoreLost: int
-        :param Metric: Reserved field
-        :type Metric: str
-        :param Count: The number of alarms
-        :type Count: int
-        """
+        :param EventId: Event ID\n        :type EventId: int\n        :param DiagType: Diagnosis type\n        :type DiagType: str\n        :param StartTime: Start time\n        :type StartTime: str\n        :param EndTime: End time\n        :type EndTime: str\n        :param Outline: Summary\n        :type Outline: str\n        :param Severity: Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.\n        :type Severity: int\n        :param ScoreLost: Deduction\n        :type ScoreLost: int\n        :param Metric: Reserved field\n        :type Metric: str\n        :param Count: The number of alarms\n        :type Count: int\n        """
         self.EventId = None
         self.DiagType = None
         self.StartTime = None
@@ -1690,13 +1294,7 @@ class GroupItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Group ID.
-        :type Id: int
-        :param Name: Group name.
-        :type Name: str
-        :param MemberCount: Number of group members.
-        :type MemberCount: int
-        """
+        :param Id: Group ID.\n        :type Id: int\n        :param Name: Group name.\n        :type Name: str\n        :param MemberCount: Number of group members.\n        :type MemberCount: int\n        """
         self.Id = None
         self.Name = None
         self.MemberCount = None
@@ -1722,23 +1320,7 @@ class HealthReportTask(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: Async task request ID.
-        :type AsyncRequestId: int
-        :param Source: Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (timed generation), and `MANUAL` (manual trigger).
-        :type Source: str
-        :param Progress: Task progress in %.
-        :type Progress: int
-        :param CreateTime: Task creation time.
-        :type CreateTime: str
-        :param StartTime: Task start time.
-        :type StartTime: str
-        :param EndTime: Task end time.
-        :type EndTime: str
-        :param InstanceInfo: Basic information about the instance to which the task belongs.
-        :type InstanceInfo: :class:`tencentcloud.dbbrain.v20191016.models.InstanceBasicInfo`
-        :param HealthStatus: Health information in a health report.
-        :type HealthStatus: :class:`tencentcloud.dbbrain.v20191016.models.HealthStatus`
-        """
+        :param AsyncRequestId: Async task request ID.\n        :type AsyncRequestId: int\n        :param Source: Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (timed generation), and `MANUAL` (manual trigger).\n        :type Source: str\n        :param Progress: Task progress in %.\n        :type Progress: int\n        :param CreateTime: Task creation time.\n        :type CreateTime: str\n        :param StartTime: Task start time.\n        :type StartTime: str\n        :param EndTime: Task end time.\n        :type EndTime: str\n        :param InstanceInfo: Basic information about the instance to which the task belongs.\n        :type InstanceInfo: :class:`tencentcloud.dbbrain.v20191016.models.InstanceBasicInfo`\n        :param HealthStatus: Health information in a health report.\n        :type HealthStatus: :class:`tencentcloud.dbbrain.v20191016.models.HealthStatus`\n        """
         self.AsyncRequestId = None
         self.Source = None
         self.Progress = None
@@ -1778,15 +1360,7 @@ class HealthScoreInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param IssueTypes: Exception details
-        :type IssueTypes: list of IssueTypeInfo
-        :param EventsTotalCount: Total number of the exceptions
-        :type EventsTotalCount: int
-        :param HealthScore: Health score
-        :type HealthScore: int
-        :param HealthLevel: Health level, such as "HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK".
-        :type HealthLevel: str
-        """
+        :param IssueTypes: Exception details\n        :type IssueTypes: list of IssueTypeInfo\n        :param EventsTotalCount: Total number of the exceptions\n        :type EventsTotalCount: int\n        :param HealthScore: Health score\n        :type HealthScore: int\n        :param HealthLevel: Health level, such as "HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK".\n        :type HealthLevel: str\n        """
         self.IssueTypes = None
         self.EventsTotalCount = None
         self.HealthScore = None
@@ -1819,16 +1393,8 @@ class HealthStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param HealthScore: Health score out of 100 points.
-        :type HealthScore: int
-        :param HealthLevel: Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).
-        :type HealthLevel: str
-        :param ScoreLost: Total scores deducted.
-        :type ScoreLost: int
-        :param ScoreDetails: Deduction details.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
-        :type ScoreDetails: list of ScoreDetail
-        """
+        :param HealthScore: Health score out of 100 points.\n        :type HealthScore: int\n        :param HealthLevel: Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).\n        :type HealthLevel: str\n        :param ScoreLost: Total scores deducted.\n        :type ScoreLost: int\n        :param ScoreDetails: Deduction details.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type ScoreDetails: list of ScoreDetail\n        """
         self.HealthScore = None
         self.HealthLevel = None
         self.ScoreLost = None
@@ -1861,19 +1427,7 @@ class InstanceBasicInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param InstanceName: Instance name.
-        :type InstanceName: str
-        :param Vip: Private IP of the instance.
-        :type Vip: str
-        :param Vport: Private network port of the instance.
-        :type Vport: int
-        :param Product: Instance product.
-        :type Product: str
-        :param EngineVersion: Instance engine version.
-        :type EngineVersion: str
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param InstanceName: Instance name.\n        :type InstanceName: str\n        :param Vip: Private IP of the instance.\n        :type Vip: str\n        :param Vport: Private network port of the instance.\n        :type Vport: int\n        :param Product: Instance product.\n        :type Product: str\n        :param EngineVersion: Instance engine version.\n        :type EngineVersion: str\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.Vip = None
@@ -1905,11 +1459,7 @@ class InstanceConfs(AbstractModel):
 
     def __init__(self):
         """
-        :param DailyInspection: Whether to enable database inspection. Valid values: Yes/No.
-        :type DailyInspection: str
-        :param OverviewDisplay: Whether to enable instance overview. Valid values: Yes/No.
-        :type OverviewDisplay: str
-        """
+        :param DailyInspection: Whether to enable database inspection. Valid values: Yes/No.\n        :type DailyInspection: str\n        :param OverviewDisplay: Whether to enable instance overview. Valid values: Yes/No.\n        :type OverviewDisplay: str\n        """
         self.DailyInspection = None
         self.OverviewDisplay = None
 
@@ -1933,63 +1483,7 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param InstanceName: Instance name
-        :type InstanceName: str
-        :param Region: The region where the instance belongs
-        :type Region: str
-        :param HealthScore: Health score
-        :type HealthScore: int
-        :param Product: Service
-        :type Product: str
-        :param EventCount: Number of exceptions
-        :type EventCount: int
-        :param InstanceType: Instance type. Valid values: 1: MASTER, 2: DR, 3: RO, 4: SDR
-        :type InstanceType: int
-        :param Cpu: Number of cores
-        :type Cpu: int
-        :param Memory: Memory in MB
-        :type Memory: int
-        :param Volume: Disk storage in GB
-        :type Volume: int
-        :param EngineVersion: Database version
-        :type EngineVersion: str
-        :param Vip: Private network address
-        :type Vip: str
-        :param Vport: Private network port
-        :type Vport: int
-        :param Source: Access source
-        :type Source: str
-        :param GroupId: Group ID
-        :type GroupId: str
-        :param GroupName: Group name
-        :type GroupName: str
-        :param Status: Instance status. Valid values: 0: Delivering, 1: Running, 4: Terminating, 5: Isolated
-        :type Status: int
-        :param UniqSubnetId: Subnet unified ID
-        :type UniqSubnetId: str
-        :param DeployMode: cdb (TencentDB instance) type
-        :type DeployMode: str
-        :param InitFlag: cdb (TencentDB instance) initialization flag. Valid values: 0: not initialized, 1: initialized
-        :type InitFlag: int
-        :param TaskStatus: Task status
-        :type TaskStatus: int
-        :param UniqVpcId: Unified VPC ID
-        :type UniqVpcId: str
-        :param InstanceConf: Instance inspection/overview status
-        :type InstanceConf: :class:`tencentcloud.dbbrain.v20191016.models.InstanceConfs`
-        :param DeadlineTime: Resource expiration time
-        :type DeadlineTime: str
-        :param IsSupported: Whether it is an instance supported by DBbrain.
-        :type IsSupported: bool
-        :param SecAuditStatus: The status of instance security audit log. ON: enabled, OFF: disabled.
-        :type SecAuditStatus: str
-        :param AuditPolicyStatus: The status of instance audit log. ALL_AUDIT: full audit is enabled, RULE_AUDIT: rule audit is enabled, UNBOUND: audit is disabled.
-        :type AuditPolicyStatus: str
-        :param AuditRunningStatus: The running status of instance audit log. normal: running, paused: suspension due to arrears
-        :type AuditRunningStatus: str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param Region: The region where the instance belongs\n        :type Region: str\n        :param HealthScore: Health score\n        :type HealthScore: int\n        :param Product: Service\n        :type Product: str\n        :param EventCount: Number of exceptions\n        :type EventCount: int\n        :param InstanceType: Instance type. Valid values: 1: MASTER, 2: DR, 3: RO, 4: SDR\n        :type InstanceType: int\n        :param Cpu: Number of cores\n        :type Cpu: int\n        :param Memory: Memory in MB\n        :type Memory: int\n        :param Volume: Disk storage in GB\n        :type Volume: int\n        :param EngineVersion: Database version\n        :type EngineVersion: str\n        :param Vip: Private network address\n        :type Vip: str\n        :param Vport: Private network port\n        :type Vport: int\n        :param Source: Access source\n        :type Source: str\n        :param GroupId: Group ID\n        :type GroupId: str\n        :param GroupName: Group name\n        :type GroupName: str\n        :param Status: Instance status. Valid values: 0: Delivering, 1: Running, 4: Terminating, 5: Isolated\n        :type Status: int\n        :param UniqSubnetId: Subnet unified ID\n        :type UniqSubnetId: str\n        :param DeployMode: cdb (TencentDB instance) type\n        :type DeployMode: str\n        :param InitFlag: cdb (TencentDB instance) initialization flag. Valid values: 0: not initialized, 1: initialized\n        :type InitFlag: int\n        :param TaskStatus: Task status\n        :type TaskStatus: int\n        :param UniqVpcId: Unified VPC ID\n        :type UniqVpcId: str\n        :param InstanceConf: Instance inspection/overview status\n        :type InstanceConf: :class:`tencentcloud.dbbrain.v20191016.models.InstanceConfs`\n        :param DeadlineTime: Resource expiration time\n        :type DeadlineTime: str\n        :param IsSupported: Whether it is an instance supported by DBbrain.\n        :type IsSupported: bool\n        :param SecAuditStatus: The status of instance security audit log. ON: enabled, OFF: disabled.\n        :type SecAuditStatus: str\n        :param AuditPolicyStatus: The status of instance audit log. ALL_AUDIT: full audit is enabled, RULE_AUDIT: rule audit is enabled, UNBOUND: audit is disabled.\n        :type AuditPolicyStatus: str\n        :param AuditRunningStatus: The running status of instance audit log. normal: running, paused: suspension due to arrears\n        :type AuditRunningStatus: str\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.Region = None
@@ -2067,13 +1561,7 @@ class IssueTypeInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param IssueType: Metric categories: AVAILABILITY, MAINTAINABILITY, PERFORMANCE, and RELIABILITY
-        :type IssueType: str
-        :param Events: Exception
-        :type Events: list of EventInfo
-        :param TotalCount: Total number of the exceptions
-        :type TotalCount: int
-        """
+        :param IssueType: Metric categories: AVAILABILITY, MAINTAINABILITY, PERFORMANCE, and RELIABILITY\n        :type IssueType: str\n        :param Events: Exception\n        :type Events: list of EventInfo\n        :param TotalCount: Total number of the exceptions\n        :type TotalCount: int\n        """
         self.IssueType = None
         self.Events = None
         self.TotalCount = None
@@ -2104,17 +1592,7 @@ class MailConfiguration(AbstractModel):
 
     def __init__(self):
         """
-        :param SendMail: Whether to enable email sending. Valid values: 0 (No), 1 (Yes).
-        :type SendMail: int
-        :param Region: Region configuration, such as "ap-guangzhou", "ap-shanghai". For the inspection email sending template, configure the region where you need to send the inspection email. For the subscription email sending template, configure the region to which the current subscribed instance belongs.
-        :type Region: list of str
-        :param HealthStatus: Sending a report with the specified health level, such as "HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK".
-        :type HealthStatus: list of str
-        :param ContactPerson: Contact ID. Either `ContactGroup` or `ContactID` should be passed in.
-        :type ContactPerson: list of int
-        :param ContactGroup: Contact group ID. Either `ContactGroup` or `ContactID` should be passed in.
-        :type ContactGroup: list of int
-        """
+        :param SendMail: Whether to enable email sending. Valid values: 0 (No), 1 (Yes).\n        :type SendMail: int\n        :param Region: Region configuration, such as "ap-guangzhou", "ap-shanghai". For the inspection email sending template, configure the region where you need to send the inspection email. For the subscription email sending template, configure the region to which the current subscribed instance belongs.\n        :type Region: list of str\n        :param HealthStatus: Sending a report with the specified health level, such as "HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK".\n        :type HealthStatus: list of str\n        :param ContactPerson: Contact ID. Either `ContactGroup` or `ContactID` should be passed in.\n        :type ContactPerson: list of int\n        :param ContactGroup: Contact group ID. Either `ContactGroup` or `ContactID` should be passed in.\n        :type ContactGroup: list of int\n        """
         self.SendMail = None
         self.Region = None
         self.HealthStatus = None
@@ -2144,15 +1622,7 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceConfs: Whether to enable inspection
-        :type InstanceConfs: :class:`tencentcloud.dbbrain.v20191016.models.InstanceConfs`
-        :param Regions: Target regions of the request. If the value is `All`, it is applied to all regions.
-        :type Regions: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
-        :type Product: str
-        :param InstanceIds: ID of the instance to modify.
-        :type InstanceIds: list of str
-        """
+        :param InstanceConfs: Whether to enable inspection\n        :type InstanceConfs: :class:`tencentcloud.dbbrain.v20191016.models.InstanceConfs`\n        :param Regions: Target regions of the request. If the value is `All`, it is applied to all regions.\n        :type Regions: str\n        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).\n        :type Product: str\n        :param InstanceIds: ID of the instance to modify.\n        :type InstanceIds: list of str\n        """
         self.InstanceConfs = None
         self.Regions = None
         self.Product = None
@@ -2182,9 +1652,7 @@ class ModifyDiagDBInstanceConfResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2199,14 +1667,8 @@ class MonitorFloatMetric(AbstractModel):
 
     def __init__(self):
         """
-        :param Metric: Metric name.
-        :type Metric: str
-        :param Unit: Metric unit.
-        :type Unit: str
-        :param Values: Metric value.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Values: list of float
-        """
+        :param Metric: Metric name.\n        :type Metric: str\n        :param Unit: Metric unit.\n        :type Unit: str\n        :param Values: Metric value.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Values: list of float\n        """
         self.Metric = None
         self.Unit = None
         self.Values = None
@@ -2232,11 +1694,7 @@ class MonitorFloatMetricSeriesData(AbstractModel):
 
     def __init__(self):
         """
-        :param Series: Monitoring metric.
-        :type Series: list of MonitorFloatMetric
-        :param Timestamp: Timestamp corresponding to monitoring metric.
-        :type Timestamp: list of int
-        """
+        :param Series: Monitoring metric.\n        :type Series: list of MonitorFloatMetric\n        :param Timestamp: Timestamp corresponding to monitoring metric.\n        :type Timestamp: list of int\n        """
         self.Series = None
         self.Timestamp = None
 
@@ -2265,14 +1723,8 @@ class MonitorMetric(AbstractModel):
 
     def __init__(self):
         """
-        :param Metric: Metric name.
-        :type Metric: str
-        :param Unit: Metric unit.
-        :type Unit: str
-        :param Values: Metric value.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Values: list of int
-        """
+        :param Metric: Metric name.\n        :type Metric: str\n        :param Unit: Metric unit.\n        :type Unit: str\n        :param Values: Metric value.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Values: list of int\n        """
         self.Metric = None
         self.Unit = None
         self.Values = None
@@ -2298,11 +1750,7 @@ class MonitorMetricSeriesData(AbstractModel):
 
     def __init__(self):
         """
-        :param Series: Monitoring metric.
-        :type Series: list of MonitorMetric
-        :param Timestamp: Timestamp corresponding to monitoring metric.
-        :type Timestamp: list of int
-        """
+        :param Series: Monitoring metric.\n        :type Series: list of MonitorMetric\n        :param Timestamp: Timestamp corresponding to monitoring metric.\n        :type Timestamp: list of int\n        """
         self.Series = None
         self.Timestamp = None
 
@@ -2331,11 +1779,7 @@ class ProfileInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Language: Language of the email, such as `en`.
-        :type Language: str
-        :param MailConfiguration: The content of email template.
-        :type MailConfiguration: :class:`tencentcloud.dbbrain.v20191016.models.MailConfiguration`
-        """
+        :param Language: Language of the email, such as `en`.\n        :type Language: str\n        :param MailConfiguration: The content of email template.\n        :type MailConfiguration: :class:`tencentcloud.dbbrain.v20191016.models.MailConfiguration`\n        """
         self.Language = None
         self.MailConfiguration = None
 
@@ -2361,9 +1805,7 @@ class SchemaItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Schema: Database name
-        :type Schema: str
-        """
+        :param Schema: Database name\n        :type Schema: str\n        """
         self.Schema = None
 
 
@@ -2385,24 +1827,8 @@ class SchemaSpaceData(AbstractModel):
 
     def __init__(self):
         """
-        :param TableSchema: Database name.
-        :type TableSchema: str
-        :param DataLength: Data space in MB.
-        :type DataLength: float
-        :param IndexLength: Index space in MB.
-        :type IndexLength: float
-        :param DataFree: Fragmented space in MB.
-        :type DataFree: float
-        :param TotalLength: Total space usage in MB.
-        :type TotalLength: float
-        :param FragRatio: Fragmented rate (%).
-        :type FragRatio: float
-        :param TableRows: Number of rows.
-        :type TableRows: int
-        :param PhysicalFileSize: The total size of the independent physical files corresponding to all the database tables (MB).
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
-        :type PhysicalFileSize: float
-        """
+        :param TableSchema: Database name.\n        :type TableSchema: str\n        :param DataLength: Data space in MB.\n        :type DataLength: float\n        :param IndexLength: Index space in MB.\n        :type IndexLength: float\n        :param DataFree: Fragmented space in MB.\n        :type DataFree: float\n        :param TotalLength: Total space usage in MB.\n        :type TotalLength: float\n        :param FragRatio: Fragmented rate (%).\n        :type FragRatio: float\n        :param TableRows: Number of rows.\n        :type TableRows: int\n        :param PhysicalFileSize: The total size of the independent physical files corresponding to all the database tables (MB).
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type PhysicalFileSize: float\n        """
         self.TableSchema = None
         self.DataLength = None
         self.IndexLength = None
@@ -2438,11 +1864,7 @@ class SchemaSpaceTimeSeries(AbstractModel):
 
     def __init__(self):
         """
-        :param TableSchema: Database name
-        :type TableSchema: str
-        :param SeriesData: Monitoring metric data in a unit of time interval.
-        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorMetricSeriesData`
-        """
+        :param TableSchema: Database name\n        :type TableSchema: str\n        :param SeriesData: Monitoring metric data in a unit of time interval.\n        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorMetricSeriesData`\n        """
         self.TableSchema = None
         self.SeriesData = None
 
@@ -2468,16 +1890,8 @@ class ScoreDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param IssueType: Deduction item types. Valid values: availability, maintainability, performance, and reliability.
-        :type IssueType: str
-        :param ScoreLost: Total scores deducted.
-        :type ScoreLost: int
-        :param ScoreLostMax: Upper limit of the deducted scores.
-        :type ScoreLostMax: int
-        :param Items: Deduction item list.
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
-        :type Items: list of ScoreItem
-        """
+        :param IssueType: Deduction item types. Valid values: availability, maintainability, performance, and reliability.\n        :type IssueType: str\n        :param ScoreLost: Total scores deducted.\n        :type ScoreLost: int\n        :param ScoreLostMax: Upper limit of the deducted scores.\n        :type ScoreLostMax: int\n        :param Items: Deduction item list.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.\n        :type Items: list of ScoreItem\n        """
         self.IssueType = None
         self.ScoreLost = None
         self.ScoreLostMax = None
@@ -2510,17 +1924,7 @@ class ScoreItem(AbstractModel):
 
     def __init__(self):
         """
-        :param DiagItem: Exception diagnosis item name.
-        :type DiagItem: str
-        :param IssueType: Diagnosis item types. Valid values: availability, maintainability, performance, and reliability.
-        :type IssueType: str
-        :param TopSeverity: Health level. Valid values: information, reminder, alarm, serious, fatal.
-        :type TopSeverity: str
-        :param Count: Number of occurrences of this exception diagnosis item.
-        :type Count: int
-        :param ScoreLost: Scores deducted.
-        :type ScoreLost: int
-        """
+        :param DiagItem: Exception diagnosis item name.\n        :type DiagItem: str\n        :param IssueType: Diagnosis item types. Valid values: availability, maintainability, performance, and reliability.\n        :type IssueType: str\n        :param TopSeverity: Health level. Valid values: information, reminder, alarm, serious, fatal.\n        :type TopSeverity: str\n        :param Count: Number of occurrences of this exception diagnosis item.\n        :type Count: int\n        :param ScoreLost: Scores deducted.\n        :type ScoreLost: int\n        """
         self.DiagItem = None
         self.IssueType = None
         self.TopSeverity = None
@@ -2550,13 +1954,7 @@ class SlowLogHost(AbstractModel):
 
     def __init__(self):
         """
-        :param UserHost: Source addresses.
-        :type UserHost: str
-        :param Ratio: The proportion (in %) of slow logs from this source address to the total number of slow logs
-        :type Ratio: float
-        :param Count: Number of slow logs from this source address.
-        :type Count: int
-        """
+        :param UserHost: Source addresses.\n        :type UserHost: str\n        :param Ratio: The proportion (in %) of slow logs from this source address to the total number of slow logs\n        :type Ratio: float\n        :param Count: Number of slow logs from this source address.\n        :type Count: int\n        """
         self.UserHost = None
         self.Ratio = None
         self.Count = None
@@ -2582,55 +1980,7 @@ class SlowLogTopSqlItem(AbstractModel):
 
     def __init__(self):
         """
-        :param LockTime: Total SQL lock wait time
-        :type LockTime: float
-        :param LockTimeMax: Maximum lock wait time
-        :type LockTimeMax: float
-        :param LockTimeMin: Minimum lock wait time
-        :type LockTimeMin: float
-        :param RowsExamined: Total number of scanned rows
-        :type RowsExamined: int
-        :param RowsExaminedMax: Maximum number of scanned rows
-        :type RowsExaminedMax: int
-        :param RowsExaminedMin: Minimum number of scanned rows
-        :type RowsExaminedMin: int
-        :param QueryTime: Total duration
-        :type QueryTime: float
-        :param QueryTimeMax: Maximum execution time
-        :type QueryTimeMax: float
-        :param QueryTimeMin: Minimum execution time
-        :type QueryTimeMin: float
-        :param RowsSent: Total number of returned rows
-        :type RowsSent: int
-        :param RowsSentMax: Maximum number of returned rows
-        :type RowsSentMax: int
-        :param RowsSentMin: Minimum number of returned rows
-        :type RowsSentMin: int
-        :param ExecTimes: Number of executions
-        :type ExecTimes: int
-        :param SqlTemplate: SQL template
-        :type SqlTemplate: str
-        :param SqlText: SQL with parameter (random)
-        :type SqlText: str
-        :param Schema: Database name
-        :type Schema: str
-        :param QueryTimeRatio: Ratio of total duration
-        :type QueryTimeRatio: float
-        :param LockTimeRatio: Ratio of total SQL lock wait time
-        :type LockTimeRatio: float
-        :param RowsExaminedRatio: Ratio of total number of scanned rows
-        :type RowsExaminedRatio: float
-        :param RowsSentRatio: Ratio of total number of returned rows
-        :type RowsSentRatio: float
-        :param QueryTimeAvg: Average execution time
-        :type QueryTimeAvg: float
-        :param RowsSentAvg: Average number of rows returned
-        :type RowsSentAvg: float
-        :param LockTimeAvg: Average lock wait time
-        :type LockTimeAvg: float
-        :param RowsExaminedAvg: Average number of rows scanned
-        :type RowsExaminedAvg: float
-        """
+        :param LockTime: Total SQL lock wait time\n        :type LockTime: float\n        :param LockTimeMax: Maximum lock wait time\n        :type LockTimeMax: float\n        :param LockTimeMin: Minimum lock wait time\n        :type LockTimeMin: float\n        :param RowsExamined: Total number of scanned rows\n        :type RowsExamined: int\n        :param RowsExaminedMax: Maximum number of scanned rows\n        :type RowsExaminedMax: int\n        :param RowsExaminedMin: Minimum number of scanned rows\n        :type RowsExaminedMin: int\n        :param QueryTime: Total duration\n        :type QueryTime: float\n        :param QueryTimeMax: Maximum execution time\n        :type QueryTimeMax: float\n        :param QueryTimeMin: Minimum execution time\n        :type QueryTimeMin: float\n        :param RowsSent: Total number of returned rows\n        :type RowsSent: int\n        :param RowsSentMax: Maximum number of returned rows\n        :type RowsSentMax: int\n        :param RowsSentMin: Minimum number of returned rows\n        :type RowsSentMin: int\n        :param ExecTimes: Number of executions\n        :type ExecTimes: int\n        :param SqlTemplate: SQL template\n        :type SqlTemplate: str\n        :param SqlText: SQL with parameter (random)\n        :type SqlText: str\n        :param Schema: Database name\n        :type Schema: str\n        :param QueryTimeRatio: Ratio of total duration\n        :type QueryTimeRatio: float\n        :param LockTimeRatio: Ratio of total SQL lock wait time\n        :type LockTimeRatio: float\n        :param RowsExaminedRatio: Ratio of total number of scanned rows\n        :type RowsExaminedRatio: float\n        :param RowsSentRatio: Ratio of total number of returned rows\n        :type RowsSentRatio: float\n        :param QueryTimeAvg: Average execution time\n        :type QueryTimeAvg: float\n        :param RowsSentAvg: Average number of rows returned\n        :type RowsSentAvg: float\n        :param LockTimeAvg: Average lock wait time\n        :type LockTimeAvg: float\n        :param RowsExaminedAvg: Average number of rows scanned\n        :type RowsExaminedAvg: float\n        """
         self.LockTime = None
         self.LockTimeMax = None
         self.LockTimeMin = None
@@ -2698,27 +2048,7 @@ class TableSpaceData(AbstractModel):
 
     def __init__(self):
         """
-        :param TableName: Table name.
-        :type TableName: str
-        :param TableSchema: Database name.
-        :type TableSchema: str
-        :param Engine: Database table storage engine.
-        :type Engine: str
-        :param DataLength: Data space in MB.
-        :type DataLength: float
-        :param IndexLength: Index space in MB.
-        :type IndexLength: float
-        :param DataFree: Fragmented space in MB.
-        :type DataFree: float
-        :param TotalLength: Total space usage in MB.
-        :type TotalLength: float
-        :param FragRatio: Fragmented rate (%).
-        :type FragRatio: float
-        :param TableRows: Number of rows.
-        :type TableRows: int
-        :param PhysicalFileSize: Size in MB of the physical file exclusive to a table.
-        :type PhysicalFileSize: float
-        """
+        :param TableName: Table name.\n        :type TableName: str\n        :param TableSchema: Database name.\n        :type TableSchema: str\n        :param Engine: Database table storage engine.\n        :type Engine: str\n        :param DataLength: Data space in MB.\n        :type DataLength: float\n        :param IndexLength: Index space in MB.\n        :type IndexLength: float\n        :param DataFree: Fragmented space in MB.\n        :type DataFree: float\n        :param TotalLength: Total space usage in MB.\n        :type TotalLength: float\n        :param FragRatio: Fragmented rate (%).\n        :type FragRatio: float\n        :param TableRows: Number of rows.\n        :type TableRows: int\n        :param PhysicalFileSize: Size in MB of the physical file exclusive to a table.\n        :type PhysicalFileSize: float\n        """
         self.TableName = None
         self.TableSchema = None
         self.Engine = None
@@ -2758,15 +2088,7 @@ class TableSpaceTimeSeries(AbstractModel):
 
     def __init__(self):
         """
-        :param TableName: Table name.
-        :type TableName: str
-        :param TableSchema: Database name.
-        :type TableSchema: str
-        :param Engine: Database table storage engine.
-        :type Engine: str
-        :param SeriesData: Monitoring metric data in a unit of time interval.
-        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorFloatMetricSeriesData`
-        """
+        :param TableName: Table name.\n        :type TableName: str\n        :param TableSchema: Database name.\n        :type TableSchema: str\n        :param Engine: Database table storage engine.\n        :type Engine: str\n        :param SeriesData: Monitoring metric data in a unit of time interval.\n        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorFloatMetricSeriesData`\n        """
         self.TableName = None
         self.TableSchema = None
         self.Engine = None
@@ -2796,11 +2118,7 @@ class TimeSlice(AbstractModel):
 
     def __init__(self):
         """
-        :param Count: Total number
-        :type Count: int
-        :param Timestamp: Statistics start time
-        :type Timestamp: int
-        """
+        :param Count: Total number\n        :type Count: int\n        :param Timestamp: Statistics start time\n        :type Timestamp: int\n        """
         self.Count = None
         self.Timestamp = None
 
@@ -2825,20 +2143,10 @@ class UserProfile(AbstractModel):
     def __init__(self):
         """
         :param ProfileId: Configured ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ProfileId: str
-        :param ProfileType: Configuration type
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ProfileType: str
-        :param ProfileLevel: Configuration level. Valid values: “User” or “Instance”
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ProfileLevel: str
-        :param ProfileName: Configuration name
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ProfileName: str
-        :param ProfileInfo: Configuration details
-        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ProfileId: str\n        :param ProfileType: Configuration type
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ProfileType: str\n        :param ProfileLevel: Configuration level. Valid values: “User” or “Instance”
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ProfileLevel: str\n        :param ProfileName: Configuration name
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ProfileName: str\n        :param ProfileInfo: Configuration details\n        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`\n        """
         self.ProfileId = None
         self.ProfileType = None
         self.ProfileLevel = None

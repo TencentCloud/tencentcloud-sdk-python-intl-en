@@ -27,22 +27,12 @@ class LivenessCompareRequest(AbstractModel):
         """
         :param ImageBase64: Base64 string of the image for face comparison.
 The size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.
-Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
-        :type ImageBase64: str
-        :param VideoBase64: Base64 string of the video for liveness detection.
+Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.\n        :type ImageBase64: str\n        :param VideoBase64: Base64 string of the video for liveness detection.
 The size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.
-Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
-        :type VideoBase64: str
-        :param LivenessType: Liveness detection type. Valid values: LIP/ACTION/SILENT.
-LIP: numeric mode; ACTION: motion mode; SILENT: silent mode. You need to select a mode to input.
-        :type LivenessType: str
-        :param ValidateData: Input parameter for the numeric mode: numeric verification code (1234). An API needs to be called first to get a numeric verification code;
+Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.\n        :type VideoBase64: str\n        :param LivenessType: Liveness detection type. Valid values: LIP/ACTION/SILENT.
+LIP: numeric mode; ACTION: motion mode; SILENT: silent mode. You need to select a mode to input.\n        :type LivenessType: str\n        :param ValidateData: Input parameter for the numeric mode: numeric verification code (1234). An API needs to be called first to get a numeric verification code;
 Input parameter for the motion mode: motion order (2,1 or 1,2). An API needs to be called first to get the motion order;
-Input parameter for silent mode: empty.
-        :type ValidateData: str
-        :param Optional: This parameter does not need to be passed in for this API.
-        :type Optional: str
-        """
+Input parameter for silent mode: empty.\n        :type ValidateData: str\n        :param Optional: This parameter does not need to be passed in for this API.\n        :type Optional: str\n        """
         self.ImageBase64 = None
         self.VideoBase64 = None
         self.LivenessType = None
@@ -72,19 +62,7 @@ class LivenessCompareResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BestFrameBase64: The best screenshot of the video after successful verification. The photo is Base64-encoded and in JPG format.
-        :type BestFrameBase64: str
-        :param Sim: Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).
-        :type Sim: float
-        :param Result: Service error code. `Success` will be returned for success. For error information, please see the `FailedOperation` section in the error code list below.
-        :type Result: str
-        :param Description: Service result description.
-        :type Description: str
-        :param BestFrameList: 
-        :type BestFrameList: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param BestFrameBase64: The best screenshot of the video after successful verification. The photo is Base64-encoded and in JPG format.\n        :type BestFrameBase64: str\n        :param Sim: Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).\n        :type Sim: float\n        :param Result: Service error code. `Success` will be returned for success. For error information, please see the `FailedOperation` section in the error code list below.\n        :type Result: str\n        :param Description: Service result description.\n        :type Description: str\n        :param BestFrameList: \n        :type BestFrameList: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.BestFrameBase64 = None
         self.Sim = None
         self.Result = None

@@ -25,21 +25,7 @@ class SendEmailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FromAddress: Sender
-        :type FromAddress: str
-        :param ToAddress: Recipient
-        :type ToAddress: str
-        :param Subject: Email summary
-        :type Subject: str
-        :param FromName: Sender name
-        :type FromName: str
-        :param ReplyAddress: Reply-to address
-        :type ReplyAddress: str
-        :param HtmlContent: The body of an HTML email
-        :type HtmlContent: str
-        :param TextContent: The body of a plain-text email
-        :type TextContent: str
-        """
+        :param FromAddress: Sender\n        :type FromAddress: str\n        :param ToAddress: Recipient\n        :type ToAddress: str\n        :param Subject: Email summary\n        :type Subject: str\n        :param FromName: Sender name\n        :type FromName: str\n        :param ReplyAddress: Reply-to address\n        :type ReplyAddress: str\n        :param HtmlContent: The body of an HTML email\n        :type HtmlContent: str\n        :param TextContent: The body of a plain-text email\n        :type TextContent: str\n        """
         self.FromAddress = None
         self.ToAddress = None
         self.Subject = None
@@ -73,11 +59,7 @@ class SendEmailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: The result of creating an email task
-        :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: The result of creating an email task\n        :type Result: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -94,19 +76,7 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FromAddress: Sender address.
-        :type FromAddress: str
-        :param ToAddress: Recipient address. Up to 100 recipient addresses are supported. Multiple addresses should be separated by semicolons (;).
-        :type ToAddress: str
-        :param TemplateName: The name of the template created in advance.
-        :type TemplateName: str
-        :param TemplateValue: Template variable value, which is a JSON string.
-        :type TemplateValue: str
-        :param FromName: Sender name.
-        :type FromName: str
-        :param ReplyAddress: Reply-to address.
-        :type ReplyAddress: str
-        """
+        :param FromAddress: Sender address.\n        :type FromAddress: str\n        :param ToAddress: Recipient address. Up to 100 recipient addresses are supported. Multiple addresses should be separated by semicolons (;).\n        :type ToAddress: str\n        :param TemplateName: The name of the template created in advance.\n        :type TemplateName: str\n        :param TemplateValue: Template variable value, which is a JSON string.\n        :type TemplateValue: str\n        :param FromName: Sender name.\n        :type FromName: str\n        :param ReplyAddress: Reply-to address.\n        :type ReplyAddress: str\n        """
         self.FromAddress = None
         self.ToAddress = None
         self.TemplateName = None
@@ -138,11 +108,7 @@ class SendTemplatedEmailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: The result of creating a template email task
-        :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Result: The result of creating a template email task\n        :type Result: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 

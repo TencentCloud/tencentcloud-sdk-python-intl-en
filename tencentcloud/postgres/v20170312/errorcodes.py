@@ -56,6 +56,9 @@ FAILEDOPERATION_DATABASEACCESSERROR = 'FailedOperation.DatabaseAccessError'
 # Failed to delete VPC routes.
 FAILEDOPERATION_DELETEALLROUTE = 'FailedOperation.DeleteAllRoute'
 
+# 
+FAILEDOPERATION_DELETERESOURCEPROJECTTAGERROR = 'FailedOperation.DeleteResourceProjectTagError'
+
 # Failed to access ES. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_ESCONNECTERROR = 'FailedOperation.ESConnectError'
 

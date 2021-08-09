@@ -25,11 +25,7 @@ class AssignProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceIds: list of str
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        """
+        :param InstanceIds: List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceIds: list of str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        """
         self.InstanceIds = None
         self.ProjectId = None
 
@@ -53,11 +49,7 @@ class AssignProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowIds: List of the returned async task IDs
-        :type FlowIds: list of int non-negative
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowIds: List of the returned async task IDs\n        :type FlowIds: list of int non-negative\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowIds = None
         self.RequestId = None
 
@@ -74,23 +66,7 @@ class BackupDownloadTask(AbstractModel):
 
     def __init__(self):
         """
-        :param CreateTime: Task creation time
-        :type CreateTime: str
-        :param BackupName: Backup name
-        :type BackupName: str
-        :param ReplicaSetId: Shard name
-        :type ReplicaSetId: str
-        :param BackupSize: Backup size in bytes
-        :type BackupSize: int
-        :param Status: Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)
-        :type Status: int
-        :param Percent: Task progress in percentage
-        :type Percent: int
-        :param TimeSpend: Task duration in seconds
-        :type TimeSpend: int
-        :param Url: Backup download address
-        :type Url: str
-        """
+        :param CreateTime: Task creation time\n        :type CreateTime: str\n        :param BackupName: Backup name\n        :type BackupName: str\n        :param ReplicaSetId: Shard name\n        :type ReplicaSetId: str\n        :param BackupSize: Backup size in bytes\n        :type BackupSize: int\n        :param Status: Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)\n        :type Status: int\n        :param Percent: Task progress in percentage\n        :type Percent: int\n        :param TimeSpend: Task duration in seconds\n        :type TimeSpend: int\n        :param Url: Backup download address\n        :type Url: str\n        """
         self.CreateTime = None
         self.BackupName = None
         self.ReplicaSetId = None
@@ -126,11 +102,7 @@ class BackupDownloadTaskStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param ReplicaSetId: Shard name
-        :type ReplicaSetId: str
-        :param Status: Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)
-        :type Status: int
-        """
+        :param ReplicaSetId: Shard name\n        :type ReplicaSetId: str\n        :param Status: Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)\n        :type Status: int\n        """
         self.ReplicaSetId = None
         self.Status = None
 
@@ -154,11 +126,7 @@ class BackupFile(AbstractModel):
 
     def __init__(self):
         """
-        :param ReplicateSetId: ID of the replica set/shard to which a backup file belongs
-        :type ReplicateSetId: str
-        :param File: Path to a backup file
-        :type File: str
-        """
+        :param ReplicateSetId: ID of the replica set/shard to which a backup file belongs\n        :type ReplicateSetId: str\n        :param File: Path to a backup file\n        :type File: str\n        """
         self.ReplicateSetId = None
         self.File = None
 
@@ -182,29 +150,11 @@ class BackupInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param BackupType: Backup mode. 0: automatic backup; 1: manual backup
-        :type BackupType: int
-        :param BackupName: Backup name
-        :type BackupName: str
-        :param BackupDesc: Backup remarks
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type BackupDesc: str
-        :param BackupSize: Backup file size in KB
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type BackupSize: int
-        :param StartTime: Backup start time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type StartTime: str
-        :param EndTime: Backup end time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EndTime: str
-        :param Status: Backup status. 1: backing up; 2: backed up successful
-        :type Status: int
-        :param BackupMethod: Backup method. 0: logical backup; 1: physical backup
-        :type BackupMethod: int
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param BackupType: Backup mode. 0: automatic backup; 1: manual backup\n        :type BackupType: int\n        :param BackupName: Backup name\n        :type BackupName: str\n        :param BackupDesc: Backup remarks
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type BackupDesc: str\n        :param BackupSize: Backup file size in KB
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type BackupSize: int\n        :param StartTime: Backup start time
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type StartTime: str\n        :param EndTime: Backup end time
+Note: This field may return null, indicating that no valid values can be obtained.\n        :type EndTime: str\n        :param Status: Backup status. 1: backing up; 2: backed up successful\n        :type Status: int\n        :param BackupMethod: Backup method. 0: logical backup; 1: physical backup\n        :type BackupMethod: int\n        """
         self.InstanceId = None
         self.BackupType = None
         self.BackupName = None
@@ -242,11 +192,7 @@ class ClientConnection(AbstractModel):
 
     def __init__(self):
         """
-        :param IP: Client IP of a connection
-        :type IP: str
-        :param Count: Number of connections corresponding to a client IP
-        :type Count: int
-        """
+        :param IP: Client IP of a connection\n        :type IP: str\n        :param Count: Number of connections corresponding to a client IP\n        :type Count: int\n        """
         self.IP = None
         self.Count = None
 
@@ -270,13 +216,7 @@ class CreateBackupDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param BackupMethod: Valid values: 0 (logical backup), 1 (physical backup)
-        :type BackupMethod: int
-        :param BackupRemark: Backup remarks
-        :type BackupRemark: str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param BackupMethod: Valid values: 0 (logical backup), 1 (physical backup)\n        :type BackupMethod: int\n        :param BackupRemark: Backup remarks\n        :type BackupRemark: str\n        """
         self.InstanceId = None
         self.BackupMethod = None
         self.BackupRemark = None
@@ -302,11 +242,7 @@ class CreateBackupDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: The status of the queried backup process.
-        :type AsyncRequestId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param AsyncRequestId: The status of the queried backup process.\n        :type AsyncRequestId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AsyncRequestId = None
         self.RequestId = None
 
@@ -323,13 +259,7 @@ class CreateBackupDownloadTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5", which is the same as the instance ID displayed in the TencentDB console
-        :type InstanceId: str
-        :param BackupName: The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API
-        :type BackupName: str
-        :param BackupSets: The list of shards with backups to be downloaded
-        :type BackupSets: list of ReplicaSetInfo
-        """
+        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5", which is the same as the instance ID displayed in the TencentDB console\n        :type InstanceId: str\n        :param BackupName: The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API\n        :type BackupName: str\n        :param BackupSets: The list of shards with backups to be downloaded\n        :type BackupSets: list of ReplicaSetInfo\n        """
         self.InstanceId = None
         self.BackupName = None
         self.BackupSets = None
@@ -360,11 +290,7 @@ class CreateBackupDownloadTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Tasks: Download task status
-        :type Tasks: list of BackupDownloadTaskStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Tasks: Download task status\n        :type Tasks: list of BackupDownloadTaskStatus\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Tasks = None
         self.RequestId = None
 
@@ -386,41 +312,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Memory: Instance memory size in GB
-        :type Memory: int
-        :param Volume: Instance disk size in GB
-        :type Volume: int
-        :param ReplicateSetNum: Number of replica sets. When a replica set instance is created, this parameter must be set to 1. When a sharding instance is created, please see the parameters returned by the DescribeSpecInfo API
-        :type ReplicateSetNum: int
-        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes in a replica set is fixed at 3, while the number of shards is customizable. For more information, please see the parameter returned by the DescribeSpecInfo API
-        :type NodeNum: int
-        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the DescribeSpecInfo API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition
-        :type MongoVersion: str
-        :param MachineCode: Server type. HIO: high IO; HIO10G: 10-Gigabit high IO
-        :type MachineCode: str
-        :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10
-        :type GoodsNum: int
-        :param Zone: AZ information in the format of ap-guangzhou-2
-        :type Zone: str
-        :param ClusterType: Instance type. REPLSET: replica set; SHARD: sharding cluster
-        :type ClusterType: str
-        :param VpcId: VPC ID. If this parameter is not set, the basic network will be selected by default
-        :type VpcId: str
-        :param SubnetId: VPC subnet ID. If VpcId is set, then SubnetId will be required
-        :type SubnetId: str
-        :param Password: Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of "instance ID+@+root account UIN". For example, if the instance ID is "cmgo-higv73ed" and the root account UIN "100000001", the instance password will be "cmgo-higv73ed@100000001".
-        :type Password: str
-        :param ProjectId: Project ID. If this parameter is not set, the default project will be used
-        :type ProjectId: int
-        :param Tags: Instance tag information
-        :type Tags: list of TagInfo
-        :param Clone: Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).
-        :type Clone: int
-        :param Father: Parent instance ID. It is required if the `Clone` is 3 or 4.
-        :type Father: str
-        :param SecurityGroup: Security group.
-        :type SecurityGroup: list of str
-        """
+        :param Memory: Instance memory size in GB\n        :type Memory: int\n        :param Volume: Instance disk size in GB\n        :type Volume: int\n        :param ReplicateSetNum: Number of replica sets. When a replica set instance is created, this parameter must be set to 1. When a sharding instance is created, please see the parameters returned by the DescribeSpecInfo API\n        :type ReplicateSetNum: int\n        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes in a replica set is fixed at 3, while the number of shards is customizable. For more information, please see the parameter returned by the DescribeSpecInfo API\n        :type NodeNum: int\n        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the DescribeSpecInfo API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition\n        :type MongoVersion: str\n        :param MachineCode: Server type. HIO: high IO; HIO10G: 10-Gigabit high IO\n        :type MachineCode: str\n        :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10\n        :type GoodsNum: int\n        :param Zone: AZ information in the format of ap-guangzhou-2\n        :type Zone: str\n        :param ClusterType: Instance type. REPLSET: replica set; SHARD: sharding cluster\n        :type ClusterType: str\n        :param VpcId: VPC ID. If this parameter is not set, the basic network will be selected by default\n        :type VpcId: str\n        :param SubnetId: VPC subnet ID. If VpcId is set, then SubnetId will be required\n        :type SubnetId: str\n        :param Password: Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of "instance ID+@+root account UIN". For example, if the instance ID is "cmgo-higv73ed" and the root account UIN "100000001", the instance password will be "cmgo-higv73ed@100000001".\n        :type Password: str\n        :param ProjectId: Project ID. If this parameter is not set, the default project will be used\n        :type ProjectId: int\n        :param Tags: Instance tag information\n        :type Tags: list of TagInfo\n        :param Clone: Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).\n        :type Clone: int\n        :param Father: Parent instance ID. It is required if the `Clone` is 3 or 4.\n        :type Father: str\n        :param SecurityGroup: Security group.\n        :type SecurityGroup: list of str\n        """
         self.Memory = None
         self.Volume = None
         self.ReplicateSetNum = None
@@ -479,13 +371,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealId: Order ID
-        :type DealId: str
-        :param InstanceIds: List of IDs of created instances
-        :type InstanceIds: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DealId: Order ID\n        :type DealId: str\n        :param InstanceIds: List of IDs of created instances\n        :type InstanceIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealId = None
         self.InstanceIds = None
         self.RequestId = None
@@ -504,47 +390,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
-        :type NodeNum: int
-        :param Memory: Instance memory size in GB.
-        :type Memory: int
-        :param Volume: Instance disk size in GB.
-        :type Volume: int
-        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.
-        :type MongoVersion: str
-        :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10.
-        :type GoodsNum: int
-        :param Zone: Instance region name in the format of ap-guangzhou-2.
-        :type Zone: str
-        :param Period: Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
-        :type Period: int
-        :param MachineCode: Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).
-        :type MachineCode: str
-        :param ClusterType: Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).
-        :type ClusterType: str
-        :param ReplicateSetNum: Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.
-        :type ReplicateSetNum: int
-        :param ProjectId: Project ID. If this parameter is not set, the default project will be used.
-        :type ProjectId: int
-        :param VpcId: VPC ID. If this parameter is not set, the classic network will be used. Please use the `DescribeVpcs` API to query the VPC list.
-        :type VpcId: str
-        :param SubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the `DescribeSubnets` API to query the subnet list.
-        :type SubnetId: str
-        :param Password: Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of "instance ID+@+root account UIN". For example, if the instance ID is "cmgo-higv73ed" and the root account UIN "100000001", the instance password will be "cmgo-higv73ed@100000001".
-        :type Password: str
-        :param Tags: Instance tag information.
-        :type Tags: list of TagInfo
-        :param AutoRenewFlag: Auto-renewal flag. Valid values: 0 (auto-renewal not enabled), 1 (auto-renewal enabled). Default value: 0.
-        :type AutoRenewFlag: int
-        :param AutoVoucher: Whether to automatically use a voucher. Valid values: 1 (yes), 0 (no). Default value: 0.
-        :type AutoVoucher: int
-        :param Clone: Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).
-        :type Clone: int
-        :param Father: Primary instance ID. It is required for read-only and disaster recovery instances.
-        :type Father: str
-        :param SecurityGroup: Security group.
-        :type SecurityGroup: list of str
-        """
+        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.\n        :type NodeNum: int\n        :param Memory: Instance memory size in GB.\n        :type Memory: int\n        :param Volume: Instance disk size in GB.\n        :type Volume: int\n        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.\n        :type MongoVersion: str\n        :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10.\n        :type GoodsNum: int\n        :param Zone: Instance region name in the format of ap-guangzhou-2.\n        :type Zone: str\n        :param Period: Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.\n        :type Period: int\n        :param MachineCode: Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).\n        :type MachineCode: str\n        :param ClusterType: Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).\n        :type ClusterType: str\n        :param ReplicateSetNum: Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.\n        :type ReplicateSetNum: int\n        :param ProjectId: Project ID. If this parameter is not set, the default project will be used.\n        :type ProjectId: int\n        :param VpcId: VPC ID. If this parameter is not set, the classic network will be used. Please use the `DescribeVpcs` API to query the VPC list.\n        :type VpcId: str\n        :param SubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the `DescribeSubnets` API to query the subnet list.\n        :type SubnetId: str\n        :param Password: Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of "instance ID+@+root account UIN". For example, if the instance ID is "cmgo-higv73ed" and the root account UIN "100000001", the instance password will be "cmgo-higv73ed@100000001".\n        :type Password: str\n        :param Tags: Instance tag information.\n        :type Tags: list of TagInfo\n        :param AutoRenewFlag: Auto-renewal flag. Valid values: 0 (auto-renewal not enabled), 1 (auto-renewal enabled). Default value: 0.\n        :type AutoRenewFlag: int\n        :param AutoVoucher: Whether to automatically use a voucher. Valid values: 1 (yes), 0 (no). Default value: 0.\n        :type AutoVoucher: int\n        :param Clone: Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).\n        :type Clone: int\n        :param Father: Primary instance ID. It is required for read-only and disaster recovery instances.\n        :type Father: str\n        :param SecurityGroup: Security group.\n        :type SecurityGroup: list of str\n        """
         self.NodeNum = None
         self.Memory = None
         self.Volume = None
@@ -609,13 +455,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealId: Order ID.
-        :type DealId: str
-        :param InstanceIds: List of IDs of created instances.
-        :type InstanceIds: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DealId: Order ID.\n        :type DealId: str\n        :param InstanceIds: List of IDs of created instances.\n        :type InstanceIds: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealId = None
         self.InstanceIds = None
         self.RequestId = None
@@ -634,11 +474,7 @@ class DBInstanceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param Region: Region information
-        :type Region: str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Region: Region information\n        :type Region: str\n        """
         self.InstanceId = None
         self.Region = None
 
@@ -663,13 +499,7 @@ class DBInstancePrice(AbstractModel):
     def __init__(self):
         """
         :param UnitPrice: Unit price.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type UnitPrice: float
-        :param OriginalPrice: Original price.
-        :type OriginalPrice: float
-        :param DiscountPrice: Discounted price.
-        :type DiscountPrice: float
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type UnitPrice: float\n        :param OriginalPrice: Original price.\n        :type OriginalPrice: float\n        :param DiscountPrice: Discounted price.\n        :type DiscountPrice: float\n        """
         self.UnitPrice = None
         self.OriginalPrice = None
         self.DiscountPrice = None
@@ -695,9 +525,7 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: Async task ID, which is returned by APIs related to async tasks, such as `CreateBackupDBInstance`.
-        :type AsyncRequestId: str
-        """
+        :param AsyncRequestId: Async task ID, which is returned by APIs related to async tasks, such as `CreateBackupDBInstance`.\n        :type AsyncRequestId: str\n        """
         self.AsyncRequestId = None
 
 
@@ -719,11 +547,7 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: Status.
-        :type Status: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Status: Status.\n        :type Status: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -740,11 +564,7 @@ class DescribeBackupAccessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceId: str
-        :param BackupName: Name of the backup file for which to get the download permission
-        :type BackupName: str
-        """
+        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceId: str\n        :param BackupName: Name of the backup file for which to get the download permission\n        :type BackupName: str\n        """
         self.InstanceId = None
         self.BackupName = None
 
@@ -768,15 +588,7 @@ class DescribeBackupAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Instance region
-        :type Region: str
-        :param Bucket: The bucket where a backup file is located
-        :type Bucket: str
-        :param Files: Storage information of a backup file
-        :type Files: list of BackupFile
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Region: Instance region\n        :type Region: str\n        :param Bucket: The bucket where a backup file is located\n        :type Bucket: str\n        :param Files: Storage information of a backup file\n        :type Files: list of BackupFile\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Region = None
         self.Bucket = None
         self.Files = None
@@ -802,25 +614,7 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5", which is the same as the instance ID displayed in the TencentDB console
-        :type InstanceId: str
-        :param BackupName: The name of a backup file with download tasks to be queried
-        :type BackupName: str
-        :param StartTime: The start time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the start time can be any time earlier than the end time.
-        :type StartTime: str
-        :param EndTime: The end time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the end time can be any time later than the start time.
-        :type EndTime: str
-        :param Limit: The maximum number of results returned per page. Value range: 1-100. Default value: `20`.
-        :type Limit: int
-        :param Offset: Offset for pagination. Default value: `0`.
-        :type Offset: int
-        :param OrderBy: The field used to sort the results. Valid values: `createTime` (default), `finishTime`.
-        :type OrderBy: str
-        :param OrderByType: Sort order. Valid values: `asc`, `desc` (default).
-        :type OrderByType: str
-        :param Status: The status of the tasks to be queried. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry). If it is left empty, tasks in any status will be returned.
-        :type Status: list of int
-        """
+        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5", which is the same as the instance ID displayed in the TencentDB console\n        :type InstanceId: str\n        :param BackupName: The name of a backup file with download tasks to be queried\n        :type BackupName: str\n        :param StartTime: The start time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the start time can be any time earlier than the end time.\n        :type StartTime: str\n        :param EndTime: The end time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the end time can be any time later than the start time.\n        :type EndTime: str\n        :param Limit: The maximum number of results returned per page. Value range: 1-100. Default value: `20`.\n        :type Limit: int\n        :param Offset: Offset for pagination. Default value: `0`.\n        :type Offset: int\n        :param OrderBy: The field used to sort the results. Valid values: `createTime` (default), `finishTime`.\n        :type OrderBy: str\n        :param OrderByType: Sort order. Valid values: `asc`, `desc` (default).\n        :type OrderByType: str\n        :param Status: The status of the tasks to be queried. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry). If it is left empty, tasks in any status will be returned.\n        :type Status: list of int\n        """
         self.InstanceId = None
         self.BackupName = None
         self.StartTime = None
@@ -858,13 +652,7 @@ class DescribeBackupDownloadTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of results
-        :type TotalCount: int
-        :param Tasks: The list of download tasks
-        :type Tasks: list of BackupDownloadTask
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of results\n        :type TotalCount: int\n        :param Tasks: The list of download tasks\n        :type Tasks: list of BackupDownloadTask\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Tasks = None
         self.RequestId = None
@@ -888,13 +676,7 @@ class DescribeClientConnectionsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceId: str
-        :param Limit: The number of records that will be returned. Default value: 10,000.
-        :type Limit: int
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        """
+        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceId: str\n        :param Limit: The number of records that will be returned. Default value: 10,000.\n        :type Limit: int\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
@@ -920,13 +702,7 @@ class DescribeClientConnectionsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Clients: Client connection information, including client IP and number of connections
-        :type Clients: list of ClientConnection
-        :param TotalCount: The total number of records that meet the query condition, which can be used for paginated queries.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Clients: Client connection information, including client IP and number of connections\n        :type Clients: list of ClientConnection\n        :param TotalCount: The total number of records that meet the query condition, which can be used for paginated queries.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Clients = None
         self.TotalCount = None
         self.RequestId = None
@@ -950,15 +726,7 @@ class DescribeDBBackupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceId: str
-        :param BackupMethod: Backup mode. Valid values: `0` (logical backup), `1` (physical backup), `2` (both modes). Default value: `0`.
-        :type BackupMethod: int
-        :param Limit: Number of entries per page. Maximum value: `100`. If this parameter is left empty, all entries will be returned.
-        :type Limit: int
-        :param Offset: Pagination offset, starting from `0`. Default value: `0`.
-        :type Offset: int
-        """
+        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceId: str\n        :param BackupMethod: Backup mode. Valid values: `0` (logical backup), `1` (physical backup), `2` (both modes). Default value: `0`.\n        :type BackupMethod: int\n        :param Limit: Number of entries per page. Maximum value: `100`. If this parameter is left empty, all entries will be returned.\n        :type Limit: int\n        :param Offset: Pagination offset, starting from `0`. Default value: `0`.\n        :type Offset: int\n        """
         self.InstanceId = None
         self.BackupMethod = None
         self.Limit = None
@@ -986,13 +754,7 @@ class DescribeDBBackupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BackupList: Backup list
-        :type BackupList: list of BackupInfo
-        :param TotalCount: Total number of backups
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param BackupList: Backup list\n        :type BackupList: list of BackupInfo\n        :param TotalCount: Total number of backups\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.BackupList = None
         self.TotalCount = None
         self.RequestId = None
@@ -1016,9 +778,7 @@ class DescribeDBInstanceDealRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DealId: Order ID. It is returned by the `CreateDBInstance` and other APIs.
-        :type DealId: str
-        """
+        :param DealId: Order ID. It is returned by the `CreateDBInstance` and other APIs.\n        :type DealId: str\n        """
         self.DealId = None
 
 
@@ -1040,17 +800,7 @@ class DescribeDBInstanceDealResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: Order status. Valid values: 1 (unpaid), 2 (paid), 3 (delivering), 4 (delivered), 5 (delivery failed), 6 (refunded), 7 (order closed), 8 (order closed because it failed to be paid within timeout period).
-        :type Status: int
-        :param OriginalPrice: Original price of the order.
-        :type OriginalPrice: float
-        :param DiscountPrice: Discounted price of the order.
-        :type DiscountPrice: float
-        :param Action: Operation performed by the order. Valid values: purchase, renew, upgrade, downgrade, refund.
-        :type Action: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Status: Order status. Valid values: 1 (unpaid), 2 (paid), 3 (delivering), 4 (delivered), 5 (delivery failed), 6 (refunded), 7 (order closed), 8 (order closed because it failed to be paid within timeout period).\n        :type Status: int\n        :param OriginalPrice: Original price of the order.\n        :type OriginalPrice: float\n        :param DiscountPrice: Discounted price of the order.\n        :type DiscountPrice: float\n        :param Action: Operation performed by the order. Valid values: purchase, renew, upgrade, downgrade, refund.\n        :type Action: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.OriginalPrice = None
         self.DiscountPrice = None
@@ -1073,35 +823,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceIds: list of str
-        :param InstanceType: Instance type. Valid values: 0 (all instances), 1 (promoted), 2 (temp), 3 (read-only), -1 (promoted + read-only + disaster recovery)
-        :type InstanceType: int
-        :param ClusterType: Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance), -1 (all instances)
-        :type ClusterType: int
-        :param Status: Instance status. Valid values: `0` (to be initialized), `1` (executing task), `2` (running), `-2` (isolated monthly-subscribed instance), `-3` (isolated pay-as-you-go instance)
-        :type Status: list of int
-        :param VpcId: VPC ID. This parameter can be left empty for the basic network
-        :type VpcId: str
-        :param SubnetId: Subnet ID of VPC. This parameter can be left empty for the basic network. If it is passed in as an input parameter, the corresponding VpcId must be set
-        :type SubnetId: str
-        :param PayMode: Billing type. Valid value: 0 (pay-as-you-go)
-        :type PayMode: int
-        :param Limit: Number of results to be returned for a single request. Valid values: 1-100. Default value: 20
-        :type Limit: int
-        :param Offset: Offset. Default value: 0
-        :type Offset: int
-        :param OrderBy: Sort by field of the returned result set. Currently, supported values include "ProjectId", "InstanceName", and "CreateTime". The return results are sorted in ascending order by default.
-        :type OrderBy: str
-        :param OrderByType: Sorting method of the return result set. Currently, "ASC" or "DESC" is supported
-        :type OrderByType: str
-        :param ProjectIds: Project ID
-        :type ProjectIds: list of int non-negative
-        :param SearchKey: Search keyword, which can be instance ID, instance name, or complete IP
-        :type SearchKey: str
-        :param Tags: Tag information
-        :type Tags: :class:`tencentcloud.mongodb.v20190725.models.TagInfo`
-        """
+        :param InstanceIds: List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceIds: list of str\n        :param InstanceType: Instance type. Valid values: 0 (all instances), 1 (promoted), 2 (temp), 3 (read-only), -1 (promoted + read-only + disaster recovery)\n        :type InstanceType: int\n        :param ClusterType: Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance), -1 (all instances)\n        :type ClusterType: int\n        :param Status: Instance status. Valid values: `0` (to be initialized), `1` (executing task), `2` (running), `-2` (isolated monthly-subscribed instance), `-3` (isolated pay-as-you-go instance)\n        :type Status: list of int\n        :param VpcId: VPC ID. This parameter can be left empty for the basic network\n        :type VpcId: str\n        :param SubnetId: Subnet ID of VPC. This parameter can be left empty for the basic network. If it is passed in as an input parameter, the corresponding VpcId must be set\n        :type SubnetId: str\n        :param PayMode: Billing type. Valid value: 0 (pay-as-you-go)\n        :type PayMode: int\n        :param Limit: Number of results to be returned for a single request. Valid values: 1-100. Default value: 20\n        :type Limit: int\n        :param Offset: Offset. Default value: 0\n        :type Offset: int\n        :param OrderBy: Sort by field of the returned result set. Currently, supported values include "ProjectId", "InstanceName", and "CreateTime". The return results are sorted in ascending order by default.\n        :type OrderBy: str\n        :param OrderByType: Sorting method of the return result set. Currently, "ASC" or "DESC" is supported\n        :type OrderByType: str\n        :param ProjectIds: Project ID\n        :type ProjectIds: list of int non-negative\n        :param SearchKey: Search keyword, which can be instance ID, instance name, or complete IP\n        :type SearchKey: str\n        :param Tags: Tag information\n        :type Tags: :class:`tencentcloud.mongodb.v20190725.models.TagInfo`\n        """
         self.InstanceIds = None
         self.InstanceType = None
         self.ClusterType = None
@@ -1151,13 +873,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of eligible instances.
-        :type TotalCount: int
-        :param InstanceDetails: List of instance details
-        :type InstanceDetails: list of InstanceDetail
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of eligible instances.\n        :type TotalCount: int\n        :param InstanceDetails: List of instance details\n        :type InstanceDetails: list of InstanceDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceDetails = None
         self.RequestId = None
@@ -1181,9 +897,7 @@ class DescribeSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5"
-        :type InstanceId: str
-        """
+        :param InstanceId: Instance ID in the format of "cmgo-p8vnipr5"\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1205,11 +919,7 @@ class DescribeSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Groups: Security groups associated with the instance
-        :type Groups: list of SecurityGroup
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Groups: Security groups associated with the instance\n        :type Groups: list of SecurityGroup\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Groups = None
         self.RequestId = None
 
@@ -1231,21 +941,7 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceId: str
-        :param StartTime: Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.
-        :type StartTime: str
-        :param EndTime: End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.
-        :type EndTime: str
-        :param SlowMS: Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.
-        :type SlowMS: int
-        :param Offset: Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.
-        :type Limit: int
-        :param Format: Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.
-        :type Format: str
-        """
+        :param InstanceId: Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceId: str\n        :param StartTime: Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.\n        :type StartTime: str\n        :param EndTime: End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.\n        :type EndTime: str\n        :param SlowMS: Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.\n        :type SlowMS: int\n        :param Offset: Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.\n        :type Limit: int\n        :param Format: Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.\n        :type Format: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1279,13 +975,7 @@ class DescribeSlowLogPatternsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Count: Total number of slow logs
-        :type Count: int
-        :param SlowLogPatterns: Slow log statistics
-        :type SlowLogPatterns: list of SlowLogPattern
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Count: Total number of slow logs\n        :type Count: int\n        :param SlowLogPatterns: Slow log statistics\n        :type SlowLogPatterns: list of SlowLogPattern\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Count = None
         self.SlowLogPatterns = None
         self.RequestId = None
@@ -1309,21 +999,7 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceId: str
-        :param StartTime: Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.
-        :type StartTime: str
-        :param EndTime: End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.
-        :type EndTime: str
-        :param SlowMS: Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.
-        :type SlowMS: int
-        :param Offset: Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.
-        :type Limit: int
-        :param Format: Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.
-        :type Format: str
-        """
+        :param InstanceId: Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceId: str\n        :param StartTime: Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.\n        :type StartTime: str\n        :param EndTime: End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.\n        :type EndTime: str\n        :param SlowMS: Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.\n        :type SlowMS: int\n        :param Offset: Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.\n        :type Limit: int\n        :param Format: Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.\n        :type Format: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1357,13 +1033,7 @@ class DescribeSlowLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Count: Total number of slow logs
-        :type Count: int
-        :param SlowLogs: Slow log details
-        :type SlowLogs: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Count: Total number of slow logs\n        :type Count: int\n        :param SlowLogs: Slow log details\n        :type SlowLogs: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Count = None
         self.SlowLogs = None
         self.RequestId = None
@@ -1382,9 +1052,7 @@ class DescribeSpecInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: AZ to be queried
-        :type Zone: str
-        """
+        :param Zone: AZ to be queried\n        :type Zone: str\n        """
         self.Zone = None
 
 
@@ -1406,11 +1074,7 @@ class DescribeSpecInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SpecInfoList: List of purchasable instance specifications
-        :type SpecInfoList: list of SpecificationInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param SpecInfoList: List of purchasable instance specifications\n        :type SpecInfoList: list of SpecificationInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SpecInfoList = None
         self.RequestId = None
 
@@ -1432,9 +1096,7 @@ class FlushInstanceRouterConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1456,9 +1118,7 @@ class FlushInstanceRouterConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1473,27 +1133,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: Instance region name in the format of ap-guangzhou-2.
-        :type Zone: str
-        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.
-        :type NodeNum: int
-        :param Memory: Instance memory size in GB.
-        :type Memory: int
-        :param Volume: Instance disk size in GB.
-        :type Volume: int
-        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.
-        :type MongoVersion: str
-        :param MachineCode: Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).
-        :type MachineCode: str
-        :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10.
-        :type GoodsNum: int
-        :param Period: Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
-        :type Period: int
-        :param ClusterType: Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).
-        :type ClusterType: str
-        :param ReplicateSetNum: Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.
-        :type ReplicateSetNum: int
-        """
+        :param Zone: Instance region name in the format of ap-guangzhou-2.\n        :type Zone: str\n        :param NodeNum: Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.\n        :type NodeNum: int\n        :param Memory: Instance memory size in GB.\n        :type Memory: int\n        :param Volume: Instance disk size in GB.\n        :type Volume: int\n        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.\n        :type MongoVersion: str\n        :param MachineCode: Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).\n        :type MachineCode: str\n        :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10.\n        :type GoodsNum: int\n        :param Period: Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.\n        :type Period: int\n        :param ClusterType: Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).\n        :type ClusterType: str\n        :param ReplicateSetNum: Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.\n        :type ReplicateSetNum: int\n        """
         self.Zone = None
         self.NodeNum = None
         self.Memory = None
@@ -1533,11 +1173,7 @@ class InquirePriceCreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Price: Price.
-        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Price: Price.\n        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Price = None
         self.RequestId = None
 
@@ -1556,13 +1192,7 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console.
-        :type InstanceId: str
-        :param Memory: Instance memory size in GB after specification adjustment.
-        :type Memory: int
-        :param Volume: Instance disk size in GB after specification adjustment.
-        :type Volume: int
-        """
+        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console.\n        :type InstanceId: str\n        :param Memory: Instance memory size in GB after specification adjustment.\n        :type Memory: int\n        :param Volume: Instance disk size in GB after specification adjustment.\n        :type Volume: int\n        """
         self.InstanceId = None
         self.Memory = None
         self.Volume = None
@@ -1588,11 +1218,7 @@ class InquirePriceModifyDBInstanceSpecResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Price: Price.
-        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Price: Price.\n        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Price = None
         self.RequestId = None
 
@@ -1611,11 +1237,7 @@ class InquirePriceRenewDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console. This API supports operations on up to 5 instances at a time.
-        :type InstanceIds: list of str
-        :param InstanceChargePrepaid: The parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set automatic renewal, and other attributes of the monthly subscription instance.
-        :type InstanceChargePrepaid: :class:`tencentcloud.mongodb.v20190725.models.InstanceChargePrepaid`
-        """
+        :param InstanceIds: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console. This API supports operations on up to 5 instances at a time.\n        :type InstanceIds: list of str\n        :param InstanceChargePrepaid: The parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set automatic renewal, and other attributes of the monthly subscription instance.\n        :type InstanceChargePrepaid: :class:`tencentcloud.mongodb.v20190725.models.InstanceChargePrepaid`\n        """
         self.InstanceIds = None
         self.InstanceChargePrepaid = None
 
@@ -1641,11 +1263,7 @@ class InquirePriceRenewDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Price: Price.
-        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Price: Price.\n        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Price = None
         self.RequestId = None
 
@@ -1665,17 +1283,13 @@ class InstanceChargePrepaid(AbstractModel):
     def __init__(self):
         """
         :param Period: Purchased usage period (in month). Valid values: `1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36`. Default value: `1`.
-(This parameter is required in `InquirePriceRenewDBInstances` and `RenewDBInstances` APIs.)
-        :type Period: int
-        :param RenewFlag: Auto-renewal flag. Valid values:
+(This parameter is required in `InquirePriceRenewDBInstances` and `RenewDBInstances` APIs.)\n        :type Period: int\n        :param RenewFlag: Auto-renewal flag. Valid values:
 `NOTIFY_AND_AUTO_RENEW`: notify expiration and renew automatically
 `NOTIFY_AND_MANUAL_RENEW`: notify expiration but not renew automatically
 `DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify expiration nor renew automatically
 
 Default value: `NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed on a monthly basis when the account balance is sufficient.
-(This parameter is required in `InquirePriceRenewDBInstances` and `RenewDBInstances` APIs.)
-        :type RenewFlag: str
-        """
+(This parameter is required in `InquirePriceRenewDBInstances` and `RenewDBInstances` APIs.)\n        :type RenewFlag: str\n        """
         self.Period = None
         self.RenewFlag = None
 
@@ -1699,83 +1313,7 @@ class InstanceDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param InstanceName: Instance name
-        :type InstanceName: str
-        :param PayMode: Billing type. Valid value: 0 (pay-as-you-go)
-        :type PayMode: int
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param ClusterType: Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance),
-        :type ClusterType: int
-        :param Region: Region information
-        :type Region: str
-        :param Zone: AZ information
-        :type Zone: str
-        :param NetType: Network type. Valid values: 0 (basic network), 1 (VPC)
-        :type NetType: int
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: Subnet ID of VPC
-        :type SubnetId: str
-        :param Status: Instance status. Valid values: 0 (to be initialized), 1 (in process), 2 (running), -2 (expired)
-        :type Status: int
-        :param Vip: Instance IP
-        :type Vip: str
-        :param Vport: Port number
-        :type Vport: int
-        :param CreateTime: Instance creation time
-        :type CreateTime: str
-        :param DeadLine: Instance expiration time
-        :type DeadLine: str
-        :param MongoVersion: Instance version information
-        :type MongoVersion: str
-        :param Memory: Instance memory size in MB
-        :type Memory: int
-        :param Volume: Instance disk size in MB
-        :type Volume: int
-        :param CpuNum: Number of CPU cores of an instance
-        :type CpuNum: int
-        :param MachineType: Instance machine type
-        :type MachineType: str
-        :param SecondaryNum: Number of secondary nodes of an instance
-        :type SecondaryNum: int
-        :param ReplicationSetNum: Number of instance shards
-        :type ReplicationSetNum: int
-        :param AutoRenewFlag: Instance auto-renewal flag. Valid values: 0 (manual renewal), 1 (auto-renewal), 2 (no renewal upon expiration)
-        :type AutoRenewFlag: int
-        :param UsedVolume: Used capacity in MB
-        :type UsedVolume: int
-        :param MaintenanceStart: Start time of the maintenance time window
-        :type MaintenanceStart: str
-        :param MaintenanceEnd: End time of the maintenance time window
-        :type MaintenanceEnd: str
-        :param ReplicaSets: Shard information
-        :type ReplicaSets: list of ShardInfo
-        :param ReadonlyInstances: Information of read-only instances
-        :type ReadonlyInstances: list of DBInstanceInfo
-        :param StandbyInstances: Information of disaster recovery instances
-        :type StandbyInstances: list of DBInstanceInfo
-        :param CloneInstances: Information of temp instances
-        :type CloneInstances: list of DBInstanceInfo
-        :param RelatedInstance: Information of associated instances. For a promoted instance, this field represents information of its temp instance; for a temp instance, this field represents information of its promoted instance; and for a read-only/disaster recovery instance, this field represents information of its primary instance
-        :type RelatedInstance: :class:`tencentcloud.mongodb.v20190725.models.DBInstanceInfo`
-        :param Tags: Instance tag information set
-        :type Tags: list of TagInfo
-        :param InstanceVer: Instance version tag
-        :type InstanceVer: int
-        :param ClusterVer: Instance version tag
-        :type ClusterVer: int
-        :param Protocol: Protocol information. Valid values: 1 (mongodb), 2 (dynamodb)
-        :type Protocol: int
-        :param InstanceType: Instance type. Valid values: 1 (promoted instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance)
-        :type InstanceType: int
-        :param InstanceStatusDesc: Instance status description
-        :type InstanceStatusDesc: str
-        :param RealInstanceId: Physical instance ID. For an instance that has been rolled back and replaced, its InstanceId and RealInstanceId are different. The physical instance ID is needed in such scenarios as getting monitoring data from Barad
-        :type RealInstanceId: str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param InstanceName: Instance name\n        :type InstanceName: str\n        :param PayMode: Billing type. Valid value: 0 (pay-as-you-go)\n        :type PayMode: int\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param ClusterType: Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance),\n        :type ClusterType: int\n        :param Region: Region information\n        :type Region: str\n        :param Zone: AZ information\n        :type Zone: str\n        :param NetType: Network type. Valid values: 0 (basic network), 1 (VPC)\n        :type NetType: int\n        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID of VPC\n        :type SubnetId: str\n        :param Status: Instance status. Valid values: 0 (to be initialized), 1 (in process), 2 (running), -2 (expired)\n        :type Status: int\n        :param Vip: Instance IP\n        :type Vip: str\n        :param Vport: Port number\n        :type Vport: int\n        :param CreateTime: Instance creation time\n        :type CreateTime: str\n        :param DeadLine: Instance expiration time\n        :type DeadLine: str\n        :param MongoVersion: Instance version information\n        :type MongoVersion: str\n        :param Memory: Instance memory size in MB\n        :type Memory: int\n        :param Volume: Instance disk size in MB\n        :type Volume: int\n        :param CpuNum: Number of CPU cores of an instance\n        :type CpuNum: int\n        :param MachineType: Instance machine type\n        :type MachineType: str\n        :param SecondaryNum: Number of secondary nodes of an instance\n        :type SecondaryNum: int\n        :param ReplicationSetNum: Number of instance shards\n        :type ReplicationSetNum: int\n        :param AutoRenewFlag: Instance auto-renewal flag. Valid values: 0 (manual renewal), 1 (auto-renewal), 2 (no renewal upon expiration)\n        :type AutoRenewFlag: int\n        :param UsedVolume: Used capacity in MB\n        :type UsedVolume: int\n        :param MaintenanceStart: Start time of the maintenance time window\n        :type MaintenanceStart: str\n        :param MaintenanceEnd: End time of the maintenance time window\n        :type MaintenanceEnd: str\n        :param ReplicaSets: Shard information\n        :type ReplicaSets: list of ShardInfo\n        :param ReadonlyInstances: Information of read-only instances\n        :type ReadonlyInstances: list of DBInstanceInfo\n        :param StandbyInstances: Information of disaster recovery instances\n        :type StandbyInstances: list of DBInstanceInfo\n        :param CloneInstances: Information of temp instances\n        :type CloneInstances: list of DBInstanceInfo\n        :param RelatedInstance: Information of associated instances. For a promoted instance, this field represents information of its temp instance; for a temp instance, this field represents information of its promoted instance; and for a read-only/disaster recovery instance, this field represents information of its primary instance\n        :type RelatedInstance: :class:`tencentcloud.mongodb.v20190725.models.DBInstanceInfo`\n        :param Tags: Instance tag information set\n        :type Tags: list of TagInfo\n        :param InstanceVer: Instance version tag\n        :type InstanceVer: int\n        :param ClusterVer: Instance version tag\n        :type ClusterVer: int\n        :param Protocol: Protocol information. Valid values: 1 (mongodb), 2 (dynamodb)\n        :type Protocol: int\n        :param InstanceType: Instance type. Valid values: 1 (promoted instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance)\n        :type InstanceType: int\n        :param InstanceStatusDesc: Instance status description\n        :type InstanceStatusDesc: str\n        :param RealInstanceId: Physical instance ID. For an instance that has been rolled back and replaced, its InstanceId and RealInstanceId are different. The physical instance ID is needed in such scenarios as getting monitoring data from Barad\n        :type RealInstanceId: str\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.PayMode = None
@@ -1898,9 +1436,7 @@ class IsolateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceId: str
-        """
+        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1922,11 +1458,7 @@ class IsolateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task.
-        :type AsyncRequestId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task.\n        :type AsyncRequestId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AsyncRequestId = None
         self.RequestId = None
 
@@ -1943,15 +1475,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceId: str
-        :param Memory: Memory size after instance configuration change in GB. Memory and disk must be upgraded or degraded simultaneously
-        :type Memory: int
-        :param Volume: Disk size after instance configuration change in GB. Memory and disk must be upgraded or degraded simultaneously. For degradation, the new disk capacity must be greater than 1.2 times the used disk capacity
-        :type Volume: int
-        :param OplogSize: Oplog size after instance configuration change in GB, which ranges from 10% to 90% of the disk capacity and is 10% of the disk capacity by default
-        :type OplogSize: int
-        """
+        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceId: str\n        :param Memory: Memory size after instance configuration change in GB. Memory and disk must be upgraded or degraded simultaneously\n        :type Memory: int\n        :param Volume: Disk size after instance configuration change in GB. Memory and disk must be upgraded or degraded simultaneously. For degradation, the new disk capacity must be greater than 1.2 times the used disk capacity\n        :type Volume: int\n        :param OplogSize: Oplog size after instance configuration change in GB, which ranges from 10% to 90% of the disk capacity and is 10% of the disk capacity by default\n        :type OplogSize: int\n        """
         self.InstanceId = None
         self.Memory = None
         self.Volume = None
@@ -1979,11 +1503,7 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealId: Order ID
-        :type DealId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DealId: Order ID\n        :type DealId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealId = None
         self.RequestId = None
 
@@ -2000,9 +1520,7 @@ class OfflineIsolatedDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceId: str
-        """
+        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -2024,11 +1542,7 @@ class OfflineIsolatedDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task.
-        :type AsyncRequestId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task.\n        :type AsyncRequestId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AsyncRequestId = None
         self.RequestId = None
 
@@ -2045,11 +1559,7 @@ class RenameInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceId: str
-        :param NewName: Instance name
-        :type NewName: str
-        """
+        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page\n        :type InstanceId: str\n        :param NewName: Instance name\n        :type NewName: str\n        """
         self.InstanceId = None
         self.NewName = None
 
@@ -2073,9 +1583,7 @@ class RenameInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2090,11 +1598,7 @@ class RenewDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: IDs of one or more instances to be operated. The value can be obtained from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 100 instances can be requested at a time.
-        :type InstanceIds: list of str
-        :param InstanceChargePrepaid: The parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set automatic renewal, and other attributes of the monthly subscription instance. This parameter is mandatory in monthly subscription.
-        :type InstanceChargePrepaid: :class:`tencentcloud.mongodb.v20190725.models.InstanceChargePrepaid`
-        """
+        :param InstanceIds: IDs of one or more instances to be operated. The value can be obtained from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 100 instances can be requested at a time.\n        :type InstanceIds: list of str\n        :param InstanceChargePrepaid: The parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set automatic renewal, and other attributes of the monthly subscription instance. This parameter is mandatory in monthly subscription.\n        :type InstanceChargePrepaid: :class:`tencentcloud.mongodb.v20190725.models.InstanceChargePrepaid`\n        """
         self.InstanceIds = None
         self.InstanceChargePrepaid = None
 
@@ -2120,9 +1624,7 @@ class RenewDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2137,9 +1639,7 @@ class ReplicaSetInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ReplicaSetId: Shard name
-        :type ReplicaSetId: str
-        """
+        :param ReplicaSetId: Shard name\n        :type ReplicaSetId: str\n        """
         self.ReplicaSetId = None
 
 
@@ -2161,13 +1661,7 @@ class ResetDBInstancePasswordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param UserName: Instance account name
-        :type UserName: str
-        :param Password: New password
-        :type Password: str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param UserName: Instance account name\n        :type UserName: str\n        :param Password: New password\n        :type Password: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Password = None
@@ -2193,11 +1687,7 @@ class ResetDBInstancePasswordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: Async request ID, which is used to query the running status of the process.
-        :type AsyncRequestId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param AsyncRequestId: Async request ID, which is used to query the running status of the process.\n        :type AsyncRequestId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AsyncRequestId = None
         self.RequestId = None
 
@@ -2214,21 +1704,7 @@ class SecurityGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param CreateTime: Creation time
-        :type CreateTime: str
-        :param Inbound: Inbound rule
-        :type Inbound: list of SecurityGroupBound
-        :param Outbound: Outbound rule
-        :type Outbound: list of SecurityGroupBound
-        :param SecurityGroupId: Security group ID
-        :type SecurityGroupId: str
-        :param SecurityGroupName: Security group name
-        :type SecurityGroupName: str
-        :param SecurityGroupRemark: Security group remarks
-        :type SecurityGroupRemark: str
-        """
+        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param Inbound: Inbound rule\n        :type Inbound: list of SecurityGroupBound\n        :param Outbound: Outbound rule\n        :type Outbound: list of SecurityGroupBound\n        :param SecurityGroupId: Security group ID\n        :type SecurityGroupId: str\n        :param SecurityGroupName: Security group name\n        :type SecurityGroupName: str\n        :param SecurityGroupRemark: Security group remarks\n        :type SecurityGroupRemark: str\n        """
         self.ProjectId = None
         self.CreateTime = None
         self.Inbound = None
@@ -2272,23 +1748,7 @@ class SecurityGroupBound(AbstractModel):
 
     def __init__(self):
         """
-        :param Action: Execution rule. Valid values: `ACCEPT`, `DROP`
-        :type Action: str
-        :param CidrIp: IP range
-        :type CidrIp: str
-        :param PortRange: Port range
-        :type PortRange: str
-        :param IpProtocol: Transport layer protocol. Valid values: `tcp`, `udp`, `ALL`
-        :type IpProtocol: str
-        :param Id: All the addresses that the security group ID represents
-        :type Id: str
-        :param AddressModule: All the addresses that the address group ID represents
-        :type AddressModule: str
-        :param ServiceModule: All the protocols and ports that the service group ID represents
-        :type ServiceModule: str
-        :param Desc: Description
-        :type Desc: str
-        """
+        :param Action: Execution rule. Valid values: `ACCEPT`, `DROP`\n        :type Action: str\n        :param CidrIp: IP range\n        :type CidrIp: str\n        :param PortRange: Port range\n        :type PortRange: str\n        :param IpProtocol: Transport layer protocol. Valid values: `tcp`, `udp`, `ALL`\n        :type IpProtocol: str\n        :param Id: All the addresses that the security group ID represents\n        :type Id: str\n        :param AddressModule: All the addresses that the address group ID represents\n        :type AddressModule: str\n        :param ServiceModule: All the protocols and ports that the service group ID represents\n        :type ServiceModule: str\n        :param Desc: Description\n        :type Desc: str\n        """
         self.Action = None
         self.CidrIp = None
         self.PortRange = None
@@ -2324,23 +1784,7 @@ class ShardInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param UsedVolume: Used shard capacity
-        :type UsedVolume: float
-        :param ReplicaSetId: Shard ID
-        :type ReplicaSetId: str
-        :param ReplicaSetName: Shard name
-        :type ReplicaSetName: str
-        :param Memory: Shard memory size in MB
-        :type Memory: int
-        :param Volume: Shard disk size in MB
-        :type Volume: int
-        :param OplogSize: Shard oplog size in MB
-        :type OplogSize: int
-        :param SecondaryNum: Number of secondary nodes of a shard
-        :type SecondaryNum: int
-        :param RealReplicaSetId: Shard physical ID
-        :type RealReplicaSetId: str
-        """
+        :param UsedVolume: Used shard capacity\n        :type UsedVolume: float\n        :param ReplicaSetId: Shard ID\n        :type ReplicaSetId: str\n        :param ReplicaSetName: Shard name\n        :type ReplicaSetName: str\n        :param Memory: Shard memory size in MB\n        :type Memory: int\n        :param Volume: Shard disk size in MB\n        :type Volume: int\n        :param OplogSize: Shard oplog size in MB\n        :type OplogSize: int\n        :param SecondaryNum: Number of secondary nodes of a shard\n        :type SecondaryNum: int\n        :param RealReplicaSetId: Shard physical ID\n        :type RealReplicaSetId: str\n        """
         self.UsedVolume = None
         self.ReplicaSetId = None
         self.ReplicaSetName = None
@@ -2376,15 +1820,7 @@ class SlowLogPattern(AbstractModel):
 
     def __init__(self):
         """
-        :param Pattern: Slow log pattern
-        :type Pattern: str
-        :param MaxTime: Maximum execution time
-        :type MaxTime: int
-        :param AverageTime: Average execution time
-        :type AverageTime: int
-        :param Total: Number of slow logs in this pattern
-        :type Total: int
-        """
+        :param Pattern: Slow log pattern\n        :type Pattern: str\n        :param MaxTime: Maximum execution time\n        :type MaxTime: int\n        :param AverageTime: Average execution time\n        :type AverageTime: int\n        :param Total: Number of slow logs in this pattern\n        :type Total: int\n        """
         self.Pattern = None
         self.MaxTime = None
         self.AverageTime = None
@@ -2412,49 +1848,7 @@ class SpecItem(AbstractModel):
 
     def __init__(self):
         """
-        :param SpecCode: Specification information identifier
-        :type SpecCode: str
-        :param Status: Specification purchasable flag. Valid values: 0 (not purchasable), 1 (purchasable)
-        :type Status: int
-        :param Cpu: Computing resource specification in terms of CPU core
-        :type Cpu: int
-        :param Memory: Memory size in MB
-        :type Memory: int
-        :param DefaultStorage: Default disk size in MB
-        :type DefaultStorage: int
-        :param MaxStorage: Maximum disk size in MB
-        :type MaxStorage: int
-        :param MinStorage: Minimum disk size in MB
-        :type MinStorage: int
-        :param Qps: Maximum QPS
-        :type Qps: int
-        :param Conns: Maximum number of connections
-        :type Conns: int
-        :param MongoVersionCode: MongoDB version information of an instance
-        :type MongoVersionCode: str
-        :param MongoVersionValue: MongoDB version number of an instance
-        :type MongoVersionValue: int
-        :param Version: MongoDB version number of an instance (short)
-        :type Version: str
-        :param EngineName: Storage engine
-        :type EngineName: str
-        :param ClusterType: Cluster type. Valid values: 1 (sharding cluster), 0 (replica set cluster)
-        :type ClusterType: int
-        :param MinNodeNum: Minimum number of secondary nodes in a replica set
-        :type MinNodeNum: int
-        :param MaxNodeNum: Maximum number of secondary nodes in a replica set
-        :type MaxNodeNum: int
-        :param MinReplicateSetNum: Minimum number of shards
-        :type MinReplicateSetNum: int
-        :param MaxReplicateSetNum: Maximum number of shards
-        :type MaxReplicateSetNum: int
-        :param MinReplicateSetNodeNum: Minimum number of secondary nodes in a shard
-        :type MinReplicateSetNodeNum: int
-        :param MaxReplicateSetNodeNum: Maximum number of secondary nodes in a shard
-        :type MaxReplicateSetNodeNum: int
-        :param MachineType: Server type. Valid values: 0 (HIO), 4 (HIO10G)
-        :type MachineType: str
-        """
+        :param SpecCode: Specification information identifier\n        :type SpecCode: str\n        :param Status: Specification purchasable flag. Valid values: 0 (not purchasable), 1 (purchasable)\n        :type Status: int\n        :param Cpu: Computing resource specification in terms of CPU core\n        :type Cpu: int\n        :param Memory: Memory size in MB\n        :type Memory: int\n        :param DefaultStorage: Default disk size in MB\n        :type DefaultStorage: int\n        :param MaxStorage: Maximum disk size in MB\n        :type MaxStorage: int\n        :param MinStorage: Minimum disk size in MB\n        :type MinStorage: int\n        :param Qps: Maximum QPS\n        :type Qps: int\n        :param Conns: Maximum number of connections\n        :type Conns: int\n        :param MongoVersionCode: MongoDB version information of an instance\n        :type MongoVersionCode: str\n        :param MongoVersionValue: MongoDB version number of an instance\n        :type MongoVersionValue: int\n        :param Version: MongoDB version number of an instance (short)\n        :type Version: str\n        :param EngineName: Storage engine\n        :type EngineName: str\n        :param ClusterType: Cluster type. Valid values: 1 (sharding cluster), 0 (replica set cluster)\n        :type ClusterType: int\n        :param MinNodeNum: Minimum number of secondary nodes in a replica set\n        :type MinNodeNum: int\n        :param MaxNodeNum: Maximum number of secondary nodes in a replica set\n        :type MaxNodeNum: int\n        :param MinReplicateSetNum: Minimum number of shards\n        :type MinReplicateSetNum: int\n        :param MaxReplicateSetNum: Maximum number of shards\n        :type MaxReplicateSetNum: int\n        :param MinReplicateSetNodeNum: Minimum number of secondary nodes in a shard\n        :type MinReplicateSetNodeNum: int\n        :param MaxReplicateSetNodeNum: Maximum number of secondary nodes in a shard\n        :type MaxReplicateSetNodeNum: int\n        :param MachineType: Server type. Valid values: 0 (HIO), 4 (HIO10G)\n        :type MachineType: str\n        """
         self.SpecCode = None
         self.Status = None
         self.Cpu = None
@@ -2516,13 +1910,7 @@ class SpecificationInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Region information
-        :type Region: str
-        :param Zone: AZ information
-        :type Zone: str
-        :param SpecItems: Purchasable specification information
-        :type SpecItems: list of SpecItem
-        """
+        :param Region: Region information\n        :type Region: str\n        :param Zone: AZ information\n        :type Zone: str\n        :param SpecItems: Purchasable specification information\n        :type SpecItems: list of SpecItem\n        """
         self.Region = None
         self.Zone = None
         self.SpecItems = None
@@ -2553,11 +1941,7 @@ class TagInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key
-        :type TagKey: str
-        :param TagValue: Tag value
-        :type TagValue: str
-        """
+        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 

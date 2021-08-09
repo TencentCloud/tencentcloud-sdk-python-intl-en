@@ -1034,6 +1034,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifySwitchTimePeriod(self, request):
+        """This API is used to perform a primary-standby switch for an instance waiting for the switch after it is upgraded.
+
+        :param request: Request instance for ModifySwitchTimePeriod.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifySwitchTimePeriodRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifySwitchTimePeriodResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySwitchTimePeriod", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySwitchTimePeriodResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def OpenDBExtranetAccess(self, request):
         """This API is used to enable public network access.
 
@@ -1259,7 +1287,7 @@ class PostgresClient(AbstractClient):
 
 
     def UpgradeDBInstance(self, request):
-        """This API is used to upgrade an instance.
+        """This API is used to upgrade instance configurations.
 
         :param request: Request instance for UpgradeDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceRequest`

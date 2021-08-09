@@ -25,9 +25,7 @@ class AcceptDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: The connection owner accepts an application for sharing the dedicated tunnel
-        :type DirectConnectTunnelId: str
-        """
+        :param DirectConnectTunnelId: The connection owner accepts an application for sharing the dedicated tunnel\n        :type DirectConnectTunnelId: str\n        """
         self.DirectConnectTunnelId = None
 
 
@@ -49,9 +47,7 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -66,31 +62,11 @@ class AccessPoint(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessPointName: Access point name.
-        :type AccessPointName: str
-        :param AccessPointId: Unique access point ID.
-        :type AccessPointId: str
-        :param State: Access point status. Valid values: available, unavailable.
-        :type State: str
-        :param Location: Access point location.
-        :type Location: str
-        :param LineOperator: List of ISPs supported by access point.
-        :type LineOperator: list of str
-        :param RegionId: ID of the region that manages the access point.
-        :type RegionId: str
-        :param AvailablePortType: Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type AvailablePortType: list of str
-        :param Coordinate: Latitude and longitude of the access point
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Coordinate: :class:`tencentcloud.dc.v20180410.models.Coordinate`
-        :param City: City where the access point is located
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type City: str
-        :param Area: Access point region
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Area: str
-        """
+        :param AccessPointName: Access point name.\n        :type AccessPointName: str\n        :param AccessPointId: Unique access point ID.\n        :type AccessPointId: str\n        :param State: Access point status. Valid values: available, unavailable.\n        :type State: str\n        :param Location: Access point location.\n        :type Location: str\n        :param LineOperator: List of ISPs supported by access point.\n        :type LineOperator: list of str\n        :param RegionId: ID of the region that manages the access point.\n        :type RegionId: str\n        :param AvailablePortType: Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type AvailablePortType: list of str\n        :param Coordinate: Latitude and longitude of the access point
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Coordinate: :class:`tencentcloud.dc.v20180410.models.Coordinate`\n        :param City: City where the access point is located
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type City: str\n        :param Area: Access point region
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Area: str\n        """
         self.AccessPointName = None
         self.AccessPointId = None
         self.State = None
@@ -132,17 +108,11 @@ class ApplyInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MaskLen: Mask length of a CIDR block
-        :type MaskLen: int
-        :param AddrType: Address type. Valid values: 0: BGP
+        :param MaskLen: Mask length of a CIDR block\n        :type MaskLen: int\n        :param AddrType: Address type. Valid values: 0: BGP
 1: China Telecom
 2: China Mobile
-3: China Unicom
-        :type AddrType: int
-        :param AddrProto: Address protocol. Valid values: 0: IPv4
-1: IPv6
-        :type AddrProto: int
-        """
+3: China Unicom\n        :type AddrType: int\n        :param AddrProto: Address protocol. Valid values: 0: IPv4
+1: IPv6\n        :type AddrProto: int\n        """
         self.MaskLen = None
         self.AddrType = None
         self.AddrProto = None
@@ -169,11 +139,7 @@ class ApplyInternetAddressResponse(AbstractModel):
     def __init__(self):
         """
         :param InstanceId: ID of the internet tunnel’s public IP address
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type InstanceId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type InstanceId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -190,11 +156,7 @@ class BgpPeer(AbstractModel):
 
     def __init__(self):
         """
-        :param Asn: User-side BGP Asn.
-        :type Asn: int
-        :param AuthKey: User-side BGP key.
-        :type AuthKey: str
-        """
+        :param Asn: User-side BGP Asn.\n        :type Asn: int\n        :param AuthKey: User-side BGP key.\n        :type AuthKey: str\n        """
         self.Asn = None
         self.AuthKey = None
 
@@ -218,11 +180,7 @@ class Coordinate(AbstractModel):
 
     def __init__(self):
         """
-        :param Lat: Latitude
-        :type Lat: float
-        :param Lng: Longitude
-        :type Lng: float
-        """
+        :param Lat: Latitude\n        :type Lat: float\n        :param Lng: Longitude\n        :type Lng: float\n        """
         self.Lat = None
         self.Lng = None
 
@@ -246,42 +204,8 @@ class CreateDirectConnectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectName: Connection name.
-        :type DirectConnectName: str
-        :param AccessPointId: Access point of connection.
-You can call `DescribeAccessPoints` to get the region ID. The selected access point must exist and be available.
-        :type AccessPointId: str
-        :param LineOperator: ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).
-        :type LineOperator: str
-        :param PortType: Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX.
-        :type PortType: str
-        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or connection provider.
-        :type CircuitCode: str
-        :param Location: Local IDC location.
-        :type Location: str
-        :param Bandwidth: Connection port bandwidth in Mbps. Value range: [2,10240]. Default value: 1000.
-        :type Bandwidth: int
-        :param RedundantDirectConnectId: ID of redundant connection.
-        :type RedundantDirectConnectId: str
-        :param Vlan: VLAN for connection debugging, which is enabled and automatically assigned by default.
-        :type Vlan: int
-        :param TencentAddress: Tencent-side IP address for connection debugging, which is automatically assigned by default.
-        :type TencentAddress: str
-        :param CustomerAddress: User-side IP address for connection debugging, which is automatically assigned by default.
-        :type CustomerAddress: str
-        :param CustomerName: Name of connection applicant, which is obtained from the account system by default.
-        :type CustomerName: str
-        :param CustomerContactMail: Email address of connection applicant, which is obtained from the account system by default.
-        :type CustomerContactMail: str
-        :param CustomerContactNumber: Contact number of connection applicant, which is obtained from the account system by default.
-        :type CustomerContactNumber: str
-        :param FaultReportContactPerson: Fault reporting contact person.
-        :type FaultReportContactPerson: str
-        :param FaultReportContactNumber: Fault reporting contact number.
-        :type FaultReportContactNumber: str
-        :param SignLaw: Whether the connection applicant has signed the service agreement. Default value: true.
-        :type SignLaw: bool
-        """
+        :param DirectConnectName: Connection name.\n        :type DirectConnectName: str\n        :param AccessPointId: Access point of connection.
+You can call `DescribeAccessPoints` to get the region ID. The selected access point must exist and be available.\n        :type AccessPointId: str\n        :param LineOperator: ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).\n        :type LineOperator: str\n        :param PortType: Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX.\n        :type PortType: str\n        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or connection provider.\n        :type CircuitCode: str\n        :param Location: Local IDC location.\n        :type Location: str\n        :param Bandwidth: Connection port bandwidth in Mbps. Value range: [2,10240]. Default value: 1000.\n        :type Bandwidth: int\n        :param RedundantDirectConnectId: ID of redundant connection.\n        :type RedundantDirectConnectId: str\n        :param Vlan: VLAN for connection debugging, which is enabled and automatically assigned by default.\n        :type Vlan: int\n        :param TencentAddress: Tencent-side IP address for connection debugging, which is automatically assigned by default.\n        :type TencentAddress: str\n        :param CustomerAddress: User-side IP address for connection debugging, which is automatically assigned by default.\n        :type CustomerAddress: str\n        :param CustomerName: Name of connection applicant, which is obtained from the account system by default.\n        :type CustomerName: str\n        :param CustomerContactMail: Email address of connection applicant, which is obtained from the account system by default.\n        :type CustomerContactMail: str\n        :param CustomerContactNumber: Contact number of connection applicant, which is obtained from the account system by default.\n        :type CustomerContactNumber: str\n        :param FaultReportContactPerson: Fault reporting contact person.\n        :type FaultReportContactPerson: str\n        :param FaultReportContactNumber: Fault reporting contact number.\n        :type FaultReportContactNumber: str\n        :param SignLaw: Whether the connection applicant has signed the service agreement. Default value: true.\n        :type SignLaw: bool\n        """
         self.DirectConnectName = None
         self.AccessPointId = None
         self.LineOperator = None
@@ -335,11 +259,7 @@ class CreateDirectConnectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectIdSet: Connection ID.
-        :type DirectConnectIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DirectConnectIdSet: Connection ID.\n        :type DirectConnectIdSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DirectConnectIdSet = None
         self.RequestId = None
 
@@ -356,48 +276,16 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectId: Direct Connect ID, such as `dc-kd7d06of`.
-        :type DirectConnectId: str
-        :param DirectConnectTunnelName: Dedicated tunnel name.
-        :type DirectConnectTunnelName: str
-        :param DirectConnectOwnerAccount: Connection owner, who is the current customer by default.
-The developer account ID should be entered for shared connections.
-        :type DirectConnectOwnerAccount: str
-        :param NetworkType: Network type. Valid values: VPC, BMVPC, CCN. Default value: VPC.
+        :param DirectConnectId: Direct Connect ID, such as `dc-kd7d06of`.\n        :type DirectConnectId: str\n        :param DirectConnectTunnelName: Dedicated tunnel name.\n        :type DirectConnectTunnelName: str\n        :param DirectConnectOwnerAccount: Connection owner, who is the current customer by default.
+The developer account ID should be entered for shared connections.\n        :type DirectConnectOwnerAccount: str\n        :param NetworkType: Network type. Valid values: VPC, BMVPC, CCN. Default value: VPC.
 VPC: Virtual Private Cloud.
 BMVPC: BM VPC.
-CCN: Cloud Connect Network.
-        :type NetworkType: str
-        :param NetworkRegion: Network region.
-        :type NetworkRegion: str
-        :param VpcId: Unified VPC ID or BMVPC ID.
-        :type VpcId: str
-        :param DirectConnectGatewayId: Direct connect gateway ID, such as `dcg-d545ddf`.
-        :type DirectConnectGatewayId: str
-        :param Bandwidth: Direct Connect bandwidth in Mbps.
-Default value: connection bandwidth value.
-        :type Bandwidth: int
-        :param RouteType: BGP: BGP routing.
+CCN: Cloud Connect Network.\n        :type NetworkType: str\n        :param NetworkRegion: Network region.\n        :type NetworkRegion: str\n        :param VpcId: Unified VPC ID or BMVPC ID.\n        :type VpcId: str\n        :param DirectConnectGatewayId: Direct connect gateway ID, such as `dcg-d545ddf`.\n        :type DirectConnectGatewayId: str\n        :param Bandwidth: Direct Connect bandwidth in Mbps.
+Default value: connection bandwidth value.\n        :type Bandwidth: int\n        :param RouteType: BGP: BGP routing.
 STATIC: Static routing.
-Default value: BGP routing.
-        :type RouteType: str
-        :param BgpPeer: BgpPeer, which is BGP information on the user side and includes Asn and AuthKey.
-        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: Static routing, i.e., IP range of the user's IDC.
-        :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param Vlan: VLAN. Value range: 0-3,000.
+Default value: BGP routing.\n        :type RouteType: str\n        :param BgpPeer: BgpPeer, which is BGP information on the user side and includes Asn and AuthKey.\n        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`\n        :param RouteFilterPrefixes: Static routing, i.e., IP range of the user's IDC.\n        :type RouteFilterPrefixes: list of RouteFilterPrefix\n        :param Vlan: VLAN. Value range: 0-3,000.
 0: sub-interface not enabled.
-Default value: Non-zero.
-        :type Vlan: int
-        :param TencentAddress: TencentAddress: Tencent-side IP address.
-        :type TencentAddress: str
-        :param CustomerAddress: CustomerAddress: User-side IP address.
-        :type CustomerAddress: str
-        :param TencentBackupAddress: TencentBackupAddress, i.e., Tencent-side standby IP address
-        :type TencentBackupAddress: str
-        :param CloudAttachId: Cloud Attached Connection Service ID
-        :type CloudAttachId: str
-        """
+Default value: Non-zero.\n        :type Vlan: int\n        :param TencentAddress: TencentAddress: Tencent-side IP address.\n        :type TencentAddress: str\n        :param CustomerAddress: CustomerAddress: User-side IP address.\n        :type CustomerAddress: str\n        :param TencentBackupAddress: TencentBackupAddress, i.e., Tencent-side standby IP address\n        :type TencentBackupAddress: str\n        :param CloudAttachId: Cloud Attached Connection Service ID\n        :type CloudAttachId: str\n        """
         self.DirectConnectId = None
         self.DirectConnectTunnelName = None
         self.DirectConnectOwnerAccount = None
@@ -456,11 +344,7 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelIdSet: Dedicated tunnel ID.
-        :type DirectConnectTunnelIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DirectConnectTunnelIdSet: Dedicated tunnel ID.\n        :type DirectConnectTunnelIdSet: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DirectConnectTunnelIdSet = None
         self.RequestId = None
 
@@ -477,9 +361,7 @@ class DeleteDirectConnectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectId: Connection ID.
-        :type DirectConnectId: str
-        """
+        :param DirectConnectId: Connection ID.\n        :type DirectConnectId: str\n        """
         self.DirectConnectId = None
 
 
@@ -501,9 +383,7 @@ class DeleteDirectConnectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -518,9 +398,7 @@ class DeleteDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: Dedicated tunnel ID.
-        :type DirectConnectTunnelId: str
-        """
+        :param DirectConnectTunnelId: Dedicated tunnel ID.\n        :type DirectConnectTunnelId: str\n        """
         self.DirectConnectTunnelId = None
 
 
@@ -542,9 +420,7 @@ class DeleteDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -561,13 +437,7 @@ class DescribeAccessPointsRequest(AbstractModel):
         """
         :param RegionId: Access point region, which can be queried through `DescribeRegions`.
 
-You can call `DescribeRegions` to get the region ID.
-        :type RegionId: str
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
-        :type Limit: int
-        """
+You can call `DescribeRegions` to get the region ID.\n        :type RegionId: str\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.\n        :type Limit: int\n        """
         self.RegionId = None
         self.Offset = None
         self.Limit = None
@@ -593,13 +463,7 @@ class DescribeAccessPointsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessPointSet: Access point information.
-        :type AccessPointSet: list of AccessPoint
-        :param TotalCount: Number of eligible access points.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param AccessPointSet: Access point information.\n        :type AccessPointSet: list of AccessPoint\n        :param TotalCount: Number of eligible access points.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.AccessPointSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -627,15 +491,7 @@ class DescribeDirectConnectTunnelsRequest(AbstractModel):
 This parameter does not support specifying `DirectConnectTunnelIds` and `Filters` at the same time.
 <li> direct-connect-tunnel-name: Dedicated tunnel name.</li>
 <li> direct-connect-tunnel-id: Dedicated tunnel instance ID, such as `dcx-abcdefgh`.</li>
-<li>direct-connect-id: Connection instance ID, such as `dc-abcdefgh`.</li>
-        :type Filters: list of Filter
-        :param DirectConnectTunnelIds: Array of dedicated tunnel IDs.
-        :type DirectConnectTunnelIds: list of str
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
-        :type Limit: int
-        """
+<li>direct-connect-id: Connection instance ID, such as `dc-abcdefgh`.</li>\n        :type Filters: list of Filter\n        :param DirectConnectTunnelIds: Array of dedicated tunnel IDs.\n        :type DirectConnectTunnelIds: list of str\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.\n        :type Limit: int\n        """
         self.Filters = None
         self.DirectConnectTunnelIds = None
         self.Offset = None
@@ -668,13 +524,7 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelSet: List of dedicated tunnels.
-        :type DirectConnectTunnelSet: list of DirectConnectTunnel
-        :param TotalCount: Number of eligible dedicated tunnels.
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DirectConnectTunnelSet: List of dedicated tunnels.\n        :type DirectConnectTunnelSet: list of DirectConnectTunnel\n        :param TotalCount: Number of eligible dedicated tunnels.\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DirectConnectTunnelSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -698,15 +548,7 @@ class DescribeDirectConnectsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: Filter conditions:
-        :type Filters: list of Filter
-        :param DirectConnectIds: Array of connection IDs.
-        :type DirectConnectIds: list of str
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
-        :type Limit: int
-        """
+        :param Filters: Filter conditions:\n        :type Filters: list of Filter\n        :param DirectConnectIds: Array of connection IDs.\n        :type DirectConnectIds: list of str\n        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.\n        :type Limit: int\n        """
         self.Filters = None
         self.DirectConnectIds = None
         self.Offset = None
@@ -739,16 +581,8 @@ class DescribeDirectConnectsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectSet: List of connections.
-        :type DirectConnectSet: list of DirectConnect
-        :param TotalCount: Number of eligible connection lists.
-        :type TotalCount: int
-        :param AllSignLaw: Whether all connections under the account have the service agreement signed.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type AllSignLaw: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DirectConnectSet: List of connections.\n        :type DirectConnectSet: list of DirectConnect\n        :param TotalCount: Number of eligible connection lists.\n        :type TotalCount: int\n        :param AllSignLaw: Whether all connections under the account have the service agreement signed.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type AllSignLaw: bool\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DirectConnectSet = None
         self.TotalCount = None
         self.AllSignLaw = None
@@ -781,23 +615,11 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
     def __init__(self):
         """
         :param Ipv6PrefixLen: Minimum prefix length allowed for a public IPv6 address
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Ipv6PrefixLen: int
-        :param Ipv4BgpQuota: Quota of BGP IPv4 addresses
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Ipv4BgpQuota: int
-        :param Ipv4OtherQuota: Quota of non-BGP IPv4 addresses
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Ipv4OtherQuota: int
-        :param Ipv4BgpNum: Used number of BGP IPv4 addresses
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Ipv4BgpNum: int
-        :param Ipv4OtherNum: Used number of non-BGP IPv4 addresses
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Ipv4OtherNum: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Ipv6PrefixLen: int\n        :param Ipv4BgpQuota: Quota of BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Ipv4BgpQuota: int\n        :param Ipv4OtherQuota: Quota of non-BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Ipv4OtherQuota: int\n        :param Ipv4BgpNum: Used number of BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Ipv4BgpNum: int\n        :param Ipv4OtherNum: Used number of non-BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Ipv4OtherNum: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Ipv6PrefixLen = None
         self.Ipv4BgpQuota = None
         self.Ipv4OtherQuota = None
@@ -822,18 +644,12 @@ class DescribeInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
-        :type Limit: int
-        :param Filters: Filter conditions:
+        :param Offset: Offset. Default value: 0.\n        :type Offset: int\n        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.\n        :type Limit: int\n        :param Filters: Filter conditions:
 <li>AddrType, address type. Valid values: 0: BGP; 1: China Telecom; 2: China Mobile; 3: China Unicom</li>
 <li>AddrProto, address protocol. Valid values: 0: IPv4; 1: IPv6</li>
 <li>Status, address status. Valid values: 0: in use; 1: disabled; 2: returned</li>
 <li>Subnet, public IP address array</li>
-<InstanceIds>Public IP address ID array</li>
-        :type Filters: list of Filter
-        """
+<InstanceIds>Public IP address ID array</li>\n        :type Filters: list of Filter\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -864,14 +680,8 @@ class DescribeInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of public IP addresses for internet tunnels
-        :type TotalCount: int
-        :param Subnets: List of the public IP addresses for internet tunnels
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Subnets: list of InternetAddressDetail
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of public IP addresses for internet tunnels\n        :type TotalCount: int\n        :param Subnets: List of the public IP addresses for internet tunnels
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Subnets: list of InternetAddressDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Subnets = None
         self.RequestId = None
@@ -901,14 +711,8 @@ class DescribeInternetAddressStatisticsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of public IP address statistics for internet tunnels
-        :type TotalCount: int
-        :param InternetAddressStatistics: List of the public IP address statistics for internet tunnels
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type InternetAddressStatistics: list of InternetAddressStatistics
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of public IP address statistics for internet tunnels\n        :type TotalCount: int\n        :param InternetAddressStatistics: List of the public IP address statistics for internet tunnels
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type InternetAddressStatistics: list of InternetAddressStatistics\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InternetAddressStatistics = None
         self.RequestId = None
@@ -932,13 +736,7 @@ class DirectConnect(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectId: Connection ID.
-        :type DirectConnectId: str
-        :param DirectConnectName: Connection name.
-        :type DirectConnectName: str
-        :param AccessPointId: Access point ID of a connection.
-        :type AccessPointId: str
-        :param State: Connection status.
+        :param DirectConnectId: Connection ID.\n        :type DirectConnectId: str\n        :param DirectConnectName: Connection name.\n        :type DirectConnectName: str\n        :param AccessPointId: Access point ID of a connection.\n        :type AccessPointId: str\n        :param State: Connection status.
 PENDING: Applying. 
 REJECTED: Application rejected.   
 TOPAY: Payment pending. 
@@ -946,85 +744,27 @@ PAID: Paid.
 ALLOCATED: Constructing.   
 AVAILABLE: Available.  
 DELETING: Deleting.
-DELETED: Deleted.
-        :type State: str
-        :param CreatedTime: Connection creation time.
-        :type CreatedTime: str
-        :param EnabledTime: Connection activation time.
-        :type EnabledTime: str
-        :param LineOperator: ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).
-        :type LineOperator: str
-        :param Location: Location of a local IDC.
-        :type Location: str
-        :param Bandwidth: Connection port bandwidth in Mbps.
-        :type Bandwidth: int
-        :param PortType: User-side port type of a connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface; it is the default value), 1000Base-LX (1-Gigabit single-mode optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-mode optical Ethernet interface; 10 KM).
-        :type PortType: str
-        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or service provider.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CircuitCode: str
-        :param RedundantDirectConnectId: ID of a redundant connection.
-        :type RedundantDirectConnectId: str
-        :param Vlan: VLAN for connection debugging, which is enabled and automatically assigned by default.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Vlan: int
-        :param TencentAddress: Tencent-side IP address for connection debugging.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TencentAddress: str
-        :param CustomerAddress: User-side IP address for connection debugging.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CustomerAddress: str
-        :param CustomerName: Name of the connection applicant, which is obtained from the account system by default.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CustomerName: str
-        :param CustomerContactMail: Email address of the connection applicant, which is obtained from the account system by default.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CustomerContactMail: str
-        :param CustomerContactNumber: Contact number of the connection applicant, which is obtained from the account system by default.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type CustomerContactNumber: str
-        :param ExpiredTime: Connection expiration time.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ExpiredTime: str
-        :param ChargeType: Connection billing mode. NON_RECURRING_CHARGE: One-time charge for accessing service
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ChargeType: str
-        :param FaultReportContactPerson: Fault reporting contact person.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FaultReportContactPerson: str
-        :param FaultReportContactNumber: Fault reporting contact number.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type FaultReportContactNumber: str
-        :param TagSet: Tag key-value pair
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type TagSet: list of Tag
-        :param AccessPointType: Access point type of a connection.
-        :type AccessPointType: str
-        :param IdcCity: IDC city.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IdcCity: str
-        :param ChargeState: Billing status
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ChargeState: str
-        :param StartTime: Connection activation time.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type StartTime: str
-        :param SignLaw: Whether the connection has the service agreement signed.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type SignLaw: bool
-        :param LocalZone: Whether the connection is an edge zone.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type LocalZone: bool
-        :param VlanZeroDirectConnectTunnelCount: Number of dedicated tunnels with disabled VLAN in the connection
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type VlanZeroDirectConnectTunnelCount: int
-        :param OtherVlanDirectConnectTunnelCount: Number of dedicated tunnels with enabled VLAN in the connection
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type OtherVlanDirectConnectTunnelCount: int
-        :param MinBandwidth: Minimum bandwidth of the connection
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type MinBandwidth: int
-        """
+DELETED: Deleted.\n        :type State: str\n        :param CreatedTime: Connection creation time.\n        :type CreatedTime: str\n        :param EnabledTime: Connection activation time.\n        :type EnabledTime: str\n        :param LineOperator: ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).\n        :type LineOperator: str\n        :param Location: Location of a local IDC.\n        :type Location: str\n        :param Bandwidth: Connection port bandwidth in Mbps.\n        :type Bandwidth: int\n        :param PortType: User-side port type of a connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface; it is the default value), 1000Base-LX (1-Gigabit single-mode optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-mode optical Ethernet interface; 10 KM).\n        :type PortType: str\n        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or service provider.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CircuitCode: str\n        :param RedundantDirectConnectId: ID of a redundant connection.\n        :type RedundantDirectConnectId: str\n        :param Vlan: VLAN for connection debugging, which is enabled and automatically assigned by default.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Vlan: int\n        :param TencentAddress: Tencent-side IP address for connection debugging.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TencentAddress: str\n        :param CustomerAddress: User-side IP address for connection debugging.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CustomerAddress: str\n        :param CustomerName: Name of the connection applicant, which is obtained from the account system by default.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CustomerName: str\n        :param CustomerContactMail: Email address of the connection applicant, which is obtained from the account system by default.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CustomerContactMail: str\n        :param CustomerContactNumber: Contact number of the connection applicant, which is obtained from the account system by default.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type CustomerContactNumber: str\n        :param ExpiredTime: Connection expiration time.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ExpiredTime: str\n        :param ChargeType: Connection billing mode. NON_RECURRING_CHARGE: One-time charge for accessing service
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ChargeType: str\n        :param FaultReportContactPerson: Fault reporting contact person.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FaultReportContactPerson: str\n        :param FaultReportContactNumber: Fault reporting contact number.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type FaultReportContactNumber: str\n        :param TagSet: Tag key-value pair
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type TagSet: list of Tag\n        :param AccessPointType: Access point type of a connection.\n        :type AccessPointType: str\n        :param IdcCity: IDC city.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IdcCity: str\n        :param ChargeState: Billing status
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ChargeState: str\n        :param StartTime: Connection activation time.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type StartTime: str\n        :param SignLaw: Whether the connection has the service agreement signed.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type SignLaw: bool\n        :param LocalZone: Whether the connection is an edge zone.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type LocalZone: bool\n        :param VlanZeroDirectConnectTunnelCount: Number of dedicated tunnels with disabled VLAN in the connection
+Note: this field may return `null`, indicating that no valid value can be found.\n        :type VlanZeroDirectConnectTunnelCount: int\n        :param OtherVlanDirectConnectTunnelCount: Number of dedicated tunnels with enabled VLAN in the connection
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type OtherVlanDirectConnectTunnelCount: int\n        :param MinBandwidth: Minimum bandwidth of the connection
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type MinBandwidth: int\n        """
         self.DirectConnectId = None
         self.DirectConnectName = None
         self.AccessPointId = None
@@ -1113,11 +853,7 @@ class DirectConnectTunnel(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: Dedicated tunnel ID.
-        :type DirectConnectTunnelId: str
-        :param DirectConnectId: Connection ID.
-        :type DirectConnectId: str
-        :param State: Dedicated tunnel status.
+        :param DirectConnectTunnelId: Dedicated tunnel ID.\n        :type DirectConnectTunnelId: str\n        :param DirectConnectId: Connection ID.\n        :type DirectConnectId: str\n        :param State: Dedicated tunnel status.
 AVAILABLE: Ready or connected.
 PENDING: Applying.
 ALLOCATING: Configuring.
@@ -1126,74 +862,18 @@ ALTERING: Modifying.
 DELETING: Deleting.
 DELETED: Deleted.
 COMFIRMING: To be accepted.
-REJECTED: Rejected.
-        :type State: str
-        :param DirectConnectOwnerAccount: Connection owner, i.e., developer account ID.
-        :type DirectConnectOwnerAccount: str
-        :param OwnerAccount: Dedicated tunnel owner, i.e., developer account ID.
-        :type OwnerAccount: str
-        :param NetworkType: Network type. Valid values: VPC, BMVPC, CCN.
- VPC: Virtual Private Cloud; BMVPC: BM VPC; CCN: Cloud Connect Network.
-        :type NetworkType: str
-        :param NetworkRegion: Network of the VPC region, such as `ap-guangzhou`.
-        :type NetworkRegion: str
-        :param VpcId: Unified VPC ID or BMVPC ID.
-        :type VpcId: str
-        :param DirectConnectGatewayId: Direct connect gateway ID.
-        :type DirectConnectGatewayId: str
-        :param RouteType: BGP: BGP routing; STATIC: Static routing. Default value: BGP routing.
-        :type RouteType: str
-        :param BgpPeer: User-side BGP, including Asn and AuthKey.
-        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: User-side IP range.
-        :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param Vlan: VLAN of a dedicated tunnel.
-        :type Vlan: int
-        :param TencentAddress: TencentAddress: Tencent-side IP address.
-        :type TencentAddress: str
-        :param CustomerAddress: CustomerAddress: User-side IP address.
-        :type CustomerAddress: str
-        :param DirectConnectTunnelName: Dedicated tunnel name.
-        :type DirectConnectTunnelName: str
-        :param CreatedTime: Creation time of a dedicated tunnel.
-        :type CreatedTime: str
-        :param Bandwidth: Bandwidth value of a dedicated tunnel.
-        :type Bandwidth: int
-        :param TagSet: Tag value of a dedicated tunnel.
-        :type TagSet: list of Tag
-        :param NetDetectId: Associated custom network probe ID
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type NetDetectId: str
-        :param EnableBGPCommunity: BGP community switch
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type EnableBGPCommunity: bool
-        :param NatType: Whether it is a NAT tunnel
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type NatType: int
-        :param VpcRegion: VPC region abbreviation, such as `gz`, `cd`.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VpcRegion: str
-        :param BfdEnable: Whether to enable BFD
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type BfdEnable: int
-        :param AccessPointType: Access point type of a dedicated tunnel.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type AccessPointType: str
-        :param DirectConnectGatewayName: Direct connect gateway name.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type DirectConnectGatewayName: str
-        :param VpcName: VPC name.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type VpcName: str
-        :param TencentBackupAddress: Backup IP address on the Tencent side.
-        :type TencentBackupAddress: str
-        :param SignLaw: Whether the connection associated with the dedicated tunnel has the service agreement signed.
-Note: this field may return `null`, indicating that no valid value is obtained.
-        :type SignLaw: bool
-        :param CloudAttachId: Cloud Attached Connection Service ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type CloudAttachId: str
-        """
+REJECTED: Rejected.\n        :type State: str\n        :param DirectConnectOwnerAccount: Connection owner, i.e., developer account ID.\n        :type DirectConnectOwnerAccount: str\n        :param OwnerAccount: Dedicated tunnel owner, i.e., developer account ID.\n        :type OwnerAccount: str\n        :param NetworkType: Network type. Valid values: VPC, BMVPC, CCN.
+ VPC: Virtual Private Cloud; BMVPC: BM VPC; CCN: Cloud Connect Network.\n        :type NetworkType: str\n        :param NetworkRegion: Network of the VPC region, such as `ap-guangzhou`.\n        :type NetworkRegion: str\n        :param VpcId: Unified VPC ID or BMVPC ID.\n        :type VpcId: str\n        :param DirectConnectGatewayId: Direct connect gateway ID.\n        :type DirectConnectGatewayId: str\n        :param RouteType: BGP: BGP routing; STATIC: Static routing. Default value: BGP routing.\n        :type RouteType: str\n        :param BgpPeer: User-side BGP, including Asn and AuthKey.\n        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`\n        :param RouteFilterPrefixes: User-side IP range.\n        :type RouteFilterPrefixes: list of RouteFilterPrefix\n        :param Vlan: VLAN of a dedicated tunnel.\n        :type Vlan: int\n        :param TencentAddress: TencentAddress: Tencent-side IP address.\n        :type TencentAddress: str\n        :param CustomerAddress: CustomerAddress: User-side IP address.\n        :type CustomerAddress: str\n        :param DirectConnectTunnelName: Dedicated tunnel name.\n        :type DirectConnectTunnelName: str\n        :param CreatedTime: Creation time of a dedicated tunnel.\n        :type CreatedTime: str\n        :param Bandwidth: Bandwidth value of a dedicated tunnel.\n        :type Bandwidth: int\n        :param TagSet: Tag value of a dedicated tunnel.\n        :type TagSet: list of Tag\n        :param NetDetectId: Associated custom network probe ID
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type NetDetectId: str\n        :param EnableBGPCommunity: BGP community switch
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type EnableBGPCommunity: bool\n        :param NatType: Whether it is a NAT tunnel
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type NatType: int\n        :param VpcRegion: VPC region abbreviation, such as `gz`, `cd`.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type VpcRegion: str\n        :param BfdEnable: Whether to enable BFD
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type BfdEnable: int\n        :param AccessPointType: Access point type of a dedicated tunnel.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type AccessPointType: str\n        :param DirectConnectGatewayName: Direct connect gateway name.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type DirectConnectGatewayName: str\n        :param VpcName: VPC name.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type VpcName: str\n        :param TencentBackupAddress: Backup IP address on the Tencent side.\n        :type TencentBackupAddress: str\n        :param SignLaw: Whether the connection associated with the dedicated tunnel has the service agreement signed.
+Note: this field may return `null`, indicating that no valid value is obtained.\n        :type SignLaw: bool\n        :param CloudAttachId: Cloud Attached Connection Service ID
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type CloudAttachId: str\n        """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
         self.State = None
@@ -1285,9 +965,7 @@ class DisableInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of the internet tunnel’s public IP address
-        :type InstanceId: str
-        """
+        :param InstanceId: ID of the internet tunnel’s public IP address\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1309,9 +987,7 @@ class DisableInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1326,9 +1002,7 @@ class EnableInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of the internet tunnel’s public IP address
-        :type InstanceId: str
-        """
+        :param InstanceId: ID of the internet tunnel’s public IP address\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1350,9 +1024,7 @@ class EnableInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1367,11 +1039,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Fields to be filtered.
-        :type Name: str
-        :param Values: Filter values of the field.
-        :type Values: list of str
-        """
+        :param Name: Fields to be filtered.\n        :type Name: str\n        :param Values: Filter values of the field.\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -1396,46 +1064,22 @@ class InternetAddressDetail(AbstractModel):
     def __init__(self):
         """
         :param InstanceId: Internet tunnel’s IP address ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type InstanceId: str
-        :param Subnet: Internet tunnel’s network address
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Subnet: str
-        :param MaskLen: Mask length of a network address
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type MaskLen: int
-        :param AddrType: Address type. Valid values: 0: BGP
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type InstanceId: str\n        :param Subnet: Internet tunnel’s network address
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Subnet: str\n        :param MaskLen: Mask length of a network address
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type MaskLen: int\n        :param AddrType: Address type. Valid values: 0: BGP
 1: China Telecom
 2: China Mobile
 3: China Unicom
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AddrType: int
-        :param Status: Address status. Valid values: 0: in use
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AddrType: int\n        :param Status: Address status. Valid values: 0: in use
 1: disabled
-2: returned
-        :type Status: int
-        :param ApplyTime: Applied at
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ApplyTime: str
-        :param StopTime: Disabled at
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type StopTime: str
-        :param ReleaseTime: Returned at
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ReleaseTime: str
-        :param Region: Region
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Region: str
-        :param AppId: User ID
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AppId: int
-        :param AddrProto: Address protocol. Valid values: 0: IPv4; 1: IPv6
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type AddrProto: int
-        :param ReserveTime: Retention period of a released IP address, in days
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ReserveTime: int
-        """
+2: returned\n        :type Status: int\n        :param ApplyTime: Applied at
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ApplyTime: str\n        :param StopTime: Disabled at
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type StopTime: str\n        :param ReleaseTime: Returned at
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ReleaseTime: str\n        :param Region: Region
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Region: str\n        :param AppId: User ID
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AppId: int\n        :param AddrProto: Address protocol. Valid values: 0: IPv4; 1: IPv6
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AddrProto: int\n        :param ReserveTime: Retention period of a released IP address, in days
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ReserveTime: int\n        """
         self.InstanceId = None
         self.Subnet = None
         self.MaskLen = None
@@ -1480,12 +1124,8 @@ class InternetAddressStatistics(AbstractModel):
     def __init__(self):
         """
         :param Region: Region
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Region: str
-        :param SubnetNum: Number of public IP addresses for internet tunnels
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type SubnetNum: int
-        """
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type Region: str\n        :param SubnetNum: Number of public IP addresses for internet tunnels
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type SubnetNum: int\n        """
         self.Region = None
         self.SubnetNum = None
 
@@ -1509,33 +1149,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectId: Connection ID.
-        :type DirectConnectId: str
-        :param DirectConnectName: Connection name.
-        :type DirectConnectName: str
-        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or connection provider.
-        :type CircuitCode: str
-        :param Vlan: VLAN for connection debugging.
-        :type Vlan: int
-        :param TencentAddress: Tencent-side IP address for connection debugging.
-        :type TencentAddress: str
-        :param CustomerAddress: User-side IP address for connection debugging.
-        :type CustomerAddress: str
-        :param CustomerName: Name of connection applicant, which is obtained from the account system by default.
-        :type CustomerName: str
-        :param CustomerContactMail: Email address of connection applicant, which is obtained from the account system by default.
-        :type CustomerContactMail: str
-        :param CustomerContactNumber: Contact number of connection applicant, which is obtained from the account system by default.
-        :type CustomerContactNumber: str
-        :param FaultReportContactPerson: Fault reporting contact person.
-        :type FaultReportContactPerson: str
-        :param FaultReportContactNumber: Fault reporting contact number.
-        :type FaultReportContactNumber: str
-        :param SignLaw: Whether the connection applicant has signed the service agreement.
-        :type SignLaw: bool
-        :param Bandwidth: Connection’s bandwidth
-        :type Bandwidth: int
-        """
+        :param DirectConnectId: Connection ID.\n        :type DirectConnectId: str\n        :param DirectConnectName: Connection name.\n        :type DirectConnectName: str\n        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or connection provider.\n        :type CircuitCode: str\n        :param Vlan: VLAN for connection debugging.\n        :type Vlan: int\n        :param TencentAddress: Tencent-side IP address for connection debugging.\n        :type TencentAddress: str\n        :param CustomerAddress: User-side IP address for connection debugging.\n        :type CustomerAddress: str\n        :param CustomerName: Name of connection applicant, which is obtained from the account system by default.\n        :type CustomerName: str\n        :param CustomerContactMail: Email address of connection applicant, which is obtained from the account system by default.\n        :type CustomerContactMail: str\n        :param CustomerContactNumber: Contact number of connection applicant, which is obtained from the account system by default.\n        :type CustomerContactNumber: str\n        :param FaultReportContactPerson: Fault reporting contact person.\n        :type FaultReportContactPerson: str\n        :param FaultReportContactNumber: Fault reporting contact number.\n        :type FaultReportContactNumber: str\n        :param SignLaw: Whether the connection applicant has signed the service agreement.\n        :type SignLaw: bool\n        :param Bandwidth: Connection’s bandwidth\n        :type Bandwidth: int\n        """
         self.DirectConnectId = None
         self.DirectConnectName = None
         self.CircuitCode = None
@@ -1581,9 +1195,7 @@ class ModifyDirectConnectAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1598,23 +1210,7 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: Dedicated tunnel ID.
-        :type DirectConnectTunnelId: str
-        :param DirectConnectTunnelName: Dedicated tunnel name.
-        :type DirectConnectTunnelName: str
-        :param BgpPeer: User-side BGP, including Asn and AuthKey.
-        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: User-side IP range.
-        :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param TencentAddress: Tencent-side IP address.
-        :type TencentAddress: str
-        :param CustomerAddress: User-side IP address.
-        :type CustomerAddress: str
-        :param Bandwidth: Bandwidth value of a dedicated tunnel in Mbps.
-        :type Bandwidth: int
-        :param TencentBackupAddress: Tencent-side standby IP address
-        :type TencentBackupAddress: str
-        """
+        :param DirectConnectTunnelId: Dedicated tunnel ID.\n        :type DirectConnectTunnelId: str\n        :param DirectConnectTunnelName: Dedicated tunnel name.\n        :type DirectConnectTunnelName: str\n        :param BgpPeer: User-side BGP, including Asn and AuthKey.\n        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`\n        :param RouteFilterPrefixes: User-side IP range.\n        :type RouteFilterPrefixes: list of RouteFilterPrefix\n        :param TencentAddress: Tencent-side IP address.\n        :type TencentAddress: str\n        :param CustomerAddress: User-side IP address.\n        :type CustomerAddress: str\n        :param Bandwidth: Bandwidth value of a dedicated tunnel in Mbps.\n        :type Bandwidth: int\n        :param TencentBackupAddress: Tencent-side standby IP address\n        :type TencentBackupAddress: str\n        """
         self.DirectConnectTunnelId = None
         self.DirectConnectTunnelName = None
         self.BgpPeer = None
@@ -1657,9 +1253,7 @@ class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1674,9 +1268,7 @@ class RejectDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: None.
-        :type DirectConnectTunnelId: str
-        """
+        :param DirectConnectTunnelId: None.\n        :type DirectConnectTunnelId: str\n        """
         self.DirectConnectTunnelId = None
 
 
@@ -1698,9 +1290,7 @@ class RejectDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1715,9 +1305,7 @@ class ReleaseInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of the internet tunnel’s public IP address
-        :type InstanceId: str
-        """
+        :param InstanceId: ID of the internet tunnel’s public IP address\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1739,9 +1327,7 @@ class ReleaseInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1756,9 +1342,7 @@ class RouteFilterPrefix(AbstractModel):
 
     def __init__(self):
         """
-        :param Cidr: User-side IP range.
-        :type Cidr: str
-        """
+        :param Cidr: User-side IP range.\n        :type Cidr: str\n        """
         self.Cidr = None
 
 
@@ -1781,12 +1365,8 @@ class Tag(AbstractModel):
     def __init__(self):
         """
         :param Key: Tag key
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Key: str
-        :param Value: Tag value
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Value: str
-        """
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Key: str\n        :param Value: Tag value
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 

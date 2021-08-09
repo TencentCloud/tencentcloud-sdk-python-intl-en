@@ -25,17 +25,7 @@ class AccountCreateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: Instance username
-        :type UserName: str
-        :param Password: Instance password
-        :type Password: str
-        :param DBPrivileges: List of database permissions
-        :type DBPrivileges: list of DBPrivilege
-        :param Remark: Account remarks
-        :type Remark: str
-        :param IsAdmin: Whether it is an admin account. Default value: no
-        :type IsAdmin: bool
-        """
+        :param UserName: Instance username\n        :type UserName: str\n        :param Password: Instance password\n        :type Password: str\n        :param DBPrivileges: List of database permissions\n        :type DBPrivileges: list of DBPrivilege\n        :param Remark: Account remarks\n        :type Remark: str\n        :param IsAdmin: Whether it is an admin account. Default value: no\n        :type IsAdmin: bool\n        """
         self.UserName = None
         self.Password = None
         self.DBPrivileges = None
@@ -70,25 +60,7 @@ class AccountDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Account name
-        :type Name: str
-        :param Remark: Account remarks
-        :type Remark: str
-        :param CreateTime: Account creation time
-        :type CreateTime: str
-        :param Status: Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting
-        :type Status: int
-        :param UpdateTime: Account update time
-        :type UpdateTime: str
-        :param PassTime: Password update time
-        :type PassTime: str
-        :param InternalStatus: Internal account status, which should be `enable` normally
-        :type InternalStatus: str
-        :param Dbs: Information of read and write permissions of this account on relevant databases
-        :type Dbs: list of DBPrivilege
-        :param IsAdmin: Whether it is an admin account
-        :type IsAdmin: bool
-        """
+        :param Name: Account name\n        :type Name: str\n        :param Remark: Account remarks\n        :type Remark: str\n        :param CreateTime: Account creation time\n        :type CreateTime: str\n        :param Status: Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting\n        :type Status: int\n        :param UpdateTime: Account update time\n        :type UpdateTime: str\n        :param PassTime: Password update time\n        :type PassTime: str\n        :param InternalStatus: Internal account status, which should be `enable` normally\n        :type InternalStatus: str\n        :param Dbs: Information of read and write permissions of this account on relevant databases\n        :type Dbs: list of DBPrivilege\n        :param IsAdmin: Whether it is an admin account\n        :type IsAdmin: bool\n        """
         self.Name = None
         self.Remark = None
         self.CreateTime = None
@@ -131,11 +103,7 @@ class AccountPassword(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: Username
-        :type UserName: str
-        :param Password: Password
-        :type Password: str
-        """
+        :param UserName: Username\n        :type UserName: str\n        :param Password: Password\n        :type Password: str\n        """
         self.UserName = None
         self.Password = None
 
@@ -159,11 +127,7 @@ class AccountPrivilege(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: Database username
-        :type UserName: str
-        :param Privilege: Database permissions. ReadWrite: read/write, ReadOnly: read-only
-        :type Privilege: str
-        """
+        :param UserName: Database username\n        :type UserName: str\n        :param Privilege: Database permissions. ReadWrite: read/write, ReadOnly: read-only\n        :type Privilege: str\n        """
         self.UserName = None
         self.Privilege = None
 
@@ -187,11 +151,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: Database username
-        :type UserName: str
-        :param DBPrivileges: Account permission change information
-        :type DBPrivileges: list of DBPrivilegeModifyInfo
-        """
+        :param UserName: Database username\n        :type UserName: str\n        :param DBPrivileges: Account permission change information\n        :type DBPrivileges: list of DBPrivilegeModifyInfo\n        """
         self.UserName = None
         self.DBPrivileges = None
 
@@ -220,11 +180,7 @@ class AccountRemark(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: Account name
-        :type UserName: str
-        :param Remark: New remarks of account
-        :type Remark: str
-        """
+        :param UserName: Account name\n        :type UserName: str\n        :param Remark: New remarks of account\n        :type Remark: str\n        """
         self.UserName = None
         self.Remark = None
 
@@ -248,31 +204,7 @@ class Backup(AbstractModel):
 
     def __init__(self):
         """
-        :param FileName: Filename
-        :type FileName: str
-        :param Size: File size in KB
-        :type Size: int
-        :param StartTime: Backup start time
-        :type StartTime: str
-        :param EndTime: Backup end time
-        :type EndTime: str
-        :param InternalAddr: Download address for private network
-        :type InternalAddr: str
-        :param ExternalAddr: Download address for public network
-        :type ExternalAddr: str
-        :param Id: Unique ID of backup file, which will be used by the `RestoreInstance` API
-        :type Id: int
-        :param Status: Backup file status (0: creating, 1: succeeded, 2: failed)
-        :type Status: int
-        :param DBs: List of databases for multi-database backup
-        :type DBs: list of str
-        :param Strategy: Backup policy (0: instance backup, 1: multi-database backup)
-        :type Strategy: int
-        :param BackupWay: Backup mode. 0: scheduled, 1: manual
-        :type BackupWay: int
-        :param BackupName: Backup name, which can be customized.
-        :type BackupName: str
-        """
+        :param FileName: Filename\n        :type FileName: str\n        :param Size: File size in KB\n        :type Size: int\n        :param StartTime: Backup start time\n        :type StartTime: str\n        :param EndTime: Backup end time\n        :type EndTime: str\n        :param InternalAddr: Download address for private network\n        :type InternalAddr: str\n        :param ExternalAddr: Download address for public network\n        :type ExternalAddr: str\n        :param Id: Unique ID of backup file, which will be used by the `RestoreInstance` API\n        :type Id: int\n        :param Status: Backup file status (0: creating, 1: succeeded, 2: failed)\n        :type Status: int\n        :param DBs: List of databases for multi-database backup\n        :type DBs: list of str\n        :param Strategy: Backup policy (0: instance backup, 1: multi-database backup)\n        :type Strategy: int\n        :param BackupWay: Backup mode. 0: scheduled, 1: manual\n        :type BackupWay: int\n        :param BackupName: Backup name, which can be customized.\n        :type BackupName: str\n        """
         self.FileName = None
         self.Size = None
         self.StartTime = None
@@ -316,11 +248,7 @@ class CloneDBRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of mssql-j8kv137v
-        :type InstanceId: str
-        :param RenameRestore: Clone and rename the databases specified in `ReNameRestoreDatabase`. Please note that the clones must be renamed.
-        :type RenameRestore: list of RenameRestoreDatabase
-        """
+        :param InstanceId: Instance ID in the format of mssql-j8kv137v\n        :type InstanceId: str\n        :param RenameRestore: Clone and rename the databases specified in `ReNameRestoreDatabase`. Please note that the clones must be renamed.\n        :type RenameRestore: list of RenameRestoreDatabase\n        """
         self.InstanceId = None
         self.RenameRestore = None
 
@@ -349,11 +277,7 @@ class CloneDBResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Async task request ID, which can be used in the `DescribeFlowStatus` API to query the execution result of an async task
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Async task request ID, which can be used in the `DescribeFlowStatus` API to query the execution result of an async task\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -370,11 +294,7 @@ class CosUploadBackupFile(AbstractModel):
 
     def __init__(self):
         """
-        :param FileName: Backup name
-        :type FileName: str
-        :param Size: Backup size
-        :type Size: int
-        """
+        :param FileName: Backup name\n        :type FileName: str\n        :param Size: Backup size\n        :type Size: int\n        """
         self.FileName = None
         self.Size = None
 
@@ -398,11 +318,7 @@ class CreateAccountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl
-        :type InstanceId: str
-        :param Accounts: Database instance account information
-        :type Accounts: list of AccountCreateInfo
-        """
+        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl\n        :type InstanceId: str\n        :param Accounts: Database instance account information\n        :type Accounts: list of AccountCreateInfo\n        """
         self.InstanceId = None
         self.Accounts = None
 
@@ -431,11 +347,7 @@ class CreateAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task flow ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -452,17 +364,7 @@ class CreateBackupMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance
-        :type InstanceId: str
-        :param RecoveryType: Migration task restoration type. FULL: full backup restoration, FULL_LOG: full backup and transaction log restoration, FULL_DIFF: full backup and differential backup restoration
-        :type RecoveryType: str
-        :param UploadType: Backup upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
-        :type UploadType: str
-        :param MigrationName: Task name
-        :type MigrationName: str
-        :param BackupFiles: If the UploadType is COS_URL, fill in the URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
-        :type BackupFiles: list of str
-        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param RecoveryType: Migration task restoration type. FULL: full backup restoration, FULL_LOG: full backup and transaction log restoration, FULL_DIFF: full backup and differential backup restoration\n        :type RecoveryType: str\n        :param UploadType: Backup upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.\n        :type UploadType: str\n        :param MigrationName: Task name\n        :type MigrationName: str\n        :param BackupFiles: If the UploadType is COS_URL, fill in the URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.\n        :type BackupFiles: list of str\n        """
         self.InstanceId = None
         self.RecoveryType = None
         self.UploadType = None
@@ -492,11 +394,7 @@ class CreateBackupMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BackupMigrationId: Backup import task ID
-        :type BackupMigrationId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param BackupMigrationId: Backup import task ID\n        :type BackupMigrationId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.BackupMigrationId = None
         self.RequestId = None
 
@@ -513,15 +411,7 @@ class CreateBackupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Strategy: Backup policy (0: instance backup, 1: multi-database backup)
-        :type Strategy: int
-        :param DBNames: List of names of databases to be backed up (required only for multi-database backup)
-        :type DBNames: list of str
-        :param InstanceId: Instance ID in the format of mssql-i1z41iwd
-        :type InstanceId: str
-        :param BackupName: Backup name. If this parameter is left empty, a backup name in the format of "[Instance ID]_[Backup start timestamp]" will be automatically generated.
-        :type BackupName: str
-        """
+        :param Strategy: Backup policy (0: instance backup, 1: multi-database backup)\n        :type Strategy: int\n        :param DBNames: List of names of databases to be backed up (required only for multi-database backup)\n        :type DBNames: list of str\n        :param InstanceId: Instance ID in the format of mssql-i1z41iwd\n        :type InstanceId: str\n        :param BackupName: Backup name. If this parameter is left empty, a backup name in the format of "[Instance ID]_[Backup start timestamp]" will be automatically generated.\n        :type BackupName: str\n        """
         self.Strategy = None
         self.DBNames = None
         self.InstanceId = None
@@ -549,11 +439,7 @@ class CreateBackupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: The async job ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: The async job ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -570,47 +456,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API
-        :type Zone: str
-        :param Memory: Instance memory size in GB
-        :type Memory: int
-        :param Storage: Instance storage capacity in GB
-        :type Storage: int
-        :param InstanceChargeType: Billing mode. Valid value: POSTPAID (pay-as-you-go).
-        :type InstanceChargeType: str
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param GoodsNum: Number of instances purchased this time. Default value: 1. Maximum value: 10
-        :type GoodsNum: int
-        :param SubnetId: VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously
-        :type SubnetId: str
-        :param VpcId: VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously
-        :type VpcId: str
-        :param Period: Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48
-        :type Period: int
-        :param AutoVoucher: Whether to automatically use voucher. 0: no, 1: yes. Default value: no
-        :type AutoVoucher: int
-        :param VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order)
-        :type VoucherIds: list of str
-        :param DBVersion: SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). The version purchasable varies by region and can be queried by calling the `DescribeProductConfig` API. If this parameter is left empty, 2008R2 will be used by default.
-        :type DBVersion: str
-        :param AutoRenewFlag: Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
-        :type AutoRenewFlag: int
-        :param SecurityGroupList: Security group list, which contains security group IDs in the format of sg-xxx.
-        :type SecurityGroupList: list of str
-        :param Weekly: Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).
-        :type Weekly: list of int
-        :param StartTime: Configuration of the maintenance window, which specifies the start time of daily maintenance.
-        :type StartTime: str
-        :param Span: Configuration of the maintenance window, which specifies the maintenance duration in hours.
-        :type Span: int
-        :param HAType: The type of purchased high-availability instance. Valid values: DUAL (dual-server high availability), CLUSTER (cluster). Default value: DUAL.
-        :type HAType: str
-        :param MultiZones: Whether to deploy across availability zones. Default value: false.
-        :type MultiZones: bool
-        :param ResourceTags: Tags associated with the instances to be created
-        :type ResourceTags: list of ResourceTag
-        """
+        :param Zone: Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API\n        :type Zone: str\n        :param Memory: Instance memory size in GB\n        :type Memory: int\n        :param Storage: Instance storage capacity in GB\n        :type Storage: int\n        :param InstanceChargeType: Billing mode. Valid value: POSTPAID (pay-as-you-go).\n        :type InstanceChargeType: str\n        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param GoodsNum: Number of instances purchased this time. Default value: 1. Maximum value: 10\n        :type GoodsNum: int\n        :param SubnetId: VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously\n        :type SubnetId: str\n        :param VpcId: VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously\n        :type VpcId: str\n        :param Period: Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48\n        :type Period: int\n        :param AutoVoucher: Whether to automatically use voucher. 0: no, 1: yes. Default value: no\n        :type AutoVoucher: int\n        :param VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order)\n        :type VoucherIds: list of str\n        :param DBVersion: SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). The version purchasable varies by region and can be queried by calling the `DescribeProductConfig` API. If this parameter is left empty, 2008R2 will be used by default.\n        :type DBVersion: str\n        :param AutoRenewFlag: Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.\n        :type AutoRenewFlag: int\n        :param SecurityGroupList: Security group list, which contains security group IDs in the format of sg-xxx.\n        :type SecurityGroupList: list of str\n        :param Weekly: Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).\n        :type Weekly: list of int\n        :param StartTime: Configuration of the maintenance window, which specifies the start time of daily maintenance.\n        :type StartTime: str\n        :param Span: Configuration of the maintenance window, which specifies the maintenance duration in hours.\n        :type Span: int\n        :param HAType: The type of purchased high-availability instance. Valid values: DUAL (dual-server high availability), CLUSTER (cluster). Default value: DUAL.\n        :type HAType: str\n        :param MultiZones: Whether to deploy across availability zones. Default value: false.\n        :type MultiZones: bool\n        :param ResourceTags: Tags associated with the instances to be created\n        :type ResourceTags: list of ResourceTag\n        """
         self.Zone = None
         self.Memory = None
         self.Storage = None
@@ -675,13 +521,7 @@ class CreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealName: Order name
-        :type DealName: str
-        :param DealNames: Order name array
-        :type DealNames: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DealName: Order name\n        :type DealName: str\n        :param DealNames: Order name array\n        :type DealNames: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealName = None
         self.DealNames = None
         self.RequestId = None
@@ -700,11 +540,7 @@ class CreateDBRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param DBs: Database creation information
-        :type DBs: list of DBCreateInfo
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param DBs: Database creation information\n        :type DBs: list of DBCreateInfo\n        """
         self.InstanceId = None
         self.DBs = None
 
@@ -733,11 +569,7 @@ class CreateDBResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task flow ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -754,15 +586,7 @@ class CreateIncrementalMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance
-        :type InstanceId: str
-        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration.
-        :type BackupMigrationId: str
-        :param BackupFiles: Incremental backup file. If the UploadType of a full backup file is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
-        :type BackupFiles: list of str
-        :param IsRecovery: Whether restoration is required. No: not required. Yes: required. Not required by default.
-        :type IsRecovery: str
-        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration.\n        :type BackupMigrationId: str\n        :param BackupFiles: Incremental backup file. If the UploadType of a full backup file is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.\n        :type BackupFiles: list of str\n        :param IsRecovery: Whether restoration is required. No: not required. Yes: required. Not required by default.\n        :type IsRecovery: str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
         self.BackupFiles = None
@@ -790,11 +614,7 @@ class CreateIncrementalMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param IncrementalMigrationId: ID of an incremental backup import task
-        :type IncrementalMigrationId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param IncrementalMigrationId: ID of an incremental backup import task\n        :type IncrementalMigrationId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IncrementalMigrationId = None
         self.RequestId = None
 
@@ -811,21 +631,7 @@ class CreateMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MigrateName: Migration task name
-        :type MigrateName: str
-        :param MigrateType: Migration type (1: structure migration, 2: data migration, 3: incremental sync)
-        :type MigrateType: int
-        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
-        :type SourceType: int
-        :param Source: Migration source
-        :type Source: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`
-        :param Target: Migration target
-        :type Target: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`
-        :param MigrateDBSet: Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)
-        :type MigrateDBSet: list of MigrateDB
-        :param RenameRestore: Restore and rename the databases listed in `ReNameRestoreDatabase`. If this parameter is left empty, all restored databases will be renamed in the default format. This parameter takes effect only when `SourceType=5`.
-        :type RenameRestore: list of RenameRestoreDatabase
-        """
+        :param MigrateName: Migration task name\n        :type MigrateName: str\n        :param MigrateType: Migration type (1: structure migration, 2: data migration, 3: incremental sync)\n        :type MigrateType: int\n        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)\n        :type SourceType: int\n        :param Source: Migration source\n        :type Source: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`\n        :param Target: Migration target\n        :type Target: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`\n        :param MigrateDBSet: Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)\n        :type MigrateDBSet: list of MigrateDB\n        :param RenameRestore: Restore and rename the databases listed in `ReNameRestoreDatabase`. If this parameter is left empty, all restored databases will be renamed in the default format. This parameter takes effect only when `SourceType=5`.\n        :type RenameRestore: list of RenameRestoreDatabase\n        """
         self.MigrateName = None
         self.MigrateType = None
         self.SourceType = None
@@ -873,11 +679,7 @@ class CreateMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MigrateId: Migration task ID
-        :type MigrateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param MigrateId: Migration task ID\n        :type MigrateId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MigrateId = None
         self.RequestId = None
 
@@ -894,15 +696,7 @@ class DBCreateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DBName: Database name
-        :type DBName: str
-        :param Charset: Character set, which can be queried by the `DescribeDBCharsets` API. Default value: `Chinese_PRC_CI_AS`.
-        :type Charset: str
-        :param Accounts: Database account permission information
-        :type Accounts: list of AccountPrivilege
-        :param Remark: Remarks
-        :type Remark: str
-        """
+        :param DBName: Database name\n        :type DBName: str\n        :param Charset: Character set, which can be queried by the `DescribeDBCharsets` API. Default value: `Chinese_PRC_CI_AS`.\n        :type Charset: str\n        :param Accounts: Database account permission information\n        :type Accounts: list of AccountPrivilege\n        :param Remark: Remarks\n        :type Remark: str\n        """
         self.DBName = None
         self.Charset = None
         self.Accounts = None
@@ -935,21 +729,7 @@ class DBDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Database name
-        :type Name: str
-        :param Charset: Character set
-        :type Charset: str
-        :param Remark: Remarks
-        :type Remark: str
-        :param CreateTime: Database creation time
-        :type CreateTime: str
-        :param Status: Database status. 1: creating, 2: running, 3: modifying, -1: dropping
-        :type Status: int
-        :param Accounts: Database account permission information
-        :type Accounts: list of AccountPrivilege
-        :param InternalStatus: Internal status. ONLINE: running
-        :type InternalStatus: str
-        """
+        :param Name: Database name\n        :type Name: str\n        :param Charset: Character set\n        :type Charset: str\n        :param Remark: Remarks\n        :type Remark: str\n        :param CreateTime: Database creation time\n        :type CreateTime: str\n        :param Status: Database status. 1: creating, 2: running, 3: modifying, -1: dropping\n        :type Status: int\n        :param Accounts: Database account permission information\n        :type Accounts: list of AccountPrivilege\n        :param InternalStatus: Internal status. ONLINE: running\n        :type InternalStatus: str\n        """
         self.Name = None
         self.Charset = None
         self.Remark = None
@@ -988,86 +768,12 @@ class DBInstance(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param Name: Instance name
-        :type Name: str
-        :param ProjectId: Project ID of instance
-        :type ProjectId: int
-        :param RegionId: Instance region ID
-        :type RegionId: int
-        :param ZoneId: Instance AZ ID
-        :type ZoneId: int
-        :param VpcId: Instance VPC ID, which will be 0 if the basic network is used
-        :type VpcId: int
-        :param SubnetId: Instance VPC subnet ID, which will be 0 if the basic network is used
-        :type SubnetId: int
-        :param Status: Instance status. Valid values: <li>1: applying </li> <li>2: running </li> <li>3: restrictedly running (primary/secondary switching) </li> <li>4: isolated </li> <li>5: repossessing </li> <li>6: repossessed </li> <li>7: task running (e.g., backing up or rolling back the instance) </li> <li>8: decommissioned </li> <li>9: scaling </li> <li>10: migrating </li> <li>11: read-only </li> <li>12: restarting </li>
-        :type Status: int
-        :param Vip: Instance access IP
-        :type Vip: str
-        :param Vport: Instance access port
-        :type Vport: int
-        :param CreateTime: Instance creation time
-        :type CreateTime: str
-        :param UpdateTime: Instance update time
-        :type UpdateTime: str
-        :param StartTime: Instance billing start time
-        :type StartTime: str
-        :param EndTime: Instance billing end time
-        :type EndTime: str
-        :param IsolateTime: Instance isolation time
-        :type IsolateTime: str
-        :param Memory: Instance memory size in GB
-        :type Memory: int
-        :param UsedStorage: Used storage capacity of instance in GB
-        :type UsedStorage: int
-        :param Storage: Instance storage capacity in GB
-        :type Storage: int
-        :param VersionName: Instance version
-        :type VersionName: str
-        :param RenewFlag: Instance renewal flag
-        :type RenewFlag: int
-        :param Model: High-availability instance type. Valid values: 1 (dual-server high-availability), 2 (standalone), 3 (multi-AZ), 4 (multi-AZ cluster), 5 (cluster), 9 (private consumption)
-        :type Model: int
-        :param Region: Instance region name, such as ap-guangzhou
-        :type Region: str
-        :param Zone: Instance AZ name, such as ap-guangzhou-1
-        :type Zone: str
-        :param BackupTime: Backup time point
-        :type BackupTime: str
-        :param PayMode: Instance billing mode. 0: pay-as-you-go
-        :type PayMode: int
-        :param Uid: Instance UID
-        :type Uid: str
-        :param Cpu: Number of CPU cores of instance
-        :type Cpu: int
-        :param Version: Instance version code
-        :type Version: str
-        :param Type: Physical server code
-        :type Type: str
-        :param Pid: Billing ID
-        :type Pid: int
-        :param UniqVpcId: Unique string-type ID of instance VPC in the format of `vpc-xxx`, which is an empty string if the basic network is used
-        :type UniqVpcId: str
-        :param UniqSubnetId: Unique string-type ID of instance subnet in the format of `subnet-xxx`, which is an empty string if the basic network is used
-        :type UniqSubnetId: str
-        :param IsolateOperator: Instance isolation.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type IsolateOperator: str
-        :param SubFlag: Pub/sub flag. Valid values: SUB (subscribe instance), PUB (publish instance). If it is left empty, it refers to a regular instance without a pub/sub design.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type SubFlag: str
-        :param ROFlag: Read-only flag. Valid values: RO (read-only instance), MASTER (primary instance with read-only instances). If it is left empty, it refers to an instance which is not read-only and has no RO group.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ROFlag: str
-        :param HAFlag: Disaster recovery type. Valid values: MIRROR (image), ALWAYSON (AlwaysOn), SINGLE (singleton).
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type HAFlag: str
-        :param ResourceTags: The list of tags associated with the instance
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ResourceTags: list of ResourceTag
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Name: Instance name\n        :type Name: str\n        :param ProjectId: Project ID of instance\n        :type ProjectId: int\n        :param RegionId: Instance region ID\n        :type RegionId: int\n        :param ZoneId: Instance AZ ID\n        :type ZoneId: int\n        :param VpcId: Instance VPC ID, which will be 0 if the basic network is used\n        :type VpcId: int\n        :param SubnetId: Instance VPC subnet ID, which will be 0 if the basic network is used\n        :type SubnetId: int\n        :param Status: Instance status. Valid values: <li>1: applying </li> <li>2: running </li> <li>3: restrictedly running (primary/secondary switching) </li> <li>4: isolated </li> <li>5: repossessing </li> <li>6: repossessed </li> <li>7: task running (e.g., backing up or rolling back the instance) </li> <li>8: decommissioned </li> <li>9: scaling </li> <li>10: migrating </li> <li>11: read-only </li> <li>12: restarting </li>\n        :type Status: int\n        :param Vip: Instance access IP\n        :type Vip: str\n        :param Vport: Instance access port\n        :type Vport: int\n        :param CreateTime: Instance creation time\n        :type CreateTime: str\n        :param UpdateTime: Instance update time\n        :type UpdateTime: str\n        :param StartTime: Instance billing start time\n        :type StartTime: str\n        :param EndTime: Instance billing end time\n        :type EndTime: str\n        :param IsolateTime: Instance isolation time\n        :type IsolateTime: str\n        :param Memory: Instance memory size in GB\n        :type Memory: int\n        :param UsedStorage: Used storage capacity of instance in GB\n        :type UsedStorage: int\n        :param Storage: Instance storage capacity in GB\n        :type Storage: int\n        :param VersionName: Instance version\n        :type VersionName: str\n        :param RenewFlag: Instance renewal flag\n        :type RenewFlag: int\n        :param Model: High-availability instance type. Valid values: 1 (dual-server high-availability), 2 (standalone), 3 (multi-AZ), 4 (multi-AZ cluster), 5 (cluster), 9 (private consumption)\n        :type Model: int\n        :param Region: Instance region name, such as ap-guangzhou\n        :type Region: str\n        :param Zone: Instance AZ name, such as ap-guangzhou-1\n        :type Zone: str\n        :param BackupTime: Backup time point\n        :type BackupTime: str\n        :param PayMode: Instance billing mode. 0: pay-as-you-go\n        :type PayMode: int\n        :param Uid: Instance UID\n        :type Uid: str\n        :param Cpu: Number of CPU cores of instance\n        :type Cpu: int\n        :param Version: Instance version code\n        :type Version: str\n        :param Type: Physical server code\n        :type Type: str\n        :param Pid: Billing ID\n        :type Pid: int\n        :param UniqVpcId: Unique string-type ID of instance VPC in the format of `vpc-xxx`, which is an empty string if the basic network is used\n        :type UniqVpcId: str\n        :param UniqSubnetId: Unique string-type ID of instance subnet in the format of `subnet-xxx`, which is an empty string if the basic network is used\n        :type UniqSubnetId: str\n        :param IsolateOperator: Instance isolation.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsolateOperator: str\n        :param SubFlag: Pub/sub flag. Valid values: SUB (subscribe instance), PUB (publish instance). If it is left empty, it refers to a regular instance without a pub/sub design.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type SubFlag: str\n        :param ROFlag: Read-only flag. Valid values: RO (read-only instance), MASTER (primary instance with read-only instances). If it is left empty, it refers to an instance which is not read-only and has no RO group.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ROFlag: str\n        :param HAFlag: Disaster recovery type. Valid values: MIRROR (image), ALWAYSON (AlwaysOn), SINGLE (singleton).
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type HAFlag: str\n        :param ResourceTags: The list of tags associated with the instance
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type ResourceTags: list of ResourceTag\n        """
         self.InstanceId = None
         self.Name = None
         self.ProjectId = None
@@ -1166,11 +872,7 @@ class DBPrivilege(AbstractModel):
 
     def __init__(self):
         """
-        :param DBName: Database name
-        :type DBName: str
-        :param Privilege: Database permissions. ReadWrite: read/write, ReadOnly: read-only
-        :type Privilege: str
-        """
+        :param DBName: Database name\n        :type DBName: str\n        :param Privilege: Database permissions. ReadWrite: read/write, ReadOnly: read-only\n        :type Privilege: str\n        """
         self.DBName = None
         self.Privilege = None
 
@@ -1194,11 +896,7 @@ class DBPrivilegeModifyInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DBName: Database name
-        :type DBName: str
-        :param Privilege: Permission change information. ReadWrite: read/write, ReadOnly: read-only, Delete: the account has the permission to delete this database
-        :type Privilege: str
-        """
+        :param DBName: Database name\n        :type DBName: str\n        :param Privilege: Permission change information. ReadWrite: read/write, ReadOnly: read-only, Delete: the account has the permission to delete this database\n        :type Privilege: str\n        """
         self.DBName = None
         self.Privilege = None
 
@@ -1222,11 +920,7 @@ class DBRemark(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Database name
-        :type Name: str
-        :param Remark: Remarks
-        :type Remark: str
-        """
+        :param Name: Database name\n        :type Name: str\n        :param Remark: Remarks\n        :type Remark: str\n        """
         self.Name = None
         self.Remark = None
 
@@ -1250,13 +944,7 @@ class DbRollbackTimeInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DBName: Database name
-        :type DBName: str
-        :param StartTime: Start time of time range available for rollback
-        :type StartTime: str
-        :param EndTime: End time of time range available for rollback
-        :type EndTime: str
-        """
+        :param DBName: Database name\n        :type DBName: str\n        :param StartTime: Start time of time range available for rollback\n        :type StartTime: str\n        :param EndTime: End time of time range available for rollback\n        :type EndTime: str\n        """
         self.DBName = None
         self.StartTime = None
         self.EndTime = None
@@ -1282,19 +970,7 @@ class DealInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DealName: Order name
-        :type DealName: str
-        :param Count: Number of items
-        :type Count: int
-        :param FlowId: ID of associated flow, which can be used to query the flow execution status
-        :type FlowId: int
-        :param InstanceIdSet: This field is required only for an order that creates an instance, indicating the ID of the instance created by the order
-        :type InstanceIdSet: list of str
-        :param OwnerUin: Account
-        :type OwnerUin: str
-        :param InstanceChargeType: Instance billing type
-        :type InstanceChargeType: str
-        """
+        :param DealName: Order name\n        :type DealName: str\n        :param Count: Number of items\n        :type Count: int\n        :param FlowId: ID of associated flow, which can be used to query the flow execution status\n        :type FlowId: int\n        :param InstanceIdSet: This field is required only for an order that creates an instance, indicating the ID of the instance created by the order\n        :type InstanceIdSet: list of str\n        :param OwnerUin: Account\n        :type OwnerUin: str\n        :param InstanceChargeType: Instance billing type\n        :type InstanceChargeType: str\n        """
         self.DealName = None
         self.Count = None
         self.FlowId = None
@@ -1326,11 +1002,7 @@ class DeleteAccountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl
-        :type InstanceId: str
-        :param UserNames: Array of instance usernames
-        :type UserNames: list of str
-        """
+        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl\n        :type InstanceId: str\n        :param UserNames: Array of instance usernames\n        :type UserNames: list of str\n        """
         self.InstanceId = None
         self.UserNames = None
 
@@ -1354,11 +1026,7 @@ class DeleteAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task flow ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -1375,11 +1043,7 @@ class DeleteBackupMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Target instance ID, which is returned through the API DescribeBackupMigration.
-        :type InstanceId: str
-        :param BackupMigrationId: Backup import task ID, which is returned through the API DescribeBackupMigration.
-        :type BackupMigrationId: str
-        """
+        :param InstanceId: Target instance ID, which is returned through the API DescribeBackupMigration.\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API DescribeBackupMigration.\n        :type BackupMigrationId: str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
 
@@ -1403,9 +1067,7 @@ class DeleteBackupMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1420,11 +1082,7 @@ class DeleteDBRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of mssql-rljoi3bf
-        :type InstanceId: str
-        :param Names: Array of database names
-        :type Names: list of str
-        """
+        :param InstanceId: Instance ID in the format of mssql-rljoi3bf\n        :type InstanceId: str\n        :param Names: Array of database names\n        :type Names: list of str\n        """
         self.InstanceId = None
         self.Names = None
 
@@ -1448,11 +1106,7 @@ class DeleteDBResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task flow ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -1469,13 +1123,7 @@ class DeleteIncrementalMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Target instance ID.
-        :type InstanceId: str
-        :param BackupMigrationId: Backup import task ID
-        :type BackupMigrationId: str
-        :param IncrementalMigrationId: ID of an incremental backup import task
-        :type IncrementalMigrationId: str
-        """
+        :param InstanceId: Target instance ID.\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID\n        :type BackupMigrationId: str\n        :param IncrementalMigrationId: ID of an incremental backup import task\n        :type IncrementalMigrationId: str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
         self.IncrementalMigrationId = None
@@ -1501,9 +1149,7 @@ class DeleteIncrementalMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1518,9 +1164,7 @@ class DeleteMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MigrateId: Migration task ID
-        :type MigrateId: int
-        """
+        :param MigrateId: Migration task ID\n        :type MigrateId: int\n        """
         self.MigrateId = None
 
 
@@ -1542,9 +1186,7 @@ class DeleteMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1559,13 +1201,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param Limit: Number of results per page. Value range: 1-100. Default value: 20
-        :type Limit: int
-        :param Offset: Page number. Default value: 0
-        :type Offset: int
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Limit: Number of results per page. Value range: 1-100. Default value: 20\n        :type Limit: int\n        :param Offset: Page number. Default value: 0\n        :type Offset: int\n        """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
@@ -1591,15 +1227,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param Accounts: Account information list
-        :type Accounts: list of AccountDetail
-        :param TotalCount: Total number
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Accounts: Account information list\n        :type Accounts: list of AccountDetail\n        :param TotalCount: Total number\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Accounts = None
         self.TotalCount = None
@@ -1625,15 +1253,7 @@ class DescribeBackupCommandRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BackupFileType: Backup file type. Full: full backup. FULL_LOG: full backup which needs log increments. FULL_DIFF: full backup which needs differential increments. LOG: log backup. DIFF: differential backup.
-        :type BackupFileType: str
-        :param DataBaseName: Database name
-        :type DataBaseName: str
-        :param IsRecovery: Whether restoration is required. No: not required. Yes: required.
-        :type IsRecovery: str
-        :param LocalPath: Storage path of backup files. If this parameter is left empty, the default storage path will be D:\\.
-        :type LocalPath: str
-        """
+        :param BackupFileType: Backup file type. Full: full backup. FULL_LOG: full backup which needs log increments. FULL_DIFF: full backup which needs differential increments. LOG: log backup. DIFF: differential backup.\n        :type BackupFileType: str\n        :param DataBaseName: Database name\n        :type DataBaseName: str\n        :param IsRecovery: Whether restoration is required. No: not required. Yes: required.\n        :type IsRecovery: str\n        :param LocalPath: Storage path of backup files. If this parameter is left empty, the default storage path will be D:\\.\n        :type LocalPath: str\n        """
         self.BackupFileType = None
         self.DataBaseName = None
         self.IsRecovery = None
@@ -1661,11 +1281,7 @@ class DescribeBackupCommandResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Command: Create a backup command
-        :type Command: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Command: Create a backup command\n        :type Command: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Command = None
         self.RequestId = None
 
@@ -1682,29 +1298,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance
-        :type InstanceId: str
-        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration.
-        :type BackupMigrationId: str
-        :param MigrationName: Import task name
-        :type MigrationName: str
-        :param BackupFileName: Backup file name
-        :type BackupFileName: str
-        :param StatusSet: Status set of import tasks
-        :type StatusSet: list of int
-        :param RecoveryType: Import task restoration type: FULL,FULL_LOG,FULL_DIFF
-        :type RecoveryType: str
-        :param UploadType: COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
-        :type UploadType: str
-        :param Limit: Paging. Page size
-        :type Limit: int
-        :param Offset: Paging. Number of pages
-        :type Offset: int
-        :param OrderBy: Field for order: name,createTime,startTime,endTime
-        :type OrderBy: str
-        :param OrderByType: Type of order: desc,asc
-        :type OrderByType: str
-        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration.\n        :type BackupMigrationId: str\n        :param MigrationName: Import task name\n        :type MigrationName: str\n        :param BackupFileName: Backup file name\n        :type BackupFileName: str\n        :param StatusSet: Status set of import tasks\n        :type StatusSet: list of int\n        :param RecoveryType: Import task restoration type: FULL,FULL_LOG,FULL_DIFF\n        :type RecoveryType: str\n        :param UploadType: COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.\n        :type UploadType: str\n        :param Limit: Paging. Page size\n        :type Limit: int\n        :param Offset: Paging. Number of pages\n        :type Offset: int\n        :param OrderBy: Field for order: name,createTime,startTime,endTime\n        :type OrderBy: str\n        :param OrderByType: Type of order: desc,asc\n        :type OrderByType: str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
         self.MigrationName = None
@@ -1746,13 +1340,7 @@ class DescribeBackupMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of tasks
-        :type TotalCount: int
-        :param BackupMigrationSet: Migration task set
-        :type BackupMigrationSet: list of Migration
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of tasks\n        :type TotalCount: int\n        :param BackupMigrationSet: Migration task set\n        :type BackupMigrationSet: list of Migration\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.BackupMigrationSet = None
         self.RequestId = None
@@ -1776,13 +1364,7 @@ class DescribeBackupUploadSizeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance
-        :type InstanceId: str
-        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
-        :type BackupMigrationId: str
-        :param IncrementalMigrationId: Incremental import task ID
-        :type IncrementalMigrationId: str
-        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        :param IncrementalMigrationId: Incremental import task ID\n        :type IncrementalMigrationId: str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
         self.IncrementalMigrationId = None
@@ -1808,11 +1390,7 @@ class DescribeBackupUploadSizeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CosUploadBackupFileSet: Information of uploaded backups
-        :type CosUploadBackupFileSet: list of CosUploadBackupFile
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param CosUploadBackupFileSet: Information of uploaded backups\n        :type CosUploadBackupFileSet: list of CosUploadBackupFile\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.CosUploadBackupFileSet = None
         self.RequestId = None
 
@@ -1834,27 +1412,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: Start name (yyyy-MM-dd HH:mm:ss)
-        :type StartTime: str
-        :param EndTime: End time (yyyy-MM-dd HH:mm:ss)
-        :type EndTime: str
-        :param InstanceId: Instance ID in the format of mssql-njj2mtpl
-        :type InstanceId: str
-        :param Limit: Number of results per page. Value range: 1-100. Default value: 20
-        :type Limit: int
-        :param Offset: Page number. Default value: 0
-        :type Offset: int
-        :param BackupName: Filter by backup name. If this parameter is left empty, backup name will not be used in filtering.
-        :type BackupName: str
-        :param Strategy: Filter by backup policy. Valid values: 0 (instance backup), 1 (multi-database backup). If this parameter is left empty, backup policy will not be used in filtering.
-        :type Strategy: int
-        :param BackupWay: Filter by backup mode. Valid values: 0 (automatic backup on a regular basis), 1 (manual backup performed by the user at any time). If this parameter is left empty, backup mode will not be used in filtering.
-        :type BackupWay: int
-        :param BackupId: Filter by backup ID. If this parameter is left empty, backup ID will not be used in filtering.
-        :type BackupId: int
-        :param DatabaseName: Filter backups by the database name. If the parameter is left empty, this filter criteria will not take effect.
-        :type DatabaseName: str
-        """
+        :param StartTime: Start name (yyyy-MM-dd HH:mm:ss)\n        :type StartTime: str\n        :param EndTime: End time (yyyy-MM-dd HH:mm:ss)\n        :type EndTime: str\n        :param InstanceId: Instance ID in the format of mssql-njj2mtpl\n        :type InstanceId: str\n        :param Limit: Number of results per page. Value range: 1-100. Default value: 20\n        :type Limit: int\n        :param Offset: Page number. Default value: 0\n        :type Offset: int\n        :param BackupName: Filter by backup name. If this parameter is left empty, backup name will not be used in filtering.\n        :type BackupName: str\n        :param Strategy: Filter by backup policy. Valid values: 0 (instance backup), 1 (multi-database backup). If this parameter is left empty, backup policy will not be used in filtering.\n        :type Strategy: int\n        :param BackupWay: Filter by backup mode. Valid values: 0 (automatic backup on a regular basis), 1 (manual backup performed by the user at any time). If this parameter is left empty, backup mode will not be used in filtering.\n        :type BackupWay: int\n        :param BackupId: Filter by backup ID. If this parameter is left empty, backup ID will not be used in filtering.\n        :type BackupId: int\n        :param DatabaseName: Filter backups by the database name. If the parameter is left empty, this filter criteria will not take effect.\n        :type DatabaseName: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.InstanceId = None
@@ -1894,13 +1452,7 @@ class DescribeBackupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of backups
-        :type TotalCount: int
-        :param Backups: Backup list details
-        :type Backups: list of Backup
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of backups\n        :type TotalCount: int\n        :param Backups: Backup list details\n        :type Backups: list of Backup\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Backups = None
         self.RequestId = None
@@ -1924,9 +1476,7 @@ class DescribeDBCharsetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of mssql-j8kv137v
-        :type InstanceId: str
-        """
+        :param InstanceId: Instance ID in the format of mssql-j8kv137v\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1948,11 +1498,7 @@ class DescribeDBCharsetsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DatabaseCharsets: Database character set list
-        :type DatabaseCharsets: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DatabaseCharsets: Database character set list\n        :type DatabaseCharsets: list of str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DatabaseCharsets = None
         self.RequestId = None
 
@@ -1969,9 +1515,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: Project ID
-        :type ProjectId: int
-        :param Status: Instance status. Valid values:
+        :param ProjectId: Project ID\n        :type ProjectId: int\n        :param Status: Instance status. Valid values:
 <li>1: applying</li>
 <li>2: running</li>
 <li>3: running restrictedly (primary/secondary switching)</li>
@@ -1983,33 +1527,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 <li>9: scaling out instance</li>
 <li>10: migrating instance</li>
 <li>11: read-only</li>
-<li>12: restarting</li>
-        :type Status: int
-        :param Offset: Page number. Default value: 0
-        :type Offset: int
-        :param Limit: Number of results per page. Value range: 1-100. Default value: 100
-        :type Limit: int
-        :param InstanceIdSet: One or more instance IDs in the format of mssql-si2823jyl
-        :type InstanceIdSet: list of str
-        :param PayMode: Retrieves billing type. 0: pay-as-you-go
-        :type PayMode: int
-        :param VpcId: Unique string-type ID of instance VPC in the format of `vpc-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.
-        :type VpcId: str
-        :param SubnetId: Unique string-type ID of instance subnet in the format of `subnet-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.
-        :type SubnetId: str
-        :param VipSet: The list of instance private IPs, such as 172.1.0.12
-        :type VipSet: list of str
-        :param InstanceNameSet: The list of instance names used for fuzzy match
-        :type InstanceNameSet: list of str
-        :param VersionSet: The list of instance version numbers, such as 2008R2, 2012SP3
-        :type VersionSet: list of str
-        :param Zone: Instance availability zone, such as ap-guangzhou-2
-        :type Zone: str
-        :param TagKeys: The list of instance tags
-        :type TagKeys: list of str
-        :param SearchKey: Keyword used for fuzzy match, including instance ID, instance name, and instance private IP
-        :type SearchKey: str
-        """
+<li>12: restarting</li>\n        :type Status: int\n        :param Offset: Page number. Default value: 0\n        :type Offset: int\n        :param Limit: Number of results per page. Value range: 1-100. Default value: 100\n        :type Limit: int\n        :param InstanceIdSet: One or more instance IDs in the format of mssql-si2823jyl\n        :type InstanceIdSet: list of str\n        :param PayMode: Retrieves billing type. 0: pay-as-you-go\n        :type PayMode: int\n        :param VpcId: Unique string-type ID of instance VPC in the format of `vpc-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.\n        :type VpcId: str\n        :param SubnetId: Unique string-type ID of instance subnet in the format of `subnet-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.\n        :type SubnetId: str\n        :param VipSet: The list of instance private IPs, such as 172.1.0.12\n        :type VipSet: list of str\n        :param InstanceNameSet: The list of instance names used for fuzzy match\n        :type InstanceNameSet: list of str\n        :param VersionSet: The list of instance version numbers, such as 2008R2, 2012SP3\n        :type VersionSet: list of str\n        :param Zone: Instance availability zone, such as ap-guangzhou-2\n        :type Zone: str\n        :param TagKeys: The list of instance tags\n        :type TagKeys: list of str\n        :param SearchKey: Keyword used for fuzzy match, including instance ID, instance name, and instance private IP\n        :type SearchKey: str\n        """
         self.ProjectId = None
         self.Status = None
         self.Offset = None
@@ -2057,13 +1575,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of eligible instances. If the results are returned in multiple pages, this value will be the number of all eligible instances but not the number of instances returned according to the current values of `Limit` and `Offset`
-        :type TotalCount: int
-        :param DBInstances: Instance list
-        :type DBInstances: list of DBInstance
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of eligible instances. If the results are returned in multiple pages, this value will be the number of all eligible instances but not the number of instances returned according to the current values of `Limit` and `Offset`\n        :type TotalCount: int\n        :param DBInstances: Instance list\n        :type DBInstances: list of DBInstance\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DBInstances = None
         self.RequestId = None
@@ -2087,13 +1599,7 @@ class DescribeDBsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIdSet: Instance ID
-        :type InstanceIdSet: list of str
-        :param Limit: Number of results per page. Value range: 1-100. Default value: 20
-        :type Limit: int
-        :param Offset: Page number. Default value: 0
-        :type Offset: int
-        """
+        :param InstanceIdSet: Instance ID\n        :type InstanceIdSet: list of str\n        :param Limit: Number of results per page. Value range: 1-100. Default value: 20\n        :type Limit: int\n        :param Offset: Page number. Default value: 0\n        :type Offset: int\n        """
         self.InstanceIdSet = None
         self.Limit = None
         self.Offset = None
@@ -2119,13 +1625,7 @@ class DescribeDBsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of databases
-        :type TotalCount: int
-        :param DBInstances: List of instance databases
-        :type DBInstances: list of InstanceDBDetail
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of databases\n        :type TotalCount: int\n        :param DBInstances: List of instance databases\n        :type DBInstances: list of InstanceDBDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DBInstances = None
         self.RequestId = None
@@ -2149,9 +1649,7 @@ class DescribeFlowStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Flow ID
-        :type FlowId: int
-        """
+        :param FlowId: Flow ID\n        :type FlowId: int\n        """
         self.FlowId = None
 
 
@@ -2173,11 +1671,7 @@ class DescribeFlowStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: Flow status. 0: succeeded, 1: failed, 2: running
-        :type Status: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Status: Flow status. 0: succeeded, 1: failed, 2: running\n        :type Status: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -2194,25 +1688,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
-        :type BackupMigrationId: str
-        :param InstanceId: ID of imported target instance
-        :type InstanceId: str
-        :param BackupFileName: Backup file name
-        :type BackupFileName: str
-        :param StatusSet: Status set of import tasks
-        :type StatusSet: list of int
-        :param Limit: Paging. Page size
-        :type Limit: int
-        :param Offset: Paging. Number of pages
-        :type Offset: int
-        :param OrderBy: Field for order: name,createTime,startTime,endTime
-        :type OrderBy: str
-        :param OrderByType: Type of order: desc,asc
-        :type OrderByType: str
-        :param IncrementalMigrationId: ID of an incremental backup import task
-        :type IncrementalMigrationId: str
-        """
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupFileName: Backup file name\n        :type BackupFileName: str\n        :param StatusSet: Status set of import tasks\n        :type StatusSet: list of int\n        :param Limit: Paging. Page size\n        :type Limit: int\n        :param Offset: Paging. Number of pages\n        :type Offset: int\n        :param OrderBy: Field for order: name,createTime,startTime,endTime\n        :type OrderBy: str\n        :param OrderByType: Type of order: desc,asc\n        :type OrderByType: str\n        :param IncrementalMigrationId: ID of an incremental backup import task\n        :type IncrementalMigrationId: str\n        """
         self.BackupMigrationId = None
         self.InstanceId = None
         self.BackupFileName = None
@@ -2250,13 +1726,7 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of import tasks
-        :type TotalCount: int
-        :param IncrementalMigrationSet: Incremental import task set
-        :type IncrementalMigrationSet: list of Migration
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of import tasks\n        :type TotalCount: int\n        :param IncrementalMigrationSet: Incremental import task set\n        :type IncrementalMigrationSet: list of Migration\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.IncrementalMigrationSet = None
         self.RequestId = None
@@ -2280,9 +1750,7 @@ class DescribeMigrationDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MigrateId: Migration task ID
-        :type MigrateId: int
-        """
+        :param MigrateId: Migration task ID\n        :type MigrateId: int\n        """
         self.MigrateId = None
 
 
@@ -2304,37 +1772,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MigrateId: Migration task ID
-        :type MigrateId: int
-        :param MigrateName: Migration task name
-        :type MigrateName: str
-        :param AppId: User ID of migration task
-        :type AppId: int
-        :param Region: Migration task region
-        :type Region: str
-        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
-        :type SourceType: int
-        :param CreateTime: Migration task creation time
-        :type CreateTime: str
-        :param StartTime: Migration task start time
-        :type StartTime: str
-        :param EndTime: Migration task end time
-        :type EndTime: str
-        :param Status: Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded)
-        :type Status: int
-        :param Progress: Migration task progress
-        :type Progress: int
-        :param MigrateType: Migration type (1: structure migration, 2: data migration, 3: incremental sync)
-        :type MigrateType: int
-        :param Source: Migration source
-        :type Source: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`
-        :param Target: Migration target
-        :type Target: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`
-        :param MigrateDBSet: Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)
-        :type MigrateDBSet: list of MigrateDB
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param MigrateId: Migration task ID\n        :type MigrateId: int\n        :param MigrateName: Migration task name\n        :type MigrateName: str\n        :param AppId: User ID of migration task\n        :type AppId: int\n        :param Region: Migration task region\n        :type Region: str\n        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)\n        :type SourceType: int\n        :param CreateTime: Migration task creation time\n        :type CreateTime: str\n        :param StartTime: Migration task start time\n        :type StartTime: str\n        :param EndTime: Migration task end time\n        :type EndTime: str\n        :param Status: Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded)\n        :type Status: int\n        :param Progress: Migration task progress\n        :type Progress: int\n        :param MigrateType: Migration type (1: structure migration, 2: data migration, 3: incremental sync)\n        :type MigrateType: int\n        :param Source: Migration source\n        :type Source: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`\n        :param Target: Migration target\n        :type Target: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`\n        :param MigrateDBSet: Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)\n        :type MigrateDBSet: list of MigrateDB\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MigrateId = None
         self.MigrateName = None
         self.AppId = None
@@ -2386,19 +1824,7 @@ class DescribeMigrationsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StatusSet: Status set. As long as a migration task is in a status therein, it will be listed
-        :type StatusSet: list of int
-        :param MigrateName: Migration task name (fuzzy match)
-        :type MigrateName: str
-        :param Limit: Number of results per page. Value range: 1-100. Default value: 100
-        :type Limit: int
-        :param Offset: Page number. Default value: 0
-        :type Offset: int
-        :param OrderBy: The query results are sorted by keyword. Valid values: name, createTime, startTime, endTime, status
-        :type OrderBy: str
-        :param OrderByType: Sorting order. Valid values: desc, asc
-        :type OrderByType: str
-        """
+        :param StatusSet: Status set. As long as a migration task is in a status therein, it will be listed\n        :type StatusSet: list of int\n        :param MigrateName: Migration task name (fuzzy match)\n        :type MigrateName: str\n        :param Limit: Number of results per page. Value range: 1-100. Default value: 100\n        :type Limit: int\n        :param Offset: Page number. Default value: 0\n        :type Offset: int\n        :param OrderBy: The query results are sorted by keyword. Valid values: name, createTime, startTime, endTime, status\n        :type OrderBy: str\n        :param OrderByType: Sorting order. Valid values: desc, asc\n        :type OrderByType: str\n        """
         self.StatusSet = None
         self.MigrateName = None
         self.Limit = None
@@ -2430,13 +1856,7 @@ class DescribeMigrationsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of query results
-        :type TotalCount: int
-        :param MigrateTaskSet: List of query results
-        :type MigrateTaskSet: list of MigrateTask
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of query results\n        :type TotalCount: int\n        :param MigrateTaskSet: List of query results\n        :type MigrateTaskSet: list of MigrateTask\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.MigrateTaskSet = None
         self.RequestId = None
@@ -2460,9 +1880,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DealNames: Order array. The order name will be returned upon shipping, which can be used to call the `DescribeOrders` API to query shipment status
-        :type DealNames: list of str
-        """
+        :param DealNames: Order array. The order name will be returned upon shipping, which can be used to call the `DescribeOrders` API to query shipment status\n        :type DealNames: list of str\n        """
         self.DealNames = None
 
 
@@ -2484,13 +1902,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Deals: Order information array
-        :type Deals: list of DealInfo
-        :param TotalCount: Number of orders returned
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Deals: Order information array\n        :type Deals: list of DealInfo\n        :param TotalCount: Number of orders returned\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Deals = None
         self.TotalCount = None
         self.RequestId = None
@@ -2514,11 +1926,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: AZ ID in the format of ap-guangzhou-1
-        :type Zone: str
-        :param InstanceType: The type of instances to be purchased. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)
-        :type InstanceType: str
-        """
+        :param Zone: AZ ID in the format of ap-guangzhou-1\n        :type Zone: str\n        :param InstanceType: The type of instances to be purchased. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)\n        :type InstanceType: str\n        """
         self.Zone = None
         self.InstanceType = None
 
@@ -2542,13 +1950,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SpecInfoList: Specification information array
-        :type SpecInfoList: list of SpecInfo
-        :param TotalCount: Number of date entries returned
-        :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param SpecInfoList: Specification information array\n        :type SpecInfoList: list of SpecInfo\n        :param TotalCount: Number of date entries returned\n        :type TotalCount: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.SpecInfoList = None
         self.TotalCount = None
         self.RequestId = None
@@ -2578,13 +1980,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of regions returned
-        :type TotalCount: int
-        :param RegionSet: Region information array
-        :type RegionSet: list of RegionInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of regions returned\n        :type TotalCount: int\n        :param RegionSet: Region information array\n        :type RegionSet: list of RegionInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RegionSet = None
         self.RequestId = None
@@ -2608,11 +2004,7 @@ class DescribeRollbackTimeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param DBs: List of databases to be queried
-        :type DBs: list of str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param DBs: List of databases to be queried\n        :type DBs: list of str\n        """
         self.InstanceId = None
         self.DBs = None
 
@@ -2636,11 +2028,7 @@ class DescribeRollbackTimeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Details: Information of time range available for database rollback
-        :type Details: list of DbRollbackTimeInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Details: Information of time range available for database rollback\n        :type Details: list of DbRollbackTimeInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Details = None
         self.RequestId = None
 
@@ -2662,17 +2050,7 @@ class DescribeSlowlogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of mssql-k8voqdlz
-        :type InstanceId: str
-        :param StartTime: Query start time
-        :type StartTime: str
-        :param EndTime: Query end time
-        :type EndTime: str
-        :param Limit: Number of results per page. Value range: 1-100. Default value: 20
-        :type Limit: int
-        :param Offset: Page number. Default value: 0
-        :type Offset: int
-        """
+        :param InstanceId: Instance ID in the format of mssql-k8voqdlz\n        :type InstanceId: str\n        :param StartTime: Query start time\n        :type StartTime: str\n        :param EndTime: Query end time\n        :type EndTime: str\n        :param Limit: Number of results per page. Value range: 1-100. Default value: 20\n        :type Limit: int\n        :param Offset: Page number. Default value: 0\n        :type Offset: int\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -2702,13 +2080,7 @@ class DescribeSlowlogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Total number of queries
-        :type TotalCount: int
-        :param Slowlogs: Information list of slow query logs
-        :type Slowlogs: list of SlowlogInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Total number of queries\n        :type TotalCount: int\n        :param Slowlogs: Information list of slow query logs\n        :type Slowlogs: list of SlowlogInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Slowlogs = None
         self.RequestId = None
@@ -2732,11 +2104,7 @@ class DescribeUploadBackupInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance
-        :type InstanceId: str
-        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
-        :type BackupMigrationId: str
-        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
 
@@ -2760,25 +2128,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BucketName: Bucket name
-        :type BucketName: str
-        :param Region: Bucket location information
-        :type Region: str
-        :param Path: Storage path
-        :type Path: str
-        :param TmpSecretId: Temporary key ID
-        :type TmpSecretId: str
-        :param TmpSecretKey: Temporary key (Key)
-        :type TmpSecretKey: str
-        :param XCosSecurityToken: Temporary key (Token)
-        :type XCosSecurityToken: str
-        :param StartTime: Temporary key start time
-        :type StartTime: str
-        :param ExpiredTime: Temporary key expiration time
-        :type ExpiredTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param BucketName: Bucket name\n        :type BucketName: str\n        :param Region: Bucket location information\n        :type Region: str\n        :param Path: Storage path\n        :type Path: str\n        :param TmpSecretId: Temporary key ID\n        :type TmpSecretId: str\n        :param TmpSecretKey: Temporary key (Key)\n        :type TmpSecretKey: str\n        :param XCosSecurityToken: Temporary key (Token)\n        :type XCosSecurityToken: str\n        :param StartTime: Temporary key start time\n        :type StartTime: str\n        :param ExpiredTime: Temporary key expiration time\n        :type ExpiredTime: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.BucketName = None
         self.Region = None
         self.Path = None
@@ -2815,13 +2165,7 @@ class DescribeZonesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: Number of AZs returned
-        :type TotalCount: int
-        :param ZoneSet: Array of AZs
-        :type ZoneSet: list of ZoneInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param TotalCount: Number of AZs returned\n        :type TotalCount: int\n        :param ZoneSet: Array of AZs\n        :type ZoneSet: list of ZoneInfo\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ZoneSet = None
         self.RequestId = None
@@ -2845,27 +2189,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API
-        :type Zone: str
-        :param Memory: Memory size in GB
-        :type Memory: int
-        :param Storage: Instance capacity in GB
-        :type Storage: int
-        :param InstanceChargeType: Billing type. Valid value: POSTPAID.
-        :type InstanceChargeType: str
-        :param Period: Length of purchase in months. Value range: 1-48. Default value: 1
-        :type Period: int
-        :param GoodsNum: Number of instances purchased at a time. Value range: 1-100. Default value: 1
-        :type GoodsNum: int
-        :param DBVersion: SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). Default value: 2008R2.
-        :type DBVersion: str
-        :param Cpu: The number of CPU cores of the instance you want to purchase.
-        :type Cpu: int
-        :param InstanceType: The type of purchased instance. Valid values: HA (high-availability edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (basic edition). Default value: HA.
-        :type InstanceType: str
-        :param MachineType: The host type of purchased instance. Valid values: PM (physical machine), CLOUD_PREMIUM (physical machine with premium cloud disk), CLOUD_SSD (physical machine with SSD). Default value: PM.
-        :type MachineType: str
-        """
+        :param Zone: AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API\n        :type Zone: str\n        :param Memory: Memory size in GB\n        :type Memory: int\n        :param Storage: Instance capacity in GB\n        :type Storage: int\n        :param InstanceChargeType: Billing type. Valid value: POSTPAID.\n        :type InstanceChargeType: str\n        :param Period: Length of purchase in months. Value range: 1-48. Default value: 1\n        :type Period: int\n        :param GoodsNum: Number of instances purchased at a time. Value range: 1-100. Default value: 1\n        :type GoodsNum: int\n        :param DBVersion: SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). Default value: 2008R2.\n        :type DBVersion: str\n        :param Cpu: The number of CPU cores of the instance you want to purchase.\n        :type Cpu: int\n        :param InstanceType: The type of purchased instance. Valid values: HA (high-availability edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (basic edition). Default value: HA.\n        :type InstanceType: str\n        :param MachineType: The host type of purchased instance. Valid values: PM (physical machine), CLOUD_PREMIUM (physical machine with premium cloud disk), CLOUD_SSD (physical machine with SSD). Default value: PM.\n        :type MachineType: str\n        """
         self.Zone = None
         self.Memory = None
         self.Storage = None
@@ -2905,13 +2229,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: Price before discount. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD
-        :type OriginalPrice: int
-        :param Price: The actual price to be paid. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD
-        :type Price: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param OriginalPrice: Price before discount. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD\n        :type OriginalPrice: int\n        :param Price: The actual price to be paid. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD\n        :type Price: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.RequestId = None
@@ -2930,15 +2248,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of mssql-njj2mtpl
-        :type InstanceId: str
-        :param Memory: Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size
-        :type Memory: int
-        :param Storage: Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity
-        :type Storage: int
-        :param Cpu: The number of CUP cores after the instance is upgraded, which cannot be smaller than that of the current cores.
-        :type Cpu: int
-        """
+        :param InstanceId: Instance ID in the format of mssql-njj2mtpl\n        :type InstanceId: str\n        :param Memory: Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size\n        :type Memory: int\n        :param Storage: Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity\n        :type Storage: int\n        :param Cpu: The number of CUP cores after the instance is upgraded, which cannot be smaller than that of the current cores.\n        :type Cpu: int\n        """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
@@ -2966,13 +2276,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD
-        :type OriginalPrice: int
-        :param Price: The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD
-        :type Price: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param OriginalPrice: Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD\n        :type OriginalPrice: int\n        :param Price: The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD\n        :type Price: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.RequestId = None
@@ -2991,11 +2295,7 @@ class InstanceDBDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param DBDetails: Database information list
-        :type DBDetails: list of DBDetail
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param DBDetails: Database information list\n        :type DBDetails: list of DBDetail\n        """
         self.InstanceId = None
         self.DBDetails = None
 
@@ -3024,9 +2324,7 @@ class MigrateDB(AbstractModel):
 
     def __init__(self):
         """
-        :param DBName: Name of migrated database
-        :type DBName: str
-        """
+        :param DBName: Name of migrated database\n        :type DBName: str\n        """
         self.DBName = None
 
 
@@ -3048,11 +2346,7 @@ class MigrateDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param StepName: Name of current step
-        :type StepName: str
-        :param Progress: Progress of current step in %
-        :type Progress: int
-        """
+        :param StepName: Name of current step\n        :type StepName: str\n        :param Progress: Progress of current step in %\n        :type Progress: int\n        """
         self.StepName = None
         self.Progress = None
 
@@ -3076,27 +2370,7 @@ class MigrateSource(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Source instance ID in the format of `mssql-si2823jyl`, which is used when `MigrateType` is 1 (TencentDB for SQL Server)
-        :type InstanceId: str
-        :param CvmId: ID of source CVM instance, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
-        :type CvmId: str
-        :param VpcId: VPC ID of source CVM instance in the format of vpc-6ys9ont9, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
-        :type VpcId: str
-        :param SubnetId: VPC subnet ID of source CVM instance in the format of subnet-h9extioi, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
-        :type SubnetId: str
-        :param UserName: Username, which is used when `MigrateType` is 1 or 2
-        :type UserName: str
-        :param Password: Password, which is used when `MigrateType` is 1 or 2
-        :type Password: str
-        :param Ip: Private IP of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
-        :type Ip: str
-        :param Port: Port number of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
-        :type Port: int
-        :param Url: Source backup address for offline migration, which is used when `MigrateType` is 4 or 5
-        :type Url: list of str
-        :param UrlPassword: Source backup password for offline migration, which is used when `MigrateType` is 4 or 5
-        :type UrlPassword: str
-        """
+        :param InstanceId: Source instance ID in the format of `mssql-si2823jyl`, which is used when `MigrateType` is 1 (TencentDB for SQL Server)\n        :type InstanceId: str\n        :param CvmId: ID of source CVM instance, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)\n        :type CvmId: str\n        :param VpcId: VPC ID of source CVM instance in the format of vpc-6ys9ont9, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)\n        :type VpcId: str\n        :param SubnetId: VPC subnet ID of source CVM instance in the format of subnet-h9extioi, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)\n        :type SubnetId: str\n        :param UserName: Username, which is used when `MigrateType` is 1 or 2\n        :type UserName: str\n        :param Password: Password, which is used when `MigrateType` is 1 or 2\n        :type Password: str\n        :param Ip: Private IP of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)\n        :type Ip: str\n        :param Port: Port number of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)\n        :type Port: int\n        :param Url: Source backup address for offline migration, which is used when `MigrateType` is 4 or 5\n        :type Url: list of str\n        :param UrlPassword: Source backup password for offline migration, which is used when `MigrateType` is 4 or 5\n        :type UrlPassword: str\n        """
         self.InstanceId = None
         self.CvmId = None
         self.VpcId = None
@@ -3136,13 +2410,7 @@ class MigrateTarget(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of target instance in the format of mssql-si2823jyl
-        :type InstanceId: str
-        :param UserName: Username of migration target instance
-        :type UserName: str
-        :param Password: Password of migration target instance
-        :type Password: str
-        """
+        :param InstanceId: ID of target instance in the format of mssql-si2823jyl\n        :type InstanceId: str\n        :param UserName: Username of migration target instance\n        :type UserName: str\n        :param Password: Password of migration target instance\n        :type Password: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Password = None
@@ -3168,33 +2436,7 @@ class MigrateTask(AbstractModel):
 
     def __init__(self):
         """
-        :param MigrateId: Migration task ID
-        :type MigrateId: int
-        :param MigrateName: Migration task name
-        :type MigrateName: str
-        :param AppId: User ID of migration task
-        :type AppId: int
-        :param Region: Migration task region
-        :type Region: str
-        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
-        :type SourceType: int
-        :param CreateTime: Migration task creation time
-        :type CreateTime: str
-        :param StartTime: Migration task start time
-        :type StartTime: str
-        :param EndTime: Migration task end time
-        :type EndTime: str
-        :param Status: Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded, 7: suspended, 8: deleted, 9: suspending, 10: completing, 11: suspension failed, 12: completion failed)
-        :type Status: int
-        :param Message: Information
-        :type Message: str
-        :param CheckFlag: Whether migration task has been checked (0: not checked, 1: check succeeded, 2: check failed, 3: checking)
-        :type CheckFlag: int
-        :param Progress: Migration task progress in %
-        :type Progress: int
-        :param MigrateDetail: Migration task progress details
-        :type MigrateDetail: :class:`tencentcloud.sqlserver.v20180328.models.MigrateDetail`
-        """
+        :param MigrateId: Migration task ID\n        :type MigrateId: int\n        :param MigrateName: Migration task name\n        :type MigrateName: str\n        :param AppId: User ID of migration task\n        :type AppId: int\n        :param Region: Migration task region\n        :type Region: str\n        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)\n        :type SourceType: int\n        :param CreateTime: Migration task creation time\n        :type CreateTime: str\n        :param StartTime: Migration task start time\n        :type StartTime: str\n        :param EndTime: Migration task end time\n        :type EndTime: str\n        :param Status: Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded, 7: suspended, 8: deleted, 9: suspending, 10: completing, 11: suspension failed, 12: completion failed)\n        :type Status: int\n        :param Message: Information\n        :type Message: str\n        :param CheckFlag: Whether migration task has been checked (0: not checked, 1: check succeeded, 2: check failed, 3: checking)\n        :type CheckFlag: int\n        :param Progress: Migration task progress in %\n        :type Progress: int\n        :param MigrateDetail: Migration task progress details\n        :type MigrateDetail: :class:`tencentcloud.sqlserver.v20180328.models.MigrateDetail`\n        """
         self.MigrateId = None
         self.MigrateName = None
         self.AppId = None
@@ -3242,41 +2484,9 @@ class Migration(AbstractModel):
 
     def __init__(self):
         """
-        :param MigrationId: Backup import task ID or incremental import task ID
-        :type MigrationId: str
-        :param MigrationName: Backup import task name. For an incremental import task, this field will be left empty.
-Note: this field may return ‘null’, indicating that no valid values can be obtained.
-        :type MigrationName: str
-        :param AppId: Application ID
-        :type AppId: int
-        :param Region: Region
-        :type Region: str
-        :param InstanceId: ID of migrated target instance
-        :type InstanceId: str
-        :param RecoveryType: Migration task restoration type
-        :type RecoveryType: str
-        :param UploadType: Backup user upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
-        :type UploadType: str
-        :param BackupFiles: Backup file list, which is determined by UploadType. If the upload type is COS_URL, URL will be saved. If the upload type is COS_UPLOAD, the backup name will be saved.
-        :type BackupFiles: list of str
-        :param Status: Migration task status. Valid values: `2` (Creation completed), `7` (Importing full backups), `8` (Waiting for incremental backups), `9` (Import success), `10` (Import failure), `12` (Importing incremental backups).
-        :type Status: int
-        :param CreateTime: Migration task creation time
-        :type CreateTime: str
-        :param StartTime: Migration task start time
-        :type StartTime: str
-        :param EndTime: Migration task end time
-        :type EndTime: str
-        :param Message: More information
-        :type Message: str
-        :param Detail: Migration detail
-        :type Detail: :class:`tencentcloud.sqlserver.v20180328.models.MigrationDetail`
-        :param Action: Operation allowed in the current status
-        :type Action: :class:`tencentcloud.sqlserver.v20180328.models.MigrationAction`
-        :param IsRecovery: Whether this is the final restoration. For a full import task, this field will be left empty.
-Note: this field may return ‘null’, indicating that no valid values can be obtained.
-        :type IsRecovery: str
-        """
+        :param MigrationId: Backup import task ID or incremental import task ID\n        :type MigrationId: str\n        :param MigrationName: Backup import task name. For an incremental import task, this field will be left empty.
+Note: this field may return ‘null’, indicating that no valid values can be obtained.\n        :type MigrationName: str\n        :param AppId: Application ID\n        :type AppId: int\n        :param Region: Region\n        :type Region: str\n        :param InstanceId: ID of migrated target instance\n        :type InstanceId: str\n        :param RecoveryType: Migration task restoration type\n        :type RecoveryType: str\n        :param UploadType: Backup user upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.\n        :type UploadType: str\n        :param BackupFiles: Backup file list, which is determined by UploadType. If the upload type is COS_URL, URL will be saved. If the upload type is COS_UPLOAD, the backup name will be saved.\n        :type BackupFiles: list of str\n        :param Status: Migration task status. Valid values: `2` (Creation completed), `7` (Importing full backups), `8` (Waiting for incremental backups), `9` (Import success), `10` (Import failure), `12` (Importing incremental backups).\n        :type Status: int\n        :param CreateTime: Migration task creation time\n        :type CreateTime: str\n        :param StartTime: Migration task start time\n        :type StartTime: str\n        :param EndTime: Migration task end time\n        :type EndTime: str\n        :param Message: More information\n        :type Message: str\n        :param Detail: Migration detail\n        :type Detail: :class:`tencentcloud.sqlserver.v20180328.models.MigrationDetail`\n        :param Action: Operation allowed in the current status\n        :type Action: :class:`tencentcloud.sqlserver.v20180328.models.MigrationAction`\n        :param IsRecovery: Whether this is the final restoration. For a full import task, this field will be left empty.
+Note: this field may return ‘null’, indicating that no valid values can be obtained.\n        :type IsRecovery: str\n        """
         self.MigrationId = None
         self.MigrationName = None
         self.AppId = None
@@ -3332,11 +2542,7 @@ class MigrationAction(AbstractModel):
 
     def __init__(self):
         """
-        :param AllAction: All the allowed operations. Values include: view (viewing a task), modify (modifying a task), start (starting a task), incremental (creating an incremental task), delete (deleting a task), and upload (obtaining the upload permission).
-        :type AllAction: list of str
-        :param AllowedAction: Operation allowed in the current status. If the subset of AllAction is left empty, no operations will be allowed.
-        :type AllowedAction: list of str
-        """
+        :param AllAction: All the allowed operations. Values include: view (viewing a task), modify (modifying a task), start (starting a task), incremental (creating an incremental task), delete (deleting a task), and upload (obtaining the upload permission).\n        :type AllAction: list of str\n        :param AllowedAction: Operation allowed in the current status. If the subset of AllAction is left empty, no operations will be allowed.\n        :type AllowedAction: list of str\n        """
         self.AllAction = None
         self.AllowedAction = None
 
@@ -3360,16 +2566,8 @@ class MigrationDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param StepAll: Total number of steps
-        :type StepAll: int
-        :param StepNow: Current step
-        :type StepNow: int
-        :param Progress: Overall progress. For example, “30” means 30%.
-        :type Progress: int
-        :param StepInfo: Step information. ‘null’ means the migration has not started
-Note: this field may return ‘null’, indicating that no valid values can be obtained.
-        :type StepInfo: list of MigrationStep
-        """
+        :param StepAll: Total number of steps\n        :type StepAll: int\n        :param StepNow: Current step\n        :type StepNow: int\n        :param Progress: Overall progress. For example, “30” means 30%.\n        :type Progress: int\n        :param StepInfo: Step information. ‘null’ means the migration has not started
+Note: this field may return ‘null’, indicating that no valid values can be obtained.\n        :type StepInfo: list of MigrationStep\n        """
         self.StepAll = None
         self.StepNow = None
         self.Progress = None
@@ -3402,15 +2600,7 @@ class MigrationStep(AbstractModel):
 
     def __init__(self):
         """
-        :param StepNo: Step sequence
-        :type StepNo: int
-        :param StepName: Step name
-        :type StepName: str
-        :param StepId: Step ID in English
-        :type StepId: str
-        :param Status: Step status: 0 (default value), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)
-        :type Status: int
-        """
+        :param StepNo: Step sequence\n        :type StepNo: int\n        :param StepName: Step name\n        :type StepName: str\n        :param StepId: Step ID in English\n        :type StepId: str\n        :param Status: Step status: 0 (default value), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)\n        :type Status: int\n        """
         self.StepNo = None
         self.StepName = None
         self.StepId = None
@@ -3438,11 +2628,7 @@ class ModifyAccountPrivilegeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl
-        :type InstanceId: str
-        :param Accounts: Account permission change information
-        :type Accounts: list of AccountPrivilegeModifyInfo
-        """
+        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl\n        :type InstanceId: str\n        :param Accounts: Account permission change information\n        :type Accounts: list of AccountPrivilegeModifyInfo\n        """
         self.InstanceId = None
         self.Accounts = None
 
@@ -3471,11 +2657,7 @@ class ModifyAccountPrivilegeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Async task flow ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Async task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -3492,11 +2674,7 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of mssql-j8kv137v
-        :type InstanceId: str
-        :param Accounts: Information of account for which to modify remarks
-        :type Accounts: list of AccountRemark
-        """
+        :param InstanceId: Instance ID in the format of mssql-j8kv137v\n        :type InstanceId: str\n        :param Accounts: Information of account for which to modify remarks\n        :type Accounts: list of AccountRemark\n        """
         self.InstanceId = None
         self.Accounts = None
 
@@ -3525,9 +2703,7 @@ class ModifyAccountRemarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3542,19 +2718,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance
-        :type InstanceId: str
-        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
-        :type BackupMigrationId: str
-        :param MigrationName: Task name
-        :type MigrationName: str
-        :param RecoveryType: Migration task restoration type: FULL,FULL_LOG,FULL_DIFF
-        :type RecoveryType: str
-        :param UploadType: COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
-        :type UploadType: str
-        :param BackupFiles: If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
-        :type BackupFiles: list of str
-        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        :param MigrationName: Task name\n        :type MigrationName: str\n        :param RecoveryType: Migration task restoration type: FULL,FULL_LOG,FULL_DIFF\n        :type RecoveryType: str\n        :param UploadType: COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.\n        :type UploadType: str\n        :param BackupFiles: If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.\n        :type BackupFiles: list of str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
         self.MigrationName = None
@@ -3586,11 +2750,7 @@ class ModifyBackupMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BackupMigrationId: Backup import task ID
-        :type BackupMigrationId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param BackupMigrationId: Backup import task ID\n        :type BackupMigrationId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.BackupMigrationId = None
         self.RequestId = None
 
@@ -3607,15 +2767,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.
-        :type InstanceId: str
-        :param BackupType: Backup mode, which supports daily backup only. Valid value: daily.
-        :type BackupType: str
-        :param BackupTime: Backup time. Value range: an integer from 0 to 23.
-        :type BackupTime: int
-        :param BackupDay: Backup interval in days when the `BackupType` is `daily`. Valid value: 1.
-        :type BackupDay: int
-        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param BackupType: Backup mode, which supports daily backup only. Valid value: daily.\n        :type BackupType: str\n        :param BackupTime: Backup time. Value range: an integer from 0 to 23.\n        :type BackupTime: int\n        :param BackupDay: Backup interval in days when the `BackupType` is `daily`. Valid value: 1.\n        :type BackupDay: int\n        """
         self.InstanceId = None
         self.BackupType = None
         self.BackupTime = None
@@ -3643,13 +2795,7 @@ class ModifyBackupStrategyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Errno: Returned error code.
-        :type Errno: int
-        :param Msg: Returned error message.
-        :type Msg: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Errno: Returned error code.\n        :type Errno: int\n        :param Msg: Returned error message.\n        :type Msg: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Errno = None
         self.Msg = None
         self.RequestId = None
@@ -3668,11 +2814,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl
-        :type InstanceId: str
-        :param InstanceName: New name of database instance
-        :type InstanceName: str
-        """
+        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl\n        :type InstanceId: str\n        :param InstanceName: New name of database instance\n        :type InstanceName: str\n        """
         self.InstanceId = None
         self.InstanceName = None
 
@@ -3696,9 +2838,7 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3713,15 +2853,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param NewVpcId: ID of the new VPC
-        :type NewVpcId: str
-        :param NewSubnetId: ID of the new subnet
-        :type NewSubnetId: str
-        :param OldIpRetainTime: Retention period (in hours) of the original VIP. Value range: `0-168`. Default value: `0`, indicating the original VIP is released immediately.
-        :type OldIpRetainTime: int
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param NewVpcId: ID of the new VPC\n        :type NewVpcId: str\n        :param NewSubnetId: ID of the new subnet\n        :type NewSubnetId: str\n        :param OldIpRetainTime: Retention period (in hours) of the original VIP. Value range: `0-168`. Default value: `0`, indicating the original VIP is released immediately.\n        :type OldIpRetainTime: int\n        """
         self.InstanceId = None
         self.NewVpcId = None
         self.NewSubnetId = None
@@ -3749,11 +2881,7 @@ class ModifyDBInstanceNetworkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: ID of the instance network changing task. You can use the [DescribeFlowStatus](https://intl.cloud.tencent.com/document/product/238/19967?from_cn_redirect=1) API to query the task status.
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: ID of the instance network changing task. You can use the [DescribeFlowStatus](https://intl.cloud.tencent.com/document/product/238/19967?from_cn_redirect=1) API to query the task status.\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -3770,11 +2898,7 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIdSet: Array of instance IDs in the format of mssql-j8kv137v
-        :type InstanceIdSet: list of str
-        :param ProjectId: Project ID. If this parameter is 0, the default project will be used
-        :type ProjectId: int
-        """
+        :param InstanceIdSet: Array of instance IDs in the format of mssql-j8kv137v\n        :type InstanceIdSet: list of str\n        :param ProjectId: Project ID. If this parameter is 0, the default project will be used\n        :type ProjectId: int\n        """
         self.InstanceIdSet = None
         self.ProjectId = None
 
@@ -3798,11 +2922,7 @@ class ModifyDBInstanceProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Count: Number of successfully modified instances
-        :type Count: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param Count: Number of successfully modified instances\n        :type Count: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Count = None
         self.RequestId = None
 
@@ -3819,13 +2939,7 @@ class ModifyDBNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param OldDBName: Old database name
-        :type OldDBName: str
-        :param NewDBName: New name of database
-        :type NewDBName: str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param OldDBName: Old database name\n        :type OldDBName: str\n        :param NewDBName: New name of database\n        :type NewDBName: str\n        """
         self.InstanceId = None
         self.OldDBName = None
         self.NewDBName = None
@@ -3851,11 +2965,7 @@ class ModifyDBNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task flow ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -3872,11 +2982,7 @@ class ModifyDBRemarkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of mssql-rljoi3bf
-        :type InstanceId: str
-        :param DBRemarks: Array of database names and remarks, where each element contains a database name and the corresponding remarks
-        :type DBRemarks: list of DBRemark
-        """
+        :param InstanceId: Instance ID in the format of mssql-rljoi3bf\n        :type InstanceId: str\n        :param DBRemarks: Array of database names and remarks, where each element contains a database name and the corresponding remarks\n        :type DBRemarks: list of DBRemark\n        """
         self.InstanceId = None
         self.DBRemarks = None
 
@@ -3905,9 +3011,7 @@ class ModifyDBRemarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3922,17 +3026,7 @@ class ModifyIncrementalMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance
-        :type InstanceId: str
-        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
-        :type BackupMigrationId: str
-        :param IncrementalMigrationId: Incremental import task ID
-        :type IncrementalMigrationId: str
-        :param IsRecovery: Whether restoration is required. No: not required. Yes: required.
-        :type IsRecovery: str
-        :param BackupFiles: If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
-        :type BackupFiles: list of str
-        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        :param IncrementalMigrationId: Incremental import task ID\n        :type IncrementalMigrationId: str\n        :param IsRecovery: Whether restoration is required. No: not required. Yes: required.\n        :type IsRecovery: str\n        :param BackupFiles: If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.\n        :type BackupFiles: list of str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
         self.IncrementalMigrationId = None
@@ -3962,11 +3056,7 @@ class ModifyIncrementalMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param IncrementalMigrationId: ID of an incremental backup import task
-        :type IncrementalMigrationId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param IncrementalMigrationId: ID of an incremental backup import task\n        :type IncrementalMigrationId: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.IncrementalMigrationId = None
         self.RequestId = None
 
@@ -3983,21 +3073,7 @@ class ModifyMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MigrateId: Migration task ID
-        :type MigrateId: int
-        :param MigrateName: New name of migration task. If this parameter is left empty, no modification will be made
-        :type MigrateName: str
-        :param MigrateType: New migration type (1: structure migration, 2: data migration, 3: incremental sync). If this parameter is left empty, no modification will be made
-        :type MigrateType: int
-        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode). If this parameter is left empty, no modification will be made
-        :type SourceType: int
-        :param Source: Migration source. If this parameter is left empty, no modification will be made
-        :type Source: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`
-        :param Target: Migration target. If this parameter is left empty, no modification will be made
-        :type Target: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`
-        :param MigrateDBSet: Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5). If it left empty, no modification will be made
-        :type MigrateDBSet: list of MigrateDB
-        """
+        :param MigrateId: Migration task ID\n        :type MigrateId: int\n        :param MigrateName: New name of migration task. If this parameter is left empty, no modification will be made\n        :type MigrateName: str\n        :param MigrateType: New migration type (1: structure migration, 2: data migration, 3: incremental sync). If this parameter is left empty, no modification will be made\n        :type MigrateType: int\n        :param SourceType: Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode). If this parameter is left empty, no modification will be made\n        :type SourceType: int\n        :param Source: Migration source. If this parameter is left empty, no modification will be made\n        :type Source: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`\n        :param Target: Migration target. If this parameter is left empty, no modification will be made\n        :type Target: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`\n        :param MigrateDBSet: Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5). If it left empty, no modification will be made\n        :type MigrateDBSet: list of MigrateDB\n        """
         self.MigrateId = None
         self.MigrateName = None
         self.MigrateType = None
@@ -4040,11 +3116,7 @@ class ModifyMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MigrateId: Migration task ID
-        :type MigrateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param MigrateId: Migration task ID\n        :type MigrateId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.MigrateId = None
         self.RequestId = None
 
@@ -4061,9 +3133,7 @@ class RecycleDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -4085,11 +3155,7 @@ class RecycleDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -4106,15 +3172,7 @@ class RegionInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: Region ID in the format of ap-guangzhou
-        :type Region: str
-        :param RegionName: Region name
-        :type RegionName: str
-        :param RegionId: Numeric ID of region
-        :type RegionId: int
-        :param RegionState: Current purchasability of this region. UNAVAILABLE: not purchasable, AVAILABLE: purchasable
-        :type RegionState: str
-        """
+        :param Region: Region ID in the format of ap-guangzhou\n        :type Region: str\n        :param RegionName: Region name\n        :type RegionName: str\n        :param RegionId: Numeric ID of region\n        :type RegionId: int\n        :param RegionState: Current purchasability of this region. UNAVAILABLE: not purchasable, AVAILABLE: purchasable\n        :type RegionState: str\n        """
         self.Region = None
         self.RegionName = None
         self.RegionId = None
@@ -4143,11 +3201,7 @@ class RenameRestoreDatabase(AbstractModel):
     def __init__(self):
         """
         :param OldName: Database name. If the `OldName` database does not exist, a failure will be returned.
-It can be left empty in offline migration tasks.
-        :type OldName: str
-        :param NewName: New database name. In offline migration, `OldName` will be used if `NewName` is left empty (`OldName` and `NewName` cannot be both empty). In database cloning, `OldName` and `NewName` must be both specified and cannot have the same value.
-        :type NewName: str
-        """
+It can be left empty in offline migration tasks.\n        :type OldName: str\n        :param NewName: New database name. In offline migration, `OldName` will be used if `NewName` is left empty (`OldName` and `NewName` cannot be both empty). In database cloning, `OldName` and `NewName` must be both specified and cannot have the same value.\n        :type NewName: str\n        """
         self.OldName = None
         self.NewName = None
 
@@ -4171,11 +3225,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl
-        :type InstanceId: str
-        :param Accounts: Updated account password information array
-        :type Accounts: list of AccountPassword
-        """
+        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl\n        :type InstanceId: str\n        :param Accounts: Updated account password information array\n        :type Accounts: list of AccountPassword\n        """
         self.InstanceId = None
         self.Accounts = None
 
@@ -4204,11 +3254,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: ID of async task flow for account password change
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: ID of async task flow for account password change\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -4225,11 +3271,7 @@ class ResourceTag(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: Tag key
-        :type TagKey: str
-        :param TagValue: Tag value
-        :type TagValue: str
-        """
+        :param TagKey: Tag key\n        :type TagKey: str\n        :param TagValue: Tag value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -4253,9 +3295,7 @@ class RestartDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl
-        :type InstanceId: str
-        """
+        :param InstanceId: Database instance ID in the format of mssql-njj2mtpl\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -4277,11 +3317,7 @@ class RestartDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Async task flow ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Async task flow ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -4298,15 +3334,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of mssql-j8kv137v
-        :type InstanceId: str
-        :param BackupId: Backup file ID, which can be obtained through the `Id` field in the returned value of the `DescribeBackups` API
-        :type BackupId: int
-        :param TargetInstanceId: ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.
-        :type TargetInstanceId: str
-        :param RenameRestore: Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format.
-        :type RenameRestore: list of RenameRestoreDatabase
-        """
+        :param InstanceId: Instance ID in the format of mssql-j8kv137v\n        :type InstanceId: str\n        :param BackupId: Backup file ID, which can be obtained through the `Id` field in the returned value of the `DescribeBackups` API\n        :type BackupId: int\n        :param TargetInstanceId: ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.\n        :type TargetInstanceId: str\n        :param RenameRestore: Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format.\n        :type RenameRestore: list of RenameRestoreDatabase\n        """
         self.InstanceId = None
         self.BackupId = None
         self.TargetInstanceId = None
@@ -4339,11 +3367,7 @@ class RestoreInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Async flow task ID, which can be used to call the `DescribeFlowStatus` API to get the task execution status
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Async flow task ID, which can be used to call the `DescribeFlowStatus` API to get the task execution status\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -4360,19 +3384,7 @@ class RollbackInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param Type: Rollback type. 0: the database rolled back overwrites the original database; 1: the database rolled back is renamed and does not overwrite the original database
-        :type Type: int
-        :param DBs: Database to be rolled back
-        :type DBs: list of str
-        :param Time: Target time point for rollback
-        :type Time: str
-        :param TargetInstanceId: ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.
-        :type TargetInstanceId: str
-        :param RenameRestore: Rename the databases listed in `ReNameRestoreDatabase`. This parameter takes effect only when `Type = 1` which indicates that backup rollback supports renaming databases. If it is left empty, databases will be renamed in the default format and the `DBs` parameter specifies the databases to be restored.
-        :type RenameRestore: list of RenameRestoreDatabase
-        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param Type: Rollback type. 0: the database rolled back overwrites the original database; 1: the database rolled back is renamed and does not overwrite the original database\n        :type Type: int\n        :param DBs: Database to be rolled back\n        :type DBs: list of str\n        :param Time: Target time point for rollback\n        :type Time: str\n        :param TargetInstanceId: ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.\n        :type TargetInstanceId: str\n        :param RenameRestore: Rename the databases listed in `ReNameRestoreDatabase`. This parameter takes effect only when `Type = 1` which indicates that backup rollback supports renaming databases. If it is left empty, databases will be renamed in the default format and the `DBs` parameter specifies the databases to be restored.\n        :type RenameRestore: list of RenameRestoreDatabase\n        """
         self.InstanceId = None
         self.Type = None
         self.DBs = None
@@ -4409,11 +3421,7 @@ class RollbackInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: The async job ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: The async job ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -4430,9 +3438,7 @@ class RunMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MigrateId: Migration task ID
-        :type MigrateId: int
-        """
+        :param MigrateId: Migration task ID\n        :type MigrateId: int\n        """
         self.MigrateId = None
 
 
@@ -4454,11 +3460,7 @@ class RunMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: After the migration task starts, the flow ID will be returned
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: After the migration task starts, the flow ID will be returned\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -4475,24 +3477,8 @@ class SlowlogInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: Unique ID of slow query log file
-        :type Id: int
-        :param StartTime: File generation start time
-        :type StartTime: str
-        :param EndTime: File generation end time
-        :type EndTime: str
-        :param Size: File size in KB
-        :type Size: int
-        :param Count: Number of logs in file
-        :type Count: int
-        :param InternalAddr: Download address for private network
-        :type InternalAddr: str
-        :param ExternalAddr: Download address for public network
-        :type ExternalAddr: str
-        :param Status: Status (1: success, 2: failure)
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type Status: int
-        """
+        :param Id: Unique ID of slow query log file\n        :type Id: int\n        :param StartTime: File generation start time\n        :type StartTime: str\n        :param EndTime: File generation end time\n        :type EndTime: str\n        :param Size: File size in KB\n        :type Size: int\n        :param Count: Number of logs in file\n        :type Count: int\n        :param InternalAddr: Download address for private network\n        :type InternalAddr: str\n        :param ExternalAddr: Download address for public network\n        :type ExternalAddr: str\n        :param Status: Status (1: success, 2: failure)
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Status: int\n        """
         self.Id = None
         self.StartTime = None
         self.EndTime = None
@@ -4528,40 +3514,8 @@ class SpecInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SpecId: Instance specification ID. The `SpecId` returned by `DescribeZones` together with the purchasable specification information returned by `DescribeProductConfig` can be used to find out what specifications can be purchased in a specified AZ
-        :type SpecId: int
-        :param MachineType: Model ID
-        :type MachineType: str
-        :param MachineTypeName: Model name
-        :type MachineTypeName: str
-        :param Version: Database version information. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)
-        :type Version: str
-        :param VersionName: Version name corresponding to the `Version` field
-        :type VersionName: str
-        :param Memory: Memory size in GB
-        :type Memory: int
-        :param CPU: Number of CPU cores
-        :type CPU: int
-        :param MinStorage: Minimum disk size under this specification in GB
-        :type MinStorage: int
-        :param MaxStorage: Maximum disk size under this specification in GB
-        :type MaxStorage: int
-        :param QPS: QPS of this specification
-        :type QPS: int
-        :param SuitInfo: Description of this specification
-        :type SuitInfo: str
-        :param Pid: Pid of this specification
-        :type Pid: int
-        :param PostPid: Pay-as-you-go Pid list corresponding to this specification
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type PostPid: list of int
-        :param PayModeStatus: Billing mode under this specification. POST: pay-as-you-go
-        :type PayModeStatus: str
-        :param InstanceType: Instance type. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)
-        :type InstanceType: str
-        :param MultiZonesStatus: Whether multi-AZ deployment is supported. Valid values: MultiZones (only multi-AZ deployment is supported), SameZones (only single-AZ deployment is supported), ALL (both deployments are supported)
-        :type MultiZonesStatus: str
-        """
+        :param SpecId: Instance specification ID. The `SpecId` returned by `DescribeZones` together with the purchasable specification information returned by `DescribeProductConfig` can be used to find out what specifications can be purchased in a specified AZ\n        :type SpecId: int\n        :param MachineType: Model ID\n        :type MachineType: str\n        :param MachineTypeName: Model name\n        :type MachineTypeName: str\n        :param Version: Database version information. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)\n        :type Version: str\n        :param VersionName: Version name corresponding to the `Version` field\n        :type VersionName: str\n        :param Memory: Memory size in GB\n        :type Memory: int\n        :param CPU: Number of CPU cores\n        :type CPU: int\n        :param MinStorage: Minimum disk size under this specification in GB\n        :type MinStorage: int\n        :param MaxStorage: Maximum disk size under this specification in GB\n        :type MaxStorage: int\n        :param QPS: QPS of this specification\n        :type QPS: int\n        :param SuitInfo: Description of this specification\n        :type SuitInfo: str\n        :param Pid: Pid of this specification\n        :type Pid: int\n        :param PostPid: Pay-as-you-go Pid list corresponding to this specification
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type PostPid: list of int\n        :param PayModeStatus: Billing mode under this specification. POST: pay-as-you-go\n        :type PayModeStatus: str\n        :param InstanceType: Instance type. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)\n        :type InstanceType: str\n        :param MultiZonesStatus: Whether multi-AZ deployment is supported. Valid values: MultiZones (only multi-AZ deployment is supported), SameZones (only single-AZ deployment is supported), ALL (both deployments are supported)\n        :type MultiZonesStatus: str\n        """
         self.SpecId = None
         self.MachineType = None
         self.MachineTypeName = None
@@ -4613,11 +3567,7 @@ class StartBackupMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance
-        :type InstanceId: str
-        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
-        :type BackupMigrationId: str
-        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
 
@@ -4641,11 +3591,7 @@ class StartBackupMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -4662,13 +3608,7 @@ class StartIncrementalMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance
-        :type InstanceId: str
-        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration
-        :type BackupMigrationId: str
-        :param IncrementalMigrationId: ID of an incremental backup import task
-        :type IncrementalMigrationId: str
-        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        :param IncrementalMigrationId: ID of an incremental backup import task\n        :type IncrementalMigrationId: str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
         self.IncrementalMigrationId = None
@@ -4694,11 +3634,7 @@ class StartIncrementalMigrationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: Task ID
-        :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -4715,9 +3651,7 @@ class TerminateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIdSet: List of instance IDs manually terminated in the format of [mssql-3l3fgqn7], which are the same as the instance IDs displayed on the TencentDB Console page
-        :type InstanceIdSet: list of str
-        """
+        :param InstanceIdSet: List of instance IDs manually terminated in the format of [mssql-3l3fgqn7], which are the same as the instance IDs displayed on the TencentDB Console page\n        :type InstanceIdSet: list of str\n        """
         self.InstanceIdSet = None
 
 
@@ -4739,9 +3673,7 @@ class TerminateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4756,25 +3688,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID in the format of mssql-j8kv137v
-        :type InstanceId: str
-        :param Memory: Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size
-        :type Memory: int
-        :param Storage: Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity
-        :type Storage: int
-        :param AutoVoucher: Whether to automatically use vouchers. 0: no, 1: yes. Default value: 0
-        :type AutoVoucher: int
-        :param VoucherIds: Voucher ID (currently, only one voucher can be used per order)
-        :type VoucherIds: list of str
-        :param Cpu: The number of CUP cores after the instance is upgraded.
-        :type Cpu: int
-        :param DBVersion: Upgrade the SQL Server version. Supported versions include SQL Server 2008 Enterprise (`2008R2`), SQL Server 2012 Enterprise (`2012SP3`), etc. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region. Downgrading is unsupported. If this parameter is left empty, the SQL Server version will not be changed.
-        :type DBVersion: str
-        :param HAType: Upgrade the high availability architecture from image-based disaster recovery to Always On cluster disaster recovery. This parameter is valid only for instances which support Always On high availability and run SQL Server 2017 or later. Neither downgrading to image-based disaster recovery nor upgrading from cluster disaster recovery to Always On disaster recovery is supported. If this parameter is left empty, the high availability architecture will not be changed.
-        :type HAType: str
-        :param MultiZones: Change the instance deployment scheme. Valid values: `SameZones` (change to single-AZ deployment, which does not support cross-AZ disaster recovery), `MultiZones` (change to multi-AZ deployment, which supports cross-AZ disaster recovery).
-        :type MultiZones: str
-        """
+        :param InstanceId: Instance ID in the format of mssql-j8kv137v\n        :type InstanceId: str\n        :param Memory: Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size\n        :type Memory: int\n        :param Storage: Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity\n        :type Storage: int\n        :param AutoVoucher: Whether to automatically use vouchers. 0: no, 1: yes. Default value: 0\n        :type AutoVoucher: int\n        :param VoucherIds: Voucher ID (currently, only one voucher can be used per order)\n        :type VoucherIds: list of str\n        :param Cpu: The number of CUP cores after the instance is upgraded.\n        :type Cpu: int\n        :param DBVersion: Upgrade the SQL Server version. Supported versions include SQL Server 2008 Enterprise (`2008R2`), SQL Server 2012 Enterprise (`2012SP3`), etc. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region. Downgrading is unsupported. If this parameter is left empty, the SQL Server version will not be changed.\n        :type DBVersion: str\n        :param HAType: Upgrade the high availability architecture from image-based disaster recovery to Always On cluster disaster recovery. This parameter is valid only for instances which support Always On high availability and run SQL Server 2017 or later. Neither downgrading to image-based disaster recovery nor upgrading from cluster disaster recovery to Always On disaster recovery is supported. If this parameter is left empty, the high availability architecture will not be changed.\n        :type HAType: str\n        :param MultiZones: Change the instance deployment scheme. Valid values: `SameZones` (change to single-AZ deployment, which does not support cross-AZ disaster recovery), `MultiZones` (change to multi-AZ deployment, which supports cross-AZ disaster recovery).\n        :type MultiZones: str\n        """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
@@ -4812,11 +3726,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealName: Order name
-        :type DealName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
+        :param DealName: Order name\n        :type DealName: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DealName = None
         self.RequestId = None
 
@@ -4833,17 +3743,7 @@ class ZoneInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: AZ ID in the format of ap-guangzhou-1 (i.e., Guangzhou Zone 1)
-        :type Zone: str
-        :param ZoneName: AZ name
-        :type ZoneName: str
-        :param ZoneId: Numeric ID of AZ
-        :type ZoneId: int
-        :param SpecId: ID of specification purchasable in this AZ, which, together with the returned value of the `DescribeProductConfig` API, can be used to find out the specifications currently purchasable in the AZ
-        :type SpecId: int
-        :param Version: Information of database versions purchasable under the current AZ and specification. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)
-        :type Version: str
-        """
+        :param Zone: AZ ID in the format of ap-guangzhou-1 (i.e., Guangzhou Zone 1)\n        :type Zone: str\n        :param ZoneName: AZ name\n        :type ZoneName: str\n        :param ZoneId: Numeric ID of AZ\n        :type ZoneId: int\n        :param SpecId: ID of specification purchasable in this AZ, which, together with the returned value of the `DescribeProductConfig` API, can be used to find out the specifications currently purchasable in the AZ\n        :type SpecId: int\n        :param Version: Information of database versions purchasable under the current AZ and specification. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)\n        :type Version: str\n        """
         self.Zone = None
         self.ZoneName = None
         self.ZoneId = None
