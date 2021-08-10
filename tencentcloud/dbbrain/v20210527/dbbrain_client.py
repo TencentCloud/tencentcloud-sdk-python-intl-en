@@ -27,7 +27,7 @@ class DbbrainClient(AbstractClient):
 
 
     def AddUserContact(self, request):
-        """This API is used to add the contact name and email. The returned value is the ID of the successfully added contact. Please always select Guangzhou for `Region`.
+        """This API is used to add the recipient name and email. The returned value is the ID of the successfully added recipient.
 
         :param request: Request instance for AddUserContact.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.AddUserContactRequest`
@@ -447,7 +447,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeMailProfile(self, request):
-        """This API is used to get the email sending configuration, including the email configuration for database inspection and the email sending configuration for scheduled task health reports. Please always select Guangzhou for `Region`.
+        """This API is used to get the email sending configuration, including the email configuration for database inspection and the email sending configuration for scheduled task health reports.
 
         :param request: Request instance for DescribeMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeMailProfileRequest`

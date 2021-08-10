@@ -326,7 +326,7 @@ class DeployServiceV2Request(AbstractModel):
 - IMAGE: deployment through image\n        :type DeployMode: str\n        :param DeployVersion: When the deployment type is `IMAGE`, this parameter indicates the image tag.
 When the deployment type is `JAR` or `WAR`, this parameter indicates the package version number.\n        :type DeployVersion: str\n        :param PkgName: Package name, which is required when using JAR or WAR packages for deployment.\n        :type PkgName: str\n        :param JdkVersion: JDK version.
 - KONA: use KONA JDK.
-- OPEN: use open JDK.\n        :type JdkVersion: str\n        :param SecurityGroupIds: Security group IDs\n        :type SecurityGroupIds: list of str\n        :param LogOutputConf: Log output configuration\n        :type LogOutputConf: :class:`tencentcloud.tem.v20201221.models.LogOutputConf`\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        :param Description: Version description\n        :type Description: str\n        :param ImageCommand: Image command\n        :type ImageCommand: str\n        :param ImageArgs: Image command parameters\n        :type ImageArgs: list of str\n        :param PortMappings: Service port mapping.\n        :type PortMappings: list of PortMapping\n        :param UseRegistryDefaultConfig: Whether to add the registry’s default configurations.\n        :type UseRegistryDefaultConfig: bool\n        :param SettingConfs: Mounting configurations\n        :type SettingConfs: list of MountedSettingConf\n        :param EksService: EKS access configuration\n        :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`\n        :param VersionId: ID of the version that you want to roll back to\n        :type VersionId: str\n        """
+- OPEN: use open JDK.\n        :type JdkVersion: str\n        :param SecurityGroupIds: Security group IDs\n        :type SecurityGroupIds: list of str\n        :param LogOutputConf: Log output configuration\n        :type LogOutputConf: :class:`tencentcloud.tem.v20201221.models.LogOutputConf`\n        :param SourceChannel: Source channel\n        :type SourceChannel: int\n        :param Description: Version description\n        :type Description: str\n        :param ImageCommand: Image command\n        :type ImageCommand: str\n        :param ImageArgs: Image command parameters\n        :type ImageArgs: list of str\n        :param PortMappings: Service port mapping.\n        :type PortMappings: list of PortMapping\n        :param UseRegistryDefaultConfig: Whether to add the registry’s default configurations.\n        :type UseRegistryDefaultConfig: bool\n        :param SettingConfs: Mounting configurations\n        :type SettingConfs: list of MountedSettingConf\n        :param EksService: EKS access configuration\n        :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`\n        :param VersionId: ID of the version that you want to roll back to\n        :type VersionId: str\n        :param PostStart: The script to run after startup\n        :type PostStart: str\n        :param PreStop: The script to run before stop\n        :type PreStop: str\n        :param DeployStrategyConf: Configuration of \n        :type DeployStrategyConf: :class:`tencentcloud.tem.v20201221.models.DeployStrategyConf`\n        :param Liveness: Configuration of aliveness probe\n        :type Liveness: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`\n        :param Readiness: Configuration of readiness probe\n        :type Readiness: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`\n        """
         self.ServiceId = None
         self.ContainerPort = None
         self.InitPodNum = None
@@ -356,6 +356,11 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
         self.SettingConfs = None
         self.EksService = None
         self.VersionId = None
+        self.PostStart = None
+        self.PreStop = None
+        self.DeployStrategyConf = None
+        self.Liveness = None
+        self.Readiness = None
 
 
     def _deserialize(self, params):
@@ -419,6 +424,17 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
             self.EksService = EksService()
             self.EksService._deserialize(params.get("EksService"))
         self.VersionId = params.get("VersionId")
+        self.PostStart = params.get("PostStart")
+        self.PreStop = params.get("PreStop")
+        if params.get("DeployStrategyConf") is not None:
+            self.DeployStrategyConf = DeployStrategyConf()
+            self.DeployStrategyConf._deserialize(params.get("DeployStrategyConf"))
+        if params.get("Liveness") is not None:
+            self.Liveness = HealthCheckConfig()
+            self.Liveness._deserialize(params.get("Liveness"))
+        if params.get("Readiness") is not None:
+            self.Readiness = HealthCheckConfig()
+            self.Readiness._deserialize(params.get("Readiness"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -443,6 +459,34 @@ class DeployServiceV2Response(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class DeployStrategyConf(AbstractModel):
+    """Configuration of batch release policies
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalBatchCount: Total batches\n        :type TotalBatchCount: int\n        :param BetaBatchNum: Number of instances for the beta batch\n        :type BetaBatchNum: int\n        :param DeployStrategyType: Batch deploy policy. `0`: automatically; `1`: manually. If you use beta batch, the policy for beta batch must be `0`. The policy specified here only applies to the rest batches.\n        :type DeployStrategyType: int\n        :param BatchInterval: Interval between batches\n        :type BatchInterval: int\n        """
+        self.TotalBatchCount = None
+        self.BetaBatchNum = None
+        self.DeployStrategyType = None
+        self.BatchInterval = None
+
+
+    def _deserialize(self, params):
+        self.TotalBatchCount = params.get("TotalBatchCount")
+        self.BetaBatchNum = params.get("BetaBatchNum")
+        self.DeployStrategyType = params.get("DeployStrategyType")
+        self.BatchInterval = params.get("BatchInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeIngressRequest(AbstractModel):
@@ -862,6 +906,42 @@ Note: this field may return `null`, indicating that no valid value can be obtain
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class HealthCheckConfig(AbstractModel):
+    """Health Check Configuration
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Health check type. Valid values: `HttpGet`，`TcpSocket`，`Exec`\n        :type Type: str\n        :param Protocol: The protocol type. It’s only valid when the health check type is `HttpGet`.\n        :type Protocol: str\n        :param Path: The request path. It’s only valid when the health check type is `HttpGet`.\n        :type Path: str\n        :param Exec: The script to be executed. It’s only valid when the health check type is `Exec`.\n        :type Exec: str\n        :param Port: The request port. It’s only valid when the health check type is `HttpGet` or `TcpSocket `.\n        :type Port: int\n        :param InitialDelaySeconds: The initial delay for health check in seconds. Default: `0`\n        :type InitialDelaySeconds: int\n        :param TimeoutSeconds: Timeout period in seconds. Default: `1`\n        :type TimeoutSeconds: int\n        :param PeriodSeconds: Interval period in seconds. Default: `10`\n        :type PeriodSeconds: int\n        """
+        self.Type = None
+        self.Protocol = None
+        self.Path = None
+        self.Exec = None
+        self.Port = None
+        self.InitialDelaySeconds = None
+        self.TimeoutSeconds = None
+        self.PeriodSeconds = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Protocol = params.get("Protocol")
+        self.Path = params.get("Path")
+        self.Exec = params.get("Exec")
+        self.Port = params.get("Port")
+        self.InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self.TimeoutSeconds = params.get("TimeoutSeconds")
+        self.PeriodSeconds = params.get("PeriodSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IngressInfo(AbstractModel):
@@ -1397,7 +1477,8 @@ class RunVersionPod(AbstractModel):
         """
         :param Webshell: Shell address\n        :type Webshell: str\n        :param PodId: Pod ID\n        :type PodId: str\n        :param Status: Status\n        :type Status: str\n        :param CreateTime: Creation time\n        :type CreateTime: str\n        :param PodIp: Pod IP.\n        :type PodIp: str\n        :param Zone: Availability zone.
 Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type Zone: str\n        :param DeployVersion: Deployed version.
-Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type DeployVersion: str\n        """
+Note: this field may return `null`, indicating that no valid value can be obtained.\n        :type DeployVersion: str\n        :param RestartCount: Number of Restarts
+Note: This is field may return `null`, indicating that no valid value can be obtained.\n        :type RestartCount: int\n        """
         self.Webshell = None
         self.PodId = None
         self.Status = None
@@ -1405,6 +1486,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.PodIp = None
         self.Zone = None
         self.DeployVersion = None
+        self.RestartCount = None
 
 
     def _deserialize(self, params):
@@ -1415,6 +1497,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.PodIp = params.get("PodIp")
         self.Zone = params.get("Zone")
         self.DeployVersion = params.get("DeployVersion")
+        self.RestartCount = params.get("RestartCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

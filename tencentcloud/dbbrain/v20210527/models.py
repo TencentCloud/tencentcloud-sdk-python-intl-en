@@ -25,7 +25,7 @@ class AddUserContactRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Contact name, which must be unique, can contain 2–60 letters, digits, and underscores, and cannot start with an underscore.\n        :type Name: str\n        :param ContactInfo: Email address, which can contain letters, digits, and underscores and cannot start with an underscore.\n        :type ContactInfo: str\n        :param Product: Service type, which is fixed to `mysql`.\n        :type Product: str\n        """
+        :param Name: Recipient name, which can contain up to 20 letters, digits, spaces, and special symbols `!@#$%^&*()_+-=()` and cannot begin with an underscore.\n        :type Name: str\n        :param ContactInfo: Email address, which can contain letters, digits, underscores, and the @ symbol, cannot begin with an underscore, and must be unique.\n        :type ContactInfo: str\n        :param Product: Service type, which is fixed to `mysql`.\n        :type Product: str\n        """
         self.Name = None
         self.ContactInfo = None
         self.Product = None
@@ -499,7 +499,7 @@ class DescribeDBDiagEventResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DiagItem: Diagnosis item.\n        :type DiagItem: str\n        :param DiagType: Diagnosis type.\n        :type DiagType: str\n        :param EventId: Event ID.\n        :type EventId: int\n        :param Explanation: Event details.\n        :type Explanation: str\n        :param Outline: Summary.\n        :type Outline: str\n        :param Problem: Found problem.\n        :type Problem: str\n        :param Severity: Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.\n        :type Severity: int\n        :param StartTime: Start time\n        :type StartTime: str\n        :param Suggestions: Suggestion.\n        :type Suggestions: str\n        :param Metric: Reserved field.
+        :param DiagItem: Diagnosis item.\n        :type DiagItem: str\n        :param DiagType: Diagnosis type.\n        :type DiagType: str\n        :param EventId: Event ID.\n        :type EventId: int\n        :param Explanation: Diagnosis event details. If there is no additional explanation information, the output will be empty.\n        :type Explanation: str\n        :param Outline: Diagnosis summary.\n        :type Outline: str\n        :param Problem: Found problem.\n        :type Problem: str\n        :param Severity: Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.\n        :type Severity: int\n        :param StartTime: Start time\n        :type StartTime: str\n        :param Suggestions: Suggestions. If there are no suggestions, the output will be empty.\n        :type Suggestions: str\n        :param Metric: Reserved field.
 Note: this field may return null, indicating that no valid values can be obtained.\n        :type Metric: str\n        :param EndTime: End time.\n        :type EndTime: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.DiagItem = None
         self.DiagType = None
@@ -758,7 +758,7 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID for which to get the health score.\n        :type InstanceId: str\n        :param Time: Time to get the health score.\n        :type Time: str\n        :param Product: Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.\n        :type Product: str\n        """
+        :param InstanceId: Instance ID for which to get the health score.\n        :type InstanceId: str\n        :param Time: Time to get the health score in the format of `2019-09-10 12:13:14`.\n        :type Time: str\n        :param Product: Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.\n        :type Product: str\n        """
         self.InstanceId = None
         self.Time = None
         self.Product = None
@@ -1143,11 +1143,12 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param StartTime: Start time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.\n        :type StartTime: str\n        :param EndTime: End time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.\n        :type EndTime: str\n        :param Product: Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.\n        :type Product: str\n        """
+        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param StartTime: Start time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.\n        :type StartTime: str\n        :param EndTime: End time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.\n        :type EndTime: str\n        :param Product: Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.\n        :type Product: str\n        :param Md5: MD5 value of SOL template\n        :type Md5: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
         self.Product = None
+        self.Md5 = None
 
 
     def _deserialize(self, params):
@@ -1155,6 +1156,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Product = params.get("Product")
+        self.Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1433,7 +1435,7 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Advices: SQL statement optimization suggestions, which can be parsed into JSON arrays.\n        :type Advices: str\n        :param Comments: Notes of SQL statement optimization suggestions, which can be parsed into String arrays.\n        :type Comments: str\n        :param SqlText: SQL statement.\n        :type SqlText: str\n        :param Schema: Database name.\n        :type Schema: str\n        :param Tables: DDL information of related tables, which can be parsed into JSON arrays.\n        :type Tables: str\n        :param SqlPlan: SQL execution plan, which can be parsed into JSON.\n        :type SqlPlan: str\n        :param Cost: Cost saving details after SQL statement optimization, which can be parsed into JSON.\n        :type Cost: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+        :param Advices: SQL statement optimization suggestions, which can be parsed into JSON arrays. If there is no need for optimization, the output will be empty.\n        :type Advices: str\n        :param Comments: Notes of SQL statement optimization suggestions, which can be parsed into String arrays. If there is no need for optimization, the output will be empty.\n        :type Comments: str\n        :param SqlText: SQL statement.\n        :type SqlText: str\n        :param Schema: Database name.\n        :type Schema: str\n        :param Tables: DDL information of related tables, which can be parsed into JSON arrays.\n        :type Tables: str\n        :param SqlPlan: SQL execution plan, which can be parsed into JSON arrays. If there is no need for optimization, the output will be empty.\n        :type SqlPlan: str\n        :param Cost: Cost saving details after SQL statement optimization, which can be parsed into JSON arrays. If there is no need for optimization, the output will be empty.\n        :type Cost: str\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
         self.Advices = None
         self.Comments = None
         self.SqlText = None
@@ -1462,10 +1464,8 @@ class DiagHistoryEventItem(AbstractModel):
 
     def __init__(self):
         """
-        :param DiagType: Diagnosis type.\n        :type DiagType: str\n        :param EndTime: End time.\n        :type EndTime: str\n        :param StartTime: Start time.\n        :type StartTime: str\n        :param EventId: Event ID.\n        :type EventId: int\n        :param Severity: Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.\n        :type Severity: int\n        :param Outline: Summary.\n        :type Outline: str\n        :param DiagItem: Diagnosis item.\n        :type DiagItem: str\n        :param InstanceId: Instance ID.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type InstanceId: str\n        :param Metric: Reserved field
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Metric: str\n        :param Region: Region
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type Region: str\n        """
+        :param DiagType: Diagnosis type.\n        :type DiagType: str\n        :param EndTime: End time.\n        :type EndTime: str\n        :param StartTime: Start time.\n        :type StartTime: str\n        :param EventId: Unique event ID.\n        :type EventId: int\n        :param Severity: Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.\n        :type Severity: int\n        :param Outline: Diagnosis summary.\n        :type Outline: str\n        :param DiagItem: Diagnosis item description.\n        :type DiagItem: str\n        :param InstanceId: Instance ID.\n        :type InstanceId: str\n        :param Metric: Reserved field.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type Metric: str\n        :param Region: Region.\n        :type Region: str\n        """
         self.DiagType = None
         self.EndTime = None
         self.StartTime = None
@@ -2311,7 +2311,7 @@ class SlowLogTopSqlItem(AbstractModel):
 
     def __init__(self):
         """
-        :param LockTime: Total SQL lock wait time in seconds.\n        :type LockTime: float\n        :param LockTimeMax: Maximum lock wait time in seconds\n        :type LockTimeMax: float\n        :param LockTimeMin: Minimum lock wait time in seconds\n        :type LockTimeMin: float\n        :param RowsExamined: Total number of scanned rows\n        :type RowsExamined: int\n        :param RowsExaminedMax: Maximum number of scanned rows\n        :type RowsExaminedMax: int\n        :param RowsExaminedMin: Minimum number of scanned rows\n        :type RowsExaminedMin: int\n        :param QueryTime: Total duration in seconds\n        :type QueryTime: float\n        :param QueryTimeMax: Maximum execution time in seconds\n        :type QueryTimeMax: float\n        :param QueryTimeMin: Minimum execution time in seconds\n        :type QueryTimeMin: float\n        :param RowsSent: Total number of returned rows\n        :type RowsSent: int\n        :param RowsSentMax: Maximum number of returned rows\n        :type RowsSentMax: int\n        :param RowsSentMin: Minimum number of returned rows\n        :type RowsSentMin: int\n        :param ExecTimes: Number of executions\n        :type ExecTimes: int\n        :param SqlTemplate: SQL template\n        :type SqlTemplate: str\n        :param SqlText: SQL statements with parameter (random)\n        :type SqlText: str\n        :param Schema: Database name\n        :type Schema: str\n        :param QueryTimeRatio: Ratio of total duration in %\n        :type QueryTimeRatio: float\n        :param LockTimeRatio: Ratio of total SQL lock wait time in %\n        :type LockTimeRatio: float\n        :param RowsExaminedRatio: Ratio of total number of scanned rows in %\n        :type RowsExaminedRatio: float\n        :param RowsSentRatio: Ratio of total number of returned rows in %\n        :type RowsSentRatio: float\n        :param QueryTimeAvg: Average execution time in seconds\n        :type QueryTimeAvg: float\n        :param RowsSentAvg: Average number of returned rows\n        :type RowsSentAvg: float\n        :param LockTimeAvg: Average lock wait time in seconds\n        :type LockTimeAvg: float\n        :param RowsExaminedAvg: Average number of scanned rows\n        :type RowsExaminedAvg: float\n        """
+        :param LockTime: Total SQL lock wait time in seconds.\n        :type LockTime: float\n        :param LockTimeMax: Maximum lock wait time in seconds\n        :type LockTimeMax: float\n        :param LockTimeMin: Minimum lock wait time in seconds\n        :type LockTimeMin: float\n        :param RowsExamined: Total number of scanned rows\n        :type RowsExamined: int\n        :param RowsExaminedMax: Maximum number of scanned rows\n        :type RowsExaminedMax: int\n        :param RowsExaminedMin: Minimum number of scanned rows\n        :type RowsExaminedMin: int\n        :param QueryTime: Total duration in seconds\n        :type QueryTime: float\n        :param QueryTimeMax: Maximum execution time in seconds\n        :type QueryTimeMax: float\n        :param QueryTimeMin: Minimum execution time in seconds\n        :type QueryTimeMin: float\n        :param RowsSent: Total number of returned rows\n        :type RowsSent: int\n        :param RowsSentMax: Maximum number of returned rows\n        :type RowsSentMax: int\n        :param RowsSentMin: Minimum number of returned rows\n        :type RowsSentMin: int\n        :param ExecTimes: Number of executions\n        :type ExecTimes: int\n        :param SqlTemplate: SQL template\n        :type SqlTemplate: str\n        :param SqlText: SQL statements with parameter (random)\n        :type SqlText: str\n        :param Schema: Database name\n        :type Schema: str\n        :param QueryTimeRatio: Ratio of total duration in %\n        :type QueryTimeRatio: float\n        :param LockTimeRatio: Ratio of total SQL lock wait time in %\n        :type LockTimeRatio: float\n        :param RowsExaminedRatio: Ratio of total number of scanned rows in %\n        :type RowsExaminedRatio: float\n        :param RowsSentRatio: Ratio of total number of returned rows in %\n        :type RowsSentRatio: float\n        :param QueryTimeAvg: Average execution time in seconds\n        :type QueryTimeAvg: float\n        :param RowsSentAvg: Average number of returned rows\n        :type RowsSentAvg: float\n        :param LockTimeAvg: Average lock wait time in seconds\n        :type LockTimeAvg: float\n        :param RowsExaminedAvg: Average number of scanned rows\n        :type RowsExaminedAvg: float\n        :param Md5: MD5 value of SOL template\n        :type Md5: str\n        """
         self.LockTime = None
         self.LockTimeMax = None
         self.LockTimeMin = None
@@ -2336,6 +2336,7 @@ class SlowLogTopSqlItem(AbstractModel):
         self.RowsSentAvg = None
         self.LockTimeAvg = None
         self.RowsExaminedAvg = None
+        self.Md5 = None
 
 
     def _deserialize(self, params):
@@ -2363,6 +2364,7 @@ class SlowLogTopSqlItem(AbstractModel):
         self.RowsSentAvg = params.get("RowsSentAvg")
         self.LockTimeAvg = params.get("LockTimeAvg")
         self.RowsExaminedAvg = params.get("RowsExaminedAvg")
+        self.Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2474,8 +2476,8 @@ class UserProfile(AbstractModel):
     def __init__(self):
         """
         :param ProfileId: Configured ID
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProfileId: str\n        :param ProfileType: Configuration type.
-Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProfileType: str\n        :param ProfileLevel: Configuration level. Valid values: User, Instance.
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProfileId: str\n        :param ProfileType: Configuration type. Valid values: "dbScan_mail_configuration" (email configuration of database inspection report), "scheduler_mail_configuration" (email configuration of scheduled task report).
+Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProfileType: str\n        :param ProfileLevel: Configuration level. Valid values: User (user-level), Instance (instance-level). For database inspection emails, it should be `User`. For scheduled task emails, it should be `Instance`.
 Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProfileLevel: str\n        :param ProfileName: Configuration name.
 Note: this field may return null, indicating that no valid values can be obtained.\n        :type ProfileName: str\n        :param ProfileInfo: Configuration details.\n        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`\n        """
         self.ProfileId = None
