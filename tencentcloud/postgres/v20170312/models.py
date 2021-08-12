@@ -1011,11 +1011,11 @@ class DescribeDBInstancesRequest(AbstractModel):
     def __init__(self):
         """
         :param Filters: Filter instances using one or more criteria. Valid filter names:
-db-instance-id: filter by instance ID (the filter value is a string)
-db-instance-name: filter by instance name (the filter value is a string)
-db-project-id: filter by project ID (the filter value is an integer)
-db-pay-mode: filter by billing mode (the filter value is a string)
-db-tag-key: filter by tag key (the filter value is a string)\n        :type Filters: list of Filter\n        :param Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`\n        :type Limit: int\n        :param OrderBy: Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime\n        :type OrderBy: str\n        :param Offset: Pagination offset, starting from 0\n        :type Offset: int\n        :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending)\n        :type OrderByType: str\n        """
+db-instance-id: filter by instance ID (in string format)
+db-instance-name: filter by instance name (in string format)
+db-project-id: filter by project ID (in integer format)
+db-pay-mode: filter by billing mode (in string format)
+db-tag-key: filter by tag key (in string format)\n        :type Filters: list of Filter\n        :param Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`\n        :type Limit: int\n        :param OrderBy: Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime\n        :type OrderBy: str\n        :param Offset: Pagination offset, starting from 0\n        :type Offset: int\n        :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending)\n        :type OrderByType: str\n        """
         self.Filters = None
         self.Limit = None
         self.OrderBy = None
@@ -2881,7 +2881,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Memory: Instance memory size in GB after upgrade\n        :type Memory: int\n        :param Storage: Instance disk size in GB after upgrade\n        :type Storage: int\n        :param DBInstanceId: Instance ID in the format of postgres-lnp6j617\n        :type DBInstanceId: str\n        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: no\n        :type AutoVoucher: int\n        :param VoucherIds: Voucher ID list (only one voucher can be specified currently)\n        :type VoucherIds: list of str\n        :param ActivityId: Activity ID\n        :type ActivityId: int\n        :param SwitchTag: Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (specify a time to switch). Default value: `0`\n        :type SwitchTag: int\n        :param SwitchStartTime: The earliest time to start a switch\n        :type SwitchStartTime: str\n        :param SwitchEndTime: The latest time to start a switch\n        :type SwitchEndTime: str\n        """
+        :param Memory: Instance memory size in GB after upgrade\n        :type Memory: int\n        :param Storage: Instance disk size in GB after upgrade\n        :type Storage: int\n        :param DBInstanceId: Instance ID in the format of postgres-lnp6j617\n        :type DBInstanceId: str\n        :param AutoVoucher: Whether to automatically use vouchers. 1: yes, 0: no. Default value: no\n        :type AutoVoucher: int\n        :param VoucherIds: Voucher ID list (only one voucher can be specified currently)\n        :type VoucherIds: list of str\n        :param ActivityId: Activity ID\n        :type ActivityId: int\n        :param SwitchTag: Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (switch at specified time). Default value: `0`\n        :type SwitchTag: int\n        :param SwitchStartTime: The earliest time to start a switch\n        :type SwitchStartTime: str\n        :param SwitchEndTime: The latest time to start a switch\n        :type SwitchEndTime: str\n        """
         self.Memory = None
         self.Storage = None
         self.DBInstanceId = None

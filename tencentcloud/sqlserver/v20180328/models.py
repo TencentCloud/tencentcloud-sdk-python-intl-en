@@ -937,6 +937,62 @@ class DBRemark(AbstractModel):
         
 
 
+class DbNormalDetail(AbstractModel):
+    """Database configurations
+
+    """
+
+    def __init__(self):
+        """
+        :param IsSubscribed: Whether it is subscribed. Valid values: `0` (no), `1` (yes)\n        :type IsSubscribed: str\n        :param CollationName: Database collation\n        :type CollationName: str\n        :param IsAutoCleanupOn: Whether the cleanup task is enabled to automatically remove old change tracking information when CT is enabled. Valid values: `0` (no), `1` (yes)\n        :type IsAutoCleanupOn: str\n        :param IsBrokerEnabled: Whether SQL Server Service Broker is enabled. Valid values: `0` (no), `1` (yes)\n        :type IsBrokerEnabled: str\n        :param IsCdcEnabled: Whether CDC is enabled. Valid values: `0` (disabled), `1` (enabled)\n        :type IsCdcEnabled: str\n        :param IsDbChainingOn: Whether CT is enabled. Valid values: `0` (disabled), `1` (enabled)\n        :type IsDbChainingOn: str\n        :param IsEncrypted: Whether it is encrypted. Valid values: `0` (no), `1` (yes)\n        :type IsEncrypted: str\n        :param IsFulltextEnabled: Whether full-text indexes are enabled. Valid values: `0` (no), `1` (yes)\n        :type IsFulltextEnabled: str\n        :param IsMirroring: Whether it is a mirror database. Valid values: `0` (no), `1` (yes)\n        :type IsMirroring: str\n        :param IsPublished: Whether it is published. Valid values: `0` (no), `1` (yes)\n        :type IsPublished: str\n        :param IsReadCommittedSnapshotOn: Whether snapshots are enabled. Valid values: `0` (no), `1` (yes)\n        :type IsReadCommittedSnapshotOn: str\n        :param IsTrustworthyOn: Whether it is trustworthy. Valid values: `0` (no), `1` (yes)\n        :type IsTrustworthyOn: str\n        :param MirroringState: Mirroring state\n        :type MirroringState: str\n        :param Name: Database name\n        :type Name: str\n        :param RecoveryModelDesc: Recovery model\n        :type RecoveryModelDesc: str\n        :param RetentionPeriod: Retention period (in days) of change tracking information\n        :type RetentionPeriod: str\n        :param StateDesc: Database status\n        :type StateDesc: str\n        :param UserAccessDesc: User type\n        :type UserAccessDesc: str\n        """
+        self.IsSubscribed = None
+        self.CollationName = None
+        self.IsAutoCleanupOn = None
+        self.IsBrokerEnabled = None
+        self.IsCdcEnabled = None
+        self.IsDbChainingOn = None
+        self.IsEncrypted = None
+        self.IsFulltextEnabled = None
+        self.IsMirroring = None
+        self.IsPublished = None
+        self.IsReadCommittedSnapshotOn = None
+        self.IsTrustworthyOn = None
+        self.MirroringState = None
+        self.Name = None
+        self.RecoveryModelDesc = None
+        self.RetentionPeriod = None
+        self.StateDesc = None
+        self.UserAccessDesc = None
+
+
+    def _deserialize(self, params):
+        self.IsSubscribed = params.get("IsSubscribed")
+        self.CollationName = params.get("CollationName")
+        self.IsAutoCleanupOn = params.get("IsAutoCleanupOn")
+        self.IsBrokerEnabled = params.get("IsBrokerEnabled")
+        self.IsCdcEnabled = params.get("IsCdcEnabled")
+        self.IsDbChainingOn = params.get("IsDbChainingOn")
+        self.IsEncrypted = params.get("IsEncrypted")
+        self.IsFulltextEnabled = params.get("IsFulltextEnabled")
+        self.IsMirroring = params.get("IsMirroring")
+        self.IsPublished = params.get("IsPublished")
+        self.IsReadCommittedSnapshotOn = params.get("IsReadCommittedSnapshotOn")
+        self.IsTrustworthyOn = params.get("IsTrustworthyOn")
+        self.MirroringState = params.get("MirroringState")
+        self.Name = params.get("Name")
+        self.RecoveryModelDesc = params.get("RecoveryModelDesc")
+        self.RetentionPeriod = params.get("RetentionPeriod")
+        self.StateDesc = params.get("StateDesc")
+        self.UserAccessDesc = params.get("UserAccessDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DbRollbackTimeInfo(AbstractModel):
     """Information of time range available for database rollback
 
@@ -1123,7 +1179,7 @@ class DeleteIncrementalMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: Target instance ID.\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID\n        :type BackupMigrationId: str\n        :param IncrementalMigrationId: ID of an incremental backup import task\n        :type IncrementalMigrationId: str\n        """
+        :param InstanceId: Target instance ID.\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the `CreateBackupMigration` API\n        :type BackupMigrationId: str\n        :param IncrementalMigrationId: Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API\n        :type IncrementalMigrationId: str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
         self.IncrementalMigrationId = None
@@ -1298,7 +1354,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration.\n        :type BackupMigrationId: str\n        :param MigrationName: Import task name\n        :type MigrationName: str\n        :param BackupFileName: Backup file name\n        :type BackupFileName: str\n        :param StatusSet: Status set of import tasks\n        :type StatusSet: list of int\n        :param RecoveryType: Import task restoration type: FULL,FULL_LOG,FULL_DIFF\n        :type RecoveryType: str\n        :param UploadType: COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.\n        :type UploadType: str\n        :param Limit: Paging. Page size\n        :type Limit: int\n        :param Offset: Paging. Number of pages\n        :type Offset: int\n        :param OrderBy: Field for order: name,createTime,startTime,endTime\n        :type OrderBy: str\n        :param OrderByType: Type of order: desc,asc\n        :type OrderByType: str\n        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration.\n        :type BackupMigrationId: str\n        :param MigrationName: Import task name\n        :type MigrationName: str\n        :param BackupFileName: Backup file name\n        :type BackupFileName: str\n        :param StatusSet: Status set of import tasks\n        :type StatusSet: list of int\n        :param RecoveryType: Import task restoration type: FULL,FULL_LOG,FULL_DIFF\n        :type RecoveryType: str\n        :param UploadType: COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.\n        :type UploadType: str\n        :param Limit: The maximum number of results returned per page. Default value: `100`.\n        :type Limit: int\n        :param Offset: Page number. Default value: `0`.\n        :type Offset: int\n        :param OrderBy: Sort by field. Valid values: `name`, `createTime`, `startTime`, `endTime`. By default, the results returned are sorted by `createTime` in the ascending order.\n        :type OrderBy: str\n        :param OrderByType: Sorting order which is valid only when `OrderBy` is specified. Valid values: `asc` (ascending), `desc` (descending). Default value: `asc`.\n        :type OrderByType: str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
         self.MigrationName = None
@@ -1592,6 +1648,52 @@ class DescribeDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBsNormalRequest(AbstractModel):
+    """DescribeDBsNormal request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of mssql-7vfv3rk3\n        :type InstanceId: str\n        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBsNormalResponse(AbstractModel):
+    """DescribeDBsNormal response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of databases of the instance\n        :type TotalCount: int\n        :param DBList: Detailed database configurations, such as whether CDC or CT is enabled for the database\n        :type DBList: list of DbNormalDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+        self.TotalCount = None
+        self.DBList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DBList") is not None:
+            self.DBList = []
+            for item in params.get("DBList"):
+                obj = DbNormalDetail()
+                obj._deserialize(item)
+                self.DBList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBsRequest(AbstractModel):
     """DescribeDBs request structure.
 
@@ -1688,7 +1790,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupFileName: Backup file name\n        :type BackupFileName: str\n        :param StatusSet: Status set of import tasks\n        :type StatusSet: list of int\n        :param Limit: Paging. Page size\n        :type Limit: int\n        :param Offset: Paging. Number of pages\n        :type Offset: int\n        :param OrderBy: Field for order: name,createTime,startTime,endTime\n        :type OrderBy: str\n        :param OrderByType: Type of order: desc,asc\n        :type OrderByType: str\n        :param IncrementalMigrationId: ID of an incremental backup import task\n        :type IncrementalMigrationId: str\n        """
+        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupFileName: Backup file name\n        :type BackupFileName: str\n        :param StatusSet: Status set of import tasks\n        :type StatusSet: list of int\n        :param Limit: The maximum number of results returned per page. Default value: `100`.\n        :type Limit: int\n        :param Offset: Page number. Default value: `0`.\n        :type Offset: int\n        :param OrderBy: Sort by field. Valid values: `name`, `createTime`, `startTime`, `endTime`. By default, the results returned are sorted by `createTime` in the ascending order.\n        :type OrderBy: str\n        :param OrderByType: Sorting order which is valid only when `OrderBy` is specified. Valid values: `asc` (ascending), `desc` (descending). Default value: `asc`.\n        :type OrderByType: str\n        :param IncrementalMigrationId: Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API.\n        :type IncrementalMigrationId: str\n        """
         self.BackupMigrationId = None
         self.InstanceId = None
         self.BackupFileName = None
@@ -1740,6 +1842,102 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
                 obj = Migration()
                 obj._deserialize(item)
                 self.IncrementalMigrationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceParamRecordsRequest(AbstractModel):
+    """DescribeInstanceParamRecords request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of mssql-dj5i29c5n. It is the same as the instance ID displayed in the TencentDB console and the response parameter `InstanceId` of the `DescribeDBInstances` API.\n        :type InstanceId: str\n        :param Offset: Page number. Default value: `0`.\n        :type Offset: int\n        :param Limit: The maximum number of results returned per page. Maximum value: `100`. Default value: `20`.\n        :type Limit: int\n        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceParamRecordsResponse(AbstractModel):
+    """DescribeInstanceParamRecords response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Number of eligible records\n        :type TotalCount: int\n        :param Items: Parameter modification records\n        :type Items: list of ParamRecord\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamRecord()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceParamsRequest(AbstractModel):
+    """DescribeInstanceParams request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID in the format of mssql-dj5i29c5n. It is the same as the instance ID displayed in the TencentDB console and the response parameter `InstanceId` of the `DescribeDBInstances` API.\n        :type InstanceId: str\n        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceParamsResponse(AbstractModel):
+    """DescribeInstanceParams response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: Total number of instance parameters\n        :type TotalCount: int\n        :param Items: Parameter details\n        :type Items: list of ParameterDetail\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParameterDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3019,6 +3217,135 @@ class ModifyDBRemarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDatabaseCDCRequest(AbstractModel):
+    """ModifyDatabaseCDC request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBNames: Array of database names\n        :type DBNames: list of str\n        :param ModifyType: Enable or disable CDC. Valid values: `enable`, `disable`\n        :type ModifyType: str\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
+        self.DBNames = None
+        self.ModifyType = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBNames = params.get("DBNames")
+        self.ModifyType = params.get("ModifyType")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseCDCResponse(AbstractModel):
+    """ModifyDatabaseCDC response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDatabaseCTRequest(AbstractModel):
+    """ModifyDatabaseCT request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBNames: Array of database names\n        :type DBNames: list of str\n        :param ModifyType: Enable or disable CT. Valid values: `enable`, `disable`\n        :type ModifyType: str\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param ChangeRetentionDay: Retention period (in days) of change tracking information when CT is enabled. Value range: 3-30. Default value: `3`\n        :type ChangeRetentionDay: int\n        """
+        self.DBNames = None
+        self.ModifyType = None
+        self.InstanceId = None
+        self.ChangeRetentionDay = None
+
+
+    def _deserialize(self, params):
+        self.DBNames = params.get("DBNames")
+        self.ModifyType = params.get("ModifyType")
+        self.InstanceId = params.get("InstanceId")
+        self.ChangeRetentionDay = params.get("ChangeRetentionDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseCTResponse(AbstractModel):
+    """ModifyDatabaseCT response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDatabaseMdfRequest(AbstractModel):
+    """ModifyDatabaseMdf request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param DBNames: Array of database names\n        :type DBNames: list of str\n        :param InstanceId: Instance ID\n        :type InstanceId: str\n        """
+        self.DBNames = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBNames = params.get("DBNames")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseMdfResponse(AbstractModel):
+    """ModifyDatabaseMdf response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: Task ID\n        :type FlowId: int\n        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyIncrementalMigrationRequest(AbstractModel):
     """ModifyIncrementalMigration request structure.
 
@@ -3026,7 +3353,7 @@ class ModifyIncrementalMigrationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        :param IncrementalMigrationId: Incremental import task ID\n        :type IncrementalMigrationId: str\n        :param IsRecovery: Whether restoration is required. No: not required. Yes: required.\n        :type IsRecovery: str\n        :param BackupFiles: If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.\n        :type BackupFiles: list of str\n        """
+        :param InstanceId: ID of imported target instance\n        :type InstanceId: str\n        :param BackupMigrationId: Backup import task ID, which is returned through the API CreateBackupMigration\n        :type BackupMigrationId: str\n        :param IncrementalMigrationId: Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API.\n        :type IncrementalMigrationId: str\n        :param IsRecovery: Whether to restore backups. Valid values: `NO`, `YES`. If this parameter is not specified, whether to restore incremental backups will not change.\n        :type IsRecovery: str\n        :param BackupFiles: If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.\n        :type BackupFiles: list of str\n        """
         self.InstanceId = None
         self.BackupMigrationId = None
         self.IncrementalMigrationId = None
@@ -3063,6 +3390,52 @@ class ModifyIncrementalMigrationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstanceParamRequest(AbstractModel):
+    """ModifyInstanceParam request structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: Instance ID list.\n        :type InstanceIds: list of str\n        :param ParamList: List of modified parameters. Each list element has two fields: `Name` and `CurrentValue`. Set `Name` to the parameter name and `CurrentValue` to the new value after modification. <b>Note</b>: if the instance needs to be <b>restarted</b> for the modified parameter to take effect, it will be <b>restarted</b> immediately or during the maintenance time. Before you modify a parameter, you can use the `DescribeInstanceParams` API to query whether the instance needs to be restarted.\n        :type ParamList: list of Parameter\n        :param WaitSwitch: When to execute the parameter modification task. Valid values: `0` (execute immediately), `1` (execute during maintenance time). Default value: `0`.\n        :type WaitSwitch: int\n        """
+        self.InstanceIds = None
+        self.ParamList = None
+        self.WaitSwitch = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = Parameter()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        self.WaitSwitch = params.get("WaitSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceParamResponse(AbstractModel):
+    """ModifyInstanceParam response structure.
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3124,6 +3497,102 @@ class ModifyMigrationResponse(AbstractModel):
     def _deserialize(self, params):
         self.MigrateId = params.get("MigrateId")
         self.RequestId = params.get("RequestId")
+
+
+class ParamRecord(AbstractModel):
+    """Instance parameter modification record
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Instance ID\n        :type InstanceId: str\n        :param ParamName: Parameter name\n        :type ParamName: str\n        :param OldValue: Parameter value before modification\n        :type OldValue: str\n        :param NewValue: Parameter value after modification\n        :type NewValue: str\n        :param Status: Parameter modification status. Valid values: `1` (initializing and waiting for modification), `2` (modification succeed), `3` (modification failed), `4` (modifying)\n        :type Status: int\n        :param ModifyTime: Modification time\n        :type ModifyTime: str\n        """
+        self.InstanceId = None
+        self.ParamName = None
+        self.OldValue = None
+        self.NewValue = None
+        self.Status = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ParamName = params.get("ParamName")
+        self.OldValue = params.get("OldValue")
+        self.NewValue = params.get("NewValue")
+        self.Status = params.get("Status")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Parameter(AbstractModel):
+    """Database instance parameter
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Parameter name\n        :type Name: str\n        :param CurrentValue: Parameter value\n        :type CurrentValue: str\n        """
+        self.Name = None
+        self.CurrentValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CurrentValue = params.get("CurrentValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParameterDetail(AbstractModel):
+    """Instance parameter details
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Parameter name\n        :type Name: str\n        :param ParamType: Data type of the parameter. Valid values: `integer`, `enum`\n        :type ParamType: str\n        :param Default: Default value of the parameter\n        :type Default: str\n        :param Description: Parameter description\n        :type Description: str\n        :param CurrentValue: Current value of the parameter\n        :type CurrentValue: str\n        :param NeedReboot: Whether the database needs to be restarted for the modified parameter to take effect. Valid values: `0` (no),`1` (yes)\n        :type NeedReboot: int\n        :param Max: Maximum value of the parameter\n        :type Max: int\n        :param Min: Minimum value of the parameter\n        :type Min: int\n        :param EnumValue: Enumerated values of the parameter\n        :type EnumValue: list of str\n        :param Status: Parameter status. Valid values: `0` (normal), `1` (modifying)\n        :type Status: int\n        """
+        self.Name = None
+        self.ParamType = None
+        self.Default = None
+        self.Description = None
+        self.CurrentValue = None
+        self.NeedReboot = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ParamType = params.get("ParamType")
+        self.Default = params.get("Default")
+        self.Description = params.get("Description")
+        self.CurrentValue = params.get("CurrentValue")
+        self.NeedReboot = params.get("NeedReboot")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RecycleDBInstanceRequest(AbstractModel):

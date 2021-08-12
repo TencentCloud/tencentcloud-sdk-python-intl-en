@@ -122,6 +122,9 @@ INVALIDPARAMETERVALUE_DBEXIST = 'InvalidParameterValue.DBExist'
 # The database name cannot contain reserved words.
 INVALIDPARAMETERVALUE_DBNAMEISKEYWRODS = 'InvalidParameterValue.DBNameIsKeyWrods'
 
+# The database name is required.
+INVALIDPARAMETERVALUE_DBNAMENOTNULL = 'InvalidParameterValue.DBNameNotNull'
+
 # The new database name is the same as the old one.
 INVALIDPARAMETERVALUE_DBNAMESAME = 'InvalidParameterValue.DBNameSame'
 
@@ -148,6 +151,9 @@ INVALIDPARAMETERVALUE_INSTANCENAMEISILLEGAL = 'InvalidParameterValue.InstanceNam
 
 # The migration name contains invalid characters.
 INVALIDPARAMETERVALUE_MIGRATIONNAMEISILLEGAL = 'InvalidParameterValue.MigrationNameIsIllegal'
+
+# Only `enable` and `disable` are valid values.
+INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = 'InvalidParameterValue.ModifyTypeValueInvalid'
 
 # Incorrect parameter type.
 INVALIDPARAMETERVALUE_PARAMETERTYPEERROR = 'InvalidParameterValue.ParameterTypeError'
@@ -215,6 +221,9 @@ RESOURCEUNAVAILABLE_INSTANCEMIGRATESTATUSINVALID = 'ResourceUnavailable.Instance
 # Invalid instance status.
 RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = 'ResourceUnavailable.InstanceStatusInvalid'
 
+# Read-only instances are not supported.
+RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = 'ResourceUnavailable.NotSupportRoInstance'
+
 # VPC not found.
 RESOURCEUNAVAILABLE_VPCNOTEXIST = 'ResourceUnavailable.VpcNotExist'
 
@@ -226,6 +235,9 @@ UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied
 
 # Unknown parameter error
 UNKNOWNPARAMETER = 'UnknownParameter'
+
+# Repeat operations are not supported.
+UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = 'UnsupportedOperation.NotSupportRepeat'
 
 # A wrong upload type.
 UNSUPPORTEDOPERATION_UPLOADTYPEERROR = 'UnsupportedOperation.UploadTypeError'

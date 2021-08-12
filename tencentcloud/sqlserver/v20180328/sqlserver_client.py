@@ -614,6 +614,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBsNormal(self, request):
+        """This API is used to query database configurations. It does not return information of the accounts that have permissions to operate the database.
+
+        :param request: Request instance for DescribeDBsNormal.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBsNormalRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBsNormalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBsNormal", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBsNormalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFlowStatus(self, request):
         """This API is used to query flow status.
 
@@ -656,6 +684,62 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIncrementalMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceParamRecords(self, request):
+        """This API is used to query the parameter modification records of an instance.
+
+        :param request: Request instance for DescribeInstanceParamRecords.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceParamRecordsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceParamRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceParamRecords", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceParamRecordsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceParams(self, request):
+        """This API is used to query the parameter list of an instance.
+
+        :param request: Request instance for DescribeInstanceParams.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceParamsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceParamsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceParams", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceParamsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1230,6 +1314,90 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDatabaseCDC(self, request):
+        """This API is used to enable or disable the change data capture (CDC) feature.
+
+        :param request: Request instance for ModifyDatabaseCDC.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseCDCRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseCDCResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDatabaseCDC", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDatabaseCDCResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDatabaseCT(self, request):
+        """This API is used to enable or disable the change tracking (CT) feature.
+
+        :param request: Request instance for ModifyDatabaseCT.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseCTRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseCTResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDatabaseCT", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDatabaseCTResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDatabaseMdf(self, request):
+        """This API is used to shrink database MDF files.
+
+        :param request: Request instance for ModifyDatabaseMdf.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseMdfRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseMdfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDatabaseMdf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDatabaseMdfResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyIncrementalMigration(self, request):
         """This API is used to modify an incremental backup import task.
 
@@ -1244,6 +1412,36 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIncrementalMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstanceParam(self, request):
+        """This API is used to modify instance parameters.
+        <b>Note</b>: if <b>the instance needs to be restarted</b> for the modified parameter to take effect, <b>it will be restarted</b> immediately or during the maintenance time according to the `WaitSwitch` parameter.
+        Before you modify a parameter, you can use the `DescribeInstanceParams` API to query whether the instance needs to be restarted.
+
+        :param request: Request instance for ModifyInstanceParam.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyInstanceParamRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyInstanceParamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstanceParam", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceParamResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
