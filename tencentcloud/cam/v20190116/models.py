@@ -3040,7 +3040,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 Note: this field may return null, indicating that no valid values can be obtained.\n        :type DeactivedDetail: list of str\n        :param IsServiceLinkedPolicy: The deletion task identifier used to check the deletion status of the service-linked role
 Note: this field may return null, indicating that no valid values can be obtained.\n        :type IsServiceLinkedPolicy: int\n        :param AttachEntityCount: The number of entities associated with the policy.
 Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AttachEntityCount: int\n        :param AttachEntityBoundaryCount: The number of entities associated with the permission boundary.
-Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AttachEntityBoundaryCount: int\n        :param UpdateTime: The last editted time.
+Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type AttachEntityBoundaryCount: int\n        :param UpdateTime: The last edited time.
 Note: this field may return `null`, indicating that no valid values can be obtained.\n        :type UpdateTime: str\n        """
         self.PolicyId = None
         self.PolicyName = None
